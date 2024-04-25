@@ -5110,13 +5110,111 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_vod_domain_bps_data_with_options_async(request, runtime)
 
+    def describe_vod_domain_bps_data_by_layer_with_options(
+        self,
+        request: vod_20170321_models.DescribeVodDomainBpsDataByLayerRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vod_20170321_models.DescribeVodDomainBpsDataByLayerResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.isp_name_en):
+            query['IspNameEn'] = request.isp_name_en
+        if not UtilClient.is_unset(request.layer):
+            query['Layer'] = request.layer
+        if not UtilClient.is_unset(request.location_name_en):
+            query['LocationNameEn'] = request.location_name_en
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVodDomainBpsDataByLayer',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vod_20170321_models.DescribeVodDomainBpsDataByLayerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_vod_domain_bps_data_by_layer_with_options_async(
+        self,
+        request: vod_20170321_models.DescribeVodDomainBpsDataByLayerRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vod_20170321_models.DescribeVodDomainBpsDataByLayerResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.isp_name_en):
+            query['IspNameEn'] = request.isp_name_en
+        if not UtilClient.is_unset(request.layer):
+            query['Layer'] = request.layer
+        if not UtilClient.is_unset(request.location_name_en):
+            query['LocationNameEn'] = request.location_name_en
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVodDomainBpsDataByLayer',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vod_20170321_models.DescribeVodDomainBpsDataByLayerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_vod_domain_bps_data_by_layer(
+        self,
+        request: vod_20170321_models.DescribeVodDomainBpsDataByLayerRequest,
+    ) -> vod_20170321_models.DescribeVodDomainBpsDataByLayerResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_vod_domain_bps_data_by_layer_with_options(request, runtime)
+
+    async def describe_vod_domain_bps_data_by_layer_async(
+        self,
+        request: vod_20170321_models.DescribeVodDomainBpsDataByLayerRequest,
+    ) -> vod_20170321_models.DescribeVodDomainBpsDataByLayerResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_vod_domain_bps_data_by_layer_with_options_async(request, runtime)
+
     def describe_vod_domain_certificate_info_with_options(
         self,
         request: vod_20170321_models.DescribeVodDomainCertificateInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DescribeVodDomainCertificateInfoResponse:
         """
-        > This operation is available only in the *China (Shanghai)** region.
+        This operation is available only in the *China (Shanghai)** region.
         
         @param request: DescribeVodDomainCertificateInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5153,7 +5251,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DescribeVodDomainCertificateInfoResponse:
         """
-        > This operation is available only in the *China (Shanghai)** region.
+        This operation is available only in the *China (Shanghai)** region.
         
         @param request: DescribeVodDomainCertificateInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5189,7 +5287,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.DescribeVodDomainCertificateInfoRequest,
     ) -> vod_20170321_models.DescribeVodDomainCertificateInfoResponse:
         """
-        > This operation is available only in the *China (Shanghai)** region.
+        This operation is available only in the *China (Shanghai)** region.
         
         @param request: DescribeVodDomainCertificateInfoRequest
         @return: DescribeVodDomainCertificateInfoResponse
@@ -5202,7 +5300,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.DescribeVodDomainCertificateInfoRequest,
     ) -> vod_20170321_models.DescribeVodDomainCertificateInfoResponse:
         """
-        > This operation is available only in the *China (Shanghai)** region.
+        This operation is available only in the *China (Shanghai)** region.
         
         @param request: DescribeVodDomainCertificateInfoRequest
         @return: DescribeVodDomainCertificateInfoResponse
@@ -5422,6 +5520,92 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_vod_domain_detail_with_options_async(request, runtime)
 
+    def describe_vod_domain_hit_rate_data_with_options(
+        self,
+        request: vod_20170321_models.DescribeVodDomainHitRateDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vod_20170321_models.DescribeVodDomainHitRateDataResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVodDomainHitRateData',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vod_20170321_models.DescribeVodDomainHitRateDataResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_vod_domain_hit_rate_data_with_options_async(
+        self,
+        request: vod_20170321_models.DescribeVodDomainHitRateDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vod_20170321_models.DescribeVodDomainHitRateDataResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVodDomainHitRateData',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vod_20170321_models.DescribeVodDomainHitRateDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_vod_domain_hit_rate_data(
+        self,
+        request: vod_20170321_models.DescribeVodDomainHitRateDataRequest,
+    ) -> vod_20170321_models.DescribeVodDomainHitRateDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_vod_domain_hit_rate_data_with_options(request, runtime)
+
+    async def describe_vod_domain_hit_rate_data_async(
+        self,
+        request: vod_20170321_models.DescribeVodDomainHitRateDataRequest,
+    ) -> vod_20170321_models.DescribeVodDomainHitRateDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_vod_domain_hit_rate_data_with_options_async(request, runtime)
+
     def describe_vod_domain_log_with_options(
         self,
         request: vod_20170321_models.DescribeVodDomainLogRequest,
@@ -5557,6 +5741,532 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_vod_domain_log_with_options_async(request, runtime)
+
+    def describe_vod_domain_real_time_bps_data_with_options(
+        self,
+        request: vod_20170321_models.DescribeVodDomainRealTimeBpsDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vod_20170321_models.DescribeVodDomainRealTimeBpsDataResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVodDomainRealTimeBpsData',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vod_20170321_models.DescribeVodDomainRealTimeBpsDataResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_vod_domain_real_time_bps_data_with_options_async(
+        self,
+        request: vod_20170321_models.DescribeVodDomainRealTimeBpsDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vod_20170321_models.DescribeVodDomainRealTimeBpsDataResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVodDomainRealTimeBpsData',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vod_20170321_models.DescribeVodDomainRealTimeBpsDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_vod_domain_real_time_bps_data(
+        self,
+        request: vod_20170321_models.DescribeVodDomainRealTimeBpsDataRequest,
+    ) -> vod_20170321_models.DescribeVodDomainRealTimeBpsDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_vod_domain_real_time_bps_data_with_options(request, runtime)
+
+    async def describe_vod_domain_real_time_bps_data_async(
+        self,
+        request: vod_20170321_models.DescribeVodDomainRealTimeBpsDataRequest,
+    ) -> vod_20170321_models.DescribeVodDomainRealTimeBpsDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_vod_domain_real_time_bps_data_with_options_async(request, runtime)
+
+    def describe_vod_domain_real_time_byte_hit_rate_data_with_options(
+        self,
+        request: vod_20170321_models.DescribeVodDomainRealTimeByteHitRateDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vod_20170321_models.DescribeVodDomainRealTimeByteHitRateDataResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVodDomainRealTimeByteHitRateData',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vod_20170321_models.DescribeVodDomainRealTimeByteHitRateDataResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_vod_domain_real_time_byte_hit_rate_data_with_options_async(
+        self,
+        request: vod_20170321_models.DescribeVodDomainRealTimeByteHitRateDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vod_20170321_models.DescribeVodDomainRealTimeByteHitRateDataResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVodDomainRealTimeByteHitRateData',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vod_20170321_models.DescribeVodDomainRealTimeByteHitRateDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_vod_domain_real_time_byte_hit_rate_data(
+        self,
+        request: vod_20170321_models.DescribeVodDomainRealTimeByteHitRateDataRequest,
+    ) -> vod_20170321_models.DescribeVodDomainRealTimeByteHitRateDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_vod_domain_real_time_byte_hit_rate_data_with_options(request, runtime)
+
+    async def describe_vod_domain_real_time_byte_hit_rate_data_async(
+        self,
+        request: vod_20170321_models.DescribeVodDomainRealTimeByteHitRateDataRequest,
+    ) -> vod_20170321_models.DescribeVodDomainRealTimeByteHitRateDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_vod_domain_real_time_byte_hit_rate_data_with_options_async(request, runtime)
+
+    def describe_vod_domain_real_time_http_code_data_with_options(
+        self,
+        request: vod_20170321_models.DescribeVodDomainRealTimeHttpCodeDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vod_20170321_models.DescribeVodDomainRealTimeHttpCodeDataResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.isp_name_en):
+            query['IspNameEn'] = request.isp_name_en
+        if not UtilClient.is_unset(request.location_name_en):
+            query['LocationNameEn'] = request.location_name_en
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVodDomainRealTimeHttpCodeData',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vod_20170321_models.DescribeVodDomainRealTimeHttpCodeDataResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_vod_domain_real_time_http_code_data_with_options_async(
+        self,
+        request: vod_20170321_models.DescribeVodDomainRealTimeHttpCodeDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vod_20170321_models.DescribeVodDomainRealTimeHttpCodeDataResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.isp_name_en):
+            query['IspNameEn'] = request.isp_name_en
+        if not UtilClient.is_unset(request.location_name_en):
+            query['LocationNameEn'] = request.location_name_en
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVodDomainRealTimeHttpCodeData',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vod_20170321_models.DescribeVodDomainRealTimeHttpCodeDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_vod_domain_real_time_http_code_data(
+        self,
+        request: vod_20170321_models.DescribeVodDomainRealTimeHttpCodeDataRequest,
+    ) -> vod_20170321_models.DescribeVodDomainRealTimeHttpCodeDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_vod_domain_real_time_http_code_data_with_options(request, runtime)
+
+    async def describe_vod_domain_real_time_http_code_data_async(
+        self,
+        request: vod_20170321_models.DescribeVodDomainRealTimeHttpCodeDataRequest,
+    ) -> vod_20170321_models.DescribeVodDomainRealTimeHttpCodeDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_vod_domain_real_time_http_code_data_with_options_async(request, runtime)
+
+    def describe_vod_domain_real_time_qps_data_with_options(
+        self,
+        request: vod_20170321_models.DescribeVodDomainRealTimeQpsDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vod_20170321_models.DescribeVodDomainRealTimeQpsDataResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVodDomainRealTimeQpsData',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vod_20170321_models.DescribeVodDomainRealTimeQpsDataResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_vod_domain_real_time_qps_data_with_options_async(
+        self,
+        request: vod_20170321_models.DescribeVodDomainRealTimeQpsDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vod_20170321_models.DescribeVodDomainRealTimeQpsDataResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVodDomainRealTimeQpsData',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vod_20170321_models.DescribeVodDomainRealTimeQpsDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_vod_domain_real_time_qps_data(
+        self,
+        request: vod_20170321_models.DescribeVodDomainRealTimeQpsDataRequest,
+    ) -> vod_20170321_models.DescribeVodDomainRealTimeQpsDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_vod_domain_real_time_qps_data_with_options(request, runtime)
+
+    async def describe_vod_domain_real_time_qps_data_async(
+        self,
+        request: vod_20170321_models.DescribeVodDomainRealTimeQpsDataRequest,
+    ) -> vod_20170321_models.DescribeVodDomainRealTimeQpsDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_vod_domain_real_time_qps_data_with_options_async(request, runtime)
+
+    def describe_vod_domain_real_time_req_hit_rate_data_with_options(
+        self,
+        request: vod_20170321_models.DescribeVodDomainRealTimeReqHitRateDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vod_20170321_models.DescribeVodDomainRealTimeReqHitRateDataResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVodDomainRealTimeReqHitRateData',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vod_20170321_models.DescribeVodDomainRealTimeReqHitRateDataResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_vod_domain_real_time_req_hit_rate_data_with_options_async(
+        self,
+        request: vod_20170321_models.DescribeVodDomainRealTimeReqHitRateDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vod_20170321_models.DescribeVodDomainRealTimeReqHitRateDataResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVodDomainRealTimeReqHitRateData',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vod_20170321_models.DescribeVodDomainRealTimeReqHitRateDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_vod_domain_real_time_req_hit_rate_data(
+        self,
+        request: vod_20170321_models.DescribeVodDomainRealTimeReqHitRateDataRequest,
+    ) -> vod_20170321_models.DescribeVodDomainRealTimeReqHitRateDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_vod_domain_real_time_req_hit_rate_data_with_options(request, runtime)
+
+    async def describe_vod_domain_real_time_req_hit_rate_data_async(
+        self,
+        request: vod_20170321_models.DescribeVodDomainRealTimeReqHitRateDataRequest,
+    ) -> vod_20170321_models.DescribeVodDomainRealTimeReqHitRateDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_vod_domain_real_time_req_hit_rate_data_with_options_async(request, runtime)
+
+    def describe_vod_domain_real_time_traffic_data_with_options(
+        self,
+        request: vod_20170321_models.DescribeVodDomainRealTimeTrafficDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vod_20170321_models.DescribeVodDomainRealTimeTrafficDataResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.isp_name_en):
+            query['IspNameEn'] = request.isp_name_en
+        if not UtilClient.is_unset(request.location_name_en):
+            query['LocationNameEn'] = request.location_name_en
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVodDomainRealTimeTrafficData',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vod_20170321_models.DescribeVodDomainRealTimeTrafficDataResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_vod_domain_real_time_traffic_data_with_options_async(
+        self,
+        request: vod_20170321_models.DescribeVodDomainRealTimeTrafficDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vod_20170321_models.DescribeVodDomainRealTimeTrafficDataResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.isp_name_en):
+            query['IspNameEn'] = request.isp_name_en
+        if not UtilClient.is_unset(request.location_name_en):
+            query['LocationNameEn'] = request.location_name_en
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVodDomainRealTimeTrafficData',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vod_20170321_models.DescribeVodDomainRealTimeTrafficDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_vod_domain_real_time_traffic_data(
+        self,
+        request: vod_20170321_models.DescribeVodDomainRealTimeTrafficDataRequest,
+    ) -> vod_20170321_models.DescribeVodDomainRealTimeTrafficDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_vod_domain_real_time_traffic_data_with_options(request, runtime)
+
+    async def describe_vod_domain_real_time_traffic_data_async(
+        self,
+        request: vod_20170321_models.DescribeVodDomainRealTimeTrafficDataRequest,
+    ) -> vod_20170321_models.DescribeVodDomainRealTimeTrafficDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_vod_domain_real_time_traffic_data_with_options_async(request, runtime)
+
+    def describe_vod_domain_req_hit_rate_data_with_options(
+        self,
+        request: vod_20170321_models.DescribeVodDomainReqHitRateDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vod_20170321_models.DescribeVodDomainReqHitRateDataResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVodDomainReqHitRateData',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vod_20170321_models.DescribeVodDomainReqHitRateDataResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_vod_domain_req_hit_rate_data_with_options_async(
+        self,
+        request: vod_20170321_models.DescribeVodDomainReqHitRateDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vod_20170321_models.DescribeVodDomainReqHitRateDataResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVodDomainReqHitRateData',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vod_20170321_models.DescribeVodDomainReqHitRateDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_vod_domain_req_hit_rate_data(
+        self,
+        request: vod_20170321_models.DescribeVodDomainReqHitRateDataRequest,
+    ) -> vod_20170321_models.DescribeVodDomainReqHitRateDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_vod_domain_req_hit_rate_data_with_options(request, runtime)
+
+    async def describe_vod_domain_req_hit_rate_data_async(
+        self,
+        request: vod_20170321_models.DescribeVodDomainReqHitRateDataRequest,
+    ) -> vod_20170321_models.DescribeVodDomainReqHitRateDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_vod_domain_req_hit_rate_data_with_options_async(request, runtime)
 
     def describe_vod_domain_src_bps_data_with_options(
         self,
@@ -6232,6 +6942,96 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_vod_media_play_data_with_options_async(request, runtime)
 
+    def describe_vod_range_data_by_locate_and_isp_service_with_options(
+        self,
+        request: vod_20170321_models.DescribeVodRangeDataByLocateAndIspServiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vod_20170321_models.DescribeVodRangeDataByLocateAndIspServiceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.isp_name_en):
+            query['IspNameEn'] = request.isp_name_en
+        if not UtilClient.is_unset(request.location_name_en):
+            query['LocationNameEn'] = request.location_name_en
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVodRangeDataByLocateAndIspService',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vod_20170321_models.DescribeVodRangeDataByLocateAndIspServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_vod_range_data_by_locate_and_isp_service_with_options_async(
+        self,
+        request: vod_20170321_models.DescribeVodRangeDataByLocateAndIspServiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vod_20170321_models.DescribeVodRangeDataByLocateAndIspServiceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.isp_name_en):
+            query['IspNameEn'] = request.isp_name_en
+        if not UtilClient.is_unset(request.location_name_en):
+            query['LocationNameEn'] = request.location_name_en
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVodRangeDataByLocateAndIspService',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vod_20170321_models.DescribeVodRangeDataByLocateAndIspServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_vod_range_data_by_locate_and_isp_service(
+        self,
+        request: vod_20170321_models.DescribeVodRangeDataByLocateAndIspServiceRequest,
+    ) -> vod_20170321_models.DescribeVodRangeDataByLocateAndIspServiceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_vod_range_data_by_locate_and_isp_service_with_options(request, runtime)
+
+    async def describe_vod_range_data_by_locate_and_isp_service_async(
+        self,
+        request: vod_20170321_models.DescribeVodRangeDataByLocateAndIspServiceRequest,
+    ) -> vod_20170321_models.DescribeVodRangeDataByLocateAndIspServiceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_vod_range_data_by_locate_and_isp_service_with_options_async(request, runtime)
+
     def describe_vod_refresh_quota_with_options(
         self,
         request: vod_20170321_models.DescribeVodRefreshQuotaRequest,
@@ -6729,6 +7529,14 @@ class Client(OpenApiClient):
         request: vod_20170321_models.DescribeVodUserDomainsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DescribeVodUserDomainsResponse:
+        """
+        You can filter domain names by name and status. Fuzzy match is supported for domain name-based query.
+        *   This operation is available only in the China (Shanghai) region.
+        
+        @param request: DescribeVodUserDomainsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVodUserDomainsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -6771,6 +7579,14 @@ class Client(OpenApiClient):
         request: vod_20170321_models.DescribeVodUserDomainsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.DescribeVodUserDomainsResponse:
+        """
+        You can filter domain names by name and status. Fuzzy match is supported for domain name-based query.
+        *   This operation is available only in the China (Shanghai) region.
+        
+        @param request: DescribeVodUserDomainsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVodUserDomainsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -6812,6 +7628,13 @@ class Client(OpenApiClient):
         self,
         request: vod_20170321_models.DescribeVodUserDomainsRequest,
     ) -> vod_20170321_models.DescribeVodUserDomainsResponse:
+        """
+        You can filter domain names by name and status. Fuzzy match is supported for domain name-based query.
+        *   This operation is available only in the China (Shanghai) region.
+        
+        @param request: DescribeVodUserDomainsRequest
+        @return: DescribeVodUserDomainsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_vod_user_domains_with_options(request, runtime)
 
@@ -6819,6 +7642,13 @@ class Client(OpenApiClient):
         self,
         request: vod_20170321_models.DescribeVodUserDomainsRequest,
     ) -> vod_20170321_models.DescribeVodUserDomainsResponse:
+        """
+        You can filter domain names by name and status. Fuzzy match is supported for domain name-based query.
+        *   This operation is available only in the China (Shanghai) region.
+        
+        @param request: DescribeVodUserDomainsRequest
+        @return: DescribeVodUserDomainsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_vod_user_domains_with_options_async(request, runtime)
 
@@ -7640,7 +8470,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetAppInfosResponse:
         """
-        Supports batch query.
+        You can specify multiple accelerated domain names in a request.
         
         @param request: GetAppInfosRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7675,7 +8505,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetAppInfosResponse:
         """
-        Supports batch query.
+        You can specify multiple accelerated domain names in a request.
         
         @param request: GetAppInfosRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7709,7 +8539,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.GetAppInfosRequest,
     ) -> vod_20170321_models.GetAppInfosResponse:
         """
-        Supports batch query.
+        You can specify multiple accelerated domain names in a request.
         
         @param request: GetAppInfosRequest
         @return: GetAppInfosResponse
@@ -7722,7 +8552,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.GetAppInfosRequest,
     ) -> vod_20170321_models.GetAppInfosResponse:
         """
-        Supports batch query.
+        You can specify multiple accelerated domain names in a request.
         
         @param request: GetAppInfosRequest
         @return: GetAppInfosResponse
@@ -9530,10 +10360,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetTranscodeSummaryResponse:
         """
-        A media file may be transcoded multiple times. This operation returns only the latest transcoding summary.
-        *   You can query transcoding summaries for a maximum of 10 media files in one request.
+        An audio or video file may be transcoded multiple times. This operation returns only the latest transcoding summary.
+        *   You can query transcoding summaries for a maximum of 10 audio and video files in one request.
         *   You can call the [ListTranscodeTask](~~109120~~) operation to query historical transcoding tasks.
-        *   **You can call this operation to query information only about transcoding tasks created within the past year.**\
+        *   **You can call this operation to query information only about transcoding tasks created within the past year.
         
         @param request: GetTranscodeSummaryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9568,10 +10398,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetTranscodeSummaryResponse:
         """
-        A media file may be transcoded multiple times. This operation returns only the latest transcoding summary.
-        *   You can query transcoding summaries for a maximum of 10 media files in one request.
+        An audio or video file may be transcoded multiple times. This operation returns only the latest transcoding summary.
+        *   You can query transcoding summaries for a maximum of 10 audio and video files in one request.
         *   You can call the [ListTranscodeTask](~~109120~~) operation to query historical transcoding tasks.
-        *   **You can call this operation to query information only about transcoding tasks created within the past year.**\
+        *   **You can call this operation to query information only about transcoding tasks created within the past year.
         
         @param request: GetTranscodeSummaryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9605,10 +10435,10 @@ class Client(OpenApiClient):
         request: vod_20170321_models.GetTranscodeSummaryRequest,
     ) -> vod_20170321_models.GetTranscodeSummaryResponse:
         """
-        A media file may be transcoded multiple times. This operation returns only the latest transcoding summary.
-        *   You can query transcoding summaries for a maximum of 10 media files in one request.
+        An audio or video file may be transcoded multiple times. This operation returns only the latest transcoding summary.
+        *   You can query transcoding summaries for a maximum of 10 audio and video files in one request.
         *   You can call the [ListTranscodeTask](~~109120~~) operation to query historical transcoding tasks.
-        *   **You can call this operation to query information only about transcoding tasks created within the past year.**\
+        *   **You can call this operation to query information only about transcoding tasks created within the past year.
         
         @param request: GetTranscodeSummaryRequest
         @return: GetTranscodeSummaryResponse
@@ -9621,10 +10451,10 @@ class Client(OpenApiClient):
         request: vod_20170321_models.GetTranscodeSummaryRequest,
     ) -> vod_20170321_models.GetTranscodeSummaryResponse:
         """
-        A media file may be transcoded multiple times. This operation returns only the latest transcoding summary.
-        *   You can query transcoding summaries for a maximum of 10 media files in one request.
+        An audio or video file may be transcoded multiple times. This operation returns only the latest transcoding summary.
+        *   You can query transcoding summaries for a maximum of 10 audio and video files in one request.
         *   You can call the [ListTranscodeTask](~~109120~~) operation to query historical transcoding tasks.
-        *   **You can call this operation to query information only about transcoding tasks created within the past year.**\
+        *   **You can call this operation to query information only about transcoding tasks created within the past year.
         
         @param request: GetTranscodeSummaryRequest
         @return: GetTranscodeSummaryResponse
@@ -9734,7 +10564,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetTranscodeTemplateGroupResponse:
         """
-        >  This operation returns the information about the specified transcoding template group and the configurations of all the transcoding templates in the group.
+        This operation returns information about the specified transcoding template group and the configurations of all the transcoding templates in the group.
         
         @param request: GetTranscodeTemplateGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9769,7 +10599,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.GetTranscodeTemplateGroupResponse:
         """
-        >  This operation returns the information about the specified transcoding template group and the configurations of all the transcoding templates in the group.
+        This operation returns information about the specified transcoding template group and the configurations of all the transcoding templates in the group.
         
         @param request: GetTranscodeTemplateGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9803,7 +10633,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.GetTranscodeTemplateGroupRequest,
     ) -> vod_20170321_models.GetTranscodeTemplateGroupResponse:
         """
-        >  This operation returns the information about the specified transcoding template group and the configurations of all the transcoding templates in the group.
+        This operation returns information about the specified transcoding template group and the configurations of all the transcoding templates in the group.
         
         @param request: GetTranscodeTemplateGroupRequest
         @return: GetTranscodeTemplateGroupResponse
@@ -9816,7 +10646,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.GetTranscodeTemplateGroupRequest,
     ) -> vod_20170321_models.GetTranscodeTemplateGroupResponse:
         """
-        >  This operation returns the information about the specified transcoding template group and the configurations of all the transcoding templates in the group.
+        This operation returns information about the specified transcoding template group and the configurations of all the transcoding templates in the group.
         
         @param request: GetTranscodeTemplateGroupRequest
         @return: GetTranscodeTemplateGroupResponse
@@ -11314,7 +12144,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.ListLiveRecordVideoResponse:
         """
-        You can query a maximum of 5,000 videos based on the specified filter condition.
+        You can query up to 5,000 videos based on the specified filter condition.
         
         @param request: ListLiveRecordVideoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11363,7 +12193,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.ListLiveRecordVideoResponse:
         """
-        You can query a maximum of 5,000 videos based on the specified filter condition.
+        You can query up to 5,000 videos based on the specified filter condition.
         
         @param request: ListLiveRecordVideoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11411,7 +12241,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.ListLiveRecordVideoRequest,
     ) -> vod_20170321_models.ListLiveRecordVideoResponse:
         """
-        You can query a maximum of 5,000 videos based on the specified filter condition.
+        You can query up to 5,000 videos based on the specified filter condition.
         
         @param request: ListLiveRecordVideoRequest
         @return: ListLiveRecordVideoResponse
@@ -11424,7 +12254,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.ListLiveRecordVideoRequest,
     ) -> vod_20170321_models.ListLiveRecordVideoResponse:
         """
-        You can query a maximum of 5,000 videos based on the specified filter condition.
+        You can query up to 5,000 videos based on the specified filter condition.
         
         @param request: ListLiveRecordVideoRequest
         @return: ListLiveRecordVideoResponse
@@ -12986,12 +13816,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.SearchMediaResponse:
         """
-        The maximum number of data records that you can query is limited based on the method used to query the data. You can use the following methods to query data:
-        *   Method 1: You must use the PageNo and PageSize parameters for the first 5,000 data records that meet the specified filter condition. This allows you to traverse data page by page. If the number of data records that meet the specified filter condition exceeds 5,000, use Method 2.
-        *   Method 2: This method applies only to the data of video and audio files. To traverse all the data records that meet the specified filter condition, you must set the PageNo, PageSize, and ScrollToken parameters to traverse data page by page. The total number of data records from the current page to the target page cannot exceed 1,200. Assume that the PageSize parameter is set to **20**:
-        *   When the PageNo parameter is set to **1**, you can scroll forward to traverse data records from page 1 to page **60** at most.
-        *   When the PageNo parameter is set to **2**, you can scroll forward to traverse data records from page 2 to page **61** at most.
-        *   When the PageNo parameter is set to **61**, you can scroll backward to traverse data records from page 61 to page **2** at most or scroll forward to traverse data records from page 61 to page **120** at most.
+        The maximum number of data records that you can query varies based on the method used to query the data. You can use the following methods to query data:
+        *   Method 1: Traverse data by page
+        You can use the PageNo and PageSize parameters to traverse up to 5,000 data records that meet the specified filter condition. PageNo specifies the page number and PageSize specifies the number of data records displayed on a page. If the number of data records that meet the specified filter condition exceeds 5,000, change the filter conditions to narrow down the results. You cannot use this method to traverse all data records. If you want to traverse more data records, use Method 2.
+        *   Method 2: Traverse all data (available only for audio and video files)
+        You can use this method to traverse up to 2 million data records related to audio and video files. If the number of data records that meet the specified filter condition exceeds 2 million, change the filter conditions to narrow down the results. To traverse data page by page, you must set the PageNo, PageSize, and ScrollToken parameters. The total number of data records from the current page to the target page cannot exceed 100. For example, you set PageSize to 20. The following content describes the traverse logic:
+        *   When the PageNo parameter is set to 1, you can traverse data records from page 1 to page 5.
+        *   When the PageNo parameter is set to 2, you can traverse data records from page 2 to page 6.
+        Make sure that you set the appropriate page number and page size, and use a traverse method based on the number of results that meet your filter condition.
         
         @param request: SearchMediaRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13038,12 +13870,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.SearchMediaResponse:
         """
-        The maximum number of data records that you can query is limited based on the method used to query the data. You can use the following methods to query data:
-        *   Method 1: You must use the PageNo and PageSize parameters for the first 5,000 data records that meet the specified filter condition. This allows you to traverse data page by page. If the number of data records that meet the specified filter condition exceeds 5,000, use Method 2.
-        *   Method 2: This method applies only to the data of video and audio files. To traverse all the data records that meet the specified filter condition, you must set the PageNo, PageSize, and ScrollToken parameters to traverse data page by page. The total number of data records from the current page to the target page cannot exceed 1,200. Assume that the PageSize parameter is set to **20**:
-        *   When the PageNo parameter is set to **1**, you can scroll forward to traverse data records from page 1 to page **60** at most.
-        *   When the PageNo parameter is set to **2**, you can scroll forward to traverse data records from page 2 to page **61** at most.
-        *   When the PageNo parameter is set to **61**, you can scroll backward to traverse data records from page 61 to page **2** at most or scroll forward to traverse data records from page 61 to page **120** at most.
+        The maximum number of data records that you can query varies based on the method used to query the data. You can use the following methods to query data:
+        *   Method 1: Traverse data by page
+        You can use the PageNo and PageSize parameters to traverse up to 5,000 data records that meet the specified filter condition. PageNo specifies the page number and PageSize specifies the number of data records displayed on a page. If the number of data records that meet the specified filter condition exceeds 5,000, change the filter conditions to narrow down the results. You cannot use this method to traverse all data records. If you want to traverse more data records, use Method 2.
+        *   Method 2: Traverse all data (available only for audio and video files)
+        You can use this method to traverse up to 2 million data records related to audio and video files. If the number of data records that meet the specified filter condition exceeds 2 million, change the filter conditions to narrow down the results. To traverse data page by page, you must set the PageNo, PageSize, and ScrollToken parameters. The total number of data records from the current page to the target page cannot exceed 100. For example, you set PageSize to 20. The following content describes the traverse logic:
+        *   When the PageNo parameter is set to 1, you can traverse data records from page 1 to page 5.
+        *   When the PageNo parameter is set to 2, you can traverse data records from page 2 to page 6.
+        Make sure that you set the appropriate page number and page size, and use a traverse method based on the number of results that meet your filter condition.
         
         @param request: SearchMediaRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13089,12 +13923,14 @@ class Client(OpenApiClient):
         request: vod_20170321_models.SearchMediaRequest,
     ) -> vod_20170321_models.SearchMediaResponse:
         """
-        The maximum number of data records that you can query is limited based on the method used to query the data. You can use the following methods to query data:
-        *   Method 1: You must use the PageNo and PageSize parameters for the first 5,000 data records that meet the specified filter condition. This allows you to traverse data page by page. If the number of data records that meet the specified filter condition exceeds 5,000, use Method 2.
-        *   Method 2: This method applies only to the data of video and audio files. To traverse all the data records that meet the specified filter condition, you must set the PageNo, PageSize, and ScrollToken parameters to traverse data page by page. The total number of data records from the current page to the target page cannot exceed 1,200. Assume that the PageSize parameter is set to **20**:
-        *   When the PageNo parameter is set to **1**, you can scroll forward to traverse data records from page 1 to page **60** at most.
-        *   When the PageNo parameter is set to **2**, you can scroll forward to traverse data records from page 2 to page **61** at most.
-        *   When the PageNo parameter is set to **61**, you can scroll backward to traverse data records from page 61 to page **2** at most or scroll forward to traverse data records from page 61 to page **120** at most.
+        The maximum number of data records that you can query varies based on the method used to query the data. You can use the following methods to query data:
+        *   Method 1: Traverse data by page
+        You can use the PageNo and PageSize parameters to traverse up to 5,000 data records that meet the specified filter condition. PageNo specifies the page number and PageSize specifies the number of data records displayed on a page. If the number of data records that meet the specified filter condition exceeds 5,000, change the filter conditions to narrow down the results. You cannot use this method to traverse all data records. If you want to traverse more data records, use Method 2.
+        *   Method 2: Traverse all data (available only for audio and video files)
+        You can use this method to traverse up to 2 million data records related to audio and video files. If the number of data records that meet the specified filter condition exceeds 2 million, change the filter conditions to narrow down the results. To traverse data page by page, you must set the PageNo, PageSize, and ScrollToken parameters. The total number of data records from the current page to the target page cannot exceed 100. For example, you set PageSize to 20. The following content describes the traverse logic:
+        *   When the PageNo parameter is set to 1, you can traverse data records from page 1 to page 5.
+        *   When the PageNo parameter is set to 2, you can traverse data records from page 2 to page 6.
+        Make sure that you set the appropriate page number and page size, and use a traverse method based on the number of results that meet your filter condition.
         
         @param request: SearchMediaRequest
         @return: SearchMediaResponse
@@ -13107,12 +13943,14 @@ class Client(OpenApiClient):
         request: vod_20170321_models.SearchMediaRequest,
     ) -> vod_20170321_models.SearchMediaResponse:
         """
-        The maximum number of data records that you can query is limited based on the method used to query the data. You can use the following methods to query data:
-        *   Method 1: You must use the PageNo and PageSize parameters for the first 5,000 data records that meet the specified filter condition. This allows you to traverse data page by page. If the number of data records that meet the specified filter condition exceeds 5,000, use Method 2.
-        *   Method 2: This method applies only to the data of video and audio files. To traverse all the data records that meet the specified filter condition, you must set the PageNo, PageSize, and ScrollToken parameters to traverse data page by page. The total number of data records from the current page to the target page cannot exceed 1,200. Assume that the PageSize parameter is set to **20**:
-        *   When the PageNo parameter is set to **1**, you can scroll forward to traverse data records from page 1 to page **60** at most.
-        *   When the PageNo parameter is set to **2**, you can scroll forward to traverse data records from page 2 to page **61** at most.
-        *   When the PageNo parameter is set to **61**, you can scroll backward to traverse data records from page 61 to page **2** at most or scroll forward to traverse data records from page 61 to page **120** at most.
+        The maximum number of data records that you can query varies based on the method used to query the data. You can use the following methods to query data:
+        *   Method 1: Traverse data by page
+        You can use the PageNo and PageSize parameters to traverse up to 5,000 data records that meet the specified filter condition. PageNo specifies the page number and PageSize specifies the number of data records displayed on a page. If the number of data records that meet the specified filter condition exceeds 5,000, change the filter conditions to narrow down the results. You cannot use this method to traverse all data records. If you want to traverse more data records, use Method 2.
+        *   Method 2: Traverse all data (available only for audio and video files)
+        You can use this method to traverse up to 2 million data records related to audio and video files. If the number of data records that meet the specified filter condition exceeds 2 million, change the filter conditions to narrow down the results. To traverse data page by page, you must set the PageNo, PageSize, and ScrollToken parameters. The total number of data records from the current page to the target page cannot exceed 100. For example, you set PageSize to 20. The following content describes the traverse logic:
+        *   When the PageNo parameter is set to 1, you can traverse data records from page 1 to page 5.
+        *   When the PageNo parameter is set to 2, you can traverse data records from page 2 to page 6.
+        Make sure that you set the appropriate page number and page size, and use a traverse method based on the number of results that meet your filter condition.
         
         @param request: SearchMediaRequest
         @return: SearchMediaResponse
@@ -13927,6 +14765,13 @@ class Client(OpenApiClient):
         request: vod_20170321_models.SubmitAIImageAuditJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.SubmitAIImageAuditJobResponse:
+        """
+        This operation is available only in the Singapore region.
+        
+        @param request: SubmitAIImageAuditJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitAIImageAuditJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.media_audit_configuration):
@@ -13967,6 +14812,13 @@ class Client(OpenApiClient):
         request: vod_20170321_models.SubmitAIImageAuditJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.SubmitAIImageAuditJobResponse:
+        """
+        This operation is available only in the Singapore region.
+        
+        @param request: SubmitAIImageAuditJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitAIImageAuditJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.media_audit_configuration):
@@ -14006,6 +14858,12 @@ class Client(OpenApiClient):
         self,
         request: vod_20170321_models.SubmitAIImageAuditJobRequest,
     ) -> vod_20170321_models.SubmitAIImageAuditJobResponse:
+        """
+        This operation is available only in the Singapore region.
+        
+        @param request: SubmitAIImageAuditJobRequest
+        @return: SubmitAIImageAuditJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.submit_aiimage_audit_job_with_options(request, runtime)
 
@@ -14013,6 +14871,12 @@ class Client(OpenApiClient):
         self,
         request: vod_20170321_models.SubmitAIImageAuditJobRequest,
     ) -> vod_20170321_models.SubmitAIImageAuditJobResponse:
+        """
+        This operation is available only in the Singapore region.
+        
+        @param request: SubmitAIImageAuditJobRequest
+        @return: SubmitAIImageAuditJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.submit_aiimage_audit_job_with_options_async(request, runtime)
 
@@ -15948,7 +16812,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.UpdateTranscodeTemplateGroupResponse:
         """
-        For security purposes, you cannot add, modify, or delete transcoding templates in a transcoding template group that is locked. To check whether a transcoding template group is locked, call the [GetTranscodeTemplateGroup](~~GetTranscodeTemplateGroup~~) operation and check whether Locked is returned in the response. If the transcoding template group is locked, you can all this operation to unlock the transcoding template group before you add, modify, or delete transcoding templates in the transcoding template group.
+        For security purposes, you cannot add, modify, or delete transcoding templates in a transcoding template group that is locked. You can call the [GetTranscodeTemplateGroup](~~GetTranscodeTemplateGroup~~) operation to query the configurations of a transcoding template group, check whether the transcoding template group is locked by using the response parameter Locked, and unlock the transcoding template group before you perform operations such as add, modify, and delete transcoding templates.
         
         @param request: UpdateTranscodeTemplateGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15989,7 +16853,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.UpdateTranscodeTemplateGroupResponse:
         """
-        For security purposes, you cannot add, modify, or delete transcoding templates in a transcoding template group that is locked. To check whether a transcoding template group is locked, call the [GetTranscodeTemplateGroup](~~GetTranscodeTemplateGroup~~) operation and check whether Locked is returned in the response. If the transcoding template group is locked, you can all this operation to unlock the transcoding template group before you add, modify, or delete transcoding templates in the transcoding template group.
+        For security purposes, you cannot add, modify, or delete transcoding templates in a transcoding template group that is locked. You can call the [GetTranscodeTemplateGroup](~~GetTranscodeTemplateGroup~~) operation to query the configurations of a transcoding template group, check whether the transcoding template group is locked by using the response parameter Locked, and unlock the transcoding template group before you perform operations such as add, modify, and delete transcoding templates.
         
         @param request: UpdateTranscodeTemplateGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16029,7 +16893,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.UpdateTranscodeTemplateGroupRequest,
     ) -> vod_20170321_models.UpdateTranscodeTemplateGroupResponse:
         """
-        For security purposes, you cannot add, modify, or delete transcoding templates in a transcoding template group that is locked. To check whether a transcoding template group is locked, call the [GetTranscodeTemplateGroup](~~GetTranscodeTemplateGroup~~) operation and check whether Locked is returned in the response. If the transcoding template group is locked, you can all this operation to unlock the transcoding template group before you add, modify, or delete transcoding templates in the transcoding template group.
+        For security purposes, you cannot add, modify, or delete transcoding templates in a transcoding template group that is locked. You can call the [GetTranscodeTemplateGroup](~~GetTranscodeTemplateGroup~~) operation to query the configurations of a transcoding template group, check whether the transcoding template group is locked by using the response parameter Locked, and unlock the transcoding template group before you perform operations such as add, modify, and delete transcoding templates.
         
         @param request: UpdateTranscodeTemplateGroupRequest
         @return: UpdateTranscodeTemplateGroupResponse
@@ -16042,7 +16906,7 @@ class Client(OpenApiClient):
         request: vod_20170321_models.UpdateTranscodeTemplateGroupRequest,
     ) -> vod_20170321_models.UpdateTranscodeTemplateGroupResponse:
         """
-        For security purposes, you cannot add, modify, or delete transcoding templates in a transcoding template group that is locked. To check whether a transcoding template group is locked, call the [GetTranscodeTemplateGroup](~~GetTranscodeTemplateGroup~~) operation and check whether Locked is returned in the response. If the transcoding template group is locked, you can all this operation to unlock the transcoding template group before you add, modify, or delete transcoding templates in the transcoding template group.
+        For security purposes, you cannot add, modify, or delete transcoding templates in a transcoding template group that is locked. You can call the [GetTranscodeTemplateGroup](~~GetTranscodeTemplateGroup~~) operation to query the configurations of a transcoding template group, check whether the transcoding template group is locked by using the response parameter Locked, and unlock the transcoding template group before you perform operations such as add, modify, and delete transcoding templates.
         
         @param request: UpdateTranscodeTemplateGroupRequest
         @return: UpdateTranscodeTemplateGroupResponse
@@ -16833,6 +17697,13 @@ class Client(OpenApiClient):
         request: vod_20170321_models.VerifyVodDomainOwnerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.VerifyVodDomainOwnerResponse:
+        """
+        This operation is available only in the *China (Shanghai)** region.
+        
+        @param request: VerifyVodDomainOwnerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VerifyVodDomainOwnerResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -16865,6 +17736,13 @@ class Client(OpenApiClient):
         request: vod_20170321_models.VerifyVodDomainOwnerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vod_20170321_models.VerifyVodDomainOwnerResponse:
+        """
+        This operation is available only in the *China (Shanghai)** region.
+        
+        @param request: VerifyVodDomainOwnerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VerifyVodDomainOwnerResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -16896,6 +17774,12 @@ class Client(OpenApiClient):
         self,
         request: vod_20170321_models.VerifyVodDomainOwnerRequest,
     ) -> vod_20170321_models.VerifyVodDomainOwnerResponse:
+        """
+        This operation is available only in the *China (Shanghai)** region.
+        
+        @param request: VerifyVodDomainOwnerRequest
+        @return: VerifyVodDomainOwnerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.verify_vod_domain_owner_with_options(request, runtime)
 
@@ -16903,5 +17787,11 @@ class Client(OpenApiClient):
         self,
         request: vod_20170321_models.VerifyVodDomainOwnerRequest,
     ) -> vod_20170321_models.VerifyVodDomainOwnerResponse:
+        """
+        This operation is available only in the *China (Shanghai)** region.
+        
+        @param request: VerifyVodDomainOwnerRequest
+        @return: VerifyVodDomainOwnerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.verify_vod_domain_owner_with_options_async(request, runtime)

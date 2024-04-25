@@ -2895,7 +2895,7 @@ class CreateUploadVideoRequest(TeaModel):
         # *   The name must contain a file name extension, which is not case-sensitive.
         # *   For more information about file name extensions supported by ApsaraVideo VOD, see [Overview](~~55396~~).
         self.file_name = file_name
-        # The size of the audio or video file. Unit: bytes.
+        # The size of the source file. Unit: bytes.
         self.file_size = file_size
         # The storage address. To obtain the storage address, log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com). In the left-side navigation pane, choose **Configuration Management** > **Media Management** > **Storage**.
         # 
@@ -7198,6 +7198,231 @@ class DescribeVodDomainBpsDataResponse(TeaModel):
         return self
 
 
+class DescribeVodDomainBpsDataByLayerRequest(TeaModel):
+    def __init__(
+        self,
+        domain_name: str = None,
+        end_time: str = None,
+        interval: str = None,
+        isp_name_en: str = None,
+        layer: str = None,
+        location_name_en: str = None,
+        owner_id: int = None,
+        start_time: str = None,
+    ):
+        self.domain_name = domain_name
+        self.end_time = end_time
+        self.interval = interval
+        self.isp_name_en = isp_name_en
+        self.layer = layer
+        self.location_name_en = location_name_en
+        self.owner_id = owner_id
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain_name is not None:
+            result['DomainName'] = self.domain_name
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.interval is not None:
+            result['Interval'] = self.interval
+        if self.isp_name_en is not None:
+            result['IspNameEn'] = self.isp_name_en
+        if self.layer is not None:
+            result['Layer'] = self.layer
+        if self.location_name_en is not None:
+            result['LocationNameEn'] = self.location_name_en
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DomainName') is not None:
+            self.domain_name = m.get('DomainName')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Interval') is not None:
+            self.interval = m.get('Interval')
+        if m.get('IspNameEn') is not None:
+            self.isp_name_en = m.get('IspNameEn')
+        if m.get('Layer') is not None:
+            self.layer = m.get('Layer')
+        if m.get('LocationNameEn') is not None:
+            self.location_name_en = m.get('LocationNameEn')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class DescribeVodDomainBpsDataByLayerResponseBodyBpsDataIntervalDataModule(TeaModel):
+    def __init__(
+        self,
+        time_stamp: str = None,
+        traffic_value: int = None,
+        value: float = None,
+    ):
+        self.time_stamp = time_stamp
+        self.traffic_value = traffic_value
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.time_stamp is not None:
+            result['TimeStamp'] = self.time_stamp
+        if self.traffic_value is not None:
+            result['TrafficValue'] = self.traffic_value
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TimeStamp') is not None:
+            self.time_stamp = m.get('TimeStamp')
+        if m.get('TrafficValue') is not None:
+            self.traffic_value = m.get('TrafficValue')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class DescribeVodDomainBpsDataByLayerResponseBodyBpsDataInterval(TeaModel):
+    def __init__(
+        self,
+        data_module: List[DescribeVodDomainBpsDataByLayerResponseBodyBpsDataIntervalDataModule] = None,
+    ):
+        self.data_module = data_module
+
+    def validate(self):
+        if self.data_module:
+            for k in self.data_module:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DataModule'] = []
+        if self.data_module is not None:
+            for k in self.data_module:
+                result['DataModule'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data_module = []
+        if m.get('DataModule') is not None:
+            for k in m.get('DataModule'):
+                temp_model = DescribeVodDomainBpsDataByLayerResponseBodyBpsDataIntervalDataModule()
+                self.data_module.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeVodDomainBpsDataByLayerResponseBody(TeaModel):
+    def __init__(
+        self,
+        bps_data_interval: DescribeVodDomainBpsDataByLayerResponseBodyBpsDataInterval = None,
+        data_interval: int = None,
+        request_id: str = None,
+    ):
+        self.bps_data_interval = bps_data_interval
+        self.data_interval = data_interval
+        self.request_id = request_id
+
+    def validate(self):
+        if self.bps_data_interval:
+            self.bps_data_interval.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bps_data_interval is not None:
+            result['BpsDataInterval'] = self.bps_data_interval.to_map()
+        if self.data_interval is not None:
+            result['DataInterval'] = self.data_interval
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BpsDataInterval') is not None:
+            temp_model = DescribeVodDomainBpsDataByLayerResponseBodyBpsDataInterval()
+            self.bps_data_interval = temp_model.from_map(m['BpsDataInterval'])
+        if m.get('DataInterval') is not None:
+            self.data_interval = m.get('DataInterval')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeVodDomainBpsDataByLayerResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeVodDomainBpsDataByLayerResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeVodDomainBpsDataByLayerResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeVodDomainCertificateInfoRequest(TeaModel):
     def __init__(
         self,
@@ -7247,11 +7472,11 @@ class DescribeVodDomainCertificateInfoResponseBodyCertInfosCertInfo(TeaModel):
     ):
         # The domain name that matches the certificate.
         self.cert_domain_name = cert_domain_name
-        # The time at which the certificate expires. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The time at which the certificate expires. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.cert_expire_time = cert_expire_time
         # The validity period of the certificate. Unit: months or years.
         self.cert_life = cert_life
-        # The name of the certificate.
+        # The certificate name.
         self.cert_name = cert_name
         # The certificate authority (CA) that issued the certificate.
         self.cert_org = cert_org
@@ -7261,14 +7486,14 @@ class DescribeVodDomainCertificateInfoResponseBodyCertInfosCertInfo(TeaModel):
         # *   **cas**: a certificate that is purchased from Certificate Management Service.
         # *   **upload**: a user-uploaded certificate.
         self.cert_type = cert_type
-        # The accelerated domain name.
+        # The accelerated domain name whose ICP filing status you want to update.
         self.domain_name = domain_name
-        # Indicates whether the SSL certificate is enabled.
+        # The status of the SSL certificate.
         # 
         # *   **on**\
         # *   **off**\
         self.server_certificate_status = server_certificate_status
-        # The status of the certificate. Valid values:
+        # The status of the certificate.
         # 
         # *   **success**: The certificate is in effect.
         # *   **checking**: The system is checking whether the domain name is added to ApsaraVideo VOD.
@@ -7278,7 +7503,7 @@ class DescribeVodDomainCertificateInfoResponseBodyCertInfosCertInfo(TeaModel):
         # *   **applying**: The certificate application is in progress.
         # *   **failed**: The certificate application failed.
         # 
-        # > A value is returned for this parameter only if `free` is returned for `CertType`. If a value other than free is returned for CertType, an empty string is returned for this parameter.
+        # >  A value is returned for this parameter only when you set `CertType` to `free`. Otherwise, an empty value is returned for this parameter.
         self.status = status
 
     def validate(self):
@@ -8064,6 +8289,231 @@ class DescribeVodDomainDetailResponse(TeaModel):
         return self
 
 
+class DescribeVodDomainHitRateDataRequest(TeaModel):
+    def __init__(
+        self,
+        domain_name: str = None,
+        end_time: str = None,
+        interval: str = None,
+        owner_id: int = None,
+        start_time: str = None,
+    ):
+        self.domain_name = domain_name
+        self.end_time = end_time
+        self.interval = interval
+        self.owner_id = owner_id
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain_name is not None:
+            result['DomainName'] = self.domain_name
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.interval is not None:
+            result['Interval'] = self.interval
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DomainName') is not None:
+            self.domain_name = m.get('DomainName')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Interval') is not None:
+            self.interval = m.get('Interval')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class DescribeVodDomainHitRateDataResponseBodyHitRateIntervalDataModule(TeaModel):
+    def __init__(
+        self,
+        https_value: str = None,
+        time_stamp: str = None,
+        value: str = None,
+    ):
+        self.https_value = https_value
+        self.time_stamp = time_stamp
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.https_value is not None:
+            result['HttpsValue'] = self.https_value
+        if self.time_stamp is not None:
+            result['TimeStamp'] = self.time_stamp
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('HttpsValue') is not None:
+            self.https_value = m.get('HttpsValue')
+        if m.get('TimeStamp') is not None:
+            self.time_stamp = m.get('TimeStamp')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class DescribeVodDomainHitRateDataResponseBodyHitRateInterval(TeaModel):
+    def __init__(
+        self,
+        data_module: List[DescribeVodDomainHitRateDataResponseBodyHitRateIntervalDataModule] = None,
+    ):
+        self.data_module = data_module
+
+    def validate(self):
+        if self.data_module:
+            for k in self.data_module:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DataModule'] = []
+        if self.data_module is not None:
+            for k in self.data_module:
+                result['DataModule'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data_module = []
+        if m.get('DataModule') is not None:
+            for k in m.get('DataModule'):
+                temp_model = DescribeVodDomainHitRateDataResponseBodyHitRateIntervalDataModule()
+                self.data_module.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeVodDomainHitRateDataResponseBody(TeaModel):
+    def __init__(
+        self,
+        data_interval: str = None,
+        domain_name: str = None,
+        end_time: str = None,
+        hit_rate_interval: DescribeVodDomainHitRateDataResponseBodyHitRateInterval = None,
+        request_id: str = None,
+        start_time: str = None,
+    ):
+        self.data_interval = data_interval
+        self.domain_name = domain_name
+        self.end_time = end_time
+        self.hit_rate_interval = hit_rate_interval
+        self.request_id = request_id
+        self.start_time = start_time
+
+    def validate(self):
+        if self.hit_rate_interval:
+            self.hit_rate_interval.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_interval is not None:
+            result['DataInterval'] = self.data_interval
+        if self.domain_name is not None:
+            result['DomainName'] = self.domain_name
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.hit_rate_interval is not None:
+            result['HitRateInterval'] = self.hit_rate_interval.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataInterval') is not None:
+            self.data_interval = m.get('DataInterval')
+        if m.get('DomainName') is not None:
+            self.domain_name = m.get('DomainName')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('HitRateInterval') is not None:
+            temp_model = DescribeVodDomainHitRateDataResponseBodyHitRateInterval()
+            self.hit_rate_interval = temp_model.from_map(m['HitRateInterval'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class DescribeVodDomainHitRateDataResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeVodDomainHitRateDataResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeVodDomainHitRateDataResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeVodDomainLogRequest(TeaModel):
     def __init__(
         self,
@@ -8427,6 +8877,1531 @@ class DescribeVodDomainLogResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeVodDomainLogResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeVodDomainRealTimeBpsDataRequest(TeaModel):
+    def __init__(
+        self,
+        domain_name: str = None,
+        end_time: str = None,
+        isp_name_en: str = None,
+        location_name_en: str = None,
+        owner_id: int = None,
+        start_time: str = None,
+    ):
+        self.domain_name = domain_name
+        self.end_time = end_time
+        self.isp_name_en = isp_name_en
+        self.location_name_en = location_name_en
+        self.owner_id = owner_id
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain_name is not None:
+            result['DomainName'] = self.domain_name
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.isp_name_en is not None:
+            result['IspNameEn'] = self.isp_name_en
+        if self.location_name_en is not None:
+            result['LocationNameEn'] = self.location_name_en
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DomainName') is not None:
+            self.domain_name = m.get('DomainName')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('IspNameEn') is not None:
+            self.isp_name_en = m.get('IspNameEn')
+        if m.get('LocationNameEn') is not None:
+            self.location_name_en = m.get('LocationNameEn')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class DescribeVodDomainRealTimeBpsDataResponseBodyDataBpsModel(TeaModel):
+    def __init__(
+        self,
+        bps: float = None,
+        time_stamp: str = None,
+    ):
+        self.bps = bps
+        self.time_stamp = time_stamp
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bps is not None:
+            result['Bps'] = self.bps
+        if self.time_stamp is not None:
+            result['TimeStamp'] = self.time_stamp
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Bps') is not None:
+            self.bps = m.get('Bps')
+        if m.get('TimeStamp') is not None:
+            self.time_stamp = m.get('TimeStamp')
+        return self
+
+
+class DescribeVodDomainRealTimeBpsDataResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        bps_model: List[DescribeVodDomainRealTimeBpsDataResponseBodyDataBpsModel] = None,
+    ):
+        self.bps_model = bps_model
+
+    def validate(self):
+        if self.bps_model:
+            for k in self.bps_model:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['BpsModel'] = []
+        if self.bps_model is not None:
+            for k in self.bps_model:
+                result['BpsModel'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.bps_model = []
+        if m.get('BpsModel') is not None:
+            for k in m.get('BpsModel'):
+                temp_model = DescribeVodDomainRealTimeBpsDataResponseBodyDataBpsModel()
+                self.bps_model.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeVodDomainRealTimeBpsDataResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: DescribeVodDomainRealTimeBpsDataResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = DescribeVodDomainRealTimeBpsDataResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeVodDomainRealTimeBpsDataResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeVodDomainRealTimeBpsDataResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeVodDomainRealTimeBpsDataResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeVodDomainRealTimeByteHitRateDataRequest(TeaModel):
+    def __init__(
+        self,
+        domain_name: str = None,
+        end_time: str = None,
+        owner_id: int = None,
+        start_time: str = None,
+    ):
+        self.domain_name = domain_name
+        self.end_time = end_time
+        self.owner_id = owner_id
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain_name is not None:
+            result['DomainName'] = self.domain_name
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DomainName') is not None:
+            self.domain_name = m.get('DomainName')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class DescribeVodDomainRealTimeByteHitRateDataResponseBodyDataByteHitRateDataModel(TeaModel):
+    def __init__(
+        self,
+        byte_hit_rate: float = None,
+        time_stamp: str = None,
+    ):
+        self.byte_hit_rate = byte_hit_rate
+        self.time_stamp = time_stamp
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.byte_hit_rate is not None:
+            result['ByteHitRate'] = self.byte_hit_rate
+        if self.time_stamp is not None:
+            result['TimeStamp'] = self.time_stamp
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ByteHitRate') is not None:
+            self.byte_hit_rate = m.get('ByteHitRate')
+        if m.get('TimeStamp') is not None:
+            self.time_stamp = m.get('TimeStamp')
+        return self
+
+
+class DescribeVodDomainRealTimeByteHitRateDataResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        byte_hit_rate_data_model: List[DescribeVodDomainRealTimeByteHitRateDataResponseBodyDataByteHitRateDataModel] = None,
+    ):
+        self.byte_hit_rate_data_model = byte_hit_rate_data_model
+
+    def validate(self):
+        if self.byte_hit_rate_data_model:
+            for k in self.byte_hit_rate_data_model:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ByteHitRateDataModel'] = []
+        if self.byte_hit_rate_data_model is not None:
+            for k in self.byte_hit_rate_data_model:
+                result['ByteHitRateDataModel'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.byte_hit_rate_data_model = []
+        if m.get('ByteHitRateDataModel') is not None:
+            for k in m.get('ByteHitRateDataModel'):
+                temp_model = DescribeVodDomainRealTimeByteHitRateDataResponseBodyDataByteHitRateDataModel()
+                self.byte_hit_rate_data_model.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeVodDomainRealTimeByteHitRateDataResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: DescribeVodDomainRealTimeByteHitRateDataResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = DescribeVodDomainRealTimeByteHitRateDataResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeVodDomainRealTimeByteHitRateDataResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeVodDomainRealTimeByteHitRateDataResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeVodDomainRealTimeByteHitRateDataResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeVodDomainRealTimeHttpCodeDataRequest(TeaModel):
+    def __init__(
+        self,
+        domain_name: str = None,
+        end_time: str = None,
+        isp_name_en: str = None,
+        location_name_en: str = None,
+        owner_id: int = None,
+        start_time: str = None,
+    ):
+        self.domain_name = domain_name
+        self.end_time = end_time
+        self.isp_name_en = isp_name_en
+        self.location_name_en = location_name_en
+        self.owner_id = owner_id
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain_name is not None:
+            result['DomainName'] = self.domain_name
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.isp_name_en is not None:
+            result['IspNameEn'] = self.isp_name_en
+        if self.location_name_en is not None:
+            result['LocationNameEn'] = self.location_name_en
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DomainName') is not None:
+            self.domain_name = m.get('DomainName')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('IspNameEn') is not None:
+            self.isp_name_en = m.get('IspNameEn')
+        if m.get('LocationNameEn') is not None:
+            self.location_name_en = m.get('LocationNameEn')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class DescribeVodDomainRealTimeHttpCodeDataResponseBodyRealTimeHttpCodeDataUsageDataValueRealTimeCodeProportionData(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        count: str = None,
+        proportion: str = None,
+    ):
+        self.code = code
+        self.count = count
+        self.proportion = proportion
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.count is not None:
+            result['Count'] = self.count
+        if self.proportion is not None:
+            result['Proportion'] = self.proportion
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
+        if m.get('Proportion') is not None:
+            self.proportion = m.get('Proportion')
+        return self
+
+
+class DescribeVodDomainRealTimeHttpCodeDataResponseBodyRealTimeHttpCodeDataUsageDataValue(TeaModel):
+    def __init__(
+        self,
+        real_time_code_proportion_data: List[DescribeVodDomainRealTimeHttpCodeDataResponseBodyRealTimeHttpCodeDataUsageDataValueRealTimeCodeProportionData] = None,
+    ):
+        self.real_time_code_proportion_data = real_time_code_proportion_data
+
+    def validate(self):
+        if self.real_time_code_proportion_data:
+            for k in self.real_time_code_proportion_data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['RealTimeCodeProportionData'] = []
+        if self.real_time_code_proportion_data is not None:
+            for k in self.real_time_code_proportion_data:
+                result['RealTimeCodeProportionData'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.real_time_code_proportion_data = []
+        if m.get('RealTimeCodeProportionData') is not None:
+            for k in m.get('RealTimeCodeProportionData'):
+                temp_model = DescribeVodDomainRealTimeHttpCodeDataResponseBodyRealTimeHttpCodeDataUsageDataValueRealTimeCodeProportionData()
+                self.real_time_code_proportion_data.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeVodDomainRealTimeHttpCodeDataResponseBodyRealTimeHttpCodeDataUsageData(TeaModel):
+    def __init__(
+        self,
+        time_stamp: str = None,
+        value: DescribeVodDomainRealTimeHttpCodeDataResponseBodyRealTimeHttpCodeDataUsageDataValue = None,
+    ):
+        self.time_stamp = time_stamp
+        self.value = value
+
+    def validate(self):
+        if self.value:
+            self.value.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.time_stamp is not None:
+            result['TimeStamp'] = self.time_stamp
+        if self.value is not None:
+            result['Value'] = self.value.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TimeStamp') is not None:
+            self.time_stamp = m.get('TimeStamp')
+        if m.get('Value') is not None:
+            temp_model = DescribeVodDomainRealTimeHttpCodeDataResponseBodyRealTimeHttpCodeDataUsageDataValue()
+            self.value = temp_model.from_map(m['Value'])
+        return self
+
+
+class DescribeVodDomainRealTimeHttpCodeDataResponseBodyRealTimeHttpCodeData(TeaModel):
+    def __init__(
+        self,
+        usage_data: List[DescribeVodDomainRealTimeHttpCodeDataResponseBodyRealTimeHttpCodeDataUsageData] = None,
+    ):
+        self.usage_data = usage_data
+
+    def validate(self):
+        if self.usage_data:
+            for k in self.usage_data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['UsageData'] = []
+        if self.usage_data is not None:
+            for k in self.usage_data:
+                result['UsageData'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.usage_data = []
+        if m.get('UsageData') is not None:
+            for k in m.get('UsageData'):
+                temp_model = DescribeVodDomainRealTimeHttpCodeDataResponseBodyRealTimeHttpCodeDataUsageData()
+                self.usage_data.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeVodDomainRealTimeHttpCodeDataResponseBody(TeaModel):
+    def __init__(
+        self,
+        data_interval: str = None,
+        domain_name: str = None,
+        end_time: str = None,
+        real_time_http_code_data: DescribeVodDomainRealTimeHttpCodeDataResponseBodyRealTimeHttpCodeData = None,
+        request_id: str = None,
+        start_time: str = None,
+    ):
+        self.data_interval = data_interval
+        self.domain_name = domain_name
+        self.end_time = end_time
+        self.real_time_http_code_data = real_time_http_code_data
+        self.request_id = request_id
+        self.start_time = start_time
+
+    def validate(self):
+        if self.real_time_http_code_data:
+            self.real_time_http_code_data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_interval is not None:
+            result['DataInterval'] = self.data_interval
+        if self.domain_name is not None:
+            result['DomainName'] = self.domain_name
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.real_time_http_code_data is not None:
+            result['RealTimeHttpCodeData'] = self.real_time_http_code_data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataInterval') is not None:
+            self.data_interval = m.get('DataInterval')
+        if m.get('DomainName') is not None:
+            self.domain_name = m.get('DomainName')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('RealTimeHttpCodeData') is not None:
+            temp_model = DescribeVodDomainRealTimeHttpCodeDataResponseBodyRealTimeHttpCodeData()
+            self.real_time_http_code_data = temp_model.from_map(m['RealTimeHttpCodeData'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class DescribeVodDomainRealTimeHttpCodeDataResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeVodDomainRealTimeHttpCodeDataResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeVodDomainRealTimeHttpCodeDataResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeVodDomainRealTimeQpsDataRequest(TeaModel):
+    def __init__(
+        self,
+        domain_name: str = None,
+        end_time: str = None,
+        isp_name_en: str = None,
+        location_name_en: str = None,
+        owner_id: int = None,
+        start_time: str = None,
+    ):
+        self.domain_name = domain_name
+        self.end_time = end_time
+        self.isp_name_en = isp_name_en
+        self.location_name_en = location_name_en
+        self.owner_id = owner_id
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain_name is not None:
+            result['DomainName'] = self.domain_name
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.isp_name_en is not None:
+            result['IspNameEn'] = self.isp_name_en
+        if self.location_name_en is not None:
+            result['LocationNameEn'] = self.location_name_en
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DomainName') is not None:
+            self.domain_name = m.get('DomainName')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('IspNameEn') is not None:
+            self.isp_name_en = m.get('IspNameEn')
+        if m.get('LocationNameEn') is not None:
+            self.location_name_en = m.get('LocationNameEn')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class DescribeVodDomainRealTimeQpsDataResponseBodyDataQpsModel(TeaModel):
+    def __init__(
+        self,
+        qps: float = None,
+        time_stamp: str = None,
+    ):
+        self.qps = qps
+        self.time_stamp = time_stamp
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.qps is not None:
+            result['Qps'] = self.qps
+        if self.time_stamp is not None:
+            result['TimeStamp'] = self.time_stamp
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Qps') is not None:
+            self.qps = m.get('Qps')
+        if m.get('TimeStamp') is not None:
+            self.time_stamp = m.get('TimeStamp')
+        return self
+
+
+class DescribeVodDomainRealTimeQpsDataResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        qps_model: List[DescribeVodDomainRealTimeQpsDataResponseBodyDataQpsModel] = None,
+    ):
+        self.qps_model = qps_model
+
+    def validate(self):
+        if self.qps_model:
+            for k in self.qps_model:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['QpsModel'] = []
+        if self.qps_model is not None:
+            for k in self.qps_model:
+                result['QpsModel'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.qps_model = []
+        if m.get('QpsModel') is not None:
+            for k in m.get('QpsModel'):
+                temp_model = DescribeVodDomainRealTimeQpsDataResponseBodyDataQpsModel()
+                self.qps_model.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeVodDomainRealTimeQpsDataResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: DescribeVodDomainRealTimeQpsDataResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = DescribeVodDomainRealTimeQpsDataResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeVodDomainRealTimeQpsDataResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeVodDomainRealTimeQpsDataResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeVodDomainRealTimeQpsDataResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeVodDomainRealTimeReqHitRateDataRequest(TeaModel):
+    def __init__(
+        self,
+        domain_name: str = None,
+        end_time: str = None,
+        owner_id: int = None,
+        start_time: str = None,
+    ):
+        self.domain_name = domain_name
+        self.end_time = end_time
+        self.owner_id = owner_id
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain_name is not None:
+            result['DomainName'] = self.domain_name
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DomainName') is not None:
+            self.domain_name = m.get('DomainName')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class DescribeVodDomainRealTimeReqHitRateDataResponseBodyDataReqHitRateDataModel(TeaModel):
+    def __init__(
+        self,
+        req_hit_rate: float = None,
+        time_stamp: str = None,
+    ):
+        self.req_hit_rate = req_hit_rate
+        self.time_stamp = time_stamp
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.req_hit_rate is not None:
+            result['ReqHitRate'] = self.req_hit_rate
+        if self.time_stamp is not None:
+            result['TimeStamp'] = self.time_stamp
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ReqHitRate') is not None:
+            self.req_hit_rate = m.get('ReqHitRate')
+        if m.get('TimeStamp') is not None:
+            self.time_stamp = m.get('TimeStamp')
+        return self
+
+
+class DescribeVodDomainRealTimeReqHitRateDataResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        req_hit_rate_data_model: List[DescribeVodDomainRealTimeReqHitRateDataResponseBodyDataReqHitRateDataModel] = None,
+    ):
+        self.req_hit_rate_data_model = req_hit_rate_data_model
+
+    def validate(self):
+        if self.req_hit_rate_data_model:
+            for k in self.req_hit_rate_data_model:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ReqHitRateDataModel'] = []
+        if self.req_hit_rate_data_model is not None:
+            for k in self.req_hit_rate_data_model:
+                result['ReqHitRateDataModel'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.req_hit_rate_data_model = []
+        if m.get('ReqHitRateDataModel') is not None:
+            for k in m.get('ReqHitRateDataModel'):
+                temp_model = DescribeVodDomainRealTimeReqHitRateDataResponseBodyDataReqHitRateDataModel()
+                self.req_hit_rate_data_model.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeVodDomainRealTimeReqHitRateDataResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: DescribeVodDomainRealTimeReqHitRateDataResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = DescribeVodDomainRealTimeReqHitRateDataResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeVodDomainRealTimeReqHitRateDataResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeVodDomainRealTimeReqHitRateDataResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeVodDomainRealTimeReqHitRateDataResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeVodDomainRealTimeTrafficDataRequest(TeaModel):
+    def __init__(
+        self,
+        domain_name: str = None,
+        end_time: str = None,
+        isp_name_en: str = None,
+        location_name_en: str = None,
+        owner_id: int = None,
+        start_time: str = None,
+    ):
+        self.domain_name = domain_name
+        self.end_time = end_time
+        self.isp_name_en = isp_name_en
+        self.location_name_en = location_name_en
+        self.owner_id = owner_id
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain_name is not None:
+            result['DomainName'] = self.domain_name
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.isp_name_en is not None:
+            result['IspNameEn'] = self.isp_name_en
+        if self.location_name_en is not None:
+            result['LocationNameEn'] = self.location_name_en
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DomainName') is not None:
+            self.domain_name = m.get('DomainName')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('IspNameEn') is not None:
+            self.isp_name_en = m.get('IspNameEn')
+        if m.get('LocationNameEn') is not None:
+            self.location_name_en = m.get('LocationNameEn')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class DescribeVodDomainRealTimeTrafficDataResponseBodyRealTimeTrafficDataPerIntervalDataModule(TeaModel):
+    def __init__(
+        self,
+        time_stamp: str = None,
+        value: str = None,
+    ):
+        self.time_stamp = time_stamp
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.time_stamp is not None:
+            result['TimeStamp'] = self.time_stamp
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TimeStamp') is not None:
+            self.time_stamp = m.get('TimeStamp')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class DescribeVodDomainRealTimeTrafficDataResponseBodyRealTimeTrafficDataPerInterval(TeaModel):
+    def __init__(
+        self,
+        data_module: List[DescribeVodDomainRealTimeTrafficDataResponseBodyRealTimeTrafficDataPerIntervalDataModule] = None,
+    ):
+        self.data_module = data_module
+
+    def validate(self):
+        if self.data_module:
+            for k in self.data_module:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DataModule'] = []
+        if self.data_module is not None:
+            for k in self.data_module:
+                result['DataModule'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data_module = []
+        if m.get('DataModule') is not None:
+            for k in m.get('DataModule'):
+                temp_model = DescribeVodDomainRealTimeTrafficDataResponseBodyRealTimeTrafficDataPerIntervalDataModule()
+                self.data_module.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeVodDomainRealTimeTrafficDataResponseBody(TeaModel):
+    def __init__(
+        self,
+        data_interval: str = None,
+        domain_name: str = None,
+        end_time: str = None,
+        real_time_traffic_data_per_interval: DescribeVodDomainRealTimeTrafficDataResponseBodyRealTimeTrafficDataPerInterval = None,
+        request_id: str = None,
+        start_time: str = None,
+    ):
+        self.data_interval = data_interval
+        self.domain_name = domain_name
+        self.end_time = end_time
+        self.real_time_traffic_data_per_interval = real_time_traffic_data_per_interval
+        self.request_id = request_id
+        self.start_time = start_time
+
+    def validate(self):
+        if self.real_time_traffic_data_per_interval:
+            self.real_time_traffic_data_per_interval.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_interval is not None:
+            result['DataInterval'] = self.data_interval
+        if self.domain_name is not None:
+            result['DomainName'] = self.domain_name
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.real_time_traffic_data_per_interval is not None:
+            result['RealTimeTrafficDataPerInterval'] = self.real_time_traffic_data_per_interval.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataInterval') is not None:
+            self.data_interval = m.get('DataInterval')
+        if m.get('DomainName') is not None:
+            self.domain_name = m.get('DomainName')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('RealTimeTrafficDataPerInterval') is not None:
+            temp_model = DescribeVodDomainRealTimeTrafficDataResponseBodyRealTimeTrafficDataPerInterval()
+            self.real_time_traffic_data_per_interval = temp_model.from_map(m['RealTimeTrafficDataPerInterval'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class DescribeVodDomainRealTimeTrafficDataResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeVodDomainRealTimeTrafficDataResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeVodDomainRealTimeTrafficDataResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeVodDomainReqHitRateDataRequest(TeaModel):
+    def __init__(
+        self,
+        domain_name: str = None,
+        end_time: str = None,
+        interval: str = None,
+        start_time: str = None,
+    ):
+        self.domain_name = domain_name
+        self.end_time = end_time
+        self.interval = interval
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain_name is not None:
+            result['DomainName'] = self.domain_name
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.interval is not None:
+            result['Interval'] = self.interval
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DomainName') is not None:
+            self.domain_name = m.get('DomainName')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Interval') is not None:
+            self.interval = m.get('Interval')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class DescribeVodDomainReqHitRateDataResponseBodyDataDataModule(TeaModel):
+    def __init__(
+        self,
+        https_value: str = None,
+        time_stamp: str = None,
+        value: str = None,
+    ):
+        self.https_value = https_value
+        self.time_stamp = time_stamp
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.https_value is not None:
+            result['HttpsValue'] = self.https_value
+        if self.time_stamp is not None:
+            result['TimeStamp'] = self.time_stamp
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('HttpsValue') is not None:
+            self.https_value = m.get('HttpsValue')
+        if m.get('TimeStamp') is not None:
+            self.time_stamp = m.get('TimeStamp')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class DescribeVodDomainReqHitRateDataResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        data_module: List[DescribeVodDomainReqHitRateDataResponseBodyDataDataModule] = None,
+    ):
+        self.data_module = data_module
+
+    def validate(self):
+        if self.data_module:
+            for k in self.data_module:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DataModule'] = []
+        if self.data_module is not None:
+            for k in self.data_module:
+                result['DataModule'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data_module = []
+        if m.get('DataModule') is not None:
+            for k in m.get('DataModule'):
+                temp_model = DescribeVodDomainReqHitRateDataResponseBodyDataDataModule()
+                self.data_module.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeVodDomainReqHitRateDataResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: DescribeVodDomainReqHitRateDataResponseBodyData = None,
+        data_interval: str = None,
+        domain_name: str = None,
+        end_time: str = None,
+        request_id: str = None,
+        start_time: str = None,
+    ):
+        self.data = data
+        self.data_interval = data_interval
+        self.domain_name = domain_name
+        self.end_time = end_time
+        self.request_id = request_id
+        self.start_time = start_time
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.data_interval is not None:
+            result['DataInterval'] = self.data_interval
+        if self.domain_name is not None:
+            result['DomainName'] = self.domain_name
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = DescribeVodDomainReqHitRateDataResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('DataInterval') is not None:
+            self.data_interval = m.get('DataInterval')
+        if m.get('DomainName') is not None:
+            self.domain_name = m.get('DomainName')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class DescribeVodDomainReqHitRateDataResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeVodDomainReqHitRateDataResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeVodDomainReqHitRateDataResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -9754,6 +11729,137 @@ class DescribeVodMediaPlayDataResponse(TeaModel):
         return self
 
 
+class DescribeVodRangeDataByLocateAndIspServiceRequest(TeaModel):
+    def __init__(
+        self,
+        domain_name: str = None,
+        end_time: str = None,
+        isp_name_en: str = None,
+        location_name_en: str = None,
+        owner_id: int = None,
+        start_time: str = None,
+    ):
+        self.domain_name = domain_name
+        self.end_time = end_time
+        self.isp_name_en = isp_name_en
+        self.location_name_en = location_name_en
+        self.owner_id = owner_id
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain_name is not None:
+            result['DomainName'] = self.domain_name
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.isp_name_en is not None:
+            result['IspNameEn'] = self.isp_name_en
+        if self.location_name_en is not None:
+            result['LocationNameEn'] = self.location_name_en
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DomainName') is not None:
+            self.domain_name = m.get('DomainName')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('IspNameEn') is not None:
+            self.isp_name_en = m.get('IspNameEn')
+        if m.get('LocationNameEn') is not None:
+            self.location_name_en = m.get('LocationNameEn')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class DescribeVodRangeDataByLocateAndIspServiceResponseBody(TeaModel):
+    def __init__(
+        self,
+        json_result: str = None,
+        request_id: str = None,
+    ):
+        self.json_result = json_result
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.json_result is not None:
+            result['JsonResult'] = self.json_result
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('JsonResult') is not None:
+            self.json_result = m.get('JsonResult')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeVodRangeDataByLocateAndIspServiceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeVodRangeDataByLocateAndIspServiceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeVodRangeDataByLocateAndIspServiceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeVodRefreshQuotaRequest(TeaModel):
     def __init__(
         self,
@@ -10481,6 +12587,7 @@ class DescribeVodTranscodeDataRequest(TeaModel):
         start_time: str = None,
         storage: str = None,
     ):
+        # The ID of the application. You can specify this parameter to query the transcoding statistics of a specific application. By default, the transcoding statistics of all applications is returned. You can obtain the application ID from the `AppId` parameter in the response to the [CreateAppInfo](~~CreateAppInfo~~) operation.
         self.app_id = app_id
         # The end of the time range to query. The end time must be later than the start time. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
         self.end_time = end_time
@@ -10798,11 +12905,11 @@ class DescribeVodUserDomainsRequestTag(TeaModel):
     ):
         # The key of tag N. Valid values of N: **1** to **20**.
         # 
-        # If you do not specify this parameter, all tag keys are queried.
+        # By default, all tag keys are queried.
         self.key = key
         # The value of tag N. Valid values of N: **1** to **20**.
         # 
-        # If you do not specify this parameter, all tag values are queried.
+        # By default, all tag values are queried.
         self.value = value
 
     def validate(self):
@@ -10844,12 +12951,14 @@ class DescribeVodUserDomainsRequest(TeaModel):
         # The domain name. The value of this parameter is used as a filter condition for a fuzzy match.
         self.domain_name = domain_name
         # The search method. Valid values:
-        # *   **fuzzy_match**: fuzzy match. This is the default value.
-        # *   **pre_match**: prefix match.
-        # *   **suf_match**: suffix match.
-        # *   **full_match**: exact match.
+        # 
+        # *   **fuzzy_match** (default): fuzzy match.
+        # *   **pre_match**: prefix match
+        # *   **suf_match**: suffix match
+        # *   **full_match**: exact match
         self.domain_search_type = domain_search_type
-        # The status of the domain name. The value of this parameter is used as a condition to filter domain names. Value values:
+        # The status of the domain name. Value values:
+        # 
         # *   **online**: indicates that the domain name is enabled.
         # *   **offline**: indicates that the domain name is disabled.
         # *   **configuring**: indicates that the domain name is being configured.
@@ -10858,12 +12967,12 @@ class DescribeVodUserDomainsRequest(TeaModel):
         # *   **check_failed**: indicates that the domain name failed the review.
         self.domain_status = domain_status
         self.owner_id = owner_id
-        # The number of the page to return.
+        # The page number.
         self.page_number = page_number
-        # The number of entries to return on each page. Default value: **20**. Maximum value: **50**. Valid values: integers in the range of **1** to **50**.
+        # The number of entries per page. Default value: **20**. Maximum value: **50**. Valid values: **1** to **50**.
         self.page_size = page_size
         self.security_token = security_token
-        # Tag.
+        # The tags.
         self.tag = tag
 
     def validate(self):
@@ -10938,9 +13047,9 @@ class DescribeVodUserDomainsResponseBodyDomainsPageDataSourcesSource(TeaModel):
         self.priority = priority
         # The type of the origin server. Valid values:
         # 
-        # *   **ipaddr**: a server that you can access by using an IP address.
-        # *   **domain**: a server that you can access by using a domain name.
-        # *   **oss**: an Object Storage Service (OSS) bucket.
+        # *   **ipaddr**: an IP address.
+        # *   **domain**: an origin domain name
+        # *   **oss**: the OSS domain of an Object Storage Service (OSS) bucket
         self.type = type
 
     def validate(self):
@@ -11023,7 +13132,7 @@ class DescribeVodUserDomainsResponseBodyDomainsPageData(TeaModel):
         sources: DescribeVodUserDomainsResponseBodyDomainsPageDataSources = None,
         ssl_protocol: str = None,
     ):
-        # The canonical domain name that is assigned to the domain name for CDN.
+        # The CNAME that is assigned to the domain name for CDN.
         self.cname = cname
         # The remarks.
         self.description = description
@@ -11038,18 +13147,18 @@ class DescribeVodUserDomainsResponseBodyDomainsPageData(TeaModel):
         # *   **checking**: indicates that the domain name is under review.
         # *   **check_failed**: indicates that the domain name failed the review.
         self.domain_status = domain_status
-        # The time when the domain name for CDN was added. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The time when the domain name for CDN was added. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.gmt_created = gmt_created
-        # The last time when the domain name for CDN was modified. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The last time when the domain name for CDN was modified. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.gmt_modified = gmt_modified
-        # Indicates whether the domain name for CDN is in a sandbox environment.
+        # Indicates whether the accelerated domain name was in a sandbox.
         self.sandbox = sandbox
         # The information about the origin server.
         self.sources = sources
         # Indicates whether HTTPS is enabled.
         # 
-        # - **on**: indicates that HTTPS is enabled.
-        # - **off**: indicates that HTTPS is disabled.
+        # *   **on**: HTTPS is enabled.
+        # *   **off**: HTTPS is not eabled.
         self.ssl_protocol = ssl_protocol
 
     def validate(self):
@@ -11152,13 +13261,13 @@ class DescribeVodUserDomainsResponseBody(TeaModel):
     ):
         # The detailed information about each domain name for CDN. The returned information is displayed in the format that is specified by the PageData parameter.
         self.domains = domains
-        # The page number of the returned page.
+        # The page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
         # The ID of the request.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -14257,7 +16366,10 @@ class GetAppInfosRequest(TeaModel):
         self,
         app_ids: str = None,
     ):
-        # The ID of the application. You can specify a maximum of 10 application IDs. Separate them with commas (,).
+        # The IDs of applications. You can obtain application IDs from the response to the [CreateAppInfo](~~113266~~) or [ListAppInfo](~~114000~~) operation.
+        # 
+        # *   You can specify a maximum of 10 application IDs.
+        # *   Separate application IDs with commas (,).
         self.app_ids = app_ids
 
     def validate(self):
@@ -14295,19 +16407,21 @@ class GetAppInfosResponseBodyAppInfoList(TeaModel):
         self.app_id = app_id
         # The name of the application.
         self.app_name = app_name
-        # The time when the application was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The time when the application was created. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.creation_time = creation_time
         # The description of the application.
         self.description = description
-        # The last time when the application was modified. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The last time when the application was modified. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.modification_time = modification_time
         # The status of the application. Valid values:
-        # - **Normal**\
-        # - **Disable**\
+        # 
+        # *   **Normal**\
+        # *   **Disable**\
         self.status = status
         # The type of the application. Valid values:
-        # - **System**\
-        # - **Custom**\
+        # 
+        # *   **System**\
+        # *   **Custom**\
         self.type = type
 
     def validate(self):
@@ -14366,7 +16480,7 @@ class GetAppInfosResponseBody(TeaModel):
         self.app_info_list = app_info_list
         # The HTTP status code that is returned.
         self.code = code
-        # The ID of the application that was not found.
+        # The IDs of applications that do not exist.
         self.non_exist_app_ids = non_exist_app_ids
         # The ID of the request.
         self.request_id = request_id
@@ -20940,10 +23054,10 @@ class GetPlayInfoRequest(TeaModel):
         # *   **oss**\
         # *   **cdn**\
         self.output_type = output_type
-        # The custom playback configuration. The value is a JSON string. For more information, see [PlayConfig](~~86952~~).
+        # The custom playback configuration. The value must be a JSON string. You can specify a domain name for playback. For more information, see [PlayConfig](~~86952~~).
         # 
-        # >-   If you do not specify PlayConfig or `PlayDomain` in PlayConfig, the default domain name configured in ApsaraVideo VOD is used in this operation. If no default domain name is configured, the domain names are queried in reverse chronological order based on the time when the domain names were modified. The domain name that was last modified is used as the streaming domain name. To prevent domain name issues, we recommend that you specify the default streaming domain name. You can log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com) and choose **Configuration Management** > **Media Management** > **Storage** > **Manage** > **Origin Domain Name** to set the default streaming domain name.
-        # >-   If the `EncryptType` parameter in PlayConfig is set to `AliyunVoDEncryption`, the playback URL of the stream encrypted by using proprietary cryptography is not returned to ensure video security. If you want to return such URL, you must set the `ResultType` parameter to `Multiple`.
+        # > *   If you do not set the PlayConfig parameter or the `PlayDomain` parameter that is nested under the PlayConfig parameter, the default domain name specified in ApsaraVideo VOD is used in this operation. If no default domain name is specified, the domain names are queried in reverse chronological order based on the time when the domain names were last modified. To prevent domain name issues, we recommend that you perform the following steps to specify the default playback domain name: Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com). In the left-side navigation pane, choose **Configuration Management** > **Media Management** > **Storage**. Find the domain name that you want to configure and click **Manage** in the Actions column. On the page that appears, set the default playback domain name in the **Origin Domain Name** section.
+        # >*   If you set the `EncryptType` parameter nested under the PlayConfig parameter to `AliyunVoDEncryption`, the playback URLs of videos encrypted by using Alibaba Cloud proprietary cryptography are not automatically returned to ensure video security. To return playback URLs of videos encrypted by using Alibaba Cloud proprietary cryptography, you must set the `ResultType` parameter to `Multiple`.
         self.play_config = play_config
         # The CDN reauthentication configuration. The value is a JSON string. If CDN reauthentication is enabled, you can use this parameter to specify the UID and rand fields for URL authentication. For more information, see [URL authentication](~~57007~~).
         self.re_auth_info = re_auth_info
@@ -21066,9 +23180,9 @@ class GetPlayInfoResponseBodyPlayInfoListPlayInfo(TeaModel):
         self.bit_depth = bit_depth
         # The bitrate of the media stream. Unit: Kbit/s.
         self.bitrate = bitrate
-        # The time when the audio or video stream was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
+        # The time when the audio or video stream was created. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.creation_time = creation_time
-        # The quality of the media stream. Valid values:
+        # The quality of the video stream. Valid values:
         # 
         # *   **FD**: low definition
         # *   **LD**: standard definition
@@ -21081,7 +23195,7 @@ class GetPlayInfoResponseBodyPlayInfoListPlayInfo(TeaModel):
         # *   **HQ**: high sound quality
         # *   **AUTO**: adaptive bitrate
         self.definition = definition
-        # The duration of the media stream. Unit: seconds. 86,400 seconds is equivalent to 24 hours.
+        # The duration of the media stream. Unit: seconds.
         self.duration = duration
         # Indicates whether the media stream is encrypted. Valid values:
         # 
@@ -21091,7 +23205,7 @@ class GetPlayInfoResponseBodyPlayInfoListPlayInfo(TeaModel):
         # The encryption type of the media stream. Valid values:
         # 
         # *   **AliyunVoDEncryption**: Alibaba Cloud proprietary cryptography
-        # *   **HLSEncryption**: HTTP Live Streaming (HLS) encryption
+        # *   **HLSEncryption**: HTTP-Live-Streaming (HLS) encryption
         # 
         # >  If the encryption type is AliyunVoDEncryption, only ApsaraVideo Player SDK can be used to play videos.
         self.encrypt_type = encrypt_type
@@ -21122,15 +23236,15 @@ class GetPlayInfoResponseBodyPlayInfoListPlayInfo(TeaModel):
         # *   **1**: tracing watermark
         # *   **2**: copyright watermark
         self.job_type = job_type
-        # The time when the audio or video file was updated. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
+        # The time when the audio or video file was last updated. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.modification_time = modification_time
         # The type of Narrowband HD transcoding. Valid values:
         # 
-        # *   **0**: normal transcoding
-        # *   **1.0**: Narrowband HD 1.0
-        # *   **2.0**: Narrowband HD 2.0
+        # *   **0**: regular transcoding
+        # *   **1.0**: Narrowband HD™ 1.0 transcoding
+        # *   **2.0**: Narrowband HD™ 2.0 transcoding
         # 
-        # This parameter is returned only when a quality that is available in the built-in Narrowband HD 1.0 transcoding template is specified. For more information, see the [Definition parameter in the TranscodeTemplate](~~52839~~) table.
+        # This parameter is returned only when a definition that is available in the built-in Narrowband HD™ 1.0 transcoding template is specified. For more information, see the [Definition parameter in the TranscodeTemplate](~~52839~~) table.
         self.narrow_band_type = narrow_band_type
         # The playback URL of the media stream.
         self.play_url = play_url
@@ -21321,7 +23435,7 @@ class GetPlayInfoResponseBodyVideoBase(TeaModel):
         self.media_type = media_type
         # The status of the audio or video file. For more information about the value range and description, see the [Status](~~52839~~) table.
         self.status = status
-        # The storage class of the audio or video file. Valid values:
+        # The storage class of the audio file. Valid values:
         # 
         # *   **Standard**: All media resources are stored as Standard objects.
         # *   **IA**: All media resources are stored as IA objects.
@@ -21329,8 +23443,8 @@ class GetPlayInfoResponseBodyVideoBase(TeaModel):
         # *   **ColdArchive**: All media resources are stored as Cold Archive objects.
         # *   **SourceIA**: Only the source files are IA objects.
         # *   **SourceArchive**: Only the source files are Archive objects.
-        # *   **SourceColdArchive**: Only the source files are Cold Archive objects.
-        # *   **Changing**: The storage class of the audio or video file is being changed.
+        # *   **SourceColdArchive**: Only the source file is stored as a Cold Archive object.
+        # *   **Changing**: The storage class of the video file is being changed.
         # *   **SourceChanging**: The storage class of the source file is being changed.
         self.storage_class = storage_class
         # The title of the audio or video file.
@@ -21485,7 +23599,7 @@ class GetTranscodeSummaryRequest(TeaModel):
     ):
         # The ID of the audio or video file. You can specify up to 10 IDs. Separate the IDs with commas (,). You can use one of the following methods to obtain the ID:
         # 
-        # *   Log on to the [ApsaraVideo VOD](https://vod.console.aliyun.com) console. In the left-side navigation pane, choose **Media Files** > **Audio/Video**. On the Video and Audio page, view the ID of the audio or video file. This method is applicable to files that are uploaded by using the ApsaraVideo VOD console.
+        # *   After you upload a video in the [ApsaraVideo VOD console](https://vod.console.aliyun.com), you can log on to the ApsaraVideo VOD console and choose **Media Files** > **Audio/Video** to view the ID of the video.
         # *   Obtain the value of VideoId from the response to the [CreateUploadVideo](~~55407~~) operation that you call to obtain the upload URL and credential.
         # *   Obtain the value of VideoId by calling the [SearchMedia](~~86044~~) operation. This method is applicable to files that have been uploaded.
         self.video_ids = video_ids
@@ -21531,9 +23645,9 @@ class GetTranscodeSummaryResponseBodyTranscodeSummaryListTranscodeJobInfoSummary
     ):
         # The average bitrate of the output video. Unit: Kbit/s.
         self.bitrate = bitrate
-        # The time when the transcoding job was complete. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The time when the transcoding job was complete. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.complete_time = complete_time
-        # The time when the transcoding job was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The time when the transcoding job was created. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.creation_time = creation_time
         # The duration of the output video. Unit: seconds.
         self.duration = duration
@@ -21550,9 +23664,10 @@ class GetTranscodeSummaryResponseBodyTranscodeSummaryListTranscodeJobInfoSummary
         # The height of the output video. Unit: pixels.
         self.height = height
         # The status of the transcoding job. Valid values:
-        # *   **Transcoding**\
-        # *   **TranscodeSuccess**\
-        # *   **TranscodeFail**\
+        # 
+        # *   **Transcoding**: Transcoding is in process.
+        # *   **TranscodeSuccess**: The job was successful.
+        # *   **TranscodeFail**: The job failed.
         self.transcode_job_status = transcode_job_status
         # The transcoding progress. Valid values: `[0,100]`.
         self.transcode_progress = transcode_progress
@@ -21649,14 +23764,15 @@ class GetTranscodeSummaryResponseBodyTranscodeSummaryList(TeaModel):
         transcode_template_group_id: str = None,
         video_id: str = None,
     ):
-        # The time when the transcoding task was complete. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The time when the transcoding task was complete. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.complete_time = complete_time
-        # The time when the transcoding task was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The time when the transcoding task was created. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.creation_time = creation_time
         # The summaries of transcoding jobs.
         self.transcode_job_info_summary_list = transcode_job_info_summary_list
         # The status of the transcoding task. Valid values:
-        # *   **Processing**: In progress.
+        # 
+        # *   **Processing**: Transcoding is in process.
         # *   **Partial**: Some transcoding jobs were complete.
         # *   **CompleteAllSucc**: All transcoding jobs were successful.
         # *   **CompleteAllFail**: All transcoding jobs failed. If an exception occurs in the source file, no transcoding job is initiated and the transcoding task fails.
@@ -22300,11 +24416,11 @@ class GetTranscodeTemplateGroupResponseBodyTranscodeTemplateGroupTranscodeTempla
     ):
         # The transcoding configurations of the audio stream. The value is a JSON string.
         self.audio = audio
-        # The video cropping configurations. The value is a JSON string. For example, you can set this parameter to extract 5 seconds of content from a video to generate a new video.
+        # The clipping configurations of the video. The value is a JSON string. For example, this parameter is returned if you extract 5 seconds of content from a video to generate a new video.
         self.clip = clip
-        # The format of the container that is used to encapsulate audio and video streams. The value is a JSON string.
+        # The format of the container used to encapsulate audio and video streams. The value is a JSON string.
         self.container = container
-        # CopyrightMark.
+        # The content of the copyright watermark.
         self.copyright_mark = copyright_mark
         # Valid values for the definition of a common transcoding template:
         # 
@@ -22328,38 +24444,38 @@ class GetTranscodeTemplateGroupResponseBodyTranscodeTemplateGroupTranscodeTempla
         # *   **4K-NBV1**\
         # 
         # > *   You cannot change the definition of a transcoding template.
-        # >*   You cannot modify the system parameters of Narrowband HD™ 1.0 transcoding templates such as the video resolution, audio resolution, and bitrate.
+        # >*   You cannot modify the system parameters, such as the video resolution, audio resolution, and bitrate, of Narrowband HD™ 1.0 transcoding templates.
         # >*   You can create only Narrowband HD™ 1.0 transcoding templates that support the FLV, M3U8 (HLS), and MP4 output formats.
         self.definition = definition
         # The encryption configuration for transcoding.
         self.encrypt_setting = encrypt_setting
-        # The transcoding segment configurations. This parameter is used when you transcode a media stream into an HLS file. The value is a JSON string.
+        # The transcoding segment configurations. This parameter must be returned if HTTP-Live-Streaming (HLS) encryption is used. The value is a JSON string.
         self.mux_config = mux_config
-        # The packaging configuration. Only HTTP-Live-Streaming (HLS) packaging and DASH packaging are supported. The value is a JSON string.
+        # The packaging configuration. Only HLS packaging and DASH packaging are supported. The value is a JSON string.
         self.package_setting = package_setting
-        # The video rotation identifier. This parameter is used to control the image rotation angle. For example, if you set this parameter to 180, the video image is turned upside down. Valid values: `[0,360]`.
+        # The video rotation identifier. It is used to control the image rotation angle. For example, if you set this parameter to 180, the video image is turned upside down. Valid values: `[0,360]`.
         self.rotate = rotate
         # The subtitle configurations. The value is a JSON string.
         self.subtitle_list = subtitle_list
         # The name of the transcoding template.
         self.template_name = template_name
-        # TraceMark.
+        # The content of the tracing watermark.
         self.trace_mark = trace_mark
-        # The conditional transcoding configurations. This parameter is used if you want to determine the basic logic based on the bitrate and resolution of the source file before the transcoded video is generated. The value is a JSON string.
+        # The conditional transcoding configurations. This parameter can be used if you want to determine the basic logic based on the bitrate and resolution of the source file before the video is transcoded. The value is a JSON-formatted string.
         self.trans_config = trans_config
         # The custom path used to store the output files.
         self.transcode_file_regular = transcode_file_regular
-        # The ID of the transcoding template.
+        # The transcoding template ID.
         self.transcode_template_id = transcode_template_id
         # The type of the transcoding template. Valid values:
         # 
-        # *   **Normal** (default): a common transcoding template. You cannot set the PackageSetting parameter for this type of template.
-        # *   **VideoPackage**: a video stream package template. If this type of template is used, ApsaraVideo VOD transcodes a video into video streams in different bitrates and creates a multi-bitrate video package. You must set the PackageSetting parameter for this type of template.
-        # *   **SubtitlePackage**: a subtitle package template. If this type of template is used, ApsaraVideo VOD adds the subtitle information to the output file that is generated by packaging the multi-bitrate video streams of the corresponding video. You must set the PackageSetting parameter for a subtitle packaging template and associate the subtitle packaging template with a video stream packaging template. You can configure only one subtitle packaging template in a template group.
+        # *   **Normal** (default): a common transcoding template. The PackageSetting parameter cannot be set for this type of template.
+        # *   **VideoPackage**: a video stream package template. If this type of template is used, ApsaraVideo VOD transcodes a video into video streams in different bitrates and packages these video streams with a file. The PackageSetting parameter must be set for this type of template.
+        # *   **SubtitlePackage**: a subtitle package template. If this type of template is used, ApsaraVideo VOD adds the subtitle information to the output file generated by packaging the multi-bitrate video streams of the corresponding video without transcoding. You must set the PackageSetting parameter for a subtitle package template and associate the subtitle package template with a video stream package template. A template group can contain only one subtitle package template.
         self.type = type
         # The transcoding configurations of the video stream. The value is a JSON string.
         self.video = video
-        # The IDs of associated watermarks.
+        # The IDs of the associated watermarks.
         self.watermark_ids = watermark_ids
 
     def validate(self):
@@ -22471,7 +24587,7 @@ class GetTranscodeTemplateGroupResponseBodyTranscodeTemplateGroup(TeaModel):
         # *   **Default**\
         # *   **NotDefault**\
         self.is_default = is_default
-        # Indicates whether the template group is locked. Valid values:
+        # Indicates whether the transcoding template group is locked. Valid values:
         # 
         # *   **Disabled**: The template group is not locked.
         # *   **Enabled**: The template group is locked.
@@ -26209,9 +28325,10 @@ class ListLiveRecordVideoRequest(TeaModel):
         self.page_no = page_no
         # The number of entries to return on each page. Maximum value: **100**. Default value: **10**.
         self.page_size = page_size
-        # The sorting rule of results. Valid values:
-        # *   **CreationTime:Desc**: sorts the results based on the creation time in descending order. This is the default value.
-        # *   **CreationTime:Asc**: sorts the results based on the creation time in ascending order.
+        # The sorting rule of the results. Valid values:
+        # 
+        # *   **CreationTime:Desc**: The results are sorted in reverse chronological order based on the creation time.
+        # *   **CreationTime:Asc**: The results are sorted in chronological order based on the creation time.
         self.sort_by = sort_by
         # The beginning of the time range to query. The query is performed based on the time range during which the required live streams were recorded. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
         self.start_time = start_time
@@ -26313,32 +28430,33 @@ class ListLiveRecordVideoResponseBodyLiveRecordVideoListLiveRecordVideoVideo(Tea
     ):
         # The ID of the video category.
         self.cate_id = cate_id
-        # The name of the video category.
+        # The category of the video.
         self.cate_name = cate_name
-        # The thumbnail URL of the video.
+        # The URL of the video thumbnail.
         self.cover_url = cover_url
-        # The time when the video was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The time when the audio or video file was created. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.creation_time = creation_time
-        # The description of the video.
+        # The description of the video file.
         self.description = description
-        # The duration of the video. Unit: seconds.
+        # The duration of the video file. Unit: seconds.
         self.duration = duration
-        # The last time when the video was updated. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The time when the video was updated. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.modify_time = modify_time
-        # The size of the mezzanine file. Unit: byte.
+        # The size of the source video file. Unit: bytes.
         self.size = size
         # The array of video snapshot URLs.
         self.snapshots = snapshots
         # The status of the video. Valid values:
-        # *   **Uploading:**: indicates that the video is being uploaded.
-        # *   **UploadFail**: indicates that the video failed to be uploaded.
-        # *   **UploadSucces**: indicates that the video was uploaded.
-        # *   **Transcoding**: indicates that the video is being transcoded.
-        # *   **TranscodeFail**: indicates that the video failed to be transcoded.
-        # *   **Blocked**: indicates that the video is blocked.
-        # *   **Normal**: indicates that the video is in a normal state.
+        # 
+        # *   **Uploading**\
+        # *   **UploadFail**\
+        # *   **UploadSuccess**\
+        # *   **Transcoding**\
+        # *   **TranscodeFail**\
+        # *   **Blocked**\
+        # *   **Normal**: The video is normal.
         self.status = status
-        # The tags of the video. Separate multiple tags with commas (,).
+        # The tags of the video. Multiple tags are separated with commas (,).
         self.tags = tags
         # The ID of the transcoding template group.
         self.template_group_id = template_group_id
@@ -26432,19 +28550,19 @@ class ListLiveRecordVideoResponseBodyLiveRecordVideoListLiveRecordVideo(TeaModel
         stream_name: str = None,
         video: ListLiveRecordVideoResponseBodyLiveRecordVideoListLiveRecordVideoVideo = None,
     ):
-        # The name of the application.
+        # The name of the app.
         self.app_name = app_name
         # The domain name.
         self.domain_name = domain_name
         # The ID of the playlist.
         self.playlist_id = playlist_id
-        # The end of the time range in which data was queried. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The recording end time. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.record_end_time = record_end_time
-        # The beginning of the time range in which data was queried. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The recording start time. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.record_start_time = record_start_time
-        # The name of the live stream.
+        # The name of the live-to-VOD file.
         self.stream_name = stream_name
-        # The information about the video.
+        # The information about the live-to-VOD file.
         self.video = video
 
     def validate(self):
@@ -26539,7 +28657,7 @@ class ListLiveRecordVideoResponseBody(TeaModel):
         self.live_record_video_list = live_record_video_list
         # The ID of the request.
         self.request_id = request_id
-        # The total number of videos returned.
+        # The total number of videos.
         self.total = total
 
     def validate(self):
@@ -31609,13 +33727,13 @@ class SubmitAIImageAuditJobRequest(TeaModel):
         resource_owner_id: str = None,
         template_id: str = None,
     ):
-        # The configuration information about the review task.
+        # The configuration information about the review job.
         # 
-        # *   Other configuration items of the review task. Only the ResourceType field is supported. This field is used to specify the type of media files. You can adjust review standards and rules based on the type of media files.
-        # *   If you want to adjust moderation policies and rules based on ResourceType, submit a ticket to request technical support.
+        # *   Other configuration items of the review job. Only the ResourceType field is supported. This field is used to specify the type of media files. You can adjust review standards and rules based on the type of media files.
         # *   The value of ResourceType can contain only letters, digits, and underscores (\_).
         # 
-        # >  You can specify a value for the ResourceType field based on the preceding limits. After you specify a value for the ResourceType field, you must submit a ticket. The value takes effect after Alibaba Cloud processes your ticket.
+        # > *   You can specify a value for the ResourceType field based on the preceding limits. After you specify a value for the ResourceType field, you must [submit a ticket](https://yida.alibaba-inc.com/o/ticketapply). The value takes effect after Alibaba Cloud processes your ticket.
+        # >*   If you want to change moderation policies and rules based on ResourceType, [submit a ticket](https://yida.alibaba-inc.com/o/ticketapply) to contact technical support.
         self.media_audit_configuration = media_audit_configuration
         # The ID of the image.
         # 
@@ -31687,7 +33805,7 @@ class SubmitAIImageAuditJobResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the image review task.
+        # The ID of the image review job.
         self.job_id = job_id
         # The ID of the request.
         self.request_id = request_id
@@ -31933,14 +34051,14 @@ class SubmitAIJobRequest(TeaModel):
         types: str = None,
         user_data: str = None,
     ):
-        # The configurations of the AI job. The value must be a JSON string.
+        # The configurations of the AI job. The value is a JSON string.
         # 
-        # *   If `Types` is set to `AIVideoTag`, you can configure `AnalyseTypes` for `Config` to set the analysis algorithm of a smart tagging job. Valid values:
+        # *   If you set `Types` to `AIVideoTag`, you can specify `AnalyseTypes` for `Config` to set the analysis algorithm of a smart tagging job. Valid values:
         # 
-        #     *   ASR: speech recognition.
-        #     *   OCR: image optical character recognition (OCR).
+        #     *   ASR: automatic speech recognition (ASR)
+        #     *   OCR: image optical character recognition (OCR)
         # 
-        # *   If `Types` is set to `AIMediaDNA`, you can configure `DNADBId` for `Config` to set the ID of the media fingerprint library for video fingerprinting jobs.
+        # *   If you set `Types` to `AIMediaDNA`, you can specify `DNADBId` for `Config` to set the ID of the media fingerprint library for video fingerprinting jobs.
         self.config = config
         # The ID of the video. You can use one of the following methods to obtain the ID:
         # 
@@ -34616,7 +36734,7 @@ class UpdateTranscodeTemplateGroupRequest(TeaModel):
         self.name = name
         # The ID of the transcoding template group.
         self.transcode_template_group_id = transcode_template_group_id
-        # The configurations of the transcoding template. The value must be a JSON string. For more information about the data structure, see [TranscodeTemplate](~~52839~~).
+        # The configurations of the transcoding template. The value must be a JSON string. For more information about the data structure, see [TranscodeTemplate](~~52839#title-9mb-8o2-uu6~~).
         self.transcode_template_list = transcode_template_list
 
     def validate(self):
@@ -35838,7 +37956,10 @@ class VerifyVodDomainOwnerRequest(TeaModel):
         # The domain name of which you want to verify the ownership. You can specify only one domain name in each call.
         self.domain_name = domain_name
         self.owner_id = owner_id
-        # The DNS verification method that is used to verify the ownership of the specified domain name.
+        # The verification method. Valid values:
+        # 
+        # *   **dnsCheck**: uses a Domain Name System (DNS) record
+        # *   **fileCheck**: uses a verification file
         self.verify_type = verify_type
 
     def validate(self):
