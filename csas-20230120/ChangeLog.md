@@ -1,3 +1,20 @@
+2024-04-25 Version: 1.4.0
+- Support API CreateClientUser.
+- Support API CreateIdpDepartment.
+- Support API DeleteClientUser.
+- Support API DeleteIdpDepartment.
+- Support API GetActiveIdpConfig.
+- Support API GetClientUser.
+- Support API GetIdpConfig.
+- Support API ListClientUsers.
+- Support API ListIdpConfigs.
+- Support API ListIdpDepartments.
+- Support API UpdateClientUser.
+- Support API UpdateClientUserPassword.
+- Support API UpdateClientUserStatus.
+- Support API UpdateIdpDepartment.
+
+
 2024-04-15 Version: 1.3.0
 - Support API ListPopTrafficStatistics.
 - Support API ListUsers.
