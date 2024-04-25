@@ -5,6 +5,13 @@
 - Update API ModifyDtsJobEndpoint: update param RegionId.
 
 
+2024-04-25 Version: 5.5.5
+- Update API CreateReverseDtsJob: add param ShardPassword.
+- Update API CreateReverseDtsJob: add param ShardUsername.
+- Update API ModifyDtsJobEndpoint: add param EndpointRegionId.
+- Update API ModifyDtsJobEndpoint: update param RegionId.
+
+
 2024-04-11 Version: 5.5.4
 - Update API TransferPayType: add param MaxDu.
 - Update API TransferPayType: add param MinDu.
