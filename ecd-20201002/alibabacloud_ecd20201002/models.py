@@ -2793,6 +2793,51 @@ class GetLoginTokenRequest(TeaModel):
         return self
 
 
+class GetLoginTokenResponseBodyRiskVerifyInfo(TeaModel):
+    def __init__(
+        self,
+        email: str = None,
+        last_lock_duration: int = None,
+        locked: str = None,
+        phone: str = None,
+    ):
+        self.email = email
+        self.last_lock_duration = last_lock_duration
+        self.locked = locked
+        self.phone = phone
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.email is not None:
+            result['Email'] = self.email
+        if self.last_lock_duration is not None:
+            result['LastLockDuration'] = self.last_lock_duration
+        if self.locked is not None:
+            result['Locked'] = self.locked
+        if self.phone is not None:
+            result['Phone'] = self.phone
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Email') is not None:
+            self.email = m.get('Email')
+        if m.get('LastLockDuration') is not None:
+            self.last_lock_duration = m.get('LastLockDuration')
+        if m.get('Locked') is not None:
+            self.locked = m.get('Locked')
+        if m.get('Phone') is not None:
+            self.phone = m.get('Phone')
+        return self
+
+
 class GetLoginTokenResponseBody(TeaModel):
     def __init__(
         self,
@@ -2807,6 +2852,7 @@ class GetLoginTokenResponseBody(TeaModel):
         props: Dict[str, str] = None,
         qr_code_png: str = None,
         request_id: str = None,
+        risk_verify_info: GetLoginTokenResponseBodyRiskVerifyInfo = None,
         secret: str = None,
         session_id: str = None,
         tenant_id: int = None,
@@ -2841,6 +2887,7 @@ class GetLoginTokenResponseBody(TeaModel):
         self.qr_code_png = qr_code_png
         # The ID of the request.
         self.request_id = request_id
+        self.risk_verify_info = risk_verify_info
         # The key that is generated when you bind the virtual MFA device. This parameter is required when the CurrentStage parameter is set to `MFABind`.
         # 
         # > For more information about each authentication stage, see the parameter description of the request parameter `CurrentStage`.
@@ -2855,7 +2902,8 @@ class GetLoginTokenResponseBody(TeaModel):
         self.window_display_mode = window_display_mode
 
     def validate(self):
-        pass
+        if self.risk_verify_info:
+            self.risk_verify_info.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -2885,6 +2933,8 @@ class GetLoginTokenResponseBody(TeaModel):
             result['QrCodePng'] = self.qr_code_png
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.risk_verify_info is not None:
+            result['RiskVerifyInfo'] = self.risk_verify_info.to_map()
         if self.secret is not None:
             result['Secret'] = self.secret
         if self.session_id is not None:
@@ -2919,6 +2969,9 @@ class GetLoginTokenResponseBody(TeaModel):
             self.qr_code_png = m.get('QrCodePng')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('RiskVerifyInfo') is not None:
+            temp_model = GetLoginTokenResponseBodyRiskVerifyInfo()
+            self.risk_verify_info = temp_model.from_map(m['RiskVerifyInfo'])
         if m.get('Secret') is not None:
             self.secret = m.get('Secret')
         if m.get('SessionId') is not None:
@@ -3250,25 +3303,27 @@ class RebootDesktopsRequest(TeaModel):
         region_id: str = None,
         session_id: str = None,
         session_token: str = None,
+        uuid: str = None,
     ):
         # The client ID. The system generates a unique ID for each client.
         self.client_id = client_id
-        # The client OS.
+        # The operating system (OS) of the device that runs the Alibaba Cloud Workspace client (hereinafter referred to as WUYING client).
         self.client_os = client_os
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How do I ensure the idempotence of a request?](~~25693~~)
         self.client_token = client_token
-        # The client version.
+        # The client version. If you use a WUYING client, you can view the client version in the **About** dialog box on the client logon page.
         self.client_version = client_version
-        # The cloud desktop IDs. You can specify 1 to 20 IDs.
+        # The IDs of the cloud computers. You can specify the IDs of 1 to 20 cloud computers.
         self.desktop_id = desktop_id
         # The logon token.
         self.login_token = login_token
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the regions supported by WUYING Workspace.
         self.region_id = region_id
         # The session ID.
         self.session_id = session_id
         # The logon token.
         self.session_token = session_token
+        self.uuid = uuid
 
     def validate(self):
         pass
@@ -3297,6 +3352,8 @@ class RebootDesktopsRequest(TeaModel):
             result['SessionId'] = self.session_id
         if self.session_token is not None:
             result['SessionToken'] = self.session_token
+        if self.uuid is not None:
+            result['Uuid'] = self.uuid
         return result
 
     def from_map(self, m: dict = None):
@@ -3319,6 +3376,8 @@ class RebootDesktopsRequest(TeaModel):
             self.session_id = m.get('SessionId')
         if m.get('SessionToken') is not None:
             self.session_token = m.get('SessionToken')
+        if m.get('Uuid') is not None:
+            self.uuid = m.get('Uuid')
         return self
 
 
@@ -4456,21 +4515,25 @@ class StartDesktopsRequest(TeaModel):
         login_token: str = None,
         region_id: str = None,
         session_id: str = None,
+        uuid: str = None,
     ):
-        # The ID of the request.
+        # The ID of the Alibaba Cloud Workspace client (hereinafter referred to as WUYING client). The system generates a unique ID for each client.
         self.client_id = client_id
-        # The OS used by the client.
+        # The operating system (OS) of the device that run the client.
         self.client_os = client_os
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
         self.client_token = client_token
-        # StartDesktops
+        # The client version. If you use a WUYING client, you can click **About** on the client logon page to view the version of the client.
         self.client_version = client_version
+        # The IDs of the cloud computers. You can specify the IDs of 1 to 20 cloud computers.
         self.desktop_id = desktop_id
-        # The ID of cloud desktop N. You can specify one or more IDs of cloud desktops. Valid values of N: 1 to 20.
+        # The logon token.
         self.login_token = login_token
-        # The logon credential.
+        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the regions supported by WUYING Workspace.
         self.region_id = region_id
-        # The operation that you want to perform. Set the value to StartDesktops.
+        # The session ID.
         self.session_id = session_id
+        self.uuid = uuid
 
     def validate(self):
         pass
@@ -4497,6 +4560,8 @@ class StartDesktopsRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.session_id is not None:
             result['SessionId'] = self.session_id
+        if self.uuid is not None:
+            result['Uuid'] = self.uuid
         return result
 
     def from_map(self, m: dict = None):
@@ -4517,6 +4582,8 @@ class StartDesktopsRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('SessionId') is not None:
             self.session_id = m.get('SessionId')
+        if m.get('Uuid') is not None:
+            self.uuid = m.get('Uuid')
         return self
 
 
@@ -4525,6 +4592,7 @@ class StartDesktopsResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4740,17 +4808,17 @@ class StopDesktopsRequest(TeaModel):
     ):
         # The client ID. The system generates a unique ID for each client.
         self.client_id = client_id
-        # The client OS.
+        # The operating system (OS) of the device that runs the Alibaba Cloud Workspace client (hereinafter referred to as WUYING client).
         self.client_os = client_os
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How do I ensure the idempotence of a request?](~~25693~~)
         self.client_token = client_token
-        # The client version.
+        # The client version. If you use a WUYING client, you can view the client version in the **About** dialog box on the client logon page.
         self.client_version = client_version
-        # The cloud desktop IDs. You can specify 1 to 20 IDs.
+        # The IDs of the cloud computers. You can specify the IDs of 1 to 20 cloud computers.
         self.desktop_id = desktop_id
         # The logon token.
         self.login_token = login_token
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the regions supported by WUYING Workspace.
         self.region_id = region_id
         # The session ID.
         self.session_id = session_id
