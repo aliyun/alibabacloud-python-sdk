@@ -1,3 +1,8 @@
+2024-04-25 Version: 2.14.0
+- Support API GetUserLatestPlan.
+- Support API SyncDingType.
+
+
 2024-04-24 Version: 2.13.0
 - Support API CheckUserIsGroupMember.
 - Support API ExpandGroupCapacity.

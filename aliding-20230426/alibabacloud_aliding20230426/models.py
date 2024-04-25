@@ -34393,6 +34393,336 @@ class GetUserResponse(TeaModel):
         return self
 
 
+class GetUserLatestPlanHeadersAccountContext(TeaModel):
+    def __init__(
+        self,
+        account_id: str = None,
+    ):
+        self.account_id = account_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['accountId'] = self.account_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accountId') is not None:
+            self.account_id = m.get('accountId')
+        return self
+
+
+class GetUserLatestPlanHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context: GetUserLatestPlanHeadersAccountContext = None,
+    ):
+        self.common_headers = common_headers
+        self.account_context = account_context
+
+    def validate(self):
+        if self.account_context:
+            self.account_context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context is not None:
+            result['AccountContext'] = self.account_context.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            temp_model = GetUserLatestPlanHeadersAccountContext()
+            self.account_context = temp_model.from_map(m['AccountContext'])
+        return self
+
+
+class GetUserLatestPlanShrinkHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context_shrink: str = None,
+    ):
+        self.common_headers = common_headers
+        self.account_context_shrink = account_context_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context_shrink is not None:
+            result['AccountContext'] = self.account_context_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            self.account_context_shrink = m.get('AccountContext')
+        return self
+
+
+class GetUserLatestPlanRequestTenantContext(TeaModel):
+    def __init__(
+        self,
+        tenant_id: str = None,
+    ):
+        self.tenant_id = tenant_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tenant_id is not None:
+            result['tenantId'] = self.tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('tenantId') is not None:
+            self.tenant_id = m.get('tenantId')
+        return self
+
+
+class GetUserLatestPlanRequest(TeaModel):
+    def __init__(
+        self,
+        tenant_context: GetUserLatestPlanRequestTenantContext = None,
+    ):
+        self.tenant_context = tenant_context
+
+    def validate(self):
+        if self.tenant_context:
+            self.tenant_context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tenant_context is not None:
+            result['TenantContext'] = self.tenant_context.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TenantContext') is not None:
+            temp_model = GetUserLatestPlanRequestTenantContext()
+            self.tenant_context = temp_model.from_map(m['TenantContext'])
+        return self
+
+
+class GetUserLatestPlanShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        tenant_context_shrink: str = None,
+    ):
+        self.tenant_context_shrink = tenant_context_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tenant_context_shrink is not None:
+            result['TenantContext'] = self.tenant_context_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TenantContext') is not None:
+            self.tenant_context_shrink = m.get('TenantContext')
+        return self
+
+
+class GetUserLatestPlanResponseBody(TeaModel):
+    def __init__(
+        self,
+        account_handle_status: int = None,
+        account_handle_time: str = None,
+        account_type: int = None,
+        agreement_first_sign_time: str = None,
+        agreement_last_sign_time: str = None,
+        agreement_status: int = None,
+        data_handle_end_time: str = None,
+        data_handle_start_time: str = None,
+        data_handle_status: int = None,
+        exclusive_plan: int = None,
+        new_account_uid: int = None,
+        request_id: str = None,
+        status: int = None,
+        vendor_request_id: str = None,
+        vendor_type: str = None,
+    ):
+        self.account_handle_status = account_handle_status
+        self.account_handle_time = account_handle_time
+        self.account_type = account_type
+        self.agreement_first_sign_time = agreement_first_sign_time
+        self.agreement_last_sign_time = agreement_last_sign_time
+        self.agreement_status = agreement_status
+        self.data_handle_end_time = data_handle_end_time
+        self.data_handle_start_time = data_handle_start_time
+        self.data_handle_status = data_handle_status
+        self.exclusive_plan = exclusive_plan
+        self.new_account_uid = new_account_uid
+        self.request_id = request_id
+        self.status = status
+        self.vendor_request_id = vendor_request_id
+        self.vendor_type = vendor_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_handle_status is not None:
+            result['accountHandleStatus'] = self.account_handle_status
+        if self.account_handle_time is not None:
+            result['accountHandleTime'] = self.account_handle_time
+        if self.account_type is not None:
+            result['accountType'] = self.account_type
+        if self.agreement_first_sign_time is not None:
+            result['agreementFirstSignTime'] = self.agreement_first_sign_time
+        if self.agreement_last_sign_time is not None:
+            result['agreementLastSignTime'] = self.agreement_last_sign_time
+        if self.agreement_status is not None:
+            result['agreementStatus'] = self.agreement_status
+        if self.data_handle_end_time is not None:
+            result['dataHandleEndTime'] = self.data_handle_end_time
+        if self.data_handle_start_time is not None:
+            result['dataHandleStartTime'] = self.data_handle_start_time
+        if self.data_handle_status is not None:
+            result['dataHandleStatus'] = self.data_handle_status
+        if self.exclusive_plan is not None:
+            result['exclusivePlan'] = self.exclusive_plan
+        if self.new_account_uid is not None:
+            result['newAccountUid'] = self.new_account_uid
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.status is not None:
+            result['status'] = self.status
+        if self.vendor_request_id is not None:
+            result['vendorRequestId'] = self.vendor_request_id
+        if self.vendor_type is not None:
+            result['vendorType'] = self.vendor_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accountHandleStatus') is not None:
+            self.account_handle_status = m.get('accountHandleStatus')
+        if m.get('accountHandleTime') is not None:
+            self.account_handle_time = m.get('accountHandleTime')
+        if m.get('accountType') is not None:
+            self.account_type = m.get('accountType')
+        if m.get('agreementFirstSignTime') is not None:
+            self.agreement_first_sign_time = m.get('agreementFirstSignTime')
+        if m.get('agreementLastSignTime') is not None:
+            self.agreement_last_sign_time = m.get('agreementLastSignTime')
+        if m.get('agreementStatus') is not None:
+            self.agreement_status = m.get('agreementStatus')
+        if m.get('dataHandleEndTime') is not None:
+            self.data_handle_end_time = m.get('dataHandleEndTime')
+        if m.get('dataHandleStartTime') is not None:
+            self.data_handle_start_time = m.get('dataHandleStartTime')
+        if m.get('dataHandleStatus') is not None:
+            self.data_handle_status = m.get('dataHandleStatus')
+        if m.get('exclusivePlan') is not None:
+            self.exclusive_plan = m.get('exclusivePlan')
+        if m.get('newAccountUid') is not None:
+            self.new_account_uid = m.get('newAccountUid')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('vendorRequestId') is not None:
+            self.vendor_request_id = m.get('vendorRequestId')
+        if m.get('vendorType') is not None:
+            self.vendor_type = m.get('vendorType')
+        return self
+
+
+class GetUserLatestPlanResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetUserLatestPlanResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetUserLatestPlanResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetWorkspaceHeadersAccountContext(TeaModel):
     def __init__(
         self,
@@ -59403,6 +59733,306 @@ class SubscribeCalendarResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SubscribeCalendarResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SyncDingTypeHeadersAccountContext(TeaModel):
+    def __init__(
+        self,
+        account_id: str = None,
+    ):
+        self.account_id = account_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['accountId'] = self.account_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accountId') is not None:
+            self.account_id = m.get('accountId')
+        return self
+
+
+class SyncDingTypeHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context: SyncDingTypeHeadersAccountContext = None,
+    ):
+        self.common_headers = common_headers
+        self.account_context = account_context
+
+    def validate(self):
+        if self.account_context:
+            self.account_context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context is not None:
+            result['AccountContext'] = self.account_context.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            temp_model = SyncDingTypeHeadersAccountContext()
+            self.account_context = temp_model.from_map(m['AccountContext'])
+        return self
+
+
+class SyncDingTypeShrinkHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context_shrink: str = None,
+    ):
+        self.common_headers = common_headers
+        self.account_context_shrink = account_context_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context_shrink is not None:
+            result['AccountContext'] = self.account_context_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            self.account_context_shrink = m.get('AccountContext')
+        return self
+
+
+class SyncDingTypeRequestTenantContext(TeaModel):
+    def __init__(
+        self,
+        tenant_id: str = None,
+    ):
+        self.tenant_id = tenant_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tenant_id is not None:
+            result['tenantId'] = self.tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('tenantId') is not None:
+            self.tenant_id = m.get('tenantId')
+        return self
+
+
+class SyncDingTypeRequest(TeaModel):
+    def __init__(
+        self,
+        ding_type: str = None,
+        source: str = None,
+        tenant_context: SyncDingTypeRequestTenantContext = None,
+        work_no: str = None,
+    ):
+        self.ding_type = ding_type
+        self.source = source
+        self.tenant_context = tenant_context
+        self.work_no = work_no
+
+    def validate(self):
+        if self.tenant_context:
+            self.tenant_context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ding_type is not None:
+            result['DingType'] = self.ding_type
+        if self.source is not None:
+            result['Source'] = self.source
+        if self.tenant_context is not None:
+            result['TenantContext'] = self.tenant_context.to_map()
+        if self.work_no is not None:
+            result['WorkNo'] = self.work_no
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DingType') is not None:
+            self.ding_type = m.get('DingType')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        if m.get('TenantContext') is not None:
+            temp_model = SyncDingTypeRequestTenantContext()
+            self.tenant_context = temp_model.from_map(m['TenantContext'])
+        if m.get('WorkNo') is not None:
+            self.work_no = m.get('WorkNo')
+        return self
+
+
+class SyncDingTypeShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        ding_type: str = None,
+        source: str = None,
+        tenant_context_shrink: str = None,
+        work_no: str = None,
+    ):
+        self.ding_type = ding_type
+        self.source = source
+        self.tenant_context_shrink = tenant_context_shrink
+        self.work_no = work_no
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ding_type is not None:
+            result['DingType'] = self.ding_type
+        if self.source is not None:
+            result['Source'] = self.source
+        if self.tenant_context_shrink is not None:
+            result['TenantContext'] = self.tenant_context_shrink
+        if self.work_no is not None:
+            result['WorkNo'] = self.work_no
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DingType') is not None:
+            self.ding_type = m.get('DingType')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        if m.get('TenantContext') is not None:
+            self.tenant_context_shrink = m.get('TenantContext')
+        if m.get('WorkNo') is not None:
+            self.work_no = m.get('WorkNo')
+        return self
+
+
+class SyncDingTypeResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+        vendor_request_id: str = None,
+        vendor_type: str = None,
+    ):
+        self.request_id = request_id
+        self.success = success
+        self.vendor_request_id = vendor_request_id
+        self.vendor_type = vendor_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        if self.vendor_request_id is not None:
+            result['vendorRequestId'] = self.vendor_request_id
+        if self.vendor_type is not None:
+            result['vendorType'] = self.vendor_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        if m.get('vendorRequestId') is not None:
+            self.vendor_request_id = m.get('vendorRequestId')
+        if m.get('vendorType') is not None:
+            self.vendor_type = m.get('vendorType')
+        return self
+
+
+class SyncDingTypeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SyncDingTypeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SyncDingTypeResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
