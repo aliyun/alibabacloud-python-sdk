@@ -1,3 +1,7 @@
+2024-04-26 Version: 2.6.0
+- Support API CredentialVerify.
+
+
 2024-04-10 Version: 2.5.0
 - Support API BankMetaVerify.
 - Support API DescribePageFaceVerifyData.

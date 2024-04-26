@@ -903,6 +903,112 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_verify_setting_with_options_async(request, runtime)
 
+    def credential_verify_with_options(
+        self,
+        request: cloudauth_20190307_models.CredentialVerifyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.CredentialVerifyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cert_num):
+            query['CertNum'] = request.cert_num
+        if not UtilClient.is_unset(request.cred_name):
+            query['CredName'] = request.cred_name
+        if not UtilClient.is_unset(request.cred_type):
+            query['CredType'] = request.cred_type
+        if not UtilClient.is_unset(request.identify_num):
+            query['IdentifyNum'] = request.identify_num
+        if not UtilClient.is_unset(request.image_url):
+            query['ImageUrl'] = request.image_url
+        if not UtilClient.is_unset(request.is_check):
+            query['IsCheck'] = request.is_check
+        if not UtilClient.is_unset(request.is_ocr):
+            query['IsOCR'] = request.is_ocr
+        if not UtilClient.is_unset(request.user_name):
+            query['UserName'] = request.user_name
+        body = {}
+        if not UtilClient.is_unset(request.image_context):
+            body['ImageContext'] = request.image_context
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CredentialVerify',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.CredentialVerifyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def credential_verify_with_options_async(
+        self,
+        request: cloudauth_20190307_models.CredentialVerifyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.CredentialVerifyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cert_num):
+            query['CertNum'] = request.cert_num
+        if not UtilClient.is_unset(request.cred_name):
+            query['CredName'] = request.cred_name
+        if not UtilClient.is_unset(request.cred_type):
+            query['CredType'] = request.cred_type
+        if not UtilClient.is_unset(request.identify_num):
+            query['IdentifyNum'] = request.identify_num
+        if not UtilClient.is_unset(request.image_url):
+            query['ImageUrl'] = request.image_url
+        if not UtilClient.is_unset(request.is_check):
+            query['IsCheck'] = request.is_check
+        if not UtilClient.is_unset(request.is_ocr):
+            query['IsOCR'] = request.is_ocr
+        if not UtilClient.is_unset(request.user_name):
+            query['UserName'] = request.user_name
+        body = {}
+        if not UtilClient.is_unset(request.image_context):
+            body['ImageContext'] = request.image_context
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CredentialVerify',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.CredentialVerifyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def credential_verify(
+        self,
+        request: cloudauth_20190307_models.CredentialVerifyRequest,
+    ) -> cloudauth_20190307_models.CredentialVerifyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.credential_verify_with_options(request, runtime)
+
+    async def credential_verify_async(
+        self,
+        request: cloudauth_20190307_models.CredentialVerifyRequest,
+    ) -> cloudauth_20190307_models.CredentialVerifyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.credential_verify_with_options_async(request, runtime)
+
     def describe_device_info_with_options(
         self,
         request: cloudauth_20190307_models.DescribeDeviceInfoRequest,
