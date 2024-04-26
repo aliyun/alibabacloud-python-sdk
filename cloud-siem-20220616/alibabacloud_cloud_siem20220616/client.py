@@ -7506,6 +7506,10 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.region_id):
             body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.role_for):
+            body['RoleFor'] = request.role_for
+        if not UtilClient.is_unset(request.role_type):
+            body['RoleType'] = request.role_type
         if not UtilClient.is_unset(request.source_log_code):
             body['SourceLogCode'] = request.source_log_code
         if not UtilClient.is_unset(request.source_prod_code):
@@ -7538,6 +7542,10 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.region_id):
             body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.role_for):
+            body['RoleFor'] = request.role_for
+        if not UtilClient.is_unset(request.role_type):
+            body['RoleType'] = request.role_type
         if not UtilClient.is_unset(request.source_log_code):
             body['SourceLogCode'] = request.source_log_code
         if not UtilClient.is_unset(request.source_prod_code):
@@ -7584,6 +7592,10 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.region_id):
             body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.role_for):
+            body['RoleFor'] = request.role_for
+        if not UtilClient.is_unset(request.role_type):
+            body['RoleType'] = request.role_type
         if not UtilClient.is_unset(request.source_prod_code):
             body['SourceProdCode'] = request.source_prod_code
         req = open_api_models.OpenApiRequest(
@@ -7614,6 +7626,10 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.region_id):
             body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.role_for):
+            body['RoleFor'] = request.role_for
+        if not UtilClient.is_unset(request.role_type):
+            body['RoleType'] = request.role_type
         if not UtilClient.is_unset(request.source_prod_code):
             body['SourceProdCode'] = request.source_prod_code
         req = open_api_models.OpenApiRequest(
