@@ -1,3 +1,6 @@
+2024-04-26 Version: 1.4.2
+- Generated python 2020-06-06 for cams.
+
 2024-04-10 Version: 1.4.1
 - Update API DeleteChatappTemplate: add param Language.
 - Update API DeleteChatappTemplate: add param TemplateName.
