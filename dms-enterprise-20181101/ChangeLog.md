@@ -1,3 +1,8 @@
+2024-04-26 Version: 1.61.0
+- Support API GetTableDesignProjectFlow.
+- Support API GetTableDesignProjectInfo.
+
+
 2024-04-18 Version: 1.60.1
 - Update API ApproveOrder: add param NewApproverList.
 - Update API GetDataCorrectOrderDetail: update response param.

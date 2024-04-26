@@ -28120,6 +28120,516 @@ class GetTableDBTopologyResponse(TeaModel):
         return self
 
 
+class GetTableDesignProjectFlowRequest(TeaModel):
+    def __init__(
+        self,
+        order_id: int = None,
+        tid: int = None,
+    ):
+        self.order_id = order_id
+        self.tid = tid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class GetTableDesignProjectFlowResponseBodyProjectFlowFlowNodeArray(TeaModel):
+    def __init__(
+        self,
+        back_to_design: bool = None,
+        can_skip: bool = None,
+        node_role: str = None,
+        node_title: str = None,
+        position: int = None,
+        publish_anchor: bool = None,
+        publish_strategies: List[str] = None,
+    ):
+        self.back_to_design = back_to_design
+        self.can_skip = can_skip
+        self.node_role = node_role
+        self.node_title = node_title
+        self.position = position
+        self.publish_anchor = publish_anchor
+        self.publish_strategies = publish_strategies
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.back_to_design is not None:
+            result['BackToDesign'] = self.back_to_design
+        if self.can_skip is not None:
+            result['CanSkip'] = self.can_skip
+        if self.node_role is not None:
+            result['NodeRole'] = self.node_role
+        if self.node_title is not None:
+            result['NodeTitle'] = self.node_title
+        if self.position is not None:
+            result['Position'] = self.position
+        if self.publish_anchor is not None:
+            result['PublishAnchor'] = self.publish_anchor
+        if self.publish_strategies is not None:
+            result['PublishStrategies'] = self.publish_strategies
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BackToDesign') is not None:
+            self.back_to_design = m.get('BackToDesign')
+        if m.get('CanSkip') is not None:
+            self.can_skip = m.get('CanSkip')
+        if m.get('NodeRole') is not None:
+            self.node_role = m.get('NodeRole')
+        if m.get('NodeTitle') is not None:
+            self.node_title = m.get('NodeTitle')
+        if m.get('Position') is not None:
+            self.position = m.get('Position')
+        if m.get('PublishAnchor') is not None:
+            self.publish_anchor = m.get('PublishAnchor')
+        if m.get('PublishStrategies') is not None:
+            self.publish_strategies = m.get('PublishStrategies')
+        return self
+
+
+class GetTableDesignProjectFlowResponseBodyProjectFlow(TeaModel):
+    def __init__(
+        self,
+        current_position: int = None,
+        flow_node_array: List[GetTableDesignProjectFlowResponseBodyProjectFlowFlowNodeArray] = None,
+        rule_comment: str = None,
+        rule_name: str = None,
+    ):
+        self.current_position = current_position
+        self.flow_node_array = flow_node_array
+        self.rule_comment = rule_comment
+        self.rule_name = rule_name
+
+    def validate(self):
+        if self.flow_node_array:
+            for k in self.flow_node_array:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_position is not None:
+            result['CurrentPosition'] = self.current_position
+        result['FlowNodeArray'] = []
+        if self.flow_node_array is not None:
+            for k in self.flow_node_array:
+                result['FlowNodeArray'].append(k.to_map() if k else None)
+        if self.rule_comment is not None:
+            result['RuleComment'] = self.rule_comment
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentPosition') is not None:
+            self.current_position = m.get('CurrentPosition')
+        self.flow_node_array = []
+        if m.get('FlowNodeArray') is not None:
+            for k in m.get('FlowNodeArray'):
+                temp_model = GetTableDesignProjectFlowResponseBodyProjectFlowFlowNodeArray()
+                self.flow_node_array.append(temp_model.from_map(k))
+        if m.get('RuleComment') is not None:
+            self.rule_comment = m.get('RuleComment')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        return self
+
+
+class GetTableDesignProjectFlowResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        project_flow: GetTableDesignProjectFlowResponseBodyProjectFlow = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.project_flow = project_flow
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.project_flow:
+            self.project_flow.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.project_flow is not None:
+            result['ProjectFlow'] = self.project_flow.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('ProjectFlow') is not None:
+            temp_model = GetTableDesignProjectFlowResponseBodyProjectFlow()
+            self.project_flow = temp_model.from_map(m['ProjectFlow'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetTableDesignProjectFlowResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetTableDesignProjectFlowResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetTableDesignProjectFlowResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetTableDesignProjectInfoRequest(TeaModel):
+    def __init__(
+        self,
+        order_id: int = None,
+        tid: int = None,
+    ):
+        self.order_id = order_id
+        self.tid = tid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class GetTableDesignProjectInfoResponseBodyProjectInfoBaseDatabase(TeaModel):
+    def __init__(
+        self,
+        alias: str = None,
+        db_id: int = None,
+        db_type: str = None,
+        env_type: str = None,
+        logic: bool = None,
+        schema_name: str = None,
+        search_name: str = None,
+    ):
+        self.alias = alias
+        self.db_id = db_id
+        self.db_type = db_type
+        self.env_type = env_type
+        self.logic = logic
+        self.schema_name = schema_name
+        self.search_name = search_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alias is not None:
+            result['Alias'] = self.alias
+        if self.db_id is not None:
+            result['DbId'] = self.db_id
+        if self.db_type is not None:
+            result['DbType'] = self.db_type
+        if self.env_type is not None:
+            result['EnvType'] = self.env_type
+        if self.logic is not None:
+            result['Logic'] = self.logic
+        if self.schema_name is not None:
+            result['SchemaName'] = self.schema_name
+        if self.search_name is not None:
+            result['SearchName'] = self.search_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Alias') is not None:
+            self.alias = m.get('Alias')
+        if m.get('DbId') is not None:
+            self.db_id = m.get('DbId')
+        if m.get('DbType') is not None:
+            self.db_type = m.get('DbType')
+        if m.get('EnvType') is not None:
+            self.env_type = m.get('EnvType')
+        if m.get('Logic') is not None:
+            self.logic = m.get('Logic')
+        if m.get('SchemaName') is not None:
+            self.schema_name = m.get('SchemaName')
+        if m.get('SearchName') is not None:
+            self.search_name = m.get('SearchName')
+        return self
+
+
+class GetTableDesignProjectInfoResponseBodyProjectInfo(TeaModel):
+    def __init__(
+        self,
+        base_database: GetTableDesignProjectInfoResponseBodyProjectInfoBaseDatabase = None,
+        creator_id: int = None,
+        description: str = None,
+        gmt_create: str = None,
+        gmt_modified: str = None,
+        order_id: int = None,
+        project_id: int = None,
+        status: str = None,
+        title: str = None,
+    ):
+        self.base_database = base_database
+        self.creator_id = creator_id
+        self.description = description
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.order_id = order_id
+        self.project_id = project_id
+        self.status = status
+        self.title = title
+
+    def validate(self):
+        if self.base_database:
+            self.base_database.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.base_database is not None:
+            result['BaseDatabase'] = self.base_database.to_map()
+        if self.creator_id is not None:
+            result['CreatorId'] = self.creator_id
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.title is not None:
+            result['Title'] = self.title
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BaseDatabase') is not None:
+            temp_model = GetTableDesignProjectInfoResponseBodyProjectInfoBaseDatabase()
+            self.base_database = temp_model.from_map(m['BaseDatabase'])
+        if m.get('CreatorId') is not None:
+            self.creator_id = m.get('CreatorId')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        return self
+
+
+class GetTableDesignProjectInfoResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        project_info: GetTableDesignProjectInfoResponseBodyProjectInfo = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.project_info = project_info
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.project_info:
+            self.project_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.project_info is not None:
+            result['ProjectInfo'] = self.project_info.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('ProjectInfo') is not None:
+            temp_model = GetTableDesignProjectInfoResponseBodyProjectInfo()
+            self.project_info = temp_model.from_map(m['ProjectInfo'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetTableDesignProjectInfoResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetTableDesignProjectInfoResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetTableDesignProjectInfoResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetTableTopologyRequest(TeaModel):
     def __init__(
         self,
