@@ -13,10 +13,20 @@ class ConfigNetStatusRequest(TeaModel):
         status: str = None,
         sub_nets: List[str] = None,
     ):
+        # The CIDR block of the anti-DDoS diversion instance.
         self.net = net
+        # The regions in which the CIDR block needs to be advertised or withdrawn from advertising. If you leave this parameter empty, the CIDR blocks in all regions are configured.
+        # 
+        # >  You can call the [QueryNetList](~~2639086~~) operation to obtain the regions of the CIDR blocks.
         self.regions = regions
+        # The ID of the anti-DDoS diversion instance.
         self.sale_id = sale_id
+        # The status of the CIDR block. Valid values:
+        # 
+        # *   enable: advertises the CIDR block.
+        # *   disable: withdraws the advertising of the CIDR block.
         self.status = status
+        # The subnet CIDR blocks of the CIDR block.
         self.sub_nets = sub_nets
 
     def validate(self):
@@ -62,8 +72,14 @@ class ConfigNetStatusResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The status code.
+        # 
+        # *   **200**: The request was successful.
+        # *   Other codes: The request failed.
         self.code = code
+        # The response parameters.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -106,9 +122,6 @@ class ConfigNetStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -147,10 +160,20 @@ class ListInstanceRequest(TeaModel):
         sale_id: str = None,
         status: str = None,
     ):
+        # The name of the instance.
         self.name = name
+        # The number of entries per page. Default value: 100.
         self.num = num
+        # The page number. Default value: 1
         self.page = page
+        # The ID of the anti-DDoS diversion instance.
         self.sale_id = sale_id
+        # The status of the instance. Valid values:
+        # 
+        # *   normal
+        # *   expired
+        # *   deleting
+        # *   stopped
         self.status = status
 
     def validate(self):
@@ -428,20 +451,25 @@ class ListInstanceResponseBody(TeaModel):
     def __init__(
         self,
         code: int = None,
-        data: List[ListInstanceResponseBodyData] = None,
+        data: ListInstanceResponseBodyData = None,
         message: str = None,
         request_id: str = None,
     ):
+        # The status code.
+        # 
+        # *   **200**: The request was successful.
+        # *   Other codes: The request failed.
         self.code = code
+        # The returned result.
         self.data = data
+        # The response parameters.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
         if self.data:
-            for k in self.data:
-                if k:
-                    k.validate()
+            self.data.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -451,10 +479,8 @@ class ListInstanceResponseBody(TeaModel):
         result = dict()
         if self.code is not None:
             result['Code'] = self.code
-        result['Data'] = []
         if self.data is not None:
-            for k in self.data:
-                result['Data'].append(k.to_map() if k else None)
+            result['Data'] = self.data.to_map()
         if self.message is not None:
             result['Message'] = self.message
         if self.request_id is not None:
@@ -465,11 +491,9 @@ class ListInstanceResponseBody(TeaModel):
         m = m or dict()
         if m.get('Code') is not None:
             self.code = m.get('Code')
-        self.data = []
         if m.get('Data') is not None:
-            for k in m.get('Data'):
-                temp_model = ListInstanceResponseBodyData()
-                self.data.append(temp_model.from_map(k))
+            temp_model = ListInstanceResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
         if m.get('Message') is not None:
             self.message = m.get('Message')
         if m.get('RequestId') is not None:
@@ -489,9 +513,6 @@ class ListInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -531,11 +552,22 @@ class QueryNetListRequest(TeaModel):
         page: int = None,
         sale_id: str = None,
     ):
+        # The primary CIDR block of the anti-DDoS diversion instance for which an extended CIDR block is configured. If no extended CIDR blocks are configured for the anti-DDoS diversion instance, leave this parameter empty.
         self.main_net = main_net
+        # The scheduling mode. Valid values:
+        # 
+        # *   manual: manual scheduling
+        # *   netflow-auto: automatic scheduling
         self.mode = mode
+        # The CIDR block of the anti-DDoS diversion instance.
+        # 
+        # >  If no extended CIDR blocks are configured for the anti-DDoS diversion instance, this parameter specifies the CIDR block of the instance. If an extended CIDR block is configured for the anti-DDoS diversion instance, this parameter specifies the extended CIDR block that is configured for the instance. If this parameter is specified, the MainNet parameter is required.
         self.net = net
+        # The number of entries per page. Default value: 100.
         self.num = num
+        # The page number. Default value: 1
         self.page = page
+        # The ID of the anti-DDoS diversion instance.
         self.sale_id = sale_id
 
     def validate(self):
@@ -584,9 +616,7 @@ class QueryNetListResponseBodyDataNetsDDoSDefenseCleanTh(TeaModel):
         mbps: int = None,
         pps: int = None,
     ):
-        # Mbps。
         self.mbps = mbps
-        # Pps。
         self.pps = pps
 
     def validate(self):
@@ -758,8 +788,8 @@ class QueryNetListResponseBodyDataNets(TeaModel):
         gmt_modify: str = None,
         mode: str = None,
         net: str = None,
-        net_extend: int = None,
-        net_main: str = None,
+        net_extend: str = None,
+        net_main: int = None,
         net_type: str = None,
         sale_id: str = None,
         upstream_type: str = None,
@@ -920,20 +950,25 @@ class QueryNetListResponseBody(TeaModel):
     def __init__(
         self,
         code: int = None,
-        data: List[QueryNetListResponseBodyData] = None,
+        data: QueryNetListResponseBodyData = None,
         message: str = None,
         request_id: str = None,
     ):
+        # The status code.
+        # 
+        # *   **200**: The request was successful.
+        # *   Other codes: The request failed.
         self.code = code
+        # The CIDR blocks.
         self.data = data
+        # The response parameters.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
         if self.data:
-            for k in self.data:
-                if k:
-                    k.validate()
+            self.data.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -943,10 +978,8 @@ class QueryNetListResponseBody(TeaModel):
         result = dict()
         if self.code is not None:
             result['Code'] = self.code
-        result['Data'] = []
         if self.data is not None:
-            for k in self.data:
-                result['Data'].append(k.to_map() if k else None)
+            result['Data'] = self.data.to_map()
         if self.message is not None:
             result['Message'] = self.message
         if self.request_id is not None:
@@ -957,11 +990,9 @@ class QueryNetListResponseBody(TeaModel):
         m = m or dict()
         if m.get('Code') is not None:
             self.code = m.get('Code')
-        self.data = []
         if m.get('Data') is not None:
-            for k in m.get('Data'):
-                temp_model = QueryNetListResponseBodyData()
-                self.data.append(temp_model.from_map(k))
+            temp_model = QueryNetListResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
         if m.get('Message') is not None:
             self.message = m.get('Message')
         if m.get('RequestId') is not None:
@@ -981,9 +1012,6 @@ class QueryNetListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 

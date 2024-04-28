@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_ddosdiversion20230701.
 
-Created on 13/12/2023
+Created on 28/04/2024
 
 @author: Alibaba Cloud SDK
 """
