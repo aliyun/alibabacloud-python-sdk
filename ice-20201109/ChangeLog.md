@@ -1,3 +1,25 @@
+2024-04-28 Version: 2.4.0
+- Support API ListBatchMediaProducingJobs.
+- Support API ListMediaProducingJobs.
+- Support API SubmitTextGenerateJob.
+- Update API DeleteLiveSnapshotFiles: update response param.
+- Update API GetBatchMediaProducingJob: add param Action.
+- Update API GetBatchMediaProducingJob: add param Signature.
+- Update API GetBatchMediaProducingJob: add param SignatureMehtod.
+- Update API GetBatchMediaProducingJob: add param SignatureNonce.
+- Update API GetBatchMediaProducingJob: add param SignatureType.
+- Update API GetBatchMediaProducingJob: add param SignatureVersion.
+- Update API GetBatchMediaProducingJob: update response param.
+- Update API GetMediaInfo: add param ReturnDetailedInfo.
+- Update API GetMediaInfo: update response param.
+- Update API GetSmartHandleJob: update response param.
+- Update API QueryIProductionJob: add param Action.
+- Update API RegisterMediaInfo: add param SmartTagTemplateId.
+- Update API SubmitIProductionJob: add param Action.
+- Update API SubmitMediaCensorJob: add param AccessKeyId.
+- Update API SubmitMediaCensorJob: add param Action.
+
+
 2024-03-04 Version: 2.3.0
 - Support API SubmitTextGenerateJob.
 - Delete API SubmitSubtitleProduceJob.

@@ -5951,6 +5951,8 @@ class Client(OpenApiClient):
             query['MediaId'] = request.media_id
         if not UtilClient.is_unset(request.output_type):
             query['OutputType'] = request.output_type
+        if not UtilClient.is_unset(request.return_detailed_info):
+            query['ReturnDetailedInfo'] = request.return_detailed_info
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5983,6 +5985,8 @@ class Client(OpenApiClient):
             query['MediaId'] = request.media_id
         if not UtilClient.is_unset(request.output_type):
             query['OutputType'] = request.output_type
+        if not UtilClient.is_unset(request.return_detailed_info):
+            query['ReturnDetailedInfo'] = request.return_detailed_info
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7644,6 +7648,104 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_avatars_with_options_async(request, runtime)
 
+    def list_batch_media_producing_jobs_with_options(
+        self,
+        request: ice20201109_models.ListBatchMediaProducingJobsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.ListBatchMediaProducingJobsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.job_type):
+            query['JobType'] = request.job_type
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListBatchMediaProducingJobs',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.ListBatchMediaProducingJobsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_batch_media_producing_jobs_with_options_async(
+        self,
+        request: ice20201109_models.ListBatchMediaProducingJobsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.ListBatchMediaProducingJobsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.job_type):
+            query['JobType'] = request.job_type
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListBatchMediaProducingJobs',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.ListBatchMediaProducingJobsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_batch_media_producing_jobs(
+        self,
+        request: ice20201109_models.ListBatchMediaProducingJobsRequest,
+    ) -> ice20201109_models.ListBatchMediaProducingJobsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_batch_media_producing_jobs_with_options(request, runtime)
+
+    async def list_batch_media_producing_jobs_async(
+        self,
+        request: ice20201109_models.ListBatchMediaProducingJobsRequest,
+    ) -> ice20201109_models.ListBatchMediaProducingJobsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_batch_media_producing_jobs_with_options_async(request, runtime)
+
     def list_custom_templates_with_options(
         self,
         request: ice20201109_models.ListCustomTemplatesRequest,
@@ -9029,6 +9131,108 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.ListMediaMarksResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_media_marks_with_options_async(request, runtime)
+
+    def list_media_producing_jobs_with_options(
+        self,
+        request: ice20201109_models.ListMediaProducingJobsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.ListMediaProducingJobsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.job_type):
+            query['JobType'] = request.job_type
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.master_job_id):
+            query['MasterJobId'] = request.master_job_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListMediaProducingJobs',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.ListMediaProducingJobsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_media_producing_jobs_with_options_async(
+        self,
+        request: ice20201109_models.ListMediaProducingJobsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.ListMediaProducingJobsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.job_type):
+            query['JobType'] = request.job_type
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.master_job_id):
+            query['MasterJobId'] = request.master_job_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListMediaProducingJobs',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.ListMediaProducingJobsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_media_producing_jobs(
+        self,
+        request: ice20201109_models.ListMediaProducingJobsRequest,
+    ) -> ice20201109_models.ListMediaProducingJobsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_media_producing_jobs_with_options(request, runtime)
+
+    async def list_media_producing_jobs_async(
+        self,
+        request: ice20201109_models.ListMediaProducingJobsRequest,
+    ) -> ice20201109_models.ListMediaProducingJobsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_media_producing_jobs_with_options_async(request, runtime)
 
     def list_package_jobs_with_options(
         self,
@@ -10613,6 +10817,8 @@ class Client(OpenApiClient):
             query['ReferenceId'] = request.reference_id
         if not UtilClient.is_unset(request.register_config):
             query['RegisterConfig'] = request.register_config
+        if not UtilClient.is_unset(request.smart_tag_template_id):
+            query['SmartTagTemplateId'] = request.smart_tag_template_id
         if not UtilClient.is_unset(request.title):
             query['Title'] = request.title
         if not UtilClient.is_unset(request.user_data):
@@ -10667,6 +10873,8 @@ class Client(OpenApiClient):
             query['ReferenceId'] = request.reference_id
         if not UtilClient.is_unset(request.register_config):
             query['RegisterConfig'] = request.register_config
+        if not UtilClient.is_unset(request.smart_tag_template_id):
+            query['SmartTagTemplateId'] = request.smart_tag_template_id
         if not UtilClient.is_unset(request.title):
             query['Title'] = request.title
         if not UtilClient.is_unset(request.user_data):
