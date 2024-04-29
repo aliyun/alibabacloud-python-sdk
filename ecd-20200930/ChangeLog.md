@@ -1,3 +1,12 @@
+2024-04-29 Version: 3.6.2
+- Update API CreateCloudDriveService: update response param.
+- Update API CreateDesktops: add param MonthDesktopSetting.
+- Update API DescribeDesktopOversoldGroup: update response param.
+- Update API DescribeDesktopOversoldUser: update param ClientToken.
+- Update API DescribeOfficeSites: update response param.
+- Update API RenewDesktops: add param ResourceType.
+
+
 2024-04-19 Version: 3.6.1
 - Update API CreateCloudDriveService: update response param.
 - Update API DescribeDesktopOversoldGroup: update response param.
