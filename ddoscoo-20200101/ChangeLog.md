@@ -1,3 +1,15 @@
+2024-04-29 Version: 2.0.0
+- Support API DescribeElasticQps.
+- Support API DescribeElasticQpsRecord.
+- Support API ModifyElasticBizQps.
+- Support API ModifyQpsMode.
+- Delete API DescribeDomainQpsWithCache.
+- Update API ConfigWebIpSet: update param BlackList.
+- Update API ConfigWebIpSet: update param WhiteList.
+- Update API DescribeSlaEventList: update param Page.
+- Update API DescribeSlaEventList: update param PageSize.
+
+
 2024-01-23 Version: 1.2.1
 - Generated python 2020-01-01 for ddoscoo.
 
