@@ -1,3 +1,30 @@
+2024-04-29 Version: 2.29.0
+- Support API ListCompressFileDetectResult.
+- Update API AddSasModuleTrial: update response param.
+- Update API ChangeCheckCustomConfig: add param RepairConfigs.
+- Update API ChangeCheckCustomConfig: update response param.
+- Update API CreateFileDetect: add param Decompress.
+- Update API CreateFileDetect: add param DecompressMaxFileCount.
+- Update API CreateFileDetect: add param DecompressMaxLayer.
+- Update API DescribeAccessKeyLeakDetail: add param ResourceDirectoryAccountId.
+- Update API DescribeAccesskeyLeakList: add param ResourceDirectoryAccountId.
+- Update API DescribeBruteForceRecords: add param InstanceId.
+- Update API DescribeBruteForceRecords: add param Remark.
+- Update API DescribeBruteForceRecords: update response param.
+- Update API DescribeVersionConfig: update response param.
+- Update API GetCheckDetail: update response param.
+- Update API GetFileDetectResult: update response param.
+- Update API GetModuleTrialAuthInfo: update response param.
+- Update API ListCheckInstanceResult: update response param.
+- Update API ListFileProtectEvent: add param EndTime.
+- Update API ListFileProtectEvent: add param InstanceId.
+- Update API ListFileProtectEvent: add param InstanceName.
+- Update API ListFileProtectEvent: add param InternetIp.
+- Update API ListFileProtectEvent: add param IntranetIp.
+- Update API ListFileProtectEvent: add param StartTime.
+- Update API ListFileProtectEvent: add param Uuid.
+
+
 2024-04-17 Version: 2.28.0
 - Support API ListCompressFileDetectResult.
 - Update API AddSasModuleTrial: update response param.
