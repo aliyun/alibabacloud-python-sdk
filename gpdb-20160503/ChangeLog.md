@@ -1,3 +1,12 @@
+2024-04-29 Version: 3.5.4
+- Update API QueryCollectionData: add param IncludeMetadataFields.
+- Update API QueryCollectionData: add param Offset.
+- Update API QueryCollectionData: add param OrderBy.
+- Update API QueryCollectionData: update param HybridSearchArgs.
+- Update API QueryCollectionData: update response param.
+- Update API QueryContent: add param IncludeMetadataFields.
+
+
 2024-04-22 Version: 3.5.3
 - Update API DescribeSampleData: update response param.
 - Update API QueryCollectionData: add param HybridSearch.
