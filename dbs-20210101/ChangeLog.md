@@ -1,3 +1,10 @@
+2024-04-29 Version: 2.0.0
+- Support API DescribeBackupDataList.
+- Support API DescribeBackupPolicy.
+- Delete API CreateSandboxInstance.
+- Update API ChangeResourceGroup: add param RegionCode.
+
+
 2023-08-21 Version: 1.0.4
 - Generated python 2021-01-01 for Dbs.
 

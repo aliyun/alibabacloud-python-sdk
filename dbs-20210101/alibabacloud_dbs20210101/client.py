@@ -77,6 +77,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.new_resource_group_id):
             query['NewResourceGroupId'] = request.new_resource_group_id
+        if not UtilClient.is_unset(request.region_code):
+            query['RegionCode'] = request.region_code
         if not UtilClient.is_unset(request.resource_id):
             query['ResourceId'] = request.resource_id
         if not UtilClient.is_unset(request.resource_type):
@@ -111,6 +113,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.new_resource_group_id):
             query['NewResourceGroupId'] = request.new_resource_group_id
+        if not UtilClient.is_unset(request.region_code):
+            query['RegionCode'] = request.region_code
         if not UtilClient.is_unset(request.resource_id):
             query['ResourceId'] = request.resource_id
         if not UtilClient.is_unset(request.resource_type):
@@ -154,7 +158,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dbs_20210101_models.CreateDownloadResponse:
         """
-        For ApsaraDB RDS for MySQL instances that use standard SSDs or enhanced SSDs (ESSDs) and meet your business requirements, you can create an advanced download task by point in time or backup set. You can set the download destination to an URL or directly upload the downloaded data to your Object Storage Service (OSS) bucket to facilitate data analysis and offline archiving. For more information, see [Download the backup files of an ApsaraDB RDS for MySQL instance](~~98819~~).
+        ### [](#)Supported database engines
+        *   ApsaraDB RDS for MySQL
+        *   ApsaraDB RDS for PostgreSQL
+        *   PolarDB for MySQL
+        ### [](#)References
+        For the instances that meet your business requirements, you can create an advanced download task by point in time or backup set. You can set the download destination to a URL or directly upload the downloaded backup set to your Object Storage Service (OSS) bucket to facilitate data analysis and offline archiving.
+        *   [Download the backup files of an ApsaraDB RDS for MySQL instance](~~98819~~)
+        *   [Download the backup files of an ApsaraDB RDS for PostgreSQL instance](~~96774~~)
+        *   [Download the backup files of a PolarDB for MySQL cluster](~~2627635~~)
         
         @param request: CreateDownloadRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -209,7 +221,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dbs_20210101_models.CreateDownloadResponse:
         """
-        For ApsaraDB RDS for MySQL instances that use standard SSDs or enhanced SSDs (ESSDs) and meet your business requirements, you can create an advanced download task by point in time or backup set. You can set the download destination to an URL or directly upload the downloaded data to your Object Storage Service (OSS) bucket to facilitate data analysis and offline archiving. For more information, see [Download the backup files of an ApsaraDB RDS for MySQL instance](~~98819~~).
+        ### [](#)Supported database engines
+        *   ApsaraDB RDS for MySQL
+        *   ApsaraDB RDS for PostgreSQL
+        *   PolarDB for MySQL
+        ### [](#)References
+        For the instances that meet your business requirements, you can create an advanced download task by point in time or backup set. You can set the download destination to a URL or directly upload the downloaded backup set to your Object Storage Service (OSS) bucket to facilitate data analysis and offline archiving.
+        *   [Download the backup files of an ApsaraDB RDS for MySQL instance](~~98819~~)
+        *   [Download the backup files of an ApsaraDB RDS for PostgreSQL instance](~~96774~~)
+        *   [Download the backup files of a PolarDB for MySQL cluster](~~2627635~~)
         
         @param request: CreateDownloadRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -263,7 +283,15 @@ class Client(OpenApiClient):
         request: dbs_20210101_models.CreateDownloadRequest,
     ) -> dbs_20210101_models.CreateDownloadResponse:
         """
-        For ApsaraDB RDS for MySQL instances that use standard SSDs or enhanced SSDs (ESSDs) and meet your business requirements, you can create an advanced download task by point in time or backup set. You can set the download destination to an URL or directly upload the downloaded data to your Object Storage Service (OSS) bucket to facilitate data analysis and offline archiving. For more information, see [Download the backup files of an ApsaraDB RDS for MySQL instance](~~98819~~).
+        ### [](#)Supported database engines
+        *   ApsaraDB RDS for MySQL
+        *   ApsaraDB RDS for PostgreSQL
+        *   PolarDB for MySQL
+        ### [](#)References
+        For the instances that meet your business requirements, you can create an advanced download task by point in time or backup set. You can set the download destination to a URL or directly upload the downloaded backup set to your Object Storage Service (OSS) bucket to facilitate data analysis and offline archiving.
+        *   [Download the backup files of an ApsaraDB RDS for MySQL instance](~~98819~~)
+        *   [Download the backup files of an ApsaraDB RDS for PostgreSQL instance](~~96774~~)
+        *   [Download the backup files of a PolarDB for MySQL cluster](~~2627635~~)
         
         @param request: CreateDownloadRequest
         @return: CreateDownloadResponse
@@ -276,149 +304,21 @@ class Client(OpenApiClient):
         request: dbs_20210101_models.CreateDownloadRequest,
     ) -> dbs_20210101_models.CreateDownloadResponse:
         """
-        For ApsaraDB RDS for MySQL instances that use standard SSDs or enhanced SSDs (ESSDs) and meet your business requirements, you can create an advanced download task by point in time or backup set. You can set the download destination to an URL or directly upload the downloaded data to your Object Storage Service (OSS) bucket to facilitate data analysis and offline archiving. For more information, see [Download the backup files of an ApsaraDB RDS for MySQL instance](~~98819~~).
+        ### [](#)Supported database engines
+        *   ApsaraDB RDS for MySQL
+        *   ApsaraDB RDS for PostgreSQL
+        *   PolarDB for MySQL
+        ### [](#)References
+        For the instances that meet your business requirements, you can create an advanced download task by point in time or backup set. You can set the download destination to a URL or directly upload the downloaded backup set to your Object Storage Service (OSS) bucket to facilitate data analysis and offline archiving.
+        *   [Download the backup files of an ApsaraDB RDS for MySQL instance](~~98819~~)
+        *   [Download the backup files of an ApsaraDB RDS for PostgreSQL instance](~~96774~~)
+        *   [Download the backup files of a PolarDB for MySQL cluster](~~2627635~~)
         
         @param request: CreateDownloadRequest
         @return: CreateDownloadResponse
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_download_with_options_async(request, runtime)
-
-    def create_sandbox_instance_with_options(
-        self,
-        request: dbs_20210101_models.CreateSandboxInstanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dbs_20210101_models.CreateSandboxInstanceResponse:
-        """
-        Before you call this operation, you must enable the sandbox feature for the database instance. For more information, see [Use the emergency recovery feature of an ApsaraDB RDS for MySQL instance](~~203154~~) or [Create a sandbox instance for emergency disaster recovery of a self-managed MySQL database](~~185577~~). This operation is available only in Database Backup (DBS) API of the 2021-01-01 version.
-        
-        @param request: CreateSandboxInstanceRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateSandboxInstanceResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.backup_plan_id):
-            query['BackupPlanId'] = request.backup_plan_id
-        if not UtilClient.is_unset(request.backup_set_id):
-            query['BackupSetId'] = request.backup_set_id
-        if not UtilClient.is_unset(request.restore_time):
-            query['RestoreTime'] = request.restore_time
-        if not UtilClient.is_unset(request.sandbox_instance_name):
-            query['SandboxInstanceName'] = request.sandbox_instance_name
-        if not UtilClient.is_unset(request.sandbox_password):
-            query['SandboxPassword'] = request.sandbox_password
-        if not UtilClient.is_unset(request.sandbox_specification):
-            query['SandboxSpecification'] = request.sandbox_specification
-        if not UtilClient.is_unset(request.sandbox_type):
-            query['SandboxType'] = request.sandbox_type
-        if not UtilClient.is_unset(request.sandbox_user):
-            query['SandboxUser'] = request.sandbox_user
-        if not UtilClient.is_unset(request.vpc_id):
-            query['VpcId'] = request.vpc_id
-        if not UtilClient.is_unset(request.vpc_switch_id):
-            query['VpcSwitchId'] = request.vpc_switch_id
-        if not UtilClient.is_unset(request.zone_id):
-            query['ZoneId'] = request.zone_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='CreateSandboxInstance',
-            version='2021-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            dbs_20210101_models.CreateSandboxInstanceResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def create_sandbox_instance_with_options_async(
-        self,
-        request: dbs_20210101_models.CreateSandboxInstanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dbs_20210101_models.CreateSandboxInstanceResponse:
-        """
-        Before you call this operation, you must enable the sandbox feature for the database instance. For more information, see [Use the emergency recovery feature of an ApsaraDB RDS for MySQL instance](~~203154~~) or [Create a sandbox instance for emergency disaster recovery of a self-managed MySQL database](~~185577~~). This operation is available only in Database Backup (DBS) API of the 2021-01-01 version.
-        
-        @param request: CreateSandboxInstanceRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateSandboxInstanceResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.backup_plan_id):
-            query['BackupPlanId'] = request.backup_plan_id
-        if not UtilClient.is_unset(request.backup_set_id):
-            query['BackupSetId'] = request.backup_set_id
-        if not UtilClient.is_unset(request.restore_time):
-            query['RestoreTime'] = request.restore_time
-        if not UtilClient.is_unset(request.sandbox_instance_name):
-            query['SandboxInstanceName'] = request.sandbox_instance_name
-        if not UtilClient.is_unset(request.sandbox_password):
-            query['SandboxPassword'] = request.sandbox_password
-        if not UtilClient.is_unset(request.sandbox_specification):
-            query['SandboxSpecification'] = request.sandbox_specification
-        if not UtilClient.is_unset(request.sandbox_type):
-            query['SandboxType'] = request.sandbox_type
-        if not UtilClient.is_unset(request.sandbox_user):
-            query['SandboxUser'] = request.sandbox_user
-        if not UtilClient.is_unset(request.vpc_id):
-            query['VpcId'] = request.vpc_id
-        if not UtilClient.is_unset(request.vpc_switch_id):
-            query['VpcSwitchId'] = request.vpc_switch_id
-        if not UtilClient.is_unset(request.zone_id):
-            query['ZoneId'] = request.zone_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='CreateSandboxInstance',
-            version='2021-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            dbs_20210101_models.CreateSandboxInstanceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def create_sandbox_instance(
-        self,
-        request: dbs_20210101_models.CreateSandboxInstanceRequest,
-    ) -> dbs_20210101_models.CreateSandboxInstanceResponse:
-        """
-        Before you call this operation, you must enable the sandbox feature for the database instance. For more information, see [Use the emergency recovery feature of an ApsaraDB RDS for MySQL instance](~~203154~~) or [Create a sandbox instance for emergency disaster recovery of a self-managed MySQL database](~~185577~~). This operation is available only in Database Backup (DBS) API of the 2021-01-01 version.
-        
-        @param request: CreateSandboxInstanceRequest
-        @return: CreateSandboxInstanceResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.create_sandbox_instance_with_options(request, runtime)
-
-    async def create_sandbox_instance_async(
-        self,
-        request: dbs_20210101_models.CreateSandboxInstanceRequest,
-    ) -> dbs_20210101_models.CreateSandboxInstanceResponse:
-        """
-        Before you call this operation, you must enable the sandbox feature for the database instance. For more information, see [Use the emergency recovery feature of an ApsaraDB RDS for MySQL instance](~~203154~~) or [Create a sandbox instance for emergency disaster recovery of a self-managed MySQL database](~~185577~~). This operation is available only in Database Backup (DBS) API of the 2021-01-01 version.
-        
-        @param request: CreateSandboxInstanceRequest
-        @return: CreateSandboxInstanceResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.create_sandbox_instance_with_options_async(request, runtime)
 
     def delete_sandbox_instance_with_options(
         self,
@@ -523,6 +423,210 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_sandbox_instance_with_options_async(request, runtime)
+
+    def describe_backup_data_list_with_options(
+        self,
+        request: dbs_20210101_models.DescribeBackupDataListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dbs_20210101_models.DescribeBackupDataListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backup_id):
+            query['BackupId'] = request.backup_id
+        if not UtilClient.is_unset(request.backup_method):
+            query['BackupMethod'] = request.backup_method
+        if not UtilClient.is_unset(request.backup_mode):
+            query['BackupMode'] = request.backup_mode
+        if not UtilClient.is_unset(request.backup_scale):
+            query['BackupScale'] = request.backup_scale
+        if not UtilClient.is_unset(request.backup_status):
+            query['BackupStatus'] = request.backup_status
+        if not UtilClient.is_unset(request.backup_type):
+            query['BackupType'] = request.backup_type
+        if not UtilClient.is_unset(request.data_source_id):
+            query['DataSourceId'] = request.data_source_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_is_deleted):
+            query['InstanceIsDeleted'] = request.instance_is_deleted
+        if not UtilClient.is_unset(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.instance_region):
+            query['InstanceRegion'] = request.instance_region
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_code):
+            query['RegionCode'] = request.region_code
+        if not UtilClient.is_unset(request.scene_type):
+            query['SceneType'] = request.scene_type
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeBackupDataList',
+            version='2021-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dbs_20210101_models.DescribeBackupDataListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_backup_data_list_with_options_async(
+        self,
+        request: dbs_20210101_models.DescribeBackupDataListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dbs_20210101_models.DescribeBackupDataListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backup_id):
+            query['BackupId'] = request.backup_id
+        if not UtilClient.is_unset(request.backup_method):
+            query['BackupMethod'] = request.backup_method
+        if not UtilClient.is_unset(request.backup_mode):
+            query['BackupMode'] = request.backup_mode
+        if not UtilClient.is_unset(request.backup_scale):
+            query['BackupScale'] = request.backup_scale
+        if not UtilClient.is_unset(request.backup_status):
+            query['BackupStatus'] = request.backup_status
+        if not UtilClient.is_unset(request.backup_type):
+            query['BackupType'] = request.backup_type
+        if not UtilClient.is_unset(request.data_source_id):
+            query['DataSourceId'] = request.data_source_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_is_deleted):
+            query['InstanceIsDeleted'] = request.instance_is_deleted
+        if not UtilClient.is_unset(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.instance_region):
+            query['InstanceRegion'] = request.instance_region
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_code):
+            query['RegionCode'] = request.region_code
+        if not UtilClient.is_unset(request.scene_type):
+            query['SceneType'] = request.scene_type
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeBackupDataList',
+            version='2021-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dbs_20210101_models.DescribeBackupDataListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_backup_data_list(
+        self,
+        request: dbs_20210101_models.DescribeBackupDataListRequest,
+    ) -> dbs_20210101_models.DescribeBackupDataListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_backup_data_list_with_options(request, runtime)
+
+    async def describe_backup_data_list_async(
+        self,
+        request: dbs_20210101_models.DescribeBackupDataListRequest,
+    ) -> dbs_20210101_models.DescribeBackupDataListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_backup_data_list_with_options_async(request, runtime)
+
+    def describe_backup_policy_with_options(
+        self,
+        request: dbs_20210101_models.DescribeBackupPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dbs_20210101_models.DescribeBackupPolicyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.region_code):
+            query['RegionCode'] = request.region_code
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeBackupPolicy',
+            version='2021-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dbs_20210101_models.DescribeBackupPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_backup_policy_with_options_async(
+        self,
+        request: dbs_20210101_models.DescribeBackupPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dbs_20210101_models.DescribeBackupPolicyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.region_code):
+            query['RegionCode'] = request.region_code
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeBackupPolicy',
+            version='2021-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dbs_20210101_models.DescribeBackupPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_backup_policy(
+        self,
+        request: dbs_20210101_models.DescribeBackupPolicyRequest,
+    ) -> dbs_20210101_models.DescribeBackupPolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_backup_policy_with_options(request, runtime)
+
+    async def describe_backup_policy_async(
+        self,
+        request: dbs_20210101_models.DescribeBackupPolicyRequest,
+    ) -> dbs_20210101_models.DescribeBackupPolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_backup_policy_with_options_async(request, runtime)
 
     def describe_dbtables_recovery_backup_set_with_options(
         self,
@@ -752,7 +856,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dbs_20210101_models.DescribeDownloadBackupSetStorageInfoResponse:
         """
-        You can create an advanced download task by point in time or backup set. You can set the download destination to an URL or directly upload the downloaded data to your Object Storage Service (OSS) bucket to facilitate data analysis and offline archiving. For more information, see [Download the backup files of an ApsaraDB RDS for MySQL instance](~~98819~~).
+        ### [](#)Supported database engines
+        *   ApsaraDB RDS for MySQL
+        *   ApsaraDB RDS for PostgreSQL
+        *   PolarDB for MySQL
+        ### [](#)References
+        *   [Download the backup files of an ApsaraDB RDS for MySQL instance](~~98819~~)
+        *   [Download the backup files of an ApsaraDB RDS for PostgreSQL instance](~~96774~~)
+        *   [Download the backup files of a PolarDB for MySQL cluster](~~2627635~~)
         
         @param request: DescribeDownloadBackupSetStorageInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -795,7 +906,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dbs_20210101_models.DescribeDownloadBackupSetStorageInfoResponse:
         """
-        You can create an advanced download task by point in time or backup set. You can set the download destination to an URL or directly upload the downloaded data to your Object Storage Service (OSS) bucket to facilitate data analysis and offline archiving. For more information, see [Download the backup files of an ApsaraDB RDS for MySQL instance](~~98819~~).
+        ### [](#)Supported database engines
+        *   ApsaraDB RDS for MySQL
+        *   ApsaraDB RDS for PostgreSQL
+        *   PolarDB for MySQL
+        ### [](#)References
+        *   [Download the backup files of an ApsaraDB RDS for MySQL instance](~~98819~~)
+        *   [Download the backup files of an ApsaraDB RDS for PostgreSQL instance](~~96774~~)
+        *   [Download the backup files of a PolarDB for MySQL cluster](~~2627635~~)
         
         @param request: DescribeDownloadBackupSetStorageInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -837,7 +955,14 @@ class Client(OpenApiClient):
         request: dbs_20210101_models.DescribeDownloadBackupSetStorageInfoRequest,
     ) -> dbs_20210101_models.DescribeDownloadBackupSetStorageInfoResponse:
         """
-        You can create an advanced download task by point in time or backup set. You can set the download destination to an URL or directly upload the downloaded data to your Object Storage Service (OSS) bucket to facilitate data analysis and offline archiving. For more information, see [Download the backup files of an ApsaraDB RDS for MySQL instance](~~98819~~).
+        ### [](#)Supported database engines
+        *   ApsaraDB RDS for MySQL
+        *   ApsaraDB RDS for PostgreSQL
+        *   PolarDB for MySQL
+        ### [](#)References
+        *   [Download the backup files of an ApsaraDB RDS for MySQL instance](~~98819~~)
+        *   [Download the backup files of an ApsaraDB RDS for PostgreSQL instance](~~96774~~)
+        *   [Download the backup files of a PolarDB for MySQL cluster](~~2627635~~)
         
         @param request: DescribeDownloadBackupSetStorageInfoRequest
         @return: DescribeDownloadBackupSetStorageInfoResponse
@@ -850,7 +975,14 @@ class Client(OpenApiClient):
         request: dbs_20210101_models.DescribeDownloadBackupSetStorageInfoRequest,
     ) -> dbs_20210101_models.DescribeDownloadBackupSetStorageInfoResponse:
         """
-        You can create an advanced download task by point in time or backup set. You can set the download destination to an URL or directly upload the downloaded data to your Object Storage Service (OSS) bucket to facilitate data analysis and offline archiving. For more information, see [Download the backup files of an ApsaraDB RDS for MySQL instance](~~98819~~).
+        ### [](#)Supported database engines
+        *   ApsaraDB RDS for MySQL
+        *   ApsaraDB RDS for PostgreSQL
+        *   PolarDB for MySQL
+        ### [](#)References
+        *   [Download the backup files of an ApsaraDB RDS for MySQL instance](~~98819~~)
+        *   [Download the backup files of an ApsaraDB RDS for PostgreSQL instance](~~96774~~)
+        *   [Download the backup files of a PolarDB for MySQL cluster](~~2627635~~)
         
         @param request: DescribeDownloadBackupSetStorageInfoRequest
         @return: DescribeDownloadBackupSetStorageInfoResponse
@@ -864,7 +996,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dbs_20210101_models.DescribeDownloadSupportResponse:
         """
-        You can create an advanced download task by point in time or backup set. You can set the download destination to an URL or directly upload the downloaded data to your Object Storage Service (OSS) bucket to facilitate data analysis and offline archiving. For more information, see [Download the backup files of an ApsaraDB RDS for MySQL instance](~~98819~~).
+        ### [](#)Supported database engines
+        *   ApsaraDB RDS for MySQL
+        *   ApsaraDB RDS for PostgreSQL
+        *   PolarDB for MySQL
+        ### [](#)References
+        You can create an advanced download task by point in time or backup set. You can set the download destination to a URL or directly upload the downloaded backup set to your Object Storage Service (OSS) bucket to facilitate data analysis and offline archiving.
+        *   [Download the backup files of an ApsaraDB RDS for MySQL instance](~~98819~~)
+        *   [Download the backup files of an ApsaraDB RDS for PostgreSQL instance](~~96774~~)
+        *   [Download the backup files of a PolarDB for MySQL cluster](~~2627635~~)
         
         @param request: DescribeDownloadSupportRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -901,7 +1041,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dbs_20210101_models.DescribeDownloadSupportResponse:
         """
-        You can create an advanced download task by point in time or backup set. You can set the download destination to an URL or directly upload the downloaded data to your Object Storage Service (OSS) bucket to facilitate data analysis and offline archiving. For more information, see [Download the backup files of an ApsaraDB RDS for MySQL instance](~~98819~~).
+        ### [](#)Supported database engines
+        *   ApsaraDB RDS for MySQL
+        *   ApsaraDB RDS for PostgreSQL
+        *   PolarDB for MySQL
+        ### [](#)References
+        You can create an advanced download task by point in time or backup set. You can set the download destination to a URL or directly upload the downloaded backup set to your Object Storage Service (OSS) bucket to facilitate data analysis and offline archiving.
+        *   [Download the backup files of an ApsaraDB RDS for MySQL instance](~~98819~~)
+        *   [Download the backup files of an ApsaraDB RDS for PostgreSQL instance](~~96774~~)
+        *   [Download the backup files of a PolarDB for MySQL cluster](~~2627635~~)
         
         @param request: DescribeDownloadSupportRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -937,7 +1085,15 @@ class Client(OpenApiClient):
         request: dbs_20210101_models.DescribeDownloadSupportRequest,
     ) -> dbs_20210101_models.DescribeDownloadSupportResponse:
         """
-        You can create an advanced download task by point in time or backup set. You can set the download destination to an URL or directly upload the downloaded data to your Object Storage Service (OSS) bucket to facilitate data analysis and offline archiving. For more information, see [Download the backup files of an ApsaraDB RDS for MySQL instance](~~98819~~).
+        ### [](#)Supported database engines
+        *   ApsaraDB RDS for MySQL
+        *   ApsaraDB RDS for PostgreSQL
+        *   PolarDB for MySQL
+        ### [](#)References
+        You can create an advanced download task by point in time or backup set. You can set the download destination to a URL or directly upload the downloaded backup set to your Object Storage Service (OSS) bucket to facilitate data analysis and offline archiving.
+        *   [Download the backup files of an ApsaraDB RDS for MySQL instance](~~98819~~)
+        *   [Download the backup files of an ApsaraDB RDS for PostgreSQL instance](~~96774~~)
+        *   [Download the backup files of a PolarDB for MySQL cluster](~~2627635~~)
         
         @param request: DescribeDownloadSupportRequest
         @return: DescribeDownloadSupportResponse
@@ -950,7 +1106,15 @@ class Client(OpenApiClient):
         request: dbs_20210101_models.DescribeDownloadSupportRequest,
     ) -> dbs_20210101_models.DescribeDownloadSupportResponse:
         """
-        You can create an advanced download task by point in time or backup set. You can set the download destination to an URL or directly upload the downloaded data to your Object Storage Service (OSS) bucket to facilitate data analysis and offline archiving. For more information, see [Download the backup files of an ApsaraDB RDS for MySQL instance](~~98819~~).
+        ### [](#)Supported database engines
+        *   ApsaraDB RDS for MySQL
+        *   ApsaraDB RDS for PostgreSQL
+        *   PolarDB for MySQL
+        ### [](#)References
+        You can create an advanced download task by point in time or backup set. You can set the download destination to a URL or directly upload the downloaded backup set to your Object Storage Service (OSS) bucket to facilitate data analysis and offline archiving.
+        *   [Download the backup files of an ApsaraDB RDS for MySQL instance](~~98819~~)
+        *   [Download the backup files of an ApsaraDB RDS for PostgreSQL instance](~~96774~~)
+        *   [Download the backup files of a PolarDB for MySQL cluster](~~2627635~~)
         
         @param request: DescribeDownloadSupportRequest
         @return: DescribeDownloadSupportResponse
@@ -964,7 +1128,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dbs_20210101_models.DescribeDownloadTaskResponse:
         """
-        You can create an advanced download task by point in time or backup set. You can set the Download Destination parameter to URL or directly upload the downloaded data to your Object Storage Service (OSS) bucket to facilitate data analysis and offline archiving. For more information, see [Download the backup files of an ApsaraDB RDS for MySQL instance](~~98819~~).
+        ### [](#)Supported database engines
+        *   ApsaraDB RDS for MySQL
+        *   ApsaraDB RDS for PostgreSQL
+        *   PolarDB for MySQL
+        ### [](#)References
+        *   [Download the backup files of an ApsaraDB RDS for MySQL instance](~~98819~~)
+        *   [Download the backup files of an ApsaraDB RDS for PostgreSQL instance](~~96774~~)
+        *   [Download the backup files of a PolarDB for MySQL cluster](~~2627635~~)
         
         @param request: DescribeDownloadTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1021,7 +1192,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dbs_20210101_models.DescribeDownloadTaskResponse:
         """
-        You can create an advanced download task by point in time or backup set. You can set the Download Destination parameter to URL or directly upload the downloaded data to your Object Storage Service (OSS) bucket to facilitate data analysis and offline archiving. For more information, see [Download the backup files of an ApsaraDB RDS for MySQL instance](~~98819~~).
+        ### [](#)Supported database engines
+        *   ApsaraDB RDS for MySQL
+        *   ApsaraDB RDS for PostgreSQL
+        *   PolarDB for MySQL
+        ### [](#)References
+        *   [Download the backup files of an ApsaraDB RDS for MySQL instance](~~98819~~)
+        *   [Download the backup files of an ApsaraDB RDS for PostgreSQL instance](~~96774~~)
+        *   [Download the backup files of a PolarDB for MySQL cluster](~~2627635~~)
         
         @param request: DescribeDownloadTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1077,7 +1255,14 @@ class Client(OpenApiClient):
         request: dbs_20210101_models.DescribeDownloadTaskRequest,
     ) -> dbs_20210101_models.DescribeDownloadTaskResponse:
         """
-        You can create an advanced download task by point in time or backup set. You can set the Download Destination parameter to URL or directly upload the downloaded data to your Object Storage Service (OSS) bucket to facilitate data analysis and offline archiving. For more information, see [Download the backup files of an ApsaraDB RDS for MySQL instance](~~98819~~).
+        ### [](#)Supported database engines
+        *   ApsaraDB RDS for MySQL
+        *   ApsaraDB RDS for PostgreSQL
+        *   PolarDB for MySQL
+        ### [](#)References
+        *   [Download the backup files of an ApsaraDB RDS for MySQL instance](~~98819~~)
+        *   [Download the backup files of an ApsaraDB RDS for PostgreSQL instance](~~96774~~)
+        *   [Download the backup files of a PolarDB for MySQL cluster](~~2627635~~)
         
         @param request: DescribeDownloadTaskRequest
         @return: DescribeDownloadTaskResponse
@@ -1090,7 +1275,14 @@ class Client(OpenApiClient):
         request: dbs_20210101_models.DescribeDownloadTaskRequest,
     ) -> dbs_20210101_models.DescribeDownloadTaskResponse:
         """
-        You can create an advanced download task by point in time or backup set. You can set the Download Destination parameter to URL or directly upload the downloaded data to your Object Storage Service (OSS) bucket to facilitate data analysis and offline archiving. For more information, see [Download the backup files of an ApsaraDB RDS for MySQL instance](~~98819~~).
+        ### [](#)Supported database engines
+        *   ApsaraDB RDS for MySQL
+        *   ApsaraDB RDS for PostgreSQL
+        *   PolarDB for MySQL
+        ### [](#)References
+        *   [Download the backup files of an ApsaraDB RDS for MySQL instance](~~98819~~)
+        *   [Download the backup files of an ApsaraDB RDS for PostgreSQL instance](~~96774~~)
+        *   [Download the backup files of a PolarDB for MySQL cluster](~~2627635~~)
         
         @param request: DescribeDownloadTaskRequest
         @return: DescribeDownloadTaskResponse
