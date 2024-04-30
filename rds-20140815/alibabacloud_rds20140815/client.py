@@ -5402,6 +5402,112 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_gad_instance_member_with_options_async(request, runtime)
 
+    def create_masking_rules_with_options(
+        self,
+        tmp_req: rds_20140815_models.CreateMaskingRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.CreateMaskingRulesResponse:
+        UtilClient.validate_model(tmp_req)
+        request = rds_20140815_models.CreateMaskingRulesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.rule_config):
+            request.rule_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.rule_config, 'RuleConfig', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.default_algo):
+            query['DefaultAlgo'] = request.default_algo
+        if not UtilClient.is_unset(request.masking_algo):
+            query['MaskingAlgo'] = request.masking_algo
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.rule_config_shrink):
+            query['RuleConfig'] = request.rule_config_shrink
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateMaskingRules',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.CreateMaskingRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_masking_rules_with_options_async(
+        self,
+        tmp_req: rds_20140815_models.CreateMaskingRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.CreateMaskingRulesResponse:
+        UtilClient.validate_model(tmp_req)
+        request = rds_20140815_models.CreateMaskingRulesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.rule_config):
+            request.rule_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.rule_config, 'RuleConfig', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.default_algo):
+            query['DefaultAlgo'] = request.default_algo
+        if not UtilClient.is_unset(request.masking_algo):
+            query['MaskingAlgo'] = request.masking_algo
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.rule_config_shrink):
+            query['RuleConfig'] = request.rule_config_shrink
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateMaskingRules',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.CreateMaskingRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_masking_rules(
+        self,
+        request: rds_20140815_models.CreateMaskingRulesRequest,
+    ) -> rds_20140815_models.CreateMaskingRulesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_masking_rules_with_options(request, runtime)
+
+    async def create_masking_rules_async(
+        self,
+        request: rds_20140815_models.CreateMaskingRulesRequest,
+    ) -> rds_20140815_models.CreateMaskingRulesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_masking_rules_with_options_async(request, runtime)
+
     def create_migrate_task_with_options(
         self,
         request: rds_20140815_models.CreateMigrateTaskRequest,
@@ -8524,6 +8630,92 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_gad_instance_with_options_async(request, runtime)
 
+    def delete_masking_rules_with_options(
+        self,
+        request: rds_20140815_models.DeleteMaskingRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.DeleteMaskingRulesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteMaskingRules',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.DeleteMaskingRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_masking_rules_with_options_async(
+        self,
+        request: rds_20140815_models.DeleteMaskingRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.DeleteMaskingRulesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteMaskingRules',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.DeleteMaskingRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_masking_rules(
+        self,
+        request: rds_20140815_models.DeleteMaskingRulesRequest,
+    ) -> rds_20140815_models.DeleteMaskingRulesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_masking_rules_with_options(request, runtime)
+
+    async def delete_masking_rules_async(
+        self,
+        request: rds_20140815_models.DeleteMaskingRulesRequest,
+    ) -> rds_20140815_models.DeleteMaskingRulesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_masking_rules_with_options_async(request, runtime)
+
     def delete_parameter_group_with_options(
         self,
         request: rds_20140815_models.DeleteParameterGroupRequest,
@@ -9453,6 +9645,92 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_adinfo_with_options_async(request, runtime)
+
+    def describe_account_masking_privilege_with_options(
+        self,
+        request: rds_20140815_models.DescribeAccountMaskingPrivilegeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.DescribeAccountMaskingPrivilegeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.user_name):
+            query['UserName'] = request.user_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAccountMaskingPrivilege',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.DescribeAccountMaskingPrivilegeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_account_masking_privilege_with_options_async(
+        self,
+        request: rds_20140815_models.DescribeAccountMaskingPrivilegeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.DescribeAccountMaskingPrivilegeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.user_name):
+            query['UserName'] = request.user_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAccountMaskingPrivilege',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.DescribeAccountMaskingPrivilegeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_account_masking_privilege(
+        self,
+        request: rds_20140815_models.DescribeAccountMaskingPrivilegeRequest,
+    ) -> rds_20140815_models.DescribeAccountMaskingPrivilegeResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_account_masking_privilege_with_options(request, runtime)
+
+    async def describe_account_masking_privilege_async(
+        self,
+        request: rds_20140815_models.DescribeAccountMaskingPrivilegeRequest,
+    ) -> rds_20140815_models.DescribeAccountMaskingPrivilegeResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_account_masking_privilege_with_options_async(request, runtime)
 
     def describe_accounts_with_options(
         self,
@@ -20072,6 +20350,92 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_marketing_activity_with_options_async(request, runtime)
 
+    def describe_masking_rules_with_options(
+        self,
+        request: rds_20140815_models.DescribeMaskingRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.DescribeMaskingRulesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeMaskingRules',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.DescribeMaskingRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_masking_rules_with_options_async(
+        self,
+        request: rds_20140815_models.DescribeMaskingRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.DescribeMaskingRulesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeMaskingRules',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.DescribeMaskingRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_masking_rules(
+        self,
+        request: rds_20140815_models.DescribeMaskingRulesRequest,
+    ) -> rds_20140815_models.DescribeMaskingRulesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_masking_rules_with_options(request, runtime)
+
+    async def describe_masking_rules_async(
+        self,
+        request: rds_20140815_models.DescribeMaskingRulesRequest,
+    ) -> rds_20140815_models.DescribeMaskingRulesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_masking_rules_with_options_async(request, runtime)
+
     def describe_meta_list_with_options(
         self,
         request: rds_20140815_models.DescribeMetaListRequest,
@@ -22392,8 +22756,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DescribeRegionsResponse:
         """
-        Before you call the [CreateDBInstance](~~26228~~) operation to create an RDS instance, you can call the DescribeRegions operation to query the available regions and zones.
-        >  If a zone supports the multi-zone deployment method, the value of the ZoneId parameter for the zone contains an MAZ part. Examples: cn-hangzhou-MAZ6(b,f) and cn-hangzhou-MAZ5(b,e,f).
+        ### [](#)Supported database engines
+        *   MySQL
+        *   PostgreSQL
+        *   SQL Server
+        *   MariaDB
         
         @param request: DescribeRegionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22430,8 +22797,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DescribeRegionsResponse:
         """
-        Before you call the [CreateDBInstance](~~26228~~) operation to create an RDS instance, you can call the DescribeRegions operation to query the available regions and zones.
-        >  If a zone supports the multi-zone deployment method, the value of the ZoneId parameter for the zone contains an MAZ part. Examples: cn-hangzhou-MAZ6(b,f) and cn-hangzhou-MAZ5(b,e,f).
+        ### [](#)Supported database engines
+        *   MySQL
+        *   PostgreSQL
+        *   SQL Server
+        *   MariaDB
         
         @param request: DescribeRegionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22467,8 +22837,11 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DescribeRegionsRequest,
     ) -> rds_20140815_models.DescribeRegionsResponse:
         """
-        Before you call the [CreateDBInstance](~~26228~~) operation to create an RDS instance, you can call the DescribeRegions operation to query the available regions and zones.
-        >  If a zone supports the multi-zone deployment method, the value of the ZoneId parameter for the zone contains an MAZ part. Examples: cn-hangzhou-MAZ6(b,f) and cn-hangzhou-MAZ5(b,e,f).
+        ### [](#)Supported database engines
+        *   MySQL
+        *   PostgreSQL
+        *   SQL Server
+        *   MariaDB
         
         @param request: DescribeRegionsRequest
         @return: DescribeRegionsResponse
@@ -22481,8 +22854,11 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DescribeRegionsRequest,
     ) -> rds_20140815_models.DescribeRegionsResponse:
         """
-        Before you call the [CreateDBInstance](~~26228~~) operation to create an RDS instance, you can call the DescribeRegions operation to query the available regions and zones.
-        >  If a zone supports the multi-zone deployment method, the value of the ZoneId parameter for the zone contains an MAZ part. Examples: cn-hangzhou-MAZ6(b,f) and cn-hangzhou-MAZ5(b,e,f).
+        ### [](#)Supported database engines
+        *   MySQL
+        *   PostgreSQL
+        *   SQL Server
+        *   MariaDB
         
         @param request: DescribeRegionsRequest
         @return: DescribeRegionsResponse
@@ -28037,6 +28413,100 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.modify_account_description_with_options_async(request, runtime)
+
+    def modify_account_masking_privilege_with_options(
+        self,
+        request: rds_20140815_models.ModifyAccountMaskingPrivilegeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.ModifyAccountMaskingPrivilegeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.expire_time):
+            query['ExpireTime'] = request.expire_time
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.privilege):
+            query['Privilege'] = request.privilege
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.user_name):
+            query['UserName'] = request.user_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyAccountMaskingPrivilege',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.ModifyAccountMaskingPrivilegeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_account_masking_privilege_with_options_async(
+        self,
+        request: rds_20140815_models.ModifyAccountMaskingPrivilegeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.ModifyAccountMaskingPrivilegeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.expire_time):
+            query['ExpireTime'] = request.expire_time
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.privilege):
+            query['Privilege'] = request.privilege
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.user_name):
+            query['UserName'] = request.user_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyAccountMaskingPrivilege',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.ModifyAccountMaskingPrivilegeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_account_masking_privilege(
+        self,
+        request: rds_20140815_models.ModifyAccountMaskingPrivilegeRequest,
+    ) -> rds_20140815_models.ModifyAccountMaskingPrivilegeResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_account_masking_privilege_with_options(request, runtime)
+
+    async def modify_account_masking_privilege_async(
+        self,
+        request: rds_20140815_models.ModifyAccountMaskingPrivilegeRequest,
+    ) -> rds_20140815_models.ModifyAccountMaskingPrivilegeResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_account_masking_privilege_with_options_async(request, runtime)
 
     def modify_action_event_policy_with_options(
         self,
@@ -34025,6 +34495,116 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.modify_instance_cross_backup_policy_with_options_async(request, runtime)
+
+    def modify_masking_rules_with_options(
+        self,
+        tmp_req: rds_20140815_models.ModifyMaskingRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.ModifyMaskingRulesResponse:
+        UtilClient.validate_model(tmp_req)
+        request = rds_20140815_models.ModifyMaskingRulesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.rule_config):
+            request.rule_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.rule_config, 'RuleConfig', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.default_algo):
+            query['DefaultAlgo'] = request.default_algo
+        if not UtilClient.is_unset(request.enabled):
+            query['Enabled'] = request.enabled
+        if not UtilClient.is_unset(request.masking_algo):
+            query['MaskingAlgo'] = request.masking_algo
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.rule_config_shrink):
+            query['RuleConfig'] = request.rule_config_shrink
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyMaskingRules',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.ModifyMaskingRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_masking_rules_with_options_async(
+        self,
+        tmp_req: rds_20140815_models.ModifyMaskingRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.ModifyMaskingRulesResponse:
+        UtilClient.validate_model(tmp_req)
+        request = rds_20140815_models.ModifyMaskingRulesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.rule_config):
+            request.rule_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.rule_config, 'RuleConfig', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.default_algo):
+            query['DefaultAlgo'] = request.default_algo
+        if not UtilClient.is_unset(request.enabled):
+            query['Enabled'] = request.enabled
+        if not UtilClient.is_unset(request.masking_algo):
+            query['MaskingAlgo'] = request.masking_algo
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.rule_config_shrink):
+            query['RuleConfig'] = request.rule_config_shrink
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyMaskingRules',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.ModifyMaskingRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_masking_rules(
+        self,
+        request: rds_20140815_models.ModifyMaskingRulesRequest,
+    ) -> rds_20140815_models.ModifyMaskingRulesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_masking_rules_with_options(request, runtime)
+
+    async def modify_masking_rules_async(
+        self,
+        request: rds_20140815_models.ModifyMaskingRulesRequest,
+    ) -> rds_20140815_models.ModifyMaskingRulesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_masking_rules_with_options_async(request, runtime)
 
     def modify_pghba_config_with_options(
         self,

@@ -8757,6 +8757,271 @@ class CreateGadInstanceMemberResponse(TeaModel):
         return self
 
 
+class CreateMaskingRulesRequestRuleConfig(TeaModel):
+    def __init__(
+        self,
+        columns: List[str] = None,
+        databases: List[str] = None,
+        tables: List[str] = None,
+    ):
+        self.columns = columns
+        self.databases = databases
+        self.tables = tables
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.columns is not None:
+            result['Columns'] = self.columns
+        if self.databases is not None:
+            result['Databases'] = self.databases
+        if self.tables is not None:
+            result['Tables'] = self.tables
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Columns') is not None:
+            self.columns = m.get('Columns')
+        if m.get('Databases') is not None:
+            self.databases = m.get('Databases')
+        if m.get('Tables') is not None:
+            self.tables = m.get('Tables')
+        return self
+
+
+class CreateMaskingRulesRequest(TeaModel):
+    def __init__(
+        self,
+        dbinstance_name: str = None,
+        default_algo: str = None,
+        masking_algo: str = None,
+        owner_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        rule_config: CreateMaskingRulesRequestRuleConfig = None,
+        rule_name: str = None,
+    ):
+        self.dbinstance_name = dbinstance_name
+        self.default_algo = default_algo
+        self.masking_algo = masking_algo
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.rule_config = rule_config
+        self.rule_name = rule_name
+
+    def validate(self):
+        if self.rule_config:
+            self.rule_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbinstance_name is not None:
+            result['DBInstanceName'] = self.dbinstance_name
+        if self.default_algo is not None:
+            result['DefaultAlgo'] = self.default_algo
+        if self.masking_algo is not None:
+            result['MaskingAlgo'] = self.masking_algo
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.rule_config is not None:
+            result['RuleConfig'] = self.rule_config.to_map()
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBInstanceName') is not None:
+            self.dbinstance_name = m.get('DBInstanceName')
+        if m.get('DefaultAlgo') is not None:
+            self.default_algo = m.get('DefaultAlgo')
+        if m.get('MaskingAlgo') is not None:
+            self.masking_algo = m.get('MaskingAlgo')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('RuleConfig') is not None:
+            temp_model = CreateMaskingRulesRequestRuleConfig()
+            self.rule_config = temp_model.from_map(m['RuleConfig'])
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        return self
+
+
+class CreateMaskingRulesShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        dbinstance_name: str = None,
+        default_algo: str = None,
+        masking_algo: str = None,
+        owner_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        rule_config_shrink: str = None,
+        rule_name: str = None,
+    ):
+        self.dbinstance_name = dbinstance_name
+        self.default_algo = default_algo
+        self.masking_algo = masking_algo
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.rule_config_shrink = rule_config_shrink
+        self.rule_name = rule_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbinstance_name is not None:
+            result['DBInstanceName'] = self.dbinstance_name
+        if self.default_algo is not None:
+            result['DefaultAlgo'] = self.default_algo
+        if self.masking_algo is not None:
+            result['MaskingAlgo'] = self.masking_algo
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.rule_config_shrink is not None:
+            result['RuleConfig'] = self.rule_config_shrink
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBInstanceName') is not None:
+            self.dbinstance_name = m.get('DBInstanceName')
+        if m.get('DefaultAlgo') is not None:
+            self.default_algo = m.get('DefaultAlgo')
+        if m.get('MaskingAlgo') is not None:
+            self.masking_algo = m.get('MaskingAlgo')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('RuleConfig') is not None:
+            self.rule_config_shrink = m.get('RuleConfig')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        return self
+
+
+class CreateMaskingRulesResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: Dict[str, str] = None,
+        message: str = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateMaskingRulesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateMaskingRulesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateMaskingRulesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateMigrateTaskRequest(TeaModel):
     def __init__(
         self,
@@ -12562,6 +12827,143 @@ class DeleteGadInstanceResponse(TeaModel):
         return self
 
 
+class DeleteMaskingRulesRequest(TeaModel):
+    def __init__(
+        self,
+        dbinstance_name: str = None,
+        owner_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        rule_name: str = None,
+    ):
+        self.dbinstance_name = dbinstance_name
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.rule_name = rule_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbinstance_name is not None:
+            result['DBInstanceName'] = self.dbinstance_name
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBInstanceName') is not None:
+            self.dbinstance_name = m.get('DBInstanceName')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        return self
+
+
+class DeleteMaskingRulesResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: Dict[str, str] = None,
+        message: str = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteMaskingRulesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteMaskingRulesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteMaskingRulesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteParameterGroupRequest(TeaModel):
     def __init__(
         self,
@@ -13818,6 +14220,207 @@ class DescribeADInfoResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeADInfoResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeAccountMaskingPrivilegeRequest(TeaModel):
+    def __init__(
+        self,
+        dbinstance_name: str = None,
+        owner_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        user_name: str = None,
+    ):
+        self.dbinstance_name = dbinstance_name
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.user_name = user_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbinstance_name is not None:
+            result['DBInstanceName'] = self.dbinstance_name
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.user_name is not None:
+            result['UserName'] = self.user_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBInstanceName') is not None:
+            self.dbinstance_name = m.get('DBInstanceName')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('UserName') is not None:
+            self.user_name = m.get('UserName')
+        return self
+
+
+class DescribeAccountMaskingPrivilegeResponseBodyDataUserPrivilege(TeaModel):
+    def __init__(
+        self,
+        expire_time: str = None,
+        privilege: str = None,
+        user_name: str = None,
+    ):
+        self.expire_time = expire_time
+        self.privilege = privilege
+        self.user_name = user_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.expire_time is not None:
+            result['ExpireTime'] = self.expire_time
+        if self.privilege is not None:
+            result['Privilege'] = self.privilege
+        if self.user_name is not None:
+            result['UserName'] = self.user_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExpireTime') is not None:
+            self.expire_time = m.get('ExpireTime')
+        if m.get('Privilege') is not None:
+            self.privilege = m.get('Privilege')
+        if m.get('UserName') is not None:
+            self.user_name = m.get('UserName')
+        return self
+
+
+class DescribeAccountMaskingPrivilegeResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        user_privilege: List[DescribeAccountMaskingPrivilegeResponseBodyDataUserPrivilege] = None,
+    ):
+        self.user_privilege = user_privilege
+
+    def validate(self):
+        if self.user_privilege:
+            for k in self.user_privilege:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['UserPrivilege'] = []
+        if self.user_privilege is not None:
+            for k in self.user_privilege:
+                result['UserPrivilege'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.user_privilege = []
+        if m.get('UserPrivilege') is not None:
+            for k in m.get('UserPrivilege'):
+                temp_model = DescribeAccountMaskingPrivilegeResponseBodyDataUserPrivilege()
+                self.user_privilege.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeAccountMaskingPrivilegeResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: DescribeAccountMaskingPrivilegeResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = DescribeAccountMaskingPrivilegeResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeAccountMaskingPrivilegeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeAccountMaskingPrivilegeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeAccountMaskingPrivilegeResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -39220,6 +39823,260 @@ class DescribeMarketingActivityResponse(TeaModel):
         return self
 
 
+class DescribeMaskingRulesRequest(TeaModel):
+    def __init__(
+        self,
+        dbinstance_name: str = None,
+        owner_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        rule_name: str = None,
+    ):
+        self.dbinstance_name = dbinstance_name
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.rule_name = rule_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbinstance_name is not None:
+            result['DBInstanceName'] = self.dbinstance_name
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBInstanceName') is not None:
+            self.dbinstance_name = m.get('DBInstanceName')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        return self
+
+
+class DescribeMaskingRulesResponseBodyDataRulesRuleConfig(TeaModel):
+    def __init__(
+        self,
+        columns: List[str] = None,
+        databases: List[str] = None,
+        tables: List[str] = None,
+    ):
+        self.columns = columns
+        self.databases = databases
+        self.tables = tables
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.columns is not None:
+            result['Columns'] = self.columns
+        if self.databases is not None:
+            result['Databases'] = self.databases
+        if self.tables is not None:
+            result['Tables'] = self.tables
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Columns') is not None:
+            self.columns = m.get('Columns')
+        if m.get('Databases') is not None:
+            self.databases = m.get('Databases')
+        if m.get('Tables') is not None:
+            self.tables = m.get('Tables')
+        return self
+
+
+class DescribeMaskingRulesResponseBodyDataRules(TeaModel):
+    def __init__(
+        self,
+        default_algo: str = None,
+        enabled: str = None,
+        masking_algo: str = None,
+        rule_config: DescribeMaskingRulesResponseBodyDataRulesRuleConfig = None,
+        rule_name: str = None,
+    ):
+        self.default_algo = default_algo
+        self.enabled = enabled
+        self.masking_algo = masking_algo
+        self.rule_config = rule_config
+        self.rule_name = rule_name
+
+    def validate(self):
+        if self.rule_config:
+            self.rule_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.default_algo is not None:
+            result['DefaultAlgo'] = self.default_algo
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.masking_algo is not None:
+            result['MaskingAlgo'] = self.masking_algo
+        if self.rule_config is not None:
+            result['RuleConfig'] = self.rule_config.to_map()
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DefaultAlgo') is not None:
+            self.default_algo = m.get('DefaultAlgo')
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        if m.get('MaskingAlgo') is not None:
+            self.masking_algo = m.get('MaskingAlgo')
+        if m.get('RuleConfig') is not None:
+            temp_model = DescribeMaskingRulesResponseBodyDataRulesRuleConfig()
+            self.rule_config = temp_model.from_map(m['RuleConfig'])
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        return self
+
+
+class DescribeMaskingRulesResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        rules: List[DescribeMaskingRulesResponseBodyDataRules] = None,
+    ):
+        self.rules = rules
+
+    def validate(self):
+        if self.rules:
+            for k in self.rules:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Rules'] = []
+        if self.rules is not None:
+            for k in self.rules:
+                result['Rules'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.rules = []
+        if m.get('Rules') is not None:
+            for k in m.get('Rules'):
+                temp_model = DescribeMaskingRulesResponseBodyDataRules()
+                self.rules.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeMaskingRulesResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: DescribeMaskingRulesResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = DescribeMaskingRulesResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeMaskingRulesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeMaskingRulesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeMaskingRulesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeMetaListRequest(TeaModel):
     def __init__(
         self,
@@ -45391,21 +46248,21 @@ class DescribeRegionsResponseBodyRegionsRDSRegion(TeaModel):
         zone_id: str = None,
         zone_name: str = None,
     ):
-        # The name of the region. The return value of the LocalName parameter is in the language that is specified by the **AcceptLanguage** parameter. For example, if the value of the RegionId parameter in the response is cn-hangzhou, the following values are returned for the LocalName parameter:
+        # The region name. The return value of this parameter is in the language that is specified by the **AcceptLanguage** parameter. For example, if the value of the RegionId parameter in the response is cn-hangzhou, the following values are returned for the LocalName parameter:
         # 
-        # *   If the value of the **AcceptLanguage** parameter is **zh-CN**, the value China (Hangzhou)  is returned for the LocalName parameter.
+        # *   If the value of the **AcceptLanguage** parameter is **zh-CN**, the value  1（）is returned for the LocalName parameter.
         # *   If the value of the **AcceptLanguage** parameter is **en-US**, the value China (Hangzhou) is returned for the LocalName parameter.
         self.local_name = local_name
-        # The endpoint that is used to connect to Alibaba Cloud services in the region. For more information, see [Request structure](~~26223~~).
+        # The endpoint that is used to connect to Alibaba Cloud services in the region. For more information, see [Endpoints](~~610370~~).
         self.region_endpoint = region_endpoint
-        # The ID of the region.
+        # The region ID.
         self.region_id = region_id
-        # The ID of the zone.
+        # The zone ID.
         self.zone_id = zone_id
-        # The name of the zone. The return value of the ZoneName parameter is in the language that is specified by the **AcceptLanguage** parameter. For example, if the value of the RegionId parameter in the response is cn-hangzhou-h, the following values are returned for the LocalName parameter:
+        # The zone name. The return value of this parameter is in the language that is specified by the **AcceptLanguage** parameter. For example, if the value of the ZoneId parameter in the response is cn-hangzhou-h, the following values are returned for the ZoneName parameter:
         # 
-        # *   If the value of the **AcceptLanguage** parameter is **zh-CN**, the value Hangzhou Zone H is returned for the LocalName parameter.
-        # *   If the value of the **AcceptLanguage** parameter is **en-US**, the value Hangzhou Zone H is returned for the LocalName parameter.
+        # *   If the value of the **AcceptLanguage** parameter is **zh-CN**, the value   H is returned for the ZoneName parameter.
+        # *   If the value of the **AcceptLanguage** parameter is **en-US**, the value Hangzhou Zone H is returned for the ZoneName parameter.
         self.zone_name = zone_name
 
     def validate(self):
@@ -45485,9 +46342,9 @@ class DescribeRegionsResponseBody(TeaModel):
         regions: DescribeRegionsResponseBodyRegions = None,
         request_id: str = None,
     ):
-        # An array that consists of the available regions and zones.
+        # The available regions and zones.
         self.regions = regions
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -55541,6 +56398,155 @@ class ModifyAccountDescriptionResponse(TeaModel):
         return self
 
 
+class ModifyAccountMaskingPrivilegeRequest(TeaModel):
+    def __init__(
+        self,
+        dbinstance_name: str = None,
+        expire_time: str = None,
+        owner_id: str = None,
+        privilege: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        user_name: str = None,
+    ):
+        self.dbinstance_name = dbinstance_name
+        self.expire_time = expire_time
+        self.owner_id = owner_id
+        self.privilege = privilege
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.user_name = user_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbinstance_name is not None:
+            result['DBInstanceName'] = self.dbinstance_name
+        if self.expire_time is not None:
+            result['ExpireTime'] = self.expire_time
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.privilege is not None:
+            result['Privilege'] = self.privilege
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.user_name is not None:
+            result['UserName'] = self.user_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBInstanceName') is not None:
+            self.dbinstance_name = m.get('DBInstanceName')
+        if m.get('ExpireTime') is not None:
+            self.expire_time = m.get('ExpireTime')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('Privilege') is not None:
+            self.privilege = m.get('Privilege')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('UserName') is not None:
+            self.user_name = m.get('UserName')
+        return self
+
+
+class ModifyAccountMaskingPrivilegeResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: Dict[str, str] = None,
+        message: str = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ModifyAccountMaskingPrivilegeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyAccountMaskingPrivilegeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyAccountMaskingPrivilegeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ModifyActionEventPolicyRequest(TeaModel):
     def __init__(
         self,
@@ -63214,6 +64220,283 @@ class ModifyInstanceCrossBackupPolicyResponse(TeaModel):
         return self
 
 
+class ModifyMaskingRulesRequestRuleConfig(TeaModel):
+    def __init__(
+        self,
+        columns: List[str] = None,
+        databases: List[str] = None,
+        tables: List[str] = None,
+    ):
+        self.columns = columns
+        self.databases = databases
+        self.tables = tables
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.columns is not None:
+            result['Columns'] = self.columns
+        if self.databases is not None:
+            result['Databases'] = self.databases
+        if self.tables is not None:
+            result['Tables'] = self.tables
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Columns') is not None:
+            self.columns = m.get('Columns')
+        if m.get('Databases') is not None:
+            self.databases = m.get('Databases')
+        if m.get('Tables') is not None:
+            self.tables = m.get('Tables')
+        return self
+
+
+class ModifyMaskingRulesRequest(TeaModel):
+    def __init__(
+        self,
+        dbinstance_name: str = None,
+        default_algo: str = None,
+        enabled: str = None,
+        masking_algo: str = None,
+        owner_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        rule_config: ModifyMaskingRulesRequestRuleConfig = None,
+        rule_name: str = None,
+    ):
+        self.dbinstance_name = dbinstance_name
+        self.default_algo = default_algo
+        self.enabled = enabled
+        self.masking_algo = masking_algo
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.rule_config = rule_config
+        self.rule_name = rule_name
+
+    def validate(self):
+        if self.rule_config:
+            self.rule_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbinstance_name is not None:
+            result['DBInstanceName'] = self.dbinstance_name
+        if self.default_algo is not None:
+            result['DefaultAlgo'] = self.default_algo
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.masking_algo is not None:
+            result['MaskingAlgo'] = self.masking_algo
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.rule_config is not None:
+            result['RuleConfig'] = self.rule_config.to_map()
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBInstanceName') is not None:
+            self.dbinstance_name = m.get('DBInstanceName')
+        if m.get('DefaultAlgo') is not None:
+            self.default_algo = m.get('DefaultAlgo')
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        if m.get('MaskingAlgo') is not None:
+            self.masking_algo = m.get('MaskingAlgo')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('RuleConfig') is not None:
+            temp_model = ModifyMaskingRulesRequestRuleConfig()
+            self.rule_config = temp_model.from_map(m['RuleConfig'])
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        return self
+
+
+class ModifyMaskingRulesShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        dbinstance_name: str = None,
+        default_algo: str = None,
+        enabled: str = None,
+        masking_algo: str = None,
+        owner_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        rule_config_shrink: str = None,
+        rule_name: str = None,
+    ):
+        self.dbinstance_name = dbinstance_name
+        self.default_algo = default_algo
+        self.enabled = enabled
+        self.masking_algo = masking_algo
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.rule_config_shrink = rule_config_shrink
+        self.rule_name = rule_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbinstance_name is not None:
+            result['DBInstanceName'] = self.dbinstance_name
+        if self.default_algo is not None:
+            result['DefaultAlgo'] = self.default_algo
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.masking_algo is not None:
+            result['MaskingAlgo'] = self.masking_algo
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.rule_config_shrink is not None:
+            result['RuleConfig'] = self.rule_config_shrink
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBInstanceName') is not None:
+            self.dbinstance_name = m.get('DBInstanceName')
+        if m.get('DefaultAlgo') is not None:
+            self.default_algo = m.get('DefaultAlgo')
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        if m.get('MaskingAlgo') is not None:
+            self.masking_algo = m.get('MaskingAlgo')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('RuleConfig') is not None:
+            self.rule_config_shrink = m.get('RuleConfig')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        return self
+
+
+class ModifyMaskingRulesResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: Dict[str, str] = None,
+        message: str = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ModifyMaskingRulesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyMaskingRulesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyMaskingRulesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ModifyPGHbaConfigRequestHbaItem(TeaModel):
     def __init__(
         self,
@@ -64858,8 +66141,11 @@ class ModifySecurityIpsRequest(TeaModel):
         # 
         # Default value: **MIX**.
         # 
-        # > *   In standard whitelist mode, IP addresses and CIDR blocks are added only to the default IP address whitelist. In enhanced whitelist mode, IP addresses and CIDR blocks are added to the IP address whitelists of the classic network type and the VPC network type.
-        # > *   If your RDS instance runs PostgreSQL and uses cloud disks, set this parameter to MIX. If you set it to another value, the system automatically changes the value to MIX.
+        # > 
+        # 
+        # *   In standard whitelist mode, IP addresses and CIDR blocks are added only to the default IP address whitelist. In enhanced whitelist mode, IP addresses and CIDR blocks are added to the IP address whitelists of the classic network type and the VPC network type.
+        # 
+        # *   If your RDS instance runs PostgreSQL and uses cloud disks, set this parameter to MIX. If you set it to another value, the system automatically changes the value to MIX.
         self.whitelist_network_type = whitelist_network_type
 
     def validate(self):

@@ -1,3 +1,14 @@
+2024-04-30 Version: 5.0.0
+- Support API CreateMaskingRules.
+- Support API DeleteMaskingRules.
+- Support API DescribeAccountMaskingPrivilege.
+- Support API DescribeMaskingRules.
+- Support API ModifyAccountMaskingPrivilege.
+- Support API ModifyMaskingRules.
+- Update API CreateTempDBInstance: update param BackupId.
+- Update API DescribeMetaList: update param BackupSetID.
+
+
 2024-04-25 Version: 4.0.6
 - Update API CreateDBInstance: add param WhitelistTemplateList.
 - Update API ModifyDBProxyInstance: add param VSwitchIds.
