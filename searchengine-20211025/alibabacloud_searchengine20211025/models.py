@@ -765,21 +765,22 @@ class CreateIndexRequestDataSourceInfoConfig(TeaModel):
         project: str = None,
         table: str = None,
     ):
-        # odps数据源ak
+        # The AccessKey ID of the MaxCompute data source.
         self.access_key = access_key
-        # odps数据源ak secret
+        # The AccessKey secret of the MaxCompute data source.
         self.access_secret = access_secret
+        # oss bucket
         self.bucket = bucket
-        # odps数据源的endpoint, oss数据源的endpoint
+        # The endpoint of the MaxCompute or Object Storage Service (OSS) data source.
         self.endpoint = endpoint
         self.namespace = namespace
         self.oss_path = oss_path
-        # 数据源为odps时必填
+        # The data partition. This parameter is required if type is set to odps.
         self.partition = partition
         self.path = path
-        # odps数据源项目名称
+        # The name of the MaxCompute project that is used as the data source.
         self.project = project
-        # 表名称
+        # The name of the table.
         self.table = table
 
     def validate(self):
@@ -883,21 +884,19 @@ class CreateIndexRequestDataSourceInfo(TeaModel):
         saro_config: CreateIndexRequestDataSourceInfoSaroConfig = None,
         type: str = None,
     ):
-        # 是否开启自动全量
+        # Specifies whether to enable the automatic full indexing feature.
         self.auto_build_index = auto_build_index
-        # odps相关
+        # The information about the MaxCompute data source.
         self.config = config
         self.data_time_sec = data_time_sec
+        # The data center where the data source is deployed.
         self.domain = domain
+        # The name of the index.
         self.name = name
-        # 数据更新资源数
+        # The number of resources used for data update.
         self.process_partition_count = process_partition_count
         self.saro_config = saro_config
-        # 数据源类型
-        # odps
-        # swift
-        # saro
-        # oss
+        # The type of the data source. Valid values: odps, swift, saro, and oss.
         self.type = type
 
     def validate(self):
@@ -967,21 +966,18 @@ class CreateIndexRequest(TeaModel):
     ):
         # The content of the index.
         self.content = content
-        # The data source type. Valid values: odps, mns, flink, and streaming. This parameter can be ignored.
+        # Optional. The data source, which can be MaxCompute, Message Service (MNS), Realtime Compute for Apache Flink, or StreamCompute.
         self.data_source = data_source
-        # 数据源相关信息 （向量检索版新版本必填）
+        # The information about the data source, which is required for the new version of OpenSearch Vector Search Edition.
         self.data_source_info = data_source_info
-        # The data center where the data source is deployed.
+        # The data center in which the data source resides.
         self.domain = domain
-        # 字段配置的扩展的内容
-        # key: 向量字段(vector)、
-        # 需embeding字段(embeding)
+        # The extended configurations of the field. Keys such as vector and embedding are included. Vector indicates the vector field. Embedding indicates the field that requires embedding.
         self.extend = extend
         # The name of the index.
         self.name = name
         # The data partition.
         self.partition = partition
-        # 是否dryRun创建（仅校验数据源是否合法）。取值：-true 是 -false 否
         self.dry_run = dry_run
 
     def validate(self):
@@ -10696,7 +10692,6 @@ class UpdateInstanceRequestComponents(TeaModel):
     ):
         # The specification code, which must be consistent with the values of the corresponding module parameters.
         self.code = code
-        # The value of the specification.
         self.value = value
 
     def validate(self):

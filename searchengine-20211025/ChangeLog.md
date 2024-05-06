@@ -1,3 +1,6 @@
+2024-05-06 Version: 2.0.3
+- Generated python 2021-10-25 for searchengine.
+
 2024-03-20 Version: 2.0.2
 - Update API CreateIndex: update param body.
 - Update API GetNodeConfig: update response param.
