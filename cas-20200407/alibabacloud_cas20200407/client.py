@@ -1682,6 +1682,146 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_certificate_state_with_options_async(request, runtime)
 
+    def describe_cloud_resource_status_with_options(
+        self,
+        request: cas_20200407_models.DescribeCloudResourceStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200407_models.DescribeCloudResourceStatusResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.secret_id):
+            query['SecretId'] = request.secret_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCloudResourceStatus',
+            version='2020-04-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200407_models.DescribeCloudResourceStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_cloud_resource_status_with_options_async(
+        self,
+        request: cas_20200407_models.DescribeCloudResourceStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200407_models.DescribeCloudResourceStatusResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.secret_id):
+            query['SecretId'] = request.secret_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCloudResourceStatus',
+            version='2020-04-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200407_models.DescribeCloudResourceStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_cloud_resource_status(
+        self,
+        request: cas_20200407_models.DescribeCloudResourceStatusRequest,
+    ) -> cas_20200407_models.DescribeCloudResourceStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_cloud_resource_status_with_options(request, runtime)
+
+    async def describe_cloud_resource_status_async(
+        self,
+        request: cas_20200407_models.DescribeCloudResourceStatusRequest,
+    ) -> cas_20200407_models.DescribeCloudResourceStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_cloud_resource_status_with_options_async(request, runtime)
+
+    def describe_deployment_job_with_options(
+        self,
+        request: cas_20200407_models.DescribeDeploymentJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200407_models.DescribeDeploymentJobResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDeploymentJob',
+            version='2020-04-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200407_models.DescribeDeploymentJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_deployment_job_with_options_async(
+        self,
+        request: cas_20200407_models.DescribeDeploymentJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200407_models.DescribeDeploymentJobResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDeploymentJob',
+            version='2020-04-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200407_models.DescribeDeploymentJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_deployment_job(
+        self,
+        request: cas_20200407_models.DescribeDeploymentJobRequest,
+    ) -> cas_20200407_models.DescribeDeploymentJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_deployment_job_with_options(request, runtime)
+
+    async def describe_deployment_job_async(
+        self,
+        request: cas_20200407_models.DescribeDeploymentJobRequest,
+    ) -> cas_20200407_models.DescribeDeploymentJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_deployment_job_with_options_async(request, runtime)
+
     def describe_deployment_job_status_with_options(
         self,
         request: cas_20200407_models.DescribeDeploymentJobStatusRequest,
@@ -2330,6 +2470,88 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_cert_warehouse_with_options_async(request, runtime)
 
+    def list_cloud_access_with_options(
+        self,
+        request: cas_20200407_models.ListCloudAccessRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200407_models.ListCloudAccessResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cloud_name):
+            query['CloudName'] = request.cloud_name
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.secret_id):
+            query['SecretId'] = request.secret_id
+        if not UtilClient.is_unset(request.show_size):
+            query['ShowSize'] = request.show_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListCloudAccess',
+            version='2020-04-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200407_models.ListCloudAccessResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_cloud_access_with_options_async(
+        self,
+        request: cas_20200407_models.ListCloudAccessRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200407_models.ListCloudAccessResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cloud_name):
+            query['CloudName'] = request.cloud_name
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.secret_id):
+            query['SecretId'] = request.secret_id
+        if not UtilClient.is_unset(request.show_size):
+            query['ShowSize'] = request.show_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListCloudAccess',
+            version='2020-04-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200407_models.ListCloudAccessResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_cloud_access(
+        self,
+        request: cas_20200407_models.ListCloudAccessRequest,
+    ) -> cas_20200407_models.ListCloudAccessResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_cloud_access_with_options(request, runtime)
+
+    async def list_cloud_access_async(
+        self,
+        request: cas_20200407_models.ListCloudAccessRequest,
+    ) -> cas_20200407_models.ListCloudAccessResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_cloud_access_with_options_async(request, runtime)
+
     def list_cloud_resources_with_options(
         self,
         request: cas_20200407_models.ListCloudResourcesRequest,
@@ -2419,6 +2641,84 @@ class Client(OpenApiClient):
     ) -> cas_20200407_models.ListCloudResourcesResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_cloud_resources_with_options_async(request, runtime)
+
+    def list_contact_with_options(
+        self,
+        request: cas_20200407_models.ListContactRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200407_models.ListContactResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.show_size):
+            query['ShowSize'] = request.show_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListContact',
+            version='2020-04-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200407_models.ListContactResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_contact_with_options_async(
+        self,
+        request: cas_20200407_models.ListContactRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200407_models.ListContactResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.show_size):
+            query['ShowSize'] = request.show_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListContact',
+            version='2020-04-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200407_models.ListContactResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_contact(
+        self,
+        request: cas_20200407_models.ListContactRequest,
+    ) -> cas_20200407_models.ListContactResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_contact_with_options(request, runtime)
+
+    async def list_contact_async(
+        self,
+        request: cas_20200407_models.ListContactRequest,
+    ) -> cas_20200407_models.ListContactResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_contact_with_options_async(request, runtime)
 
     def list_csr_with_options(
         self,
@@ -2847,6 +3147,92 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_user_certificate_order_with_options_async(request, runtime)
+
+    def list_worker_resource_with_options(
+        self,
+        request: cas_20200407_models.ListWorkerResourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200407_models.ListWorkerResourceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cloud_product):
+            query['CloudProduct'] = request.cloud_product
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.show_size):
+            query['ShowSize'] = request.show_size
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListWorkerResource',
+            version='2020-04-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200407_models.ListWorkerResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_worker_resource_with_options_async(
+        self,
+        request: cas_20200407_models.ListWorkerResourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200407_models.ListWorkerResourceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cloud_product):
+            query['CloudProduct'] = request.cloud_product
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.show_size):
+            query['ShowSize'] = request.show_size
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListWorkerResource',
+            version='2020-04-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200407_models.ListWorkerResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_worker_resource(
+        self,
+        request: cas_20200407_models.ListWorkerResourceRequest,
+    ) -> cas_20200407_models.ListWorkerResourceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_worker_resource_with_options(request, runtime)
+
+    async def list_worker_resource_async(
+        self,
+        request: cas_20200407_models.ListWorkerResourceRequest,
+    ) -> cas_20200407_models.ListWorkerResourceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_worker_resource_with_options_async(request, runtime)
 
     def renew_certificate_order_for_package_request_with_options(
         self,
