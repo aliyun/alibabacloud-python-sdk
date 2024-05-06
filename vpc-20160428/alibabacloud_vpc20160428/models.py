@@ -50863,6 +50863,7 @@ class DescribeSnatTableEntriesRequest(TeaModel):
 class DescribeSnatTableEntriesResponseBodySnatTableEntriesSnatTableEntry(TeaModel):
     def __init__(
         self,
+        eip_affinity: str = None,
         nat_gateway_id: str = None,
         snat_entry_id: str = None,
         snat_entry_name: str = None,
@@ -50872,6 +50873,7 @@ class DescribeSnatTableEntriesResponseBodySnatTableEntriesSnatTableEntry(TeaMode
         source_vswitch_id: str = None,
         status: str = None,
     ):
+        self.eip_affinity = eip_affinity
         # The ID of the NAT gateway to which the SNAT entry belongs.
         self.nat_gateway_id = nat_gateway_id
         # The ID of the SNAT entry.
@@ -50904,6 +50906,8 @@ class DescribeSnatTableEntriesResponseBodySnatTableEntriesSnatTableEntry(TeaMode
             return _map
 
         result = dict()
+        if self.eip_affinity is not None:
+            result['EipAffinity'] = self.eip_affinity
         if self.nat_gateway_id is not None:
             result['NatGatewayId'] = self.nat_gateway_id
         if self.snat_entry_id is not None:
@@ -50924,6 +50928,8 @@ class DescribeSnatTableEntriesResponseBodySnatTableEntriesSnatTableEntry(TeaMode
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('EipAffinity') is not None:
+            self.eip_affinity = m.get('EipAffinity')
         if m.get('NatGatewayId') is not None:
             self.nat_gateway_id = m.get('NatGatewayId')
         if m.get('SnatEntryId') is not None:
@@ -61396,6 +61402,33 @@ class DescribeVpnGatewayRequest(TeaModel):
         return self
 
 
+class DescribeVpnGatewayResponseBodyEniInstanceIds(TeaModel):
+    def __init__(
+        self,
+        eni_instance_id: List[str] = None,
+    ):
+        self.eni_instance_id = eni_instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.eni_instance_id is not None:
+            result['EniInstanceId'] = self.eni_instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EniInstanceId') is not None:
+            self.eni_instance_id = m.get('EniInstanceId')
+        return self
+
+
 class DescribeVpnGatewayResponseBodyReservationData(TeaModel):
     def __init__(
         self,
@@ -61563,6 +61596,7 @@ class DescribeVpnGatewayResponseBody(TeaModel):
         disaster_recovery_vswitch_id: str = None,
         enable_bgp: bool = None,
         end_time: int = None,
+        eni_instance_ids: DescribeVpnGatewayResponseBodyEniInstanceIds = None,
         internet_ip: str = None,
         ipsec_vpn: str = None,
         name: str = None,
@@ -61619,6 +61653,7 @@ class DescribeVpnGatewayResponseBody(TeaModel):
         # 
         # This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
         self.end_time = end_time
+        self.eni_instance_ids = eni_instance_ids
         # *   If the VPN gateway supports IPsec-VPN connections in single-tunnel mode, the address is the IP address of the VPN gateway and can be used to create an IPsec-VPN connection or an SSL-VPN connection.
         # 
         # *   If the VPN gateway supports IPsec-VPN connections in dual-tunnel mode, the address is the first IP address used to create an IPsec-VPN connection. The address cannot be used to create an SSL-VPN connection.
@@ -61708,6 +61743,8 @@ class DescribeVpnGatewayResponseBody(TeaModel):
         self.vpn_type = vpn_type
 
     def validate(self):
+        if self.eni_instance_ids:
+            self.eni_instance_ids.validate()
         if self.reservation_data:
             self.reservation_data.validate()
         if self.tags:
@@ -61737,6 +61774,8 @@ class DescribeVpnGatewayResponseBody(TeaModel):
             result['EnableBgp'] = self.enable_bgp
         if self.end_time is not None:
             result['EndTime'] = self.end_time
+        if self.eni_instance_ids is not None:
+            result['EniInstanceIds'] = self.eni_instance_ids.to_map()
         if self.internet_ip is not None:
             result['InternetIp'] = self.internet_ip
         if self.ipsec_vpn is not None:
@@ -61795,6 +61834,9 @@ class DescribeVpnGatewayResponseBody(TeaModel):
             self.enable_bgp = m.get('EnableBgp')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
+        if m.get('EniInstanceIds') is not None:
+            temp_model = DescribeVpnGatewayResponseBodyEniInstanceIds()
+            self.eni_instance_ids = temp_model.from_map(m['EniInstanceIds'])
         if m.get('InternetIp') is not None:
             self.internet_ip = m.get('InternetIp')
         if m.get('IpsecVpn') is not None:
@@ -62247,6 +62289,33 @@ class DescribeVpnGatewaysRequest(TeaModel):
         return self
 
 
+class DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGatewayEniInstanceIds(TeaModel):
+    def __init__(
+        self,
+        eni_instance_id: List[str] = None,
+    ):
+        self.eni_instance_id = eni_instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.eni_instance_id is not None:
+            result['EniInstanceId'] = self.eni_instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EniInstanceId') is not None:
+            self.eni_instance_id = m.get('EniInstanceId')
+        return self
+
+
 class DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGatewayReservationData(TeaModel):
     def __init__(
         self,
@@ -62414,6 +62483,7 @@ class DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGateway(TeaModel):
         disaster_recovery_vswitch_id: str = None,
         enable_bgp: bool = None,
         end_time: int = None,
+        eni_instance_ids: DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGatewayEniInstanceIds = None,
         internet_ip: str = None,
         ipsec_vpn: str = None,
         name: str = None,
@@ -62469,6 +62539,7 @@ class DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGateway(TeaModel):
         # 
         # This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.end_time = end_time
+        self.eni_instance_ids = eni_instance_ids
         # *   If the VPN gateway supports IPsec-VPN connections in single-tunnel mode, the address is the IP address of the VPN gateway and can be used to create an IPsec-VPN connection or an SSL-VPN connection.
         # 
         # *   If the VPN gateway supports IPsec-VPN connections in dual-tunnel mode, the address is the first IP address used to create an IPsec-VPN connection. The address cannot be used to create an SSL-VPN connection.
@@ -62556,6 +62627,8 @@ class DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGateway(TeaModel):
         self.vpn_type = vpn_type
 
     def validate(self):
+        if self.eni_instance_ids:
+            self.eni_instance_ids.validate()
         if self.reservation_data:
             self.reservation_data.validate()
         if self.tags:
@@ -62585,6 +62658,8 @@ class DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGateway(TeaModel):
             result['EnableBgp'] = self.enable_bgp
         if self.end_time is not None:
             result['EndTime'] = self.end_time
+        if self.eni_instance_ids is not None:
+            result['EniInstanceIds'] = self.eni_instance_ids.to_map()
         if self.internet_ip is not None:
             result['InternetIp'] = self.internet_ip
         if self.ipsec_vpn is not None:
@@ -62641,6 +62716,9 @@ class DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGateway(TeaModel):
             self.enable_bgp = m.get('EnableBgp')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
+        if m.get('EniInstanceIds') is not None:
+            temp_model = DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGatewayEniInstanceIds()
+            self.eni_instance_ids = temp_model.from_map(m['EniInstanceIds'])
         if m.get('InternetIp') is not None:
             self.internet_ip = m.get('InternetIp')
         if m.get('IpsecVpn') is not None:
@@ -84451,6 +84529,7 @@ class ModifySnatEntryRequest(TeaModel):
     def __init__(
         self,
         client_token: str = None,
+        eip_affinity: int = None,
         owner_account: str = None,
         owner_id: int = None,
         region_id: str = None,
@@ -84467,6 +84546,7 @@ class ModifySnatEntryRequest(TeaModel):
         # 
         # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
+        self.eip_affinity = eip_affinity
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the NAT gateway.
@@ -84501,6 +84581,8 @@ class ModifySnatEntryRequest(TeaModel):
         result = dict()
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
+        if self.eip_affinity is not None:
+            result['EipAffinity'] = self.eip_affinity
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
@@ -84525,6 +84607,8 @@ class ModifySnatEntryRequest(TeaModel):
         m = m or dict()
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
+        if m.get('EipAffinity') is not None:
+            self.eip_affinity = m.get('EipAffinity')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:

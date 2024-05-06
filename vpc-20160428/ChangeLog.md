@@ -1,3 +1,11 @@
+2024-05-06 Version: 6.6.2
+- Update API DescribeSnatTableEntries: update response param.
+- Update API DescribeVpnGateway: update response param.
+- Update API DescribeVpnGateways: update response param.
+- Update API ListTrafficMirrorFilters: update response param.
+- Update API ModifySnatEntry: add param EipAffinity.
+
+
 2024-04-25 Version: 6.6.1
 - Update API AssociateVpcCidrBlock: add param SecondaryCidrMask.
 - Update API CreateVpc: add param Ipv4CidrMask.
