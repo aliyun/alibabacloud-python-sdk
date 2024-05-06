@@ -1092,6 +1092,7 @@ class CreateCacheAnalysisTaskResponse(TeaModel):
 class CreateGlobalDistributeCacheRequest(TeaModel):
     def __init__(
         self,
+        effective_time: str = None,
         owner_account: str = None,
         owner_id: int = None,
         resource_group_id: str = None,
@@ -1100,6 +1101,7 @@ class CreateGlobalDistributeCacheRequest(TeaModel):
         security_token: str = None,
         seed_sub_instance_id: str = None,
     ):
+        self.effective_time = effective_time
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The ID of the resource group.
@@ -1121,6 +1123,8 @@ class CreateGlobalDistributeCacheRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.effective_time is not None:
+            result['EffectiveTime'] = self.effective_time
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
@@ -1139,6 +1143,8 @@ class CreateGlobalDistributeCacheRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('EffectiveTime') is not None:
+            self.effective_time = m.get('EffectiveTime')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
@@ -2427,6 +2433,7 @@ class CreateTairInstanceRequest(TeaModel):
         resource_group_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
+        restore_time: str = None,
         secondary_zone_id: str = None,
         security_token: str = None,
         shard_count: int = None,
@@ -2456,9 +2463,9 @@ class CreateTairInstanceRequest(TeaModel):
         # *   **true**: uses a coupon.
         # *   **false**: does not use a coupon.
         self.auto_use_coupon = auto_use_coupon
-        # The ID of the backup set of the source instance. You can call the [DescribeBackups](~~61081~~) operation to query the ID of the backup set.
+        # The ID of the backup set of the source instance. If you want to create an instance based on a backup set of a specified instance, you can specify this parameter after you specify the **SrcDBInstanceId** parameter. Then, the system creates an instance based on the backup set that is specified by this parameter. You can call the [DescribeBackups](~~61081~~) operation to query the IDs of backup sets.
         # 
-        # > If you want to create an instance based on the backup set of an existing instance, you must specify this parameter after you specify the **SrcDBInstanceId** parameter. The system creates an instance based on the backup set that is specified by this parameter.
+        # >  If you want to create an instance based on a backup set of a specified instance, you must specify this parameter after you use the **SrcDBInstanceId** parameter to specify the ID of the source instance. Then, the system creates an instance based on the backup set that is specified by this parameter.
         self.backup_id = backup_id
         # The ID of the promotion event or the business information.
         self.business_info = business_info
@@ -2469,7 +2476,13 @@ class CreateTairInstanceRequest(TeaModel):
         self.charge_type = charge_type
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the token is unique among different requests. The token is case-sensitive. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
-        # The backup set ID.
+        # This parameter is supported for specific new cluster instances. You can query the backup set ID by using the [DescribeClusterBackupList](~~2679158~~) operation.
+        # 
+        # *   If this parameter is supported, you can specify the backup set ID. In this case, you do not need to specify the **BackupId** parameter.
+        # 
+        # <!---->
+        # 
+        # *   If this parameter is not supported, set the BackupId parameter to the IDs of backup sets in all shards of the source instance, separated by commas (,). Example: "11101,11102".
         self.cluster_backup_id = cluster_backup_id
         # The coupon code.
         self.coupon_no = coupon_no
@@ -2538,6 +2551,7 @@ class CreateTairInstanceRequest(TeaModel):
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        self.restore_time = restore_time
         # The ID of the secondary zone. You can call the [DescribeRegions](~~61012~~) operation to query the ID of the secondary zone.
         # 
         # > You cannot specify multiple zone IDs or set this parameter to a value that is the same as that of the ZoneId parameter.
@@ -2555,6 +2569,9 @@ class CreateTairInstanceRequest(TeaModel):
         # *   **MASTER_SLAVE**: runs in a master-replica architecture that provides high availability.
         # *   **STAND_ALONE**: runs in a standalone architecture. If the only node fails, the system creates a new instance and switches the workloads to the new instance. This may cause data loss. You can set this parameter to this value only if the instance uses the **single-zone** deployment type. If you set this parameter to this value, you cannot create cluster or read/write splitting instances.
         self.shard_type = shard_type
+        # The number of read replicas in the secondary zone. This parameter is used to create a read/write splitting instance that is deployed across multiple zones.
+        # 
+        # > To create a read/write splitting instance that is deployed across multiple zones, you must specify both SlaveReadOnlyCount and SecondaryZoneId.
         self.slave_read_only_count = slave_read_only_count
         # The ID of the source instance.
         # 
@@ -2649,6 +2666,8 @@ class CreateTairInstanceRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
+        if self.restore_time is not None:
+            result['RestoreTime'] = self.restore_time
         if self.secondary_zone_id is not None:
             result['SecondaryZoneId'] = self.secondary_zone_id
         if self.security_token is not None:
@@ -2737,6 +2756,8 @@ class CreateTairInstanceRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('RestoreTime') is not None:
+            self.restore_time = m.get('RestoreTime')
         if m.get('SecondaryZoneId') is not None:
             self.secondary_zone_id = m.get('SecondaryZoneId')
         if m.get('SecurityToken') is not None:
@@ -6306,12 +6327,19 @@ class DescribeBackupsResponseBodyAccessDeniedDetail(TeaModel):
         no_permission_type: str = None,
         policy_type: str = None,
     ):
+        # This parameter is no longer used. Ignore this parameter.
         self.auth_action = auth_action
+        # This parameter is no longer used. Ignore this parameter.
         self.auth_principal_display_name = auth_principal_display_name
+        # This parameter is no longer used. Ignore this parameter.
         self.auth_principal_owner_id = auth_principal_owner_id
+        # This parameter is no longer used. Ignore this parameter.
         self.auth_principal_type = auth_principal_type
+        # This parameter is no longer used. Ignore this parameter.
         self.encoded_diagnostic_message = encoded_diagnostic_message
+        # This parameter is no longer used. Ignore this parameter.
         self.no_permission_type = no_permission_type
+        # This parameter is no longer used. Ignore this parameter.
         self.policy_type = policy_type
 
     def validate(self):
@@ -6376,7 +6404,7 @@ class DescribeBackupsResponseBodyBackupsBackup(TeaModel):
         engine_version: str = None,
         node_instance_id: str = None,
     ):
-        # The databases that are backed up. Default value: **all**, which indicates that all databases are backed up.
+        # The names of the databases that are backed up. The default value is **all**, which indicates that all databases are backed up.
         self.backup_dbnames = backup_dbnames
         # The public download URL of the backup file.
         self.backup_download_url = backup_download_url
@@ -6386,7 +6414,7 @@ class DescribeBackupsResponseBodyBackupsBackup(TeaModel):
         self.backup_id = backup_id
         # The internal download URL of the backup file.
         # 
-        # >  You can download the backup file by using this URL from the Elastic Compute Service (ECS) instance that is connected to the ApsaraDB for Redis instance. The ECS instance and ApsaraDB for Redis instance must reside in the classic network or the same virtual private cloud (VPC) within the same region.
+        # >  You can use this URL to download the backup file from an Elastic Compute Service (ECS) instance that is connected to the ApsaraDB for Redis instance. The ECS instance must belong to the same classic network or reside in the same virtual private cloud (VPC) as the ApsaraDB for Redis instance.
         self.backup_intranet_download_url = backup_intranet_download_url
         # The ID of the backup task.
         self.backup_job_id = backup_job_id
@@ -6404,21 +6432,21 @@ class DescribeBackupsResponseBodyBackupsBackup(TeaModel):
         self.backup_size = backup_size
         # The start time of the backup.
         self.backup_start_time = backup_start_time
-        # The state of the backup task. Valid values:
+        # The status of the backup. Valid values:
         # 
-        # *   **Success**: The task is successful.
-        # *   **Failed**: The task failed.
+        # *   **Success**\
+        # *   **Failed**\
         self.backup_status = backup_status
-        # The backup type of the backup file. Valid values:
+        # The backup type. Valid values:
         # 
         # *   **FullBackup**\
         # *   **IncrementalBackup**\
         self.backup_type = backup_type
-        # The major engine version of the instance.
+        # The engine version (major version) of the instance.
         self.engine_version = engine_version
         # The node ID.
         # 
-        # >  If a standard instance is used, the instance ID is returned.
+        # >  If the instance uses the standard architecture, this parameter returns the instance ID.
         self.node_instance_id = node_instance_id
 
     def validate(self):
@@ -6541,11 +6569,19 @@ class DescribeBackupsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The following parameters are no longer used. Ignore the parameters.
         self.access_denied_detail = access_denied_detail
         # Details of the backup files.
         self.backups = backups
+        # This parameter does not take effect. Ignore this parameter.
         self.free_size = free_size
+        # The size of the full backup file of the instance. Unit: bytes. Full backups originate from scheduled backups, manual backups, and backups generated during cache analysis.
+        # 
+        # >  The value of this parameter is independent of the number and size of the returned backup sets. Instead, it reflects the total size of all valid full backups of the instance.
         self.full_storage_size = full_storage_size
+        # The size of the log backup file of the instance. Unit: bytes. This value is valid only when flashback is enabled.
+        # 
+        # >  The value of this parameter is independent of the number and size of the returned backup sets. Instead, it reflects the total size of all valid log backups of the instance.
         self.log_storage_size = log_storage_size
         # The page number of the returned page.
         self.page_number = page_number
@@ -7218,17 +7254,24 @@ class DescribeClusterBackupListRequest(TeaModel):
         security_token: str = None,
         start_time: str = None,
     ):
+        # The backup set ID.
         self.cluster_backup_id = cluster_backup_id
+        # The end of the time range to query. Specify the time in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC. The end time must be later than the start time.
         self.end_time = end_time
+        # The ID of the instance.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The page number of the returned page.
         self.page_number = page_number
+        # The maximum number of entries returned per page.
         self.page_size = page_size
+        # The region ID of the instance. You can call the [DescribeRegions](~~61012~~) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
+        # The beginning of the time range to query. Specify the time in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
         self.start_time = start_time
 
     def validate(self):
@@ -7565,9 +7608,15 @@ class DescribeClusterBackupListResponseBody(TeaModel):
         # 
         # >  The value of this parameter is independent of the number and size of returned backup sets. Instead, it represents the size of all valid log backups of the instance.
         self.log_storage_size = log_storage_size
+        # The number of entries to return per page. Valid values: 1 to 100.
+        # Default value: 30.
+        # >If you specify this parameter, PageSize and PageNumber are unavailable.
         self.max_results = max_results
+        # The page number of the returned page.
         self.page_number = page_number
+        # The maximum number of entries returned per page.
         self.page_size = page_size
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -8403,7 +8452,7 @@ class DescribeDBNodeDirectVipInfoResponseBody(TeaModel):
         instance_id: str = None,
         request_id: str = None,
     ):
-        # The VIPs of shards in the cluster instance.
+        # The virtual IP addresses (VIPs) of shards in an ApsaraDB for Redis cluster instance.
         self.direct_vip_info = direct_vip_info
         # The instance ID.
         self.instance_id = instance_id
@@ -8644,7 +8693,7 @@ class DescribeDedicatedClusterInstanceListResponseBodyInstancesInstanceNodeList(
         self.dedicated_host_name = dedicated_host_name
         # The ID of the instance.
         self.instance_id = instance_id
-        # The ID of the node.
+        # The node ID.
         self.node_id = node_id
         # The IP address of the node.
         self.node_ip = node_ip
@@ -8747,7 +8796,7 @@ class DescribeDedicatedClusterInstanceListResponseBodyInstances(TeaModel):
         # *   **logic**: cluster
         # *   **normal**: standard
         self.character_type = character_type
-        # The ID of the dedicated cluster.
+        # The ID of the dedicated cluster to which the instance belongs.
         self.cluster_id = cluster_id
         # The name of the dedicated cluster to which the instance belongs.
         self.cluster_name = cluster_name
@@ -8755,21 +8804,21 @@ class DescribeDedicatedClusterInstanceListResponseBodyInstances(TeaModel):
         self.connection_domain = connection_domain
         # The time when the instance was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.create_time = create_time
-        # The current bandwidth of the instance, which consists of the default bandwidth and the additional bandwidth. Unit: Mbit/s.
+        # The current bandwidth of the instance, which is the sum of the default bandwidth and any extra bandwidth that is purchased. Unit: Mbit/s.
         self.current_band_width = current_band_width
-        # The custom ID that is used for instance internal maintenance.
+        # An internal parameter used for the maintenance and management of instances.
         self.custom_id = custom_id
-        # The database engine of the instance. The return value is **Redis**.
+        # The database engine. The return value is **redis**.
         self.engine = engine
         # The database engine version of the instance. The return value is **5.0**.
         self.engine_version = engine_version
-        # The instance type of the instance.
+        # The instance type.
         self.instance_class = instance_class
         # The ID of the instance.
         self.instance_id = instance_id
-        # The name of the instance.
+        # The instance name.
         self.instance_name = instance_name
-        # Details about the nodes.
+        # The nodes.
         self.instance_node_list = instance_node_list
         # The state of the instance. Valid values:
         # 
@@ -8780,13 +8829,13 @@ class DescribeDedicatedClusterInstanceListResponseBodyInstances(TeaModel):
         # *   **Flushing**: The instance is being released.
         # *   **Released**: The instance is released.
         # *   **Transforming**: The billing method of the instance is being changed.
-        # *   **Unavailable**: The instance is suspended.
+        # *   **Unavailable**: The instance is unavailable.
         # *   **Error**: The instance failed to be created.
         # *   **Migrating**: The instance is being migrated.
         # *   **BackupRecovering**: The instance is being restored from a backup.
         # *   **MinorVersionUpgrading**: The minor version of the instance is being updated.
         # *   **NetworkModifying**: The network type of the instance is being changed.
-        # *   **SSLModifying**: The SSL certificate of the instance is being changed.
+        # *   **SSLModifying**: The SSL configurations of the instance are being changed.
         # *   **MajorVersionUpgrading**: The major version of the instance is being upgraded. The instance remains accessible during the upgrade.
         self.instance_status = instance_status
         # The end time of the maintenance window. The time is in the *HH:mm*Z format. The time is displayed in UTC.
@@ -8795,22 +8844,25 @@ class DescribeDedicatedClusterInstanceListResponseBodyInstances(TeaModel):
         self.maintain_start_time = maintain_start_time
         # The number of proxy nodes.
         # 
-        # > *   If the return value is **0**, the proxy mode is disabled. If the return value is an integer that is greater than **0**, the proxy mode is enabled. This integer indicates the number of proxy nodes in the instance. For example, a value of **1** indicates that the instance has one proxy node.
-        # > *   This parameter is returned only when the instance is a [cluster instance](~~52228~~).
+        # > 
+        # 
+        # *   If the return value is **0**, the proxy mode is disabled for the instance. If the return value is an integer greater than **0**, such as **1**, the proxy mode is enabled for the instance.
+        # 
+        # *   This parameter is returned only when the instance is a cluster instance. For more information about cluster instances, see [Cluster master-replica instances](~~52228~~).
         self.proxy_count = proxy_count
-        # The region ID of the instance.
+        # The ID of the region.
         self.region_id = region_id
         # The number of shards.
         # 
-        # > This parameter is returned only when the ApsaraDB for Redis instance is a [cluster instance](~~52228~~).
+        # >  This parameter is returned only when the instance is a cluster instance. For more information about cluster instances, see [Cluster master-replica instances](~~52228~~).
         self.shard_count = shard_count
         # The storage type of the instance. The return value is LOCAL_SSD, which indicates [enhanced SSDs (ESSDs)](~~122389~~).
         self.storage_type = storage_type
-        # The ID of the VPC.
+        # The VPC ID.
         self.vpc_id = vpc_id
-        # The ID of the vSwitch.
+        # The vSwitch ID.
         self.vswitch_id = vswitch_id
-        # The zone ID of the instance.
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -8946,11 +8998,11 @@ class DescribeDedicatedClusterInstanceListResponseBody(TeaModel):
         self.instances = instances
         # The page number of the returned page.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
         # The ID of the request.
         self.request_id = request_id
-        # The total number of returned entries.
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -9840,6 +9892,7 @@ class DescribeEngineVersionResponseBody(TeaModel):
         is_auto_upgrade_open: str = None,
         is_latest_version: bool = None,
         is_new_sslmode: str = None,
+        is_open_nglb: str = None,
         is_redis_compatible_version: str = None,
         is_sslenable: str = None,
         major_version: str = None,
@@ -9878,6 +9931,7 @@ class DescribeEngineVersionResponseBody(TeaModel):
         self.is_latest_version = is_latest_version
         # 是否支持新版 ssl。
         self.is_new_sslmode = is_new_sslmode
+        self.is_open_nglb = is_open_nglb
         # Indicates whether the instance supports the new SSL encryption feature.
         self.is_redis_compatible_version = is_redis_compatible_version
         # 是否打开了小版本升级。
@@ -9927,6 +9981,8 @@ class DescribeEngineVersionResponseBody(TeaModel):
             result['IsLatestVersion'] = self.is_latest_version
         if self.is_new_sslmode is not None:
             result['IsNewSSLMode'] = self.is_new_sslmode
+        if self.is_open_nglb is not None:
+            result['IsOpenNGLB'] = self.is_open_nglb
         if self.is_redis_compatible_version is not None:
             result['IsRedisCompatibleVersion'] = self.is_redis_compatible_version
         if self.is_sslenable is not None:
@@ -9964,6 +10020,8 @@ class DescribeEngineVersionResponseBody(TeaModel):
             self.is_latest_version = m.get('IsLatestVersion')
         if m.get('IsNewSSLMode') is not None:
             self.is_new_sslmode = m.get('IsNewSSLMode')
+        if m.get('IsOpenNGLB') is not None:
+            self.is_open_nglb = m.get('IsOpenNGLB')
         if m.get('IsRedisCompatibleVersion') is not None:
             self.is_redis_compatible_version = m.get('IsRedisCompatibleVersion')
         if m.get('IsSSLEnable') is not None:
@@ -13722,7 +13780,7 @@ class DescribeInstancesOverviewRequest(TeaModel):
         # *   **Community**: Community Edition
         # *   **Enterprise**: Enhanced Edition (Tair)
         self.edition_type = edition_type
-        # The database engine version of the instance. Valid values: **2.8**, **4.0**, and **5.0**.
+        # The database engine version of the instance.
         self.engine_version = engine_version
         # The instance type of the instance. For more information, see [Instance types](~~107984~~).
         self.instance_class = instance_class
@@ -16697,6 +16755,87 @@ class DescribePriceResponseBodySubOrdersSubOrderDepreciateInfo(TeaModel):
         return self
 
 
+class DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstanceDepreciateInfo(TeaModel):
+    def __init__(
+        self,
+        cheap_rate: float = None,
+        cheap_stand_amount: float = None,
+        differential: float = None,
+        differential_name: str = None,
+        is_contract_activity: bool = None,
+        is_show: bool = None,
+        list_price: float = None,
+        month_price: float = None,
+        original_stand_amount: float = None,
+        start_time: str = None,
+    ):
+        self.cheap_rate = cheap_rate
+        self.cheap_stand_amount = cheap_stand_amount
+        self.differential = differential
+        self.differential_name = differential_name
+        self.is_contract_activity = is_contract_activity
+        self.is_show = is_show
+        self.list_price = list_price
+        self.month_price = month_price
+        self.original_stand_amount = original_stand_amount
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cheap_rate is not None:
+            result['CheapRate'] = self.cheap_rate
+        if self.cheap_stand_amount is not None:
+            result['CheapStandAmount'] = self.cheap_stand_amount
+        if self.differential is not None:
+            result['Differential'] = self.differential
+        if self.differential_name is not None:
+            result['DifferentialName'] = self.differential_name
+        if self.is_contract_activity is not None:
+            result['IsContractActivity'] = self.is_contract_activity
+        if self.is_show is not None:
+            result['IsShow'] = self.is_show
+        if self.list_price is not None:
+            result['ListPrice'] = self.list_price
+        if self.month_price is not None:
+            result['MonthPrice'] = self.month_price
+        if self.original_stand_amount is not None:
+            result['OriginalStandAmount'] = self.original_stand_amount
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CheapRate') is not None:
+            self.cheap_rate = m.get('CheapRate')
+        if m.get('CheapStandAmount') is not None:
+            self.cheap_stand_amount = m.get('CheapStandAmount')
+        if m.get('Differential') is not None:
+            self.differential = m.get('Differential')
+        if m.get('DifferentialName') is not None:
+            self.differential_name = m.get('DifferentialName')
+        if m.get('IsContractActivity') is not None:
+            self.is_contract_activity = m.get('IsContractActivity')
+        if m.get('IsShow') is not None:
+            self.is_show = m.get('IsShow')
+        if m.get('ListPrice') is not None:
+            self.list_price = m.get('ListPrice')
+        if m.get('MonthPrice') is not None:
+            self.month_price = m.get('MonthPrice')
+        if m.get('OriginalStandAmount') is not None:
+            self.original_stand_amount = m.get('OriginalStandAmount')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
 class DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstanceModuleAttrsModuleAttr(TeaModel):
     def __init__(
         self,
@@ -16781,6 +16920,7 @@ class DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstance(Tea
     def __init__(
         self,
         contract_activity: bool = None,
+        depreciate_info: DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstanceDepreciateInfo = None,
         discount_fee: float = None,
         module_attrs: DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstanceModuleAttrs = None,
         module_code: str = None,
@@ -16793,6 +16933,7 @@ class DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstance(Tea
         total_product_fee: float = None,
     ):
         self.contract_activity = contract_activity
+        self.depreciate_info = depreciate_info
         self.discount_fee = discount_fee
         self.module_attrs = module_attrs
         self.module_code = module_code
@@ -16805,6 +16946,8 @@ class DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstance(Tea
         self.total_product_fee = total_product_fee
 
     def validate(self):
+        if self.depreciate_info:
+            self.depreciate_info.validate()
         if self.module_attrs:
             self.module_attrs.validate()
 
@@ -16816,6 +16959,8 @@ class DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstance(Tea
         result = dict()
         if self.contract_activity is not None:
             result['ContractActivity'] = self.contract_activity
+        if self.depreciate_info is not None:
+            result['DepreciateInfo'] = self.depreciate_info.to_map()
         if self.discount_fee is not None:
             result['DiscountFee'] = self.discount_fee
         if self.module_attrs is not None:
@@ -16842,6 +16987,9 @@ class DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstance(Tea
         m = m or dict()
         if m.get('ContractActivity') is not None:
             self.contract_activity = m.get('ContractActivity')
+        if m.get('DepreciateInfo') is not None:
+            temp_model = DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstanceDepreciateInfo()
+            self.depreciate_info = temp_model.from_map(m['DepreciateInfo'])
         if m.get('DiscountFee') is not None:
             self.discount_fee = m.get('DiscountFee')
         if m.get('ModuleAttrs') is not None:
@@ -17509,11 +17657,11 @@ class DescribeRegionsResponseBodyRegionIdsKVStoreRegion(TeaModel):
         self.local_name = local_name
         # The endpoint of the region.
         self.region_endpoint = region_endpoint
-        # The region ID of the instance.
+        # The ID of the region.
         self.region_id = region_id
-        # The list of zone IDs.
+        # The zone IDs.
         self.zone_id_list = zone_id_list
-        # The zone ID of the instance.
+        # The IDs of the zones in the region.
         self.zone_ids = zone_ids
 
     def validate(self):
@@ -17595,7 +17743,7 @@ class DescribeRegionsResponseBody(TeaModel):
         region_ids: DescribeRegionsResponseBodyRegionIds = None,
         request_id: str = None,
     ):
-        # The value of the **RegionIds** parameter is in the array format. Each element in the array contains the **RegionId** and **ZoneIds** parameters.
+        # The **region IDs**.
         self.region_ids = region_ids
         # The ID of the request.
         self.request_id = request_id
@@ -21864,6 +22012,7 @@ class ModifyBackupPolicyRequest(TeaModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
+        # The number of days for which data backup files are retained. Valid values: 7 to 730. Default value: 7.
         self.backup_retention_period = backup_retention_period
         # Specifies whether to enable incremental data backup. Default value: 0. Valid values:
         # 
@@ -24140,7 +24289,7 @@ class ModifyInstanceSpecRequest(TeaModel):
         self.order_type = order_type
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The number of read replicas. Valid values: 0 to 5. This parameter applies only to the following scenarios:
+        # The number of read replicas in the primary zone. Valid values: 0 to 5. This parameter applies only to the following scenarios:
         # 
         # *   If the instance is a standard instance that uses cloud disks, you can set this parameter to a value greater than 0 to enable the read/write splitting architecture.
         # *   If the instance is a read/write splitting instance that uses cloud disks, you can use this parameter to customize the number of read replicas. You can also set this parameter to 0 to disable the read/write splitting architecture and switch the instance to the standard architecture.
@@ -24152,6 +24301,7 @@ class ModifyInstanceSpecRequest(TeaModel):
         self.security_token = security_token
         # The number of shards. This parameter is available only for cluster instances that use cloud disks.
         self.shard_count = shard_count
+        # The number of read replicas in the secondary zone. This parameter is used to create a read/write splitting instance that is deployed in multiple zones. Valid values: 1 to 9. The sum of the SlaveReadOnlyCount and ReadOnlyCount values cannot be greater than 9.
         self.slave_read_only_count = slave_read_only_count
         # The source of the operation. This parameter is used only for internal maintenance. You do not need to specify this parameter.
         self.source_biz = source_biz
@@ -25106,7 +25256,8 @@ class ModifySecurityIpsRequest(TeaModel):
         self.resource_owner_id = resource_owner_id
         # By default, this parameter is left empty. The attribute of the whitelist. The console does not display the whitelist whose value of this parameter is **hidden**.
         self.security_ip_group_attribute = security_ip_group_attribute
-        # The name of the whitelist.
+        # The name of the IP address whitelist.
+        # ><warning>You cannot modify the whitelist that is generated by the system. If you do not specify this parameter, the default whitelist is modified by default.></warning>
         self.security_ip_group_name = security_ip_group_name
         # The IP addresses in the whitelist. Up to 1,000 IP addresses can be specified in a whitelist. Separate multiple IP addresses with a comma (,). Specify an IP address in the 0.0.0.0/0, 10.23.12.24, or 10.23.12.24/24 format. In CIDR block 10.23.12.24/24, /24 specifies the length of the prefix of an IP address. The prefix length ranges from 1 to 32.
         self.security_ips = security_ips
@@ -25816,6 +25967,10 @@ class RenewInstanceRequest(TeaModel):
         # 
         # If you select false, you must choose **Expenses** > **Renewal Management** in the top navigation bar. In the left-side navigation pane, click **Orders**. Find the specified order and pay for it.
         self.auto_pay = auto_pay
+        # Specifies whether to enable auto-renewal for the instance. Valid values:
+        # 
+        # *   **true**: enables auto-renewal. The instance is renewed based on the specified renewal duration. For example, if you set the renewal duration to three months, you are charged for three months of service each time the instance is automatically renewed.
+        # *   **false** (default): disables auto-renewal.
         self.auto_renew = auto_renew
         # The ID of the promotional event or business information.
         self.business_info = business_info

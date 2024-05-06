@@ -1,3 +1,11 @@
+2024-05-06 Version: 4.0.0
+- Update API CreateGlobalDistributeCache: add param EffectiveTime.
+- Update API CreateTairInstance: add param RestoreTime.
+- Update API DescribeBackups: update response param.
+- Update API DescribeEngineVersion: update response param.
+- Update API DescribePrice: update response param.
+
+
 2024-04-07 Version: 3.0.1
 - Update API DescribePrice: update response param.
 - Update API LockDBInstanceWrite: update param AccessKeyId.

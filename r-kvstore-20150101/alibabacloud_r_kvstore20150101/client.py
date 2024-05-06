@@ -1053,6 +1053,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.effective_time):
+            query['EffectiveTime'] = request.effective_time
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -1103,6 +1105,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.effective_time):
+            query['EffectiveTime'] = request.effective_time
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -1777,6 +1781,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.restore_time):
+            query['RestoreTime'] = request.restore_time
         if not UtilClient.is_unset(request.secondary_zone_id):
             query['SecondaryZoneId'] = request.secondary_zone_id
         if not UtilClient.is_unset(request.security_token):
@@ -1895,6 +1901,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.restore_time):
+            query['RestoreTime'] = request.restore_time
         if not UtilClient.is_unset(request.secondary_zone_id):
             query['SecondaryZoneId'] = request.secondary_zone_id
         if not UtilClient.is_unset(request.security_token):
