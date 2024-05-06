@@ -1917,6 +1917,10 @@ class CreateResourceAccountRequest(TeaModel):
         # 
         # The name must be unique in the resource directory.
         self.display_name = display_name
+        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        # 
+        # *   true: performs only a dry run. The system checks whether an identity type can be specified for the member. If the request does not pass the dry run, an error code is returned.
+        # *   false (default): performs a dry run and performs the actual request.
         self.dry_run = dry_run
         # The ID of the parent folder.
         self.parent_folder_id = parent_folder_id
@@ -3728,6 +3732,7 @@ class GetAccountResponseBodyAccount(TeaModel):
         display_name: str = None,
         email_status: str = None,
         folder_id: str = None,
+        has_secure_mobile_phone: bool = None,
         identity_information: str = None,
         join_method: str = None,
         join_time: str = None,
@@ -3754,6 +3759,7 @@ class GetAccountResponseBodyAccount(TeaModel):
         self.email_status = email_status
         # The ID of the folder.
         self.folder_id = folder_id
+        self.has_secure_mobile_phone = has_secure_mobile_phone
         # The real-name verification information.
         self.identity_information = identity_information
         # The way in which the member joins the resource directory. Valid values:
@@ -3811,6 +3817,8 @@ class GetAccountResponseBodyAccount(TeaModel):
             result['EmailStatus'] = self.email_status
         if self.folder_id is not None:
             result['FolderId'] = self.folder_id
+        if self.has_secure_mobile_phone is not None:
+            result['HasSecureMobilePhone'] = self.has_secure_mobile_phone
         if self.identity_information is not None:
             result['IdentityInformation'] = self.identity_information
         if self.join_method is not None:
@@ -3847,6 +3855,8 @@ class GetAccountResponseBodyAccount(TeaModel):
             self.email_status = m.get('EmailStatus')
         if m.get('FolderId') is not None:
             self.folder_id = m.get('FolderId')
+        if m.get('HasSecureMobilePhone') is not None:
+            self.has_secure_mobile_phone = m.get('HasSecureMobilePhone')
         if m.get('IdentityInformation') is not None:
             self.identity_information = m.get('IdentityInformation')
         if m.get('JoinMethod') is not None:
@@ -6098,9 +6108,10 @@ class ListAccountsRequest(TeaModel):
         query_keyword: str = None,
         tag: List[ListAccountsRequestTag] = None,
     ):
-        # Specifies whether to return the information of tags. Valid values:
+        # Specifies whether to return information about tags. Valid values:
         # 
-        # false (default value) true
+        # *   false (default value)
+        # *   true
         self.include_tags = include_tags
         # The number of the page to return.
         # 
@@ -6167,9 +6178,9 @@ class ListAccountsResponseBodyAccountsAccountTagsTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
+        # The key of the tag.
         self.key = key
-        # The tag value.
+        # The value of the tag.
         self.value = value
 
     def validate(self):
@@ -6252,6 +6263,14 @@ class ListAccountsResponseBodyAccountsAccount(TeaModel):
         self.account_id = account_id
         # The Alibaba Cloud account name of the member.
         self.account_name = account_name
+        # The deletion status of the member. Valid values:
+        # 
+        # *   Checking: A deletion check is being performed for the member.
+        # *   Deleting: The member is being deleted.
+        # *   CheckFailed: The deletion check for the member fails.
+        # *   DeleteFailed: The member fails to be deleted.
+        # 
+        # >  If deletion is not performed for the member, the value of this parameter is empty.
         self.deletion_status = deletion_status
         # The display name of the member.
         self.display_name = display_name
@@ -6268,12 +6287,12 @@ class ListAccountsResponseBodyAccountsAccount(TeaModel):
         self.modify_time = modify_time
         # The ID of the resource directory.
         self.resource_directory_id = resource_directory_id
-        # The path of the member in the resource directory.
+        # The RDPath of the member.
         self.resource_directory_path = resource_directory_path
         # The status of the member. Valid values:
         # 
         # *   CreateSuccess: The member is created.
-        # *   PromoteVerifying: The upgrade of the member is being confirmed.
+        # *   PromoteVerifying: The upgrade of the member is under confirmation.
         # *   PromoteFailed: The upgrade of the member fails.
         # *   PromoteExpired: The upgrade of the member expires.
         # *   PromoteCancelled: The upgrade of the member is canceled.
@@ -6402,7 +6421,7 @@ class ListAccountsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The members returned.
+        # The information about the members.
         self.accounts = accounts
         # The page number of the returned page.
         self.page_number = page_number
@@ -6537,9 +6556,10 @@ class ListAccountsForParentRequest(TeaModel):
         query_keyword: str = None,
         tag: List[ListAccountsForParentRequestTag] = None,
     ):
-        # Specifies whether to return the information of tags. Valid values:
+        # Specifies whether to return information about tags. Valid values:
         # 
-        # false (default value) true
+        # *   false (default value)
+        # *   true
         self.include_tags = include_tags
         # The number of the page to return.
         # 
@@ -6696,12 +6716,20 @@ class ListAccountsForParentResponseBodyAccountsAccount(TeaModel):
         self.account_id = account_id
         # The Alibaba Cloud account name of the member.
         self.account_name = account_name
+        # The deletion status of the member. Valid values:
+        # 
+        # *   Checking: A deletion check is being performed for the member.
+        # *   Deleting: The member is being deleted.
+        # *   CheckFailed: The deletion check for the member fails.
+        # *   DeleteFailed: The member fails to be deleted.
+        # 
+        # >  If deletion is not performed for the member, the value of this parameter is empty.
         self.deletion_status = deletion_status
         # The display name of the member.
         self.display_name = display_name
         # The ID of the folder.
         self.folder_id = folder_id
-        # The way in which the member joins the resource directory. Valid values:
+        # The way in which the member joins the resource directory.
         # 
         # *   invited: The member is invited to join the resource directory.
         # *   created: The member is directly created in the resource directory.
@@ -6715,7 +6743,7 @@ class ListAccountsForParentResponseBodyAccountsAccount(TeaModel):
         # The status of the member. Valid values:
         # 
         # *   CreateSuccess: The member is created.
-        # *   PromoteVerifying: The upgrade of the member is being confirmed.
+        # *   PromoteVerifying: The upgrade of the member is under confirmation.
         # *   PromoteFailed: The upgrade of the member fails.
         # *   PromoteExpired: The upgrade of the member expires.
         # *   PromoteCancelled: The upgrade of the member is canceled.
@@ -6840,7 +6868,7 @@ class ListAccountsForParentResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The information of the members.
+        # The information about the members.
         self.accounts = accounts
         # The page number of the returned page.
         self.page_number = page_number
@@ -11759,6 +11787,10 @@ class UpdateAccountRequest(TeaModel):
     ):
         # The Alibaba Cloud account ID of the member.
         self.account_id = account_id
+        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        # 
+        # *   true: performs only a dry run. The system checks items such as whether the member status can be modified and whether security information is configured for the member. If the request does not pass the dry run, an error code is returned.
+        # *   false (default): performs a dry run and performs the actual request.
         self.dry_run = dry_run
         # The new type of the member. Valid values:
         # 
