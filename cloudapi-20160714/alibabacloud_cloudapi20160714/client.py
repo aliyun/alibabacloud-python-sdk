@@ -986,8 +986,8 @@ class Client(OpenApiClient):
     ) -> cloud_api20160714_models.CreateApiResponse:
         """
         This operation is intended for API providers.
-        *   The name of each API within the same group must be unique.
-        *   Each request path within the same group must be unique.
+        *   The name of an API must be unique within an API group.
+        *   A request path must be unique within an API group.
         *   The QPS limit on this operation is 50 per user.
         
         @param request: CreateApiRequest
@@ -1028,6 +1028,8 @@ class Client(OpenApiClient):
             query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.service_config):
             query['ServiceConfig'] = request.service_config
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.visibility):
             query['Visibility'] = request.visibility
         if not UtilClient.is_unset(request.web_socket_api_type):
@@ -1078,8 +1080,8 @@ class Client(OpenApiClient):
     ) -> cloud_api20160714_models.CreateApiResponse:
         """
         This operation is intended for API providers.
-        *   The name of each API within the same group must be unique.
-        *   Each request path within the same group must be unique.
+        *   The name of an API must be unique within an API group.
+        *   A request path must be unique within an API group.
         *   The QPS limit on this operation is 50 per user.
         
         @param request: CreateApiRequest
@@ -1120,6 +1122,8 @@ class Client(OpenApiClient):
             query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.service_config):
             query['ServiceConfig'] = request.service_config
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.visibility):
             query['Visibility'] = request.visibility
         if not UtilClient.is_unset(request.web_socket_api_type):
@@ -1169,8 +1173,8 @@ class Client(OpenApiClient):
     ) -> cloud_api20160714_models.CreateApiResponse:
         """
         This operation is intended for API providers.
-        *   The name of each API within the same group must be unique.
-        *   Each request path within the same group must be unique.
+        *   The name of an API must be unique within an API group.
+        *   A request path must be unique within an API group.
         *   The QPS limit on this operation is 50 per user.
         
         @param request: CreateApiRequest
@@ -1185,8 +1189,8 @@ class Client(OpenApiClient):
     ) -> cloud_api20160714_models.CreateApiResponse:
         """
         This operation is intended for API providers.
-        *   The name of each API within the same group must be unique.
-        *   Each request path within the same group must be unique.
+        *   The name of an API must be unique within an API group.
+        *   A request path must be unique within an API group.
         *   The QPS limit on this operation is 50 per user.
         
         @param request: CreateApiRequest
@@ -1562,10 +1566,14 @@ class Client(OpenApiClient):
             query['BackendType'] = request.backend_type
         if not UtilClient.is_unset(request.create_event_bridge_service_linked_role):
             query['CreateEventBridgeServiceLinkedRole'] = request.create_event_bridge_service_linked_role
+        if not UtilClient.is_unset(request.create_slr):
+            query['CreateSlr'] = request.create_slr
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.security_token):
             query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1598,10 +1606,14 @@ class Client(OpenApiClient):
             query['BackendType'] = request.backend_type
         if not UtilClient.is_unset(request.create_event_bridge_service_linked_role):
             query['CreateEventBridgeServiceLinkedRole'] = request.create_event_bridge_service_linked_role
+        if not UtilClient.is_unset(request.create_slr):
+            query['CreateSlr'] = request.create_slr
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.security_token):
             query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1738,6 +1750,8 @@ class Client(OpenApiClient):
             query['DatasetType'] = request.dataset_type
         if not UtilClient.is_unset(request.security_token):
             query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1770,6 +1784,8 @@ class Client(OpenApiClient):
             query['DatasetType'] = request.dataset_type
         if not UtilClient.is_unset(request.security_token):
             query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2314,6 +2330,8 @@ class Client(OpenApiClient):
             query['ModelName'] = request.model_name
         if not UtilClient.is_unset(request.schema):
             query['Schema'] = request.schema
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2356,6 +2374,8 @@ class Client(OpenApiClient):
             query['ModelName'] = request.model_name
         if not UtilClient.is_unset(request.schema):
             query['Schema'] = request.schema
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5375,7 +5395,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeApiDocResponse:
         """
-        For API callers, the specified API must be a public or authorized private API that has been published to a runtime environment.****************\
+        For API callers, the specified API must be a public or authorized private API that has been published to a runtime environment.
         *   When you call this operation as an API caller, the service information, parameter definitions, and other details of the API you specify are returned.
         *   When you call this operation as an API provider, the definition of the specified API running in the specified runtime environment is returned. The returned definition takes effect in the runtime environment, and may be different from the definition of the API you modify.
         *   Before you call this operation as an API provider, ensure that the API to be queried is a public one or that your application has been authorized to call the API, because authentication on API callers is required.
@@ -5419,7 +5439,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeApiDocResponse:
         """
-        For API callers, the specified API must be a public or authorized private API that has been published to a runtime environment.****************\
+        For API callers, the specified API must be a public or authorized private API that has been published to a runtime environment.
         *   When you call this operation as an API caller, the service information, parameter definitions, and other details of the API you specify are returned.
         *   When you call this operation as an API provider, the definition of the specified API running in the specified runtime environment is returned. The returned definition takes effect in the runtime environment, and may be different from the definition of the API you modify.
         *   Before you call this operation as an API provider, ensure that the API to be queried is a public one or that your application has been authorized to call the API, because authentication on API callers is required.
@@ -5462,7 +5482,7 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeApiDocRequest,
     ) -> cloud_api20160714_models.DescribeApiDocResponse:
         """
-        For API callers, the specified API must be a public or authorized private API that has been published to a runtime environment.****************\
+        For API callers, the specified API must be a public or authorized private API that has been published to a runtime environment.
         *   When you call this operation as an API caller, the service information, parameter definitions, and other details of the API you specify are returned.
         *   When you call this operation as an API provider, the definition of the specified API running in the specified runtime environment is returned. The returned definition takes effect in the runtime environment, and may be different from the definition of the API you modify.
         *   Before you call this operation as an API provider, ensure that the API to be queried is a public one or that your application has been authorized to call the API, because authentication on API callers is required.
@@ -5478,7 +5498,7 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeApiDocRequest,
     ) -> cloud_api20160714_models.DescribeApiDocResponse:
         """
-        For API callers, the specified API must be a public or authorized private API that has been published to a runtime environment.****************\
+        For API callers, the specified API must be a public or authorized private API that has been published to a runtime environment.
         *   When you call this operation as an API caller, the service information, parameter definitions, and other details of the API you specify are returned.
         *   When you call this operation as an API provider, the definition of the specified API running in the specified runtime environment is returned. The returned definition takes effect in the runtime environment, and may be different from the definition of the API you modify.
         *   Before you call this operation as an API provider, ensure that the API to be queried is a public one or that your application has been authorized to call the API, because authentication on API callers is required.
@@ -7689,6 +7709,88 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_apis_by_traffic_control_with_options_async(request, runtime)
 
+    def describe_apis_by_vpc_access_with_options(
+        self,
+        request: cloud_api20160714_models.DescribeApisByVpcAccessRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_api20160714_models.DescribeApisByVpcAccessResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.vpc_name):
+            query['VpcName'] = request.vpc_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeApisByVpcAccess',
+            version='2016-07-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloud_api20160714_models.DescribeApisByVpcAccessResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_apis_by_vpc_access_with_options_async(
+        self,
+        request: cloud_api20160714_models.DescribeApisByVpcAccessRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_api20160714_models.DescribeApisByVpcAccessResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.vpc_name):
+            query['VpcName'] = request.vpc_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeApisByVpcAccess',
+            version='2016-07-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloud_api20160714_models.DescribeApisByVpcAccessResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_apis_by_vpc_access(
+        self,
+        request: cloud_api20160714_models.DescribeApisByVpcAccessRequest,
+    ) -> cloud_api20160714_models.DescribeApisByVpcAccessResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_apis_by_vpc_access_with_options(request, runtime)
+
+    async def describe_apis_by_vpc_access_async(
+        self,
+        request: cloud_api20160714_models.DescribeApisByVpcAccessRequest,
+    ) -> cloud_api20160714_models.DescribeApisByVpcAccessResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_apis_by_vpc_access_with_options_async(request, runtime)
+
     def describe_apis_with_stage_name_integrated_by_app_with_options(
         self,
         request: cloud_api20160714_models.DescribeApisWithStageNameIntegratedByAppRequest,
@@ -8010,6 +8112,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeAppSecurityRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeAppSecurityResponse:
+        """
+        This operation is intended for API callers.
+        
+        @param request: DescribeAppSecurityRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAppSecurityResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -8042,6 +8151,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeAppSecurityRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeAppSecurityResponse:
+        """
+        This operation is intended for API callers.
+        
+        @param request: DescribeAppSecurityRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAppSecurityResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -8073,6 +8189,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribeAppSecurityRequest,
     ) -> cloud_api20160714_models.DescribeAppSecurityResponse:
+        """
+        This operation is intended for API callers.
+        
+        @param request: DescribeAppSecurityRequest
+        @return: DescribeAppSecurityResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_app_security_with_options(request, runtime)
 
@@ -8080,6 +8202,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribeAppSecurityRequest,
     ) -> cloud_api20160714_models.DescribeAppSecurityResponse:
+        """
+        This operation is intended for API callers.
+        
+        @param request: DescribeAppSecurityRequest
+        @return: DescribeAppSecurityResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_app_security_with_options_async(request, runtime)
 
@@ -8624,6 +8752,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.security_token):
             query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8660,6 +8790,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.security_token):
             query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8950,6 +9082,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.security_token):
             query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8984,6 +9118,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.security_token):
             query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9179,7 +9315,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeDeployedApisResponse:
         """
-        This API is intended for API providers.
+        This operation is intended for API callers.
         
         @param request: DescribeDeployedApisRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9234,7 +9370,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeDeployedApisResponse:
         """
-        This API is intended for API providers.
+        This operation is intended for API callers.
         
         @param request: DescribeDeployedApisRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9288,7 +9424,7 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeDeployedApisRequest,
     ) -> cloud_api20160714_models.DescribeDeployedApisResponse:
         """
-        This API is intended for API providers.
+        This operation is intended for API callers.
         
         @param request: DescribeDeployedApisRequest
         @return: DescribeDeployedApisResponse
@@ -9301,7 +9437,7 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeDeployedApisRequest,
     ) -> cloud_api20160714_models.DescribeDeployedApisResponse:
         """
-        This API is intended for API providers.
+        This operation is intended for API callers.
         
         @param request: DescribeDeployedApisRequest
         @return: DescribeDeployedApisResponse
@@ -10796,9 +10932,9 @@ class Client(OpenApiClient):
     ) -> cloud_api20160714_models.DescribeIpControlsResponse:
         """
         This operation is intended for API providers.
-        *   This operation is used to query the ACLs in a Region. Region is a system parameter.
+        *   This operation is used to query the ACLs in a region. Region is a system parameter.
         *   You can filter the query results by ACL ID, name, or type.
-        *   This operation cannot be used to query specific policies. If you want to query specific policies, use the DescribeIpControlPolicyItems operation.
+        *   This operation cannot be used to query specific policies. If you want to query specific policies, call the [DescribeIpControlPolicyItems](~~DescribeIpControlPolicyItems~~) operation.
         
         @param request: DescribeIpControlsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10844,9 +10980,9 @@ class Client(OpenApiClient):
     ) -> cloud_api20160714_models.DescribeIpControlsResponse:
         """
         This operation is intended for API providers.
-        *   This operation is used to query the ACLs in a Region. Region is a system parameter.
+        *   This operation is used to query the ACLs in a region. Region is a system parameter.
         *   You can filter the query results by ACL ID, name, or type.
-        *   This operation cannot be used to query specific policies. If you want to query specific policies, use the DescribeIpControlPolicyItems operation.
+        *   This operation cannot be used to query specific policies. If you want to query specific policies, call the [DescribeIpControlPolicyItems](~~DescribeIpControlPolicyItems~~) operation.
         
         @param request: DescribeIpControlsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10891,9 +11027,9 @@ class Client(OpenApiClient):
     ) -> cloud_api20160714_models.DescribeIpControlsResponse:
         """
         This operation is intended for API providers.
-        *   This operation is used to query the ACLs in a Region. Region is a system parameter.
+        *   This operation is used to query the ACLs in a region. Region is a system parameter.
         *   You can filter the query results by ACL ID, name, or type.
-        *   This operation cannot be used to query specific policies. If you want to query specific policies, use the DescribeIpControlPolicyItems operation.
+        *   This operation cannot be used to query specific policies. If you want to query specific policies, call the [DescribeIpControlPolicyItems](~~DescribeIpControlPolicyItems~~) operation.
         
         @param request: DescribeIpControlsRequest
         @return: DescribeIpControlsResponse
@@ -10907,9 +11043,9 @@ class Client(OpenApiClient):
     ) -> cloud_api20160714_models.DescribeIpControlsResponse:
         """
         This operation is intended for API providers.
-        *   This operation is used to query the ACLs in a Region. Region is a system parameter.
+        *   This operation is used to query the ACLs in a region. Region is a system parameter.
         *   You can filter the query results by ACL ID, name, or type.
-        *   This operation cannot be used to query specific policies. If you want to query specific policies, use the DescribeIpControlPolicyItems operation.
+        *   This operation cannot be used to query specific policies. If you want to query specific policies, call the [DescribeIpControlPolicyItems](~~DescribeIpControlPolicyItems~~) operation.
         
         @param request: DescribeIpControlsRequest
         @return: DescribeIpControlsResponse
@@ -11089,6 +11225,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -11132,6 +11270,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -12842,6 +12982,8 @@ class Client(OpenApiClient):
             query['Port'] = request.port
         if not UtilClient.is_unset(request.security_token):
             query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.vpc_access_id):
             query['VpcAccessId'] = request.vpc_access_id
         if not UtilClient.is_unset(request.vpc_id):
@@ -12884,6 +13026,8 @@ class Client(OpenApiClient):
             query['Port'] = request.port
         if not UtilClient.is_unset(request.security_token):
             query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.vpc_access_id):
             query['VpcAccessId'] = request.vpc_access_id
         if not UtilClient.is_unset(request.vpc_id):
@@ -13689,7 +13833,7 @@ class Client(OpenApiClient):
         *   You can also specify Tag.N.Key to query the visible keys of a specified key in a region.
         *   At least one of ResourceId.N, Tag.N.Key, and Tag.N.Value exists.
         *   You can query tags of the same type or different types in a single operation.
-        *   You can query all your user tags and visible system tags.
+        *   You can query all your user types and visible system tags.
         
         @param request: ListTagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13738,7 +13882,7 @@ class Client(OpenApiClient):
         *   You can also specify Tag.N.Key to query the visible keys of a specified key in a region.
         *   At least one of ResourceId.N, Tag.N.Key, and Tag.N.Value exists.
         *   You can query tags of the same type or different types in a single operation.
-        *   You can query all your user tags and visible system tags.
+        *   You can query all your user types and visible system tags.
         
         @param request: ListTagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13786,7 +13930,7 @@ class Client(OpenApiClient):
         *   You can also specify Tag.N.Key to query the visible keys of a specified key in a region.
         *   At least one of ResourceId.N, Tag.N.Key, and Tag.N.Value exists.
         *   You can query tags of the same type or different types in a single operation.
-        *   You can query all your user tags and visible system tags.
+        *   You can query all your user types and visible system tags.
         
         @param request: ListTagResourcesRequest
         @return: ListTagResourcesResponse
@@ -13807,7 +13951,7 @@ class Client(OpenApiClient):
         *   You can also specify Tag.N.Key to query the visible keys of a specified key in a region.
         *   At least one of ResourceId.N, Tag.N.Key, and Tag.N.Value exists.
         *   You can query tags of the same type or different types in a single operation.
-        *   You can query all your user tags and visible system tags.
+        *   You can query all your user types and visible system tags.
         
         @param request: ListTagResourcesRequest
         @return: ListTagResourcesResponse
@@ -13847,16 +13991,10 @@ class Client(OpenApiClient):
             query['BackendEnable'] = request.backend_enable
         if not UtilClient.is_unset(request.backend_id):
             query['BackendId'] = request.backend_id
-        if not UtilClient.is_unset(request.constant_parameters):
-            query['ConstantParameters'] = request.constant_parameters
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.disable_internet):
             query['DisableInternet'] = request.disable_internet
-        if not UtilClient.is_unset(request.error_code_samples):
-            query['ErrorCodeSamples'] = request.error_code_samples
-        if not UtilClient.is_unset(request.fail_result_sample):
-            query['FailResultSample'] = request.fail_result_sample
         if not UtilClient.is_unset(request.force_nonce_check):
             query['ForceNonceCheck'] = request.force_nonce_check
         if not UtilClient.is_unset(request.group_id):
@@ -13865,32 +14003,40 @@ class Client(OpenApiClient):
             query['OpenIdConnectConfig'] = request.open_id_connect_config
         if not UtilClient.is_unset(request.request_config):
             query['RequestConfig'] = request.request_config
-        if not UtilClient.is_unset(request.request_parameters):
-            query['RequestParameters'] = request.request_parameters
         if not UtilClient.is_unset(request.result_body_model):
             query['ResultBodyModel'] = request.result_body_model
-        if not UtilClient.is_unset(request.result_descriptions):
-            query['ResultDescriptions'] = request.result_descriptions
-        if not UtilClient.is_unset(request.result_sample):
-            query['ResultSample'] = request.result_sample
         if not UtilClient.is_unset(request.result_type):
             query['ResultType'] = request.result_type
         if not UtilClient.is_unset(request.security_token):
             query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.service_config):
             query['ServiceConfig'] = request.service_config
-        if not UtilClient.is_unset(request.service_parameters):
-            query['ServiceParameters'] = request.service_parameters
-        if not UtilClient.is_unset(request.service_parameters_map):
-            query['ServiceParametersMap'] = request.service_parameters_map
-        if not UtilClient.is_unset(request.system_parameters):
-            query['SystemParameters'] = request.system_parameters
         if not UtilClient.is_unset(request.visibility):
             query['Visibility'] = request.visibility
         if not UtilClient.is_unset(request.web_socket_api_type):
             query['WebSocketApiType'] = request.web_socket_api_type
+        body = {}
+        if not UtilClient.is_unset(request.constant_parameters):
+            body['ConstantParameters'] = request.constant_parameters
+        if not UtilClient.is_unset(request.error_code_samples):
+            body['ErrorCodeSamples'] = request.error_code_samples
+        if not UtilClient.is_unset(request.fail_result_sample):
+            body['FailResultSample'] = request.fail_result_sample
+        if not UtilClient.is_unset(request.request_parameters):
+            body['RequestParameters'] = request.request_parameters
+        if not UtilClient.is_unset(request.result_descriptions):
+            body['ResultDescriptions'] = request.result_descriptions
+        if not UtilClient.is_unset(request.result_sample):
+            body['ResultSample'] = request.result_sample
+        if not UtilClient.is_unset(request.service_parameters):
+            body['ServiceParameters'] = request.service_parameters
+        if not UtilClient.is_unset(request.service_parameters_map):
+            body['ServiceParametersMap'] = request.service_parameters_map
+        if not UtilClient.is_unset(request.system_parameters):
+            body['SystemParameters'] = request.system_parameters
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='ModifyApi',
@@ -13940,16 +14086,10 @@ class Client(OpenApiClient):
             query['BackendEnable'] = request.backend_enable
         if not UtilClient.is_unset(request.backend_id):
             query['BackendId'] = request.backend_id
-        if not UtilClient.is_unset(request.constant_parameters):
-            query['ConstantParameters'] = request.constant_parameters
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.disable_internet):
             query['DisableInternet'] = request.disable_internet
-        if not UtilClient.is_unset(request.error_code_samples):
-            query['ErrorCodeSamples'] = request.error_code_samples
-        if not UtilClient.is_unset(request.fail_result_sample):
-            query['FailResultSample'] = request.fail_result_sample
         if not UtilClient.is_unset(request.force_nonce_check):
             query['ForceNonceCheck'] = request.force_nonce_check
         if not UtilClient.is_unset(request.group_id):
@@ -13958,32 +14098,40 @@ class Client(OpenApiClient):
             query['OpenIdConnectConfig'] = request.open_id_connect_config
         if not UtilClient.is_unset(request.request_config):
             query['RequestConfig'] = request.request_config
-        if not UtilClient.is_unset(request.request_parameters):
-            query['RequestParameters'] = request.request_parameters
         if not UtilClient.is_unset(request.result_body_model):
             query['ResultBodyModel'] = request.result_body_model
-        if not UtilClient.is_unset(request.result_descriptions):
-            query['ResultDescriptions'] = request.result_descriptions
-        if not UtilClient.is_unset(request.result_sample):
-            query['ResultSample'] = request.result_sample
         if not UtilClient.is_unset(request.result_type):
             query['ResultType'] = request.result_type
         if not UtilClient.is_unset(request.security_token):
             query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.service_config):
             query['ServiceConfig'] = request.service_config
-        if not UtilClient.is_unset(request.service_parameters):
-            query['ServiceParameters'] = request.service_parameters
-        if not UtilClient.is_unset(request.service_parameters_map):
-            query['ServiceParametersMap'] = request.service_parameters_map
-        if not UtilClient.is_unset(request.system_parameters):
-            query['SystemParameters'] = request.system_parameters
         if not UtilClient.is_unset(request.visibility):
             query['Visibility'] = request.visibility
         if not UtilClient.is_unset(request.web_socket_api_type):
             query['WebSocketApiType'] = request.web_socket_api_type
+        body = {}
+        if not UtilClient.is_unset(request.constant_parameters):
+            body['ConstantParameters'] = request.constant_parameters
+        if not UtilClient.is_unset(request.error_code_samples):
+            body['ErrorCodeSamples'] = request.error_code_samples
+        if not UtilClient.is_unset(request.fail_result_sample):
+            body['FailResultSample'] = request.fail_result_sample
+        if not UtilClient.is_unset(request.request_parameters):
+            body['RequestParameters'] = request.request_parameters
+        if not UtilClient.is_unset(request.result_descriptions):
+            body['ResultDescriptions'] = request.result_descriptions
+        if not UtilClient.is_unset(request.result_sample):
+            body['ResultSample'] = request.result_sample
+        if not UtilClient.is_unset(request.service_parameters):
+            body['ServiceParameters'] = request.service_parameters
+        if not UtilClient.is_unset(request.service_parameters_map):
+            body['ServiceParametersMap'] = request.service_parameters_map
+        if not UtilClient.is_unset(request.system_parameters):
+            body['SystemParameters'] = request.system_parameters
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='ModifyApi',
@@ -14396,6 +14544,190 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.modify_api_group_with_options_async(request, runtime)
+
+    def modify_api_group_instance_with_options(
+        self,
+        request: cloud_api20160714_models.ModifyApiGroupInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_api20160714_models.ModifyApiGroupInstanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.target_instance_id):
+            query['TargetInstanceId'] = request.target_instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyApiGroupInstance',
+            version='2016-07-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloud_api20160714_models.ModifyApiGroupInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_api_group_instance_with_options_async(
+        self,
+        request: cloud_api20160714_models.ModifyApiGroupInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_api20160714_models.ModifyApiGroupInstanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.target_instance_id):
+            query['TargetInstanceId'] = request.target_instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyApiGroupInstance',
+            version='2016-07-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloud_api20160714_models.ModifyApiGroupInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_api_group_instance(
+        self,
+        request: cloud_api20160714_models.ModifyApiGroupInstanceRequest,
+    ) -> cloud_api20160714_models.ModifyApiGroupInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_api_group_instance_with_options(request, runtime)
+
+    async def modify_api_group_instance_async(
+        self,
+        request: cloud_api20160714_models.ModifyApiGroupInstanceRequest,
+    ) -> cloud_api20160714_models.ModifyApiGroupInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_api_group_instance_with_options_async(request, runtime)
+
+    def modify_api_group_network_policy_with_options(
+        self,
+        request: cloud_api20160714_models.ModifyApiGroupNetworkPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_api20160714_models.ModifyApiGroupNetworkPolicyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.https_policy):
+            query['HttpsPolicy'] = request.https_policy
+        if not UtilClient.is_unset(request.inner_domain_enable):
+            query['InnerDomainEnable'] = request.inner_domain_enable
+        if not UtilClient.is_unset(request.internet_enable):
+            query['InternetEnable'] = request.internet_enable
+        if not UtilClient.is_unset(request.internet_ipv6enable):
+            query['InternetIPV6Enable'] = request.internet_ipv6enable
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.vpc_intranet_enable):
+            query['VpcIntranetEnable'] = request.vpc_intranet_enable
+        if not UtilClient.is_unset(request.vpc_slb_intranet_enable):
+            query['VpcSlbIntranetEnable'] = request.vpc_slb_intranet_enable
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyApiGroupNetworkPolicy',
+            version='2016-07-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloud_api20160714_models.ModifyApiGroupNetworkPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_api_group_network_policy_with_options_async(
+        self,
+        request: cloud_api20160714_models.ModifyApiGroupNetworkPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_api20160714_models.ModifyApiGroupNetworkPolicyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.https_policy):
+            query['HttpsPolicy'] = request.https_policy
+        if not UtilClient.is_unset(request.inner_domain_enable):
+            query['InnerDomainEnable'] = request.inner_domain_enable
+        if not UtilClient.is_unset(request.internet_enable):
+            query['InternetEnable'] = request.internet_enable
+        if not UtilClient.is_unset(request.internet_ipv6enable):
+            query['InternetIPV6Enable'] = request.internet_ipv6enable
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.vpc_intranet_enable):
+            query['VpcIntranetEnable'] = request.vpc_intranet_enable
+        if not UtilClient.is_unset(request.vpc_slb_intranet_enable):
+            query['VpcSlbIntranetEnable'] = request.vpc_slb_intranet_enable
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyApiGroupNetworkPolicy',
+            version='2016-07-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloud_api20160714_models.ModifyApiGroupNetworkPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_api_group_network_policy(
+        self,
+        request: cloud_api20160714_models.ModifyApiGroupNetworkPolicyRequest,
+    ) -> cloud_api20160714_models.ModifyApiGroupNetworkPolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_api_group_network_policy_with_options(request, runtime)
+
+    async def modify_api_group_network_policy_async(
+        self,
+        request: cloud_api20160714_models.ModifyApiGroupNetworkPolicyRequest,
+    ) -> cloud_api20160714_models.ModifyApiGroupNetworkPolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_api_group_network_policy_with_options_async(request, runtime)
 
     def modify_api_group_vpc_whitelist_with_options(
         self,
@@ -14942,6 +15274,128 @@ class Client(OpenApiClient):
     ) -> cloud_api20160714_models.ModifyDatasetItemResponse:
         runtime = util_models.RuntimeOptions()
         return await self.modify_dataset_item_with_options_async(request, runtime)
+
+    def modify_instance_attribute_with_options(
+        self,
+        tmp_req: cloud_api20160714_models.ModifyInstanceAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_api20160714_models.ModifyInstanceAttributeResponse:
+        UtilClient.validate_model(tmp_req)
+        request = cloud_api20160714_models.ModifyInstanceAttributeShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.to_connect_vpc_ip_block):
+            request.to_connect_vpc_ip_block_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.to_connect_vpc_ip_block, 'ToConnectVpcIpBlock', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.delete_vpc_ip_block):
+            query['DeleteVpcIpBlock'] = request.delete_vpc_ip_block
+        if not UtilClient.is_unset(request.egress_ipv_6enable):
+            query['EgressIpv6Enable'] = request.egress_ipv_6enable
+        if not UtilClient.is_unset(request.https_policy):
+            query['HttpsPolicy'] = request.https_policy
+        if not UtilClient.is_unset(request.ipv6enabled):
+            query['IPV6Enabled'] = request.ipv6enabled
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.intranet_segments):
+            query['IntranetSegments'] = request.intranet_segments
+        if not UtilClient.is_unset(request.maintain_end_time):
+            query['MaintainEndTime'] = request.maintain_end_time
+        if not UtilClient.is_unset(request.maintain_start_time):
+            query['MaintainStartTime'] = request.maintain_start_time
+        if not UtilClient.is_unset(request.to_connect_vpc_ip_block_shrink):
+            query['ToConnectVpcIpBlock'] = request.to_connect_vpc_ip_block_shrink
+        if not UtilClient.is_unset(request.token):
+            query['Token'] = request.token
+        if not UtilClient.is_unset(request.vpc_slb_intranet_enable):
+            query['VpcSlbIntranetEnable'] = request.vpc_slb_intranet_enable
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyInstanceAttribute',
+            version='2016-07-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloud_api20160714_models.ModifyInstanceAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_instance_attribute_with_options_async(
+        self,
+        tmp_req: cloud_api20160714_models.ModifyInstanceAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_api20160714_models.ModifyInstanceAttributeResponse:
+        UtilClient.validate_model(tmp_req)
+        request = cloud_api20160714_models.ModifyInstanceAttributeShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.to_connect_vpc_ip_block):
+            request.to_connect_vpc_ip_block_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.to_connect_vpc_ip_block, 'ToConnectVpcIpBlock', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.delete_vpc_ip_block):
+            query['DeleteVpcIpBlock'] = request.delete_vpc_ip_block
+        if not UtilClient.is_unset(request.egress_ipv_6enable):
+            query['EgressIpv6Enable'] = request.egress_ipv_6enable
+        if not UtilClient.is_unset(request.https_policy):
+            query['HttpsPolicy'] = request.https_policy
+        if not UtilClient.is_unset(request.ipv6enabled):
+            query['IPV6Enabled'] = request.ipv6enabled
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.intranet_segments):
+            query['IntranetSegments'] = request.intranet_segments
+        if not UtilClient.is_unset(request.maintain_end_time):
+            query['MaintainEndTime'] = request.maintain_end_time
+        if not UtilClient.is_unset(request.maintain_start_time):
+            query['MaintainStartTime'] = request.maintain_start_time
+        if not UtilClient.is_unset(request.to_connect_vpc_ip_block_shrink):
+            query['ToConnectVpcIpBlock'] = request.to_connect_vpc_ip_block_shrink
+        if not UtilClient.is_unset(request.token):
+            query['Token'] = request.token
+        if not UtilClient.is_unset(request.vpc_slb_intranet_enable):
+            query['VpcSlbIntranetEnable'] = request.vpc_slb_intranet_enable
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyInstanceAttribute',
+            version='2016-07-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloud_api20160714_models.ModifyInstanceAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_instance_attribute(
+        self,
+        request: cloud_api20160714_models.ModifyInstanceAttributeRequest,
+    ) -> cloud_api20160714_models.ModifyInstanceAttributeResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_instance_attribute_with_options(request, runtime)
+
+    async def modify_instance_attribute_async(
+        self,
+        request: cloud_api20160714_models.ModifyInstanceAttributeRequest,
+    ) -> cloud_api20160714_models.ModifyInstanceAttributeResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_instance_attribute_with_options_async(request, runtime)
 
     def modify_instance_spec_with_options(
         self,
@@ -18015,6 +18469,92 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.set_apis_authorities_with_options_async(request, runtime)
 
+    def set_apps_auth_to_api_product_with_options(
+        self,
+        request: cloud_api20160714_models.SetAppsAuthToApiProductRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_api20160714_models.SetAppsAuthToApiProductResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.api_product_id):
+            query['ApiProductId'] = request.api_product_id
+        if not UtilClient.is_unset(request.app_ids):
+            query['AppIds'] = request.app_ids
+        if not UtilClient.is_unset(request.auth_valid_time):
+            query['AuthValidTime'] = request.auth_valid_time
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetAppsAuthToApiProduct',
+            version='2016-07-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloud_api20160714_models.SetAppsAuthToApiProductResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def set_apps_auth_to_api_product_with_options_async(
+        self,
+        request: cloud_api20160714_models.SetAppsAuthToApiProductRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_api20160714_models.SetAppsAuthToApiProductResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.api_product_id):
+            query['ApiProductId'] = request.api_product_id
+        if not UtilClient.is_unset(request.app_ids):
+            query['AppIds'] = request.app_ids
+        if not UtilClient.is_unset(request.auth_valid_time):
+            query['AuthValidTime'] = request.auth_valid_time
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetAppsAuthToApiProduct',
+            version='2016-07-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloud_api20160714_models.SetAppsAuthToApiProductResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def set_apps_auth_to_api_product(
+        self,
+        request: cloud_api20160714_models.SetAppsAuthToApiProductRequest,
+    ) -> cloud_api20160714_models.SetAppsAuthToApiProductResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.set_apps_auth_to_api_product_with_options(request, runtime)
+
+    async def set_apps_auth_to_api_product_async(
+        self,
+        request: cloud_api20160714_models.SetAppsAuthToApiProductRequest,
+    ) -> cloud_api20160714_models.SetAppsAuthToApiProductResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.set_apps_auth_to_api_product_with_options_async(request, runtime)
+
     def set_apps_authorities_with_options(
         self,
         request: cloud_api20160714_models.SetAppsAuthoritiesRequest,
@@ -18882,6 +19422,14 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.SetVpcAccessRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.SetVpcAccessResponse:
+        """
+        This operation is intended for API providers.
+        * This operation is used to authorize API Gateway to access your VPC instance.
+        
+        @param request: SetVpcAccessRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetVpcAccessResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -18894,6 +19442,8 @@ class Client(OpenApiClient):
             query['Port'] = request.port
         if not UtilClient.is_unset(request.security_token):
             query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.vpc_id):
             query['VpcId'] = request.vpc_id
         if not UtilClient.is_unset(request.vpc_target_host_name):
@@ -18922,6 +19472,14 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.SetVpcAccessRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.SetVpcAccessResponse:
+        """
+        This operation is intended for API providers.
+        * This operation is used to authorize API Gateway to access your VPC instance.
+        
+        @param request: SetVpcAccessRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetVpcAccessResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -18934,6 +19492,8 @@ class Client(OpenApiClient):
             query['Port'] = request.port
         if not UtilClient.is_unset(request.security_token):
             query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.vpc_id):
             query['VpcId'] = request.vpc_id
         if not UtilClient.is_unset(request.vpc_target_host_name):
@@ -18961,6 +19521,13 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.SetVpcAccessRequest,
     ) -> cloud_api20160714_models.SetVpcAccessResponse:
+        """
+        This operation is intended for API providers.
+        * This operation is used to authorize API Gateway to access your VPC instance.
+        
+        @param request: SetVpcAccessRequest
+        @return: SetVpcAccessResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.set_vpc_access_with_options(request, runtime)
 
@@ -18968,6 +19535,13 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.SetVpcAccessRequest,
     ) -> cloud_api20160714_models.SetVpcAccessResponse:
+        """
+        This operation is intended for API providers.
+        * This operation is used to authorize API Gateway to access your VPC instance.
+        
+        @param request: SetVpcAccessRequest
+        @return: SetVpcAccessResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.set_vpc_access_with_options_async(request, runtime)
 

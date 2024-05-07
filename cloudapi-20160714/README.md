@@ -28,7 +28,7 @@ pip install alibabacloud_cloudapi20160714
 
 ## Changelog
 
-Detailed changes for each release are documented in the [release notes](./ChangeLog.md).
+Detailed changes for each release are documented in the [release notes](https://github.com/aliyun/alibabacloud-python-sdk/blob/master/cloudapi-20160714/ChangeLog.md).
 
 ## References
 

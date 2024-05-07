@@ -1,3 +1,52 @@
+2024-05-07 Version: 4.0.0
+- Support API DescribeApisByVpcAccess.
+- Support API ModifyApiGroupInstance.
+- Support API ModifyApiGroupNetworkPolicy.
+- Support API ModifyInstanceAttribute.
+- Support API SetAppsAuthToApiProduct.
+- Update API CreateApi: add param Tag.
+- Update API CreateBackend: add param CreateSlr.
+- Update API CreateBackend: add param Tag.
+- Update API CreateBackend: update param CreateEventBridgeServiceLinkedRole.
+- Update API CreateDataset: add param Tag.
+- Update API CreateInstance: update param Duration.
+- Update API CreateInstance: update param HttpsPolicy.
+- Update API CreateInstance: update param PricingCycle.
+- Update API CreateInstance: update response param.
+- Update API CreateModel: add param Tag.
+- Update API DeleteBackendModel: update param BackendModelId.
+- Update API DescribeAccessControlListAttribute: update response param.
+- Update API DescribeApi: update response param.
+- Update API DescribeApiGroup: update response param.
+- Update API DescribeApisByApp: update response param.
+- Update API DescribeAuthorizedApps: update response param.
+- Update API DescribeBackendInfo: update response param.
+- Update API DescribeBackendList: add param Tag.
+- Update API DescribeBackendList: update response param.
+- Update API DescribeDatasetList: add param Tag.
+- Update API DescribeDatasetList: update response param.
+- Update API DescribeHistoryApis: update response param.
+- Update API DescribeInstances: update response param.
+- Update API DescribeModels: add param Tag.
+- Update API DescribeModels: update response param.
+- Update API DescribePluginApis: update response param.
+- Update API DescribeVpcAccesses: add param Tag.
+- Update API DescribeVpcAccesses: update response param.
+- Update API ModifyApi: update param ConstantParameters.
+- Update API ModifyApi: update param ErrorCodeSamples.
+- Update API ModifyApi: update param FailResultSample.
+- Update API ModifyApi: update param RequestParameters.
+- Update API ModifyApi: update param ResultDescriptions.
+- Update API ModifyApi: update param ResultSample.
+- Update API ModifyApi: update param ServiceParameters.
+- Update API ModifyApi: update param ServiceParametersMap.
+- Update API ModifyApi: update param SystemParameters.
+- Update API ModifyApiConfiguration: update param Visibility.
+- Update API SetGroupAuthAppCode: update response param.
+- Update API SetVpcAccess: add param Tag.
+- Update API SetVpcAccess: update response param.
+
+
 2023-10-25 Version: 3.1.3
 - Generated python 2016-07-14 for CloudAPI.
 
