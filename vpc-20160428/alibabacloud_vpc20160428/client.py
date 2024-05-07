@@ -38385,25 +38385,33 @@ class Client(OpenApiClient):
 
     def modify_nat_gateway_attribute_with_options(
         self,
-        request: vpc_20160428_models.ModifyNatGatewayAttributeRequest,
+        tmp_req: vpc_20160428_models.ModifyNatGatewayAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyNatGatewayAttributeResponse:
         """
         ## [](#)Description
         You can call this operation to query an Internet NAT gateway or a virtual private cloud (VPC) NAT gateway. The term NAT gateway in this topic refers to both NAT gateway types.
         
-        @param request: ModifyNatGatewayAttributeRequest
+        @param tmp_req: ModifyNatGatewayAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyNatGatewayAttributeResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = vpc_20160428_models.ModifyNatGatewayAttributeShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.log_delivery):
+            request.log_delivery_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.log_delivery, 'LogDelivery', 'json')
         query = {}
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.eip_bind_mode):
             query['EipBindMode'] = request.eip_bind_mode
+        if not UtilClient.is_unset(request.enable_session_log):
+            query['EnableSessionLog'] = request.enable_session_log
         if not UtilClient.is_unset(request.icmp_reply_enabled):
             query['IcmpReplyEnabled'] = request.icmp_reply_enabled
+        if not UtilClient.is_unset(request.log_delivery_shrink):
+            query['LogDelivery'] = request.log_delivery_shrink
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.nat_gateway_id):
@@ -38439,25 +38447,33 @@ class Client(OpenApiClient):
 
     async def modify_nat_gateway_attribute_with_options_async(
         self,
-        request: vpc_20160428_models.ModifyNatGatewayAttributeRequest,
+        tmp_req: vpc_20160428_models.ModifyNatGatewayAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyNatGatewayAttributeResponse:
         """
         ## [](#)Description
         You can call this operation to query an Internet NAT gateway or a virtual private cloud (VPC) NAT gateway. The term NAT gateway in this topic refers to both NAT gateway types.
         
-        @param request: ModifyNatGatewayAttributeRequest
+        @param tmp_req: ModifyNatGatewayAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyNatGatewayAttributeResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = vpc_20160428_models.ModifyNatGatewayAttributeShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.log_delivery):
+            request.log_delivery_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.log_delivery, 'LogDelivery', 'json')
         query = {}
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.eip_bind_mode):
             query['EipBindMode'] = request.eip_bind_mode
+        if not UtilClient.is_unset(request.enable_session_log):
+            query['EnableSessionLog'] = request.enable_session_log
         if not UtilClient.is_unset(request.icmp_reply_enabled):
             query['IcmpReplyEnabled'] = request.icmp_reply_enabled
+        if not UtilClient.is_unset(request.log_delivery_shrink):
+            query['LogDelivery'] = request.log_delivery_shrink
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.nat_gateway_id):

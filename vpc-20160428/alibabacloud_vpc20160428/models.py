@@ -43803,6 +43803,7 @@ class DescribeNatGatewaysResponseBodyNatGatewaysNatGateway(TeaModel):
         description: str = None,
         ecs_metric_enabled: bool = None,
         eip_bind_mode: str = None,
+        enable_session_log: str = None,
         expired_time: str = None,
         forward_table_ids: DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayForwardTableIds = None,
         full_nat_table_ids: DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayFullNatTableIds = None,
@@ -43857,6 +43858,7 @@ class DescribeNatGatewaysResponseBodyNatGatewaysNatGateway(TeaModel):
         # 
         # >  Note: If you use the NAT mode, the EIP occupies one private IP address on the vSwitch of the NAT gateway. Make sure that the vSwitch has sufficient private IP addresses. Otherwise, the NAT gateway fails to be associated with the EIP. In NAT mode, you can associate a NAT gateway with up to 50 EIPs.
         self.eip_bind_mode = eip_bind_mode
+        self.enable_session_log = enable_session_log
         # The time when the NAT gateway expires.
         self.expired_time = expired_time
         # The ID of the DNAT table.
@@ -43964,6 +43966,8 @@ class DescribeNatGatewaysResponseBodyNatGatewaysNatGateway(TeaModel):
             result['EcsMetricEnabled'] = self.ecs_metric_enabled
         if self.eip_bind_mode is not None:
             result['EipBindMode'] = self.eip_bind_mode
+        if self.enable_session_log is not None:
+            result['EnableSessionLog'] = self.enable_session_log
         if self.expired_time is not None:
             result['ExpiredTime'] = self.expired_time
         if self.forward_table_ids is not None:
@@ -44026,6 +44030,8 @@ class DescribeNatGatewaysResponseBodyNatGatewaysNatGateway(TeaModel):
             self.ecs_metric_enabled = m.get('EcsMetricEnabled')
         if m.get('EipBindMode') is not None:
             self.eip_bind_mode = m.get('EipBindMode')
+        if m.get('EnableSessionLog') is not None:
+            self.enable_session_log = m.get('EnableSessionLog')
         if m.get('ExpiredTime') is not None:
             self.expired_time = m.get('ExpiredTime')
         if m.get('ForwardTableIds') is not None:
@@ -67436,6 +67442,51 @@ class GetNatGatewayAttributeResponseBodyIpList(TeaModel):
         return self
 
 
+class GetNatGatewayAttributeResponseBodyLogDelivery(TeaModel):
+    def __init__(
+        self,
+        deliver_logs_error_message: str = None,
+        delivery_status: str = None,
+        log_delivery_type: str = None,
+        log_destination: str = None,
+    ):
+        self.deliver_logs_error_message = deliver_logs_error_message
+        self.delivery_status = delivery_status
+        self.log_delivery_type = log_delivery_type
+        self.log_destination = log_destination
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.deliver_logs_error_message is not None:
+            result['DeliverLogsErrorMessage'] = self.deliver_logs_error_message
+        if self.delivery_status is not None:
+            result['DeliveryStatus'] = self.delivery_status
+        if self.log_delivery_type is not None:
+            result['LogDeliveryType'] = self.log_delivery_type
+        if self.log_destination is not None:
+            result['LogDestination'] = self.log_destination
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeliverLogsErrorMessage') is not None:
+            self.deliver_logs_error_message = m.get('DeliverLogsErrorMessage')
+        if m.get('DeliveryStatus') is not None:
+            self.delivery_status = m.get('DeliveryStatus')
+        if m.get('LogDeliveryType') is not None:
+            self.log_delivery_type = m.get('LogDeliveryType')
+        if m.get('LogDestination') is not None:
+            self.log_destination = m.get('LogDestination')
+        return self
+
+
 class GetNatGatewayAttributeResponseBodyPrivateInfo(TeaModel):
     def __init__(
         self,
@@ -67536,10 +67587,12 @@ class GetNatGatewayAttributeResponseBody(TeaModel):
         deletion_protection_info: GetNatGatewayAttributeResponseBodyDeletionProtectionInfo = None,
         description: str = None,
         ecs_metric_enabled: bool = None,
+        enable_session_log: bool = None,
         expired_time: str = None,
         forward_table: GetNatGatewayAttributeResponseBodyForwardTable = None,
         full_nat_table: GetNatGatewayAttributeResponseBodyFullNatTable = None,
         ip_list: List[GetNatGatewayAttributeResponseBodyIpList] = None,
+        log_delivery: GetNatGatewayAttributeResponseBodyLogDelivery = None,
         name: str = None,
         nat_gateway_id: str = None,
         nat_type: str = None,
@@ -67572,6 +67625,7 @@ class GetNatGatewayAttributeResponseBody(TeaModel):
         # *   **true**: yes
         # *   **false**: no
         self.ecs_metric_enabled = ecs_metric_enabled
+        self.enable_session_log = enable_session_log
         # The time when the NAT gateway expires.
         self.expired_time = expired_time
         # The information about the DNAT table.
@@ -67580,6 +67634,7 @@ class GetNatGatewayAttributeResponseBody(TeaModel):
         self.full_nat_table = full_nat_table
         # The elastic IP addresses (EIPs) that are associated with the Internet NAT gateway.
         self.ip_list = ip_list
+        self.log_delivery = log_delivery
         # The name of the NAT gateway.
         self.name = name
         # The ID of the NAT gateway.
@@ -67635,6 +67690,8 @@ class GetNatGatewayAttributeResponseBody(TeaModel):
             for k in self.ip_list:
                 if k:
                     k.validate()
+        if self.log_delivery:
+            self.log_delivery.validate()
         if self.private_info:
             self.private_info.validate()
         if self.snat_table:
@@ -67658,6 +67715,8 @@ class GetNatGatewayAttributeResponseBody(TeaModel):
             result['Description'] = self.description
         if self.ecs_metric_enabled is not None:
             result['EcsMetricEnabled'] = self.ecs_metric_enabled
+        if self.enable_session_log is not None:
+            result['EnableSessionLog'] = self.enable_session_log
         if self.expired_time is not None:
             result['ExpiredTime'] = self.expired_time
         if self.forward_table is not None:
@@ -67668,6 +67727,8 @@ class GetNatGatewayAttributeResponseBody(TeaModel):
         if self.ip_list is not None:
             for k in self.ip_list:
                 result['IpList'].append(k.to_map() if k else None)
+        if self.log_delivery is not None:
+            result['LogDelivery'] = self.log_delivery.to_map()
         if self.name is not None:
             result['Name'] = self.name
         if self.nat_gateway_id is not None:
@@ -67712,6 +67773,8 @@ class GetNatGatewayAttributeResponseBody(TeaModel):
             self.description = m.get('Description')
         if m.get('EcsMetricEnabled') is not None:
             self.ecs_metric_enabled = m.get('EcsMetricEnabled')
+        if m.get('EnableSessionLog') is not None:
+            self.enable_session_log = m.get('EnableSessionLog')
         if m.get('ExpiredTime') is not None:
             self.expired_time = m.get('ExpiredTime')
         if m.get('ForwardTable') is not None:
@@ -67725,6 +67788,9 @@ class GetNatGatewayAttributeResponseBody(TeaModel):
             for k in m.get('IpList'):
                 temp_model = GetNatGatewayAttributeResponseBodyIpList()
                 self.ip_list.append(temp_model.from_map(k))
+        if m.get('LogDelivery') is not None:
+            temp_model = GetNatGatewayAttributeResponseBodyLogDelivery()
+            self.log_delivery = temp_model.from_map(m['LogDelivery'])
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('NatGatewayId') is not None:
@@ -74229,6 +74295,10 @@ class ListPublicIpAddressPoolsRequest(TeaModel):
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # Specifies whether to enable Anti-DDoS Pro/Premium. Valid values:
+        # 
+        # *   **false**\
+        # *   **true**\
         self.security_protection_enabled = security_protection_enabled
         # The status of the IP address pool. Valid values:
         # 
@@ -74329,9 +74399,9 @@ class ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolListTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
+        # The key of tag N.
         self.key = key
-        # The tag value.
+        # The value of tag N.
         self.value = value
 
     def validate(self):
@@ -74380,26 +74450,26 @@ class ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolList(TeaModel):
         user_type: bool = None,
         zones: List[str] = None,
     ):
-        # The service type of the IP address pool. Valid values:
+        # The service type of the IP address pool.
         # 
-        # *   **CloudBox**: the cloud box service type. Only cloud box users can select this type.
-        # *   **Default** (default): the general service type.
+        # *   **CloudBox** Only cloud box users can select this type.
+        # *   **Default** (default)
         self.biz_type = biz_type
         # The time when the IP address pool was created. The time is displayed in the `YYYY-MM-DDThh:mm:ssZ` format.
         self.creation_time = creation_time
-        # The information about the IP address pool.
+        # The description of the IP address pool.
         self.description = description
-        # Indicates whether the IP address pool has idle IP addresses. Valid values:
+        # Indicates whether idle IP addresses exist.
         # 
         # *   **true**\
         # *   **false**\
         self.ip_address_remaining = ip_address_remaining
-        # The line type. Valid values:
+        # The line type.
         # 
-        # *   **BGP**: BGP (Multi-ISP) line
-        # *   **BGP_PRO**: BGP (Multi-ISP) Pro line
+        # *   **BGP**: BGP (Multi-ISP)
+        # *   **BGP_PRO**: BGP (Multi-ISP) Pro
         # 
-        # For more information about the BGP (Multi-ISP) line and BGP (Multi-ISP) Pro line, see the "Line types" section of [What is EIP?](~~32321~~)
+        # For more information about BGP (Multi-ISP) and BGP (Multi-ISP) Pro, see [EIP line types](~~32321~~).
         # 
         # If you are allowed to use single-ISP bandwidth, one of the following values may be returned:
         # 
@@ -74418,34 +74488,38 @@ class ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolList(TeaModel):
         self.owner_id = owner_id
         # The ID of the IP address pool.
         self.public_ip_address_pool_id = public_ip_address_pool_id
-        # The ID of the region in which the IP address pool that you want to query resides.
+        # The region ID of the IP address pool.
         self.region_id = region_id
         # The ID of the resource group to which the IP address pool belongs.
         self.resource_group_id = resource_group_id
-        self.security_protection_types = security_protection_types
-        # Indicates whether the IP address pool is shared.
+        # The edition of Anti-DDoS.
         # 
-        # *   Only **Shared** may be returned.
-        # *   An empty value indicates that the IP address pool is not shared.
+        # *   If you do not set this parameter, Anti-DDoS Origin Basic is used.
+        # *   If the value is set to **AntiDDoS_Enhanced**, Anti-DDoS Pro/Premium is used.
+        self.security_protection_types = security_protection_types
+        # The sharing type of the IP address pool.
+        # 
+        # *   If **Shared** is returned, the IP address pool is shared.
+        # *   If an empty value is returned, the IP address pool is not shared.
         self.share_type = share_type
-        # The status of the IP address pool. Valid values:
+        # The status of the IP address pool.
         # 
         # *   **Created**\
         # *   **Deleting**\
         # *   **Modifying**\
         self.status = status
-        # The tags.
+        # The tag list.
         self.tags = tags
-        # The total number of IP addresses in the public IP address pool.
+        # The total number of available IP addresses in the public IP address pool.
         self.total_ip_num = total_ip_num
-        # The number of occupied IP addresses in the public IP address pool.
+        # The number of used IP addresses in the public IP address pool.
         self.used_ip_num = used_ip_num
         # The user type. Valid values:
         # 
-        # *   **admin**: administrator. An administrator can delete, modify, and query IP address pools and allocate elastic IP addresses (EIPs) to IP address pools.
-        # *   **user**: regular user. A regular user can only allocate EIPs to IP address pools and query IP address pools. A regular user cannot modify or delete IP address pools.
+        # *   **admin**: An administrator can delete, modify, and query IP address pools, and can assign elastic IP addresses (EIPs) to the pool.
+        # *   **user**: A user can only assign EIPs to the IP address pool and query the IP address pool, but cannot modify or delete the IP address pool.
         self.user_type = user_type
-        # The zones of the IP address pool. This parameter is returned only when BizType is set to CloudBox.
+        # The zone of the IP address pool. This parameter is returned only when the service type of the IP address pool is CloudBox.
         self.zones = zones
 
     def validate(self):
@@ -82749,12 +82823,47 @@ class ModifyIpv6InternetBandwidthResponse(TeaModel):
         return self
 
 
+class ModifyNatGatewayAttributeRequestLogDelivery(TeaModel):
+    def __init__(
+        self,
+        log_delivery_type: str = None,
+        log_destination: str = None,
+    ):
+        self.log_delivery_type = log_delivery_type
+        self.log_destination = log_destination
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.log_delivery_type is not None:
+            result['LogDeliveryType'] = self.log_delivery_type
+        if self.log_destination is not None:
+            result['LogDestination'] = self.log_destination
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LogDeliveryType') is not None:
+            self.log_delivery_type = m.get('LogDeliveryType')
+        if m.get('LogDestination') is not None:
+            self.log_destination = m.get('LogDestination')
+        return self
+
+
 class ModifyNatGatewayAttributeRequest(TeaModel):
     def __init__(
         self,
         description: str = None,
         eip_bind_mode: str = None,
+        enable_session_log: bool = None,
         icmp_reply_enabled: bool = None,
+        log_delivery: ModifyNatGatewayAttributeRequestLogDelivery = None,
         name: str = None,
         nat_gateway_id: str = None,
         owner_account: str = None,
@@ -82778,11 +82887,132 @@ class ModifyNatGatewayAttributeRequest(TeaModel):
         # *   When the mode in which the NAT gateway is associated with an EIP is being changed, a transient connection that lasts a few seconds may occur. If the number of EIPs with which the NAT gateway is associated increases, the transient connection lasts longer. You can change the mode only for a NAT gateway that is associated with up to five EIPs. We recommend that you change the mode during off-peak hours.
         # *   After the mode is changed to **NAT**, the Internet NAT gateway is compatible with the IPv4 gateway. However, if you associate an EIP with the NAT gateway, the EIP occupies one private IP address on the vSwitch of the NAT gateway. Make sure that the vSwitch has sufficient private IP addresses. Otherwise, the EIP fails to be associated with the NAT gateway.
         self.eip_bind_mode = eip_bind_mode
+        self.enable_session_log = enable_session_log
         # Specifies whether to enable the Internet Control Message Protocol (ICMP) non-retrieval feature. Valid values:
         # 
         # *   **false** (default)
         # *   **true**\
         self.icmp_reply_enabled = icmp_reply_enabled
+        self.log_delivery = log_delivery
+        # The name of the NAT gateway.
+        # 
+        # The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+        self.name = name
+        # The ID of the NAT gateway.
+        self.nat_gateway_id = nat_gateway_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        # The region ID of the NAT gateway.
+        # 
+        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        if self.log_delivery:
+            self.log_delivery.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.eip_bind_mode is not None:
+            result['EipBindMode'] = self.eip_bind_mode
+        if self.enable_session_log is not None:
+            result['EnableSessionLog'] = self.enable_session_log
+        if self.icmp_reply_enabled is not None:
+            result['IcmpReplyEnabled'] = self.icmp_reply_enabled
+        if self.log_delivery is not None:
+            result['LogDelivery'] = self.log_delivery.to_map()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.nat_gateway_id is not None:
+            result['NatGatewayId'] = self.nat_gateway_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('EipBindMode') is not None:
+            self.eip_bind_mode = m.get('EipBindMode')
+        if m.get('EnableSessionLog') is not None:
+            self.enable_session_log = m.get('EnableSessionLog')
+        if m.get('IcmpReplyEnabled') is not None:
+            self.icmp_reply_enabled = m.get('IcmpReplyEnabled')
+        if m.get('LogDelivery') is not None:
+            temp_model = ModifyNatGatewayAttributeRequestLogDelivery()
+            self.log_delivery = temp_model.from_map(m['LogDelivery'])
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('NatGatewayId') is not None:
+            self.nat_gateway_id = m.get('NatGatewayId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class ModifyNatGatewayAttributeShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        eip_bind_mode: str = None,
+        enable_session_log: bool = None,
+        icmp_reply_enabled: bool = None,
+        log_delivery_shrink: str = None,
+        name: str = None,
+        nat_gateway_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        # The description of the NAT gateway.
+        # 
+        # The description must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
+        self.description = description
+        # The mode in which the NAT gateway is associated with an elastic IP address (EIP). You can leave this parameter empty. If you want to specify a value for this parameter, set the value to **NAT**, which indicates that the NAT gateway is associated with the EIP in NAT mode.
+        # 
+        # **\
+        # 
+        # **Description**\
+        # 
+        # *   If EipBindMode is set to MULTI_BINDED when the NAT gateway is created, you can change the value of this parameter from **MULTI_BINDED** to **NAT**. If EipBindMode is set to NAT when the NAT gateway is created, you cannot change the value of this parameter from **NAT** to **MULTI_BINDED**. For more information about **MULTI_BINDED**, see [CreateNatGateway](~~120219~~).
+        # 
+        # *   When the mode in which the NAT gateway is associated with an EIP is being changed, a transient connection that lasts a few seconds may occur. If the number of EIPs with which the NAT gateway is associated increases, the transient connection lasts longer. You can change the mode only for a NAT gateway that is associated with up to five EIPs. We recommend that you change the mode during off-peak hours.
+        # *   After the mode is changed to **NAT**, the Internet NAT gateway is compatible with the IPv4 gateway. However, if you associate an EIP with the NAT gateway, the EIP occupies one private IP address on the vSwitch of the NAT gateway. Make sure that the vSwitch has sufficient private IP addresses. Otherwise, the EIP fails to be associated with the NAT gateway.
+        self.eip_bind_mode = eip_bind_mode
+        self.enable_session_log = enable_session_log
+        # Specifies whether to enable the Internet Control Message Protocol (ICMP) non-retrieval feature. Valid values:
+        # 
+        # *   **false** (default)
+        # *   **true**\
+        self.icmp_reply_enabled = icmp_reply_enabled
+        self.log_delivery_shrink = log_delivery_shrink
         # The name of the NAT gateway.
         # 
         # The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
@@ -82811,8 +83041,12 @@ class ModifyNatGatewayAttributeRequest(TeaModel):
             result['Description'] = self.description
         if self.eip_bind_mode is not None:
             result['EipBindMode'] = self.eip_bind_mode
+        if self.enable_session_log is not None:
+            result['EnableSessionLog'] = self.enable_session_log
         if self.icmp_reply_enabled is not None:
             result['IcmpReplyEnabled'] = self.icmp_reply_enabled
+        if self.log_delivery_shrink is not None:
+            result['LogDelivery'] = self.log_delivery_shrink
         if self.name is not None:
             result['Name'] = self.name
         if self.nat_gateway_id is not None:
@@ -82835,8 +83069,12 @@ class ModifyNatGatewayAttributeRequest(TeaModel):
             self.description = m.get('Description')
         if m.get('EipBindMode') is not None:
             self.eip_bind_mode = m.get('EipBindMode')
+        if m.get('EnableSessionLog') is not None:
+            self.enable_session_log = m.get('EnableSessionLog')
         if m.get('IcmpReplyEnabled') is not None:
             self.icmp_reply_enabled = m.get('IcmpReplyEnabled')
+        if m.get('LogDelivery') is not None:
+            self.log_delivery_shrink = m.get('LogDelivery')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('NatGatewayId') is not None:
