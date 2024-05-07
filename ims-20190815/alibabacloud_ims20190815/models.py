@@ -12,7 +12,7 @@ class AddClientIdToOIDCProviderRequest(TeaModel):
     ):
         # The client ID that you want to add.
         # 
-        # ````
+        # The client ID can contain letters, digits, and special characters and cannot start with the special characters. The special characters are periods (.), hyphens (-), underscores (_), colons (:), and forward slashes (/). 
         # 
         # The client ID can be up to 64 characters in length.
         self.client_id = client_id
@@ -190,9 +190,6 @@ class AddClientIdToOIDCProviderResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -408,9 +405,6 @@ class AddFingerprintToOIDCProviderResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -515,9 +509,6 @@ class AddUserToGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -642,9 +633,6 @@ class BindMFADeviceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -751,9 +739,6 @@ class ChangePasswordResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -914,9 +899,6 @@ class CreateAccessKeyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1072,9 +1054,6 @@ class CreateAppSecretResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1124,7 +1103,7 @@ class CreateApplicationRequest(TeaModel):
         # 
         # Default value: 3600.
         self.access_token_validity = access_token_validity
-        # The name of the application.
+        # The application name.
         # 
         # The name can be up to 64 characters in length. The name can contain letters, digits, periods (.), underscores (\_), and hyphens (-).
         self.app_name = app_name
@@ -1162,6 +1141,13 @@ class CreateApplicationRequest(TeaModel):
         # *   For applications of the WebApp and ServerApp types, if this parameter is left empty, the value 2592000 is used. The value 2592000 indicates that the validity period of the refreshed token is 30 days.
         # *   For applications of the NativeApp type, if this parameter is left empty, the value 7776000 is used. The value 7776000 indicates that the validity period of the refreshed token is 90 days.
         self.refresh_token_validity = refresh_token_validity
+        # The required permission.
+        # 
+        # You can specify one or more permissions for the `RequiredScopes` parameter. After you specify this parameter, the required permissions are automatically selected and cannot be revoked when a user grants permissions on the application.
+        # 
+        # If you enter multiple permissions, separate them with semicolons (;).
+        # 
+        # >  If the permission that you specify for the `RequiredScopes` parameter is not included in value of the `PredefinedScopes` parameter, the permission does not take effect.
         self.required_scopes = required_scopes
         # Indicates whether a secret is required. Valid values:
         # 
@@ -1235,10 +1221,16 @@ class CreateApplicationResponseBodyApplicationDelegatedScopePredefinedScopesPred
         name: str = None,
         required: bool = None,
     ):
-        # The description of the permission scope.
+        # The description of the permission.
         self.description = description
-        # The name of the scope.
+        # The name of the permission.
         self.name = name
+        # Indicates whether the permission is automatically selected by default when you install the application. Valid values:
+        # 
+        # *   true
+        # *   false
+        # 
+        # `openid` is required by default.
         self.required = required
 
     def validate(self):
@@ -1309,7 +1301,7 @@ class CreateApplicationResponseBodyApplicationDelegatedScope(TeaModel):
         self,
         predefined_scopes: CreateApplicationResponseBodyApplicationDelegatedScopePredefinedScopes = None,
     ):
-        # The information of application permissions.
+        # The information about the permissions that are granted on the application.
         self.predefined_scopes = predefined_scopes
 
     def validate(self):
@@ -1384,21 +1376,21 @@ class CreateApplicationResponseBodyApplication(TeaModel):
         self.account_id = account_id
         # The ID of the application.
         self.app_id = app_id
-        # The name of the application.
+        # The application name.
         self.app_name = app_name
-        # The type of the application.
+        # The application type.
         self.app_type = app_type
         # The creation time.
         self.create_date = create_date
-        # The information of application permissions.
+        # The information about the permissions that are granted on the application.
         self.delegated_scope = delegated_scope
         # The display name of the application.
         self.display_name = display_name
         # Indicates whether the application can be installed by using other Alibaba Cloud accounts.
         self.is_multi_tenant = is_multi_tenant
-        # The callback URL.
+        # The callback URLs.
         self.redirect_uris = redirect_uris
-        # The validity period of the refreshed token. Unit: seconds.
+        # The validity period of the refresh token. Unit: seconds.
         self.refresh_token_validity = refresh_token_validity
         # Indicates whether a secret is required.
         self.secret_required = secret_required
@@ -1484,9 +1476,9 @@ class CreateApplicationResponseBody(TeaModel):
         application: CreateApplicationResponseBodyApplication = None,
         request_id: str = None,
     ):
-        # The information of the application.
+        # The information about the application.
         self.application = application
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1527,9 +1519,6 @@ class CreateApplicationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1719,9 +1708,6 @@ class CreateGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1923,9 +1909,6 @@ class CreateLoginProfileResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2183,9 +2166,6 @@ class CreateOIDCProviderResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2366,9 +2346,6 @@ class CreateSAMLProviderResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2751,9 +2728,6 @@ class CreateUserResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2904,9 +2878,6 @@ class CreateVirtualMFADeviceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3013,9 +2984,6 @@ class DeleteAccessKeyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3120,9 +3088,6 @@ class DeleteAppSecretResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3220,9 +3185,6 @@ class DeleteApplicationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3320,9 +3282,6 @@ class DeleteGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3420,9 +3379,6 @@ class DeleteLoginProfileResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3520,9 +3476,6 @@ class DeleteOIDCProviderResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3620,9 +3573,6 @@ class DeleteSAMLProviderResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3731,9 +3681,6 @@ class DeleteUserResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3831,9 +3778,6 @@ class DeleteVirtualMFADeviceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3931,9 +3875,6 @@ class DisableVirtualMFAResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4014,9 +3955,6 @@ class GenerateCredentialReportResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4167,9 +4105,6 @@ class GetAccessKeyLastUsedResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4249,9 +4184,6 @@ class GetAccountMFAInfoResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4458,9 +4390,6 @@ class GetAccountSecurityPracticeReportResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4707,9 +4636,6 @@ class GetAccountSummaryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4872,9 +4798,6 @@ class GetAppSecretResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4943,6 +4866,12 @@ class GetApplicationResponseBodyApplicationDelegatedScopePredefinedScopesPredefi
         self.description = description
         # The name of the permission.
         self.name = name
+        # Indicates whether the permission is automatically selected by default when you install the application. Valid values:
+        # 
+        # *   true
+        # *   false
+        # 
+        # `openid` is required by default.
         self.required = required
 
     def validate(self):
@@ -5192,7 +5121,7 @@ class GetApplicationResponseBody(TeaModel):
         application: GetApplicationResponseBodyApplication = None,
         request_id: str = None,
     ):
-        # The configuration information about the application.
+        # The information about the application.
         self.application = application
         # The ID of the request.
         self.request_id = request_id
@@ -5235,9 +5164,6 @@ class GetApplicationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5377,9 +5303,6 @@ class GetCredentialReportResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5456,9 +5379,6 @@ class GetDefaultDomainResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5628,9 +5548,6 @@ class GetGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5800,9 +5717,6 @@ class GetLoginProfileResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6007,9 +5921,6 @@ class GetOIDCProviderResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6186,9 +6097,6 @@ class GetPasswordPolicyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6358,9 +6266,6 @@ class GetSAMLProviderResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6706,9 +6611,6 @@ class GetSecurityPreferenceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7017,9 +6919,6 @@ class GetUserResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7177,9 +7076,6 @@ class GetUserMFAInfoResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7300,9 +7196,6 @@ class GetUserSsoSettingsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7328,6 +7221,190 @@ class GetUserSsoSettingsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetUserSsoSettingsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetVerificationInfoRequest(TeaModel):
+    def __init__(
+        self,
+        user_principal_name: str = None,
+    ):
+        self.user_principal_name = user_principal_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.user_principal_name is not None:
+            result['UserPrincipalName'] = self.user_principal_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('UserPrincipalName') is not None:
+            self.user_principal_name = m.get('UserPrincipalName')
+        return self
+
+
+class GetVerificationInfoResponseBodySecurityEmailDevice(TeaModel):
+    def __init__(
+        self,
+        email: str = None,
+        status: str = None,
+    ):
+        self.email = email
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.email is not None:
+            result['Email'] = self.email
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Email') is not None:
+            self.email = m.get('Email')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class GetVerificationInfoResponseBodySecurityPhoneDevice(TeaModel):
+    def __init__(
+        self,
+        area_code: str = None,
+        phone_number: str = None,
+        status: str = None,
+    ):
+        self.area_code = area_code
+        self.phone_number = phone_number
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.area_code is not None:
+            result['AreaCode'] = self.area_code
+        if self.phone_number is not None:
+            result['PhoneNumber'] = self.phone_number
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AreaCode') is not None:
+            self.area_code = m.get('AreaCode')
+        if m.get('PhoneNumber') is not None:
+            self.phone_number = m.get('PhoneNumber')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class GetVerificationInfoResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        security_email_device: GetVerificationInfoResponseBodySecurityEmailDevice = None,
+        security_phone_device: GetVerificationInfoResponseBodySecurityPhoneDevice = None,
+    ):
+        self.request_id = request_id
+        self.security_email_device = security_email_device
+        self.security_phone_device = security_phone_device
+
+    def validate(self):
+        if self.security_email_device:
+            self.security_email_device.validate()
+        if self.security_phone_device:
+            self.security_phone_device.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.security_email_device is not None:
+            result['SecurityEmailDevice'] = self.security_email_device.to_map()
+        if self.security_phone_device is not None:
+            result['SecurityPhoneDevice'] = self.security_phone_device.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SecurityEmailDevice') is not None:
+            temp_model = GetVerificationInfoResponseBodySecurityEmailDevice()
+            self.security_email_device = temp_model.from_map(m['SecurityEmailDevice'])
+        if m.get('SecurityPhoneDevice') is not None:
+            temp_model = GetVerificationInfoResponseBodySecurityPhoneDevice()
+            self.security_phone_device = temp_model.from_map(m['SecurityPhoneDevice'])
+        return self
+
+
+class GetVerificationInfoResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetVerificationInfoResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetVerificationInfoResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -7498,9 +7575,6 @@ class ListAccessKeysResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7684,9 +7758,6 @@ class ListAppSecretIdsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7727,6 +7798,12 @@ class ListApplicationsResponseBodyApplicationsApplicationDelegatedScopePredefine
         self.description = description
         # The name of the permission.
         self.name = name
+        # Indicates whether the permission is automatically selected by default when you install the application. Valid values:
+        # 
+        # *   true
+        # *   false
+        # 
+        # `openid` is required by default.
         self.required = required
 
     def validate(self):
@@ -7797,7 +7874,7 @@ class ListApplicationsResponseBodyApplicationsApplicationDelegatedScope(TeaModel
         self,
         predefined_scopes: ListApplicationsResponseBodyApplicationsApplicationDelegatedScopePredefinedScopes = None,
     ):
-        # An array consisting of the information about the permissions that are granted on the application.
+        # The information about the permissions that are granted on the application.
         self.predefined_scopes = predefined_scopes
 
     def validate(self):
@@ -7872,9 +7949,9 @@ class ListApplicationsResponseBodyApplicationsApplication(TeaModel):
         self.account_id = account_id
         # The ID of the application.
         self.app_id = app_id
-        # The name of the application.
+        # The application name.
         self.app_name = app_name
-        # The type of the application. Valid values:
+        # The application type. Valid values:
         # 
         # *   WebApp: a web application.
         # *   NativeApp: a native application that runs on an operating system, such as a desktop or mobile operating system.
@@ -7888,7 +7965,7 @@ class ListApplicationsResponseBodyApplicationsApplication(TeaModel):
         self.display_name = display_name
         # Indicates whether the application can be installed by using other Alibaba Cloud accounts.
         self.is_multi_tenant = is_multi_tenant
-        # The callback URL.
+        # The callback URLs.
         self.redirect_uris = redirect_uris
         # The validity period of the refresh token. Unit: seconds.
         self.refresh_token_validity = refresh_token_validity
@@ -8054,9 +8131,6 @@ class ListApplicationsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8287,9 +8361,6 @@ class ListGroupsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8487,9 +8558,6 @@ class ListGroupsForUserResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8755,9 +8823,6 @@ class ListOIDCProvidersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8940,9 +9005,6 @@ class ListPredefinedScopesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9166,9 +9228,6 @@ class ListSAMLProvidersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9472,9 +9531,6 @@ class ListTagResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9738,9 +9794,6 @@ class ListUserBasicInfosResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10140,9 +10193,6 @@ class ListUsersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10366,9 +10416,6 @@ class ListUsersForGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10622,9 +10669,6 @@ class ListVirtualMFADevicesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10840,9 +10884,6 @@ class RemoveClientIdFromOIDCProviderResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11054,9 +11095,6 @@ class RemoveFingerprintFromOIDCProviderResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11161,9 +11199,6 @@ class RemoveUserFromGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11274,9 +11309,6 @@ class SetDefaultDomainResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11587,9 +11619,6 @@ class SetPasswordPolicyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12161,9 +12190,6 @@ class SetSecurityPreferenceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12331,9 +12357,6 @@ class SetUserSsoSettingsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12509,9 +12532,6 @@ class TagResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12646,9 +12666,6 @@ class UnbindMFADeviceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12791,9 +12808,6 @@ class UntagResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12910,9 +12924,6 @@ class UpdateAccessKeyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12957,33 +12968,44 @@ class UpdateApplicationRequest(TeaModel):
     ):
         # The ID of the application.
         self.app_id = app_id
-        # The validity period of the new access token.
+        # The validity period of the access token.
         # 
         # Valid values: 900 to 10800. Unit: seconds.
         self.new_access_token_validity = new_access_token_validity
-        # The new display name of the application.
+        # The display name.
         self.new_display_name = new_display_name
         # Specifies whether the application can be installed by using other Alibaba Cloud accounts. Valid values:
         # 
         # *   true
         # *   false
         self.new_is_multi_tenant = new_is_multi_tenant
-        # The new scope of application permissions.
+        # The permission that is granted on the application.
         # 
-        # For more information about the application permission scope, see [Open authorization scope](~~93693~~). You can also call the [ListPredefinedScopes](~~187206~~) operation to obtain the permission scopes supported by different types of applications.
+        # For more information about the application permission scope, see [OAuth scopes](~~93693~~). You can also call the [ListPredefinedScopes](~~187206~~) operation to query the permissions that are supported by different types of applications.
         # 
-        # Separate multiple permission scopes with semicolons (;).
+        # If you enter multiple permissions, separate them with semicolons (;).
         # 
-        # If you specify a new permission scope, the new permission scope takes effect. For example, if the original permission scope is `/acs/ccc`, and the new permission scope is `/acs/alidns`, `/acs/alidns` takes effect. If you want to retain the original permission scope, set the new permission scope to `/acs/ccc;/acs/alidns`.
+        # The new value of this parameter overwrites the original value, and the permission specified by the new value takes effect. For example, if the original value is `/acs/ccc`, and the new value is `/acs/alidns`, `/acs/alidns` takes effect. If you want to retain the original permission and the `/acs/alidns` permission, set the value to `/acs/ccc;/acs/alidns`.
         self.new_predefined_scopes = new_predefined_scopes
-        # The new callback URL.
+        # The callback URL.
         # 
-        # Separate multiple callback URLs with semicolons (;).
+        # If you enter multiple callback URLs, separate them with semicolons (;).
         self.new_redirect_uris = new_redirect_uris
-        # The validity period of the refreshed token.
+        # The validity period of the refresh token.
         # 
         # Valid values: 7200 to 31536000. Unit: seconds.
         self.new_refresh_token_validity = new_refresh_token_validity
+        # The required permission.
+        # 
+        # You can specify one or more permissions for the `RequiredScopes` parameter. After you specify this parameter, the required permissions are automatically selected and cannot be revoked when a user grants permissions on the application.
+        # 
+        # If you also specify the `NewPredefinedScopes` parameter, the `NewPredefinedScopes` parameter specifies the permissions that can be granted on the application, and this parameter specifies the required permissions.
+        # 
+        # If you enter multiple permissions, separate them with semicolons (;).
+        # 
+        # The new value of this parameter overwrites the original value, and the required permission specified by the new value takes effect.
+        # 
+        # >  If the permission that you specify for the `RequiredScopes` parameter is not included in value of the `PredefinedScopes` parameter, the permission does not take effect.
         self.new_required_scopes = new_required_scopes
         # Specifies whether a secret is required. Valid values:
         # 
@@ -13055,10 +13077,16 @@ class UpdateApplicationResponseBodyApplicationDelegatedScopePredefinedScopesPred
         name: str = None,
         required: bool = None,
     ):
-        # The description of the permission scope.
+        # The description of the permission.
         self.description = description
-        # The name of the scope.
+        # The name of the permission.
         self.name = name
+        # Indicates whether the permission is automatically selected by default when you install the application. Valid values:
+        # 
+        # *   true
+        # *   false
+        # 
+        # `openid` is required by default.
         self.required = required
 
     def validate(self):
@@ -13129,7 +13157,7 @@ class UpdateApplicationResponseBodyApplicationDelegatedScope(TeaModel):
         self,
         predefined_scopes: UpdateApplicationResponseBodyApplicationDelegatedScopePredefinedScopes = None,
     ):
-        # The information of application permissions.
+        # The information about the permissions that are granted on the application.
         self.predefined_scopes = predefined_scopes
 
     def validate(self):
@@ -13204,21 +13232,21 @@ class UpdateApplicationResponseBodyApplication(TeaModel):
         self.account_id = account_id
         # The ID of the application.
         self.app_id = app_id
-        # The name of the application.
+        # The application name.
         self.app_name = app_name
-        # The type of the application.
+        # The application type.
         self.app_type = app_type
         # The creation time.
         self.create_date = create_date
-        # The information of application permissions.
+        # The information about the permissions that are granted on the application.
         self.delegated_scope = delegated_scope
         # The display name of the application.
         self.display_name = display_name
         # Indicates whether the application can be installed by using other Alibaba Cloud accounts.
         self.is_multi_tenant = is_multi_tenant
-        # The callback URL.
+        # The callback URLs.
         self.redirect_uris = redirect_uris
-        # The validity period of the refreshed token. Unit: seconds.
+        # The validity period of the refresh token. Unit: seconds.
         self.refresh_token_validity = refresh_token_validity
         # Indicates whether a secret is required.
         self.secret_required = secret_required
@@ -13304,9 +13332,9 @@ class UpdateApplicationResponseBody(TeaModel):
         application: UpdateApplicationResponseBodyApplication = None,
         request_id: str = None,
     ):
-        # The information of the application.
+        # The information about the application.
         self.application = application
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -13347,9 +13375,6 @@ class UpdateApplicationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13546,9 +13571,6 @@ class UpdateGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13750,9 +13772,6 @@ class UpdateLoginProfileResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13986,9 +14005,6 @@ class UpdateOIDCProviderResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -14169,9 +14185,6 @@ class UpdateSAMLProviderResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -14437,9 +14450,6 @@ class UpdateUserResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 

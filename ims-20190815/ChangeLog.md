@@ -1,3 +1,7 @@
+2024-05-07 Version: 3.1.0
+- Support API GetVerificationInfo.
+
+
 2023-12-14 Version: 3.0.4
 - Generated python 2019-08-15 for Ims.
 

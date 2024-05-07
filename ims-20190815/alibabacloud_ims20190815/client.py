@@ -46,14 +46,6 @@ class Client(OpenApiClient):
         request: ims_20190815_models.AddClientIdToOIDCProviderRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.AddClientIdToOIDCProviderResponse:
-        """
-        ###
-        This topic provides an example on how to add the client ID `598469743454717****` to the OIDC IdP named `TestOIDCProvider`.
-        
-        @param request: AddClientIdToOIDCProviderRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: AddClientIdToOIDCProviderResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_id):
@@ -84,14 +76,6 @@ class Client(OpenApiClient):
         request: ims_20190815_models.AddClientIdToOIDCProviderRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ims_20190815_models.AddClientIdToOIDCProviderResponse:
-        """
-        ###
-        This topic provides an example on how to add the client ID `598469743454717****` to the OIDC IdP named `TestOIDCProvider`.
-        
-        @param request: AddClientIdToOIDCProviderRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: AddClientIdToOIDCProviderResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_id):
@@ -121,13 +105,6 @@ class Client(OpenApiClient):
         self,
         request: ims_20190815_models.AddClientIdToOIDCProviderRequest,
     ) -> ims_20190815_models.AddClientIdToOIDCProviderResponse:
-        """
-        ###
-        This topic provides an example on how to add the client ID `598469743454717****` to the OIDC IdP named `TestOIDCProvider`.
-        
-        @param request: AddClientIdToOIDCProviderRequest
-        @return: AddClientIdToOIDCProviderResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.add_client_id_to_oidcprovider_with_options(request, runtime)
 
@@ -135,13 +112,6 @@ class Client(OpenApiClient):
         self,
         request: ims_20190815_models.AddClientIdToOIDCProviderRequest,
     ) -> ims_20190815_models.AddClientIdToOIDCProviderResponse:
-        """
-        ###
-        This topic provides an example on how to add the client ID `598469743454717****` to the OIDC IdP named `TestOIDCProvider`.
-        
-        @param request: AddClientIdToOIDCProviderRequest
-        @return: AddClientIdToOIDCProviderResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.add_client_id_to_oidcprovider_with_options_async(request, runtime)
 
@@ -3292,6 +3262,76 @@ class Client(OpenApiClient):
     async def get_user_sso_settings_async(self) -> ims_20190815_models.GetUserSsoSettingsResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_user_sso_settings_with_options_async(runtime)
+
+    def get_verification_info_with_options(
+        self,
+        request: ims_20190815_models.GetVerificationInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ims_20190815_models.GetVerificationInfoResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.user_principal_name):
+            query['UserPrincipalName'] = request.user_principal_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetVerificationInfo',
+            version='2019-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ims_20190815_models.GetVerificationInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_verification_info_with_options_async(
+        self,
+        request: ims_20190815_models.GetVerificationInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ims_20190815_models.GetVerificationInfoResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.user_principal_name):
+            query['UserPrincipalName'] = request.user_principal_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetVerificationInfo',
+            version='2019-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ims_20190815_models.GetVerificationInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_verification_info(
+        self,
+        request: ims_20190815_models.GetVerificationInfoRequest,
+    ) -> ims_20190815_models.GetVerificationInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_verification_info_with_options(request, runtime)
+
+    async def get_verification_info_async(
+        self,
+        request: ims_20190815_models.GetVerificationInfoRequest,
+    ) -> ims_20190815_models.GetVerificationInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_verification_info_with_options_async(request, runtime)
 
     def list_access_keys_with_options(
         self,
