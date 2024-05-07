@@ -2073,9 +2073,11 @@ class AddAliClusterIdsToPrometheusGlobalViewResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Status code. 200 is success, other status codes are exceptions.
         self.code = code
         # The information about the array object.
         self.data = data
+        # Returns a hint message for the result.
         self.message = message
         # The request ID. You can use the ID to query logs and troubleshoot issues.
         self.request_id = request_id
@@ -2601,9 +2603,11 @@ class AddPrometheusGlobalViewResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # 状态码。说明 200表示成功。
         self.code = code
         # The information about the array object.
         self.data = data
+        # 返回结果的提示信息。
         self.message = message
         # The request ID. You can use the ID to query logs and troubleshoot issues.
         self.request_id = request_id
@@ -2691,9 +2695,13 @@ class AddPrometheusGlobalViewByAliClusterIdsRequest(TeaModel):
         product_code: str = None,
         region_id: str = None,
     ):
+        # The IDs of clusters. Separate multiple IDs with commas (,).
         self.cluster_ids = cluster_ids
+        # The name of the global aggregation instance.
         self.group_name = group_name
+        # The identifier to identify the service if custom dashboards are created for the specified clusters.
         self.product_code = product_code
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -2735,8 +2743,14 @@ class AddPrometheusGlobalViewByAliClusterIdsResponseBodyData(TeaModel):
         msg: str = None,
         success: bool = None,
     ):
+        # The Info-level information.
         self.info = info
+        # The additional information.
         self.msg = msg
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   `true`
+        # *   `false`
         self.success = success
 
     def validate(self):
@@ -2775,9 +2789,13 @@ class AddPrometheusGlobalViewByAliClusterIdsResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Status code. 200 is success, other status codes are exceptions.
         self.code = code
+        # The struct returned.
         self.data = data
+        # Returns a hint message for the result.
         self.message = message
+        # The request ID. You can use the ID to query logs and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -6320,7 +6338,37 @@ class CreateEnvironmentRequest(TeaModel):
         resource_group_id: str = None,
         tags: List[CreateEnvironmentRequestTags] = None,
     ):
-        # The language. Valid values: zh and en. Default value: zh.
+        # The language. Default value: zh.
+        # 
+        # Valid values:
+        # 
+        # *   en
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     English
+        # 
+        #     <!-- -->
+        # 
+        #     .
+        # 
+        # *   zh
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     Chinese
+        # 
+        #     <!-- -->
+        # 
+        #     .
         self.aliyun_lang = aliyun_lang
         # The ID of the resource bound to the environment, such as the container ID or VPC ID. For a Cloud environment, specify the region ID.
         self.bind_resource_id = bind_resource_id
@@ -6328,23 +6376,27 @@ class CreateEnvironmentRequest(TeaModel):
         self.environment_name = environment_name
         # The subtype of the environment. Valid values:
         # 
-        # *   CS: Container Service for Kubernetes (ACK)
-        # *   ECS: Elastic Compute Service (ECS)
+        # *   CS: ACK
+        # *   ECS: ECS
         # *   Cloud: cloud service
         self.environment_sub_type = environment_sub_type
         # The type of the environment. Valid values:
         # 
-        # *   CS: Container Service
-        # *   ECS: Elastic Compute Service
+        # *   CS: ACK
+        # *   ECS: ECS
         # *   Cloud: cloud service
         self.environment_type = environment_type
+        # Paid packages.
+        # *  When EnvironmentType is CS: can be specified as CS_Basic (default) or CS_Pro.
+        # * When EnvironmentType is any other value, enter a null value.
         self.fee_package = fee_package
-        # type of managed: 
-        # - none: not managed. default value of prometheus for ACK.
-        # - agent: managed agent. default value of  promehtues for ASK/ACS/AckOne.
-        # - agent-exproter: maanged agent and exporter. default of prometheus for Cloud.
+        # Specifies whether agents or exporters are managed. Valid values:
+        # 
+        # *   none: No. By default, no managed agents or exporters are provided for ACK clusters.
+        # *   agent: Agents are managed. By default, managed agents are provided for ASK clusters, ACS clusters, and ACK One clusters.
+        # *   agent-exproter: Agents and exporters are managed. By default, managed agents and exporters are provided for cloud services.
         self.managed_type = managed_type
-        # the ID of prometheus instance bound to the environment. If not provided, please call the InitEnvironment interface to complete the initialization of the storage instance.
+        # Nullable, the prom instance id for the environment binding. if not provided, call the InitEnvironment interface to complete the initialization of the storage instance.
         self.prometheus_instance_id = prometheus_instance_id
         # The region ID.
         self.region_id = region_id
@@ -6812,11 +6864,23 @@ class CreateIntegrationRequest(TeaModel):
         recover_time: int = None,
         region_id: str = None,
     ):
+        # Specifies whether to automatically clear alert events. Default value: true. Valid values:
+        # 
+        # *   true
+        # *   false
         self.auto_recover = auto_recover
+        # The description of the alert integration.
         self.description = description
+        # The name of the alert integration.
         self.integration_name = integration_name
+        # The service of the alert integration. Valid values:
+        # 
+        # *   CLOUD_MONITOR: CloudMonitor
+        # *   LOG_SERVICE: Log Service
         self.integration_product_type = integration_product_type
+        # The period of time within which alert events are automatically cleared. Unit: seconds. Default value: 300.
         self.recover_time = recover_time
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -6869,11 +6933,23 @@ class CreateIntegrationResponseBodyIntegration(TeaModel):
         integration_product_type: str = None,
         recover_time: int = None,
     ):
+        # Indicates whether alert events are automatically cleared. Default value: true. Valid values:
+        # 
+        # *   true
+        # *   false
         self.auto_recover = auto_recover
+        # The description of the alert integration.
         self.description = description
+        # The ID of the alert integration.
         self.integration_id = integration_id
+        # The name of the alert integration.
         self.integration_name = integration_name
+        # The service of the alert integration. Valid values:
+        # 
+        # *   CLOUD_MONITOR: CloudMonitor
+        # *   LOG_SERVICE: Log Service
         self.integration_product_type = integration_product_type
+        # The period of time within which alert events are automatically cleared. Unit: seconds. Default value: 300.
         self.recover_time = recover_time
 
     def validate(self):
@@ -6922,7 +6998,9 @@ class CreateIntegrationResponseBody(TeaModel):
         integration: CreateIntegrationResponseBodyIntegration = None,
         request_id: str = None,
     ):
+        # The returned information about the alert integration.
         self.integration = integration
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -7075,6 +7153,7 @@ class CreateOrUpdateAlertRuleRequest(TeaModel):
         alert_type: str = None,
         annotations: str = None,
         auto_add_new_application: bool = None,
+        auto_add_target_config: str = None,
         cluster_id: str = None,
         data_config: str = None,
         duration: int = None,
@@ -7089,6 +7168,7 @@ class CreateOrUpdateAlertRuleRequest(TeaModel):
         notify_mode: str = None,
         notify_strategy: str = None,
         pids: str = None,
+        product: str = None,
         prom_ql: str = None,
         region_id: str = None,
         tags: List[CreateOrUpdateAlertRuleRequestTags] = None,
@@ -7158,6 +7238,7 @@ class CreateOrUpdateAlertRuleRequest(TeaModel):
         # *   `true`: enables the health check feature.
         # *   `false`: disables the automatic backup feature.
         self.auto_add_new_application = auto_add_new_application
+        self.auto_add_target_config = auto_add_target_config
         # The ID of the monitored cluster.
         self.cluster_id = cluster_id
         # Data Configuration. The dataRevision field specifies the data repair method when there is no data for the metric.
@@ -7215,6 +7296,7 @@ class CreateOrUpdateAlertRuleRequest(TeaModel):
         self.notify_strategy = notify_strategy
         # The process ID (PID) that is associated with the Application Monitoring or Browser Monitoring alert rule.
         self.pids = pids
+        self.product = product
         # The PromQL statement of the Prometheus alert rule.
         self.prom_ql = prom_ql
         # The region ID.
@@ -7258,6 +7340,8 @@ class CreateOrUpdateAlertRuleRequest(TeaModel):
             result['Annotations'] = self.annotations
         if self.auto_add_new_application is not None:
             result['AutoAddNewApplication'] = self.auto_add_new_application
+        if self.auto_add_target_config is not None:
+            result['AutoAddTargetConfig'] = self.auto_add_target_config
         if self.cluster_id is not None:
             result['ClusterId'] = self.cluster_id
         if self.data_config is not None:
@@ -7288,6 +7372,8 @@ class CreateOrUpdateAlertRuleRequest(TeaModel):
             result['NotifyStrategy'] = self.notify_strategy
         if self.pids is not None:
             result['Pids'] = self.pids
+        if self.product is not None:
+            result['Product'] = self.product
         if self.prom_ql is not None:
             result['PromQL'] = self.prom_ql
         if self.region_id is not None:
@@ -7320,6 +7406,8 @@ class CreateOrUpdateAlertRuleRequest(TeaModel):
             self.annotations = m.get('Annotations')
         if m.get('AutoAddNewApplication') is not None:
             self.auto_add_new_application = m.get('AutoAddNewApplication')
+        if m.get('AutoAddTargetConfig') is not None:
+            self.auto_add_target_config = m.get('AutoAddTargetConfig')
         if m.get('ClusterId') is not None:
             self.cluster_id = m.get('ClusterId')
         if m.get('DataConfig') is not None:
@@ -7351,6 +7439,8 @@ class CreateOrUpdateAlertRuleRequest(TeaModel):
             self.notify_strategy = m.get('NotifyStrategy')
         if m.get('Pids') is not None:
             self.pids = m.get('Pids')
+        if m.get('Product') is not None:
+            self.product = m.get('Product')
         if m.get('PromQL') is not None:
             self.prom_ql = m.get('PromQL')
         if m.get('RegionId') is not None:
@@ -16336,9 +16426,9 @@ class DeleteGrafanaResourceRequest(TeaModel):
         cluster_name: str = None,
         region_id: str = None,
     ):
-        # The instance ID.
+        # The ID of the cluster.
         self.cluster_id = cluster_id
-        # The instance name.
+        # The name of the cluster.
         self.cluster_name = cluster_name
         # The region ID.
         self.region_id = region_id
@@ -16379,9 +16469,11 @@ class DeleteGrafanaResourceResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Status code. 200 is success, other status codes are exceptions.
         self.code = code
-        # The returned message.
+        # The message returned.
         self.data = data
+        # Returns a hint message for the result.
         self.message = message
         # The request ID. You can use the ID to query logs and troubleshoot issues.
         self.request_id = request_id
@@ -17201,9 +17293,11 @@ class DeletePrometheusGlobalViewResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Status code. 200 is success, other status codes are exceptions.
         self.code = code
         # The response parameters in the JSON format.
         self.data = data
+        # Additional Message.
         self.message = message
         # The request ID. You can use the ID to query logs and troubleshoot issues.
         self.request_id = request_id
@@ -17758,25 +17852,21 @@ class DeleteRetcodeAppResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code. The status code 200 indicates that the request was successful. If another status code is returned, the request failed.
+        # 状态码。200为成功，其他状态码为异常。
         self.code = code
         # Indicates whether the Browser Monitoring task was deleted. Valid values:
         # 
         # *   `true`
         # *   `false`
         self.data = data
-        # The message returned for the operation. Valid values:
-        # 
-        # *   **Success** is returned if the operation is successful.
-        # *   An error message is returned if the operation fails.
+        # 附加信息。取值说明如下：请求正常，返回success。请求异常，返回具体异常信息。
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # 操作是否成功：
         # 
-        # true: The request was successful.
-        # 
-        # false: The request failed.
+        # - `true`：操作成功
+        # - `false`：操作失败
         self.success = success
 
     def validate(self):
@@ -18882,11 +18972,11 @@ class DescribeAddonReleaseRequest(TeaModel):
         region_id: str = None,
         release_name: str = None,
     ):
-        # Environment ID.
+        # The environment ID.
         self.environment_id = environment_id
         # The region ID.
         self.region_id = region_id
-        # Name of Release.
+        # The name of the add-on release.
         self.release_name = release_name
 
     def validate(self):
@@ -18927,17 +19017,17 @@ class DescribeAddonReleaseResponseBodyDataReleaseConditions(TeaModel):
         status: str = None,
         type: str = None,
     ):
-        # First transition time.
+        # The first transition time.
         self.first_transition_time = first_transition_time
-        # Last transition time.
+        # The last transition time.
         self.last_transition_time = last_transition_time
-        # COndition details.
+        # The detailed information.
         self.message = message
-        # Reason of failure.
+        # The reason for the failure.
         self.reason = reason
-        # Condition status.
+        # The status of the phase.
         self.status = status
-        # Condition type.
+        # The type of the phase.
         self.type = type
 
     def validate(self):
@@ -19003,42 +19093,43 @@ class DescribeAddonReleaseResponseBodyDataRelease(TeaModel):
         user_id: str = None,
         version: str = None,
     ):
-        # Name of Addon.
+        # The name of the add-on.
         self.addon_name = addon_name
-        # Number of alarm groups.
+        # The number of alert rules.
         self.alert_rule_count = alert_rule_count
-        # Condition list.
+        # The installation phase.
         self.conditions = conditions
-        # Create time.
+        # The time when the add-on was created.
         self.create_time = create_time
-        # Number of dashboard.
+        # The number of dashboards.
         self.dashboard_count = dashboard_count
-        # Environment ID.
+        # The environment ID.
         self.environment_id = environment_id
-        # Number of Exporter.
+        # The number of exporters.
         self.exporter_count = exporter_count
-        # Whether there is configuration.
+        # Indicates whether the configuration is available.
         self.have_config = have_config
-        # User ID of the installation.
+        # The user ID.
         self.install_user_id = install_user_id
-        # Language.
+        # The language.
         self.language = language
+        # Whether or not it is a managed component.
         self.managed = managed
         # The region ID.
         self.region_id = region_id
-        # Release ID.
+        # The release ID after installation.
         self.release_id = release_id
-        # Name of Release.
+        # The name of the release.
         self.release_name = release_name
-        # Scene.
+        # The scenario.
         self.scene = scene
-        # Status of Release.
+        # The status.
         self.status = status
-        # Update time.
+        # The time when the add-on was updated.
         self.update_time = update_time
-        # User ID.
+        # The user ID.
         self.user_id = user_id
-        # Version of Addon.
+        # The version of the add-on.
         self.version = version
 
     def validate(self):
@@ -19147,9 +19238,9 @@ class DescribeAddonReleaseResponseBodyData(TeaModel):
         config: str = None,
         release: DescribeAddonReleaseResponseBodyDataRelease = None,
     ):
-        # Config of the Release.
+        # The configuration information of the add-on release.
         self.config = config
-        # Release Detail.
+        # The release information.
         self.release = release
 
     def validate(self):
@@ -19187,18 +19278,15 @@ class DescribeAddonReleaseResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
-        # Status code: 200 indicates success.
+        # The HTTP status code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed.
         self.code = code
-        # The struct returned.
+        # The release information.
         self.data = data
         # The returned message.
         self.message = message
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the alert rule was deleted. Valid values:
-        # 
-        # *   `true`: The alert rule was deleted.
-        # *   `false`: The alert rule failed to be deleted.
+        # Indicates whether the request was successful. Valid values: true and false.
         self.success = success
 
     def validate(self):
@@ -21362,10 +21450,12 @@ class DescribeEnvironmentResponse(TeaModel):
 class DescribeEnvironmentFeatureRequest(TeaModel):
     def __init__(
         self,
+        aliyun_lang: str = None,
         environment_id: str = None,
         feature_name: str = None,
         region_id: str = None,
     ):
+        self.aliyun_lang = aliyun_lang
         # The environment ID.
         self.environment_id = environment_id
         # The name of the feature.
@@ -21400,6 +21490,8 @@ class DescribeEnvironmentFeatureRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.aliyun_lang is not None:
+            result['AliyunLang'] = self.aliyun_lang
         if self.environment_id is not None:
             result['EnvironmentId'] = self.environment_id
         if self.feature_name is not None:
@@ -21410,6 +21502,8 @@ class DescribeEnvironmentFeatureRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AliyunLang') is not None:
+            self.aliyun_lang = m.get('AliyunLang')
         if m.get('EnvironmentId') is not None:
             self.environment_id = m.get('EnvironmentId')
         if m.get('FeatureName') is not None:
@@ -21448,6 +21542,7 @@ class DescribeEnvironmentFeatureResponseBodyDataFeature(TeaModel):
         self.language = language
         # The latest version number.
         self.latest_version = latest_version
+        # Whether or not it is a managed component.
         self.managed = managed
         # The name of the feature.
         self.name = name
@@ -21561,23 +21656,29 @@ class DescribeEnvironmentFeatureResponseBodyDataFeatureStatusFeatureContainers(T
 class DescribeEnvironmentFeatureResponseBodyDataFeatureStatus(TeaModel):
     def __init__(
         self,
+        bind_resource_id: str = None,
         feature_containers: List[DescribeEnvironmentFeatureResponseBodyDataFeatureStatusFeatureContainers] = None,
         name: str = None,
         namespace: str = None,
+        security_group_id: str = None,
         status: str = None,
+        v_switch_id: str = None,
     ):
+        self.bind_resource_id = bind_resource_id
         # The containers of the feature.
         self.feature_containers = feature_containers
         # The Kubernetes resource name of the feature.
         self.name = name
         # The namespace.
         self.namespace = namespace
+        self.security_group_id = security_group_id
         # The status of the agent. Valid values:
         # 
         # *   Success: The agent is running.
         # *   Failed: The agent failed to run.
         # *   Not Found: The agent is not installed.
         self.status = status
+        self.v_switch_id = v_switch_id
 
     def validate(self):
         if self.feature_containers:
@@ -21591,6 +21692,8 @@ class DescribeEnvironmentFeatureResponseBodyDataFeatureStatus(TeaModel):
             return _map
 
         result = dict()
+        if self.bind_resource_id is not None:
+            result['BindResourceId'] = self.bind_resource_id
         result['FeatureContainers'] = []
         if self.feature_containers is not None:
             for k in self.feature_containers:
@@ -21599,12 +21702,18 @@ class DescribeEnvironmentFeatureResponseBodyDataFeatureStatus(TeaModel):
             result['Name'] = self.name
         if self.namespace is not None:
             result['Namespace'] = self.namespace
+        if self.security_group_id is not None:
+            result['SecurityGroupId'] = self.security_group_id
         if self.status is not None:
             result['Status'] = self.status
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BindResourceId') is not None:
+            self.bind_resource_id = m.get('BindResourceId')
         self.feature_containers = []
         if m.get('FeatureContainers') is not None:
             for k in m.get('FeatureContainers'):
@@ -21614,8 +21723,12 @@ class DescribeEnvironmentFeatureResponseBodyDataFeatureStatus(TeaModel):
             self.name = m.get('Name')
         if m.get('Namespace') is not None:
             self.namespace = m.get('Namespace')
+        if m.get('SecurityGroupId') is not None:
+            self.security_group_id = m.get('SecurityGroupId')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
         return self
 
 
@@ -22950,7 +23063,7 @@ class GetAgentDownloadUrlRequest(TeaModel):
         self,
         region_id: str = None,
     ):
-        # The download URL of the ARMS agent.
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -22979,9 +23092,9 @@ class GetAgentDownloadUrlResponseBody(TeaModel):
         arms_agent_download_url: str = None,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The download URL of the ARMS agent.
         self.arms_agent_download_url = arms_agent_download_url
-        # Obtains the download URL of the Application Real-Time Monitoring Service (ARMS) agent.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -26905,9 +27018,11 @@ class GetPrometheusGlobalViewResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Status code. 200 is success, other status codes are exceptions.
         self.code = code
-        # The returned struct.
+        # The struct returned.
         self.data = data
+        # Returns a hint message for the result.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -27026,9 +27141,9 @@ class GetPrometheusInstanceResponseBodyDataTags(TeaModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The tag key of the instance.
+        # The tag key.
         self.tag_key = tag_key
-        # The tag value of the instance.
+        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):
@@ -27084,8 +27199,9 @@ class GetPrometheusInstanceResponseBodyData(TeaModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
+        # The number of days for automatic archiving after storage expiration (optional values: 60, 90, 180, 365). 0 means not archive.
         self.archive_duration = archive_duration
-        # auth token string.
+        # Authorization token.
         self.auth_token = auth_token
         # The ID of the Prometheus instance.
         self.cluster_id = cluster_id
@@ -27100,35 +27216,36 @@ class GetPrometheusInstanceResponseBodyData(TeaModel):
         self.cluster_type = cluster_type
         # The ID of the Grafana workspace.
         self.grafana_instance_id = grafana_instance_id
-        # http api internet url.
+        # Http API internet address.
         self.http_api_inter_url = http_api_inter_url
-        # http api intranet url.
+        # Http API intranet address.
         self.http_api_intra_url = http_api_intra_url
         # The billing method. Valid values:
         # 
         # *   PREPAY: subscription
         # *   POSTPAY: pay-as-you-go
         self.payment_type = payment_type
-        # push gateway internet url.
+        # Push gateway internet address.
         self.push_gateway_inter_url = push_gateway_inter_url
-        # push gateway intranet url.
+        # Push gateway intranet address.
         self.push_gateway_intra_url = push_gateway_intra_url
         # The region ID.
         self.region_id = region_id
-        # remote read internet url.
+        # Remote read internet address.
         self.remote_read_inter_url = remote_read_inter_url
-        # remote read intranet url.
+        # Remote read intranet address.
         self.remote_read_intra_url = remote_read_intra_url
-        # remote write internet url.
+        # Remote write internet address.
         self.remote_write_inter_url = remote_write_inter_url
-        # remote write intranet url.
+        # Remote write intranet address.
         self.remote_write_intra_url = remote_write_intra_url
         # The ID of the resource group to which the instance belongs.
         self.resource_group_id = resource_group_id
         # The type of the resource. Set the value to PROMETHEUS.
         self.resource_type = resource_type
-        # The ID of the security group.
+        # The ID of the security group. This parameter is returned only for Prometheus instances for ECS.
         self.security_group_id = security_group_id
+        # Storage duration (days).
         self.storage_duration = storage_duration
         # The child instances of the Prometheus instance for GlobalView. The value is a JSON string.
         self.sub_clusters_json = sub_clusters_json
@@ -27136,9 +27253,9 @@ class GetPrometheusInstanceResponseBodyData(TeaModel):
         self.tags = tags
         # The user ID.
         self.user_id = user_id
-        # The ID of the vSwitch.
+        # The vSwitch ID. This parameter is returned only for Prometheus instances for ECS.
         self.v_switch_id = v_switch_id
-        # The virtual private cloud (VPC) where the monitoring object resides.
+        # The VPC ID. This parameter is returned only for Prometheus instances for ECS.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -27275,7 +27392,7 @@ class GetPrometheusInstanceResponseBody(TeaModel):
     ):
         # The status code. The status code 200 indicates that the request was successful. If another status code is returned, the request failed.
         self.code = code
-        # The returned information.
+        # The returned message.
         self.data = data
         # The message returned.
         self.message = message
@@ -28029,7 +28146,7 @@ class GetRecordingRuleRequest(TeaModel):
         cluster_id: str = None,
         region_id: str = None,
     ):
-        # The cluster ID.
+        # The ID of the cluster.
         self.cluster_id = cluster_id
         # The region ID.
         self.region_id = region_id
@@ -28066,9 +28183,11 @@ class GetRecordingRuleResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Status code. 200 is success, other status codes are exceptions.
         self.code = code
         # The recording rule.
         self.data = data
+        # Returns a hint message for the result.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -33987,21 +34106,21 @@ class InstallAddonRequest(TeaModel):
         release_name: str = None,
         values: str = None,
     ):
-        # Version of Addon.
+        # The version of the add-on.
         self.addon_version = addon_version
-        # Locale, the default is Chinese zh.
+        # The language. Valid values: zh and en. Default value: zh.
         self.aliyun_lang = aliyun_lang
-        # Whether to test run. The default value is false.
+        # Specifies whether to perform only a dry run, without performing the actual request. Default value: false.
         self.dry_run = dry_run
-        # Environment ID.
+        # The environment ID.
         self.environment_id = environment_id
-        # Name of Addon.
+        # The name of the add-on.
         self.name = name
         # The region ID.
         self.region_id = region_id
-        # The release name after installation, if not specified, generates the default rule name.
+        # The name of the add-on after it is installed. If you do not specify this parameter, a default rule name is generated.
         self.release_name = release_name
-        # Config information.
+        # The metadata.
         self.values = values
 
     def validate(self):
@@ -34062,17 +34181,17 @@ class InstallAddonResponseBodyDataConditions(TeaModel):
         status: str = None,
         type: str = None,
     ):
-        # First transition time.
+        # The first transition time.
         self.first_transition_time = first_transition_time
-        # Last transition time.
+        # The last transition time.
         self.last_transition_time = last_transition_time
-        # Details.
+        # The detailed information.
         self.message = message
-        # Reason of failure.
+        # The reason for the failure.
         self.reason = reason
-        # Condition status.
+        # The status of the phase.
         self.status = status
-        # Condition type.
+        # The type of the phase.
         self.type = type
 
     def validate(self):
@@ -34138,42 +34257,43 @@ class InstallAddonResponseBodyData(TeaModel):
         user_id: str = None,
         version: str = None,
     ):
-        # Addon name.
+        # The name of the add-on.
         self.addon_name = addon_name
-        # Number of alarm groups.
+        # The number of alert rules.
         self.alert_rule_count = alert_rule_count
-        # Condition list.
+        # The installation phase.
         self.conditions = conditions
-        # Created time.
+        # The time when the add-on was created.
         self.create_time = create_time
-        # Number of dashboard.
+        # The number of dashboards.
         self.dashboard_count = dashboard_count
-        # Environment ID.
+        # The environment ID.
         self.environment_id = environment_id
-        # Number of Exporter.
+        # The number of exporters.
         self.exporter_count = exporter_count
-        # Whether there is configuration.
+        # Indicates whether the configuration is available.
         self.have_config = have_config
-        # User ID of the installation.
+        # The user ID.
         self.install_user_id = install_user_id
-        # Language.
+        # The language.
         self.language = language
+        # Whether or not it is a managed component.
         self.managed = managed
         # The region ID.
         self.region_id = region_id
-        # Release ID.
+        # The release ID after installation.
         self.release_id = release_id
-        # Name of Release.
+        # The name of the release.
         self.release_name = release_name
-        # Scene.
+        # The scenario.
         self.scene = scene
-        # Status of Release.
+        # The status.
         self.status = status
-        # Update time.
+        # The time when the add-on was updated.
         self.update_time = update_time
-        # User ID.
+        # The user ID.
         self.user_id = user_id
-        # The version number.
+        # The version of the add-on.
         self.version = version
 
     def validate(self):
@@ -34285,18 +34405,15 @@ class InstallAddonResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Status code: 200 indicates success.
+        # The HTTP status code. The status code 200 indicates that the request was successful.
         self.code = code
-        # The returned struct.
+        # The returned data.
         self.data = data
-        # The message returned.
+        # The returned message.
         self.message = message
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the call was successful. Valid values:
-        # 
-        # *   `true`: The call was successful.
-        # *   `false`: The call failed.
+        # Indicates whether the request was successful. Valid values: true and false.
         self.success = success
 
     def validate(self):
@@ -37835,9 +37952,9 @@ class ListDashboardsRequest(TeaModel):
         self.cluster_type = cluster_type
         # The unique names of the dashboards. You can query dashboards by specifying their names. The **dashboard title** can be changed whereas the **dashboard name** cannot. You can specify multiple names and separate them with commas (,), for example, `k8s-event,k8s-overview`. A dashboard may have multiple versions. If you want to specify a version, you can add version information after the name, for example, `k8s-event:v1,k8s-overview:latest`.
         self.dashboard_name = dashboard_name
-        # The language of the Grafana dashboards. Valid values: en and zh. Default value: en.
+        # The language of the returned Grafana dashboard. Valid values: en and zh. Default value: en.
         self.language = language
-        # The code of the cloud service. This parameter is required if you set the ClusterType parameter to `cloud-product-prometheus`. The following cloud services are available: Serverless App Engine, Microservices Engine, Message Queue for Apache RocketMQ, Lindorm, Message Queue for Apache Kafka, ApsaraDB for ClickHouse, Data Lake Analytics, Message Queue for RabbitMQ, ApsaraDB for MongoDB, Time Series Database (TSDB) for InfluxDB, MSE Cloud-native Gateway, Grafana Service, SchedulerX, Global Transaction Service, Enterprise Distributed Application Service, Machine Learning Platform for AI - Elastic Algorithm Service (EAS), Application High Availability Service, and Performance Testing.
+        # The cloud service code. This parameter is required if you set the ClusterType parameter to `cloud-product-prometheus`. The following cloud services are available: Serverless App Engine, Microservices Engine, Message Queue for Apache RocketMQ, Lindorm, Message Queue for Apache Kafka, ApsaraDB for ClickHouse, Data Lake Analytics, Message Queue for RabbitMQ, ApsaraDB for MongoDB, Time Series Database (TSDB) for InfluxDB, MSE Cloud-native Gateway, Grafana Service, SchedulerX, Global Transaction Service, Enterprise Distributed Application Service, Machine Learning Platform for AI - Elastic Algorithm Service (EAS), Application High Availability Service, and Performance Testing.
         self.product = product
         # Specifies whether to create or query a virtual cluster. This parameter provides backward compatibility.
         self.recreate_switch = recreate_switch
@@ -38104,7 +38221,7 @@ class ListDashboardsResponseBodyDashboardVos(TeaModel):
         self.http_url = http_url
         # The URL of the Grafana dashboard.
         self.https_url = https_url
-        # The information about the Grafana dashboard.
+        # The information about the Grafana dashboards.
         self.i_18n_child = i_18n_child
         # The ID of the Grafana dashboard. The value is unique only when you install the Grafana dashboard.
         self.id = id
@@ -38123,7 +38240,7 @@ class ListDashboardsResponseBodyDashboardVos(TeaModel):
         self.need_update = need_update
         # The tags of the Grafana dashboard.
         self.tags = tags
-        # The timestamp when the Grafana dashboard was created. Unit: seconds.
+        # The timestamp generated when the Grafana dashboard was created. Unit: seconds
         self.time = time
         # The title of the Grafana dashboard.
         self.title = title
@@ -38240,9 +38357,11 @@ class ListDashboardsResponseBody(TeaModel):
     ):
         # The information about the Grafana dashboard.
         self.dashboard_vos = dashboard_vos
+        # The environment ID.
         self.environment_id = environment_id
+        # Whether to enable Grafana service.
         self.grafana_service_opened = grafana_service_opened
-        # The indicators of whether the Prometheus service has been activated.
+        # Whether or not to turn on Prometheus service.
         self.prometheus_service_opened = prometheus_service_opened
         # The request ID.
         self.request_id = request_id
@@ -38345,14 +38464,36 @@ class ListDashboardsByNameRequest(TeaModel):
         product_code: str = None,
         region_id: str = None,
     ):
+        # The ID of the cluster. If the ClusterType parameter is not set to `cloud-product-prometheus` or `cms-enterprise-prometheus`, you must specify the ClusterId parameter.
         self.cluster_id = cluster_id
+        # The cluster type. Valid values:
+        # 
+        # *   vpc-prometheus
+        # *   cloud-product-prometheus
+        # *   cms-enterprise-prometheus
+        # *   ExternalKubernetes
+        # *   Ask
+        # *   Kubernetes
+        # *   ManagedKubernetes
+        # *   remote-write-prometheus
+        # *   GlobalViewV2
         self.cluster_type = cluster_type
+        # The name of the dashboard.
         self.dash_board_name = dash_board_name
+        # The version of the dashboard.
         self.dash_board_version = dash_board_version
+        # The type of the data source. Valid values:
+        # 
+        # *   loki
+        # *   prometheus
         self.data_source_type = data_source_type
+        # The name of the dashboard group.
         self.group_name = group_name
+        # Specifies whether to display the Grafana dashboard only in the Application Real-Time Monitoring Service (ARMS) console.
         self.only_query = only_query
+        # The abbreviation of the Alibaba Cloud service name.
         self.product_code = product_code
+        # The ID of the region.
         self.region_id = region_id
 
     def validate(self):
@@ -38415,11 +38556,13 @@ class ListDashboardsByNameResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
-        # 状态码。说明 200表示成功。
+        # Status Code. Description 200 indicates success.
         self.code = code
+        # The returned struct.
         self.data = data
-        # 返回结果的提示信息。
+        # Returns a hint message for the result.
         self.message = message
+        # The ID of the request, You can use the ID to locate logs and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -39548,13 +39691,13 @@ class ListEnvironmentDashboardsRequest(TeaModel):
         region_id: str = None,
         scene: str = None,
     ):
-        # Name of Addon.AddonName and Scene are required.
+        # Name of Addon,One of AddonName and Scene must be filled in.
         self.addon_name = addon_name
         # The ID of the environment instance.
         self.environment_id = environment_id
-        # The ID of the region.
+        # The region ID of the instance.
         self.region_id = region_id
-        # Scene of Addon.AddonName and Scene are required
+        # The scenario of Addon. Either AddonName or Scene is required.
         self.scene = scene
 
     def validate(self):
@@ -39599,17 +39742,17 @@ class ListEnvironmentDashboardsResponseBodyDataDashboards(TeaModel):
         uid: str = None,
         url: str = None,
     ):
-        # Dashboard folder UID.
+        # The UID of the folder.
         self.folder_uid = folder_uid
         # The region ID.
         self.region = region
-        # List of tabs on the dashboard.
+        # The keyword.
         self.tags = tags
-        # The title on the dashboard.
+        # The title of the Grafana dashboard.
         self.title = title
-        # The UID on the dashboard.
+        # The unique identifier of the dashboard.
         self.uid = uid
-        # The URL on the dashboard.
+        # The complete URL of the dashboard.
         self.url = url
 
     def validate(self):
@@ -39658,9 +39801,9 @@ class ListEnvironmentDashboardsResponseBodyData(TeaModel):
         dashboards: List[ListEnvironmentDashboardsResponseBodyDataDashboards] = None,
         total: int = None,
     ):
-        # List of dashboard.
+        # The dashboards.
         self.dashboards = dashboards
-        # Total of the dashboards.
+        # The total number of entries returned.
         self.total = total
 
     def validate(self):
@@ -39704,18 +39847,18 @@ class ListEnvironmentDashboardsResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Status code: 200 indicates success.
+        # The HTTP status code. The status code 200 indicates that the request was successful.
         self.code = code
-        # The returned struct.
+        # The result of the operation.
         self.data = data
         # The returned message.
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the call was successful. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # *   `true`: The call was successful.
-        # *   `false`: The call failed.
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -40059,13 +40202,14 @@ class ListEnvironmentsRequest(TeaModel):
         addon_name: str = None,
         bind_resource_id: str = None,
         environment_type: str = None,
+        fee_package: str = None,
         region_id: str = None,
         resource_group_id: str = None,
         tag: List[ListEnvironmentsRequestTag] = None,
     ):
         # The add-on name. You must specify at least one of the AddonName and EnvironmentType parameters.
         self.addon_name = addon_name
-        # 绑定的资源ID。
+        # The ID of the resource.
         self.bind_resource_id = bind_resource_id
         # The environment type. You must specify at least one of the AddonName and EnvironmentType parameters.
         # 
@@ -40107,6 +40251,7 @@ class ListEnvironmentsRequest(TeaModel):
         # 
         #     <!-- -->
         self.environment_type = environment_type
+        self.fee_package = fee_package
         # The region ID.
         self.region_id = region_id
         # The ID of the resource group.
@@ -40132,6 +40277,8 @@ class ListEnvironmentsRequest(TeaModel):
             result['BindResourceId'] = self.bind_resource_id
         if self.environment_type is not None:
             result['EnvironmentType'] = self.environment_type
+        if self.fee_package is not None:
+            result['FeePackage'] = self.fee_package
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
@@ -40150,6 +40297,8 @@ class ListEnvironmentsRequest(TeaModel):
             self.bind_resource_id = m.get('BindResourceId')
         if m.get('EnvironmentType') is not None:
             self.environment_type = m.get('EnvironmentType')
+        if m.get('FeePackage') is not None:
+            self.fee_package = m.get('FeePackage')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ResourceGroupId') is not None:
@@ -40168,13 +40317,14 @@ class ListEnvironmentsShrinkRequest(TeaModel):
         addon_name: str = None,
         bind_resource_id: str = None,
         environment_type: str = None,
+        fee_package: str = None,
         region_id: str = None,
         resource_group_id: str = None,
         tag_shrink: str = None,
     ):
         # The add-on name. You must specify at least one of the AddonName and EnvironmentType parameters.
         self.addon_name = addon_name
-        # 绑定的资源ID。
+        # The ID of the resource.
         self.bind_resource_id = bind_resource_id
         # The environment type. You must specify at least one of the AddonName and EnvironmentType parameters.
         # 
@@ -40216,6 +40366,7 @@ class ListEnvironmentsShrinkRequest(TeaModel):
         # 
         #     <!-- -->
         self.environment_type = environment_type
+        self.fee_package = fee_package
         # The region ID.
         self.region_id = region_id
         # The ID of the resource group.
@@ -40238,6 +40389,8 @@ class ListEnvironmentsShrinkRequest(TeaModel):
             result['BindResourceId'] = self.bind_resource_id
         if self.environment_type is not None:
             result['EnvironmentType'] = self.environment_type
+        if self.fee_package is not None:
+            result['FeePackage'] = self.fee_package
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
@@ -40254,6 +40407,8 @@ class ListEnvironmentsShrinkRequest(TeaModel):
             self.bind_resource_id = m.get('BindResourceId')
         if m.get('EnvironmentType') is not None:
             self.environment_type = m.get('EnvironmentType')
+        if m.get('FeePackage') is not None:
+            self.fee_package = m.get('FeePackage')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ResourceGroupId') is not None:
@@ -40324,7 +40479,7 @@ class ListEnvironmentsResponseBodyDataEnvironmentsFeatures(TeaModel):
         self.alias = alias
         # The description of the feature.
         self.description = description
-        # The URL of the feature icon.
+        # The URL of the icon.
         self.icon = icon
         # The name of the feature.
         self.name = name
@@ -40410,6 +40565,7 @@ class ListEnvironmentsResponseBodyDataEnvironments(TeaModel):
         environment_name: str = None,
         environment_type: str = None,
         features: List[ListEnvironmentsResponseBodyDataEnvironmentsFeatures] = None,
+        fee_package: str = None,
         grafana_datasource_uid: str = None,
         grafana_folder_title: str = None,
         grafana_folder_uid: str = None,
@@ -40423,46 +40579,50 @@ class ListEnvironmentsResponseBodyDataEnvironments(TeaModel):
         tags: List[ListEnvironmentsResponseBodyDataEnvironmentsTags] = None,
         user_id: str = None,
     ):
-        # The queried add-ons.
+        # The add-ons.
         self.addons = addons
-        # The ID of the resource associated with the environment, such as the ACK cluster ID or VPC ID.
+        # The ID of the resource bound to the environment instance. The resource can be a Kubernetes cluster or a VPC.
         self.bind_resource_id = bind_resource_id
-        # The profile of the resource.
+        # The profile that is bound to the resource.
         self.bind_resource_profile = bind_resource_profile
         # The resource type.
         self.bind_resource_type = bind_resource_type
         # The CIDR block that is bound to the VPC.
         self.bind_vpc_cidr = bind_vpc_cidr
-        # The time when the VPC was created.
+        # The time when the environment instance was created.
         self.create_time = create_time
-        # The ID of the user that created the VPC.
+        # The user ID.
         self.created_user_id = created_user_id
         # The ID of the environment instance.
         self.environment_id = environment_id
-        # The name of the environment.
+        # The name of the environment instance.
         self.environment_name = environment_name
-        # The type of the environment. Valid values:
+        # The type of the environment instance. Valid values:
         # 
-        # *   CS: Container Service for Kubernetes (ACK)
+        # *   CS: Container Service
         # *   ECS: Elastic Compute Service (ECS)
         # *   Cloud: cloud service
         self.environment_type = environment_type
-        # The features.
+        # The parameters of the feature.
         self.features = features
+        self.fee_package = fee_package
         # The unique ID of the Grafana data source.
         self.grafana_datasource_uid = grafana_datasource_uid
         # The name of the Grafana directory.
         self.grafana_folder_title = grafana_folder_title
         # The unique ID of the Grafana directory.
         self.grafana_folder_uid = grafana_folder_uid
-        # The time when the add-on was last created.
+        # The time when the last add-on was created.
         self.latest_release_create_time = latest_release_create_time
-        # type of managed: 
+        # type of managed:
+        # 
         # - none: not managed. default value of prometheus for ACK.
-        # - agent: managed agent. default value of  promehtues for ASK/ACS/AckOne.
-        # - agent-exproter: maanged agent and exporter. default of prometheus for Cloud.
+        # 
+        # - agent: managed agent. default value of promehtues for ASK/ACS/AckOne.
+        # 
+        # - agent-exproter: managed agent and exporter. default of prometheus for Cloud.
         self.managed_type = managed_type
-        # The ID of the Prometheus service.
+        # The Prometheus ID.
         self.prometheus_id = prometheus_id
         # The ID of the Prometheus instance.
         self.prometheus_instance_id = prometheus_instance_id
@@ -40523,6 +40683,8 @@ class ListEnvironmentsResponseBodyDataEnvironments(TeaModel):
         if self.features is not None:
             for k in self.features:
                 result['Features'].append(k.to_map() if k else None)
+        if self.fee_package is not None:
+            result['FeePackage'] = self.fee_package
         if self.grafana_datasource_uid is not None:
             result['GrafanaDatasourceUid'] = self.grafana_datasource_uid
         if self.grafana_folder_title is not None:
@@ -40581,6 +40743,8 @@ class ListEnvironmentsResponseBodyDataEnvironments(TeaModel):
             for k in m.get('Features'):
                 temp_model = ListEnvironmentsResponseBodyDataEnvironmentsFeatures()
                 self.features.append(temp_model.from_map(k))
+        if m.get('FeePackage') is not None:
+            self.fee_package = m.get('FeePackage')
         if m.get('GrafanaDatasourceUid') is not None:
             self.grafana_datasource_uid = m.get('GrafanaDatasourceUid')
         if m.get('GrafanaFolderTitle') is not None:
@@ -40617,7 +40781,7 @@ class ListEnvironmentsResponseBodyData(TeaModel):
         environments: List[ListEnvironmentsResponseBodyDataEnvironments] = None,
         total: int = None,
     ):
-        # The queried environments.
+        # The parameters of the environment instance.
         self.environments = environments
         # The total number of returned entries.
         self.total = total
@@ -41430,20 +41594,20 @@ class ListInsightsEventsRequest(TeaModel):
         region_id: str = None,
         start_time: str = None,
     ):
-        # The details of the event.
+        # The end of the time range to query. The value is a timestamp.
         self.end_time = end_time
-        # Average response-time spikes of application services.
-        self.insights_types = insights_types
         # The types of the events that you want to query. Separate multiple event types with commas (,). If you do not specify this parameter, all events are queried.
         # 
         # *   errorIncrease: API error-rate spike events. Examples: HTTP API error-rate spike events and Dubbo API error-rate spike events.
         # *   topErrorIncrease: the top five API error-rate spike events with the highest traffic.
         # *   topRtIncrease: API response-time spike events. Examples: HTTP API response-time spike events and Dubbo API response-time spike events.
         # *   rtIncrease: the top five API response-time spike events with the highest traffic.
+        self.insights_types = insights_types
+        # The ID of the application.
         self.pid = pid
-        # The end of the time range to query. The value is a timestamp.
+        # The region ID.
         self.region_id = region_id
-        # The ID of the request.
+        # The start of the time range to query. The value is a timestamp.
         self.start_time = start_time
 
     def validate(self):
@@ -41493,15 +41657,15 @@ class ListInsightsEventsResponseBodyInsightsEvents(TeaModel):
         title: str = None,
         type: str = None,
     ):
-        # The time when the event occurred. The value is a timestamp.
+        # The time at which the event occurred. The value is a timestamp.
         self.date = date
-        # The description of the event.
+        # The description of the alert event.
         self.desc = desc
         # The severity of the event.
         self.level = level
         # The ID of the application associated with the event.
         self.pid = pid
-        # Problem identification.
+        # 问题标识。
         self.problem_id = problem_id
         # The title of the event.
         self.title = title
@@ -41558,9 +41722,9 @@ class ListInsightsEventsResponseBody(TeaModel):
         insights_events: List[ListInsightsEventsResponseBodyInsightsEvents] = None,
         request_id: str = None,
     ):
-        # The event details.
+        # The details of the event.
         self.insights_events = insights_events
-        # The title of the event.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -47803,7 +47967,7 @@ class OpenArmsServiceSecondVersionResponseBody(TeaModel):
         order_id: str = None,
         request_id: str = None,
     ):
-        # The service ID that is returned if the service is activated.
+        # The service ID returned if the service is activated.
         self.order_id = order_id
         # The request ID.
         self.request_id = request_id
@@ -49604,9 +49768,13 @@ class RemoveSourcesFromPrometheusGlobalViewRequest(TeaModel):
         region_id: str = None,
         source_names: str = None,
     ):
+        # The ID of the global aggregation instance.
         self.global_view_cluster_id = global_view_cluster_id
+        # The name of the global aggregation instance.
         self.group_name = group_name
+        # The region ID.
         self.region_id = region_id
+        # The list of custom data sources. You can specify multiple data sources and separate them with commas (,).
         self.source_names = source_names
 
     def validate(self):
@@ -49648,8 +49816,14 @@ class RemoveSourcesFromPrometheusGlobalViewResponseBodyData(TeaModel):
         msg: str = None,
         success: bool = None,
     ):
+        # The Info-level information.
         self.info = info
+        # The additional information.
         self.msg = msg
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   `true`
+        # *   `false`
         self.success = success
 
     def validate(self):
@@ -49688,9 +49862,13 @@ class RemoveSourcesFromPrometheusGlobalViewResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Status code. 200 is success, other status codes are exceptions.
         self.code = code
+        # The returned struct.
         self.data = data
+        # Returns a hint message for the result.
         self.message = message
+        # The request ID. You can use the ID to query logs and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -58545,10 +58723,15 @@ class UpdatePrometheusInstanceRequest(TeaModel):
         resource_group_id: str = None,
         storage_duration: int = None,
     ):
+        # The number of days for automatic archiving after storage expiration (optional values: 60, 90, 180, 365). 0 means not archive.
         self.archive_duration = archive_duration
+        # The ID of the Prometheus instance.
         self.cluster_id = cluster_id
+        # The ID of the region.
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # Storage duration (days).
         self.storage_duration = storage_duration
 
     def validate(self):
@@ -58595,8 +58778,11 @@ class UpdatePrometheusInstanceResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The status code. The status code 200 indicates that the request was successful.
         self.code = code
+        # The returned result.
         self.data = data
+        # The message returned.
         self.message = message
         # Id of the request
         self.request_id = request_id

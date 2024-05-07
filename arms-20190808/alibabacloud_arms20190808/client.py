@@ -2768,6 +2768,8 @@ class Client(OpenApiClient):
             body['Annotations'] = request.annotations
         if not UtilClient.is_unset(request.auto_add_new_application):
             body['AutoAddNewApplication'] = request.auto_add_new_application
+        if not UtilClient.is_unset(request.auto_add_target_config):
+            body['AutoAddTargetConfig'] = request.auto_add_target_config
         if not UtilClient.is_unset(request.cluster_id):
             body['ClusterId'] = request.cluster_id
         if not UtilClient.is_unset(request.data_config):
@@ -2796,6 +2798,8 @@ class Client(OpenApiClient):
             body['NotifyStrategy'] = request.notify_strategy
         if not UtilClient.is_unset(request.pids):
             body['Pids'] = request.pids
+        if not UtilClient.is_unset(request.product):
+            body['Product'] = request.product
         if not UtilClient.is_unset(request.prom_ql):
             body['PromQL'] = request.prom_ql
         if not UtilClient.is_unset(request.region_id):
@@ -2848,6 +2852,8 @@ class Client(OpenApiClient):
             body['Annotations'] = request.annotations
         if not UtilClient.is_unset(request.auto_add_new_application):
             body['AutoAddNewApplication'] = request.auto_add_new_application
+        if not UtilClient.is_unset(request.auto_add_target_config):
+            body['AutoAddTargetConfig'] = request.auto_add_target_config
         if not UtilClient.is_unset(request.cluster_id):
             body['ClusterId'] = request.cluster_id
         if not UtilClient.is_unset(request.data_config):
@@ -2876,6 +2882,8 @@ class Client(OpenApiClient):
             body['NotifyStrategy'] = request.notify_strategy
         if not UtilClient.is_unset(request.pids):
             body['Pids'] = request.pids
+        if not UtilClient.is_unset(request.product):
+            body['Product'] = request.product
         if not UtilClient.is_unset(request.prom_ql):
             body['PromQL'] = request.prom_ql
         if not UtilClient.is_unset(request.region_id):
@@ -7900,6 +7908,8 @@ class Client(OpenApiClient):
     ) -> arms20190808_models.DescribeEnvironmentFeatureResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.aliyun_lang):
+            query['AliyunLang'] = request.aliyun_lang
         if not UtilClient.is_unset(request.environment_id):
             query['EnvironmentId'] = request.environment_id
         if not UtilClient.is_unset(request.feature_name):
@@ -7932,6 +7942,8 @@ class Client(OpenApiClient):
     ) -> arms20190808_models.DescribeEnvironmentFeatureResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.aliyun_lang):
+            query['AliyunLang'] = request.aliyun_lang
         if not UtilClient.is_unset(request.environment_id):
             query['EnvironmentId'] = request.environment_id
         if not UtilClient.is_unset(request.feature_name):
@@ -13090,6 +13102,8 @@ class Client(OpenApiClient):
             query['BindResourceId'] = request.bind_resource_id
         if not UtilClient.is_unset(request.environment_type):
             query['EnvironmentType'] = request.environment_type
+        if not UtilClient.is_unset(request.fee_package):
+            query['FeePackage'] = request.fee_package
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
@@ -13132,6 +13146,8 @@ class Client(OpenApiClient):
             query['BindResourceId'] = request.bind_resource_id
         if not UtilClient.is_unset(request.environment_type):
             query['EnvironmentType'] = request.environment_type
+        if not UtilClient.is_unset(request.fee_package):
+            query['FeePackage'] = request.fee_package
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
