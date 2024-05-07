@@ -1,3 +1,9 @@
+2024-05-07 Version: 6.6.1
+- Update API GetGatewayServiceDetail: update response param.
+- Update API GetMseSource: add param VpcId.
+- Update API ListGatewayService: update response param.
+
+
 2024-04-24 Version: 6.6.0
 - Support API CloneSentinelRuleFromAhas.
 

@@ -24103,6 +24103,7 @@ class GetGatewayServiceDetailResponseBodyData(TeaModel):
         namespace: str = None,
         port_traffic_policy_list: List[GetGatewayServiceDetailResponseBodyDataPortTrafficPolicyList] = None,
         ports: List[int] = None,
+        service_fqdn: str = None,
         service_name_in_registry: str = None,
         service_protocol: str = None,
         source_id: int = None,
@@ -24142,6 +24143,7 @@ class GetGatewayServiceDetailResponseBodyData(TeaModel):
         self.port_traffic_policy_list = port_traffic_policy_list
         # The array of service ports.
         self.ports = ports
+        self.service_fqdn = service_fqdn
         # The name of the service registered with the service registry.
         self.service_name_in_registry = service_name_in_registry
         # The protocol of the service.
@@ -24217,6 +24219,8 @@ class GetGatewayServiceDetailResponseBodyData(TeaModel):
                 result['PortTrafficPolicyList'].append(k.to_map() if k else None)
         if self.ports is not None:
             result['Ports'] = self.ports
+        if self.service_fqdn is not None:
+            result['ServiceFQDN'] = self.service_fqdn
         if self.service_name_in_registry is not None:
             result['ServiceNameInRegistry'] = self.service_name_in_registry
         if self.service_protocol is not None:
@@ -24276,6 +24280,8 @@ class GetGatewayServiceDetailResponseBodyData(TeaModel):
                 self.port_traffic_policy_list.append(temp_model.from_map(k))
         if m.get('Ports') is not None:
             self.ports = m.get('Ports')
+        if m.get('ServiceFQDN') is not None:
+            self.service_fqdn = m.get('ServiceFQDN')
         if m.get('ServiceNameInRegistry') is not None:
             self.service_name_in_registry = m.get('ServiceNameInRegistry')
         if m.get('ServiceProtocol') is not None:
@@ -25679,6 +25685,7 @@ class GetMseSourceRequest(TeaModel):
         accept_language: str = None,
         gateway_unique_id: str = None,
         type: str = None,
+        vpc_id: str = None,
     ):
         # The language of the response. Valid values:
         # 
@@ -25692,6 +25699,7 @@ class GetMseSourceRequest(TeaModel):
         # *   NACOS
         # *   ZOOKEEPER
         self.type = type
+        self.vpc_id = vpc_id
 
     def validate(self):
         pass
@@ -25708,6 +25716,8 @@ class GetMseSourceRequest(TeaModel):
             result['GatewayUniqueId'] = self.gateway_unique_id
         if self.type is not None:
             result['Type'] = self.type
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
         return result
 
     def from_map(self, m: dict = None):
@@ -25718,6 +25728,8 @@ class GetMseSourceRequest(TeaModel):
             self.gateway_unique_id = m.get('GatewayUniqueId')
         if m.get('Type') is not None:
             self.type = m.get('Type')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
         return self
 
 
@@ -42285,6 +42297,7 @@ class ListGatewayServiceResponseBodyDataResult(TeaModel):
         name: str = None,
         namespace: str = None,
         ports: List[int] = None,
+        service_fqdn: str = None,
         service_name_in_registry: str = None,
         service_port: int = None,
         service_protocol: str = None,
@@ -42333,6 +42346,7 @@ class ListGatewayServiceResponseBodyDataResult(TeaModel):
         self.namespace = namespace
         # The port array.
         self.ports = ports
+        self.service_fqdn = service_fqdn
         # The name of the service that is registered with the service registry.
         self.service_name_in_registry = service_name_in_registry
         # The service port.
@@ -42396,6 +42410,8 @@ class ListGatewayServiceResponseBodyDataResult(TeaModel):
             result['Namespace'] = self.namespace
         if self.ports is not None:
             result['Ports'] = self.ports
+        if self.service_fqdn is not None:
+            result['ServiceFQDN'] = self.service_fqdn
         if self.service_name_in_registry is not None:
             result['ServiceNameInRegistry'] = self.service_name_in_registry
         if self.service_port is not None:
@@ -42450,6 +42466,8 @@ class ListGatewayServiceResponseBodyDataResult(TeaModel):
             self.namespace = m.get('Namespace')
         if m.get('Ports') is not None:
             self.ports = m.get('Ports')
+        if m.get('ServiceFQDN') is not None:
+            self.service_fqdn = m.get('ServiceFQDN')
         if m.get('ServiceNameInRegistry') is not None:
             self.service_name_in_registry = m.get('ServiceNameInRegistry')
         if m.get('ServicePort') is not None:

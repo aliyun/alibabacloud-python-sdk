@@ -8521,6 +8521,8 @@ class Client(OpenApiClient):
             query['GatewayUniqueId'] = request.gateway_unique_id
         if not UtilClient.is_unset(request.type):
             query['Type'] = request.type
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8553,6 +8555,8 @@ class Client(OpenApiClient):
             query['GatewayUniqueId'] = request.gateway_unique_id
         if not UtilClient.is_unset(request.type):
             query['Type'] = request.type
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
