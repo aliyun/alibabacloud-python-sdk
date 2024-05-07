@@ -1,3 +1,7 @@
+2024-05-07 Version: 3.6.3
+- Update API DescribeDesktopInfo: update response param.
+
+
 2024-04-29 Version: 3.6.2
 - Update API CreateCloudDriveService: update response param.
 - Update API CreateDesktops: add param MonthDesktopSetting.

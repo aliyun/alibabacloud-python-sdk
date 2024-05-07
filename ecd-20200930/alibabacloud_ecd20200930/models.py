@@ -16273,6 +16273,7 @@ class DescribeDesktopInfoResponseBodyDesktops(TeaModel):
         self,
         connection_status: str = None,
         current_app_version: str = None,
+        desktop_group_id: str = None,
         desktop_id: str = None,
         desktop_status: str = None,
         management_flag: List[str] = None,
@@ -16288,6 +16289,7 @@ class DescribeDesktopInfoResponseBodyDesktops(TeaModel):
         self.connection_status = connection_status
         # The version of the image that is used by the cloud computer.
         self.current_app_version = current_app_version
+        self.desktop_group_id = desktop_group_id
         # The cloud computer ID.
         self.desktop_id = desktop_id
         # The status of the cloud computer. Valid values:
@@ -16325,6 +16327,8 @@ class DescribeDesktopInfoResponseBodyDesktops(TeaModel):
             result['ConnectionStatus'] = self.connection_status
         if self.current_app_version is not None:
             result['CurrentAppVersion'] = self.current_app_version
+        if self.desktop_group_id is not None:
+            result['DesktopGroupId'] = self.desktop_group_id
         if self.desktop_id is not None:
             result['DesktopId'] = self.desktop_id
         if self.desktop_status is not None:
@@ -16347,6 +16351,8 @@ class DescribeDesktopInfoResponseBodyDesktops(TeaModel):
             self.connection_status = m.get('ConnectionStatus')
         if m.get('CurrentAppVersion') is not None:
             self.current_app_version = m.get('CurrentAppVersion')
+        if m.get('DesktopGroupId') is not None:
+            self.desktop_group_id = m.get('DesktopGroupId')
         if m.get('DesktopId') is not None:
             self.desktop_id = m.get('DesktopId')
         if m.get('DesktopStatus') is not None:
