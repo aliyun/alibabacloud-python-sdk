@@ -783,6 +783,88 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.add_users_to_skill_group_with_options_async(request, runtime)
 
+    def analyze_conversation_with_options(
+        self,
+        request: ccc20200701_models.AnalyzeConversationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.AnalyzeConversationResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.contact_id):
+            query['ContactId'] = request.contact_id
+        if not UtilClient.is_unset(request.field_list_json):
+            query['FieldListJson'] = request.field_list_json
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.task_list_json):
+            query['TaskListJson'] = request.task_list_json
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AnalyzeConversation',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.AnalyzeConversationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def analyze_conversation_with_options_async(
+        self,
+        request: ccc20200701_models.AnalyzeConversationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.AnalyzeConversationResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.contact_id):
+            query['ContactId'] = request.contact_id
+        if not UtilClient.is_unset(request.field_list_json):
+            query['FieldListJson'] = request.field_list_json
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.task_list_json):
+            query['TaskListJson'] = request.task_list_json
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AnalyzeConversation',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.AnalyzeConversationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def analyze_conversation(
+        self,
+        request: ccc20200701_models.AnalyzeConversationRequest,
+    ) -> ccc20200701_models.AnalyzeConversationResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.analyze_conversation_with_options(request, runtime)
+
+    async def analyze_conversation_async(
+        self,
+        request: ccc20200701_models.AnalyzeConversationRequest,
+    ) -> ccc20200701_models.AnalyzeConversationResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.analyze_conversation_with_options_async(request, runtime)
+
     def answer_call_with_options(
         self,
         request: ccc20200701_models.AnswerCallRequest,

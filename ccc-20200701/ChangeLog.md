@@ -1,3 +1,7 @@
+2024-05-07 Version: 2.15.0
+- Support API AnalyzeConversation.
+
+
 2024-04-24 Version: 2.14.1
 - Update API ListSkillGroupSummaryReportsSinceMidnight: update response param.
 
