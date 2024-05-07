@@ -103,6 +103,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> linkedmall_20230930_models.CancelRefundOrderResponse:
+        """
+        @summary 取消逆向单
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelRefundOrderResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -128,6 +135,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> linkedmall_20230930_models.CancelRefundOrderResponse:
+        """
+        @summary 取消逆向单
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelRefundOrderResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -151,6 +165,11 @@ class Client(OpenApiClient):
         self,
         dispute_id: str,
     ) -> linkedmall_20230930_models.CancelRefundOrderResponse:
+        """
+        @summary 取消逆向单
+        
+        @return: CancelRefundOrderResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.cancel_refund_order_with_options(dispute_id, headers, runtime)
@@ -159,6 +178,11 @@ class Client(OpenApiClient):
         self,
         dispute_id: str,
     ) -> linkedmall_20230930_models.CancelRefundOrderResponse:
+        """
+        @summary 取消逆向单
+        
+        @return: CancelRefundOrderResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.cancel_refund_order_with_options_async(dispute_id, headers, runtime)
@@ -169,6 +193,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> linkedmall_20230930_models.ConfirmDisburseResponse:
+        """
+        @summary 确认收货（订单）
+        
+        @param request: ConfirmDisburseRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConfirmDisburseResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -196,6 +228,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> linkedmall_20230930_models.ConfirmDisburseResponse:
+        """
+        @summary 确认收货（订单）
+        
+        @param request: ConfirmDisburseRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConfirmDisburseResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -221,6 +261,12 @@ class Client(OpenApiClient):
         self,
         request: linkedmall_20230930_models.ConfirmDisburseRequest,
     ) -> linkedmall_20230930_models.ConfirmDisburseResponse:
+        """
+        @summary 确认收货（订单）
+        
+        @param request: ConfirmDisburseRequest
+        @return: ConfirmDisburseResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.confirm_disburse_with_options(request, headers, runtime)
@@ -229,6 +275,12 @@ class Client(OpenApiClient):
         self,
         request: linkedmall_20230930_models.ConfirmDisburseRequest,
     ) -> linkedmall_20230930_models.ConfirmDisburseResponse:
+        """
+        @summary 确认收货（订单）
+        
+        @param request: ConfirmDisburseRequest
+        @return: ConfirmDisburseResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.confirm_disburse_with_options_async(request, headers, runtime)
@@ -239,6 +291,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> linkedmall_20230930_models.CreateGoodsShippingNoticeResponse:
+        """
+        @summary 提交运单信息
+        
+        @param request: CreateGoodsShippingNoticeRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateGoodsShippingNoticeResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -266,6 +326,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> linkedmall_20230930_models.CreateGoodsShippingNoticeResponse:
+        """
+        @summary 提交运单信息
+        
+        @param request: CreateGoodsShippingNoticeRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateGoodsShippingNoticeResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -291,6 +359,12 @@ class Client(OpenApiClient):
         self,
         request: linkedmall_20230930_models.CreateGoodsShippingNoticeRequest,
     ) -> linkedmall_20230930_models.CreateGoodsShippingNoticeResponse:
+        """
+        @summary 提交运单信息
+        
+        @param request: CreateGoodsShippingNoticeRequest
+        @return: CreateGoodsShippingNoticeResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_goods_shipping_notice_with_options(request, headers, runtime)
@@ -299,6 +373,12 @@ class Client(OpenApiClient):
         self,
         request: linkedmall_20230930_models.CreateGoodsShippingNoticeRequest,
     ) -> linkedmall_20230930_models.CreateGoodsShippingNoticeResponse:
+        """
+        @summary 提交运单信息
+        
+        @param request: CreateGoodsShippingNoticeRequest
+        @return: CreateGoodsShippingNoticeResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_goods_shipping_notice_with_options_async(request, headers, runtime)
@@ -309,6 +389,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> linkedmall_20230930_models.CreatePurchaseOrderResponse:
+        """
+        @summary 创建采购单
+        
+        @param request: CreatePurchaseOrderRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreatePurchaseOrderResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -336,6 +424,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> linkedmall_20230930_models.CreatePurchaseOrderResponse:
+        """
+        @summary 创建采购单
+        
+        @param request: CreatePurchaseOrderRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreatePurchaseOrderResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -361,6 +457,12 @@ class Client(OpenApiClient):
         self,
         request: linkedmall_20230930_models.CreatePurchaseOrderRequest,
     ) -> linkedmall_20230930_models.CreatePurchaseOrderResponse:
+        """
+        @summary 创建采购单
+        
+        @param request: CreatePurchaseOrderRequest
+        @return: CreatePurchaseOrderResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_purchase_order_with_options(request, headers, runtime)
@@ -369,6 +471,12 @@ class Client(OpenApiClient):
         self,
         request: linkedmall_20230930_models.CreatePurchaseOrderRequest,
     ) -> linkedmall_20230930_models.CreatePurchaseOrderResponse:
+        """
+        @summary 创建采购单
+        
+        @param request: CreatePurchaseOrderRequest
+        @return: CreatePurchaseOrderResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_purchase_order_with_options_async(request, headers, runtime)
@@ -379,6 +487,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> linkedmall_20230930_models.CreateRefundOrderResponse:
+        """
+        @summary 创建逆向单
+        
+        @param request: CreateRefundOrderRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateRefundOrderResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -406,6 +522,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> linkedmall_20230930_models.CreateRefundOrderResponse:
+        """
+        @summary 创建逆向单
+        
+        @param request: CreateRefundOrderRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateRefundOrderResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -431,6 +555,12 @@ class Client(OpenApiClient):
         self,
         request: linkedmall_20230930_models.CreateRefundOrderRequest,
     ) -> linkedmall_20230930_models.CreateRefundOrderResponse:
+        """
+        @summary 创建逆向单
+        
+        @param request: CreateRefundOrderRequest
+        @return: CreateRefundOrderResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_refund_order_with_options(request, headers, runtime)
@@ -439,6 +569,12 @@ class Client(OpenApiClient):
         self,
         request: linkedmall_20230930_models.CreateRefundOrderRequest,
     ) -> linkedmall_20230930_models.CreateRefundOrderResponse:
+        """
+        @summary 创建逆向单
+        
+        @param request: CreateRefundOrderRequest
+        @return: CreateRefundOrderResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_refund_order_with_options_async(request, headers, runtime)
@@ -449,6 +585,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> linkedmall_20230930_models.GetOrderResponse:
+        """
+        @summary 查询主单详情
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetOrderResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -474,6 +617,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> linkedmall_20230930_models.GetOrderResponse:
+        """
+        @summary 查询主单详情
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetOrderResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -497,6 +647,11 @@ class Client(OpenApiClient):
         self,
         order_id: str,
     ) -> linkedmall_20230930_models.GetOrderResponse:
+        """
+        @summary 查询主单详情
+        
+        @return: GetOrderResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_order_with_options(order_id, headers, runtime)
@@ -505,6 +660,11 @@ class Client(OpenApiClient):
         self,
         order_id: str,
     ) -> linkedmall_20230930_models.GetOrderResponse:
+        """
+        @summary 查询主单详情
+        
+        @return: GetOrderResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_order_with_options_async(order_id, headers, runtime)
@@ -515,6 +675,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> linkedmall_20230930_models.GetPurchaseOrderStatusResponse:
+        """
+        @summary 查询采购单状态
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPurchaseOrderStatusResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -540,6 +707,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> linkedmall_20230930_models.GetPurchaseOrderStatusResponse:
+        """
+        @summary 查询采购单状态
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPurchaseOrderStatusResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -563,6 +737,11 @@ class Client(OpenApiClient):
         self,
         purchase_order_id: str,
     ) -> linkedmall_20230930_models.GetPurchaseOrderStatusResponse:
+        """
+        @summary 查询采购单状态
+        
+        @return: GetPurchaseOrderStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_purchase_order_status_with_options(purchase_order_id, headers, runtime)
@@ -571,6 +750,11 @@ class Client(OpenApiClient):
         self,
         purchase_order_id: str,
     ) -> linkedmall_20230930_models.GetPurchaseOrderStatusResponse:
+        """
+        @summary 查询采购单状态
+        
+        @return: GetPurchaseOrderStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_purchase_order_status_with_options_async(purchase_order_id, headers, runtime)
@@ -581,6 +765,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> linkedmall_20230930_models.GetPurchaserShopResponse:
+        """
+        @summary 查询分销商店铺
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPurchaserShopResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -606,6 +797,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> linkedmall_20230930_models.GetPurchaserShopResponse:
+        """
+        @summary 查询分销商店铺
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPurchaserShopResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -629,6 +827,11 @@ class Client(OpenApiClient):
         self,
         purchaser_id: str,
     ) -> linkedmall_20230930_models.GetPurchaserShopResponse:
+        """
+        @summary 查询分销商店铺
+        
+        @return: GetPurchaserShopResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_purchaser_shop_with_options(purchaser_id, headers, runtime)
@@ -637,6 +840,11 @@ class Client(OpenApiClient):
         self,
         purchaser_id: str,
     ) -> linkedmall_20230930_models.GetPurchaserShopResponse:
+        """
+        @summary 查询分销商店铺
+        
+        @return: GetPurchaserShopResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_purchaser_shop_with_options_async(purchaser_id, headers, runtime)
@@ -647,6 +855,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> linkedmall_20230930_models.GetRefundOrderResponse:
+        """
+        @summary 查询逆向单详情
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetRefundOrderResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -672,6 +887,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> linkedmall_20230930_models.GetRefundOrderResponse:
+        """
+        @summary 查询逆向单详情
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetRefundOrderResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -695,6 +917,11 @@ class Client(OpenApiClient):
         self,
         dispute_id: str,
     ) -> linkedmall_20230930_models.GetRefundOrderResponse:
+        """
+        @summary 查询逆向单详情
+        
+        @return: GetRefundOrderResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_refund_order_with_options(dispute_id, headers, runtime)
@@ -703,6 +930,11 @@ class Client(OpenApiClient):
         self,
         dispute_id: str,
     ) -> linkedmall_20230930_models.GetRefundOrderResponse:
+        """
+        @summary 查询逆向单详情
+        
+        @return: GetRefundOrderResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_refund_order_with_options_async(dispute_id, headers, runtime)
@@ -714,6 +946,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> linkedmall_20230930_models.GetSelectionProductResponse:
+        """
+        @summary 查询选品池商品详情
+        
+        @param request: GetSelectionProductRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSelectionProductResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.division_code):
@@ -747,6 +987,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> linkedmall_20230930_models.GetSelectionProductResponse:
+        """
+        @summary 查询选品池商品详情
+        
+        @param request: GetSelectionProductRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSelectionProductResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.division_code):
@@ -778,6 +1026,12 @@ class Client(OpenApiClient):
         product_id: str,
         request: linkedmall_20230930_models.GetSelectionProductRequest,
     ) -> linkedmall_20230930_models.GetSelectionProductResponse:
+        """
+        @summary 查询选品池商品详情
+        
+        @param request: GetSelectionProductRequest
+        @return: GetSelectionProductResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_selection_product_with_options(product_id, request, headers, runtime)
@@ -787,6 +1041,12 @@ class Client(OpenApiClient):
         product_id: str,
         request: linkedmall_20230930_models.GetSelectionProductRequest,
     ) -> linkedmall_20230930_models.GetSelectionProductResponse:
+        """
+        @summary 查询选品池商品详情
+        
+        @param request: GetSelectionProductRequest
+        @return: GetSelectionProductResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_selection_product_with_options_async(product_id, request, headers, runtime)
@@ -798,6 +1058,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> linkedmall_20230930_models.GetSelectionProductSaleInfoResponse:
+        """
+        @summary 查询选品池商品库存
+        
+        @param request: GetSelectionProductSaleInfoRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSelectionProductSaleInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.division_code):
@@ -831,6 +1099,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> linkedmall_20230930_models.GetSelectionProductSaleInfoResponse:
+        """
+        @summary 查询选品池商品库存
+        
+        @param request: GetSelectionProductSaleInfoRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSelectionProductSaleInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.division_code):
@@ -862,6 +1138,12 @@ class Client(OpenApiClient):
         product_id: str,
         request: linkedmall_20230930_models.GetSelectionProductSaleInfoRequest,
     ) -> linkedmall_20230930_models.GetSelectionProductSaleInfoResponse:
+        """
+        @summary 查询选品池商品库存
+        
+        @param request: GetSelectionProductSaleInfoRequest
+        @return: GetSelectionProductSaleInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_selection_product_sale_info_with_options(product_id, request, headers, runtime)
@@ -871,6 +1153,12 @@ class Client(OpenApiClient):
         product_id: str,
         request: linkedmall_20230930_models.GetSelectionProductSaleInfoRequest,
     ) -> linkedmall_20230930_models.GetSelectionProductSaleInfoResponse:
+        """
+        @summary 查询选品池商品库存
+        
+        @param request: GetSelectionProductSaleInfoRequest
+        @return: GetSelectionProductSaleInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_selection_product_sale_info_with_options_async(product_id, request, headers, runtime)
@@ -881,6 +1169,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> linkedmall_20230930_models.ListCategoriesResponse:
+        """
+        @summary 查询类目
+        
+        @param request: ListCategoriesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCategoriesResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -908,6 +1204,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> linkedmall_20230930_models.ListCategoriesResponse:
+        """
+        @summary 查询类目
+        
+        @param request: ListCategoriesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCategoriesResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -933,6 +1237,12 @@ class Client(OpenApiClient):
         self,
         request: linkedmall_20230930_models.ListCategoriesRequest,
     ) -> linkedmall_20230930_models.ListCategoriesResponse:
+        """
+        @summary 查询类目
+        
+        @param request: ListCategoriesRequest
+        @return: ListCategoriesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_categories_with_options(request, headers, runtime)
@@ -941,6 +1251,12 @@ class Client(OpenApiClient):
         self,
         request: linkedmall_20230930_models.ListCategoriesRequest,
     ) -> linkedmall_20230930_models.ListCategoriesResponse:
+        """
+        @summary 查询类目
+        
+        @param request: ListCategoriesRequest
+        @return: ListCategoriesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_categories_with_options_async(request, headers, runtime)
@@ -951,6 +1267,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> linkedmall_20230930_models.ListLogisticsOrdersResponse:
+        """
+        @summary 查询物流信息（订单）
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListLogisticsOrdersResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -976,6 +1299,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> linkedmall_20230930_models.ListLogisticsOrdersResponse:
+        """
+        @summary 查询物流信息（订单）
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListLogisticsOrdersResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -999,6 +1329,11 @@ class Client(OpenApiClient):
         self,
         order_id: str,
     ) -> linkedmall_20230930_models.ListLogisticsOrdersResponse:
+        """
+        @summary 查询物流信息（订单）
+        
+        @return: ListLogisticsOrdersResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_logistics_orders_with_options(order_id, headers, runtime)
@@ -1007,6 +1342,11 @@ class Client(OpenApiClient):
         self,
         order_id: str,
     ) -> linkedmall_20230930_models.ListLogisticsOrdersResponse:
+        """
+        @summary 查询物流信息（订单）
+        
+        @return: ListLogisticsOrdersResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_logistics_orders_with_options_async(order_id, headers, runtime)
@@ -1017,6 +1357,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> linkedmall_20230930_models.ListPurchaserShopsResponse:
+        """
+        @summary 采购方店铺列表查询
+        
+        @param request: ListPurchaserShopsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPurchaserShopsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -1049,6 +1397,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> linkedmall_20230930_models.ListPurchaserShopsResponse:
+        """
+        @summary 采购方店铺列表查询
+        
+        @param request: ListPurchaserShopsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPurchaserShopsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -1079,6 +1435,12 @@ class Client(OpenApiClient):
         self,
         request: linkedmall_20230930_models.ListPurchaserShopsRequest,
     ) -> linkedmall_20230930_models.ListPurchaserShopsResponse:
+        """
+        @summary 采购方店铺列表查询
+        
+        @param request: ListPurchaserShopsRequest
+        @return: ListPurchaserShopsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_purchaser_shops_with_options(request, headers, runtime)
@@ -1087,6 +1449,12 @@ class Client(OpenApiClient):
         self,
         request: linkedmall_20230930_models.ListPurchaserShopsRequest,
     ) -> linkedmall_20230930_models.ListPurchaserShopsResponse:
+        """
+        @summary 采购方店铺列表查询
+        
+        @param request: ListPurchaserShopsRequest
+        @return: ListPurchaserShopsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_purchaser_shops_with_options_async(request, headers, runtime)
@@ -1097,6 +1465,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> linkedmall_20230930_models.ListSelectionProductSaleInfosResponse:
+        """
+        @summary 批量查询选品池商品库存
+        
+        @param request: ListSelectionProductSaleInfosRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSelectionProductSaleInfosResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -1124,6 +1500,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> linkedmall_20230930_models.ListSelectionProductSaleInfosResponse:
+        """
+        @summary 批量查询选品池商品库存
+        
+        @param request: ListSelectionProductSaleInfosRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSelectionProductSaleInfosResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -1149,6 +1533,12 @@ class Client(OpenApiClient):
         self,
         request: linkedmall_20230930_models.ListSelectionProductSaleInfosRequest,
     ) -> linkedmall_20230930_models.ListSelectionProductSaleInfosResponse:
+        """
+        @summary 批量查询选品池商品库存
+        
+        @param request: ListSelectionProductSaleInfosRequest
+        @return: ListSelectionProductSaleInfosResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_selection_product_sale_infos_with_options(request, headers, runtime)
@@ -1157,6 +1547,12 @@ class Client(OpenApiClient):
         self,
         request: linkedmall_20230930_models.ListSelectionProductSaleInfosRequest,
     ) -> linkedmall_20230930_models.ListSelectionProductSaleInfosResponse:
+        """
+        @summary 批量查询选品池商品库存
+        
+        @param request: ListSelectionProductSaleInfosRequest
+        @return: ListSelectionProductSaleInfosResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_selection_product_sale_infos_with_options_async(request, headers, runtime)
@@ -1167,6 +1563,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> linkedmall_20230930_models.ListSelectionProductsResponse:
+        """
+        @summary 查询商品列表
+        
+        @param request: ListSelectionProductsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSelectionProductsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -1201,6 +1605,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> linkedmall_20230930_models.ListSelectionProductsResponse:
+        """
+        @summary 查询商品列表
+        
+        @param request: ListSelectionProductsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSelectionProductsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -1233,6 +1645,12 @@ class Client(OpenApiClient):
         self,
         request: linkedmall_20230930_models.ListSelectionProductsRequest,
     ) -> linkedmall_20230930_models.ListSelectionProductsResponse:
+        """
+        @summary 查询商品列表
+        
+        @param request: ListSelectionProductsRequest
+        @return: ListSelectionProductsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_selection_products_with_options(request, headers, runtime)
@@ -1241,6 +1659,12 @@ class Client(OpenApiClient):
         self,
         request: linkedmall_20230930_models.ListSelectionProductsRequest,
     ) -> linkedmall_20230930_models.ListSelectionProductsResponse:
+        """
+        @summary 查询商品列表
+        
+        @param request: ListSelectionProductsRequest
+        @return: ListSelectionProductsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_selection_products_with_options_async(request, headers, runtime)
@@ -1251,6 +1675,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> linkedmall_20230930_models.ListSelectionSkuSaleInfosResponse:
+        """
+        @summary 批量查询选品池商品SKU库存
+        
+        @param request: ListSelectionSkuSaleInfosRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSelectionSkuSaleInfosResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -1278,6 +1710,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> linkedmall_20230930_models.ListSelectionSkuSaleInfosResponse:
+        """
+        @summary 批量查询选品池商品SKU库存
+        
+        @param request: ListSelectionSkuSaleInfosRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSelectionSkuSaleInfosResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -1303,6 +1743,12 @@ class Client(OpenApiClient):
         self,
         request: linkedmall_20230930_models.ListSelectionSkuSaleInfosRequest,
     ) -> linkedmall_20230930_models.ListSelectionSkuSaleInfosResponse:
+        """
+        @summary 批量查询选品池商品SKU库存
+        
+        @param request: ListSelectionSkuSaleInfosRequest
+        @return: ListSelectionSkuSaleInfosResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_selection_sku_sale_infos_with_options(request, headers, runtime)
@@ -1311,6 +1757,12 @@ class Client(OpenApiClient):
         self,
         request: linkedmall_20230930_models.ListSelectionSkuSaleInfosRequest,
     ) -> linkedmall_20230930_models.ListSelectionSkuSaleInfosResponse:
+        """
+        @summary 批量查询选品池商品SKU库存
+        
+        @param request: ListSelectionSkuSaleInfosRequest
+        @return: ListSelectionSkuSaleInfosResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_selection_sku_sale_infos_with_options_async(request, headers, runtime)
@@ -1321,6 +1773,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> linkedmall_20230930_models.QueryChildDivisionCodeResponse:
+        """
+        @summary 查询地址divisionCode
+        
+        @param request: QueryChildDivisionCodeRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryChildDivisionCodeResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -1348,6 +1808,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> linkedmall_20230930_models.QueryChildDivisionCodeResponse:
+        """
+        @summary 查询地址divisionCode
+        
+        @param request: QueryChildDivisionCodeRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryChildDivisionCodeResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -1373,6 +1841,12 @@ class Client(OpenApiClient):
         self,
         request: linkedmall_20230930_models.QueryChildDivisionCodeRequest,
     ) -> linkedmall_20230930_models.QueryChildDivisionCodeResponse:
+        """
+        @summary 查询地址divisionCode
+        
+        @param request: QueryChildDivisionCodeRequest
+        @return: QueryChildDivisionCodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.query_child_division_code_with_options(request, headers, runtime)
@@ -1381,6 +1855,12 @@ class Client(OpenApiClient):
         self,
         request: linkedmall_20230930_models.QueryChildDivisionCodeRequest,
     ) -> linkedmall_20230930_models.QueryChildDivisionCodeResponse:
+        """
+        @summary 查询地址divisionCode
+        
+        @param request: QueryChildDivisionCodeRequest
+        @return: QueryChildDivisionCodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.query_child_division_code_with_options_async(request, headers, runtime)
@@ -1391,6 +1871,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> linkedmall_20230930_models.QueryOrdersResponse:
+        """
+        @summary 查询主单列表
+        
+        @param request: QueryOrdersRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryOrdersResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -1418,6 +1906,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> linkedmall_20230930_models.QueryOrdersResponse:
+        """
+        @summary 查询主单列表
+        
+        @param request: QueryOrdersRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryOrdersResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -1443,6 +1939,12 @@ class Client(OpenApiClient):
         self,
         request: linkedmall_20230930_models.QueryOrdersRequest,
     ) -> linkedmall_20230930_models.QueryOrdersResponse:
+        """
+        @summary 查询主单列表
+        
+        @param request: QueryOrdersRequest
+        @return: QueryOrdersResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.query_orders_with_options(request, headers, runtime)
@@ -1451,6 +1953,12 @@ class Client(OpenApiClient):
         self,
         request: linkedmall_20230930_models.QueryOrdersRequest,
     ) -> linkedmall_20230930_models.QueryOrdersResponse:
+        """
+        @summary 查询主单列表
+        
+        @param request: QueryOrdersRequest
+        @return: QueryOrdersResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.query_orders_with_options_async(request, headers, runtime)
@@ -1461,6 +1969,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> linkedmall_20230930_models.RenderPurchaseOrderResponse:
+        """
+        @summary 渲染采购单
+        
+        @param request: RenderPurchaseOrderRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RenderPurchaseOrderResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -1488,6 +2004,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> linkedmall_20230930_models.RenderPurchaseOrderResponse:
+        """
+        @summary 渲染采购单
+        
+        @param request: RenderPurchaseOrderRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RenderPurchaseOrderResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -1513,6 +2037,12 @@ class Client(OpenApiClient):
         self,
         request: linkedmall_20230930_models.RenderPurchaseOrderRequest,
     ) -> linkedmall_20230930_models.RenderPurchaseOrderResponse:
+        """
+        @summary 渲染采购单
+        
+        @param request: RenderPurchaseOrderRequest
+        @return: RenderPurchaseOrderResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.render_purchase_order_with_options(request, headers, runtime)
@@ -1521,6 +2051,12 @@ class Client(OpenApiClient):
         self,
         request: linkedmall_20230930_models.RenderPurchaseOrderRequest,
     ) -> linkedmall_20230930_models.RenderPurchaseOrderResponse:
+        """
+        @summary 渲染采购单
+        
+        @param request: RenderPurchaseOrderRequest
+        @return: RenderPurchaseOrderResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.render_purchase_order_with_options_async(request, headers, runtime)
@@ -1531,6 +2067,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> linkedmall_20230930_models.RenderRefundOrderResponse:
+        """
+        @summary 逆向单渲染
+        
+        @param request: RenderRefundOrderRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RenderRefundOrderResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -1558,6 +2102,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> linkedmall_20230930_models.RenderRefundOrderResponse:
+        """
+        @summary 逆向单渲染
+        
+        @param request: RenderRefundOrderRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RenderRefundOrderResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -1583,6 +2135,12 @@ class Client(OpenApiClient):
         self,
         request: linkedmall_20230930_models.RenderRefundOrderRequest,
     ) -> linkedmall_20230930_models.RenderRefundOrderResponse:
+        """
+        @summary 逆向单渲染
+        
+        @param request: RenderRefundOrderRequest
+        @return: RenderRefundOrderResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.render_refund_order_with_options(request, headers, runtime)
@@ -1591,6 +2149,12 @@ class Client(OpenApiClient):
         self,
         request: linkedmall_20230930_models.RenderRefundOrderRequest,
     ) -> linkedmall_20230930_models.RenderRefundOrderResponse:
+        """
+        @summary 逆向单渲染
+        
+        @param request: RenderRefundOrderRequest
+        @return: RenderRefundOrderResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.render_refund_order_with_options_async(request, headers, runtime)
@@ -1601,6 +2165,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> linkedmall_20230930_models.SplitPurchaseOrderResponse:
+        """
+        @summary 渲染拆分采购单
+        
+        @param request: SplitPurchaseOrderRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SplitPurchaseOrderResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -1628,6 +2200,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> linkedmall_20230930_models.SplitPurchaseOrderResponse:
+        """
+        @summary 渲染拆分采购单
+        
+        @param request: SplitPurchaseOrderRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SplitPurchaseOrderResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -1653,6 +2233,12 @@ class Client(OpenApiClient):
         self,
         request: linkedmall_20230930_models.SplitPurchaseOrderRequest,
     ) -> linkedmall_20230930_models.SplitPurchaseOrderResponse:
+        """
+        @summary 渲染拆分采购单
+        
+        @param request: SplitPurchaseOrderRequest
+        @return: SplitPurchaseOrderResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.split_purchase_order_with_options(request, headers, runtime)
@@ -1661,6 +2247,12 @@ class Client(OpenApiClient):
         self,
         request: linkedmall_20230930_models.SplitPurchaseOrderRequest,
     ) -> linkedmall_20230930_models.SplitPurchaseOrderResponse:
+        """
+        @summary 渲染拆分采购单
+        
+        @param request: SplitPurchaseOrderRequest
+        @return: SplitPurchaseOrderResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.split_purchase_order_with_options_async(request, headers, runtime)

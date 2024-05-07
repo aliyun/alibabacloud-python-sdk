@@ -14,10 +14,13 @@ class AddressInfo(TeaModel):
         receiver_phone: str = None,
         town_division_code: str = None,
     ):
+        # This parameter is required.
         self.address_detail = address_detail
         self.address_id = address_id
         self.division_code = division_code
+        # This parameter is required.
         self.receiver = receiver
+        # This parameter is required.
         self.receiver_phone = receiver_phone
         self.town_division_code = town_division_code
 
@@ -499,6 +502,7 @@ class DivisionQuery(TeaModel):
         self,
         division_code: str = None,
     ):
+        # This parameter is required.
         self.division_code = division_code
 
     def validate(self):
@@ -906,8 +910,11 @@ class GoodsShippingNoticeCreateCmd(TeaModel):
         dispute_id: str = None,
         logistics_no: str = None,
     ):
+        # This parameter is required.
         self.cp_code = cp_code
+        # This parameter is required.
         self.dispute_id = dispute_id
+        # This parameter is required.
         self.logistics_no = logistics_no
 
     def validate(self):
@@ -1378,7 +1385,9 @@ class OrderPageQuery(TeaModel):
         purchase_order_id: str = None,
     ):
         self.order_id_list = order_id_list
+        # This parameter is required.
         self.page_number = page_number
+        # This parameter is required.
         self.page_size = page_size
         self.purchase_order_id = purchase_order_id
 
@@ -1509,9 +1518,13 @@ class OrderRenderProductDTO(TeaModel):
         quantity: int = None,
         sku_id: str = None,
     ):
+        # This parameter is required.
         self.product_id = product_id
+        # This parameter is required.
         self.purchaser_id = purchaser_id
+        # This parameter is required.
         self.quantity = quantity
+        # This parameter is required.
         self.sku_id = sku_id
 
     def validate(self):
@@ -2101,9 +2114,13 @@ class ProductDTO(TeaModel):
         sku_id: str = None,
     ):
         self.price = price
+        # This parameter is required.
         self.product_id = product_id
+        # This parameter is required.
         self.purchaser_id = purchaser_id
+        # This parameter is required.
         self.quantity = quantity
+        # This parameter is required.
         self.sku_id = sku_id
 
     def validate(self):
@@ -2151,10 +2168,13 @@ class ProductPageResult(TeaModel):
         request_id: str = None,
         total: int = None,
     ):
+        # This parameter is required.
         self.page_number = page_number
+        # This parameter is required.
         self.page_size = page_size
         self.products = products
         self.request_id = request_id
+        # This parameter is required.
         self.total = total
 
     def validate(self):
@@ -2234,6 +2254,7 @@ class ProductQuery(TeaModel):
         distributor_shop_id: str = None,
         division_code: str = None,
     ):
+        # This parameter is required.
         self.distributor_shop_id = distributor_shop_id
         self.division_code = division_code
 
@@ -2445,7 +2466,9 @@ class ProductSaleInfoListQuery(TeaModel):
         purchaser_id: str = None,
     ):
         self.division_code = division_code
+        # This parameter is required.
         self.product_ids = product_ids
+        # This parameter is required.
         self.purchaser_id = purchaser_id
 
     def validate(self):
@@ -2523,6 +2546,7 @@ class ProductSaleInfoQuery(TeaModel):
         distributor_shop_id: str = None,
         division_code: str = None,
     ):
+        # This parameter is required.
         self.distributor_shop_id = distributor_shop_id
         self.division_code = division_code
 
@@ -2559,10 +2583,14 @@ class PurchaseOrderCreateCmd(TeaModel):
         outer_purchase_order_id: str = None,
         product_list: List[ProductDTO] = None,
     ):
+        # This parameter is required.
         self.buyer_id = buyer_id
+        # This parameter is required.
         self.delivery_address = delivery_address
         self.ext_info = ext_info
+        # This parameter is required.
         self.outer_purchase_order_id = outer_purchase_order_id
+        # This parameter is required.
         self.product_list = product_list
 
     def validate(self):
@@ -2653,9 +2681,12 @@ class PurchaseOrderRenderQuery(TeaModel):
         ext_info: Dict[str, Any] = None,
         product_list: List[OrderRenderProductDTO] = None,
     ):
+        # This parameter is required.
         self.buyer_id = buyer_id
+        # This parameter is required.
         self.delivery_address = delivery_address
         self.ext_info = ext_info
+        # This parameter is required.
         self.product_list = product_list
 
     def validate(self):
@@ -2869,14 +2900,20 @@ class RefundOrderCmd(TeaModel):
         leave_picture_lists: List[LeavePictureList] = None,
         order_line_id: str = None,
     ):
+        # This parameter is required.
         self.apply_reason_text_id = apply_reason_text_id
         self.apply_reason_tips = apply_reason_tips
+        # This parameter is required.
         self.apply_refund_count = apply_refund_count
+        # This parameter is required.
         self.apply_refund_fee = apply_refund_fee
+        # This parameter is required.
         self.biz_claim_type = biz_claim_type
+        # This parameter is required.
         self.goods_status = goods_status
         self.leave_message = leave_message
         self.leave_picture_lists = leave_picture_lists
+        # This parameter is required.
         self.order_line_id = order_line_id
 
     def validate(self):
@@ -3036,8 +3073,11 @@ class RefundRenderCmd(TeaModel):
         goods_status: int = None,
         order_line_id: str = None,
     ):
+        # This parameter is required.
         self.biz_claim_type = biz_claim_type
+        # This parameter is required.
         self.goods_status = goods_status
+        # This parameter is required.
         self.order_line_id = order_line_id
 
     def validate(self):
@@ -3507,7 +3547,9 @@ class SkuQueryParam(TeaModel):
         product_id: str = None,
         sku_id: str = None,
     ):
+        # This parameter is required.
         self.product_id = product_id
+        # This parameter is required.
         self.sku_id = sku_id
 
     def validate(self):
@@ -3542,7 +3584,9 @@ class SkuSaleInfoListQuery(TeaModel):
         sku_query_params: List[SkuQueryParam] = None,
     ):
         self.division_code = division_code
+        # This parameter is required.
         self.purchaser_id = purchaser_id
+        # This parameter is required.
         self.sku_query_params = sku_query_params
 
     def validate(self):
@@ -3668,6 +3712,7 @@ class ConfirmDisburseRequest(TeaModel):
         self,
         body: ConfirmDisburseCmd = None,
     ):
+        # This parameter is required.
         self.body = body
 
     def validate(self):
@@ -3738,6 +3783,7 @@ class CreateGoodsShippingNoticeRequest(TeaModel):
         self,
         body: GoodsShippingNoticeCreateCmd = None,
     ):
+        # This parameter is required.
         self.body = body
 
     def validate(self):
@@ -3808,6 +3854,7 @@ class CreatePurchaseOrderRequest(TeaModel):
         self,
         body: PurchaseOrderCreateCmd = None,
     ):
+        # This parameter is required.
         self.body = body
 
     def validate(self):
@@ -3878,6 +3925,7 @@ class CreateRefundOrderRequest(TeaModel):
         self,
         body: RefundOrderCmd = None,
     ):
+        # This parameter is required.
         self.body = body
 
     def validate(self):
@@ -4114,6 +4162,7 @@ class GetSelectionProductRequest(TeaModel):
         purchaser_id: str = None,
     ):
         self.division_code = division_code
+        # This parameter is required.
         self.purchaser_id = purchaser_id
 
     def validate(self):
@@ -4188,6 +4237,7 @@ class GetSelectionProductSaleInfoRequest(TeaModel):
         purchaser_id: str = None,
     ):
         self.division_code = division_code
+        # This parameter is required.
         self.purchaser_id = purchaser_id
 
     def validate(self):
@@ -4445,6 +4495,7 @@ class ListSelectionProductSaleInfosRequest(TeaModel):
         self,
         body: ProductSaleInfoListQuery = None,
     ):
+        # This parameter is required.
         self.body = body
 
     def validate(self):
@@ -4517,8 +4568,11 @@ class ListSelectionProductsRequest(TeaModel):
         page_size: int = None,
         purchaser_id: str = None,
     ):
+        # This parameter is required.
         self.page_number = page_number
+        # This parameter is required.
         self.page_size = page_size
+        # This parameter is required.
         self.purchaser_id = purchaser_id
 
     def validate(self):
@@ -4595,6 +4649,7 @@ class ListSelectionSkuSaleInfosRequest(TeaModel):
         self,
         body: SkuSaleInfoListQuery = None,
     ):
+        # This parameter is required.
         self.body = body
 
     def validate(self):
@@ -4665,6 +4720,7 @@ class QueryChildDivisionCodeRequest(TeaModel):
         self,
         body: DivisionQuery = None,
     ):
+        # This parameter is required.
         self.body = body
 
     def validate(self):
@@ -4735,6 +4791,7 @@ class QueryOrdersRequest(TeaModel):
         self,
         body: OrderPageQuery = None,
     ):
+        # This parameter is required.
         self.body = body
 
     def validate(self):
@@ -4805,6 +4862,7 @@ class RenderPurchaseOrderRequest(TeaModel):
         self,
         body: PurchaseOrderRenderQuery = None,
     ):
+        # This parameter is required.
         self.body = body
 
     def validate(self):
@@ -4875,6 +4933,7 @@ class RenderRefundOrderRequest(TeaModel):
         self,
         body: RefundRenderCmd = None,
     ):
+        # This parameter is required.
         self.body = body
 
     def validate(self):
