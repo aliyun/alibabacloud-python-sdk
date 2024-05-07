@@ -1,3 +1,11 @@
+2024-05-07 Version: 4.1.3
+- Update API CreateAutoProvisioningGroup: update param LaunchConfiguration.DataDisk.
+- Update API CreateAutoProvisioningGroup: update param LaunchConfiguration.SystemDisk.
+- Update API CreateNetworkInterface: add param ConnectionTrackingConfiguration.
+- Update API DescribeNetworkInterfaceAttribute: update response param.
+- Update API ModifyNetworkInterfaceAttribute: add param ConnectionTrackingConfiguration.
+
+
 2024-04-24 Version: 4.1.2
 - Update API DescribeInstanceTypes: update response param.
 
