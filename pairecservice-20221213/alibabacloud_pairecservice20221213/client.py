@@ -1897,6 +1897,210 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_param_with_options_async(request, headers, runtime)
 
+    def create_resource_rule_with_options(
+        self,
+        request: pai_rec_service_20221213_models.CreateResourceRuleRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_rec_service_20221213_models.CreateResourceRuleResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.metric_operation_type):
+            body['MetricOperationType'] = request.metric_operation_type
+        if not UtilClient.is_unset(request.metric_pull_info):
+            body['MetricPullInfo'] = request.metric_pull_info
+        if not UtilClient.is_unset(request.metric_pull_period):
+            body['MetricPullPeriod'] = request.metric_pull_period
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.rule_computing_definition):
+            body['RuleComputingDefinition'] = request.rule_computing_definition
+        if not UtilClient.is_unset(request.rule_items):
+            body['RuleItems'] = request.rule_items
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateResourceRule',
+            version='2022-12-13',
+            protocol='HTTPS',
+            pathname=f'/api/v1/resourcerules',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_rec_service_20221213_models.CreateResourceRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_resource_rule_with_options_async(
+        self,
+        request: pai_rec_service_20221213_models.CreateResourceRuleRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_rec_service_20221213_models.CreateResourceRuleResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.metric_operation_type):
+            body['MetricOperationType'] = request.metric_operation_type
+        if not UtilClient.is_unset(request.metric_pull_info):
+            body['MetricPullInfo'] = request.metric_pull_info
+        if not UtilClient.is_unset(request.metric_pull_period):
+            body['MetricPullPeriod'] = request.metric_pull_period
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.rule_computing_definition):
+            body['RuleComputingDefinition'] = request.rule_computing_definition
+        if not UtilClient.is_unset(request.rule_items):
+            body['RuleItems'] = request.rule_items
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateResourceRule',
+            version='2022-12-13',
+            protocol='HTTPS',
+            pathname=f'/api/v1/resourcerules',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_rec_service_20221213_models.CreateResourceRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_resource_rule(
+        self,
+        request: pai_rec_service_20221213_models.CreateResourceRuleRequest,
+    ) -> pai_rec_service_20221213_models.CreateResourceRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_resource_rule_with_options(request, headers, runtime)
+
+    async def create_resource_rule_async(
+        self,
+        request: pai_rec_service_20221213_models.CreateResourceRuleRequest,
+    ) -> pai_rec_service_20221213_models.CreateResourceRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_resource_rule_with_options_async(request, headers, runtime)
+
+    def create_resource_rule_item_with_options(
+        self,
+        resource_rule_id: str,
+        request: pai_rec_service_20221213_models.CreateResourceRuleItemRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_rec_service_20221213_models.CreateResourceRuleItemResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.max_value):
+            body['MaxValue'] = request.max_value
+        if not UtilClient.is_unset(request.min_value):
+            body['MinValue'] = request.min_value
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.value):
+            body['Value'] = request.value
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateResourceRuleItem',
+            version='2022-12-13',
+            protocol='HTTPS',
+            pathname=f'/api/v1/resourcerules/{OpenApiUtilClient.get_encode_param(resource_rule_id)}/items',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_rec_service_20221213_models.CreateResourceRuleItemResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_resource_rule_item_with_options_async(
+        self,
+        resource_rule_id: str,
+        request: pai_rec_service_20221213_models.CreateResourceRuleItemRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_rec_service_20221213_models.CreateResourceRuleItemResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.max_value):
+            body['MaxValue'] = request.max_value
+        if not UtilClient.is_unset(request.min_value):
+            body['MinValue'] = request.min_value
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.value):
+            body['Value'] = request.value
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateResourceRuleItem',
+            version='2022-12-13',
+            protocol='HTTPS',
+            pathname=f'/api/v1/resourcerules/{OpenApiUtilClient.get_encode_param(resource_rule_id)}/items',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_rec_service_20221213_models.CreateResourceRuleItemResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_resource_rule_item(
+        self,
+        resource_rule_id: str,
+        request: pai_rec_service_20221213_models.CreateResourceRuleItemRequest,
+    ) -> pai_rec_service_20221213_models.CreateResourceRuleItemResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_resource_rule_item_with_options(resource_rule_id, request, headers, runtime)
+
+    async def create_resource_rule_item_async(
+        self,
+        resource_rule_id: str,
+        request: pai_rec_service_20221213_models.CreateResourceRuleItemRequest,
+    ) -> pai_rec_service_20221213_models.CreateResourceRuleItemResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_resource_rule_item_with_options_async(resource_rule_id, request, headers, runtime)
+
     def create_scene_with_options(
         self,
         request: pai_rec_service_20221213_models.CreateSceneRequest,
@@ -2172,6 +2376,102 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_table_meta_with_options_async(request, headers, runtime)
+
+    def debug_resource_rule_with_options(
+        self,
+        resource_rule_id: str,
+        tmp_req: pai_rec_service_20221213_models.DebugResourceRuleRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_rec_service_20221213_models.DebugResourceRuleResponse:
+        UtilClient.validate_model(tmp_req)
+        request = pai_rec_service_20221213_models.DebugResourceRuleShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.metric_info):
+            request.metric_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.metric_info, 'MetricInfo', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.metric_info_shrink):
+            query['MetricInfo'] = request.metric_info_shrink
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DebugResourceRule',
+            version='2022-12-13',
+            protocol='HTTPS',
+            pathname=f'/api/v1/resourcerules/{OpenApiUtilClient.get_encode_param(resource_rule_id)}/action/debug',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_rec_service_20221213_models.DebugResourceRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def debug_resource_rule_with_options_async(
+        self,
+        resource_rule_id: str,
+        tmp_req: pai_rec_service_20221213_models.DebugResourceRuleRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_rec_service_20221213_models.DebugResourceRuleResponse:
+        UtilClient.validate_model(tmp_req)
+        request = pai_rec_service_20221213_models.DebugResourceRuleShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.metric_info):
+            request.metric_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.metric_info, 'MetricInfo', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.metric_info_shrink):
+            query['MetricInfo'] = request.metric_info_shrink
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DebugResourceRule',
+            version='2022-12-13',
+            protocol='HTTPS',
+            pathname=f'/api/v1/resourcerules/{OpenApiUtilClient.get_encode_param(resource_rule_id)}/action/debug',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_rec_service_20221213_models.DebugResourceRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def debug_resource_rule(
+        self,
+        resource_rule_id: str,
+        request: pai_rec_service_20221213_models.DebugResourceRuleRequest,
+    ) -> pai_rec_service_20221213_models.DebugResourceRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.debug_resource_rule_with_options(resource_rule_id, request, headers, runtime)
+
+    async def debug_resource_rule_async(
+        self,
+        resource_rule_id: str,
+        request: pai_rec_service_20221213_models.DebugResourceRuleRequest,
+    ) -> pai_rec_service_20221213_models.DebugResourceRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.debug_resource_rule_with_options_async(resource_rule_id, request, headers, runtime)
 
     def delete_abmetric_with_options(
         self,
@@ -2882,6 +3182,170 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_param_with_options_async(param_id, request, headers, runtime)
+
+    def delete_resource_rule_with_options(
+        self,
+        resource_rule_id: str,
+        request: pai_rec_service_20221213_models.DeleteResourceRuleRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_rec_service_20221213_models.DeleteResourceRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteResourceRule',
+            version='2022-12-13',
+            protocol='HTTPS',
+            pathname=f'/api/v1/resourcerules/{OpenApiUtilClient.get_encode_param(resource_rule_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_rec_service_20221213_models.DeleteResourceRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_resource_rule_with_options_async(
+        self,
+        resource_rule_id: str,
+        request: pai_rec_service_20221213_models.DeleteResourceRuleRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_rec_service_20221213_models.DeleteResourceRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteResourceRule',
+            version='2022-12-13',
+            protocol='HTTPS',
+            pathname=f'/api/v1/resourcerules/{OpenApiUtilClient.get_encode_param(resource_rule_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_rec_service_20221213_models.DeleteResourceRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_resource_rule(
+        self,
+        resource_rule_id: str,
+        request: pai_rec_service_20221213_models.DeleteResourceRuleRequest,
+    ) -> pai_rec_service_20221213_models.DeleteResourceRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_resource_rule_with_options(resource_rule_id, request, headers, runtime)
+
+    async def delete_resource_rule_async(
+        self,
+        resource_rule_id: str,
+        request: pai_rec_service_20221213_models.DeleteResourceRuleRequest,
+    ) -> pai_rec_service_20221213_models.DeleteResourceRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_resource_rule_with_options_async(resource_rule_id, request, headers, runtime)
+
+    def delete_resource_rule_item_with_options(
+        self,
+        resource_rule_id: str,
+        resource_rule_item_id: str,
+        request: pai_rec_service_20221213_models.DeleteResourceRuleItemRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_rec_service_20221213_models.DeleteResourceRuleItemResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteResourceRuleItem',
+            version='2022-12-13',
+            protocol='HTTPS',
+            pathname=f'/api/v1/resourcerules/{OpenApiUtilClient.get_encode_param(resource_rule_id)}/items/{OpenApiUtilClient.get_encode_param(resource_rule_item_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_rec_service_20221213_models.DeleteResourceRuleItemResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_resource_rule_item_with_options_async(
+        self,
+        resource_rule_id: str,
+        resource_rule_item_id: str,
+        request: pai_rec_service_20221213_models.DeleteResourceRuleItemRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_rec_service_20221213_models.DeleteResourceRuleItemResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteResourceRuleItem',
+            version='2022-12-13',
+            protocol='HTTPS',
+            pathname=f'/api/v1/resourcerules/{OpenApiUtilClient.get_encode_param(resource_rule_id)}/items/{OpenApiUtilClient.get_encode_param(resource_rule_item_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_rec_service_20221213_models.DeleteResourceRuleItemResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_resource_rule_item(
+        self,
+        resource_rule_id: str,
+        resource_rule_item_id: str,
+        request: pai_rec_service_20221213_models.DeleteResourceRuleItemRequest,
+    ) -> pai_rec_service_20221213_models.DeleteResourceRuleItemResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_resource_rule_item_with_options(resource_rule_id, resource_rule_item_id, request, headers, runtime)
+
+    async def delete_resource_rule_item_async(
+        self,
+        resource_rule_id: str,
+        resource_rule_item_id: str,
+        request: pai_rec_service_20221213_models.DeleteResourceRuleItemRequest,
+    ) -> pai_rec_service_20221213_models.DeleteResourceRuleItemResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_resource_rule_item_with_options_async(resource_rule_id, resource_rule_item_id, request, headers, runtime)
 
     def delete_scene_with_options(
         self,
@@ -4056,6 +4520,86 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_layer_with_options_async(layer_id, request, headers, runtime)
+
+    def get_resource_rule_with_options(
+        self,
+        resource_rule_id: str,
+        request: pai_rec_service_20221213_models.GetResourceRuleRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_rec_service_20221213_models.GetResourceRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetResourceRule',
+            version='2022-12-13',
+            protocol='HTTPS',
+            pathname=f'/api/v1/resourcerules/{OpenApiUtilClient.get_encode_param(resource_rule_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_rec_service_20221213_models.GetResourceRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_resource_rule_with_options_async(
+        self,
+        resource_rule_id: str,
+        request: pai_rec_service_20221213_models.GetResourceRuleRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_rec_service_20221213_models.GetResourceRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetResourceRule',
+            version='2022-12-13',
+            protocol='HTTPS',
+            pathname=f'/api/v1/resourcerules/{OpenApiUtilClient.get_encode_param(resource_rule_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_rec_service_20221213_models.GetResourceRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_resource_rule(
+        self,
+        resource_rule_id: str,
+        request: pai_rec_service_20221213_models.GetResourceRuleRequest,
+    ) -> pai_rec_service_20221213_models.GetResourceRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_resource_rule_with_options(resource_rule_id, request, headers, runtime)
+
+    async def get_resource_rule_async(
+        self,
+        resource_rule_id: str,
+        request: pai_rec_service_20221213_models.GetResourceRuleRequest,
+    ) -> pai_rec_service_20221213_models.GetResourceRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_resource_rule_with_options_async(resource_rule_id, request, headers, runtime)
 
     def get_scene_with_options(
         self,
@@ -5749,6 +6293,110 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_params_with_options_async(request, headers, runtime)
 
+    def list_resource_rules_with_options(
+        self,
+        request: pai_rec_service_20221213_models.ListResourceRulesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_rec_service_20221213_models.ListResourceRulesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.all):
+            query['All'] = request.all
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_rule_id):
+            query['ResourceRuleId'] = request.resource_rule_id
+        if not UtilClient.is_unset(request.resource_rule_name):
+            query['ResourceRuleName'] = request.resource_rule_name
+        if not UtilClient.is_unset(request.sort_by):
+            query['SortBy'] = request.sort_by
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListResourceRules',
+            version='2022-12-13',
+            protocol='HTTPS',
+            pathname=f'/api/v1/resourcerules',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_rec_service_20221213_models.ListResourceRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_resource_rules_with_options_async(
+        self,
+        request: pai_rec_service_20221213_models.ListResourceRulesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_rec_service_20221213_models.ListResourceRulesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.all):
+            query['All'] = request.all
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_rule_id):
+            query['ResourceRuleId'] = request.resource_rule_id
+        if not UtilClient.is_unset(request.resource_rule_name):
+            query['ResourceRuleName'] = request.resource_rule_name
+        if not UtilClient.is_unset(request.sort_by):
+            query['SortBy'] = request.sort_by
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListResourceRules',
+            version='2022-12-13',
+            protocol='HTTPS',
+            pathname=f'/api/v1/resourcerules',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_rec_service_20221213_models.ListResourceRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_resource_rules(
+        self,
+        request: pai_rec_service_20221213_models.ListResourceRulesRequest,
+    ) -> pai_rec_service_20221213_models.ListResourceRulesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_resource_rules_with_options(request, headers, runtime)
+
+    async def list_resource_rules_async(
+        self,
+        request: pai_rec_service_20221213_models.ListResourceRulesRequest,
+    ) -> pai_rec_service_20221213_models.ListResourceRulesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_resource_rules_with_options_async(request, headers, runtime)
+
     def list_scenes_with_options(
         self,
         request: pai_rec_service_20221213_models.ListScenesRequest,
@@ -6564,6 +7212,98 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.push_all_experiment_with_options_async(experiment_id, request, headers, runtime)
+
+    def push_resource_rule_with_options(
+        self,
+        resource_rule_id: str,
+        tmp_req: pai_rec_service_20221213_models.PushResourceRuleRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_rec_service_20221213_models.PushResourceRuleResponse:
+        UtilClient.validate_model(tmp_req)
+        request = pai_rec_service_20221213_models.PushResourceRuleShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.metric_info):
+            request.metric_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.metric_info, 'MetricInfo', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.metric_info_shrink):
+            query['MetricInfo'] = request.metric_info_shrink
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PushResourceRule',
+            version='2022-12-13',
+            protocol='HTTPS',
+            pathname=f'/api/v1/resourcerules/{OpenApiUtilClient.get_encode_param(resource_rule_id)}/action/push',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_rec_service_20221213_models.PushResourceRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def push_resource_rule_with_options_async(
+        self,
+        resource_rule_id: str,
+        tmp_req: pai_rec_service_20221213_models.PushResourceRuleRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_rec_service_20221213_models.PushResourceRuleResponse:
+        UtilClient.validate_model(tmp_req)
+        request = pai_rec_service_20221213_models.PushResourceRuleShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.metric_info):
+            request.metric_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.metric_info, 'MetricInfo', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.metric_info_shrink):
+            query['MetricInfo'] = request.metric_info_shrink
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PushResourceRule',
+            version='2022-12-13',
+            protocol='HTTPS',
+            pathname=f'/api/v1/resourcerules/{OpenApiUtilClient.get_encode_param(resource_rule_id)}/action/push',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_rec_service_20221213_models.PushResourceRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def push_resource_rule(
+        self,
+        resource_rule_id: str,
+        request: pai_rec_service_20221213_models.PushResourceRuleRequest,
+    ) -> pai_rec_service_20221213_models.PushResourceRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.push_resource_rule_with_options(resource_rule_id, request, headers, runtime)
+
+    async def push_resource_rule_async(
+        self,
+        resource_rule_id: str,
+        request: pai_rec_service_20221213_models.PushResourceRuleRequest,
+    ) -> pai_rec_service_20221213_models.PushResourceRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.push_resource_rule_with_options_async(resource_rule_id, request, headers, runtime)
 
     def report_abmetric_group_with_options(
         self,
@@ -8016,6 +8756,214 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_param_with_options_async(param_id, request, headers, runtime)
+
+    def update_resource_rule_with_options(
+        self,
+        resource_rule_id: str,
+        request: pai_rec_service_20221213_models.UpdateResourceRuleRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_rec_service_20221213_models.UpdateResourceRuleResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.metric_operation_type):
+            body['MetricOperationType'] = request.metric_operation_type
+        if not UtilClient.is_unset(request.metric_pull_info):
+            body['MetricPullInfo'] = request.metric_pull_info
+        if not UtilClient.is_unset(request.metric_pull_period):
+            body['MetricPullPeriod'] = request.metric_pull_period
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.rule_computing_definition):
+            body['RuleComputingDefinition'] = request.rule_computing_definition
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateResourceRule',
+            version='2022-12-13',
+            protocol='HTTPS',
+            pathname=f'/api/v1/resourcerules/{OpenApiUtilClient.get_encode_param(resource_rule_id)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_rec_service_20221213_models.UpdateResourceRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_resource_rule_with_options_async(
+        self,
+        resource_rule_id: str,
+        request: pai_rec_service_20221213_models.UpdateResourceRuleRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_rec_service_20221213_models.UpdateResourceRuleResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.metric_operation_type):
+            body['MetricOperationType'] = request.metric_operation_type
+        if not UtilClient.is_unset(request.metric_pull_info):
+            body['MetricPullInfo'] = request.metric_pull_info
+        if not UtilClient.is_unset(request.metric_pull_period):
+            body['MetricPullPeriod'] = request.metric_pull_period
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.rule_computing_definition):
+            body['RuleComputingDefinition'] = request.rule_computing_definition
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateResourceRule',
+            version='2022-12-13',
+            protocol='HTTPS',
+            pathname=f'/api/v1/resourcerules/{OpenApiUtilClient.get_encode_param(resource_rule_id)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_rec_service_20221213_models.UpdateResourceRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_resource_rule(
+        self,
+        resource_rule_id: str,
+        request: pai_rec_service_20221213_models.UpdateResourceRuleRequest,
+    ) -> pai_rec_service_20221213_models.UpdateResourceRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_resource_rule_with_options(resource_rule_id, request, headers, runtime)
+
+    async def update_resource_rule_async(
+        self,
+        resource_rule_id: str,
+        request: pai_rec_service_20221213_models.UpdateResourceRuleRequest,
+    ) -> pai_rec_service_20221213_models.UpdateResourceRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_resource_rule_with_options_async(resource_rule_id, request, headers, runtime)
+
+    def update_resource_rule_item_with_options(
+        self,
+        resource_rule_id: str,
+        resource_rule_item_id: str,
+        request: pai_rec_service_20221213_models.UpdateResourceRuleItemRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_rec_service_20221213_models.UpdateResourceRuleItemResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.max_value):
+            body['MaxValue'] = request.max_value
+        if not UtilClient.is_unset(request.min_value):
+            body['MinValue'] = request.min_value
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.value):
+            body['Value'] = request.value
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateResourceRuleItem',
+            version='2022-12-13',
+            protocol='HTTPS',
+            pathname=f'/api/v1/resourcerules/{OpenApiUtilClient.get_encode_param(resource_rule_id)}/items/{OpenApiUtilClient.get_encode_param(resource_rule_item_id)}',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_rec_service_20221213_models.UpdateResourceRuleItemResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_resource_rule_item_with_options_async(
+        self,
+        resource_rule_id: str,
+        resource_rule_item_id: str,
+        request: pai_rec_service_20221213_models.UpdateResourceRuleItemRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_rec_service_20221213_models.UpdateResourceRuleItemResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.max_value):
+            body['MaxValue'] = request.max_value
+        if not UtilClient.is_unset(request.min_value):
+            body['MinValue'] = request.min_value
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.value):
+            body['Value'] = request.value
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateResourceRuleItem',
+            version='2022-12-13',
+            protocol='HTTPS',
+            pathname=f'/api/v1/resourcerules/{OpenApiUtilClient.get_encode_param(resource_rule_id)}/items/{OpenApiUtilClient.get_encode_param(resource_rule_item_id)}',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_rec_service_20221213_models.UpdateResourceRuleItemResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_resource_rule_item(
+        self,
+        resource_rule_id: str,
+        resource_rule_item_id: str,
+        request: pai_rec_service_20221213_models.UpdateResourceRuleItemRequest,
+    ) -> pai_rec_service_20221213_models.UpdateResourceRuleItemResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_resource_rule_item_with_options(resource_rule_id, resource_rule_item_id, request, headers, runtime)
+
+    async def update_resource_rule_item_async(
+        self,
+        resource_rule_id: str,
+        resource_rule_item_id: str,
+        request: pai_rec_service_20221213_models.UpdateResourceRuleItemRequest,
+    ) -> pai_rec_service_20221213_models.UpdateResourceRuleItemResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_resource_rule_item_with_options_async(resource_rule_id, resource_rule_item_id, request, headers, runtime)
 
     def update_scene_with_options(
         self,

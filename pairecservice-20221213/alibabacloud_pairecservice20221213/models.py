@@ -2601,6 +2601,339 @@ class CreateParamResponse(TeaModel):
         return self
 
 
+class CreateResourceRuleRequestRuleItems(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        max_value: float = None,
+        min_value: float = None,
+        name: str = None,
+        value: float = None,
+    ):
+        self.description = description
+        self.max_value = max_value
+        self.min_value = min_value
+        self.name = name
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.max_value is not None:
+            result['MaxValue'] = self.max_value
+        if self.min_value is not None:
+            result['MinValue'] = self.min_value
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('MaxValue') is not None:
+            self.max_value = m.get('MaxValue')
+        if m.get('MinValue') is not None:
+            self.min_value = m.get('MinValue')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class CreateResourceRuleRequest(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        instance_id: str = None,
+        metric_operation_type: str = None,
+        metric_pull_info: str = None,
+        metric_pull_period: str = None,
+        name: str = None,
+        rule_computing_definition: str = None,
+        rule_items: List[CreateResourceRuleRequestRuleItems] = None,
+    ):
+        self.description = description
+        self.instance_id = instance_id
+        self.metric_operation_type = metric_operation_type
+        self.metric_pull_info = metric_pull_info
+        self.metric_pull_period = metric_pull_period
+        self.name = name
+        self.rule_computing_definition = rule_computing_definition
+        self.rule_items = rule_items
+
+    def validate(self):
+        if self.rule_items:
+            for k in self.rule_items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.metric_operation_type is not None:
+            result['MetricOperationType'] = self.metric_operation_type
+        if self.metric_pull_info is not None:
+            result['MetricPullInfo'] = self.metric_pull_info
+        if self.metric_pull_period is not None:
+            result['MetricPullPeriod'] = self.metric_pull_period
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.rule_computing_definition is not None:
+            result['RuleComputingDefinition'] = self.rule_computing_definition
+        result['RuleItems'] = []
+        if self.rule_items is not None:
+            for k in self.rule_items:
+                result['RuleItems'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('MetricOperationType') is not None:
+            self.metric_operation_type = m.get('MetricOperationType')
+        if m.get('MetricPullInfo') is not None:
+            self.metric_pull_info = m.get('MetricPullInfo')
+        if m.get('MetricPullPeriod') is not None:
+            self.metric_pull_period = m.get('MetricPullPeriod')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('RuleComputingDefinition') is not None:
+            self.rule_computing_definition = m.get('RuleComputingDefinition')
+        self.rule_items = []
+        if m.get('RuleItems') is not None:
+            for k in m.get('RuleItems'):
+                temp_model = CreateResourceRuleRequestRuleItems()
+                self.rule_items.append(temp_model.from_map(k))
+        return self
+
+
+class CreateResourceRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        resource_rule_id: str = None,
+    ):
+        self.request_id = request_id
+        self.resource_rule_id = resource_rule_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.resource_rule_id is not None:
+            result['ResourceRuleId'] = self.resource_rule_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ResourceRuleId') is not None:
+            self.resource_rule_id = m.get('ResourceRuleId')
+        return self
+
+
+class CreateResourceRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateResourceRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateResourceRuleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateResourceRuleItemRequest(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        instance_id: str = None,
+        max_value: float = None,
+        min_value: float = None,
+        name: str = None,
+        value: float = None,
+    ):
+        self.description = description
+        self.instance_id = instance_id
+        self.max_value = max_value
+        self.min_value = min_value
+        self.name = name
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.max_value is not None:
+            result['MaxValue'] = self.max_value
+        if self.min_value is not None:
+            result['MinValue'] = self.min_value
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('MaxValue') is not None:
+            self.max_value = m.get('MaxValue')
+        if m.get('MinValue') is not None:
+            self.min_value = m.get('MinValue')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class CreateResourceRuleItemResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        resource_rule_item_id: str = None,
+    ):
+        self.request_id = request_id
+        self.resource_rule_item_id = resource_rule_item_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.resource_rule_item_id is not None:
+            result['ResourceRuleItemId'] = self.resource_rule_item_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ResourceRuleItemId') is not None:
+            self.resource_rule_item_id = m.get('ResourceRuleItemId')
+        return self
+
+
+class CreateResourceRuleItemResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateResourceRuleItemResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateResourceRuleItemResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateSceneRequestFlows(TeaModel):
     def __init__(
         self,
@@ -3074,6 +3407,164 @@ class CreateTableMetaResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateTableMetaResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DebugResourceRuleRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        metric_info: Dict[str, Any] = None,
+        region_id: str = None,
+    ):
+        self.instance_id = instance_id
+        self.metric_info = metric_info
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.metric_info is not None:
+            result['MetricInfo'] = self.metric_info
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('MetricInfo') is not None:
+            self.metric_info = m.get('MetricInfo')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class DebugResourceRuleShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        metric_info_shrink: str = None,
+        region_id: str = None,
+    ):
+        self.instance_id = instance_id
+        self.metric_info_shrink = metric_info_shrink
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.metric_info_shrink is not None:
+            result['MetricInfo'] = self.metric_info_shrink
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('MetricInfo') is not None:
+            self.metric_info_shrink = m.get('MetricInfo')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class DebugResourceRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        current_values: Dict[str, Any] = None,
+        output_values: Dict[str, Any] = None,
+        request_id: str = None,
+    ):
+        self.current_values = current_values
+        self.output_values = output_values
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_values is not None:
+            result['CurrentValues'] = self.current_values
+        if self.output_values is not None:
+            result['OutputValues'] = self.output_values
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentValues') is not None:
+            self.current_values = m.get('CurrentValues')
+        if m.get('OutputValues') is not None:
+            self.output_values = m.get('OutputValues')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DebugResourceRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DebugResourceRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DebugResourceRuleResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -3908,6 +4399,196 @@ class DeleteParamResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteParamResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteResourceRuleRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+    ):
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class DeleteResourceRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteResourceRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteResourceRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteResourceRuleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteResourceRuleItemRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+    ):
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class DeleteResourceRuleItemResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteResourceRuleItemResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteResourceRuleItemResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteResourceRuleItemResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -6407,6 +7088,208 @@ class GetLayerResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetLayerResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetResourceRuleRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+    ):
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class GetResourceRuleResponseBodyRuleItems(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        max_value: str = None,
+        min_value: str = None,
+        name: str = None,
+        value: str = None,
+    ):
+        self.description = description
+        self.max_value = max_value
+        self.min_value = min_value
+        self.name = name
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.max_value is not None:
+            result['MaxValue'] = self.max_value
+        if self.min_value is not None:
+            result['MinValue'] = self.min_value
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('MaxValue') is not None:
+            self.max_value = m.get('MaxValue')
+        if m.get('MinValue') is not None:
+            self.min_value = m.get('MinValue')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class GetResourceRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        metric_operation_type: str = None,
+        metric_pull_info: str = None,
+        metric_pull_period: str = None,
+        name: str = None,
+        request_id: str = None,
+        resource_rule_id: str = None,
+        rule_computing_definition: str = None,
+        rule_items: List[GetResourceRuleResponseBodyRuleItems] = None,
+    ):
+        self.description = description
+        self.metric_operation_type = metric_operation_type
+        self.metric_pull_info = metric_pull_info
+        self.metric_pull_period = metric_pull_period
+        self.name = name
+        self.request_id = request_id
+        self.resource_rule_id = resource_rule_id
+        self.rule_computing_definition = rule_computing_definition
+        self.rule_items = rule_items
+
+    def validate(self):
+        if self.rule_items:
+            for k in self.rule_items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.metric_operation_type is not None:
+            result['MetricOperationType'] = self.metric_operation_type
+        if self.metric_pull_info is not None:
+            result['MetricPullInfo'] = self.metric_pull_info
+        if self.metric_pull_period is not None:
+            result['MetricPullPeriod'] = self.metric_pull_period
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.resource_rule_id is not None:
+            result['ResourceRuleId'] = self.resource_rule_id
+        if self.rule_computing_definition is not None:
+            result['RuleComputingDefinition'] = self.rule_computing_definition
+        result['RuleItems'] = []
+        if self.rule_items is not None:
+            for k in self.rule_items:
+                result['RuleItems'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('MetricOperationType') is not None:
+            self.metric_operation_type = m.get('MetricOperationType')
+        if m.get('MetricPullInfo') is not None:
+            self.metric_pull_info = m.get('MetricPullInfo')
+        if m.get('MetricPullPeriod') is not None:
+            self.metric_pull_period = m.get('MetricPullPeriod')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ResourceRuleId') is not None:
+            self.resource_rule_id = m.get('ResourceRuleId')
+        if m.get('RuleComputingDefinition') is not None:
+            self.rule_computing_definition = m.get('RuleComputingDefinition')
+        self.rule_items = []
+        if m.get('RuleItems') is not None:
+            for k in m.get('RuleItems'):
+                temp_model = GetResourceRuleResponseBodyRuleItems()
+                self.rule_items.append(temp_model.from_map(k))
+        return self
+
+
+class GetResourceRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetResourceRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetResourceRuleResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -10699,6 +11582,291 @@ class ListParamsResponse(TeaModel):
         return self
 
 
+class ListResourceRulesRequest(TeaModel):
+    def __init__(
+        self,
+        all: bool = None,
+        instance_id: str = None,
+        order: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        resource_rule_id: str = None,
+        resource_rule_name: str = None,
+        sort_by: str = None,
+    ):
+        self.all = all
+        self.instance_id = instance_id
+        self.order = order
+        self.page_number = page_number
+        self.page_size = page_size
+        self.resource_rule_id = resource_rule_id
+        self.resource_rule_name = resource_rule_name
+        self.sort_by = sort_by
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.all is not None:
+            result['All'] = self.all
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.order is not None:
+            result['Order'] = self.order
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.resource_rule_id is not None:
+            result['ResourceRuleId'] = self.resource_rule_id
+        if self.resource_rule_name is not None:
+            result['ResourceRuleName'] = self.resource_rule_name
+        if self.sort_by is not None:
+            result['SortBy'] = self.sort_by
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('All') is not None:
+            self.all = m.get('All')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Order') is not None:
+            self.order = m.get('Order')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ResourceRuleId') is not None:
+            self.resource_rule_id = m.get('ResourceRuleId')
+        if m.get('ResourceRuleName') is not None:
+            self.resource_rule_name = m.get('ResourceRuleName')
+        if m.get('SortBy') is not None:
+            self.sort_by = m.get('SortBy')
+        return self
+
+
+class ListResourceRulesResponseBodyResourceRulesRuleItems(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        max_value: str = None,
+        min_value: str = None,
+        name: str = None,
+        value: str = None,
+    ):
+        self.description = description
+        self.max_value = max_value
+        self.min_value = min_value
+        self.name = name
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.max_value is not None:
+            result['MaxValue'] = self.max_value
+        if self.min_value is not None:
+            result['MinValue'] = self.min_value
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('MaxValue') is not None:
+            self.max_value = m.get('MaxValue')
+        if m.get('MinValue') is not None:
+            self.min_value = m.get('MinValue')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ListResourceRulesResponseBodyResourceRules(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        metric_operation_type: str = None,
+        metric_pull_info: str = None,
+        metric_pull_period: str = None,
+        name: str = None,
+        resource_rule_id: str = None,
+        rule_computing_definition: str = None,
+        rule_items: List[ListResourceRulesResponseBodyResourceRulesRuleItems] = None,
+    ):
+        self.description = description
+        self.metric_operation_type = metric_operation_type
+        self.metric_pull_info = metric_pull_info
+        self.metric_pull_period = metric_pull_period
+        self.name = name
+        self.resource_rule_id = resource_rule_id
+        self.rule_computing_definition = rule_computing_definition
+        self.rule_items = rule_items
+
+    def validate(self):
+        if self.rule_items:
+            for k in self.rule_items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.metric_operation_type is not None:
+            result['MetricOperationType'] = self.metric_operation_type
+        if self.metric_pull_info is not None:
+            result['MetricPullInfo'] = self.metric_pull_info
+        if self.metric_pull_period is not None:
+            result['MetricPullPeriod'] = self.metric_pull_period
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.resource_rule_id is not None:
+            result['ResourceRuleId'] = self.resource_rule_id
+        if self.rule_computing_definition is not None:
+            result['RuleComputingDefinition'] = self.rule_computing_definition
+        result['RuleItems'] = []
+        if self.rule_items is not None:
+            for k in self.rule_items:
+                result['RuleItems'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('MetricOperationType') is not None:
+            self.metric_operation_type = m.get('MetricOperationType')
+        if m.get('MetricPullInfo') is not None:
+            self.metric_pull_info = m.get('MetricPullInfo')
+        if m.get('MetricPullPeriod') is not None:
+            self.metric_pull_period = m.get('MetricPullPeriod')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('ResourceRuleId') is not None:
+            self.resource_rule_id = m.get('ResourceRuleId')
+        if m.get('RuleComputingDefinition') is not None:
+            self.rule_computing_definition = m.get('RuleComputingDefinition')
+        self.rule_items = []
+        if m.get('RuleItems') is not None:
+            for k in m.get('RuleItems'):
+                temp_model = ListResourceRulesResponseBodyResourceRulesRuleItems()
+                self.rule_items.append(temp_model.from_map(k))
+        return self
+
+
+class ListResourceRulesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        resource_rules: List[ListResourceRulesResponseBodyResourceRules] = None,
+        total_count: int = None,
+    ):
+        self.request_id = request_id
+        self.resource_rules = resource_rules
+        self.total_count = total_count
+
+    def validate(self):
+        if self.resource_rules:
+            for k in self.resource_rules:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['ResourceRules'] = []
+        if self.resource_rules is not None:
+            for k in self.resource_rules:
+                result['ResourceRules'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.resource_rules = []
+        if m.get('ResourceRules') is not None:
+            for k in m.get('ResourceRules'):
+                temp_model = ListResourceRulesResponseBodyResourceRules()
+                self.resource_rules.append(temp_model.from_map(k))
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListResourceRulesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListResourceRulesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListResourceRulesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListScenesRequest(TeaModel):
     def __init__(
         self,
@@ -12045,6 +13213,247 @@ class PushAllExperimentResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = PushAllExperimentResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class PushResourceRuleRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        metric_info: Dict[str, Any] = None,
+    ):
+        self.instance_id = instance_id
+        self.metric_info = metric_info
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.metric_info is not None:
+            result['MetricInfo'] = self.metric_info
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('MetricInfo') is not None:
+            self.metric_info = m.get('MetricInfo')
+        return self
+
+
+class PushResourceRuleShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        metric_info_shrink: str = None,
+    ):
+        self.instance_id = instance_id
+        self.metric_info_shrink = metric_info_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.metric_info_shrink is not None:
+            result['MetricInfo'] = self.metric_info_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('MetricInfo') is not None:
+            self.metric_info_shrink = m.get('MetricInfo')
+        return self
+
+
+class PushResourceRuleResponseBodyRuleItems(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        max_value: str = None,
+        min_value: str = None,
+        name: str = None,
+        value: str = None,
+    ):
+        self.description = description
+        self.max_value = max_value
+        self.min_value = min_value
+        self.name = name
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.max_value is not None:
+            result['MaxValue'] = self.max_value
+        if self.min_value is not None:
+            result['MinValue'] = self.min_value
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('MaxValue') is not None:
+            self.max_value = m.get('MaxValue')
+        if m.get('MinValue') is not None:
+            self.min_value = m.get('MinValue')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class PushResourceRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        metric_operation_type: str = None,
+        metric_pull_info: str = None,
+        metric_pull_period: str = None,
+        name: str = None,
+        request_id: str = None,
+        resource_rule_id: str = None,
+        rule_computing_definition: str = None,
+        rule_items: List[PushResourceRuleResponseBodyRuleItems] = None,
+    ):
+        self.description = description
+        self.metric_operation_type = metric_operation_type
+        self.metric_pull_info = metric_pull_info
+        self.metric_pull_period = metric_pull_period
+        self.name = name
+        self.request_id = request_id
+        self.resource_rule_id = resource_rule_id
+        self.rule_computing_definition = rule_computing_definition
+        self.rule_items = rule_items
+
+    def validate(self):
+        if self.rule_items:
+            for k in self.rule_items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.metric_operation_type is not None:
+            result['MetricOperationType'] = self.metric_operation_type
+        if self.metric_pull_info is not None:
+            result['MetricPullInfo'] = self.metric_pull_info
+        if self.metric_pull_period is not None:
+            result['MetricPullPeriod'] = self.metric_pull_period
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.resource_rule_id is not None:
+            result['ResourceRuleId'] = self.resource_rule_id
+        if self.rule_computing_definition is not None:
+            result['RuleComputingDefinition'] = self.rule_computing_definition
+        result['RuleItems'] = []
+        if self.rule_items is not None:
+            for k in self.rule_items:
+                result['RuleItems'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('MetricOperationType') is not None:
+            self.metric_operation_type = m.get('MetricOperationType')
+        if m.get('MetricPullInfo') is not None:
+            self.metric_pull_info = m.get('MetricPullInfo')
+        if m.get('MetricPullPeriod') is not None:
+            self.metric_pull_period = m.get('MetricPullPeriod')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ResourceRuleId') is not None:
+            self.resource_rule_id = m.get('ResourceRuleId')
+        if m.get('RuleComputingDefinition') is not None:
+            self.rule_computing_definition = m.get('RuleComputingDefinition')
+        self.rule_items = []
+        if m.get('RuleItems') is not None:
+            for k in m.get('RuleItems'):
+                temp_model = PushResourceRuleResponseBodyRuleItems()
+                self.rule_items.append(temp_model.from_map(k))
+        return self
+
+
+class PushResourceRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: PushResourceRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = PushResourceRuleResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -13924,6 +15333,262 @@ class UpdateParamResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateParamResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateResourceRuleRequest(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        instance_id: str = None,
+        metric_operation_type: str = None,
+        metric_pull_info: str = None,
+        metric_pull_period: str = None,
+        name: str = None,
+        rule_computing_definition: str = None,
+    ):
+        self.description = description
+        self.instance_id = instance_id
+        self.metric_operation_type = metric_operation_type
+        self.metric_pull_info = metric_pull_info
+        self.metric_pull_period = metric_pull_period
+        self.name = name
+        self.rule_computing_definition = rule_computing_definition
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.metric_operation_type is not None:
+            result['MetricOperationType'] = self.metric_operation_type
+        if self.metric_pull_info is not None:
+            result['MetricPullInfo'] = self.metric_pull_info
+        if self.metric_pull_period is not None:
+            result['MetricPullPeriod'] = self.metric_pull_period
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.rule_computing_definition is not None:
+            result['RuleComputingDefinition'] = self.rule_computing_definition
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('MetricOperationType') is not None:
+            self.metric_operation_type = m.get('MetricOperationType')
+        if m.get('MetricPullInfo') is not None:
+            self.metric_pull_info = m.get('MetricPullInfo')
+        if m.get('MetricPullPeriod') is not None:
+            self.metric_pull_period = m.get('MetricPullPeriod')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('RuleComputingDefinition') is not None:
+            self.rule_computing_definition = m.get('RuleComputingDefinition')
+        return self
+
+
+class UpdateResourceRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateResourceRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateResourceRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateResourceRuleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateResourceRuleItemRequest(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        instance_id: str = None,
+        max_value: float = None,
+        min_value: float = None,
+        name: str = None,
+        value: float = None,
+    ):
+        self.description = description
+        self.instance_id = instance_id
+        self.max_value = max_value
+        self.min_value = min_value
+        self.name = name
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.max_value is not None:
+            result['MaxValue'] = self.max_value
+        if self.min_value is not None:
+            result['MinValue'] = self.min_value
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('MaxValue') is not None:
+            self.max_value = m.get('MaxValue')
+        if m.get('MinValue') is not None:
+            self.min_value = m.get('MinValue')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class UpdateResourceRuleItemResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateResourceRuleItemResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateResourceRuleItemResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateResourceRuleItemResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

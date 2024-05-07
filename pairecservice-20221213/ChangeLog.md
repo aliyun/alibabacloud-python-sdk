@@ -1,3 +1,16 @@
+2024-05-07 Version: 1.4.0
+- Support API CreateResourceRule.
+- Support API CreateResourceRuleItem.
+- Support API DebugResourceRule.
+- Support API DeleteResourceRule.
+- Support API DeleteResourceRuleItem.
+- Support API GetResourceRule.
+- Support API ListResourceRules.
+- Support API PushResourceRule.
+- Support API UpdateResourceRule.
+- Support API UpdateResourceRuleItem.
+
+
 2024-04-28 Version: 1.3.3
 - Generated python 2022-12-13 for PaiRecService.
 
