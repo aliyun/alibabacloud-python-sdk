@@ -3975,11 +3975,17 @@ class Client(OpenApiClient):
     def describe_cluster_node_pools_with_options(
         self,
         cluster_id: str,
+        request: cs20151215_models.DescribeClusterNodePoolsRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterNodePoolsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.nodepool_name):
+            query['NodepoolName'] = request.nodepool_name
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeClusterNodePools',
@@ -4000,11 +4006,17 @@ class Client(OpenApiClient):
     async def describe_cluster_node_pools_with_options_async(
         self,
         cluster_id: str,
+        request: cs20151215_models.DescribeClusterNodePoolsRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterNodePoolsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.nodepool_name):
+            query['NodepoolName'] = request.nodepool_name
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeClusterNodePools',
@@ -4025,18 +4037,20 @@ class Client(OpenApiClient):
     def describe_cluster_node_pools(
         self,
         cluster_id: str,
+        request: cs20151215_models.DescribeClusterNodePoolsRequest,
     ) -> cs20151215_models.DescribeClusterNodePoolsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_cluster_node_pools_with_options(cluster_id, headers, runtime)
+        return self.describe_cluster_node_pools_with_options(cluster_id, request, headers, runtime)
 
     async def describe_cluster_node_pools_async(
         self,
         cluster_id: str,
+        request: cs20151215_models.DescribeClusterNodePoolsRequest,
     ) -> cs20151215_models.DescribeClusterNodePoolsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_cluster_node_pools_with_options_async(cluster_id, headers, runtime)
+        return await self.describe_cluster_node_pools_with_options_async(cluster_id, request, headers, runtime)
 
     def describe_cluster_nodes_with_options(
         self,

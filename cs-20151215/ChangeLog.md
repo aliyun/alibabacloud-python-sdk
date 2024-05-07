@@ -1,3 +1,8 @@
+2024-05-07 Version: 4.0.6
+- Update API DescribeClusterDetail: update response param.
+- Update API DescribeClusterNodePools: add param NodepoolName.
+
+
 2024-04-24 Version: 4.0.5
 - Update API ModifyCluster: update param body.
 
