@@ -1,3 +1,6 @@
+2024-05-08 Version: 0.1.2
+- Generated python 2020-06-30 for idrsservice.
+
 2024-05-07 Version: 0.1.1
 - Update API UploadReport: add param Role.
 - Update API UploadReport: add param VideoType.
