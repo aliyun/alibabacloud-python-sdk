@@ -59863,11 +59863,13 @@ class SyncDingTypeRequest(TeaModel):
     def __init__(
         self,
         ding_type: str = None,
+        is_dimission: str = None,
         source: str = None,
         tenant_context: SyncDingTypeRequestTenantContext = None,
         work_no: str = None,
     ):
         self.ding_type = ding_type
+        self.is_dimission = is_dimission
         self.source = source
         self.tenant_context = tenant_context
         self.work_no = work_no
@@ -59884,6 +59886,8 @@ class SyncDingTypeRequest(TeaModel):
         result = dict()
         if self.ding_type is not None:
             result['DingType'] = self.ding_type
+        if self.is_dimission is not None:
+            result['IsDimission'] = self.is_dimission
         if self.source is not None:
             result['Source'] = self.source
         if self.tenant_context is not None:
@@ -59896,6 +59900,8 @@ class SyncDingTypeRequest(TeaModel):
         m = m or dict()
         if m.get('DingType') is not None:
             self.ding_type = m.get('DingType')
+        if m.get('IsDimission') is not None:
+            self.is_dimission = m.get('IsDimission')
         if m.get('Source') is not None:
             self.source = m.get('Source')
         if m.get('TenantContext') is not None:
@@ -59910,11 +59916,13 @@ class SyncDingTypeShrinkRequest(TeaModel):
     def __init__(
         self,
         ding_type: str = None,
+        is_dimission: str = None,
         source: str = None,
         tenant_context_shrink: str = None,
         work_no: str = None,
     ):
         self.ding_type = ding_type
+        self.is_dimission = is_dimission
         self.source = source
         self.tenant_context_shrink = tenant_context_shrink
         self.work_no = work_no
@@ -59930,6 +59938,8 @@ class SyncDingTypeShrinkRequest(TeaModel):
         result = dict()
         if self.ding_type is not None:
             result['DingType'] = self.ding_type
+        if self.is_dimission is not None:
+            result['IsDimission'] = self.is_dimission
         if self.source is not None:
             result['Source'] = self.source
         if self.tenant_context_shrink is not None:
@@ -59942,6 +59952,8 @@ class SyncDingTypeShrinkRequest(TeaModel):
         m = m or dict()
         if m.get('DingType') is not None:
             self.ding_type = m.get('DingType')
+        if m.get('IsDimission') is not None:
+            self.is_dimission = m.get('IsDimission')
         if m.get('Source') is not None:
             self.source = m.get('Source')
         if m.get('TenantContext') is not None:

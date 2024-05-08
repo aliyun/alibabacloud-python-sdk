@@ -18327,6 +18327,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.ding_type):
             body['DingType'] = request.ding_type
+        if not UtilClient.is_unset(request.is_dimission):
+            body['IsDimission'] = request.is_dimission
         if not UtilClient.is_unset(request.source):
             body['Source'] = request.source
         if not UtilClient.is_unset(request.tenant_context_shrink):
@@ -18376,6 +18378,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.ding_type):
             body['DingType'] = request.ding_type
+        if not UtilClient.is_unset(request.is_dimission):
+            body['IsDimission'] = request.is_dimission
         if not UtilClient.is_unset(request.source):
             body['Source'] = request.source
         if not UtilClient.is_unset(request.tenant_context_shrink):

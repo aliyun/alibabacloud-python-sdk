@@ -1,3 +1,7 @@
+2024-05-08 Version: 2.14.1
+- Update API SyncDingType: add param IsDimission.
+
+
 2024-04-25 Version: 2.14.0
 - Support API GetUserLatestPlan.
 - Support API SyncDingType.
