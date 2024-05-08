@@ -1,3 +1,6 @@
+2024-05-08 Version: 3.1.1
+- Generated python 2019-06-01 for oos.
+
 2024-04-18 Version: 3.1.0
 - Support API ListGitRepositories.
 - Update API CreateSecretParameter: add param DKMSInstanceId.
