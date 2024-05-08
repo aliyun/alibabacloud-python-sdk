@@ -1,3 +1,12 @@
+2024-05-08 Version: 2.2.0
+- Support API GetKeyPolicy.
+- Support API GetSecretPolicy.
+- Support API SetKeyPolicy.
+- Support API SetSecretPolicy.
+- Update API CreateKey: add param Policy.
+- Update API CreateSecret: add param Policy.
+
+
 2024-03-06 Version: 2.1.3
 - Generated python 2016-01-20 for Kms.
 

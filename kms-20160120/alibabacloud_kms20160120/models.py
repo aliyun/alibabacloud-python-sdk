@@ -2098,6 +2098,7 @@ class CreateKeyRequest(TeaModel):
         key_spec: str = None,
         key_usage: str = None,
         origin: str = None,
+        policy: str = None,
         protection_level: str = None,
         rotation_interval: str = None,
         tags: str = None,
@@ -2138,6 +2139,7 @@ class CreateKeyRequest(TeaModel):
         # > - Default keys of the customer master key (CMK) type support Aliyun_KMS and EXTERNAL. Keys in instances of the software key management type support only Aliyun_KMS. Keys in instances of the hardware key management type support Aliyun_KMS and EXTERNAL.
         # > - If you set Origin to EXTERNAL, you must import key material. For more information, see [Import key material into a symmetric key](~~607841~~) or [Import key material into an asymmetric key](~~608827~~).
         self.origin = origin
+        self.policy = policy
         # You do not need to specify this parameter. KMS sets a protection level for your key.
         # 
         # The protection level of the key. Valid values:
@@ -2187,6 +2189,8 @@ class CreateKeyRequest(TeaModel):
             result['KeyUsage'] = self.key_usage
         if self.origin is not None:
             result['Origin'] = self.origin
+        if self.policy is not None:
+            result['Policy'] = self.policy
         if self.protection_level is not None:
             result['ProtectionLevel'] = self.protection_level
         if self.rotation_interval is not None:
@@ -2209,6 +2213,8 @@ class CreateKeyRequest(TeaModel):
             self.key_usage = m.get('KeyUsage')
         if m.get('Origin') is not None:
             self.origin = m.get('Origin')
+        if m.get('Policy') is not None:
+            self.policy = m.get('Policy')
         if m.get('ProtectionLevel') is not None:
             self.protection_level = m.get('ProtectionLevel')
         if m.get('RotationInterval') is not None:
@@ -2966,6 +2972,7 @@ class CreateSecretRequest(TeaModel):
         enable_automatic_rotation: bool = None,
         encryption_key_id: str = None,
         extended_config: Dict[str, Any] = None,
+        policy: str = None,
         rotation_interval: str = None,
         secret_data: str = None,
         secret_data_type: str = None,
@@ -2995,6 +3002,7 @@ class CreateSecretRequest(TeaModel):
         self.encryption_key_id = encryption_key_id
         # The ID of the request, which is used to locate and troubleshoot issues.
         self.extended_config = extended_config
+        self.policy = policy
         # The name of the secret.
         self.rotation_interval = rotation_interval
         # The tags of the secret.
@@ -3085,6 +3093,8 @@ class CreateSecretRequest(TeaModel):
             result['EncryptionKeyId'] = self.encryption_key_id
         if self.extended_config is not None:
             result['ExtendedConfig'] = self.extended_config
+        if self.policy is not None:
+            result['Policy'] = self.policy
         if self.rotation_interval is not None:
             result['RotationInterval'] = self.rotation_interval
         if self.secret_data is not None:
@@ -3113,6 +3123,8 @@ class CreateSecretRequest(TeaModel):
             self.encryption_key_id = m.get('EncryptionKeyId')
         if m.get('ExtendedConfig') is not None:
             self.extended_config = m.get('ExtendedConfig')
+        if m.get('Policy') is not None:
+            self.policy = m.get('Policy')
         if m.get('RotationInterval') is not None:
             self.rotation_interval = m.get('RotationInterval')
         if m.get('SecretData') is not None:
@@ -3138,6 +3150,7 @@ class CreateSecretShrinkRequest(TeaModel):
         enable_automatic_rotation: bool = None,
         encryption_key_id: str = None,
         extended_config_shrink: str = None,
+        policy: str = None,
         rotation_interval: str = None,
         secret_data: str = None,
         secret_data_type: str = None,
@@ -3167,6 +3180,7 @@ class CreateSecretShrinkRequest(TeaModel):
         self.encryption_key_id = encryption_key_id
         # The ID of the request, which is used to locate and troubleshoot issues.
         self.extended_config_shrink = extended_config_shrink
+        self.policy = policy
         # The name of the secret.
         self.rotation_interval = rotation_interval
         # The tags of the secret.
@@ -3257,6 +3271,8 @@ class CreateSecretShrinkRequest(TeaModel):
             result['EncryptionKeyId'] = self.encryption_key_id
         if self.extended_config_shrink is not None:
             result['ExtendedConfig'] = self.extended_config_shrink
+        if self.policy is not None:
+            result['Policy'] = self.policy
         if self.rotation_interval is not None:
             result['RotationInterval'] = self.rotation_interval
         if self.secret_data is not None:
@@ -3285,6 +3301,8 @@ class CreateSecretShrinkRequest(TeaModel):
             self.encryption_key_id = m.get('EncryptionKeyId')
         if m.get('ExtendedConfig') is not None:
             self.extended_config_shrink = m.get('ExtendedConfig')
+        if m.get('Policy') is not None:
+            self.policy = m.get('Policy')
         if m.get('RotationInterval') is not None:
             self.rotation_interval = m.get('RotationInterval')
         if m.get('SecretData') is not None:
@@ -7644,6 +7662,113 @@ class GetClientKeyResponse(TeaModel):
         return self
 
 
+class GetKeyPolicyRequest(TeaModel):
+    def __init__(
+        self,
+        key_id: str = None,
+        policy_name: str = None,
+    ):
+        self.key_id = key_id
+        self.policy_name = policy_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key_id is not None:
+            result['KeyId'] = self.key_id
+        if self.policy_name is not None:
+            result['PolicyName'] = self.policy_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('KeyId') is not None:
+            self.key_id = m.get('KeyId')
+        if m.get('PolicyName') is not None:
+            self.policy_name = m.get('PolicyName')
+        return self
+
+
+class GetKeyPolicyResponseBody(TeaModel):
+    def __init__(
+        self,
+        policy: str = None,
+        request_id: str = None,
+    ):
+        self.policy = policy
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.policy is not None:
+            result['Policy'] = self.policy
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Policy') is not None:
+            self.policy = m.get('Policy')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetKeyPolicyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetKeyPolicyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetKeyPolicyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetKmsInstanceRequest(TeaModel):
     def __init__(
         self,
@@ -8421,6 +8546,113 @@ class GetRandomPasswordResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetRandomPasswordResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetSecretPolicyRequest(TeaModel):
+    def __init__(
+        self,
+        policy_name: str = None,
+        secret_name: str = None,
+    ):
+        self.policy_name = policy_name
+        self.secret_name = secret_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.policy_name is not None:
+            result['PolicyName'] = self.policy_name
+        if self.secret_name is not None:
+            result['SecretName'] = self.secret_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PolicyName') is not None:
+            self.policy_name = m.get('PolicyName')
+        if m.get('SecretName') is not None:
+            self.secret_name = m.get('SecretName')
+        return self
+
+
+class GetSecretPolicyResponseBody(TeaModel):
+    def __init__(
+        self,
+        policy: str = None,
+        request_id: str = None,
+    ):
+        self.policy = policy
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.policy is not None:
+            result['Policy'] = self.policy
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Policy') is not None:
+            self.policy = m.get('Policy')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetSecretPolicyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetSecretPolicyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetSecretPolicyResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -12824,6 +13056,220 @@ class SetDeletionProtectionResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SetDeletionProtectionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SetKeyPolicyRequest(TeaModel):
+    def __init__(
+        self,
+        key_id: str = None,
+        policy: str = None,
+        policy_name: str = None,
+    ):
+        self.key_id = key_id
+        self.policy = policy
+        self.policy_name = policy_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key_id is not None:
+            result['KeyId'] = self.key_id
+        if self.policy is not None:
+            result['Policy'] = self.policy
+        if self.policy_name is not None:
+            result['PolicyName'] = self.policy_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('KeyId') is not None:
+            self.key_id = m.get('KeyId')
+        if m.get('Policy') is not None:
+            self.policy = m.get('Policy')
+        if m.get('PolicyName') is not None:
+            self.policy_name = m.get('PolicyName')
+        return self
+
+
+class SetKeyPolicyResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class SetKeyPolicyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SetKeyPolicyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SetKeyPolicyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SetSecretPolicyRequest(TeaModel):
+    def __init__(
+        self,
+        policy: str = None,
+        policy_name: str = None,
+        secret_name: str = None,
+    ):
+        self.policy = policy
+        self.policy_name = policy_name
+        self.secret_name = secret_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.policy is not None:
+            result['Policy'] = self.policy
+        if self.policy_name is not None:
+            result['PolicyName'] = self.policy_name
+        if self.secret_name is not None:
+            result['SecretName'] = self.secret_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Policy') is not None:
+            self.policy = m.get('Policy')
+        if m.get('PolicyName') is not None:
+            self.policy_name = m.get('PolicyName')
+        if m.get('SecretName') is not None:
+            self.secret_name = m.get('SecretName')
+        return self
+
+
+class SetSecretPolicyResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class SetSecretPolicyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SetSecretPolicyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SetSecretPolicyResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
