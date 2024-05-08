@@ -1,3 +1,6 @@
+2024-05-08 Version: 6.6.2
+- Generated python 2019-05-31 for mse.
+
 2024-05-07 Version: 6.6.1
 - Update API GetGatewayServiceDetail: update response param.
 - Update API GetMseSource: add param VpcId.
