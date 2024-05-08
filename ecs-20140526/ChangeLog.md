@@ -1,3 +1,11 @@
+2024-05-08 Version: 4.1.4
+- Update API AttachDisk: add param Force.
+- Update API AttachDisk: update response param.
+- Update API AttachNetworkInterface: update response param.
+- Update API DescribeDisks: update response param.
+- Update API ReplaceSystemDisk: update response param.
+
+
 2024-05-07 Version: 4.1.3
 - Update API CreateAutoProvisioningGroup: update param LaunchConfiguration.DataDisk.
 - Update API CreateAutoProvisioningGroup: update param LaunchConfiguration.SystemDisk.

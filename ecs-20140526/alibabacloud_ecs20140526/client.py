@@ -1908,6 +1908,8 @@ class Client(OpenApiClient):
             query['Device'] = request.device
         if not UtilClient.is_unset(request.disk_id):
             query['DiskId'] = request.disk_id
+        if not UtilClient.is_unset(request.force):
+            query['Force'] = request.force
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.key_pair_name):
@@ -1973,6 +1975,8 @@ class Client(OpenApiClient):
             query['Device'] = request.device
         if not UtilClient.is_unset(request.disk_id):
             query['DiskId'] = request.disk_id
+        if not UtilClient.is_unset(request.force):
+            query['Force'] = request.force
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.key_pair_name):
@@ -8276,7 +8280,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.CreateLaunchTemplateVersionResponse:
         """
-        If you want to modify the parameters of a launch template version, you can create another version with different parameter settings for the launch template. A maximum of 30 versions can be created for each launch template.
+        ## [](#)Usage notes
+        If you want to modify the parameters of a launch template version, you can create another version with different parameter settings for the launch template. You can create up to 30 versions for each launch template.
         
         @param request: CreateLaunchTemplateVersionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8403,7 +8408,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.CreateLaunchTemplateVersionResponse:
         """
-        If you want to modify the parameters of a launch template version, you can create another version with different parameter settings for the launch template. A maximum of 30 versions can be created for each launch template.
+        ## [](#)Usage notes
+        If you want to modify the parameters of a launch template version, you can create another version with different parameter settings for the launch template. You can create up to 30 versions for each launch template.
         
         @param request: CreateLaunchTemplateVersionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8529,7 +8535,8 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.CreateLaunchTemplateVersionRequest,
     ) -> ecs_20140526_models.CreateLaunchTemplateVersionResponse:
         """
-        If you want to modify the parameters of a launch template version, you can create another version with different parameter settings for the launch template. A maximum of 30 versions can be created for each launch template.
+        ## [](#)Usage notes
+        If you want to modify the parameters of a launch template version, you can create another version with different parameter settings for the launch template. You can create up to 30 versions for each launch template.
         
         @param request: CreateLaunchTemplateVersionRequest
         @return: CreateLaunchTemplateVersionResponse
@@ -8542,7 +8549,8 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.CreateLaunchTemplateVersionRequest,
     ) -> ecs_20140526_models.CreateLaunchTemplateVersionResponse:
         """
-        If you want to modify the parameters of a launch template version, you can create another version with different parameter settings for the launch template. A maximum of 30 versions can be created for each launch template.
+        ## [](#)Usage notes
+        If you want to modify the parameters of a launch template version, you can create another version with different parameter settings for the launch template. You can create up to 30 versions for each launch template.
         
         @param request: CreateLaunchTemplateVersionRequest
         @return: CreateLaunchTemplateVersionResponse
