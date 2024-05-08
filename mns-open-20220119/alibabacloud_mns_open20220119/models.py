@@ -1923,7 +1923,9 @@ class ListTopicResponseBodyDataPageData(TeaModel):
         max_message_size: int = None,
         message_count: int = None,
         message_retention_period: int = None,
+        topic_inner_url: str = None,
         topic_name: str = None,
+        topic_url: str = None,
     ):
         self.create_time = create_time
         self.last_modify_time = last_modify_time
@@ -1931,7 +1933,9 @@ class ListTopicResponseBodyDataPageData(TeaModel):
         self.max_message_size = max_message_size
         self.message_count = message_count
         self.message_retention_period = message_retention_period
+        self.topic_inner_url = topic_inner_url
         self.topic_name = topic_name
+        self.topic_url = topic_url
 
     def validate(self):
         pass
@@ -1954,8 +1958,12 @@ class ListTopicResponseBodyDataPageData(TeaModel):
             result['MessageCount'] = self.message_count
         if self.message_retention_period is not None:
             result['MessageRetentionPeriod'] = self.message_retention_period
+        if self.topic_inner_url is not None:
+            result['TopicInnerUrl'] = self.topic_inner_url
         if self.topic_name is not None:
             result['TopicName'] = self.topic_name
+        if self.topic_url is not None:
+            result['TopicUrl'] = self.topic_url
         return result
 
     def from_map(self, m: dict = None):
@@ -1972,8 +1980,12 @@ class ListTopicResponseBodyDataPageData(TeaModel):
             self.message_count = m.get('MessageCount')
         if m.get('MessageRetentionPeriod') is not None:
             self.message_retention_period = m.get('MessageRetentionPeriod')
+        if m.get('TopicInnerUrl') is not None:
+            self.topic_inner_url = m.get('TopicInnerUrl')
         if m.get('TopicName') is not None:
             self.topic_name = m.get('TopicName')
+        if m.get('TopicUrl') is not None:
+            self.topic_url = m.get('TopicUrl')
         return self
 
 
