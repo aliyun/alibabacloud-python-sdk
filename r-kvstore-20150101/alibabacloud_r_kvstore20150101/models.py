@@ -1106,7 +1106,7 @@ class CreateGlobalDistributeCacheRequest(TeaModel):
         self.owner_id = owner_id
         # The ID of the resource group.
         # 
-        # **Description** You can query resource group IDs by using the ApsaraDB for Redis console or by calling the [ListResourceGroups](~~158855~~) operation. For more information, see [View basic information of a resource group](~~151181~~).
+        # >  You do not need to specify system parameters.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -1244,9 +1244,9 @@ class CreateGlobalSecurityIPGroupRequest(TeaModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
-        # The IP address in the whitelist template.
+        # The IP addresses in the IP whitelist template.
         # 
-        # >  Separate multiple IP addresses with commas (,). You can create up to 1,000 IP addresses or CIDR blocks for all IP whitelists.
+        # >  Separate multiple IP addresses with commas (,). The maximum number of IP addresses is 1,000.
         self.gip_list = gip_list
         # The name of the IP whitelist template. The name must meet the following requirements:
         # 
@@ -1324,15 +1324,9 @@ class CreateGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup(TeaModel):
         global_security_group_id: str = None,
         region_id: str = None,
     ):
-        # The IP address in the whitelist template.
-        # 
-        # >  Multiple IP addresses are separated by commas (,). You can create up to 1,000 IP addresses or CIDR blocks for all IP whitelists.
+        # The IP addresses in the IP whitelist template.
         self.gip_list = gip_list
-        # The name of the IP whitelist template. The name must meet the following requirements:
-        # 
-        # *   The name can contain lowercase letters, digits, and underscores (\_).
-        # *   The name must start with a letter and end with a letter or digit.
-        # *   The name must be 2 to 120 characters in length.
+        # The name of the IP whitelist template.
         self.global_ig_name = global_ig_name
         # The ID of the IP whitelist template.
         self.global_security_group_id = global_security_group_id
@@ -1377,7 +1371,7 @@ class CreateGlobalSecurityIPGroupResponseBody(TeaModel):
         global_security_ipgroup: List[CreateGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup] = None,
         request_id: str = None,
     ):
-        # 1
+        # The information about the global IP whitelist template.
         self.global_security_ipgroup = global_security_ipgroup
         # The request ID.
         self.request_id = request_id
@@ -3891,12 +3885,11 @@ class DescribeActiveOperationTaskRequest(TeaModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
-        # The type of the O&M task. Valid values:
+        # The type of the O\&M task. Valid values:
         # 
         # *   **rds_apsaradb_ha**: master-replica switchover
         # *   **rds_apsaradb_transfer**: instance migration
         # *   **rds_apsaradb_upgrade**: minor version update
-        # *   **all**: all types
         self.task_type = task_type
 
     def validate(self):
@@ -4764,7 +4757,7 @@ class DescribeAvailableResourceRequest(TeaModel):
         # *   **Local**: classic ApsaraDB for Redis Community Edition instance or classic ApsaraDB for Redis Enhanced Edition (Tair) DRAM-based instance
         # *   **Tair_rdb**: cloud-native ApsaraDB for Redis Enhanced Edition (Tair) DRAM-based instance
         # *   **Tair_scm**: ApsaraDB for Redis Enhanced Edition (Tair) persistent memory-optimized instance
-        # *   **Tair_essd**: ApsaraDB for Redis Enhanced Edition (Tair) ESSD-based instance
+        # *   **Tair_essd**: ESSD-based instance
         # *   **OnECS**: cloud-native ApsaraDB for Redis Community Edition instance
         self.product_type = product_type
         # The region ID of the instance. You can call the [DescribeRegions](~~61012~~) operation to query the most recent region list.
@@ -5686,12 +5679,19 @@ class DescribeBackupPolicyResponseBodyAccessDeniedDetail(TeaModel):
         no_permission_type: str = None,
         policy_type: str = None,
     ):
+        # This parameter is no longer used. Ignore this parameter.
         self.auth_action = auth_action
+        # This parameter is no longer used. Ignore this parameter.
         self.auth_principal_display_name = auth_principal_display_name
+        # This parameter is no longer used. Ignore this parameter.
         self.auth_principal_owner_id = auth_principal_owner_id
+        # This parameter is no longer used. Ignore this parameter.
         self.auth_principal_type = auth_principal_type
+        # This parameter is no longer used. Ignore this parameter.
         self.encoded_diagnostic_message = encoded_diagnostic_message
+        # This parameter is no longer used. Ignore this parameter.
         self.no_permission_type = no_permission_type
+        # This parameter is no longer used. Ignore this parameter.
         self.policy_type = policy_type
 
     def validate(self):
@@ -5750,9 +5750,14 @@ class DescribeBackupPolicyResponseBody(TeaModel):
         preferred_next_backup_time: str = None,
         request_id: str = None,
     ):
+        # The following parameters are no longer used. Ignore the parameters.
         self.access_denied_detail = access_denied_detail
         # The retention period of the backup data. Unit: days.
         self.backup_retention_period = backup_retention_period
+        # Indicates whether the backup-as-a-service feature is enabled for the instance. Valid values:
+        # 
+        # *   **1**: The backup-as-a-service feature is enabled for the instance.
+        # *   **0**: The backup-as-a-service feature is disabled for the instance.
         self.dbs_instance = dbs_instance
         # Indicates whether incremental data backup is enabled. Valid values:
         # 
@@ -5955,19 +5960,19 @@ class DescribeBackupTasksResponseBodyAccessDeniedDetail(TeaModel):
         no_permission_type: str = None,
         policy_type: str = None,
     ):
-        # An internal parameter. Ignore this parameter.
+        # This parameter is no longer used. Ignore this parameter.
         self.auth_action = auth_action
-        # An internal parameter. Ignore this parameter.
+        # This parameter is no longer used. Ignore this parameter.
         self.auth_principal_display_name = auth_principal_display_name
-        # An internal parameter. Ignore this parameter.
+        # This parameter is no longer used. Ignore this parameter.
         self.auth_principal_owner_id = auth_principal_owner_id
-        # An internal parameter. Ignore this parameter.
+        # This parameter is no longer used. Ignore this parameter.
         self.auth_principal_type = auth_principal_type
-        # An internal parameter. Ignore this parameter.
+        # This parameter is no longer used. Ignore this parameter.
         self.encoded_diagnostic_message = encoded_diagnostic_message
-        # An internal parameter. Ignore this parameter.
+        # This parameter is no longer used. Ignore this parameter.
         self.no_permission_type = no_permission_type
-        # An internal parameter. Ignore this parameter.
+        # This parameter is no longer used. Ignore this parameter.
         self.policy_type = policy_type
 
     def validate(self):
@@ -6105,7 +6110,7 @@ class DescribeBackupTasksResponseBody(TeaModel):
         instance_id: str = None,
         request_id: str = None,
     ):
-        # The following parameters are internal parameters. Ignore the parameters.
+        # The following parameters are no longer used. Ignore the parameters.
         self.access_denied_detail = access_denied_detail
         # The details of the backup tasks.
         self.backup_jobs = backup_jobs
@@ -8085,37 +8090,40 @@ class DescribeDBInstanceNetInfoResponseBodyNetInfoItemsInstanceNetInfo(TeaModel)
     ):
         # The endpoint of the instance.
         self.connection_string = connection_string
-        # The network type of the endpoint. Valid values:
+        # The network type of the instance. Valid values:
         # 
-        # *   **0**: the Internet.
-        # *   **1**: classic network.
-        # *   **2**: VPC.
+        # *   **0**: Internet
+        # *   **1**: classic network
+        # *   **2**: Virtual Private Cloud (VPC)
         self.dbinstance_net_type = dbinstance_net_type
         # Indicates whether the address is a private endpoint. Valid values:
         # 
-        # *   **0**: no.
-        # *   **1**: yes.
+        # *   **0**: The address is not a private endpoint.
+        # *   **1**: The address is a private endpoint.
         self.direct_connection = direct_connection
-        # The expiration time of the classic network address of an ApsaraDB for Redis instance. Unit: seconds.
+        # The expiration time of the classic network endpoint. Unit: seconds.
         self.expired_time = expired_time
         # The IP address.
         self.ipaddress = ipaddress
         # The network type of the IP address. Valid values:
         # 
-        # *   **Public**: Internet.
-        # *   **Inner**: classic network.
-        # *   **Private**: VPC.
+        # *   **Public**: Internet
+        # *   **Inner**: classic network
+        # *   **Private**: VPC
         self.iptype = iptype
-        self.is_slave_proxy = is_slave_proxy
-        # The service port of the ApsaraDB for Redis instance.
-        self.port = port
-        # The remaining validity period of the endpoint of the classic network. Unit: seconds.
+        # Indicates whether the address is the endpoint for the secondary zone. Valid values: 1 and 0. A value of 1 indicates that the address is the endpoint for the secondary zone.
         # 
-        # >  A value of **0** indicates that the endpoint never expires.
+        # >  This parameter is returned only after you enable the multi-zone read/write splitting architecture for the instance.
+        self.is_slave_proxy = is_slave_proxy
+        # The service port of the instance.
+        self.port = port
+        # The remaining validity period of the classic network endpoint. Unit: seconds.
+        # 
+        # >  **A value of 0 indicates that the endpoint never expires.
         self.upgradeable = upgradeable
-        # The ID of the VPC where the instance is deployed.
+        # The ID of the VPC to which the instance belongs.
         self.vpcid = vpcid
-        # The ID of the instance.
+        # The instance ID.
         self.vpcinstance_id = vpcinstance_id
         # The ID of the vSwitch.
         self.v_switch_id = v_switch_id
@@ -8231,7 +8239,7 @@ class DescribeDBInstanceNetInfoResponseBody(TeaModel):
         # *   **CLASSIC**: The instance runs in a classic network.
         # *   **VPC**: The instance runs in a virtual private cloud (VPC).
         self.instance_network_type = instance_network_type
-        # The list of network information about the instance.
+        # The network information about the instance.
         self.net_info_items = net_info_items
         # The ID of the request.
         self.request_id = request_id
@@ -10835,6 +10843,7 @@ class DescribeHistoryMonitorValuesRequest(TeaModel):
         interval_for_history: str = None,
         monitor_keys: str = None,
         node_id: str = None,
+        node_role: str = None,
         owner_account: str = None,
         owner_id: int = None,
         resource_owner_account: str = None,
@@ -10862,6 +10871,7 @@ class DescribeHistoryMonitorValuesRequest(TeaModel):
         # 
         # *   You can call the [DescribeLogicInstanceTopology](~~94665~~) operation to query node IDs.
         self.node_id = node_id
+        self.node_role = node_role
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -10889,6 +10899,8 @@ class DescribeHistoryMonitorValuesRequest(TeaModel):
             result['MonitorKeys'] = self.monitor_keys
         if self.node_id is not None:
             result['NodeId'] = self.node_id
+        if self.node_role is not None:
+            result['NodeRole'] = self.node_role
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
@@ -10915,6 +10927,8 @@ class DescribeHistoryMonitorValuesRequest(TeaModel):
             self.monitor_keys = m.get('MonitorKeys')
         if m.get('NodeId') is not None:
             self.node_id = m.get('NodeId')
+        if m.get('NodeRole') is not None:
+            self.node_role = m.get('NodeRole')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
@@ -11704,7 +11718,7 @@ class DescribeInstanceAttributeResponseBodyInstancesDBInstanceAttribute(TeaModel
         self.has_renew_change_order = has_renew_change_order
         # The instance type. For more information, see [Instance types](~~107984~~).
         self.instance_class = instance_class
-        # The instance ID.
+        # The ID of the instance.
         self.instance_id = instance_id
         # The name of the instance.
         self.instance_name = instance_name
@@ -11773,7 +11787,7 @@ class DescribeInstanceAttributeResponseBodyInstancesDBInstanceAttribute(TeaModel
         # *   **standard**: standard plan.
         # *   **customized**: custom plan. This plan type is phased out.
         self.package_type = package_type
-        # The service port of the ApsaraDB for Redis instance.
+        # The service port of the instance.
         self.port = port
         # The private IP address of the instance.
         # 
@@ -11806,6 +11820,7 @@ class DescribeInstanceAttributeResponseBodyInstancesDBInstanceAttribute(TeaModel
         self.security_iplist = security_iplist
         # The number of shards. This parameter is available only for ApsaraDB for Redis instances that are purchased on the China site (aliyun.com).
         self.shard_count = shard_count
+        # The number of read replicas in the secondary zone. This parameter is returned only after read/write splitting is enabled for the instance across multiple zones.
         self.slave_read_only_count = slave_read_only_count
         # The storage capacity of the cloud disk.
         self.storage = storage
@@ -11813,7 +11828,7 @@ class DescribeInstanceAttributeResponseBodyInstancesDBInstanceAttribute(TeaModel
         self.storage_type = storage_type
         # Details about the tags.
         self.tags = tags
-        # The vSwitch ID.
+        # The ID of the vSwitch.
         self.v_switch_id = v_switch_id
         # Indicates whether password authentication is enabled. Valid values:
         # 
@@ -13026,7 +13041,7 @@ class DescribeInstancesRequest(TeaModel):
         self.owner_id = owner_id
         # The page number. Pages start from page **1**. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page. Maximum value: **50**. Default value: **10**.
+        # The number of entries per page. Maximum value: **50**. Default value: **30**.
         self.page_size = page_size
         # The private IP address of the instance.
         self.private_ip = private_ip
@@ -19930,10 +19945,13 @@ class EnableAdditionalBandwidthRequest(TeaModel):
         # > * This parameter takes effect and must be specified only when you set the **AutoRenew** parameter to **true**.
         # > * You cannot query the auto-renewal cycle by calling an API operation. To obtain the auto-renewal cycle, you can perform the following procedure: In the top navigation bar of the ApsaraDB for Redis console, choose **Expenses** > **Renewal Management**. On the page that appears, enter the ID of the instance and the `-bw` suffix in the **Instance ID** field. Example: r-bp1zxszhcgatnx****-bw.
         self.auto_renew_period = auto_renew_period
-        # The amount of bandwidth that you want to purchase. Unit: MB/s. The value of this parameter must be an integer that is greater than or equal to **0**. You can set this parameter to a value that is up to two times the default bandwidth that is supported by the instance type. For example, if the default bandwidth that is supported by the instance type is 10 MB/s, you can set this parameter to a value within the range of **0** to **20**.
+        # The amount of extra bandwidth that you want to purchase. Unit: Mbit/s. The value must be an integer greater than or equal to **0**. The maximum value can be up to six times the default bandwidth of the instance or a single shard, but cannot exceed 192 Mbit/s. For example, if the default bandwidth of an instance is 10 Mbit/s, the value range of this parameter is **0** to **60**.
         # 
-        # > * You call the [DescribeRoleZoneInfo](~~190794~~) operation to query the default bandwidth that is supported by an instance type. In the response, the default bandwidth is indicated by the **DefaultBandWidth** parameter. For more information about instance types, see [Overview](~~26350~~).
-        # > * If you specify multiple data shard IDs in the **NodeId** parameter, you must specify the amount of bandwidth that you want to purchase for each specified data shard in the Bandwidth parameter. The bandwidth values that you specify in the Bandwidth parameter must be in the same sequence as the data shard IDs that you specify in the NodeId parameter. In addition, you must separate the bandwidth values with commas (,).
+        # > 
+        # 
+        # *   You can call the [DescribeRoleZoneInfo](~~190794~~) operation to obtain the default maximum bandwidth returned by the **DefaultBandWidth** response parameter. For more information about instance types, see [Overview](~~26350~~).
+        # 
+        # *   If you specify multiple data shard IDs in the **NodeId** parameter, you must specify the amount of bandwidth that you want to purchase for each specified data shard in the Bandwidth parameter. The bandwidth values that you specify in the Bandwidth parameter must be in the same sequence as the data shard IDs that you specify in the NodeId parameter. In addition, you must separate the bandwidth values with commas (,).
         self.bandwidth = bandwidth
         # The billing method of the bandwidth instance. Default value: PostPaid. Valid values:
         # 
@@ -23247,9 +23265,9 @@ class ModifyInstanceMaintainTimeRequest(TeaModel):
     ):
         # The ID of the instance.
         self.instance_id = instance_id
-        # The end time of the maintenance window. The time is in the *HH:mm*Z format. The time is displayed in UTC. For example, if you want the maintenance to end at 2:00 (UTC+8), set this parameter to `18:00Z`.
+        # The end time of the maintenance window. The time is in the *HH:mm*Z format. The time is displayed in UTC. For example, if you want the maintenance window to end at 2:00 (UTC+8), set this parameter to `18:00Z`.
         # 
-        # > The end time must be one hour later than the start time. For example, if the value of the MaintainStartTime parameter is `17:00Z`, the value of the MaintainEndTime parameter must be `18:00Z`.
+        # >  The interval between the start time and the end time cannot be less than 1 hour.
         self.maintain_end_time = maintain_end_time
         # The start time of the maintenance window. The time is in the *HH:mm*Z format. The time is displayed in UTC. For example, if you want the maintenance to start at 1:00 (UTC+8), set this parameter to `17:00Z`. After you call the API operation, you can view the actual time in the ApsaraDB for Redis console. For more information, see [Set a maintenance window](~~55252~~).
         self.maintain_start_time = maintain_start_time

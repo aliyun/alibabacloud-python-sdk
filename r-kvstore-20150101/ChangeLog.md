@@ -1,3 +1,7 @@
+2024-05-08 Version: 4.0.1
+- Update API DescribeHistoryMonitorValues: add param NodeRole.
+
+
 2024-05-06 Version: 4.0.0
 - Update API CreateGlobalDistributeCache: add param EffectiveTime.
 - Update API CreateTairInstance: add param RestoreTime.
