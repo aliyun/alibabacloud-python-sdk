@@ -1,3 +1,8 @@
+2024-05-08 Version: 4.0.1
+- Update API CreateAccessControlList: update response param.
+- Update API DescribeAccessControlListAttribute: update response param.
+
+
 2024-05-07 Version: 4.0.0
 - Support API DescribeApisByVpcAccess.
 - Support API ModifyApiGroupInstance.

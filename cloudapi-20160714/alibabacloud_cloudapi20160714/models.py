@@ -1172,8 +1172,10 @@ class CreateAccessControlListRequest(TeaModel):
 class CreateAccessControlListResponseBody(TeaModel):
     def __init__(
         self,
+        acl_id: str = None,
         request_id: str = None,
     ):
+        self.acl_id = acl_id
         # The ID of the request.
         self.request_id = request_id
 
@@ -1186,12 +1188,16 @@ class CreateAccessControlListResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.acl_id is not None:
+            result['AclId'] = self.acl_id
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AclId') is not None:
+            self.acl_id = m.get('AclId')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
@@ -7299,6 +7305,7 @@ class DescribeAccessControlListAttributeResponseBody(TeaModel):
         acl_entrys: DescribeAccessControlListAttributeResponseBodyAclEntrys = None,
         acl_id: str = None,
         acl_name: str = None,
+        address_ipversion: str = None,
         request_id: str = None,
     ):
         # The information about the access control policy.
@@ -7307,6 +7314,7 @@ class DescribeAccessControlListAttributeResponseBody(TeaModel):
         self.acl_id = acl_id
         # The name of the access control policy.
         self.acl_name = acl_name
+        self.address_ipversion = address_ipversion
         # The ID of the request.
         self.request_id = request_id
 
@@ -7326,6 +7334,8 @@ class DescribeAccessControlListAttributeResponseBody(TeaModel):
             result['AclId'] = self.acl_id
         if self.acl_name is not None:
             result['AclName'] = self.acl_name
+        if self.address_ipversion is not None:
+            result['AddressIPVersion'] = self.address_ipversion
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
@@ -7339,6 +7349,8 @@ class DescribeAccessControlListAttributeResponseBody(TeaModel):
             self.acl_id = m.get('AclId')
         if m.get('AclName') is not None:
             self.acl_name = m.get('AclName')
+        if m.get('AddressIPVersion') is not None:
+            self.address_ipversion = m.get('AddressIPVersion')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
