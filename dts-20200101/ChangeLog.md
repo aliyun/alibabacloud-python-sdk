@@ -1,3 +1,8 @@
+2024-05-09 Version: 5.6.0
+- Support API DescribeSyncStatus.
+- Update API ModifyDtsJobEndpoint: add param ModifyAccount.
+
+
 2024-04-25 Version: 5.5.5
 - Update API CreateReverseDtsJob: add param ShardPassword.
 - Update API CreateReverseDtsJob: add param ShardUsername.

@@ -29538,6 +29538,238 @@ class DescribeSubscriptionMetaResponse(TeaModel):
         return self
 
 
+class DescribeSyncStatusRequest(TeaModel):
+    def __init__(
+        self,
+        direction: str = None,
+        dts_instance_id: str = None,
+        dts_job_id: str = None,
+        region_id: str = None,
+        resource_group_id: str = None,
+    ):
+        self.direction = direction
+        self.dts_instance_id = dts_instance_id
+        self.dts_job_id = dts_job_id
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.direction is not None:
+            result['Direction'] = self.direction
+        if self.dts_instance_id is not None:
+            result['DtsInstanceId'] = self.dts_instance_id
+        if self.dts_job_id is not None:
+            result['DtsJobId'] = self.dts_job_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Direction') is not None:
+            self.direction = m.get('Direction')
+        if m.get('DtsInstanceId') is not None:
+            self.dts_instance_id = m.get('DtsInstanceId')
+        if m.get('DtsJobId') is not None:
+            self.dts_job_id = m.get('DtsJobId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        return self
+
+
+class DescribeSyncStatusResponseBodySyncStatusList(TeaModel):
+    def __init__(
+        self,
+        checkpoint: int = None,
+        code: str = None,
+        delay: int = None,
+        job_id: str = None,
+        rate: str = None,
+        status: str = None,
+    ):
+        self.checkpoint = checkpoint
+        self.code = code
+        self.delay = delay
+        self.job_id = job_id
+        self.rate = rate
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.checkpoint is not None:
+            result['Checkpoint'] = self.checkpoint
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.delay is not None:
+            result['Delay'] = self.delay
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.rate is not None:
+            result['Rate'] = self.rate
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Checkpoint') is not None:
+            self.checkpoint = m.get('Checkpoint')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Delay') is not None:
+            self.delay = m.get('Delay')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('Rate') is not None:
+            self.rate = m.get('Rate')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class DescribeSyncStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        dynamic_code: str = None,
+        dynamic_message: str = None,
+        err_code: str = None,
+        err_message: str = None,
+        http_status_code: int = None,
+        page_number: int = None,
+        request_id: str = None,
+        success: bool = None,
+        sync_status_list: List[DescribeSyncStatusResponseBodySyncStatusList] = None,
+    ):
+        self.dynamic_code = dynamic_code
+        self.dynamic_message = dynamic_message
+        self.err_code = err_code
+        self.err_message = err_message
+        self.http_status_code = http_status_code
+        self.page_number = page_number
+        self.request_id = request_id
+        self.success = success
+        self.sync_status_list = sync_status_list
+
+    def validate(self):
+        if self.sync_status_list:
+            for k in self.sync_status_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dynamic_code is not None:
+            result['DynamicCode'] = self.dynamic_code
+        if self.dynamic_message is not None:
+            result['DynamicMessage'] = self.dynamic_message
+        if self.err_code is not None:
+            result['ErrCode'] = self.err_code
+        if self.err_message is not None:
+            result['ErrMessage'] = self.err_message
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        result['SyncStatusList'] = []
+        if self.sync_status_list is not None:
+            for k in self.sync_status_list:
+                result['SyncStatusList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DynamicCode') is not None:
+            self.dynamic_code = m.get('DynamicCode')
+        if m.get('DynamicMessage') is not None:
+            self.dynamic_message = m.get('DynamicMessage')
+        if m.get('ErrCode') is not None:
+            self.err_code = m.get('ErrCode')
+        if m.get('ErrMessage') is not None:
+            self.err_message = m.get('ErrMessage')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        self.sync_status_list = []
+        if m.get('SyncStatusList') is not None:
+            for k in m.get('SyncStatusList'):
+                temp_model = DescribeSyncStatusResponseBodySyncStatusList()
+                self.sync_status_list.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeSyncStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeSyncStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeSyncStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeSynchronizationJobAlertRequest(TeaModel):
     def __init__(
         self,
@@ -35746,6 +35978,7 @@ class ModifyDtsJobEndpointRequest(TeaModel):
         endpoint_ip: str = None,
         endpoint_port: str = None,
         endpoint_region_id: str = None,
+        modify_account: bool = None,
         password: str = None,
         region_id: str = None,
         resource_group_id: str = None,
@@ -35766,6 +35999,7 @@ class ModifyDtsJobEndpointRequest(TeaModel):
         self.endpoint_ip = endpoint_ip
         self.endpoint_port = endpoint_port
         self.endpoint_region_id = endpoint_region_id
+        self.modify_account = modify_account
         self.password = password
         self.region_id = region_id
         self.resource_group_id = resource_group_id
@@ -35806,6 +36040,8 @@ class ModifyDtsJobEndpointRequest(TeaModel):
             result['EndpointPort'] = self.endpoint_port
         if self.endpoint_region_id is not None:
             result['EndpointRegionId'] = self.endpoint_region_id
+        if self.modify_account is not None:
+            result['ModifyAccount'] = self.modify_account
         if self.password is not None:
             result['Password'] = self.password
         if self.region_id is not None:
@@ -35848,6 +36084,8 @@ class ModifyDtsJobEndpointRequest(TeaModel):
             self.endpoint_port = m.get('EndpointPort')
         if m.get('EndpointRegionId') is not None:
             self.endpoint_region_id = m.get('EndpointRegionId')
+        if m.get('ModifyAccount') is not None:
+            self.modify_account = m.get('ModifyAccount')
         if m.get('Password') is not None:
             self.password = m.get('Password')
         if m.get('RegionId') is not None:

@@ -6788,6 +6788,92 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_subscription_meta_with_options_async(request, runtime)
 
+    def describe_sync_status_with_options(
+        self,
+        request: dts_20200101_models.DescribeSyncStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.DescribeSyncStatusResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.direction):
+            query['Direction'] = request.direction
+        if not UtilClient.is_unset(request.dts_instance_id):
+            query['DtsInstanceId'] = request.dts_instance_id
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSyncStatus',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.DescribeSyncStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_sync_status_with_options_async(
+        self,
+        request: dts_20200101_models.DescribeSyncStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.DescribeSyncStatusResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.direction):
+            query['Direction'] = request.direction
+        if not UtilClient.is_unset(request.dts_instance_id):
+            query['DtsInstanceId'] = request.dts_instance_id
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSyncStatus',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.DescribeSyncStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_sync_status(
+        self,
+        request: dts_20200101_models.DescribeSyncStatusRequest,
+    ) -> dts_20200101_models.DescribeSyncStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_sync_status_with_options(request, runtime)
+
+    async def describe_sync_status_async(
+        self,
+        request: dts_20200101_models.DescribeSyncStatusRequest,
+    ) -> dts_20200101_models.DescribeSyncStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_sync_status_with_options_async(request, runtime)
+
     def describe_synchronization_job_alert_with_options(
         self,
         request: dts_20200101_models.DescribeSynchronizationJobAlertRequest,
@@ -9029,6 +9115,8 @@ class Client(OpenApiClient):
             query['EndpointPort'] = request.endpoint_port
         if not UtilClient.is_unset(request.endpoint_region_id):
             query['EndpointRegionId'] = request.endpoint_region_id
+        if not UtilClient.is_unset(request.modify_account):
+            query['ModifyAccount'] = request.modify_account
         if not UtilClient.is_unset(request.password):
             query['Password'] = request.password
         if not UtilClient.is_unset(request.region_id):
@@ -9093,6 +9181,8 @@ class Client(OpenApiClient):
             query['EndpointPort'] = request.endpoint_port
         if not UtilClient.is_unset(request.endpoint_region_id):
             query['EndpointRegionId'] = request.endpoint_region_id
+        if not UtilClient.is_unset(request.modify_account):
+            query['ModifyAccount'] = request.modify_account
         if not UtilClient.is_unset(request.password):
             query['Password'] = request.password
         if not UtilClient.is_unset(request.region_id):
