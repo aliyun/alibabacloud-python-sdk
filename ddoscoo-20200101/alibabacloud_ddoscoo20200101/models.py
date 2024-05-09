@@ -511,6 +511,7 @@ class ConfigL7RsPolicyRequest(TeaModel):
         domain: str = None,
         policy: str = None,
         resource_group_id: str = None,
+        upstream_retry: int = None,
     ):
         # The domain name of the website.
         # 
@@ -536,6 +537,7 @@ class ConfigL7RsPolicyRequest(TeaModel):
         # 
         # For more information about resource groups, see [Create a resource group](~~94485~~).
         self.resource_group_id = resource_group_id
+        self.upstream_retry = upstream_retry
 
     def validate(self):
         pass
@@ -552,6 +554,8 @@ class ConfigL7RsPolicyRequest(TeaModel):
             result['Policy'] = self.policy
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
+        if self.upstream_retry is not None:
+            result['UpstreamRetry'] = self.upstream_retry
         return result
 
     def from_map(self, m: dict = None):
@@ -562,6 +566,8 @@ class ConfigL7RsPolicyRequest(TeaModel):
             self.policy = m.get('Policy')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('UpstreamRetry') is not None:
+            self.upstream_retry = m.get('UpstreamRetry')
         return self
 
 
@@ -13394,8 +13400,20 @@ class DescribeL7RsPolicyRequest(TeaModel):
 class DescribeL7RsPolicyResponseBodyAttributesAttribute(TeaModel):
     def __init__(
         self,
+        connect_timeout: int = None,
+        fail_timeout: int = None,
+        max_fails: int = None,
+        mode: str = None,
+        read_timeout: int = None,
+        send_timeout: int = None,
         weight: int = None,
     ):
+        self.connect_timeout = connect_timeout
+        self.fail_timeout = fail_timeout
+        self.max_fails = max_fails
+        self.mode = mode
+        self.read_timeout = read_timeout
+        self.send_timeout = send_timeout
         # The weight of the origin server. This parameter takes effect only when **ProxyMode** is set to **rr**.
         # 
         # Valid values: **1** to **100**. Default value: **100**. A server with a higher weight receives more requests.
@@ -13410,12 +13428,36 @@ class DescribeL7RsPolicyResponseBodyAttributesAttribute(TeaModel):
             return _map
 
         result = dict()
+        if self.connect_timeout is not None:
+            result['ConnectTimeout'] = self.connect_timeout
+        if self.fail_timeout is not None:
+            result['FailTimeout'] = self.fail_timeout
+        if self.max_fails is not None:
+            result['MaxFails'] = self.max_fails
+        if self.mode is not None:
+            result['Mode'] = self.mode
+        if self.read_timeout is not None:
+            result['ReadTimeout'] = self.read_timeout
+        if self.send_timeout is not None:
+            result['SendTimeout'] = self.send_timeout
         if self.weight is not None:
             result['Weight'] = self.weight
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ConnectTimeout') is not None:
+            self.connect_timeout = m.get('ConnectTimeout')
+        if m.get('FailTimeout') is not None:
+            self.fail_timeout = m.get('FailTimeout')
+        if m.get('MaxFails') is not None:
+            self.max_fails = m.get('MaxFails')
+        if m.get('Mode') is not None:
+            self.mode = m.get('Mode')
+        if m.get('ReadTimeout') is not None:
+            self.read_timeout = m.get('ReadTimeout')
+        if m.get('SendTimeout') is not None:
+            self.send_timeout = m.get('SendTimeout')
         if m.get('Weight') is not None:
             self.weight = m.get('Weight')
         return self
@@ -13474,6 +13516,7 @@ class DescribeL7RsPolicyResponseBody(TeaModel):
         attributes: List[DescribeL7RsPolicyResponseBodyAttributes] = None,
         proxy_mode: str = None,
         request_id: str = None,
+        upstream_retry: int = None,
     ):
         # The details of the parameters for back-to-origin.
         self.attributes = attributes
@@ -13485,6 +13528,7 @@ class DescribeL7RsPolicyResponseBody(TeaModel):
         self.proxy_mode = proxy_mode
         # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        self.upstream_retry = upstream_retry
 
     def validate(self):
         if self.attributes:
@@ -13506,6 +13550,8 @@ class DescribeL7RsPolicyResponseBody(TeaModel):
             result['ProxyMode'] = self.proxy_mode
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.upstream_retry is not None:
+            result['UpstreamRetry'] = self.upstream_retry
         return result
 
     def from_map(self, m: dict = None):
@@ -13519,6 +13565,8 @@ class DescribeL7RsPolicyResponseBody(TeaModel):
             self.proxy_mode = m.get('ProxyMode')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('UpstreamRetry') is not None:
+            self.upstream_retry = m.get('UpstreamRetry')
         return self
 
 

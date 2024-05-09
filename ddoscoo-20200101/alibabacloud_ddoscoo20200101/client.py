@@ -431,6 +431,8 @@ class Client(OpenApiClient):
             query['Policy'] = request.policy
         if not UtilClient.is_unset(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.upstream_retry):
+            query['UpstreamRetry'] = request.upstream_retry
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -470,6 +472,8 @@ class Client(OpenApiClient):
             query['Policy'] = request.policy
         if not UtilClient.is_unset(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.upstream_retry):
+            query['UpstreamRetry'] = request.upstream_retry
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )

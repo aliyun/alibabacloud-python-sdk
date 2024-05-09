@@ -1,3 +1,8 @@
+2024-05-09 Version: 2.0.1
+- Update API ConfigL7RsPolicy: add param UpstreamRetry.
+- Update API DescribeL7RsPolicy: update response param.
+
+
 2024-04-29 Version: 2.0.0
 - Support API DescribeElasticQps.
 - Support API DescribeElasticQpsRecord.
