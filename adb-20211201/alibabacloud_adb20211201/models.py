@@ -2815,7 +2815,10 @@ class CreateDBClusterRequest(TeaModel):
         enable_default_resource_pool: bool = None,
         pay_type: str = None,
         period: str = None,
+        product_form: str = None,
         region_id: str = None,
+        reserved_node_count: int = None,
+        reserved_node_size: str = None,
         resource_group_id: str = None,
         restore_to_time: str = None,
         restore_type: str = None,
@@ -2861,10 +2864,13 @@ class CreateDBClusterRequest(TeaModel):
         # 
         # >  This parameter must be specified when PayType is set to Prepaid.
         self.period = period
+        self.product_form = product_form
         # The region ID.
         # 
         # >  You can call the [DescribeRegions](~~454314~~) operation to query the most recent region list.
         self.region_id = region_id
+        self.reserved_node_count = reserved_node_count
+        self.reserved_node_size = reserved_node_size
         # The resource group ID.
         self.resource_group_id = resource_group_id
         # The point in time to which you want to restore data from the backup set.
@@ -2926,8 +2932,14 @@ class CreateDBClusterRequest(TeaModel):
             result['PayType'] = self.pay_type
         if self.period is not None:
             result['Period'] = self.period
+        if self.product_form is not None:
+            result['ProductForm'] = self.product_form
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.reserved_node_count is not None:
+            result['ReservedNodeCount'] = self.reserved_node_count
+        if self.reserved_node_size is not None:
+            result['ReservedNodeSize'] = self.reserved_node_size
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
         if self.restore_to_time is not None:
@@ -2970,8 +2982,14 @@ class CreateDBClusterRequest(TeaModel):
             self.pay_type = m.get('PayType')
         if m.get('Period') is not None:
             self.period = m.get('Period')
+        if m.get('ProductForm') is not None:
+            self.product_form = m.get('ProductForm')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ReservedNodeCount') is not None:
+            self.reserved_node_count = m.get('ReservedNodeCount')
+        if m.get('ReservedNodeSize') is not None:
+            self.reserved_node_size = m.get('ReservedNodeSize')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('RestoreToTime') is not None:
@@ -3095,8 +3113,15 @@ class CreateDBResourceGroupRequestRules(TeaModel):
         query_time: str = None,
         target_group_name: str = None,
     ):
+        # The name of the resource group.
+        # 
+        # *   The name can be up to 255 characters in length.
+        # *   The name must start with a letter or digit.
+        # *   The name can contain letters, digits, hyphens (\_), and underscores (\_).
         self.group_name = group_name
+        # The execution duration of the query. Unit: milliseconds.
         self.query_time = query_time
+        # The name of the destination resource group.
         self.target_group_name = target_group_name
 
     def validate(self):
@@ -3149,6 +3174,10 @@ class CreateDBResourceGroupRequest(TeaModel):
         self.cluster_size_resource = cluster_size_resource
         # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
         self.dbcluster_id = dbcluster_id
+        # Specifies whether to enable the preemptible instance feature for the resource group. After you enable the preemptible instance feature, you are charged for resources at a lower unit price but the resources are probably released. You can enable the preemptible instance feature only for job resource groups. Valid values:
+        # 
+        # *   **True**\
+        # *   **False**\
         self.enable_spot = enable_spot
         # The name of the resource group.
         # 
@@ -3181,6 +3210,7 @@ class CreateDBResourceGroupRequest(TeaModel):
         # 
         # >  You can call the [DescribeRegions](~~612393~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The job resubmission rules.
         self.rules = rules
 
     def validate(self):
@@ -3277,6 +3307,10 @@ class CreateDBResourceGroupShrinkRequest(TeaModel):
         self.cluster_size_resource = cluster_size_resource
         # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
         self.dbcluster_id = dbcluster_id
+        # Specifies whether to enable the preemptible instance feature for the resource group. After you enable the preemptible instance feature, you are charged for resources at a lower unit price but the resources are probably released. You can enable the preemptible instance feature only for job resource groups. Valid values:
+        # 
+        # *   **True**\
+        # *   **False**\
         self.enable_spot = enable_spot
         # The name of the resource group.
         # 
@@ -3309,6 +3343,7 @@ class CreateDBResourceGroupShrinkRequest(TeaModel):
         # 
         # >  You can call the [DescribeRegions](~~612393~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The job resubmission rules.
         self.rules_shrink = rules_shrink
 
     def validate(self):
@@ -7117,6 +7152,7 @@ class DescribeApsResourceGroupsRequest(TeaModel):
         # >  You can call the [DescribeDBClusters](~~612397~~) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region.
         self.dbcluster_id = dbcluster_id
         self.region_id = region_id
+        # The ID of the data synchronization job.
         self.workload_id = workload_id
 
     def validate(self):
@@ -9824,8 +9860,11 @@ class DescribeDBClusterAttributeResponseBodyItemsDBCluster(TeaModel):
         mode: str = None,
         pay_type: str = None,
         port: int = None,
+        product_form: str = None,
         region_id: str = None,
         reserved_acu: str = None,
+        reserved_node_count: int = None,
+        reserved_node_size: str = None,
         resource_group_id: str = None,
         storage_resource: str = None,
         storage_resource_total: str = None,
@@ -9885,11 +9924,9 @@ class DescribeDBClusterAttributeResponseBodyItemsDBCluster(TeaModel):
         # *   **true**\
         # *   **false**\
         # 
-        # > 
         # 
-        # *   If the cluster has expired, the system locks or releases the cluster within a period of time. We recommend that you renew the expired cluster. For more information, see [Renewal policy](~~135248~~).
-        # 
-        # *   This parameter is not returned for pay-as-you-go clusters.
+        # > - If the cluster has expired, the system locks or releases the cluster within a period of time. We recommend that you renew the expired cluster. For more information, see [Renewal policy](~~135248~~).
+        # > - This parameter is not returned for pay-as-you-go clusters.
         self.expired = expired
         # The lock mode of the cluster. Valid values:
         # 
@@ -9914,10 +9951,13 @@ class DescribeDBClusterAttributeResponseBodyItemsDBCluster(TeaModel):
         self.pay_type = pay_type
         # The port number that is used to connect to the cluster.
         self.port = port
+        self.product_form = product_form
         # The region ID of the cluster.
         self.region_id = region_id
         # The remaining reserved computing resources that are available in the cluster. Each ACU is equivalent to 1 core and 4 GB memory.
         self.reserved_acu = reserved_acu
+        self.reserved_node_count = reserved_node_count
+        self.reserved_node_size = reserved_node_size
         # The resource group ID.
         self.resource_group_id = resource_group_id
         # The specifications of reserved storage resources. Each AnalyticDB compute unit (ACU) is equivalent to 1 core and 4 GB memory. Storage resources are used to read and write data. The increase in the storage resources can improve the read and write performance of the cluster.
@@ -9992,10 +10032,16 @@ class DescribeDBClusterAttributeResponseBodyItemsDBCluster(TeaModel):
             result['PayType'] = self.pay_type
         if self.port is not None:
             result['Port'] = self.port
+        if self.product_form is not None:
+            result['ProductForm'] = self.product_form
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.reserved_acu is not None:
             result['ReservedACU'] = self.reserved_acu
+        if self.reserved_node_count is not None:
+            result['ReservedNodeCount'] = self.reserved_node_count
+        if self.reserved_node_size is not None:
+            result['ReservedNodeSize'] = self.reserved_node_size
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
         if self.storage_resource is not None:
@@ -10060,10 +10106,16 @@ class DescribeDBClusterAttributeResponseBodyItemsDBCluster(TeaModel):
             self.pay_type = m.get('PayType')
         if m.get('Port') is not None:
             self.port = m.get('Port')
+        if m.get('ProductForm') is not None:
+            self.product_form = m.get('ProductForm')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ReservedACU') is not None:
             self.reserved_acu = m.get('ReservedACU')
+        if m.get('ReservedNodeCount') is not None:
+            self.reserved_node_count = m.get('ReservedNodeCount')
+        if m.get('ReservedNodeSize') is not None:
+            self.reserved_node_size = m.get('ReservedNodeSize')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('StorageResource') is not None:
@@ -10577,10 +10629,10 @@ class DescribeDBClusterPerformanceRequest(TeaModel):
         #     *   **AnalyticDB_IOPS**: the disk IOPS.
         #     *   **AnalyticDB_Disk_Usage**: the disk space that is used.
         #     *   **AnalyticDB_Disk_Usage_Percentage**: the disk usage.
-        #     *   **AnalyticDB_HotDataDiskUsage**: the disk space that is used by hot data.
-        #     *   **AnalyticDB_ColdDataDiskUsage**: the disk space that is used by hot data.
+        #     *   **AnalyticDB_Hot_Data_Usage**: the disk space that is used by hot data.
+        #     *   **AnalyticDB_Cold_Data_Usage**: the disk space that is used by code data.
         # 
-        # > This parameter must be specified.
+        # >  This parameter must be specified.
         self.key = key
         # The region ID of the cluster.
         # 
@@ -10840,9 +10892,13 @@ class DescribeDBClusterSpaceSummaryRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The region ID.
+        # 
+        # >  You can call the [DescribeRegions](~~143074~~) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -10896,10 +10952,17 @@ class DescribeDBClusterSpaceSummaryResponseBodyDataColdData(TeaModel):
         primary_key_index_size: int = None,
         total_size: int = None,
     ):
+        # The data size of table records. Unit: bytes.
         self.data_size = data_size
+        # The data size of regular indexes. Unit: bytes.
         self.index_size = index_size
+        # The data size of other data. Unit: bytes.
         self.other_size = other_size
+        # The data size of primary key indexes. Unit: bytes.
         self.primary_key_index_size = primary_key_index_size
+        # The cold data size. Unit: bytes.
+        # 
+        # >  Formula: Cold data size = Data size of table records + Data size of regular indexes + Data size of primary key indexes + Data size of other data.
         self.total_size = total_size
 
     def validate(self):
@@ -10944,7 +11007,13 @@ class DescribeDBClusterSpaceSummaryResponseBodyDataDataGrowth(TeaModel):
         day_growth: int = None,
         week_growth: int = None,
     ):
+        # The data growth within the last day. Unit: bytes.
+        # 
+        # >  Formula: Data growth within the last day = Current data size - Data size one day ago.
         self.day_growth = day_growth
+        # The daily data growth within the last seven days. Unit: bytes.
+        # 
+        # >  Formula: Daily data growth within the last seven days = (Current data size - Data size seven days ago)/7.
         self.week_growth = week_growth
 
     def validate(self):
@@ -10980,10 +11049,17 @@ class DescribeDBClusterSpaceSummaryResponseBodyDataHotData(TeaModel):
         primary_key_index_size: int = None,
         total_size: int = None,
     ):
+        # The data size of table records. Unit: bytes.
         self.data_size = data_size
+        # The data size of regular indexes. Unit: bytes.
         self.index_size = index_size
+        # The data size of other data. Unit: bytes.
         self.other_size = other_size
+        # The data size of primary key indexes. Unit: bytes.
         self.primary_key_index_size = primary_key_index_size
+        # The hot data size. Unit: bytes.
+        # 
+        # >  Formula: Hot data size = Data size of table records + Data size of regular indexes + Data size of primary key indexes + Data size of other data.
         self.total_size = total_size
 
     def validate(self):
@@ -11030,9 +11106,15 @@ class DescribeDBClusterSpaceSummaryResponseBodyData(TeaModel):
         hot_data: DescribeDBClusterSpaceSummaryResponseBodyDataHotData = None,
         total_size: str = None,
     ):
+        # The cold data.
         self.cold_data = cold_data
+        # The data growth.
         self.data_growth = data_growth
+        # The hot data.
         self.hot_data = hot_data
+        # The total data size. Unit: bytes.
+        # 
+        # >  Formula: Total data size = Hot data size+ Cold data size.
         self.total_size = total_size
 
     def validate(self):
@@ -11081,7 +11163,9 @@ class DescribeDBClusterSpaceSummaryResponseBody(TeaModel):
         data: DescribeDBClusterSpaceSummaryResponseBodyData = None,
         request_id: str = None,
     ):
+        # The queried storage overview information.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -11298,8 +11382,10 @@ class DescribeDBClustersRequest(TeaModel):
         dbcluster_description: str = None,
         dbcluster_ids: str = None,
         dbcluster_status: str = None,
+        dbcluster_version: str = None,
         page_number: int = None,
         page_size: int = None,
+        product_version: str = None,
         region_id: str = None,
         resource_group_id: str = None,
         tag: List[DescribeDBClustersRequestTag] = None,
@@ -11334,6 +11420,7 @@ class DescribeDBClustersRequest(TeaModel):
         # *   **NetAddressDeleting**\
         # *   **NetAddressModifying**\
         self.dbcluster_status = dbcluster_status
+        self.dbcluster_version = dbcluster_version
         # The page number. Pages start from page 1. Default value: **1**.
         self.page_number = page_number
         # The number of entries per page. Valid values:
@@ -11342,6 +11429,7 @@ class DescribeDBClustersRequest(TeaModel):
         # *   **50**\
         # *   **100**\
         self.page_size = page_size
+        self.product_version = product_version
         # The region ID of the cluster.
         # 
         # >  You can call the [DescribeRegions](~~454314~~) operation to query the most recent region list.
@@ -11369,10 +11457,14 @@ class DescribeDBClustersRequest(TeaModel):
             result['DBClusterIds'] = self.dbcluster_ids
         if self.dbcluster_status is not None:
             result['DBClusterStatus'] = self.dbcluster_status
+        if self.dbcluster_version is not None:
+            result['DBClusterVersion'] = self.dbcluster_version
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.product_version is not None:
+            result['ProductVersion'] = self.product_version
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
@@ -11391,10 +11483,14 @@ class DescribeDBClustersRequest(TeaModel):
             self.dbcluster_ids = m.get('DBClusterIds')
         if m.get('DBClusterStatus') is not None:
             self.dbcluster_status = m.get('DBClusterStatus')
+        if m.get('DBClusterVersion') is not None:
+            self.dbcluster_version = m.get('DBClusterVersion')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('ProductVersion') is not None:
+            self.product_version = m.get('ProductVersion')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ResourceGroupId') is not None:
@@ -11479,9 +11575,149 @@ class DescribeDBClustersResponseBodyItemsDBClusterTags(TeaModel):
         return self
 
 
+class DescribeDBClustersResponseBodyItemsDBClusterTaskInfoStepListStepList(TeaModel):
+    def __init__(
+        self,
+        end_time: str = None,
+        start_time: str = None,
+        step_desc: str = None,
+        step_name: str = None,
+        step_progress: str = None,
+        step_status: str = None,
+    ):
+        self.end_time = end_time
+        self.start_time = start_time
+        self.step_desc = step_desc
+        self.step_name = step_name
+        self.step_progress = step_progress
+        self.step_status = step_status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.step_desc is not None:
+            result['StepDesc'] = self.step_desc
+        if self.step_name is not None:
+            result['StepName'] = self.step_name
+        if self.step_progress is not None:
+            result['StepProgress'] = self.step_progress
+        if self.step_status is not None:
+            result['StepStatus'] = self.step_status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('StepDesc') is not None:
+            self.step_desc = m.get('StepDesc')
+        if m.get('StepName') is not None:
+            self.step_name = m.get('StepName')
+        if m.get('StepProgress') is not None:
+            self.step_progress = m.get('StepProgress')
+        if m.get('StepStatus') is not None:
+            self.step_status = m.get('StepStatus')
+        return self
+
+
+class DescribeDBClustersResponseBodyItemsDBClusterTaskInfoStepList(TeaModel):
+    def __init__(
+        self,
+        step_list: List[DescribeDBClustersResponseBodyItemsDBClusterTaskInfoStepListStepList] = None,
+    ):
+        self.step_list = step_list
+
+    def validate(self):
+        if self.step_list:
+            for k in self.step_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['StepList'] = []
+        if self.step_list is not None:
+            for k in self.step_list:
+                result['StepList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.step_list = []
+        if m.get('StepList') is not None:
+            for k in m.get('StepList'):
+                temp_model = DescribeDBClustersResponseBodyItemsDBClusterTaskInfoStepListStepList()
+                self.step_list.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeDBClustersResponseBodyItemsDBClusterTaskInfo(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        progress: str = None,
+        status: str = None,
+        step_list: DescribeDBClustersResponseBodyItemsDBClusterTaskInfoStepList = None,
+    ):
+        self.name = name
+        self.progress = progress
+        self.status = status
+        self.step_list = step_list
+
+    def validate(self):
+        if self.step_list:
+            self.step_list.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.progress is not None:
+            result['Progress'] = self.progress
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.step_list is not None:
+            result['StepList'] = self.step_list.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Progress') is not None:
+            self.progress = m.get('Progress')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('StepList') is not None:
+            temp_model = DescribeDBClustersResponseBodyItemsDBClusterTaskInfoStepList()
+            self.step_list = temp_model.from_map(m['StepList'])
+        return self
+
+
 class DescribeDBClustersResponseBodyItemsDBCluster(TeaModel):
     def __init__(
         self,
+        category: str = None,
         commodity_code: str = None,
         compute_resource: str = None,
         connection_string: str = None,
@@ -11491,24 +11727,40 @@ class DescribeDBClustersResponseBodyItemsDBCluster(TeaModel):
         dbcluster_network_type: str = None,
         dbcluster_status: str = None,
         dbcluster_type: str = None,
+        dbnode_class: str = None,
+        dbnode_count: int = None,
+        dbnode_storage: int = None,
         dbversion: str = None,
+        disk_type: str = None,
+        dts_job_id: str = None,
+        elastic_ioresource: int = None,
         engine: str = None,
+        executor_count: str = None,
         expire_time: str = None,
         expired: str = None,
+        inner_ip: str = None,
+        inner_port: str = None,
         lock_mode: str = None,
         lock_reason: str = None,
         mode: str = None,
         pay_type: str = None,
         port: str = None,
+        product_form: str = None,
+        rds_instance_id: str = None,
         region_id: str = None,
         reserved_acu: str = None,
+        reserved_node_count: int = None,
+        reserved_node_size: str = None,
         resource_group_id: str = None,
         storage_resource: str = None,
         tags: DescribeDBClustersResponseBodyItemsDBClusterTags = None,
+        task_info: DescribeDBClustersResponseBodyItemsDBClusterTaskInfo = None,
+        vpccloud_instance_id: str = None,
         vpcid: str = None,
         v_switch_id: str = None,
         zone_id: str = None,
     ):
+        self.category = category
         # The billing method of the cluster. Valid values:
         # 
         # *   **ads**: pay-as-you-go.
@@ -11549,10 +11801,17 @@ class DescribeDBClustersResponseBodyItemsDBCluster(TeaModel):
         self.dbcluster_status = dbcluster_status
         # The type of the cluster. By default, **Common** is returned, which indicates a common cluster.
         self.dbcluster_type = dbcluster_type
+        self.dbnode_class = dbnode_class
+        self.dbnode_count = dbnode_count
+        self.dbnode_storage = dbnode_storage
         # The version of AnalyticDB for MySQL Data Lakehouse Edition. **5.0** is returned.
         self.dbversion = dbversion
+        self.disk_type = disk_type
+        self.dts_job_id = dts_job_id
+        self.elastic_ioresource = elastic_ioresource
         # The database engine of the cluster. **AnalyticDB** is returned.
         self.engine = engine
+        self.executor_count = executor_count
         # The time when the cluster expired. The time follows the ISO 8601 standard in the *yyyy-MM-ddTHH:mm:ssZ* format. The time is displayed in UTC.
         # 
         # > - The expiration time is returned for a subscription cluster.
@@ -11566,6 +11825,8 @@ class DescribeDBClustersResponseBodyItemsDBCluster(TeaModel):
         # > - If the cluster has expired, the system locks or releases the cluster within a period of time. We recommend that you renew expired clusters. For more information, see [Renewal policy](~~135246~~).
         # > - This parameter is not returned for pay-as-you-go clusters.
         self.expired = expired
+        self.inner_ip = inner_ip
+        self.inner_port = inner_port
         # The lock state of the cluster. Valid values:
         # 
         # *   **Unlock**: The cluster is not locked.
@@ -11585,16 +11846,22 @@ class DescribeDBClustersResponseBodyItemsDBCluster(TeaModel):
         self.pay_type = pay_type
         # The port number that is used to connect to the cluster.
         self.port = port
+        self.product_form = product_form
+        self.rds_instance_id = rds_instance_id
         # The region ID of the cluster.
         self.region_id = region_id
         # The amount of remaining reserved computing resources that are available in the cluster. Each ACU is equivalent to 1 core and 4 GB memory.
         self.reserved_acu = reserved_acu
+        self.reserved_node_count = reserved_node_count
+        self.reserved_node_size = reserved_node_size
         # The resource group ID.
         self.resource_group_id = resource_group_id
         # The specifications of reserved storage resources. Each AnalyticDB compute unit (ACU) is equivalent to 1 core and 4 GB memory. Storage resources are used to read and write data. The increase in the storage resources can improve the read and write performance of the cluster.
         self.storage_resource = storage_resource
         # The tags that are added to the cluster.
         self.tags = tags
+        self.task_info = task_info
+        self.vpccloud_instance_id = vpccloud_instance_id
         # The virtual private cloud (VPC) ID of the cluster.
         self.vpcid = vpcid
         # The vSwitch ID of the cluster.
@@ -11605,6 +11872,8 @@ class DescribeDBClustersResponseBodyItemsDBCluster(TeaModel):
     def validate(self):
         if self.tags:
             self.tags.validate()
+        if self.task_info:
+            self.task_info.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -11612,6 +11881,8 @@ class DescribeDBClustersResponseBodyItemsDBCluster(TeaModel):
             return _map
 
         result = dict()
+        if self.category is not None:
+            result['Category'] = self.category
         if self.commodity_code is not None:
             result['CommodityCode'] = self.commodity_code
         if self.compute_resource is not None:
@@ -11630,14 +11901,32 @@ class DescribeDBClustersResponseBodyItemsDBCluster(TeaModel):
             result['DBClusterStatus'] = self.dbcluster_status
         if self.dbcluster_type is not None:
             result['DBClusterType'] = self.dbcluster_type
+        if self.dbnode_class is not None:
+            result['DBNodeClass'] = self.dbnode_class
+        if self.dbnode_count is not None:
+            result['DBNodeCount'] = self.dbnode_count
+        if self.dbnode_storage is not None:
+            result['DBNodeStorage'] = self.dbnode_storage
         if self.dbversion is not None:
             result['DBVersion'] = self.dbversion
+        if self.disk_type is not None:
+            result['DiskType'] = self.disk_type
+        if self.dts_job_id is not None:
+            result['DtsJobId'] = self.dts_job_id
+        if self.elastic_ioresource is not None:
+            result['ElasticIOResource'] = self.elastic_ioresource
         if self.engine is not None:
             result['Engine'] = self.engine
+        if self.executor_count is not None:
+            result['ExecutorCount'] = self.executor_count
         if self.expire_time is not None:
             result['ExpireTime'] = self.expire_time
         if self.expired is not None:
             result['Expired'] = self.expired
+        if self.inner_ip is not None:
+            result['InnerIp'] = self.inner_ip
+        if self.inner_port is not None:
+            result['InnerPort'] = self.inner_port
         if self.lock_mode is not None:
             result['LockMode'] = self.lock_mode
         if self.lock_reason is not None:
@@ -11648,16 +11937,28 @@ class DescribeDBClustersResponseBodyItemsDBCluster(TeaModel):
             result['PayType'] = self.pay_type
         if self.port is not None:
             result['Port'] = self.port
+        if self.product_form is not None:
+            result['ProductForm'] = self.product_form
+        if self.rds_instance_id is not None:
+            result['RdsInstanceId'] = self.rds_instance_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.reserved_acu is not None:
             result['ReservedACU'] = self.reserved_acu
+        if self.reserved_node_count is not None:
+            result['ReservedNodeCount'] = self.reserved_node_count
+        if self.reserved_node_size is not None:
+            result['ReservedNodeSize'] = self.reserved_node_size
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
         if self.storage_resource is not None:
             result['StorageResource'] = self.storage_resource
         if self.tags is not None:
             result['Tags'] = self.tags.to_map()
+        if self.task_info is not None:
+            result['TaskInfo'] = self.task_info.to_map()
+        if self.vpccloud_instance_id is not None:
+            result['VPCCloudInstanceId'] = self.vpccloud_instance_id
         if self.vpcid is not None:
             result['VPCId'] = self.vpcid
         if self.v_switch_id is not None:
@@ -11668,6 +11969,8 @@ class DescribeDBClustersResponseBodyItemsDBCluster(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
         if m.get('CommodityCode') is not None:
             self.commodity_code = m.get('CommodityCode')
         if m.get('ComputeResource') is not None:
@@ -11686,14 +11989,32 @@ class DescribeDBClustersResponseBodyItemsDBCluster(TeaModel):
             self.dbcluster_status = m.get('DBClusterStatus')
         if m.get('DBClusterType') is not None:
             self.dbcluster_type = m.get('DBClusterType')
+        if m.get('DBNodeClass') is not None:
+            self.dbnode_class = m.get('DBNodeClass')
+        if m.get('DBNodeCount') is not None:
+            self.dbnode_count = m.get('DBNodeCount')
+        if m.get('DBNodeStorage') is not None:
+            self.dbnode_storage = m.get('DBNodeStorage')
         if m.get('DBVersion') is not None:
             self.dbversion = m.get('DBVersion')
+        if m.get('DiskType') is not None:
+            self.disk_type = m.get('DiskType')
+        if m.get('DtsJobId') is not None:
+            self.dts_job_id = m.get('DtsJobId')
+        if m.get('ElasticIOResource') is not None:
+            self.elastic_ioresource = m.get('ElasticIOResource')
         if m.get('Engine') is not None:
             self.engine = m.get('Engine')
+        if m.get('ExecutorCount') is not None:
+            self.executor_count = m.get('ExecutorCount')
         if m.get('ExpireTime') is not None:
             self.expire_time = m.get('ExpireTime')
         if m.get('Expired') is not None:
             self.expired = m.get('Expired')
+        if m.get('InnerIp') is not None:
+            self.inner_ip = m.get('InnerIp')
+        if m.get('InnerPort') is not None:
+            self.inner_port = m.get('InnerPort')
         if m.get('LockMode') is not None:
             self.lock_mode = m.get('LockMode')
         if m.get('LockReason') is not None:
@@ -11704,10 +12025,18 @@ class DescribeDBClustersResponseBodyItemsDBCluster(TeaModel):
             self.pay_type = m.get('PayType')
         if m.get('Port') is not None:
             self.port = m.get('Port')
+        if m.get('ProductForm') is not None:
+            self.product_form = m.get('ProductForm')
+        if m.get('RdsInstanceId') is not None:
+            self.rds_instance_id = m.get('RdsInstanceId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ReservedACU') is not None:
             self.reserved_acu = m.get('ReservedACU')
+        if m.get('ReservedNodeCount') is not None:
+            self.reserved_node_count = m.get('ReservedNodeCount')
+        if m.get('ReservedNodeSize') is not None:
+            self.reserved_node_size = m.get('ReservedNodeSize')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('StorageResource') is not None:
@@ -11715,6 +12044,11 @@ class DescribeDBClustersResponseBodyItemsDBCluster(TeaModel):
         if m.get('Tags') is not None:
             temp_model = DescribeDBClustersResponseBodyItemsDBClusterTags()
             self.tags = temp_model.from_map(m['Tags'])
+        if m.get('TaskInfo') is not None:
+            temp_model = DescribeDBClustersResponseBodyItemsDBClusterTaskInfo()
+            self.task_info = temp_model.from_map(m['TaskInfo'])
+        if m.get('VPCCloudInstanceId') is not None:
+            self.vpccloud_instance_id = m.get('VPCCloudInstanceId')
         if m.get('VPCId') is not None:
             self.vpcid = m.get('VPCId')
         if m.get('VSwitchId') is not None:
@@ -11880,6 +12214,9 @@ class DescribeDBResourceGroupRequest(TeaModel):
         # 
         # > For information about resource groups of Data Lakehouse Edition, see [Resource groups](~~428610~~).
         self.group_type = group_type
+        # The region ID of the cluster.
+        # 
+        # >  You can call the [DescribeRegions](~~612393~~) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
 
@@ -11926,8 +12263,11 @@ class DescribeDBResourceGroupResponseBodyGroupsInfoRules(TeaModel):
         query_time: str = None,
         target_group_name: str = None,
     ):
+        # The name of the resource group.
         self.group_name = group_name
+        # The execution duration of the query. Unit: milliseconds.
         self.query_time = query_time
+        # The name of the destination resource group.
         self.target_group_name = target_group_name
 
     def validate(self):
@@ -11984,8 +12324,14 @@ class DescribeDBResourceGroupResponseBodyGroupsInfo(TeaModel):
         self.cluster_size_resource = cluster_size_resource
         # The time when the resource group was created. The time follows the ISO 8601 standard in the *yyyy-MM-ddTHH:mm:ssZ* format. The time is displayed in UTC.
         self.create_time = create_time
-        # The minimum amount of elastic computing resources. Unit: ACU.
+        # The minimum amount of elastic computing resources. Unit: ACUs.
         self.elastic_min_compute_resource = elastic_min_compute_resource
+        # Indicates whether the preemptible instance feature is enabled for the resource group. After the preemptible instance feature is enabled, you are charged for resources at a lower unit price but the resources are probably released. Valid values:
+        # 
+        # *   **True**\
+        # *   **False**\
+        # 
+        # The True value is returned only for job resource groups.
         self.enable_spot = enable_spot
         # The name of the resource group.
         self.group_name = group_name
@@ -12000,12 +12346,13 @@ class DescribeDBResourceGroupResponseBodyGroupsInfo(TeaModel):
         self.group_users = group_users
         # A reserved parameter.
         self.max_cluster_count = max_cluster_count
-        # The maximum amount of reserved computing resources. Unit: ACU.
+        # The maximum amount of reserved computing resources. Unit: ACUs.
         self.max_compute_resource = max_compute_resource
         # A reserved parameter.
         self.min_cluster_count = min_cluster_count
-        # The minimum amount of reserved computing resources. Unit: AnalyticDB compute unit (ACU).
+        # The minimum amount of reserved computing resources. Unit: AnalyticDB compute units (ACUs).
         self.min_compute_resource = min_compute_resource
+        # The job resubmission rules.
         self.rules = rules
         # A reserved parameter.
         self.running_cluster_count = running_cluster_count
@@ -12914,7 +13261,7 @@ class DescribeDiagnosisSQLInfoRequest(TeaModel):
         # 
         # >  You can call the [DescribeDiagnosisRecords](~~308207~~) operation to query the diagnostic information about SQL statements for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster, including the execution start time of the SQL statement.
         self.process_start_time = process_start_time
-        # The state of the SQL statement. Valid values:
+        # The status of the SQL statement. Valid values:
         # 
         # *   **running**\
         # *   **finished**\
@@ -13345,13 +13692,13 @@ class DescribeElasticPlanAttributeRequest(TeaModel):
         dbcluster_id: str = None,
         elastic_plan_name: str = None,
     ):
-        # The ID of the cluster.
+        # The cluster ID.
         # 
-        # >  You can call the [DescribeDBClusters](~~454250~~) operation to query the ID of an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        # >  You can call the [DescribeDBClusters](~~454250~~) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region.
         self.dbcluster_id = dbcluster_id
         # The name of the scaling plan.
         # 
-        # >  You can call the [DescribeElasticPlans](~~601334~~) operation to query the name of a scaling plan.
+        # >  You can call the [DescribeElasticPlans](~~601334~~) operation to query the names of scaling plans.
         self.elastic_plan_name = elastic_plan_name
 
     def validate(self):
@@ -13391,27 +13738,21 @@ class DescribeElasticPlanAttributeResponseBodyElasticPlan(TeaModel):
         target_size: str = None,
         type: str = None,
     ):
-        # Indicates whether **Proportional Default Scaling for EIUs** is enabled.
+        # Indicates whether **Default Proportional Scaling for EIUs** is enabled. Valid values: true: Default Proportional Scaling for EIUs is enabled. If you set this parameter to true, storage resources are scaled along with computing resources. false: Default Proportional Scaling for EIUs is not enabled.
         # 
-        # Valid values:
-        # 
-        # true: Proportional Default Scaling for EIUs is enabled. If you set this parameter to true, the amount of storage resources scales along with the computing resources.
-        # 
-        # false: Proportional Default Scaling for EIUs is not enabled.
-        # 
-        # >  You can enable Proportional Default Scaling for EIUs for only a single scaling plan of a cluster.
+        # >  You can enable Default Proportional Scaling for EIUs for only a single scaling plan of a cluster. After you enable a scaling plan of the Default Proportional Scaling for EIUs type, you cannot enable scaling plans of other types.
         self.auto_scale = auto_scale
         # A CORN expression that indicates the scaling cycle and time for the scaling plan.
         self.cron_expression = cron_expression
         # The name of the scaling plan.
         self.elastic_plan_name = elastic_plan_name
-        # Indicates whether the scaling plan was enabled.
+        # Indicates whether the scaling plan is enabled.
         self.enabled = enabled
         # The end time of the scaling plan.
         # 
         # >  The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mm:ssZ format. The time is displayed in UTC.
         self.end_time = end_time
-        # The name of the resource group.
+        # The name of the resource group used by the scaling plan.
         self.resource_group_name = resource_group_name
         # The start time of the scaling plan.
         # 
@@ -13480,9 +13821,9 @@ class DescribeElasticPlanAttributeResponseBody(TeaModel):
         elastic_plan: DescribeElasticPlanAttributeResponseBodyElasticPlan = None,
         request_id: str = None,
     ):
-        # Details of the scaling plan.
+        # The queried scaling plan.
         self.elastic_plan = elastic_plan
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -15084,11 +15425,11 @@ class DescribeRegionsRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The language used for the region and zone names specified by the LocalName parameter. Default value: zh-CN. Valid values:
+        # The language that is used for the region and zone names indicated by the LocalName parameter in the response parameters. Valid values:
         # 
-        # *   **zh-CN**: simplified Chinese
-        # *   **en-US**: English
-        # *   **ja**: Japanese
+        # *   **zh-CN** (default): simplified Chinese.
+        # *   **en-US**: English.
+        # *   **ja**: Japanese.
         self.accept_language = accept_language
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -15142,10 +15483,10 @@ class DescribeRegionsResponseBodyRegionsRegionZonesZone(TeaModel):
         self.local_name = local_name
         # Indicates whether Virtual Private Cloud (VPC) is supported in the zone. Valid values:
         # 
-        # *   **true**: VPC is supported.
-        # *   **false**: VPC is not supported.
+        # *   **true**\
+        # *   **false**\
         self.vpc_enabled = vpc_enabled
-        # The ID of the zone.
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -15223,9 +15564,9 @@ class DescribeRegionsResponseBodyRegionsRegion(TeaModel):
         self.local_name = local_name
         # The endpoint of the region.
         self.region_endpoint = region_endpoint
-        # The ID of the region.
+        # The region ID.
         self.region_id = region_id
-        # Details of the zones.
+        # The queried zones.
         self.zones = zones
 
     def validate(self):
@@ -15303,9 +15644,9 @@ class DescribeRegionsResponseBody(TeaModel):
         regions: DescribeRegionsResponseBodyRegions = None,
         request_id: str = None,
     ):
-        # Details of the regions.
+        # The queried regions.
         self.regions = regions
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -19195,7 +19536,7 @@ class GetSparkAppStateResponseBodyData(TeaModel):
         self.app_id = app_id
         # The name of the application.
         self.app_name = app_name
-        # The database ID.
+        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
         self.dbcluster_id = dbcluster_id
         # The alert message returned for the operation, such as task execution failure or insufficient resources. If no alert occurs, null is returned.
         self.message = message
@@ -22941,7 +23282,7 @@ class ModifyAccountDescriptionRequest(TeaModel):
         self.account_description = account_description
         # The name of the database account.
         # 
-        # > You can call the [DescribeAccounts](~~612430~~) operation to query the information about database accounts in a cluster, including the database account name.
+        # >  You can call the [DescribeAccounts](~~612430~~) operation to query the information about database accounts of an AnalyticDB for MySQL cluster, including database account names.
         self.account_name = account_name
         # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
         self.dbcluster_id = dbcluster_id
@@ -23916,6 +24257,8 @@ class ModifyDBClusterRequest(TeaModel):
         owner_account: str = None,
         owner_id: int = None,
         region_id: str = None,
+        reserved_node_count: int = None,
+        reserved_node_size: str = None,
         resource_owner_account: str = None,
         storage_resource: str = None,
     ):
@@ -23938,6 +24281,8 @@ class ModifyDBClusterRequest(TeaModel):
         # 
         # >  You can call the [DescribeRegions](~~454314~~) operation to query the most recent region list.
         self.region_id = region_id
+        self.reserved_node_count = reserved_node_count
+        self.reserved_node_size = reserved_node_size
         self.resource_owner_account = resource_owner_account
         # The reserved storage resources. Unit: ACUs. Valid values: 0 to 2064. The value must be in increments of 24 ACUs. Each ACU is equivalent to 1 core and 4 GB memory.
         # 
@@ -23965,6 +24310,10 @@ class ModifyDBClusterRequest(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.reserved_node_count is not None:
+            result['ReservedNodeCount'] = self.reserved_node_count
+        if self.reserved_node_size is not None:
+            result['ReservedNodeSize'] = self.reserved_node_size
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.storage_resource is not None:
@@ -23985,6 +24334,10 @@ class ModifyDBClusterRequest(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ReservedNodeCount') is not None:
+            self.reserved_node_count = m.get('ReservedNodeCount')
+        if m.get('ReservedNodeSize') is not None:
+            self.reserved_node_size = m.get('ReservedNodeSize')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('StorageResource') is not None:
@@ -24192,7 +24545,7 @@ class ModifyDBClusterMaintainTimeRequest(TeaModel):
         self.dbcluster_id = dbcluster_id
         # The maintenance window of the cluster. It must be in the hh:mmZ-hh:mmZ format.
         # 
-        # > The interval must be 1 hour on the hour.
+        # > The interval must be 1 hour and start and end at the beginning of an hour.
         self.maintain_time = maintain_time
 
     def validate(self):
@@ -24295,8 +24648,11 @@ class ModifyDBResourceGroupRequestRules(TeaModel):
         query_time: str = None,
         target_group_name: str = None,
     ):
+        # The name of the resource group.
         self.group_name = group_name
+        # The execution duration of the query. Unit: milliseconds.
         self.query_time = query_time
+        # The name of the destination resource group.
         self.target_group_name = target_group_name
 
     def validate(self):
@@ -24349,7 +24705,7 @@ class ModifyDBResourceGroupRequest(TeaModel):
         self.cluster_size_resource = cluster_size_resource
         # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
         self.dbcluster_id = dbcluster_id
-        # Specifies whether to enable the preemptible instance feature for the resource group. This feature can be enabled only for job resource groups. Valid values:
+        # Specifies whether to enable the spot instance feature for the resource group. After you enable the spot instance feature, you are charged for resources at a lower unit price but the resources are probably released. You can enable the spot instance feature only for job resource groups. Valid values:
         # 
         # *   **True**\
         # *   **False**\
@@ -24383,6 +24739,7 @@ class ModifyDBResourceGroupRequest(TeaModel):
         # 
         # >  You can call the [DescribeRegions](~~454314~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The job resubmission rules.
         self.rules = rules
 
     def validate(self):
@@ -24479,7 +24836,7 @@ class ModifyDBResourceGroupShrinkRequest(TeaModel):
         self.cluster_size_resource = cluster_size_resource
         # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
         self.dbcluster_id = dbcluster_id
-        # Specifies whether to enable the preemptible instance feature for the resource group. This feature can be enabled only for job resource groups. Valid values:
+        # Specifies whether to enable the spot instance feature for the resource group. After you enable the spot instance feature, you are charged for resources at a lower unit price but the resources are probably released. You can enable the spot instance feature only for job resource groups. Valid values:
         # 
         # *   **True**\
         # *   **False**\
@@ -24513,6 +24870,7 @@ class ModifyDBResourceGroupShrinkRequest(TeaModel):
         # 
         # >  You can call the [DescribeRegions](~~454314~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The job resubmission rules.
         self.rules_shrink = rules_shrink
 
     def validate(self):

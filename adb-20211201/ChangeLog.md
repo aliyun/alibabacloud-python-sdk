@@ -1,3 +1,20 @@
+2024-05-09 Version: 1.3.4
+- Update API CreateDBCluster: add param ProductForm.
+- Update API CreateDBCluster: add param ReservedNodeCount.
+- Update API CreateDBCluster: add param ReservedNodeSize.
+- Update API CreateDBCluster: update param ComputeResource.
+- Update API CreateDBCluster: update param StorageResource.
+- Update API DescribeDBClusterAttribute: update response param.
+- Update API DescribeDBClusters: add param DBClusterVersion.
+- Update API DescribeDBClusters: add param ProductVersion.
+- Update API DescribeDBClusters: update response param.
+- Update API ExistRunningSQLEngine: update response param.
+- Update API ModifyDBCluster: add param ReservedNodeCount.
+- Update API ModifyDBCluster: add param ReservedNodeSize.
+- Update API ModifyDBCluster: update param ComputeResource.
+- Update API ModifyDBCluster: update param StorageResource.
+
+
 2024-04-10 Version: 1.3.3
 - Update API DescribeApsResourceGroups: add param RegionId.
 - Update API DescribeApsResourceGroups: add param WorkloadId.

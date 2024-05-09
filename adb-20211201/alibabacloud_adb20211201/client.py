@@ -92,6 +92,13 @@ class Client(OpenApiClient):
         request: adb_20211201_models.AllocateClusterPublicConnectionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.AllocateClusterPublicConnectionResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
+        
+        @param request: AllocateClusterPublicConnectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AllocateClusterPublicConnectionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.connection_string_prefix):
@@ -122,6 +129,13 @@ class Client(OpenApiClient):
         request: adb_20211201_models.AllocateClusterPublicConnectionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.AllocateClusterPublicConnectionResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
+        
+        @param request: AllocateClusterPublicConnectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AllocateClusterPublicConnectionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.connection_string_prefix):
@@ -151,6 +165,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.AllocateClusterPublicConnectionRequest,
     ) -> adb_20211201_models.AllocateClusterPublicConnectionResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
+        
+        @param request: AllocateClusterPublicConnectionRequest
+        @return: AllocateClusterPublicConnectionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.allocate_cluster_public_connection_with_options(request, runtime)
 
@@ -158,6 +178,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.AllocateClusterPublicConnectionRequest,
     ) -> adb_20211201_models.AllocateClusterPublicConnectionResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
+        
+        @param request: AllocateClusterPublicConnectionRequest
+        @return: AllocateClusterPublicConnectionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.allocate_cluster_public_connection_with_options_async(request, runtime)
 
@@ -166,6 +192,13 @@ class Client(OpenApiClient):
         request: adb_20211201_models.AttachUserENIRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.AttachUserENIResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: AttachUserENIRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AttachUserENIResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -194,6 +227,13 @@ class Client(OpenApiClient):
         request: adb_20211201_models.AttachUserENIRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.AttachUserENIResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: AttachUserENIRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AttachUserENIResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -221,6 +261,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.AttachUserENIRequest,
     ) -> adb_20211201_models.AttachUserENIResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: AttachUserENIRequest
+        @return: AttachUserENIResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.attach_user_eniwith_options(request, runtime)
 
@@ -228,6 +274,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.AttachUserENIRequest,
     ) -> adb_20211201_models.AttachUserENIResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: AttachUserENIRequest
+        @return: AttachUserENIResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.attach_user_eniwith_options_async(request, runtime)
 
@@ -236,6 +288,13 @@ class Client(OpenApiClient):
         request: adb_20211201_models.BindAccountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.BindAccountResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: BindAccountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BindAccountResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_name):
@@ -268,6 +327,13 @@ class Client(OpenApiClient):
         request: adb_20211201_models.BindAccountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.BindAccountResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: BindAccountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BindAccountResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_name):
@@ -299,6 +365,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.BindAccountRequest,
     ) -> adb_20211201_models.BindAccountResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: BindAccountRequest
+        @return: BindAccountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.bind_account_with_options(request, runtime)
 
@@ -306,6 +378,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.BindAccountRequest,
     ) -> adb_20211201_models.BindAccountResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: BindAccountRequest
+        @return: BindAccountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.bind_account_with_options_async(request, runtime)
 
@@ -314,6 +392,13 @@ class Client(OpenApiClient):
         request: adb_20211201_models.BindDBResourceGroupWithUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.BindDBResourceGroupWithUserResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: BindDBResourceGroupWithUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BindDBResourceGroupWithUserResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -346,6 +431,13 @@ class Client(OpenApiClient):
         request: adb_20211201_models.BindDBResourceGroupWithUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.BindDBResourceGroupWithUserResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: BindDBResourceGroupWithUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BindDBResourceGroupWithUserResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -377,6 +469,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.BindDBResourceGroupWithUserRequest,
     ) -> adb_20211201_models.BindDBResourceGroupWithUserResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: BindDBResourceGroupWithUserRequest
+        @return: BindDBResourceGroupWithUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.bind_dbresource_group_with_user_with_options(request, runtime)
 
@@ -384,6 +482,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.BindDBResourceGroupWithUserRequest,
     ) -> adb_20211201_models.BindDBResourceGroupWithUserResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: BindDBResourceGroupWithUserRequest
+        @return: BindDBResourceGroupWithUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.bind_dbresource_group_with_user_with_options_async(request, runtime)
 
@@ -392,6 +496,13 @@ class Client(OpenApiClient):
         request: adb_20211201_models.CheckBindRamUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.CheckBindRamUserResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: CheckBindRamUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckBindRamUserResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -422,6 +533,13 @@ class Client(OpenApiClient):
         request: adb_20211201_models.CheckBindRamUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.CheckBindRamUserResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: CheckBindRamUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckBindRamUserResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -451,6 +569,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.CheckBindRamUserRequest,
     ) -> adb_20211201_models.CheckBindRamUserResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: CheckBindRamUserRequest
+        @return: CheckBindRamUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.check_bind_ram_user_with_options(request, runtime)
 
@@ -458,6 +582,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.CheckBindRamUserRequest,
     ) -> adb_20211201_models.CheckBindRamUserResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: CheckBindRamUserRequest
+        @return: CheckBindRamUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.check_bind_ram_user_with_options_async(request, runtime)
 
@@ -466,6 +596,13 @@ class Client(OpenApiClient):
         request: adb_20211201_models.CheckSampleDataSetRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.CheckSampleDataSetResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: CheckSampleDataSetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckSampleDataSetResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -494,6 +631,13 @@ class Client(OpenApiClient):
         request: adb_20211201_models.CheckSampleDataSetRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.CheckSampleDataSetResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: CheckSampleDataSetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckSampleDataSetResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -521,6 +665,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.CheckSampleDataSetRequest,
     ) -> adb_20211201_models.CheckSampleDataSetResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: CheckSampleDataSetRequest
+        @return: CheckSampleDataSetResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.check_sample_data_set_with_options(request, runtime)
 
@@ -528,6 +678,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.CheckSampleDataSetRequest,
     ) -> adb_20211201_models.CheckSampleDataSetResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: CheckSampleDataSetRequest
+        @return: CheckSampleDataSetResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.check_sample_data_set_with_options_async(request, runtime)
 
@@ -536,6 +692,13 @@ class Client(OpenApiClient):
         request: adb_20211201_models.CreateAccountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.CreateAccountResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: CreateAccountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAccountResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_description):
@@ -572,6 +735,13 @@ class Client(OpenApiClient):
         request: adb_20211201_models.CreateAccountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.CreateAccountResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: CreateAccountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAccountResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_description):
@@ -607,6 +777,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.CreateAccountRequest,
     ) -> adb_20211201_models.CreateAccountResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: CreateAccountRequest
+        @return: CreateAccountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_account_with_options(request, runtime)
 
@@ -614,6 +790,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.CreateAccountRequest,
     ) -> adb_20211201_models.CreateAccountResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: CreateAccountRequest
+        @return: CreateAccountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_account_with_options_async(request, runtime)
 
@@ -622,6 +804,13 @@ class Client(OpenApiClient):
         request: adb_20211201_models.CreateDBClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.CreateDBClusterResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: CreateDBClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDBClusterResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_set_id):
@@ -640,8 +829,14 @@ class Client(OpenApiClient):
             query['PayType'] = request.pay_type
         if not UtilClient.is_unset(request.period):
             query['Period'] = request.period
+        if not UtilClient.is_unset(request.product_form):
+            query['ProductForm'] = request.product_form
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.reserved_node_count):
+            query['ReservedNodeCount'] = request.reserved_node_count
+        if not UtilClient.is_unset(request.reserved_node_size):
+            query['ReservedNodeSize'] = request.reserved_node_size
         if not UtilClient.is_unset(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.restore_to_time):
@@ -686,6 +881,13 @@ class Client(OpenApiClient):
         request: adb_20211201_models.CreateDBClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.CreateDBClusterResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: CreateDBClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDBClusterResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_set_id):
@@ -704,8 +906,14 @@ class Client(OpenApiClient):
             query['PayType'] = request.pay_type
         if not UtilClient.is_unset(request.period):
             query['Period'] = request.period
+        if not UtilClient.is_unset(request.product_form):
+            query['ProductForm'] = request.product_form
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.reserved_node_count):
+            query['ReservedNodeCount'] = request.reserved_node_count
+        if not UtilClient.is_unset(request.reserved_node_size):
+            query['ReservedNodeSize'] = request.reserved_node_size
         if not UtilClient.is_unset(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.restore_to_time):
@@ -749,6 +957,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.CreateDBClusterRequest,
     ) -> adb_20211201_models.CreateDBClusterResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: CreateDBClusterRequest
+        @return: CreateDBClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_dbcluster_with_options(request, runtime)
 
@@ -756,6 +970,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.CreateDBClusterRequest,
     ) -> adb_20211201_models.CreateDBClusterResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: CreateDBClusterRequest
+        @return: CreateDBClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_dbcluster_with_options_async(request, runtime)
 
@@ -764,6 +984,13 @@ class Client(OpenApiClient):
         tmp_req: adb_20211201_models.CreateDBResourceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.CreateDBResourceGroupResponse:
+        """
+        For information about the endpoints of the current service, see [Endpoints](~~612373~~).
+        
+        @param tmp_req: CreateDBResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDBResourceGroupResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = adb_20211201_models.CreateDBResourceGroupShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -818,6 +1045,13 @@ class Client(OpenApiClient):
         tmp_req: adb_20211201_models.CreateDBResourceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.CreateDBResourceGroupResponse:
+        """
+        For information about the endpoints of the current service, see [Endpoints](~~612373~~).
+        
+        @param tmp_req: CreateDBResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDBResourceGroupResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = adb_20211201_models.CreateDBResourceGroupShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -871,6 +1105,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.CreateDBResourceGroupRequest,
     ) -> adb_20211201_models.CreateDBResourceGroupResponse:
+        """
+        For information about the endpoints of the current service, see [Endpoints](~~612373~~).
+        
+        @param request: CreateDBResourceGroupRequest
+        @return: CreateDBResourceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_dbresource_group_with_options(request, runtime)
 
@@ -878,6 +1118,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.CreateDBResourceGroupRequest,
     ) -> adb_20211201_models.CreateDBResourceGroupResponse:
+        """
+        For information about the endpoints of the current service, see [Endpoints](~~612373~~).
+        
+        @param request: CreateDBResourceGroupRequest
+        @return: CreateDBResourceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_dbresource_group_with_options_async(request, runtime)
 
@@ -886,6 +1132,13 @@ class Client(OpenApiClient):
         request: adb_20211201_models.CreateElasticPlanRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.CreateElasticPlanResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: CreateElasticPlanRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateElasticPlanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auto_scale):
@@ -932,6 +1185,13 @@ class Client(OpenApiClient):
         request: adb_20211201_models.CreateElasticPlanRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.CreateElasticPlanResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: CreateElasticPlanRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateElasticPlanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auto_scale):
@@ -977,6 +1237,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.CreateElasticPlanRequest,
     ) -> adb_20211201_models.CreateElasticPlanResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: CreateElasticPlanRequest
+        @return: CreateElasticPlanResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_elastic_plan_with_options(request, runtime)
 
@@ -984,6 +1250,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.CreateElasticPlanRequest,
     ) -> adb_20211201_models.CreateElasticPlanResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: CreateElasticPlanRequest
+        @return: CreateElasticPlanResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_elastic_plan_with_options_async(request, runtime)
 
@@ -992,6 +1264,15 @@ class Client(OpenApiClient):
         request: adb_20211201_models.CreateOssSubDirectoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.CreateOssSubDirectoryResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: CreateOssSubDirectoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateOssSubDirectoryResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -1022,6 +1303,15 @@ class Client(OpenApiClient):
         request: adb_20211201_models.CreateOssSubDirectoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.CreateOssSubDirectoryResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: CreateOssSubDirectoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateOssSubDirectoryResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -1051,6 +1341,14 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.CreateOssSubDirectoryRequest,
     ) -> adb_20211201_models.CreateOssSubDirectoryResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: CreateOssSubDirectoryRequest
+        @return: CreateOssSubDirectoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_oss_sub_directory_with_options(request, runtime)
 
@@ -1058,6 +1356,14 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.CreateOssSubDirectoryRequest,
     ) -> adb_20211201_models.CreateOssSubDirectoryResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: CreateOssSubDirectoryRequest
+        @return: CreateOssSubDirectoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_oss_sub_directory_with_options_async(request, runtime)
 
@@ -1066,6 +1372,15 @@ class Client(OpenApiClient):
         request: adb_20211201_models.CreateSparkTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.CreateSparkTemplateResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: CreateSparkTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSparkTemplateResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_type):
@@ -1102,6 +1417,15 @@ class Client(OpenApiClient):
         request: adb_20211201_models.CreateSparkTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.CreateSparkTemplateResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: CreateSparkTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSparkTemplateResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_type):
@@ -1137,6 +1461,14 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.CreateSparkTemplateRequest,
     ) -> adb_20211201_models.CreateSparkTemplateResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: CreateSparkTemplateRequest
+        @return: CreateSparkTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_spark_template_with_options(request, runtime)
 
@@ -1144,6 +1476,14 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.CreateSparkTemplateRequest,
     ) -> adb_20211201_models.CreateSparkTemplateResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: CreateSparkTemplateRequest
+        @return: CreateSparkTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_spark_template_with_options_async(request, runtime)
 
@@ -1227,8 +1567,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DeleteDBClusterResponse:
         """
-        ###
-        You can call this operation to delete only subscription clusters.
+        ### [](#)
+        *   You can call this operation to delete only subscription clusters.
+        *   For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
         
         @param request: DeleteDBClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1263,8 +1604,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DeleteDBClusterResponse:
         """
-        ###
-        You can call this operation to delete only subscription clusters.
+        ### [](#)
+        *   You can call this operation to delete only subscription clusters.
+        *   For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
         
         @param request: DeleteDBClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1298,8 +1640,9 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DeleteDBClusterRequest,
     ) -> adb_20211201_models.DeleteDBClusterResponse:
         """
-        ###
-        You can call this operation to delete only subscription clusters.
+        ### [](#)
+        *   You can call this operation to delete only subscription clusters.
+        *   For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
         
         @param request: DeleteDBClusterRequest
         @return: DeleteDBClusterResponse
@@ -1312,8 +1655,9 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DeleteDBClusterRequest,
     ) -> adb_20211201_models.DeleteDBClusterResponse:
         """
-        ###
-        You can call this operation to delete only subscription clusters.
+        ### [](#)
+        *   You can call this operation to delete only subscription clusters.
+        *   For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
         
         @param request: DeleteDBClusterRequest
         @return: DeleteDBClusterResponse
@@ -1326,6 +1670,13 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DeleteDBResourceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DeleteDBResourceGroupResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: DeleteDBResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDBResourceGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -1356,6 +1707,13 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DeleteDBResourceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DeleteDBResourceGroupResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: DeleteDBResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDBResourceGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -1385,6 +1743,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.DeleteDBResourceGroupRequest,
     ) -> adb_20211201_models.DeleteDBResourceGroupResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: DeleteDBResourceGroupRequest
+        @return: DeleteDBResourceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_dbresource_group_with_options(request, runtime)
 
@@ -1392,6 +1756,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.DeleteDBResourceGroupRequest,
     ) -> adb_20211201_models.DeleteDBResourceGroupResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: DeleteDBResourceGroupRequest
+        @return: DeleteDBResourceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_dbresource_group_with_options_async(request, runtime)
 
@@ -1400,6 +1770,13 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DeleteElasticPlanRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DeleteElasticPlanResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: DeleteElasticPlanRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteElasticPlanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -1430,6 +1807,13 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DeleteElasticPlanRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DeleteElasticPlanResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: DeleteElasticPlanRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteElasticPlanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -1459,6 +1843,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.DeleteElasticPlanRequest,
     ) -> adb_20211201_models.DeleteElasticPlanResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: DeleteElasticPlanRequest
+        @return: DeleteElasticPlanResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_elastic_plan_with_options(request, runtime)
 
@@ -1466,6 +1856,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.DeleteElasticPlanRequest,
     ) -> adb_20211201_models.DeleteElasticPlanResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: DeleteElasticPlanRequest
+        @return: DeleteElasticPlanResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_elastic_plan_with_options_async(request, runtime)
 
@@ -1474,6 +1870,14 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DeleteProcessInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DeleteProcessInstanceResponse:
+        """
+        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: DeleteProcessInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteProcessInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -1508,6 +1912,14 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DeleteProcessInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DeleteProcessInstanceResponse:
+        """
+        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: DeleteProcessInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteProcessInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -1541,6 +1953,13 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.DeleteProcessInstanceRequest,
     ) -> adb_20211201_models.DeleteProcessInstanceResponse:
+        """
+        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: DeleteProcessInstanceRequest
+        @return: DeleteProcessInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_process_instance_with_options(request, runtime)
 
@@ -1548,6 +1967,13 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.DeleteProcessInstanceRequest,
     ) -> adb_20211201_models.DeleteProcessInstanceResponse:
+        """
+        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: DeleteProcessInstanceRequest
+        @return: DeleteProcessInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_process_instance_with_options_async(request, runtime)
 
@@ -1556,6 +1982,15 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DeleteSparkTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DeleteSparkTemplateResponse:
+        """
+        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
+        
+        @param request: DeleteSparkTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSparkTemplateResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -1586,6 +2021,15 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DeleteSparkTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DeleteSparkTemplateResponse:
+        """
+        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
+        
+        @param request: DeleteSparkTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSparkTemplateResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -1615,6 +2059,14 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.DeleteSparkTemplateRequest,
     ) -> adb_20211201_models.DeleteSparkTemplateResponse:
+        """
+        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
+        
+        @param request: DeleteSparkTemplateRequest
+        @return: DeleteSparkTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_spark_template_with_options(request, runtime)
 
@@ -1622,6 +2074,14 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.DeleteSparkTemplateRequest,
     ) -> adb_20211201_models.DeleteSparkTemplateResponse:
+        """
+        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
+        
+        @param request: DeleteSparkTemplateRequest
+        @return: DeleteSparkTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_spark_template_with_options_async(request, runtime)
 
@@ -1704,6 +2164,13 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeAccountAllPrivilegesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeAccountAllPrivilegesResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: DescribeAccountAllPrivilegesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAccountAllPrivilegesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_name):
@@ -1738,6 +2205,13 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeAccountAllPrivilegesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeAccountAllPrivilegesResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: DescribeAccountAllPrivilegesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAccountAllPrivilegesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_name):
@@ -1771,6 +2245,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.DescribeAccountAllPrivilegesRequest,
     ) -> adb_20211201_models.DescribeAccountAllPrivilegesResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: DescribeAccountAllPrivilegesRequest
+        @return: DescribeAccountAllPrivilegesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_account_all_privileges_with_options(request, runtime)
 
@@ -1778,6 +2258,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.DescribeAccountAllPrivilegesRequest,
     ) -> adb_20211201_models.DescribeAccountAllPrivilegesResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: DescribeAccountAllPrivilegesRequest
+        @return: DescribeAccountAllPrivilegesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_account_all_privileges_with_options_async(request, runtime)
 
@@ -1786,6 +2272,13 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeAccountPrivilegeObjectsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeAccountPrivilegeObjectsResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: DescribeAccountPrivilegeObjectsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAccountPrivilegeObjectsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_name):
@@ -1830,6 +2323,13 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeAccountPrivilegeObjectsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeAccountPrivilegeObjectsResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: DescribeAccountPrivilegeObjectsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAccountPrivilegeObjectsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_name):
@@ -1873,6 +2373,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.DescribeAccountPrivilegeObjectsRequest,
     ) -> adb_20211201_models.DescribeAccountPrivilegeObjectsResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: DescribeAccountPrivilegeObjectsRequest
+        @return: DescribeAccountPrivilegeObjectsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_account_privilege_objects_with_options(request, runtime)
 
@@ -1880,6 +2386,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.DescribeAccountPrivilegeObjectsRequest,
     ) -> adb_20211201_models.DescribeAccountPrivilegeObjectsResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: DescribeAccountPrivilegeObjectsRequest
+        @return: DescribeAccountPrivilegeObjectsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_account_privilege_objects_with_options_async(request, runtime)
 
@@ -1990,6 +2502,13 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeAccountsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeAccountsResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: DescribeAccountsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAccountsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_name):
@@ -2022,6 +2541,13 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeAccountsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeAccountsResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: DescribeAccountsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAccountsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_name):
@@ -2053,6 +2579,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.DescribeAccountsRequest,
     ) -> adb_20211201_models.DescribeAccountsResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: DescribeAccountsRequest
+        @return: DescribeAccountsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_accounts_with_options(request, runtime)
 
@@ -2060,6 +2592,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.DescribeAccountsRequest,
     ) -> adb_20211201_models.DescribeAccountsResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: DescribeAccountsRequest
+        @return: DescribeAccountsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_accounts_with_options_async(request, runtime)
 
@@ -2506,6 +3044,14 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeApsResourceGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeApsResourceGroupsResponse:
+        """
+        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: DescribeApsResourceGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApsResourceGroupsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -2538,6 +3084,14 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeApsResourceGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeApsResourceGroupsResponse:
+        """
+        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: DescribeApsResourceGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApsResourceGroupsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -2569,6 +3123,13 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.DescribeApsResourceGroupsRequest,
     ) -> adb_20211201_models.DescribeApsResourceGroupsResponse:
+        """
+        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: DescribeApsResourceGroupsRequest
+        @return: DescribeApsResourceGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_aps_resource_groups_with_options(request, runtime)
 
@@ -2576,6 +3137,13 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.DescribeApsResourceGroupsRequest,
     ) -> adb_20211201_models.DescribeApsResourceGroupsResponse:
+        """
+        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: DescribeApsResourceGroupsRequest
+        @return: DescribeApsResourceGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_aps_resource_groups_with_options_async(request, runtime)
 
@@ -2585,7 +3153,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeAuditLogRecordsResponse:
         """
-        SQL audit logs can be queried only when SQL audit is enabled. Only SQL audit logs within the last 30 days can be queried. If SQL audit was disabled and re-enabled, only SQL audit logs from the time when SQL audit was re-enabled can be queried. The following operations are not recorded in SQL audit logs: *INSERT INTO VALUES**, **REPLACE INTO VALUES**, and **UPSERT INTO VALUES**.
+        SQL audit logs can be queried only when SQL audit is enabled. Only SQL audit logs within the last 30 days can be queried. If SQL audit was disabled and re-enabled, only SQL audit logs from the time when SQL audit was re-enabled can be queried. The following operations are not recorded in SQL audit logs: **INSERT INTO VALUES**, **REPLACE INTO VALUES**, and **UPSERT INTO VALUES**.
+        *   General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
         
         @param request: DescribeAuditLogRecordsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2656,7 +3227,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeAuditLogRecordsResponse:
         """
-        SQL audit logs can be queried only when SQL audit is enabled. Only SQL audit logs within the last 30 days can be queried. If SQL audit was disabled and re-enabled, only SQL audit logs from the time when SQL audit was re-enabled can be queried. The following operations are not recorded in SQL audit logs: *INSERT INTO VALUES**, **REPLACE INTO VALUES**, and **UPSERT INTO VALUES**.
+        SQL audit logs can be queried only when SQL audit is enabled. Only SQL audit logs within the last 30 days can be queried. If SQL audit was disabled and re-enabled, only SQL audit logs from the time when SQL audit was re-enabled can be queried. The following operations are not recorded in SQL audit logs: **INSERT INTO VALUES**, **REPLACE INTO VALUES**, and **UPSERT INTO VALUES**.
+        *   General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
         
         @param request: DescribeAuditLogRecordsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2726,7 +3300,10 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeAuditLogRecordsRequest,
     ) -> adb_20211201_models.DescribeAuditLogRecordsResponse:
         """
-        SQL audit logs can be queried only when SQL audit is enabled. Only SQL audit logs within the last 30 days can be queried. If SQL audit was disabled and re-enabled, only SQL audit logs from the time when SQL audit was re-enabled can be queried. The following operations are not recorded in SQL audit logs: *INSERT INTO VALUES**, **REPLACE INTO VALUES**, and **UPSERT INTO VALUES**.
+        SQL audit logs can be queried only when SQL audit is enabled. Only SQL audit logs within the last 30 days can be queried. If SQL audit was disabled and re-enabled, only SQL audit logs from the time when SQL audit was re-enabled can be queried. The following operations are not recorded in SQL audit logs: **INSERT INTO VALUES**, **REPLACE INTO VALUES**, and **UPSERT INTO VALUES**.
+        *   General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
         
         @param request: DescribeAuditLogRecordsRequest
         @return: DescribeAuditLogRecordsResponse
@@ -2739,7 +3316,10 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeAuditLogRecordsRequest,
     ) -> adb_20211201_models.DescribeAuditLogRecordsResponse:
         """
-        SQL audit logs can be queried only when SQL audit is enabled. Only SQL audit logs within the last 30 days can be queried. If SQL audit was disabled and re-enabled, only SQL audit logs from the time when SQL audit was re-enabled can be queried. The following operations are not recorded in SQL audit logs: *INSERT INTO VALUES**, **REPLACE INTO VALUES**, and **UPSERT INTO VALUES**.
+        SQL audit logs can be queried only when SQL audit is enabled. Only SQL audit logs within the last 30 days can be queried. If SQL audit was disabled and re-enabled, only SQL audit logs from the time when SQL audit was re-enabled can be queried. The following operations are not recorded in SQL audit logs: **INSERT INTO VALUES**, **REPLACE INTO VALUES**, and **UPSERT INTO VALUES**.
+        *   General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
         
         @param request: DescribeAuditLogRecordsRequest
         @return: DescribeAuditLogRecordsResponse
@@ -2752,6 +3332,13 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeBackupPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeBackupPolicyResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: DescribeBackupPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeBackupPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -2788,6 +3375,13 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeBackupPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeBackupPolicyResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: DescribeBackupPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeBackupPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -2823,6 +3417,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.DescribeBackupPolicyRequest,
     ) -> adb_20211201_models.DescribeBackupPolicyResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: DescribeBackupPolicyRequest
+        @return: DescribeBackupPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_backup_policy_with_options(request, runtime)
 
@@ -2830,6 +3430,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.DescribeBackupPolicyRequest,
     ) -> adb_20211201_models.DescribeBackupPolicyResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: DescribeBackupPolicyRequest
+        @return: DescribeBackupPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_backup_policy_with_options_async(request, runtime)
 
@@ -2838,6 +3444,13 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeBackupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeBackupsResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: DescribeBackupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeBackupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_id):
@@ -2884,6 +3497,13 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeBackupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeBackupsResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: DescribeBackupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeBackupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_id):
@@ -2929,6 +3549,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.DescribeBackupsRequest,
     ) -> adb_20211201_models.DescribeBackupsResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: DescribeBackupsRequest
+        @return: DescribeBackupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_backups_with_options(request, runtime)
 
@@ -2936,6 +3562,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.DescribeBackupsRequest,
     ) -> adb_20211201_models.DescribeBackupsResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: DescribeBackupsRequest
+        @return: DescribeBackupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_backups_with_options_async(request, runtime)
 
@@ -2944,6 +3576,13 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeClusterAccessWhiteListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeClusterAccessWhiteListResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: DescribeClusterAccessWhiteListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeClusterAccessWhiteListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -2974,6 +3613,13 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeClusterAccessWhiteListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeClusterAccessWhiteListResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: DescribeClusterAccessWhiteListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeClusterAccessWhiteListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -3003,6 +3649,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.DescribeClusterAccessWhiteListRequest,
     ) -> adb_20211201_models.DescribeClusterAccessWhiteListResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: DescribeClusterAccessWhiteListRequest
+        @return: DescribeClusterAccessWhiteListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_cluster_access_white_list_with_options(request, runtime)
 
@@ -3010,6 +3662,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.DescribeClusterAccessWhiteListRequest,
     ) -> adb_20211201_models.DescribeClusterAccessWhiteListResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: DescribeClusterAccessWhiteListRequest
+        @return: DescribeClusterAccessWhiteListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_cluster_access_white_list_with_options_async(request, runtime)
 
@@ -3018,6 +3676,13 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeClusterNetInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeClusterNetInfoResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: DescribeClusterNetInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeClusterNetInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -3046,6 +3711,13 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeClusterNetInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeClusterNetInfoResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: DescribeClusterNetInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeClusterNetInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -3073,6 +3745,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.DescribeClusterNetInfoRequest,
     ) -> adb_20211201_models.DescribeClusterNetInfoResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: DescribeClusterNetInfoRequest
+        @return: DescribeClusterNetInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_cluster_net_info_with_options(request, runtime)
 
@@ -3080,6 +3758,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.DescribeClusterNetInfoRequest,
     ) -> adb_20211201_models.DescribeClusterNetInfoResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: DescribeClusterNetInfoRequest
+        @return: DescribeClusterNetInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_cluster_net_info_with_options_async(request, runtime)
 
@@ -3388,6 +4072,13 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeDBClusterAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeDBClusterAttributeResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: DescribeDBClusterAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDBClusterAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -3416,6 +4107,13 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeDBClusterAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeDBClusterAttributeResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: DescribeDBClusterAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDBClusterAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -3443,6 +4141,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.DescribeDBClusterAttributeRequest,
     ) -> adb_20211201_models.DescribeDBClusterAttributeResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: DescribeDBClusterAttributeRequest
+        @return: DescribeDBClusterAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_dbcluster_attribute_with_options(request, runtime)
 
@@ -3450,6 +4154,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.DescribeDBClusterAttributeRequest,
     ) -> adb_20211201_models.DescribeDBClusterAttributeResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: DescribeDBClusterAttributeRequest
+        @return: DescribeDBClusterAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_dbcluster_attribute_with_options_async(request, runtime)
 
@@ -3458,6 +4168,13 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeDBClusterHealthStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeDBClusterHealthStatusResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
+        
+        @param request: DescribeDBClusterHealthStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDBClusterHealthStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -3488,6 +4205,13 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeDBClusterHealthStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeDBClusterHealthStatusResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
+        
+        @param request: DescribeDBClusterHealthStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDBClusterHealthStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -3517,6 +4241,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.DescribeDBClusterHealthStatusRequest,
     ) -> adb_20211201_models.DescribeDBClusterHealthStatusResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
+        
+        @param request: DescribeDBClusterHealthStatusRequest
+        @return: DescribeDBClusterHealthStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_dbcluster_health_status_with_options(request, runtime)
 
@@ -3524,6 +4254,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.DescribeDBClusterHealthStatusRequest,
     ) -> adb_20211201_models.DescribeDBClusterHealthStatusResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
+        
+        @param request: DescribeDBClusterHealthStatusRequest
+        @return: DescribeDBClusterHealthStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_dbcluster_health_status_with_options_async(request, runtime)
 
@@ -3532,6 +4268,15 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeDBClusterPerformanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeDBClusterPerformanceResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: DescribeDBClusterPerformanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDBClusterPerformanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -3570,6 +4315,15 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeDBClusterPerformanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeDBClusterPerformanceResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: DescribeDBClusterPerformanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDBClusterPerformanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -3607,6 +4361,14 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.DescribeDBClusterPerformanceRequest,
     ) -> adb_20211201_models.DescribeDBClusterPerformanceResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: DescribeDBClusterPerformanceRequest
+        @return: DescribeDBClusterPerformanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_dbcluster_performance_with_options(request, runtime)
 
@@ -3614,6 +4376,14 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.DescribeDBClusterPerformanceRequest,
     ) -> adb_20211201_models.DescribeDBClusterPerformanceResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: DescribeDBClusterPerformanceRequest
+        @return: DescribeDBClusterPerformanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_dbcluster_performance_with_options_async(request, runtime)
 
@@ -3622,6 +4392,13 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeDBClusterSpaceSummaryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeDBClusterSpaceSummaryResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: DescribeDBClusterSpaceSummaryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDBClusterSpaceSummaryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -3660,6 +4437,13 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeDBClusterSpaceSummaryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeDBClusterSpaceSummaryResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: DescribeDBClusterSpaceSummaryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDBClusterSpaceSummaryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -3697,6 +4481,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.DescribeDBClusterSpaceSummaryRequest,
     ) -> adb_20211201_models.DescribeDBClusterSpaceSummaryResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: DescribeDBClusterSpaceSummaryRequest
+        @return: DescribeDBClusterSpaceSummaryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_dbcluster_space_summary_with_options(request, runtime)
 
@@ -3704,6 +4494,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.DescribeDBClusterSpaceSummaryRequest,
     ) -> adb_20211201_models.DescribeDBClusterSpaceSummaryResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: DescribeDBClusterSpaceSummaryRequest
+        @return: DescribeDBClusterSpaceSummaryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_dbcluster_space_summary_with_options_async(request, runtime)
 
@@ -3712,6 +4508,13 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeDBClusterStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeDBClusterStatusResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: DescribeDBClusterStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDBClusterStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region_id):
@@ -3740,6 +4543,13 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeDBClusterStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeDBClusterStatusResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: DescribeDBClusterStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDBClusterStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region_id):
@@ -3767,6 +4577,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.DescribeDBClusterStatusRequest,
     ) -> adb_20211201_models.DescribeDBClusterStatusResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: DescribeDBClusterStatusRequest
+        @return: DescribeDBClusterStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_dbcluster_status_with_options(request, runtime)
 
@@ -3774,6 +4590,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.DescribeDBClusterStatusRequest,
     ) -> adb_20211201_models.DescribeDBClusterStatusResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: DescribeDBClusterStatusRequest
+        @return: DescribeDBClusterStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_dbcluster_status_with_options_async(request, runtime)
 
@@ -3782,6 +4604,13 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeDBClustersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeDBClustersResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: DescribeDBClustersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDBClustersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_description):
@@ -3790,10 +4619,14 @@ class Client(OpenApiClient):
             query['DBClusterIds'] = request.dbcluster_ids
         if not UtilClient.is_unset(request.dbcluster_status):
             query['DBClusterStatus'] = request.dbcluster_status
+        if not UtilClient.is_unset(request.dbcluster_version):
+            query['DBClusterVersion'] = request.dbcluster_version
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.product_version):
+            query['ProductVersion'] = request.product_version
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
@@ -3824,6 +4657,13 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeDBClustersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeDBClustersResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: DescribeDBClustersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDBClustersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_description):
@@ -3832,10 +4672,14 @@ class Client(OpenApiClient):
             query['DBClusterIds'] = request.dbcluster_ids
         if not UtilClient.is_unset(request.dbcluster_status):
             query['DBClusterStatus'] = request.dbcluster_status
+        if not UtilClient.is_unset(request.dbcluster_version):
+            query['DBClusterVersion'] = request.dbcluster_version
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.product_version):
+            query['ProductVersion'] = request.product_version
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
@@ -3865,6 +4709,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.DescribeDBClustersRequest,
     ) -> adb_20211201_models.DescribeDBClustersResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: DescribeDBClustersRequest
+        @return: DescribeDBClustersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_dbclusters_with_options(request, runtime)
 
@@ -3872,6 +4722,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.DescribeDBClustersRequest,
     ) -> adb_20211201_models.DescribeDBClustersResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: DescribeDBClustersRequest
+        @return: DescribeDBClustersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_dbclusters_with_options_async(request, runtime)
 
@@ -3880,6 +4736,13 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeDBResourceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeDBResourceGroupResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: DescribeDBResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDBResourceGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -3916,6 +4779,13 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeDBResourceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeDBResourceGroupResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: DescribeDBResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDBResourceGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -3951,6 +4821,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.DescribeDBResourceGroupRequest,
     ) -> adb_20211201_models.DescribeDBResourceGroupResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: DescribeDBResourceGroupRequest
+        @return: DescribeDBResourceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_dbresource_group_with_options(request, runtime)
 
@@ -3958,6 +4834,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.DescribeDBResourceGroupRequest,
     ) -> adb_20211201_models.DescribeDBResourceGroupResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: DescribeDBResourceGroupRequest
+        @return: DescribeDBResourceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_dbresource_group_with_options_async(request, runtime)
 
@@ -3966,6 +4848,15 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeDiagnosisDimensionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeDiagnosisDimensionsResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: DescribeDiagnosisDimensionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDiagnosisDimensionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -4004,6 +4895,15 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeDiagnosisDimensionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeDiagnosisDimensionsResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: DescribeDiagnosisDimensionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDiagnosisDimensionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -4041,6 +4941,14 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.DescribeDiagnosisDimensionsRequest,
     ) -> adb_20211201_models.DescribeDiagnosisDimensionsResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: DescribeDiagnosisDimensionsRequest
+        @return: DescribeDiagnosisDimensionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_diagnosis_dimensions_with_options(request, runtime)
 
@@ -4048,6 +4956,14 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.DescribeDiagnosisDimensionsRequest,
     ) -> adb_20211201_models.DescribeDiagnosisDimensionsResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: DescribeDiagnosisDimensionsRequest
+        @return: DescribeDiagnosisDimensionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_diagnosis_dimensions_with_options_async(request, runtime)
 
@@ -4056,6 +4972,13 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeDiagnosisRecordsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeDiagnosisRecordsResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
+        
+        @param request: DescribeDiagnosisRecordsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDiagnosisRecordsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_ip):
@@ -4120,6 +5043,13 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeDiagnosisRecordsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeDiagnosisRecordsResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
+        
+        @param request: DescribeDiagnosisRecordsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDiagnosisRecordsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_ip):
@@ -4183,6 +5113,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.DescribeDiagnosisRecordsRequest,
     ) -> adb_20211201_models.DescribeDiagnosisRecordsResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
+        
+        @param request: DescribeDiagnosisRecordsRequest
+        @return: DescribeDiagnosisRecordsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_diagnosis_records_with_options(request, runtime)
 
@@ -4190,6 +5126,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.DescribeDiagnosisRecordsRequest,
     ) -> adb_20211201_models.DescribeDiagnosisRecordsResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
+        
+        @param request: DescribeDiagnosisRecordsRequest
+        @return: DescribeDiagnosisRecordsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_diagnosis_records_with_options_async(request, runtime)
 
@@ -4198,6 +5140,15 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeDiagnosisSQLInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeDiagnosisSQLInfoResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: DescribeDiagnosisSQLInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDiagnosisSQLInfoResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -4224,6 +5175,15 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeDiagnosisSQLInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeDiagnosisSQLInfoResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: DescribeDiagnosisSQLInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDiagnosisSQLInfoResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -4249,6 +5209,14 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.DescribeDiagnosisSQLInfoRequest,
     ) -> adb_20211201_models.DescribeDiagnosisSQLInfoResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: DescribeDiagnosisSQLInfoRequest
+        @return: DescribeDiagnosisSQLInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_diagnosis_sqlinfo_with_options(request, runtime)
 
@@ -4256,6 +5224,14 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.DescribeDiagnosisSQLInfoRequest,
     ) -> adb_20211201_models.DescribeDiagnosisSQLInfoResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: DescribeDiagnosisSQLInfoRequest
+        @return: DescribeDiagnosisSQLInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_diagnosis_sqlinfo_with_options_async(request, runtime)
 
@@ -4342,6 +5318,13 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeElasticPlanAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeElasticPlanAttributeResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see DescribeElasticPlanAttribute.
+        
+        @param request: DescribeElasticPlanAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeElasticPlanAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -4372,6 +5355,13 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeElasticPlanAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeElasticPlanAttributeResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see DescribeElasticPlanAttribute.
+        
+        @param request: DescribeElasticPlanAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeElasticPlanAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -4401,6 +5391,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.DescribeElasticPlanAttributeRequest,
     ) -> adb_20211201_models.DescribeElasticPlanAttributeResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see DescribeElasticPlanAttribute.
+        
+        @param request: DescribeElasticPlanAttributeRequest
+        @return: DescribeElasticPlanAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_elastic_plan_attribute_with_options(request, runtime)
 
@@ -4408,6 +5404,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.DescribeElasticPlanAttributeRequest,
     ) -> adb_20211201_models.DescribeElasticPlanAttributeResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see DescribeElasticPlanAttribute.
+        
+        @param request: DescribeElasticPlanAttributeRequest
+        @return: DescribeElasticPlanAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_elastic_plan_attribute_with_options_async(request, runtime)
 
@@ -4416,6 +5418,13 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeElasticPlanJobsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeElasticPlanJobsResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: DescribeElasticPlanJobsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeElasticPlanJobsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -4456,6 +5465,13 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeElasticPlanJobsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeElasticPlanJobsResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: DescribeElasticPlanJobsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeElasticPlanJobsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -4495,6 +5511,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.DescribeElasticPlanJobsRequest,
     ) -> adb_20211201_models.DescribeElasticPlanJobsResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: DescribeElasticPlanJobsRequest
+        @return: DescribeElasticPlanJobsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_elastic_plan_jobs_with_options(request, runtime)
 
@@ -4502,6 +5524,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.DescribeElasticPlanJobsRequest,
     ) -> adb_20211201_models.DescribeElasticPlanJobsResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: DescribeElasticPlanJobsRequest
+        @return: DescribeElasticPlanJobsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_elastic_plan_jobs_with_options_async(request, runtime)
 
@@ -4826,6 +5854,13 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribePatternPerformanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribePatternPerformanceResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: DescribePatternPerformanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePatternPerformanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -4862,6 +5897,13 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribePatternPerformanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribePatternPerformanceResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: DescribePatternPerformanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePatternPerformanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -4897,6 +5939,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.DescribePatternPerformanceRequest,
     ) -> adb_20211201_models.DescribePatternPerformanceResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: DescribePatternPerformanceRequest
+        @return: DescribePatternPerformanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_pattern_performance_with_options(request, runtime)
 
@@ -4904,6 +5952,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.DescribePatternPerformanceRequest,
     ) -> adb_20211201_models.DescribePatternPerformanceResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: DescribePatternPerformanceRequest
+        @return: DescribePatternPerformanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_pattern_performance_with_options_async(request, runtime)
 
@@ -4912,6 +5966,13 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeRegionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeRegionsResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: DescribeRegionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRegionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -4948,6 +6009,13 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeRegionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeRegionsResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: DescribeRegionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRegionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -4983,6 +6051,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.DescribeRegionsRequest,
     ) -> adb_20211201_models.DescribeRegionsResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: DescribeRegionsRequest
+        @return: DescribeRegionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_regions_with_options(request, runtime)
 
@@ -4990,6 +6064,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.DescribeRegionsRequest,
     ) -> adb_20211201_models.DescribeRegionsResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: DescribeRegionsRequest
+        @return: DescribeRegionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_regions_with_options_async(request, runtime)
 
@@ -5252,6 +6332,14 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeSparkCodeOutputRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeSparkCodeOutputResponse:
+        """
+        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: DescribeSparkCodeOutputRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSparkCodeOutputResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -5284,6 +6372,14 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeSparkCodeOutputRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeSparkCodeOutputResponse:
+        """
+        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: DescribeSparkCodeOutputRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSparkCodeOutputResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -5315,6 +6411,13 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.DescribeSparkCodeOutputRequest,
     ) -> adb_20211201_models.DescribeSparkCodeOutputResponse:
+        """
+        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: DescribeSparkCodeOutputRequest
+        @return: DescribeSparkCodeOutputResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_spark_code_output_with_options(request, runtime)
 
@@ -5322,6 +6425,13 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.DescribeSparkCodeOutputRequest,
     ) -> adb_20211201_models.DescribeSparkCodeOutputResponse:
+        """
+        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: DescribeSparkCodeOutputRequest
+        @return: DescribeSparkCodeOutputResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_spark_code_output_with_options_async(request, runtime)
 
@@ -5408,6 +6518,13 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeSqlPatternRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeSqlPatternResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: DescribeSqlPatternRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSqlPatternResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -5450,6 +6567,13 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeSqlPatternRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeSqlPatternResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: DescribeSqlPatternRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSqlPatternResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -5491,6 +6615,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.DescribeSqlPatternRequest,
     ) -> adb_20211201_models.DescribeSqlPatternResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: DescribeSqlPatternRequest
+        @return: DescribeSqlPatternResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_sql_pattern_with_options(request, runtime)
 
@@ -5498,6 +6628,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.DescribeSqlPatternRequest,
     ) -> adb_20211201_models.DescribeSqlPatternResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: DescribeSqlPatternRequest
+        @return: DescribeSqlPatternResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_sql_pattern_with_options_async(request, runtime)
 
@@ -5584,6 +6720,15 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeTableAccessCountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeTableAccessCountResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: DescribeTableAccessCountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTableAccessCountResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -5624,6 +6769,15 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeTableAccessCountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeTableAccessCountResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: DescribeTableAccessCountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTableAccessCountResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -5663,6 +6817,14 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.DescribeTableAccessCountRequest,
     ) -> adb_20211201_models.DescribeTableAccessCountResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: DescribeTableAccessCountRequest
+        @return: DescribeTableAccessCountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_table_access_count_with_options(request, runtime)
 
@@ -5670,6 +6832,14 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.DescribeTableAccessCountRequest,
     ) -> adb_20211201_models.DescribeTableAccessCountResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: DescribeTableAccessCountRequest
+        @return: DescribeTableAccessCountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_table_access_count_with_options_async(request, runtime)
 
@@ -5756,6 +6926,13 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeUserQuotaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeUserQuotaResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: DescribeUserQuotaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUserQuotaResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -5782,6 +6959,13 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeUserQuotaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeUserQuotaResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: DescribeUserQuotaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUserQuotaResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -5807,6 +6991,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.DescribeUserQuotaRequest,
     ) -> adb_20211201_models.DescribeUserQuotaResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: DescribeUserQuotaRequest
+        @return: DescribeUserQuotaResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_user_quota_with_options(request, runtime)
 
@@ -5814,6 +7004,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.DescribeUserQuotaRequest,
     ) -> adb_20211201_models.DescribeUserQuotaResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: DescribeUserQuotaRequest
+        @return: DescribeUserQuotaResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_user_quota_with_options_async(request, runtime)
 
@@ -5822,6 +7018,13 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DetachUserENIRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DetachUserENIResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: DetachUserENIRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetachUserENIResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -5850,6 +7053,13 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DetachUserENIRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DetachUserENIResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: DetachUserENIRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetachUserENIResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -5877,6 +7087,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.DetachUserENIRequest,
     ) -> adb_20211201_models.DetachUserENIResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: DetachUserENIRequest
+        @return: DetachUserENIResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.detach_user_eniwith_options(request, runtime)
 
@@ -5884,6 +7100,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.DetachUserENIRequest,
     ) -> adb_20211201_models.DetachUserENIResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: DetachUserENIRequest
+        @return: DetachUserENIResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.detach_user_eniwith_options_async(request, runtime)
 
@@ -5892,6 +7114,13 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DisableElasticPlanRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DisableElasticPlanResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: DisableElasticPlanRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisableElasticPlanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -5922,6 +7151,13 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DisableElasticPlanRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DisableElasticPlanResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: DisableElasticPlanRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisableElasticPlanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -5951,6 +7187,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.DisableElasticPlanRequest,
     ) -> adb_20211201_models.DisableElasticPlanResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: DisableElasticPlanRequest
+        @return: DisableElasticPlanResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.disable_elastic_plan_with_options(request, runtime)
 
@@ -5958,6 +7200,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.DisableElasticPlanRequest,
     ) -> adb_20211201_models.DisableElasticPlanResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: DisableElasticPlanRequest
+        @return: DisableElasticPlanResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.disable_elastic_plan_with_options_async(request, runtime)
 
@@ -5966,6 +7214,15 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DownloadDiagnosisRecordsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DownloadDiagnosisRecordsResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: DownloadDiagnosisRecordsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DownloadDiagnosisRecordsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_ip):
@@ -6022,6 +7279,15 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DownloadDiagnosisRecordsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DownloadDiagnosisRecordsResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: DownloadDiagnosisRecordsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DownloadDiagnosisRecordsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_ip):
@@ -6077,6 +7343,14 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.DownloadDiagnosisRecordsRequest,
     ) -> adb_20211201_models.DownloadDiagnosisRecordsResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: DownloadDiagnosisRecordsRequest
+        @return: DownloadDiagnosisRecordsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.download_diagnosis_records_with_options(request, runtime)
 
@@ -6084,6 +7358,14 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.DownloadDiagnosisRecordsRequest,
     ) -> adb_20211201_models.DownloadDiagnosisRecordsResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: DownloadDiagnosisRecordsRequest
+        @return: DownloadDiagnosisRecordsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.download_diagnosis_records_with_options_async(request, runtime)
 
@@ -6092,6 +7374,13 @@ class Client(OpenApiClient):
         request: adb_20211201_models.EnableElasticPlanRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.EnableElasticPlanResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: EnableElasticPlanRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableElasticPlanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -6122,6 +7411,13 @@ class Client(OpenApiClient):
         request: adb_20211201_models.EnableElasticPlanRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.EnableElasticPlanResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: EnableElasticPlanRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableElasticPlanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -6151,6 +7447,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.EnableElasticPlanRequest,
     ) -> adb_20211201_models.EnableElasticPlanResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: EnableElasticPlanRequest
+        @return: EnableElasticPlanResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.enable_elastic_plan_with_options(request, runtime)
 
@@ -6158,6 +7460,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.EnableElasticPlanRequest,
     ) -> adb_20211201_models.EnableElasticPlanResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: EnableElasticPlanRequest
+        @return: EnableElasticPlanResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.enable_elastic_plan_with_options_async(request, runtime)
 
@@ -6240,6 +7548,14 @@ class Client(OpenApiClient):
         request: adb_20211201_models.GetDatabaseObjectsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.GetDatabaseObjectsResponse:
+        """
+        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: GetDatabaseObjectsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDatabaseObjectsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -6280,6 +7596,14 @@ class Client(OpenApiClient):
         request: adb_20211201_models.GetDatabaseObjectsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.GetDatabaseObjectsResponse:
+        """
+        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: GetDatabaseObjectsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDatabaseObjectsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -6319,6 +7643,13 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.GetDatabaseObjectsRequest,
     ) -> adb_20211201_models.GetDatabaseObjectsResponse:
+        """
+        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: GetDatabaseObjectsRequest
+        @return: GetDatabaseObjectsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_database_objects_with_options(request, runtime)
 
@@ -6326,6 +7657,13 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.GetDatabaseObjectsRequest,
     ) -> adb_20211201_models.GetDatabaseObjectsResponse:
+        """
+        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: GetDatabaseObjectsRequest
+        @return: GetDatabaseObjectsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_database_objects_with_options_async(request, runtime)
 
@@ -6334,6 +7672,15 @@ class Client(OpenApiClient):
         request: adb_20211201_models.GetSparkAppAttemptLogRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.GetSparkAppAttemptLogResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: GetSparkAppAttemptLogRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSparkAppAttemptLogResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -6370,6 +7717,15 @@ class Client(OpenApiClient):
         request: adb_20211201_models.GetSparkAppAttemptLogRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.GetSparkAppAttemptLogResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: GetSparkAppAttemptLogRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSparkAppAttemptLogResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -6405,6 +7761,14 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.GetSparkAppAttemptLogRequest,
     ) -> adb_20211201_models.GetSparkAppAttemptLogResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: GetSparkAppAttemptLogRequest
+        @return: GetSparkAppAttemptLogResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_spark_app_attempt_log_with_options(request, runtime)
 
@@ -6412,6 +7776,14 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.GetSparkAppAttemptLogRequest,
     ) -> adb_20211201_models.GetSparkAppAttemptLogResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: GetSparkAppAttemptLogRequest
+        @return: GetSparkAppAttemptLogResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_spark_app_attempt_log_with_options_async(request, runtime)
 
@@ -6498,6 +7870,15 @@ class Client(OpenApiClient):
         request: adb_20211201_models.GetSparkAppLogRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.GetSparkAppLogResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: GetSparkAppLogRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSparkAppLogResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -6536,6 +7917,15 @@ class Client(OpenApiClient):
         request: adb_20211201_models.GetSparkAppLogRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.GetSparkAppLogResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: GetSparkAppLogRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSparkAppLogResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -6573,6 +7963,14 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.GetSparkAppLogRequest,
     ) -> adb_20211201_models.GetSparkAppLogResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: GetSparkAppLogRequest
+        @return: GetSparkAppLogResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_spark_app_log_with_options(request, runtime)
 
@@ -6580,6 +7978,14 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.GetSparkAppLogRequest,
     ) -> adb_20211201_models.GetSparkAppLogResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: GetSparkAppLogRequest
+        @return: GetSparkAppLogResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_spark_app_log_with_options_async(request, runtime)
 
@@ -6588,6 +7994,15 @@ class Client(OpenApiClient):
         request: adb_20211201_models.GetSparkAppMetricsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.GetSparkAppMetricsResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: GetSparkAppMetricsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSparkAppMetricsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -6620,6 +8035,15 @@ class Client(OpenApiClient):
         request: adb_20211201_models.GetSparkAppMetricsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.GetSparkAppMetricsResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: GetSparkAppMetricsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSparkAppMetricsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -6651,6 +8075,14 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.GetSparkAppMetricsRequest,
     ) -> adb_20211201_models.GetSparkAppMetricsResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: GetSparkAppMetricsRequest
+        @return: GetSparkAppMetricsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_spark_app_metrics_with_options(request, runtime)
 
@@ -6658,6 +8090,14 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.GetSparkAppMetricsRequest,
     ) -> adb_20211201_models.GetSparkAppMetricsResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: GetSparkAppMetricsRequest
+        @return: GetSparkAppMetricsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_spark_app_metrics_with_options_async(request, runtime)
 
@@ -6666,6 +8106,15 @@ class Client(OpenApiClient):
         request: adb_20211201_models.GetSparkAppStateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.GetSparkAppStateResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: GetSparkAppStateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSparkAppStateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -6698,6 +8147,15 @@ class Client(OpenApiClient):
         request: adb_20211201_models.GetSparkAppStateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.GetSparkAppStateResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: GetSparkAppStateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSparkAppStateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -6729,6 +8187,14 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.GetSparkAppStateRequest,
     ) -> adb_20211201_models.GetSparkAppStateResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: GetSparkAppStateRequest
+        @return: GetSparkAppStateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_spark_app_state_with_options(request, runtime)
 
@@ -6736,6 +8202,14 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.GetSparkAppStateRequest,
     ) -> adb_20211201_models.GetSparkAppStateResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: GetSparkAppStateRequest
+        @return: GetSparkAppStateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_spark_app_state_with_options_async(request, runtime)
 
@@ -6744,6 +8218,15 @@ class Client(OpenApiClient):
         request: adb_20211201_models.GetSparkAppWebUiAddressRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.GetSparkAppWebUiAddressResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: GetSparkAppWebUiAddressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSparkAppWebUiAddressResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -6776,6 +8259,15 @@ class Client(OpenApiClient):
         request: adb_20211201_models.GetSparkAppWebUiAddressRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.GetSparkAppWebUiAddressResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: GetSparkAppWebUiAddressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSparkAppWebUiAddressResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -6807,6 +8299,14 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.GetSparkAppWebUiAddressRequest,
     ) -> adb_20211201_models.GetSparkAppWebUiAddressResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: GetSparkAppWebUiAddressRequest
+        @return: GetSparkAppWebUiAddressResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_spark_app_web_ui_address_with_options(request, runtime)
 
@@ -6814,6 +8314,14 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.GetSparkAppWebUiAddressRequest,
     ) -> adb_20211201_models.GetSparkAppWebUiAddressResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: GetSparkAppWebUiAddressRequest
+        @return: GetSparkAppWebUiAddressResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_spark_app_web_ui_address_with_options_async(request, runtime)
 
@@ -6822,6 +8330,15 @@ class Client(OpenApiClient):
         request: adb_20211201_models.GetSparkConfigLogPathRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.GetSparkConfigLogPathResponse:
+        """
+        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
+        
+        @param request: GetSparkConfigLogPathRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSparkConfigLogPathResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -6850,6 +8367,15 @@ class Client(OpenApiClient):
         request: adb_20211201_models.GetSparkConfigLogPathRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.GetSparkConfigLogPathResponse:
+        """
+        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
+        
+        @param request: GetSparkConfigLogPathRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSparkConfigLogPathResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -6877,6 +8403,14 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.GetSparkConfigLogPathRequest,
     ) -> adb_20211201_models.GetSparkConfigLogPathResponse:
+        """
+        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
+        
+        @param request: GetSparkConfigLogPathRequest
+        @return: GetSparkConfigLogPathResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_spark_config_log_path_with_options(request, runtime)
 
@@ -6884,6 +8418,14 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.GetSparkConfigLogPathRequest,
     ) -> adb_20211201_models.GetSparkConfigLogPathResponse:
+        """
+        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
+        
+        @param request: GetSparkConfigLogPathRequest
+        @return: GetSparkConfigLogPathResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_spark_config_log_path_with_options_async(request, runtime)
 
@@ -6892,6 +8434,15 @@ class Client(OpenApiClient):
         request: adb_20211201_models.GetSparkDefinitionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.GetSparkDefinitionsResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: GetSparkDefinitionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSparkDefinitionsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -6920,6 +8471,15 @@ class Client(OpenApiClient):
         request: adb_20211201_models.GetSparkDefinitionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.GetSparkDefinitionsResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: GetSparkDefinitionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSparkDefinitionsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -6947,6 +8507,14 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.GetSparkDefinitionsRequest,
     ) -> adb_20211201_models.GetSparkDefinitionsResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: GetSparkDefinitionsRequest
+        @return: GetSparkDefinitionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_spark_definitions_with_options(request, runtime)
 
@@ -6954,6 +8522,14 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.GetSparkDefinitionsRequest,
     ) -> adb_20211201_models.GetSparkDefinitionsResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: GetSparkDefinitionsRequest
+        @return: GetSparkDefinitionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_spark_definitions_with_options_async(request, runtime)
 
@@ -6962,6 +8538,15 @@ class Client(OpenApiClient):
         request: adb_20211201_models.GetSparkLogAnalyzeTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.GetSparkLogAnalyzeTaskResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: GetSparkLogAnalyzeTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSparkLogAnalyzeTaskResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.task_id):
@@ -6990,6 +8575,15 @@ class Client(OpenApiClient):
         request: adb_20211201_models.GetSparkLogAnalyzeTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.GetSparkLogAnalyzeTaskResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: GetSparkLogAnalyzeTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSparkLogAnalyzeTaskResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.task_id):
@@ -7017,6 +8611,14 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.GetSparkLogAnalyzeTaskRequest,
     ) -> adb_20211201_models.GetSparkLogAnalyzeTaskResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: GetSparkLogAnalyzeTaskRequest
+        @return: GetSparkLogAnalyzeTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_spark_log_analyze_task_with_options(request, runtime)
 
@@ -7024,6 +8626,14 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.GetSparkLogAnalyzeTaskRequest,
     ) -> adb_20211201_models.GetSparkLogAnalyzeTaskResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: GetSparkLogAnalyzeTaskRequest
+        @return: GetSparkLogAnalyzeTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_spark_log_analyze_task_with_options_async(request, runtime)
 
@@ -7106,6 +8716,15 @@ class Client(OpenApiClient):
         request: adb_20211201_models.GetSparkTemplateFileContentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.GetSparkTemplateFileContentResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: GetSparkTemplateFileContentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSparkTemplateFileContentResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -7136,6 +8755,15 @@ class Client(OpenApiClient):
         request: adb_20211201_models.GetSparkTemplateFileContentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.GetSparkTemplateFileContentResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: GetSparkTemplateFileContentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSparkTemplateFileContentResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -7165,6 +8793,14 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.GetSparkTemplateFileContentRequest,
     ) -> adb_20211201_models.GetSparkTemplateFileContentResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: GetSparkTemplateFileContentRequest
+        @return: GetSparkTemplateFileContentResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_spark_template_file_content_with_options(request, runtime)
 
@@ -7172,6 +8808,14 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.GetSparkTemplateFileContentRequest,
     ) -> adb_20211201_models.GetSparkTemplateFileContentResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: GetSparkTemplateFileContentRequest
+        @return: GetSparkTemplateFileContentResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_spark_template_file_content_with_options_async(request, runtime)
 
@@ -7181,8 +8825,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.GetSparkTemplateFolderTreeResponse:
         """
-        ### [](#)Usage notes
         You can call this operation to query the directory structure but not application data in the directory. To query the directory structure that contains application data, call the [GetSparkTemplateFullTree](~~612467~~) operation.
+        *   General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
         
         @param request: GetSparkTemplateFolderTreeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7217,8 +8863,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.GetSparkTemplateFolderTreeResponse:
         """
-        ### [](#)Usage notes
         You can call this operation to query the directory structure but not application data in the directory. To query the directory structure that contains application data, call the [GetSparkTemplateFullTree](~~612467~~) operation.
+        *   General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
         
         @param request: GetSparkTemplateFolderTreeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7252,8 +8900,10 @@ class Client(OpenApiClient):
         request: adb_20211201_models.GetSparkTemplateFolderTreeRequest,
     ) -> adb_20211201_models.GetSparkTemplateFolderTreeResponse:
         """
-        ### [](#)Usage notes
         You can call this operation to query the directory structure but not application data in the directory. To query the directory structure that contains application data, call the [GetSparkTemplateFullTree](~~612467~~) operation.
+        *   General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
         
         @param request: GetSparkTemplateFolderTreeRequest
         @return: GetSparkTemplateFolderTreeResponse
@@ -7266,8 +8916,10 @@ class Client(OpenApiClient):
         request: adb_20211201_models.GetSparkTemplateFolderTreeRequest,
     ) -> adb_20211201_models.GetSparkTemplateFolderTreeResponse:
         """
-        ### [](#)Usage notes
         You can call this operation to query the directory structure but not application data in the directory. To query the directory structure that contains application data, call the [GetSparkTemplateFullTree](~~612467~~) operation.
+        *   General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
         
         @param request: GetSparkTemplateFolderTreeRequest
         @return: GetSparkTemplateFolderTreeResponse
@@ -7280,6 +8932,15 @@ class Client(OpenApiClient):
         request: adb_20211201_models.GetSparkTemplateFullTreeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.GetSparkTemplateFullTreeResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: GetSparkTemplateFullTreeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSparkTemplateFullTreeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -7308,6 +8969,15 @@ class Client(OpenApiClient):
         request: adb_20211201_models.GetSparkTemplateFullTreeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.GetSparkTemplateFullTreeResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: GetSparkTemplateFullTreeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSparkTemplateFullTreeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -7335,6 +9005,14 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.GetSparkTemplateFullTreeRequest,
     ) -> adb_20211201_models.GetSparkTemplateFullTreeResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: GetSparkTemplateFullTreeRequest
+        @return: GetSparkTemplateFullTreeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_spark_template_full_tree_with_options(request, runtime)
 
@@ -7342,6 +9020,14 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.GetSparkTemplateFullTreeRequest,
     ) -> adb_20211201_models.GetSparkTemplateFullTreeResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: GetSparkTemplateFullTreeRequest
+        @return: GetSparkTemplateFullTreeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_spark_template_full_tree_with_options_async(request, runtime)
 
@@ -7744,6 +9430,14 @@ class Client(OpenApiClient):
         request: adb_20211201_models.GetViewDDLRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.GetViewDDLResponse:
+        """
+        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: GetViewDDLRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetViewDDLResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -7778,6 +9472,14 @@ class Client(OpenApiClient):
         request: adb_20211201_models.GetViewDDLRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.GetViewDDLResponse:
+        """
+        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: GetViewDDLRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetViewDDLResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -7811,6 +9513,13 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.GetViewDDLRequest,
     ) -> adb_20211201_models.GetViewDDLResponse:
+        """
+        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: GetViewDDLRequest
+        @return: GetViewDDLResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_view_ddlwith_options(request, runtime)
 
@@ -7818,6 +9527,13 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.GetViewDDLRequest,
     ) -> adb_20211201_models.GetViewDDLResponse:
+        """
+        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: GetViewDDLRequest
+        @return: GetViewDDLResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_view_ddlwith_options_async(request, runtime)
 
@@ -7826,6 +9542,14 @@ class Client(OpenApiClient):
         request: adb_20211201_models.GetViewObjectsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.GetViewObjectsResponse:
+        """
+        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: GetViewObjectsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetViewObjectsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -7870,6 +9594,14 @@ class Client(OpenApiClient):
         request: adb_20211201_models.GetViewObjectsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.GetViewObjectsResponse:
+        """
+        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: GetViewObjectsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetViewObjectsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -7913,6 +9645,13 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.GetViewObjectsRequest,
     ) -> adb_20211201_models.GetViewObjectsResponse:
+        """
+        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: GetViewObjectsRequest
+        @return: GetViewObjectsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_view_objects_with_options(request, runtime)
 
@@ -7920,6 +9659,13 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.GetViewObjectsRequest,
     ) -> adb_20211201_models.GetViewObjectsResponse:
+        """
+        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: GetViewObjectsRequest
+        @return: GetViewObjectsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_view_objects_with_options_async(request, runtime)
 
@@ -7928,6 +9674,15 @@ class Client(OpenApiClient):
         request: adb_20211201_models.KillSparkAppRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.KillSparkAppResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: KillSparkAppRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: KillSparkAppResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -7960,6 +9715,15 @@ class Client(OpenApiClient):
         request: adb_20211201_models.KillSparkAppRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.KillSparkAppResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: KillSparkAppRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: KillSparkAppResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -7991,6 +9755,14 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.KillSparkAppRequest,
     ) -> adb_20211201_models.KillSparkAppResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: KillSparkAppRequest
+        @return: KillSparkAppResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.kill_spark_app_with_options(request, runtime)
 
@@ -7998,6 +9770,14 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.KillSparkAppRequest,
     ) -> adb_20211201_models.KillSparkAppResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: KillSparkAppRequest
+        @return: KillSparkAppResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.kill_spark_app_with_options_async(request, runtime)
 
@@ -8006,6 +9786,15 @@ class Client(OpenApiClient):
         request: adb_20211201_models.KillSparkLogAnalyzeTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.KillSparkLogAnalyzeTaskResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: KillSparkLogAnalyzeTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: KillSparkLogAnalyzeTaskResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.task_id):
@@ -8034,6 +9823,15 @@ class Client(OpenApiClient):
         request: adb_20211201_models.KillSparkLogAnalyzeTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.KillSparkLogAnalyzeTaskResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: KillSparkLogAnalyzeTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: KillSparkLogAnalyzeTaskResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.task_id):
@@ -8061,6 +9859,14 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.KillSparkLogAnalyzeTaskRequest,
     ) -> adb_20211201_models.KillSparkLogAnalyzeTaskResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: KillSparkLogAnalyzeTaskRequest
+        @return: KillSparkLogAnalyzeTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.kill_spark_log_analyze_task_with_options(request, runtime)
 
@@ -8068,6 +9874,14 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.KillSparkLogAnalyzeTaskRequest,
     ) -> adb_20211201_models.KillSparkLogAnalyzeTaskResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: KillSparkLogAnalyzeTaskRequest
+        @return: KillSparkLogAnalyzeTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.kill_spark_log_analyze_task_with_options_async(request, runtime)
 
@@ -8076,6 +9890,15 @@ class Client(OpenApiClient):
         request: adb_20211201_models.KillSparkSQLEngineRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.KillSparkSQLEngineResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: KillSparkSQLEngineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: KillSparkSQLEngineResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -8106,6 +9929,15 @@ class Client(OpenApiClient):
         request: adb_20211201_models.KillSparkSQLEngineRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.KillSparkSQLEngineResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: KillSparkSQLEngineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: KillSparkSQLEngineResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -8135,6 +9967,14 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.KillSparkSQLEngineRequest,
     ) -> adb_20211201_models.KillSparkSQLEngineResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: KillSparkSQLEngineRequest
+        @return: KillSparkSQLEngineResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.kill_spark_sqlengine_with_options(request, runtime)
 
@@ -8142,6 +9982,14 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.KillSparkSQLEngineRequest,
     ) -> adb_20211201_models.KillSparkSQLEngineResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: KillSparkSQLEngineRequest
+        @return: KillSparkSQLEngineResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.kill_spark_sqlengine_with_options_async(request, runtime)
 
@@ -8150,6 +9998,15 @@ class Client(OpenApiClient):
         request: adb_20211201_models.ListSparkAppAttemptsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.ListSparkAppAttemptsResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: ListSparkAppAttemptsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSparkAppAttemptsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -8184,6 +10041,15 @@ class Client(OpenApiClient):
         request: adb_20211201_models.ListSparkAppAttemptsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.ListSparkAppAttemptsResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: ListSparkAppAttemptsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSparkAppAttemptsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -8217,6 +10083,14 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.ListSparkAppAttemptsRequest,
     ) -> adb_20211201_models.ListSparkAppAttemptsResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: ListSparkAppAttemptsRequest
+        @return: ListSparkAppAttemptsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_spark_app_attempts_with_options(request, runtime)
 
@@ -8224,6 +10098,14 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.ListSparkAppAttemptsRequest,
     ) -> adb_20211201_models.ListSparkAppAttemptsResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: ListSparkAppAttemptsRequest
+        @return: ListSparkAppAttemptsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_spark_app_attempts_with_options_async(request, runtime)
 
@@ -8314,6 +10196,15 @@ class Client(OpenApiClient):
         request: adb_20211201_models.ListSparkLogAnalyzeTasksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.ListSparkLogAnalyzeTasksResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: ListSparkLogAnalyzeTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSparkLogAnalyzeTasksResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -8346,6 +10237,15 @@ class Client(OpenApiClient):
         request: adb_20211201_models.ListSparkLogAnalyzeTasksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.ListSparkLogAnalyzeTasksResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: ListSparkLogAnalyzeTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSparkLogAnalyzeTasksResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -8377,6 +10277,14 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.ListSparkLogAnalyzeTasksRequest,
     ) -> adb_20211201_models.ListSparkLogAnalyzeTasksResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: ListSparkLogAnalyzeTasksRequest
+        @return: ListSparkLogAnalyzeTasksResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_spark_log_analyze_tasks_with_options(request, runtime)
 
@@ -8384,6 +10292,14 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.ListSparkLogAnalyzeTasksRequest,
     ) -> adb_20211201_models.ListSparkLogAnalyzeTasksResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: ListSparkLogAnalyzeTasksRequest
+        @return: ListSparkLogAnalyzeTasksResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_spark_log_analyze_tasks_with_options_async(request, runtime)
 
@@ -8392,6 +10308,15 @@ class Client(OpenApiClient):
         request: adb_20211201_models.ListSparkTemplateFileIdsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.ListSparkTemplateFileIdsResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: ListSparkTemplateFileIdsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSparkTemplateFileIdsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -8420,6 +10345,15 @@ class Client(OpenApiClient):
         request: adb_20211201_models.ListSparkTemplateFileIdsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.ListSparkTemplateFileIdsResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: ListSparkTemplateFileIdsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSparkTemplateFileIdsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -8447,6 +10381,14 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.ListSparkTemplateFileIdsRequest,
     ) -> adb_20211201_models.ListSparkTemplateFileIdsResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: ListSparkTemplateFileIdsRequest
+        @return: ListSparkTemplateFileIdsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_spark_template_file_ids_with_options(request, runtime)
 
@@ -8454,6 +10396,14 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.ListSparkTemplateFileIdsRequest,
     ) -> adb_20211201_models.ListSparkTemplateFileIdsResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: ListSparkTemplateFileIdsRequest
+        @return: ListSparkTemplateFileIdsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_spark_template_file_ids_with_options_async(request, runtime)
 
@@ -8462,6 +10412,13 @@ class Client(OpenApiClient):
         request: adb_20211201_models.LoadSampleDataSetRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.LoadSampleDataSetResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
+        
+        @param request: LoadSampleDataSetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: LoadSampleDataSetResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -8490,6 +10447,13 @@ class Client(OpenApiClient):
         request: adb_20211201_models.LoadSampleDataSetRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.LoadSampleDataSetResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
+        
+        @param request: LoadSampleDataSetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: LoadSampleDataSetResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -8517,6 +10481,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.LoadSampleDataSetRequest,
     ) -> adb_20211201_models.LoadSampleDataSetResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
+        
+        @param request: LoadSampleDataSetRequest
+        @return: LoadSampleDataSetResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.load_sample_data_set_with_options(request, runtime)
 
@@ -8524,6 +10494,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.LoadSampleDataSetRequest,
     ) -> adb_20211201_models.LoadSampleDataSetResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
+        
+        @param request: LoadSampleDataSetRequest
+        @return: LoadSampleDataSetResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.load_sample_data_set_with_options_async(request, runtime)
 
@@ -8532,6 +10508,13 @@ class Client(OpenApiClient):
         request: adb_20211201_models.ModifyAccountDescriptionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.ModifyAccountDescriptionResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
+        
+        @param request: ModifyAccountDescriptionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyAccountDescriptionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_description):
@@ -8564,6 +10547,13 @@ class Client(OpenApiClient):
         request: adb_20211201_models.ModifyAccountDescriptionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.ModifyAccountDescriptionResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
+        
+        @param request: ModifyAccountDescriptionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyAccountDescriptionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_description):
@@ -8595,6 +10585,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.ModifyAccountDescriptionRequest,
     ) -> adb_20211201_models.ModifyAccountDescriptionResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
+        
+        @param request: ModifyAccountDescriptionRequest
+        @return: ModifyAccountDescriptionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_account_description_with_options(request, runtime)
 
@@ -8602,6 +10598,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.ModifyAccountDescriptionRequest,
     ) -> adb_20211201_models.ModifyAccountDescriptionResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
+        
+        @param request: ModifyAccountDescriptionRequest
+        @return: ModifyAccountDescriptionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_account_description_with_options_async(request, runtime)
 
@@ -8794,6 +10796,13 @@ class Client(OpenApiClient):
         request: adb_20211201_models.ModifyBackupPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.ModifyBackupPolicyResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: ModifyBackupPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyBackupPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_retention_period):
@@ -8840,6 +10849,13 @@ class Client(OpenApiClient):
         request: adb_20211201_models.ModifyBackupPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.ModifyBackupPolicyResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: ModifyBackupPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyBackupPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_retention_period):
@@ -8885,6 +10901,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.ModifyBackupPolicyRequest,
     ) -> adb_20211201_models.ModifyBackupPolicyResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: ModifyBackupPolicyRequest
+        @return: ModifyBackupPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_backup_policy_with_options(request, runtime)
 
@@ -8892,6 +10914,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.ModifyBackupPolicyRequest,
     ) -> adb_20211201_models.ModifyBackupPolicyResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: ModifyBackupPolicyRequest
+        @return: ModifyBackupPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_backup_policy_with_options_async(request, runtime)
 
@@ -8900,6 +10928,13 @@ class Client(OpenApiClient):
         request: adb_20211201_models.ModifyClusterAccessWhiteListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.ModifyClusterAccessWhiteListResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: ModifyClusterAccessWhiteListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyClusterAccessWhiteListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_iparray_attribute):
@@ -8936,6 +10971,13 @@ class Client(OpenApiClient):
         request: adb_20211201_models.ModifyClusterAccessWhiteListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.ModifyClusterAccessWhiteListResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: ModifyClusterAccessWhiteListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyClusterAccessWhiteListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_iparray_attribute):
@@ -8971,6 +11013,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.ModifyClusterAccessWhiteListRequest,
     ) -> adb_20211201_models.ModifyClusterAccessWhiteListResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: ModifyClusterAccessWhiteListRequest
+        @return: ModifyClusterAccessWhiteListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_cluster_access_white_list_with_options(request, runtime)
 
@@ -8978,6 +11026,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.ModifyClusterAccessWhiteListRequest,
     ) -> adb_20211201_models.ModifyClusterAccessWhiteListResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: ModifyClusterAccessWhiteListRequest
+        @return: ModifyClusterAccessWhiteListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_cluster_access_white_list_with_options_async(request, runtime)
 
@@ -8986,6 +11040,13 @@ class Client(OpenApiClient):
         request: adb_20211201_models.ModifyClusterConnectionStringRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.ModifyClusterConnectionStringResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: ModifyClusterConnectionStringRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyClusterConnectionStringResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.connection_string_prefix):
@@ -9020,6 +11081,13 @@ class Client(OpenApiClient):
         request: adb_20211201_models.ModifyClusterConnectionStringRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.ModifyClusterConnectionStringResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: ModifyClusterConnectionStringRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyClusterConnectionStringResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.connection_string_prefix):
@@ -9053,6 +11121,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.ModifyClusterConnectionStringRequest,
     ) -> adb_20211201_models.ModifyClusterConnectionStringResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: ModifyClusterConnectionStringRequest
+        @return: ModifyClusterConnectionStringResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_cluster_connection_string_with_options(request, runtime)
 
@@ -9060,6 +11134,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.ModifyClusterConnectionStringRequest,
     ) -> adb_20211201_models.ModifyClusterConnectionStringResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: ModifyClusterConnectionStringRequest
+        @return: ModifyClusterConnectionStringResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_cluster_connection_string_with_options_async(request, runtime)
 
@@ -9094,6 +11174,10 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.reserved_node_count):
+            query['ReservedNodeCount'] = request.reserved_node_count
+        if not UtilClient.is_unset(request.reserved_node_size):
+            query['ReservedNodeSize'] = request.reserved_node_size
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.storage_resource):
@@ -9148,6 +11232,10 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.reserved_node_count):
+            query['ReservedNodeCount'] = request.reserved_node_count
+        if not UtilClient.is_unset(request.reserved_node_size):
+            query['ReservedNodeSize'] = request.reserved_node_size
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.storage_resource):
@@ -9212,6 +11300,13 @@ class Client(OpenApiClient):
         request: adb_20211201_models.ModifyDBClusterDescriptionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.ModifyDBClusterDescriptionResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: ModifyDBClusterDescriptionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDBClusterDescriptionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_description):
@@ -9242,6 +11337,13 @@ class Client(OpenApiClient):
         request: adb_20211201_models.ModifyDBClusterDescriptionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.ModifyDBClusterDescriptionResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: ModifyDBClusterDescriptionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDBClusterDescriptionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_description):
@@ -9271,6 +11373,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.ModifyDBClusterDescriptionRequest,
     ) -> adb_20211201_models.ModifyDBClusterDescriptionResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: ModifyDBClusterDescriptionRequest
+        @return: ModifyDBClusterDescriptionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_dbcluster_description_with_options(request, runtime)
 
@@ -9278,6 +11386,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.ModifyDBClusterDescriptionRequest,
     ) -> adb_20211201_models.ModifyDBClusterDescriptionResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: ModifyDBClusterDescriptionRequest
+        @return: ModifyDBClusterDescriptionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_dbcluster_description_with_options_async(request, runtime)
 
@@ -9286,6 +11400,13 @@ class Client(OpenApiClient):
         request: adb_20211201_models.ModifyDBClusterMaintainTimeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.ModifyDBClusterMaintainTimeResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: ModifyDBClusterMaintainTimeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDBClusterMaintainTimeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -9316,6 +11437,13 @@ class Client(OpenApiClient):
         request: adb_20211201_models.ModifyDBClusterMaintainTimeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.ModifyDBClusterMaintainTimeResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: ModifyDBClusterMaintainTimeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDBClusterMaintainTimeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -9345,6 +11473,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.ModifyDBClusterMaintainTimeRequest,
     ) -> adb_20211201_models.ModifyDBClusterMaintainTimeResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: ModifyDBClusterMaintainTimeRequest
+        @return: ModifyDBClusterMaintainTimeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_dbcluster_maintain_time_with_options(request, runtime)
 
@@ -9352,6 +11486,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.ModifyDBClusterMaintainTimeRequest,
     ) -> adb_20211201_models.ModifyDBClusterMaintainTimeResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: ModifyDBClusterMaintainTimeRequest
+        @return: ModifyDBClusterMaintainTimeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_dbcluster_maintain_time_with_options_async(request, runtime)
 
@@ -9360,6 +11500,13 @@ class Client(OpenApiClient):
         tmp_req: adb_20211201_models.ModifyDBResourceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.ModifyDBResourceGroupResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param tmp_req: ModifyDBResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDBResourceGroupResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = adb_20211201_models.ModifyDBResourceGroupShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -9414,6 +11561,13 @@ class Client(OpenApiClient):
         tmp_req: adb_20211201_models.ModifyDBResourceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.ModifyDBResourceGroupResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param tmp_req: ModifyDBResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDBResourceGroupResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = adb_20211201_models.ModifyDBResourceGroupShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -9467,6 +11621,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.ModifyDBResourceGroupRequest,
     ) -> adb_20211201_models.ModifyDBResourceGroupResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: ModifyDBResourceGroupRequest
+        @return: ModifyDBResourceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_dbresource_group_with_options(request, runtime)
 
@@ -9474,6 +11634,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.ModifyDBResourceGroupRequest,
     ) -> adb_20211201_models.ModifyDBResourceGroupResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: ModifyDBResourceGroupRequest
+        @return: ModifyDBResourceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_dbresource_group_with_options_async(request, runtime)
 
@@ -9482,6 +11648,13 @@ class Client(OpenApiClient):
         request: adb_20211201_models.ModifyElasticPlanRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.ModifyElasticPlanResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: ModifyElasticPlanRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyElasticPlanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cron_expression):
@@ -9520,6 +11693,13 @@ class Client(OpenApiClient):
         request: adb_20211201_models.ModifyElasticPlanRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.ModifyElasticPlanResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: ModifyElasticPlanRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyElasticPlanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cron_expression):
@@ -9557,6 +11737,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.ModifyElasticPlanRequest,
     ) -> adb_20211201_models.ModifyElasticPlanResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: ModifyElasticPlanRequest
+        @return: ModifyElasticPlanResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_elastic_plan_with_options(request, runtime)
 
@@ -9564,6 +11750,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.ModifyElasticPlanRequest,
     ) -> adb_20211201_models.ModifyElasticPlanResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: ModifyElasticPlanRequest
+        @return: ModifyElasticPlanResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_elastic_plan_with_options_async(request, runtime)
 
@@ -9880,6 +12072,15 @@ class Client(OpenApiClient):
         request: adb_20211201_models.SetSparkAppLogRootPathRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.SetSparkAppLogRootPathResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: SetSparkAppLogRootPathRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetSparkAppLogRootPathResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -9912,6 +12113,15 @@ class Client(OpenApiClient):
         request: adb_20211201_models.SetSparkAppLogRootPathRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.SetSparkAppLogRootPathResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: SetSparkAppLogRootPathRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetSparkAppLogRootPathResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -9943,6 +12153,14 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.SetSparkAppLogRootPathRequest,
     ) -> adb_20211201_models.SetSparkAppLogRootPathResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: SetSparkAppLogRootPathRequest
+        @return: SetSparkAppLogRootPathResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.set_spark_app_log_root_path_with_options(request, runtime)
 
@@ -9950,6 +12168,14 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.SetSparkAppLogRootPathRequest,
     ) -> adb_20211201_models.SetSparkAppLogRootPathResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: SetSparkAppLogRootPathRequest
+        @return: SetSparkAppLogRootPathResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.set_spark_app_log_root_path_with_options_async(request, runtime)
 
@@ -9958,6 +12184,15 @@ class Client(OpenApiClient):
         request: adb_20211201_models.StartSparkSQLEngineRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.StartSparkSQLEngineResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: StartSparkSQLEngineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartSparkSQLEngineResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.config):
@@ -9998,6 +12233,15 @@ class Client(OpenApiClient):
         request: adb_20211201_models.StartSparkSQLEngineRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.StartSparkSQLEngineResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: StartSparkSQLEngineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartSparkSQLEngineResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.config):
@@ -10037,6 +12281,14 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.StartSparkSQLEngineRequest,
     ) -> adb_20211201_models.StartSparkSQLEngineResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: StartSparkSQLEngineRequest
+        @return: StartSparkSQLEngineResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.start_spark_sqlengine_with_options(request, runtime)
 
@@ -10044,6 +12296,14 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.StartSparkSQLEngineRequest,
     ) -> adb_20211201_models.StartSparkSQLEngineResponse:
+        """
+        General endpoint: `adb.aliyuncs.com`.
+        *   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        
+        @param request: StartSparkSQLEngineRequest
+        @return: StartSparkSQLEngineResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.start_spark_sqlengine_with_options_async(request, runtime)
 
@@ -10052,6 +12312,15 @@ class Client(OpenApiClient):
         request: adb_20211201_models.SubmitSparkAppRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.SubmitSparkAppResponse:
+        """
+        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
+        
+        @param request: SubmitSparkAppRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitSparkAppResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.agent_source):
@@ -10094,6 +12363,15 @@ class Client(OpenApiClient):
         request: adb_20211201_models.SubmitSparkAppRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.SubmitSparkAppResponse:
+        """
+        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
+        
+        @param request: SubmitSparkAppRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitSparkAppResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.agent_source):
@@ -10135,6 +12413,14 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.SubmitSparkAppRequest,
     ) -> adb_20211201_models.SubmitSparkAppResponse:
+        """
+        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
+        
+        @param request: SubmitSparkAppRequest
+        @return: SubmitSparkAppResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.submit_spark_app_with_options(request, runtime)
 
@@ -10142,6 +12428,14 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.SubmitSparkAppRequest,
     ) -> adb_20211201_models.SubmitSparkAppResponse:
+        """
+        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
+        
+        @param request: SubmitSparkAppRequest
+        @return: SubmitSparkAppResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.submit_spark_app_with_options_async(request, runtime)
 
@@ -10220,6 +12514,13 @@ class Client(OpenApiClient):
         request: adb_20211201_models.UnbindAccountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.UnbindAccountResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
+        
+        @param request: UnbindAccountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnbindAccountResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_name):
@@ -10250,6 +12551,13 @@ class Client(OpenApiClient):
         request: adb_20211201_models.UnbindAccountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.UnbindAccountResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
+        
+        @param request: UnbindAccountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnbindAccountResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_name):
@@ -10279,6 +12587,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.UnbindAccountRequest,
     ) -> adb_20211201_models.UnbindAccountResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
+        
+        @param request: UnbindAccountRequest
+        @return: UnbindAccountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.unbind_account_with_options(request, runtime)
 
@@ -10286,6 +12600,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.UnbindAccountRequest,
     ) -> adb_20211201_models.UnbindAccountResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
+        
+        @param request: UnbindAccountRequest
+        @return: UnbindAccountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.unbind_account_with_options_async(request, runtime)
 
@@ -10294,6 +12614,13 @@ class Client(OpenApiClient):
         request: adb_20211201_models.UnbindDBResourceGroupWithUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.UnbindDBResourceGroupWithUserResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: UnbindDBResourceGroupWithUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnbindDBResourceGroupWithUserResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -10326,6 +12653,13 @@ class Client(OpenApiClient):
         request: adb_20211201_models.UnbindDBResourceGroupWithUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.UnbindDBResourceGroupWithUserResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: UnbindDBResourceGroupWithUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnbindDBResourceGroupWithUserResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -10357,6 +12691,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.UnbindDBResourceGroupWithUserRequest,
     ) -> adb_20211201_models.UnbindDBResourceGroupWithUserResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: UnbindDBResourceGroupWithUserRequest
+        @return: UnbindDBResourceGroupWithUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.unbind_dbresource_group_with_user_with_options(request, runtime)
 
@@ -10364,6 +12704,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.UnbindDBResourceGroupWithUserRequest,
     ) -> adb_20211201_models.UnbindDBResourceGroupWithUserResponse:
+        """
+        For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](~~612373~~).
+        
+        @param request: UnbindDBResourceGroupWithUserRequest
+        @return: UnbindDBResourceGroupWithUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.unbind_dbresource_group_with_user_with_options_async(request, runtime)
 
@@ -10372,6 +12718,15 @@ class Client(OpenApiClient):
         request: adb_20211201_models.UpdateSparkTemplateFileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.UpdateSparkTemplateFileResponse:
+        """
+        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
+        
+        @param request: UpdateSparkTemplateFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateSparkTemplateFileResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.content):
@@ -10406,6 +12761,15 @@ class Client(OpenApiClient):
         request: adb_20211201_models.UpdateSparkTemplateFileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.UpdateSparkTemplateFileResponse:
+        """
+        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
+        
+        @param request: UpdateSparkTemplateFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateSparkTemplateFileResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.content):
@@ -10439,6 +12803,14 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.UpdateSparkTemplateFileRequest,
     ) -> adb_20211201_models.UpdateSparkTemplateFileResponse:
+        """
+        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
+        
+        @param request: UpdateSparkTemplateFileRequest
+        @return: UpdateSparkTemplateFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_spark_template_file_with_options(request, runtime)
 
@@ -10446,5 +12818,13 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.UpdateSparkTemplateFileRequest,
     ) -> adb_20211201_models.UpdateSparkTemplateFileResponse:
+        """
+        Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+        *   Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+        >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
+        
+        @param request: UpdateSparkTemplateFileRequest
+        @return: UpdateSparkTemplateFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_spark_template_file_with_options_async(request, runtime)
