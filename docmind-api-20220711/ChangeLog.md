@@ -1,3 +1,9 @@
+2024-05-09 Version: 1.3.0
+- Support API SubmitConvertImageToMarkdownJob.
+- Support API SubmitConvertPdfToMarkdownJob.
+- Update API SubmitDocStructureJob: add param FormulaEnhancement.
+
+
 2024-01-09 Version: 1.2.1
 - Generated python 2022-07-11 for docmind-api.
 
