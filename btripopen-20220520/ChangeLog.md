@@ -1,3 +1,41 @@
+2024-05-09 Version: 2.8.0
+- Support API TrainApplyChange.
+- Support API TrainApplyRefund.
+- Support API TrainFeeCalculateChange.
+- Support API TrainFeeCalculateRefund.
+- Support API TrainNoInfoSearch.
+- Support API TrainNoListSearch.
+- Support API TrainOrderCancel.
+- Support API TrainOrderChangeConfirm.
+- Support API TrainOrderCreate.
+- Support API TrainOrderDetailQuery.
+- Support API TrainOrderPay.
+- Support API TrainStopoverSearch.
+- Update API ApplyAdd: add param payment_department_id.
+- Update API ApplyAdd: add param payment_department_name.
+- Update API ApplyAdd: update param external_traveler_list.
+- Update API ApplyAdd: update param itinerary_list.
+- Update API ApplyAdd: update param itinerary_set_list.
+- Update API ApplyAdd: update param traveler_list.
+- Update API ApplyListQuery: update response param.
+- Update API ApplyModify: add param payment_department_id.
+- Update API ApplyModify: add param payment_department_name.
+- Update API ApplyModify: update param external_traveler_list.
+- Update API ApplyModify: update param itinerary_list.
+- Update API ApplyModify: update param itinerary_set_list.
+- Update API ApplyModify: update param traveler_list.
+- Update API ApplyQuery: update response param.
+- Update API CarApplyAdd: update param third_part_cost_center_id.
+- Update API CarApplyAdd: update param third_part_invoice_id.
+- Update API FlightModifyListingSearchV2: add param interface_caller_is_support_retry.
+- Update API FlightModifyListingSearchV2: add param search_retry_token.
+- Update API FlightModifyListingSearchV2: update response param.
+- Update API GroupCorpToken: update response param.
+- Update API HotelOrderDetailInfo: update response param.
+- Update API InvoiceSearch: add param third_part_id.
+- Update API QueryReimbursementOrder: update response param.
+
+
 2024-04-12 Version: 2.7.0
 - Support API TravelStandardListQuery.
 - Support API TravelStandardQuery.

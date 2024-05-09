@@ -579,6 +579,10 @@ class Client(OpenApiClient):
             body['itinerary_set_list'] = request.itinerary_set_list_shrink
         if not UtilClient.is_unset(request.limit_traveler):
             body['limit_traveler'] = request.limit_traveler
+        if not UtilClient.is_unset(request.payment_department_id):
+            body['payment_department_id'] = request.payment_department_id
+        if not UtilClient.is_unset(request.payment_department_name):
+            body['payment_department_name'] = request.payment_department_name
         if not UtilClient.is_unset(request.status):
             body['status'] = request.status
         if not UtilClient.is_unset(request.sub_corp_id):
@@ -698,6 +702,10 @@ class Client(OpenApiClient):
             body['itinerary_set_list'] = request.itinerary_set_list_shrink
         if not UtilClient.is_unset(request.limit_traveler):
             body['limit_traveler'] = request.limit_traveler
+        if not UtilClient.is_unset(request.payment_department_id):
+            body['payment_department_id'] = request.payment_department_id
+        if not UtilClient.is_unset(request.payment_department_name):
+            body['payment_department_name'] = request.payment_department_name
         if not UtilClient.is_unset(request.status):
             body['status'] = request.status
         if not UtilClient.is_unset(request.sub_corp_id):
@@ -1271,6 +1279,10 @@ class Client(OpenApiClient):
             body['itinerary_set_list'] = request.itinerary_set_list_shrink
         if not UtilClient.is_unset(request.limit_traveler):
             body['limit_traveler'] = request.limit_traveler
+        if not UtilClient.is_unset(request.payment_department_id):
+            body['payment_department_id'] = request.payment_department_id
+        if not UtilClient.is_unset(request.payment_department_name):
+            body['payment_department_name'] = request.payment_department_name
         if not UtilClient.is_unset(request.status):
             body['status'] = request.status
         if not UtilClient.is_unset(request.sub_corp_id):
@@ -1386,6 +1398,10 @@ class Client(OpenApiClient):
             body['itinerary_set_list'] = request.itinerary_set_list_shrink
         if not UtilClient.is_unset(request.limit_traveler):
             body['limit_traveler'] = request.limit_traveler
+        if not UtilClient.is_unset(request.payment_department_id):
+            body['payment_department_id'] = request.payment_department_id
+        if not UtilClient.is_unset(request.payment_department_name):
+            body['payment_department_name'] = request.payment_department_name
         if not UtilClient.is_unset(request.status):
             body['status'] = request.status
         if not UtilClient.is_unset(request.sub_corp_id):
@@ -5639,6 +5655,8 @@ class Client(OpenApiClient):
             query['cabin_class'] = request.cabin_class_shrink
         if not UtilClient.is_unset(request.dep_date_shrink):
             query['dep_date'] = request.dep_date_shrink
+        if not UtilClient.is_unset(request.interface_caller_is_support_retry):
+            query['interface_caller_is_support_retry'] = request.interface_caller_is_support_retry
         if not UtilClient.is_unset(request.isv_name):
             query['isv_name'] = request.isv_name
         if not UtilClient.is_unset(request.order_id):
@@ -5649,6 +5667,8 @@ class Client(OpenApiClient):
             query['passenger_segment_relations'] = request.passenger_segment_relations_shrink
         if not UtilClient.is_unset(request.search_mode):
             query['search_mode'] = request.search_mode
+        if not UtilClient.is_unset(request.search_retry_token):
+            query['search_retry_token'] = request.search_retry_token
         if not UtilClient.is_unset(request.selected_segments_shrink):
             query['selected_segments'] = request.selected_segments_shrink
         if not UtilClient.is_unset(request.session_id):
@@ -5702,6 +5722,8 @@ class Client(OpenApiClient):
             query['cabin_class'] = request.cabin_class_shrink
         if not UtilClient.is_unset(request.dep_date_shrink):
             query['dep_date'] = request.dep_date_shrink
+        if not UtilClient.is_unset(request.interface_caller_is_support_retry):
+            query['interface_caller_is_support_retry'] = request.interface_caller_is_support_retry
         if not UtilClient.is_unset(request.isv_name):
             query['isv_name'] = request.isv_name
         if not UtilClient.is_unset(request.order_id):
@@ -5712,6 +5734,8 @@ class Client(OpenApiClient):
             query['passenger_segment_relations'] = request.passenger_segment_relations_shrink
         if not UtilClient.is_unset(request.search_mode):
             query['search_mode'] = request.search_mode
+        if not UtilClient.is_unset(request.search_retry_token):
+            query['search_retry_token'] = request.search_retry_token
         if not UtilClient.is_unset(request.selected_segments_shrink):
             query['selected_segments'] = request.selected_segments_shrink
         if not UtilClient.is_unset(request.session_id):
@@ -13165,6 +13189,8 @@ class Client(OpenApiClient):
     ) -> btrip_open_20220520_models.InvoiceSearchResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.third_part_id):
+            query['third_part_id'] = request.third_part_id
         if not UtilClient.is_unset(request.title):
             query['title'] = request.title
         if not UtilClient.is_unset(request.user_id):
@@ -13202,6 +13228,8 @@ class Client(OpenApiClient):
     ) -> btrip_open_20220520_models.InvoiceSearchResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.third_part_id):
+            query['third_part_id'] = request.third_part_id
         if not UtilClient.is_unset(request.title):
             query['title'] = request.title
         if not UtilClient.is_unset(request.user_id):
@@ -15309,6 +15337,234 @@ class Client(OpenApiClient):
         headers = btrip_open_20220520_models.TicketChangingPayHeaders()
         return await self.ticket_changing_pay_with_options_async(request, headers, runtime)
 
+    def train_apply_change_with_options(
+        self,
+        tmp_req: btrip_open_20220520_models.TrainApplyChangeRequest,
+        headers: btrip_open_20220520_models.TrainApplyChangeHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.TrainApplyChangeResponse:
+        UtilClient.validate_model(tmp_req)
+        request = btrip_open_20220520_models.TrainApplyChangeShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.change_train_info_s):
+            request.change_train_info_sshrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.change_train_info_s, 'change_train_info_s', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.change_train_info_sshrink):
+            query['change_train_info_s'] = request.change_train_info_sshrink
+        body = {}
+        if not UtilClient.is_unset(request.accept_no_seat):
+            body['accept_no_seat'] = request.accept_no_seat
+        if not UtilClient.is_unset(request.force_match):
+            body['force_match'] = request.force_match
+        if not UtilClient.is_unset(request.is_pay_now):
+            body['is_pay_now'] = request.is_pay_now
+        if not UtilClient.is_unset(request.order_id):
+            body['order_id'] = request.order_id
+        if not UtilClient.is_unset(request.out_change_apply_id):
+            body['out_change_apply_id'] = request.out_change_apply_id
+        if not UtilClient.is_unset(request.out_order_id):
+            body['out_order_id'] = request.out_order_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='TrainApplyChange',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/train/v1/change/apply',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.TrainApplyChangeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def train_apply_change_with_options_async(
+        self,
+        tmp_req: btrip_open_20220520_models.TrainApplyChangeRequest,
+        headers: btrip_open_20220520_models.TrainApplyChangeHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.TrainApplyChangeResponse:
+        UtilClient.validate_model(tmp_req)
+        request = btrip_open_20220520_models.TrainApplyChangeShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.change_train_info_s):
+            request.change_train_info_sshrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.change_train_info_s, 'change_train_info_s', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.change_train_info_sshrink):
+            query['change_train_info_s'] = request.change_train_info_sshrink
+        body = {}
+        if not UtilClient.is_unset(request.accept_no_seat):
+            body['accept_no_seat'] = request.accept_no_seat
+        if not UtilClient.is_unset(request.force_match):
+            body['force_match'] = request.force_match
+        if not UtilClient.is_unset(request.is_pay_now):
+            body['is_pay_now'] = request.is_pay_now
+        if not UtilClient.is_unset(request.order_id):
+            body['order_id'] = request.order_id
+        if not UtilClient.is_unset(request.out_change_apply_id):
+            body['out_change_apply_id'] = request.out_change_apply_id
+        if not UtilClient.is_unset(request.out_order_id):
+            body['out_order_id'] = request.out_order_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='TrainApplyChange',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/train/v1/change/apply',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.TrainApplyChangeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def train_apply_change(
+        self,
+        request: btrip_open_20220520_models.TrainApplyChangeRequest,
+    ) -> btrip_open_20220520_models.TrainApplyChangeResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.TrainApplyChangeHeaders()
+        return self.train_apply_change_with_options(request, headers, runtime)
+
+    async def train_apply_change_async(
+        self,
+        request: btrip_open_20220520_models.TrainApplyChangeRequest,
+    ) -> btrip_open_20220520_models.TrainApplyChangeResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.TrainApplyChangeHeaders()
+        return await self.train_apply_change_with_options_async(request, headers, runtime)
+
+    def train_apply_refund_with_options(
+        self,
+        tmp_req: btrip_open_20220520_models.TrainApplyRefundRequest,
+        headers: btrip_open_20220520_models.TrainApplyRefundHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.TrainApplyRefundResponse:
+        UtilClient.validate_model(tmp_req)
+        request = btrip_open_20220520_models.TrainApplyRefundShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.refund_train_infos):
+            request.refund_train_infos_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.refund_train_infos, 'refund_train_infos', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.order_id):
+            body['order_id'] = request.order_id
+        if not UtilClient.is_unset(request.out_order_id):
+            body['out_order_id'] = request.out_order_id
+        if not UtilClient.is_unset(request.out_refund_id):
+            body['out_refund_id'] = request.out_refund_id
+        if not UtilClient.is_unset(request.refund_train_infos_shrink):
+            body['refund_train_infos'] = request.refund_train_infos_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='TrainApplyRefund',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/train/v1/refund/apply',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.TrainApplyRefundResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def train_apply_refund_with_options_async(
+        self,
+        tmp_req: btrip_open_20220520_models.TrainApplyRefundRequest,
+        headers: btrip_open_20220520_models.TrainApplyRefundHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.TrainApplyRefundResponse:
+        UtilClient.validate_model(tmp_req)
+        request = btrip_open_20220520_models.TrainApplyRefundShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.refund_train_infos):
+            request.refund_train_infos_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.refund_train_infos, 'refund_train_infos', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.order_id):
+            body['order_id'] = request.order_id
+        if not UtilClient.is_unset(request.out_order_id):
+            body['out_order_id'] = request.out_order_id
+        if not UtilClient.is_unset(request.out_refund_id):
+            body['out_refund_id'] = request.out_refund_id
+        if not UtilClient.is_unset(request.refund_train_infos_shrink):
+            body['refund_train_infos'] = request.refund_train_infos_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='TrainApplyRefund',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/train/v1/refund/apply',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.TrainApplyRefundResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def train_apply_refund(
+        self,
+        request: btrip_open_20220520_models.TrainApplyRefundRequest,
+    ) -> btrip_open_20220520_models.TrainApplyRefundResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.TrainApplyRefundHeaders()
+        return self.train_apply_refund_with_options(request, headers, runtime)
+
+    async def train_apply_refund_async(
+        self,
+        request: btrip_open_20220520_models.TrainApplyRefundRequest,
+    ) -> btrip_open_20220520_models.TrainApplyRefundResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.TrainApplyRefundHeaders()
+        return await self.train_apply_refund_with_options_async(request, headers, runtime)
+
     def train_bill_settlement_query_with_options(
         self,
         request: btrip_open_20220520_models.TrainBillSettlementQueryRequest,
@@ -15493,6 +15749,866 @@ class Client(OpenApiClient):
         headers = btrip_open_20220520_models.TrainExceedApplyQueryHeaders()
         return await self.train_exceed_apply_query_with_options_async(request, headers, runtime)
 
+    def train_fee_calculate_change_with_options(
+        self,
+        tmp_req: btrip_open_20220520_models.TrainFeeCalculateChangeRequest,
+        headers: btrip_open_20220520_models.TrainFeeCalculateChangeHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.TrainFeeCalculateChangeResponse:
+        UtilClient.validate_model(tmp_req)
+        request = btrip_open_20220520_models.TrainFeeCalculateChangeShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.change_train_details):
+            request.change_train_details_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.change_train_details, 'change_train_details', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.change_train_details_shrink):
+            body['change_train_details'] = request.change_train_details_shrink
+        if not UtilClient.is_unset(request.distribute_order_id):
+            body['distribute_order_id'] = request.distribute_order_id
+        if not UtilClient.is_unset(request.order_id):
+            body['order_id'] = request.order_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='TrainFeeCalculateChange',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/train/v1/change/fee',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.TrainFeeCalculateChangeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def train_fee_calculate_change_with_options_async(
+        self,
+        tmp_req: btrip_open_20220520_models.TrainFeeCalculateChangeRequest,
+        headers: btrip_open_20220520_models.TrainFeeCalculateChangeHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.TrainFeeCalculateChangeResponse:
+        UtilClient.validate_model(tmp_req)
+        request = btrip_open_20220520_models.TrainFeeCalculateChangeShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.change_train_details):
+            request.change_train_details_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.change_train_details, 'change_train_details', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.change_train_details_shrink):
+            body['change_train_details'] = request.change_train_details_shrink
+        if not UtilClient.is_unset(request.distribute_order_id):
+            body['distribute_order_id'] = request.distribute_order_id
+        if not UtilClient.is_unset(request.order_id):
+            body['order_id'] = request.order_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='TrainFeeCalculateChange',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/train/v1/change/fee',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.TrainFeeCalculateChangeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def train_fee_calculate_change(
+        self,
+        request: btrip_open_20220520_models.TrainFeeCalculateChangeRequest,
+    ) -> btrip_open_20220520_models.TrainFeeCalculateChangeResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.TrainFeeCalculateChangeHeaders()
+        return self.train_fee_calculate_change_with_options(request, headers, runtime)
+
+    async def train_fee_calculate_change_async(
+        self,
+        request: btrip_open_20220520_models.TrainFeeCalculateChangeRequest,
+    ) -> btrip_open_20220520_models.TrainFeeCalculateChangeResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.TrainFeeCalculateChangeHeaders()
+        return await self.train_fee_calculate_change_with_options_async(request, headers, runtime)
+
+    def train_fee_calculate_refund_with_options(
+        self,
+        tmp_req: btrip_open_20220520_models.TrainFeeCalculateRefundRequest,
+        headers: btrip_open_20220520_models.TrainFeeCalculateRefundHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.TrainFeeCalculateRefundResponse:
+        UtilClient.validate_model(tmp_req)
+        request = btrip_open_20220520_models.TrainFeeCalculateRefundShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.refund_train_infos):
+            request.refund_train_infos_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.refund_train_infos, 'refund_train_infos', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.distribute_order_id):
+            body['distribute_order_id'] = request.distribute_order_id
+        if not UtilClient.is_unset(request.order_id):
+            body['order_id'] = request.order_id
+        if not UtilClient.is_unset(request.refund_train_infos_shrink):
+            body['refund_train_infos'] = request.refund_train_infos_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='TrainFeeCalculateRefund',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/train/v1/refund/fee',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.TrainFeeCalculateRefundResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def train_fee_calculate_refund_with_options_async(
+        self,
+        tmp_req: btrip_open_20220520_models.TrainFeeCalculateRefundRequest,
+        headers: btrip_open_20220520_models.TrainFeeCalculateRefundHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.TrainFeeCalculateRefundResponse:
+        UtilClient.validate_model(tmp_req)
+        request = btrip_open_20220520_models.TrainFeeCalculateRefundShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.refund_train_infos):
+            request.refund_train_infos_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.refund_train_infos, 'refund_train_infos', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.distribute_order_id):
+            body['distribute_order_id'] = request.distribute_order_id
+        if not UtilClient.is_unset(request.order_id):
+            body['order_id'] = request.order_id
+        if not UtilClient.is_unset(request.refund_train_infos_shrink):
+            body['refund_train_infos'] = request.refund_train_infos_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='TrainFeeCalculateRefund',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/train/v1/refund/fee',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.TrainFeeCalculateRefundResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def train_fee_calculate_refund(
+        self,
+        request: btrip_open_20220520_models.TrainFeeCalculateRefundRequest,
+    ) -> btrip_open_20220520_models.TrainFeeCalculateRefundResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.TrainFeeCalculateRefundHeaders()
+        return self.train_fee_calculate_refund_with_options(request, headers, runtime)
+
+    async def train_fee_calculate_refund_async(
+        self,
+        request: btrip_open_20220520_models.TrainFeeCalculateRefundRequest,
+    ) -> btrip_open_20220520_models.TrainFeeCalculateRefundResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.TrainFeeCalculateRefundHeaders()
+        return await self.train_fee_calculate_refund_with_options_async(request, headers, runtime)
+
+    def train_no_info_search_with_options(
+        self,
+        request: btrip_open_20220520_models.TrainNoInfoSearchRequest,
+        headers: btrip_open_20220520_models.TrainNoInfoSearchHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.TrainNoInfoSearchResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.arr_location):
+            body['arr_location'] = request.arr_location
+        if not UtilClient.is_unset(request.dep_date):
+            body['dep_date'] = request.dep_date
+        if not UtilClient.is_unset(request.dep_location):
+            body['dep_location'] = request.dep_location
+        if not UtilClient.is_unset(request.line_key):
+            body['line_key'] = request.line_key
+        if not UtilClient.is_unset(request.middle_date):
+            body['middle_date'] = request.middle_date
+        if not UtilClient.is_unset(request.middle_station):
+            body['middle_station'] = request.middle_station
+        if not UtilClient.is_unset(request.order_id):
+            body['order_id'] = request.order_id
+        if not UtilClient.is_unset(request.train_no):
+            body['train_no'] = request.train_no
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='TrainNoInfoSearch',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/train/v1/search/info',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.TrainNoInfoSearchResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def train_no_info_search_with_options_async(
+        self,
+        request: btrip_open_20220520_models.TrainNoInfoSearchRequest,
+        headers: btrip_open_20220520_models.TrainNoInfoSearchHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.TrainNoInfoSearchResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.arr_location):
+            body['arr_location'] = request.arr_location
+        if not UtilClient.is_unset(request.dep_date):
+            body['dep_date'] = request.dep_date
+        if not UtilClient.is_unset(request.dep_location):
+            body['dep_location'] = request.dep_location
+        if not UtilClient.is_unset(request.line_key):
+            body['line_key'] = request.line_key
+        if not UtilClient.is_unset(request.middle_date):
+            body['middle_date'] = request.middle_date
+        if not UtilClient.is_unset(request.middle_station):
+            body['middle_station'] = request.middle_station
+        if not UtilClient.is_unset(request.order_id):
+            body['order_id'] = request.order_id
+        if not UtilClient.is_unset(request.train_no):
+            body['train_no'] = request.train_no
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='TrainNoInfoSearch',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/train/v1/search/info',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.TrainNoInfoSearchResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def train_no_info_search(
+        self,
+        request: btrip_open_20220520_models.TrainNoInfoSearchRequest,
+    ) -> btrip_open_20220520_models.TrainNoInfoSearchResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.TrainNoInfoSearchHeaders()
+        return self.train_no_info_search_with_options(request, headers, runtime)
+
+    async def train_no_info_search_async(
+        self,
+        request: btrip_open_20220520_models.TrainNoInfoSearchRequest,
+    ) -> btrip_open_20220520_models.TrainNoInfoSearchResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.TrainNoInfoSearchHeaders()
+        return await self.train_no_info_search_with_options_async(request, headers, runtime)
+
+    def train_no_list_search_with_options(
+        self,
+        tmp_req: btrip_open_20220520_models.TrainNoListSearchRequest,
+        headers: btrip_open_20220520_models.TrainNoListSearchHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.TrainNoListSearchResponse:
+        UtilClient.validate_model(tmp_req)
+        request = btrip_open_20220520_models.TrainNoListSearchShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.option):
+            request.option_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.option, 'option', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.arr_location):
+            body['arr_location'] = request.arr_location
+        if not UtilClient.is_unset(request.dep_date):
+            body['dep_date'] = request.dep_date
+        if not UtilClient.is_unset(request.dep_location):
+            body['dep_location'] = request.dep_location
+        if not UtilClient.is_unset(request.option_shrink):
+            body['option'] = request.option_shrink
+        if not UtilClient.is_unset(request.order_id):
+            body['order_id'] = request.order_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='TrainNoListSearch',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/train/v1/search/list',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.TrainNoListSearchResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def train_no_list_search_with_options_async(
+        self,
+        tmp_req: btrip_open_20220520_models.TrainNoListSearchRequest,
+        headers: btrip_open_20220520_models.TrainNoListSearchHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.TrainNoListSearchResponse:
+        UtilClient.validate_model(tmp_req)
+        request = btrip_open_20220520_models.TrainNoListSearchShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.option):
+            request.option_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.option, 'option', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.arr_location):
+            body['arr_location'] = request.arr_location
+        if not UtilClient.is_unset(request.dep_date):
+            body['dep_date'] = request.dep_date
+        if not UtilClient.is_unset(request.dep_location):
+            body['dep_location'] = request.dep_location
+        if not UtilClient.is_unset(request.option_shrink):
+            body['option'] = request.option_shrink
+        if not UtilClient.is_unset(request.order_id):
+            body['order_id'] = request.order_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='TrainNoListSearch',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/train/v1/search/list',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.TrainNoListSearchResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def train_no_list_search(
+        self,
+        request: btrip_open_20220520_models.TrainNoListSearchRequest,
+    ) -> btrip_open_20220520_models.TrainNoListSearchResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.TrainNoListSearchHeaders()
+        return self.train_no_list_search_with_options(request, headers, runtime)
+
+    async def train_no_list_search_async(
+        self,
+        request: btrip_open_20220520_models.TrainNoListSearchRequest,
+    ) -> btrip_open_20220520_models.TrainNoListSearchResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.TrainNoListSearchHeaders()
+        return await self.train_no_list_search_with_options_async(request, headers, runtime)
+
+    def train_order_cancel_with_options(
+        self,
+        request: btrip_open_20220520_models.TrainOrderCancelRequest,
+        headers: btrip_open_20220520_models.TrainOrderCancelHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.TrainOrderCancelResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.change_order_id):
+            body['change_order_id'] = request.change_order_id
+        if not UtilClient.is_unset(request.order_id):
+            body['order_id'] = request.order_id
+        if not UtilClient.is_unset(request.out_change_order_id):
+            body['out_change_order_id'] = request.out_change_order_id
+        if not UtilClient.is_unset(request.out_order_id):
+            body['out_order_id'] = request.out_order_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='TrainOrderCancel',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/train/v1/order/cancel',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.TrainOrderCancelResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def train_order_cancel_with_options_async(
+        self,
+        request: btrip_open_20220520_models.TrainOrderCancelRequest,
+        headers: btrip_open_20220520_models.TrainOrderCancelHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.TrainOrderCancelResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.change_order_id):
+            body['change_order_id'] = request.change_order_id
+        if not UtilClient.is_unset(request.order_id):
+            body['order_id'] = request.order_id
+        if not UtilClient.is_unset(request.out_change_order_id):
+            body['out_change_order_id'] = request.out_change_order_id
+        if not UtilClient.is_unset(request.out_order_id):
+            body['out_order_id'] = request.out_order_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='TrainOrderCancel',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/train/v1/order/cancel',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.TrainOrderCancelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def train_order_cancel(
+        self,
+        request: btrip_open_20220520_models.TrainOrderCancelRequest,
+    ) -> btrip_open_20220520_models.TrainOrderCancelResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.TrainOrderCancelHeaders()
+        return self.train_order_cancel_with_options(request, headers, runtime)
+
+    async def train_order_cancel_async(
+        self,
+        request: btrip_open_20220520_models.TrainOrderCancelRequest,
+    ) -> btrip_open_20220520_models.TrainOrderCancelResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.TrainOrderCancelHeaders()
+        return await self.train_order_cancel_with_options_async(request, headers, runtime)
+
+    def train_order_change_confirm_with_options(
+        self,
+        request: btrip_open_20220520_models.TrainOrderChangeConfirmRequest,
+        headers: btrip_open_20220520_models.TrainOrderChangeConfirmHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.TrainOrderChangeConfirmResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.change_apply_id):
+            body['change_apply_id'] = request.change_apply_id
+        if not UtilClient.is_unset(request.change_settle_amount):
+            body['change_settle_amount'] = request.change_settle_amount
+        if not UtilClient.is_unset(request.order_id):
+            body['order_id'] = request.order_id
+        if not UtilClient.is_unset(request.out_change_apply_id):
+            body['out_change_apply_id'] = request.out_change_apply_id
+        if not UtilClient.is_unset(request.out_order_id):
+            body['out_order_id'] = request.out_order_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='TrainOrderChangeConfirm',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/train/v1/change/confirm',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.TrainOrderChangeConfirmResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def train_order_change_confirm_with_options_async(
+        self,
+        request: btrip_open_20220520_models.TrainOrderChangeConfirmRequest,
+        headers: btrip_open_20220520_models.TrainOrderChangeConfirmHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.TrainOrderChangeConfirmResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.change_apply_id):
+            body['change_apply_id'] = request.change_apply_id
+        if not UtilClient.is_unset(request.change_settle_amount):
+            body['change_settle_amount'] = request.change_settle_amount
+        if not UtilClient.is_unset(request.order_id):
+            body['order_id'] = request.order_id
+        if not UtilClient.is_unset(request.out_change_apply_id):
+            body['out_change_apply_id'] = request.out_change_apply_id
+        if not UtilClient.is_unset(request.out_order_id):
+            body['out_order_id'] = request.out_order_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='TrainOrderChangeConfirm',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/train/v1/change/confirm',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.TrainOrderChangeConfirmResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def train_order_change_confirm(
+        self,
+        request: btrip_open_20220520_models.TrainOrderChangeConfirmRequest,
+    ) -> btrip_open_20220520_models.TrainOrderChangeConfirmResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.TrainOrderChangeConfirmHeaders()
+        return self.train_order_change_confirm_with_options(request, headers, runtime)
+
+    async def train_order_change_confirm_async(
+        self,
+        request: btrip_open_20220520_models.TrainOrderChangeConfirmRequest,
+    ) -> btrip_open_20220520_models.TrainOrderChangeConfirmResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.TrainOrderChangeConfirmHeaders()
+        return await self.train_order_change_confirm_with_options_async(request, headers, runtime)
+
+    def train_order_create_with_options(
+        self,
+        tmp_req: btrip_open_20220520_models.TrainOrderCreateRequest,
+        headers: btrip_open_20220520_models.TrainOrderCreateHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.TrainOrderCreateResponse:
+        UtilClient.validate_model(tmp_req)
+        request = btrip_open_20220520_models.TrainOrderCreateShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.book_train_infos):
+            request.book_train_infos_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.book_train_infos, 'book_train_infos', 'json')
+        if not UtilClient.is_unset(tmp_req.business_info):
+            request.business_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.business_info, 'business_info', 'json')
+        if not UtilClient.is_unset(tmp_req.contact_info):
+            request.contact_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.contact_info, 'contact_info', 'json')
+        if not UtilClient.is_unset(tmp_req.passenger_open_info_s):
+            request.passenger_open_info_sshrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.passenger_open_info_s, 'passenger_open_info_s', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.accept_no_seat):
+            body['accept_no_seat'] = request.accept_no_seat
+        if not UtilClient.is_unset(request.book_train_infos_shrink):
+            body['book_train_infos'] = request.book_train_infos_shrink
+        if not UtilClient.is_unset(request.btrip_user_id):
+            body['btrip_user_id'] = request.btrip_user_id
+        if not UtilClient.is_unset(request.btrip_user_name):
+            body['btrip_user_name'] = request.btrip_user_name
+        if not UtilClient.is_unset(request.business_info_shrink):
+            body['business_info'] = request.business_info_shrink
+        if not UtilClient.is_unset(request.contact_info_shrink):
+            body['contact_info'] = request.contact_info_shrink
+        if not UtilClient.is_unset(request.force_match):
+            body['force_match'] = request.force_match
+        if not UtilClient.is_unset(request.is_pay_now):
+            body['is_pay_now'] = request.is_pay_now
+        if not UtilClient.is_unset(request.out_order_id):
+            body['out_order_id'] = request.out_order_id
+        if not UtilClient.is_unset(request.passenger_open_info_sshrink):
+            body['passenger_open_info_s'] = request.passenger_open_info_sshrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='TrainOrderCreate',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/train/v1/order/create',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.TrainOrderCreateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def train_order_create_with_options_async(
+        self,
+        tmp_req: btrip_open_20220520_models.TrainOrderCreateRequest,
+        headers: btrip_open_20220520_models.TrainOrderCreateHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.TrainOrderCreateResponse:
+        UtilClient.validate_model(tmp_req)
+        request = btrip_open_20220520_models.TrainOrderCreateShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.book_train_infos):
+            request.book_train_infos_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.book_train_infos, 'book_train_infos', 'json')
+        if not UtilClient.is_unset(tmp_req.business_info):
+            request.business_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.business_info, 'business_info', 'json')
+        if not UtilClient.is_unset(tmp_req.contact_info):
+            request.contact_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.contact_info, 'contact_info', 'json')
+        if not UtilClient.is_unset(tmp_req.passenger_open_info_s):
+            request.passenger_open_info_sshrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.passenger_open_info_s, 'passenger_open_info_s', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.accept_no_seat):
+            body['accept_no_seat'] = request.accept_no_seat
+        if not UtilClient.is_unset(request.book_train_infos_shrink):
+            body['book_train_infos'] = request.book_train_infos_shrink
+        if not UtilClient.is_unset(request.btrip_user_id):
+            body['btrip_user_id'] = request.btrip_user_id
+        if not UtilClient.is_unset(request.btrip_user_name):
+            body['btrip_user_name'] = request.btrip_user_name
+        if not UtilClient.is_unset(request.business_info_shrink):
+            body['business_info'] = request.business_info_shrink
+        if not UtilClient.is_unset(request.contact_info_shrink):
+            body['contact_info'] = request.contact_info_shrink
+        if not UtilClient.is_unset(request.force_match):
+            body['force_match'] = request.force_match
+        if not UtilClient.is_unset(request.is_pay_now):
+            body['is_pay_now'] = request.is_pay_now
+        if not UtilClient.is_unset(request.out_order_id):
+            body['out_order_id'] = request.out_order_id
+        if not UtilClient.is_unset(request.passenger_open_info_sshrink):
+            body['passenger_open_info_s'] = request.passenger_open_info_sshrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='TrainOrderCreate',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/train/v1/order/create',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.TrainOrderCreateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def train_order_create(
+        self,
+        request: btrip_open_20220520_models.TrainOrderCreateRequest,
+    ) -> btrip_open_20220520_models.TrainOrderCreateResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.TrainOrderCreateHeaders()
+        return self.train_order_create_with_options(request, headers, runtime)
+
+    async def train_order_create_async(
+        self,
+        request: btrip_open_20220520_models.TrainOrderCreateRequest,
+    ) -> btrip_open_20220520_models.TrainOrderCreateResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.TrainOrderCreateHeaders()
+        return await self.train_order_create_with_options_async(request, headers, runtime)
+
+    def train_order_detail_query_with_options(
+        self,
+        request: btrip_open_20220520_models.TrainOrderDetailQueryRequest,
+        headers: btrip_open_20220520_models.TrainOrderDetailQueryHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.TrainOrderDetailQueryResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.order_id):
+            body['order_id'] = request.order_id
+        if not UtilClient.is_unset(request.out_order_id):
+            body['out_order_id'] = request.out_order_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='TrainOrderDetailQuery',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/train/v1/order/query',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.TrainOrderDetailQueryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def train_order_detail_query_with_options_async(
+        self,
+        request: btrip_open_20220520_models.TrainOrderDetailQueryRequest,
+        headers: btrip_open_20220520_models.TrainOrderDetailQueryHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.TrainOrderDetailQueryResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.order_id):
+            body['order_id'] = request.order_id
+        if not UtilClient.is_unset(request.out_order_id):
+            body['out_order_id'] = request.out_order_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='TrainOrderDetailQuery',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/train/v1/order/query',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.TrainOrderDetailQueryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def train_order_detail_query(
+        self,
+        request: btrip_open_20220520_models.TrainOrderDetailQueryRequest,
+    ) -> btrip_open_20220520_models.TrainOrderDetailQueryResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.TrainOrderDetailQueryHeaders()
+        return self.train_order_detail_query_with_options(request, headers, runtime)
+
+    async def train_order_detail_query_async(
+        self,
+        request: btrip_open_20220520_models.TrainOrderDetailQueryRequest,
+    ) -> btrip_open_20220520_models.TrainOrderDetailQueryResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.TrainOrderDetailQueryHeaders()
+        return await self.train_order_detail_query_with_options_async(request, headers, runtime)
+
     def train_order_list_query_with_options(
         self,
         request: btrip_open_20220520_models.TrainOrderListQueryRequest,
@@ -15618,6 +16734,100 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.TrainOrderListQueryHeaders()
         return await self.train_order_list_query_with_options_async(request, headers, runtime)
+
+    def train_order_pay_with_options(
+        self,
+        request: btrip_open_20220520_models.TrainOrderPayRequest,
+        headers: btrip_open_20220520_models.TrainOrderPayHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.TrainOrderPayResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.order_id):
+            body['order_id'] = request.order_id
+        if not UtilClient.is_unset(request.out_order_id):
+            body['out_order_id'] = request.out_order_id
+        if not UtilClient.is_unset(request.pay_amount):
+            body['pay_amount'] = request.pay_amount
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='TrainOrderPay',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/train/v1/order/pay',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.TrainOrderPayResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def train_order_pay_with_options_async(
+        self,
+        request: btrip_open_20220520_models.TrainOrderPayRequest,
+        headers: btrip_open_20220520_models.TrainOrderPayHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.TrainOrderPayResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.order_id):
+            body['order_id'] = request.order_id
+        if not UtilClient.is_unset(request.out_order_id):
+            body['out_order_id'] = request.out_order_id
+        if not UtilClient.is_unset(request.pay_amount):
+            body['pay_amount'] = request.pay_amount
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='TrainOrderPay',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/train/v1/order/pay',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.TrainOrderPayResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def train_order_pay(
+        self,
+        request: btrip_open_20220520_models.TrainOrderPayRequest,
+    ) -> btrip_open_20220520_models.TrainOrderPayResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.TrainOrderPayHeaders()
+        return self.train_order_pay_with_options(request, headers, runtime)
+
+    async def train_order_pay_async(
+        self,
+        request: btrip_open_20220520_models.TrainOrderPayRequest,
+    ) -> btrip_open_20220520_models.TrainOrderPayResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.TrainOrderPayHeaders()
+        return await self.train_order_pay_with_options_async(request, headers, runtime)
 
     def train_order_query_with_options(
         self,
@@ -15884,6 +17094,104 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.TrainStationSearchHeaders()
         return await self.train_station_search_with_options_async(request, headers, runtime)
+
+    def train_stopover_search_with_options(
+        self,
+        request: btrip_open_20220520_models.TrainStopoverSearchRequest,
+        headers: btrip_open_20220520_models.TrainStopoverSearchHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.TrainStopoverSearchResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.arr_station):
+            body['arr_station'] = request.arr_station
+        if not UtilClient.is_unset(request.dep_station):
+            body['dep_station'] = request.dep_station
+        if not UtilClient.is_unset(request.train_date):
+            body['train_date'] = request.train_date
+        if not UtilClient.is_unset(request.train_no):
+            body['train_no'] = request.train_no
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='TrainStopoverSearch',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/train/v1/search/stopover',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.TrainStopoverSearchResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def train_stopover_search_with_options_async(
+        self,
+        request: btrip_open_20220520_models.TrainStopoverSearchRequest,
+        headers: btrip_open_20220520_models.TrainStopoverSearchHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.TrainStopoverSearchResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.arr_station):
+            body['arr_station'] = request.arr_station
+        if not UtilClient.is_unset(request.dep_station):
+            body['dep_station'] = request.dep_station
+        if not UtilClient.is_unset(request.train_date):
+            body['train_date'] = request.train_date
+        if not UtilClient.is_unset(request.train_no):
+            body['train_no'] = request.train_no
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='TrainStopoverSearch',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/train/v1/search/stopover',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.TrainStopoverSearchResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def train_stopover_search(
+        self,
+        request: btrip_open_20220520_models.TrainStopoverSearchRequest,
+    ) -> btrip_open_20220520_models.TrainStopoverSearchResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.TrainStopoverSearchHeaders()
+        return self.train_stopover_search_with_options(request, headers, runtime)
+
+    async def train_stopover_search_async(
+        self,
+        request: btrip_open_20220520_models.TrainStopoverSearchRequest,
+    ) -> btrip_open_20220520_models.TrainStopoverSearchResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.TrainStopoverSearchHeaders()
+        return await self.train_stopover_search_with_options_async(request, headers, runtime)
 
     def train_ticket_scan_query_with_options(
         self,
