@@ -4606,6 +4606,72 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_dbinstances_with_options_async(request, runtime)
 
+    def describe_dbresource_management_mode_with_options(
+        self,
+        request: gpdb_20160503_models.DescribeDBResourceManagementModeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DescribeDBResourceManagementModeResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBResourceManagementMode',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DescribeDBResourceManagementModeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_dbresource_management_mode_with_options_async(
+        self,
+        request: gpdb_20160503_models.DescribeDBResourceManagementModeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DescribeDBResourceManagementModeResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBResourceManagementMode',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DescribeDBResourceManagementModeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_dbresource_management_mode(
+        self,
+        request: gpdb_20160503_models.DescribeDBResourceManagementModeRequest,
+    ) -> gpdb_20160503_models.DescribeDBResourceManagementModeResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_dbresource_management_mode_with_options(request, runtime)
+
+    async def describe_dbresource_management_mode_async(
+        self,
+        request: gpdb_20160503_models.DescribeDBResourceManagementModeRequest,
+    ) -> gpdb_20160503_models.DescribeDBResourceManagementModeResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_dbresource_management_mode_with_options_async(request, runtime)
+
     def describe_dbversion_infos_with_options(
         self,
         request: gpdb_20160503_models.DescribeDBVersionInfosRequest,
