@@ -1,3 +1,21 @@
+2024-05-09 Version: 4.10.0
+- Support API CreateRumApp.
+- Support API CreateRumUploadFileUrl.
+- Support API DeleteRumApp.
+- Support API DeleteRumUploadFile.
+- Support API GetRumAppInfo.
+- Support API GetRumApps.
+- Support API GetRumDataForPage.
+- Support API GetRumExceptionStack.
+- Support API GetRumUploadFiles.
+- Support API UpdateRumApp.
+- Support API UpdateRumFileStatus.
+- Update API CreateEnvironment: update param EnvironmentSubType.
+- Update API CreateOrUpdateContact: add param CorpUserId.
+- Update API CreateOrUpdateContact: update response param.
+- Update API DescribeIMRobots: update response param.
+
+
 2024-05-07 Version: 4.9.0
 - Support API UpdatePrometheusInstance.
 - Update API CreateOrUpdateAlertRule: add param AutoAddTargetConfig.

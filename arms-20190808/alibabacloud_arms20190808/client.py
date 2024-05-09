@@ -2939,6 +2939,8 @@ class Client(OpenApiClient):
             body['ContactId'] = request.contact_id
         if not UtilClient.is_unset(request.contact_name):
             body['ContactName'] = request.contact_name
+        if not UtilClient.is_unset(request.corp_user_id):
+            body['CorpUserId'] = request.corp_user_id
         if not UtilClient.is_unset(request.email):
             body['Email'] = request.email
         if not UtilClient.is_unset(request.is_email_verify):
@@ -2983,6 +2985,8 @@ class Client(OpenApiClient):
             body['ContactId'] = request.contact_id
         if not UtilClient.is_unset(request.contact_name):
             body['ContactName'] = request.contact_name
+        if not UtilClient.is_unset(request.corp_user_id):
+            body['CorpUserId'] = request.corp_user_id
         if not UtilClient.is_unset(request.email):
             body['Email'] = request.email
         if not UtilClient.is_unset(request.is_email_verify):
@@ -4020,6 +4024,206 @@ class Client(OpenApiClient):
     ) -> arms20190808_models.CreateRetcodeAppResponse:
         runtime = util_models.RuntimeOptions()
         return await self.create_retcode_app_with_options_async(request, runtime)
+
+    def create_rum_app_with_options(
+        self,
+        request: arms20190808_models.CreateRumAppRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> arms20190808_models.CreateRumAppResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_group):
+            query['AppGroup'] = request.app_group
+        if not UtilClient.is_unset(request.app_name):
+            query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.package_name):
+            query['PackageName'] = request.package_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.site_type):
+            query['SiteType'] = request.site_type
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateRumApp',
+            version='2019-08-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            arms20190808_models.CreateRumAppResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_rum_app_with_options_async(
+        self,
+        request: arms20190808_models.CreateRumAppRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> arms20190808_models.CreateRumAppResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_group):
+            query['AppGroup'] = request.app_group
+        if not UtilClient.is_unset(request.app_name):
+            query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.package_name):
+            query['PackageName'] = request.package_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.site_type):
+            query['SiteType'] = request.site_type
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateRumApp',
+            version='2019-08-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            arms20190808_models.CreateRumAppResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_rum_app(
+        self,
+        request: arms20190808_models.CreateRumAppRequest,
+    ) -> arms20190808_models.CreateRumAppResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_rum_app_with_options(request, runtime)
+
+    async def create_rum_app_async(
+        self,
+        request: arms20190808_models.CreateRumAppRequest,
+    ) -> arms20190808_models.CreateRumAppResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_rum_app_with_options_async(request, runtime)
+
+    def create_rum_upload_file_url_with_options(
+        self,
+        request: arms20190808_models.CreateRumUploadFileUrlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> arms20190808_models.CreateRumUploadFileUrlResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_name):
+            query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.content_type):
+            query['ContentType'] = request.content_type
+        if not UtilClient.is_unset(request.file_name):
+            query['FileName'] = request.file_name
+        if not UtilClient.is_unset(request.pid):
+            query['Pid'] = request.pid
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.sourcemap_type):
+            query['SourcemapType'] = request.sourcemap_type
+        if not UtilClient.is_unset(request.uuid):
+            query['Uuid'] = request.uuid
+        if not UtilClient.is_unset(request.version_id):
+            query['VersionId'] = request.version_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateRumUploadFileUrl',
+            version='2019-08-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            arms20190808_models.CreateRumUploadFileUrlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_rum_upload_file_url_with_options_async(
+        self,
+        request: arms20190808_models.CreateRumUploadFileUrlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> arms20190808_models.CreateRumUploadFileUrlResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_name):
+            query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.content_type):
+            query['ContentType'] = request.content_type
+        if not UtilClient.is_unset(request.file_name):
+            query['FileName'] = request.file_name
+        if not UtilClient.is_unset(request.pid):
+            query['Pid'] = request.pid
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.sourcemap_type):
+            query['SourcemapType'] = request.sourcemap_type
+        if not UtilClient.is_unset(request.uuid):
+            query['Uuid'] = request.uuid
+        if not UtilClient.is_unset(request.version_id):
+            query['VersionId'] = request.version_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateRumUploadFileUrl',
+            version='2019-08-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            arms20190808_models.CreateRumUploadFileUrlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_rum_upload_file_url(
+        self,
+        request: arms20190808_models.CreateRumUploadFileUrlRequest,
+    ) -> arms20190808_models.CreateRumUploadFileUrlResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_rum_upload_file_url_with_options(request, runtime)
+
+    async def create_rum_upload_file_url_async(
+        self,
+        request: arms20190808_models.CreateRumUploadFileUrlRequest,
+    ) -> arms20190808_models.CreateRumUploadFileUrlResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_rum_upload_file_url_with_options_async(request, runtime)
 
     def create_synthetic_task_with_options(
         self,
@@ -6694,6 +6898,170 @@ class Client(OpenApiClient):
     ) -> arms20190808_models.DeleteRetcodeAppResponse:
         runtime = util_models.RuntimeOptions()
         return await self.delete_retcode_app_with_options_async(request, runtime)
+
+    def delete_rum_app_with_options(
+        self,
+        request: arms20190808_models.DeleteRumAppRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> arms20190808_models.DeleteRumAppResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_group):
+            query['AppGroup'] = request.app_group
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteRumApp',
+            version='2019-08-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            arms20190808_models.DeleteRumAppResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_rum_app_with_options_async(
+        self,
+        request: arms20190808_models.DeleteRumAppRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> arms20190808_models.DeleteRumAppResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_group):
+            query['AppGroup'] = request.app_group
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteRumApp',
+            version='2019-08-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            arms20190808_models.DeleteRumAppResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_rum_app(
+        self,
+        request: arms20190808_models.DeleteRumAppRequest,
+    ) -> arms20190808_models.DeleteRumAppResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_rum_app_with_options(request, runtime)
+
+    async def delete_rum_app_async(
+        self,
+        request: arms20190808_models.DeleteRumAppRequest,
+    ) -> arms20190808_models.DeleteRumAppResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_rum_app_with_options_async(request, runtime)
+
+    def delete_rum_upload_file_with_options(
+        self,
+        request: arms20190808_models.DeleteRumUploadFileRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> arms20190808_models.DeleteRumUploadFileResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.file_name):
+            query['FileName'] = request.file_name
+        if not UtilClient.is_unset(request.pid):
+            query['Pid'] = request.pid
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.uuid):
+            query['Uuid'] = request.uuid
+        if not UtilClient.is_unset(request.version_id):
+            query['VersionId'] = request.version_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteRumUploadFile',
+            version='2019-08-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            arms20190808_models.DeleteRumUploadFileResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_rum_upload_file_with_options_async(
+        self,
+        request: arms20190808_models.DeleteRumUploadFileRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> arms20190808_models.DeleteRumUploadFileResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.file_name):
+            query['FileName'] = request.file_name
+        if not UtilClient.is_unset(request.pid):
+            query['Pid'] = request.pid
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.uuid):
+            query['Uuid'] = request.uuid
+        if not UtilClient.is_unset(request.version_id):
+            query['VersionId'] = request.version_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteRumUploadFile',
+            version='2019-08-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            arms20190808_models.DeleteRumUploadFileResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_rum_upload_file(
+        self,
+        request: arms20190808_models.DeleteRumUploadFileRequest,
+    ) -> arms20190808_models.DeleteRumUploadFileResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_rum_upload_file_with_options(request, runtime)
+
+    async def delete_rum_upload_file_async(
+        self,
+        request: arms20190808_models.DeleteRumUploadFileRequest,
+    ) -> arms20190808_models.DeleteRumUploadFileResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_rum_upload_file_with_options_async(request, runtime)
 
     def delete_scenario_with_options(
         self,
@@ -10368,6 +10736,436 @@ class Client(OpenApiClient):
     ) -> arms20190808_models.GetRetcodeShareUrlResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_retcode_share_url_with_options_async(request, runtime)
+
+    def get_rum_app_info_with_options(
+        self,
+        request: arms20190808_models.GetRumAppInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> arms20190808_models.GetRumAppInfoResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_group):
+            query['AppGroup'] = request.app_group
+        if not UtilClient.is_unset(request.pid):
+            query['Pid'] = request.pid
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetRumAppInfo',
+            version='2019-08-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            arms20190808_models.GetRumAppInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_rum_app_info_with_options_async(
+        self,
+        request: arms20190808_models.GetRumAppInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> arms20190808_models.GetRumAppInfoResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_group):
+            query['AppGroup'] = request.app_group
+        if not UtilClient.is_unset(request.pid):
+            query['Pid'] = request.pid
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetRumAppInfo',
+            version='2019-08-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            arms20190808_models.GetRumAppInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_rum_app_info(
+        self,
+        request: arms20190808_models.GetRumAppInfoRequest,
+    ) -> arms20190808_models.GetRumAppInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_rum_app_info_with_options(request, runtime)
+
+    async def get_rum_app_info_async(
+        self,
+        request: arms20190808_models.GetRumAppInfoRequest,
+    ) -> arms20190808_models.GetRumAppInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_rum_app_info_with_options_async(request, runtime)
+
+    def get_rum_apps_with_options(
+        self,
+        request: arms20190808_models.GetRumAppsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> arms20190808_models.GetRumAppsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_group):
+            query['AppGroup'] = request.app_group
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.app_name):
+            query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetRumApps',
+            version='2019-08-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            arms20190808_models.GetRumAppsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_rum_apps_with_options_async(
+        self,
+        request: arms20190808_models.GetRumAppsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> arms20190808_models.GetRumAppsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_group):
+            query['AppGroup'] = request.app_group
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.app_name):
+            query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetRumApps',
+            version='2019-08-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            arms20190808_models.GetRumAppsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_rum_apps(
+        self,
+        request: arms20190808_models.GetRumAppsRequest,
+    ) -> arms20190808_models.GetRumAppsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_rum_apps_with_options(request, runtime)
+
+    async def get_rum_apps_async(
+        self,
+        request: arms20190808_models.GetRumAppsRequest,
+    ) -> arms20190808_models.GetRumAppsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_rum_apps_with_options_async(request, runtime)
+
+    def get_rum_data_for_page_with_options(
+        self,
+        request: arms20190808_models.GetRumDataForPageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> arms20190808_models.GetRumDataForPageResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_group):
+            query['AppGroup'] = request.app_group
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.pid):
+            query['Pid'] = request.pid
+        if not UtilClient.is_unset(request.query):
+            query['Query'] = request.query
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetRumDataForPage',
+            version='2019-08-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            arms20190808_models.GetRumDataForPageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_rum_data_for_page_with_options_async(
+        self,
+        request: arms20190808_models.GetRumDataForPageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> arms20190808_models.GetRumDataForPageResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_group):
+            query['AppGroup'] = request.app_group
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.pid):
+            query['Pid'] = request.pid
+        if not UtilClient.is_unset(request.query):
+            query['Query'] = request.query
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetRumDataForPage',
+            version='2019-08-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            arms20190808_models.GetRumDataForPageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_rum_data_for_page(
+        self,
+        request: arms20190808_models.GetRumDataForPageRequest,
+    ) -> arms20190808_models.GetRumDataForPageResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_rum_data_for_page_with_options(request, runtime)
+
+    async def get_rum_data_for_page_async(
+        self,
+        request: arms20190808_models.GetRumDataForPageRequest,
+    ) -> arms20190808_models.GetRumDataForPageResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_rum_data_for_page_with_options_async(request, runtime)
+
+    def get_rum_exception_stack_with_options(
+        self,
+        request: arms20190808_models.GetRumExceptionStackRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> arms20190808_models.GetRumExceptionStackResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.exception_binary_images):
+            query['ExceptionBinaryImages'] = request.exception_binary_images
+        if not UtilClient.is_unset(request.exception_stack):
+            query['ExceptionStack'] = request.exception_stack
+        if not UtilClient.is_unset(request.exception_thread_id):
+            query['ExceptionThreadId'] = request.exception_thread_id
+        if not UtilClient.is_unset(request.pid):
+            query['Pid'] = request.pid
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetRumExceptionStack',
+            version='2019-08-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            arms20190808_models.GetRumExceptionStackResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_rum_exception_stack_with_options_async(
+        self,
+        request: arms20190808_models.GetRumExceptionStackRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> arms20190808_models.GetRumExceptionStackResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.exception_binary_images):
+            query['ExceptionBinaryImages'] = request.exception_binary_images
+        if not UtilClient.is_unset(request.exception_stack):
+            query['ExceptionStack'] = request.exception_stack
+        if not UtilClient.is_unset(request.exception_thread_id):
+            query['ExceptionThreadId'] = request.exception_thread_id
+        if not UtilClient.is_unset(request.pid):
+            query['Pid'] = request.pid
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetRumExceptionStack',
+            version='2019-08-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            arms20190808_models.GetRumExceptionStackResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_rum_exception_stack(
+        self,
+        request: arms20190808_models.GetRumExceptionStackRequest,
+    ) -> arms20190808_models.GetRumExceptionStackResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_rum_exception_stack_with_options(request, runtime)
+
+    async def get_rum_exception_stack_async(
+        self,
+        request: arms20190808_models.GetRumExceptionStackRequest,
+    ) -> arms20190808_models.GetRumExceptionStackResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_rum_exception_stack_with_options_async(request, runtime)
+
+    def get_rum_upload_files_with_options(
+        self,
+        request: arms20190808_models.GetRumUploadFilesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> arms20190808_models.GetRumUploadFilesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_type):
+            query['AppType'] = request.app_type
+        if not UtilClient.is_unset(request.pid):
+            query['Pid'] = request.pid
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetRumUploadFiles',
+            version='2019-08-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            arms20190808_models.GetRumUploadFilesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_rum_upload_files_with_options_async(
+        self,
+        request: arms20190808_models.GetRumUploadFilesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> arms20190808_models.GetRumUploadFilesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_type):
+            query['AppType'] = request.app_type
+        if not UtilClient.is_unset(request.pid):
+            query['Pid'] = request.pid
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetRumUploadFiles',
+            version='2019-08-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            arms20190808_models.GetRumUploadFilesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_rum_upload_files(
+        self,
+        request: arms20190808_models.GetRumUploadFilesRequest,
+    ) -> arms20190808_models.GetRumUploadFilesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_rum_upload_files_with_options(request, runtime)
+
+    async def get_rum_upload_files_async(
+        self,
+        request: arms20190808_models.GetRumUploadFilesRequest,
+    ) -> arms20190808_models.GetRumUploadFilesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_rum_upload_files_with_options_async(request, runtime)
 
     def get_source_map_info_with_options(
         self,
@@ -20148,6 +20946,202 @@ class Client(OpenApiClient):
     ) -> arms20190808_models.UpdatePrometheusRemoteWriteResponse:
         runtime = util_models.RuntimeOptions()
         return await self.update_prometheus_remote_write_with_options_async(request, runtime)
+
+    def update_rum_app_with_options(
+        self,
+        request: arms20190808_models.UpdateRumAppRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> arms20190808_models.UpdateRumAppResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auto_restart):
+            query['AutoRestart'] = request.auto_restart
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.is_subscribe):
+            query['IsSubscribe'] = request.is_subscribe
+        if not UtilClient.is_unset(request.nickname):
+            query['Nickname'] = request.nickname
+        if not UtilClient.is_unset(request.pid):
+            query['Pid'] = request.pid
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.restart):
+            query['Restart'] = request.restart
+        if not UtilClient.is_unset(request.service_domain_operation_json):
+            query['ServiceDomainOperationJson'] = request.service_domain_operation_json
+        if not UtilClient.is_unset(request.stop):
+            query['Stop'] = request.stop
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateRumApp',
+            version='2019-08-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            arms20190808_models.UpdateRumAppResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_rum_app_with_options_async(
+        self,
+        request: arms20190808_models.UpdateRumAppRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> arms20190808_models.UpdateRumAppResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auto_restart):
+            query['AutoRestart'] = request.auto_restart
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.is_subscribe):
+            query['IsSubscribe'] = request.is_subscribe
+        if not UtilClient.is_unset(request.nickname):
+            query['Nickname'] = request.nickname
+        if not UtilClient.is_unset(request.pid):
+            query['Pid'] = request.pid
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.restart):
+            query['Restart'] = request.restart
+        if not UtilClient.is_unset(request.service_domain_operation_json):
+            query['ServiceDomainOperationJson'] = request.service_domain_operation_json
+        if not UtilClient.is_unset(request.stop):
+            query['Stop'] = request.stop
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateRumApp',
+            version='2019-08-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            arms20190808_models.UpdateRumAppResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_rum_app(
+        self,
+        request: arms20190808_models.UpdateRumAppRequest,
+    ) -> arms20190808_models.UpdateRumAppResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_rum_app_with_options(request, runtime)
+
+    async def update_rum_app_async(
+        self,
+        request: arms20190808_models.UpdateRumAppRequest,
+    ) -> arms20190808_models.UpdateRumAppResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_rum_app_with_options_async(request, runtime)
+
+    def update_rum_file_status_with_options(
+        self,
+        request: arms20190808_models.UpdateRumFileStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> arms20190808_models.UpdateRumFileStatusResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.file_name):
+            query['FileName'] = request.file_name
+        if not UtilClient.is_unset(request.pid):
+            query['Pid'] = request.pid
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.size):
+            query['Size'] = request.size
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.uuid):
+            query['Uuid'] = request.uuid
+        if not UtilClient.is_unset(request.version_id):
+            query['VersionId'] = request.version_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateRumFileStatus',
+            version='2019-08-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            arms20190808_models.UpdateRumFileStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_rum_file_status_with_options_async(
+        self,
+        request: arms20190808_models.UpdateRumFileStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> arms20190808_models.UpdateRumFileStatusResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.file_name):
+            query['FileName'] = request.file_name
+        if not UtilClient.is_unset(request.pid):
+            query['Pid'] = request.pid
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.size):
+            query['Size'] = request.size
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.uuid):
+            query['Uuid'] = request.uuid
+        if not UtilClient.is_unset(request.version_id):
+            query['VersionId'] = request.version_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateRumFileStatus',
+            version='2019-08-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            arms20190808_models.UpdateRumFileStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_rum_file_status(
+        self,
+        request: arms20190808_models.UpdateRumFileStatusRequest,
+    ) -> arms20190808_models.UpdateRumFileStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_rum_file_status_with_options(request, runtime)
+
+    async def update_rum_file_status_async(
+        self,
+        request: arms20190808_models.UpdateRumFileStatusRequest,
+    ) -> arms20190808_models.UpdateRumFileStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_rum_file_status_with_options_async(request, runtime)
 
     def update_timing_synthetic_task_with_options(
         self,

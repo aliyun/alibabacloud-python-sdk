@@ -6376,7 +6376,7 @@ class CreateEnvironmentRequest(TeaModel):
         self.environment_name = environment_name
         # The subtype of the environment. Valid values:
         # 
-        # *   CS: ACK
+        # *   CS: ACK, One
         # *   ECS: ECS
         # *   Cloud: cloud service
         self.environment_sub_type = environment_sub_type
@@ -6386,9 +6386,10 @@ class CreateEnvironmentRequest(TeaModel):
         # *   ECS: ECS
         # *   Cloud: cloud service
         self.environment_type = environment_type
-        # Paid packages.
-        # *  When EnvironmentType is CS: can be specified as CS_Basic (default) or CS_Pro.
-        # * When EnvironmentType is any other value, enter a null value.
+        # The payable resource plan. Valid values:
+        # 
+        # *   If the EnvironmentType parameter is set to CS, set the value to CS_Basic or CS_Pro. Default value: CS_Basic.
+        # *   Otherwise, leave the parameter empty.
         self.fee_package = fee_package
         # Specifies whether agents or exporters are managed. Valid values:
         # 
@@ -6396,7 +6397,7 @@ class CreateEnvironmentRequest(TeaModel):
         # *   agent: Agents are managed. By default, managed agents are provided for ASK clusters, ACS clusters, and ACK One clusters.
         # *   agent-exproter: Agents and exporters are managed. By default, managed agents and exporters are provided for cloud services.
         self.managed_type = managed_type
-        # Nullable, the prom instance id for the environment binding. if not provided, call the InitEnvironment interface to complete the initialization of the storage instance.
+        # The ID of the Prometheus instance. If no Prometheus instance is created, call the InitEnvironment operation to initialize a storage instance.
         self.prometheus_instance_id = prometheus_instance_id
         # The region ID.
         self.region_id = region_id
@@ -8185,6 +8186,7 @@ class CreateOrUpdateContactRequest(TeaModel):
         self,
         contact_id: int = None,
         contact_name: str = None,
+        corp_user_id: str = None,
         ding_robot_url: str = None,
         email: str = None,
         is_email_verify: bool = None,
@@ -8199,6 +8201,7 @@ class CreateOrUpdateContactRequest(TeaModel):
         self.contact_id = contact_id
         # The name of the alert contact.
         self.contact_name = contact_name
+        self.corp_user_id = corp_user_id
         # The webhook URL of the DingTalk chatbot.
         self.ding_robot_url = ding_robot_url
         # The email address of the alert contact.
@@ -8234,6 +8237,8 @@ class CreateOrUpdateContactRequest(TeaModel):
             result['ContactId'] = self.contact_id
         if self.contact_name is not None:
             result['ContactName'] = self.contact_name
+        if self.corp_user_id is not None:
+            result['CorpUserId'] = self.corp_user_id
         if self.ding_robot_url is not None:
             result['DingRobotUrl'] = self.ding_robot_url
         if self.email is not None:
@@ -8254,6 +8259,8 @@ class CreateOrUpdateContactRequest(TeaModel):
             self.contact_id = m.get('ContactId')
         if m.get('ContactName') is not None:
             self.contact_name = m.get('ContactName')
+        if m.get('CorpUserId') is not None:
+            self.corp_user_id = m.get('CorpUserId')
         if m.get('DingRobotUrl') is not None:
             self.ding_robot_url = m.get('DingRobotUrl')
         if m.get('Email') is not None:
@@ -11492,6 +11499,396 @@ class CreateRetcodeAppResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateRetcodeAppResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateRumAppRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class CreateRumAppRequest(TeaModel):
+    def __init__(
+        self,
+        app_group: str = None,
+        app_name: str = None,
+        description: str = None,
+        package_name: str = None,
+        region_id: str = None,
+        resource_group_id: str = None,
+        site_type: str = None,
+        source: str = None,
+        tag: List[CreateRumAppRequestTag] = None,
+    ):
+        self.app_group = app_group
+        self.app_name = app_name
+        self.description = description
+        self.package_name = package_name
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
+        self.site_type = site_type
+        self.source = source
+        self.tag = tag
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_group is not None:
+            result['AppGroup'] = self.app_group
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.package_name is not None:
+            result['PackageName'] = self.package_name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.site_type is not None:
+            result['SiteType'] = self.site_type
+        if self.source is not None:
+            result['Source'] = self.source
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppGroup') is not None:
+            self.app_group = m.get('AppGroup')
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('PackageName') is not None:
+            self.package_name = m.get('PackageName')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('SiteType') is not None:
+            self.site_type = m.get('SiteType')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = CreateRumAppRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
+class CreateRumAppResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        resource_group_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        # Id of the request
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.resource_group_id = resource_group_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateRumAppResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateRumAppResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateRumAppResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateRumUploadFileUrlRequest(TeaModel):
+    def __init__(
+        self,
+        app_name: str = None,
+        content_type: str = None,
+        file_name: str = None,
+        pid: str = None,
+        region_id: str = None,
+        sourcemap_type: str = None,
+        uuid: str = None,
+        version_id: str = None,
+    ):
+        self.app_name = app_name
+        self.content_type = content_type
+        self.file_name = file_name
+        self.pid = pid
+        self.region_id = region_id
+        self.sourcemap_type = sourcemap_type
+        self.uuid = uuid
+        self.version_id = version_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
+        if self.content_type is not None:
+            result['ContentType'] = self.content_type
+        if self.file_name is not None:
+            result['FileName'] = self.file_name
+        if self.pid is not None:
+            result['Pid'] = self.pid
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.sourcemap_type is not None:
+            result['SourcemapType'] = self.sourcemap_type
+        if self.uuid is not None:
+            result['Uuid'] = self.uuid
+        if self.version_id is not None:
+            result['VersionId'] = self.version_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
+        if m.get('ContentType') is not None:
+            self.content_type = m.get('ContentType')
+        if m.get('FileName') is not None:
+            self.file_name = m.get('FileName')
+        if m.get('Pid') is not None:
+            self.pid = m.get('Pid')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SourcemapType') is not None:
+            self.sourcemap_type = m.get('SourcemapType')
+        if m.get('Uuid') is not None:
+            self.uuid = m.get('Uuid')
+        if m.get('VersionId') is not None:
+            self.version_id = m.get('VersionId')
+        return self
+
+
+class CreateRumUploadFileUrlResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateRumUploadFileUrlResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateRumUploadFileUrlResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateRumUploadFileUrlResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -17942,6 +18339,300 @@ class DeleteRetcodeAppResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteRetcodeAppResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteRumAppRequest(TeaModel):
+    def __init__(
+        self,
+        app_group: str = None,
+        app_id: str = None,
+        region_id: str = None,
+    ):
+        self.app_group = app_group
+        self.app_id = app_id
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_group is not None:
+            result['AppGroup'] = self.app_group
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppGroup') is not None:
+            self.app_group = m.get('AppGroup')
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class DeleteRumAppResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        resource_group_id: str = None,
+        result: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.http_status_code = http_status_code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.resource_group_id = resource_group_id
+        self.result = result
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.result is not None:
+            result['Result'] = self.result
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteRumAppResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteRumAppResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteRumAppResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteRumUploadFileRequest(TeaModel):
+    def __init__(
+        self,
+        file_name: str = None,
+        pid: str = None,
+        region_id: str = None,
+        uuid: str = None,
+        version_id: str = None,
+    ):
+        self.file_name = file_name
+        self.pid = pid
+        self.region_id = region_id
+        self.uuid = uuid
+        self.version_id = version_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_name is not None:
+            result['FileName'] = self.file_name
+        if self.pid is not None:
+            result['Pid'] = self.pid
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.uuid is not None:
+            result['Uuid'] = self.uuid
+        if self.version_id is not None:
+            result['VersionId'] = self.version_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FileName') is not None:
+            self.file_name = m.get('FileName')
+        if m.get('Pid') is not None:
+            self.pid = m.get('Pid')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('Uuid') is not None:
+            self.uuid = m.get('Uuid')
+        if m.get('VersionId') is not None:
+            self.version_id = m.get('VersionId')
+        return self
+
+
+class DeleteRumUploadFileResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteRumUploadFileResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteRumUploadFileResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteRumUploadFileResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -28975,6 +29666,1402 @@ class GetRetcodeShareUrlResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetRetcodeShareUrlResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetRumAppInfoRequest(TeaModel):
+    def __init__(
+        self,
+        app_group: str = None,
+        pid: str = None,
+        region_id: str = None,
+    ):
+        self.app_group = app_group
+        self.pid = pid
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_group is not None:
+            result['AppGroup'] = self.app_group
+        if self.pid is not None:
+            result['Pid'] = self.pid
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppGroup') is not None:
+            self.app_group = m.get('AppGroup')
+        if m.get('Pid') is not None:
+            self.pid = m.get('Pid')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class GetRumAppInfoResponseBodyDataServiceDomainConfigs(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        domain: str = None,
+        propagator_types: List[str] = None,
+        tracing: bool = None,
+    ):
+        self.description = description
+        self.domain = domain
+        self.propagator_types = propagator_types
+        self.tracing = tracing
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        if self.propagator_types is not None:
+            result['PropagatorTypes'] = self.propagator_types
+        if self.tracing is not None:
+            result['Tracing'] = self.tracing
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        if m.get('PropagatorTypes') is not None:
+            self.propagator_types = m.get('PropagatorTypes')
+        if m.get('Tracing') is not None:
+            self.tracing = m.get('Tracing')
+        return self
+
+
+class GetRumAppInfoResponseBodyDataTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class GetRumAppInfoResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        app_type: str = None,
+        create_time: str = None,
+        description: str = None,
+        endpoint: str = None,
+        is_subscription: str = None,
+        name: str = None,
+        nick_name: str = None,
+        package_name: str = None,
+        pid: str = None,
+        region_id: str = None,
+        resource_group_id: str = None,
+        service_domain_configs: List[GetRumAppInfoResponseBodyDataServiceDomainConfigs] = None,
+        sls_logstore: str = None,
+        sls_project: str = None,
+        status: str = None,
+        tags: List[GetRumAppInfoResponseBodyDataTags] = None,
+        type: str = None,
+    ):
+        self.app_type = app_type
+        self.create_time = create_time
+        self.description = description
+        self.endpoint = endpoint
+        self.is_subscription = is_subscription
+        self.name = name
+        self.nick_name = nick_name
+        self.package_name = package_name
+        self.pid = pid
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
+        self.service_domain_configs = service_domain_configs
+        self.sls_logstore = sls_logstore
+        self.sls_project = sls_project
+        self.status = status
+        self.tags = tags
+        self.type = type
+
+    def validate(self):
+        if self.service_domain_configs:
+            for k in self.service_domain_configs:
+                if k:
+                    k.validate()
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_type is not None:
+            result['AppType'] = self.app_type
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.endpoint is not None:
+            result['Endpoint'] = self.endpoint
+        if self.is_subscription is not None:
+            result['IsSubscription'] = self.is_subscription
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.nick_name is not None:
+            result['NickName'] = self.nick_name
+        if self.package_name is not None:
+            result['PackageName'] = self.package_name
+        if self.pid is not None:
+            result['Pid'] = self.pid
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        result['ServiceDomainConfigs'] = []
+        if self.service_domain_configs is not None:
+            for k in self.service_domain_configs:
+                result['ServiceDomainConfigs'].append(k.to_map() if k else None)
+        if self.sls_logstore is not None:
+            result['SlsLogstore'] = self.sls_logstore
+        if self.sls_project is not None:
+            result['SlsProject'] = self.sls_project
+        if self.status is not None:
+            result['Status'] = self.status
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppType') is not None:
+            self.app_type = m.get('AppType')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Endpoint') is not None:
+            self.endpoint = m.get('Endpoint')
+        if m.get('IsSubscription') is not None:
+            self.is_subscription = m.get('IsSubscription')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('NickName') is not None:
+            self.nick_name = m.get('NickName')
+        if m.get('PackageName') is not None:
+            self.package_name = m.get('PackageName')
+        if m.get('Pid') is not None:
+            self.pid = m.get('Pid')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        self.service_domain_configs = []
+        if m.get('ServiceDomainConfigs') is not None:
+            for k in m.get('ServiceDomainConfigs'):
+                temp_model = GetRumAppInfoResponseBodyDataServiceDomainConfigs()
+                self.service_domain_configs.append(temp_model.from_map(k))
+        if m.get('SlsLogstore') is not None:
+            self.sls_logstore = m.get('SlsLogstore')
+        if m.get('SlsProject') is not None:
+            self.sls_project = m.get('SlsProject')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = GetRumAppInfoResponseBodyDataTags()
+                self.tags.append(temp_model.from_map(k))
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class GetRumAppInfoResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: GetRumAppInfoResponseBodyData = None,
+        http_status_code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetRumAppInfoResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetRumAppInfoResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetRumAppInfoResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetRumAppInfoResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetRumAppsRequestTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class GetRumAppsRequest(TeaModel):
+    def __init__(
+        self,
+        app_group: str = None,
+        app_id: str = None,
+        app_name: str = None,
+        region_id: str = None,
+        resource_group_id: str = None,
+        tags: List[GetRumAppsRequestTags] = None,
+    ):
+        self.app_group = app_group
+        self.app_id = app_id
+        self.app_name = app_name
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
+        self.tags = tags
+
+    def validate(self):
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_group is not None:
+            result['AppGroup'] = self.app_group
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppGroup') is not None:
+            self.app_group = m.get('AppGroup')
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = GetRumAppsRequestTags()
+                self.tags.append(temp_model.from_map(k))
+        return self
+
+
+class GetRumAppsResponseBodyAppListServiceDomainConfigs(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        domain: str = None,
+        propagator_types: List[str] = None,
+        tracing: str = None,
+    ):
+        self.description = description
+        self.domain = domain
+        self.propagator_types = propagator_types
+        self.tracing = tracing
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        if self.propagator_types is not None:
+            result['PropagatorTypes'] = self.propagator_types
+        if self.tracing is not None:
+            result['Tracing'] = self.tracing
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        if m.get('PropagatorTypes') is not None:
+            self.propagator_types = m.get('PropagatorTypes')
+        if m.get('Tracing') is not None:
+            self.tracing = m.get('Tracing')
+        return self
+
+
+class GetRumAppsResponseBodyAppListTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class GetRumAppsResponseBodyAppList(TeaModel):
+    def __init__(
+        self,
+        app_type: str = None,
+        create_time: Any = None,
+        description: str = None,
+        endpoint: str = None,
+        is_subscription: bool = None,
+        name: str = None,
+        nick_name: str = None,
+        package_name: str = None,
+        pid: str = None,
+        region_id: str = None,
+        resource_group_id: str = None,
+        service_domain_configs: List[GetRumAppsResponseBodyAppListServiceDomainConfigs] = None,
+        sls_logstore: str = None,
+        sls_project: str = None,
+        status: str = None,
+        tags: List[GetRumAppsResponseBodyAppListTags] = None,
+        type: str = None,
+    ):
+        self.app_type = app_type
+        self.create_time = create_time
+        self.description = description
+        self.endpoint = endpoint
+        self.is_subscription = is_subscription
+        self.name = name
+        self.nick_name = nick_name
+        self.package_name = package_name
+        self.pid = pid
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
+        self.service_domain_configs = service_domain_configs
+        self.sls_logstore = sls_logstore
+        self.sls_project = sls_project
+        self.status = status
+        self.tags = tags
+        self.type = type
+
+    def validate(self):
+        if self.service_domain_configs:
+            for k in self.service_domain_configs:
+                if k:
+                    k.validate()
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_type is not None:
+            result['AppType'] = self.app_type
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.endpoint is not None:
+            result['Endpoint'] = self.endpoint
+        if self.is_subscription is not None:
+            result['IsSubscription'] = self.is_subscription
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.nick_name is not None:
+            result['NickName'] = self.nick_name
+        if self.package_name is not None:
+            result['PackageName'] = self.package_name
+        if self.pid is not None:
+            result['Pid'] = self.pid
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        result['ServiceDomainConfigs'] = []
+        if self.service_domain_configs is not None:
+            for k in self.service_domain_configs:
+                result['ServiceDomainConfigs'].append(k.to_map() if k else None)
+        if self.sls_logstore is not None:
+            result['SlsLogstore'] = self.sls_logstore
+        if self.sls_project is not None:
+            result['SlsProject'] = self.sls_project
+        if self.status is not None:
+            result['Status'] = self.status
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppType') is not None:
+            self.app_type = m.get('AppType')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Endpoint') is not None:
+            self.endpoint = m.get('Endpoint')
+        if m.get('IsSubscription') is not None:
+            self.is_subscription = m.get('IsSubscription')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('NickName') is not None:
+            self.nick_name = m.get('NickName')
+        if m.get('PackageName') is not None:
+            self.package_name = m.get('PackageName')
+        if m.get('Pid') is not None:
+            self.pid = m.get('Pid')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        self.service_domain_configs = []
+        if m.get('ServiceDomainConfigs') is not None:
+            for k in m.get('ServiceDomainConfigs'):
+                temp_model = GetRumAppsResponseBodyAppListServiceDomainConfigs()
+                self.service_domain_configs.append(temp_model.from_map(k))
+        if m.get('SlsLogstore') is not None:
+            self.sls_logstore = m.get('SlsLogstore')
+        if m.get('SlsProject') is not None:
+            self.sls_project = m.get('SlsProject')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = GetRumAppsResponseBodyAppListTags()
+                self.tags.append(temp_model.from_map(k))
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class GetRumAppsResponseBody(TeaModel):
+    def __init__(
+        self,
+        app_list: List[GetRumAppsResponseBodyAppList] = None,
+        code: int = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.app_list = app_list
+        self.code = code
+        self.http_status_code = http_status_code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.app_list:
+            for k in self.app_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AppList'] = []
+        if self.app_list is not None:
+            for k in self.app_list:
+                result['AppList'].append(k.to_map() if k else None)
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.app_list = []
+        if m.get('AppList') is not None:
+            for k in m.get('AppList'):
+                temp_model = GetRumAppsResponseBodyAppList()
+                self.app_list.append(temp_model.from_map(k))
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetRumAppsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetRumAppsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetRumAppsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetRumDataForPageRequest(TeaModel):
+    def __init__(
+        self,
+        app_group: str = None,
+        current_page: int = None,
+        end_time: int = None,
+        page_size: int = None,
+        pid: str = None,
+        query: str = None,
+        region_id: str = None,
+        start_time: int = None,
+    ):
+        self.app_group = app_group
+        self.current_page = current_page
+        self.end_time = end_time
+        self.page_size = page_size
+        self.pid = pid
+        self.query = query
+        self.region_id = region_id
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_group is not None:
+            result['AppGroup'] = self.app_group
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.pid is not None:
+            result['Pid'] = self.pid
+        if self.query is not None:
+            result['Query'] = self.query
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppGroup') is not None:
+            self.app_group = m.get('AppGroup')
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Pid') is not None:
+            self.pid = m.get('Pid')
+        if m.get('Query') is not None:
+            self.query = m.get('Query')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class GetRumDataForPageResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        authentication: str = None,
+        completion: str = None,
+        items: List[Dict[str, Any]] = None,
+        page: str = None,
+        page_size: str = None,
+        preference: str = None,
+        total: str = None,
+    ):
+        self.authentication = authentication
+        self.completion = completion
+        self.items = items
+        self.page = page
+        self.page_size = page_size
+        self.preference = preference
+        self.total = total
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.authentication is not None:
+            result['Authentication'] = self.authentication
+        if self.completion is not None:
+            result['Completion'] = self.completion
+        if self.items is not None:
+            result['Items'] = self.items
+        if self.page is not None:
+            result['Page'] = self.page
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.preference is not None:
+            result['Preference'] = self.preference
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Authentication') is not None:
+            self.authentication = m.get('Authentication')
+        if m.get('Completion') is not None:
+            self.completion = m.get('Completion')
+        if m.get('Items') is not None:
+            self.items = m.get('Items')
+        if m.get('Page') is not None:
+            self.page = m.get('Page')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Preference') is not None:
+            self.preference = m.get('Preference')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class GetRumDataForPageResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: GetRumDataForPageResponseBodyData = None,
+        http_status_code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetRumDataForPageResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetRumDataForPageResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetRumDataForPageResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetRumDataForPageResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetRumExceptionStackRequest(TeaModel):
+    def __init__(
+        self,
+        exception_binary_images: str = None,
+        exception_stack: str = None,
+        exception_thread_id: str = None,
+        pid: str = None,
+        region_id: str = None,
+    ):
+        self.exception_binary_images = exception_binary_images
+        self.exception_stack = exception_stack
+        self.exception_thread_id = exception_thread_id
+        self.pid = pid
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.exception_binary_images is not None:
+            result['ExceptionBinaryImages'] = self.exception_binary_images
+        if self.exception_stack is not None:
+            result['ExceptionStack'] = self.exception_stack
+        if self.exception_thread_id is not None:
+            result['ExceptionThreadId'] = self.exception_thread_id
+        if self.pid is not None:
+            result['Pid'] = self.pid
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExceptionBinaryImages') is not None:
+            self.exception_binary_images = m.get('ExceptionBinaryImages')
+        if m.get('ExceptionStack') is not None:
+            self.exception_stack = m.get('ExceptionStack')
+        if m.get('ExceptionThreadId') is not None:
+            self.exception_thread_id = m.get('ExceptionThreadId')
+        if m.get('Pid') is not None:
+            self.pid = m.get('Pid')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class GetRumExceptionStackResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        lines: List[str] = None,
+        thread_id: str = None,
+    ):
+        self.lines = lines
+        self.thread_id = thread_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.lines is not None:
+            result['Lines'] = self.lines
+        if self.thread_id is not None:
+            result['ThreadId'] = self.thread_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Lines') is not None:
+            self.lines = m.get('Lines')
+        if m.get('ThreadId') is not None:
+            self.thread_id = m.get('ThreadId')
+        return self
+
+
+class GetRumExceptionStackResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: GetRumExceptionStackResponseBodyData = None,
+        http_status_code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetRumExceptionStackResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetRumExceptionStackResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetRumExceptionStackResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetRumExceptionStackResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetRumUploadFilesRequest(TeaModel):
+    def __init__(
+        self,
+        app_type: str = None,
+        pid: str = None,
+        region_id: str = None,
+    ):
+        self.app_type = app_type
+        self.pid = pid
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_type is not None:
+            result['AppType'] = self.app_type
+        if self.pid is not None:
+            result['Pid'] = self.pid
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppType') is not None:
+            self.app_type = m.get('AppType')
+        if m.get('Pid') is not None:
+            self.pid = m.get('Pid')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class GetRumUploadFilesResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        file_name: str = None,
+        last_modified_time: Any = None,
+        size: str = None,
+        uuid: str = None,
+        version_id: str = None,
+    ):
+        self.file_name = file_name
+        self.last_modified_time = last_modified_time
+        self.size = size
+        self.uuid = uuid
+        self.version_id = version_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_name is not None:
+            result['FileName'] = self.file_name
+        if self.last_modified_time is not None:
+            result['LastModifiedTime'] = self.last_modified_time
+        if self.size is not None:
+            result['Size'] = self.size
+        if self.uuid is not None:
+            result['Uuid'] = self.uuid
+        if self.version_id is not None:
+            result['VersionId'] = self.version_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FileName') is not None:
+            self.file_name = m.get('FileName')
+        if m.get('LastModifiedTime') is not None:
+            self.last_modified_time = m.get('LastModifiedTime')
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        if m.get('Uuid') is not None:
+            self.uuid = m.get('Uuid')
+        if m.get('VersionId') is not None:
+            self.version_id = m.get('VersionId')
+        return self
+
+
+class GetRumUploadFilesResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: List[GetRumUploadFilesResponseBodyData] = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = GetRumUploadFilesResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetRumUploadFilesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetRumUploadFilesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetRumUploadFilesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -59485,6 +61572,359 @@ class UpdatePrometheusRemoteWriteResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdatePrometheusRemoteWriteResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateRumAppRequest(TeaModel):
+    def __init__(
+        self,
+        auto_restart: bool = None,
+        description: str = None,
+        is_subscribe: bool = None,
+        nickname: str = None,
+        pid: str = None,
+        region_id: str = None,
+        restart: bool = None,
+        service_domain_operation_json: str = None,
+        stop: bool = None,
+    ):
+        self.auto_restart = auto_restart
+        self.description = description
+        self.is_subscribe = is_subscribe
+        self.nickname = nickname
+        self.pid = pid
+        self.region_id = region_id
+        self.restart = restart
+        self.service_domain_operation_json = service_domain_operation_json
+        self.stop = stop
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auto_restart is not None:
+            result['AutoRestart'] = self.auto_restart
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.is_subscribe is not None:
+            result['IsSubscribe'] = self.is_subscribe
+        if self.nickname is not None:
+            result['Nickname'] = self.nickname
+        if self.pid is not None:
+            result['Pid'] = self.pid
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.restart is not None:
+            result['Restart'] = self.restart
+        if self.service_domain_operation_json is not None:
+            result['ServiceDomainOperationJson'] = self.service_domain_operation_json
+        if self.stop is not None:
+            result['Stop'] = self.stop
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AutoRestart') is not None:
+            self.auto_restart = m.get('AutoRestart')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('IsSubscribe') is not None:
+            self.is_subscribe = m.get('IsSubscribe')
+        if m.get('Nickname') is not None:
+            self.nickname = m.get('Nickname')
+        if m.get('Pid') is not None:
+            self.pid = m.get('Pid')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('Restart') is not None:
+            self.restart = m.get('Restart')
+        if m.get('ServiceDomainOperationJson') is not None:
+            self.service_domain_operation_json = m.get('ServiceDomainOperationJson')
+        if m.get('Stop') is not None:
+            self.stop = m.get('Stop')
+        return self
+
+
+class UpdateRumAppResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        config: str = None,
+        limit: int = None,
+        limited: bool = None,
+        usage: int = None,
+    ):
+        self.config = config
+        self.limit = limit
+        self.limited = limited
+        self.usage = usage
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config is not None:
+            result['Config'] = self.config
+        if self.limit is not None:
+            result['Limit'] = self.limit
+        if self.limited is not None:
+            result['Limited'] = self.limited
+        if self.usage is not None:
+            result['Usage'] = self.usage
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Config') is not None:
+            self.config = m.get('Config')
+        if m.get('Limit') is not None:
+            self.limit = m.get('Limit')
+        if m.get('Limited') is not None:
+            self.limited = m.get('Limited')
+        if m.get('Usage') is not None:
+            self.usage = m.get('Usage')
+        return self
+
+
+class UpdateRumAppResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: UpdateRumAppResponseBodyData = None,
+        http_status_code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = UpdateRumAppResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateRumAppResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateRumAppResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateRumAppResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateRumFileStatusRequest(TeaModel):
+    def __init__(
+        self,
+        file_name: str = None,
+        pid: str = None,
+        region_id: str = None,
+        size: str = None,
+        status: str = None,
+        uuid: str = None,
+        version_id: str = None,
+    ):
+        self.file_name = file_name
+        self.pid = pid
+        self.region_id = region_id
+        self.size = size
+        self.status = status
+        self.uuid = uuid
+        self.version_id = version_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_name is not None:
+            result['FileName'] = self.file_name
+        if self.pid is not None:
+            result['Pid'] = self.pid
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.size is not None:
+            result['Size'] = self.size
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.uuid is not None:
+            result['Uuid'] = self.uuid
+        if self.version_id is not None:
+            result['VersionId'] = self.version_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FileName') is not None:
+            self.file_name = m.get('FileName')
+        if m.get('Pid') is not None:
+            self.pid = m.get('Pid')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Uuid') is not None:
+            self.uuid = m.get('Uuid')
+        if m.get('VersionId') is not None:
+            self.version_id = m.get('VersionId')
+        return self
+
+
+class UpdateRumFileStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateRumFileStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateRumFileStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateRumFileStatusResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
