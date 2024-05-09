@@ -5892,13 +5892,48 @@ class DeleteAlertContactGroupResponse(TeaModel):
         return self
 
 
+class DeleteClusterRequestDeleteOptions(TeaModel):
+    def __init__(
+        self,
+        delete_mode: str = None,
+        resource_type: str = None,
+    ):
+        self.delete_mode = delete_mode
+        self.resource_type = resource_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.delete_mode is not None:
+            result['delete_mode'] = self.delete_mode
+        if self.resource_type is not None:
+            result['resource_type'] = self.resource_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('delete_mode') is not None:
+            self.delete_mode = m.get('delete_mode')
+        if m.get('resource_type') is not None:
+            self.resource_type = m.get('resource_type')
+        return self
+
+
 class DeleteClusterRequest(TeaModel):
     def __init__(
         self,
+        delete_options: List[DeleteClusterRequestDeleteOptions] = None,
         keep_slb: bool = None,
         retain_all_resources: bool = None,
         retain_resources: List[str] = None,
     ):
+        self.delete_options = delete_options
         # Specifies whether to retain the Server Load Balancer (SLB) resources that are created by the cluster.
         # 
         # *   `true`: retains the SLB resources that are created by the cluster.
@@ -5917,7 +5952,10 @@ class DeleteClusterRequest(TeaModel):
         self.retain_resources = retain_resources
 
     def validate(self):
-        pass
+        if self.delete_options:
+            for k in self.delete_options:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -5925,6 +5963,10 @@ class DeleteClusterRequest(TeaModel):
             return _map
 
         result = dict()
+        result['delete_options'] = []
+        if self.delete_options is not None:
+            for k in self.delete_options:
+                result['delete_options'].append(k.to_map() if k else None)
         if self.keep_slb is not None:
             result['keep_slb'] = self.keep_slb
         if self.retain_all_resources is not None:
@@ -5935,6 +5977,11 @@ class DeleteClusterRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.delete_options = []
+        if m.get('delete_options') is not None:
+            for k in m.get('delete_options'):
+                temp_model = DeleteClusterRequestDeleteOptions()
+                self.delete_options.append(temp_model.from_map(k))
         if m.get('keep_slb') is not None:
             self.keep_slb = m.get('keep_slb')
         if m.get('retain_all_resources') is not None:
@@ -5947,10 +5994,12 @@ class DeleteClusterRequest(TeaModel):
 class DeleteClusterShrinkRequest(TeaModel):
     def __init__(
         self,
+        delete_options_shrink: str = None,
         keep_slb: bool = None,
         retain_all_resources: bool = None,
         retain_resources_shrink: str = None,
     ):
+        self.delete_options_shrink = delete_options_shrink
         # Specifies whether to retain the Server Load Balancer (SLB) resources that are created by the cluster.
         # 
         # *   `true`: retains the SLB resources that are created by the cluster.
@@ -5977,6 +6026,8 @@ class DeleteClusterShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.delete_options_shrink is not None:
+            result['delete_options'] = self.delete_options_shrink
         if self.keep_slb is not None:
             result['keep_slb'] = self.keep_slb
         if self.retain_all_resources is not None:
@@ -5987,6 +6038,8 @@ class DeleteClusterShrinkRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('delete_options') is not None:
+            self.delete_options_shrink = m.get('delete_options')
         if m.get('keep_slb') is not None:
             self.keep_slb = m.get('keep_slb')
         if m.get('retain_all_resources') is not None:

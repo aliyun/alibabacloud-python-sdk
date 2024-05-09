@@ -1,3 +1,7 @@
+2024-05-09 Version: 4.0.7
+- Update API DeleteCluster: add param delete_options.
+
+
 2024-05-07 Version: 4.0.6
 - Update API DescribeClusterDetail: update response param.
 - Update API DescribeClusterNodePools: add param NodepoolName.

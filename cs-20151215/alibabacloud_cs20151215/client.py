@@ -2014,9 +2014,13 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = cs20151215_models.DeleteClusterShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.delete_options):
+            request.delete_options_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.delete_options, 'delete_options', 'json')
         if not UtilClient.is_unset(tmp_req.retain_resources):
             request.retain_resources_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.retain_resources, 'retain_resources', 'json')
         query = {}
+        if not UtilClient.is_unset(request.delete_options_shrink):
+            query['delete_options'] = request.delete_options_shrink
         if not UtilClient.is_unset(request.keep_slb):
             query['keep_slb'] = request.keep_slb
         if not UtilClient.is_unset(request.retain_all_resources):
@@ -2053,9 +2057,13 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = cs20151215_models.DeleteClusterShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.delete_options):
+            request.delete_options_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.delete_options, 'delete_options', 'json')
         if not UtilClient.is_unset(tmp_req.retain_resources):
             request.retain_resources_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.retain_resources, 'retain_resources', 'json')
         query = {}
+        if not UtilClient.is_unset(request.delete_options_shrink):
+            query['delete_options'] = request.delete_options_shrink
         if not UtilClient.is_unset(request.keep_slb):
             query['keep_slb'] = request.keep_slb
         if not UtilClient.is_unset(request.retain_all_resources):
