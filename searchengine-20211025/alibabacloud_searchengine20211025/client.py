@@ -721,6 +721,126 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_instance_with_options_async(request, headers, runtime)
 
+    def create_table_with_options(
+        self,
+        instance_id: str,
+        request: searchengine_20211025_models.CreateTableRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.CreateTableResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dry_run):
+            query['dryRun'] = request.dry_run
+        body = {}
+        if not UtilClient.is_unset(request.data_process_config):
+            body['dataProcessConfig'] = request.data_process_config
+        if not UtilClient.is_unset(request.data_processor_count):
+            body['dataProcessorCount'] = request.data_processor_count
+        if not UtilClient.is_unset(request.data_source):
+            body['dataSource'] = request.data_source
+        if not UtilClient.is_unset(request.field_schema):
+            body['fieldSchema'] = request.field_schema
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        if not UtilClient.is_unset(request.partition_count):
+            body['partitionCount'] = request.partition_count
+        if not UtilClient.is_unset(request.primary_key):
+            body['primaryKey'] = request.primary_key
+        if not UtilClient.is_unset(request.raw_schema):
+            body['rawSchema'] = request.raw_schema
+        if not UtilClient.is_unset(request.vector_index):
+            body['vectorIndex'] = request.vector_index
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateTable',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/tables',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.CreateTableResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_table_with_options_async(
+        self,
+        instance_id: str,
+        request: searchengine_20211025_models.CreateTableRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.CreateTableResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dry_run):
+            query['dryRun'] = request.dry_run
+        body = {}
+        if not UtilClient.is_unset(request.data_process_config):
+            body['dataProcessConfig'] = request.data_process_config
+        if not UtilClient.is_unset(request.data_processor_count):
+            body['dataProcessorCount'] = request.data_processor_count
+        if not UtilClient.is_unset(request.data_source):
+            body['dataSource'] = request.data_source
+        if not UtilClient.is_unset(request.field_schema):
+            body['fieldSchema'] = request.field_schema
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        if not UtilClient.is_unset(request.partition_count):
+            body['partitionCount'] = request.partition_count
+        if not UtilClient.is_unset(request.primary_key):
+            body['primaryKey'] = request.primary_key
+        if not UtilClient.is_unset(request.raw_schema):
+            body['rawSchema'] = request.raw_schema
+        if not UtilClient.is_unset(request.vector_index):
+            body['vectorIndex'] = request.vector_index
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateTable',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/tables',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.CreateTableResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_table(
+        self,
+        instance_id: str,
+        request: searchengine_20211025_models.CreateTableRequest,
+    ) -> searchengine_20211025_models.CreateTableResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_table_with_options(instance_id, request, headers, runtime)
+
+    async def create_table_async(
+        self,
+        instance_id: str,
+        request: searchengine_20211025_models.CreateTableRequest,
+    ) -> searchengine_20211025_models.CreateTableResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_table_with_options_async(instance_id, request, headers, runtime)
+
     def delete_advance_config_with_options(
         self,
         instance_id: str,
@@ -1272,6 +1392,152 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_instance_with_options_async(instance_id, headers, runtime)
+
+    def delete_table_with_options(
+        self,
+        instance_id: str,
+        table_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.DeleteTableResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteTable',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/tables/{OpenApiUtilClient.get_encode_param(table_name)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.DeleteTableResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_table_with_options_async(
+        self,
+        instance_id: str,
+        table_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.DeleteTableResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteTable',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/tables/{OpenApiUtilClient.get_encode_param(table_name)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.DeleteTableResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_table(
+        self,
+        instance_id: str,
+        table_name: str,
+    ) -> searchengine_20211025_models.DeleteTableResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_table_with_options(instance_id, table_name, headers, runtime)
+
+    async def delete_table_async(
+        self,
+        instance_id: str,
+        table_name: str,
+    ) -> searchengine_20211025_models.DeleteTableResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_table_with_options_async(instance_id, table_name, headers, runtime)
+
+    def describe_regions_with_options(
+        self,
+        request: searchengine_20211025_models.DescribeRegionsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.DescribeRegionsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['acceptLanguage'] = request.accept_language
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRegions',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/regions',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.DescribeRegionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_regions_with_options_async(
+        self,
+        request: searchengine_20211025_models.DescribeRegionsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.DescribeRegionsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['acceptLanguage'] = request.accept_language
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRegions',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/regions',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.DescribeRegionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_regions(
+        self,
+        request: searchengine_20211025_models.DescribeRegionsRequest,
+    ) -> searchengine_20211025_models.DescribeRegionsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.describe_regions_with_options(request, headers, runtime)
+
+    async def describe_regions_async(
+        self,
+        request: searchengine_20211025_models.DescribeRegionsRequest,
+    ) -> searchengine_20211025_models.DescribeRegionsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.describe_regions_with_options_async(request, headers, runtime)
 
     def force_switch_with_options(
         self,
@@ -2634,6 +2900,150 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_node_config_with_options_async(instance_id, request, headers, runtime)
+
+    def get_table_with_options(
+        self,
+        instance_id: str,
+        table_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.GetTableResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetTable',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/tables/{OpenApiUtilClient.get_encode_param(table_name)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.GetTableResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_table_with_options_async(
+        self,
+        instance_id: str,
+        table_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.GetTableResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetTable',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/tables/{OpenApiUtilClient.get_encode_param(table_name)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.GetTableResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_table(
+        self,
+        instance_id: str,
+        table_name: str,
+    ) -> searchengine_20211025_models.GetTableResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_table_with_options(instance_id, table_name, headers, runtime)
+
+    async def get_table_async(
+        self,
+        instance_id: str,
+        table_name: str,
+    ) -> searchengine_20211025_models.GetTableResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_table_with_options_async(instance_id, table_name, headers, runtime)
+
+    def get_table_generation_with_options(
+        self,
+        instance_id: str,
+        table_name: str,
+        generation_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.GetTableGenerationResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetTableGeneration',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/tables/{OpenApiUtilClient.get_encode_param(table_name)}/index_versions/{OpenApiUtilClient.get_encode_param(generation_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.GetTableGenerationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_table_generation_with_options_async(
+        self,
+        instance_id: str,
+        table_name: str,
+        generation_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.GetTableGenerationResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetTableGeneration',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/tables/{OpenApiUtilClient.get_encode_param(table_name)}/index_versions/{OpenApiUtilClient.get_encode_param(generation_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.GetTableGenerationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_table_generation(
+        self,
+        instance_id: str,
+        table_name: str,
+        generation_id: str,
+    ) -> searchengine_20211025_models.GetTableGenerationResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_table_generation_with_options(instance_id, table_name, generation_id, headers, runtime)
+
+    async def get_table_generation_async(
+        self,
+        instance_id: str,
+        table_name: str,
+        generation_id: str,
+    ) -> searchengine_20211025_models.GetTableGenerationResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_table_generation_with_options_async(instance_id, table_name, generation_id, headers, runtime)
 
     def list_advance_config_dir_with_options(
         self,
@@ -4315,6 +4725,156 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_query_result_with_options_async(instance_id, request, headers, runtime)
 
+    def list_table_generations_with_options(
+        self,
+        instance_id: str,
+        table_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.ListTableGenerationsResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='ListTableGenerations',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/tables/{OpenApiUtilClient.get_encode_param(table_name)}/index_versions',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.ListTableGenerationsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_table_generations_with_options_async(
+        self,
+        instance_id: str,
+        table_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.ListTableGenerationsResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='ListTableGenerations',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/tables/{OpenApiUtilClient.get_encode_param(table_name)}/index_versions',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.ListTableGenerationsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_table_generations(
+        self,
+        instance_id: str,
+        table_name: str,
+    ) -> searchengine_20211025_models.ListTableGenerationsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_table_generations_with_options(instance_id, table_name, headers, runtime)
+
+    async def list_table_generations_async(
+        self,
+        instance_id: str,
+        table_name: str,
+    ) -> searchengine_20211025_models.ListTableGenerationsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_table_generations_with_options_async(instance_id, table_name, headers, runtime)
+
+    def list_tables_with_options(
+        self,
+        instance_id: str,
+        request: searchengine_20211025_models.ListTablesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.ListTablesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.new_mode):
+            query['newMode'] = request.new_mode
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTables',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/tables',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.ListTablesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_tables_with_options_async(
+        self,
+        instance_id: str,
+        request: searchengine_20211025_models.ListTablesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.ListTablesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.new_mode):
+            query['newMode'] = request.new_mode
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTables',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/tables',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.ListTablesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_tables(
+        self,
+        instance_id: str,
+        request: searchengine_20211025_models.ListTablesRequest,
+    ) -> searchengine_20211025_models.ListTablesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_tables_with_options(instance_id, request, headers, runtime)
+
+    async def list_tables_async(
+        self,
+        instance_id: str,
+        request: searchengine_20211025_models.ListTablesRequest,
+    ) -> searchengine_20211025_models.ListTablesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_tables_with_options_async(instance_id, request, headers, runtime)
+
     def modify_advance_config_file_with_options(
         self,
         instance_id: str,
@@ -5809,6 +6369,122 @@ class Client(OpenApiClient):
         headers = {}
         return await self.modify_password_with_options_async(instance_id, request, headers, runtime)
 
+    def modify_table_with_options(
+        self,
+        instance_id: str,
+        table_name: str,
+        request: searchengine_20211025_models.ModifyTableRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.ModifyTableResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dry_run):
+            query['dryRun'] = request.dry_run
+        body = {}
+        if not UtilClient.is_unset(request.data_process_config):
+            body['dataProcessConfig'] = request.data_process_config
+        if not UtilClient.is_unset(request.data_source):
+            body['dataSource'] = request.data_source
+        if not UtilClient.is_unset(request.field_schema):
+            body['fieldSchema'] = request.field_schema
+        if not UtilClient.is_unset(request.partition_count):
+            body['partitionCount'] = request.partition_count
+        if not UtilClient.is_unset(request.primary_key):
+            body['primaryKey'] = request.primary_key
+        if not UtilClient.is_unset(request.raw_schema):
+            body['rawSchema'] = request.raw_schema
+        if not UtilClient.is_unset(request.vector_index):
+            body['vectorIndex'] = request.vector_index
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyTable',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/tables/{OpenApiUtilClient.get_encode_param(table_name)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.ModifyTableResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_table_with_options_async(
+        self,
+        instance_id: str,
+        table_name: str,
+        request: searchengine_20211025_models.ModifyTableRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.ModifyTableResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dry_run):
+            query['dryRun'] = request.dry_run
+        body = {}
+        if not UtilClient.is_unset(request.data_process_config):
+            body['dataProcessConfig'] = request.data_process_config
+        if not UtilClient.is_unset(request.data_source):
+            body['dataSource'] = request.data_source
+        if not UtilClient.is_unset(request.field_schema):
+            body['fieldSchema'] = request.field_schema
+        if not UtilClient.is_unset(request.partition_count):
+            body['partitionCount'] = request.partition_count
+        if not UtilClient.is_unset(request.primary_key):
+            body['primaryKey'] = request.primary_key
+        if not UtilClient.is_unset(request.raw_schema):
+            body['rawSchema'] = request.raw_schema
+        if not UtilClient.is_unset(request.vector_index):
+            body['vectorIndex'] = request.vector_index
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyTable',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/tables/{OpenApiUtilClient.get_encode_param(table_name)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.ModifyTableResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_table(
+        self,
+        instance_id: str,
+        table_name: str,
+        request: searchengine_20211025_models.ModifyTableRequest,
+    ) -> searchengine_20211025_models.ModifyTableResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.modify_table_with_options(instance_id, table_name, request, headers, runtime)
+
+    async def modify_table_async(
+        self,
+        instance_id: str,
+        table_name: str,
+        request: searchengine_20211025_models.ModifyTableRequest,
+    ) -> searchengine_20211025_models.ModifyTableResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.modify_table_with_options_async(instance_id, table_name, request, headers, runtime)
+
     def publish_advance_config_with_options(
         self,
         instance_id: str,
@@ -6204,6 +6880,98 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.recover_index_with_options_async(instance_id, request, headers, runtime)
+
+    def reindex_with_options(
+        self,
+        instance_id: str,
+        table_name: str,
+        request: searchengine_20211025_models.ReindexRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.ReindexResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.data_time_sec):
+            body['dataTimeSec'] = request.data_time_sec
+        if not UtilClient.is_unset(request.oss_data_path):
+            body['ossDataPath'] = request.oss_data_path
+        if not UtilClient.is_unset(request.partition):
+            body['partition'] = request.partition
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='Reindex',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/tables/{OpenApiUtilClient.get_encode_param(table_name)}/reindex',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.ReindexResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def reindex_with_options_async(
+        self,
+        instance_id: str,
+        table_name: str,
+        request: searchengine_20211025_models.ReindexRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchengine_20211025_models.ReindexResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.data_time_sec):
+            body['dataTimeSec'] = request.data_time_sec
+        if not UtilClient.is_unset(request.oss_data_path):
+            body['ossDataPath'] = request.oss_data_path
+        if not UtilClient.is_unset(request.partition):
+            body['partition'] = request.partition
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='Reindex',
+            version='2021-10-25',
+            protocol='HTTPS',
+            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/tables/{OpenApiUtilClient.get_encode_param(table_name)}/reindex',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchengine_20211025_models.ReindexResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def reindex(
+        self,
+        instance_id: str,
+        table_name: str,
+        request: searchengine_20211025_models.ReindexRequest,
+    ) -> searchengine_20211025_models.ReindexResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.reindex_with_options(instance_id, table_name, request, headers, runtime)
+
+    async def reindex_async(
+        self,
+        instance_id: str,
+        table_name: str,
+        request: searchengine_20211025_models.ReindexRequest,
+    ) -> searchengine_20211025_models.ReindexResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.reindex_with_options_async(instance_id, table_name, request, headers, runtime)
 
     def remove_cluster_with_options(
         self,

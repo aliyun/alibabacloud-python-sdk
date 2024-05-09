@@ -1,3 +1,15 @@
+2024-05-09 Version: 2.1.0
+- Support API CreateTable.
+- Support API DeleteTable.
+- Support API DescribeRegions.
+- Support API GetTable.
+- Support API GetTableGeneration.
+- Support API ListTableGenerations.
+- Support API ListTables.
+- Support API ModifyTable.
+- Support API Reindex.
+
+
 2024-05-06 Version: 2.0.3
 - Generated python 2021-10-25 for searchengine.
 
