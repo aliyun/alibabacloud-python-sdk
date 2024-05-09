@@ -4245,9 +4245,13 @@ class GetDataSourceDeployResponseBodyResultStorage(TeaModel):
         project: str = None,
         table: str = None,
     ):
+        # AK
         self.access_key = access_key
+        # AS
         self.access_secret = access_secret
+        # oss bucket
         self.bucket = bucket
+        # odps endpoint
         self.endpoint = endpoint
         self.namespace = namespace
         self.oss_path = oss_path
@@ -4318,7 +4322,9 @@ class GetDataSourceDeployResponseBodyResultSwift(TeaModel):
         topic: str = None,
         zk: str = None,
     ):
+        # topic
         self.topic = topic
+        # zk
         self.zk = zk
 
     def validate(self):
@@ -4413,7 +4419,9 @@ class GetDataSourceDeployResponseBody(TeaModel):
         request_id: str = None,
         result: GetDataSourceDeployResponseBodyResult = None,
     ):
+        # requestId
         self.request_id = request_id
+        # Deploy
         self.result = result
 
     def validate(self):
@@ -6551,6 +6559,7 @@ class GetTableResponseBodyResult(TeaModel):
         partition_count: int = None,
         primary_key: str = None,
         raw_schema: str = None,
+        status: str = None,
         vector_index: List[GetTableResponseBodyResultVectorIndex] = None,
     ):
         self.data_process_config = data_process_config
@@ -6561,6 +6570,7 @@ class GetTableResponseBodyResult(TeaModel):
         self.partition_count = partition_count
         self.primary_key = primary_key
         self.raw_schema = raw_schema
+        self.status = status
         self.vector_index = vector_index
 
     def validate(self):
@@ -6599,6 +6609,8 @@ class GetTableResponseBodyResult(TeaModel):
             result['primaryKey'] = self.primary_key
         if self.raw_schema is not None:
             result['rawSchema'] = self.raw_schema
+        if self.status is not None:
+            result['status'] = self.status
         result['vectorIndex'] = []
         if self.vector_index is not None:
             for k in self.vector_index:
@@ -6627,6 +6639,8 @@ class GetTableResponseBodyResult(TeaModel):
             self.primary_key = m.get('primaryKey')
         if m.get('rawSchema') is not None:
             self.raw_schema = m.get('rawSchema')
+        if m.get('status') is not None:
+            self.status = m.get('status')
         self.vector_index = []
         if m.get('vectorIndex') is not None:
             for k in m.get('vectorIndex'):
@@ -10335,9 +10349,11 @@ class ListTablesResponseBodyResult(TeaModel):
         self,
         index_status: str = None,
         name: str = None,
+        status: str = None,
     ):
         self.index_status = index_status
         self.name = name
+        self.status = status
 
     def validate(self):
         pass
@@ -10352,6 +10368,8 @@ class ListTablesResponseBodyResult(TeaModel):
             result['indexStatus'] = self.index_status
         if self.name is not None:
             result['name'] = self.name
+        if self.status is not None:
+            result['status'] = self.status
         return result
 
     def from_map(self, m: dict = None):
@@ -10360,6 +10378,8 @@ class ListTablesResponseBodyResult(TeaModel):
             self.index_status = m.get('indexStatus')
         if m.get('name') is not None:
             self.name = m.get('name')
+        if m.get('status') is not None:
+            self.status = m.get('status')
         return self
 
 

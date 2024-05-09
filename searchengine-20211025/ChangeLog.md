@@ -1,3 +1,8 @@
+2024-05-09 Version: 2.1.1
+- Update API GetTable: update response param.
+- Update API ListTables: update response param.
+
+
 2024-05-09 Version: 2.1.0
 - Support API CreateTable.
 - Support API DeleteTable.
