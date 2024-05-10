@@ -47,6 +47,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.AddAttendeeHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.AddAttendeeResponse:
+        """
+        @summary 添加日程参与者
+        
+        @param tmp_req: AddAttendeeRequest
+        @param tmp_header: AddAttendeeHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddAttendeeResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.AddAttendeeShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -98,6 +106,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.AddAttendeeHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.AddAttendeeResponse:
+        """
+        @summary 添加日程参与者
+        
+        @param tmp_req: AddAttendeeRequest
+        @param tmp_header: AddAttendeeHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddAttendeeResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.AddAttendeeShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -147,6 +163,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.AddAttendeeRequest,
     ) -> aliding_20230426_models.AddAttendeeResponse:
+        """
+        @summary 添加日程参与者
+        
+        @param request: AddAttendeeRequest
+        @return: AddAttendeeResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.AddAttendeeHeaders()
         return self.add_attendee_with_options(request, headers, runtime)
@@ -155,6 +177,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.AddAttendeeRequest,
     ) -> aliding_20230426_models.AddAttendeeResponse:
+        """
+        @summary 添加日程参与者
+        
+        @param request: AddAttendeeRequest
+        @return: AddAttendeeResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.AddAttendeeHeaders()
         return await self.add_attendee_with_options_async(request, headers, runtime)
@@ -165,6 +193,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.AddMeetingRoomsHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.AddMeetingRoomsResponse:
+        """
+        @summary 预定会议室
+        
+        @param tmp_req: AddMeetingRoomsRequest
+        @param tmp_header: AddMeetingRoomsHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddMeetingRoomsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.AddMeetingRoomsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -212,6 +248,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.AddMeetingRoomsHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.AddMeetingRoomsResponse:
+        """
+        @summary 预定会议室
+        
+        @param tmp_req: AddMeetingRoomsRequest
+        @param tmp_header: AddMeetingRoomsHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddMeetingRoomsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.AddMeetingRoomsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -257,6 +301,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.AddMeetingRoomsRequest,
     ) -> aliding_20230426_models.AddMeetingRoomsResponse:
+        """
+        @summary 预定会议室
+        
+        @param request: AddMeetingRoomsRequest
+        @return: AddMeetingRoomsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.AddMeetingRoomsHeaders()
         return self.add_meeting_rooms_with_options(request, headers, runtime)
@@ -265,6 +315,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.AddMeetingRoomsRequest,
     ) -> aliding_20230426_models.AddMeetingRoomsResponse:
+        """
+        @summary 预定会议室
+        
+        @param request: AddMeetingRoomsRequest
+        @return: AddMeetingRoomsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.AddMeetingRoomsHeaders()
         return await self.add_meeting_rooms_with_options_async(request, headers, runtime)
@@ -275,6 +331,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.AddScenegroupMemberHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.AddScenegroupMemberResponse:
+        """
+        @summary 新增群成员
+        
+        @param request: AddScenegroupMemberRequest
+        @param tmp_header: AddScenegroupMemberHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddScenegroupMemberResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.AddScenegroupMemberShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -316,6 +380,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.AddScenegroupMemberHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.AddScenegroupMemberResponse:
+        """
+        @summary 新增群成员
+        
+        @param request: AddScenegroupMemberRequest
+        @param tmp_header: AddScenegroupMemberHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddScenegroupMemberResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.AddScenegroupMemberShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -355,6 +427,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.AddScenegroupMemberRequest,
     ) -> aliding_20230426_models.AddScenegroupMemberResponse:
+        """
+        @summary 新增群成员
+        
+        @param request: AddScenegroupMemberRequest
+        @return: AddScenegroupMemberResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.AddScenegroupMemberHeaders()
         return self.add_scenegroup_member_with_options(request, headers, runtime)
@@ -363,6 +441,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.AddScenegroupMemberRequest,
     ) -> aliding_20230426_models.AddScenegroupMemberResponse:
+        """
+        @summary 新增群成员
+        
+        @param request: AddScenegroupMemberRequest
+        @return: AddScenegroupMemberResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.AddScenegroupMemberHeaders()
         return await self.add_scenegroup_member_with_options_async(request, headers, runtime)
@@ -373,6 +457,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.AddWorkspaceHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.AddWorkspaceResponse:
+        """
+        @summary 新建知识库
+        
+        @param tmp_req: AddWorkspaceRequest
+        @param tmp_header: AddWorkspaceHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddWorkspaceResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.AddWorkspaceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -422,6 +514,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.AddWorkspaceHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.AddWorkspaceResponse:
+        """
+        @summary 新建知识库
+        
+        @param tmp_req: AddWorkspaceRequest
+        @param tmp_header: AddWorkspaceHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddWorkspaceResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.AddWorkspaceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -469,6 +569,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.AddWorkspaceRequest,
     ) -> aliding_20230426_models.AddWorkspaceResponse:
+        """
+        @summary 新建知识库
+        
+        @param request: AddWorkspaceRequest
+        @return: AddWorkspaceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.AddWorkspaceHeaders()
         return self.add_workspace_with_options(request, headers, runtime)
@@ -477,6 +583,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.AddWorkspaceRequest,
     ) -> aliding_20230426_models.AddWorkspaceResponse:
+        """
+        @summary 新建知识库
+        
+        @param request: AddWorkspaceRequest
+        @return: AddWorkspaceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.AddWorkspaceHeaders()
         return await self.add_workspace_with_options_async(request, headers, runtime)
@@ -487,6 +599,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.AddWorkspaceDocMembersHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.AddWorkspaceDocMembersResponse:
+        """
+        @summary 添加知识库文档成员
+        
+        @param tmp_req: AddWorkspaceDocMembersRequest
+        @param tmp_header: AddWorkspaceDocMembersHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddWorkspaceDocMembersResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.AddWorkspaceDocMembersShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -538,6 +658,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.AddWorkspaceDocMembersHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.AddWorkspaceDocMembersResponse:
+        """
+        @summary 添加知识库文档成员
+        
+        @param tmp_req: AddWorkspaceDocMembersRequest
+        @param tmp_header: AddWorkspaceDocMembersHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddWorkspaceDocMembersResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.AddWorkspaceDocMembersShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -587,6 +715,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.AddWorkspaceDocMembersRequest,
     ) -> aliding_20230426_models.AddWorkspaceDocMembersResponse:
+        """
+        @summary 添加知识库文档成员
+        
+        @param request: AddWorkspaceDocMembersRequest
+        @return: AddWorkspaceDocMembersResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.AddWorkspaceDocMembersHeaders()
         return self.add_workspace_doc_members_with_options(request, headers, runtime)
@@ -595,6 +729,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.AddWorkspaceDocMembersRequest,
     ) -> aliding_20230426_models.AddWorkspaceDocMembersResponse:
+        """
+        @summary 添加知识库文档成员
+        
+        @param request: AddWorkspaceDocMembersRequest
+        @return: AddWorkspaceDocMembersResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.AddWorkspaceDocMembersHeaders()
         return await self.add_workspace_doc_members_with_options_async(request, headers, runtime)
@@ -605,6 +745,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.AddWorkspaceMembersHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.AddWorkspaceMembersResponse:
+        """
+        @summary 添加知识库成员
+        
+        @param tmp_req: AddWorkspaceMembersRequest
+        @param tmp_header: AddWorkspaceMembersHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddWorkspaceMembersResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.AddWorkspaceMembersShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -654,6 +802,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.AddWorkspaceMembersHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.AddWorkspaceMembersResponse:
+        """
+        @summary 添加知识库成员
+        
+        @param tmp_req: AddWorkspaceMembersRequest
+        @param tmp_header: AddWorkspaceMembersHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddWorkspaceMembersResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.AddWorkspaceMembersShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -701,6 +857,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.AddWorkspaceMembersRequest,
     ) -> aliding_20230426_models.AddWorkspaceMembersResponse:
+        """
+        @summary 添加知识库成员
+        
+        @param request: AddWorkspaceMembersRequest
+        @return: AddWorkspaceMembersResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.AddWorkspaceMembersHeaders()
         return self.add_workspace_members_with_options(request, headers, runtime)
@@ -709,6 +871,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.AddWorkspaceMembersRequest,
     ) -> aliding_20230426_models.AddWorkspaceMembersResponse:
+        """
+        @summary 添加知识库成员
+        
+        @param request: AddWorkspaceMembersRequest
+        @return: AddWorkspaceMembersResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.AddWorkspaceMembersHeaders()
         return await self.add_workspace_members_with_options_async(request, headers, runtime)
@@ -719,6 +887,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.BatchGetFormDataByIdListHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.BatchGetFormDataByIdListResponse:
+        """
+        @summary 批量获取表单实例数据
+        
+        @param tmp_req: BatchGetFormDataByIdListRequest
+        @param tmp_header: BatchGetFormDataByIdListHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchGetFormDataByIdListResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.BatchGetFormDataByIdListShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -770,6 +946,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.BatchGetFormDataByIdListHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.BatchGetFormDataByIdListResponse:
+        """
+        @summary 批量获取表单实例数据
+        
+        @param tmp_req: BatchGetFormDataByIdListRequest
+        @param tmp_header: BatchGetFormDataByIdListHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchGetFormDataByIdListResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.BatchGetFormDataByIdListShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -819,6 +1003,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.BatchGetFormDataByIdListRequest,
     ) -> aliding_20230426_models.BatchGetFormDataByIdListResponse:
+        """
+        @summary 批量获取表单实例数据
+        
+        @param request: BatchGetFormDataByIdListRequest
+        @return: BatchGetFormDataByIdListResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.BatchGetFormDataByIdListHeaders()
         return self.batch_get_form_data_by_id_list_with_options(request, headers, runtime)
@@ -827,6 +1017,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.BatchGetFormDataByIdListRequest,
     ) -> aliding_20230426_models.BatchGetFormDataByIdListResponse:
+        """
+        @summary 批量获取表单实例数据
+        
+        @param request: BatchGetFormDataByIdListRequest
+        @return: BatchGetFormDataByIdListResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.BatchGetFormDataByIdListHeaders()
         return await self.batch_get_form_data_by_id_list_with_options_async(request, headers, runtime)
@@ -837,6 +1033,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.BatchRemovalByFormInstanceIdListHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.BatchRemovalByFormInstanceIdListResponse:
+        """
+        @summary 批量删除表单实例
+        
+        @param tmp_req: BatchRemovalByFormInstanceIdListRequest
+        @param tmp_header: BatchRemovalByFormInstanceIdListHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchRemovalByFormInstanceIdListResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.BatchRemovalByFormInstanceIdListShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -890,6 +1094,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.BatchRemovalByFormInstanceIdListHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.BatchRemovalByFormInstanceIdListResponse:
+        """
+        @summary 批量删除表单实例
+        
+        @param tmp_req: BatchRemovalByFormInstanceIdListRequest
+        @param tmp_header: BatchRemovalByFormInstanceIdListHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchRemovalByFormInstanceIdListResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.BatchRemovalByFormInstanceIdListShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -941,6 +1153,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.BatchRemovalByFormInstanceIdListRequest,
     ) -> aliding_20230426_models.BatchRemovalByFormInstanceIdListResponse:
+        """
+        @summary 批量删除表单实例
+        
+        @param request: BatchRemovalByFormInstanceIdListRequest
+        @return: BatchRemovalByFormInstanceIdListResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.BatchRemovalByFormInstanceIdListHeaders()
         return self.batch_removal_by_form_instance_id_list_with_options(request, headers, runtime)
@@ -949,6 +1167,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.BatchRemovalByFormInstanceIdListRequest,
     ) -> aliding_20230426_models.BatchRemovalByFormInstanceIdListResponse:
+        """
+        @summary 批量删除表单实例
+        
+        @param request: BatchRemovalByFormInstanceIdListRequest
+        @return: BatchRemovalByFormInstanceIdListResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.BatchRemovalByFormInstanceIdListHeaders()
         return await self.batch_removal_by_form_instance_id_list_with_options_async(request, headers, runtime)
@@ -959,6 +1183,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.BatchSaveFormDataHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.BatchSaveFormDataResponse:
+        """
+        @summary 批量创建表单实例
+        
+        @param tmp_req: BatchSaveFormDataRequest
+        @param tmp_header: BatchSaveFormDataHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchSaveFormDataResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.BatchSaveFormDataShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1014,6 +1246,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.BatchSaveFormDataHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.BatchSaveFormDataResponse:
+        """
+        @summary 批量创建表单实例
+        
+        @param tmp_req: BatchSaveFormDataRequest
+        @param tmp_header: BatchSaveFormDataHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchSaveFormDataResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.BatchSaveFormDataShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1067,6 +1307,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.BatchSaveFormDataRequest,
     ) -> aliding_20230426_models.BatchSaveFormDataResponse:
+        """
+        @summary 批量创建表单实例
+        
+        @param request: BatchSaveFormDataRequest
+        @return: BatchSaveFormDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.BatchSaveFormDataHeaders()
         return self.batch_save_form_data_with_options(request, headers, runtime)
@@ -1075,6 +1321,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.BatchSaveFormDataRequest,
     ) -> aliding_20230426_models.BatchSaveFormDataResponse:
+        """
+        @summary 批量创建表单实例
+        
+        @param request: BatchSaveFormDataRequest
+        @return: BatchSaveFormDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.BatchSaveFormDataHeaders()
         return await self.batch_save_form_data_with_options_async(request, headers, runtime)
@@ -1085,6 +1337,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.BatchUpdateFormDataByInstanceIdHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.BatchUpdateFormDataByInstanceIdResponse:
+        """
+        @summary 批量更新表单实例内的组件值
+        
+        @param tmp_req: BatchUpdateFormDataByInstanceIdRequest
+        @param tmp_header: BatchUpdateFormDataByInstanceIdHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchUpdateFormDataByInstanceIdResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.BatchUpdateFormDataByInstanceIdShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1144,6 +1404,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.BatchUpdateFormDataByInstanceIdHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.BatchUpdateFormDataByInstanceIdResponse:
+        """
+        @summary 批量更新表单实例内的组件值
+        
+        @param tmp_req: BatchUpdateFormDataByInstanceIdRequest
+        @param tmp_header: BatchUpdateFormDataByInstanceIdHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchUpdateFormDataByInstanceIdResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.BatchUpdateFormDataByInstanceIdShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1201,6 +1469,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.BatchUpdateFormDataByInstanceIdRequest,
     ) -> aliding_20230426_models.BatchUpdateFormDataByInstanceIdResponse:
+        """
+        @summary 批量更新表单实例内的组件值
+        
+        @param request: BatchUpdateFormDataByInstanceIdRequest
+        @return: BatchUpdateFormDataByInstanceIdResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.BatchUpdateFormDataByInstanceIdHeaders()
         return self.batch_update_form_data_by_instance_id_with_options(request, headers, runtime)
@@ -1209,6 +1483,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.BatchUpdateFormDataByInstanceIdRequest,
     ) -> aliding_20230426_models.BatchUpdateFormDataByInstanceIdResponse:
+        """
+        @summary 批量更新表单实例内的组件值
+        
+        @param request: BatchUpdateFormDataByInstanceIdRequest
+        @return: BatchUpdateFormDataByInstanceIdResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.BatchUpdateFormDataByInstanceIdHeaders()
         return await self.batch_update_form_data_by_instance_id_with_options_async(request, headers, runtime)
@@ -1219,6 +1499,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.BatchUpdateFormDataByInstanceMapHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.BatchUpdateFormDataByInstanceMapResponse:
+        """
+        @summary 通过表单实例数据批量更新表单实例
+        
+        @param tmp_req: BatchUpdateFormDataByInstanceMapRequest
+        @param tmp_header: BatchUpdateFormDataByInstanceMapHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchUpdateFormDataByInstanceMapResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.BatchUpdateFormDataByInstanceMapShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1276,6 +1564,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.BatchUpdateFormDataByInstanceMapHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.BatchUpdateFormDataByInstanceMapResponse:
+        """
+        @summary 通过表单实例数据批量更新表单实例
+        
+        @param tmp_req: BatchUpdateFormDataByInstanceMapRequest
+        @param tmp_header: BatchUpdateFormDataByInstanceMapHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchUpdateFormDataByInstanceMapResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.BatchUpdateFormDataByInstanceMapShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1331,6 +1627,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.BatchUpdateFormDataByInstanceMapRequest,
     ) -> aliding_20230426_models.BatchUpdateFormDataByInstanceMapResponse:
+        """
+        @summary 通过表单实例数据批量更新表单实例
+        
+        @param request: BatchUpdateFormDataByInstanceMapRequest
+        @return: BatchUpdateFormDataByInstanceMapResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.BatchUpdateFormDataByInstanceMapHeaders()
         return self.batch_update_form_data_by_instance_map_with_options(request, headers, runtime)
@@ -1339,6 +1641,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.BatchUpdateFormDataByInstanceMapRequest,
     ) -> aliding_20230426_models.BatchUpdateFormDataByInstanceMapResponse:
+        """
+        @summary 通过表单实例数据批量更新表单实例
+        
+        @param request: BatchUpdateFormDataByInstanceMapRequest
+        @return: BatchUpdateFormDataByInstanceMapResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.BatchUpdateFormDataByInstanceMapHeaders()
         return await self.batch_update_form_data_by_instance_map_with_options_async(request, headers, runtime)
@@ -1349,6 +1657,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.CancelScheduleConferenceHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.CancelScheduleConferenceResponse:
+        """
+        @summary 取消预约会议
+        
+        @param tmp_req: CancelScheduleConferenceRequest
+        @param tmp_header: CancelScheduleConferenceHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelScheduleConferenceResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.CancelScheduleConferenceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1394,6 +1710,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.CancelScheduleConferenceHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.CancelScheduleConferenceResponse:
+        """
+        @summary 取消预约会议
+        
+        @param tmp_req: CancelScheduleConferenceRequest
+        @param tmp_header: CancelScheduleConferenceHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelScheduleConferenceResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.CancelScheduleConferenceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1437,6 +1761,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.CancelScheduleConferenceRequest,
     ) -> aliding_20230426_models.CancelScheduleConferenceResponse:
+        """
+        @summary 取消预约会议
+        
+        @param request: CancelScheduleConferenceRequest
+        @return: CancelScheduleConferenceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.CancelScheduleConferenceHeaders()
         return self.cancel_schedule_conference_with_options(request, headers, runtime)
@@ -1445,6 +1775,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.CancelScheduleConferenceRequest,
     ) -> aliding_20230426_models.CancelScheduleConferenceResponse:
+        """
+        @summary 取消预约会议
+        
+        @param request: CancelScheduleConferenceRequest
+        @return: CancelScheduleConferenceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.CancelScheduleConferenceHeaders()
         return await self.cancel_schedule_conference_with_options_async(request, headers, runtime)
@@ -1455,6 +1791,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.CheckUserIsGroupMemberHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.CheckUserIsGroupMemberResponse:
+        """
+        @summary 查询用户是否为企业内部群成员
+        
+        @param request: CheckUserIsGroupMemberRequest
+        @param tmp_header: CheckUserIsGroupMemberHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckUserIsGroupMemberResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.CheckUserIsGroupMemberShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -1494,6 +1838,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.CheckUserIsGroupMemberHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.CheckUserIsGroupMemberResponse:
+        """
+        @summary 查询用户是否为企业内部群成员
+        
+        @param request: CheckUserIsGroupMemberRequest
+        @param tmp_header: CheckUserIsGroupMemberHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckUserIsGroupMemberResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.CheckUserIsGroupMemberShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -1531,6 +1883,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.CheckUserIsGroupMemberRequest,
     ) -> aliding_20230426_models.CheckUserIsGroupMemberResponse:
+        """
+        @summary 查询用户是否为企业内部群成员
+        
+        @param request: CheckUserIsGroupMemberRequest
+        @return: CheckUserIsGroupMemberResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.CheckUserIsGroupMemberHeaders()
         return self.check_user_is_group_member_with_options(request, headers, runtime)
@@ -1539,6 +1897,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.CheckUserIsGroupMemberRequest,
     ) -> aliding_20230426_models.CheckUserIsGroupMemberResponse:
+        """
+        @summary 查询用户是否为企业内部群成员
+        
+        @param request: CheckUserIsGroupMemberRequest
+        @return: CheckUserIsGroupMemberResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.CheckUserIsGroupMemberHeaders()
         return await self.check_user_is_group_member_with_options_async(request, headers, runtime)
@@ -1549,6 +1913,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.ClearHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.ClearResponse:
+        """
+        @summary 清除单元格所有内容
+        
+        @param tmp_req: ClearRequest
+        @param tmp_header: ClearHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ClearResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.ClearShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1598,6 +1970,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.ClearHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.ClearResponse:
+        """
+        @summary 清除单元格所有内容
+        
+        @param tmp_req: ClearRequest
+        @param tmp_header: ClearHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ClearResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.ClearShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1645,6 +2025,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.ClearRequest,
     ) -> aliding_20230426_models.ClearResponse:
+        """
+        @summary 清除单元格所有内容
+        
+        @param request: ClearRequest
+        @return: ClearResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.ClearHeaders()
         return self.clear_with_options(request, headers, runtime)
@@ -1653,6 +2039,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.ClearRequest,
     ) -> aliding_20230426_models.ClearResponse:
+        """
+        @summary 清除单元格所有内容
+        
+        @param request: ClearRequest
+        @return: ClearResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.ClearHeaders()
         return await self.clear_with_options_async(request, headers, runtime)
@@ -1663,6 +2055,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.ClearDataHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.ClearDataResponse:
+        """
+        @summary 清除单元格数据
+        
+        @param tmp_req: ClearDataRequest
+        @param tmp_header: ClearDataHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ClearDataResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.ClearDataShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1712,6 +2112,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.ClearDataHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.ClearDataResponse:
+        """
+        @summary 清除单元格数据
+        
+        @param tmp_req: ClearDataRequest
+        @param tmp_header: ClearDataHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ClearDataResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.ClearDataShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1759,6 +2167,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.ClearDataRequest,
     ) -> aliding_20230426_models.ClearDataResponse:
+        """
+        @summary 清除单元格数据
+        
+        @param request: ClearDataRequest
+        @return: ClearDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.ClearDataHeaders()
         return self.clear_data_with_options(request, headers, runtime)
@@ -1767,6 +2181,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.ClearDataRequest,
     ) -> aliding_20230426_models.ClearDataResponse:
+        """
+        @summary 清除单元格数据
+        
+        @param request: ClearDataRequest
+        @return: ClearDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.ClearDataHeaders()
         return await self.clear_data_with_options_async(request, headers, runtime)
@@ -1777,6 +2197,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.CommentListReportHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.CommentListReportResponse:
+        """
+        @summary 获取日志评论列表
+        
+        @param tmp_req: CommentListReportRequest
+        @param tmp_header: CommentListReportHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CommentListReportResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.CommentListReportShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1826,6 +2254,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.CommentListReportHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.CommentListReportResponse:
+        """
+        @summary 获取日志评论列表
+        
+        @param tmp_req: CommentListReportRequest
+        @param tmp_header: CommentListReportHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CommentListReportResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.CommentListReportShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1873,6 +2309,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.CommentListReportRequest,
     ) -> aliding_20230426_models.CommentListReportResponse:
+        """
+        @summary 获取日志评论列表
+        
+        @param request: CommentListReportRequest
+        @return: CommentListReportResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.CommentListReportHeaders()
         return self.comment_list_report_with_options(request, headers, runtime)
@@ -1881,6 +2323,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.CommentListReportRequest,
     ) -> aliding_20230426_models.CommentListReportResponse:
+        """
+        @summary 获取日志评论列表
+        
+        @param request: CommentListReportRequest
+        @return: CommentListReportResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.CommentListReportHeaders()
         return await self.comment_list_report_with_options_async(request, headers, runtime)
@@ -1891,6 +2339,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.CreateDeliveryPlanHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.CreateDeliveryPlanResponse:
+        """
+        @summary 发布钉钉投放活动
+        
+        @param tmp_req: CreateDeliveryPlanRequest
+        @param tmp_header: CreateDeliveryPlanHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDeliveryPlanResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.CreateDeliveryPlanShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1948,6 +2404,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.CreateDeliveryPlanHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.CreateDeliveryPlanResponse:
+        """
+        @summary 发布钉钉投放活动
+        
+        @param tmp_req: CreateDeliveryPlanRequest
+        @param tmp_header: CreateDeliveryPlanHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDeliveryPlanResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.CreateDeliveryPlanShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -2003,6 +2467,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.CreateDeliveryPlanRequest,
     ) -> aliding_20230426_models.CreateDeliveryPlanResponse:
+        """
+        @summary 发布钉钉投放活动
+        
+        @param request: CreateDeliveryPlanRequest
+        @return: CreateDeliveryPlanResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.CreateDeliveryPlanHeaders()
         return self.create_delivery_plan_with_options(request, headers, runtime)
@@ -2011,6 +2481,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.CreateDeliveryPlanRequest,
     ) -> aliding_20230426_models.CreateDeliveryPlanResponse:
+        """
+        @summary 发布钉钉投放活动
+        
+        @param request: CreateDeliveryPlanRequest
+        @return: CreateDeliveryPlanResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.CreateDeliveryPlanHeaders()
         return await self.create_delivery_plan_with_options_async(request, headers, runtime)
@@ -2021,6 +2497,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.CreateEventHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.CreateEventResponse:
+        """
+        @summary 创建日程
+        
+        @param tmp_req: CreateEventRequest
+        @param tmp_header: CreateEventHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateEventResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.CreateEventShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -2108,6 +2592,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.CreateEventHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.CreateEventResponse:
+        """
+        @summary 创建日程
+        
+        @param tmp_req: CreateEventRequest
+        @param tmp_header: CreateEventHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateEventResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.CreateEventShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -2193,6 +2685,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.CreateEventRequest,
     ) -> aliding_20230426_models.CreateEventResponse:
+        """
+        @summary 创建日程
+        
+        @param request: CreateEventRequest
+        @return: CreateEventResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.CreateEventHeaders()
         return self.create_event_with_options(request, headers, runtime)
@@ -2201,6 +2699,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.CreateEventRequest,
     ) -> aliding_20230426_models.CreateEventResponse:
+        """
+        @summary 创建日程
+        
+        @param request: CreateEventRequest
+        @return: CreateEventResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.CreateEventHeaders()
         return await self.create_event_with_options_async(request, headers, runtime)
@@ -2211,6 +2715,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.CreateLiveHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.CreateLiveResponse:
+        """
+        @summary 创建直播
+        
+        @param tmp_req: CreateLiveRequest
+        @param tmp_header: CreateLiveHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateLiveResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.CreateLiveShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -2266,6 +2778,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.CreateLiveHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.CreateLiveResponse:
+        """
+        @summary 创建直播
+        
+        @param tmp_req: CreateLiveRequest
+        @param tmp_header: CreateLiveHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateLiveResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.CreateLiveShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -2319,6 +2839,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.CreateLiveRequest,
     ) -> aliding_20230426_models.CreateLiveResponse:
+        """
+        @summary 创建直播
+        
+        @param request: CreateLiveRequest
+        @return: CreateLiveResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.CreateLiveHeaders()
         return self.create_live_with_options(request, headers, runtime)
@@ -2327,6 +2853,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.CreateLiveRequest,
     ) -> aliding_20230426_models.CreateLiveResponse:
+        """
+        @summary 创建直播
+        
+        @param request: CreateLiveRequest
+        @return: CreateLiveResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.CreateLiveHeaders()
         return await self.create_live_with_options_async(request, headers, runtime)
@@ -2337,6 +2869,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.CreateMeetingRoomHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.CreateMeetingRoomResponse:
+        """
+        @summary 创建会议室
+        
+        @param tmp_req: CreateMeetingRoomRequest
+        @param tmp_header: CreateMeetingRoomHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMeetingRoomResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.CreateMeetingRoomShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -2406,6 +2946,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.CreateMeetingRoomHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.CreateMeetingRoomResponse:
+        """
+        @summary 创建会议室
+        
+        @param tmp_req: CreateMeetingRoomRequest
+        @param tmp_header: CreateMeetingRoomHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMeetingRoomResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.CreateMeetingRoomShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -2473,6 +3021,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.CreateMeetingRoomRequest,
     ) -> aliding_20230426_models.CreateMeetingRoomResponse:
+        """
+        @summary 创建会议室
+        
+        @param request: CreateMeetingRoomRequest
+        @return: CreateMeetingRoomResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.CreateMeetingRoomHeaders()
         return self.create_meeting_room_with_options(request, headers, runtime)
@@ -2481,6 +3035,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.CreateMeetingRoomRequest,
     ) -> aliding_20230426_models.CreateMeetingRoomResponse:
+        """
+        @summary 创建会议室
+        
+        @param request: CreateMeetingRoomRequest
+        @return: CreateMeetingRoomResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.CreateMeetingRoomHeaders()
         return await self.create_meeting_room_with_options_async(request, headers, runtime)
@@ -2491,6 +3051,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.CreateMeetingRoomGroupHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.CreateMeetingRoomGroupResponse:
+        """
+        @summary 创建会议室分组
+        
+        @param tmp_req: CreateMeetingRoomGroupRequest
+        @param tmp_header: CreateMeetingRoomGroupHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMeetingRoomGroupResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.CreateMeetingRoomGroupShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -2538,6 +3106,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.CreateMeetingRoomGroupHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.CreateMeetingRoomGroupResponse:
+        """
+        @summary 创建会议室分组
+        
+        @param tmp_req: CreateMeetingRoomGroupRequest
+        @param tmp_header: CreateMeetingRoomGroupHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMeetingRoomGroupResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.CreateMeetingRoomGroupShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -2583,6 +3159,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.CreateMeetingRoomGroupRequest,
     ) -> aliding_20230426_models.CreateMeetingRoomGroupResponse:
+        """
+        @summary 创建会议室分组
+        
+        @param request: CreateMeetingRoomGroupRequest
+        @return: CreateMeetingRoomGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.CreateMeetingRoomGroupHeaders()
         return self.create_meeting_room_group_with_options(request, headers, runtime)
@@ -2591,6 +3173,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.CreateMeetingRoomGroupRequest,
     ) -> aliding_20230426_models.CreateMeetingRoomGroupResponse:
+        """
+        @summary 创建会议室分组
+        
+        @param request: CreateMeetingRoomGroupRequest
+        @return: CreateMeetingRoomGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.CreateMeetingRoomGroupHeaders()
         return await self.create_meeting_room_group_with_options_async(request, headers, runtime)
@@ -2601,6 +3189,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.CreateOrUpdateFormDataHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.CreateOrUpdateFormDataResponse:
+        """
+        @summary 新增或更新表单实例
+        
+        @param request: CreateOrUpdateFormDataRequest
+        @param tmp_header: CreateOrUpdateFormDataHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateOrUpdateFormDataResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.CreateOrUpdateFormDataShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -2652,6 +3248,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.CreateOrUpdateFormDataHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.CreateOrUpdateFormDataResponse:
+        """
+        @summary 新增或更新表单实例
+        
+        @param request: CreateOrUpdateFormDataRequest
+        @param tmp_header: CreateOrUpdateFormDataHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateOrUpdateFormDataResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.CreateOrUpdateFormDataShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -2701,6 +3305,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.CreateOrUpdateFormDataRequest,
     ) -> aliding_20230426_models.CreateOrUpdateFormDataResponse:
+        """
+        @summary 新增或更新表单实例
+        
+        @param request: CreateOrUpdateFormDataRequest
+        @return: CreateOrUpdateFormDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.CreateOrUpdateFormDataHeaders()
         return self.create_or_update_form_data_with_options(request, headers, runtime)
@@ -2709,6 +3319,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.CreateOrUpdateFormDataRequest,
     ) -> aliding_20230426_models.CreateOrUpdateFormDataResponse:
+        """
+        @summary 新增或更新表单实例
+        
+        @param request: CreateOrUpdateFormDataRequest
+        @return: CreateOrUpdateFormDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.CreateOrUpdateFormDataHeaders()
         return await self.create_or_update_form_data_with_options_async(request, headers, runtime)
@@ -2719,6 +3335,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.CreateOrgHonorTemplateHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.CreateOrgHonorTemplateResponse:
+        """
+        @summary 创建荣誉勋章模板
+        
+        @param tmp_req: CreateOrgHonorTemplateRequest
+        @param tmp_header: CreateOrgHonorTemplateHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateOrgHonorTemplateResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.CreateOrgHonorTemplateShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -2776,6 +3400,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.CreateOrgHonorTemplateHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.CreateOrgHonorTemplateResponse:
+        """
+        @summary 创建荣誉勋章模板
+        
+        @param tmp_req: CreateOrgHonorTemplateRequest
+        @param tmp_header: CreateOrgHonorTemplateHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateOrgHonorTemplateResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.CreateOrgHonorTemplateShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -2831,6 +3463,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.CreateOrgHonorTemplateRequest,
     ) -> aliding_20230426_models.CreateOrgHonorTemplateResponse:
+        """
+        @summary 创建荣誉勋章模板
+        
+        @param request: CreateOrgHonorTemplateRequest
+        @return: CreateOrgHonorTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.CreateOrgHonorTemplateHeaders()
         return self.create_org_honor_template_with_options(request, headers, runtime)
@@ -2839,6 +3477,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.CreateOrgHonorTemplateRequest,
     ) -> aliding_20230426_models.CreateOrgHonorTemplateResponse:
+        """
+        @summary 创建荣誉勋章模板
+        
+        @param request: CreateOrgHonorTemplateRequest
+        @return: CreateOrgHonorTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.CreateOrgHonorTemplateHeaders()
         return await self.create_org_honor_template_with_options_async(request, headers, runtime)
@@ -2849,6 +3493,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.CreatePersonalTodoTaskHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.CreatePersonalTodoTaskResponse:
+        """
+        @summary 创建钉钉个人待办任务
+        
+        @param tmp_req: CreatePersonalTodoTaskRequest
+        @param tmp_header: CreatePersonalTodoTaskHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreatePersonalTodoTaskResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.CreatePersonalTodoTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -2910,6 +3562,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.CreatePersonalTodoTaskHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.CreatePersonalTodoTaskResponse:
+        """
+        @summary 创建钉钉个人待办任务
+        
+        @param tmp_req: CreatePersonalTodoTaskRequest
+        @param tmp_header: CreatePersonalTodoTaskHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreatePersonalTodoTaskResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.CreatePersonalTodoTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -2969,6 +3629,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.CreatePersonalTodoTaskRequest,
     ) -> aliding_20230426_models.CreatePersonalTodoTaskResponse:
+        """
+        @summary 创建钉钉个人待办任务
+        
+        @param request: CreatePersonalTodoTaskRequest
+        @return: CreatePersonalTodoTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.CreatePersonalTodoTaskHeaders()
         return self.create_personal_todo_task_with_options(request, headers, runtime)
@@ -2977,6 +3643,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.CreatePersonalTodoTaskRequest,
     ) -> aliding_20230426_models.CreatePersonalTodoTaskResponse:
+        """
+        @summary 创建钉钉个人待办任务
+        
+        @param request: CreatePersonalTodoTaskRequest
+        @return: CreatePersonalTodoTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.CreatePersonalTodoTaskHeaders()
         return await self.create_personal_todo_task_with_options_async(request, headers, runtime)
@@ -2987,6 +3659,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.CreateReportHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.CreateReportResponse:
+        """
+        @summary 创建日志
+        
+        @param tmp_req: CreateReportRequest
+        @param tmp_header: CreateReportHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateReportResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.CreateReportShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3048,6 +3728,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.CreateReportHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.CreateReportResponse:
+        """
+        @summary 创建日志
+        
+        @param tmp_req: CreateReportRequest
+        @param tmp_header: CreateReportHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateReportResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.CreateReportShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3107,6 +3795,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.CreateReportRequest,
     ) -> aliding_20230426_models.CreateReportResponse:
+        """
+        @summary 创建日志
+        
+        @param request: CreateReportRequest
+        @return: CreateReportResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.CreateReportHeaders()
         return self.create_report_with_options(request, headers, runtime)
@@ -3115,6 +3809,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.CreateReportRequest,
     ) -> aliding_20230426_models.CreateReportResponse:
+        """
+        @summary 创建日志
+        
+        @param request: CreateReportRequest
+        @return: CreateReportResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.CreateReportHeaders()
         return await self.create_report_with_options_async(request, headers, runtime)
@@ -3125,6 +3825,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.CreateScenegroupHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.CreateScenegroupResponse:
+        """
+        @summary 创建场景群
+        
+        @param request: CreateScenegroupRequest
+        @param tmp_header: CreateScenegroupHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateScenegroupResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.CreateScenegroupShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -3202,6 +3910,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.CreateScenegroupHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.CreateScenegroupResponse:
+        """
+        @summary 创建场景群
+        
+        @param request: CreateScenegroupRequest
+        @param tmp_header: CreateScenegroupHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateScenegroupResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.CreateScenegroupShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -3277,6 +3993,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.CreateScenegroupRequest,
     ) -> aliding_20230426_models.CreateScenegroupResponse:
+        """
+        @summary 创建场景群
+        
+        @param request: CreateScenegroupRequest
+        @return: CreateScenegroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.CreateScenegroupHeaders()
         return self.create_scenegroup_with_options(request, headers, runtime)
@@ -3285,6 +4007,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.CreateScenegroupRequest,
     ) -> aliding_20230426_models.CreateScenegroupResponse:
+        """
+        @summary 创建场景群
+        
+        @param request: CreateScenegroupRequest
+        @return: CreateScenegroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.CreateScenegroupHeaders()
         return await self.create_scenegroup_with_options_async(request, headers, runtime)
@@ -3295,6 +4023,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.CreateScheduleConferenceHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.CreateScheduleConferenceResponse:
+        """
+        @summary 创建预约会议
+        
+        @param tmp_req: CreateScheduleConferenceRequest
+        @param tmp_header: CreateScheduleConferenceHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateScheduleConferenceResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.CreateScheduleConferenceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3344,6 +4080,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.CreateScheduleConferenceHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.CreateScheduleConferenceResponse:
+        """
+        @summary 创建预约会议
+        
+        @param tmp_req: CreateScheduleConferenceRequest
+        @param tmp_header: CreateScheduleConferenceHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateScheduleConferenceResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.CreateScheduleConferenceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3391,6 +4135,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.CreateScheduleConferenceRequest,
     ) -> aliding_20230426_models.CreateScheduleConferenceResponse:
+        """
+        @summary 创建预约会议
+        
+        @param request: CreateScheduleConferenceRequest
+        @return: CreateScheduleConferenceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.CreateScheduleConferenceHeaders()
         return self.create_schedule_conference_with_options(request, headers, runtime)
@@ -3399,6 +4149,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.CreateScheduleConferenceRequest,
     ) -> aliding_20230426_models.CreateScheduleConferenceResponse:
+        """
+        @summary 创建预约会议
+        
+        @param request: CreateScheduleConferenceRequest
+        @return: CreateScheduleConferenceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.CreateScheduleConferenceHeaders()
         return await self.create_schedule_conference_with_options_async(request, headers, runtime)
@@ -3409,6 +4165,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.CreateSearchDomeHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.CreateSearchDomeResponse:
+        """
+        @summary 发布钉钉搜索穹顶
+        
+        @param tmp_req: CreateSearchDomeRequest
+        @param tmp_header: CreateSearchDomeHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSearchDomeResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.CreateSearchDomeShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3464,6 +4228,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.CreateSearchDomeHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.CreateSearchDomeResponse:
+        """
+        @summary 发布钉钉搜索穹顶
+        
+        @param tmp_req: CreateSearchDomeRequest
+        @param tmp_header: CreateSearchDomeHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSearchDomeResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.CreateSearchDomeShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3517,6 +4289,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.CreateSearchDomeRequest,
     ) -> aliding_20230426_models.CreateSearchDomeResponse:
+        """
+        @summary 发布钉钉搜索穹顶
+        
+        @param request: CreateSearchDomeRequest
+        @return: CreateSearchDomeResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.CreateSearchDomeHeaders()
         return self.create_search_dome_with_options(request, headers, runtime)
@@ -3525,6 +4303,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.CreateSearchDomeRequest,
     ) -> aliding_20230426_models.CreateSearchDomeResponse:
+        """
+        @summary 发布钉钉搜索穹顶
+        
+        @param request: CreateSearchDomeRequest
+        @return: CreateSearchDomeResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.CreateSearchDomeHeaders()
         return await self.create_search_dome_with_options_async(request, headers, runtime)
@@ -3535,6 +4319,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.CreateSearchKeywordHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.CreateSearchKeywordResponse:
+        """
+        @summary 发布钉钉搜索关键词
+        
+        @param tmp_req: CreateSearchKeywordRequest
+        @param tmp_header: CreateSearchKeywordHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSearchKeywordResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.CreateSearchKeywordShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3590,6 +4382,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.CreateSearchKeywordHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.CreateSearchKeywordResponse:
+        """
+        @summary 发布钉钉搜索关键词
+        
+        @param tmp_req: CreateSearchKeywordRequest
+        @param tmp_header: CreateSearchKeywordHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSearchKeywordResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.CreateSearchKeywordShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3643,6 +4443,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.CreateSearchKeywordRequest,
     ) -> aliding_20230426_models.CreateSearchKeywordResponse:
+        """
+        @summary 发布钉钉搜索关键词
+        
+        @param request: CreateSearchKeywordRequest
+        @return: CreateSearchKeywordResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.CreateSearchKeywordHeaders()
         return self.create_search_keyword_with_options(request, headers, runtime)
@@ -3651,6 +4457,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.CreateSearchKeywordRequest,
     ) -> aliding_20230426_models.CreateSearchKeywordResponse:
+        """
+        @summary 发布钉钉搜索关键词
+        
+        @param request: CreateSearchKeywordRequest
+        @return: CreateSearchKeywordResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.CreateSearchKeywordHeaders()
         return await self.create_search_keyword_with_options_async(request, headers, runtime)
@@ -3661,6 +4473,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.CreateSheetHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.CreateSheetResponse:
+        """
+        @summary 创建工作表
+        
+        @param tmp_req: CreateSheetRequest
+        @param tmp_header: CreateSheetHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSheetResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.CreateSheetShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3708,6 +4528,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.CreateSheetHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.CreateSheetResponse:
+        """
+        @summary 创建工作表
+        
+        @param tmp_req: CreateSheetRequest
+        @param tmp_header: CreateSheetHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSheetResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.CreateSheetShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3753,6 +4581,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.CreateSheetRequest,
     ) -> aliding_20230426_models.CreateSheetResponse:
+        """
+        @summary 创建工作表
+        
+        @param request: CreateSheetRequest
+        @return: CreateSheetResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.CreateSheetHeaders()
         return self.create_sheet_with_options(request, headers, runtime)
@@ -3761,6 +4595,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.CreateSheetRequest,
     ) -> aliding_20230426_models.CreateSheetResponse:
+        """
+        @summary 创建工作表
+        
+        @param request: CreateSheetRequest
+        @return: CreateSheetResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.CreateSheetHeaders()
         return await self.create_sheet_with_options_async(request, headers, runtime)
@@ -3771,6 +4611,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.CreateSubscribedCalendarHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.CreateSubscribedCalendarResponse:
+        """
+        @summary 创建订阅日历
+        
+        @param tmp_req: CreateSubscribedCalendarRequest
+        @param tmp_header: CreateSubscribedCalendarHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSubscribedCalendarResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.CreateSubscribedCalendarShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3822,6 +4670,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.CreateSubscribedCalendarHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.CreateSubscribedCalendarResponse:
+        """
+        @summary 创建订阅日历
+        
+        @param tmp_req: CreateSubscribedCalendarRequest
+        @param tmp_header: CreateSubscribedCalendarHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSubscribedCalendarResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.CreateSubscribedCalendarShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3871,6 +4727,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.CreateSubscribedCalendarRequest,
     ) -> aliding_20230426_models.CreateSubscribedCalendarResponse:
+        """
+        @summary 创建订阅日历
+        
+        @param request: CreateSubscribedCalendarRequest
+        @return: CreateSubscribedCalendarResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.CreateSubscribedCalendarHeaders()
         return self.create_subscribed_calendar_with_options(request, headers, runtime)
@@ -3879,6 +4741,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.CreateSubscribedCalendarRequest,
     ) -> aliding_20230426_models.CreateSubscribedCalendarResponse:
+        """
+        @summary 创建订阅日历
+        
+        @param request: CreateSubscribedCalendarRequest
+        @return: CreateSubscribedCalendarResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.CreateSubscribedCalendarHeaders()
         return await self.create_subscribed_calendar_with_options_async(request, headers, runtime)
@@ -3889,6 +4757,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.CreateTodoTaskHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.CreateTodoTaskResponse:
+        """
+        @summary 创建代办
+        
+        @param tmp_req: CreateTodoTaskRequest
+        @param tmp_header: CreateTodoTaskHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTodoTaskResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.CreateTodoTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3970,6 +4846,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.CreateTodoTaskHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.CreateTodoTaskResponse:
+        """
+        @summary 创建代办
+        
+        @param tmp_req: CreateTodoTaskRequest
+        @param tmp_header: CreateTodoTaskHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTodoTaskResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.CreateTodoTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -4049,6 +4933,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.CreateTodoTaskRequest,
     ) -> aliding_20230426_models.CreateTodoTaskResponse:
+        """
+        @summary 创建代办
+        
+        @param request: CreateTodoTaskRequest
+        @return: CreateTodoTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.CreateTodoTaskHeaders()
         return self.create_todo_task_with_options(request, headers, runtime)
@@ -4057,6 +4947,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.CreateTodoTaskRequest,
     ) -> aliding_20230426_models.CreateTodoTaskResponse:
+        """
+        @summary 创建代办
+        
+        @param request: CreateTodoTaskRequest
+        @return: CreateTodoTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.CreateTodoTaskHeaders()
         return await self.create_todo_task_with_options_async(request, headers, runtime)
@@ -4067,6 +4963,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.CreateVideoConferenceHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.CreateVideoConferenceResponse:
+        """
+        @summary 创建视频会议
+        
+        @param tmp_req: CreateVideoConferenceRequest
+        @param tmp_header: CreateVideoConferenceHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateVideoConferenceResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.CreateVideoConferenceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -4114,6 +5018,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.CreateVideoConferenceHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.CreateVideoConferenceResponse:
+        """
+        @summary 创建视频会议
+        
+        @param tmp_req: CreateVideoConferenceRequest
+        @param tmp_header: CreateVideoConferenceHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateVideoConferenceResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.CreateVideoConferenceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -4159,6 +5071,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.CreateVideoConferenceRequest,
     ) -> aliding_20230426_models.CreateVideoConferenceResponse:
+        """
+        @summary 创建视频会议
+        
+        @param request: CreateVideoConferenceRequest
+        @return: CreateVideoConferenceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.CreateVideoConferenceHeaders()
         return self.create_video_conference_with_options(request, headers, runtime)
@@ -4167,6 +5085,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.CreateVideoConferenceRequest,
     ) -> aliding_20230426_models.CreateVideoConferenceResponse:
+        """
+        @summary 创建视频会议
+        
+        @param request: CreateVideoConferenceRequest
+        @return: CreateVideoConferenceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.CreateVideoConferenceHeaders()
         return await self.create_video_conference_with_options_async(request, headers, runtime)
@@ -4177,6 +5101,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.CreateWorkspaceHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.CreateWorkspaceResponse:
+        """
+        @summary 创建知识库
+        
+        @param tmp_req: CreateWorkspaceRequest
+        @param tmp_header: CreateWorkspaceHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateWorkspaceResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.CreateWorkspaceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -4224,6 +5156,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.CreateWorkspaceHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.CreateWorkspaceResponse:
+        """
+        @summary 创建知识库
+        
+        @param tmp_req: CreateWorkspaceRequest
+        @param tmp_header: CreateWorkspaceHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateWorkspaceResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.CreateWorkspaceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -4269,6 +5209,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.CreateWorkspaceRequest,
     ) -> aliding_20230426_models.CreateWorkspaceResponse:
+        """
+        @summary 创建知识库
+        
+        @param request: CreateWorkspaceRequest
+        @return: CreateWorkspaceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.CreateWorkspaceHeaders()
         return self.create_workspace_with_options(request, headers, runtime)
@@ -4277,6 +5223,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.CreateWorkspaceRequest,
     ) -> aliding_20230426_models.CreateWorkspaceResponse:
+        """
+        @summary 创建知识库
+        
+        @param request: CreateWorkspaceRequest
+        @return: CreateWorkspaceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.CreateWorkspaceHeaders()
         return await self.create_workspace_with_options_async(request, headers, runtime)
@@ -4287,6 +5239,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.CreateWorkspaceDocHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.CreateWorkspaceDocResponse:
+        """
+        @summary 创建知识库文档
+        
+        @param tmp_req: CreateWorkspaceDocRequest
+        @param tmp_header: CreateWorkspaceDocHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateWorkspaceDocResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.CreateWorkspaceDocShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -4342,6 +5302,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.CreateWorkspaceDocHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.CreateWorkspaceDocResponse:
+        """
+        @summary 创建知识库文档
+        
+        @param tmp_req: CreateWorkspaceDocRequest
+        @param tmp_header: CreateWorkspaceDocHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateWorkspaceDocResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.CreateWorkspaceDocShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -4395,6 +5363,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.CreateWorkspaceDocRequest,
     ) -> aliding_20230426_models.CreateWorkspaceDocResponse:
+        """
+        @summary 创建知识库文档
+        
+        @param request: CreateWorkspaceDocRequest
+        @return: CreateWorkspaceDocResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.CreateWorkspaceDocHeaders()
         return self.create_workspace_doc_with_options(request, headers, runtime)
@@ -4403,6 +5377,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.CreateWorkspaceDocRequest,
     ) -> aliding_20230426_models.CreateWorkspaceDocResponse:
+        """
+        @summary 创建知识库文档
+        
+        @param request: CreateWorkspaceDocRequest
+        @return: CreateWorkspaceDocResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.CreateWorkspaceDocHeaders()
         return await self.create_workspace_doc_with_options_async(request, headers, runtime)
@@ -4413,6 +5393,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.DeleteColumnsHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.DeleteColumnsResponse:
+        """
+        @summary 删除指定列
+        
+        @param tmp_req: DeleteColumnsRequest
+        @param tmp_header: DeleteColumnsHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteColumnsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.DeleteColumnsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -4464,6 +5452,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.DeleteColumnsHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.DeleteColumnsResponse:
+        """
+        @summary 删除指定列
+        
+        @param tmp_req: DeleteColumnsRequest
+        @param tmp_header: DeleteColumnsHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteColumnsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.DeleteColumnsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -4513,6 +5509,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.DeleteColumnsRequest,
     ) -> aliding_20230426_models.DeleteColumnsResponse:
+        """
+        @summary 删除指定列
+        
+        @param request: DeleteColumnsRequest
+        @return: DeleteColumnsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.DeleteColumnsHeaders()
         return self.delete_columns_with_options(request, headers, runtime)
@@ -4521,6 +5523,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.DeleteColumnsRequest,
     ) -> aliding_20230426_models.DeleteColumnsResponse:
+        """
+        @summary 删除指定列
+        
+        @param request: DeleteColumnsRequest
+        @return: DeleteColumnsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.DeleteColumnsHeaders()
         return await self.delete_columns_with_options_async(request, headers, runtime)
@@ -4531,6 +5539,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.DeleteEventHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.DeleteEventResponse:
+        """
+        @summary 删除日程
+        
+        @param request: DeleteEventRequest
+        @param tmp_header: DeleteEventHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteEventResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.DeleteEventShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -4574,6 +5590,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.DeleteEventHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.DeleteEventResponse:
+        """
+        @summary 删除日程
+        
+        @param request: DeleteEventRequest
+        @param tmp_header: DeleteEventHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteEventResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.DeleteEventShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -4615,6 +5639,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.DeleteEventRequest,
     ) -> aliding_20230426_models.DeleteEventResponse:
+        """
+        @summary 删除日程
+        
+        @param request: DeleteEventRequest
+        @return: DeleteEventResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.DeleteEventHeaders()
         return self.delete_event_with_options(request, headers, runtime)
@@ -4623,6 +5653,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.DeleteEventRequest,
     ) -> aliding_20230426_models.DeleteEventResponse:
+        """
+        @summary 删除日程
+        
+        @param request: DeleteEventRequest
+        @return: DeleteEventResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.DeleteEventHeaders()
         return await self.delete_event_with_options_async(request, headers, runtime)
@@ -4633,6 +5669,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.DeleteFormDataHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.DeleteFormDataResponse:
+        """
+        @summary 删除表单数据
+        
+        @param request: DeleteFormDataRequest
+        @param tmp_header: DeleteFormDataHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteFormDataResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.DeleteFormDataShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -4678,6 +5722,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.DeleteFormDataHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.DeleteFormDataResponse:
+        """
+        @summary 删除表单数据
+        
+        @param request: DeleteFormDataRequest
+        @param tmp_header: DeleteFormDataHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteFormDataResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.DeleteFormDataShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -4721,6 +5773,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.DeleteFormDataRequest,
     ) -> aliding_20230426_models.DeleteFormDataResponse:
+        """
+        @summary 删除表单数据
+        
+        @param request: DeleteFormDataRequest
+        @return: DeleteFormDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.DeleteFormDataHeaders()
         return self.delete_form_data_with_options(request, headers, runtime)
@@ -4729,6 +5787,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.DeleteFormDataRequest,
     ) -> aliding_20230426_models.DeleteFormDataResponse:
+        """
+        @summary 删除表单数据
+        
+        @param request: DeleteFormDataRequest
+        @return: DeleteFormDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.DeleteFormDataHeaders()
         return await self.delete_form_data_with_options_async(request, headers, runtime)
@@ -4739,6 +5803,12 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.DeleteInstanceHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.DeleteInstanceResponse:
+        """
+        @param request: DeleteInstanceRequest
+        @param tmp_header: DeleteInstanceHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteInstanceResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.DeleteInstanceShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -4784,6 +5854,12 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.DeleteInstanceHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.DeleteInstanceResponse:
+        """
+        @param request: DeleteInstanceRequest
+        @param tmp_header: DeleteInstanceHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteInstanceResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.DeleteInstanceShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -4827,6 +5903,10 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.DeleteInstanceRequest,
     ) -> aliding_20230426_models.DeleteInstanceResponse:
+        """
+        @param request: DeleteInstanceRequest
+        @return: DeleteInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.DeleteInstanceHeaders()
         return self.delete_instance_with_options(request, headers, runtime)
@@ -4835,6 +5915,10 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.DeleteInstanceRequest,
     ) -> aliding_20230426_models.DeleteInstanceResponse:
+        """
+        @param request: DeleteInstanceRequest
+        @return: DeleteInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.DeleteInstanceHeaders()
         return await self.delete_instance_with_options_async(request, headers, runtime)
@@ -4845,6 +5929,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.DeleteLiveHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.DeleteLiveResponse:
+        """
+        @summary 删除直播
+        
+        @param tmp_req: DeleteLiveRequest
+        @param tmp_header: DeleteLiveHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteLiveResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.DeleteLiveShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -4890,6 +5982,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.DeleteLiveHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.DeleteLiveResponse:
+        """
+        @summary 删除直播
+        
+        @param tmp_req: DeleteLiveRequest
+        @param tmp_header: DeleteLiveHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteLiveResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.DeleteLiveShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -4933,6 +6033,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.DeleteLiveRequest,
     ) -> aliding_20230426_models.DeleteLiveResponse:
+        """
+        @summary 删除直播
+        
+        @param request: DeleteLiveRequest
+        @return: DeleteLiveResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.DeleteLiveHeaders()
         return self.delete_live_with_options(request, headers, runtime)
@@ -4941,6 +6047,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.DeleteLiveRequest,
     ) -> aliding_20230426_models.DeleteLiveResponse:
+        """
+        @summary 删除直播
+        
+        @param request: DeleteLiveRequest
+        @return: DeleteLiveResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.DeleteLiveHeaders()
         return await self.delete_live_with_options_async(request, headers, runtime)
@@ -4951,6 +6063,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.DeleteMeetingRoomHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.DeleteMeetingRoomResponse:
+        """
+        @summary 删除会议室
+        
+        @param tmp_req: DeleteMeetingRoomRequest
+        @param tmp_header: DeleteMeetingRoomHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMeetingRoomResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.DeleteMeetingRoomShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -4996,6 +6116,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.DeleteMeetingRoomHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.DeleteMeetingRoomResponse:
+        """
+        @summary 删除会议室
+        
+        @param tmp_req: DeleteMeetingRoomRequest
+        @param tmp_header: DeleteMeetingRoomHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMeetingRoomResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.DeleteMeetingRoomShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -5039,6 +6167,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.DeleteMeetingRoomRequest,
     ) -> aliding_20230426_models.DeleteMeetingRoomResponse:
+        """
+        @summary 删除会议室
+        
+        @param request: DeleteMeetingRoomRequest
+        @return: DeleteMeetingRoomResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.DeleteMeetingRoomHeaders()
         return self.delete_meeting_room_with_options(request, headers, runtime)
@@ -5047,6 +6181,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.DeleteMeetingRoomRequest,
     ) -> aliding_20230426_models.DeleteMeetingRoomResponse:
+        """
+        @summary 删除会议室
+        
+        @param request: DeleteMeetingRoomRequest
+        @return: DeleteMeetingRoomResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.DeleteMeetingRoomHeaders()
         return await self.delete_meeting_room_with_options_async(request, headers, runtime)
@@ -5057,6 +6197,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.DeleteMeetingRoomGroupHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.DeleteMeetingRoomGroupResponse:
+        """
+        @summary 删除会议室分组
+        
+        @param tmp_req: DeleteMeetingRoomGroupRequest
+        @param tmp_header: DeleteMeetingRoomGroupHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMeetingRoomGroupResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.DeleteMeetingRoomGroupShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -5102,6 +6250,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.DeleteMeetingRoomGroupHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.DeleteMeetingRoomGroupResponse:
+        """
+        @summary 删除会议室分组
+        
+        @param tmp_req: DeleteMeetingRoomGroupRequest
+        @param tmp_header: DeleteMeetingRoomGroupHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMeetingRoomGroupResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.DeleteMeetingRoomGroupShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -5145,6 +6301,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.DeleteMeetingRoomGroupRequest,
     ) -> aliding_20230426_models.DeleteMeetingRoomGroupResponse:
+        """
+        @summary 删除会议室分组
+        
+        @param request: DeleteMeetingRoomGroupRequest
+        @return: DeleteMeetingRoomGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.DeleteMeetingRoomGroupHeaders()
         return self.delete_meeting_room_group_with_options(request, headers, runtime)
@@ -5153,6 +6315,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.DeleteMeetingRoomGroupRequest,
     ) -> aliding_20230426_models.DeleteMeetingRoomGroupResponse:
+        """
+        @summary 删除会议室分组
+        
+        @param request: DeleteMeetingRoomGroupRequest
+        @return: DeleteMeetingRoomGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.DeleteMeetingRoomGroupHeaders()
         return await self.delete_meeting_room_group_with_options_async(request, headers, runtime)
@@ -5163,6 +6331,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.DeleteRowsHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.DeleteRowsResponse:
+        """
+        @summary 删除指定行
+        
+        @param tmp_req: DeleteRowsRequest
+        @param tmp_header: DeleteRowsHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteRowsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.DeleteRowsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -5214,6 +6390,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.DeleteRowsHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.DeleteRowsResponse:
+        """
+        @summary 删除指定行
+        
+        @param tmp_req: DeleteRowsRequest
+        @param tmp_header: DeleteRowsHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteRowsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.DeleteRowsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -5263,6 +6447,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.DeleteRowsRequest,
     ) -> aliding_20230426_models.DeleteRowsResponse:
+        """
+        @summary 删除指定行
+        
+        @param request: DeleteRowsRequest
+        @return: DeleteRowsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.DeleteRowsHeaders()
         return self.delete_rows_with_options(request, headers, runtime)
@@ -5271,6 +6461,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.DeleteRowsRequest,
     ) -> aliding_20230426_models.DeleteRowsResponse:
+        """
+        @summary 删除指定行
+        
+        @param request: DeleteRowsRequest
+        @return: DeleteRowsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.DeleteRowsHeaders()
         return await self.delete_rows_with_options_async(request, headers, runtime)
@@ -5281,6 +6477,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.DeleteScenegroupMemberHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.DeleteScenegroupMemberResponse:
+        """
+        @summary 删除群成员
+        
+        @param request: DeleteScenegroupMemberRequest
+        @param tmp_header: DeleteScenegroupMemberHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteScenegroupMemberResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.DeleteScenegroupMemberShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -5322,6 +6526,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.DeleteScenegroupMemberHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.DeleteScenegroupMemberResponse:
+        """
+        @summary 删除群成员
+        
+        @param request: DeleteScenegroupMemberRequest
+        @param tmp_header: DeleteScenegroupMemberHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteScenegroupMemberResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.DeleteScenegroupMemberShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -5361,6 +6573,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.DeleteScenegroupMemberRequest,
     ) -> aliding_20230426_models.DeleteScenegroupMemberResponse:
+        """
+        @summary 删除群成员
+        
+        @param request: DeleteScenegroupMemberRequest
+        @return: DeleteScenegroupMemberResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.DeleteScenegroupMemberHeaders()
         return self.delete_scenegroup_member_with_options(request, headers, runtime)
@@ -5369,6 +6587,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.DeleteScenegroupMemberRequest,
     ) -> aliding_20230426_models.DeleteScenegroupMemberResponse:
+        """
+        @summary 删除群成员
+        
+        @param request: DeleteScenegroupMemberRequest
+        @return: DeleteScenegroupMemberResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.DeleteScenegroupMemberHeaders()
         return await self.delete_scenegroup_member_with_options_async(request, headers, runtime)
@@ -5379,6 +6603,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.DeleteSheetHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.DeleteSheetResponse:
+        """
+        @summary 删除一个工作表
+        
+        @param tmp_req: DeleteSheetRequest
+        @param tmp_header: DeleteSheetHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSheetResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.DeleteSheetShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -5426,6 +6658,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.DeleteSheetHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.DeleteSheetResponse:
+        """
+        @summary 删除一个工作表
+        
+        @param tmp_req: DeleteSheetRequest
+        @param tmp_header: DeleteSheetHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSheetResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.DeleteSheetShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -5471,6 +6711,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.DeleteSheetRequest,
     ) -> aliding_20230426_models.DeleteSheetResponse:
+        """
+        @summary 删除一个工作表
+        
+        @param request: DeleteSheetRequest
+        @return: DeleteSheetResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.DeleteSheetHeaders()
         return self.delete_sheet_with_options(request, headers, runtime)
@@ -5479,6 +6725,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.DeleteSheetRequest,
     ) -> aliding_20230426_models.DeleteSheetResponse:
+        """
+        @summary 删除一个工作表
+        
+        @param request: DeleteSheetRequest
+        @return: DeleteSheetResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.DeleteSheetHeaders()
         return await self.delete_sheet_with_options_async(request, headers, runtime)
@@ -5489,6 +6741,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.DeleteSubscribedCalendarHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.DeleteSubscribedCalendarResponse:
+        """
+        @summary 删除订阅日历
+        
+        @param request: DeleteSubscribedCalendarRequest
+        @param tmp_header: DeleteSubscribedCalendarHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSubscribedCalendarResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.DeleteSubscribedCalendarShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -5528,6 +6788,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.DeleteSubscribedCalendarHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.DeleteSubscribedCalendarResponse:
+        """
+        @summary 删除订阅日历
+        
+        @param request: DeleteSubscribedCalendarRequest
+        @param tmp_header: DeleteSubscribedCalendarHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSubscribedCalendarResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.DeleteSubscribedCalendarShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -5565,6 +6833,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.DeleteSubscribedCalendarRequest,
     ) -> aliding_20230426_models.DeleteSubscribedCalendarResponse:
+        """
+        @summary 删除订阅日历
+        
+        @param request: DeleteSubscribedCalendarRequest
+        @return: DeleteSubscribedCalendarResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.DeleteSubscribedCalendarHeaders()
         return self.delete_subscribed_calendar_with_options(request, headers, runtime)
@@ -5573,6 +6847,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.DeleteSubscribedCalendarRequest,
     ) -> aliding_20230426_models.DeleteSubscribedCalendarResponse:
+        """
+        @summary 删除订阅日历
+        
+        @param request: DeleteSubscribedCalendarRequest
+        @return: DeleteSubscribedCalendarResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.DeleteSubscribedCalendarHeaders()
         return await self.delete_subscribed_calendar_with_options_async(request, headers, runtime)
@@ -5583,6 +6863,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.DeleteTodoTaskHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.DeleteTodoTaskResponse:
+        """
+        @summary 删除代办
+        
+        @param tmp_req: DeleteTodoTaskRequest
+        @param tmp_header: DeleteTodoTaskHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteTodoTaskResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.DeleteTodoTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -5630,6 +6918,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.DeleteTodoTaskHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.DeleteTodoTaskResponse:
+        """
+        @summary 删除代办
+        
+        @param tmp_req: DeleteTodoTaskRequest
+        @param tmp_header: DeleteTodoTaskHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteTodoTaskResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.DeleteTodoTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -5675,6 +6971,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.DeleteTodoTaskRequest,
     ) -> aliding_20230426_models.DeleteTodoTaskResponse:
+        """
+        @summary 删除代办
+        
+        @param request: DeleteTodoTaskRequest
+        @return: DeleteTodoTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.DeleteTodoTaskHeaders()
         return self.delete_todo_task_with_options(request, headers, runtime)
@@ -5683,6 +6985,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.DeleteTodoTaskRequest,
     ) -> aliding_20230426_models.DeleteTodoTaskResponse:
+        """
+        @summary 删除代办
+        
+        @param request: DeleteTodoTaskRequest
+        @return: DeleteTodoTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.DeleteTodoTaskHeaders()
         return await self.delete_todo_task_with_options_async(request, headers, runtime)
@@ -5693,6 +7001,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.DeleteWorkspaceDocMembersHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.DeleteWorkspaceDocMembersResponse:
+        """
+        @summary 删除知识库文档成员
+        
+        @param tmp_req: DeleteWorkspaceDocMembersRequest
+        @param tmp_header: DeleteWorkspaceDocMembersHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteWorkspaceDocMembersResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.DeleteWorkspaceDocMembersShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -5744,6 +7060,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.DeleteWorkspaceDocMembersHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.DeleteWorkspaceDocMembersResponse:
+        """
+        @summary 删除知识库文档成员
+        
+        @param tmp_req: DeleteWorkspaceDocMembersRequest
+        @param tmp_header: DeleteWorkspaceDocMembersHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteWorkspaceDocMembersResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.DeleteWorkspaceDocMembersShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -5793,6 +7117,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.DeleteWorkspaceDocMembersRequest,
     ) -> aliding_20230426_models.DeleteWorkspaceDocMembersResponse:
+        """
+        @summary 删除知识库文档成员
+        
+        @param request: DeleteWorkspaceDocMembersRequest
+        @return: DeleteWorkspaceDocMembersResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.DeleteWorkspaceDocMembersHeaders()
         return self.delete_workspace_doc_members_with_options(request, headers, runtime)
@@ -5801,6 +7131,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.DeleteWorkspaceDocMembersRequest,
     ) -> aliding_20230426_models.DeleteWorkspaceDocMembersResponse:
+        """
+        @summary 删除知识库文档成员
+        
+        @param request: DeleteWorkspaceDocMembersRequest
+        @return: DeleteWorkspaceDocMembersResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.DeleteWorkspaceDocMembersHeaders()
         return await self.delete_workspace_doc_members_with_options_async(request, headers, runtime)
@@ -5811,6 +7147,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.DeleteWorkspaceMembersHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.DeleteWorkspaceMembersResponse:
+        """
+        @summary 删除知识库成员
+        
+        @param tmp_req: DeleteWorkspaceMembersRequest
+        @param tmp_header: DeleteWorkspaceMembersHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteWorkspaceMembersResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.DeleteWorkspaceMembersShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -5860,6 +7204,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.DeleteWorkspaceMembersHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.DeleteWorkspaceMembersResponse:
+        """
+        @summary 删除知识库成员
+        
+        @param tmp_req: DeleteWorkspaceMembersRequest
+        @param tmp_header: DeleteWorkspaceMembersHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteWorkspaceMembersResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.DeleteWorkspaceMembersShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -5907,6 +7259,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.DeleteWorkspaceMembersRequest,
     ) -> aliding_20230426_models.DeleteWorkspaceMembersResponse:
+        """
+        @summary 删除知识库成员
+        
+        @param request: DeleteWorkspaceMembersRequest
+        @return: DeleteWorkspaceMembersResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.DeleteWorkspaceMembersHeaders()
         return self.delete_workspace_members_with_options(request, headers, runtime)
@@ -5915,6 +7273,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.DeleteWorkspaceMembersRequest,
     ) -> aliding_20230426_models.DeleteWorkspaceMembersResponse:
+        """
+        @summary 删除知识库成员
+        
+        @param request: DeleteWorkspaceMembersRequest
+        @return: DeleteWorkspaceMembersResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.DeleteWorkspaceMembersHeaders()
         return await self.delete_workspace_members_with_options_async(request, headers, runtime)
@@ -5925,6 +7289,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.ExecuteBatchTaskHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.ExecuteBatchTaskResponse:
+        """
+        @summary 批量执行宜搭审批任务
+        
+        @param request: ExecuteBatchTaskRequest
+        @param tmp_header: ExecuteBatchTaskHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExecuteBatchTaskResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.ExecuteBatchTaskShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -5972,6 +7344,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.ExecuteBatchTaskHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.ExecuteBatchTaskResponse:
+        """
+        @summary 批量执行宜搭审批任务
+        
+        @param request: ExecuteBatchTaskRequest
+        @param tmp_header: ExecuteBatchTaskHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExecuteBatchTaskResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.ExecuteBatchTaskShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -6017,6 +7397,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.ExecuteBatchTaskRequest,
     ) -> aliding_20230426_models.ExecuteBatchTaskResponse:
+        """
+        @summary 批量执行宜搭审批任务
+        
+        @param request: ExecuteBatchTaskRequest
+        @return: ExecuteBatchTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.ExecuteBatchTaskHeaders()
         return self.execute_batch_task_with_options(request, headers, runtime)
@@ -6025,6 +7411,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.ExecuteBatchTaskRequest,
     ) -> aliding_20230426_models.ExecuteBatchTaskResponse:
+        """
+        @summary 批量执行宜搭审批任务
+        
+        @param request: ExecuteBatchTaskRequest
+        @return: ExecuteBatchTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.ExecuteBatchTaskHeaders()
         return await self.execute_batch_task_with_options_async(request, headers, runtime)
@@ -6035,6 +7427,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.ExecutePlatformTaskHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.ExecutePlatformTaskResponse:
+        """
+        @summary 执行宜搭的审批任务
+        
+        @param request: ExecutePlatformTaskRequest
+        @param tmp_header: ExecutePlatformTaskHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExecutePlatformTaskResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.ExecutePlatformTaskShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -6088,6 +7488,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.ExecutePlatformTaskHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.ExecutePlatformTaskResponse:
+        """
+        @summary 执行宜搭的审批任务
+        
+        @param request: ExecutePlatformTaskRequest
+        @param tmp_header: ExecutePlatformTaskHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExecutePlatformTaskResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.ExecutePlatformTaskShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -6139,6 +7547,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.ExecutePlatformTaskRequest,
     ) -> aliding_20230426_models.ExecutePlatformTaskResponse:
+        """
+        @summary 执行宜搭的审批任务
+        
+        @param request: ExecutePlatformTaskRequest
+        @return: ExecutePlatformTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.ExecutePlatformTaskHeaders()
         return self.execute_platform_task_with_options(request, headers, runtime)
@@ -6147,6 +7561,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.ExecutePlatformTaskRequest,
     ) -> aliding_20230426_models.ExecutePlatformTaskResponse:
+        """
+        @summary 执行宜搭的审批任务
+        
+        @param request: ExecutePlatformTaskRequest
+        @return: ExecutePlatformTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.ExecutePlatformTaskHeaders()
         return await self.execute_platform_task_with_options_async(request, headers, runtime)
@@ -6157,6 +7577,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.ExecuteTaskHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.ExecuteTaskResponse:
+        """
+        @summary 同意或拒绝宜搭审批任务(执行审批任务)
+        
+        @param request: ExecuteTaskRequest
+        @param tmp_header: ExecuteTaskHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExecuteTaskResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.ExecuteTaskShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -6214,6 +7642,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.ExecuteTaskHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.ExecuteTaskResponse:
+        """
+        @summary 同意或拒绝宜搭审批任务(执行审批任务)
+        
+        @param request: ExecuteTaskRequest
+        @param tmp_header: ExecuteTaskHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExecuteTaskResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.ExecuteTaskShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -6269,6 +7705,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.ExecuteTaskRequest,
     ) -> aliding_20230426_models.ExecuteTaskResponse:
+        """
+        @summary 同意或拒绝宜搭审批任务(执行审批任务)
+        
+        @param request: ExecuteTaskRequest
+        @return: ExecuteTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.ExecuteTaskHeaders()
         return self.execute_task_with_options(request, headers, runtime)
@@ -6277,6 +7719,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.ExecuteTaskRequest,
     ) -> aliding_20230426_models.ExecuteTaskResponse:
+        """
+        @summary 同意或拒绝宜搭审批任务(执行审批任务)
+        
+        @param request: ExecuteTaskRequest
+        @return: ExecuteTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.ExecuteTaskHeaders()
         return await self.execute_task_with_options_async(request, headers, runtime)
@@ -6287,6 +7735,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.ExpandGroupCapacityHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.ExpandGroupCapacityResponse:
+        """
+        @summary 群扩容
+        
+        @param tmp_req: ExpandGroupCapacityRequest
+        @param tmp_header: ExpandGroupCapacityHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExpandGroupCapacityResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.ExpandGroupCapacityShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -6332,6 +7788,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.ExpandGroupCapacityHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.ExpandGroupCapacityResponse:
+        """
+        @summary 群扩容
+        
+        @param tmp_req: ExpandGroupCapacityRequest
+        @param tmp_header: ExpandGroupCapacityHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExpandGroupCapacityResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.ExpandGroupCapacityShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -6375,6 +7839,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.ExpandGroupCapacityRequest,
     ) -> aliding_20230426_models.ExpandGroupCapacityResponse:
+        """
+        @summary 群扩容
+        
+        @param request: ExpandGroupCapacityRequest
+        @return: ExpandGroupCapacityResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.ExpandGroupCapacityHeaders()
         return self.expand_group_capacity_with_options(request, headers, runtime)
@@ -6383,6 +7853,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.ExpandGroupCapacityRequest,
     ) -> aliding_20230426_models.ExpandGroupCapacityResponse:
+        """
+        @summary 群扩容
+        
+        @param request: ExpandGroupCapacityRequest
+        @return: ExpandGroupCapacityResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.ExpandGroupCapacityHeaders()
         return await self.expand_group_capacity_with_options_async(request, headers, runtime)
@@ -6393,6 +7869,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.GetActivityListHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.GetActivityListResponse:
+        """
+        @summary 获取流程设计的节点信息
+        
+        @param request: GetActivityListRequest
+        @param tmp_header: GetActivityListHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetActivityListResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.GetActivityListShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -6438,6 +7922,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.GetActivityListHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.GetActivityListResponse:
+        """
+        @summary 获取流程设计的节点信息
+        
+        @param request: GetActivityListRequest
+        @param tmp_header: GetActivityListHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetActivityListResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.GetActivityListShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -6481,6 +7973,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.GetActivityListRequest,
     ) -> aliding_20230426_models.GetActivityListResponse:
+        """
+        @summary 获取流程设计的节点信息
+        
+        @param request: GetActivityListRequest
+        @return: GetActivityListResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetActivityListHeaders()
         return self.get_activity_list_with_options(request, headers, runtime)
@@ -6489,6 +7987,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.GetActivityListRequest,
     ) -> aliding_20230426_models.GetActivityListResponse:
+        """
+        @summary 获取流程设计的节点信息
+        
+        @param request: GetActivityListRequest
+        @return: GetActivityListResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetActivityListHeaders()
         return await self.get_activity_list_with_options_async(request, headers, runtime)
@@ -6499,6 +8003,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.GetAllSheetsHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.GetAllSheetsResponse:
+        """
+        @summary 获取所有工作表
+        
+        @param tmp_req: GetAllSheetsRequest
+        @param tmp_header: GetAllSheetsHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAllSheetsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.GetAllSheetsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -6544,6 +8056,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.GetAllSheetsHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.GetAllSheetsResponse:
+        """
+        @summary 获取所有工作表
+        
+        @param tmp_req: GetAllSheetsRequest
+        @param tmp_header: GetAllSheetsHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAllSheetsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.GetAllSheetsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -6587,6 +8107,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.GetAllSheetsRequest,
     ) -> aliding_20230426_models.GetAllSheetsResponse:
+        """
+        @summary 获取所有工作表
+        
+        @param request: GetAllSheetsRequest
+        @return: GetAllSheetsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetAllSheetsHeaders()
         return self.get_all_sheets_with_options(request, headers, runtime)
@@ -6595,6 +8121,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.GetAllSheetsRequest,
     ) -> aliding_20230426_models.GetAllSheetsResponse:
+        """
+        @summary 获取所有工作表
+        
+        @param request: GetAllSheetsRequest
+        @return: GetAllSheetsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetAllSheetsHeaders()
         return await self.get_all_sheets_with_options_async(request, headers, runtime)
@@ -6605,6 +8137,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.GetConversaionSpaceHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.GetConversaionSpaceResponse:
+        """
+        @summary 获取群存储空间信息
+        
+        @param tmp_req: GetConversaionSpaceRequest
+        @param tmp_header: GetConversaionSpaceHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetConversaionSpaceResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.GetConversaionSpaceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -6650,6 +8190,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.GetConversaionSpaceHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.GetConversaionSpaceResponse:
+        """
+        @summary 获取群存储空间信息
+        
+        @param tmp_req: GetConversaionSpaceRequest
+        @param tmp_header: GetConversaionSpaceHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetConversaionSpaceResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.GetConversaionSpaceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -6693,6 +8241,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.GetConversaionSpaceRequest,
     ) -> aliding_20230426_models.GetConversaionSpaceResponse:
+        """
+        @summary 获取群存储空间信息
+        
+        @param request: GetConversaionSpaceRequest
+        @return: GetConversaionSpaceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetConversaionSpaceHeaders()
         return self.get_conversaion_space_with_options(request, headers, runtime)
@@ -6701,6 +8255,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.GetConversaionSpaceRequest,
     ) -> aliding_20230426_models.GetConversaionSpaceResponse:
+        """
+        @summary 获取群存储空间信息
+        
+        @param request: GetConversaionSpaceRequest
+        @return: GetConversaionSpaceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetConversaionSpaceHeaders()
         return await self.get_conversaion_space_with_options_async(request, headers, runtime)
@@ -6711,6 +8271,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.GetCorpAccomplishmentTasksHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.GetCorpAccomplishmentTasksResponse:
+        """
+        @summary 获取组织内已完成的审批任务
+        
+        @param request: GetCorpAccomplishmentTasksRequest
+        @param tmp_header: GetCorpAccomplishmentTasksHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCorpAccomplishmentTasksResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.GetCorpAccomplishmentTasksShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -6768,6 +8336,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.GetCorpAccomplishmentTasksHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.GetCorpAccomplishmentTasksResponse:
+        """
+        @summary 获取组织内已完成的审批任务
+        
+        @param request: GetCorpAccomplishmentTasksRequest
+        @param tmp_header: GetCorpAccomplishmentTasksHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCorpAccomplishmentTasksResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.GetCorpAccomplishmentTasksShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -6823,6 +8399,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.GetCorpAccomplishmentTasksRequest,
     ) -> aliding_20230426_models.GetCorpAccomplishmentTasksResponse:
+        """
+        @summary 获取组织内已完成的审批任务
+        
+        @param request: GetCorpAccomplishmentTasksRequest
+        @return: GetCorpAccomplishmentTasksResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetCorpAccomplishmentTasksHeaders()
         return self.get_corp_accomplishment_tasks_with_options(request, headers, runtime)
@@ -6831,6 +8413,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.GetCorpAccomplishmentTasksRequest,
     ) -> aliding_20230426_models.GetCorpAccomplishmentTasksResponse:
+        """
+        @summary 获取组织内已完成的审批任务
+        
+        @param request: GetCorpAccomplishmentTasksRequest
+        @return: GetCorpAccomplishmentTasksResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetCorpAccomplishmentTasksHeaders()
         return await self.get_corp_accomplishment_tasks_with_options_async(request, headers, runtime)
@@ -6841,6 +8429,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.GetCorpTasksHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.GetCorpTasksResponse:
+        """
+        @summary 获取任务列表（组织维度）
+        
+        @param request: GetCorpTasksRequest
+        @param tmp_header: GetCorpTasksHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCorpTasksResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.GetCorpTasksShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -6898,6 +8494,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.GetCorpTasksHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.GetCorpTasksResponse:
+        """
+        @summary 获取任务列表（组织维度）
+        
+        @param request: GetCorpTasksRequest
+        @param tmp_header: GetCorpTasksHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCorpTasksResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.GetCorpTasksShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -6953,6 +8557,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.GetCorpTasksRequest,
     ) -> aliding_20230426_models.GetCorpTasksResponse:
+        """
+        @summary 获取任务列表（组织维度）
+        
+        @param request: GetCorpTasksRequest
+        @return: GetCorpTasksResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetCorpTasksHeaders()
         return self.get_corp_tasks_with_options(request, headers, runtime)
@@ -6961,6 +8571,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.GetCorpTasksRequest,
     ) -> aliding_20230426_models.GetCorpTasksResponse:
+        """
+        @summary 获取任务列表（组织维度）
+        
+        @param request: GetCorpTasksRequest
+        @return: GetCorpTasksResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetCorpTasksHeaders()
         return await self.get_corp_tasks_with_options_async(request, headers, runtime)
@@ -6971,6 +8587,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.GetDocContentHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.GetDocContentResponse:
+        """
+        @summary 委托权限获取文档内容
+        
+        @param tmp_req: GetDocContentRequest
+        @param tmp_header: GetDocContentHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDocContentResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.GetDocContentShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -7020,6 +8644,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.GetDocContentHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.GetDocContentResponse:
+        """
+        @summary 委托权限获取文档内容
+        
+        @param tmp_req: GetDocContentRequest
+        @param tmp_header: GetDocContentHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDocContentResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.GetDocContentShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -7067,6 +8699,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.GetDocContentRequest,
     ) -> aliding_20230426_models.GetDocContentResponse:
+        """
+        @summary 委托权限获取文档内容
+        
+        @param request: GetDocContentRequest
+        @return: GetDocContentResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetDocContentHeaders()
         return self.get_doc_content_with_options(request, headers, runtime)
@@ -7075,9 +8713,153 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.GetDocContentRequest,
     ) -> aliding_20230426_models.GetDocContentResponse:
+        """
+        @summary 委托权限获取文档内容
+        
+        @param request: GetDocContentRequest
+        @return: GetDocContentResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetDocContentHeaders()
         return await self.get_doc_content_with_options_async(request, headers, runtime)
+
+    def get_doc_content_tak_id_with_options(
+        self,
+        tmp_req: aliding_20230426_models.GetDocContentTakIdRequest,
+        tmp_header: aliding_20230426_models.GetDocContentTakIdHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.GetDocContentTakIdResponse:
+        """
+        @summary 委托权限获取文档内容taskId
+        
+        @param tmp_req: GetDocContentTakIdRequest
+        @param tmp_header: GetDocContentTakIdHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDocContentTakIdResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.GetDocContentTakIdShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.GetDocContentTakIdShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.dentry_uuid):
+            body['DentryUuid'] = request.dentry_uuid
+        if not UtilClient.is_unset(request.target_format):
+            body['TargetFormat'] = request.target_format
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetDocContentTakId',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v2/documents/getDocContentTakId',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.GetDocContentTakIdResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_doc_content_tak_id_with_options_async(
+        self,
+        tmp_req: aliding_20230426_models.GetDocContentTakIdRequest,
+        tmp_header: aliding_20230426_models.GetDocContentTakIdHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.GetDocContentTakIdResponse:
+        """
+        @summary 委托权限获取文档内容taskId
+        
+        @param tmp_req: GetDocContentTakIdRequest
+        @param tmp_header: GetDocContentTakIdHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDocContentTakIdResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.GetDocContentTakIdShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.GetDocContentTakIdShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.dentry_uuid):
+            body['DentryUuid'] = request.dentry_uuid
+        if not UtilClient.is_unset(request.target_format):
+            body['TargetFormat'] = request.target_format
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetDocContentTakId',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v2/documents/getDocContentTakId',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.GetDocContentTakIdResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_doc_content_tak_id(
+        self,
+        request: aliding_20230426_models.GetDocContentTakIdRequest,
+    ) -> aliding_20230426_models.GetDocContentTakIdResponse:
+        """
+        @summary 委托权限获取文档内容taskId
+        
+        @param request: GetDocContentTakIdRequest
+        @return: GetDocContentTakIdResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.GetDocContentTakIdHeaders()
+        return self.get_doc_content_tak_id_with_options(request, headers, runtime)
+
+    async def get_doc_content_tak_id_async(
+        self,
+        request: aliding_20230426_models.GetDocContentTakIdRequest,
+    ) -> aliding_20230426_models.GetDocContentTakIdResponse:
+        """
+        @summary 委托权限获取文档内容taskId
+        
+        @param request: GetDocContentTakIdRequest
+        @return: GetDocContentTakIdResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.GetDocContentTakIdHeaders()
+        return await self.get_doc_content_tak_id_with_options_async(request, headers, runtime)
 
     def get_event_with_options(
         self,
@@ -7085,6 +8867,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.GetEventHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.GetEventResponse:
+        """
+        @summary 查询单个日程详情
+        
+        @param request: GetEventRequest
+        @param tmp_header: GetEventHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetEventResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.GetEventShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -7130,6 +8920,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.GetEventHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.GetEventResponse:
+        """
+        @summary 查询单个日程详情
+        
+        @param request: GetEventRequest
+        @param tmp_header: GetEventHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetEventResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.GetEventShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -7173,6 +8971,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.GetEventRequest,
     ) -> aliding_20230426_models.GetEventResponse:
+        """
+        @summary 查询单个日程详情
+        
+        @param request: GetEventRequest
+        @return: GetEventResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetEventHeaders()
         return self.get_event_with_options(request, headers, runtime)
@@ -7181,6 +8985,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.GetEventRequest,
     ) -> aliding_20230426_models.GetEventResponse:
+        """
+        @summary 查询单个日程详情
+        
+        @param request: GetEventRequest
+        @return: GetEventResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetEventHeaders()
         return await self.get_event_with_options_async(request, headers, runtime)
@@ -7191,6 +9001,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.GetFieldDefByUuidHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.GetFieldDefByUuidResponse:
+        """
+        @summary 获取表单内的组件信息
+        
+        @param request: GetFieldDefByUuidRequest
+        @param tmp_header: GetFieldDefByUuidHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetFieldDefByUuidResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.GetFieldDefByUuidShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -7234,6 +9052,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.GetFieldDefByUuidHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.GetFieldDefByUuidResponse:
+        """
+        @summary 获取表单内的组件信息
+        
+        @param request: GetFieldDefByUuidRequest
+        @param tmp_header: GetFieldDefByUuidHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetFieldDefByUuidResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.GetFieldDefByUuidShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -7275,6 +9101,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.GetFieldDefByUuidRequest,
     ) -> aliding_20230426_models.GetFieldDefByUuidResponse:
+        """
+        @summary 获取表单内的组件信息
+        
+        @param request: GetFieldDefByUuidRequest
+        @return: GetFieldDefByUuidResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetFieldDefByUuidHeaders()
         return self.get_field_def_by_uuid_with_options(request, headers, runtime)
@@ -7283,6 +9115,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.GetFieldDefByUuidRequest,
     ) -> aliding_20230426_models.GetFieldDefByUuidResponse:
+        """
+        @summary 获取表单内的组件信息
+        
+        @param request: GetFieldDefByUuidRequest
+        @return: GetFieldDefByUuidResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetFieldDefByUuidHeaders()
         return await self.get_field_def_by_uuid_with_options_async(request, headers, runtime)
@@ -7293,6 +9131,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.GetFileDownloadInfoHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.GetFileDownloadInfoResponse:
+        """
+        @summary 获取文件下载信息
+        
+        @param tmp_req: GetFileDownloadInfoRequest
+        @param tmp_header: GetFileDownloadInfoHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetFileDownloadInfoResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.GetFileDownloadInfoShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -7344,6 +9190,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.GetFileDownloadInfoHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.GetFileDownloadInfoResponse:
+        """
+        @summary 获取文件下载信息
+        
+        @param tmp_req: GetFileDownloadInfoRequest
+        @param tmp_header: GetFileDownloadInfoHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetFileDownloadInfoResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.GetFileDownloadInfoShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -7393,6 +9247,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.GetFileDownloadInfoRequest,
     ) -> aliding_20230426_models.GetFileDownloadInfoResponse:
+        """
+        @summary 获取文件下载信息
+        
+        @param request: GetFileDownloadInfoRequest
+        @return: GetFileDownloadInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetFileDownloadInfoHeaders()
         return self.get_file_download_info_with_options(request, headers, runtime)
@@ -7401,6 +9261,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.GetFileDownloadInfoRequest,
     ) -> aliding_20230426_models.GetFileDownloadInfoResponse:
+        """
+        @summary 获取文件下载信息
+        
+        @param request: GetFileDownloadInfoRequest
+        @return: GetFileDownloadInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetFileDownloadInfoHeaders()
         return await self.get_file_download_info_with_options_async(request, headers, runtime)
@@ -7411,6 +9277,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.GetFormComponentDefinitionListHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.GetFormComponentDefinitionListResponse:
+        """
+        @summary 获取表单组件定义列表
+        
+        @param request: GetFormComponentDefinitionListRequest
+        @param tmp_header: GetFormComponentDefinitionListHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetFormComponentDefinitionListResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.GetFormComponentDefinitionListShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -7456,6 +9330,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.GetFormComponentDefinitionListHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.GetFormComponentDefinitionListResponse:
+        """
+        @summary 获取表单组件定义列表
+        
+        @param request: GetFormComponentDefinitionListRequest
+        @param tmp_header: GetFormComponentDefinitionListHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetFormComponentDefinitionListResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.GetFormComponentDefinitionListShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -7499,6 +9381,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.GetFormComponentDefinitionListRequest,
     ) -> aliding_20230426_models.GetFormComponentDefinitionListResponse:
+        """
+        @summary 获取表单组件定义列表
+        
+        @param request: GetFormComponentDefinitionListRequest
+        @return: GetFormComponentDefinitionListResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetFormComponentDefinitionListHeaders()
         return self.get_form_component_definition_list_with_options(request, headers, runtime)
@@ -7507,6 +9395,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.GetFormComponentDefinitionListRequest,
     ) -> aliding_20230426_models.GetFormComponentDefinitionListResponse:
+        """
+        @summary 获取表单组件定义列表
+        
+        @param request: GetFormComponentDefinitionListRequest
+        @return: GetFormComponentDefinitionListResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetFormComponentDefinitionListHeaders()
         return await self.get_form_component_definition_list_with_options_async(request, headers, runtime)
@@ -7517,6 +9411,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.GetFormDataByIDHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.GetFormDataByIDResponse:
+        """
+        @summary 查询表单数据
+        
+        @param request: GetFormDataByIDRequest
+        @param tmp_header: GetFormDataByIDHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetFormDataByIDResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.GetFormDataByIDShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -7562,6 +9464,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.GetFormDataByIDHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.GetFormDataByIDResponse:
+        """
+        @summary 查询表单数据
+        
+        @param request: GetFormDataByIDRequest
+        @param tmp_header: GetFormDataByIDHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetFormDataByIDResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.GetFormDataByIDShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -7605,6 +9515,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.GetFormDataByIDRequest,
     ) -> aliding_20230426_models.GetFormDataByIDResponse:
+        """
+        @summary 查询表单数据
+        
+        @param request: GetFormDataByIDRequest
+        @return: GetFormDataByIDResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetFormDataByIDHeaders()
         return self.get_form_data_by_idwith_options(request, headers, runtime)
@@ -7613,6 +9529,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.GetFormDataByIDRequest,
     ) -> aliding_20230426_models.GetFormDataByIDResponse:
+        """
+        @summary 查询表单数据
+        
+        @param request: GetFormDataByIDRequest
+        @return: GetFormDataByIDResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetFormDataByIDHeaders()
         return await self.get_form_data_by_idwith_options_async(request, headers, runtime)
@@ -7623,6 +9545,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.GetFormListInAppHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.GetFormListInAppResponse:
+        """
+        @summary 获取指定应用下的表单列表
+        
+        @param request: GetFormListInAppRequest
+        @param tmp_header: GetFormListInAppHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetFormListInAppResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.GetFormListInAppShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -7670,6 +9600,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.GetFormListInAppHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.GetFormListInAppResponse:
+        """
+        @summary 获取指定应用下的表单列表
+        
+        @param request: GetFormListInAppRequest
+        @param tmp_header: GetFormListInAppHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetFormListInAppResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.GetFormListInAppShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -7715,6 +9653,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.GetFormListInAppRequest,
     ) -> aliding_20230426_models.GetFormListInAppResponse:
+        """
+        @summary 获取指定应用下的表单列表
+        
+        @param request: GetFormListInAppRequest
+        @return: GetFormListInAppResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetFormListInAppHeaders()
         return self.get_form_list_in_app_with_options(request, headers, runtime)
@@ -7723,6 +9667,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.GetFormListInAppRequest,
     ) -> aliding_20230426_models.GetFormListInAppResponse:
+        """
+        @summary 获取指定应用下的表单列表
+        
+        @param request: GetFormListInAppRequest
+        @return: GetFormListInAppResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetFormListInAppHeaders()
         return await self.get_form_list_in_app_with_options_async(request, headers, runtime)
@@ -7733,6 +9683,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.GetInnerGroupMembersHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.GetInnerGroupMembersResponse:
+        """
+        @summary 查询企业内部群成员
+        
+        @param request: GetInnerGroupMembersRequest
+        @param tmp_header: GetInnerGroupMembersHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetInnerGroupMembersResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.GetInnerGroupMembersShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -7776,6 +9734,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.GetInnerGroupMembersHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.GetInnerGroupMembersResponse:
+        """
+        @summary 查询企业内部群成员
+        
+        @param request: GetInnerGroupMembersRequest
+        @param tmp_header: GetInnerGroupMembersHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetInnerGroupMembersResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.GetInnerGroupMembersShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -7817,6 +9783,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.GetInnerGroupMembersRequest,
     ) -> aliding_20230426_models.GetInnerGroupMembersResponse:
+        """
+        @summary 查询企业内部群成员
+        
+        @param request: GetInnerGroupMembersRequest
+        @return: GetInnerGroupMembersResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetInnerGroupMembersHeaders()
         return self.get_inner_group_members_with_options(request, headers, runtime)
@@ -7825,6 +9797,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.GetInnerGroupMembersRequest,
     ) -> aliding_20230426_models.GetInnerGroupMembersResponse:
+        """
+        @summary 查询企业内部群成员
+        
+        @param request: GetInnerGroupMembersRequest
+        @return: GetInnerGroupMembersResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetInnerGroupMembersHeaders()
         return await self.get_inner_group_members_with_options_async(request, headers, runtime)
@@ -7835,6 +9813,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.GetInstanceByIdHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.GetInstanceByIdResponse:
+        """
+        @summary 根据流程实例ID获取流程实例
+        
+        @param request: GetInstanceByIdRequest
+        @param tmp_header: GetInstanceByIdHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetInstanceByIdResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.GetInstanceByIdShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -7880,6 +9866,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.GetInstanceByIdHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.GetInstanceByIdResponse:
+        """
+        @summary 根据流程实例ID获取流程实例
+        
+        @param request: GetInstanceByIdRequest
+        @param tmp_header: GetInstanceByIdHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetInstanceByIdResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.GetInstanceByIdShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -7923,6 +9917,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.GetInstanceByIdRequest,
     ) -> aliding_20230426_models.GetInstanceByIdResponse:
+        """
+        @summary 根据流程实例ID获取流程实例
+        
+        @param request: GetInstanceByIdRequest
+        @return: GetInstanceByIdResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetInstanceByIdHeaders()
         return self.get_instance_by_id_with_options(request, headers, runtime)
@@ -7931,6 +9931,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.GetInstanceByIdRequest,
     ) -> aliding_20230426_models.GetInstanceByIdResponse:
+        """
+        @summary 根据流程实例ID获取流程实例
+        
+        @param request: GetInstanceByIdRequest
+        @return: GetInstanceByIdResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetInstanceByIdHeaders()
         return await self.get_instance_by_id_with_options_async(request, headers, runtime)
@@ -7941,6 +9947,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.GetInstanceIdListHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.GetInstanceIdListResponse:
+        """
+        @summary 获取实例ID列表
+        
+        @param request: GetInstanceIdListRequest
+        @param tmp_header: GetInstanceIdListHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetInstanceIdListResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.GetInstanceIdListShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -8008,6 +10022,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.GetInstanceIdListHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.GetInstanceIdListResponse:
+        """
+        @summary 获取实例ID列表
+        
+        @param request: GetInstanceIdListRequest
+        @param tmp_header: GetInstanceIdListHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetInstanceIdListResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.GetInstanceIdListShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -8073,6 +10095,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.GetInstanceIdListRequest,
     ) -> aliding_20230426_models.GetInstanceIdListResponse:
+        """
+        @summary 获取实例ID列表
+        
+        @param request: GetInstanceIdListRequest
+        @return: GetInstanceIdListResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetInstanceIdListHeaders()
         return self.get_instance_id_list_with_options(request, headers, runtime)
@@ -8081,6 +10109,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.GetInstanceIdListRequest,
     ) -> aliding_20230426_models.GetInstanceIdListResponse:
+        """
+        @summary 获取实例ID列表
+        
+        @param request: GetInstanceIdListRequest
+        @return: GetInstanceIdListResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetInstanceIdListHeaders()
         return await self.get_instance_id_list_with_options_async(request, headers, runtime)
@@ -8091,6 +10125,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.GetInstancesHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.GetInstancesResponse:
+        """
+        @summary 获取流程实例
+        
+        @param request: GetInstancesRequest
+        @param tmp_header: GetInstancesHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetInstancesResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.GetInstancesShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -8160,6 +10202,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.GetInstancesHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.GetInstancesResponse:
+        """
+        @summary 获取流程实例
+        
+        @param request: GetInstancesRequest
+        @param tmp_header: GetInstancesHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetInstancesResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.GetInstancesShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -8227,6 +10277,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.GetInstancesRequest,
     ) -> aliding_20230426_models.GetInstancesResponse:
+        """
+        @summary 获取流程实例
+        
+        @param request: GetInstancesRequest
+        @return: GetInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetInstancesHeaders()
         return self.get_instances_with_options(request, headers, runtime)
@@ -8235,6 +10291,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.GetInstancesRequest,
     ) -> aliding_20230426_models.GetInstancesResponse:
+        """
+        @summary 获取流程实例
+        
+        @param request: GetInstancesRequest
+        @return: GetInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetInstancesHeaders()
         return await self.get_instances_with_options_async(request, headers, runtime)
@@ -8245,6 +10307,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.GetInstancesByIdListHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.GetInstancesByIdListResponse:
+        """
+        @summary 根据实例 ID 列表批量获取流程实例详情(批量获取流程实例列表)
+        
+        @param request: GetInstancesByIdListRequest
+        @param tmp_header: GetInstancesByIdListHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetInstancesByIdListResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.GetInstancesByIdListShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -8290,6 +10360,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.GetInstancesByIdListHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.GetInstancesByIdListResponse:
+        """
+        @summary 根据实例 ID 列表批量获取流程实例详情(批量获取流程实例列表)
+        
+        @param request: GetInstancesByIdListRequest
+        @param tmp_header: GetInstancesByIdListHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetInstancesByIdListResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.GetInstancesByIdListShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -8333,6 +10411,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.GetInstancesByIdListRequest,
     ) -> aliding_20230426_models.GetInstancesByIdListResponse:
+        """
+        @summary 根据实例 ID 列表批量获取流程实例详情(批量获取流程实例列表)
+        
+        @param request: GetInstancesByIdListRequest
+        @return: GetInstancesByIdListResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetInstancesByIdListHeaders()
         return self.get_instances_by_id_list_with_options(request, headers, runtime)
@@ -8341,6 +10425,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.GetInstancesByIdListRequest,
     ) -> aliding_20230426_models.GetInstancesByIdListResponse:
+        """
+        @summary 根据实例 ID 列表批量获取流程实例详情(批量获取流程实例列表)
+        
+        @param request: GetInstancesByIdListRequest
+        @return: GetInstancesByIdListResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetInstancesByIdListHeaders()
         return await self.get_instances_by_id_list_with_options_async(request, headers, runtime)
@@ -8351,6 +10441,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.GetLiveReplayUrlHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.GetLiveReplayUrlResponse:
+        """
+        @summary 获取直播的可下载回放地址
+        
+        @param tmp_req: GetLiveReplayUrlRequest
+        @param tmp_header: GetLiveReplayUrlHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLiveReplayUrlResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.GetLiveReplayUrlShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -8396,6 +10494,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.GetLiveReplayUrlHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.GetLiveReplayUrlResponse:
+        """
+        @summary 获取直播的可下载回放地址
+        
+        @param tmp_req: GetLiveReplayUrlRequest
+        @param tmp_header: GetLiveReplayUrlHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLiveReplayUrlResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.GetLiveReplayUrlShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -8439,6 +10545,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.GetLiveReplayUrlRequest,
     ) -> aliding_20230426_models.GetLiveReplayUrlResponse:
+        """
+        @summary 获取直播的可下载回放地址
+        
+        @param request: GetLiveReplayUrlRequest
+        @return: GetLiveReplayUrlResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetLiveReplayUrlHeaders()
         return self.get_live_replay_url_with_options(request, headers, runtime)
@@ -8447,6 +10559,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.GetLiveReplayUrlRequest,
     ) -> aliding_20230426_models.GetLiveReplayUrlResponse:
+        """
+        @summary 获取直播的可下载回放地址
+        
+        @param request: GetLiveReplayUrlRequest
+        @return: GetLiveReplayUrlResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetLiveReplayUrlHeaders()
         return await self.get_live_replay_url_with_options_async(request, headers, runtime)
@@ -8457,6 +10575,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.GetMeCorpSubmissionHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.GetMeCorpSubmissionResponse:
+        """
+        @summary 获取组织内某人提交的任务
+        
+        @param request: GetMeCorpSubmissionRequest
+        @param tmp_header: GetMeCorpSubmissionHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMeCorpSubmissionResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.GetMeCorpSubmissionShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -8514,6 +10640,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.GetMeCorpSubmissionHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.GetMeCorpSubmissionResponse:
+        """
+        @summary 获取组织内某人提交的任务
+        
+        @param request: GetMeCorpSubmissionRequest
+        @param tmp_header: GetMeCorpSubmissionHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMeCorpSubmissionResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.GetMeCorpSubmissionShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -8569,6 +10703,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.GetMeCorpSubmissionRequest,
     ) -> aliding_20230426_models.GetMeCorpSubmissionResponse:
+        """
+        @summary 获取组织内某人提交的任务
+        
+        @param request: GetMeCorpSubmissionRequest
+        @return: GetMeCorpSubmissionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetMeCorpSubmissionHeaders()
         return self.get_me_corp_submission_with_options(request, headers, runtime)
@@ -8577,6 +10717,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.GetMeCorpSubmissionRequest,
     ) -> aliding_20230426_models.GetMeCorpSubmissionResponse:
+        """
+        @summary 获取组织内某人提交的任务
+        
+        @param request: GetMeCorpSubmissionRequest
+        @return: GetMeCorpSubmissionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetMeCorpSubmissionHeaders()
         return await self.get_me_corp_submission_with_options_async(request, headers, runtime)
@@ -8587,6 +10733,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.GetMeetingRoomsScheduleHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.GetMeetingRoomsScheduleResponse:
+        """
+        @summary 获取会议室忙闲信息
+        
+        @param tmp_req: GetMeetingRoomsScheduleRequest
+        @param tmp_header: GetMeetingRoomsScheduleHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMeetingRoomsScheduleResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.GetMeetingRoomsScheduleShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -8634,6 +10788,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.GetMeetingRoomsScheduleHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.GetMeetingRoomsScheduleResponse:
+        """
+        @summary 获取会议室忙闲信息
+        
+        @param tmp_req: GetMeetingRoomsScheduleRequest
+        @param tmp_header: GetMeetingRoomsScheduleHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMeetingRoomsScheduleResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.GetMeetingRoomsScheduleShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -8679,6 +10841,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.GetMeetingRoomsScheduleRequest,
     ) -> aliding_20230426_models.GetMeetingRoomsScheduleResponse:
+        """
+        @summary 获取会议室忙闲信息
+        
+        @param request: GetMeetingRoomsScheduleRequest
+        @return: GetMeetingRoomsScheduleResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetMeetingRoomsScheduleHeaders()
         return self.get_meeting_rooms_schedule_with_options(request, headers, runtime)
@@ -8687,6 +10855,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.GetMeetingRoomsScheduleRequest,
     ) -> aliding_20230426_models.GetMeetingRoomsScheduleResponse:
+        """
+        @summary 获取会议室忙闲信息
+        
+        @param request: GetMeetingRoomsScheduleRequest
+        @return: GetMeetingRoomsScheduleResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetMeetingRoomsScheduleHeaders()
         return await self.get_meeting_rooms_schedule_with_options_async(request, headers, runtime)
@@ -8697,6 +10871,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.GetMineWorkspaceHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.GetMineWorkspaceResponse:
+        """
+        @summary 获取我的文档知识库信息
+        
+        @param tmp_req: GetMineWorkspaceRequest
+        @param tmp_header: GetMineWorkspaceHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMineWorkspaceResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.GetMineWorkspaceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -8744,6 +10926,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.GetMineWorkspaceHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.GetMineWorkspaceResponse:
+        """
+        @summary 获取我的文档知识库信息
+        
+        @param tmp_req: GetMineWorkspaceRequest
+        @param tmp_header: GetMineWorkspaceHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMineWorkspaceResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.GetMineWorkspaceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -8789,6 +10979,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.GetMineWorkspaceRequest,
     ) -> aliding_20230426_models.GetMineWorkspaceResponse:
+        """
+        @summary 获取我的文档知识库信息
+        
+        @param request: GetMineWorkspaceRequest
+        @return: GetMineWorkspaceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetMineWorkspaceHeaders()
         return self.get_mine_workspace_with_options(request, headers, runtime)
@@ -8797,6 +10993,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.GetMineWorkspaceRequest,
     ) -> aliding_20230426_models.GetMineWorkspaceResponse:
+        """
+        @summary 获取我的文档知识库信息
+        
+        @param request: GetMineWorkspaceRequest
+        @return: GetMineWorkspaceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetMineWorkspaceHeaders()
         return await self.get_mine_workspace_with_options_async(request, headers, runtime)
@@ -8807,6 +11009,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.GetNewestInnerGroupsHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.GetNewestInnerGroupsResponse:
+        """
+        @summary 查询最近活跃的企业内部群列表
+        
+        @param tmp_req: GetNewestInnerGroupsRequest
+        @param tmp_header: GetNewestInnerGroupsHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetNewestInnerGroupsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.GetNewestInnerGroupsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -8850,6 +11060,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.GetNewestInnerGroupsHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.GetNewestInnerGroupsResponse:
+        """
+        @summary 查询最近活跃的企业内部群列表
+        
+        @param tmp_req: GetNewestInnerGroupsRequest
+        @param tmp_header: GetNewestInnerGroupsHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetNewestInnerGroupsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.GetNewestInnerGroupsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -8891,6 +11109,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.GetNewestInnerGroupsRequest,
     ) -> aliding_20230426_models.GetNewestInnerGroupsResponse:
+        """
+        @summary 查询最近活跃的企业内部群列表
+        
+        @param request: GetNewestInnerGroupsRequest
+        @return: GetNewestInnerGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetNewestInnerGroupsHeaders()
         return self.get_newest_inner_groups_with_options(request, headers, runtime)
@@ -8899,6 +11123,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.GetNewestInnerGroupsRequest,
     ) -> aliding_20230426_models.GetNewestInnerGroupsResponse:
+        """
+        @summary 查询最近活跃的企业内部群列表
+        
+        @param request: GetNewestInnerGroupsRequest
+        @return: GetNewestInnerGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetNewestInnerGroupsHeaders()
         return await self.get_newest_inner_groups_with_options_async(request, headers, runtime)
@@ -8909,6 +11139,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.GetNodeHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.GetNodeResponse:
+        """
+        @summary 获取节点
+        
+        @param tmp_req: GetNodeRequest
+        @param tmp_header: GetNodeHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetNodeResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.GetNodeShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -8958,6 +11196,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.GetNodeHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.GetNodeResponse:
+        """
+        @summary 获取节点
+        
+        @param tmp_req: GetNodeRequest
+        @param tmp_header: GetNodeHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetNodeResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.GetNodeShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -9005,6 +11251,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.GetNodeRequest,
     ) -> aliding_20230426_models.GetNodeResponse:
+        """
+        @summary 获取节点
+        
+        @param request: GetNodeRequest
+        @return: GetNodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetNodeHeaders()
         return self.get_node_with_options(request, headers, runtime)
@@ -9013,6 +11265,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.GetNodeRequest,
     ) -> aliding_20230426_models.GetNodeResponse:
+        """
+        @summary 获取节点
+        
+        @param request: GetNodeRequest
+        @return: GetNodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetNodeHeaders()
         return await self.get_node_with_options_async(request, headers, runtime)
@@ -9023,6 +11281,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.GetNodeByUrlHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.GetNodeByUrlResponse:
+        """
+        @summary 通过链接获取节点
+        
+        @param tmp_req: GetNodeByUrlRequest
+        @param tmp_header: GetNodeByUrlHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetNodeByUrlResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.GetNodeByUrlShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -9072,6 +11338,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.GetNodeByUrlHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.GetNodeByUrlResponse:
+        """
+        @summary 通过链接获取节点
+        
+        @param tmp_req: GetNodeByUrlRequest
+        @param tmp_header: GetNodeByUrlHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetNodeByUrlResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.GetNodeByUrlShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -9119,6 +11393,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.GetNodeByUrlRequest,
     ) -> aliding_20230426_models.GetNodeByUrlResponse:
+        """
+        @summary 通过链接获取节点
+        
+        @param request: GetNodeByUrlRequest
+        @return: GetNodeByUrlResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetNodeByUrlHeaders()
         return self.get_node_by_url_with_options(request, headers, runtime)
@@ -9127,6 +11407,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.GetNodeByUrlRequest,
     ) -> aliding_20230426_models.GetNodeByUrlResponse:
+        """
+        @summary 通过链接获取节点
+        
+        @param request: GetNodeByUrlRequest
+        @return: GetNodeByUrlResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetNodeByUrlHeaders()
         return await self.get_node_by_url_with_options_async(request, headers, runtime)
@@ -9137,6 +11423,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.GetNodesHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.GetNodesResponse:
+        """
+        @summary 批量获取节点
+        
+        @param tmp_req: GetNodesRequest
+        @param tmp_header: GetNodesHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetNodesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.GetNodesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -9188,6 +11482,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.GetNodesHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.GetNodesResponse:
+        """
+        @summary 批量获取节点
+        
+        @param tmp_req: GetNodesRequest
+        @param tmp_header: GetNodesHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetNodesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.GetNodesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -9237,6 +11539,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.GetNodesRequest,
     ) -> aliding_20230426_models.GetNodesResponse:
+        """
+        @summary 批量获取节点
+        
+        @param request: GetNodesRequest
+        @return: GetNodesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetNodesHeaders()
         return self.get_nodes_with_options(request, headers, runtime)
@@ -9245,6 +11553,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.GetNodesRequest,
     ) -> aliding_20230426_models.GetNodesResponse:
+        """
+        @summary 批量获取节点
+        
+        @param request: GetNodesRequest
+        @return: GetNodesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetNodesHeaders()
         return await self.get_nodes_with_options_async(request, headers, runtime)
@@ -9255,6 +11569,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.GetNotifyMeHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.GetNotifyMeResponse:
+        """
+        @summary 获取发送给用户的通知
+        
+        @param request: GetNotifyMeRequest
+        @param tmp_header: GetNotifyMeHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetNotifyMeResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.GetNotifyMeShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -9316,6 +11638,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.GetNotifyMeHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.GetNotifyMeResponse:
+        """
+        @summary 获取发送给用户的通知
+        
+        @param request: GetNotifyMeRequest
+        @param tmp_header: GetNotifyMeHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetNotifyMeResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.GetNotifyMeShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -9375,6 +11705,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.GetNotifyMeRequest,
     ) -> aliding_20230426_models.GetNotifyMeResponse:
+        """
+        @summary 获取发送给用户的通知
+        
+        @param request: GetNotifyMeRequest
+        @return: GetNotifyMeResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetNotifyMeHeaders()
         return self.get_notify_me_with_options(request, headers, runtime)
@@ -9383,6 +11719,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.GetNotifyMeRequest,
     ) -> aliding_20230426_models.GetNotifyMeResponse:
+        """
+        @summary 获取发送给用户的通知
+        
+        @param request: GetNotifyMeRequest
+        @return: GetNotifyMeResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetNotifyMeHeaders()
         return await self.get_notify_me_with_options_async(request, headers, runtime)
@@ -9393,6 +11735,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.GetOpenUrlHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.GetOpenUrlResponse:
+        """
+        @summary 获取宜搭附件临时免登地址
+        
+        @param request: GetOpenUrlRequest
+        @param tmp_header: GetOpenUrlHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetOpenUrlResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.GetOpenUrlShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -9440,6 +11790,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.GetOpenUrlHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.GetOpenUrlResponse:
+        """
+        @summary 获取宜搭附件临时免登地址
+        
+        @param request: GetOpenUrlRequest
+        @param tmp_header: GetOpenUrlHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetOpenUrlResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.GetOpenUrlShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -9485,6 +11843,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.GetOpenUrlRequest,
     ) -> aliding_20230426_models.GetOpenUrlResponse:
+        """
+        @summary 获取宜搭附件临时免登地址
+        
+        @param request: GetOpenUrlRequest
+        @return: GetOpenUrlResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetOpenUrlHeaders()
         return self.get_open_url_with_options(request, headers, runtime)
@@ -9493,6 +11857,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.GetOpenUrlRequest,
     ) -> aliding_20230426_models.GetOpenUrlResponse:
+        """
+        @summary 获取宜搭附件临时免登地址
+        
+        @param request: GetOpenUrlRequest
+        @return: GetOpenUrlResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetOpenUrlHeaders()
         return await self.get_open_url_with_options_async(request, headers, runtime)
@@ -9503,6 +11873,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.GetOperationRecordsHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.GetOperationRecordsResponse:
+        """
+        @summary 获取审批记录
+        
+        @param request: GetOperationRecordsRequest
+        @param tmp_header: GetOperationRecordsHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetOperationRecordsResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.GetOperationRecordsShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -9548,6 +11926,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.GetOperationRecordsHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.GetOperationRecordsResponse:
+        """
+        @summary 获取审批记录
+        
+        @param request: GetOperationRecordsRequest
+        @param tmp_header: GetOperationRecordsHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetOperationRecordsResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.GetOperationRecordsShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -9591,6 +11977,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.GetOperationRecordsRequest,
     ) -> aliding_20230426_models.GetOperationRecordsResponse:
+        """
+        @summary 获取审批记录
+        
+        @param request: GetOperationRecordsRequest
+        @return: GetOperationRecordsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetOperationRecordsHeaders()
         return self.get_operation_records_with_options(request, headers, runtime)
@@ -9599,6 +11991,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.GetOperationRecordsRequest,
     ) -> aliding_20230426_models.GetOperationRecordsResponse:
+        """
+        @summary 获取审批记录
+        
+        @param request: GetOperationRecordsRequest
+        @return: GetOperationRecordsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetOperationRecordsHeaders()
         return await self.get_operation_records_with_options_async(request, headers, runtime)
@@ -9609,6 +12007,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.GetProcessDefinitionHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.GetProcessDefinitionResponse:
+        """
+        @summary 获取流程定义
+        
+        @param request: GetProcessDefinitionRequest
+        @param tmp_header: GetProcessDefinitionHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetProcessDefinitionResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.GetProcessDefinitionShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -9664,6 +12070,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.GetProcessDefinitionHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.GetProcessDefinitionResponse:
+        """
+        @summary 获取流程定义
+        
+        @param request: GetProcessDefinitionRequest
+        @param tmp_header: GetProcessDefinitionHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetProcessDefinitionResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.GetProcessDefinitionShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -9717,6 +12131,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.GetProcessDefinitionRequest,
     ) -> aliding_20230426_models.GetProcessDefinitionResponse:
+        """
+        @summary 获取流程定义
+        
+        @param request: GetProcessDefinitionRequest
+        @return: GetProcessDefinitionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetProcessDefinitionHeaders()
         return self.get_process_definition_with_options(request, headers, runtime)
@@ -9725,6 +12145,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.GetProcessDefinitionRequest,
     ) -> aliding_20230426_models.GetProcessDefinitionResponse:
+        """
+        @summary 获取流程定义
+        
+        @param request: GetProcessDefinitionRequest
+        @return: GetProcessDefinitionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetProcessDefinitionHeaders()
         return await self.get_process_definition_with_options_async(request, headers, runtime)
@@ -9735,6 +12161,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.GetRangeHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.GetRangeResponse:
+        """
+        @summary 获取单元格区域
+        
+        @param tmp_req: GetRangeRequest
+        @param tmp_header: GetRangeHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetRangeResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.GetRangeShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -9786,6 +12220,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.GetRangeHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.GetRangeResponse:
+        """
+        @summary 获取单元格区域
+        
+        @param tmp_req: GetRangeRequest
+        @param tmp_header: GetRangeHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetRangeResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.GetRangeShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -9835,6 +12277,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.GetRangeRequest,
     ) -> aliding_20230426_models.GetRangeResponse:
+        """
+        @summary 获取单元格区域
+        
+        @param request: GetRangeRequest
+        @return: GetRangeResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetRangeHeaders()
         return self.get_range_with_options(request, headers, runtime)
@@ -9843,6 +12291,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.GetRangeRequest,
     ) -> aliding_20230426_models.GetRangeResponse:
+        """
+        @summary 获取单元格区域
+        
+        @param request: GetRangeRequest
+        @return: GetRangeResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetRangeHeaders()
         return await self.get_range_with_options_async(request, headers, runtime)
@@ -9853,6 +12307,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.GetRelatedWorkspacesHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.GetRelatedWorkspacesResponse:
+        """
+        @summary 查询用户有权限的知识库列表(旧)
+        
+        @param tmp_req: GetRelatedWorkspacesRequest
+        @param tmp_header: GetRelatedWorkspacesHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetRelatedWorkspacesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.GetRelatedWorkspacesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -9898,6 +12360,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.GetRelatedWorkspacesHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.GetRelatedWorkspacesResponse:
+        """
+        @summary 查询用户有权限的知识库列表(旧)
+        
+        @param tmp_req: GetRelatedWorkspacesRequest
+        @param tmp_header: GetRelatedWorkspacesHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetRelatedWorkspacesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.GetRelatedWorkspacesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -9941,6 +12411,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.GetRelatedWorkspacesRequest,
     ) -> aliding_20230426_models.GetRelatedWorkspacesResponse:
+        """
+        @summary 查询用户有权限的知识库列表(旧)
+        
+        @param request: GetRelatedWorkspacesRequest
+        @return: GetRelatedWorkspacesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetRelatedWorkspacesHeaders()
         return self.get_related_workspaces_with_options(request, headers, runtime)
@@ -9949,6 +12425,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.GetRelatedWorkspacesRequest,
     ) -> aliding_20230426_models.GetRelatedWorkspacesResponse:
+        """
+        @summary 查询用户有权限的知识库列表(旧)
+        
+        @param request: GetRelatedWorkspacesRequest
+        @return: GetRelatedWorkspacesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetRelatedWorkspacesHeaders()
         return await self.get_related_workspaces_with_options_async(request, headers, runtime)
@@ -9959,6 +12441,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.GetReportTemplateByNameHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.GetReportTemplateByNameResponse:
+        """
+        @summary 获取模板详情
+        
+        @param tmp_req: GetReportTemplateByNameRequest
+        @param tmp_header: GetReportTemplateByNameHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetReportTemplateByNameResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.GetReportTemplateByNameShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -10004,6 +12494,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.GetReportTemplateByNameHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.GetReportTemplateByNameResponse:
+        """
+        @summary 获取模板详情
+        
+        @param tmp_req: GetReportTemplateByNameRequest
+        @param tmp_header: GetReportTemplateByNameHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetReportTemplateByNameResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.GetReportTemplateByNameShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -10047,6 +12545,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.GetReportTemplateByNameRequest,
     ) -> aliding_20230426_models.GetReportTemplateByNameResponse:
+        """
+        @summary 获取模板详情
+        
+        @param request: GetReportTemplateByNameRequest
+        @return: GetReportTemplateByNameResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetReportTemplateByNameHeaders()
         return self.get_report_template_by_name_with_options(request, headers, runtime)
@@ -10055,6 +12559,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.GetReportTemplateByNameRequest,
     ) -> aliding_20230426_models.GetReportTemplateByNameResponse:
+        """
+        @summary 获取模板详情
+        
+        @param request: GetReportTemplateByNameRequest
+        @return: GetReportTemplateByNameResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetReportTemplateByNameHeaders()
         return await self.get_report_template_by_name_with_options_async(request, headers, runtime)
@@ -10065,6 +12575,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.GetReportUnReadCountHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.GetReportUnReadCountResponse:
+        """
+        @summary 获取员工有多少数量的日志（一个月内）是未读状态
+        
+        @param tmp_req: GetReportUnReadCountRequest
+        @param tmp_header: GetReportUnReadCountHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetReportUnReadCountResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.GetReportUnReadCountShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -10112,6 +12630,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.GetReportUnReadCountHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.GetReportUnReadCountResponse:
+        """
+        @summary 获取员工有多少数量的日志（一个月内）是未读状态
+        
+        @param tmp_req: GetReportUnReadCountRequest
+        @param tmp_header: GetReportUnReadCountHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetReportUnReadCountResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.GetReportUnReadCountShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -10157,6 +12683,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.GetReportUnReadCountRequest,
     ) -> aliding_20230426_models.GetReportUnReadCountResponse:
+        """
+        @summary 获取员工有多少数量的日志（一个月内）是未读状态
+        
+        @param request: GetReportUnReadCountRequest
+        @return: GetReportUnReadCountResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetReportUnReadCountHeaders()
         return self.get_report_un_read_count_with_options(request, headers, runtime)
@@ -10165,6 +12697,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.GetReportUnReadCountRequest,
     ) -> aliding_20230426_models.GetReportUnReadCountResponse:
+        """
+        @summary 获取员工有多少数量的日志（一个月内）是未读状态
+        
+        @param request: GetReportUnReadCountRequest
+        @return: GetReportUnReadCountResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetReportUnReadCountHeaders()
         return await self.get_report_un_read_count_with_options_async(request, headers, runtime)
@@ -10175,6 +12713,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.GetRunningTasksHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.GetRunningTasksResponse:
+        """
+        @summary 查询流程运行任务（VPC）
+        
+        @param request: GetRunningTasksRequest
+        @param tmp_header: GetRunningTasksHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetRunningTasksResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.GetRunningTasksShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -10222,6 +12768,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.GetRunningTasksHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.GetRunningTasksResponse:
+        """
+        @summary 查询流程运行任务（VPC）
+        
+        @param request: GetRunningTasksRequest
+        @param tmp_header: GetRunningTasksHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetRunningTasksResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.GetRunningTasksShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -10267,6 +12821,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.GetRunningTasksRequest,
     ) -> aliding_20230426_models.GetRunningTasksResponse:
+        """
+        @summary 查询流程运行任务（VPC）
+        
+        @param request: GetRunningTasksRequest
+        @return: GetRunningTasksResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetRunningTasksHeaders()
         return self.get_running_tasks_with_options(request, headers, runtime)
@@ -10275,6 +12835,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.GetRunningTasksRequest,
     ) -> aliding_20230426_models.GetRunningTasksResponse:
+        """
+        @summary 查询流程运行任务（VPC）
+        
+        @param request: GetRunningTasksRequest
+        @return: GetRunningTasksResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetRunningTasksHeaders()
         return await self.get_running_tasks_with_options_async(request, headers, runtime)
@@ -10285,6 +12851,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.GetSheetHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.GetSheetResponse:
+        """
+        @summary 获取工作表
+        
+        @param tmp_req: GetSheetRequest
+        @param tmp_header: GetSheetHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSheetResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.GetSheetShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -10332,6 +12906,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.GetSheetHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.GetSheetResponse:
+        """
+        @summary 获取工作表
+        
+        @param tmp_req: GetSheetRequest
+        @param tmp_header: GetSheetHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSheetResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.GetSheetShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -10377,6 +12959,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.GetSheetRequest,
     ) -> aliding_20230426_models.GetSheetResponse:
+        """
+        @summary 获取工作表
+        
+        @param request: GetSheetRequest
+        @return: GetSheetResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetSheetHeaders()
         return self.get_sheet_with_options(request, headers, runtime)
@@ -10385,6 +12973,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.GetSheetRequest,
     ) -> aliding_20230426_models.GetSheetResponse:
+        """
+        @summary 获取工作表
+        
+        @param request: GetSheetRequest
+        @return: GetSheetResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetSheetHeaders()
         return await self.get_sheet_with_options_async(request, headers, runtime)
@@ -10395,6 +12989,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.GetSpaceDirectoriesHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.GetSpaceDirectoriesResponse:
+        """
+        @summary 查询知识库下的目录结构
+        
+        @param tmp_req: GetSpaceDirectoriesRequest
+        @param tmp_header: GetSpaceDirectoriesHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSpaceDirectoriesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.GetSpaceDirectoriesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -10446,6 +13048,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.GetSpaceDirectoriesHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.GetSpaceDirectoriesResponse:
+        """
+        @summary 查询知识库下的目录结构
+        
+        @param tmp_req: GetSpaceDirectoriesRequest
+        @param tmp_header: GetSpaceDirectoriesHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSpaceDirectoriesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.GetSpaceDirectoriesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -10495,6 +13105,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.GetSpaceDirectoriesRequest,
     ) -> aliding_20230426_models.GetSpaceDirectoriesResponse:
+        """
+        @summary 查询知识库下的目录结构
+        
+        @param request: GetSpaceDirectoriesRequest
+        @return: GetSpaceDirectoriesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetSpaceDirectoriesHeaders()
         return self.get_space_directories_with_options(request, headers, runtime)
@@ -10503,6 +13119,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.GetSpaceDirectoriesRequest,
     ) -> aliding_20230426_models.GetSpaceDirectoriesResponse:
+        """
+        @summary 查询知识库下的目录结构
+        
+        @param request: GetSpaceDirectoriesRequest
+        @return: GetSpaceDirectoriesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetSpaceDirectoriesHeaders()
         return await self.get_space_directories_with_options_async(request, headers, runtime)
@@ -10513,6 +13135,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.GetSubscribedCalendarHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.GetSubscribedCalendarResponse:
+        """
+        @summary 查询单个订阅日历详情
+        
+        @param request: GetSubscribedCalendarRequest
+        @param tmp_header: GetSubscribedCalendarHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSubscribedCalendarResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.GetSubscribedCalendarShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -10552,6 +13182,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.GetSubscribedCalendarHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.GetSubscribedCalendarResponse:
+        """
+        @summary 查询单个订阅日历详情
+        
+        @param request: GetSubscribedCalendarRequest
+        @param tmp_header: GetSubscribedCalendarHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSubscribedCalendarResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.GetSubscribedCalendarShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -10589,6 +13227,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.GetSubscribedCalendarRequest,
     ) -> aliding_20230426_models.GetSubscribedCalendarResponse:
+        """
+        @summary 查询单个订阅日历详情
+        
+        @param request: GetSubscribedCalendarRequest
+        @return: GetSubscribedCalendarResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetSubscribedCalendarHeaders()
         return self.get_subscribed_calendar_with_options(request, headers, runtime)
@@ -10597,6 +13241,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.GetSubscribedCalendarRequest,
     ) -> aliding_20230426_models.GetSubscribedCalendarResponse:
+        """
+        @summary 查询单个订阅日历详情
+        
+        @param request: GetSubscribedCalendarRequest
+        @return: GetSubscribedCalendarResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetSubscribedCalendarHeaders()
         return await self.get_subscribed_calendar_with_options_async(request, headers, runtime)
@@ -10607,6 +13257,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.GetTaskCopiesHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.GetTaskCopiesResponse:
+        """
+        @summary 查询抄送我的任务列表（应用维度）
+        
+        @param request: GetTaskCopiesRequest
+        @param tmp_header: GetTaskCopiesHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTaskCopiesResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.GetTaskCopiesShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -10662,6 +13320,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.GetTaskCopiesHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.GetTaskCopiesResponse:
+        """
+        @summary 查询抄送我的任务列表（应用维度）
+        
+        @param request: GetTaskCopiesRequest
+        @param tmp_header: GetTaskCopiesHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTaskCopiesResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.GetTaskCopiesShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -10715,6 +13381,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.GetTaskCopiesRequest,
     ) -> aliding_20230426_models.GetTaskCopiesResponse:
+        """
+        @summary 查询抄送我的任务列表（应用维度）
+        
+        @param request: GetTaskCopiesRequest
+        @return: GetTaskCopiesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetTaskCopiesHeaders()
         return self.get_task_copies_with_options(request, headers, runtime)
@@ -10723,6 +13395,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.GetTaskCopiesRequest,
     ) -> aliding_20230426_models.GetTaskCopiesResponse:
+        """
+        @summary 查询抄送我的任务列表（应用维度）
+        
+        @param request: GetTaskCopiesRequest
+        @return: GetTaskCopiesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetTaskCopiesHeaders()
         return await self.get_task_copies_with_options_async(request, headers, runtime)
@@ -10733,6 +13411,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.GetTemplateListByUserIdHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.GetTemplateListByUserIdResponse:
+        """
+        @summary 获取用户可见的日志模板
+        
+        @param tmp_req: GetTemplateListByUserIdRequest
+        @param tmp_header: GetTemplateListByUserIdHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTemplateListByUserIdResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.GetTemplateListByUserIdShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -10780,6 +13466,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.GetTemplateListByUserIdHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.GetTemplateListByUserIdResponse:
+        """
+        @summary 获取用户可见的日志模板
+        
+        @param tmp_req: GetTemplateListByUserIdRequest
+        @param tmp_header: GetTemplateListByUserIdHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTemplateListByUserIdResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.GetTemplateListByUserIdShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -10825,6 +13519,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.GetTemplateListByUserIdRequest,
     ) -> aliding_20230426_models.GetTemplateListByUserIdResponse:
+        """
+        @summary 获取用户可见的日志模板
+        
+        @param request: GetTemplateListByUserIdRequest
+        @return: GetTemplateListByUserIdResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetTemplateListByUserIdHeaders()
         return self.get_template_list_by_user_id_with_options(request, headers, runtime)
@@ -10833,6 +13533,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.GetTemplateListByUserIdRequest,
     ) -> aliding_20230426_models.GetTemplateListByUserIdResponse:
+        """
+        @summary 获取用户可见的日志模板
+        
+        @param request: GetTemplateListByUserIdRequest
+        @return: GetTemplateListByUserIdResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetTemplateListByUserIdHeaders()
         return await self.get_template_list_by_user_id_with_options_async(request, headers, runtime)
@@ -10843,6 +13549,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.GetUserHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.GetUserResponse:
+        """
+        @summary 获取专属账号信息
+        
+        @param tmp_req: GetUserRequest
+        @param tmp_header: GetUserHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetUserResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.GetUserShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -10888,6 +13602,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.GetUserHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.GetUserResponse:
+        """
+        @summary 获取专属账号信息
+        
+        @param tmp_req: GetUserRequest
+        @param tmp_header: GetUserHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetUserResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.GetUserShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -10931,6 +13653,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.GetUserRequest,
     ) -> aliding_20230426_models.GetUserResponse:
+        """
+        @summary 获取专属账号信息
+        
+        @param request: GetUserRequest
+        @return: GetUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetUserHeaders()
         return self.get_user_with_options(request, headers, runtime)
@@ -10939,6 +13667,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.GetUserRequest,
     ) -> aliding_20230426_models.GetUserResponse:
+        """
+        @summary 获取专属账号信息
+        
+        @param request: GetUserRequest
+        @return: GetUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetUserHeaders()
         return await self.get_user_with_options_async(request, headers, runtime)
@@ -10949,6 +13683,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.GetUserLatestPlanHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.GetUserLatestPlanResponse:
+        """
+        @summary 获取用户最新的有效的专属账号迁移方案
+        
+        @param tmp_req: GetUserLatestPlanRequest
+        @param tmp_header: GetUserLatestPlanHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetUserLatestPlanResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.GetUserLatestPlanShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -10992,6 +13734,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.GetUserLatestPlanHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.GetUserLatestPlanResponse:
+        """
+        @summary 获取用户最新的有效的专属账号迁移方案
+        
+        @param tmp_req: GetUserLatestPlanRequest
+        @param tmp_header: GetUserLatestPlanHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetUserLatestPlanResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.GetUserLatestPlanShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -11033,6 +13783,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.GetUserLatestPlanRequest,
     ) -> aliding_20230426_models.GetUserLatestPlanResponse:
+        """
+        @summary 获取用户最新的有效的专属账号迁移方案
+        
+        @param request: GetUserLatestPlanRequest
+        @return: GetUserLatestPlanResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetUserLatestPlanHeaders()
         return self.get_user_latest_plan_with_options(request, headers, runtime)
@@ -11041,6 +13797,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.GetUserLatestPlanRequest,
     ) -> aliding_20230426_models.GetUserLatestPlanResponse:
+        """
+        @summary 获取用户最新的有效的专属账号迁移方案
+        
+        @param request: GetUserLatestPlanRequest
+        @return: GetUserLatestPlanResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetUserLatestPlanHeaders()
         return await self.get_user_latest_plan_with_options_async(request, headers, runtime)
@@ -11051,6 +13813,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.GetWorkspaceHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.GetWorkspaceResponse:
+        """
+        @summary 获取知识库
+        
+        @param tmp_req: GetWorkspaceRequest
+        @param tmp_header: GetWorkspaceHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetWorkspaceResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.GetWorkspaceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -11098,6 +13868,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.GetWorkspaceHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.GetWorkspaceResponse:
+        """
+        @summary 获取知识库
+        
+        @param tmp_req: GetWorkspaceRequest
+        @param tmp_header: GetWorkspaceHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetWorkspaceResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.GetWorkspaceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -11143,6 +13921,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.GetWorkspaceRequest,
     ) -> aliding_20230426_models.GetWorkspaceResponse:
+        """
+        @summary 获取知识库
+        
+        @param request: GetWorkspaceRequest
+        @return: GetWorkspaceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetWorkspaceHeaders()
         return self.get_workspace_with_options(request, headers, runtime)
@@ -11151,6 +13935,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.GetWorkspaceRequest,
     ) -> aliding_20230426_models.GetWorkspaceResponse:
+        """
+        @summary 获取知识库
+        
+        @param request: GetWorkspaceRequest
+        @return: GetWorkspaceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetWorkspaceHeaders()
         return await self.get_workspace_with_options_async(request, headers, runtime)
@@ -11161,6 +13951,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.GetWorkspacesHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.GetWorkspacesResponse:
+        """
+        @summary 批量获取知识库
+        
+        @param tmp_req: GetWorkspacesRequest
+        @param tmp_header: GetWorkspacesHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetWorkspacesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.GetWorkspacesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -11212,6 +14010,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.GetWorkspacesHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.GetWorkspacesResponse:
+        """
+        @summary 批量获取知识库
+        
+        @param tmp_req: GetWorkspacesRequest
+        @param tmp_header: GetWorkspacesHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetWorkspacesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.GetWorkspacesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -11261,6 +14067,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.GetWorkspacesRequest,
     ) -> aliding_20230426_models.GetWorkspacesResponse:
+        """
+        @summary 批量获取知识库
+        
+        @param request: GetWorkspacesRequest
+        @return: GetWorkspacesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetWorkspacesHeaders()
         return self.get_workspaces_with_options(request, headers, runtime)
@@ -11269,6 +14081,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.GetWorkspacesRequest,
     ) -> aliding_20230426_models.GetWorkspacesResponse:
+        """
+        @summary 批量获取知识库
+        
+        @param request: GetWorkspacesRequest
+        @return: GetWorkspacesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetWorkspacesHeaders()
         return await self.get_workspaces_with_options_async(request, headers, runtime)
@@ -11279,6 +14097,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.GrantHonorHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.GrantHonorResponse:
+        """
+        @summary 授予勋章
+        
+        @param tmp_req: GrantHonorRequest
+        @param tmp_header: GrantHonorHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GrantHonorResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.GrantHonorShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -11346,6 +14172,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.GrantHonorHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.GrantHonorResponse:
+        """
+        @summary 授予勋章
+        
+        @param tmp_req: GrantHonorRequest
+        @param tmp_header: GrantHonorHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GrantHonorResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.GrantHonorShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -11411,6 +14245,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.GrantHonorRequest,
     ) -> aliding_20230426_models.GrantHonorResponse:
+        """
+        @summary 授予勋章
+        
+        @param request: GrantHonorRequest
+        @return: GrantHonorResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GrantHonorHeaders()
         return self.grant_honor_with_options(request, headers, runtime)
@@ -11419,6 +14259,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.GrantHonorRequest,
     ) -> aliding_20230426_models.GrantHonorResponse:
+        """
+        @summary 授予勋章
+        
+        @param request: GrantHonorRequest
+        @return: GrantHonorResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GrantHonorHeaders()
         return await self.grant_honor_with_options_async(request, headers, runtime)
@@ -11429,6 +14275,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.InsertColumnsBeforeHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.InsertColumnsBeforeResponse:
+        """
+        @summary 在指定列左侧插入若干列
+        
+        @param tmp_req: InsertColumnsBeforeRequest
+        @param tmp_header: InsertColumnsBeforeHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InsertColumnsBeforeResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.InsertColumnsBeforeShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -11480,6 +14334,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.InsertColumnsBeforeHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.InsertColumnsBeforeResponse:
+        """
+        @summary 在指定列左侧插入若干列
+        
+        @param tmp_req: InsertColumnsBeforeRequest
+        @param tmp_header: InsertColumnsBeforeHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InsertColumnsBeforeResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.InsertColumnsBeforeShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -11529,6 +14391,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.InsertColumnsBeforeRequest,
     ) -> aliding_20230426_models.InsertColumnsBeforeResponse:
+        """
+        @summary 在指定列左侧插入若干列
+        
+        @param request: InsertColumnsBeforeRequest
+        @return: InsertColumnsBeforeResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.InsertColumnsBeforeHeaders()
         return self.insert_columns_before_with_options(request, headers, runtime)
@@ -11537,6 +14405,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.InsertColumnsBeforeRequest,
     ) -> aliding_20230426_models.InsertColumnsBeforeResponse:
+        """
+        @summary 在指定列左侧插入若干列
+        
+        @param request: InsertColumnsBeforeRequest
+        @return: InsertColumnsBeforeResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.InsertColumnsBeforeHeaders()
         return await self.insert_columns_before_with_options_async(request, headers, runtime)
@@ -11547,6 +14421,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.InsertRowsBeforeHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.InsertRowsBeforeResponse:
+        """
+        @summary 在指定行上方插入若干行
+        
+        @param tmp_req: InsertRowsBeforeRequest
+        @param tmp_header: InsertRowsBeforeHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InsertRowsBeforeResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.InsertRowsBeforeShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -11598,6 +14480,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.InsertRowsBeforeHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.InsertRowsBeforeResponse:
+        """
+        @summary 在指定行上方插入若干行
+        
+        @param tmp_req: InsertRowsBeforeRequest
+        @param tmp_header: InsertRowsBeforeHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InsertRowsBeforeResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.InsertRowsBeforeShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -11647,6 +14537,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.InsertRowsBeforeRequest,
     ) -> aliding_20230426_models.InsertRowsBeforeResponse:
+        """
+        @summary 在指定行上方插入若干行
+        
+        @param request: InsertRowsBeforeRequest
+        @return: InsertRowsBeforeResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.InsertRowsBeforeHeaders()
         return self.insert_rows_before_with_options(request, headers, runtime)
@@ -11655,6 +14551,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.InsertRowsBeforeRequest,
     ) -> aliding_20230426_models.InsertRowsBeforeResponse:
+        """
+        @summary 在指定行上方插入若干行
+        
+        @param request: InsertRowsBeforeRequest
+        @return: InsertRowsBeforeResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.InsertRowsBeforeHeaders()
         return await self.insert_rows_before_with_options_async(request, headers, runtime)
@@ -11665,6 +14567,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.InviteUsersHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.InviteUsersResponse:
+        """
+        @summary 邀请用户入会
+        
+        @param tmp_req: InviteUsersRequest
+        @param tmp_header: InviteUsersHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InviteUsersResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.InviteUsersShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -11718,6 +14628,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.InviteUsersHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.InviteUsersResponse:
+        """
+        @summary 邀请用户入会
+        
+        @param tmp_req: InviteUsersRequest
+        @param tmp_header: InviteUsersHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InviteUsersResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.InviteUsersShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -11769,6 +14687,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.InviteUsersRequest,
     ) -> aliding_20230426_models.InviteUsersResponse:
+        """
+        @summary 邀请用户入会
+        
+        @param request: InviteUsersRequest
+        @return: InviteUsersResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.InviteUsersHeaders()
         return self.invite_users_with_options(request, headers, runtime)
@@ -11777,6 +14701,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.InviteUsersRequest,
     ) -> aliding_20230426_models.InviteUsersResponse:
+        """
+        @summary 邀请用户入会
+        
+        @param request: InviteUsersRequest
+        @return: InviteUsersResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.InviteUsersHeaders()
         return await self.invite_users_with_options_async(request, headers, runtime)
@@ -11787,6 +14717,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.ListApplicationHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.ListApplicationResponse:
+        """
+        @summary 查询宜搭应用列表
+        
+        @param request: ListApplicationRequest
+        @param tmp_header: ListApplicationHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListApplicationResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.ListApplicationShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -11836,6 +14774,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.ListApplicationHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.ListApplicationResponse:
+        """
+        @summary 查询宜搭应用列表
+        
+        @param request: ListApplicationRequest
+        @param tmp_header: ListApplicationHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListApplicationResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.ListApplicationShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -11883,6 +14829,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.ListApplicationRequest,
     ) -> aliding_20230426_models.ListApplicationResponse:
+        """
+        @summary 查询宜搭应用列表
+        
+        @param request: ListApplicationRequest
+        @return: ListApplicationResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.ListApplicationHeaders()
         return self.list_application_with_options(request, headers, runtime)
@@ -11891,6 +14843,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.ListApplicationRequest,
     ) -> aliding_20230426_models.ListApplicationResponse:
+        """
+        @summary 查询宜搭应用列表
+        
+        @param request: ListApplicationRequest
+        @return: ListApplicationResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.ListApplicationHeaders()
         return await self.list_application_with_options_async(request, headers, runtime)
@@ -11901,6 +14859,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.ListCalendarsHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.ListCalendarsResponse:
+        """
+        @summary 查询日历
+        
+        @param tmp_req: ListCalendarsRequest
+        @param tmp_header: ListCalendarsHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCalendarsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.ListCalendarsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -11944,6 +14910,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.ListCalendarsHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.ListCalendarsResponse:
+        """
+        @summary 查询日历
+        
+        @param tmp_req: ListCalendarsRequest
+        @param tmp_header: ListCalendarsHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCalendarsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.ListCalendarsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -11985,6 +14959,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.ListCalendarsRequest,
     ) -> aliding_20230426_models.ListCalendarsResponse:
+        """
+        @summary 查询日历
+        
+        @param request: ListCalendarsRequest
+        @return: ListCalendarsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.ListCalendarsHeaders()
         return self.list_calendars_with_options(request, headers, runtime)
@@ -11993,6 +14973,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.ListCalendarsRequest,
     ) -> aliding_20230426_models.ListCalendarsResponse:
+        """
+        @summary 查询日历
+        
+        @param request: ListCalendarsRequest
+        @return: ListCalendarsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.ListCalendarsHeaders()
         return await self.list_calendars_with_options_async(request, headers, runtime)
@@ -12003,6 +14989,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.ListDentriesHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.ListDentriesResponse:
+        """
+        @summary 获取文件或文件夹列表
+        
+        @param tmp_req: ListDentriesRequest
+        @param tmp_header: ListDentriesHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDentriesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.ListDentriesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -12060,6 +15054,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.ListDentriesHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.ListDentriesResponse:
+        """
+        @summary 获取文件或文件夹列表
+        
+        @param tmp_req: ListDentriesRequest
+        @param tmp_header: ListDentriesHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDentriesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.ListDentriesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -12115,6 +15117,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.ListDentriesRequest,
     ) -> aliding_20230426_models.ListDentriesResponse:
+        """
+        @summary 获取文件或文件夹列表
+        
+        @param request: ListDentriesRequest
+        @return: ListDentriesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.ListDentriesHeaders()
         return self.list_dentries_with_options(request, headers, runtime)
@@ -12123,6 +15131,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.ListDentriesRequest,
     ) -> aliding_20230426_models.ListDentriesResponse:
+        """
+        @summary 获取文件或文件夹列表
+        
+        @param request: ListDentriesRequest
+        @return: ListDentriesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.ListDentriesHeaders()
         return await self.list_dentries_with_options_async(request, headers, runtime)
@@ -12133,6 +15147,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.ListEventsHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.ListEventsResponse:
+        """
+        @summary 查询日程列表
+        
+        @param request: ListEventsRequest
+        @param tmp_header: ListEventsHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListEventsResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.ListEventsShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -12188,6 +15210,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.ListEventsHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.ListEventsResponse:
+        """
+        @summary 查询日程列表
+        
+        @param request: ListEventsRequest
+        @param tmp_header: ListEventsHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListEventsResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.ListEventsShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -12241,6 +15271,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.ListEventsRequest,
     ) -> aliding_20230426_models.ListEventsResponse:
+        """
+        @summary 查询日程列表
+        
+        @param request: ListEventsRequest
+        @return: ListEventsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.ListEventsHeaders()
         return self.list_events_with_options(request, headers, runtime)
@@ -12249,6 +15285,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.ListEventsRequest,
     ) -> aliding_20230426_models.ListEventsResponse:
+        """
+        @summary 查询日程列表
+        
+        @param request: ListEventsRequest
+        @return: ListEventsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.ListEventsHeaders()
         return await self.list_events_with_options_async(request, headers, runtime)
@@ -12259,6 +15301,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.ListEventsViewHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.ListEventsViewResponse:
+        """
+        @summary 查询日程视图
+        
+        @param request: ListEventsViewRequest
+        @param tmp_header: ListEventsViewHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListEventsViewResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.ListEventsViewShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -12308,6 +15358,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.ListEventsViewHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.ListEventsViewResponse:
+        """
+        @summary 查询日程视图
+        
+        @param request: ListEventsViewRequest
+        @param tmp_header: ListEventsViewHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListEventsViewResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.ListEventsViewShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -12355,6 +15413,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.ListEventsViewRequest,
     ) -> aliding_20230426_models.ListEventsViewResponse:
+        """
+        @summary 查询日程视图
+        
+        @param request: ListEventsViewRequest
+        @return: ListEventsViewResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.ListEventsViewHeaders()
         return self.list_events_view_with_options(request, headers, runtime)
@@ -12363,6 +15427,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.ListEventsViewRequest,
     ) -> aliding_20230426_models.ListEventsViewResponse:
+        """
+        @summary 查询日程视图
+        
+        @param request: ListEventsViewRequest
+        @return: ListEventsViewResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.ListEventsViewHeaders()
         return await self.list_events_view_with_options_async(request, headers, runtime)
@@ -12373,6 +15443,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.ListFormRemarksHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.ListFormRemarksResponse:
+        """
+        @summary 批量查询宜搭表单实例的评论
+        
+        @param tmp_req: ListFormRemarksRequest
+        @param tmp_header: ListFormRemarksHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFormRemarksResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.ListFormRemarksShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -12422,6 +15500,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.ListFormRemarksHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.ListFormRemarksResponse:
+        """
+        @summary 批量查询宜搭表单实例的评论
+        
+        @param tmp_req: ListFormRemarksRequest
+        @param tmp_header: ListFormRemarksHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFormRemarksResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.ListFormRemarksShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -12469,6 +15555,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.ListFormRemarksRequest,
     ) -> aliding_20230426_models.ListFormRemarksResponse:
+        """
+        @summary 批量查询宜搭表单实例的评论
+        
+        @param request: ListFormRemarksRequest
+        @return: ListFormRemarksResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.ListFormRemarksHeaders()
         return self.list_form_remarks_with_options(request, headers, runtime)
@@ -12477,6 +15569,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.ListFormRemarksRequest,
     ) -> aliding_20230426_models.ListFormRemarksResponse:
+        """
+        @summary 批量查询宜搭表单实例的评论
+        
+        @param request: ListFormRemarksRequest
+        @return: ListFormRemarksResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.ListFormRemarksHeaders()
         return await self.list_form_remarks_with_options_async(request, headers, runtime)
@@ -12487,6 +15585,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.ListNavigationByFormTypeHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.ListNavigationByFormTypeResponse:
+        """
+        @summary 获取应用下的页面列表
+        
+        @param request: ListNavigationByFormTypeRequest
+        @param tmp_header: ListNavigationByFormTypeHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListNavigationByFormTypeResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.ListNavigationByFormTypeShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -12532,6 +15638,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.ListNavigationByFormTypeHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.ListNavigationByFormTypeResponse:
+        """
+        @summary 获取应用下的页面列表
+        
+        @param request: ListNavigationByFormTypeRequest
+        @param tmp_header: ListNavigationByFormTypeHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListNavigationByFormTypeResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.ListNavigationByFormTypeShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -12575,6 +15689,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.ListNavigationByFormTypeRequest,
     ) -> aliding_20230426_models.ListNavigationByFormTypeResponse:
+        """
+        @summary 获取应用下的页面列表
+        
+        @param request: ListNavigationByFormTypeRequest
+        @return: ListNavigationByFormTypeResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.ListNavigationByFormTypeHeaders()
         return self.list_navigation_by_form_type_with_options(request, headers, runtime)
@@ -12583,6 +15703,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.ListNavigationByFormTypeRequest,
     ) -> aliding_20230426_models.ListNavigationByFormTypeResponse:
+        """
+        @summary 获取应用下的页面列表
+        
+        @param request: ListNavigationByFormTypeRequest
+        @return: ListNavigationByFormTypeResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.ListNavigationByFormTypeHeaders()
         return await self.list_navigation_by_form_type_with_options_async(request, headers, runtime)
@@ -12593,6 +15719,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.ListNodesHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.ListNodesResponse:
+        """
+        @summary 获取节点列表
+        
+        @param tmp_req: ListNodesRequest
+        @param tmp_header: ListNodesHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListNodesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.ListNodesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -12644,6 +15778,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.ListNodesHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.ListNodesResponse:
+        """
+        @summary 获取节点列表
+        
+        @param tmp_req: ListNodesRequest
+        @param tmp_header: ListNodesHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListNodesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.ListNodesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -12693,6 +15835,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.ListNodesRequest,
     ) -> aliding_20230426_models.ListNodesResponse:
+        """
+        @summary 获取节点列表
+        
+        @param request: ListNodesRequest
+        @return: ListNodesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.ListNodesHeaders()
         return self.list_nodes_with_options(request, headers, runtime)
@@ -12701,6 +15849,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.ListNodesRequest,
     ) -> aliding_20230426_models.ListNodesResponse:
+        """
+        @summary 获取节点列表
+        
+        @param request: ListNodesRequest
+        @return: ListNodesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.ListNodesHeaders()
         return await self.list_nodes_with_options_async(request, headers, runtime)
@@ -12711,6 +15865,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.ListReportHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.ListReportResponse:
+        """
+        @summary 获取用户发出的日志列表
+        
+        @param tmp_req: ListReportRequest
+        @param tmp_header: ListReportHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListReportResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.ListReportShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -12768,6 +15930,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.ListReportHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.ListReportResponse:
+        """
+        @summary 获取用户发出的日志列表
+        
+        @param tmp_req: ListReportRequest
+        @param tmp_header: ListReportHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListReportResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.ListReportShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -12823,6 +15993,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.ListReportRequest,
     ) -> aliding_20230426_models.ListReportResponse:
+        """
+        @summary 获取用户发出的日志列表
+        
+        @param request: ListReportRequest
+        @return: ListReportResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.ListReportHeaders()
         return self.list_report_with_options(request, headers, runtime)
@@ -12831,6 +16007,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.ListReportRequest,
     ) -> aliding_20230426_models.ListReportResponse:
+        """
+        @summary 获取用户发出的日志列表
+        
+        @param request: ListReportRequest
+        @return: ListReportResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.ListReportHeaders()
         return await self.list_report_with_options_async(request, headers, runtime)
@@ -12841,6 +16023,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.ListTableDataByFormInstanceIdTableIdHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.ListTableDataByFormInstanceIdTableIdResponse:
+        """
+        @summary 获取子表组件数据
+        
+        @param request: ListTableDataByFormInstanceIdTableIdRequest
+        @param tmp_header: ListTableDataByFormInstanceIdTableIdHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTableDataByFormInstanceIdTableIdResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.ListTableDataByFormInstanceIdTableIdShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -12892,6 +16082,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.ListTableDataByFormInstanceIdTableIdHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.ListTableDataByFormInstanceIdTableIdResponse:
+        """
+        @summary 获取子表组件数据
+        
+        @param request: ListTableDataByFormInstanceIdTableIdRequest
+        @param tmp_header: ListTableDataByFormInstanceIdTableIdHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTableDataByFormInstanceIdTableIdResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.ListTableDataByFormInstanceIdTableIdShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -12941,6 +16139,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.ListTableDataByFormInstanceIdTableIdRequest,
     ) -> aliding_20230426_models.ListTableDataByFormInstanceIdTableIdResponse:
+        """
+        @summary 获取子表组件数据
+        
+        @param request: ListTableDataByFormInstanceIdTableIdRequest
+        @return: ListTableDataByFormInstanceIdTableIdResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.ListTableDataByFormInstanceIdTableIdHeaders()
         return self.list_table_data_by_form_instance_id_table_id_with_options(request, headers, runtime)
@@ -12949,6 +16153,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.ListTableDataByFormInstanceIdTableIdRequest,
     ) -> aliding_20230426_models.ListTableDataByFormInstanceIdTableIdResponse:
+        """
+        @summary 获取子表组件数据
+        
+        @param request: ListTableDataByFormInstanceIdTableIdRequest
+        @return: ListTableDataByFormInstanceIdTableIdResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.ListTableDataByFormInstanceIdTableIdHeaders()
         return await self.list_table_data_by_form_instance_id_table_id_with_options_async(request, headers, runtime)
@@ -12959,6 +16169,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.ListTeamsHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.ListTeamsResponse:
+        """
+        @summary 获取知识小组列表
+        
+        @param tmp_req: ListTeamsRequest
+        @param tmp_header: ListTeamsHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTeamsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.ListTeamsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -13006,6 +16224,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.ListTeamsHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.ListTeamsResponse:
+        """
+        @summary 获取知识小组列表
+        
+        @param tmp_req: ListTeamsRequest
+        @param tmp_header: ListTeamsHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTeamsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.ListTeamsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -13051,6 +16277,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.ListTeamsRequest,
     ) -> aliding_20230426_models.ListTeamsResponse:
+        """
+        @summary 获取知识小组列表
+        
+        @param request: ListTeamsRequest
+        @return: ListTeamsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.ListTeamsHeaders()
         return self.list_teams_with_options(request, headers, runtime)
@@ -13059,6 +16291,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.ListTeamsRequest,
     ) -> aliding_20230426_models.ListTeamsResponse:
+        """
+        @summary 获取知识小组列表
+        
+        @param request: ListTeamsRequest
+        @return: ListTeamsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.ListTeamsHeaders()
         return await self.list_teams_with_options_async(request, headers, runtime)
@@ -13069,6 +16307,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.ListWorkspacesHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.ListWorkspacesResponse:
+        """
+        @summary 获取知识库列表
+        
+        @param tmp_req: ListWorkspacesRequest
+        @param tmp_header: ListWorkspacesHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListWorkspacesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.ListWorkspacesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -13122,6 +16368,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.ListWorkspacesHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.ListWorkspacesResponse:
+        """
+        @summary 获取知识库列表
+        
+        @param tmp_req: ListWorkspacesRequest
+        @param tmp_header: ListWorkspacesHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListWorkspacesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.ListWorkspacesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -13173,6 +16427,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.ListWorkspacesRequest,
     ) -> aliding_20230426_models.ListWorkspacesResponse:
+        """
+        @summary 获取知识库列表
+        
+        @param request: ListWorkspacesRequest
+        @return: ListWorkspacesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.ListWorkspacesHeaders()
         return self.list_workspaces_with_options(request, headers, runtime)
@@ -13181,6 +16441,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.ListWorkspacesRequest,
     ) -> aliding_20230426_models.ListWorkspacesResponse:
+        """
+        @summary 获取知识库列表
+        
+        @param request: ListWorkspacesRequest
+        @return: ListWorkspacesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.ListWorkspacesHeaders()
         return await self.list_workspaces_with_options_async(request, headers, runtime)
@@ -13191,6 +16457,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.PatchEventHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.PatchEventResponse:
+        """
+        @summary 修改日程
+        
+        @param tmp_req: PatchEventRequest
+        @param tmp_header: PatchEventHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PatchEventResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.PatchEventShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -13268,6 +16542,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.PatchEventHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.PatchEventResponse:
+        """
+        @summary 修改日程
+        
+        @param tmp_req: PatchEventRequest
+        @param tmp_header: PatchEventHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PatchEventResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.PatchEventShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -13343,6 +16625,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.PatchEventRequest,
     ) -> aliding_20230426_models.PatchEventResponse:
+        """
+        @summary 修改日程
+        
+        @param request: PatchEventRequest
+        @return: PatchEventResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.PatchEventHeaders()
         return self.patch_event_with_options(request, headers, runtime)
@@ -13351,6 +16639,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.PatchEventRequest,
     ) -> aliding_20230426_models.PatchEventResponse:
+        """
+        @summary 修改日程
+        
+        @param request: PatchEventRequest
+        @return: PatchEventResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.PatchEventHeaders()
         return await self.patch_event_with_options_async(request, headers, runtime)
@@ -13361,6 +16655,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.QueryCloudRecordTextHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.QueryCloudRecordTextResponse:
+        """
+        @summary 查询会议录制中的文本信息
+        
+        @param tmp_req: QueryCloudRecordTextRequest
+        @param tmp_header: QueryCloudRecordTextHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryCloudRecordTextResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.QueryCloudRecordTextShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -13414,6 +16716,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.QueryCloudRecordTextHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.QueryCloudRecordTextResponse:
+        """
+        @summary 查询会议录制中的文本信息
+        
+        @param tmp_req: QueryCloudRecordTextRequest
+        @param tmp_header: QueryCloudRecordTextHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryCloudRecordTextResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.QueryCloudRecordTextShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -13465,6 +16775,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.QueryCloudRecordTextRequest,
     ) -> aliding_20230426_models.QueryCloudRecordTextResponse:
+        """
+        @summary 查询会议录制中的文本信息
+        
+        @param request: QueryCloudRecordTextRequest
+        @return: QueryCloudRecordTextResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.QueryCloudRecordTextHeaders()
         return self.query_cloud_record_text_with_options(request, headers, runtime)
@@ -13473,6 +16789,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.QueryCloudRecordTextRequest,
     ) -> aliding_20230426_models.QueryCloudRecordTextResponse:
+        """
+        @summary 查询会议录制中的文本信息
+        
+        @param request: QueryCloudRecordTextRequest
+        @return: QueryCloudRecordTextResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.QueryCloudRecordTextHeaders()
         return await self.query_cloud_record_text_with_options_async(request, headers, runtime)
@@ -13483,6 +16805,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.QueryCloudRecordVideoHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.QueryCloudRecordVideoResponse:
+        """
+        @summary 查询会议录制的详情信息
+        
+        @param tmp_req: QueryCloudRecordVideoRequest
+        @param tmp_header: QueryCloudRecordVideoHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryCloudRecordVideoResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.QueryCloudRecordVideoShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -13528,6 +16858,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.QueryCloudRecordVideoHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.QueryCloudRecordVideoResponse:
+        """
+        @summary 查询会议录制的详情信息
+        
+        @param tmp_req: QueryCloudRecordVideoRequest
+        @param tmp_header: QueryCloudRecordVideoHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryCloudRecordVideoResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.QueryCloudRecordVideoShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -13571,6 +16909,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.QueryCloudRecordVideoRequest,
     ) -> aliding_20230426_models.QueryCloudRecordVideoResponse:
+        """
+        @summary 查询会议录制的详情信息
+        
+        @param request: QueryCloudRecordVideoRequest
+        @return: QueryCloudRecordVideoResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.QueryCloudRecordVideoHeaders()
         return self.query_cloud_record_video_with_options(request, headers, runtime)
@@ -13579,6 +16923,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.QueryCloudRecordVideoRequest,
     ) -> aliding_20230426_models.QueryCloudRecordVideoResponse:
+        """
+        @summary 查询会议录制的详情信息
+        
+        @param request: QueryCloudRecordVideoRequest
+        @return: QueryCloudRecordVideoResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.QueryCloudRecordVideoHeaders()
         return await self.query_cloud_record_video_with_options_async(request, headers, runtime)
@@ -13589,6 +16939,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.QueryCloudRecordVideoPlayInfoHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.QueryCloudRecordVideoPlayInfoResponse:
+        """
+        @summary 查询会议录制中的视频信息
+        
+        @param tmp_req: QueryCloudRecordVideoPlayInfoRequest
+        @param tmp_header: QueryCloudRecordVideoPlayInfoHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryCloudRecordVideoPlayInfoResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.QueryCloudRecordVideoPlayInfoShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -13638,6 +16996,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.QueryCloudRecordVideoPlayInfoHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.QueryCloudRecordVideoPlayInfoResponse:
+        """
+        @summary 查询会议录制中的视频信息
+        
+        @param tmp_req: QueryCloudRecordVideoPlayInfoRequest
+        @param tmp_header: QueryCloudRecordVideoPlayInfoHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryCloudRecordVideoPlayInfoResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.QueryCloudRecordVideoPlayInfoShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -13685,6 +17051,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.QueryCloudRecordVideoPlayInfoRequest,
     ) -> aliding_20230426_models.QueryCloudRecordVideoPlayInfoResponse:
+        """
+        @summary 查询会议录制中的视频信息
+        
+        @param request: QueryCloudRecordVideoPlayInfoRequest
+        @return: QueryCloudRecordVideoPlayInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.QueryCloudRecordVideoPlayInfoHeaders()
         return self.query_cloud_record_video_play_info_with_options(request, headers, runtime)
@@ -13693,6 +17065,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.QueryCloudRecordVideoPlayInfoRequest,
     ) -> aliding_20230426_models.QueryCloudRecordVideoPlayInfoResponse:
+        """
+        @summary 查询会议录制中的视频信息
+        
+        @param request: QueryCloudRecordVideoPlayInfoRequest
+        @return: QueryCloudRecordVideoPlayInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.QueryCloudRecordVideoPlayInfoHeaders()
         return await self.query_cloud_record_video_play_info_with_options_async(request, headers, runtime)
@@ -13703,6 +17081,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.QueryConferenceInfoHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.QueryConferenceInfoResponse:
+        """
+        @summary 查询视频会议信息
+        
+        @param request: QueryConferenceInfoRequest
+        @param tmp_header: QueryConferenceInfoHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryConferenceInfoResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.QueryConferenceInfoShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -13742,6 +17128,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.QueryConferenceInfoHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.QueryConferenceInfoResponse:
+        """
+        @summary 查询视频会议信息
+        
+        @param request: QueryConferenceInfoRequest
+        @param tmp_header: QueryConferenceInfoHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryConferenceInfoResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.QueryConferenceInfoShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -13779,6 +17173,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.QueryConferenceInfoRequest,
     ) -> aliding_20230426_models.QueryConferenceInfoResponse:
+        """
+        @summary 查询视频会议信息
+        
+        @param request: QueryConferenceInfoRequest
+        @return: QueryConferenceInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.QueryConferenceInfoHeaders()
         return self.query_conference_info_with_options(request, headers, runtime)
@@ -13787,6 +17187,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.QueryConferenceInfoRequest,
     ) -> aliding_20230426_models.QueryConferenceInfoResponse:
+        """
+        @summary 查询视频会议信息
+        
+        @param request: QueryConferenceInfoRequest
+        @return: QueryConferenceInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.QueryConferenceInfoHeaders()
         return await self.query_conference_info_with_options_async(request, headers, runtime)
@@ -13797,6 +17203,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.QueryConferenceMembersHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.QueryConferenceMembersResponse:
+        """
+        @summary 查询视频会议成员
+        
+        @param tmp_req: QueryConferenceMembersRequest
+        @param tmp_header: QueryConferenceMembersHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryConferenceMembersResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.QueryConferenceMembersShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -13846,6 +17260,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.QueryConferenceMembersHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.QueryConferenceMembersResponse:
+        """
+        @summary 查询视频会议成员
+        
+        @param tmp_req: QueryConferenceMembersRequest
+        @param tmp_header: QueryConferenceMembersHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryConferenceMembersResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.QueryConferenceMembersShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -13893,6 +17315,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.QueryConferenceMembersRequest,
     ) -> aliding_20230426_models.QueryConferenceMembersResponse:
+        """
+        @summary 查询视频会议成员
+        
+        @param request: QueryConferenceMembersRequest
+        @return: QueryConferenceMembersResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.QueryConferenceMembersHeaders()
         return self.query_conference_members_with_options(request, headers, runtime)
@@ -13901,6 +17329,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.QueryConferenceMembersRequest,
     ) -> aliding_20230426_models.QueryConferenceMembersResponse:
+        """
+        @summary 查询视频会议成员
+        
+        @param request: QueryConferenceMembersRequest
+        @return: QueryConferenceMembersResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.QueryConferenceMembersHeaders()
         return await self.query_conference_members_with_options_async(request, headers, runtime)
@@ -13911,6 +17345,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.QueryDentryHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.QueryDentryResponse:
+        """
+        @summary 查询知识库节点信息
+        
+        @param tmp_req: QueryDentryRequest
+        @param tmp_header: QueryDentryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDentryResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.QueryDentryShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -13960,6 +17402,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.QueryDentryHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.QueryDentryResponse:
+        """
+        @summary 查询知识库节点信息
+        
+        @param tmp_req: QueryDentryRequest
+        @param tmp_header: QueryDentryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDentryResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.QueryDentryShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -14007,6 +17457,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.QueryDentryRequest,
     ) -> aliding_20230426_models.QueryDentryResponse:
+        """
+        @summary 查询知识库节点信息
+        
+        @param request: QueryDentryRequest
+        @return: QueryDentryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.QueryDentryHeaders()
         return self.query_dentry_with_options(request, headers, runtime)
@@ -14015,6 +17471,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.QueryDentryRequest,
     ) -> aliding_20230426_models.QueryDentryResponse:
+        """
+        @summary 查询知识库节点信息
+        
+        @param request: QueryDentryRequest
+        @return: QueryDentryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.QueryDentryHeaders()
         return await self.query_dentry_with_options_async(request, headers, runtime)
@@ -14025,6 +17487,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.QueryLiveInfoHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.QueryLiveInfoResponse:
+        """
+        @summary 查询直播信息
+        
+        @param tmp_req: QueryLiveInfoRequest
+        @param tmp_header: QueryLiveInfoHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryLiveInfoResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.QueryLiveInfoShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -14070,6 +17540,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.QueryLiveInfoHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.QueryLiveInfoResponse:
+        """
+        @summary 查询直播信息
+        
+        @param tmp_req: QueryLiveInfoRequest
+        @param tmp_header: QueryLiveInfoHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryLiveInfoResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.QueryLiveInfoShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -14113,6 +17591,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.QueryLiveInfoRequest,
     ) -> aliding_20230426_models.QueryLiveInfoResponse:
+        """
+        @summary 查询直播信息
+        
+        @param request: QueryLiveInfoRequest
+        @return: QueryLiveInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.QueryLiveInfoHeaders()
         return self.query_live_info_with_options(request, headers, runtime)
@@ -14121,6 +17605,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.QueryLiveInfoRequest,
     ) -> aliding_20230426_models.QueryLiveInfoResponse:
+        """
+        @summary 查询直播信息
+        
+        @param request: QueryLiveInfoRequest
+        @return: QueryLiveInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.QueryLiveInfoHeaders()
         return await self.query_live_info_with_options_async(request, headers, runtime)
@@ -14131,6 +17621,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.QueryLiveWatchDetailHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.QueryLiveWatchDetailResponse:
+        """
+        @summary 查询直播的观看数据
+        
+        @param tmp_req: QueryLiveWatchDetailRequest
+        @param tmp_header: QueryLiveWatchDetailHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryLiveWatchDetailResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.QueryLiveWatchDetailShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -14176,6 +17674,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.QueryLiveWatchDetailHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.QueryLiveWatchDetailResponse:
+        """
+        @summary 查询直播的观看数据
+        
+        @param tmp_req: QueryLiveWatchDetailRequest
+        @param tmp_header: QueryLiveWatchDetailHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryLiveWatchDetailResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.QueryLiveWatchDetailShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -14219,6 +17725,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.QueryLiveWatchDetailRequest,
     ) -> aliding_20230426_models.QueryLiveWatchDetailResponse:
+        """
+        @summary 查询直播的观看数据
+        
+        @param request: QueryLiveWatchDetailRequest
+        @return: QueryLiveWatchDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.QueryLiveWatchDetailHeaders()
         return self.query_live_watch_detail_with_options(request, headers, runtime)
@@ -14227,6 +17739,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.QueryLiveWatchDetailRequest,
     ) -> aliding_20230426_models.QueryLiveWatchDetailResponse:
+        """
+        @summary 查询直播的观看数据
+        
+        @param request: QueryLiveWatchDetailRequest
+        @return: QueryLiveWatchDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.QueryLiveWatchDetailHeaders()
         return await self.query_live_watch_detail_with_options_async(request, headers, runtime)
@@ -14237,6 +17755,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.QueryLiveWatchUserListHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.QueryLiveWatchUserListResponse:
+        """
+        @summary 查询直播观看人员信息
+        
+        @param tmp_req: QueryLiveWatchUserListRequest
+        @param tmp_header: QueryLiveWatchUserListHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryLiveWatchUserListResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.QueryLiveWatchUserListShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -14286,6 +17812,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.QueryLiveWatchUserListHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.QueryLiveWatchUserListResponse:
+        """
+        @summary 查询直播观看人员信息
+        
+        @param tmp_req: QueryLiveWatchUserListRequest
+        @param tmp_header: QueryLiveWatchUserListHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryLiveWatchUserListResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.QueryLiveWatchUserListShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -14333,6 +17867,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.QueryLiveWatchUserListRequest,
     ) -> aliding_20230426_models.QueryLiveWatchUserListResponse:
+        """
+        @summary 查询直播观看人员信息
+        
+        @param request: QueryLiveWatchUserListRequest
+        @return: QueryLiveWatchUserListResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.QueryLiveWatchUserListHeaders()
         return self.query_live_watch_user_list_with_options(request, headers, runtime)
@@ -14341,6 +17881,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.QueryLiveWatchUserListRequest,
     ) -> aliding_20230426_models.QueryLiveWatchUserListResponse:
+        """
+        @summary 查询直播观看人员信息
+        
+        @param request: QueryLiveWatchUserListRequest
+        @return: QueryLiveWatchUserListResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.QueryLiveWatchUserListHeaders()
         return await self.query_live_watch_user_list_with_options_async(request, headers, runtime)
@@ -14351,6 +17897,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.QueryMeetingRoomHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.QueryMeetingRoomResponse:
+        """
+        @summary 查询会议室详情
+        
+        @param tmp_req: QueryMeetingRoomRequest
+        @param tmp_header: QueryMeetingRoomHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryMeetingRoomResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.QueryMeetingRoomShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -14396,6 +17950,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.QueryMeetingRoomHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.QueryMeetingRoomResponse:
+        """
+        @summary 查询会议室详情
+        
+        @param tmp_req: QueryMeetingRoomRequest
+        @param tmp_header: QueryMeetingRoomHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryMeetingRoomResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.QueryMeetingRoomShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -14439,6 +18001,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.QueryMeetingRoomRequest,
     ) -> aliding_20230426_models.QueryMeetingRoomResponse:
+        """
+        @summary 查询会议室详情
+        
+        @param request: QueryMeetingRoomRequest
+        @return: QueryMeetingRoomResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.QueryMeetingRoomHeaders()
         return self.query_meeting_room_with_options(request, headers, runtime)
@@ -14447,6 +18015,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.QueryMeetingRoomRequest,
     ) -> aliding_20230426_models.QueryMeetingRoomResponse:
+        """
+        @summary 查询会议室详情
+        
+        @param request: QueryMeetingRoomRequest
+        @return: QueryMeetingRoomResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.QueryMeetingRoomHeaders()
         return await self.query_meeting_room_with_options_async(request, headers, runtime)
@@ -14457,6 +18031,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.QueryMeetingRoomGroupHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.QueryMeetingRoomGroupResponse:
+        """
+        @summary 查询会议室分组信息
+        
+        @param tmp_req: QueryMeetingRoomGroupRequest
+        @param tmp_header: QueryMeetingRoomGroupHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryMeetingRoomGroupResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.QueryMeetingRoomGroupShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -14502,6 +18084,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.QueryMeetingRoomGroupHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.QueryMeetingRoomGroupResponse:
+        """
+        @summary 查询会议室分组信息
+        
+        @param tmp_req: QueryMeetingRoomGroupRequest
+        @param tmp_header: QueryMeetingRoomGroupHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryMeetingRoomGroupResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.QueryMeetingRoomGroupShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -14545,6 +18135,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.QueryMeetingRoomGroupRequest,
     ) -> aliding_20230426_models.QueryMeetingRoomGroupResponse:
+        """
+        @summary 查询会议室分组信息
+        
+        @param request: QueryMeetingRoomGroupRequest
+        @return: QueryMeetingRoomGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.QueryMeetingRoomGroupHeaders()
         return self.query_meeting_room_group_with_options(request, headers, runtime)
@@ -14553,6 +18149,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.QueryMeetingRoomGroupRequest,
     ) -> aliding_20230426_models.QueryMeetingRoomGroupResponse:
+        """
+        @summary 查询会议室分组信息
+        
+        @param request: QueryMeetingRoomGroupRequest
+        @return: QueryMeetingRoomGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.QueryMeetingRoomGroupHeaders()
         return await self.query_meeting_room_group_with_options_async(request, headers, runtime)
@@ -14563,6 +18165,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.QueryMeetingRoomGroupListHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.QueryMeetingRoomGroupListResponse:
+        """
+        @summary 查询会议室分组列表
+        
+        @param tmp_req: QueryMeetingRoomGroupListRequest
+        @param tmp_header: QueryMeetingRoomGroupListHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryMeetingRoomGroupListResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.QueryMeetingRoomGroupListShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -14610,6 +18220,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.QueryMeetingRoomGroupListHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.QueryMeetingRoomGroupListResponse:
+        """
+        @summary 查询会议室分组列表
+        
+        @param tmp_req: QueryMeetingRoomGroupListRequest
+        @param tmp_header: QueryMeetingRoomGroupListHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryMeetingRoomGroupListResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.QueryMeetingRoomGroupListShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -14655,6 +18273,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.QueryMeetingRoomGroupListRequest,
     ) -> aliding_20230426_models.QueryMeetingRoomGroupListResponse:
+        """
+        @summary 查询会议室分组列表
+        
+        @param request: QueryMeetingRoomGroupListRequest
+        @return: QueryMeetingRoomGroupListResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.QueryMeetingRoomGroupListHeaders()
         return self.query_meeting_room_group_list_with_options(request, headers, runtime)
@@ -14663,6 +18287,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.QueryMeetingRoomGroupListRequest,
     ) -> aliding_20230426_models.QueryMeetingRoomGroupListResponse:
+        """
+        @summary 查询会议室分组列表
+        
+        @param request: QueryMeetingRoomGroupListRequest
+        @return: QueryMeetingRoomGroupListResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.QueryMeetingRoomGroupListHeaders()
         return await self.query_meeting_room_group_list_with_options_async(request, headers, runtime)
@@ -14673,6 +18303,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.QueryMeetingRoomListHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.QueryMeetingRoomListResponse:
+        """
+        @summary 查询会议室列表
+        
+        @param tmp_req: QueryMeetingRoomListRequest
+        @param tmp_header: QueryMeetingRoomListHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryMeetingRoomListResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.QueryMeetingRoomListShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -14720,6 +18358,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.QueryMeetingRoomListHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.QueryMeetingRoomListResponse:
+        """
+        @summary 查询会议室列表
+        
+        @param tmp_req: QueryMeetingRoomListRequest
+        @param tmp_header: QueryMeetingRoomListHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryMeetingRoomListResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.QueryMeetingRoomListShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -14765,6 +18411,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.QueryMeetingRoomListRequest,
     ) -> aliding_20230426_models.QueryMeetingRoomListResponse:
+        """
+        @summary 查询会议室列表
+        
+        @param request: QueryMeetingRoomListRequest
+        @return: QueryMeetingRoomListResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.QueryMeetingRoomListHeaders()
         return self.query_meeting_room_list_with_options(request, headers, runtime)
@@ -14773,6 +18425,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.QueryMeetingRoomListRequest,
     ) -> aliding_20230426_models.QueryMeetingRoomListResponse:
+        """
+        @summary 查询会议室列表
+        
+        @param request: QueryMeetingRoomListRequest
+        @return: QueryMeetingRoomListResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.QueryMeetingRoomListHeaders()
         return await self.query_meeting_room_list_with_options_async(request, headers, runtime)
@@ -14783,6 +18441,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.QueryOrgHonorsHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.QueryOrgHonorsResponse:
+        """
+        @summary 查询企业荣誉
+        
+        @param tmp_req: QueryOrgHonorsRequest
+        @param tmp_header: QueryOrgHonorsHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryOrgHonorsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.QueryOrgHonorsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -14832,6 +18498,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.QueryOrgHonorsHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.QueryOrgHonorsResponse:
+        """
+        @summary 查询企业荣誉
+        
+        @param tmp_req: QueryOrgHonorsRequest
+        @param tmp_header: QueryOrgHonorsHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryOrgHonorsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.QueryOrgHonorsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -14879,6 +18553,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.QueryOrgHonorsRequest,
     ) -> aliding_20230426_models.QueryOrgHonorsResponse:
+        """
+        @summary 查询企业荣誉
+        
+        @param request: QueryOrgHonorsRequest
+        @return: QueryOrgHonorsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.QueryOrgHonorsHeaders()
         return self.query_org_honors_with_options(request, headers, runtime)
@@ -14887,6 +18567,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.QueryOrgHonorsRequest,
     ) -> aliding_20230426_models.QueryOrgHonorsResponse:
+        """
+        @summary 查询企业荣誉
+        
+        @param request: QueryOrgHonorsRequest
+        @return: QueryOrgHonorsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.QueryOrgHonorsHeaders()
         return await self.query_org_honors_with_options_async(request, headers, runtime)
@@ -14897,6 +18583,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.QueryOrgTodoTasksHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.QueryOrgTodoTasksResponse:
+        """
+        @summary 查询企业代办
+        
+        @param tmp_req: QueryOrgTodoTasksRequest
+        @param tmp_header: QueryOrgTodoTasksHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryOrgTodoTasksResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.QueryOrgTodoTasksShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -14944,6 +18638,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.QueryOrgTodoTasksHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.QueryOrgTodoTasksResponse:
+        """
+        @summary 查询企业代办
+        
+        @param tmp_req: QueryOrgTodoTasksRequest
+        @param tmp_header: QueryOrgTodoTasksHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryOrgTodoTasksResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.QueryOrgTodoTasksShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -14989,6 +18691,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.QueryOrgTodoTasksRequest,
     ) -> aliding_20230426_models.QueryOrgTodoTasksResponse:
+        """
+        @summary 查询企业代办
+        
+        @param request: QueryOrgTodoTasksRequest
+        @return: QueryOrgTodoTasksResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.QueryOrgTodoTasksHeaders()
         return self.query_org_todo_tasks_with_options(request, headers, runtime)
@@ -14997,6 +18705,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.QueryOrgTodoTasksRequest,
     ) -> aliding_20230426_models.QueryOrgTodoTasksResponse:
+        """
+        @summary 查询企业代办
+        
+        @param request: QueryOrgTodoTasksRequest
+        @return: QueryOrgTodoTasksResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.QueryOrgTodoTasksHeaders()
         return await self.query_org_todo_tasks_with_options_async(request, headers, runtime)
@@ -15007,6 +18721,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.QueryScheduleConferenceHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.QueryScheduleConferenceResponse:
+        """
+        @summary 查询预约会议
+        
+        @param tmp_req: QueryScheduleConferenceRequest
+        @param tmp_header: QueryScheduleConferenceHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryScheduleConferenceResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.QueryScheduleConferenceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -15052,6 +18774,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.QueryScheduleConferenceHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.QueryScheduleConferenceResponse:
+        """
+        @summary 查询预约会议
+        
+        @param tmp_req: QueryScheduleConferenceRequest
+        @param tmp_header: QueryScheduleConferenceHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryScheduleConferenceResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.QueryScheduleConferenceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -15095,6 +18825,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.QueryScheduleConferenceRequest,
     ) -> aliding_20230426_models.QueryScheduleConferenceResponse:
+        """
+        @summary 查询预约会议
+        
+        @param request: QueryScheduleConferenceRequest
+        @return: QueryScheduleConferenceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.QueryScheduleConferenceHeaders()
         return self.query_schedule_conference_with_options(request, headers, runtime)
@@ -15103,6 +18839,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.QueryScheduleConferenceRequest,
     ) -> aliding_20230426_models.QueryScheduleConferenceResponse:
+        """
+        @summary 查询预约会议
+        
+        @param request: QueryScheduleConferenceRequest
+        @return: QueryScheduleConferenceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.QueryScheduleConferenceHeaders()
         return await self.query_schedule_conference_with_options_async(request, headers, runtime)
@@ -15113,6 +18855,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.QueryUserHonorsHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.QueryUserHonorsResponse:
+        """
+        @summary 查询员工勋章列表
+        
+        @param tmp_req: QueryUserHonorsRequest
+        @param tmp_header: QueryUserHonorsHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryUserHonorsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.QueryUserHonorsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -15164,6 +18914,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.QueryUserHonorsHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.QueryUserHonorsResponse:
+        """
+        @summary 查询员工勋章列表
+        
+        @param tmp_req: QueryUserHonorsRequest
+        @param tmp_header: QueryUserHonorsHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryUserHonorsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.QueryUserHonorsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -15213,6 +18971,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.QueryUserHonorsRequest,
     ) -> aliding_20230426_models.QueryUserHonorsResponse:
+        """
+        @summary 查询员工勋章列表
+        
+        @param request: QueryUserHonorsRequest
+        @return: QueryUserHonorsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.QueryUserHonorsHeaders()
         return self.query_user_honors_with_options(request, headers, runtime)
@@ -15221,6 +18985,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.QueryUserHonorsRequest,
     ) -> aliding_20230426_models.QueryUserHonorsResponse:
+        """
+        @summary 查询员工勋章列表
+        
+        @param request: QueryUserHonorsRequest
+        @return: QueryUserHonorsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.QueryUserHonorsHeaders()
         return await self.query_user_honors_with_options_async(request, headers, runtime)
@@ -15231,6 +19001,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.RecallHonorHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.RecallHonorResponse:
+        """
+        @summary 收回勋章
+        
+        @param tmp_req: RecallHonorRequest
+        @param tmp_header: RecallHonorHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RecallHonorResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.RecallHonorShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -15280,6 +19058,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.RecallHonorHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.RecallHonorResponse:
+        """
+        @summary 收回勋章
+        
+        @param tmp_req: RecallHonorRequest
+        @param tmp_header: RecallHonorHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RecallHonorResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.RecallHonorShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -15327,6 +19113,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.RecallHonorRequest,
     ) -> aliding_20230426_models.RecallHonorResponse:
+        """
+        @summary 收回勋章
+        
+        @param request: RecallHonorRequest
+        @return: RecallHonorResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.RecallHonorHeaders()
         return self.recall_honor_with_options(request, headers, runtime)
@@ -15335,6 +19127,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.RecallHonorRequest,
     ) -> aliding_20230426_models.RecallHonorResponse:
+        """
+        @summary 收回勋章
+        
+        @param request: RecallHonorRequest
+        @return: RecallHonorResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.RecallHonorHeaders()
         return await self.recall_honor_with_options_async(request, headers, runtime)
@@ -15345,6 +19143,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.ReceiverListReportHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.ReceiverListReportResponse:
+        """
+        @summary 获取日志接收人员列表
+        
+        @param tmp_req: ReceiverListReportRequest
+        @param tmp_header: ReceiverListReportHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReceiverListReportResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.ReceiverListReportShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -15394,6 +19200,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.ReceiverListReportHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.ReceiverListReportResponse:
+        """
+        @summary 获取日志接收人员列表
+        
+        @param tmp_req: ReceiverListReportRequest
+        @param tmp_header: ReceiverListReportHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReceiverListReportResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.ReceiverListReportShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -15441,6 +19255,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.ReceiverListReportRequest,
     ) -> aliding_20230426_models.ReceiverListReportResponse:
+        """
+        @summary 获取日志接收人员列表
+        
+        @param request: ReceiverListReportRequest
+        @return: ReceiverListReportResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.ReceiverListReportHeaders()
         return self.receiver_list_report_with_options(request, headers, runtime)
@@ -15449,6 +19269,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.ReceiverListReportRequest,
     ) -> aliding_20230426_models.ReceiverListReportResponse:
+        """
+        @summary 获取日志接收人员列表
+        
+        @param request: ReceiverListReportRequest
+        @return: ReceiverListReportResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.ReceiverListReportHeaders()
         return await self.receiver_list_report_with_options_async(request, headers, runtime)
@@ -15459,6 +19285,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.RedirectTaskHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.RedirectTaskResponse:
+        """
+        @summary 转交任务
+        
+        @param request: RedirectTaskRequest
+        @param tmp_header: RedirectTaskHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RedirectTaskResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.RedirectTaskShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -15512,6 +19346,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.RedirectTaskHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.RedirectTaskResponse:
+        """
+        @summary 转交任务
+        
+        @param request: RedirectTaskRequest
+        @param tmp_header: RedirectTaskHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RedirectTaskResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.RedirectTaskShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -15563,6 +19405,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.RedirectTaskRequest,
     ) -> aliding_20230426_models.RedirectTaskResponse:
+        """
+        @summary 转交任务
+        
+        @param request: RedirectTaskRequest
+        @return: RedirectTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.RedirectTaskHeaders()
         return self.redirect_task_with_options(request, headers, runtime)
@@ -15571,6 +19419,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.RedirectTaskRequest,
     ) -> aliding_20230426_models.RedirectTaskResponse:
+        """
+        @summary 转交任务
+        
+        @param request: RedirectTaskRequest
+        @return: RedirectTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.RedirectTaskHeaders()
         return await self.redirect_task_with_options_async(request, headers, runtime)
@@ -15581,6 +19435,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.RemoveAttendeeHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.RemoveAttendeeResponse:
+        """
+        @summary 删除日程参与者
+        
+        @param tmp_req: RemoveAttendeeRequest
+        @param tmp_header: RemoveAttendeeHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveAttendeeResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.RemoveAttendeeShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -15628,6 +19490,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.RemoveAttendeeHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.RemoveAttendeeResponse:
+        """
+        @summary 删除日程参与者
+        
+        @param tmp_req: RemoveAttendeeRequest
+        @param tmp_header: RemoveAttendeeHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveAttendeeResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.RemoveAttendeeShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -15673,6 +19543,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.RemoveAttendeeRequest,
     ) -> aliding_20230426_models.RemoveAttendeeResponse:
+        """
+        @summary 删除日程参与者
+        
+        @param request: RemoveAttendeeRequest
+        @return: RemoveAttendeeResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.RemoveAttendeeHeaders()
         return self.remove_attendee_with_options(request, headers, runtime)
@@ -15681,6 +19557,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.RemoveAttendeeRequest,
     ) -> aliding_20230426_models.RemoveAttendeeResponse:
+        """
+        @summary 删除日程参与者
+        
+        @param request: RemoveAttendeeRequest
+        @return: RemoveAttendeeResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.RemoveAttendeeHeaders()
         return await self.remove_attendee_with_options_async(request, headers, runtime)
@@ -15691,6 +19573,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.RemoveMeetingRoomsHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.RemoveMeetingRoomsResponse:
+        """
+        @summary 取消预定会议室
+        
+        @param tmp_req: RemoveMeetingRoomsRequest
+        @param tmp_header: RemoveMeetingRoomsHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveMeetingRoomsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.RemoveMeetingRoomsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -15738,6 +19628,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.RemoveMeetingRoomsHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.RemoveMeetingRoomsResponse:
+        """
+        @summary 取消预定会议室
+        
+        @param tmp_req: RemoveMeetingRoomsRequest
+        @param tmp_header: RemoveMeetingRoomsHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveMeetingRoomsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.RemoveMeetingRoomsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -15783,6 +19681,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.RemoveMeetingRoomsRequest,
     ) -> aliding_20230426_models.RemoveMeetingRoomsResponse:
+        """
+        @summary 取消预定会议室
+        
+        @param request: RemoveMeetingRoomsRequest
+        @return: RemoveMeetingRoomsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.RemoveMeetingRoomsHeaders()
         return self.remove_meeting_rooms_with_options(request, headers, runtime)
@@ -15791,6 +19695,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.RemoveMeetingRoomsRequest,
     ) -> aliding_20230426_models.RemoveMeetingRoomsResponse:
+        """
+        @summary 取消预定会议室
+        
+        @param request: RemoveMeetingRoomsRequest
+        @return: RemoveMeetingRoomsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.RemoveMeetingRoomsHeaders()
         return await self.remove_meeting_rooms_with_options_async(request, headers, runtime)
@@ -15801,6 +19711,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.SaveContentHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.SaveContentResponse:
+        """
+        @summary 保存日志内容
+        
+        @param tmp_req: SaveContentRequest
+        @param tmp_header: SaveContentHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SaveContentResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.SaveContentShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -15852,6 +19770,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.SaveContentHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.SaveContentResponse:
+        """
+        @summary 保存日志内容
+        
+        @param tmp_req: SaveContentRequest
+        @param tmp_header: SaveContentHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SaveContentResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.SaveContentShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -15901,6 +19827,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.SaveContentRequest,
     ) -> aliding_20230426_models.SaveContentResponse:
+        """
+        @summary 保存日志内容
+        
+        @param request: SaveContentRequest
+        @return: SaveContentResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.SaveContentHeaders()
         return self.save_content_with_options(request, headers, runtime)
@@ -15909,6 +19841,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.SaveContentRequest,
     ) -> aliding_20230426_models.SaveContentResponse:
+        """
+        @summary 保存日志内容
+        
+        @param request: SaveContentRequest
+        @return: SaveContentResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.SaveContentHeaders()
         return await self.save_content_with_options_async(request, headers, runtime)
@@ -15919,6 +19857,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.SaveFormDataHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.SaveFormDataResponse:
+        """
+        @summary 保存表单数据
+        
+        @param request: SaveFormDataRequest
+        @param tmp_header: SaveFormDataHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SaveFormDataResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.SaveFormDataShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -15966,6 +19912,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.SaveFormDataHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.SaveFormDataResponse:
+        """
+        @summary 保存表单数据
+        
+        @param request: SaveFormDataRequest
+        @param tmp_header: SaveFormDataHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SaveFormDataResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.SaveFormDataShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -16011,6 +19965,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.SaveFormDataRequest,
     ) -> aliding_20230426_models.SaveFormDataResponse:
+        """
+        @summary 保存表单数据
+        
+        @param request: SaveFormDataRequest
+        @return: SaveFormDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.SaveFormDataHeaders()
         return self.save_form_data_with_options(request, headers, runtime)
@@ -16019,6 +19979,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.SaveFormDataRequest,
     ) -> aliding_20230426_models.SaveFormDataResponse:
+        """
+        @summary 保存表单数据
+        
+        @param request: SaveFormDataRequest
+        @return: SaveFormDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.SaveFormDataHeaders()
         return await self.save_form_data_with_options_async(request, headers, runtime)
@@ -16029,6 +19995,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.SaveFormRemarkHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.SaveFormRemarkResponse:
+        """
+        @summary 提交表单或流程实例下的评论
+        
+        @param request: SaveFormRemarkRequest
+        @param tmp_header: SaveFormRemarkHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SaveFormRemarkResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.SaveFormRemarkShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -16080,6 +20054,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.SaveFormRemarkHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.SaveFormRemarkResponse:
+        """
+        @summary 提交表单或流程实例下的评论
+        
+        @param request: SaveFormRemarkRequest
+        @param tmp_header: SaveFormRemarkHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SaveFormRemarkResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.SaveFormRemarkShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -16129,6 +20111,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.SaveFormRemarkRequest,
     ) -> aliding_20230426_models.SaveFormRemarkResponse:
+        """
+        @summary 提交表单或流程实例下的评论
+        
+        @param request: SaveFormRemarkRequest
+        @return: SaveFormRemarkResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.SaveFormRemarkHeaders()
         return self.save_form_remark_with_options(request, headers, runtime)
@@ -16137,6 +20125,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.SaveFormRemarkRequest,
     ) -> aliding_20230426_models.SaveFormRemarkResponse:
+        """
+        @summary 提交表单或流程实例下的评论
+        
+        @param request: SaveFormRemarkRequest
+        @return: SaveFormRemarkResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.SaveFormRemarkHeaders()
         return await self.save_form_remark_with_options_async(request, headers, runtime)
@@ -16147,6 +20141,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.SearchEmployeeFieldValuesHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.SearchEmployeeFieldValuesResponse:
+        """
+        @summary 获取员工组件的值
+        
+        @param request: SearchEmployeeFieldValuesRequest
+        @param tmp_header: SearchEmployeeFieldValuesHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchEmployeeFieldValuesResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.SearchEmployeeFieldValuesShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -16206,6 +20208,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.SearchEmployeeFieldValuesHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.SearchEmployeeFieldValuesResponse:
+        """
+        @summary 获取员工组件的值
+        
+        @param request: SearchEmployeeFieldValuesRequest
+        @param tmp_header: SearchEmployeeFieldValuesHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchEmployeeFieldValuesResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.SearchEmployeeFieldValuesShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -16263,6 +20273,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.SearchEmployeeFieldValuesRequest,
     ) -> aliding_20230426_models.SearchEmployeeFieldValuesResponse:
+        """
+        @summary 获取员工组件的值
+        
+        @param request: SearchEmployeeFieldValuesRequest
+        @return: SearchEmployeeFieldValuesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.SearchEmployeeFieldValuesHeaders()
         return self.search_employee_field_values_with_options(request, headers, runtime)
@@ -16271,6 +20287,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.SearchEmployeeFieldValuesRequest,
     ) -> aliding_20230426_models.SearchEmployeeFieldValuesResponse:
+        """
+        @summary 获取员工组件的值
+        
+        @param request: SearchEmployeeFieldValuesRequest
+        @return: SearchEmployeeFieldValuesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.SearchEmployeeFieldValuesHeaders()
         return await self.search_employee_field_values_with_options_async(request, headers, runtime)
@@ -16281,6 +20303,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.SearchFormDataIdListHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.SearchFormDataIdListResponse:
+        """
+        @summary 获取多个表单实例ID
+        
+        @param request: SearchFormDataIdListRequest
+        @param tmp_header: SearchFormDataIdListHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchFormDataIdListResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.SearchFormDataIdListShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -16342,6 +20372,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.SearchFormDataIdListHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.SearchFormDataIdListResponse:
+        """
+        @summary 获取多个表单实例ID
+        
+        @param request: SearchFormDataIdListRequest
+        @param tmp_header: SearchFormDataIdListHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchFormDataIdListResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.SearchFormDataIdListShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -16401,6 +20439,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.SearchFormDataIdListRequest,
     ) -> aliding_20230426_models.SearchFormDataIdListResponse:
+        """
+        @summary 获取多个表单实例ID
+        
+        @param request: SearchFormDataIdListRequest
+        @return: SearchFormDataIdListResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.SearchFormDataIdListHeaders()
         return self.search_form_data_id_list_with_options(request, headers, runtime)
@@ -16409,6 +20453,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.SearchFormDataIdListRequest,
     ) -> aliding_20230426_models.SearchFormDataIdListResponse:
+        """
+        @summary 获取多个表单实例ID
+        
+        @param request: SearchFormDataIdListRequest
+        @return: SearchFormDataIdListResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.SearchFormDataIdListHeaders()
         return await self.search_form_data_id_list_with_options_async(request, headers, runtime)
@@ -16419,6 +20469,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.SearchFormDataSecondGenerationHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.SearchFormDataSecondGenerationResponse:
+        """
+        @summary 通过高级查询条件获取表单实例数据（包括子表单组件数据）
+        
+        @param request: SearchFormDataSecondGenerationRequest
+        @param tmp_header: SearchFormDataSecondGenerationHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchFormDataSecondGenerationResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.SearchFormDataSecondGenerationShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -16480,6 +20538,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.SearchFormDataSecondGenerationHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.SearchFormDataSecondGenerationResponse:
+        """
+        @summary 通过高级查询条件获取表单实例数据（包括子表单组件数据）
+        
+        @param request: SearchFormDataSecondGenerationRequest
+        @param tmp_header: SearchFormDataSecondGenerationHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchFormDataSecondGenerationResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.SearchFormDataSecondGenerationShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -16539,6 +20605,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.SearchFormDataSecondGenerationRequest,
     ) -> aliding_20230426_models.SearchFormDataSecondGenerationResponse:
+        """
+        @summary 通过高级查询条件获取表单实例数据（包括子表单组件数据）
+        
+        @param request: SearchFormDataSecondGenerationRequest
+        @return: SearchFormDataSecondGenerationResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.SearchFormDataSecondGenerationHeaders()
         return self.search_form_data_second_generation_with_options(request, headers, runtime)
@@ -16547,6 +20619,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.SearchFormDataSecondGenerationRequest,
     ) -> aliding_20230426_models.SearchFormDataSecondGenerationResponse:
+        """
+        @summary 通过高级查询条件获取表单实例数据（包括子表单组件数据）
+        
+        @param request: SearchFormDataSecondGenerationRequest
+        @return: SearchFormDataSecondGenerationResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.SearchFormDataSecondGenerationHeaders()
         return await self.search_form_data_second_generation_with_options_async(request, headers, runtime)
@@ -16557,6 +20635,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.SearchFormDataSecondGenerationNoTableFieldHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.SearchFormDataSecondGenerationNoTableFieldResponse:
+        """
+        @summary 通过高级查询条件获取表单实例数据（不包括子表单组件数据）
+        
+        @param request: SearchFormDataSecondGenerationNoTableFieldRequest
+        @param tmp_header: SearchFormDataSecondGenerationNoTableFieldHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchFormDataSecondGenerationNoTableFieldResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.SearchFormDataSecondGenerationNoTableFieldShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -16618,6 +20704,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.SearchFormDataSecondGenerationNoTableFieldHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.SearchFormDataSecondGenerationNoTableFieldResponse:
+        """
+        @summary 通过高级查询条件获取表单实例数据（不包括子表单组件数据）
+        
+        @param request: SearchFormDataSecondGenerationNoTableFieldRequest
+        @param tmp_header: SearchFormDataSecondGenerationNoTableFieldHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchFormDataSecondGenerationNoTableFieldResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.SearchFormDataSecondGenerationNoTableFieldShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -16677,6 +20771,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.SearchFormDataSecondGenerationNoTableFieldRequest,
     ) -> aliding_20230426_models.SearchFormDataSecondGenerationNoTableFieldResponse:
+        """
+        @summary 通过高级查询条件获取表单实例数据（不包括子表单组件数据）
+        
+        @param request: SearchFormDataSecondGenerationNoTableFieldRequest
+        @return: SearchFormDataSecondGenerationNoTableFieldResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.SearchFormDataSecondGenerationNoTableFieldHeaders()
         return self.search_form_data_second_generation_no_table_field_with_options(request, headers, runtime)
@@ -16685,6 +20785,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.SearchFormDataSecondGenerationNoTableFieldRequest,
     ) -> aliding_20230426_models.SearchFormDataSecondGenerationNoTableFieldResponse:
+        """
+        @summary 通过高级查询条件获取表单实例数据（不包括子表单组件数据）
+        
+        @param request: SearchFormDataSecondGenerationNoTableFieldRequest
+        @return: SearchFormDataSecondGenerationNoTableFieldResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.SearchFormDataSecondGenerationNoTableFieldHeaders()
         return await self.search_form_data_second_generation_no_table_field_with_options_async(request, headers, runtime)
@@ -16695,6 +20801,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.SearchFormDatasHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.SearchFormDatasResponse:
+        """
+        @summary 查询表单实例数据
+        
+        @param request: SearchFormDatasRequest
+        @param tmp_header: SearchFormDatasHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchFormDatasResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.SearchFormDatasShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -16758,6 +20872,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.SearchFormDatasHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.SearchFormDatasResponse:
+        """
+        @summary 查询表单实例数据
+        
+        @param request: SearchFormDatasRequest
+        @param tmp_header: SearchFormDatasHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchFormDatasResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.SearchFormDatasShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -16819,6 +20941,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.SearchFormDatasRequest,
     ) -> aliding_20230426_models.SearchFormDatasResponse:
+        """
+        @summary 查询表单实例数据
+        
+        @param request: SearchFormDatasRequest
+        @return: SearchFormDatasResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.SearchFormDatasHeaders()
         return self.search_form_datas_with_options(request, headers, runtime)
@@ -16827,6 +20955,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.SearchFormDatasRequest,
     ) -> aliding_20230426_models.SearchFormDatasResponse:
+        """
+        @summary 查询表单实例数据
+        
+        @param request: SearchFormDatasRequest
+        @return: SearchFormDatasResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.SearchFormDatasHeaders()
         return await self.search_form_datas_with_options_async(request, headers, runtime)
@@ -16837,6 +20971,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.SearchInnerGroupsHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.SearchInnerGroupsResponse:
+        """
+        @summary 根据关键词搜索企业内部群
+        
+        @param request: SearchInnerGroupsRequest
+        @param tmp_header: SearchInnerGroupsHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchInnerGroupsResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.SearchInnerGroupsShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -16878,6 +21020,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.SearchInnerGroupsHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.SearchInnerGroupsResponse:
+        """
+        @summary 根据关键词搜索企业内部群
+        
+        @param request: SearchInnerGroupsRequest
+        @param tmp_header: SearchInnerGroupsHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchInnerGroupsResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.SearchInnerGroupsShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -16917,6 +21067,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.SearchInnerGroupsRequest,
     ) -> aliding_20230426_models.SearchInnerGroupsResponse:
+        """
+        @summary 根据关键词搜索企业内部群
+        
+        @param request: SearchInnerGroupsRequest
+        @return: SearchInnerGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.SearchInnerGroupsHeaders()
         return self.search_inner_groups_with_options(request, headers, runtime)
@@ -16925,6 +21081,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.SearchInnerGroupsRequest,
     ) -> aliding_20230426_models.SearchInnerGroupsResponse:
+        """
+        @summary 根据关键词搜索企业内部群
+        
+        @param request: SearchInnerGroupsRequest
+        @return: SearchInnerGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.SearchInnerGroupsHeaders()
         return await self.search_inner_groups_with_options_async(request, headers, runtime)
@@ -16935,6 +21097,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.SendBannerHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.SendBannerResponse:
+        """
+        @summary 发送钉钉Banner通知
+        
+        @param tmp_req: SendBannerRequest
+        @param tmp_header: SendBannerHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SendBannerResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.SendBannerShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -16986,6 +21156,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.SendBannerHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.SendBannerResponse:
+        """
+        @summary 发送钉钉Banner通知
+        
+        @param tmp_req: SendBannerRequest
+        @param tmp_header: SendBannerHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SendBannerResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.SendBannerShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -17035,6 +21213,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.SendBannerRequest,
     ) -> aliding_20230426_models.SendBannerResponse:
+        """
+        @summary 发送钉钉Banner通知
+        
+        @param request: SendBannerRequest
+        @return: SendBannerResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.SendBannerHeaders()
         return self.send_banner_with_options(request, headers, runtime)
@@ -17043,6 +21227,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.SendBannerRequest,
     ) -> aliding_20230426_models.SendBannerResponse:
+        """
+        @summary 发送钉钉Banner通知
+        
+        @param request: SendBannerRequest
+        @return: SendBannerResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.SendBannerHeaders()
         return await self.send_banner_with_options_async(request, headers, runtime)
@@ -17053,6 +21243,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.SendPopupHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.SendPopupResponse:
+        """
+        @summary 发送钉钉封屏弹窗
+        
+        @param tmp_req: SendPopupRequest
+        @param tmp_header: SendPopupHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SendPopupResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.SendPopupShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -17104,6 +21302,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.SendPopupHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.SendPopupResponse:
+        """
+        @summary 发送钉钉封屏弹窗
+        
+        @param tmp_req: SendPopupRequest
+        @param tmp_header: SendPopupHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SendPopupResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.SendPopupShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -17153,6 +21359,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.SendPopupRequest,
     ) -> aliding_20230426_models.SendPopupResponse:
+        """
+        @summary 发送钉钉封屏弹窗
+        
+        @param request: SendPopupRequest
+        @return: SendPopupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.SendPopupHeaders()
         return self.send_popup_with_options(request, headers, runtime)
@@ -17161,6 +21373,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.SendPopupRequest,
     ) -> aliding_20230426_models.SendPopupResponse:
+        """
+        @summary 发送钉钉封屏弹窗
+        
+        @param request: SendPopupRequest
+        @return: SendPopupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.SendPopupHeaders()
         return await self.send_popup_with_options_async(request, headers, runtime)
@@ -17171,6 +21389,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.SendSearchShadeHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.SendSearchShadeResponse:
+        """
+        @summary 发送钉钉搜索底纹
+        
+        @param tmp_req: SendSearchShadeRequest
+        @param tmp_header: SendSearchShadeHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SendSearchShadeResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.SendSearchShadeShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -17222,6 +21448,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.SendSearchShadeHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.SendSearchShadeResponse:
+        """
+        @summary 发送钉钉搜索底纹
+        
+        @param tmp_req: SendSearchShadeRequest
+        @param tmp_header: SendSearchShadeHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SendSearchShadeResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.SendSearchShadeShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -17271,6 +21505,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.SendSearchShadeRequest,
     ) -> aliding_20230426_models.SendSearchShadeResponse:
+        """
+        @summary 发送钉钉搜索底纹
+        
+        @param request: SendSearchShadeRequest
+        @return: SendSearchShadeResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.SendSearchShadeHeaders()
         return self.send_search_shade_with_options(request, headers, runtime)
@@ -17279,6 +21519,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.SendSearchShadeRequest,
     ) -> aliding_20230426_models.SendSearchShadeResponse:
+        """
+        @summary 发送钉钉搜索底纹
+        
+        @param request: SendSearchShadeRequest
+        @return: SendSearchShadeResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.SendSearchShadeHeaders()
         return await self.send_search_shade_with_options_async(request, headers, runtime)
@@ -17289,6 +21535,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.SetColumnsVisibilityHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.SetColumnsVisibilityResponse:
+        """
+        @summary 指定列隐藏
+        
+        @param tmp_req: SetColumnsVisibilityRequest
+        @param tmp_header: SetColumnsVisibilityHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetColumnsVisibilityResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.SetColumnsVisibilityShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -17342,6 +21596,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.SetColumnsVisibilityHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.SetColumnsVisibilityResponse:
+        """
+        @summary 指定列隐藏
+        
+        @param tmp_req: SetColumnsVisibilityRequest
+        @param tmp_header: SetColumnsVisibilityHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetColumnsVisibilityResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.SetColumnsVisibilityShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -17393,6 +21655,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.SetColumnsVisibilityRequest,
     ) -> aliding_20230426_models.SetColumnsVisibilityResponse:
+        """
+        @summary 指定列隐藏
+        
+        @param request: SetColumnsVisibilityRequest
+        @return: SetColumnsVisibilityResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.SetColumnsVisibilityHeaders()
         return self.set_columns_visibility_with_options(request, headers, runtime)
@@ -17401,6 +21669,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.SetColumnsVisibilityRequest,
     ) -> aliding_20230426_models.SetColumnsVisibilityResponse:
+        """
+        @summary 指定列隐藏
+        
+        @param request: SetColumnsVisibilityRequest
+        @return: SetColumnsVisibilityResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.SetColumnsVisibilityHeaders()
         return await self.set_columns_visibility_with_options_async(request, headers, runtime)
@@ -17411,6 +21685,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.SetRowsVisibilityHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.SetRowsVisibilityResponse:
+        """
+        @summary 指定行隐藏
+        
+        @param tmp_req: SetRowsVisibilityRequest
+        @param tmp_header: SetRowsVisibilityHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetRowsVisibilityResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.SetRowsVisibilityShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -17464,6 +21746,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.SetRowsVisibilityHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.SetRowsVisibilityResponse:
+        """
+        @summary 指定行隐藏
+        
+        @param tmp_req: SetRowsVisibilityRequest
+        @param tmp_header: SetRowsVisibilityHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetRowsVisibilityResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.SetRowsVisibilityShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -17515,6 +21805,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.SetRowsVisibilityRequest,
     ) -> aliding_20230426_models.SetRowsVisibilityResponse:
+        """
+        @summary 指定行隐藏
+        
+        @param request: SetRowsVisibilityRequest
+        @return: SetRowsVisibilityResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.SetRowsVisibilityHeaders()
         return self.set_rows_visibility_with_options(request, headers, runtime)
@@ -17523,6 +21819,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.SetRowsVisibilityRequest,
     ) -> aliding_20230426_models.SetRowsVisibilityResponse:
+        """
+        @summary 指定行隐藏
+        
+        @param request: SetRowsVisibilityRequest
+        @return: SetRowsVisibilityResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.SetRowsVisibilityHeaders()
         return await self.set_rows_visibility_with_options_async(request, headers, runtime)
@@ -17533,6 +21835,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.SimpleListReportHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.SimpleListReportResponse:
+        """
+        @summary 获取用户发送日志的概要信息
+        
+        @param tmp_req: SimpleListReportRequest
+        @param tmp_header: SimpleListReportHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SimpleListReportResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.SimpleListReportShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -17586,6 +21896,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.SimpleListReportHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.SimpleListReportResponse:
+        """
+        @summary 获取用户发送日志的概要信息
+        
+        @param tmp_req: SimpleListReportRequest
+        @param tmp_header: SimpleListReportHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SimpleListReportResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.SimpleListReportShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -17637,6 +21955,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.SimpleListReportRequest,
     ) -> aliding_20230426_models.SimpleListReportResponse:
+        """
+        @summary 获取用户发送日志的概要信息
+        
+        @param request: SimpleListReportRequest
+        @return: SimpleListReportResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.SimpleListReportHeaders()
         return self.simple_list_report_with_options(request, headers, runtime)
@@ -17645,6 +21969,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.SimpleListReportRequest,
     ) -> aliding_20230426_models.SimpleListReportResponse:
+        """
+        @summary 获取用户发送日志的概要信息
+        
+        @param request: SimpleListReportRequest
+        @return: SimpleListReportResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.SimpleListReportHeaders()
         return await self.simple_list_report_with_options_async(request, headers, runtime)
@@ -17655,6 +21985,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.StartCloudRecordHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.StartCloudRecordResponse:
+        """
+        @summary 开启视频会议云录制
+        
+        @param tmp_req: StartCloudRecordRequest
+        @param tmp_header: StartCloudRecordHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartCloudRecordResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.StartCloudRecordShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -17704,6 +22042,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.StartCloudRecordHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.StartCloudRecordResponse:
+        """
+        @summary 开启视频会议云录制
+        
+        @param tmp_req: StartCloudRecordRequest
+        @param tmp_header: StartCloudRecordHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartCloudRecordResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.StartCloudRecordShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -17751,6 +22097,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.StartCloudRecordRequest,
     ) -> aliding_20230426_models.StartCloudRecordResponse:
+        """
+        @summary 开启视频会议云录制
+        
+        @param request: StartCloudRecordRequest
+        @return: StartCloudRecordResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.StartCloudRecordHeaders()
         return self.start_cloud_record_with_options(request, headers, runtime)
@@ -17759,6 +22111,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.StartCloudRecordRequest,
     ) -> aliding_20230426_models.StartCloudRecordResponse:
+        """
+        @summary 开启视频会议云录制
+        
+        @param request: StartCloudRecordRequest
+        @return: StartCloudRecordResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.StartCloudRecordHeaders()
         return await self.start_cloud_record_with_options_async(request, headers, runtime)
@@ -17769,6 +22127,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.StartInstanceHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.StartInstanceResponse:
+        """
+        @summary 发起宜搭审批流程
+        
+        @param request: StartInstanceRequest
+        @param tmp_header: StartInstanceHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartInstanceResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.StartInstanceShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -17822,6 +22188,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.StartInstanceHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.StartInstanceResponse:
+        """
+        @summary 发起宜搭审批流程
+        
+        @param request: StartInstanceRequest
+        @param tmp_header: StartInstanceHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartInstanceResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.StartInstanceShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -17873,6 +22247,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.StartInstanceRequest,
     ) -> aliding_20230426_models.StartInstanceResponse:
+        """
+        @summary 发起宜搭审批流程
+        
+        @param request: StartInstanceRequest
+        @return: StartInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.StartInstanceHeaders()
         return self.start_instance_with_options(request, headers, runtime)
@@ -17881,6 +22261,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.StartInstanceRequest,
     ) -> aliding_20230426_models.StartInstanceResponse:
+        """
+        @summary 发起宜搭审批流程
+        
+        @param request: StartInstanceRequest
+        @return: StartInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.StartInstanceHeaders()
         return await self.start_instance_with_options_async(request, headers, runtime)
@@ -17891,6 +22277,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.StatisticsListByTypeReportHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.StatisticsListByTypeReportResponse:
+        """
+        @summary 获取日志相关人员列表
+        
+        @param tmp_req: StatisticsListByTypeReportRequest
+        @param tmp_header: StatisticsListByTypeReportHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StatisticsListByTypeReportResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.StatisticsListByTypeReportShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -17942,6 +22336,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.StatisticsListByTypeReportHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.StatisticsListByTypeReportResponse:
+        """
+        @summary 获取日志相关人员列表
+        
+        @param tmp_req: StatisticsListByTypeReportRequest
+        @param tmp_header: StatisticsListByTypeReportHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StatisticsListByTypeReportResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.StatisticsListByTypeReportShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -17991,6 +22393,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.StatisticsListByTypeReportRequest,
     ) -> aliding_20230426_models.StatisticsListByTypeReportResponse:
+        """
+        @summary 获取日志相关人员列表
+        
+        @param request: StatisticsListByTypeReportRequest
+        @return: StatisticsListByTypeReportResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.StatisticsListByTypeReportHeaders()
         return self.statistics_list_by_type_report_with_options(request, headers, runtime)
@@ -17999,6 +22407,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.StatisticsListByTypeReportRequest,
     ) -> aliding_20230426_models.StatisticsListByTypeReportResponse:
+        """
+        @summary 获取日志相关人员列表
+        
+        @param request: StatisticsListByTypeReportRequest
+        @return: StatisticsListByTypeReportResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.StatisticsListByTypeReportHeaders()
         return await self.statistics_list_by_type_report_with_options_async(request, headers, runtime)
@@ -18009,6 +22423,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.StatisticsReportHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.StatisticsReportResponse:
+        """
+        @summary 获取日志统计数据
+        
+        @param tmp_req: StatisticsReportRequest
+        @param tmp_header: StatisticsReportHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StatisticsReportResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.StatisticsReportShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -18054,6 +22476,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.StatisticsReportHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.StatisticsReportResponse:
+        """
+        @summary 获取日志统计数据
+        
+        @param tmp_req: StatisticsReportRequest
+        @param tmp_header: StatisticsReportHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StatisticsReportResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.StatisticsReportShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -18097,6 +22527,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.StatisticsReportRequest,
     ) -> aliding_20230426_models.StatisticsReportResponse:
+        """
+        @summary 获取日志统计数据
+        
+        @param request: StatisticsReportRequest
+        @return: StatisticsReportResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.StatisticsReportHeaders()
         return self.statistics_report_with_options(request, headers, runtime)
@@ -18105,6 +22541,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.StatisticsReportRequest,
     ) -> aliding_20230426_models.StatisticsReportResponse:
+        """
+        @summary 获取日志统计数据
+        
+        @param request: StatisticsReportRequest
+        @return: StatisticsReportResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.StatisticsReportHeaders()
         return await self.statistics_report_with_options_async(request, headers, runtime)
@@ -18115,6 +22557,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.StopCloudRecordHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.StopCloudRecordResponse:
+        """
+        @summary 停止视频会议云录制
+        
+        @param tmp_req: StopCloudRecordRequest
+        @param tmp_header: StopCloudRecordHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopCloudRecordResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.StopCloudRecordShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -18160,6 +22610,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.StopCloudRecordHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.StopCloudRecordResponse:
+        """
+        @summary 停止视频会议云录制
+        
+        @param tmp_req: StopCloudRecordRequest
+        @param tmp_header: StopCloudRecordHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopCloudRecordResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.StopCloudRecordShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -18203,6 +22661,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.StopCloudRecordRequest,
     ) -> aliding_20230426_models.StopCloudRecordResponse:
+        """
+        @summary 停止视频会议云录制
+        
+        @param request: StopCloudRecordRequest
+        @return: StopCloudRecordResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.StopCloudRecordHeaders()
         return self.stop_cloud_record_with_options(request, headers, runtime)
@@ -18211,6 +22675,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.StopCloudRecordRequest,
     ) -> aliding_20230426_models.StopCloudRecordResponse:
+        """
+        @summary 停止视频会议云录制
+        
+        @param request: StopCloudRecordRequest
+        @return: StopCloudRecordResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.StopCloudRecordHeaders()
         return await self.stop_cloud_record_with_options_async(request, headers, runtime)
@@ -18221,6 +22691,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.SubscribeCalendarHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.SubscribeCalendarResponse:
+        """
+        @summary 订阅公共日历
+        
+        @param request: SubscribeCalendarRequest
+        @param tmp_header: SubscribeCalendarHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubscribeCalendarResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.SubscribeCalendarShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -18260,6 +22738,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.SubscribeCalendarHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.SubscribeCalendarResponse:
+        """
+        @summary 订阅公共日历
+        
+        @param request: SubscribeCalendarRequest
+        @param tmp_header: SubscribeCalendarHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubscribeCalendarResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.SubscribeCalendarShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -18297,6 +22783,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.SubscribeCalendarRequest,
     ) -> aliding_20230426_models.SubscribeCalendarResponse:
+        """
+        @summary 订阅公共日历
+        
+        @param request: SubscribeCalendarRequest
+        @return: SubscribeCalendarResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.SubscribeCalendarHeaders()
         return self.subscribe_calendar_with_options(request, headers, runtime)
@@ -18305,6 +22797,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.SubscribeCalendarRequest,
     ) -> aliding_20230426_models.SubscribeCalendarResponse:
+        """
+        @summary 订阅公共日历
+        
+        @param request: SubscribeCalendarRequest
+        @return: SubscribeCalendarResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.SubscribeCalendarHeaders()
         return await self.subscribe_calendar_with_options_async(request, headers, runtime)
@@ -18315,6 +22813,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.SyncDingTypeHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.SyncDingTypeResponse:
+        """
+        @summary 同步钉钉账号类型
+        
+        @param tmp_req: SyncDingTypeRequest
+        @param tmp_header: SyncDingTypeHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SyncDingTypeResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.SyncDingTypeShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -18366,6 +22872,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.SyncDingTypeHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.SyncDingTypeResponse:
+        """
+        @summary 同步钉钉账号类型
+        
+        @param tmp_req: SyncDingTypeRequest
+        @param tmp_header: SyncDingTypeHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SyncDingTypeResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.SyncDingTypeShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -18415,6 +22929,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.SyncDingTypeRequest,
     ) -> aliding_20230426_models.SyncDingTypeResponse:
+        """
+        @summary 同步钉钉账号类型
+        
+        @param request: SyncDingTypeRequest
+        @return: SyncDingTypeResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.SyncDingTypeHeaders()
         return self.sync_ding_type_with_options(request, headers, runtime)
@@ -18423,6 +22943,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.SyncDingTypeRequest,
     ) -> aliding_20230426_models.SyncDingTypeResponse:
+        """
+        @summary 同步钉钉账号类型
+        
+        @param request: SyncDingTypeRequest
+        @return: SyncDingTypeResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.SyncDingTypeHeaders()
         return await self.sync_ding_type_with_options_async(request, headers, runtime)
@@ -18433,6 +22959,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.TerminateInstanceHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.TerminateInstanceResponse:
+        """
+        @summary 终止流程实例
+        
+        @param request: TerminateInstanceRequest
+        @param tmp_header: TerminateInstanceHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TerminateInstanceResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.TerminateInstanceShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -18478,6 +23012,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.TerminateInstanceHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.TerminateInstanceResponse:
+        """
+        @summary 终止流程实例
+        
+        @param request: TerminateInstanceRequest
+        @param tmp_header: TerminateInstanceHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TerminateInstanceResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.TerminateInstanceShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -18521,6 +23063,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.TerminateInstanceRequest,
     ) -> aliding_20230426_models.TerminateInstanceResponse:
+        """
+        @summary 终止流程实例
+        
+        @param request: TerminateInstanceRequest
+        @return: TerminateInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.TerminateInstanceHeaders()
         return self.terminate_instance_with_options(request, headers, runtime)
@@ -18529,6 +23077,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.TerminateInstanceRequest,
     ) -> aliding_20230426_models.TerminateInstanceResponse:
+        """
+        @summary 终止流程实例
+        
+        @param request: TerminateInstanceRequest
+        @return: TerminateInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.TerminateInstanceHeaders()
         return await self.terminate_instance_with_options_async(request, headers, runtime)
@@ -18539,6 +23093,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.UnsubscribeCalendarHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.UnsubscribeCalendarResponse:
+        """
+        @summary 取消订阅公共日历
+        
+        @param request: UnsubscribeCalendarRequest
+        @param tmp_header: UnsubscribeCalendarHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnsubscribeCalendarResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.UnsubscribeCalendarShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -18578,6 +23140,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.UnsubscribeCalendarHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.UnsubscribeCalendarResponse:
+        """
+        @summary 取消订阅公共日历
+        
+        @param request: UnsubscribeCalendarRequest
+        @param tmp_header: UnsubscribeCalendarHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnsubscribeCalendarResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.UnsubscribeCalendarShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -18615,6 +23185,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.UnsubscribeCalendarRequest,
     ) -> aliding_20230426_models.UnsubscribeCalendarResponse:
+        """
+        @summary 取消订阅公共日历
+        
+        @param request: UnsubscribeCalendarRequest
+        @return: UnsubscribeCalendarResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.UnsubscribeCalendarHeaders()
         return self.unsubscribe_calendar_with_options(request, headers, runtime)
@@ -18623,6 +23199,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.UnsubscribeCalendarRequest,
     ) -> aliding_20230426_models.UnsubscribeCalendarResponse:
+        """
+        @summary 取消订阅公共日历
+        
+        @param request: UnsubscribeCalendarRequest
+        @return: UnsubscribeCalendarResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.UnsubscribeCalendarHeaders()
         return await self.unsubscribe_calendar_with_options_async(request, headers, runtime)
@@ -18633,6 +23215,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.UpdateFormDataHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.UpdateFormDataResponse:
+        """
+        @summary 更新表单数据
+        
+        @param request: UpdateFormDataRequest
+        @param tmp_header: UpdateFormDataHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateFormDataResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.UpdateFormDataShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -18682,6 +23272,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.UpdateFormDataHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.UpdateFormDataResponse:
+        """
+        @summary 更新表单数据
+        
+        @param request: UpdateFormDataRequest
+        @param tmp_header: UpdateFormDataHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateFormDataResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.UpdateFormDataShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -18729,6 +23327,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.UpdateFormDataRequest,
     ) -> aliding_20230426_models.UpdateFormDataResponse:
+        """
+        @summary 更新表单数据
+        
+        @param request: UpdateFormDataRequest
+        @return: UpdateFormDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.UpdateFormDataHeaders()
         return self.update_form_data_with_options(request, headers, runtime)
@@ -18737,6 +23341,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.UpdateFormDataRequest,
     ) -> aliding_20230426_models.UpdateFormDataResponse:
+        """
+        @summary 更新表单数据
+        
+        @param request: UpdateFormDataRequest
+        @return: UpdateFormDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.UpdateFormDataHeaders()
         return await self.update_form_data_with_options_async(request, headers, runtime)
@@ -18747,6 +23357,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.UpdateInstanceHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.UpdateInstanceResponse:
+        """
+        @summary 更新流程实例
+        
+        @param request: UpdateInstanceRequest
+        @param tmp_header: UpdateInstanceHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateInstanceResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.UpdateInstanceShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -18794,6 +23412,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.UpdateInstanceHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.UpdateInstanceResponse:
+        """
+        @summary 更新流程实例
+        
+        @param request: UpdateInstanceRequest
+        @param tmp_header: UpdateInstanceHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateInstanceResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.UpdateInstanceShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -18839,6 +23465,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.UpdateInstanceRequest,
     ) -> aliding_20230426_models.UpdateInstanceResponse:
+        """
+        @summary 更新流程实例
+        
+        @param request: UpdateInstanceRequest
+        @return: UpdateInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.UpdateInstanceHeaders()
         return self.update_instance_with_options(request, headers, runtime)
@@ -18847,6 +23479,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.UpdateInstanceRequest,
     ) -> aliding_20230426_models.UpdateInstanceResponse:
+        """
+        @summary 更新流程实例
+        
+        @param request: UpdateInstanceRequest
+        @return: UpdateInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.UpdateInstanceHeaders()
         return await self.update_instance_with_options_async(request, headers, runtime)
@@ -18857,6 +23495,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.UpdateLiveHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.UpdateLiveResponse:
+        """
+        @summary 修改直播属性信息
+        
+        @param tmp_req: UpdateLiveRequest
+        @param tmp_header: UpdateLiveHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateLiveResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.UpdateLiveShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -18912,6 +23558,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.UpdateLiveHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.UpdateLiveResponse:
+        """
+        @summary 修改直播属性信息
+        
+        @param tmp_req: UpdateLiveRequest
+        @param tmp_header: UpdateLiveHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateLiveResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.UpdateLiveShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -18965,6 +23619,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.UpdateLiveRequest,
     ) -> aliding_20230426_models.UpdateLiveResponse:
+        """
+        @summary 修改直播属性信息
+        
+        @param request: UpdateLiveRequest
+        @return: UpdateLiveResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.UpdateLiveHeaders()
         return self.update_live_with_options(request, headers, runtime)
@@ -18973,6 +23633,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.UpdateLiveRequest,
     ) -> aliding_20230426_models.UpdateLiveResponse:
+        """
+        @summary 修改直播属性信息
+        
+        @param request: UpdateLiveRequest
+        @return: UpdateLiveResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.UpdateLiveHeaders()
         return await self.update_live_with_options_async(request, headers, runtime)
@@ -18983,6 +23649,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.UpdateMeetingRoomHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.UpdateMeetingRoomResponse:
+        """
+        @summary 更新会议室信息
+        
+        @param tmp_req: UpdateMeetingRoomRequest
+        @param tmp_header: UpdateMeetingRoomHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateMeetingRoomResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.UpdateMeetingRoomShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -19054,6 +23728,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.UpdateMeetingRoomHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.UpdateMeetingRoomResponse:
+        """
+        @summary 更新会议室信息
+        
+        @param tmp_req: UpdateMeetingRoomRequest
+        @param tmp_header: UpdateMeetingRoomHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateMeetingRoomResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.UpdateMeetingRoomShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -19123,6 +23805,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.UpdateMeetingRoomRequest,
     ) -> aliding_20230426_models.UpdateMeetingRoomResponse:
+        """
+        @summary 更新会议室信息
+        
+        @param request: UpdateMeetingRoomRequest
+        @return: UpdateMeetingRoomResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.UpdateMeetingRoomHeaders()
         return self.update_meeting_room_with_options(request, headers, runtime)
@@ -19131,6 +23819,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.UpdateMeetingRoomRequest,
     ) -> aliding_20230426_models.UpdateMeetingRoomResponse:
+        """
+        @summary 更新会议室信息
+        
+        @param request: UpdateMeetingRoomRequest
+        @return: UpdateMeetingRoomResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.UpdateMeetingRoomHeaders()
         return await self.update_meeting_room_with_options_async(request, headers, runtime)
@@ -19141,6 +23835,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.UpdateMeetingRoomGroupHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.UpdateMeetingRoomGroupResponse:
+        """
+        @summary 更新会议室分组信息
+        
+        @param tmp_req: UpdateMeetingRoomGroupRequest
+        @param tmp_header: UpdateMeetingRoomGroupHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateMeetingRoomGroupResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.UpdateMeetingRoomGroupShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -19188,6 +23890,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.UpdateMeetingRoomGroupHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.UpdateMeetingRoomGroupResponse:
+        """
+        @summary 更新会议室分组信息
+        
+        @param tmp_req: UpdateMeetingRoomGroupRequest
+        @param tmp_header: UpdateMeetingRoomGroupHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateMeetingRoomGroupResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.UpdateMeetingRoomGroupShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -19233,6 +23943,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.UpdateMeetingRoomGroupRequest,
     ) -> aliding_20230426_models.UpdateMeetingRoomGroupResponse:
+        """
+        @summary 更新会议室分组信息
+        
+        @param request: UpdateMeetingRoomGroupRequest
+        @return: UpdateMeetingRoomGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.UpdateMeetingRoomGroupHeaders()
         return self.update_meeting_room_group_with_options(request, headers, runtime)
@@ -19241,6 +23957,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.UpdateMeetingRoomGroupRequest,
     ) -> aliding_20230426_models.UpdateMeetingRoomGroupResponse:
+        """
+        @summary 更新会议室分组信息
+        
+        @param request: UpdateMeetingRoomGroupRequest
+        @return: UpdateMeetingRoomGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.UpdateMeetingRoomGroupHeaders()
         return await self.update_meeting_room_group_with_options_async(request, headers, runtime)
@@ -19251,6 +23973,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.UpdateRangeHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.UpdateRangeResponse:
+        """
+        @summary 更新单元格区域
+        
+        @param tmp_req: UpdateRangeRequest
+        @param tmp_header: UpdateRangeHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateRangeResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.UpdateRangeShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -19314,6 +24044,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.UpdateRangeHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.UpdateRangeResponse:
+        """
+        @summary 更新单元格区域
+        
+        @param tmp_req: UpdateRangeRequest
+        @param tmp_header: UpdateRangeHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateRangeResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.UpdateRangeShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -19375,6 +24113,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.UpdateRangeRequest,
     ) -> aliding_20230426_models.UpdateRangeResponse:
+        """
+        @summary 更新单元格区域
+        
+        @param request: UpdateRangeRequest
+        @return: UpdateRangeResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.UpdateRangeHeaders()
         return self.update_range_with_options(request, headers, runtime)
@@ -19383,6 +24127,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.UpdateRangeRequest,
     ) -> aliding_20230426_models.UpdateRangeResponse:
+        """
+        @summary 更新单元格区域
+        
+        @param request: UpdateRangeRequest
+        @return: UpdateRangeResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.UpdateRangeHeaders()
         return await self.update_range_with_options_async(request, headers, runtime)
@@ -19393,6 +24143,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.UpdateScheduleConfSettingsHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.UpdateScheduleConfSettingsResponse:
+        """
+        @summary 更新预约会议设置
+        
+        @param tmp_req: UpdateScheduleConfSettingsRequest
+        @param tmp_header: UpdateScheduleConfSettingsHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateScheduleConfSettingsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.UpdateScheduleConfSettingsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -19442,6 +24200,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.UpdateScheduleConfSettingsHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.UpdateScheduleConfSettingsResponse:
+        """
+        @summary 更新预约会议设置
+        
+        @param tmp_req: UpdateScheduleConfSettingsRequest
+        @param tmp_header: UpdateScheduleConfSettingsHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateScheduleConfSettingsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.UpdateScheduleConfSettingsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -19489,6 +24255,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.UpdateScheduleConfSettingsRequest,
     ) -> aliding_20230426_models.UpdateScheduleConfSettingsResponse:
+        """
+        @summary 更新预约会议设置
+        
+        @param request: UpdateScheduleConfSettingsRequest
+        @return: UpdateScheduleConfSettingsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.UpdateScheduleConfSettingsHeaders()
         return self.update_schedule_conf_settings_with_options(request, headers, runtime)
@@ -19497,6 +24269,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.UpdateScheduleConfSettingsRequest,
     ) -> aliding_20230426_models.UpdateScheduleConfSettingsResponse:
+        """
+        @summary 更新预约会议设置
+        
+        @param request: UpdateScheduleConfSettingsRequest
+        @return: UpdateScheduleConfSettingsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.UpdateScheduleConfSettingsHeaders()
         return await self.update_schedule_conf_settings_with_options_async(request, headers, runtime)
@@ -19507,6 +24285,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.UpdateScheduleConferenceHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.UpdateScheduleConferenceResponse:
+        """
+        @summary 更新预约会议
+        
+        @param tmp_req: UpdateScheduleConferenceRequest
+        @param tmp_header: UpdateScheduleConferenceHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateScheduleConferenceResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.UpdateScheduleConferenceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -19558,6 +24344,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.UpdateScheduleConferenceHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.UpdateScheduleConferenceResponse:
+        """
+        @summary 更新预约会议
+        
+        @param tmp_req: UpdateScheduleConferenceRequest
+        @param tmp_header: UpdateScheduleConferenceHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateScheduleConferenceResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.UpdateScheduleConferenceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -19607,6 +24401,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.UpdateScheduleConferenceRequest,
     ) -> aliding_20230426_models.UpdateScheduleConferenceResponse:
+        """
+        @summary 更新预约会议
+        
+        @param request: UpdateScheduleConferenceRequest
+        @return: UpdateScheduleConferenceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.UpdateScheduleConferenceHeaders()
         return self.update_schedule_conference_with_options(request, headers, runtime)
@@ -19615,6 +24415,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.UpdateScheduleConferenceRequest,
     ) -> aliding_20230426_models.UpdateScheduleConferenceResponse:
+        """
+        @summary 更新预约会议
+        
+        @param request: UpdateScheduleConferenceRequest
+        @return: UpdateScheduleConferenceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.UpdateScheduleConferenceHeaders()
         return await self.update_schedule_conference_with_options_async(request, headers, runtime)
@@ -19625,6 +24431,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.UpdateStatusHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.UpdateStatusResponse:
+        """
+        @summary 更新状态
+        
+        @param tmp_req: UpdateStatusRequest
+        @param tmp_header: UpdateStatusHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateStatusResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.UpdateStatusShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -19678,6 +24492,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.UpdateStatusHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.UpdateStatusResponse:
+        """
+        @summary 更新状态
+        
+        @param tmp_req: UpdateStatusRequest
+        @param tmp_header: UpdateStatusHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateStatusResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.UpdateStatusShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -19729,6 +24551,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.UpdateStatusRequest,
     ) -> aliding_20230426_models.UpdateStatusResponse:
+        """
+        @summary 更新状态
+        
+        @param request: UpdateStatusRequest
+        @return: UpdateStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.UpdateStatusHeaders()
         return self.update_status_with_options(request, headers, runtime)
@@ -19737,6 +24565,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.UpdateStatusRequest,
     ) -> aliding_20230426_models.UpdateStatusResponse:
+        """
+        @summary 更新状态
+        
+        @param request: UpdateStatusRequest
+        @return: UpdateStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.UpdateStatusHeaders()
         return await self.update_status_with_options_async(request, headers, runtime)
@@ -19747,6 +24581,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.UpdateSubscribedCalendarsHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.UpdateSubscribedCalendarsResponse:
+        """
+        @summary 更新订阅日历
+        
+        @param tmp_req: UpdateSubscribedCalendarsRequest
+        @param tmp_header: UpdateSubscribedCalendarsHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateSubscribedCalendarsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.UpdateSubscribedCalendarsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -19800,6 +24642,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.UpdateSubscribedCalendarsHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.UpdateSubscribedCalendarsResponse:
+        """
+        @summary 更新订阅日历
+        
+        @param tmp_req: UpdateSubscribedCalendarsRequest
+        @param tmp_header: UpdateSubscribedCalendarsHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateSubscribedCalendarsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.UpdateSubscribedCalendarsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -19851,6 +24701,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.UpdateSubscribedCalendarsRequest,
     ) -> aliding_20230426_models.UpdateSubscribedCalendarsResponse:
+        """
+        @summary 更新订阅日历
+        
+        @param request: UpdateSubscribedCalendarsRequest
+        @return: UpdateSubscribedCalendarsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.UpdateSubscribedCalendarsHeaders()
         return self.update_subscribed_calendars_with_options(request, headers, runtime)
@@ -19859,6 +24715,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.UpdateSubscribedCalendarsRequest,
     ) -> aliding_20230426_models.UpdateSubscribedCalendarsResponse:
+        """
+        @summary 更新订阅日历
+        
+        @param request: UpdateSubscribedCalendarsRequest
+        @return: UpdateSubscribedCalendarsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.UpdateSubscribedCalendarsHeaders()
         return await self.update_subscribed_calendars_with_options_async(request, headers, runtime)
@@ -19869,6 +24731,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.UpdateTodoTaskHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.UpdateTodoTaskResponse:
+        """
+        @summary 更新代办
+        
+        @param tmp_req: UpdateTodoTaskRequest
+        @param tmp_header: UpdateTodoTaskHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTodoTaskResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.UpdateTodoTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -19930,6 +24800,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.UpdateTodoTaskHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.UpdateTodoTaskResponse:
+        """
+        @summary 更新代办
+        
+        @param tmp_req: UpdateTodoTaskRequest
+        @param tmp_header: UpdateTodoTaskHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTodoTaskResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.UpdateTodoTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -19989,6 +24867,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.UpdateTodoTaskRequest,
     ) -> aliding_20230426_models.UpdateTodoTaskResponse:
+        """
+        @summary 更新代办
+        
+        @param request: UpdateTodoTaskRequest
+        @return: UpdateTodoTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.UpdateTodoTaskHeaders()
         return self.update_todo_task_with_options(request, headers, runtime)
@@ -19997,6 +24881,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.UpdateTodoTaskRequest,
     ) -> aliding_20230426_models.UpdateTodoTaskResponse:
+        """
+        @summary 更新代办
+        
+        @param request: UpdateTodoTaskRequest
+        @return: UpdateTodoTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.UpdateTodoTaskHeaders()
         return await self.update_todo_task_with_options_async(request, headers, runtime)
@@ -20007,6 +24897,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.UpdateTodoTaskExecutorStatusHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.UpdateTodoTaskExecutorStatusResponse:
+        """
+        @summary 更新代办执行者状态
+        
+        @param tmp_req: UpdateTodoTaskExecutorStatusRequest
+        @param tmp_header: UpdateTodoTaskExecutorStatusHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTodoTaskExecutorStatusResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.UpdateTodoTaskExecutorStatusShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -20058,6 +24956,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.UpdateTodoTaskExecutorStatusHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.UpdateTodoTaskExecutorStatusResponse:
+        """
+        @summary 更新代办执行者状态
+        
+        @param tmp_req: UpdateTodoTaskExecutorStatusRequest
+        @param tmp_header: UpdateTodoTaskExecutorStatusHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTodoTaskExecutorStatusResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.UpdateTodoTaskExecutorStatusShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -20107,6 +25013,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.UpdateTodoTaskExecutorStatusRequest,
     ) -> aliding_20230426_models.UpdateTodoTaskExecutorStatusResponse:
+        """
+        @summary 更新代办执行者状态
+        
+        @param request: UpdateTodoTaskExecutorStatusRequest
+        @return: UpdateTodoTaskExecutorStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.UpdateTodoTaskExecutorStatusHeaders()
         return self.update_todo_task_executor_status_with_options(request, headers, runtime)
@@ -20115,6 +25027,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.UpdateTodoTaskExecutorStatusRequest,
     ) -> aliding_20230426_models.UpdateTodoTaskExecutorStatusResponse:
+        """
+        @summary 更新代办执行者状态
+        
+        @param request: UpdateTodoTaskExecutorStatusRequest
+        @return: UpdateTodoTaskExecutorStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.UpdateTodoTaskExecutorStatusHeaders()
         return await self.update_todo_task_executor_status_with_options_async(request, headers, runtime)
@@ -20125,6 +25043,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.UpdateUserAvatarHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.UpdateUserAvatarResponse:
+        """
+        @summary 更新企业账号用户头像
+        
+        @param request: UpdateUserAvatarRequest
+        @param tmp_header: UpdateUserAvatarHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateUserAvatarResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.UpdateUserAvatarShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -20164,6 +25090,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.UpdateUserAvatarHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.UpdateUserAvatarResponse:
+        """
+        @summary 更新企业账号用户头像
+        
+        @param request: UpdateUserAvatarRequest
+        @param tmp_header: UpdateUserAvatarHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateUserAvatarResponse
+        """
         UtilClient.validate_model(request)
         headers = aliding_20230426_models.UpdateUserAvatarShrinkHeaders()
         OpenApiUtilClient.convert(tmp_header, headers)
@@ -20201,6 +25135,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.UpdateUserAvatarRequest,
     ) -> aliding_20230426_models.UpdateUserAvatarResponse:
+        """
+        @summary 更新企业账号用户头像
+        
+        @param request: UpdateUserAvatarRequest
+        @return: UpdateUserAvatarResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.UpdateUserAvatarHeaders()
         return self.update_user_avatar_with_options(request, headers, runtime)
@@ -20209,6 +25149,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.UpdateUserAvatarRequest,
     ) -> aliding_20230426_models.UpdateUserAvatarResponse:
+        """
+        @summary 更新企业账号用户头像
+        
+        @param request: UpdateUserAvatarRequest
+        @return: UpdateUserAvatarResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.UpdateUserAvatarHeaders()
         return await self.update_user_avatar_with_options_async(request, headers, runtime)
@@ -20219,6 +25165,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.UpdateWorkspaceDocMembersHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.UpdateWorkspaceDocMembersResponse:
+        """
+        @summary 修改知识库文档成员权限
+        
+        @param tmp_req: UpdateWorkspaceDocMembersRequest
+        @param tmp_header: UpdateWorkspaceDocMembersHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateWorkspaceDocMembersResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.UpdateWorkspaceDocMembersShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -20270,6 +25224,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.UpdateWorkspaceDocMembersHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.UpdateWorkspaceDocMembersResponse:
+        """
+        @summary 修改知识库文档成员权限
+        
+        @param tmp_req: UpdateWorkspaceDocMembersRequest
+        @param tmp_header: UpdateWorkspaceDocMembersHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateWorkspaceDocMembersResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.UpdateWorkspaceDocMembersShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -20319,6 +25281,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.UpdateWorkspaceDocMembersRequest,
     ) -> aliding_20230426_models.UpdateWorkspaceDocMembersResponse:
+        """
+        @summary 修改知识库文档成员权限
+        
+        @param request: UpdateWorkspaceDocMembersRequest
+        @return: UpdateWorkspaceDocMembersResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.UpdateWorkspaceDocMembersHeaders()
         return self.update_workspace_doc_members_with_options(request, headers, runtime)
@@ -20327,6 +25295,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.UpdateWorkspaceDocMembersRequest,
     ) -> aliding_20230426_models.UpdateWorkspaceDocMembersResponse:
+        """
+        @summary 修改知识库文档成员权限
+        
+        @param request: UpdateWorkspaceDocMembersRequest
+        @return: UpdateWorkspaceDocMembersResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.UpdateWorkspaceDocMembersHeaders()
         return await self.update_workspace_doc_members_with_options_async(request, headers, runtime)
@@ -20337,6 +25311,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.UpdateWorkspaceMembersHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.UpdateWorkspaceMembersResponse:
+        """
+        @summary 更新知识库成员权限
+        
+        @param tmp_req: UpdateWorkspaceMembersRequest
+        @param tmp_header: UpdateWorkspaceMembersHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateWorkspaceMembersResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.UpdateWorkspaceMembersShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -20386,6 +25368,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.UpdateWorkspaceMembersHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.UpdateWorkspaceMembersResponse:
+        """
+        @summary 更新知识库成员权限
+        
+        @param tmp_req: UpdateWorkspaceMembersRequest
+        @param tmp_header: UpdateWorkspaceMembersHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateWorkspaceMembersResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.UpdateWorkspaceMembersShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -20433,6 +25423,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.UpdateWorkspaceMembersRequest,
     ) -> aliding_20230426_models.UpdateWorkspaceMembersResponse:
+        """
+        @summary 更新知识库成员权限
+        
+        @param request: UpdateWorkspaceMembersRequest
+        @return: UpdateWorkspaceMembersResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.UpdateWorkspaceMembersHeaders()
         return self.update_workspace_members_with_options(request, headers, runtime)
@@ -20441,6 +25437,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.UpdateWorkspaceMembersRequest,
     ) -> aliding_20230426_models.UpdateWorkspaceMembersResponse:
+        """
+        @summary 更新知识库成员权限
+        
+        @param request: UpdateWorkspaceMembersRequest
+        @return: UpdateWorkspaceMembersResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.UpdateWorkspaceMembersHeaders()
         return await self.update_workspace_members_with_options_async(request, headers, runtime)
@@ -20451,6 +25453,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.UploadMediaHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.UploadMediaResponse:
+        """
+        @summary 上传媒体<br/>
+        
+        @param tmp_req: UploadMediaRequest
+        @param tmp_header: UploadMediaHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UploadMediaResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.UploadMediaShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -20502,6 +25512,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.UploadMediaHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.UploadMediaResponse:
+        """
+        @summary 上传媒体<br/>
+        
+        @param tmp_req: UploadMediaRequest
+        @param tmp_header: UploadMediaHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UploadMediaResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.UploadMediaShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -20551,6 +25569,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.UploadMediaRequest,
     ) -> aliding_20230426_models.UploadMediaResponse:
+        """
+        @summary 上传媒体<br/>
+        
+        @param request: UploadMediaRequest
+        @return: UploadMediaResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.UploadMediaHeaders()
         return self.upload_media_with_options(request, headers, runtime)
@@ -20559,6 +25583,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.UploadMediaRequest,
     ) -> aliding_20230426_models.UploadMediaResponse:
+        """
+        @summary 上传媒体<br/>
+        
+        @param request: UploadMediaRequest
+        @return: UploadMediaResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.UploadMediaHeaders()
         return await self.upload_media_with_options_async(request, headers, runtime)
@@ -20569,6 +25599,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.WearOrgHonorHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.WearOrgHonorResponse:
+        """
+        @summary 穿戴勋章
+        
+        @param tmp_req: WearOrgHonorRequest
+        @param tmp_header: WearOrgHonorHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: WearOrgHonorResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.WearOrgHonorShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -20620,6 +25658,14 @@ class Client(OpenApiClient):
         tmp_header: aliding_20230426_models.WearOrgHonorHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> aliding_20230426_models.WearOrgHonorResponse:
+        """
+        @summary 穿戴勋章
+        
+        @param tmp_req: WearOrgHonorRequest
+        @param tmp_header: WearOrgHonorHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: WearOrgHonorResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = aliding_20230426_models.WearOrgHonorShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -20669,6 +25715,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.WearOrgHonorRequest,
     ) -> aliding_20230426_models.WearOrgHonorResponse:
+        """
+        @summary 穿戴勋章
+        
+        @param request: WearOrgHonorRequest
+        @return: WearOrgHonorResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.WearOrgHonorHeaders()
         return self.wear_org_honor_with_options(request, headers, runtime)
@@ -20677,6 +25729,12 @@ class Client(OpenApiClient):
         self,
         request: aliding_20230426_models.WearOrgHonorRequest,
     ) -> aliding_20230426_models.WearOrgHonorResponse:
+        """
+        @summary 穿戴勋章
+        
+        @param request: WearOrgHonorRequest
+        @return: WearOrgHonorResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.WearOrgHonorHeaders()
         return await self.wear_org_honor_with_options_async(request, headers, runtime)

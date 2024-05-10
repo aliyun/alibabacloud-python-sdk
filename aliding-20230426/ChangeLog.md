@@ -1,3 +1,7 @@
+2024-05-10 Version: 2.15.0
+- Support API GetDocContentTakId.
+
+
 2024-05-08 Version: 2.14.1
 - Update API SyncDingType: add param IsDimission.
 

@@ -48,6 +48,7 @@ class AddAttendeeHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -180,8 +181,11 @@ class AddAttendeeRequest(TeaModel):
         chat_notification: bool = None,
         push_notification: bool = None,
     ):
+        # This parameter is required.
         self.attendees_to_add = attendees_to_add
+        # This parameter is required.
         self.calendar_id = calendar_id
+        # This parameter is required.
         self.event_id = event_id
         self.chat_notification = chat_notification
         self.push_notification = push_notification
@@ -239,8 +243,11 @@ class AddAttendeeShrinkRequest(TeaModel):
         chat_notification: bool = None,
         push_notification: bool = None,
     ):
+        # This parameter is required.
         self.attendees_to_add_shrink = attendees_to_add_shrink
+        # This parameter is required.
         self.calendar_id = calendar_id
+        # This parameter is required.
         self.event_id = event_id
         self.chat_notification = chat_notification
         self.push_notification = push_notification
@@ -420,6 +427,7 @@ class AddMeetingRoomsHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -544,8 +552,11 @@ class AddMeetingRoomsRequest(TeaModel):
         event_id: str = None,
         meeting_rooms_to_add: List[AddMeetingRoomsRequestMeetingRoomsToAdd] = None,
     ):
+        # This parameter is required.
         self.calendar_id = calendar_id
+        # This parameter is required.
         self.event_id = event_id
+        # This parameter is required.
         self.meeting_rooms_to_add = meeting_rooms_to_add
 
     def validate(self):
@@ -591,8 +602,11 @@ class AddMeetingRoomsShrinkRequest(TeaModel):
         event_id: str = None,
         meeting_rooms_to_add_shrink: str = None,
     ):
+        # This parameter is required.
         self.calendar_id = calendar_id
+        # This parameter is required.
         self.event_id = event_id
+        # This parameter is required.
         self.meeting_rooms_to_add_shrink = meeting_rooms_to_add_shrink
 
     def validate(self):
@@ -703,6 +717,7 @@ class AddScenegroupMemberHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -799,7 +814,9 @@ class AddScenegroupMemberRequest(TeaModel):
         open_conversation_id: str = None,
         user_ids: str = None,
     ):
+        # This parameter is required.
         self.open_conversation_id = open_conversation_id
+        # This parameter is required.
         self.user_ids = user_ids
 
     def validate(self):
@@ -906,6 +923,7 @@ class AddWorkspaceHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -1063,6 +1081,7 @@ class AddWorkspaceRequest(TeaModel):
         option: AddWorkspaceRequestOption = None,
         tenant_context: AddWorkspaceRequestTenantContext = None,
     ):
+        # This parameter is required.
         self.name = name
         self.option = option
         self.tenant_context = tenant_context
@@ -1107,6 +1126,7 @@ class AddWorkspaceShrinkRequest(TeaModel):
         option_shrink: str = None,
         tenant_context_shrink: str = None,
     ):
+        # This parameter is required.
         self.name = name
         self.option_shrink = option_shrink
         self.tenant_context_shrink = tenant_context_shrink
@@ -1367,6 +1387,7 @@ class AddWorkspaceDocMembersHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -1464,8 +1485,11 @@ class AddWorkspaceDocMembersRequestMembers(TeaModel):
         member_type: str = None,
         role_type: str = None,
     ):
+        # This parameter is required.
         self.member_id = member_id
+        # This parameter is required.
         self.member_type = member_type
+        # This parameter is required.
         self.role_type = role_type
 
     def validate(self):
@@ -1531,9 +1555,12 @@ class AddWorkspaceDocMembersRequest(TeaModel):
         tenant_context: AddWorkspaceDocMembersRequestTenantContext = None,
         workspace_id: str = None,
     ):
+        # This parameter is required.
         self.members = members
+        # This parameter is required.
         self.node_id = node_id
         self.tenant_context = tenant_context
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -1587,9 +1614,12 @@ class AddWorkspaceDocMembersShrinkRequest(TeaModel):
         tenant_context_shrink: str = None,
         workspace_id: str = None,
     ):
+        # This parameter is required.
         self.members_shrink = members_shrink
+        # This parameter is required.
         self.node_id = node_id
         self.tenant_context_shrink = tenant_context_shrink
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -1698,6 +1728,7 @@ class AddWorkspaceMembersHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -1863,6 +1894,7 @@ class AddWorkspaceMembersRequest(TeaModel):
     ):
         self.members = members
         self.tenant_context = tenant_context
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -1913,6 +1945,7 @@ class AddWorkspaceMembersShrinkRequest(TeaModel):
     ):
         self.members_shrink = members_shrink
         self.tenant_context_shrink = tenant_context_shrink
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -2023,6 +2056,7 @@ class BatchGetFormDataByIdListHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -2122,10 +2156,14 @@ class BatchGetFormDataByIdListRequest(TeaModel):
         need_form_instance_value: bool = None,
         system_token: str = None,
     ):
+        # This parameter is required.
         self.app_type = app_type
+        # This parameter is required.
         self.form_instance_id_list = form_instance_id_list
+        # This parameter is required.
         self.form_uuid = form_uuid
         self.need_form_instance_value = need_form_instance_value
+        # This parameter is required.
         self.system_token = system_token
 
     def validate(self):
@@ -2173,10 +2211,14 @@ class BatchGetFormDataByIdListShrinkRequest(TeaModel):
         need_form_instance_value: bool = None,
         system_token: str = None,
     ):
+        # This parameter is required.
         self.app_type = app_type
+        # This parameter is required.
         self.form_instance_id_list_shrink = form_instance_id_list_shrink
+        # This parameter is required.
         self.form_uuid = form_uuid
         self.need_form_instance_value = need_form_instance_value
+        # This parameter is required.
         self.system_token = system_token
 
     def validate(self):
@@ -2566,6 +2608,7 @@ class BatchRemovalByFormInstanceIdListHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -2666,11 +2709,15 @@ class BatchRemovalByFormInstanceIdListRequest(TeaModel):
         form_uuid: str = None,
         system_token: str = None,
     ):
+        # This parameter is required.
         self.app_type = app_type
         self.asynchronous_execution = asynchronous_execution
         self.execute_expression = execute_expression
+        # This parameter is required.
         self.form_instance_id_list = form_instance_id_list
+        # This parameter is required.
         self.form_uuid = form_uuid
+        # This parameter is required.
         self.system_token = system_token
 
     def validate(self):
@@ -2723,11 +2770,15 @@ class BatchRemovalByFormInstanceIdListShrinkRequest(TeaModel):
         form_uuid: str = None,
         system_token: str = None,
     ):
+        # This parameter is required.
         self.app_type = app_type
         self.asynchronous_execution = asynchronous_execution
         self.execute_expression = execute_expression
+        # This parameter is required.
         self.form_instance_id_list_shrink = form_instance_id_list_shrink
+        # This parameter is required.
         self.form_uuid = form_uuid
+        # This parameter is required.
         self.system_token = system_token
 
     def validate(self):
@@ -2855,6 +2906,7 @@ class BatchSaveFormDataHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -3162,6 +3214,7 @@ class BatchUpdateFormDataByInstanceIdHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -3267,11 +3320,15 @@ class BatchUpdateFormDataByInstanceIdRequest(TeaModel):
     ):
         self.app_type = app_type
         self.asynchronous_execution = asynchronous_execution
+        # This parameter is required.
         self.form_instance_id_list = form_instance_id_list
+        # This parameter is required.
         self.form_uuid = form_uuid
         self.ignore_empty = ignore_empty
         self.no_execute_expression = no_execute_expression
+        # This parameter is required.
         self.system_token = system_token
+        # This parameter is required.
         self.update_form_data_json = update_form_data_json
         self.use_latest_form_schema_version = use_latest_form_schema_version
 
@@ -3342,11 +3399,15 @@ class BatchUpdateFormDataByInstanceIdShrinkRequest(TeaModel):
     ):
         self.app_type = app_type
         self.asynchronous_execution = asynchronous_execution
+        # This parameter is required.
         self.form_instance_id_list_shrink = form_instance_id_list_shrink
+        # This parameter is required.
         self.form_uuid = form_uuid
         self.ignore_empty = ignore_empty
         self.no_execute_expression = no_execute_expression
+        # This parameter is required.
         self.system_token = system_token
+        # This parameter is required.
         self.update_form_data_json = update_form_data_json
         self.use_latest_form_schema_version = use_latest_form_schema_version
 
@@ -3493,6 +3554,7 @@ class BatchUpdateFormDataByInstanceMapHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -3812,6 +3874,7 @@ class CancelScheduleConferenceHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -3935,6 +3998,7 @@ class CancelScheduleConferenceRequest(TeaModel):
         schedule_conference_id: str = None,
         tenant_context: CancelScheduleConferenceRequestTenantContext = None,
     ):
+        # This parameter is required.
         self.schedule_conference_id = schedule_conference_id
         self.tenant_context = tenant_context
 
@@ -3970,6 +4034,7 @@ class CancelScheduleConferenceShrinkRequest(TeaModel):
         schedule_conference_id: str = None,
         tenant_context_shrink: str = None,
     ):
+        # This parameter is required.
         self.schedule_conference_id = schedule_conference_id
         self.tenant_context_shrink = tenant_context_shrink
 
@@ -4077,6 +4142,7 @@ class CheckUserIsGroupMemberHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -4410,9 +4476,12 @@ class ClearRequest(TeaModel):
         tenant_context: ClearRequestTenantContext = None,
         workbook_id: str = None,
     ):
+        # This parameter is required.
         self.range_address = range_address
+        # This parameter is required.
         self.sheet_id = sheet_id
         self.tenant_context = tenant_context
+        # This parameter is required.
         self.workbook_id = workbook_id
 
     def validate(self):
@@ -4457,9 +4526,12 @@ class ClearShrinkRequest(TeaModel):
         tenant_context_shrink: str = None,
         workbook_id: str = None,
     ):
+        # This parameter is required.
         self.range_address = range_address
+        # This parameter is required.
         self.sheet_id = sheet_id
         self.tenant_context_shrink = tenant_context_shrink
+        # This parameter is required.
         self.workbook_id = workbook_id
 
     def validate(self):
@@ -4699,9 +4771,12 @@ class ClearDataRequest(TeaModel):
         tenant_context: ClearDataRequestTenantContext = None,
         workbook_id: str = None,
     ):
+        # This parameter is required.
         self.range_address = range_address
+        # This parameter is required.
         self.sheet_id = sheet_id
         self.tenant_context = tenant_context
+        # This parameter is required.
         self.workbook_id = workbook_id
 
     def validate(self):
@@ -4746,9 +4821,12 @@ class ClearDataShrinkRequest(TeaModel):
         tenant_context_shrink: str = None,
         workbook_id: str = None,
     ):
+        # This parameter is required.
         self.range_address = range_address
+        # This parameter is required.
         self.sheet_id = sheet_id
         self.tenant_context_shrink = tenant_context_shrink
+        # This parameter is required.
         self.workbook_id = workbook_id
 
     def validate(self):
@@ -4863,6 +4941,7 @@ class CommentListReportHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -4988,8 +5067,11 @@ class CommentListReportRequest(TeaModel):
         size: int = None,
         tenant_context: CommentListReportRequestTenantContext = None,
     ):
+        # This parameter is required.
         self.offset = offset
+        # This parameter is required.
         self.report_id = report_id
+        # This parameter is required.
         self.size = size
         self.tenant_context = tenant_context
 
@@ -5035,8 +5117,11 @@ class CommentListReportShrinkRequest(TeaModel):
         size: int = None,
         tenant_context_shrink: str = None,
     ):
+        # This parameter is required.
         self.offset = offset
+        # This parameter is required.
         self.report_id = report_id
+        # This parameter is required.
         self.size = size
         self.tenant_context_shrink = tenant_context_shrink
 
@@ -5541,6 +5626,7 @@ class CreateEventHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -6045,9 +6131,12 @@ class CreateEventRequest(TeaModel):
         self.recurrence = recurrence
         self.reminders = reminders
         self.rich_text_description = rich_text_description
+        # This parameter is required.
         self.summary = summary
         self.ui_configs = ui_configs
+        # This parameter is required.
         self.calendar_id = calendar_id
+        # This parameter is required.
         self.start = start
 
     def validate(self):
@@ -6194,9 +6283,12 @@ class CreateEventShrinkRequest(TeaModel):
         self.recurrence_shrink = recurrence_shrink
         self.reminders_shrink = reminders_shrink
         self.rich_text_description_shrink = rich_text_description_shrink
+        # This parameter is required.
         self.summary = summary
         self.ui_configs_shrink = ui_configs_shrink
+        # This parameter is required.
         self.calendar_id = calendar_id
+        # This parameter is required.
         self.start_shrink = start_shrink
 
     def validate(self):
@@ -6949,6 +7041,7 @@ class CreateLiveHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -7079,10 +7172,13 @@ class CreateLiveRequest(TeaModel):
     ):
         self.cover_url = cover_url
         self.introduction = introduction
+        # This parameter is required.
         self.pre_end_time = pre_end_time
+        # This parameter is required.
         self.pre_start_time = pre_start_time
         self.public_type = public_type
         self.tenant_context = tenant_context
+        # This parameter is required.
         self.title = title
 
     def validate(self):
@@ -7144,10 +7240,13 @@ class CreateLiveShrinkRequest(TeaModel):
     ):
         self.cover_url = cover_url
         self.introduction = introduction
+        # This parameter is required.
         self.pre_end_time = pre_end_time
+        # This parameter is required.
         self.pre_start_time = pre_start_time
         self.public_type = public_type
         self.tenant_context_shrink = tenant_context_shrink
+        # This parameter is required.
         self.title = title
 
     def validate(self):
@@ -7274,6 +7373,7 @@ class CreateMeetingRoomHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -7772,6 +7872,7 @@ class CreateMeetingRoomGroupHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -7897,6 +7998,7 @@ class CreateMeetingRoomGroupRequest(TeaModel):
         tenant_context: CreateMeetingRoomGroupRequestTenantContext = None,
     ):
         self.group_name = group_name
+        # This parameter is required.
         self.parent_group_id = parent_group_id
         self.tenant_context = tenant_context
 
@@ -7938,6 +8040,7 @@ class CreateMeetingRoomGroupShrinkRequest(TeaModel):
         tenant_context_shrink: str = None,
     ):
         self.group_name = group_name
+        # This parameter is required.
         self.parent_group_id = parent_group_id
         self.tenant_context_shrink = tenant_context_shrink
 
@@ -8049,6 +8152,7 @@ class CreateOrUpdateFormDataHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -8423,12 +8527,19 @@ class CreateOrgHonorTemplateRequest(TeaModel):
         user_id: str = None,
     ):
         self.tenant_context = tenant_context
+        # This parameter is required.
         self.avatar_frame_media_id = avatar_frame_media_id
+        # This parameter is required.
         self.default_bg_color = default_bg_color
+        # This parameter is required.
         self.medal_desc = medal_desc
+        # This parameter is required.
         self.medal_media_id = medal_media_id
+        # This parameter is required.
         self.medal_name = medal_name
+        # This parameter is required.
         self.org_id = org_id
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -8494,12 +8605,19 @@ class CreateOrgHonorTemplateShrinkRequest(TeaModel):
         user_id: str = None,
     ):
         self.tenant_context_shrink = tenant_context_shrink
+        # This parameter is required.
         self.avatar_frame_media_id = avatar_frame_media_id
+        # This parameter is required.
         self.default_bg_color = default_bg_color
+        # This parameter is required.
         self.medal_desc = medal_desc
+        # This parameter is required.
         self.medal_media_id = medal_media_id
+        # This parameter is required.
         self.medal_name = medal_name
+        # This parameter is required.
         self.org_id = org_id
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -8630,6 +8748,7 @@ class CreatePersonalTodoTaskHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -8787,9 +8906,11 @@ class CreatePersonalTodoTaskRequest(TeaModel):
     ):
         self.description = description
         self.due_time = due_time
+        # This parameter is required.
         self.executor_ids = executor_ids
         self.notify_configs = notify_configs
         self.participant_ids = participant_ids
+        # This parameter is required.
         self.subject = subject
         self.tenant_context = tenant_context
 
@@ -8855,9 +8976,11 @@ class CreatePersonalTodoTaskShrinkRequest(TeaModel):
     ):
         self.description = description
         self.due_time = due_time
+        # This parameter is required.
         self.executor_ids_shrink = executor_ids_shrink
         self.notify_configs_shrink = notify_configs_shrink
         self.participant_ids_shrink = participant_ids_shrink
+        # This parameter is required.
         self.subject = subject
         self.tenant_context_shrink = tenant_context_shrink
 
@@ -9002,6 +9125,7 @@ class CreateReportHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -9101,10 +9225,15 @@ class CreateReportRequestContents(TeaModel):
         sort: int = None,
         type: int = None,
     ):
+        # This parameter is required.
         self.content = content
+        # This parameter is required.
         self.content_type = content_type
+        # This parameter is required.
         self.key = key
+        # This parameter is required.
         self.sort = sort
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -9181,10 +9310,14 @@ class CreateReportRequest(TeaModel):
         to_cids: List[str] = None,
         to_userids: List[str] = None,
     ):
+        # This parameter is required.
         self.contents = contents
+        # This parameter is required.
         self.dd_from = dd_from
+        # This parameter is required.
         self.template_id = template_id
         self.tenant_context = tenant_context
+        # This parameter is required.
         self.to_chat = to_chat
         self.to_cids = to_cids
         self.to_userids = to_userids
@@ -9255,10 +9388,14 @@ class CreateReportShrinkRequest(TeaModel):
         to_cids_shrink: str = None,
         to_userids_shrink: str = None,
     ):
+        # This parameter is required.
         self.contents_shrink = contents_shrink
+        # This parameter is required.
         self.dd_from = dd_from
+        # This parameter is required.
         self.template_id = template_id
         self.tenant_context_shrink = tenant_context_shrink
+        # This parameter is required.
         self.to_chat = to_chat
         self.to_cids_shrink = to_cids_shrink
         self.to_userids_shrink = to_userids_shrink
@@ -9387,6 +9524,7 @@ class CreateScenegroupHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -9516,7 +9654,9 @@ class CreateScenegroupRequest(TeaModel):
         self.searchable = searchable
         self.show_history_type = show_history_type
         self.subadmin_ids = subadmin_ids
+        # This parameter is required.
         self.template_id = template_id
+        # This parameter is required.
         self.title = title
         self.user_ids = user_ids
         self.uuid = uuid
@@ -9698,6 +9838,7 @@ class CreateScheduleConferenceHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -9823,9 +9964,12 @@ class CreateScheduleConferenceRequest(TeaModel):
         tenant_context: CreateScheduleConferenceRequestTenantContext = None,
         title: str = None,
     ):
+        # This parameter is required.
         self.end_time = end_time
+        # This parameter is required.
         self.start_time = start_time
         self.tenant_context = tenant_context
+        # This parameter is required.
         self.title = title
 
     def validate(self):
@@ -9870,9 +10014,12 @@ class CreateScheduleConferenceShrinkRequest(TeaModel):
         tenant_context_shrink: str = None,
         title: str = None,
     ):
+        # This parameter is required.
         self.end_time = end_time
+        # This parameter is required.
         self.start_time = start_time
         self.tenant_context_shrink = tenant_context_shrink
+        # This parameter is required.
         self.title = title
 
     def validate(self):
@@ -10789,8 +10936,10 @@ class CreateSheetRequest(TeaModel):
         tenant_context: CreateSheetRequestTenantContext = None,
         workbook_id: str = None,
     ):
+        # This parameter is required.
         self.name = name
         self.tenant_context = tenant_context
+        # This parameter is required.
         self.workbook_id = workbook_id
 
     def validate(self):
@@ -10830,8 +10979,10 @@ class CreateSheetShrinkRequest(TeaModel):
         tenant_context_shrink: str = None,
         workbook_id: str = None,
     ):
+        # This parameter is required.
         self.name = name
         self.tenant_context_shrink = tenant_context_shrink
+        # This parameter is required.
         self.workbook_id = workbook_id
 
     def validate(self):
@@ -10953,6 +11104,7 @@ class CreateSubscribedCalendarHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -11080,7 +11232,9 @@ class CreateSubscribedCalendarRequest(TeaModel):
     ):
         self.description = description
         self.managers = managers
+        # This parameter is required.
         self.name = name
+        # This parameter is required.
         self.subscribe_scope = subscribe_scope
 
     def validate(self):
@@ -11127,7 +11281,9 @@ class CreateSubscribedCalendarShrinkRequest(TeaModel):
     ):
         self.description = description
         self.managers_shrink = managers_shrink
+        # This parameter is required.
         self.name = name
+        # This parameter is required.
         self.subscribe_scope_shrink = subscribe_scope_shrink
 
     def validate(self):
@@ -11485,6 +11641,7 @@ class CreateTodoTaskRequest(TeaModel):
         self.participant_ids = participant_ids
         self.priority = priority
         self.source_id = source_id
+        # This parameter is required.
         self.subject = subject
 
     def validate(self):
@@ -11607,6 +11764,7 @@ class CreateTodoTaskShrinkRequest(TeaModel):
         self.participant_ids_shrink = participant_ids_shrink
         self.priority = priority
         self.source_id = source_id
+        # This parameter is required.
         self.subject = subject
 
     def validate(self):
@@ -11990,6 +12148,7 @@ class CreateVideoConferenceHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -12087,6 +12246,7 @@ class CreateVideoConferenceRequest(TeaModel):
         invite_caller: bool = None,
         invite_user_ids: List[str] = None,
     ):
+        # This parameter is required.
         self.conf_title = conf_title
         self.invite_caller = invite_caller
         self.invite_user_ids = invite_user_ids
@@ -12126,6 +12286,7 @@ class CreateVideoConferenceShrinkRequest(TeaModel):
         invite_caller: bool = None,
         invite_user_ids_shrink: str = None,
     ):
+        # This parameter is required.
         self.conf_title = conf_title
         self.invite_caller = invite_caller
         self.invite_user_ids_shrink = invite_user_ids_shrink
@@ -12268,6 +12429,7 @@ class CreateWorkspaceHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -12393,6 +12555,7 @@ class CreateWorkspaceRequest(TeaModel):
         tenant_context: CreateWorkspaceRequestTenantContext = None,
     ):
         self.description = description
+        # This parameter is required.
         self.name = name
         self.tenant_context = tenant_context
 
@@ -12434,6 +12597,7 @@ class CreateWorkspaceShrinkRequest(TeaModel):
         tenant_context_shrink: str = None,
     ):
         self.description = description
+        # This parameter is required.
         self.name = name
         self.tenant_context_shrink = tenant_context_shrink
 
@@ -12563,6 +12727,7 @@ class CreateWorkspaceDocHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -12691,12 +12856,15 @@ class CreateWorkspaceDocRequest(TeaModel):
         tenant_context: CreateWorkspaceDocRequestTenantContext = None,
         workspace_id: str = None,
     ):
+        # This parameter is required.
         self.doc_type = doc_type
+        # This parameter is required.
         self.name = name
         self.parent_node_id = parent_node_id
         self.template_id = template_id
         self.template_type = template_type
         self.tenant_context = tenant_context
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -12756,12 +12924,15 @@ class CreateWorkspaceDocShrinkRequest(TeaModel):
         tenant_context_shrink: str = None,
         workspace_id: str = None,
     ):
+        # This parameter is required.
         self.doc_type = doc_type
+        # This parameter is required.
         self.name = name
         self.parent_node_id = parent_node_id
         self.template_id = template_id
         self.template_type = template_type
         self.tenant_context_shrink = tenant_context_shrink
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -13032,10 +13203,14 @@ class DeleteColumnsRequest(TeaModel):
         tenant_context: DeleteColumnsRequestTenantContext = None,
         workbook_id: str = None,
     ):
+        # This parameter is required.
         self.column = column
+        # This parameter is required.
         self.column_count = column_count
+        # This parameter is required.
         self.sheet_id = sheet_id
         self.tenant_context = tenant_context
+        # This parameter is required.
         self.workbook_id = workbook_id
 
     def validate(self):
@@ -13085,10 +13260,14 @@ class DeleteColumnsShrinkRequest(TeaModel):
         tenant_context_shrink: str = None,
         workbook_id: str = None,
     ):
+        # This parameter is required.
         self.column = column
+        # This parameter is required.
         self.column_count = column_count
+        # This parameter is required.
         self.sheet_id = sheet_id
         self.tenant_context_shrink = tenant_context_shrink
+        # This parameter is required.
         self.workbook_id = workbook_id
 
     def validate(self):
@@ -13207,6 +13386,7 @@ class DeleteEventHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -13304,7 +13484,9 @@ class DeleteEventRequest(TeaModel):
         event_id: str = None,
         push_notification: bool = None,
     ):
+        # This parameter is required.
         self.calendar_id = calendar_id
+        # This parameter is required.
         self.event_id = event_id
         self.push_notification = push_notification
 
@@ -13475,6 +13657,7 @@ class DeleteFormDataHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -13573,9 +13756,12 @@ class DeleteFormDataRequest(TeaModel):
         language: str = None,
         system_token: str = None,
     ):
+        # This parameter is required.
         self.app_type = app_type
+        # This parameter is required.
         self.form_instance_id = form_instance_id
         self.language = language
+        # This parameter is required.
         self.system_token = system_token
 
     def validate(self):
@@ -13695,6 +13881,7 @@ class DeleteInstanceHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -13915,6 +14102,7 @@ class DeleteLiveHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -14038,6 +14226,7 @@ class DeleteLiveRequest(TeaModel):
         live_id: str = None,
         tenant_context: DeleteLiveRequestTenantContext = None,
     ):
+        # This parameter is required.
         self.live_id = live_id
         self.tenant_context = tenant_context
 
@@ -14073,6 +14262,7 @@ class DeleteLiveShrinkRequest(TeaModel):
         live_id: str = None,
         tenant_context_shrink: str = None,
     ):
+        # This parameter is required.
         self.live_id = live_id
         self.tenant_context_shrink = tenant_context_shrink
 
@@ -14180,6 +14370,7 @@ class DeleteMeetingRoomHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -14303,6 +14494,7 @@ class DeleteMeetingRoomRequest(TeaModel):
         room_id: str = None,
         tenant_context: DeleteMeetingRoomRequestTenantContext = None,
     ):
+        # This parameter is required.
         self.room_id = room_id
         self.tenant_context = tenant_context
 
@@ -14338,6 +14530,7 @@ class DeleteMeetingRoomShrinkRequest(TeaModel):
         room_id: str = None,
         tenant_context_shrink: str = None,
     ):
+        # This parameter is required.
         self.room_id = room_id
         self.tenant_context_shrink = tenant_context_shrink
 
@@ -14445,6 +14638,7 @@ class DeleteMeetingRoomGroupHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -14568,6 +14762,7 @@ class DeleteMeetingRoomGroupRequest(TeaModel):
         group_id: str = None,
         tenant_context: DeleteMeetingRoomGroupRequestTenantContext = None,
     ):
+        # This parameter is required.
         self.group_id = group_id
         self.tenant_context = tenant_context
 
@@ -14603,6 +14798,7 @@ class DeleteMeetingRoomGroupShrinkRequest(TeaModel):
         group_id: str = None,
         tenant_context_shrink: str = None,
     ):
+        # This parameter is required.
         self.group_id = group_id
         self.tenant_context_shrink = tenant_context_shrink
 
@@ -14836,10 +15032,14 @@ class DeleteRowsRequest(TeaModel):
         tenant_context: DeleteRowsRequestTenantContext = None,
         workbook_id: str = None,
     ):
+        # This parameter is required.
         self.row = row
+        # This parameter is required.
         self.row_count = row_count
+        # This parameter is required.
         self.sheet_id = sheet_id
         self.tenant_context = tenant_context
+        # This parameter is required.
         self.workbook_id = workbook_id
 
     def validate(self):
@@ -14889,10 +15089,14 @@ class DeleteRowsShrinkRequest(TeaModel):
         tenant_context_shrink: str = None,
         workbook_id: str = None,
     ):
+        # This parameter is required.
         self.row = row
+        # This parameter is required.
         self.row_count = row_count
+        # This parameter is required.
         self.sheet_id = sheet_id
         self.tenant_context_shrink = tenant_context_shrink
+        # This parameter is required.
         self.workbook_id = workbook_id
 
     def validate(self):
@@ -15011,6 +15215,7 @@ class DeleteScenegroupMemberHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -15107,7 +15312,9 @@ class DeleteScenegroupMemberRequest(TeaModel):
         open_conversation_id: str = None,
         user_ids: str = None,
     ):
+        # This parameter is required.
         self.open_conversation_id = open_conversation_id
+        # This parameter is required.
         self.user_ids = user_ids
 
     def validate(self):
@@ -15338,8 +15545,10 @@ class DeleteSheetRequest(TeaModel):
         tenant_context: DeleteSheetRequestTenantContext = None,
         workbook_id: str = None,
     ):
+        # This parameter is required.
         self.sheet_id = sheet_id
         self.tenant_context = tenant_context
+        # This parameter is required.
         self.workbook_id = workbook_id
 
     def validate(self):
@@ -15379,8 +15588,10 @@ class DeleteSheetShrinkRequest(TeaModel):
         tenant_context_shrink: str = None,
         workbook_id: str = None,
     ):
+        # This parameter is required.
         self.sheet_id = sheet_id
         self.tenant_context_shrink = tenant_context_shrink
+        # This parameter is required.
         self.workbook_id = workbook_id
 
     def validate(self):
@@ -15491,6 +15702,7 @@ class DeleteSubscribedCalendarHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -15586,6 +15798,7 @@ class DeleteSubscribedCalendarRequest(TeaModel):
         self,
         calendar_id: str = None,
     ):
+        # This parameter is required.
         self.calendar_id = calendar_id
 
     def validate(self):
@@ -15814,6 +16027,7 @@ class DeleteTodoTaskRequest(TeaModel):
     ):
         self.tenant_context = tenant_context
         self.operator_id = operator_id
+        # This parameter is required.
         self.task_id = task_id
 
     def validate(self):
@@ -15855,6 +16069,7 @@ class DeleteTodoTaskShrinkRequest(TeaModel):
     ):
         self.tenant_context_shrink = tenant_context_shrink
         self.operator_id = operator_id
+        # This parameter is required.
         self.task_id = task_id
 
     def validate(self):
@@ -15965,6 +16180,7 @@ class DeleteWorkspaceDocMembersHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -16061,7 +16277,9 @@ class DeleteWorkspaceDocMembersRequestMembers(TeaModel):
         member_id: str = None,
         member_type: str = None,
     ):
+        # This parameter is required.
         self.member_id = member_id
+        # This parameter is required.
         self.member_type = member_type
 
     def validate(self):
@@ -16123,9 +16341,12 @@ class DeleteWorkspaceDocMembersRequest(TeaModel):
         tenant_context: DeleteWorkspaceDocMembersRequestTenantContext = None,
         workspace_id: str = None,
     ):
+        # This parameter is required.
         self.members = members
+        # This parameter is required.
         self.node_id = node_id
         self.tenant_context = tenant_context
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -16179,9 +16400,12 @@ class DeleteWorkspaceDocMembersShrinkRequest(TeaModel):
         tenant_context_shrink: str = None,
         workspace_id: str = None,
     ):
+        # This parameter is required.
         self.members_shrink = members_shrink
+        # This parameter is required.
         self.node_id = node_id
         self.tenant_context_shrink = tenant_context_shrink
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -16290,6 +16514,7 @@ class DeleteWorkspaceMembersHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -16386,7 +16611,9 @@ class DeleteWorkspaceMembersRequestMembers(TeaModel):
         member_id: str = None,
         member_type: str = None,
     ):
+        # This parameter is required.
         self.member_id = member_id
+        # This parameter is required.
         self.member_type = member_type
 
     def validate(self):
@@ -16447,8 +16674,10 @@ class DeleteWorkspaceMembersRequest(TeaModel):
         tenant_context: DeleteWorkspaceMembersRequestTenantContext = None,
         workspace_id: str = None,
     ):
+        # This parameter is required.
         self.members = members
         self.tenant_context = tenant_context
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -16497,8 +16726,10 @@ class DeleteWorkspaceMembersShrinkRequest(TeaModel):
         tenant_context_shrink: str = None,
         workspace_id: str = None,
     ):
+        # This parameter is required.
         self.members_shrink = members_shrink
         self.tenant_context_shrink = tenant_context_shrink
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -16603,6 +16834,7 @@ class ExecuteBatchTaskHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -16702,10 +16934,14 @@ class ExecuteBatchTaskRequest(TeaModel):
         system_token: str = None,
         task_information_list: str = None,
     ):
+        # This parameter is required.
         self.app_type = app_type
+        # This parameter is required.
         self.out_result = out_result
         self.remark = remark
+        # This parameter is required.
         self.system_token = system_token
+        # This parameter is required.
         self.task_information_list = task_information_list
 
     def validate(self):
@@ -16847,6 +17083,7 @@ class ExecutePlatformTaskHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -17091,6 +17328,7 @@ class ExecuteTaskHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -17347,6 +17585,7 @@ class ExpandGroupCapacityHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -17470,6 +17709,7 @@ class ExpandGroupCapacityRequest(TeaModel):
         open_conversation_id: str = None,
         tenant_context: ExpandGroupCapacityRequestTenantContext = None,
     ):
+        # This parameter is required.
         self.open_conversation_id = open_conversation_id
         self.tenant_context = tenant_context
 
@@ -17505,6 +17745,7 @@ class ExpandGroupCapacityShrinkRequest(TeaModel):
         open_conversation_id: str = None,
         tenant_context_shrink: str = None,
     ):
+        # This parameter is required.
         self.open_conversation_id = open_conversation_id
         self.tenant_context_shrink = tenant_context_shrink
 
@@ -17623,6 +17864,7 @@ class GetActivityListHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -18020,6 +18262,7 @@ class GetAllSheetsRequest(TeaModel):
         workbook_id: str = None,
     ):
         self.tenant_context = tenant_context
+        # This parameter is required.
         self.workbook_id = workbook_id
 
     def validate(self):
@@ -18055,6 +18298,7 @@ class GetAllSheetsShrinkRequest(TeaModel):
         workbook_id: str = None,
     ):
         self.tenant_context_shrink = tenant_context_shrink
+        # This parameter is required.
         self.workbook_id = workbook_id
 
     def validate(self):
@@ -18202,6 +18446,7 @@ class GetConversaionSpaceHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -18325,6 +18570,7 @@ class GetConversaionSpaceRequest(TeaModel):
         open_conversation_id: str = None,
         tenant_context: GetConversaionSpaceRequestTenantContext = None,
     ):
+        # This parameter is required.
         self.open_conversation_id = open_conversation_id
         self.tenant_context = tenant_context
 
@@ -18360,6 +18606,7 @@ class GetConversaionSpaceShrinkRequest(TeaModel):
         open_conversation_id: str = None,
         tenant_context_shrink: str = None,
     ):
+        # This parameter is required.
         self.open_conversation_id = open_conversation_id
         self.tenant_context_shrink = tenant_context_shrink
 
@@ -18525,6 +18772,7 @@ class GetCorpAccomplishmentTasksHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -18630,6 +18878,7 @@ class GetCorpAccomplishmentTasksRequest(TeaModel):
         token: str = None,
     ):
         self.app_types = app_types
+        # This parameter is required.
         self.corp_id = corp_id
         self.create_from_time_gmt = create_from_time_gmt
         self.create_to_time_gmt = create_to_time_gmt
@@ -18638,6 +18887,7 @@ class GetCorpAccomplishmentTasksRequest(TeaModel):
         self.page_number = page_number
         self.page_size = page_size
         self.process_codes = process_codes
+        # This parameter is required.
         self.token = token
 
     def validate(self):
@@ -18924,6 +19174,7 @@ class GetCorpTasksHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -19028,7 +19279,9 @@ class GetCorpTasksRequest(TeaModel):
         process_codes: str = None,
         token: str = None,
     ):
+        # This parameter is required.
         self.app_types = app_types
+        # This parameter is required.
         self.corp_id = corp_id
         self.create_from_time_gmt = create_from_time_gmt
         self.create_to_time_gmt = create_to_time_gmt
@@ -19037,6 +19290,7 @@ class GetCorpTasksRequest(TeaModel):
         self.page_number = page_number
         self.page_size = page_size
         self.process_codes = process_codes
+        # This parameter is required.
         self.token = token
 
     def validate(self):
@@ -19353,6 +19607,7 @@ class GetDocContentHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -19478,9 +19733,11 @@ class GetDocContentRequest(TeaModel):
         tenant_context: GetDocContentRequestTenantContext = None,
         user_token: str = None,
     ):
+        # This parameter is required.
         self.dentry_uuid = dentry_uuid
         self.target_format = target_format
         self.tenant_context = tenant_context
+        # This parameter is required.
         self.user_token = user_token
 
     def validate(self):
@@ -19525,9 +19782,11 @@ class GetDocContentShrinkRequest(TeaModel):
         tenant_context_shrink: str = None,
         user_token: str = None,
     ):
+        # This parameter is required.
         self.dentry_uuid = dentry_uuid
         self.target_format = target_format
         self.tenant_context_shrink = tenant_context_shrink
+        # This parameter is required.
         self.user_token = user_token
 
     def validate(self):
@@ -19648,11 +19907,303 @@ class GetDocContentResponse(TeaModel):
         return self
 
 
+class GetDocContentTakIdHeadersAccountContext(TeaModel):
+    def __init__(
+        self,
+        account_id: str = None,
+    ):
+        # This parameter is required.
+        self.account_id = account_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['accountId'] = self.account_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accountId') is not None:
+            self.account_id = m.get('accountId')
+        return self
+
+
+class GetDocContentTakIdHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context: GetDocContentTakIdHeadersAccountContext = None,
+    ):
+        self.common_headers = common_headers
+        self.account_context = account_context
+
+    def validate(self):
+        if self.account_context:
+            self.account_context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context is not None:
+            result['AccountContext'] = self.account_context.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            temp_model = GetDocContentTakIdHeadersAccountContext()
+            self.account_context = temp_model.from_map(m['AccountContext'])
+        return self
+
+
+class GetDocContentTakIdShrinkHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context_shrink: str = None,
+    ):
+        self.common_headers = common_headers
+        self.account_context_shrink = account_context_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context_shrink is not None:
+            result['AccountContext'] = self.account_context_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            self.account_context_shrink = m.get('AccountContext')
+        return self
+
+
+class GetDocContentTakIdRequestTenantContext(TeaModel):
+    def __init__(
+        self,
+        tenant_id: str = None,
+    ):
+        self.tenant_id = tenant_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tenant_id is not None:
+            result['tenantId'] = self.tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('tenantId') is not None:
+            self.tenant_id = m.get('tenantId')
+        return self
+
+
+class GetDocContentTakIdRequest(TeaModel):
+    def __init__(
+        self,
+        dentry_uuid: str = None,
+        target_format: str = None,
+        tenant_context: GetDocContentTakIdRequestTenantContext = None,
+    ):
+        # This parameter is required.
+        self.dentry_uuid = dentry_uuid
+        self.target_format = target_format
+        self.tenant_context = tenant_context
+
+    def validate(self):
+        if self.tenant_context:
+            self.tenant_context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dentry_uuid is not None:
+            result['DentryUuid'] = self.dentry_uuid
+        if self.target_format is not None:
+            result['TargetFormat'] = self.target_format
+        if self.tenant_context is not None:
+            result['TenantContext'] = self.tenant_context.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DentryUuid') is not None:
+            self.dentry_uuid = m.get('DentryUuid')
+        if m.get('TargetFormat') is not None:
+            self.target_format = m.get('TargetFormat')
+        if m.get('TenantContext') is not None:
+            temp_model = GetDocContentTakIdRequestTenantContext()
+            self.tenant_context = temp_model.from_map(m['TenantContext'])
+        return self
+
+
+class GetDocContentTakIdShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        dentry_uuid: str = None,
+        target_format: str = None,
+        tenant_context_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.dentry_uuid = dentry_uuid
+        self.target_format = target_format
+        self.tenant_context_shrink = tenant_context_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dentry_uuid is not None:
+            result['DentryUuid'] = self.dentry_uuid
+        if self.target_format is not None:
+            result['TargetFormat'] = self.target_format
+        if self.tenant_context_shrink is not None:
+            result['TenantContext'] = self.tenant_context_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DentryUuid') is not None:
+            self.dentry_uuid = m.get('DentryUuid')
+        if m.get('TargetFormat') is not None:
+            self.target_format = m.get('TargetFormat')
+        if m.get('TenantContext') is not None:
+            self.tenant_context_shrink = m.get('TenantContext')
+        return self
+
+
+class GetDocContentTakIdResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        task_id: int = None,
+        vendor_request_id: str = None,
+        vendor_type: str = None,
+    ):
+        self.request_id = request_id
+        self.task_id = task_id
+        self.vendor_request_id = vendor_request_id
+        self.vendor_type = vendor_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.task_id is not None:
+            result['taskId'] = self.task_id
+        if self.vendor_request_id is not None:
+            result['vendorRequestId'] = self.vendor_request_id
+        if self.vendor_type is not None:
+            result['vendorType'] = self.vendor_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('taskId') is not None:
+            self.task_id = m.get('taskId')
+        if m.get('vendorRequestId') is not None:
+            self.vendor_request_id = m.get('vendorRequestId')
+        if m.get('vendorType') is not None:
+            self.vendor_type = m.get('vendorType')
+        return self
+
+
+class GetDocContentTakIdResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetDocContentTakIdResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetDocContentTakIdResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetEventHeadersAccountContext(TeaModel):
     def __init__(
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -19750,7 +20301,9 @@ class GetEventRequest(TeaModel):
         event_id: str = None,
         max_attendees: int = None,
     ):
+        # This parameter is required.
         self.calendar_id = calendar_id
+        # This parameter is required.
         self.event_id = event_id
         self.max_attendees = max_attendees
 
@@ -20640,6 +21193,7 @@ class GetFieldDefByUuidHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -20737,8 +21291,11 @@ class GetFieldDefByUuidRequest(TeaModel):
         form_uuid: str = None,
         system_token: str = None,
     ):
+        # This parameter is required.
         self.app_type = app_type
+        # This parameter is required.
         self.form_uuid = form_uuid
+        # This parameter is required.
         self.system_token = system_token
 
     def validate(self):
@@ -20937,6 +21494,7 @@ class GetFileDownloadInfoHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -21332,6 +21890,7 @@ class GetFormComponentDefinitionListHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -21430,9 +21989,12 @@ class GetFormComponentDefinitionListRequest(TeaModel):
         language: str = None,
         system_token: str = None,
     ):
+        # This parameter is required.
         self.app_type = app_type
+        # This parameter is required.
         self.form_uuid = form_uuid
         self.language = language
+        # This parameter is required.
         self.system_token = system_token
 
     def validate(self):
@@ -21611,6 +22173,7 @@ class GetFormDataByIDHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -21943,6 +22506,7 @@ class GetFormListInAppHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -22042,10 +22606,12 @@ class GetFormListInAppRequest(TeaModel):
         page_size: int = None,
         system_token: str = None,
     ):
+        # This parameter is required.
         self.app_type = app_type
         self.form_types = form_types
         self.page_number = page_number
         self.page_size = page_size
+        # This parameter is required.
         self.system_token = system_token
 
     def validate(self):
@@ -22287,6 +22853,7 @@ class GetInnerGroupMembersHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -22519,6 +23086,7 @@ class GetInstanceByIdHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -22994,6 +23562,7 @@ class GetInstanceIdListHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -23298,6 +23867,7 @@ class GetInstancesHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -23892,6 +24462,7 @@ class GetInstancesByIdListHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -24384,6 +24955,7 @@ class GetLiveReplayUrlHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -24507,6 +25079,7 @@ class GetLiveReplayUrlRequest(TeaModel):
         live_id: str = None,
         tenant_context: GetLiveReplayUrlRequestTenantContext = None,
     ):
+        # This parameter is required.
         self.live_id = live_id
         self.tenant_context = tenant_context
 
@@ -24542,6 +25115,7 @@ class GetLiveReplayUrlShrinkRequest(TeaModel):
         live_id: str = None,
         tenant_context_shrink: str = None,
     ):
+        # This parameter is required.
         self.live_id = live_id
         self.tenant_context_shrink = tenant_context_shrink
 
@@ -24660,6 +25234,7 @@ class GetMeCorpSubmissionHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -25316,6 +25891,7 @@ class GetMeetingRoomsScheduleHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -25413,8 +25989,11 @@ class GetMeetingRoomsScheduleRequest(TeaModel):
         room_ids: List[str] = None,
         start_time: str = None,
     ):
+        # This parameter is required.
         self.end_time = end_time
+        # This parameter is required.
         self.room_ids = room_ids
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -25452,8 +26031,11 @@ class GetMeetingRoomsScheduleShrinkRequest(TeaModel):
         room_ids_shrink: str = None,
         start_time: str = None,
     ):
+        # This parameter is required.
         self.end_time = end_time
+        # This parameter is required.
         self.room_ids_shrink = room_ids_shrink
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -25771,6 +26353,7 @@ class GetMineWorkspaceHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -26184,6 +26767,7 @@ class GetNewestInnerGroupsHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -26472,6 +27056,7 @@ class GetNodeHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -26597,6 +27182,7 @@ class GetNodeRequest(TeaModel):
         with_permission_role: bool = None,
         with_statistical_info: bool = None,
     ):
+        # This parameter is required.
         self.node_id = node_id
         self.tenant_context = tenant_context
         self.with_permission_role = with_permission_role
@@ -26644,6 +27230,7 @@ class GetNodeShrinkRequest(TeaModel):
         with_permission_role: bool = None,
         with_statistical_info: bool = None,
     ):
+        # This parameter is required.
         self.node_id = node_id
         self.tenant_context_shrink = tenant_context_shrink
         self.with_permission_role = with_permission_role
@@ -26903,6 +27490,7 @@ class GetNodeByUrlHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -27062,6 +27650,7 @@ class GetNodeByUrlRequest(TeaModel):
     ):
         self.option = option
         self.tenant_context = tenant_context
+        # This parameter is required.
         self.url = url
 
     def validate(self):
@@ -27106,6 +27695,7 @@ class GetNodeByUrlShrinkRequest(TeaModel):
     ):
         self.option_shrink = option_shrink
         self.tenant_context_shrink = tenant_context_shrink
+        # This parameter is required.
         self.url = url
 
     def validate(self):
@@ -27358,6 +27948,7 @@ class GetNodesHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -27515,6 +28106,7 @@ class GetNodesRequest(TeaModel):
         option: GetNodesRequestOption = None,
         tenant_context: GetNodesRequestTenantContext = None,
     ):
+        # This parameter is required.
         self.node_ids = node_ids
         self.option = option
         self.tenant_context = tenant_context
@@ -27559,6 +28151,7 @@ class GetNodesShrinkRequest(TeaModel):
         option_shrink: str = None,
         tenant_context_shrink: str = None,
     ):
+        # This parameter is required.
         self.node_ids_shrink = node_ids_shrink
         self.option_shrink = option_shrink
         self.tenant_context_shrink = tenant_context_shrink
@@ -27819,6 +28412,7 @@ class GetNotifyMeHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -27926,6 +28520,7 @@ class GetNotifyMeRequest(TeaModel):
         token: str = None,
     ):
         self.app_types = app_types
+        # This parameter is required.
         self.corp_id = corp_id
         self.create_from_time_gmt = create_from_time_gmt
         self.create_to_time_gmt = create_to_time_gmt
@@ -27936,6 +28531,7 @@ class GetNotifyMeRequest(TeaModel):
         self.page_number = page_number
         self.page_size = page_size
         self.process_codes = process_codes
+        # This parameter is required.
         self.token = token
 
     def validate(self):
@@ -28188,6 +28784,7 @@ class GetOpenUrlHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -28287,9 +28884,12 @@ class GetOpenUrlRequest(TeaModel):
         system_token: str = None,
         timeout: int = None,
     ):
+        # This parameter is required.
         self.app_type = app_type
+        # This parameter is required.
         self.file_url = file_url
         self.language = language
+        # This parameter is required.
         self.system_token = system_token
         self.timeout = timeout
 
@@ -28409,6 +29009,7 @@ class GetOperationRecordsHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -28808,6 +29409,7 @@ class GetProcessDefinitionHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -29678,10 +30280,13 @@ class GetRangeRequest(TeaModel):
         tenant_context: GetRangeRequestTenantContext = None,
         workbook_id: str = None,
     ):
+        # This parameter is required.
         self.range_address = range_address
         self.select = select
+        # This parameter is required.
         self.sheet_id = sheet_id
         self.tenant_context = tenant_context
+        # This parameter is required.
         self.workbook_id = workbook_id
 
     def validate(self):
@@ -29731,10 +30336,13 @@ class GetRangeShrinkRequest(TeaModel):
         tenant_context_shrink: str = None,
         workbook_id: str = None,
     ):
+        # This parameter is required.
         self.range_address = range_address
         self.select = select
+        # This parameter is required.
         self.sheet_id = sheet_id
         self.tenant_context_shrink = tenant_context_shrink
+        # This parameter is required.
         self.workbook_id = workbook_id
 
     def validate(self):
@@ -29935,6 +30543,7 @@ class GetRelatedWorkspacesHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -30341,6 +30950,7 @@ class GetReportTemplateByNameHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -30464,6 +31074,7 @@ class GetReportTemplateByNameRequest(TeaModel):
         template_name: str = None,
         tenant_context: GetReportTemplateByNameRequestTenantContext = None,
     ):
+        # This parameter is required.
         self.template_name = template_name
         self.tenant_context = tenant_context
 
@@ -30499,6 +31110,7 @@ class GetReportTemplateByNameShrinkRequest(TeaModel):
         template_name: str = None,
         tenant_context_shrink: str = None,
     ):
+        # This parameter is required.
         self.template_name = template_name
         self.tenant_context_shrink = tenant_context_shrink
 
@@ -31038,6 +31650,7 @@ class GetRunningTasksHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -31137,10 +31750,12 @@ class GetRunningTasksRequest(TeaModel):
         process_instance_id: str = None,
         system_token: str = None,
     ):
+        # This parameter is required.
         self.app_type = app_type
         self.language = language
         self.process_codes = process_codes
         self.process_instance_id = process_instance_id
+        # This parameter is required.
         self.system_token = system_token
 
     def validate(self):
@@ -31495,8 +32110,10 @@ class GetSheetRequest(TeaModel):
         tenant_context: GetSheetRequestTenantContext = None,
         workbook_id: str = None,
     ):
+        # This parameter is required.
         self.sheet_id = sheet_id
         self.tenant_context = tenant_context
+        # This parameter is required.
         self.workbook_id = workbook_id
 
     def validate(self):
@@ -31536,8 +32153,10 @@ class GetSheetShrinkRequest(TeaModel):
         tenant_context_shrink: str = None,
         workbook_id: str = None,
     ):
+        # This parameter is required.
         self.sheet_id = sheet_id
         self.tenant_context_shrink = tenant_context_shrink
+        # This parameter is required.
         self.workbook_id = workbook_id
 
     def validate(self):
@@ -31684,6 +32303,7 @@ class GetSpaceDirectoriesHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -31811,8 +32431,10 @@ class GetSpaceDirectoriesRequest(TeaModel):
         tenant_context: GetSpaceDirectoriesRequestTenantContext = None,
     ):
         self.dentry_id = dentry_id
+        # This parameter is required.
         self.max_results = max_results
         self.next_token = next_token
+        # This parameter is required.
         self.space_id = space_id
         self.tenant_context = tenant_context
 
@@ -31864,8 +32486,10 @@ class GetSpaceDirectoriesShrinkRequest(TeaModel):
         tenant_context_shrink: str = None,
     ):
         self.dentry_id = dentry_id
+        # This parameter is required.
         self.max_results = max_results
         self.next_token = next_token
+        # This parameter is required.
         self.space_id = space_id
         self.tenant_context_shrink = tenant_context_shrink
 
@@ -32612,6 +33236,7 @@ class GetSubscribedCalendarHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -32707,6 +33332,7 @@ class GetSubscribedCalendarRequest(TeaModel):
         self,
         calendar_id: str = None,
     ):
+        # This parameter is required.
         self.calendar_id = calendar_id
 
     def validate(self):
@@ -32880,6 +33506,7 @@ class GetTaskCopiesHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -32991,6 +33618,7 @@ class GetTaskCopiesRequest(TeaModel):
         self.page_number = page_number
         self.page_size = page_size
         self.process_codes = process_codes
+        # This parameter is required.
         self.system_token = system_token
 
     def validate(self):
@@ -33398,6 +34026,7 @@ class GetTemplateListByUserIdHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -33522,7 +34151,9 @@ class GetTemplateListByUserIdRequest(TeaModel):
         size: int = None,
         tenant_context: GetTemplateListByUserIdRequestTenantContext = None,
     ):
+        # This parameter is required.
         self.offset = offset
+        # This parameter is required.
         self.size = size
         self.tenant_context = tenant_context
 
@@ -33563,7 +34194,9 @@ class GetTemplateListByUserIdShrinkRequest(TeaModel):
         size: int = None,
         tenant_context_shrink: str = None,
     ):
+        # This parameter is required.
         self.offset = offset
+        # This parameter is required.
         self.size = size
         self.tenant_context_shrink = tenant_context_shrink
 
@@ -34398,6 +35031,7 @@ class GetUserLatestPlanHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -34728,6 +35362,7 @@ class GetWorkspaceHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -34854,6 +35489,7 @@ class GetWorkspaceRequest(TeaModel):
     ):
         self.tenant_context = tenant_context
         self.with_permission_role = with_permission_role
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -34895,6 +35531,7 @@ class GetWorkspaceShrinkRequest(TeaModel):
     ):
         self.tenant_context_shrink = tenant_context_shrink
         self.with_permission_role = with_permission_role
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -35153,6 +35790,7 @@ class GetWorkspacesHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -35306,6 +35944,7 @@ class GetWorkspacesRequest(TeaModel):
     ):
         self.option = option
         self.tenant_context = tenant_context
+        # This parameter is required.
         self.workspace_ids = workspace_ids
 
     def validate(self):
@@ -35350,6 +35989,7 @@ class GetWorkspacesShrinkRequest(TeaModel):
     ):
         self.option_shrink = option_shrink
         self.tenant_context_shrink = tenant_context_shrink
+        # This parameter is required.
         self.workspace_ids_shrink = workspace_ids_shrink
 
     def validate(self):
@@ -35748,14 +36388,20 @@ class GrantHonorRequest(TeaModel):
     ):
         self.tenant_context = tenant_context
         self.expiration_time = expiration_time
+        # This parameter is required.
         self.grant_reason = grant_reason
+        # This parameter is required.
         self.granter_name = granter_name
+        # This parameter is required.
         self.honor_id = honor_id
         self.notice_announcer = notice_announcer
         self.notice_single = notice_single
         self.open_conversation_ids = open_conversation_ids
+        # This parameter is required.
         self.org_id = org_id
+        # This parameter is required.
         self.receiver_user_ids = receiver_user_ids
+        # This parameter is required.
         self.sender_user_id = sender_user_id
 
     def validate(self):
@@ -35837,14 +36483,20 @@ class GrantHonorShrinkRequest(TeaModel):
     ):
         self.tenant_context_shrink = tenant_context_shrink
         self.expiration_time = expiration_time
+        # This parameter is required.
         self.grant_reason = grant_reason
+        # This parameter is required.
         self.granter_name = granter_name
+        # This parameter is required.
         self.honor_id = honor_id
         self.notice_announcer = notice_announcer
         self.notice_single = notice_single
         self.open_conversation_ids_shrink = open_conversation_ids_shrink
+        # This parameter is required.
         self.org_id = org_id
+        # This parameter is required.
         self.receiver_user_ids_shrink = receiver_user_ids_shrink
+        # This parameter is required.
         self.sender_user_id = sender_user_id
 
     def validate(self):
@@ -36119,10 +36771,14 @@ class InsertColumnsBeforeRequest(TeaModel):
         tenant_context: InsertColumnsBeforeRequestTenantContext = None,
         workbook_id: str = None,
     ):
+        # This parameter is required.
         self.column = column
+        # This parameter is required.
         self.column_count = column_count
+        # This parameter is required.
         self.sheet_id = sheet_id
         self.tenant_context = tenant_context
+        # This parameter is required.
         self.workbook_id = workbook_id
 
     def validate(self):
@@ -36172,10 +36828,14 @@ class InsertColumnsBeforeShrinkRequest(TeaModel):
         tenant_context_shrink: str = None,
         workbook_id: str = None,
     ):
+        # This parameter is required.
         self.column = column
+        # This parameter is required.
         self.column_count = column_count
+        # This parameter is required.
         self.sheet_id = sheet_id
         self.tenant_context_shrink = tenant_context_shrink
+        # This parameter is required.
         self.workbook_id = workbook_id
 
     def validate(self):
@@ -36420,10 +37080,14 @@ class InsertRowsBeforeRequest(TeaModel):
         tenant_context: InsertRowsBeforeRequestTenantContext = None,
         workbook_id: str = None,
     ):
+        # This parameter is required.
         self.row = row
+        # This parameter is required.
         self.row_count = row_count
+        # This parameter is required.
         self.sheet_id = sheet_id
         self.tenant_context = tenant_context
+        # This parameter is required.
         self.workbook_id = workbook_id
 
     def validate(self):
@@ -36473,10 +37137,14 @@ class InsertRowsBeforeShrinkRequest(TeaModel):
         tenant_context_shrink: str = None,
         workbook_id: str = None,
     ):
+        # This parameter is required.
         self.row = row
+        # This parameter is required.
         self.row_count = row_count
+        # This parameter is required.
         self.sheet_id = sheet_id
         self.tenant_context_shrink = tenant_context_shrink
+        # This parameter is required.
         self.workbook_id = workbook_id
 
     def validate(self):
@@ -36595,6 +37263,7 @@ class InviteUsersHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -36691,6 +37360,7 @@ class InviteUsersRequestInviteeList(TeaModel):
         nick: str = None,
         user_id: str = None,
     ):
+        # This parameter is required.
         self.nick = nick
         self.user_id = user_id
 
@@ -36788,6 +37458,7 @@ class InviteUsersRequest(TeaModel):
     ):
         self.invitee_list = invitee_list
         self.tenant_context = tenant_context
+        # This parameter is required.
         self.conference_id = conference_id
         self.phone_invitee_list = phone_invitee_list
 
@@ -36853,6 +37524,7 @@ class InviteUsersShrinkRequest(TeaModel):
     ):
         self.invitee_list_shrink = invitee_list_shrink
         self.tenant_context_shrink = tenant_context_shrink
+        # This parameter is required.
         self.conference_id = conference_id
         self.phone_invitee_list_shrink = phone_invitee_list_shrink
 
@@ -36968,6 +37640,7 @@ class ListApplicationHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -37070,9 +37743,11 @@ class ListApplicationRequest(TeaModel):
     ):
         self.app_filter = app_filter
         self.app_name_search_keyword = app_name_search_keyword
+        # This parameter is required.
         self.corp_id = corp_id
         self.page_number = page_number
         self.page_size = page_size
+        # This parameter is required.
         self.token = token
 
     def validate(self):
@@ -37307,6 +37982,7 @@ class ListCalendarsHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -37631,6 +38307,7 @@ class ListDentriesHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -37764,7 +38441,9 @@ class ListDentriesRequest(TeaModel):
         self.next_token = next_token
         self.order = order
         self.order_by = order_by
+        # This parameter is required.
         self.parent_id = parent_id
+        # This parameter is required.
         self.space_id = space_id
         self.tenant_context = tenant_context
         self.with_thumbnail = with_thumbnail
@@ -37835,7 +38514,9 @@ class ListDentriesShrinkRequest(TeaModel):
         self.next_token = next_token
         self.order = order
         self.order_by = order_by
+        # This parameter is required.
         self.parent_id = parent_id
+        # This parameter is required.
         self.space_id = space_id
         self.tenant_context_shrink = tenant_context_shrink
         self.with_thumbnail = with_thumbnail
@@ -38221,6 +38902,7 @@ class ListEventsHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -38324,6 +39006,7 @@ class ListEventsRequest(TeaModel):
         time_max: str = None,
         time_min: str = None,
     ):
+        # This parameter is required.
         self.calendar_id = calendar_id
         self.max_attendees = max_attendees
         self.max_results = max_results
@@ -39290,6 +39973,7 @@ class ListEventsViewHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -39390,6 +40074,7 @@ class ListEventsViewRequest(TeaModel):
         time_max: str = None,
         time_min: str = None,
     ):
+        # This parameter is required.
         self.calendar_id = calendar_id
         self.max_attendees = max_attendees
         self.max_results = max_results
@@ -40287,6 +40972,7 @@ class ListFormRemarksHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -40385,9 +41071,13 @@ class ListFormRemarksRequest(TeaModel):
         form_uuid: str = None,
         system_token: str = None,
     ):
+        # This parameter is required.
         self.app_type = app_type
+        # This parameter is required.
         self.form_instance_id_list = form_instance_id_list
+        # This parameter is required.
         self.form_uuid = form_uuid
+        # This parameter is required.
         self.system_token = system_token
 
     def validate(self):
@@ -40430,9 +41120,13 @@ class ListFormRemarksShrinkRequest(TeaModel):
         form_uuid: str = None,
         system_token: str = None,
     ):
+        # This parameter is required.
         self.app_type = app_type
+        # This parameter is required.
         self.form_instance_id_list_shrink = form_instance_id_list_shrink
+        # This parameter is required.
         self.form_uuid = form_uuid
+        # This parameter is required.
         self.system_token = system_token
 
     def validate(self):
@@ -40558,6 +41252,7 @@ class ListNavigationByFormTypeHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -40656,9 +41351,12 @@ class ListNavigationByFormTypeRequest(TeaModel):
         language: str = None,
         system_token: str = None,
     ):
+        # This parameter is required.
         self.app_type = app_type
+        # This parameter is required.
         self.form_type = form_type
         self.language = language
+        # This parameter is required.
         self.system_token = system_token
 
     def validate(self):
@@ -40872,6 +41570,7 @@ class ListNodesHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -41000,6 +41699,7 @@ class ListNodesRequest(TeaModel):
     ):
         self.max_results = max_results
         self.next_token = next_token
+        # This parameter is required.
         self.parent_node_id = parent_node_id
         self.tenant_context = tenant_context
         self.with_permission_role = with_permission_role
@@ -41053,6 +41753,7 @@ class ListNodesShrinkRequest(TeaModel):
     ):
         self.max_results = max_results
         self.next_token = next_token
+        # This parameter is required.
         self.parent_node_id = parent_node_id
         self.tenant_context_shrink = tenant_context_shrink
         self.with_permission_role = with_permission_role
@@ -41456,11 +42157,15 @@ class ListReportRequest(TeaModel):
         template_name: str = None,
         tenant_context: ListReportRequestTenantContext = None,
     ):
+        # This parameter is required.
         self.cursor = cursor
+        # This parameter is required.
         self.end_time = end_time
         self.modified_end_time = modified_end_time
         self.modified_start_time = modified_start_time
+        # This parameter is required.
         self.size = size
+        # This parameter is required.
         self.start_time = start_time
         self.template_name = template_name
         self.tenant_context = tenant_context
@@ -41527,11 +42232,15 @@ class ListReportShrinkRequest(TeaModel):
         template_name: str = None,
         tenant_context_shrink: str = None,
     ):
+        # This parameter is required.
         self.cursor = cursor
+        # This parameter is required.
         self.end_time = end_time
         self.modified_end_time = modified_end_time
         self.modified_start_time = modified_start_time
+        # This parameter is required.
         self.size = size
+        # This parameter is required.
         self.start_time = start_time
         self.template_name = template_name
         self.tenant_context_shrink = tenant_context_shrink
@@ -41836,6 +42545,7 @@ class ListTableDataByFormInstanceIdTableIdHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -41937,12 +42647,17 @@ class ListTableDataByFormInstanceIdTableIdRequest(TeaModel):
         system_token: str = None,
         table_field_id: str = None,
     ):
+        # This parameter is required.
         self.app_type = app_type
+        # This parameter is required.
         self.form_instance_id = form_instance_id
+        # This parameter is required.
         self.form_uuid = form_uuid
         self.page_number = page_number
         self.page_size = page_size
+        # This parameter is required.
         self.system_token = system_token
+        # This parameter is required.
         self.table_field_id = table_field_id
 
     def validate(self):
@@ -42092,6 +42807,7 @@ class ListTeamsHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -42510,6 +43226,7 @@ class ListWorkspacesHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -42983,6 +43700,7 @@ class PatchEventHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -43389,9 +44107,11 @@ class PatchEventRequest(TeaModel):
         summary: str = None,
     ):
         self.attendees = attendees
+        # This parameter is required.
         self.calendar_id = calendar_id
         self.description = description
         self.end = end
+        # This parameter is required.
         self.event_id = event_id
         self.extra = extra
         self.is_all_day = is_all_day
@@ -43511,9 +44231,11 @@ class PatchEventShrinkRequest(TeaModel):
         summary: str = None,
     ):
         self.attendees_shrink = attendees_shrink
+        # This parameter is required.
         self.calendar_id = calendar_id
         self.description = description
         self.end_shrink = end_shrink
+        # This parameter is required.
         self.event_id = event_id
         self.extra_shrink = extra_shrink
         self.is_all_day = is_all_day
@@ -44139,6 +44861,7 @@ class QueryCloudRecordTextHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -44271,6 +44994,7 @@ class QueryCloudRecordTextRequest(TeaModel):
         self.next_token = next_token
         self.start_time = start_time
         self.tenant_context = tenant_context
+        # This parameter is required.
         self.conference_id = conference_id
 
     def validate(self):
@@ -44330,6 +45054,7 @@ class QueryCloudRecordTextShrinkRequest(TeaModel):
         self.next_token = next_token
         self.start_time = start_time
         self.tenant_context_shrink = tenant_context_shrink
+        # This parameter is required.
         self.conference_id = conference_id
 
     def validate(self):
@@ -44653,6 +45378,7 @@ class QueryCloudRecordVideoHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -44777,6 +45503,7 @@ class QueryCloudRecordVideoRequest(TeaModel):
         conference_id: str = None,
     ):
         self.tenant_context = tenant_context
+        # This parameter is required.
         self.conference_id = conference_id
 
     def validate(self):
@@ -44812,6 +45539,7 @@ class QueryCloudRecordVideoShrinkRequest(TeaModel):
         conference_id: str = None,
     ):
         self.tenant_context_shrink = tenant_context_shrink
+        # This parameter is required.
         self.conference_id = conference_id
 
     def validate(self):
@@ -45001,6 +45729,7 @@ class QueryCloudRecordVideoPlayInfoHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -45126,8 +45855,11 @@ class QueryCloudRecordVideoPlayInfoRequest(TeaModel):
         region_id: str = None,
         tenant_context: QueryCloudRecordVideoPlayInfoRequestTenantContext = None,
     ):
+        # This parameter is required.
         self.conference_id = conference_id
+        # This parameter is required.
         self.media_id = media_id
+        # This parameter is required.
         self.region_id = region_id
         self.tenant_context = tenant_context
 
@@ -45173,8 +45905,11 @@ class QueryCloudRecordVideoPlayInfoShrinkRequest(TeaModel):
         region_id: str = None,
         tenant_context_shrink: str = None,
     ):
+        # This parameter is required.
         self.conference_id = conference_id
+        # This parameter is required.
         self.media_id = media_id
+        # This parameter is required.
         self.region_id = region_id
         self.tenant_context_shrink = tenant_context_shrink
 
@@ -45409,6 +46144,7 @@ class QueryConferenceInfoRequest(TeaModel):
         self,
         conference_id: str = None,
     ):
+        # This parameter is required.
         self.conference_id = conference_id
 
     def validate(self):
@@ -45612,6 +46348,7 @@ class QueryConferenceMembersHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -45740,6 +46477,7 @@ class QueryConferenceMembersRequest(TeaModel):
         self.max_results = max_results
         self.next_token = next_token
         self.tenant_context = tenant_context
+        # This parameter is required.
         self.conference_id = conference_id
 
     def validate(self):
@@ -45787,6 +46525,7 @@ class QueryConferenceMembersShrinkRequest(TeaModel):
         self.max_results = max_results
         self.next_token = next_token
         self.tenant_context_shrink = tenant_context_shrink
+        # This parameter is required.
         self.conference_id = conference_id
 
     def validate(self):
@@ -46008,6 +46747,7 @@ class QueryDentryHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -46133,8 +46873,10 @@ class QueryDentryRequest(TeaModel):
         space_id: str = None,
         tenant_context: QueryDentryRequestTenantContext = None,
     ):
+        # This parameter is required.
         self.dentry_id = dentry_id
         self.include_space = include_space
+        # This parameter is required.
         self.space_id = space_id
         self.tenant_context = tenant_context
 
@@ -46180,8 +46922,10 @@ class QueryDentryShrinkRequest(TeaModel):
         space_id: str = None,
         tenant_context_shrink: str = None,
     ):
+        # This parameter is required.
         self.dentry_id = dentry_id
         self.include_space = include_space
+        # This parameter is required.
         self.space_id = space_id
         self.tenant_context_shrink = tenant_context_shrink
 
@@ -47216,6 +47960,7 @@ class QueryLiveInfoHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -47339,6 +48084,7 @@ class QueryLiveInfoRequest(TeaModel):
         live_id: str = None,
         tenant_context: QueryLiveInfoRequestTenantContext = None,
     ):
+        # This parameter is required.
         self.live_id = live_id
         self.tenant_context = tenant_context
 
@@ -47374,6 +48120,7 @@ class QueryLiveInfoShrinkRequest(TeaModel):
         live_id: str = None,
         tenant_context_shrink: str = None,
     ):
+        # This parameter is required.
         self.live_id = live_id
         self.tenant_context_shrink = tenant_context_shrink
 
@@ -47547,6 +48294,7 @@ class QueryLiveWatchDetailHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -47670,6 +48418,7 @@ class QueryLiveWatchDetailRequest(TeaModel):
         live_id: str = None,
         tenant_context: QueryLiveWatchDetailRequestTenantContext = None,
     ):
+        # This parameter is required.
         self.live_id = live_id
         self.tenant_context = tenant_context
 
@@ -47705,6 +48454,7 @@ class QueryLiveWatchDetailShrinkRequest(TeaModel):
         live_id: str = None,
         tenant_context_shrink: str = None,
     ):
+        # This parameter is required.
         self.live_id = live_id
         self.tenant_context_shrink = tenant_context_shrink
 
@@ -47854,6 +48604,7 @@ class QueryLiveWatchUserListHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -47979,8 +48730,10 @@ class QueryLiveWatchUserListRequest(TeaModel):
         page_size: int = None,
         tenant_context: QueryLiveWatchUserListRequestTenantContext = None,
     ):
+        # This parameter is required.
         self.live_id = live_id
         self.page_number = page_number
+        # This parameter is required.
         self.page_size = page_size
         self.tenant_context = tenant_context
 
@@ -48026,8 +48779,10 @@ class QueryLiveWatchUserListShrinkRequest(TeaModel):
         page_size: int = None,
         tenant_context_shrink: str = None,
     ):
+        # This parameter is required.
         self.live_id = live_id
         self.page_number = page_number
+        # This parameter is required.
         self.page_size = page_size
         self.tenant_context_shrink = tenant_context_shrink
 
@@ -48268,6 +49023,7 @@ class QueryMeetingRoomHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -48391,6 +49147,7 @@ class QueryMeetingRoomRequest(TeaModel):
         room_id: str = None,
         tenant_context: QueryMeetingRoomRequestTenantContext = None,
     ):
+        # This parameter is required.
         self.room_id = room_id
         self.tenant_context = tenant_context
 
@@ -48426,6 +49183,7 @@ class QueryMeetingRoomShrinkRequest(TeaModel):
         room_id: str = None,
         tenant_context_shrink: str = None,
     ):
+        # This parameter is required.
         self.room_id = room_id
         self.tenant_context_shrink = tenant_context_shrink
 
@@ -48848,6 +49606,7 @@ class QueryMeetingRoomGroupHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -48971,6 +49730,7 @@ class QueryMeetingRoomGroupRequest(TeaModel):
         group_id: str = None,
         tenant_context: QueryMeetingRoomGroupRequestTenantContext = None,
     ):
+        # This parameter is required.
         self.group_id = group_id
         self.tenant_context = tenant_context
 
@@ -49006,6 +49766,7 @@ class QueryMeetingRoomGroupShrinkRequest(TeaModel):
         group_id: str = None,
         tenant_context_shrink: str = None,
     ):
+        # This parameter is required.
         self.group_id = group_id
         self.tenant_context_shrink = tenant_context_shrink
 
@@ -49125,6 +49886,7 @@ class QueryMeetingRoomGroupListHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -49437,6 +50199,7 @@ class QueryMeetingRoomListHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -50067,7 +50830,9 @@ class QueryOrgHonorsRequest(TeaModel):
     ):
         self.tenant_context = tenant_context
         self.max_results = max_results
+        # This parameter is required.
         self.next_token = next_token
+        # This parameter is required.
         self.org_id = org_id
 
     def validate(self):
@@ -50114,7 +50879,9 @@ class QueryOrgHonorsShrinkRequest(TeaModel):
     ):
         self.tenant_context_shrink = tenant_context_shrink
         self.max_results = max_results
+        # This parameter is required.
         self.next_token = next_token
+        # This parameter is required.
         self.org_id = org_id
 
     def validate(self):
@@ -50707,6 +51474,7 @@ class QueryScheduleConferenceHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -50831,6 +51599,7 @@ class QueryScheduleConferenceRequest(TeaModel):
         schedule_conference_id: str = None,
     ):
         self.tenant_context = tenant_context
+        # This parameter is required.
         self.schedule_conference_id = schedule_conference_id
 
     def validate(self):
@@ -50866,6 +51635,7 @@ class QueryScheduleConferenceShrinkRequest(TeaModel):
         schedule_conference_id: str = None,
     ):
         self.tenant_context_shrink = tenant_context_shrink
+        # This parameter is required.
         self.schedule_conference_id = schedule_conference_id
 
     def validate(self):
@@ -51135,8 +51905,11 @@ class QueryUserHonorsRequest(TeaModel):
     ):
         self.tenant_context = tenant_context
         self.max_results = max_results
+        # This parameter is required.
         self.next_token = next_token
+        # This parameter is required.
         self.org_id = org_id
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -51188,8 +51961,11 @@ class QueryUserHonorsShrinkRequest(TeaModel):
     ):
         self.tenant_context_shrink = tenant_context_shrink
         self.max_results = max_results
+        # This parameter is required.
         self.next_token = next_token
+        # This parameter is required.
         self.org_id = org_id
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -51540,8 +52316,11 @@ class RecallHonorRequest(TeaModel):
         user_id: str = None,
     ):
         self.tenant_context = tenant_context
+        # This parameter is required.
         self.honor_id = honor_id
+        # This parameter is required.
         self.org_id = org_id
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -51587,8 +52366,11 @@ class RecallHonorShrinkRequest(TeaModel):
         user_id: str = None,
     ):
         self.tenant_context_shrink = tenant_context_shrink
+        # This parameter is required.
         self.honor_id = honor_id
+        # This parameter is required.
         self.org_id = org_id
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -51762,6 +52544,7 @@ class ReceiverListReportHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -51887,8 +52670,11 @@ class ReceiverListReportRequest(TeaModel):
         size: int = None,
         tenant_context: ReceiverListReportRequestTenantContext = None,
     ):
+        # This parameter is required.
         self.offset = offset
+        # This parameter is required.
         self.report_id = report_id
+        # This parameter is required.
         self.size = size
         self.tenant_context = tenant_context
 
@@ -51934,8 +52720,11 @@ class ReceiverListReportShrinkRequest(TeaModel):
         size: int = None,
         tenant_context_shrink: str = None,
     ):
+        # This parameter is required.
         self.offset = offset
+        # This parameter is required.
         self.report_id = report_id
+        # This parameter is required.
         self.size = size
         self.tenant_context_shrink = tenant_context_shrink
 
@@ -52063,6 +52852,7 @@ class RedirectTaskHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -52165,13 +52955,18 @@ class RedirectTaskRequest(TeaModel):
         system_token: str = None,
         task_id: int = None,
     ):
+        # This parameter is required.
         self.app_type = app_type
         self.by_manager = by_manager
         self.language = language
+        # This parameter is required.
         self.now_action_executor_id = now_action_executor_id
+        # This parameter is required.
         self.process_instance_id = process_instance_id
         self.remark = remark
+        # This parameter is required.
         self.system_token = system_token
+        # This parameter is required.
         self.task_id = task_id
 
     def validate(self):
@@ -52307,6 +53102,7 @@ class RemoveAttendeeHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -52405,7 +53201,9 @@ class RemoveAttendeeRequest(TeaModel):
         event_id: str = None,
     ):
         self.attendees_to_remove = attendees_to_remove
+        # This parameter is required.
         self.calendar_id = calendar_id
+        # This parameter is required.
         self.event_id = event_id
 
     def validate(self):
@@ -52444,7 +53242,9 @@ class RemoveAttendeeShrinkRequest(TeaModel):
         event_id: str = None,
     ):
         self.attendees_to_remove_shrink = attendees_to_remove_shrink
+        # This parameter is required.
         self.calendar_id = calendar_id
+        # This parameter is required.
         self.event_id = event_id
 
     def validate(self):
@@ -52614,6 +53414,7 @@ class RemoveMeetingRoomsHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -52709,6 +53510,7 @@ class RemoveMeetingRoomsRequestMeetingRoomsToRemove(TeaModel):
         self,
         room_id: str = None,
     ):
+        # This parameter is required.
         self.room_id = room_id
 
     def validate(self):
@@ -52738,7 +53540,9 @@ class RemoveMeetingRoomsRequest(TeaModel):
         event_id: str = None,
         meeting_rooms_to_remove: List[RemoveMeetingRoomsRequestMeetingRoomsToRemove] = None,
     ):
+        # This parameter is required.
         self.calendar_id = calendar_id
+        # This parameter is required.
         self.event_id = event_id
         self.meeting_rooms_to_remove = meeting_rooms_to_remove
 
@@ -52785,7 +53589,9 @@ class RemoveMeetingRoomsShrinkRequest(TeaModel):
         event_id: str = None,
         meeting_rooms_to_remove_shrink: str = None,
     ):
+        # This parameter is required.
         self.calendar_id = calendar_id
+        # This parameter is required.
         self.event_id = event_id
         self.meeting_rooms_to_remove_shrink = meeting_rooms_to_remove_shrink
 
@@ -52897,6 +53703,7 @@ class SaveContentHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -52996,10 +53803,15 @@ class SaveContentRequestContents(TeaModel):
         sort: int = None,
         type: int = None,
     ):
+        # This parameter is required.
         self.content = content
+        # This parameter is required.
         self.content_type = content_type
+        # This parameter is required.
         self.key = key
+        # This parameter is required.
         self.sort = sort
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -53073,8 +53885,11 @@ class SaveContentRequest(TeaModel):
         template_id: str = None,
         tenant_context: SaveContentRequestTenantContext = None,
     ):
+        # This parameter is required.
         self.contents = contents
+        # This parameter is required.
         self.dd_from = dd_from
+        # This parameter is required.
         self.template_id = template_id
         self.tenant_context = tenant_context
 
@@ -53129,8 +53944,11 @@ class SaveContentShrinkRequest(TeaModel):
         template_id: str = None,
         tenant_context_shrink: str = None,
     ):
+        # This parameter is required.
         self.contents_shrink = contents_shrink
+        # This parameter is required.
         self.dd_from = dd_from
+        # This parameter is required.
         self.template_id = template_id
         self.tenant_context_shrink = tenant_context_shrink
 
@@ -53246,6 +54064,7 @@ class SaveFormDataHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -53345,10 +54164,14 @@ class SaveFormDataRequest(TeaModel):
         language: str = None,
         system_token: str = None,
     ):
+        # This parameter is required.
         self.app_type = app_type
+        # This parameter is required.
         self.form_data_json = form_data_json
+        # This parameter is required.
         self.form_uuid = form_uuid
         self.language = language
+        # This parameter is required.
         self.system_token = system_token
 
     def validate(self):
@@ -53478,6 +54301,7 @@ class SaveFormRemarkHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -53579,12 +54403,16 @@ class SaveFormRemarkRequest(TeaModel):
         reply_id: int = None,
         system_token: str = None,
     ):
+        # This parameter is required.
         self.app_type = app_type
         self.at_user_id = at_user_id
+        # This parameter is required.
         self.content = content
+        # This parameter is required.
         self.form_instance_id = form_instance_id
         self.language = language
         self.reply_id = reply_id
+        # This parameter is required.
         self.system_token = system_token
 
     def validate(self):
@@ -53722,6 +54550,7 @@ class SearchEmployeeFieldValuesHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -53990,6 +54819,7 @@ class SearchFormDataIdListHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -54096,9 +54926,11 @@ class SearchFormDataIdListRequest(TeaModel):
         search_field_json: str = None,
         system_token: str = None,
     ):
+        # This parameter is required.
         self.app_type = app_type
         self.create_from_time_gmt = create_from_time_gmt
         self.create_to_time_gmt = create_to_time_gmt
+        # This parameter is required.
         self.form_uuid = form_uuid
         self.language = language
         self.modified_from_time_gmt = modified_from_time_gmt
@@ -54107,6 +54939,7 @@ class SearchFormDataIdListRequest(TeaModel):
         self.page_number = page_number
         self.page_size = page_size
         self.search_field_json = search_field_json
+        # This parameter is required.
         self.system_token = system_token
 
     def validate(self):
@@ -54276,6 +55109,7 @@ class SearchFormDataSecondGenerationHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -54382,9 +55216,11 @@ class SearchFormDataSecondGenerationRequest(TeaModel):
         search_condition: str = None,
         system_token: str = None,
     ):
+        # This parameter is required.
         self.app_type = app_type
         self.create_from_time_gmt = create_from_time_gmt
         self.create_to_time_gmt = create_to_time_gmt
+        # This parameter is required.
         self.form_uuid = form_uuid
         self.modified_from_time_gmt = modified_from_time_gmt
         self.modified_to_time_gmt = modified_to_time_gmt
@@ -54393,6 +55229,7 @@ class SearchFormDataSecondGenerationRequest(TeaModel):
         self.page_number = page_number
         self.page_size = page_size
         self.search_condition = search_condition
+        # This parameter is required.
         self.system_token = system_token
 
     def validate(self):
@@ -54822,6 +55659,7 @@ class SearchFormDataSecondGenerationNoTableFieldHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -54928,9 +55766,11 @@ class SearchFormDataSecondGenerationNoTableFieldRequest(TeaModel):
         search_condition: str = None,
         system_token: str = None,
     ):
+        # This parameter is required.
         self.app_type = app_type
         self.create_from_time_gmt = create_from_time_gmt
         self.create_to_time_gmt = create_to_time_gmt
+        # This parameter is required.
         self.form_uuid = form_uuid
         self.modified_from_time_gmt = modified_from_time_gmt
         self.modified_to_time_gmt = modified_to_time_gmt
@@ -54939,6 +55779,7 @@ class SearchFormDataSecondGenerationNoTableFieldRequest(TeaModel):
         self.page_number = page_number
         self.page_size = page_size
         self.search_condition = search_condition
+        # This parameter is required.
         self.system_token = system_token
 
     def validate(self):
@@ -55368,6 +56209,7 @@ class SearchFormDatasHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -55475,11 +56317,13 @@ class SearchFormDatasRequest(TeaModel):
         search_field_json: str = None,
         system_token: str = None,
     ):
+        # This parameter is required.
         self.app_type = app_type
         self.create_from_time_gmt = create_from_time_gmt
         self.create_to_time_gmt = create_to_time_gmt
         self.current_page = current_page
         self.dynamic_order = dynamic_order
+        # This parameter is required.
         self.form_uuid = form_uuid
         self.language = language
         self.modified_from_time_gmt = modified_from_time_gmt
@@ -55487,6 +56331,7 @@ class SearchFormDatasRequest(TeaModel):
         self.originator_id = originator_id
         self.page_size = page_size
         self.search_field_json = search_field_json
+        # This parameter is required.
         self.system_token = system_token
 
     def validate(self):
@@ -55938,6 +56783,7 @@ class SearchInnerGroupsHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -56205,6 +57051,7 @@ class SendBannerHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -56511,6 +57358,7 @@ class SendPopupHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -56817,6 +57665,7 @@ class SendSearchShadeHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -57250,11 +58099,16 @@ class SetColumnsVisibilityRequest(TeaModel):
         visibility: str = None,
         workbook_id: str = None,
     ):
+        # This parameter is required.
         self.column = column
+        # This parameter is required.
         self.column_count = column_count
+        # This parameter is required.
         self.sheet_id = sheet_id
         self.tenant_context = tenant_context
+        # This parameter is required.
         self.visibility = visibility
+        # This parameter is required.
         self.workbook_id = workbook_id
 
     def validate(self):
@@ -57309,11 +58163,16 @@ class SetColumnsVisibilityShrinkRequest(TeaModel):
         visibility: str = None,
         workbook_id: str = None,
     ):
+        # This parameter is required.
         self.column = column
+        # This parameter is required.
         self.column_count = column_count
+        # This parameter is required.
         self.sheet_id = sheet_id
         self.tenant_context_shrink = tenant_context_shrink
+        # This parameter is required.
         self.visibility = visibility
+        # This parameter is required.
         self.workbook_id = workbook_id
 
     def validate(self):
@@ -57563,11 +58422,16 @@ class SetRowsVisibilityRequest(TeaModel):
         visibility: str = None,
         workbook_id: str = None,
     ):
+        # This parameter is required.
         self.row = row
+        # This parameter is required.
         self.row_count = row_count
+        # This parameter is required.
         self.sheet_id = sheet_id
         self.tenant_context = tenant_context
+        # This parameter is required.
         self.visibility = visibility
+        # This parameter is required.
         self.workbook_id = workbook_id
 
     def validate(self):
@@ -57622,11 +58486,16 @@ class SetRowsVisibilityShrinkRequest(TeaModel):
         visibility: str = None,
         workbook_id: str = None,
     ):
+        # This parameter is required.
         self.row = row
+        # This parameter is required.
         self.row_count = row_count
+        # This parameter is required.
         self.sheet_id = sheet_id
         self.tenant_context_shrink = tenant_context_shrink
+        # This parameter is required.
         self.visibility = visibility
+        # This parameter is required.
         self.workbook_id = workbook_id
 
     def validate(self):
@@ -57876,9 +58745,13 @@ class SimpleListReportRequest(TeaModel):
         template_name: str = None,
         tenant_context: SimpleListReportRequestTenantContext = None,
     ):
+        # This parameter is required.
         self.cursor = cursor
+        # This parameter is required.
         self.end_time = end_time
+        # This parameter is required.
         self.size = size
+        # This parameter is required.
         self.start_time = start_time
         self.template_name = template_name
         self.tenant_context = tenant_context
@@ -57935,9 +58808,13 @@ class SimpleListReportShrinkRequest(TeaModel):
         template_name: str = None,
         tenant_context_shrink: str = None,
     ):
+        # This parameter is required.
         self.cursor = cursor
+        # This parameter is required.
         self.end_time = end_time
+        # This parameter is required.
         self.size = size
+        # This parameter is required.
         self.start_time = start_time
         self.template_name = template_name
         self.tenant_context_shrink = tenant_context_shrink
@@ -58151,6 +59028,7 @@ class StartCloudRecordHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -58279,6 +59157,7 @@ class StartCloudRecordRequest(TeaModel):
         self.mode = mode
         self.small_window_position = small_window_position
         self.tenant_context = tenant_context
+        # This parameter is required.
         self.conference_id = conference_id
 
     def validate(self):
@@ -58326,6 +59205,7 @@ class StartCloudRecordShrinkRequest(TeaModel):
         self.mode = mode
         self.small_window_position = small_window_position
         self.tenant_context_shrink = tenant_context_shrink
+        # This parameter is required.
         self.conference_id = conference_id
 
     def validate(self):
@@ -58440,6 +59320,7 @@ class StartInstanceHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -58690,6 +59571,7 @@ class StatisticsListByTypeReportHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -58816,10 +59698,14 @@ class StatisticsListByTypeReportRequest(TeaModel):
         tenant_context: StatisticsListByTypeReportRequestTenantContext = None,
         type: int = None,
     ):
+        # This parameter is required.
         self.offset = offset
+        # This parameter is required.
         self.report_id = report_id
+        # This parameter is required.
         self.size = size
         self.tenant_context = tenant_context
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -58869,10 +59755,14 @@ class StatisticsListByTypeReportShrinkRequest(TeaModel):
         tenant_context_shrink: str = None,
         type: int = None,
     ):
+        # This parameter is required.
         self.offset = offset
+        # This parameter is required.
         self.report_id = report_id
+        # This parameter is required.
         self.size = size
         self.tenant_context_shrink = tenant_context_shrink
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -59003,6 +59893,7 @@ class StatisticsReportHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -59126,6 +60017,7 @@ class StatisticsReportRequest(TeaModel):
         report_id: str = None,
         tenant_context: StatisticsReportRequestTenantContext = None,
     ):
+        # This parameter is required.
         self.report_id = report_id
         self.tenant_context = tenant_context
 
@@ -59161,6 +60053,7 @@ class StatisticsReportShrinkRequest(TeaModel):
         report_id: str = None,
         tenant_context_shrink: str = None,
     ):
+        # This parameter is required.
         self.report_id = report_id
         self.tenant_context_shrink = tenant_context_shrink
 
@@ -59286,6 +60179,7 @@ class StopCloudRecordHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -59410,6 +60304,7 @@ class StopCloudRecordRequest(TeaModel):
         conference_id: str = None,
     ):
         self.tenant_context = tenant_context
+        # This parameter is required.
         self.conference_id = conference_id
 
     def validate(self):
@@ -59445,6 +60340,7 @@ class StopCloudRecordShrinkRequest(TeaModel):
         conference_id: str = None,
     ):
         self.tenant_context_shrink = tenant_context_shrink
+        # This parameter is required.
         self.conference_id = conference_id
 
     def validate(self):
@@ -59551,6 +60447,7 @@ class SubscribeCalendarHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -59646,6 +60543,7 @@ class SubscribeCalendarRequest(TeaModel):
         self,
         calendar_id: str = None,
     ):
+        # This parameter is required.
         self.calendar_id = calendar_id
 
     def validate(self):
@@ -59742,6 +60640,7 @@ class SyncDingTypeHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -59868,10 +60767,13 @@ class SyncDingTypeRequest(TeaModel):
         tenant_context: SyncDingTypeRequestTenantContext = None,
         work_no: str = None,
     ):
+        # This parameter is required.
         self.ding_type = ding_type
         self.is_dimission = is_dimission
+        # This parameter is required.
         self.source = source
         self.tenant_context = tenant_context
+        # This parameter is required.
         self.work_no = work_no
 
     def validate(self):
@@ -59921,10 +60823,13 @@ class SyncDingTypeShrinkRequest(TeaModel):
         tenant_context_shrink: str = None,
         work_no: str = None,
     ):
+        # This parameter is required.
         self.ding_type = ding_type
         self.is_dimission = is_dimission
+        # This parameter is required.
         self.source = source
         self.tenant_context_shrink = tenant_context_shrink
+        # This parameter is required.
         self.work_no = work_no
 
     def validate(self):
@@ -60054,6 +60959,7 @@ class TerminateInstanceHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -60274,6 +61180,7 @@ class UnsubscribeCalendarHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -60369,6 +61276,7 @@ class UnsubscribeCalendarRequest(TeaModel):
         self,
         calendar_id: str = None,
     ):
+        # This parameter is required.
         self.calendar_id = calendar_id
 
     def validate(self):
@@ -60471,6 +61379,7 @@ class UpdateFormDataHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -60703,6 +61612,7 @@ class UpdateInstanceHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -60929,6 +61839,7 @@ class UpdateLiveHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -61059,10 +61970,14 @@ class UpdateLiveRequest(TeaModel):
     ):
         self.cover_url = cover_url
         self.introduction = introduction
+        # This parameter is required.
         self.live_id = live_id
+        # This parameter is required.
         self.pre_end_time = pre_end_time
+        # This parameter is required.
         self.pre_start_time = pre_start_time
         self.tenant_context = tenant_context
+        # This parameter is required.
         self.title = title
 
     def validate(self):
@@ -61124,10 +62039,14 @@ class UpdateLiveShrinkRequest(TeaModel):
     ):
         self.cover_url = cover_url
         self.introduction = introduction
+        # This parameter is required.
         self.live_id = live_id
+        # This parameter is required.
         self.pre_end_time = pre_end_time
+        # This parameter is required.
         self.pre_start_time = pre_start_time
         self.tenant_context_shrink = tenant_context_shrink
+        # This parameter is required.
         self.title = title
 
     def validate(self):
@@ -61254,6 +62173,7 @@ class UpdateMeetingRoomHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -61764,6 +62684,7 @@ class UpdateMeetingRoomGroupHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -61888,6 +62809,7 @@ class UpdateMeetingRoomGroupRequest(TeaModel):
         group_name: str = None,
         tenant_context: UpdateMeetingRoomGroupRequestTenantContext = None,
     ):
+        # This parameter is required.
         self.group_id = group_id
         self.group_name = group_name
         self.tenant_context = tenant_context
@@ -61929,6 +62851,7 @@ class UpdateMeetingRoomGroupShrinkRequest(TeaModel):
         group_name: str = None,
         tenant_context_shrink: str = None,
     ):
+        # This parameter is required.
         self.group_id = group_id
         self.group_name = group_name
         self.tenant_context_shrink = tenant_context_shrink
@@ -62212,10 +63135,13 @@ class UpdateRangeRequest(TeaModel):
         self.background_colors = background_colors
         self.hyperlinks = hyperlinks
         self.number_format = number_format
+        # This parameter is required.
         self.range_address = range_address
+        # This parameter is required.
         self.sheet_id = sheet_id
         self.tenant_context = tenant_context
         self.values = values
+        # This parameter is required.
         self.workbook_id = workbook_id
 
     def validate(self):
@@ -62299,10 +63225,13 @@ class UpdateRangeShrinkRequest(TeaModel):
         self.background_colors_shrink = background_colors_shrink
         self.hyperlinks_shrink = hyperlinks_shrink
         self.number_format = number_format
+        # This parameter is required.
         self.range_address = range_address
+        # This parameter is required.
         self.sheet_id = sheet_id
         self.tenant_context_shrink = tenant_context_shrink
         self.values_shrink = values_shrink
+        # This parameter is required.
         self.workbook_id = workbook_id
 
     def validate(self):
@@ -62433,6 +63362,7 @@ class UpdateScheduleConfSettingsHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -62846,6 +63776,7 @@ class UpdateScheduleConferenceHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -62972,10 +63903,14 @@ class UpdateScheduleConferenceRequest(TeaModel):
         tenant_context: UpdateScheduleConferenceRequestTenantContext = None,
         title: str = None,
     ):
+        # This parameter is required.
         self.end_time = end_time
+        # This parameter is required.
         self.schedule_conference_id = schedule_conference_id
+        # This parameter is required.
         self.start_time = start_time
         self.tenant_context = tenant_context
+        # This parameter is required.
         self.title = title
 
     def validate(self):
@@ -63025,10 +63960,14 @@ class UpdateScheduleConferenceShrinkRequest(TeaModel):
         tenant_context_shrink: str = None,
         title: str = None,
     ):
+        # This parameter is required.
         self.end_time = end_time
+        # This parameter is required.
         self.schedule_conference_id = schedule_conference_id
+        # This parameter is required.
         self.start_time = start_time
         self.tenant_context_shrink = tenant_context_shrink
+        # This parameter is required.
         self.title = title
 
     def validate(self):
@@ -63147,6 +64086,7 @@ class UpdateStatusHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -63436,6 +64376,7 @@ class UpdateSubscribedCalendarsHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -63562,6 +64503,7 @@ class UpdateSubscribedCalendarsRequest(TeaModel):
         name: str = None,
         subscribe_scope: UpdateSubscribedCalendarsRequestSubscribeScope = None,
     ):
+        # This parameter is required.
         self.calendar_id = calendar_id
         self.description = description
         self.managers = managers
@@ -63615,6 +64557,7 @@ class UpdateSubscribedCalendarsShrinkRequest(TeaModel):
         name: str = None,
         subscribe_scope_shrink: str = None,
     ):
+        # This parameter is required.
         self.calendar_id = calendar_id
         self.description = description
         self.managers_shrink = managers_shrink
@@ -63873,6 +64816,7 @@ class UpdateTodoTaskRequest(TeaModel):
         self.executor_ids = executor_ids
         self.participant_ids = participant_ids
         self.subject = subject
+        # This parameter is required.
         self.task_id = task_id
 
     def validate(self):
@@ -63944,6 +64888,7 @@ class UpdateTodoTaskShrinkRequest(TeaModel):
         self.executor_ids_shrink = executor_ids_shrink
         self.participant_ids_shrink = participant_ids_shrink
         self.subject = subject
+        # This parameter is required.
         self.task_id = task_id
 
     def validate(self):
@@ -64235,6 +65180,7 @@ class UpdateTodoTaskExecutorStatusRequest(TeaModel):
         self.tenant_context = tenant_context
         self.executor_status_list = executor_status_list
         self.operator_id = operator_id
+        # This parameter is required.
         self.task_id = task_id
 
     def validate(self):
@@ -64291,6 +65237,7 @@ class UpdateTodoTaskExecutorStatusShrinkRequest(TeaModel):
         self.tenant_context_shrink = tenant_context_shrink
         self.executor_status_list_shrink = executor_status_list_shrink
         self.operator_id = operator_id
+        # This parameter is required.
         self.task_id = task_id
 
     def validate(self):
@@ -64405,6 +65352,7 @@ class UpdateUserAvatarHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -64619,6 +65567,7 @@ class UpdateWorkspaceDocMembersHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -64784,8 +65733,10 @@ class UpdateWorkspaceDocMembersRequest(TeaModel):
         workspace_id: str = None,
     ):
         self.members = members
+        # This parameter is required.
         self.node_id = node_id
         self.tenant_context = tenant_context
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -64840,8 +65791,10 @@ class UpdateWorkspaceDocMembersShrinkRequest(TeaModel):
         workspace_id: str = None,
     ):
         self.members_shrink = members_shrink
+        # This parameter is required.
         self.node_id = node_id
         self.tenant_context_shrink = tenant_context_shrink
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -64950,6 +65903,7 @@ class UpdateWorkspaceMembersHeadersAccountContext(TeaModel):
         self,
         account_id: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -65047,8 +66001,11 @@ class UpdateWorkspaceMembersRequestMembers(TeaModel):
         member_type: str = None,
         role_type: str = None,
     ):
+        # This parameter is required.
         self.member_id = member_id
+        # This parameter is required.
         self.member_type = member_type
+        # This parameter is required.
         self.role_type = role_type
 
     def validate(self):
@@ -65113,8 +66070,10 @@ class UpdateWorkspaceMembersRequest(TeaModel):
         tenant_context: UpdateWorkspaceMembersRequestTenantContext = None,
         workspace_id: str = None,
     ):
+        # This parameter is required.
         self.members = members
         self.tenant_context = tenant_context
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -65163,8 +66122,10 @@ class UpdateWorkspaceMembersShrinkRequest(TeaModel):
         tenant_context_shrink: str = None,
         workspace_id: str = None,
     ):
+        # This parameter is required.
         self.members_shrink = members_shrink
         self.tenant_context_shrink = tenant_context_shrink
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -65397,8 +66358,11 @@ class UploadMediaRequest(TeaModel):
     ):
         self.tenant_context = tenant_context
         self.media_name = media_name
+        # This parameter is required.
         self.media_type = media_type
+        # This parameter is required.
         self.org_id = org_id
+        # This parameter is required.
         self.url = url
 
     def validate(self):
@@ -65450,8 +66414,11 @@ class UploadMediaShrinkRequest(TeaModel):
     ):
         self.tenant_context_shrink = tenant_context_shrink
         self.media_name = media_name
+        # This parameter is required.
         self.media_type = media_type
+        # This parameter is required.
         self.org_id = org_id
+        # This parameter is required.
         self.url = url
 
     def validate(self):
@@ -65697,9 +66664,13 @@ class WearOrgHonorRequest(TeaModel):
         wear: bool = None,
     ):
         self.tenant_context = tenant_context
+        # This parameter is required.
         self.honor_id = honor_id
+        # This parameter is required.
         self.org_id = org_id
+        # This parameter is required.
         self.user_id = user_id
+        # This parameter is required.
         self.wear = wear
 
     def validate(self):
@@ -65750,9 +66721,13 @@ class WearOrgHonorShrinkRequest(TeaModel):
         wear: bool = None,
     ):
         self.tenant_context_shrink = tenant_context_shrink
+        # This parameter is required.
         self.honor_id = honor_id
+        # This parameter is required.
         self.org_id = org_id
+        # This parameter is required.
         self.user_id = user_id
+        # This parameter is required.
         self.wear = wear
 
     def validate(self):
