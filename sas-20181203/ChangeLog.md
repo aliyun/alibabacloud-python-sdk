@@ -1,3 +1,7 @@
+2024-05-10 Version: 2.29.2
+- Update API ListCheckResult: update response param.
+
+
 2024-05-08 Version: 2.29.1
 - Update API DescribeAssetDetailByUuid: update response param.
 - Update API ListCheckItemWarningSummary: update response param.
