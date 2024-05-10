@@ -19,9 +19,13 @@ class CancelStackOperationRequest(TeaModel):
         # *   Quick: cancels the operations on the stack at the earliest opportunity. In this case, Resource Orchestration Service (ROS) stops scheduling new resources and stops running resources at the earliest opportunity. If you use this method, the resource status may become invalid and subsequent stack operations may be affected.
         # *   Safe (default): cancels the operations on the stack in a secure manner. In this case, ROS stops scheduling new resources and waits for running resources to be stopped.
         self.cancel_type = cancel_type
-        # The region ID of the stack. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
+        # The region ID of the stack. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/131035.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The stack ID.
+        # 
+        # This parameter is required.
         self.stack_id = stack_id
 
     def validate(self):
@@ -137,9 +141,13 @@ class CancelUpdateStackRequest(TeaModel):
         # *   Quick: cancels the update of a stack as soon as possible.
         # *   Safe: cancels the update of a stack as safely as possible.
         self.cancel_type = cancel_type
-        # The region ID of the stack. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
+        # The region ID of the stack. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/131035.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the stack.
+        # 
+        # This parameter is required.
         self.stack_id = stack_id
 
     def validate(self):
@@ -248,6 +256,8 @@ class ContinueCreateStackRequestParameters(TeaModel):
         # The name of template parameter N that you want to use to override a specific parameter. If you do not specify the name and value of a template parameter, ROS uses the name and value specified in the previous operation that was performed to create the stack. Maximum value of N: 200.
         # 
         # > This parameter takes effect only when Mode is set to Recreate.
+        # 
+        # This parameter is required.
         self.parameter_key = parameter_key
         # The value of template parameter N that you want to use to override a specific parameter. Maximum value of N: 200.
         # 
@@ -257,6 +267,8 @@ class ContinueCreateStackRequestParameters(TeaModel):
         # *   The template parameters can be referenced only by resources that ROS continues to create.
         # 
         # > This parameter takes effect only when Mode is set to Recreate.
+        # 
+        # This parameter is required.
         self.parameter_value = parameter_value
 
     def validate(self):
@@ -336,9 +348,9 @@ class ContinueCreateStackRequest(TeaModel):
         self.parallelism = parallelism
         # The template parameters that you want to use to override specific parameters.
         self.parameters = parameters
-        # The name of the RAM role. Resource Orchestration Service (ROS) assumes the RAM role to create the stack and uses the credentials of the role to call the APIs of Alibaba Cloud services.\
-        # ROS assumes the RAM role to perform operations on the stack. If you have permissions to perform operations on the stack but do not have permissions to use the RAM role, ROS still assumes the RAM role. You must make sure that the least privileges are granted to the RAM role.\
-        # If you do not specify this parameter, ROS assumes the existing role that is associated with the stack. If no roles are available, ROS uses a temporary credential that is generated from the credentials of your account.\
+        # The name of the RAM role. Resource Orchestration Service (ROS) assumes the RAM role to create the stack and uses the credentials of the role to call the APIs of Alibaba Cloud services.\\
+        # ROS assumes the RAM role to perform operations on the stack. If you have permissions to perform operations on the stack but do not have permissions to use the RAM role, ROS still assumes the RAM role. You must make sure that the least privileges are granted to the RAM role.\\
+        # If you do not specify this parameter, ROS assumes the existing role that is associated with the stack. If no roles are available, ROS uses a temporary credential that is generated from the credentials of your account.\\
         # The name of the RAM role can be up to 64 bytes in length.
         self.ram_role_name = ram_role_name
         # The options that ROS adopts when ROS continues to create the stack.
@@ -347,11 +359,15 @@ class ContinueCreateStackRequest(TeaModel):
         # 
         # > This parameter is available only for ROS stacks.
         self.recreating_resources = recreating_resources
-        # The region ID of the stack. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
+        # The region ID of the stack. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/131035.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The stack ID.
+        # 
+        # This parameter is required.
         self.stack_id = stack_id
-        # The structure that contains the template body. The template body must be 1 to 524,288 bytes in length.\
+        # The structure that contains the template body. The template body must be 1 to 524,288 bytes in length.\\
         # If the length of the template body exceeds the upper limit, we recommend that you add parameters to the HTTP POST request body to prevent request failures caused by excessively long URLs.
         # 
         # A ROS template is subject to the following limits:
@@ -598,10 +614,14 @@ class CreateChangeSetRequestParameters(TeaModel):
         # The key of parameter N that is defined in the template. If you do not specify the key and value of a parameter, ROS uses the default name and value that are defined in the template. Maximum value of N: 200.
         # 
         # >  Parameters is optional. If you specify Parameters, you must also specify Parameters.N.ParameterKey.
+        # 
+        # This parameter is required.
         self.parameter_key = parameter_key
         # The value of parameter N that is defined in the template. Maximum value of N: 200.
         # 
         # >  Parameters is optional. If you specify Parameters, you must also specify Parameters.N.ParameterValue.
+        # 
+        # This parameter is required.
         self.parameter_value = parameter_value
 
     def validate(self):
@@ -635,18 +655,20 @@ class CreateChangeSetRequestResourcesToImport(TeaModel):
         resource_identifier: str = None,
         resource_type: str = None,
     ):
-        # The logical ID of resource N that you want to import. The logical ID specifies the name of resource N that is defined in the template.
+        # The logical ID of resource N. The logical ID is the name of the resource defined in the template.
         # 
-        # > This parameter takes effect only if you set ChangeSetType to IMPORT. ResourcesToImport is optional. If you specify ResourcesToImport, you must also specify ResourcesToImport.N.LogicalResourceId.
+        # >  This parameter takes effect only when ChangeSetType is set to IMPORT. ResourcesToImport is optional. If you specify ResourcesToImport, you must specify ResourcesToImport.N.LogicalResourceId.
         self.logical_resource_id = logical_resource_id
-        # The key-value mapping between strings. The value is a JSON string that identifies resource N that you want to import.\
-        # A key is an identifier for a resource and a value is an assignment of data to the key. For example, VpcId is a key that indicates the ID of a virtual private cloud (VPC), and `vpc-2zevx9ios****` is a value that is assigned to VpcId. You can call the [GetTemplateSummary](~~172485~~) operation to obtain the key of a resource.
+        # The key-value mapping between strings. The key-value mapping is used to identify resource N that you want to import. The key-value mapping must be a JSON string.\\
+        # A key is an identifier property of a resource and a value is the property value. For example, the key of the ALIYUN::ECS::VPC resource is VpcId and the value is `vpc-2zevx9ios****`.
         # 
-        # > This parameter takes effect only if you set ChangeSetType to IMPORT. ResourcesToImport is optional. If you specify ResourcesToImport, you must also specify ResourcesToImport.N.ResourceIdentifier.
+        # You can call the [GetTemplateSummary](https://help.aliyun.com/document_detail/172485.html) operation to query the identifier property of the resource.
+        # 
+        # >  This parameter takes effect only when ChangeSetType is set to IMPORT. ResourcesToImport is optional. If you specify ResourcesToImport, you must specify ResourcesToImport.N.ResourceIdentifier.
         self.resource_identifier = resource_identifier
-        # The type of resource N that you want to import. The resource type must be the same as the resource type that is defined in the template.
+        # The type of resource N. The resource type must be the same as the resource type that is defined in the template.
         # 
-        # > This parameter takes effect only if you set ChangeSetType to IMPORT. ResourcesToImport is optional. If you specify ResourcesToImport, you must also specify ResourcesToImport.N.ResourceType.
+        # >  This parameter takes effect only when ChangeSetType is set to IMPORT. ResourcesToImport is optional. If you specify ResourcesToImport, you must specify ResourcesToImport.N.ResourceType.
         self.resource_type = resource_type
 
     def validate(self):
@@ -706,10 +728,12 @@ class CreateChangeSetRequest(TeaModel):
         timeout_in_minutes: int = None,
         use_previous_parameters: bool = None,
     ):
-        # The name of the change set.\
-        # The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (\_). The name must start with a digit or a letter.
+        # The name of the change set.\\
+        # The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). The name must start with a digit or a letter.
         # 
         # > Make sure that the name is unique among all names of change sets that are associated with the specified stack.
+        # 
+        # This parameter is required.
         self.change_set_name = change_set_name
         # The type of the change set. Valid values:
         # 
@@ -717,16 +741,21 @@ class CreateChangeSetRequest(TeaModel):
         # *   UPDATE (default): creates a change set for an existing stack.
         # *   IMPORT: creates a change set for a new stack or an existing stack to import resources that are not managed by ROS.
         # 
-        # If you create a change set for a new stack, ROS generates a unique stack ID for the stack. The stack remains in the REVIEW_IN_PROGRESS state until you execute the change set.\
-        # If you want to create a change set for a new stack, do not set ChangeSetType to UPDATE. If you want to create a change set for an existing stack, do not set ChangeSetType to CREATE.
+        # If you set ChangeSetType to CREATE, ROS creates a stack. The stack remains in the `REVIEW_IN_PROGRESS` state until you execute the change set.
+        # 
+        # > 
+        # 
+        # *   You cannot set ChangeSetType to UPDATE when you create a change set for a new stack. You cannot set ChangeSetType to CREATE when you create a change set for an existing stack.
+        # 
+        # *   If you set ChangeSetType to Import, you cannot configure a stack policy. You can specify ChangeSetType only when you create or update a stack.
         self.change_set_type = change_set_type
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests.\
-        # The token can contain letters, digits, hyphens (-), and underscores (\_) and cannot exceed 64 characters in length.\
-        # For more information, see [How to ensure idempotence](~~134212~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests.\\
+        # The token can contain letters, digits, hyphens (-), and underscores (_) and cannot exceed 64 characters in length.\\
+        # For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/134212.html).
         self.client_token = client_token
         # The description of the change set. The description can be up to 1,024 bytes in length.
         self.description = description
-        # Specifies whether to disable rollback when the stack fails to be created.\
+        # Specifies whether to disable rollback when the stack fails to be created.\\
         # Valid values:
         # 
         # *   true: disables rollback for the stack when the stack fails to be created.
@@ -753,12 +782,18 @@ class CreateChangeSetRequest(TeaModel):
         self.parallelism = parallelism
         # The parameters that are defined in the template.
         self.parameters = parameters
-        # The name of the Resource Access Management (RAM) role. Resource Orchestration Service (ROS) assumes the RAM role to create the stack and uses the credentials of the role to call the APIs of Alibaba Cloud services.\
-        # ROS assumes the role to perform operations on the stack. If you have permissions to perform operations on the stack but do not have permissions to use the RAM role, ROS still assumes the RAM role. You must make sure that the least privileges are granted to the RAM role.\
-        # If you do not specify this parameter, ROS uses the existing role that is associated with the stack. If no roles are available for ROS to assume, ROS uses a temporary credential that is generated from the credentials of your Alibaba Cloud account.\
-        # The name of the RAM role can be up to 64 bytes in length.
+        # The name of the Resource Access Management (RAM) role. ROS assumes the RAM role to create the stack and uses the credentials of the role to call the APIs of Alibaba Cloud services.\\
+        # ROS assumes the RAM role to perform operations on the stack. If you have permissions to perform operations on the stack, ROS assumes the RAM role even if you do not have permissions to use the RAM role. You must make sure that permissions are granted to the RAM role based on the principle of least privilege.\\
+        # If you do not specify this parameter, ROS assumes the existing role of the stack. If no roles are available, ROS uses a temporary credential that is generated from the credentials of your account.\\
+        # The RAM role name can be up to 64 characters in length.
+        # 
+        # For more information about RAM roles, see [Use a stack role](https://help.aliyun.com/document_detail/2568025.html).
         self.ram_role_name = ram_role_name
-        # The region ID of the change set. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
+        # The region ID of the change set.
+        # 
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/131035.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # Specifies whether to enable replacement update if a resource property is changed and you cannot modify the new resource property. For a change, the physical ID of the resource remains unchanged. For a replacement update, the existing resource is deleted, a new resource is created, and the physical ID of the resource is changed. Valid values:
         # 
@@ -767,26 +802,31 @@ class CreateChangeSetRequest(TeaModel):
         # 
         # > Operations that you perform to modify the resource properties for an update take precedence over operations you perform to replace the resource properties for an update. This parameter takes effect only if you set ChangeSetType to UPDATE.
         self.replacement_option = replacement_option
-        # The resources that you want to import into the stack.
+        # The resources that you want to import to the stack.
         self.resources_to_import = resources_to_import
-        # The ID of the stack for which you want to create a change set. ROS compares the stack information with the information that you submit, such as a modified template or a changed parameter value, to generate the change set.
+        # The ID of the stack for which you want to create the change set. ROS compares the stack information with the information that you submit, such as an updated template or parameter value, to generate the change set.\\
+        # You can call the [ListStacks](https://help.aliyun.com/document_detail/610818.html) operation to query the stack ID.
         # 
-        # > This parameter takes effect only for change sets of the UPDATE or IMPORT.
+        # >  This parameter takes effect only when ChangeSetType is set to UPDATE or IMPORT.
         self.stack_id = stack_id
-        # The name of the stack for which you want to create the change set.\
-        # The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (\_). The name must start with a digit or a letter.
+        # The name of the stack for which you want to create the change set.\\
+        # The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). The name must start with a digit or a letter.
         # 
         # > This parameter takes effect only if you set ChangeSetType to CREATE or IMPORT.
         self.stack_name = stack_name
-        # The structure of the stack policy body. The policy body must be 1 to 16,384 bytes in length. If you set ChangeSetType to CREATE, you can specify StackPolicyBody or StackPolicyURL. If you set ChangeSetType to UPDATE, you can specify only one of the following parameters:
+        # The structure that contains the stack policy body. The policy body must be 1 to 16,384 bytes in length.
+        # 
+        # If you set ChangeSetType to **CREATE**, you can specify StackPolicyBody or StackPolicyURL.
+        # 
+        # If you set ChangeSetType to **UPDATE**, you can specify only one of the following parameters:
         # 
         # *   StackPolicyBody
         # *   StackPolicyURL
         # *   StackPolicyDuringUpdateBody
         # *   StackPolicyDuringUpdateURL
         self.stack_policy_body = stack_policy_body
-        # The structure of the temporary overriding stack policy. The policy body must be 1 to 16,384 bytes in length.\
-        # If you need to update protected resources, specify a temporary overriding stack policy for the resources during the update. If you do not specify a temporary overriding stack policy, the existing stack policy that is associated with the stack is used.\
+        # The structure of the temporary overriding stack policy. The policy body must be 1 to 16,384 bytes in length.\\
+        # If you need to update protected resources, specify a temporary overriding stack policy for the resources during the update. If you do not specify a temporary overriding stack policy, the existing stack policy that is associated with the stack is used.\\
         # This parameter takes effect only if you set ChangeSetType to UPDATE. You can specify only one of the following parameters:
         # 
         # *   StackPolicyBody
@@ -798,7 +838,7 @@ class CreateChangeSetRequest(TeaModel):
         # 
         # > If you do not specify the region of the OSS bucket, the value of RegionId is used.
         # 
-        # The URL can be up to 1,350 bytes in length.\
+        # The URL can be up to 1,350 bytes in length.\\
         # If you need to update protected resources, specify a temporary overriding stack policy for the resources during the update. If you do not specify a stack policy, the existing policy that is associated with the stack is used. This parameter takes effect only if you set ChangeSetType to UPDATE. You can specify only one of the following parameters:
         # 
         # *   StackPolicyBody
@@ -806,14 +846,15 @@ class CreateChangeSetRequest(TeaModel):
         # *   StackPolicyDuringUpdateBody
         # *   StackPolicyDuringUpdateURL
         self.stack_policy_during_update_url = stack_policy_during_update_url
-        # The URL of the file that contains the stack policy. The URL must point to a policy that is located on an HTTP or HTTPS web server or in an Object Storage Service (OSS) bucket, such as oss://ros/stack-policy/demo and oss://ros/stack-policy/demo?RegionId=cn-hangzhou. The policy file can be up to 16,384 bytes in length.
+        # The URL of the file that contains the stack policy. The URL must point to a policy that is located on an HTTP or HTTPS web server or in an Object Storage Service (OSS) bucket, such as oss://ros/stack-policy/demo or oss://ros/stack-policy/demo?RegionId=cn-hangzhou. The policy file can be up to 16,384 bytes in length.
         # 
-        # > If you do not specify the region of the OSS bucket, the value of RegionId is used.
-        # 
-        # You can specify only one of the following parameters: StackPolicyBody and StackPolicyURL.\
         # The URL can be up to 1,350 bytes in length.
         # 
-        # If you set ChangeSetType to CREATE, you can specify StackPolicyBody or StackPolicyURL. If you set ChangeSetType to UPDATE, you can specify only one of the following parameters:
+        # >  If you do not specify the region ID of the OSS bucket, the value of RegionId is used.
+        # 
+        # If you set ChangeSetType to **CREATE**, you can specify StackPolicyBody or StackPolicyURL.
+        # 
+        # If you set ChangeSetType to **UPDATE**, you can specify only one of the following parameters:
         # 
         # *   StackPolicyBody
         # *   StackPolicyURL
@@ -821,11 +862,19 @@ class CreateChangeSetRequest(TeaModel):
         # *   StackPolicyDuringUpdateURL
         self.stack_policy_url = stack_policy_url
         self.template_body = template_body
-        # The ID of the template. This parameter applies to shared and private templates.
+        # The template ID. This parameter applies to shared templates and private templates.
         # 
-        # You can specify only one of the following parameters: TemplateBody, TemplateURL, and TemplateId.
+        # You can call the [ListTemplates](https://help.aliyun.com/document_detail/610842.html) operation to query the template ID.
+        # 
+        # >  You can specify only one of the following parameters: TemplateBody, TemplateURL, and TemplateId.
         self.template_id = template_id
-        # The ID of the scenario template.
+        # The ID of the resource scenario. In this example, this parameter specifies the ID of a resource management scenario.
+        # 
+        # This parameter takes effect only when ChangeSetType is set to IMPORT. TemplateScratchId is supported only when you import resources to create a new stack.
+        # 
+        # If you want to use a resource management scenario to import resources, you can specify only TemplateScratchId rather than configuring parameters related to templates.
+        # 
+        # You can call the [ListTemplateScratches](https://help.aliyun.com/document_detail/610832.html) operation to query the ID of the resource management scenario.
         self.template_scratch_id = template_scratch_id
         # The URL of the file that contains the template body. The URL must point to a template that is located on an HTTP or HTTPS web server or in an OSS bucket, such as oss://ros/template/demo and oss://ros/template/demo?RegionId=cn-hangzhou. The template body can be up to 524,288 bytes in length.
         # 
@@ -839,7 +888,7 @@ class CreateChangeSetRequest(TeaModel):
         # 
         # > This parameter takes effect only if you specify TemplateId.
         self.template_version = template_version
-        # The amount of time that can elapse before the stack enters the CREATE_FAILED or UPDATE_FAILED state.\
+        # The amount of time that can elapse before the stack enters the CREATE_FAILED or UPDATE_FAILED state.\\
         # If you set ChangeSetType to CREATE, this parameter is required. If you set ChangeSetType to UPDATE, this parameter is optional.
         # 
         # *   Unit: minutes.
@@ -1248,17 +1297,21 @@ class CreateStackRequestParameters(TeaModel):
     ):
         # The key of parameter N that is defined in the template. If you do not specify the name and value of a parameter, ROS uses the default name and value that are specified in the template.
         # 
-        # Maximum value of N: 200.\
+        # Maximum value of N: 200.\\
         # The name must be 1 to 128 characters in length, and cannot contain `http://` or `https://`. It cannot start with `aliyun` or `acs:`.
         # 
         # > The Parameters parameter is optional. If you specify Parameters, you must specify Parameters.N.ParameterKey and Parameters.N.ParameterValue.
+        # 
+        # This parameter is required.
         self.parameter_key = parameter_key
         # The value of parameter N that is defined in the template.
         # 
-        # Maximum value of N: 200.\
+        # Maximum value of N: 200.\\
         # The value can be up to 128 characters in length, and cannot contain `http://` or `https://`. It cannot start with `aliyun` or `acs:`.
         # 
         # > The Parameters parameter is optional. If you specify Parameters, you must specify Parameters.N.ParameterKey and Parameters.N.ParameterValue.
+        # 
+        # This parameter is required.
         self.parameter_value = parameter_value
 
     def validate(self):
@@ -1296,13 +1349,15 @@ class CreateStackRequestTags(TeaModel):
         # Valid values of N: 1 to 20.
         # 
         # > - The Tags parameter is optional. If you specify Tags, you must specify Tags.N.Key.
-        # > -  The tag of a stack is propagated to each resource that supports the tag feature in the stack. For more information, see [Propagate tags](~~201421~~).
+        # > -  The tag of a stack is propagated to each resource that supports the tag feature in the stack. For more information, see [Propagate tags](https://help.aliyun.com/document_detail/201421.html).
+        # 
+        # This parameter is required.
         self.key = key
         # The value of tag N that you want to add to the stack.
         # 
         # Valid values of N: 1 to 20.
         # 
-        # > The tag of a stack is propagated to each resource that supports the tag feature in the stack. For more information, see [Propagate tags](~~201421~~).
+        # > The tag of a stack is propagated to each resource that supports the tag feature in the stack. For more information, see [Propagate tags](https://help.aliyun.com/document_detail/201421.html).
         self.value = value
 
     def validate(self):
@@ -1355,9 +1410,9 @@ class CreateStackRequest(TeaModel):
         template_version: str = None,
         timeout_in_minutes: int = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can be up to 64 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can be up to 64 characters in length, and can contain letters, digits, hyphens (-), and underscores (_).
         # 
-        # For more information, see [Ensure idempotence](~~134212~~).
+        # For more information, see [Ensure idempotence](https://help.aliyun.com/document_detail/134212.html).
         self.client_token = client_token
         # The creation option for the stack. Valid values:
         # 
@@ -1396,7 +1451,7 @@ class CreateStackRequest(TeaModel):
         # 
         # > This feature is supported in the China (Hangzhou), China (Shanghai), China (Beijing), China (Hong Kong), and China (Zhangjiakou) regions.
         # 
-        # Maximum value of N: 5. When the status of a stack changes, ROS sends a notification to the specified URL. When rollback is enabled for the stack, notifications are sent if the stack is in the CREATE_ROLLBACK or ROLLBACK state, but are not sent if the stack is in the CREATE_FAILED, UPDATE_FAILED, or IN_PROGRESS state.\
+        # Maximum value of N: 5. When the status of a stack changes, ROS sends a notification to the specified URL. When rollback is enabled for the stack, notifications are sent if the stack is in the CREATE_ROLLBACK or ROLLBACK state, but are not sent if the stack is in the CREATE_FAILED, UPDATE_FAILED, or IN_PROGRESS state.\\
         # ROS sends notifications regardless of whether you specify the Outputs section. The following sample code provides an example on the content of a notification:
         # 
         #     {
@@ -1423,21 +1478,25 @@ class CreateStackRequest(TeaModel):
         self.parallelism = parallelism
         # The parameters that are defined in the template.
         self.parameters = parameters
-        # The name of the RAM role. ROS assumes the RAM role to create the stack and uses the credentials of the role to call the APIs of Alibaba Cloud services.\
+        # The name of the RAM role. ROS assumes the RAM role to create the stack and uses the credentials of the role to call the APIs of Alibaba Cloud services.\\
         # ROS assumes the RAM role to perform operations on the stack. If you have permissions to perform operations on the stack but do not have permissions to use the RAM role, ROS still assumes the RAM role. You must make sure that the least privileges are granted to the RAM role.
         # 
         # If you do not specify this parameter, ROS assumes the existing role that is associated with the stack. If no roles are available, ROS uses a temporary credential that is generated from the credentials of your account.
         # 
         # The RAM role name can be up to 64 characters in length.
         self.ram_role_name = ram_role_name
-        # The region ID of the stack. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
+        # The region ID of the stack. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/131035.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group. If you leave this parameter empty, the stack is added to the default resource group.
         # 
-        # For more information about resource groups, see the "Resource group" section of the [What is Resource Management?](~~94475~~) topic.
+        # For more information about resource groups, see the "Resource group" section of the [What is Resource Management?](https://help.aliyun.com/document_detail/94475.html) topic.
         self.resource_group_id = resource_group_id
-        # The name of the stack.\
-        # The name can be up to 255 characters in length, and can contain digits, letters, hyphens (-), and underscores (\_). It must start with a letter.
+        # The name of the stack.\\
+        # The name can be up to 255 characters in length, and can contain digits, letters, hyphens (-), and underscores (_). It must start with a letter.
+        # 
+        # This parameter is required.
         self.stack_name = stack_name
         # The structure that contains the stack policy body. The policy body must be 1 to 16,384 bytes in length.
         # 
@@ -1458,13 +1517,13 @@ class CreateStackRequest(TeaModel):
         self.template_id = template_id
         # The scenario ID.
         # 
-        # For more information about how to query the scenario ID, see [ListTemplateScratches](~~363050~~).
+        # For more information about how to query the scenario ID, see [ListTemplateScratches](https://help.aliyun.com/document_detail/363050.html).
         # 
         # > You must and can specify only one of the following parameters: TemplateBody, TemplateURL, TemplateId, and TemplateScratchId.
         self.template_scratch_id = template_scratch_id
         # The region ID of the scenario. The default value is the same as the value of RegionId.
         # 
-        # You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/131035.html) operation to query the most recent region list.
         self.template_scratch_region_id = template_scratch_region_id
         # The URL of the file that contains the template body. The URL must point to a template that is located on an HTTP or HTTPS web server or in an OSS bucket, such as oss://ros/template/demo or oss://ros/template/demo?RegionId=cn-hangzhou. The template body can be up to 524,288 bytes in length. If you do not specify the region ID of the OSS bucket, the value of RegionId is used.
         # 
@@ -1734,12 +1793,16 @@ class CreateStackGroupRequestParameters(TeaModel):
         # Maximum value of N: 200.
         # 
         # > Parameters is optional. If you specify Parameters, you must also specify Parameters.N.ParameterKey.
+        # 
+        # This parameter is required.
         self.parameter_key = parameter_key
         # The value of parameter N.
         # 
         # Maximum value of N: 200.
         # 
         # > Parameters is optional. If you specify Parameters, you must also specify Parameters.N.ParameterValue.
+        # 
+        # This parameter is required.
         self.parameter_value = parameter_value
 
     def validate(self):
@@ -1775,6 +1838,8 @@ class CreateStackGroupRequestTags(TeaModel):
         # The tag key of the stack group.
         # 
         # > Tags is optional. If you want to specify Tags, you must also specify Tags.N.Key.
+        # 
+        # This parameter is required.
         self.key = key
         # The tag value of the stack group.
         self.value = value
@@ -1833,11 +1898,11 @@ class CreateStackGroupRequest(TeaModel):
         self.auto_deployment = auto_deployment
         # The options for the stack group. You can specify up to one option.
         self.capabilities = capabilities
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.\
-        # The token can contain letters, digits, underscores (\_), and hyphens (-) and cannot exceed 64 characters in length.\
-        # For more information, see [How to ensure idempotence](~~134212~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.\\
+        # The token can contain letters, digits, underscores (_), and hyphens (-) and cannot exceed 64 characters in length.\\
+        # For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/134212.html).
         self.client_token = client_token
-        # The description of the stack group.\
+        # The description of the stack group.\\
         # The description must be 1 to 256 characters in length.
         self.description = description
         # The name of the RAM role that you specify for the execution account when you create a self-managed stack group. The administrator role AliyunROSStackGroupAdministrationRole assumes the execution role to perform operations. If you do not specify this parameter, AliyunROSStackGroupExecutionRole is used as the default value. ROS assumes the execution role to perform operations on the stacks in the stack group.
@@ -1853,15 +1918,19 @@ class CreateStackGroupRequest(TeaModel):
         # *   SELF_MANAGED (default): the self-managed permission model. If you create a self-managed stack group, you must create RAM roles within the administrator and execution accounts and establish a trust relationship between the accounts. Then, you can deploy stacks within the execution account.
         # *   SERVICE_MANAGED: the service-managed permission model. If you create a service-managed stack group, ROS creates service-linked roles for the administrator and execution accounts, and the administrator account uses its role to deploy stacks within the execution account.
         # 
-        # > If you want to use the service-managed permission model to deploy stacks, your account must be the management account or a delegated administrator account of your resource directory and the trusted access feature is enabled for the account. For more information, see [Manage a delegated administrator account](~~308253~~) and [Enable trusted access](~~298229~~).
+        # > If you want to use the service-managed permission model to deploy stacks, your account must be the management account or a delegated administrator account of your resource directory and the trusted access feature is enabled for the account. For more information, see [Manage a delegated administrator account](https://help.aliyun.com/document_detail/308253.html) and [Enable trusted access](https://help.aliyun.com/document_detail/298229.html).
         self.permission_model = permission_model
-        # The region ID of the stack group. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
+        # The region ID of the stack group. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/131035.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource group. If you do not specify this parameter, the stack group is added to the default resource group.\
-        # For more information about resource groups, see [Resource groups](~~94475~~).
+        # The ID of the resource group. If you do not specify this parameter, the stack group is added to the default resource group.\\
+        # For more information about resource groups, see [Resource groups](https://help.aliyun.com/document_detail/94475.html).
         self.resource_group_id = resource_group_id
-        # The name of the stack group. The name must be unique within a region.\
-        # The name can be up to 255 characters in length, and can contain digits, letters, hyphens (-), and underscores (\_). It must start with a digit or a letter.
+        # The name of the stack group. The name must be unique within a region.\\
+        # The name can be up to 255 characters in length, and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or a letter.
+        # 
+        # This parameter is required.
         self.stack_group_name = stack_group_name
         # The tags of the stack group.
         self.tags = tags
@@ -1990,12 +2059,16 @@ class CreateStackGroupShrinkRequestParameters(TeaModel):
         # Maximum value of N: 200.
         # 
         # > Parameters is optional. If you specify Parameters, you must also specify Parameters.N.ParameterKey.
+        # 
+        # This parameter is required.
         self.parameter_key = parameter_key
         # The value of parameter N.
         # 
         # Maximum value of N: 200.
         # 
         # > Parameters is optional. If you specify Parameters, you must also specify Parameters.N.ParameterValue.
+        # 
+        # This parameter is required.
         self.parameter_value = parameter_value
 
     def validate(self):
@@ -2031,6 +2104,8 @@ class CreateStackGroupShrinkRequestTags(TeaModel):
         # The tag key of the stack group.
         # 
         # > Tags is optional. If you want to specify Tags, you must also specify Tags.N.Key.
+        # 
+        # This parameter is required.
         self.key = key
         # The tag value of the stack group.
         self.value = value
@@ -2089,11 +2164,11 @@ class CreateStackGroupShrinkRequest(TeaModel):
         self.auto_deployment_shrink = auto_deployment_shrink
         # The options for the stack group. You can specify up to one option.
         self.capabilities = capabilities
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.\
-        # The token can contain letters, digits, underscores (\_), and hyphens (-) and cannot exceed 64 characters in length.\
-        # For more information, see [How to ensure idempotence](~~134212~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.\\
+        # The token can contain letters, digits, underscores (_), and hyphens (-) and cannot exceed 64 characters in length.\\
+        # For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/134212.html).
         self.client_token = client_token
-        # The description of the stack group.\
+        # The description of the stack group.\\
         # The description must be 1 to 256 characters in length.
         self.description = description
         # The name of the RAM role that you specify for the execution account when you create a self-managed stack group. The administrator role AliyunROSStackGroupAdministrationRole assumes the execution role to perform operations. If you do not specify this parameter, AliyunROSStackGroupExecutionRole is used as the default value. ROS assumes the execution role to perform operations on the stacks in the stack group.
@@ -2109,15 +2184,19 @@ class CreateStackGroupShrinkRequest(TeaModel):
         # *   SELF_MANAGED (default): the self-managed permission model. If you create a self-managed stack group, you must create RAM roles within the administrator and execution accounts and establish a trust relationship between the accounts. Then, you can deploy stacks within the execution account.
         # *   SERVICE_MANAGED: the service-managed permission model. If you create a service-managed stack group, ROS creates service-linked roles for the administrator and execution accounts, and the administrator account uses its role to deploy stacks within the execution account.
         # 
-        # > If you want to use the service-managed permission model to deploy stacks, your account must be the management account or a delegated administrator account of your resource directory and the trusted access feature is enabled for the account. For more information, see [Manage a delegated administrator account](~~308253~~) and [Enable trusted access](~~298229~~).
+        # > If you want to use the service-managed permission model to deploy stacks, your account must be the management account or a delegated administrator account of your resource directory and the trusted access feature is enabled for the account. For more information, see [Manage a delegated administrator account](https://help.aliyun.com/document_detail/308253.html) and [Enable trusted access](https://help.aliyun.com/document_detail/298229.html).
         self.permission_model = permission_model
-        # The region ID of the stack group. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
+        # The region ID of the stack group. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/131035.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource group. If you do not specify this parameter, the stack group is added to the default resource group.\
-        # For more information about resource groups, see [Resource groups](~~94475~~).
+        # The ID of the resource group. If you do not specify this parameter, the stack group is added to the default resource group.\\
+        # For more information about resource groups, see [Resource groups](https://help.aliyun.com/document_detail/94475.html).
         self.resource_group_id = resource_group_id
-        # The name of the stack group. The name must be unique within a region.\
-        # The name can be up to 255 characters in length, and can contain digits, letters, hyphens (-), and underscores (\_). It must start with a digit or a letter.
+        # The name of the stack group. The name must be unique within a region.\\
+        # The name can be up to 255 characters in length, and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or a letter.
+        # 
+        # This parameter is required.
         self.stack_group_name = stack_group_name
         # The tags of the stack group.
         self.tags = tags
@@ -2317,7 +2396,7 @@ class CreateStackInstancesRequestDeploymentTargets(TeaModel):
         # 
         # You can create stacks within all the member accounts in the specified folders. If you create stacks in the Root folder, the stacks are created within all member accounts in the resource directory.
         # 
-        # > To view the folder IDs, go to the **Overview** page in the **Resource Management** console. For more information, see [View the basic information about a folder](~~111223~~).
+        # > To view the folder IDs, go to the **Overview** page in the **Resource Management** console. For more information, see [View the basic information about a folder](https://help.aliyun.com/document_detail/111223.html).
         self.rd_folder_ids = rd_folder_ids
 
     def validate(self):
@@ -2352,6 +2431,8 @@ class CreateStackInstancesRequestParameterOverrides(TeaModel):
         # 
         # >-   ParameterOverrides is optional.
         # >-   If you specify ParameterOverrides, you must specify ParameterOverrides.N.ParameterKey and ParameterOverrides.N.ParameterValue.
+        # 
+        # This parameter is required.
         self.parameter_key = parameter_key
         # The value of parameter N that you want to use to override a specific parameter. If you do not specify this parameter, ROS uses the value that you specify when you create the stack group.
         # 
@@ -2359,6 +2440,8 @@ class CreateStackInstancesRequestParameterOverrides(TeaModel):
         # 
         # >-  ParameterOverrides is optional.
         # >-  If you specify ParameterOverrides, you must specify ParameterOverrides.N.ParameterKey and ParameterOverrides.N.ParameterValue.
+        # 
+        # This parameter is required.
         self.parameter_value = parameter_value
 
     def validate(self):
@@ -2404,9 +2487,9 @@ class CreateStackInstancesRequest(TeaModel):
         # 
         # > You must specify one of the following parameters: `AccountIds` and `DeploymentTargets`.
         self.account_ids = account_ids
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.\
-        # The token can contain letters, digits, hyphens (-), and underscores (\_), and cannot exceed 64 characters in length.\
-        # For more information, see [How to ensure idempotence](~~134212~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.\\
+        # The token can contain letters, digits, hyphens (-), and underscores (_), and cannot exceed 64 characters in length.\\
+        # For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/134212.html).
         self.client_token = client_token
         # The folders in which ROS deploy stacks in service-managed permission model.
         # 
@@ -2459,7 +2542,7 @@ class CreateStackInstancesRequest(TeaModel):
         # 
         #     If you do not specify MaxConcurrentPercentage, 1 is used as the default value.
         # 
-        # -  {"RegionConcurrencyType": N}\
+        # -  {"RegionConcurrencyType": N}\\
         #     The mode that you want to use to deploy stacks across regions. Valid values: 
         #    - SEQUENTIAL (default): deploys stacks in each specified region based on the specified sequence of regions. ROS deploys stacks in one region at a time. 
         #    - PARALLEL: deploys stacks in parallel across all specified regions.
@@ -2471,12 +2554,18 @@ class CreateStackInstancesRequest(TeaModel):
         self.operation_preferences = operation_preferences
         # The parameters that are used to override specific parameters.
         self.parameter_overrides = parameter_overrides
-        # The region ID of the stack group. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
+        # The region ID of the stack group. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/131035.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The IDs of the regions where you want to create the stacks. You can specify up to 20 region IDs.
+        # 
+        # This parameter is required.
         self.region_ids = region_ids
-        # The name of the stack group. The name must be unique within a region.\
-        # The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (\_). It must start with a digit or a letter.
+        # The name of the stack group. The name must be unique within a region.\\
+        # The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or a letter.
+        # 
+        # This parameter is required.
         self.stack_group_name = stack_group_name
         # The timeout period within which you can create the stack.
         # 
@@ -2567,6 +2656,8 @@ class CreateStackInstancesShrinkRequestParameterOverrides(TeaModel):
         # 
         # >-   ParameterOverrides is optional.
         # >-   If you specify ParameterOverrides, you must specify ParameterOverrides.N.ParameterKey and ParameterOverrides.N.ParameterValue.
+        # 
+        # This parameter is required.
         self.parameter_key = parameter_key
         # The value of parameter N that you want to use to override a specific parameter. If you do not specify this parameter, ROS uses the value that you specify when you create the stack group.
         # 
@@ -2574,6 +2665,8 @@ class CreateStackInstancesShrinkRequestParameterOverrides(TeaModel):
         # 
         # >-  ParameterOverrides is optional.
         # >-  If you specify ParameterOverrides, you must specify ParameterOverrides.N.ParameterKey and ParameterOverrides.N.ParameterValue.
+        # 
+        # This parameter is required.
         self.parameter_value = parameter_value
 
     def validate(self):
@@ -2619,9 +2712,9 @@ class CreateStackInstancesShrinkRequest(TeaModel):
         # 
         # > You must specify one of the following parameters: `AccountIds` and `DeploymentTargets`.
         self.account_ids_shrink = account_ids_shrink
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.\
-        # The token can contain letters, digits, hyphens (-), and underscores (\_), and cannot exceed 64 characters in length.\
-        # For more information, see [How to ensure idempotence](~~134212~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.\\
+        # The token can contain letters, digits, hyphens (-), and underscores (_), and cannot exceed 64 characters in length.\\
+        # For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/134212.html).
         self.client_token = client_token
         # The folders in which ROS deploy stacks in service-managed permission model.
         # 
@@ -2674,7 +2767,7 @@ class CreateStackInstancesShrinkRequest(TeaModel):
         # 
         #     If you do not specify MaxConcurrentPercentage, 1 is used as the default value.
         # 
-        # -  {"RegionConcurrencyType": N}\
+        # -  {"RegionConcurrencyType": N}\\
         #     The mode that you want to use to deploy stacks across regions. Valid values: 
         #    - SEQUENTIAL (default): deploys stacks in each specified region based on the specified sequence of regions. ROS deploys stacks in one region at a time. 
         #    - PARALLEL: deploys stacks in parallel across all specified regions.
@@ -2686,12 +2779,18 @@ class CreateStackInstancesShrinkRequest(TeaModel):
         self.operation_preferences_shrink = operation_preferences_shrink
         # The parameters that are used to override specific parameters.
         self.parameter_overrides = parameter_overrides
-        # The region ID of the stack group. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
+        # The region ID of the stack group. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/131035.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The IDs of the regions where you want to create the stacks. You can specify up to 20 region IDs.
+        # 
+        # This parameter is required.
         self.region_ids_shrink = region_ids_shrink
-        # The name of the stack group. The name must be unique within a region.\
-        # The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (\_). It must start with a digit or a letter.
+        # The name of the stack group. The name must be unique within a region.\\
+        # The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or a letter.
+        # 
+        # This parameter is required.
         self.stack_group_name = stack_group_name
         # The timeout period within which you can create the stack.
         # 
@@ -2852,6 +2951,8 @@ class CreateTemplateRequestTags(TeaModel):
         # The tag key of the template.
         # 
         # > Tags is optional. If you need to specify Tags, you must also specify Key.
+        # 
+        # This parameter is required.
         self.key = key
         # The tag value of the template.
         self.value = value
@@ -2892,14 +2993,16 @@ class CreateTemplateRequest(TeaModel):
     ):
         # The description of the template. The description can be up to 256 characters in length.
         self.description = description
-        # The ID of the resource group.\
-        # For more information about resource groups, see [Resource groups](~~94475~~).
+        # The ID of the resource group.\\
+        # For more information about resource groups, see [Resource groups](https://help.aliyun.com/document_detail/94475.html).
         self.resource_group_id = resource_group_id
         # The tags of the template.
         self.tags = tags
         self.template_body = template_body
-        # The name of the template.\
-        # The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (\_). It must start with a digit or a letter.
+        # The name of the template.\\
+        # The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or a letter.
+        # 
+        # This parameter is required.
         self.template_name = template_name
         # The URL of the file that contains the template body. The URL must point to a template that is located on an HTTP or HTTPS web server or in an Alibaba Cloud Object Storage Service (OSS) bucket, such as oss://ros/stack-policy/demo or oss://ros/stack-policy/demo?RegionId=cn-hangzhou. The template body must be 1 to 1,024 bytes in length. If you do not specify the region of the OSS bucket, the value of RegionId is used.
         # 
@@ -3041,12 +3144,16 @@ class CreateTemplateScratchRequestPreferenceParameters(TeaModel):
         # For information about the valid values of ParameterKey, see the **Additional information about request parameters** section of this topic.
         # > - PreferenceParameters is optional. If you want to specify PreferenceParameters, you must specify ParameterKey and ParameterValue.
         # > -  If you set TemplateScratchType to ResourceImport, you must set ParameterKey to DeletionPolicy.
+        # 
+        # This parameter is required.
         self.parameter_key = parameter_key
         # The value of the parameter. The value of ParameterValue varies based on the value of ParameterKey.
         # 
         # For information about the valid values of ParameterValue, see the **Additional information about request parameters** section of this topic.
         # 
         # > PreferenceParameters is optional. If you want to specify PreferenceParameters, you must specify ParameterKey and ParameterValue.
+        # 
+        # This parameter is required.
         self.parameter_value = parameter_value
 
     def validate(self):
@@ -3080,6 +3187,8 @@ class CreateTemplateScratchRequestSourceResourceGroup(TeaModel):
         resource_type_filter: List[str] = None,
     ):
         # The ID of the source resource group.
+        # 
+        # This parameter is required.
         self.resource_group_id = resource_group_id
         # The resource types.
         self.resource_type_filter = resource_type_filter
@@ -3120,8 +3229,12 @@ class CreateTemplateScratchRequestSourceResources(TeaModel):
         self.region_id = region_id
         self.related_resource_type_filter = related_resource_type_filter
         # The ID of the resource.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
         # The type of the resource.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
 
     def validate(self):
@@ -3165,6 +3278,8 @@ class CreateTemplateScratchRequestSourceTag(TeaModel):
         # The source tags that consist of key-value pairs. If you want to specify only the tag key, you must leave the tag value empty. Example: `{"TagKey": ""}`.
         # 
         # You can add up to 10 source tags.
+        # 
+        # This parameter is required.
         self.resource_tags = resource_tags
         # The resource types.
         self.resource_type_filter = resource_type_filter
@@ -3202,6 +3317,8 @@ class CreateTemplateScratchRequestTags(TeaModel):
         # The tag key of the scenario.
         # 
         # > Tags is optional. If you want to specify Tags, you must specify Key.
+        # 
+        # This parameter is required.
         self.key = key
         # The tag value of the scenario.
         self.value = value
@@ -3248,7 +3365,7 @@ class CreateTemplateScratchRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         # 
-        # For more information, see [How to ensure idempotence](~~134212~~).
+        # For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/134212.html).
         self.client_token = client_token
         # The description of the scenario.
         self.description = description
@@ -3269,7 +3386,9 @@ class CreateTemplateScratchRequest(TeaModel):
         self.preference_parameters = preference_parameters
         # The region ID of the scenario.
         # 
-        # You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/131035.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -3286,6 +3405,8 @@ class CreateTemplateScratchRequest(TeaModel):
         # *   ResourceImport: resource management
         # *   ArchitectureReplication: resource replication
         # *   ResourceMigration: resource migration
+        # 
+        # This parameter is required.
         self.template_scratch_type = template_scratch_type
 
     def validate(self):
@@ -3393,6 +3514,8 @@ class CreateTemplateScratchShrinkRequestTags(TeaModel):
         # The tag key of the scenario.
         # 
         # > Tags is optional. If you want to specify Tags, you must specify Key.
+        # 
+        # This parameter is required.
         self.key = key
         # The tag value of the scenario.
         self.value = value
@@ -3439,7 +3562,7 @@ class CreateTemplateScratchShrinkRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         # 
-        # For more information, see [How to ensure idempotence](~~134212~~).
+        # For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/134212.html).
         self.client_token = client_token
         # The description of the scenario.
         self.description = description
@@ -3460,7 +3583,9 @@ class CreateTemplateScratchShrinkRequest(TeaModel):
         self.preference_parameters_shrink = preference_parameters_shrink
         # The region ID of the scenario.
         # 
-        # You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/131035.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -3477,6 +3602,8 @@ class CreateTemplateScratchShrinkRequest(TeaModel):
         # *   ResourceImport: resource management
         # *   ArchitectureReplication: resource replication
         # *   ResourceMigration: resource migration
+        # 
+        # This parameter is required.
         self.template_scratch_type = template_scratch_type
 
     def validate(self):
@@ -3634,8 +3761,12 @@ class DeleteChangeSetRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the change set.
+        # 
+        # This parameter is required.
         self.change_set_id = change_set_id
-        # The region ID of the change set. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
+        # The region ID of the change set. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/131035.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -3871,12 +4002,14 @@ class DeleteStackRequest(TeaModel):
     ):
         # The options for deleting the stack.
         self.delete_options = delete_options
-        # The name of the RAM role. Resource Orchestration Service (ROS) assumes the RAM role to create the stack and uses the credentials of the role to call the APIs of Alibaba Cloud services.\
-        # ROS assumes the role to perform operations on the stack. If you have permissions to perform operations on the stack but do not have permissions to use the RAM role, ROS still assumes the RAM role. You must make sure that the least privileges are granted to the RAM role.\
-        # If you leave this parameter empty when you call the DeleteStack operation, ROS cannot assume the existing RAM role that is associated with the stack. If you want ROS to assume a RAM role, you must specify this parameter. If no RAM roles are available, ROS uses a temporary credential that is generated from the credentials of your account.\
+        # The name of the RAM role. Resource Orchestration Service (ROS) assumes the RAM role to create the stack and uses the credentials of the role to call the APIs of Alibaba Cloud services.\\
+        # ROS assumes the role to perform operations on the stack. If you have permissions to perform operations on the stack but do not have permissions to use the RAM role, ROS still assumes the RAM role. You must make sure that the least privileges are granted to the RAM role.\\
+        # If you leave this parameter empty when you call the DeleteStack operation, ROS cannot assume the existing RAM role that is associated with the stack. If you want ROS to assume a RAM role, you must specify this parameter. If no RAM roles are available, ROS uses a temporary credential that is generated from the credentials of your account.\\
         # The name of the RAM role can be up to 64 bytes in length.
         self.ram_role_name = ram_role_name
-        # The region ID of the stack. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
+        # The region ID of the stack. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/131035.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # Specifies whether to retain all resources in the stack.
         # 
@@ -3888,6 +4021,8 @@ class DeleteStackRequest(TeaModel):
         # The resources that you want to retain.
         self.retain_resources = retain_resources
         # The ID of the stack.
+        # 
+        # This parameter is required.
         self.stack_id = stack_id
 
     def validate(self):
@@ -4005,11 +4140,15 @@ class DeleteStackGroupRequest(TeaModel):
         region_id: str = None,
         stack_group_name: str = None,
     ):
-        # The ID of the region to which the stack group belongs. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
+        # The ID of the region to which the stack group belongs. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/131035.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The name of the stack group. The name must be unique in a region.
         # 
-        # The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (\_). The name must start with a digit or a letter.
+        # The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). The name must start with a digit or a letter.
+        # 
+        # This parameter is required.
         self.stack_group_name = stack_group_name
 
     def validate(self):
@@ -4113,13 +4252,13 @@ class DeleteStackInstancesRequestDeploymentTargets(TeaModel):
     ):
         # The IDs of the execution accounts within which you want to deploy stacks in self-managed mode. You can specify up to 20 execution account IDs.
         # 
-        # > To view the folder IDs, go to the **Overview** page in the **Resource Management** console. For more information, see [View the basic information about a folder](~~111223~~).
+        # > To view the folder IDs, go to the **Overview** page in the **Resource Management** console. For more information, see [View the basic information about a folder](https://help.aliyun.com/document_detail/111223.html).
         self.account_ids = account_ids
         # The IDs of the folders in the resource directory. You can add up to five folder IDs.
         # 
         # You can create stacks within all the member accounts in the specified folders. If you create stacks in the Root folder, the stacks are created within all member accounts in the resource directory.
         # 
-        # > To view the folder IDs, go to the **Overview** page in the **Resource Management** console. For more information, see [View the basic information about a folder](~~111223~~).
+        # > To view the folder IDs, go to the **Overview** page in the **Resource Management** console. For more information, see [View the basic information about a folder](https://help.aliyun.com/document_detail/111223.html).
         self.rd_folder_ids = rd_folder_ids
 
     def validate(self):
@@ -4161,9 +4300,9 @@ class DeleteStackInstancesRequest(TeaModel):
     ):
         # The IDs of the execution accounts within which you want to deploy stacks in self-managed mode. You can specify up to 20 execution account IDs.
         self.account_ids = account_ids
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.\
-        # The token can contain letters, digits, hyphens (-), and underscores (\_), and cannot exceed 64 characters in length.\
-        # For more information, see [How to ensure idempotence](~~134212~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.\\
+        # The token can contain letters, digits, hyphens (-), and underscores (_), and cannot exceed 64 characters in length.\\
+        # For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/134212.html).
         self.client_token = client_token
         # The folders in which you want to deploy stacks in service-managed mode.
         self.deployment_targets = deployment_targets
@@ -4219,9 +4358,13 @@ class DeleteStackInstancesRequest(TeaModel):
         # > - You can specify only one of the following parameters: MaxConcurrentCount and MaxConcurrentPercentage.
         # > - You can specify only one of the following parameters: FailureToleranceCount and FailureTolerancePercentage.
         self.operation_preferences = operation_preferences
-        # The region ID of the stack group. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
+        # The region ID of the stack group. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/131035.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The IDs of the regions where you want to delete the stacks. You can specify up to 20 region IDs.
+        # 
+        # This parameter is required.
         self.region_ids = region_ids
         # Specifies whether to delete the stacks.
         # 
@@ -4229,9 +4372,13 @@ class DeleteStackInstancesRequest(TeaModel):
         # 
         # *   true: retains the stacks.
         # *   false: deletes the stacks.
+        # 
+        # This parameter is required.
         self.retain_stacks = retain_stacks
-        # The name of the stack group. The name must be unique within a region.\
-        # The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (\_). It must start with a digit or a letter.
+        # The name of the stack group. The name must be unique within a region.\\
+        # The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or a letter.
+        # 
+        # This parameter is required.
         self.stack_group_name = stack_group_name
 
     def validate(self):
@@ -4303,9 +4450,9 @@ class DeleteStackInstancesShrinkRequest(TeaModel):
     ):
         # The IDs of the execution accounts within which you want to deploy stacks in self-managed mode. You can specify up to 20 execution account IDs.
         self.account_ids_shrink = account_ids_shrink
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.\
-        # The token can contain letters, digits, hyphens (-), and underscores (\_), and cannot exceed 64 characters in length.\
-        # For more information, see [How to ensure idempotence](~~134212~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.\\
+        # The token can contain letters, digits, hyphens (-), and underscores (_), and cannot exceed 64 characters in length.\\
+        # For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/134212.html).
         self.client_token = client_token
         # The folders in which you want to deploy stacks in service-managed mode.
         self.deployment_targets_shrink = deployment_targets_shrink
@@ -4361,9 +4508,13 @@ class DeleteStackInstancesShrinkRequest(TeaModel):
         # > - You can specify only one of the following parameters: MaxConcurrentCount and MaxConcurrentPercentage.
         # > - You can specify only one of the following parameters: FailureToleranceCount and FailureTolerancePercentage.
         self.operation_preferences_shrink = operation_preferences_shrink
-        # The region ID of the stack group. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
+        # The region ID of the stack group. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/131035.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The IDs of the regions where you want to delete the stacks. You can specify up to 20 region IDs.
+        # 
+        # This parameter is required.
         self.region_ids_shrink = region_ids_shrink
         # Specifies whether to delete the stacks.
         # 
@@ -4371,9 +4522,13 @@ class DeleteStackInstancesShrinkRequest(TeaModel):
         # 
         # *   true: retains the stacks.
         # *   false: deletes the stacks.
+        # 
+        # This parameter is required.
         self.retain_stacks = retain_stacks
-        # The name of the stack group. The name must be unique within a region.\
-        # The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (\_). It must start with a digit or a letter.
+        # The name of the stack group. The name must be unique within a region.\\
+        # The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or a letter.
+        # 
+        # This parameter is required.
         self.stack_group_name = stack_group_name
 
     def validate(self):
@@ -4510,6 +4665,8 @@ class DeleteTemplateRequest(TeaModel):
         template_id: str = None,
     ):
         # The ID of the template. This parameter applies to only private templates.
+        # 
+        # This parameter is required.
         self.template_id = template_id
 
     def validate(self):
@@ -4609,9 +4766,13 @@ class DeleteTemplateScratchRequest(TeaModel):
     ):
         # The region ID of the scenario.
         # 
-        # You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/131035.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the scenario.
+        # 
+        # This parameter is required.
         self.template_scratch_id = template_scratch_id
 
     def validate(self):
@@ -4714,6 +4875,8 @@ class DeregisterResourceTypeRequest(TeaModel):
         version_id: str = None,
     ):
         # The resource type.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The version ID. If you want to delete a version of the resource type, you must specify this parameter.
         self.version_id = version_id
@@ -4979,15 +5142,19 @@ class DetectStackDriftRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests.
         # 
-        # The value can be up to 64 characters in length and can contain letters, digits, hyphens (-), and underscores (\_).
+        # The value can be up to 64 characters in length and can contain letters, digits, hyphens (-), and underscores (_).
         # 
-        # For more information, see [How to ensure idempotence](~~134212~~).
+        # For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/134212.html).
         self.client_token = client_token
         # The logical ID of resource.
         self.logical_resource_id = logical_resource_id
-        # The region ID of the stack. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
+        # The region ID of the stack. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/131035.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the stack.
+        # 
+        # This parameter is required.
         self.stack_id = stack_id
 
     def validate(self):
@@ -5108,9 +5275,9 @@ class DetectStackGroupDriftRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests.
         # 
-        # The value can be up to 64 characters in length and can contain letters, digits, hyphens (-), and underscores (\_).
+        # The value can be up to 64 characters in length and can contain letters, digits, hyphens (-), and underscores (_).
         # 
-        # For more information, see [How to ensure idempotence](~~134212~~).
+        # For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/134212.html).
         self.client_token = client_token
         # The operation settings, in JSON format. The following fields are supported:
         # 
@@ -5147,10 +5314,14 @@ class DetectStackGroupDriftRequest(TeaModel):
         # Valid values: 1 to 100.
         self.operation_preferences = operation_preferences
         # The region ID of the stack group. You can call the [DescribeRegions](~~131035#doc-api-ROS-DescribeRegions~~ "Queries the DescribeRegions list of a region.") operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The name of the stack group. The name must be unique in a region.
         # 
-        # The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (\_). It must start with a digit or letter.
+        # The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
+        # 
+        # This parameter is required.
         self.stack_group_name = stack_group_name
 
     def validate(self):
@@ -5195,9 +5366,9 @@ class DetectStackGroupDriftShrinkRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests.
         # 
-        # The value can be up to 64 characters in length and can contain letters, digits, hyphens (-), and underscores (\_).
+        # The value can be up to 64 characters in length and can contain letters, digits, hyphens (-), and underscores (_).
         # 
-        # For more information, see [How to ensure idempotence](~~134212~~).
+        # For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/134212.html).
         self.client_token = client_token
         # The operation settings, in JSON format. The following fields are supported:
         # 
@@ -5234,10 +5405,14 @@ class DetectStackGroupDriftShrinkRequest(TeaModel):
         # Valid values: 1 to 100.
         self.operation_preferences_shrink = operation_preferences_shrink
         # The region ID of the stack group. You can call the [DescribeRegions](~~131035#doc-api-ROS-DescribeRegions~~ "Queries the DescribeRegions list of a region.") operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The name of the stack group. The name must be unique in a region.
         # 
-        # The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (\_). It must start with a digit or letter.
+        # The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
+        # 
+        # This parameter is required.
         self.stack_group_name = stack_group_name
 
     def validate(self):
@@ -5358,15 +5533,21 @@ class DetectStackResourceDriftRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests.
         # 
-        # The value can be up to 64 characters in length and can contain letters, digits, hyphens (-), and underscores (\_).
+        # The value can be up to 64 characters in length and can contain letters, digits, hyphens (-), and underscores (_).
         # 
-        # For more information, see [How to ensure idempotence](~~134212~~).
+        # For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/134212.html).
         self.client_token = client_token
         # The name of the resource.
+        # 
+        # This parameter is required.
         self.logical_resource_id = logical_resource_id
-        # The region ID of the stack. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
+        # The region ID of the stack. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/131035.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the stack.
+        # 
+        # This parameter is required.
         self.stack_id = stack_id
 
     def validate(self):
@@ -5607,14 +5788,18 @@ class ExecuteChangeSetRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the change set.
+        # 
+        # This parameter is required.
         self.change_set_id = change_set_id
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests.
         # 
-        # The token can be up to 64 characters in length and can contain letters, digits, hyphens (-), and underscores (\_).
+        # The token can be up to 64 characters in length and can contain letters, digits, hyphens (-), and underscores (_).
         # 
-        # For more information, see [How to ensure idempotence](~~134212~~).
+        # For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/134212.html).
         self.client_token = client_token
-        # The region ID of the change set. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
+        # The region ID of the change set. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/131035.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -5726,11 +5911,15 @@ class GenerateTemplateByScratchRequest(TeaModel):
         self.provision_region_id = provision_region_id
         # The region ID of the scenario.
         # 
-        # You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/131035.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the scenario.
         # 
-        # For more information about how to query the IDs of scenarios, see [ListTemplateScratches](~~363050~~).
+        # For more information about how to query the IDs of scenarios, see [ListTemplateScratches](https://help.aliyun.com/document_detail/363050.html).
+        # 
+        # This parameter is required.
         self.template_scratch_id = template_scratch_id
         # The type of the template that Resource Orchestration Service (ROS) generates. ROS can generate templates of the ROS and Terraform types. Default value: ROS.
         self.template_type = template_type
@@ -5776,7 +5965,7 @@ class GenerateTemplateByScratchResponseBodyResourcesToImport(TeaModel):
     ):
         # The logical ID of the resource.
         self.logical_resource_id = logical_resource_id
-        # The key-value mapping between strings. The value is a JSON string that identifies the resource that you want to import into a stack.\
+        # The key-value mapping between strings. The value is a JSON string that identifies the resource that you want to import into a stack.\\
         # A key is an identifier for a resource, and a value is an assignment of data to the key. For example, VpcId is a key that indicates the ID of a virtual private cloud (VPC), and `vpc-bp1m6fww66xbntjyc****"` is a value that is assigned to VpcId.
         self.resource_identifier = resource_identifier
         # The type of the resource.
@@ -6002,7 +6191,7 @@ class GenerateTemplatePolicyResponseBodyPolicyStatement(TeaModel):
         # *   Allow
         # *   Deny
         self.effect = effect
-        # The objects that the statement covers. An asterisk (\*) indicates all resources.
+        # The objects that the statement covers. An asterisk (\\*) indicates all resources.
         self.resource = resource
 
     def validate(self):
@@ -6166,8 +6355,12 @@ class GetChangeSetRequest(TeaModel):
         show_template: bool = None,
     ):
         # The ID of the change set.
+        # 
+        # This parameter is required.
         self.change_set_id = change_set_id
-        # The region ID of the change set. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
+        # The region ID of the change set. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/131035.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # Specifies whether to obtain the template. Valid values:
         # 
@@ -6780,8 +6973,12 @@ class GetFeatureDetailsRequest(TeaModel):
         # *   ResourceCleaner: the resource cleaner feature. You can use ALIYUN::ROS::ResourceCleaner to create a resource cleaner.
         # *   TemplateScratch: the scenario feature.
         # *   All: all features that are supported by ROS.
+        # 
+        # This parameter is required.
         self.feature = feature
-        # The region ID of the stack. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
+        # The region ID of the stack. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/131035.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -7526,6 +7723,8 @@ class GetResourceTypeRequest(TeaModel):
         version_id: str = None,
     ):
         # The ID of the request.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The version ID. If you want to query a specific version of the resource type, you must specify this parameter. If you do not specify this parameter, only the resource type is queried.
         # 
@@ -7588,8 +7787,8 @@ class GetResourceTypeResponseBody(TeaModel):
         self.description = description
         # The entity type. Valid values:
         # 
-        # *   Resource: regular resource. For more information, see [Resources](~~28863~~).
-        # *   DataSource: DataSource resource. For more information, see [DataSource resources](~~404753~~).
+        # *   Resource: regular resource. For more information, see [Resources](https://help.aliyun.com/document_detail/28863.html).
+        # *   DataSource: DataSource resource. For more information, see [DataSource resources](https://help.aliyun.com/document_detail/404753.html).
         # *   module: module.
         self.entity_type = entity_type
         # Indicates whether the version is the default version. Valid values:
@@ -7624,7 +7823,7 @@ class GetResourceTypeResponseBody(TeaModel):
         self.support_drift_detection = support_drift_detection
         # The entity type. Valid values:
         # 
-        # *   Resource: resources other than DataSource resources. For more information, see [Resources](~~28863~~).
+        # *   Resource: resources other than DataSource resources. For more information, see [Resources](https://help.aliyun.com/document_detail/28863.html).
         # *   DataSource: DataSource resources.
         self.support_scratch_detection = support_scratch_detection
         # The template content in the module.
@@ -7766,6 +7965,8 @@ class GetResourceTypeTemplateRequest(TeaModel):
         version_id: str = None,
     ):
         # The resource type.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The version ID. If you want to query a specific version of the resource type, you must specify this parameter. If you do not specify this parameter, only the resource type is queried.
         # 
@@ -7805,11 +8006,11 @@ class GetResourceTypeTemplateResponseBody(TeaModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The structure that contains the template body. The template body must be 1 to 51,200 bytes in length. For more information, see [Template syntax](~~28857~~).
+        # The structure that contains the template body. The template body must be 1 to 51,200 bytes in length. For more information, see [Template syntax](https://help.aliyun.com/document_detail/28857.html).
         # 
         # > We recommend that use TemplateContent instead of TemplateBody.
         self.template_body = template_body
-        # The JSON-formatted structure of the template body. For more information, see [Template syntax](~~28857~~).
+        # The JSON-formatted structure of the template body. For more information, see [Template syntax](https://help.aliyun.com/document_detail/28857.html).
         self.template_content = template_content
 
     def validate(self):
@@ -7890,10 +8091,14 @@ class GetServiceProvisionsRequestParameters(TeaModel):
         # The name of the parameter. If you do not specify the name and value of a parameter, Resource Orchestration Service (ROS) uses the default name and value that are specified in the template.
         # 
         # > The Parameters parameter is optional. If you specify Parameters, you must specify ParameterKey.
+        # 
+        # This parameter is required.
         self.parameter_key = parameter_key
         # The value of the parameter.
         # 
         # > The Parameters parameter is optional. If you specify Parameters, you must specify ParameterValue.
+        # 
+        # This parameter is required.
         self.parameter_value = parameter_value
 
     def validate(self):
@@ -7962,6 +8167,8 @@ class GetServiceProvisionsRequestServices(TeaModel):
         # *   TrafficMirror: the traffic mirroring feature
         # *   VS: Video Surveillance System
         # *   Xtrace: Managed Service for OpenTelemetry
+        # 
+        # This parameter is required.
         self.service_name = service_name
 
     def validate(self):
@@ -7997,7 +8204,9 @@ class GetServiceProvisionsRequest(TeaModel):
     ):
         # The parameters.
         self.parameters = parameters
-        # The region ID. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/131035.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The services.
         self.services = services
@@ -8404,9 +8613,9 @@ class GetStackRequest(TeaModel):
         show_resource_progress: str = None,
         stack_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.\
-        # The token can be up to 64 characters in length.\
-        # For more information, see [Ensure idempotence](~~134212~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.\\
+        # The token can be up to 64 characters in length.\\
+        # For more information, see [Ensure idempotence](https://help.aliyun.com/document_detail/134212.html).
         self.client_token = client_token
         # The option for returning logs. Valid values:
         # 
@@ -8422,7 +8631,9 @@ class GetStackRequest(TeaModel):
         # 
         # >  The Outputs parameter requires a long period of time to calculate. If you do not require Outputs of the stack, we recommend that you set OutputOption to Disabled to improve the response speed of the GetStack operation.
         self.output_option = output_option
-        # The region ID of the stack. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
+        # The region ID of the stack. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/131035.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # Specifies whether to return information about ResourceProgress. Valid values:
         # 
@@ -8431,11 +8642,13 @@ class GetStackRequest(TeaModel):
         # 
         # >  ROS and Terraform stacks are supported. Creation, resumed creation, update, deletion, import, and rollback operations on stacks are supported.
         # 
-        # *   EnabledIfCreateStack (not recommend): returns \*Count and InProgressResourceDetails of ResourceProgress only during a stack creation operation.
+        # *   EnabledIfCreateStack (not recommend): returns \\*Count and InProgressResourceDetails of ResourceProgress only during a stack creation operation.
         # 
         # >  During a creation operation, a stack is in one of the following states: CREATE_IN_PROGRESS, CREATE_COMPLETE, CREATE_FAILED, CREATE_ROLLBACK_IN_PROGRESS, CREATE_ROLLBACK_COMPLETE, and CREATE_ROLLBACK_FAILED.
         self.show_resource_progress = show_resource_progress
         # The stack ID.
+        # 
+        # This parameter is required.
         self.stack_id = stack_id
 
     def validate(self):
@@ -9037,12 +9250,12 @@ class GetStackResponseBody(TeaModel):
         self.parameters = parameters
         # The ID of the parent stack.
         self.parent_stack_id = parent_stack_id
-        # The name of the Resource Access Management (RAM) role. ROS assumes the RAM role to create the stack and uses the credentials of the role to call the APIs of Alibaba Cloud services.\
-        # ROS assumes the RAM role to perform operations on the stack. If you have permissions to perform operations on the stack, ROS assumes the RAM role even if you do not have permissions to use the RAM role. You must make sure that permissions are granted to the RAM role based on the principle of least privilege.\
-        # If this parameter is not specified, ROS uses the existing role that is associated with the stack. If no roles are available, ROS uses a temporary credential that is generated from the credentials of your account.\
+        # The name of the Resource Access Management (RAM) role. ROS assumes the RAM role to create the stack and uses the credentials of the role to call the APIs of Alibaba Cloud services.\\
+        # ROS assumes the RAM role to perform operations on the stack. If you have permissions to perform operations on the stack, ROS assumes the RAM role even if you do not have permissions to use the RAM role. You must make sure that permissions are granted to the RAM role based on the principle of least privilege.\\
+        # If this parameter is not specified, ROS uses the existing role that is associated with the stack. If no roles are available, ROS uses a temporary credential that is generated from the credentials of your account.\\
         # The RAM role name can be up to 64 characters in length.
         self.ram_role_name = ram_role_name
-        # The region ID of the stack. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
+        # The region ID of the stack. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/131035.html) operation to query the most recent region list.
         self.region_id = region_id
         # The request ID.
         self.request_id = request_id
@@ -9069,8 +9282,8 @@ class GetStackResponseBody(TeaModel):
         self.stack_drift_status = stack_drift_status
         # The stack ID.
         self.stack_id = stack_id
-        # The stack name.\
-        # The name can be up to 255 characters in length, and can contain digits, letters, hyphens (-), and underscores (\_). The name must start with a digit or letter.
+        # The stack name.\\
+        # The name can be up to 255 characters in length, and can contain digits, letters, hyphens (-), and underscores (_). The name must start with a digit or letter.
         self.stack_name = stack_name
         # The stack type. Valid values:
         # 
@@ -9378,11 +9591,15 @@ class GetStackDriftDetectionStatusRequest(TeaModel):
     ):
         # The ID of the drift detection operation.
         # 
-        # You can call the [ListStackResourceDrifts](~~155098~~) operation to obtain the ID of the drift detection operation.
+        # You can call the [ListStackResourceDrifts](https://help.aliyun.com/document_detail/155098.html) operation to obtain the ID of the drift detection operation.
+        # 
+        # This parameter is required.
         self.drift_detection_id = drift_detection_id
         # The region ID of the stack to be detected for drift.
         # 
-        # You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/131035.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -9544,9 +9761,11 @@ class GetStackGroupRequest(TeaModel):
     ):
         # The name of the stack group. The name must be unique within a region.
         # 
-        # The name can be up to 255 characters in length, and can contain digits, letters, hyphens (-), and underscores (\_). It must start with a digit or letter.
+        # The name can be up to 255 characters in length, and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
         # 
         # >  You must specify one of the StackGroupName and StackGroupId parameters.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the request.
         self.stack_group_id = stack_group_id
@@ -9765,6 +9984,7 @@ class GetStackGroupResponseBodyStackGroup(TeaModel):
         self,
         administration_role_name: str = None,
         auto_deployment: GetStackGroupResponseBodyStackGroupAutoDeployment = None,
+        create_time: str = None,
         description: str = None,
         execution_role_name: str = None,
         parameters: List[GetStackGroupResponseBodyStackGroupParameters] = None,
@@ -9777,6 +9997,7 @@ class GetStackGroupResponseBodyStackGroup(TeaModel):
         status: str = None,
         template_body: str = None,
         template_content: str = None,
+        update_time: str = None,
     ):
         # The parameters of the stack group.
         self.administration_role_name = administration_role_name
@@ -9787,6 +10008,7 @@ class GetStackGroupResponseBodyStackGroup(TeaModel):
         # *   true: Automatic deployment is enabled. If a member account is added to the folder to which the stack group belongs after automatic deployment is enabled, the stack group deploys its stack instances in the specified region where the added account is deployed. If the account is deleted from the folder, the stack instances in the specified region are deleted from the stack group.
         # *   false: Automatic deployment is disabled. After automatic deployment is disabled, the stack instances remain unchanged when the member account in the folder is changed.
         self.auto_deployment = auto_deployment
+        self.create_time = create_time
         # The name of the stack group.
         self.description = description
         # The template body.
@@ -9808,7 +10030,7 @@ class GetStackGroupResponseBodyStackGroup(TeaModel):
         # *   SELF_MANAGED: the self-managed permission model
         # *   SERVICE_MANAGED: the service-managed permission model
         # 
-        # >  For more information about the permission models of stack groups, see [Overview](~~154578~~).
+        # >  For more information about the permission models of stack groups, see [Overview](https://help.aliyun.com/document_detail/154578.html).
         self.resource_group_id = resource_group_id
         # The time when drift detection was performed on the stack group.
         self.stack_group_drift_detection_detail = stack_group_drift_detection_detail
@@ -9827,8 +10049,9 @@ class GetStackGroupResponseBodyStackGroup(TeaModel):
         # 
         # > We recommend that you use TemplateContent instead of TemplateBody.
         self.template_body = template_body
-        # The JSON-formatted structure that contains the template body. For more information, see [Template syntax](~~28857~~).
+        # The JSON-formatted structure that contains the template body. For more information, see [Template syntax](https://help.aliyun.com/document_detail/28857.html).
         self.template_content = template_content
+        self.update_time = update_time
 
     def validate(self):
         if self.auto_deployment:
@@ -9850,6 +10073,8 @@ class GetStackGroupResponseBodyStackGroup(TeaModel):
             result['AdministrationRoleName'] = self.administration_role_name
         if self.auto_deployment is not None:
             result['AutoDeployment'] = self.auto_deployment.to_map()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
         if self.description is not None:
             result['Description'] = self.description
         if self.execution_role_name is not None:
@@ -9876,6 +10101,8 @@ class GetStackGroupResponseBodyStackGroup(TeaModel):
             result['TemplateBody'] = self.template_body
         if self.template_content is not None:
             result['TemplateContent'] = self.template_content
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
         return result
 
     def from_map(self, m: dict = None):
@@ -9885,6 +10112,8 @@ class GetStackGroupResponseBodyStackGroup(TeaModel):
         if m.get('AutoDeployment') is not None:
             temp_model = GetStackGroupResponseBodyStackGroupAutoDeployment()
             self.auto_deployment = temp_model.from_map(m['AutoDeployment'])
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('ExecutionRoleName') is not None:
@@ -9913,6 +10142,8 @@ class GetStackGroupResponseBodyStackGroup(TeaModel):
             self.template_body = m.get('TemplateBody')
         if m.get('TemplateContent') is not None:
             self.template_content = m.get('TemplateContent')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
         return self
 
 
@@ -10000,9 +10231,13 @@ class GetStackGroupOperationRequest(TeaModel):
         operation_id: str = None,
         region_id: str = None,
     ):
-        # The operation ID. You can call the [ListStackGroupOperations](~~151342~~) operation to query the operation ID.
+        # The operation ID. You can call the [ListStackGroupOperations](https://help.aliyun.com/document_detail/151342.html) operation to query the operation ID.
+        # 
+        # This parameter is required.
         self.operation_id = operation_id
-        # The region ID of the stack group. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
+        # The region ID of the stack group. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/131035.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -10037,7 +10272,7 @@ class GetStackGroupOperationResponseBodyStackGroupOperationDeploymentTargets(Tea
     ):
         # The IDs of the members in the resource directory.
         # 
-        # > This parameter is returned only if AccountIds is specified when the [UpdateStackInstances](~~151716~~) operation is called to update stack instances.
+        # > This parameter is returned only if AccountIds is specified when the [UpdateStackInstances](https://help.aliyun.com/document_detail/151716.html) operation is called to update stack instances.
         self.account_ids = account_ids
         # The IDs of the folders in the resource directory.
         self.rd_folder_ids = rd_folder_ids
@@ -10275,7 +10510,7 @@ class GetStackGroupOperationResponseBodyStackGroupOperation(TeaModel):
         self.execution_role_name = execution_role_name
         # The description of the operation.
         # 
-        # > This parameter is returned only if OperationDescription is specified when the [CreateStackInstances](~~151338~~) operation is called to create stack instances.
+        # > This parameter is returned only if OperationDescription is specified when the [CreateStackInstances](https://help.aliyun.com/document_detail/151338.html) operation is called to create stack instances.
         self.operation_description = operation_description
         # The operation ID.
         self.operation_id = operation_id
@@ -10483,19 +10718,27 @@ class GetStackInstanceRequest(TeaModel):
         # 
         # >  The Outputs parameter requires a long period of time to calculate. If you do not require the outputs of the stack, we recommend that you set OutputOption to Disabled to improve the response speed of the API operation.
         self.output_option = output_option
-        # The region ID of the stack group. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
+        # The region ID of the stack group. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/131035.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
-        # The name of the stack group. The name must be unique within a region.\
-        # The name can be up to 255 characters in length, and can contain digits, letters, hyphens (-), and underscores (\_). It must start with a digit or letter.
+        # The name of the stack group. The name must be unique within a region.\\
+        # The name can be up to 255 characters in length, and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
+        # 
+        # This parameter is required.
         self.stack_group_name = stack_group_name
         # The ID of the destination account to which the stack belongs.
         # 
         # *   If the stack group is granted self-managed permissions, the stack belongs to an Alibaba Cloud account.
         # *   If the stack group is granted service-managed permissions, the stack belongs to a member in a resource directory.
         # 
-        # > For more information about the destination account, see [Overview](~~154578~~).
+        # > For more information about the destination account, see [Overview](https://help.aliyun.com/document_detail/154578.html).
+        # 
+        # This parameter is required.
         self.stack_instance_account_id = stack_instance_account_id
         # The region ID of the stack.
+        # 
+        # This parameter is required.
         self.stack_instance_region_id = stack_instance_region_id
 
     def validate(self):
@@ -10794,9 +11037,13 @@ class GetStackPolicyRequest(TeaModel):
         region_id: str = None,
         stack_id: str = None,
     ):
-        # The region ID of the stack. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
+        # The region ID of the stack. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/131035.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the stack.
+        # 
+        # This parameter is required.
         self.stack_id = stack_id
 
     def validate(self):
@@ -10917,8 +11164,12 @@ class GetStackResourceRequest(TeaModel):
         # The name of resource property N that you want to query.
         # 
         # >  Maximum value of N: 20.
+        # 
+        # This parameter is required.
         self.logical_resource_id = logical_resource_id
         # The logical ID of the resource defined in the template.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The status of the resource. Valid values:
         # 
@@ -10939,7 +11190,9 @@ class GetStackResourceRequest(TeaModel):
         self.resource_attributes = resource_attributes
         # The name of resource property N that you want to query.
         self.show_resource_attributes = show_resource_attributes
-        # The ID of the region to which the stack belongs. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
+        # The ID of the region to which the stack belongs. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/131035.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.stack_id = stack_id
 
     def validate(self):
@@ -11086,7 +11339,7 @@ class GetStackResourceResponseBody(TeaModel):
         self.status_reason = status_reason
         # The name of the stack.
         # 
-        # The name can be up to 255 characters in length, and can contain digits, letters, hyphens (-), and underscores (\_). The name must start with a digit or letter.
+        # The name can be up to 255 characters in length, and can contain digits, letters, hyphens (-), and underscores (_). The name must start with a digit or letter.
         self.update_time = update_time
 
     def validate(self):
@@ -11243,7 +11496,7 @@ class GetTemplateRequest(TeaModel):
         # 
         # > This parameter takes effect only if you specify TemplateId.
         self.include_tags = include_tags
-        # The region ID of the stack or stack group that uses the template. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
+        # The region ID of the stack or stack group that uses the template. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/131035.html) operation to query the most recent region list.
         self.region_id = region_id
         # The name of the stack group.
         # 
@@ -11266,8 +11519,8 @@ class GetTemplateRequest(TeaModel):
         # *   Processed (default): returns the processed template.
         # *   Original: returns the original template.
         self.template_stage = template_stage
-        # The version of the template. This parameter takes effect only if you specify TemplateId.\
-        # If the template is a shared template, you can specify this parameter only if VersionOption is set to AllVersions. For more information, see [SetTemplatePermission](~~194768~~).
+        # The version of the template. This parameter takes effect only if you specify TemplateId.\\
+        # If the template is a shared template, you can specify this parameter only if VersionOption is set to AllVersions. For more information, see [SetTemplatePermission](https://help.aliyun.com/document_detail/194768.html).
         # 
         # Valid values: v1 to v100.
         self.template_version = template_version
@@ -11505,7 +11758,7 @@ class GetTemplateResponseBody(TeaModel):
         # > -   If you specify TemplateVersion, the name of the template whose version is specified by TemplateVersion is returned.
         # > -  If you not specify TemplateVersion, the name of the template whose version is the default version is returned.
         self.template_name = template_name
-        # The version of the template. This parameter is returned only if you specify TemplateId.\
+        # The version of the template. This parameter is returned only if you specify TemplateId.\\
         # If TemplateVersion is not specified or does not take effect, the default version is used.
         # 
         # If the template is a shared template, this parameter is returned only if you set VersionOption to AllVersions.
@@ -11673,8 +11926,12 @@ class GetTemplateEstimateCostRequestParameters(TeaModel):
         parameter_value: str = None,
     ):
         # The ID of the request.
+        # 
+        # This parameter is required.
         self.parameter_key = parameter_key
         # Details of the resource.
+        # 
+        # This parameter is required.
         self.parameter_value = parameter_value
 
     def validate(self):
@@ -11728,11 +11985,13 @@ class GetTemplateEstimateCostRequest(TeaModel):
         self.client_token = client_token
         # The region ID of the scenario. The default value is the same as the value of the RegionId parameter.
         # 
-        # You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/131035.html) operation to query the most recent region list.
         self.parameters = parameters
         # The ID of the template. This parameter applies to shared and private templates.
         # 
         # >  You must specify only one of the following parameters: TemplateBody, TemplateURL, TemplateId, and TemplateScratchId.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The stack ID.
         # 
@@ -11756,17 +12015,17 @@ class GetTemplateEstimateCostRequest(TeaModel):
         self.template_scratch_id = template_scratch_id
         # The region ID of the scenario. The default value is the same as the value of the RegionId parameter.
         # 
-        # You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/131035.html) operation to query the most recent region list.
         self.template_scratch_region_id = template_scratch_region_id
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests.
         # 
-        # The token can be up to 64 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_).
+        # The token can be up to 64 characters in length, and can contain letters, digits, hyphens (-), and underscores (_).
         # 
-        # For more information, see [Ensure idempotence](~~134212~~).
+        # For more information, see [Ensure idempotence](https://help.aliyun.com/document_detail/134212.html).
         self.template_url = template_url
         # The ID of the scenario.
         # 
-        # For more information about how to query the IDs of scenarios, see [ListTemplateScratches](~~363050~~).
+        # For more information about how to query the IDs of scenarios, see [ListTemplateScratches](https://help.aliyun.com/document_detail/363050.html).
         # 
         # >  You must specify only one of the following parameters: TemplateBody, TemplateURL, TemplateId, and TemplateScratchId.
         self.template_version = template_version
@@ -11920,10 +12179,14 @@ class GetTemplateParameterConstraintsRequestParameters(TeaModel):
         # The name of parameter N in the template.
         # 
         # >  The Parameters parameter is optional. If you specify the Parameters parameter, you must specify the Parameters.N.ParameterKey parameter.
+        # 
+        # This parameter is required.
         self.parameter_key = parameter_key
         # The value of parameter N in the template.
         # 
         # >  The Parameters parameter is optional. If you specify the Parameters parameter, you must specify the Parameters.N.ParameterValue parameter.
+        # 
+        # This parameter is required.
         self.parameter_value = parameter_value
 
     def validate(self):
@@ -11966,9 +12229,9 @@ class GetTemplateParameterConstraintsRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that the value is unique among different requests. The token can be up to 64 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_).
+        # You can use the client to generate the value, but you must make sure that the value is unique among different requests. The token can be up to 64 characters in length, and can contain letters, digits, hyphens (-), and underscores (_).
         # 
-        # For more information, see [Ensure idempotence](~~134212~~).
+        # For more information, see [Ensure idempotence](https://help.aliyun.com/document_detail/134212.html).
         self.client_token = client_token
         # The name of parameter N in the template.
         self.parameters = parameters
@@ -11980,7 +12243,9 @@ class GetTemplateParameterConstraintsRequest(TeaModel):
         self.parameters_order = parameters_order
         # The region ID of the template.
         # 
-        # You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/131035.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the stack.
         self.stack_id = stack_id
@@ -12071,10 +12336,14 @@ class GetTemplateParameterConstraintsShrinkRequestParameters(TeaModel):
         # The name of parameter N in the template.
         # 
         # >  The Parameters parameter is optional. If you specify the Parameters parameter, you must specify the Parameters.N.ParameterKey parameter.
+        # 
+        # This parameter is required.
         self.parameter_key = parameter_key
         # The value of parameter N in the template.
         # 
         # >  The Parameters parameter is optional. If you specify the Parameters parameter, you must specify the Parameters.N.ParameterValue parameter.
+        # 
+        # This parameter is required.
         self.parameter_value = parameter_value
 
     def validate(self):
@@ -12117,9 +12386,9 @@ class GetTemplateParameterConstraintsShrinkRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that the value is unique among different requests. The token can be up to 64 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_).
+        # You can use the client to generate the value, but you must make sure that the value is unique among different requests. The token can be up to 64 characters in length, and can contain letters, digits, hyphens (-), and underscores (_).
         # 
-        # For more information, see [Ensure idempotence](~~134212~~).
+        # For more information, see [Ensure idempotence](https://help.aliyun.com/document_detail/134212.html).
         self.client_token = client_token
         # The name of parameter N in the template.
         self.parameters = parameters
@@ -12131,7 +12400,9 @@ class GetTemplateParameterConstraintsShrinkRequest(TeaModel):
         self.parameters_order_shrink = parameters_order_shrink
         # The region ID of the template.
         # 
-        # You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/131035.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the stack.
         self.stack_id = stack_id
@@ -12609,6 +12880,7 @@ class GetTemplateRecommendParametersRequest(TeaModel):
     ):
         self.client_token = client_token
         self.parameters = parameters
+        # This parameter is required.
         self.region_id = region_id
         self.template_body = template_body
         self.template_id = template_id
@@ -12791,7 +13063,9 @@ class GetTemplateScratchRequest(TeaModel):
     ):
         # The region ID of the scenario.
         # 
-        # You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/131035.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The data display option. Valid values:
         # 
@@ -12800,7 +13074,7 @@ class GetTemplateScratchRequest(TeaModel):
         # *   Provisions: displays only the data of new nodes. This setting takes effect only when TemplateScratchType is not set to ArchitectureDetection.
         # *   All: displays all data.
         # 
-        # For more information about source nodes and new nodes, see [Overview](~~352074~~).
+        # For more information about source nodes and new nodes, see [Overview](https://help.aliyun.com/document_detail/352074.html).
         # 
         # >  If you do not specify this parameter, the node data is not displayed.
         self.show_data_option = show_data_option
@@ -12841,9 +13115,9 @@ class GetTemplateScratchResponseBodyTemplateScratchPreferenceParameters(TeaModel
         parameter_key: str = None,
         parameter_value: str = None,
     ):
-        # The parameter name.
+        # The name of the parameter.
         self.parameter_key = parameter_key
-        # The parameter value.
+        # The value of the parameter.
         self.parameter_value = parameter_value
 
     def validate(self):
@@ -12987,12 +13261,12 @@ class GetTemplateScratchResponseBodyTemplateScratchStackProvision(TeaModel):
         creatable: bool = None,
         importable: bool = None,
     ):
-        # Indicates whether the resource is replicated by calling the [CreateStack](~~132086~~) operation. Valid values:
+        # Indicates whether the resource is replicated by calling the [CreateStack](https://help.aliyun.com/document_detail/132086.html) operation. Valid values:
         # 
         # *   true
         # *   false
         self.creatable = creatable
-        # Indicates whether the resource is managed by calling the [CreateChangeSet](~~131051~~) operation. Valid values:
+        # Indicates whether the resource is managed by calling the [CreateChangeSet](https://help.aliyun.com/document_detail/131051.html) operation. Valid values:
         # 
         # *   true
         # *   false
@@ -13400,13 +13674,13 @@ class GetTemplateSummaryRequest(TeaModel):
         # 
         # You can specify only one of the following parameters: TemplateBody, TemplateURL, TemplateId, StackId, ChangeSetId, and StackGroupName.
         self.change_set_id = change_set_id
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.\
-        # The token can be up to 64 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_).\
-        # For more information, see [Ensure idempotence](~~134212~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.\\
+        # The token can be up to 64 characters in length, and can contain letters, digits, hyphens (-), and underscores (_).\\
+        # For more information, see [Ensure idempotence](https://help.aliyun.com/document_detail/134212.html).
         self.client_token = client_token
         # The parameters that are defined in the template.
         self.parameters = parameters
-        # The region ID of the stack or stack group that uses the template. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
+        # The region ID of the stack or stack group that uses the template. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/131035.html) operation to query the most recent region list.
         # 
         # This parameter takes effect only when one of the following parameters are specified: StackId, ChangeSetId, and StackGroupName.
         self.region_id = region_id
@@ -13418,8 +13692,8 @@ class GetTemplateSummaryRequest(TeaModel):
         # 
         # You can specify only one of the following parameters: TemplateBody, TemplateURL, TemplateId, StackId, ChangeSetId, and StackGroupName.
         self.stack_id = stack_id
-        # The structure that contains the template body. The template body must be 1 to 524,288 bytes in length.\
-        # If the length of the template body exceeds the upper limit, we recommend that you add parameters to the HTTP POST request body to prevent request failures caused by excessively long URLs.\
+        # The structure that contains the template body. The template body must be 1 to 524,288 bytes in length.\\
+        # If the length of the template body exceeds the upper limit, we recommend that you add parameters to the HTTP POST request body to prevent request failures caused by excessively long URLs.\\
         # You can specify only one of the following parameters: TemplateBody, TemplateURL, TemplateId, StackId, ChangeSetId, and StackGroupName.
         self.template_body = template_body
         # The template ID. This parameter applies to shared and private templates.
@@ -13564,7 +13838,7 @@ class GetTemplateSummaryResponseBody(TeaModel):
         self.parameters = parameters
         # The request ID.
         self.request_id = request_id
-        # The resource identifier summaries.\
+        # The resource identifier summaries.\\
         # A summary describes the resource that you want to import and the properties that are used to identify the resource during the import. For example, VpcId is an identifier property of ALIYUN::ECS::VPC.
         self.resource_identifier_summaries = resource_identifier_summaries
         # All resource types that are used in the template.
@@ -13679,7 +13953,7 @@ class ListChangeSetsRequest(TeaModel):
     ):
         # The ID of the change set. If detailed information about the change set is not required, you can use this parameter to replace the GetChangeSet operation.
         self.change_set_id = change_set_id
-        # The name of change set N. Maximum value of N: 5. You can use an asterisk (\*) as a wildcard for fuzzy search.
+        # The name of change set N. Maximum value of N: 5. You can use an asterisk (\\*) as a wildcard for fuzzy search.
         self.change_set_name = change_set_name
         # The execution status of change set N. Maximum value of N: 5. Valid values:
         # 
@@ -13690,17 +13964,21 @@ class ListChangeSetsRequest(TeaModel):
         # *   EXECUTE_FAILED
         # *   OBSOLETE
         self.execution_status = execution_status
-        # The page number.\
-        # Pages start from page 1.\
+        # The page number.\\
+        # Pages start from page 1.\\
         # Default value: 1.
         self.page_number = page_number
-        # The number of entries per page.\
-        # Valid values: 1 to 50.\
+        # The number of entries per page.\\
+        # Valid values: 1 to 50.\\
         # Default value: 10.
         self.page_size = page_size
-        # The region ID of the change set. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
+        # The region ID of the change set. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/131035.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the stack.
+        # 
+        # This parameter is required.
         self.stack_id = stack_id
         # The status of change set N. Maximum value of N: 5. Valid values:
         # 
@@ -14212,7 +14490,7 @@ class ListResourceTypeRegistrationsRequest(TeaModel):
         self.page_size = page_size
         # The ID of the registration record.
         self.registration_id = registration_id
-        # The resource type. The resource type can contain letters, digits, colons (:), and asterisks (\*). You can use an asterisk (\*) to perform a fuzzy match.
+        # The resource type. The resource type can contain letters, digits, colons (:), and asterisks (\\*). You can use an asterisk (\\*) to perform a fuzzy match.
         self.resource_type = resource_type
         # The registration state. Valid values:
         # 
@@ -14439,6 +14717,8 @@ class ListResourceTypeVersionsRequest(TeaModel):
         resource_type: str = None,
     ):
         # The resource type.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
 
     def validate(self):
@@ -14638,8 +14918,8 @@ class ListResourceTypesRequest(TeaModel):
         # The entity type. Valid values:
         # 
         # *   All: all types of resources.
-        # *   Resource (default): regular resources. For more information, see [Resources](~~28863~~).
-        # *   DataSource: DataSource resources. For more information, see [DataSource resources](~~404753~~).
+        # *   Resource (default): regular resources. For more information, see [Resources](https://help.aliyun.com/document_detail/28863.html).
+        # *   DataSource: DataSource resources. For more information, see [DataSource resources](https://help.aliyun.com/document_detail/404753.html).
         # *   Module: modules.
         self.entity_type = entity_type
         # The provider of the resource type. Valid values:
@@ -14647,7 +14927,7 @@ class ListResourceTypesRequest(TeaModel):
         # *   ROS (default): The resource type is provided by Resource Orchestration Service (ROS).
         # *   Self: The resource type is provided by you.
         self.provider = provider
-        # The resource type. The resource type can contain letters, digits, colons (:), and asterisks (\*). You can use an asterisk (\*) to perform a fuzzy match.
+        # The resource type. The resource type can contain letters, digits, colons (:), and asterisks (\\*). You can use an asterisk (\\*) to perform a fuzzy match.
         self.resource_type = resource_type
 
     def validate(self):
@@ -14873,19 +15153,23 @@ class ListStackEventsRequest(TeaModel):
     ):
         # The logical IDs of the resources.
         self.logical_resource_id = logical_resource_id
-        # The number of the page to return.\
-        # Pages start from page 1.\
+        # The number of the page to return.\\
+        # Pages start from page 1.\\
         # Default value: 1.
         self.page_number = page_number
-        # The number of entries to return on each page.\
-        # Maximum value: 50.\
+        # The number of entries to return on each page.\\
+        # Maximum value: 50.\\
         # Default value: 10.
         self.page_size = page_size
-        # The region ID of the stack. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
+        # The region ID of the stack. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/131035.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The resource types.
         self.resource_type = resource_type
         # The stack ID.
+        # 
+        # This parameter is required.
         self.stack_id = stack_id
         # The status of the resource.
         self.status = status
@@ -15029,12 +15313,12 @@ class ListStackEventsResponseBody(TeaModel):
     ):
         # The events.
         self.events = events
-        # The page number of the returned page.\
-        # Pages start from page 1.\
+        # The page number of the returned page.\\
+        # Pages start from page 1.\\
         # Default value: 1.
         self.page_number = page_number
-        # The number of entries returned per page.\
-        # Maximum value: 50.\
+        # The number of entries returned per page.\\
+        # Maximum value: 50.\\
         # Default value: 10.
         self.page_size = page_size
         # The request ID.
@@ -15137,7 +15421,9 @@ class ListStackGroupOperationResultsRequest(TeaModel):
     ):
         # The ID of the operation.
         # 
-        # You can call the [ListStackGroupOperations](~~151342~~) operation to query the operation ID.
+        # You can call the [ListStackGroupOperations](https://help.aliyun.com/document_detail/151342.html) operation to query the operation ID.
+        # 
+        # This parameter is required.
         self.operation_id = operation_id
         # The number of the page to return.
         # 
@@ -15151,7 +15437,9 @@ class ListStackGroupOperationResultsRequest(TeaModel):
         self.page_size = page_size
         # The region ID of the stack group.
         # 
-        # You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/131035.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -15200,7 +15488,7 @@ class ListStackGroupOperationResultsResponseBodyStackGroupOperationResults(TeaMo
         # *   If the stack group has self-managed permissions, the stack instance belongs to an Alibaba Cloud account.
         # *   If the stack group has service-managed permissions, the stack instance belongs to a member account in the resource directory.
         # 
-        # >  For more information about the account, see [Overview](~~154578~~).
+        # >  For more information about the account, see [Overview](https://help.aliyun.com/document_detail/154578.html).
         self.account_id = account_id
         # The folder ID of the resource directory.
         # 
@@ -15384,11 +15672,15 @@ class ListStackGroupOperationsRequest(TeaModel):
         # 
         # Default value: 10.
         self.page_size = page_size
-        # The region ID of the stack. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
+        # The region ID of the stack. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/131035.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The name of the stack group. The name must be unique within a region.
         # 
-        # The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (\_). It must start with a digit or letter.
+        # The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
+        # 
+        # This parameter is required.
         self.stack_group_name = stack_group_name
 
     def validate(self):
@@ -15629,6 +15921,8 @@ class ListStackGroupsRequestTags(TeaModel):
         # The key of the tag that is added to the stack group.
         # 
         # > Tags is optional. If you specify Tags, you must specify Tags.N.Key.
+        # 
+        # This parameter is required.
         self.key = key
         # The value of the tag that is added to the stack group.
         self.value = value
@@ -15677,11 +15971,13 @@ class ListStackGroupsRequest(TeaModel):
         # *   Valid values: 1 to 50.
         # *   Default value: 10.
         self.page_size = page_size
-        # The region ID of the stack group. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
+        # The region ID of the stack group. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/131035.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group. If you do not specify this parameter, the stack groups in all the resource groups are queried.
         # 
-        # > To obtain the resource group ID, go to the **Resource Group** page in the **Resource Management** console. For more information, see [View the basic information about a resource group](~~151181~~).
+        # > To obtain the resource group ID, go to the **Resource Group** page in the **Resource Management** console. For more information, see [View the basic information about a resource group](https://help.aliyun.com/document_detail/151181.html).
         self.resource_group_id = resource_group_id
         # The state of the stack group. If you do not specify this parameter, the stack groups in all states in the specified region are queried.
         # 
@@ -15827,6 +16123,7 @@ class ListStackGroupsResponseBodyStackGroups(TeaModel):
     def __init__(
         self,
         auto_deployment: ListStackGroupsResponseBodyStackGroupsAutoDeployment = None,
+        create_time: str = None,
         description: str = None,
         drift_detection_time: str = None,
         permission_model: str = None,
@@ -15836,9 +16133,11 @@ class ListStackGroupsResponseBodyStackGroups(TeaModel):
         stack_group_name: str = None,
         status: str = None,
         tags: List[ListStackGroupsResponseBodyStackGroupsTags] = None,
+        update_time: str = None,
     ):
         # The information about automatic deployment settings.
         self.auto_deployment = auto_deployment
+        self.create_time = create_time
         # The description of the stack group.
         self.description = description
         # The time when the most recent successful drift detection was performed on the stack group.
@@ -15850,7 +16149,7 @@ class ListStackGroupsResponseBodyStackGroups(TeaModel):
         # *   SELF_MANAGED
         # *   SERVICE_MANAGED
         # 
-        # > For more information about the permission models of stack groups, see [Overview](~~154578~~).
+        # > For more information about the permission models of stack groups, see [Overview](https://help.aliyun.com/document_detail/154578.html).
         self.permission_model = permission_model
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -15875,6 +16174,7 @@ class ListStackGroupsResponseBodyStackGroups(TeaModel):
         self.status = status
         # The tags that are added to the stack group.
         self.tags = tags
+        self.update_time = update_time
 
     def validate(self):
         if self.auto_deployment:
@@ -15892,6 +16192,8 @@ class ListStackGroupsResponseBodyStackGroups(TeaModel):
         result = dict()
         if self.auto_deployment is not None:
             result['AutoDeployment'] = self.auto_deployment.to_map()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
         if self.description is not None:
             result['Description'] = self.description
         if self.drift_detection_time is not None:
@@ -15912,6 +16214,8 @@ class ListStackGroupsResponseBodyStackGroups(TeaModel):
         if self.tags is not None:
             for k in self.tags:
                 result['Tags'].append(k.to_map() if k else None)
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
         return result
 
     def from_map(self, m: dict = None):
@@ -15919,6 +16223,8 @@ class ListStackGroupsResponseBodyStackGroups(TeaModel):
         if m.get('AutoDeployment') is not None:
             temp_model = ListStackGroupsResponseBodyStackGroupsAutoDeployment()
             self.auto_deployment = temp_model.from_map(m['AutoDeployment'])
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('DriftDetectionTime') is not None:
@@ -15940,6 +16246,8 @@ class ListStackGroupsResponseBodyStackGroups(TeaModel):
             for k in m.get('Tags'):
                 temp_model = ListStackGroupsResponseBodyStackGroupsTags()
                 self.tags.append(temp_model.from_map(k))
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
         return self
 
 
@@ -16068,17 +16376,21 @@ class ListStackInstancesRequest(TeaModel):
         # *   Valid values: 1 to 50.
         # *   Default value: 10.
         self.page_size = page_size
-        # The region ID of the stack group. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
+        # The region ID of the stack group. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/131035.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
-        # The name of the stack group. The name must be unique within a region.\
-        # The name can be up to 255 characters in length, and can contain digits, letters, hyphens (-), and underscores (\_). It must start with a digit or letter.
+        # The name of the stack group. The name must be unique within a region.\\
+        # The name can be up to 255 characters in length, and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
+        # 
+        # This parameter is required.
         self.stack_group_name = stack_group_name
         # The ID of the destination account to which the stack belongs.
         # 
         # *   If the stack group is granted self-managed permissions, the stack belongs to an Alibaba Cloud account.
         # *   If the stack group is granted service-managed permissions, the stack belongs to a member in a resource directory.
         # 
-        # > For more information about the destination account, see [Overview](~~154578~~).
+        # > For more information about the destination account, see [Overview](https://help.aliyun.com/document_detail/154578.html).
         self.stack_instance_account_id = stack_instance_account_id
         # The region ID of the stack.
         self.stack_instance_region_id = stack_instance_region_id
@@ -16360,7 +16672,7 @@ class ListStackOperationRisksRequest(TeaModel):
         template_url: str = None,
         template_version: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can be up to 64 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_). For more information, see [How to ensure idempotence](~~134212~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can be up to 64 characters in length, and can contain letters, digits, hyphens (-), and underscores (_). For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/134212.html).
         self.client_token = client_token
         # The type of the operation of which you want to detect risks. Valid values:
         # 
@@ -16374,7 +16686,9 @@ class ListStackOperationRisksRequest(TeaModel):
         # 
         # The name of the RAM role can be up to 64 bytes in length.
         self.ram_role_name = ram_role_name
-        # The region ID of the stack. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
+        # The region ID of the stack. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/131035.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # Specifies whether to retain all resources in the stack. Valid values:
         # 
@@ -16656,10 +16970,14 @@ class ListStackResourceDriftsRequest(TeaModel):
         # The type of the resource.
         self.next_token = next_token
         # The physical ID of the resource.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The resource properties as defined in the template, in JSON format.
         self.resource_drift_status = resource_drift_status
         # The ID of the stack.
+        # 
+        # This parameter is required.
         self.stack_id = stack_id
 
     def validate(self):
@@ -16999,8 +17317,12 @@ class ListStackResourcesRequest(TeaModel):
         stack_id: str = None,
     ):
         # The ID of the request.
+        # 
+        # This parameter is required.
         self.region_id = region_id
-        # The ID of the region to which the stack belongs. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
+        # The ID of the region to which the stack belongs. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/131035.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.stack_id = stack_id
 
     def validate(self):
@@ -17107,8 +17429,8 @@ class ListStackResourcesResponseBodyResources(TeaModel):
         self.resource_type = resource_type
         # The stack ID.
         self.stack_id = stack_id
-        # The stack name.\
-        # The name can be up to 255 characters in length, and can contain digits, letters, hyphens (-), and underscores (\_). It must start with a digit or letter.
+        # The stack name.\\
+        # The name can be up to 255 characters in length, and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
         self.stack_name = stack_name
         # The state of the resource. Valid values:
         # 
@@ -17290,10 +17612,10 @@ class ListStacksRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N.\
+        # The key of tag N.\\
         # Valid values of N: 1 to 20.
         self.key = key
-        # The value of tag N.\
+        # The value of tag N.\\
         # Valid values of N: 1 to 20.
         self.value = value
 
@@ -17354,10 +17676,12 @@ class ListStacksRequest(TeaModel):
         self.page_size = page_size
         # The ID of the parent stack.
         self.parent_stack_id = parent_stack_id
-        # The region ID of the stack. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
+        # The region ID of the stack. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/131035.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource group.\
-        # For more information about resource groups, see the "Resource Group" section of the [What is Resource Management?](~~94475~~) topic.
+        # The ID of the resource group.\\
+        # For more information about resource groups, see the "Resource Group" section of the [What is Resource Management?](https://help.aliyun.com/document_detail/94475.html) topic.
         self.resource_group_id = resource_group_id
         # Specifies whether to return nested stacks. Valid values:
         # 
@@ -17581,7 +17905,7 @@ class ListStacksResponseBodyStacks(TeaModel):
         # Indicates whether deletion protection is enabled for the stack. Valid values:
         # 
         # *   Enabled: Deletion protection is enabled for the stack.
-        # *   Disabled: Deletion protection is disabled for the stack. In this case, you can delete the stack by using the console or calling the [DeleteStack](~~610812~~) operation.
+        # *   Disabled: Deletion protection is disabled for the stack. In this case, you can delete the stack by using the console or calling the [DeleteStack](https://help.aliyun.com/document_detail/610812.html) operation.
         # 
         # >  Deletion protection of a nested stack is the same as that of its root stack.
         self.deletion_protection = deletion_protection
@@ -17598,7 +17922,7 @@ class ListStacksResponseBodyStacks(TeaModel):
         self.operation_info = operation_info
         # The ID of the parent stack.
         self.parent_stack_id = parent_stack_id
-        # The region ID of the stack. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
+        # The region ID of the stack. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/131035.html) operation to query the most recent region list.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -17856,7 +18180,9 @@ class ListTagKeysRequest(TeaModel):
     ):
         # The pagination token that is used in the next request to retrieve a new page of results.
         self.next_token = next_token
-        # The region ID of the tag key. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
+        # The region ID of the tag key. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/131035.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The type of the resource. Valid values:
         # 
@@ -17864,6 +18190,8 @@ class ListTagKeysRequest(TeaModel):
         # *   stackgroup: stack group
         # *   template: template
         # *   templatescratch: scenario
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
 
     def validate(self):
@@ -17983,10 +18311,10 @@ class ListTagResourcesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key of the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.\
+        # The tag key of the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.\\
         # The tag key can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `aliyun` or `acs:`.
         self.key = key
-        # The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string.\
+        # The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string.\\
         # The tag value can be up to 128 characters in length, and cannot contain `http://` or `https://`. The tag value cannot start with `aliyun` or `acs:`.
         self.value = value
 
@@ -18025,7 +18353,9 @@ class ListTagResourcesRequest(TeaModel):
     ):
         # The pagination token that is used in the next request to retrieve a new page of results.
         self.next_token = next_token
-        # The region ID of the tag. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
+        # The region ID of the tag. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/131035.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The IDs of the resources.
         self.resource_id = resource_id
@@ -18035,6 +18365,8 @@ class ListTagResourcesRequest(TeaModel):
         # *   stackgroup: stack group
         # *   template: template
         # *   templatescratch: scenario
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The tags of the resources. You can specify up to 20 tags.
         self.tag = tag
@@ -18232,10 +18564,14 @@ class ListTagValuesRequest(TeaModel):
         resource_type: str = None,
     ):
         # The key of the tag.
+        # 
+        # This parameter is required.
         self.key = key
         # The pagination token that is used in the next request to retrieve a new page of results.
         self.next_token = next_token
-        # The region ID of the tag value. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
+        # The region ID of the tag value. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/131035.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The type of the resource. Valid values:
         # 
@@ -18243,6 +18579,8 @@ class ListTagValuesRequest(TeaModel):
         # *   stackgroup: stack group
         # *   template: template
         # *   templatescratch: scenario
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
 
     def validate(self):
@@ -18369,6 +18707,8 @@ class ListTemplateScratchesRequestTags(TeaModel):
         # The tag key of the scenario.
         # 
         # > Tags is optional. If you want to specify Tags, you must specify Key.
+        # 
+        # This parameter is required.
         self.key = key
         # The tag value of the scenario.
         self.value = value
@@ -18423,7 +18763,9 @@ class ListTemplateScratchesRequest(TeaModel):
         self.page_size = page_size
         # The region ID of the scenario.
         # 
-        # You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/131035.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -18970,6 +19312,8 @@ class ListTemplateVersionsRequest(TeaModel):
         # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
         self.next_token = next_token
         # The template ID. This parameter applies to shared and private templates.
+        # 
+        # This parameter is required.
         self.template_id = template_id
 
     def validate(self):
@@ -19213,16 +19557,16 @@ class ListTemplatesRequest(TeaModel):
         # *   Enabled
         # *   Disabled (default)
         self.include_tags = include_tags
-        # The page number.\
-        # Pages start from page 1.\
+        # The page number.\\
+        # Pages start from page 1.\\
         # Default value: 1.
         self.page_number = page_number
-        # The number of entries per page.\
-        # Valid values: 1 to 50.\
+        # The number of entries per page.\\
+        # Valid values: 1 to 50.\\
         # Default value: 10.
         self.page_size = page_size
-        # The ID of the resource group.\
-        # For more information about resource groups, see the "Resource Group" section of [What is Resource Management?](~~94475~~)
+        # The ID of the resource group.\\
+        # For more information about resource groups, see the "Resource Group" section of [What is Resource Management?](https://help.aliyun.com/document_detail/94475.html)
         self.resource_group_id = resource_group_id
         # The sharing type of the template.
         # 
@@ -19234,7 +19578,7 @@ class ListTemplatesRequest(TeaModel):
         self.share_type = share_type
         # The tags. You can specify up to 20 tags.
         self.tag = tag
-        # The template name. This parameter takes effect only when ShareType is set to Private. The name can be up to 255 characters in length, and can contain digits, letters, hyphens (-), and underscores (\_). The name must start with a digit or letter.
+        # The template name. This parameter takes effect only when ShareType is set to Private. The name can be up to 255 characters in length, and can contain digits, letters, hyphens (-), and underscores (_). The name must start with a digit or letter.
         self.template_name = template_name
 
     def validate(self):
@@ -19444,7 +19788,7 @@ class ListTemplatesResponseBody(TeaModel):
         templates: List[ListTemplatesResponseBodyTemplates] = None,
         total_count: int = None,
     ):
-        # The page number.\
+        # The page number.\\
         # Pages start from page 1.
         self.page_number = page_number
         # The number of entries per page.
@@ -19549,18 +19893,26 @@ class MoveResourceGroupRequest(TeaModel):
         resource_id: str = None,
         resource_type: str = None,
     ):
-        # The ID of the resource group to which you want to move the resource. For more information about resource groups, see the "Resource Group" section of the [What is Resource Management?](~~94475~~) topic.
+        # The ID of the resource group to which you want to move the resource. For more information about resource groups, see the "Resource Group" section of the [What is Resource Management?](https://help.aliyun.com/document_detail/94475.html) topic.
+        # 
+        # This parameter is required.
         self.new_resource_group_id = new_resource_group_id
-        # The region ID of the resource.\
-        # You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
+        # The region ID of the resource.\\
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/131035.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
         # The type of the resource. Valid values:
         # 
         # *   stack: stack
         # *   stackgroup: stack group
         # *   template: template
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
 
     def validate(self):
@@ -19673,10 +20025,14 @@ class PreviewStackRequestParameters(TeaModel):
         # The name of the parameter N. If you do not specify the name and value of a parameter, Resource Orchestration Service (ROS) uses the default name and value that are specified in the template. Maximum value of N: 200.
         # 
         # > If you specify Parameters, you must specify Parameters.N.ParameterKey.
+        # 
+        # This parameter is required.
         self.parameter_key = parameter_key
         # The value of parameter N. Maximum value of N: 200.
         # 
         # > If you specify Parameters, you must specify Parameters.N.ParameterValue.
+        # 
+        # This parameter is required.
         self.parameter_value = parameter_value
 
     def validate(self):
@@ -19724,9 +20080,9 @@ class PreviewStackRequest(TeaModel):
         template_version: str = None,
         timeout_in_minutes: int = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.\
-        # The token can be up to 64 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-).\
-        # For more information, see [Ensure idempotence](~~134212~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.\\
+        # The token can be up to 64 characters in length, and can contain letters, digits, underscores (_), and hyphens (-).\\
+        # For more information, see [Ensure idempotence](https://help.aliyun.com/document_detail/134212.html).
         self.client_token = client_token
         # Specifies whether to disable rollback for the resources when the stack fails to be created. Valid values:
         # 
@@ -19748,7 +20104,9 @@ class PreviewStackRequest(TeaModel):
         self.parallelism = parallelism
         # The parameters of the stack.
         self.parameters = parameters
-        # The region ID of the stack. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
+        # The region ID of the stack. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/131035.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The stack ID. You can use this parameter to preview a stack that you want to update.
         # 
@@ -19757,7 +20115,7 @@ class PreviewStackRequest(TeaModel):
         # > -  You must and can specify only one of StackName and StackId.
         # > - In the scenario in which you preview a stack that you want to create or update, you cannot preview the resources in its nested stacks.
         self.stack_id = stack_id
-        # The stack name. You can use this parameter to preview the stack that you want to create. The name can be up to 255 characters in length, and can contain digits, letters, hyphens (-), and underscores (\_). It must start with a digit or letter.
+        # The stack name. You can use this parameter to preview the stack that you want to create. The name can be up to 255 characters in length, and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
         # 
         # > You must and can specify only one of StackName and StackId.
         self.stack_name = stack_name
@@ -19778,13 +20136,13 @@ class PreviewStackRequest(TeaModel):
         self.template_id = template_id
         # The scenario ID.
         # 
-        # For more information about how to query the scenario ID, see [ListTemplateScratches](~~363050~~).
+        # For more information about how to query the scenario ID, see [ListTemplateScratches](https://help.aliyun.com/document_detail/363050.html).
         # 
         # > You must and can specify only one of the following parameters: TemplateBody, TemplateURL, TemplateId, and TemplateScratchId.
         self.template_scratch_id = template_scratch_id
         # The region ID of the scenario. The default value is the same as the value of RegionId.
         # 
-        # You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/131035.html) operation to query the most recent region list.
         self.template_scratch_region_id = template_scratch_region_id
         # The URL of the file that contains the template body. The URL must point to a template that is located on an HTTP or HTTPS web server or in an OSS bucket, such as oss://ros/template/demo or oss://ros/template/demo?RegionId=cn-hangzhou. The template body can be up to 524,288 bytes in length. If you do not specify the region ID of the OSS bucket, the value of RegionId is used.
         # 
@@ -20321,15 +20679,19 @@ class RegisterResourceTypeRequest(TeaModel):
         template_body: str = None,
         template_url: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.\
-        # The token can be up to 64 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_).\
-        # For more information, see [Ensure idempotence](~~134212~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.\\
+        # The token can be up to 64 characters in length, and can contain letters, digits, hyphens (-), and underscores (_).\\
+        # For more information, see [Ensure idempotence](https://help.aliyun.com/document_detail/134212.html).
         self.client_token = client_token
         # The description of the resource type. The description can be up to 512 characters in length.
         self.description = description
         # The entity type. Set the value to Module.
+        # 
+        # This parameter is required.
         self.entity_type = entity_type
         # The resource type.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The structure that contains the template body. The template body must be 1 to 524,288 bytes in length. The template body is used as the module content. If the length of the template body exceeds the upper limit, we recommend that you add parameters to the HTTP POST request body to prevent request failures caused by excessively long URLs.
         # 
@@ -20392,7 +20754,7 @@ class RegisterResourceTypeResponseBody(TeaModel):
         registration_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the registration record. You can call the [ListResourceTypeRegistrations](~~2330740~~) operation to query registration records.
+        # The ID of the registration record. You can call the [ListResourceTypeRegistrations](https://help.aliyun.com/document_detail/2330740.html) operation to query registration records.
         self.registration_id = registration_id
         # The request ID.
         self.request_id = request_id
@@ -20475,12 +20837,18 @@ class SetDeletionProtectionRequest(TeaModel):
         # *   Disabled (default): Resource stack deletion protection is Disabled. You can use the console or API(DeleteStack) to release the stack resources.
         # 
         # >  The deletion of nested stacks is the same as the root stack.
+        # 
+        # This parameter is required.
         self.deletion_protection = deletion_protection
-        # The region ID of the stack. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
+        # The region ID of the stack. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/131035.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the stack.
         # 
         # The delete protection attribute of a nested stack is determined by the root stack and remains unchanged from the root stack.
+        # 
+        # This parameter is required.
         self.stack_id = stack_id
 
     def validate(self):
@@ -20595,6 +20963,8 @@ class SetResourceTypeRequest(TeaModel):
         # The description of the resource type or resource type version. The description can be up to 512 characters in length.
         self.description = description
         # The resource type.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The version ID. If you want to modify a version of the resource type, you must specify this parameter. If you do not specify this parameter, only the resource type is modified.
         # 
@@ -20710,9 +21080,13 @@ class SetStackPolicyRequest(TeaModel):
         stack_policy_body: str = None,
         stack_policy_url: str = None,
     ):
-        # The region ID of the stack. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
+        # The region ID of the stack. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/131035.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the stack.
+        # 
+        # This parameter is required.
         self.stack_id = stack_id
         # The structure that contains the stack policy body. The stack policy body must be 1 to 16,384 bytes in length.
         # 
@@ -20835,11 +21209,13 @@ class SetTemplatePermissionRequest(TeaModel):
         template_version: str = None,
         version_option: str = None,
     ):
-        # The Alibaba Cloud accounts with or from which you want to share or unshare the template.\
+        # The Alibaba Cloud accounts with or from which you want to share or unshare the template.\\
         # Valid values of N: 1, 2, 3, 4, and 5.
         # 
         # > - This parameter cannot be set to the ID of the Alibaba Cloud account that owns the template, or the RAM users of this Alibaba Cloud account.
-        # > - When ShareOption is set to CancelSharing, you can unshare the template from all the specified Alibaba Cloud accounts by using an asterisk (\*).
+        # > - When ShareOption is set to CancelSharing, you can unshare the template from all the specified Alibaba Cloud accounts by using an asterisk (\\*).
+        # 
+        # This parameter is required.
         self.account_ids = account_ids
         # The sharing option.
         # 
@@ -20847,8 +21223,12 @@ class SetTemplatePermissionRequest(TeaModel):
         # 
         # *   ShareToAccounts: shares the template with other Alibaba Cloud accounts.
         # *   CancelSharing: unshares the template.
+        # 
+        # This parameter is required.
         self.share_option = share_option
         # The ID of the template.
+        # 
+        # This parameter is required.
         self.template_id = template_id
         # The version of the shared template. This parameter takes effect only if you set ShareOption to ShareToAccounts and set VersionOption to Specified.
         # 
@@ -20981,23 +21361,33 @@ class SignalResourceRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests.
         # 
-        # The token can be up to 64 characters in length and can contain letters, digits, hyphens (-) and underscores (\_).
+        # The token can be up to 64 characters in length and can contain letters, digits, hyphens (-) and underscores (_).
         # 
-        # For more information, see [How to ensure idempotence](~~134212~~).
+        # For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/134212.html).
         self.client_token = client_token
         # The logical ID of the resource as defined in the template.
+        # 
+        # This parameter is required.
         self.logical_resource_id = logical_resource_id
-        # The region ID of the stack. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
+        # The region ID of the stack. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/131035.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the stack.
+        # 
+        # This parameter is required.
         self.stack_id = stack_id
         # The status of the signal. Failure signals can cause stack creation or update to fail. If all signals are warnings, the stack cannot be created or updated. Valid values:
         # 
         # *   SUCCESS
         # *   FAILURE
         # *   WARNING
+        # 
+        # This parameter is required.
         self.status = status
         # The unique ID of the signal. The ID must be 1 to 64 characters in length. If multiple signals are sent to a single resource, each signal must have a unique ID.
+        # 
+        # This parameter is required.
         self.unique_id = unique_id
 
     def validate(self):
@@ -21117,9 +21507,13 @@ class StopStackGroupOperationRequest(TeaModel):
     ):
         # The ID of the operation.
         # 
-        # You can call the [ListStackGroupOperations](~~151342~~) operation to obtain the operation ID.
+        # You can call the [ListStackGroupOperations](https://help.aliyun.com/document_detail/151342.html) operation to obtain the operation ID.
+        # 
+        # This parameter is required.
         self.operation_id = operation_id
-        # The region ID of the stack. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
+        # The region ID of the stack. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/131035.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -21224,10 +21618,14 @@ class TagResourcesRequestTag(TeaModel):
         # The tag key of the resource. You can specify up to 20 tag keys.
         # 
         # The tag key can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `aliyun` or `acs:`.
+        # 
+        # This parameter is required.
         self.key = key
         # The tag value of the resource. You can specify up to 20 tag values.
         # 
         # The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag value cannot start with `aliyun` or `acs:`.
+        # 
+        # This parameter is required.
         self.value = value
 
     def validate(self):
@@ -21262,9 +21660,13 @@ class TagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag: List[TagResourcesRequestTag] = None,
     ):
-        # The region ID of the tag that you want to create. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
+        # The region ID of the tag that you want to create. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/131035.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The IDs of the resources.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
         # The type of the resource. Valid values:
         # 
@@ -21272,8 +21674,12 @@ class TagResourcesRequest(TeaModel):
         # *   stackgroup: stack group
         # *   template: template
         # *   templatescratch: scenario
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The tags of the resource. You can specify up to 20 tags.
+        # 
+        # This parameter is required.
         self.tag = tag
 
     def validate(self):
@@ -21399,11 +21805,15 @@ class UntagResourcesRequest(TeaModel):
         # *   true
         # *   false (default)
         self.all = all
-        # The region ID of the tag. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
+        # The region ID of the tag. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/131035.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The IDs of the resource.
         # 
         # > If you set ResourceType to stackgroup, you must set ResourceId to the name of the stack group.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
         # The type of the resource. Valid values:
         # 
@@ -21411,6 +21821,8 @@ class UntagResourcesRequest(TeaModel):
         # *   stackgroup: stack group
         # *   template: template
         # *   templatescratch: scenario
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The tag keys of the resource. You can specify up to 20 tag keys.
         self.tag_key = tag_key
@@ -21531,10 +21943,14 @@ class UpdateStackRequestParameters(TeaModel):
         # Maximum value of N: 200.
         # 
         # >  The Parameters parameter is optional. If you specify Parameters, you must specify both Parameters.N.ParameterKey and Parameters.N.ParameterValue.
+        # 
+        # This parameter is required.
         self.parameter_key = parameter_key
         # The value of parameter N. Maximum value of N: 200.
         # 
         # >  The Parameters parameter is optional. If you specify Parameters, you must specify both Parameters.N.ParameterKey and Parameters.N.ParameterValue.
+        # 
+        # This parameter is required.
         self.parameter_value = parameter_value
 
     def validate(self):
@@ -21572,13 +21988,15 @@ class UpdateStackRequestTags(TeaModel):
         # Valid values of N: 1 to 20.
         # 
         # > - The Tags parameter is optional. If you specify Tags, you must specify Tags.N.Key.
-        # > - The tag of a stack is propagated to each resource that supports the tag feature in the stack. For more information, see [Propagate tags](~~201421~~).
+        # > - The tag of a stack is propagated to each resource that supports the tag feature in the stack. For more information, see [Propagate tags](https://help.aliyun.com/document_detail/201421.html).
+        # 
+        # This parameter is required.
         self.key = key
         # The value of tag N that you want to add to the stack.
         # 
         # Valid values of N: 1 to 20.
         # 
-        # >  The tag of a stack is propagated to each resource that supports the tag feature in the stack. For more information, see [Propagate tags](~~201421~~).
+        # >  The tag of a stack is propagated to each resource that supports the tag feature in the stack. For more information, see [Propagate tags](https://help.aliyun.com/document_detail/201421.html).
         self.value = value
 
     def validate(self):
@@ -21633,9 +22051,9 @@ class UpdateStackRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests.
         # 
-        # The token can be up to 64 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_).
+        # The token can be up to 64 characters in length, and can contain letters, digits, hyphens (-), and underscores (_).
         # 
-        # For more information, see [Ensure idempotence](~~134212~~).
+        # For more information, see [Ensure idempotence](https://help.aliyun.com/document_detail/134212.html).
         self.client_token = client_token
         # Specifies whether to roll back the resources in the stack when the stack fails to be updated.
         # 
@@ -21674,7 +22092,9 @@ class UpdateStackRequest(TeaModel):
         # 
         # The name of the RAM role can be up to 64 bytes in length.
         self.ram_role_name = ram_role_name
-        # The ID of the region in which the stack is deployed. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
+        # The ID of the region in which the stack is deployed. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/131035.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # Specifies whether to enable the replacement update feature. If you cannot change resource properties, you can enable the replacement update feature to replace the resource properties. If the replacement update feature is used, the existing resource is deleted and a new resource is created. The physical ID of the new resource is different from the physical ID of the deleted resource.
         # 
@@ -21688,6 +22108,8 @@ class UpdateStackRequest(TeaModel):
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
         # The ID of the stack.
+        # 
+        # This parameter is required.
         self.stack_id = stack_id
         # The structure that contains the stack policy body. The policy body must be 1 to 16,384 bytes in length.
         # 
@@ -22071,11 +22493,11 @@ class UpdateStackGroupRequestAutoDeployment(TeaModel):
     ):
         # The IDs of the members in the resource directory. You can specify a maximum of 20 member IDs.
         # 
-        # >  To view the member IDs, go to the **Overview** page in the **Resource Management** console. For more information, see [View the detailed information of a member](~~111624~~).
+        # >  To view the member IDs, go to the **Overview** page in the **Resource Management** console. For more information, see [View the detailed information of a member](https://help.aliyun.com/document_detail/111624.html).
         self.enabled = enabled
         # The IDs of the members in the resource directory. You can specify a maximum of 20 member IDs.
         # 
-        # >  To view the member IDs, go to the **Overview** page in the **Resource Management** console. For more information, see [View the detailed information of a member](~~111624~~).
+        # >  To view the member IDs, go to the **Overview** page in the **Resource Management** console. For more information, see [View the detailed information of a member](https://help.aliyun.com/document_detail/111624.html).
         self.retain_stacks_on_account_removal = retain_stacks_on_account_removal
 
     def validate(self):
@@ -22151,8 +22573,12 @@ class UpdateStackGroupRequestParameters(TeaModel):
         # *   false: deletes the stacks.
         # 
         # >  This parameter is required if the Enabled parameter is set to true.
+        # 
+        # This parameter is required.
         self.parameter_key = parameter_key
         # The folders in which you want to use service-managed permissions to update stacks.
+        # 
+        # This parameter is required.
         self.parameter_value = parameter_value
 
     def validate(self):
@@ -22216,7 +22642,7 @@ class UpdateStackGroupRequest(TeaModel):
         # 
         # You can create stacks within all members in the specified folders. If you create stacks in the Root folder, the stacks are created within all members in the resource directory.
         # 
-        # >  To view the folder IDs, go to the **Overview** page in the **Resource Management** console. For more information, see [View the basic information of a folder](~~111223~~).
+        # >  To view the folder IDs, go to the **Overview** page in the **Resource Management** console. For more information, see [View the basic information of a folder](https://help.aliyun.com/document_detail/111223.html).
         self.auto_deployment = auto_deployment
         # The option for the stack group. You can specify up to one option.
         self.capabilities = capabilities
@@ -22257,13 +22683,17 @@ class UpdateStackGroupRequest(TeaModel):
         # *   If you set only the AccountIds parameter, stacks are deployed within the specified members.
         # *   If you set both parameters, the accounts specified by AccountIds must be contained in the folders specified by RdFolderIds.
         # 
-        # >  To view the folder IDs, go to the **Overview** page in the **Resource Management** console. For more information, see [View the basic information of a folder](~~111223~~).
+        # >  To view the folder IDs, go to the **Overview** page in the **Resource Management** console. For more information, see [View the basic information of a folder](https://help.aliyun.com/document_detail/111223.html).
         self.permission_model = permission_model
         # The region IDs of stack instances. You can specify a maximum of 20 region IDs.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The description of the operation to update the stack group.
         self.region_ids = region_ids
         # The region IDs of stack instances. You can specify a maximum of 20 region IDs.
+        # 
+        # This parameter is required.
         self.stack_group_name = stack_group_name
         self.template_body = template_body
         # The permission model.
@@ -22274,7 +22704,7 @@ class UpdateStackGroupRequest(TeaModel):
         # *   SERVICE_MANAGED: the service-managed permission model. If you use the service-managed model for the stack group, ROS creates service-linked roles for the administrator and execution accounts, and the administrator account uses its role to deploy stacks within the execution account.
         # 
         # >- If stack instances have been created in the stack group, you cannot switch the permission mode of the stack group.
-        # >- If you want to use the service-managed permission model to deploy stacks, your account must be the management account or a delegated administrator account of your resource directory and the trusted access feature is enabled for the account. For more information, see [Step 1: (Optional) Create a delegated administrator account](~~308253~~) and [Step 2: Enable trusted access](~~298229~~).
+        # >- If you want to use the service-managed permission model to deploy stacks, your account must be the management account or a delegated administrator account of your resource directory and the trusted access feature is enabled for the account. For more information, see [Step 1: (Optional) Create a delegated administrator account](https://help.aliyun.com/document_detail/308253.html) and [Step 2: Enable trusted access](https://help.aliyun.com/document_detail/298229.html).
         self.template_id = template_id
         # The name of the RAM role to be assumed by the administrator role AliyunROSStackGroupAdministrationRole. This parameter is required if you want to grant self-managed permissions to the stack group. If you do not specify a value for this parameter, the default value AliyunROSStackGroupExecutionRole is used. You can use this role in ROS to perform operations on the stacks that correspond to stack instances in the stack group.
         # 
@@ -22405,8 +22835,12 @@ class UpdateStackGroupShrinkRequestParameters(TeaModel):
         # *   false: deletes the stacks.
         # 
         # >  This parameter is required if the Enabled parameter is set to true.
+        # 
+        # This parameter is required.
         self.parameter_key = parameter_key
         # The folders in which you want to use service-managed permissions to update stacks.
+        # 
+        # This parameter is required.
         self.parameter_value = parameter_value
 
     def validate(self):
@@ -22470,7 +22904,7 @@ class UpdateStackGroupShrinkRequest(TeaModel):
         # 
         # You can create stacks within all members in the specified folders. If you create stacks in the Root folder, the stacks are created within all members in the resource directory.
         # 
-        # >  To view the folder IDs, go to the **Overview** page in the **Resource Management** console. For more information, see [View the basic information of a folder](~~111223~~).
+        # >  To view the folder IDs, go to the **Overview** page in the **Resource Management** console. For more information, see [View the basic information of a folder](https://help.aliyun.com/document_detail/111223.html).
         self.auto_deployment_shrink = auto_deployment_shrink
         # The option for the stack group. You can specify up to one option.
         self.capabilities = capabilities
@@ -22511,13 +22945,17 @@ class UpdateStackGroupShrinkRequest(TeaModel):
         # *   If you set only the AccountIds parameter, stacks are deployed within the specified members.
         # *   If you set both parameters, the accounts specified by AccountIds must be contained in the folders specified by RdFolderIds.
         # 
-        # >  To view the folder IDs, go to the **Overview** page in the **Resource Management** console. For more information, see [View the basic information of a folder](~~111223~~).
+        # >  To view the folder IDs, go to the **Overview** page in the **Resource Management** console. For more information, see [View the basic information of a folder](https://help.aliyun.com/document_detail/111223.html).
         self.permission_model = permission_model
         # The region IDs of stack instances. You can specify a maximum of 20 region IDs.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The description of the operation to update the stack group.
         self.region_ids_shrink = region_ids_shrink
         # The region IDs of stack instances. You can specify a maximum of 20 region IDs.
+        # 
+        # This parameter is required.
         self.stack_group_name = stack_group_name
         self.template_body = template_body
         # The permission model.
@@ -22528,7 +22966,7 @@ class UpdateStackGroupShrinkRequest(TeaModel):
         # *   SERVICE_MANAGED: the service-managed permission model. If you use the service-managed model for the stack group, ROS creates service-linked roles for the administrator and execution accounts, and the administrator account uses its role to deploy stacks within the execution account.
         # 
         # >- If stack instances have been created in the stack group, you cannot switch the permission mode of the stack group.
-        # >- If you want to use the service-managed permission model to deploy stacks, your account must be the management account or a delegated administrator account of your resource directory and the trusted access feature is enabled for the account. For more information, see [Step 1: (Optional) Create a delegated administrator account](~~308253~~) and [Step 2: Enable trusted access](~~298229~~).
+        # >- If you want to use the service-managed permission model to deploy stacks, your account must be the management account or a delegated administrator account of your resource directory and the trusted access feature is enabled for the account. For more information, see [Step 1: (Optional) Create a delegated administrator account](https://help.aliyun.com/document_detail/308253.html) and [Step 2: Enable trusted access](https://help.aliyun.com/document_detail/298229.html).
         self.template_id = template_id
         # The name of the RAM role to be assumed by the administrator role AliyunROSStackGroupAdministrationRole. This parameter is required if you want to grant self-managed permissions to the stack group. If you do not specify a value for this parameter, the default value AliyunROSStackGroupExecutionRole is used. You can use this role in ROS to perform operations on the stacks that correspond to stack instances in the stack group.
         # 
@@ -22723,7 +23161,7 @@ class UpdateStackInstancesRequestDeploymentTargets(TeaModel):
     ):
         # The IDs of the member accounts in the resource directory. You can specify up to 20 member account IDs.
         # 
-        # > To view the member account IDs, go to the **Overview** page in the **Resource Management** console. For more information, see [View the details of a member](~~111624~~).
+        # > To view the member account IDs, go to the **Overview** page in the **Resource Management** console. For more information, see [View the details of a member](https://help.aliyun.com/document_detail/111624.html).
         self.account_ids = account_ids
         # The folder IDs of the resource directory.
         self.rd_folder_ids = rd_folder_ids
@@ -22764,6 +23202,8 @@ class UpdateStackInstancesRequestParameterOverrides(TeaModel):
         # 
         # > -  ParameterOverrides is optional.
         # > - If you specify ParameterOverrides, you must specify ParameterOverrides.N.ParameterKey and ParameterOverrides.N.ParameterValue.
+        # 
+        # This parameter is required.
         self.parameter_key = parameter_key
         # The value of parameter N that you want to use to override a specific parameter. If you do not specify this parameter, ROS uses the value that you specified when you created the stack group.
         # 
@@ -22771,6 +23211,8 @@ class UpdateStackInstancesRequestParameterOverrides(TeaModel):
         # 
         # > -  ParameterOverrides is optional.
         # > - If you specify ParameterOverrides, you must specify ParameterOverrides.N.ParameterKey and ParameterOverrides.N.ParameterValue.
+        # 
+        # This parameter is required.
         self.parameter_value = parameter_value
 
     def validate(self):
@@ -22815,9 +23257,9 @@ class UpdateStackInstancesRequest(TeaModel):
         # 
         # > If you want to update stacks in self-managed permission mode, you must specify this parameter.
         self.account_ids = account_ids
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.\
-        # The token can contain letters, digits, hyphens (-), and underscores (\_), and cannot exceed 64 characters in length.\
-        # For more information, see [How to ensure idempotence](~~134212~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.\\
+        # The token can contain letters, digits, hyphens (-), and underscores (_), and cannot exceed 64 characters in length.\\
+        # For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/134212.html).
         self.client_token = client_token
         # The folders in which you want to deploy stacks in service-managed mode.
         # 
@@ -22876,12 +23318,18 @@ class UpdateStackInstancesRequest(TeaModel):
         self.operation_preferences = operation_preferences
         # The parameters that are used to override specific parameters.
         self.parameter_overrides = parameter_overrides
-        # The region ID of the stack group. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
+        # The region ID of the stack group. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/131035.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The IDs of the regions where you want to update the stacks. You can specify up to 20 region IDs.
+        # 
+        # This parameter is required.
         self.region_ids = region_ids
-        # The name of the stack group. The name must be unique within a region.\
-        # The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (\_). It must start with a digit or a letter.
+        # The name of the stack group. The name must be unique within a region.\\
+        # The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or a letter.
+        # 
+        # This parameter is required.
         self.stack_group_name = stack_group_name
         # The timeout period for the update operation.
         # 
@@ -22968,6 +23416,8 @@ class UpdateStackInstancesShrinkRequestParameterOverrides(TeaModel):
         # 
         # > -  ParameterOverrides is optional.
         # > - If you specify ParameterOverrides, you must specify ParameterOverrides.N.ParameterKey and ParameterOverrides.N.ParameterValue.
+        # 
+        # This parameter is required.
         self.parameter_key = parameter_key
         # The value of parameter N that you want to use to override a specific parameter. If you do not specify this parameter, ROS uses the value that you specified when you created the stack group.
         # 
@@ -22975,6 +23425,8 @@ class UpdateStackInstancesShrinkRequestParameterOverrides(TeaModel):
         # 
         # > -  ParameterOverrides is optional.
         # > - If you specify ParameterOverrides, you must specify ParameterOverrides.N.ParameterKey and ParameterOverrides.N.ParameterValue.
+        # 
+        # This parameter is required.
         self.parameter_value = parameter_value
 
     def validate(self):
@@ -23019,9 +23471,9 @@ class UpdateStackInstancesShrinkRequest(TeaModel):
         # 
         # > If you want to update stacks in self-managed permission mode, you must specify this parameter.
         self.account_ids_shrink = account_ids_shrink
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.\
-        # The token can contain letters, digits, hyphens (-), and underscores (\_), and cannot exceed 64 characters in length.\
-        # For more information, see [How to ensure idempotence](~~134212~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.\\
+        # The token can contain letters, digits, hyphens (-), and underscores (_), and cannot exceed 64 characters in length.\\
+        # For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/134212.html).
         self.client_token = client_token
         # The folders in which you want to deploy stacks in service-managed mode.
         # 
@@ -23080,12 +23532,18 @@ class UpdateStackInstancesShrinkRequest(TeaModel):
         self.operation_preferences_shrink = operation_preferences_shrink
         # The parameters that are used to override specific parameters.
         self.parameter_overrides = parameter_overrides
-        # The region ID of the stack group. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
+        # The region ID of the stack group. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/131035.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The IDs of the regions where you want to update the stacks. You can specify up to 20 region IDs.
+        # 
+        # This parameter is required.
         self.region_ids_shrink = region_ids_shrink
-        # The name of the stack group. The name must be unique within a region.\
-        # The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (\_). It must start with a digit or a letter.
+        # The name of the stack group. The name must be unique within a region.\\
+        # The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or a letter.
+        # 
+        # This parameter is required.
         self.stack_group_name = stack_group_name
         # The timeout period for the update operation.
         # 
@@ -23245,9 +23703,9 @@ class UpdateStackTemplateByResourcesRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests.
         # 
-        # The token can be up to 64 characters in length and can contain letters, digits, hyphens (-), and underscores (\_).
+        # The token can be up to 64 characters in length and can contain letters, digits, hyphens (-), and underscores (_).
         # 
-        # For more information, see [How to ensure idempotence](~~134212~~).
+        # For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/134212.html).
         self.client_token = client_token
         # Specifies whether to only preview the corrected template in this request. Default value: false. Valid values:
         # 
@@ -23258,9 +23716,13 @@ class UpdateStackTemplateByResourcesRequest(TeaModel):
         self.dry_run = dry_run
         # The logical ID of resource.
         self.logical_resource_id = logical_resource_id
-        # The region ID of the stack. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
+        # The region ID of the stack. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/131035.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the stack.
+        # 
+        # This parameter is required.
         self.stack_id = stack_id
         # The format of the returned template. Default value: JSON. Valid values:
         # 
@@ -23404,10 +23866,12 @@ class UpdateTemplateRequest(TeaModel):
         self.description = description
         self.template_body = template_body
         # The ID of the template. This parameter applies to shared and private templates.
+        # 
+        # This parameter is required.
         self.template_id = template_id
         # The name of the template.
         # 
-        # The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (\_). It must start with a digit or letter.
+        # The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
         self.template_name = template_name
         # The URL of the file that contains the template body. The URL must point to a template located in an HTTP or HTTPS web server or an Alibaba Cloud OSS bucket. Examples: oss://ros/template/demo and oss://ros/template/demo?RegionId=cn-hangzhou. The template can be up to 524,288 bytes in length, and the URL can be up to 1,024 bytes in length.
         # 
@@ -23540,12 +24004,16 @@ class UpdateTemplateScratchRequestPreferenceParameters(TeaModel):
         # 
         # >- PreferenceParameters is optional. If you specify PreferenceParameters, you must specify both ParameterKey and ParameterValue.
         # > - If you set TemplateScratchType to ResourceImport, you must set ParameterKey to DeletionPolicy.
+        # 
+        # This parameter is required.
         self.parameter_key = parameter_key
         # The parameter value. The value of ParameterValue varies based on the value of ParameterKey.
         # 
         # For more information about the valid values of ParameterKey, see the "**Additional information about request parameters**" section of this topic.
         # 
         # >  PreferenceParameters is optional. If you specify PreferenceParameters, you must specify both ParameterKey and ParameterValue.
+        # 
+        # This parameter is required.
         self.parameter_value = parameter_value
 
     def validate(self):
@@ -23579,6 +24047,8 @@ class UpdateTemplateScratchRequestSourceResourceGroup(TeaModel):
         resource_type_filter: List[str] = None,
     ):
         # The ID of the source resource group.
+        # 
+        # This parameter is required.
         self.resource_group_id = resource_group_id
         # The resource types.
         self.resource_type_filter = resource_type_filter
@@ -23614,8 +24084,12 @@ class UpdateTemplateScratchRequestSourceResources(TeaModel):
         resource_type: str = None,
     ):
         # The resource ID.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
         # The resource type.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
 
     def validate(self):
@@ -23653,6 +24127,8 @@ class UpdateTemplateScratchRequestSourceTag(TeaModel):
         # If you want to specify only the tag key, you must set the tag value to an empty string. Example: {"TagKey": ""}.
         # 
         # If you set TemplateScratchType to ArchitectureDetection, you can add up to five source tags. In other cases, you can add up to 10 source tags.
+        # 
+        # This parameter is required.
         self.resource_tags = resource_tags
         # The resource types for filtering resources.
         self.resource_type_filter = resource_type_filter
@@ -23698,7 +24174,7 @@ class UpdateTemplateScratchRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         # 
-        # For more information, see [How to ensure idempotence](~~134212~~).
+        # For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/134212.html).
         self.client_token = client_token
         # The description of the scenario.
         self.description = description
@@ -23721,7 +24197,9 @@ class UpdateTemplateScratchRequest(TeaModel):
         self.preference_parameters = preference_parameters
         # The region ID of the scenario.
         # 
-        # You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/131035.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -23736,6 +24214,8 @@ class UpdateTemplateScratchRequest(TeaModel):
         # The source tag.
         self.source_tag = source_tag
         # The ID of the scenario.
+        # 
+        # This parameter is required.
         self.template_scratch_id = template_scratch_id
 
     def validate(self):
@@ -23838,7 +24318,7 @@ class UpdateTemplateScratchShrinkRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         # 
-        # For more information, see [How to ensure idempotence](~~134212~~).
+        # For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/134212.html).
         self.client_token = client_token
         # The description of the scenario.
         self.description = description
@@ -23861,7 +24341,9 @@ class UpdateTemplateScratchShrinkRequest(TeaModel):
         self.preference_parameters_shrink = preference_parameters_shrink
         # The region ID of the scenario.
         # 
-        # You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/131035.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -23876,6 +24358,8 @@ class UpdateTemplateScratchShrinkRequest(TeaModel):
         # The source tag.
         self.source_tag_shrink = source_tag_shrink
         # The ID of the scenario.
+        # 
+        # This parameter is required.
         self.template_scratch_id = template_scratch_id
 
     def validate(self):
@@ -24026,18 +24510,18 @@ class ValidateTemplateRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.
         # 
-        # The token can be up to 64 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_).
+        # The token can be up to 64 characters in length, and can contain letters, digits, hyphens (-), and underscores (_).
         # 
-        # For more information, see [Ensure idempotence](~~134212~~).
+        # For more information, see [Ensure idempotence](https://help.aliyun.com/document_detail/134212.html).
         self.client_token = client_token
-        # The region ID of the template. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
+        # The region ID of the template. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/131035.html) operation to query the most recent region list.
         self.region_id = region_id
         self.template_body = template_body
         # The URL of the file that contains the template body. The URL must point to a template that is located on an HTTP web server or in an Object Storage Service (OSS) bucket, such as oss://ros/template/demo or oss://ros/template/demo?RegionId=cn-hangzhou. The template body can be up to 524,288 bytes in length.
         # 
         # > If you do not specify the region ID of the OSS bucket, the value of RegionId is used.
         # 
-        # You can specify one of TemplateBody and TemplateURL, but not both of them. The URL can be up to 1,024 bytes in length.\
+        # You can specify one of TemplateBody and TemplateURL, but not both of them. The URL can be up to 1,024 bytes in length.\\
         self.template_url = template_url
         # The options that are used to control the generation of information about the stack update. You can specify up to two options.
         self.update_info_options = update_info_options
