@@ -1,3 +1,8 @@
+2024-05-10 Version: 2.0.1
+- Update API DescribeInstance: update response param.
+- Update API ListInstance: update response param.
+
+
 2024-04-23 Version: 2.0.0
 - Support API DisableKibanaPvlNetwork.
 - Support API EnableKibanaPvlNetwork.
