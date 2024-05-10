@@ -77,6 +77,7 @@ class GroupConfiguration(TeaModel):
         type: str = None,
     ):
         self.fields = fields
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -194,15 +195,23 @@ class AlertQuery(TeaModel):
     ):
         self.chart_title = chart_title
         self.dashboard_id = dashboard_id
+        # This parameter is required.
         self.end = end
         self.power_sql_mode = power_sql_mode
+        # This parameter is required.
         self.project = project
+        # This parameter is required.
         self.query = query
+        # This parameter is required.
         self.region = region
         self.role_arn = role_arn
+        # This parameter is required.
         self.start = start
+        # This parameter is required.
         self.store = store
+        # This parameter is required.
         self.store_type = store_type
+        # This parameter is required.
         self.time_span_type = time_span_type
         self.ui = ui
 
@@ -425,9 +434,11 @@ class TemplateConfiguration(TeaModel):
         version: str = None,
     ):
         self.aonotations = aonotations
+        # This parameter is required.
         self.id = id
         self.lang = lang
         self.tokens = tokens
+        # This parameter is required.
         self.type = type
         self.version = version
 
@@ -498,26 +509,34 @@ class AlertConfiguration(TeaModel):
         version: str = None,
     ):
         self.annotations = annotations
+        # This parameter is required.
         self.auto_annotation = auto_annotation
         self.condition_configuration = condition_configuration
         self.dashboard = dashboard
+        # This parameter is required.
         self.group_configuration = group_configuration
         self.join_configurations = join_configurations
         self.labels = labels
         self.mute_until = mute_until
+        # This parameter is required.
         self.no_data_fire = no_data_fire
         self.no_data_severity = no_data_severity
         self.policy_configuration = policy_configuration
+        # This parameter is required.
         self.query_list = query_list
+        # This parameter is required.
         self.send_resolved = send_resolved
+        # This parameter is required.
         self.severity_configurations = severity_configurations
         self.sink_alerthub = sink_alerthub
         self.sink_cms = sink_cms
         self.sink_event_store = sink_event_store
         self.tags = tags
         self.template_configuration = template_configuration
+        # This parameter is required.
         self.threshold = threshold
         self.type = type
+        # This parameter is required.
         self.version = version
 
     def validate(self):
@@ -704,6 +723,7 @@ class Schedule(TeaModel):
         self.interval = interval
         self.run_immediately = run_immediately
         self.time_zone = time_zone
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -758,12 +778,16 @@ class Alert(TeaModel):
         schedule: Schedule = None,
         status: str = None,
     ):
+        # This parameter is required.
         self.configuration = configuration
         self.create_time = create_time
         self.description = description
+        # This parameter is required.
         self.display_name = display_name
         self.last_modified_time = last_modified_time
+        # This parameter is required.
         self.name = name
+        # This parameter is required.
         self.schedule = schedule
         self.status = status
 
@@ -859,481 +883,6 @@ class ConsumerGroup(TeaModel):
         return self
 
 
-class CreateAlertReq(TeaModel):
-    def __init__(
-        self,
-        configuration: AlertConfiguration = None,
-        description: str = None,
-        display_name: str = None,
-        name: str = None,
-        schedule: Schedule = None,
-    ):
-        self.configuration = configuration
-        self.description = description
-        self.display_name = display_name
-        self.name = name
-        self.schedule = schedule
-
-    def validate(self):
-        if self.configuration:
-            self.configuration.validate()
-        if self.schedule:
-            self.schedule.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.configuration is not None:
-            result['configuration'] = self.configuration.to_map()
-        if self.description is not None:
-            result['description'] = self.description
-        if self.display_name is not None:
-            result['displayName'] = self.display_name
-        if self.name is not None:
-            result['name'] = self.name
-        if self.schedule is not None:
-            result['schedule'] = self.schedule.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('configuration') is not None:
-            temp_model = AlertConfiguration()
-            self.configuration = temp_model.from_map(m['configuration'])
-        if m.get('description') is not None:
-            self.description = m.get('description')
-        if m.get('displayName') is not None:
-            self.display_name = m.get('displayName')
-        if m.get('name') is not None:
-            self.name = m.get('name')
-        if m.get('schedule') is not None:
-            temp_model = Schedule()
-            self.schedule = temp_model.from_map(m['schedule'])
-        return self
-
-
-class OSSExportConfigurationSink(TeaModel):
-    def __init__(
-        self,
-        bucket: str = None,
-        buffer_interval: int = None,
-        buffer_size: int = None,
-        compression_type: str = None,
-        content_detail: Dict[str, Any] = None,
-        content_type: str = None,
-        delay_sec: int = None,
-        endpoint: str = None,
-        path_format: str = None,
-        path_format_type: str = None,
-        prefix: str = None,
-        role_arn: str = None,
-        suffix: str = None,
-        time_zone: str = None,
-    ):
-        self.bucket = bucket
-        self.buffer_interval = buffer_interval
-        self.buffer_size = buffer_size
-        self.compression_type = compression_type
-        self.content_detail = content_detail
-        self.content_type = content_type
-        self.delay_sec = delay_sec
-        self.endpoint = endpoint
-        self.path_format = path_format
-        self.path_format_type = path_format_type
-        self.prefix = prefix
-        self.role_arn = role_arn
-        self.suffix = suffix
-        self.time_zone = time_zone
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.bucket is not None:
-            result['bucket'] = self.bucket
-        if self.buffer_interval is not None:
-            result['bufferInterval'] = self.buffer_interval
-        if self.buffer_size is not None:
-            result['bufferSize'] = self.buffer_size
-        if self.compression_type is not None:
-            result['compressionType'] = self.compression_type
-        if self.content_detail is not None:
-            result['contentDetail'] = self.content_detail
-        if self.content_type is not None:
-            result['contentType'] = self.content_type
-        if self.delay_sec is not None:
-            result['delaySec'] = self.delay_sec
-        if self.endpoint is not None:
-            result['endpoint'] = self.endpoint
-        if self.path_format is not None:
-            result['pathFormat'] = self.path_format
-        if self.path_format_type is not None:
-            result['pathFormatType'] = self.path_format_type
-        if self.prefix is not None:
-            result['prefix'] = self.prefix
-        if self.role_arn is not None:
-            result['roleArn'] = self.role_arn
-        if self.suffix is not None:
-            result['suffix'] = self.suffix
-        if self.time_zone is not None:
-            result['timeZone'] = self.time_zone
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('bucket') is not None:
-            self.bucket = m.get('bucket')
-        if m.get('bufferInterval') is not None:
-            self.buffer_interval = m.get('bufferInterval')
-        if m.get('bufferSize') is not None:
-            self.buffer_size = m.get('bufferSize')
-        if m.get('compressionType') is not None:
-            self.compression_type = m.get('compressionType')
-        if m.get('contentDetail') is not None:
-            self.content_detail = m.get('contentDetail')
-        if m.get('contentType') is not None:
-            self.content_type = m.get('contentType')
-        if m.get('delaySec') is not None:
-            self.delay_sec = m.get('delaySec')
-        if m.get('endpoint') is not None:
-            self.endpoint = m.get('endpoint')
-        if m.get('pathFormat') is not None:
-            self.path_format = m.get('pathFormat')
-        if m.get('pathFormatType') is not None:
-            self.path_format_type = m.get('pathFormatType')
-        if m.get('prefix') is not None:
-            self.prefix = m.get('prefix')
-        if m.get('roleArn') is not None:
-            self.role_arn = m.get('roleArn')
-        if m.get('suffix') is not None:
-            self.suffix = m.get('suffix')
-        if m.get('timeZone') is not None:
-            self.time_zone = m.get('timeZone')
-        return self
-
-
-class OSSExportConfiguration(TeaModel):
-    def __init__(
-        self,
-        from_time: int = None,
-        logstore: str = None,
-        role_arn: str = None,
-        sink: OSSExportConfigurationSink = None,
-        to_time: int = None,
-    ):
-        self.from_time = from_time
-        self.logstore = logstore
-        self.role_arn = role_arn
-        self.sink = sink
-        self.to_time = to_time
-
-    def validate(self):
-        if self.sink:
-            self.sink.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.from_time is not None:
-            result['fromTime'] = self.from_time
-        if self.logstore is not None:
-            result['logstore'] = self.logstore
-        if self.role_arn is not None:
-            result['roleArn'] = self.role_arn
-        if self.sink is not None:
-            result['sink'] = self.sink.to_map()
-        if self.to_time is not None:
-            result['toTime'] = self.to_time
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('fromTime') is not None:
-            self.from_time = m.get('fromTime')
-        if m.get('logstore') is not None:
-            self.logstore = m.get('logstore')
-        if m.get('roleArn') is not None:
-            self.role_arn = m.get('roleArn')
-        if m.get('sink') is not None:
-            temp_model = OSSExportConfigurationSink()
-            self.sink = temp_model.from_map(m['sink'])
-        if m.get('toTime') is not None:
-            self.to_time = m.get('toTime')
-        return self
-
-
-class CreateOSSExportReq(TeaModel):
-    def __init__(
-        self,
-        configuration: OSSExportConfiguration = None,
-        description: str = None,
-        display_name: str = None,
-        name: str = None,
-    ):
-        self.configuration = configuration
-        self.description = description
-        self.display_name = display_name
-        self.name = name
-
-    def validate(self):
-        if self.configuration:
-            self.configuration.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.configuration is not None:
-            result['configuration'] = self.configuration.to_map()
-        if self.description is not None:
-            result['description'] = self.description
-        if self.display_name is not None:
-            result['displayName'] = self.display_name
-        if self.name is not None:
-            result['name'] = self.name
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('configuration') is not None:
-            temp_model = OSSExportConfiguration()
-            self.configuration = temp_model.from_map(m['configuration'])
-        if m.get('description') is not None:
-            self.description = m.get('description')
-        if m.get('displayName') is not None:
-            self.display_name = m.get('displayName')
-        if m.get('name') is not None:
-            self.name = m.get('name')
-        return self
-
-
-class OSSIngestionConfigurationSource(TeaModel):
-    def __init__(
-        self,
-        bucket: str = None,
-        compression_codec: str = None,
-        encoding: str = None,
-        end_time: int = None,
-        endpoint: str = None,
-        format: Dict[str, Any] = None,
-        interval: str = None,
-        pattern: str = None,
-        prefix: str = None,
-        restore_object_enabled: bool = None,
-        role_arn: str = None,
-        start_time: int = None,
-        time_field: str = None,
-        time_format: str = None,
-        time_pattern: str = None,
-        time_zone: str = None,
-        use_meta_index: bool = None,
-    ):
-        self.bucket = bucket
-        self.compression_codec = compression_codec
-        self.encoding = encoding
-        self.end_time = end_time
-        self.endpoint = endpoint
-        self.format = format
-        self.interval = interval
-        self.pattern = pattern
-        self.prefix = prefix
-        self.restore_object_enabled = restore_object_enabled
-        self.role_arn = role_arn
-        self.start_time = start_time
-        self.time_field = time_field
-        self.time_format = time_format
-        self.time_pattern = time_pattern
-        self.time_zone = time_zone
-        self.use_meta_index = use_meta_index
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.bucket is not None:
-            result['bucket'] = self.bucket
-        if self.compression_codec is not None:
-            result['compressionCodec'] = self.compression_codec
-        if self.encoding is not None:
-            result['encoding'] = self.encoding
-        if self.end_time is not None:
-            result['endTime'] = self.end_time
-        if self.endpoint is not None:
-            result['endpoint'] = self.endpoint
-        if self.format is not None:
-            result['format'] = self.format
-        if self.interval is not None:
-            result['interval'] = self.interval
-        if self.pattern is not None:
-            result['pattern'] = self.pattern
-        if self.prefix is not None:
-            result['prefix'] = self.prefix
-        if self.restore_object_enabled is not None:
-            result['restoreObjectEnabled'] = self.restore_object_enabled
-        if self.role_arn is not None:
-            result['roleARN'] = self.role_arn
-        if self.start_time is not None:
-            result['startTime'] = self.start_time
-        if self.time_field is not None:
-            result['timeField'] = self.time_field
-        if self.time_format is not None:
-            result['timeFormat'] = self.time_format
-        if self.time_pattern is not None:
-            result['timePattern'] = self.time_pattern
-        if self.time_zone is not None:
-            result['timeZone'] = self.time_zone
-        if self.use_meta_index is not None:
-            result['useMetaIndex'] = self.use_meta_index
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('bucket') is not None:
-            self.bucket = m.get('bucket')
-        if m.get('compressionCodec') is not None:
-            self.compression_codec = m.get('compressionCodec')
-        if m.get('encoding') is not None:
-            self.encoding = m.get('encoding')
-        if m.get('endTime') is not None:
-            self.end_time = m.get('endTime')
-        if m.get('endpoint') is not None:
-            self.endpoint = m.get('endpoint')
-        if m.get('format') is not None:
-            self.format = m.get('format')
-        if m.get('interval') is not None:
-            self.interval = m.get('interval')
-        if m.get('pattern') is not None:
-            self.pattern = m.get('pattern')
-        if m.get('prefix') is not None:
-            self.prefix = m.get('prefix')
-        if m.get('restoreObjectEnabled') is not None:
-            self.restore_object_enabled = m.get('restoreObjectEnabled')
-        if m.get('roleARN') is not None:
-            self.role_arn = m.get('roleARN')
-        if m.get('startTime') is not None:
-            self.start_time = m.get('startTime')
-        if m.get('timeField') is not None:
-            self.time_field = m.get('timeField')
-        if m.get('timeFormat') is not None:
-            self.time_format = m.get('timeFormat')
-        if m.get('timePattern') is not None:
-            self.time_pattern = m.get('timePattern')
-        if m.get('timeZone') is not None:
-            self.time_zone = m.get('timeZone')
-        if m.get('useMetaIndex') is not None:
-            self.use_meta_index = m.get('useMetaIndex')
-        return self
-
-
-class OSSIngestionConfiguration(TeaModel):
-    def __init__(
-        self,
-        logstore: str = None,
-        source: OSSIngestionConfigurationSource = None,
-    ):
-        self.logstore = logstore
-        self.source = source
-
-    def validate(self):
-        if self.source:
-            self.source.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.logstore is not None:
-            result['logstore'] = self.logstore
-        if self.source is not None:
-            result['source'] = self.source.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('logstore') is not None:
-            self.logstore = m.get('logstore')
-        if m.get('source') is not None:
-            temp_model = OSSIngestionConfigurationSource()
-            self.source = temp_model.from_map(m['source'])
-        return self
-
-
-class CreateOSSIngestionReq(TeaModel):
-    def __init__(
-        self,
-        configuration: OSSIngestionConfiguration = None,
-        description: str = None,
-        display_name: str = None,
-        name: str = None,
-        schedule: Schedule = None,
-    ):
-        self.configuration = configuration
-        self.description = description
-        self.display_name = display_name
-        self.name = name
-        self.schedule = schedule
-
-    def validate(self):
-        if self.configuration:
-            self.configuration.validate()
-        if self.schedule:
-            self.schedule.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.configuration is not None:
-            result['configuration'] = self.configuration.to_map()
-        if self.description is not None:
-            result['description'] = self.description
-        if self.display_name is not None:
-            result['displayName'] = self.display_name
-        if self.name is not None:
-            result['name'] = self.name
-        if self.schedule is not None:
-            result['schedule'] = self.schedule.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('configuration') is not None:
-            temp_model = OSSIngestionConfiguration()
-            self.configuration = temp_model.from_map(m['configuration'])
-        if m.get('description') is not None:
-            self.description = m.get('description')
-        if m.get('displayName') is not None:
-            self.display_name = m.get('displayName')
-        if m.get('name') is not None:
-            self.name = m.get('name')
-        if m.get('schedule') is not None:
-            temp_model = Schedule()
-            self.schedule = temp_model.from_map(m['schedule'])
-        return self
-
-
 class ETLConfigurationSink(TeaModel):
     def __init__(
         self,
@@ -1348,9 +897,13 @@ class ETLConfigurationSink(TeaModel):
         self.access_key_id = access_key_id
         self.access_key_secret = access_key_secret
         self.endpoint = endpoint
+        # This parameter is required.
         self.logstore = logstore
+        # This parameter is required.
         self.name = name
+        # This parameter is required.
         self.project = project
+        # This parameter is required.
         self.role_arn = role_arn
 
     def validate(self):
@@ -1412,12 +965,18 @@ class ETLConfiguration(TeaModel):
     ):
         self.access_key_id = access_key_id
         self.access_key_secret = access_key_secret
+        # This parameter is required.
         self.from_time = from_time
+        # This parameter is required.
         self.logstore = logstore
         self.parameters = parameters
+        # This parameter is required.
         self.role_arn = role_arn
+        # This parameter is required.
         self.script = script
+        # This parameter is required.
         self.sinks = sinks
+        # This parameter is required.
         self.to_time = to_time
 
     def validate(self):
@@ -1492,11 +1051,14 @@ class ETL(TeaModel):
         schedule_id: str = None,
         status: str = None,
     ):
+        # This parameter is required.
         self.configuration = configuration
         self.create_time = create_time
         self.description = description
+        # This parameter is required.
         self.display_name = display_name
         self.last_modified_time = last_modified_time
+        # This parameter is required.
         self.name = name
         self.schedule_id = schedule_id
         self.status = status
@@ -1558,8 +1120,11 @@ class EncryptUserCmkConf(TeaModel):
         cmk_key_id: str = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.arn = arn
+        # This parameter is required.
         self.cmk_key_id = cmk_key_id
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -1597,6 +1162,7 @@ class EncryptConf(TeaModel):
         encrypt_type: str = None,
         user_cmk_info: EncryptUserCmkConf = None,
     ):
+        # This parameter is required.
         self.enable = enable
         self.encrypt_type = encrypt_type
         self.user_cmk_info = user_cmk_info
@@ -1682,7 +1248,9 @@ class LogContent(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # This parameter is required.
         self.key = key
+        # This parameter is required.
         self.value = value
 
     def validate(self):
@@ -1715,7 +1283,9 @@ class LogTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # This parameter is required.
         self.key = key
+        # This parameter is required.
         self.value = value
 
     def validate(self):
@@ -1748,7 +1318,9 @@ class LogItem(TeaModel):
         contents: List[LogContent] = None,
         time: int = None,
     ):
+        # This parameter is required.
         self.contents = contents
+        # This parameter is required.
         self.time = time
 
     def validate(self):
@@ -1791,9 +1363,12 @@ class LogGroup(TeaModel):
         source: str = None,
         topic: str = None,
     ):
+        # This parameter is required.
         self.log_tags = log_tags
+        # This parameter is required.
         self.logs = logs
         self.source = source
+        # This parameter is required.
         self.topic = topic
 
     def validate(self):
@@ -1852,7 +1427,9 @@ class LogtailConfigOutputDetail(TeaModel):
         logstore_name: str = None,
         region: str = None,
     ):
+        # This parameter is required.
         self.endpoint = endpoint
+        # This parameter is required.
         self.logstore_name = logstore_name
         self.region = region
 
@@ -1896,13 +1473,18 @@ class LogtailConfig(TeaModel):
         output_detail: LogtailConfigOutputDetail = None,
         output_type: str = None,
     ):
+        # This parameter is required.
         self.config_name = config_name
         self.create_time = create_time
+        # This parameter is required.
         self.input_detail = input_detail
+        # This parameter is required.
         self.input_type = input_type
         self.last_modify_time = last_modify_time
         self.log_sample = log_sample
+        # This parameter is required.
         self.output_detail = output_detail
+        # This parameter is required.
         self.output_type = output_type
 
     def validate(self):
@@ -1969,10 +1551,13 @@ class LogtailPipelineConfig(TeaModel):
         processors: List[Dict[str, Any]] = None,
     ):
         self.aggregators = aggregators
+        # This parameter is required.
         self.config_name = config_name
         self.create_time = create_time
+        # This parameter is required.
         self.flushers = flushers
         self.global_ = global_
+        # This parameter is required.
         self.inputs = inputs
         self.last_modify_time = last_modify_time
         self.log_sample = log_sample
@@ -2591,16 +2176,24 @@ class MaxComputeExportConfigurationSink(TeaModel):
         partition_time_format: str = None,
         time_zone: str = None,
     ):
+        # This parameter is required.
         self.fields = fields
         self.odps_access_key_id = odps_access_key_id
         self.odps_access_secret = odps_access_secret
+        # This parameter is required.
         self.odps_endpoint = odps_endpoint
+        # This parameter is required.
         self.odps_project = odps_project
         self.odps_rolearn = odps_rolearn
+        # This parameter is required.
         self.odps_table = odps_table
+        # This parameter is required.
         self.odps_tunnel_endpoint = odps_tunnel_endpoint
+        # This parameter is required.
         self.partition_column = partition_column
+        # This parameter is required.
         self.partition_time_format = partition_time_format
+        # This parameter is required.
         self.time_zone = time_zone
 
     def validate(self):
@@ -2672,10 +2265,15 @@ class MaxComputeExportConfiguration(TeaModel):
         sink: MaxComputeExportConfigurationSink = None,
         to_time: int = None,
     ):
+        # This parameter is required.
         self.from_time = from_time
+        # This parameter is required.
         self.logstore = logstore
+        # This parameter is required.
         self.role_arn = role_arn
+        # This parameter is required.
         self.sink = sink
+        # This parameter is required.
         self.to_time = to_time
 
     def validate(self):
@@ -2727,11 +2325,14 @@ class MaxComputeExport(TeaModel):
         name: str = None,
         status: str = None,
     ):
+        # This parameter is required.
         self.configuration = configuration
         self.create_time = create_time
         self.description = description
+        # This parameter is required.
         self.display_name = display_name
         self.last_modified_time = last_modified_time
+        # This parameter is required.
         self.name = name
         self.status = status
 
@@ -2781,6 +2382,175 @@ class MaxComputeExport(TeaModel):
         return self
 
 
+class OSSExportConfigurationSink(TeaModel):
+    def __init__(
+        self,
+        bucket: str = None,
+        buffer_interval: int = None,
+        buffer_size: int = None,
+        compression_type: str = None,
+        content_detail: Dict[str, Any] = None,
+        content_type: str = None,
+        delay_sec: int = None,
+        delay_seconds: int = None,
+        endpoint: str = None,
+        path_format: str = None,
+        path_format_type: str = None,
+        prefix: str = None,
+        role_arn: str = None,
+        suffix: str = None,
+        time_zone: str = None,
+    ):
+        # This parameter is required.
+        self.bucket = bucket
+        self.buffer_interval = buffer_interval
+        self.buffer_size = buffer_size
+        self.compression_type = compression_type
+        self.content_detail = content_detail
+        self.content_type = content_type
+        self.delay_sec = delay_sec
+        self.delay_seconds = delay_seconds
+        # This parameter is required.
+        self.endpoint = endpoint
+        # This parameter is required.
+        self.path_format = path_format
+        # This parameter is required.
+        self.path_format_type = path_format_type
+        self.prefix = prefix
+        # This parameter is required.
+        self.role_arn = role_arn
+        self.suffix = suffix
+        self.time_zone = time_zone
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bucket is not None:
+            result['bucket'] = self.bucket
+        if self.buffer_interval is not None:
+            result['bufferInterval'] = self.buffer_interval
+        if self.buffer_size is not None:
+            result['bufferSize'] = self.buffer_size
+        if self.compression_type is not None:
+            result['compressionType'] = self.compression_type
+        if self.content_detail is not None:
+            result['contentDetail'] = self.content_detail
+        if self.content_type is not None:
+            result['contentType'] = self.content_type
+        if self.delay_sec is not None:
+            result['delaySec'] = self.delay_sec
+        if self.delay_seconds is not None:
+            result['delaySeconds'] = self.delay_seconds
+        if self.endpoint is not None:
+            result['endpoint'] = self.endpoint
+        if self.path_format is not None:
+            result['pathFormat'] = self.path_format
+        if self.path_format_type is not None:
+            result['pathFormatType'] = self.path_format_type
+        if self.prefix is not None:
+            result['prefix'] = self.prefix
+        if self.role_arn is not None:
+            result['roleArn'] = self.role_arn
+        if self.suffix is not None:
+            result['suffix'] = self.suffix
+        if self.time_zone is not None:
+            result['timeZone'] = self.time_zone
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('bucket') is not None:
+            self.bucket = m.get('bucket')
+        if m.get('bufferInterval') is not None:
+            self.buffer_interval = m.get('bufferInterval')
+        if m.get('bufferSize') is not None:
+            self.buffer_size = m.get('bufferSize')
+        if m.get('compressionType') is not None:
+            self.compression_type = m.get('compressionType')
+        if m.get('contentDetail') is not None:
+            self.content_detail = m.get('contentDetail')
+        if m.get('contentType') is not None:
+            self.content_type = m.get('contentType')
+        if m.get('delaySec') is not None:
+            self.delay_sec = m.get('delaySec')
+        if m.get('delaySeconds') is not None:
+            self.delay_seconds = m.get('delaySeconds')
+        if m.get('endpoint') is not None:
+            self.endpoint = m.get('endpoint')
+        if m.get('pathFormat') is not None:
+            self.path_format = m.get('pathFormat')
+        if m.get('pathFormatType') is not None:
+            self.path_format_type = m.get('pathFormatType')
+        if m.get('prefix') is not None:
+            self.prefix = m.get('prefix')
+        if m.get('roleArn') is not None:
+            self.role_arn = m.get('roleArn')
+        if m.get('suffix') is not None:
+            self.suffix = m.get('suffix')
+        if m.get('timeZone') is not None:
+            self.time_zone = m.get('timeZone')
+        return self
+
+
+class OSSExportConfiguration(TeaModel):
+    def __init__(
+        self,
+        from_time: int = None,
+        logstore: str = None,
+        role_arn: str = None,
+        sink: OSSExportConfigurationSink = None,
+        to_time: int = None,
+    ):
+        self.from_time = from_time
+        self.logstore = logstore
+        self.role_arn = role_arn
+        self.sink = sink
+        self.to_time = to_time
+
+    def validate(self):
+        if self.sink:
+            self.sink.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.from_time is not None:
+            result['fromTime'] = self.from_time
+        if self.logstore is not None:
+            result['logstore'] = self.logstore
+        if self.role_arn is not None:
+            result['roleArn'] = self.role_arn
+        if self.sink is not None:
+            result['sink'] = self.sink.to_map()
+        if self.to_time is not None:
+            result['toTime'] = self.to_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('fromTime') is not None:
+            self.from_time = m.get('fromTime')
+        if m.get('logstore') is not None:
+            self.logstore = m.get('logstore')
+        if m.get('roleArn') is not None:
+            self.role_arn = m.get('roleArn')
+        if m.get('sink') is not None:
+            temp_model = OSSExportConfigurationSink()
+            self.sink = temp_model.from_map(m['sink'])
+        if m.get('toTime') is not None:
+            self.to_time = m.get('toTime')
+        return self
+
+
 class OSSExport(TeaModel):
     def __init__(
         self,
@@ -2795,8 +2565,10 @@ class OSSExport(TeaModel):
         self.configuration = configuration
         self.create_time = create_time
         self.description = description
+        # This parameter is required.
         self.display_name = display_name
         self.last_modified_time = last_modified_time
+        # This parameter is required.
         self.name = name
         self.status = status
 
@@ -2846,6 +2618,173 @@ class OSSExport(TeaModel):
         return self
 
 
+class OSSIngestionConfigurationSource(TeaModel):
+    def __init__(
+        self,
+        bucket: str = None,
+        compression_codec: str = None,
+        encoding: str = None,
+        end_time: int = None,
+        endpoint: str = None,
+        format: Dict[str, Any] = None,
+        interval: str = None,
+        pattern: str = None,
+        prefix: str = None,
+        restore_object_enabled: bool = None,
+        role_arn: str = None,
+        start_time: int = None,
+        time_field: str = None,
+        time_format: str = None,
+        time_pattern: str = None,
+        time_zone: str = None,
+        use_meta_index: bool = None,
+    ):
+        # This parameter is required.
+        self.bucket = bucket
+        # This parameter is required.
+        self.compression_codec = compression_codec
+        # This parameter is required.
+        self.encoding = encoding
+        self.end_time = end_time
+        # This parameter is required.
+        self.endpoint = endpoint
+        # This parameter is required.
+        self.format = format
+        # This parameter is required.
+        self.interval = interval
+        self.pattern = pattern
+        self.prefix = prefix
+        self.restore_object_enabled = restore_object_enabled
+        self.role_arn = role_arn
+        self.start_time = start_time
+        self.time_field = time_field
+        self.time_format = time_format
+        self.time_pattern = time_pattern
+        self.time_zone = time_zone
+        # This parameter is required.
+        self.use_meta_index = use_meta_index
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bucket is not None:
+            result['bucket'] = self.bucket
+        if self.compression_codec is not None:
+            result['compressionCodec'] = self.compression_codec
+        if self.encoding is not None:
+            result['encoding'] = self.encoding
+        if self.end_time is not None:
+            result['endTime'] = self.end_time
+        if self.endpoint is not None:
+            result['endpoint'] = self.endpoint
+        if self.format is not None:
+            result['format'] = self.format
+        if self.interval is not None:
+            result['interval'] = self.interval
+        if self.pattern is not None:
+            result['pattern'] = self.pattern
+        if self.prefix is not None:
+            result['prefix'] = self.prefix
+        if self.restore_object_enabled is not None:
+            result['restoreObjectEnabled'] = self.restore_object_enabled
+        if self.role_arn is not None:
+            result['roleARN'] = self.role_arn
+        if self.start_time is not None:
+            result['startTime'] = self.start_time
+        if self.time_field is not None:
+            result['timeField'] = self.time_field
+        if self.time_format is not None:
+            result['timeFormat'] = self.time_format
+        if self.time_pattern is not None:
+            result['timePattern'] = self.time_pattern
+        if self.time_zone is not None:
+            result['timeZone'] = self.time_zone
+        if self.use_meta_index is not None:
+            result['useMetaIndex'] = self.use_meta_index
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('bucket') is not None:
+            self.bucket = m.get('bucket')
+        if m.get('compressionCodec') is not None:
+            self.compression_codec = m.get('compressionCodec')
+        if m.get('encoding') is not None:
+            self.encoding = m.get('encoding')
+        if m.get('endTime') is not None:
+            self.end_time = m.get('endTime')
+        if m.get('endpoint') is not None:
+            self.endpoint = m.get('endpoint')
+        if m.get('format') is not None:
+            self.format = m.get('format')
+        if m.get('interval') is not None:
+            self.interval = m.get('interval')
+        if m.get('pattern') is not None:
+            self.pattern = m.get('pattern')
+        if m.get('prefix') is not None:
+            self.prefix = m.get('prefix')
+        if m.get('restoreObjectEnabled') is not None:
+            self.restore_object_enabled = m.get('restoreObjectEnabled')
+        if m.get('roleARN') is not None:
+            self.role_arn = m.get('roleARN')
+        if m.get('startTime') is not None:
+            self.start_time = m.get('startTime')
+        if m.get('timeField') is not None:
+            self.time_field = m.get('timeField')
+        if m.get('timeFormat') is not None:
+            self.time_format = m.get('timeFormat')
+        if m.get('timePattern') is not None:
+            self.time_pattern = m.get('timePattern')
+        if m.get('timeZone') is not None:
+            self.time_zone = m.get('timeZone')
+        if m.get('useMetaIndex') is not None:
+            self.use_meta_index = m.get('useMetaIndex')
+        return self
+
+
+class OSSIngestionConfiguration(TeaModel):
+    def __init__(
+        self,
+        logstore: str = None,
+        source: OSSIngestionConfigurationSource = None,
+    ):
+        # This parameter is required.
+        self.logstore = logstore
+        # This parameter is required.
+        self.source = source
+
+    def validate(self):
+        if self.source:
+            self.source.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.logstore is not None:
+            result['logstore'] = self.logstore
+        if self.source is not None:
+            result['source'] = self.source.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('logstore') is not None:
+            self.logstore = m.get('logstore')
+        if m.get('source') is not None:
+            temp_model = OSSIngestionConfigurationSource()
+            self.source = temp_model.from_map(m['source'])
+        return self
+
+
 class OSSIngestion(TeaModel):
     def __init__(
         self,
@@ -2858,12 +2797,16 @@ class OSSIngestion(TeaModel):
         schedule: Schedule = None,
         status: str = None,
     ):
+        # This parameter is required.
         self.configuration = configuration
         self.create_time = create_time
         self.description = description
+        # This parameter is required.
         self.display_name = display_name
         self.last_modified_time = last_modified_time
+        # This parameter is required.
         self.name = name
+        # This parameter is required.
         self.schedule = schedule
         self.status = status
 
@@ -2929,9 +2872,13 @@ class SavedSearch(TeaModel):
         search_query: str = None,
         topic: str = None,
     ):
+        # This parameter is required.
         self.display_name = display_name
+        # This parameter is required.
         self.logstore = logstore
+        # This parameter is required.
         self.savedsearch_name = savedsearch_name
+        # This parameter is required.
         self.search_query = search_query
         self.topic = topic
 
@@ -2992,22 +2939,39 @@ class ScheduledSQLConfiguration(TeaModel):
         to_time: int = None,
         to_time_expr: str = None,
     ):
+        # This parameter is required.
         self.data_format = data_format
+        # This parameter is required.
         self.dest_endpoint = dest_endpoint
+        # This parameter is required.
         self.dest_logstore = dest_logstore
+        # This parameter is required.
         self.dest_project = dest_project
+        # This parameter is required.
         self.dest_role_arn = dest_role_arn
+        # This parameter is required.
         self.from_time = from_time
+        # This parameter is required.
         self.from_time_expr = from_time_expr
+        # This parameter is required.
         self.max_retries = max_retries
+        # This parameter is required.
         self.max_run_time_in_seconds = max_run_time_in_seconds
+        # This parameter is required.
         self.parameters = parameters
+        # This parameter is required.
         self.resource_pool = resource_pool
+        # This parameter is required.
         self.role_arn = role_arn
+        # This parameter is required.
         self.script = script
+        # This parameter is required.
         self.source_logstore = source_logstore
+        # This parameter is required.
         self.sql_type = sql_type
+        # This parameter is required.
         self.to_time = to_time
+        # This parameter is required.
         self.to_time_expr = to_time_expr
 
     def validate(self):
@@ -3105,15 +3069,21 @@ class ScheduledSQL(TeaModel):
         name: str = None,
         schedule: Schedule = None,
         schedule_id: str = None,
+        status: str = None,
     ):
+        # This parameter is required.
         self.configuration = configuration
         self.create_time = create_time
         self.description = description
+        # This parameter is required.
         self.display_name = display_name
         self.last_modified_time = last_modified_time
+        # This parameter is required.
         self.name = name
+        # This parameter is required.
         self.schedule = schedule
         self.schedule_id = schedule_id
+        self.status = status
 
     def validate(self):
         if self.configuration:
@@ -3143,6 +3113,8 @@ class ScheduledSQL(TeaModel):
             result['schedule'] = self.schedule.to_map()
         if self.schedule_id is not None:
             result['scheduleId'] = self.schedule_id
+        if self.status is not None:
+            result['status'] = self.status
         return result
 
     def from_map(self, m: dict = None):
@@ -3165,6 +3137,8 @@ class ScheduledSQL(TeaModel):
             self.schedule = temp_model.from_map(m['schedule'])
         if m.get('scheduleId') is not None:
             self.schedule_id = m.get('scheduleId')
+        if m.get('status') is not None:
+            self.status = m.get('status')
         return self
 
 
@@ -3175,8 +3149,10 @@ class StoreViewStore(TeaModel):
         query: str = None,
         store_name: str = None,
     ):
+        # This parameter is required.
         self.project = project
         self.query = query
+        # This parameter is required.
         self.store_name = store_name
 
     def validate(self):
@@ -3300,147 +3276,6 @@ class Ticket(TeaModel):
         return self
 
 
-class UpdateAlertReq(TeaModel):
-    def __init__(
-        self,
-        configuration: AlertConfiguration = None,
-        description: str = None,
-        display_name: str = None,
-        schedule: Schedule = None,
-    ):
-        self.configuration = configuration
-        self.description = description
-        self.display_name = display_name
-        self.schedule = schedule
-
-    def validate(self):
-        if self.configuration:
-            self.configuration.validate()
-        if self.schedule:
-            self.schedule.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.configuration is not None:
-            result['configuration'] = self.configuration.to_map()
-        if self.description is not None:
-            result['description'] = self.description
-        if self.display_name is not None:
-            result['displayName'] = self.display_name
-        if self.schedule is not None:
-            result['schedule'] = self.schedule.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('configuration') is not None:
-            temp_model = AlertConfiguration()
-            self.configuration = temp_model.from_map(m['configuration'])
-        if m.get('description') is not None:
-            self.description = m.get('description')
-        if m.get('displayName') is not None:
-            self.display_name = m.get('displayName')
-        if m.get('schedule') is not None:
-            temp_model = Schedule()
-            self.schedule = temp_model.from_map(m['schedule'])
-        return self
-
-
-class UpdateOSSExportReq(TeaModel):
-    def __init__(
-        self,
-        configuration: OSSExportConfiguration = None,
-        description: str = None,
-        display_name: str = None,
-    ):
-        self.configuration = configuration
-        self.description = description
-        self.display_name = display_name
-
-    def validate(self):
-        if self.configuration:
-            self.configuration.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.configuration is not None:
-            result['configuration'] = self.configuration.to_map()
-        if self.description is not None:
-            result['description'] = self.description
-        if self.display_name is not None:
-            result['displayName'] = self.display_name
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('configuration') is not None:
-            temp_model = OSSExportConfiguration()
-            self.configuration = temp_model.from_map(m['configuration'])
-        if m.get('description') is not None:
-            self.description = m.get('description')
-        if m.get('displayName') is not None:
-            self.display_name = m.get('displayName')
-        return self
-
-
-class UpdateOSSIngestionReq(TeaModel):
-    def __init__(
-        self,
-        configuration: OSSIngestionConfiguration = None,
-        description: str = None,
-        display_name: str = None,
-        schedule: Schedule = None,
-    ):
-        self.configuration = configuration
-        self.description = description
-        self.display_name = display_name
-        self.schedule = schedule
-
-    def validate(self):
-        if self.configuration:
-            self.configuration.validate()
-        if self.schedule:
-            self.schedule.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.configuration is not None:
-            result['configuration'] = self.configuration.to_map()
-        if self.description is not None:
-            result['description'] = self.description
-        if self.display_name is not None:
-            result['displayName'] = self.display_name
-        if self.schedule is not None:
-            result['schedule'] = self.schedule.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('configuration') is not None:
-            temp_model = OSSIngestionConfiguration()
-            self.configuration = temp_model.from_map(m['configuration'])
-        if m.get('description') is not None:
-            self.description = m.get('description')
-        if m.get('displayName') is not None:
-            self.display_name = m.get('displayName')
-        if m.get('schedule') is not None:
-            temp_model = Schedule()
-            self.schedule = temp_model.from_map(m['schedule'])
-        return self
-
-
 class Chart(TeaModel):
     def __init__(
         self,
@@ -3450,10 +3285,15 @@ class Chart(TeaModel):
         title: str = None,
         type: str = None,
     ):
+        # This parameter is required.
         self.action = action
+        # This parameter is required.
         self.display = display
+        # This parameter is required.
         self.search = search
+        # This parameter is required.
         self.title = title
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -3502,9 +3342,12 @@ class Dashboard(TeaModel):
         display_name: str = None,
     ):
         self.attribute = attribute
+        # This parameter is required.
         self.charts = charts
+        # This parameter is required.
         self.dashboard_name = dashboard_name
         self.description = description
+        # This parameter is required.
         self.display_name = display_name
 
     def validate(self):
@@ -3565,6 +3408,7 @@ class EtlJobFunctionConfig(TeaModel):
         self.account_id = account_id
         self.endpoint = endpoint
         self.function_name = function_name
+        # This parameter is required.
         self.function_provider = function_provider
         self.region_name = region_name
         self.role_arn = role_arn
@@ -3621,8 +3465,11 @@ class EtlJobLogConfig(TeaModel):
         logstore_name: str = None,
         project_name: str = None,
     ):
+        # This parameter is required.
         self.endpoint = endpoint
+        # This parameter is required.
         self.logstore_name = logstore_name
+        # This parameter is required.
         self.project_name = project_name
 
     def validate(self):
@@ -3658,6 +3505,7 @@ class EtlJobSourceConfig(TeaModel):
         self,
         logstore_name: str = None,
     ):
+        # This parameter is required.
         self.logstore_name = logstore_name
 
     def validate(self):
@@ -3689,10 +3537,13 @@ class EtlJobTriggerConfig(TeaModel):
         starting_unixtime: int = None,
         trigger_interval: int = None,
     ):
+        # This parameter is required.
         self.max_retry_time = max_retry_time
+        # This parameter is required.
         self.role_arn = role_arn
         self.starting_position = starting_position
         self.starting_unixtime = starting_unixtime
+        # This parameter is required.
         self.trigger_interval = trigger_interval
 
     def validate(self):
@@ -3742,12 +3593,19 @@ class EtlJob(TeaModel):
         source_config: EtlJobSourceConfig = None,
         trigger_config: EtlJobTriggerConfig = None,
     ):
+        # This parameter is required.
         self.enable = enable
+        # This parameter is required.
         self.etl_job_name = etl_job_name
+        # This parameter is required.
         self.function_config = function_config
+        # This parameter is required.
         self.function_parameter = function_parameter
+        # This parameter is required.
         self.log_config = log_config
+        # This parameter is required.
         self.source_config = source_config
+        # This parameter is required.
         self.trigger_config = trigger_config
 
     def validate(self):
@@ -3814,8 +3672,11 @@ class EtlMeta(TeaModel):
         etl_meta_tag: str = None,
         etl_meta_value: str = None,
     ):
+        # This parameter is required.
         self.enable = enable
+        # This parameter is required.
         self.etl_meta_key = etl_meta_key
+        # This parameter is required.
         self.etl_meta_name = etl_meta_name
         self.etl_meta_tag = etl_meta_tag
         self.etl_meta_value = etl_meta_value
@@ -3863,8 +3724,11 @@ class ExternalStore(TeaModel):
         parameter: Dict[str, Any] = None,
         store_type: str = None,
     ):
+        # This parameter is required.
         self.external_store_name = external_store_name
+        # This parameter is required.
         self.parameter = parameter
+        # This parameter is required.
         self.store_type = store_type
 
     def validate(self):
@@ -3908,6 +3772,7 @@ class IndexLine(TeaModel):
         self.chn = chn
         self.exclude_keys = exclude_keys
         self.include_keys = include_keys
+        # This parameter is required.
         self.token = token
 
     def validate(self):
@@ -3960,6 +3825,7 @@ class IndexKeysValue(TeaModel):
         self.case_sensitive = case_sensitive
         self.token = token
         self.alias = alias
+        # This parameter is required.
         self.type = type
         self.doc_value = doc_value
 
@@ -4022,6 +3888,7 @@ class Index(TeaModel):
         self.log_reduce_black_list = log_reduce_black_list
         self.log_reduce_white_list = log_reduce_white_list
         self.max_text_len = max_text_len
+        # This parameter is required.
         self.ttl = ttl
 
     def validate(self):
@@ -4089,7 +3956,9 @@ class LoggingLoggingDetails(TeaModel):
         logstore: str = None,
         type: str = None,
     ):
+        # This parameter is required.
         self.logstore = logstore
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -4122,7 +3991,9 @@ class Logging(TeaModel):
         logging_details: List[LoggingLoggingDetails] = None,
         logging_project: str = None,
     ):
+        # This parameter is required.
         self.logging_details = logging_details
+        # This parameter is required.
         self.logging_project = logging_project
 
     def validate(self):
@@ -4184,12 +4055,15 @@ class Logstore(TeaModel):
         self.hot_ttl = hot_ttl
         self.infrequent_access_ttl = infrequent_access_ttl
         self.last_modify_time = last_modify_time
+        # This parameter is required.
         self.logstore_name = logstore_name
         self.max_split_shard = max_split_shard
         self.mode = mode
         self.product_type = product_type
+        # This parameter is required.
         self.shard_count = shard_count
         self.telemetry_type = telemetry_type
+        # This parameter is required.
         self.ttl = ttl
 
     def validate(self):
@@ -4358,9 +4232,12 @@ class MachineGroup(TeaModel):
         machine_list: List[str] = None,
     ):
         self.group_attribute = group_attribute
+        # This parameter is required.
         self.group_name = group_name
         self.group_type = group_type
+        # This parameter is required.
         self.machine_identify_type = machine_identify_type
+        # This parameter is required.
         self.machine_list = machine_list
 
     def validate(self):
@@ -4414,9 +4291,11 @@ class Project(TeaModel):
         status: str = None,
     ):
         self.create_time = create_time
+        # This parameter is required.
         self.description = description
         self.last_modify_time = last_modify_time
         self.owner = owner
+        # This parameter is required.
         self.project_name = project_name
         self.region = region
         self.resource_group_id = resource_group_id
@@ -4575,6 +4454,8 @@ class KeysValue(TeaModel):
         # *   false (default)
         self.chn = chn
         # The data type of the field value. Valid values: text, json, double, and long.
+        # 
+        # This parameter is required.
         self.type = type
         # The alias of the field.
         self.alias = alias
@@ -4664,8 +4545,12 @@ class ChangeResourceGroupRequest(TeaModel):
         resource_type: str = None,
     ):
         # The ID of the resource group.
+        # 
+        # This parameter is required.
         self.resource_group_id = resource_group_id
         # The ID of the resource.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
         # The type of the resource. Only PROJECT is supported. Set the value to PROJECT.
         self.resource_type = resource_type
@@ -4738,8 +4623,12 @@ class ConsumerGroupHeartBeatRequest(TeaModel):
         consumer: str = None,
     ):
         # The IDs of shards whose data is being consumed.
+        # 
+        # This parameter is required.
         self.body = body
         # The consumer.
+        # 
+        # This parameter is required.
         self.consumer = consumer
 
     def validate(self):
@@ -4805,6 +4694,125 @@ class ConsumerGroupHeartBeatResponse(TeaModel):
         return self
 
 
+class ConsumerGroupUpdateCheckPointRequestBody(TeaModel):
+    def __init__(
+        self,
+        checkpoint: str = None,
+        shard: int = None,
+    ):
+        # This parameter is required.
+        self.checkpoint = checkpoint
+        # Shard ID。
+        # 
+        # This parameter is required.
+        self.shard = shard
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.checkpoint is not None:
+            result['checkpoint'] = self.checkpoint
+        if self.shard is not None:
+            result['shard'] = self.shard
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('checkpoint') is not None:
+            self.checkpoint = m.get('checkpoint')
+        if m.get('shard') is not None:
+            self.shard = m.get('shard')
+        return self
+
+
+class ConsumerGroupUpdateCheckPointRequest(TeaModel):
+    def __init__(
+        self,
+        body: List[ConsumerGroupUpdateCheckPointRequestBody] = None,
+        consumer: str = None,
+        force_success: bool = None,
+    ):
+        # Shard ID。
+        self.body = body
+        # This parameter is required.
+        self.consumer = consumer
+        self.force_success = force_success
+
+    def validate(self):
+        if self.body:
+            for k in self.body:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['body'] = []
+        if self.body is not None:
+            for k in self.body:
+                result['body'].append(k.to_map() if k else None)
+        if self.consumer is not None:
+            result['consumer'] = self.consumer
+        if self.force_success is not None:
+            result['forceSuccess'] = self.force_success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.body = []
+        if m.get('body') is not None:
+            for k in m.get('body'):
+                temp_model = ConsumerGroupUpdateCheckPointRequestBody()
+                self.body.append(temp_model.from_map(k))
+        if m.get('consumer') is not None:
+            self.consumer = m.get('consumer')
+        if m.get('forceSuccess') is not None:
+            self.force_success = m.get('forceSuccess')
+        return self
+
+
+class ConsumerGroupUpdateCheckPointResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        return self
+
+
 class CreateAlertRequest(TeaModel):
     def __init__(
         self,
@@ -4814,10 +4822,14 @@ class CreateAlertRequest(TeaModel):
         name: str = None,
         schedule: Schedule = None,
     ):
+        # This parameter is required.
         self.configuration = configuration
         self.description = description
+        # This parameter is required.
         self.display_name = display_name
+        # This parameter is required.
         self.name = name
+        # This parameter is required.
         self.schedule = schedule
 
     def validate(self):
@@ -5098,18 +5110,24 @@ class CreateConsumerGroupRequest(TeaModel):
         timeout: int = None,
     ):
         # The name of the consumer group. The name must be unique in a project.
+        # 
+        # This parameter is required.
         self.consumer_group = consumer_group
         # Specifies whether to consume data in sequence. Valid values:
         # 
         # *   true
         # 
-        #     *   In a shard, data is consumed in ascending order based on the value of the \*\*\__tag\_\_:\__receive_time\_\_\*\* field.
+        #     *   In a shard, data is consumed in ascending order based on the value of the \\*\\*__tag__:__receive_time__\\*\\* field.
         #     *   If a shard is split, data in the original shard is consumed first. Then, data in the new shards is consumed at the same time.
         #     *   If shards are merged, data in the original shards is consumed first. Then, data in the new shard is consumed.
         # 
         # *   false Data in all shards is consumed at the same time. If a new shard is generated after a shard is split or after shards are merged, data in the new shard is immediately consumed.
+        # 
+        # This parameter is required.
         self.order = order
         # The timeout period. If the server does not receive heartbeats from a consumer within the timeout period, the server deletes the consumer. Unit: seconds.
+        # 
+        # This parameter is required.
         self.timeout = timeout
 
     def validate(self):
@@ -5179,6 +5197,8 @@ class CreateDashboardRequest(TeaModel):
         body: Dashboard = None,
     ):
         # The data structure of the dashboard.
+        # 
+        # This parameter is required.
         self.body = body
 
     def validate(self):
@@ -5242,6 +5262,8 @@ class CreateDomainRequest(TeaModel):
         domain_name: str = None,
     ):
         # The domain name.
+        # 
+        # This parameter is required.
         self.domain_name = domain_name
 
     def validate(self):
@@ -5305,9 +5327,12 @@ class CreateETLRequest(TeaModel):
         display_name: str = None,
         name: str = None,
     ):
+        # This parameter is required.
         self.configuration = configuration
         self.description = description
+        # This parameter is required.
         self.display_name = display_name
+        # This parameter is required.
         self.name = name
 
     def validate(self):
@@ -5401,6 +5426,8 @@ class CreateIndexRequestLine(TeaModel):
         # The included fields. You cannot specify both include_keys and exclude_keys.
         self.include_keys = include_keys
         # The delimiters. You can specify a delimiter to delimit the content of a field value. For more information about delimiters, see Example.
+        # 
+        # This parameter is required.
         self.token = token
 
     def validate(self):
@@ -5588,15 +5615,17 @@ class CreateLogStoreRequest(TeaModel):
         self.encrypt_conf = encrypt_conf
         # The retention period of data in the hot storage tier of the Logstore. Unit: days. You can specify a value that ranges from 30 to the value of ttl.
         # 
-        # Hot data that is stored for longer than the period specified by hot_ttl is converted to cold data. For more information, see [Enable hot and cold-tiered storage for a Logstore](~~308645~~).
+        # Hot data that is stored for longer than the period specified by hot_ttl is converted to cold data. For more information, see [Enable hot and cold-tiered storage for a Logstore](https://help.aliyun.com/document_detail/308645.html).
         self.hot_ttl = hot_ttl
         self.infrequent_access_ttl = infrequent_access_ttl
         # The name of the Logstore. The name must meet the following requirements:
         # 
         # *   The name must be unique in a project.
-        # *   The name can contain only lowercase letters, digits, hyphens (-), and underscores (\_).
+        # *   The name can contain only lowercase letters, digits, hyphens (-), and underscores (_).
         # *   The name must start and end with a lowercase letter or a digit.
         # *   The name must be 3 to 63 characters in length.
+        # 
+        # This parameter is required.
         self.logstore_name = logstore_name
         # The maximum number of shards into which existing shards can be automatically split. Valid values: 1 to 64.
         # 
@@ -5610,6 +5639,8 @@ class CreateLogStoreRequest(TeaModel):
         # The number of shards.
         # 
         # > You cannot call the CreateLogStore operation to change the number of shards. You can call the SplitShard or MergeShards operation to change the number of shards.
+        # 
+        # This parameter is required.
         self.shard_count = shard_count
         # The type of the observable data. Valid values:
         # 
@@ -5617,6 +5648,8 @@ class CreateLogStoreRequest(TeaModel):
         # *   Metrics: metrics
         self.telemetry_type = telemetry_type
         # The retention period of data. Unit: days. Valid values: 1 to 3000. If you set this parameter to 3650, data is permanently stored.
+        # 
+        # This parameter is required.
         self.ttl = ttl
 
     def validate(self):
@@ -5725,6 +5758,8 @@ class CreateLoggingRequestLoggingDetails(TeaModel):
         type: str = None,
     ):
         # The name of the Logstore to which service logs of the type are stored.
+        # 
+        # This parameter is required.
         self.logstore = logstore
         # The type of service logs. Valid values:
         # 
@@ -5736,6 +5771,8 @@ class CreateLoggingRequestLoggingDetails(TeaModel):
         # *   logtail_status: the status logs of Logtail.
         # *   scheduledsqlalert: the run logs of Scheduled SQL jobs.
         # *   etl_alert: the run logs of data transformation jobs.
+        # 
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -5769,8 +5806,12 @@ class CreateLoggingRequest(TeaModel):
         logging_project: str = None,
     ):
         # The configurations of service logs.
+        # 
+        # This parameter is required.
         self.logging_details = logging_details
         # The name of the project to which service logs are stored.
+        # 
+        # This parameter is required.
         self.logging_project = logging_project
 
     def validate(self):
@@ -5852,12 +5893,18 @@ class CreateLogtailPipelineConfigRequest(TeaModel):
         # The aggregation plug-ins.
         self.aggregators = aggregators
         # The name of the configuration.
+        # 
+        # This parameter is required.
         self.config_name = config_name
         # The data output plug-ins.
+        # 
+        # This parameter is required.
         self.flushers = flushers
         # The global configuration.
         self.global_ = global_
         # The data source plug-ins.
+        # 
+        # This parameter is required.
         self.inputs = inputs
         # The sample log.
         self.log_sample = log_sample
@@ -5990,9 +6037,11 @@ class CreateMachineGroupRequest(TeaModel):
         # The name of the machine group. The name must meet the following requirements:
         # 
         # *   The name of each machine group in a project must be unique.
-        # *   It can contain only lowercase letters, digits, hyphens (-), and underscores (\_).
+        # *   It can contain only lowercase letters, digits, hyphens (-), and underscores (_).
         # *   It must start and end with a lowercase letter or a digit.
         # *   It must be 3 to 128 characters in length.
+        # 
+        # This parameter is required.
         self.group_name = group_name
         # The type of the machine group. The parameter can be left empty.
         self.group_type = group_type
@@ -6000,11 +6049,15 @@ class CreateMachineGroupRequest(TeaModel):
         # 
         # *   ip: The machine group uses IP addresses as identifiers.
         # *   userdefined: The machine group uses custom identifiers.
+        # 
+        # This parameter is required.
         self.machine_identify_type = machine_identify_type
         # The identifiers of machine group.
         # 
         # *   If you set machineIdentifyType to ip, enter the IP address of the machine.
         # *   If you set machineIdentifyType to userdefined, enter a custom identifier.
+        # 
+        # This parameter is required.
         self.machine_list = machine_list
 
     def validate(self):
@@ -6086,9 +6139,12 @@ class CreateOSSExportRequest(TeaModel):
         display_name: str = None,
         name: str = None,
     ):
+        # This parameter is required.
         self.configuration = configuration
         self.description = description
+        # This parameter is required.
         self.display_name = display_name
+        # This parameter is required.
         self.name = name
 
     def validate(self):
@@ -6166,9 +6222,12 @@ class CreateOSSHDFSExportRequest(TeaModel):
         display_name: str = None,
         name: str = None,
     ):
+        # This parameter is required.
         self.configuration = configuration
         self.description = description
+        # This parameter is required.
         self.display_name = display_name
+        # This parameter is required.
         self.name = name
 
     def validate(self):
@@ -6247,9 +6306,12 @@ class CreateOSSIngestionRequest(TeaModel):
         name: str = None,
         schedule: Schedule = None,
     ):
+        # This parameter is required.
         self.configuration = configuration
         self.description = description
+        # This parameter is required.
         self.display_name = display_name
+        # This parameter is required.
         self.name = name
         self.schedule = schedule
 
@@ -6334,8 +6396,12 @@ class CreateOssExternalStoreRequestParameterColumns(TeaModel):
         type: str = None,
     ):
         # The name of the field.
+        # 
+        # This parameter is required.
         self.name = name
         # The type of the field.
+        # 
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -6373,16 +6439,28 @@ class CreateOssExternalStoreRequestParameter(TeaModel):
         objects: List[str] = None,
     ):
         # The AccessKey ID of your account.
+        # 
+        # This parameter is required.
         self.accessid = accessid
         # The AccessKey secret of your account.
+        # 
+        # This parameter is required.
         self.accesskey = accesskey
         # The name of the OSS bucket.
+        # 
+        # This parameter is required.
         self.bucket = bucket
         # The fields that are associated to the external store.
+        # 
+        # This parameter is required.
         self.columns = columns
         # The Object Storage Service (OSS) endpoint.
+        # 
+        # This parameter is required.
         self.endpoint = endpoint
         # The names of the OSS objects that are associated to the external store.
+        # 
+        # This parameter is required.
         self.objects = objects
 
     def validate(self):
@@ -6441,10 +6519,16 @@ class CreateOssExternalStoreRequest(TeaModel):
         store_type: str = None,
     ):
         # The name of the external store.
+        # 
+        # This parameter is required.
         self.external_store_name = external_store_name
         # The parameters that are configured for the external store.
+        # 
+        # This parameter is required.
         self.parameter = parameter
         # The type of the external store. Set the value to oss.
+        # 
+        # This parameter is required.
         self.store_type = store_type
 
     def validate(self):
@@ -6521,6 +6605,8 @@ class CreateProjectRequest(TeaModel):
         # Data redundancy type
         self.data_redundancy_type = data_redundancy_type
         # The description of the project.
+        # 
+        # This parameter is required.
         self.description = description
         # The name of the project. The name must be unique in a region. You cannot change the name after you create the project. The name must meet the following requirements:
         # 
@@ -6528,6 +6614,8 @@ class CreateProjectRequest(TeaModel):
         # *   It can contain only lowercase letters, digits, and hyphens (-).
         # *   It must start and end with a lowercase letter or a digit.
         # *   It must be 3 to 63 characters in length.
+        # 
+        # This parameter is required.
         self.project_name = project_name
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -6611,20 +6699,32 @@ class CreateRdsExternalStoreRequestParameter(TeaModel):
         vpc_id: str = None,
     ):
         # The name of the database in the ApsaraDB RDS for MySQL instance.
+        # 
+        # This parameter is required.
         self.db = db
         # The internal or public endpoint of the ApsaraDB RDS for MySQL instance.
         self.host = host
         # The ID of the ApsaraDB RDS for MySQL instance.
         self.instance_id = instance_id
         # The password that is used to log on to the ApsaraDB RDS for MySQL instance.
+        # 
+        # This parameter is required.
         self.password = password
         # The internal or public port of the ApsaraDB RDS for MySQL instance.
+        # 
+        # This parameter is required.
         self.port = port
         # The region where the ApsaraDB RDS for MySQL instance resides. Valid values: cn-qingdao, cn-beijing, and cn-hangzhou.
+        # 
+        # This parameter is required.
         self.region = region
         # The name of the database table in the ApsaraDB RDS for MySQL instance.
+        # 
+        # This parameter is required.
         self.table = table
         # The username that is used to log on to the ApsaraDB RDS for MySQL instance.
+        # 
+        # This parameter is required.
         self.username = username
         # The ID of the VPC to which the ApsaraDB RDS for MySQL instance belongs.
         self.vpc_id = vpc_id
@@ -6689,10 +6789,16 @@ class CreateRdsExternalStoreRequest(TeaModel):
         store_type: str = None,
     ):
         # The name of the external store. The name must be unique in a project and must be different from Logstore names.
+        # 
+        # This parameter is required.
         self.external_store_name = external_store_name
         # The parameter struct.
+        # 
+        # This parameter is required.
         self.parameter = parameter
         # The storage type. Set the value to rds-vpc, which indicates an ApsaraDB RDS for MySQL database in a virtual private cloud (VPC).
+        # 
+        # This parameter is required.
         self.store_type = store_type
 
     def validate(self):
@@ -6768,12 +6874,20 @@ class CreateSavedSearchRequest(TeaModel):
         topic: str = None,
     ):
         # The display name.
+        # 
+        # This parameter is required.
         self.display_name = display_name
         # The name of the Logstore to which the saved search belongs.
+        # 
+        # This parameter is required.
         self.logstore = logstore
         # The name of the saved search. The name must be 3 to 63 characters in length.
+        # 
+        # This parameter is required.
         self.savedsearch_name = savedsearch_name
-        # The query statement of the saved search. A query statement consists of a search statement and an analytic statement in the `Search statement|Analytic statement` format. For more information about search statements and analytic statements, see [Log search overview](~~43772~~) and [Log analysis overview](~~53608~~).
+        # The query statement of the saved search. A query statement consists of a search statement and an analytic statement in the `Search statement|Analytic statement` format. For more information about search statements and analytic statements, see [Log search overview](https://help.aliyun.com/document_detail/43772.html) and [Log analysis overview](https://help.aliyun.com/document_detail/53608.html).
+        # 
+        # This parameter is required.
         self.search_query = search_query
         # The topic of the log.
         self.topic = topic
@@ -6856,10 +6970,14 @@ class CreateScheduledSQLRequest(TeaModel):
         name: str = None,
         schedule: Schedule = None,
     ):
+        # This parameter is required.
         self.configuration = configuration
         self.description = description
+        # This parameter is required.
         self.display_name = display_name
+        # This parameter is required.
         self.name = name
+        # This parameter is required.
         self.schedule = schedule
 
     def validate(self):
@@ -6942,7 +7060,9 @@ class CreateSqlInstanceRequest(TeaModel):
         cu: int = None,
         use_as_default: bool = None,
     ):
+        # This parameter is required.
         self.cu = cu
+        # This parameter is required.
         self.use_as_default = use_as_default
 
     def validate(self):
@@ -6970,6 +7090,89 @@ class CreateSqlInstanceRequest(TeaModel):
 
 
 class CreateSqlInstanceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        return self
+
+
+class CreateStoreViewRequest(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        store_type: str = None,
+        stores: List[StoreViewStore] = None,
+    ):
+        # This parameter is required.
+        self.name = name
+        # This parameter is required.
+        self.store_type = store_type
+        # This parameter is required.
+        self.stores = stores
+
+    def validate(self):
+        if self.stores:
+            for k in self.stores:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['name'] = self.name
+        if self.store_type is not None:
+            result['storeType'] = self.store_type
+        result['stores'] = []
+        if self.stores is not None:
+            for k in self.stores:
+                result['stores'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('storeType') is not None:
+            self.store_type = m.get('storeType')
+        self.stores = []
+        if m.get('stores') is not None:
+            for k in m.get('stores'):
+                temp_model = StoreViewStore()
+                self.stores.append(temp_model.from_map(k))
+        return self
+
+
+class CreateStoreViewResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
@@ -7963,6 +8166,39 @@ class DeleteShipperResponse(TeaModel):
         return self
 
 
+class DeleteStoreViewResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        return self
+
+
 class DisableAlertResponse(TeaModel):
     def __init__(
         self,
@@ -7996,7 +8232,73 @@ class DisableAlertResponse(TeaModel):
         return self
 
 
+class DisableScheduledSQLResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        return self
+
+
 class EnableAlertResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        return self
+
+
+class EnableScheduledSQLResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
@@ -8826,14 +9128,24 @@ class GetContextLogsRequest(TeaModel):
         type: str = None,
     ):
         # The number of logs that you want to obtain and are generated before the generation time of the start log. Valid values: (0,100].
+        # 
+        # This parameter is required.
         self.back_lines = back_lines
         # The number of logs that you want to obtain and are generated after the generation time of the start log. Valid values: (0,100].
+        # 
+        # This parameter is required.
         self.forward_lines = forward_lines
         # The unique identifier of the log group to which the start log belongs.
+        # 
+        # This parameter is required.
         self.pack_id = pack_id
         # The unique context identifier of the start log in the log group.
+        # 
+        # This parameter is required.
         self.pack_meta = pack_meta
         # The type of the data in the Logstore. Set the value to context_log.
+        # 
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -8978,6 +9290,8 @@ class GetCursorRequest(TeaModel):
         from_: str = None,
     ):
         # The point in time that you want to use to query a cursor. Set the value to a UNIX timestamp or a string such as `begin` and `end`.
+        # 
+        # This parameter is required.
         self.from_ = from_
 
     def validate(self):
@@ -9075,6 +9389,8 @@ class GetCursorTimeRequest(TeaModel):
         cursor: str = None,
     ):
         # The cursor.
+        # 
+        # This parameter is required.
         self.cursor = cursor
 
     def validate(self):
@@ -9298,10 +9614,14 @@ class GetHistogramsRequest(TeaModel):
         topic: str = None,
     ):
         # The start time of the subinterval. The value is a UNIX timestamp representing the number of seconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+        # 
+        # This parameter is required.
         self.from_ = from_
-        # The search statement. Only search statements are supported. Analytic statements are not supported. For more information about the syntax of search statements, see [Log search overview](~~43772~~).
+        # The search statement. Only search statements are supported. Analytic statements are not supported. For more information about the syntax of search statements, see [Log search overview](https://help.aliyun.com/document_detail/43772.html).
         self.query = query
         # The end time of the subinterval. The value is a UNIX timestamp representing the number of seconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+        # 
+        # This parameter is required.
         self.to = to
         # The topic of the logs.
         self.topic = topic
@@ -9816,25 +10136,27 @@ class GetLogsRequest(TeaModel):
         # 
         # > To ensure that full data can be queried, specify a query time range that is accurate to the minute. If you also specify a time range in an analytic statement, Simple Log Service uses the time range specified in the analytic statement for query and analysis.
         # 
-        # If you want to specify a time range that is accurate to the second in your analytic statement, you must use the from_unixtime or to_unixtime function to convert the time format. For more information about the functions, see [from_unixtime function](~~63451~~) and [to_unixtime function](~~63451~~). Examples:
+        # If you want to specify a time range that is accurate to the second in your analytic statement, you must use the from_unixtime or to_unixtime function to convert the time format. For more information about the functions, see [from_unixtime function](https://help.aliyun.com/document_detail/63451.html) and [to_unixtime function](https://help.aliyun.com/document_detail/63451.html). Examples:
         # 
         # *   `* | SELECT * FROM log WHERE from_unixtime(__time__) > from_unixtime(1664186624) AND from_unixtime(__time__) < now()`
-        # *   `* | SELECT * FROM log WHERE __time__ > to_unixtime(date_parse(\"2022-10-19 15:46:05\", \"%Y-%m-%d %H:%i:%s\")) AND __time__ < to_unixtime(now())`
+        # *   `* | SELECT * FROM log WHERE __time__ > to_unixtime(date_parse(\\"2022-10-19 15:46:05\\", \\"%Y-%m-%d %H:%i:%s\\")) AND __time__ < to_unixtime(now())`
+        # 
+        # This parameter is required.
         self.from_ = from_
         # The maximum number of logs to return for the request. This parameter takes effect only when the query parameter is set to a search statement. Minimum value: 0. Maximum value: 100. Default value: 100.
         self.line = line
         # The line from which the query starts. This parameter takes effect only when the query parameter is set to a search statement. Default value: 0.
         self.offset = offset
-        # Specifies whether to enable the Dedicated SQL feature. For more information, see [Enable Dedicated SQL](~~223777~~). Valid values:
+        # Specifies whether to enable the Dedicated SQL feature. For more information, see [Enable Dedicated SQL](https://help.aliyun.com/document_detail/223777.html). Valid values:
         # 
         # *   true: enables the Dedicated SQL feature.
         # *   false (default): enables the Standard SQL feature.
         # 
         # You can use the powerSql or **query** parameter to configure Dedicated SQL.
         self.power_sql = power_sql
-        # The search statement or the query statement. For more information, see [Log search overview](~~43772~~) and [Log analysis overview](~~53608~~). If you add `set session parallel_sql=true;` to the analytic statement in the query parameter, Dedicated SQL is used. For example, you can set the query parameter to `* | set session parallel_sql=true; select count(*) as pv`. For more information about common errors that may occur during log query and analysis, see [How do I resolve common errors that occur when I query and analyze logs?](~~61628~~)
+        # The search statement or the query statement. For more information, see [Log search overview](https://help.aliyun.com/document_detail/43772.html) and [Log analysis overview](https://help.aliyun.com/document_detail/53608.html). If you add `set session parallel_sql=true;` to the analytic statement in the query parameter, Dedicated SQL is used. For example, you can set the query parameter to `* | set session parallel_sql=true; select count(*) as pv`. For more information about common errors that may occur during log query and analysis, see [How do I resolve common errors that occur when I query and analyze logs?](https://help.aliyun.com/document_detail/61628.html)
         # 
-        # > If you specify an analytic statement in the value of the query parameter, the line and offset parameters do not take effect. In this case, we recommend that you set the line and offset parameters to 0 and use the LIMIT clause to limit the number of logs to return on each page. For more information, see [Paged query](~~89994~~).
+        # > If you specify an analytic statement in the value of the query parameter, the line and offset parameters do not take effect. In this case, we recommend that you set the line and offset parameters to 0 and use the LIMIT clause to limit the number of logs to return on each page. For more information, see [Paged query](https://help.aliyun.com/document_detail/89994.html).
         self.query = query
         # Specifies whether to return logs in reverse chronological order of log timestamps. The log timestamps are accurate to the minute. Valid values:
         # 
@@ -9853,12 +10175,14 @@ class GetLogsRequest(TeaModel):
         # 
         # > To ensure that full data can be queried, specify a query time range that is accurate to the minute. If you also specify a time range in an analytic statement, Simple Log Service uses the time range specified in the analytic statement for query and analysis.
         # 
-        # If you want to specify a time range that is accurate to the second in your analytic statement, you must use the from_unixtime or to_unixtime function to convert the time format. For more information about the functions, see [from_unixtime function](~~63451~~) and [to_unixtime function](~~63451~~). Examples:
+        # If you want to specify a time range that is accurate to the second in your analytic statement, you must use the from_unixtime or to_unixtime function to convert the time format. For more information about the functions, see [from_unixtime function](https://help.aliyun.com/document_detail/63451.html) and [to_unixtime function](https://help.aliyun.com/document_detail/63451.html). Examples:
         # 
         # *   `* | SELECT * FROM log WHERE from_unixtime(__time__) > from_unixtime(1664186624) AND from_unixtime(__time__) < now()`
-        # *   `* | SELECT * FROM log WHERE __time__ > to_unixtime(date_parse(\"2022-10-19 15:46:05\", \"%Y-%m-%d %H:%i:%s\")) AND __time__ < to_unixtime(now())`
+        # *   `* | SELECT * FROM log WHERE __time__ > to_unixtime(date_parse(\\"2022-10-19 15:46:05\\", \\"%Y-%m-%d %H:%i:%s\\")) AND __time__ < to_unixtime(now())`
+        # 
+        # This parameter is required.
         self.to = to
-        # The topic of the logs. The default value is double quotation marks (""). For more information, see [Topic](~~48881~~).
+        # The topic of the logs. The default value is double quotation marks (""). For more information, see [Topic](https://help.aliyun.com/document_detail/48881.html).
         self.topic = topic
 
     def validate(self):
@@ -9956,6 +10280,8 @@ class GetLogsV2Headers(TeaModel):
     ):
         self.common_headers = common_headers
         # The compression method.
+        # 
+        # This parameter is required.
         self.accept_encoding = accept_encoding
 
     def validate(self):
@@ -10002,6 +10328,8 @@ class GetLogsV2Request(TeaModel):
         # The beginning of the time range to query. The value is the log time that is specified when log data is written.
         # 
         # The time range that is specified in this operation is a left-closed, right-open interval. The interval includes the start time specified by the from parameter, but does not include the end time specified by the to parameter. If you specify the same value for the from and to parameters, the interval is invalid, and an error message is returned. The value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # 
+        # This parameter is required.
         self.from_ = from_
         self.highlight = highlight
         # The maximum number of logs to return for the request. This parameter takes effect only when the query parameter is set to a search statement. Minimum value: 0. Maximum value: 100. Default value: 100.
@@ -10012,7 +10340,7 @@ class GetLogsV2Request(TeaModel):
         self.power_sql = power_sql
         # The search statement or the query statement. For more information, see the "Log search overview" and "Log analysis overview" topics.
         # 
-        # If you add set session parallel_sql=true; to the analytic statement in the query parameter, Dedicated SQL is used. For example, you can set the query parameter to \* | set session parallel_sql=true; select count(\*) as pv.
+        # If you add set session parallel_sql=true; to the analytic statement in the query parameter, Dedicated SQL is used. For example, you can set the query parameter to \\* | set session parallel_sql=true; select count(\\*) as pv.
         # 
         # Note: If you specify an analytic statement in the query parameter, the line and offset parameters do not take effect in this operation. In this case, we recommend that you set the line and offset parameters to 0 and use the LIMIT clause to limit the number of logs to return on each page. For more information, see the "Perform paged queries" topic.
         self.query = query
@@ -10025,6 +10353,8 @@ class GetLogsV2Request(TeaModel):
         # The end of the time range to query. The value is the log time that is specified when log data is written.
         # 
         # The time range that is specified in this operation is a left-closed, right-open interval. The interval includes the start time specified by the from parameter, but does not include the end time specified by the to parameter. If you specify the same value for the from and to parameters, the interval is invalid, and an error message is returned. The value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # 
+        # This parameter is required.
         self.to = to
         # The topic of the logs. Default value: double quotation marks ("").
         self.topic = topic
@@ -10432,9 +10762,11 @@ class GetMLServiceResultsRequest(TeaModel):
         self,
         allow_builtin: bool = None,
         body: MLServiceAnalysisParam = None,
+        version: str = None,
     ):
         self.allow_builtin = allow_builtin
         self.body = body
+        self.version = version
 
     def validate(self):
         if self.body:
@@ -10450,6 +10782,8 @@ class GetMLServiceResultsRequest(TeaModel):
             result['allowBuiltin'] = self.allow_builtin
         if self.body is not None:
             result['body'] = self.body.to_map()
+        if self.version is not None:
+            result['version'] = self.version
         return result
 
     def from_map(self, m: dict = None):
@@ -10459,6 +10793,8 @@ class GetMLServiceResultsRequest(TeaModel):
         if m.get('body') is not None:
             temp_model = MLServiceAnalysisParam()
             self.body = temp_model.from_map(m['body'])
+        if m.get('version') is not None:
+            self.version = m.get('version')
         return self
 
 
@@ -10573,6 +10909,74 @@ class GetMachineGroupResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = MachineGroup()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetMetricStoreMeteringModeResponseBody(TeaModel):
+    def __init__(
+        self,
+        metering_mode: str = None,
+    ):
+        self.metering_mode = metering_mode
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.metering_mode is not None:
+            result['meteringMode'] = self.metering_mode
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('meteringMode') is not None:
+            self.metering_mode = m.get('meteringMode')
+        return self
+
+
+class GetMetricStoreMeteringModeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetMetricStoreMeteringModeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetMetricStoreMeteringModeResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -10747,7 +11151,7 @@ class GetProjectLogsRequest(TeaModel):
         power_sql: bool = None,
         query: str = None,
     ):
-        # Specifies whether to enable the Dedicated SQL feature. For more information, see [Enable Dedicated SQL](~~223777~~). Valid values:
+        # Specifies whether to enable the Dedicated SQL feature. For more information, see [Enable Dedicated SQL](https://help.aliyun.com/document_detail/223777.html). Valid values:
         # 
         # *   true
         # *   false (default): enables the Standard SQL feature.
@@ -10755,6 +11159,8 @@ class GetProjectLogsRequest(TeaModel):
         # You can use the powerSql or **query** parameter to configure Dedicated SQL.
         self.power_sql = power_sql
         # The standard SQL statement. In this example, the SQL statement queries the number of page views (PVs) from 2022-03-01 10:41:40 to 2022-03-01 10:56:40 in a Logstore whose name is nginx-moni.
+        # 
+        # This parameter is required.
         self.query = query
 
     def validate(self):
@@ -10951,6 +11357,8 @@ class GetShipperStatusRequest(TeaModel):
         to: int = None,
     ):
         # The start time of the log shipping job. The value is a UNIX timestamp representing the number of seconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+        # 
+        # This parameter is required.
         self.from_ = from_
         # The line from which the query starts. Default value: 0.
         self.offset = offset
@@ -10959,6 +11367,8 @@ class GetShipperStatusRequest(TeaModel):
         # The status of the log shipping job. This parameter is empty by default, which indicates that log shipping jobs in all states are returned. Valid values: success, fail, and running.
         self.status = status
         # The end time of the log shipping job. The value is a UNIX timestamp representing the number of seconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+        # 
+        # This parameter is required.
         self.to = to
 
     def validate(self):
@@ -11347,6 +11757,205 @@ class GetSqlInstanceResponse(TeaModel):
             for k in m.get('body'):
                 temp_model = GetSqlInstanceResponseBody()
                 self.body.append(temp_model.from_map(k))
+        return self
+
+
+class GetStoreViewResponseBody(TeaModel):
+    def __init__(
+        self,
+        store_type: str = None,
+        stores: List[StoreViewStore] = None,
+    ):
+        self.store_type = store_type
+        self.stores = stores
+
+    def validate(self):
+        if self.stores:
+            for k in self.stores:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.store_type is not None:
+            result['storeType'] = self.store_type
+        result['stores'] = []
+        if self.stores is not None:
+            for k in self.stores:
+                result['stores'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('storeType') is not None:
+            self.store_type = m.get('storeType')
+        self.stores = []
+        if m.get('stores') is not None:
+            for k in m.get('stores'):
+                temp_model = StoreViewStore()
+                self.stores.append(temp_model.from_map(k))
+        return self
+
+
+class GetStoreViewResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetStoreViewResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetStoreViewResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetStoreViewIndexResponseBodyIndexes(TeaModel):
+    def __init__(
+        self,
+        index: Index = None,
+        logstore: str = None,
+        project: str = None,
+    ):
+        self.index = index
+        self.logstore = logstore
+        self.project = project
+
+    def validate(self):
+        if self.index:
+            self.index.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.index is not None:
+            result['index'] = self.index.to_map()
+        if self.logstore is not None:
+            result['logstore'] = self.logstore
+        if self.project is not None:
+            result['project'] = self.project
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('index') is not None:
+            temp_model = Index()
+            self.index = temp_model.from_map(m['index'])
+        if m.get('logstore') is not None:
+            self.logstore = m.get('logstore')
+        if m.get('project') is not None:
+            self.project = m.get('project')
+        return self
+
+
+class GetStoreViewIndexResponseBody(TeaModel):
+    def __init__(
+        self,
+        indexes: List[GetStoreViewIndexResponseBodyIndexes] = None,
+    ):
+        self.indexes = indexes
+
+    def validate(self):
+        if self.indexes:
+            for k in self.indexes:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['indexes'] = []
+        if self.indexes is not None:
+            for k in self.indexes:
+                result['indexes'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.indexes = []
+        if m.get('indexes') is not None:
+            for k in m.get('indexes'):
+                temp_model = GetStoreViewIndexResponseBodyIndexes()
+                self.indexes.append(temp_model.from_map(k))
+        return self
+
+
+class GetStoreViewIndexResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetStoreViewIndexResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetStoreViewIndexResponseBody()
+            self.body = temp_model.from_map(m['body'])
         return self
 
 
@@ -12294,10 +12903,16 @@ class ListConfigRequest(TeaModel):
         # The name of the Logtail configuration.
         self.config_name = config_name
         # The name of the Logstore.
+        # 
+        # This parameter is required.
         self.logstore_name = logstore_name
         # The line from which the query starts. Default value: 0.
+        # 
+        # This parameter is required.
         self.offset = offset
         # The number of entries per page. Maximum value: 500.
+        # 
+        # This parameter is required.
         self.size = size
 
     def validate(self):
@@ -14424,6 +15039,131 @@ class ListShipperResponse(TeaModel):
         return self
 
 
+class ListStoreViewsRequest(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        offset: int = None,
+        size: int = None,
+        store_type: str = None,
+    ):
+        self.name = name
+        self.offset = offset
+        self.size = size
+        self.store_type = store_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['name'] = self.name
+        if self.offset is not None:
+            result['offset'] = self.offset
+        if self.size is not None:
+            result['size'] = self.size
+        if self.store_type is not None:
+            result['storeType'] = self.store_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('offset') is not None:
+            self.offset = m.get('offset')
+        if m.get('size') is not None:
+            self.size = m.get('size')
+        if m.get('storeType') is not None:
+            self.store_type = m.get('storeType')
+        return self
+
+
+class ListStoreViewsResponseBody(TeaModel):
+    def __init__(
+        self,
+        count: int = None,
+        storeviews: List[str] = None,
+        total: int = None,
+    ):
+        self.count = count
+        self.storeviews = storeviews
+        self.total = total
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.count is not None:
+            result['count'] = self.count
+        if self.storeviews is not None:
+            result['storeviews'] = self.storeviews
+        if self.total is not None:
+            result['total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('count') is not None:
+            self.count = m.get('count')
+        if m.get('storeviews') is not None:
+            self.storeviews = m.get('storeviews')
+        if m.get('total') is not None:
+            self.total = m.get('total')
+        return self
+
+
+class ListStoreViewsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListStoreViewsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListStoreViewsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListTagResourcesRequestTags(TeaModel):
     def __init__(
         self,
@@ -14431,6 +15171,8 @@ class ListTagResourcesRequestTags(TeaModel):
         value: str = None,
     ):
         # The key of the tag that you want to use to filter resources. For example, if you set the key to `"test-key"`, only resources to which the key is added are returned.``
+        # 
+        # This parameter is required.
         self.key = key
         # The value of the tag that you want to use to filter resources. If you set the value to null, resources are filtered based only on the key of the tag.
         self.value = value
@@ -14469,6 +15211,8 @@ class ListTagResourcesRequest(TeaModel):
         # The IDs of the resources for which you want to query tags. You must specify at least one of resourceId and tags.
         self.resource_id = resource_id
         # The type of the resource. Set the value to project.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The tags that you want to use to filter resources based on exact match. Each tag is a key-value pair. You must specify at least one of resourceId and tags.
         # 
@@ -14521,6 +15265,8 @@ class ListTagResourcesShrinkRequest(TeaModel):
         # The IDs of the resources for which you want to query tags. You must specify at least one of resourceId and tags.
         self.resource_id_shrink = resource_id_shrink
         # The type of the resource. Set the value to project.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The tags that you want to use to filter resources based on exact match. Each tag is a key-value pair. You must specify at least one of resourceId and tags.
         # 
@@ -14976,9 +15722,13 @@ class PutWebtrackingRequest(TeaModel):
     ):
         # The logs. Each element is a JSON object that indicates a log.
         # 
-        # >  **Note**: The time in a log that is collected by using the web tracking feature is the time at which Simple Log Service receives the log. You do not need to configure the \__time\_\_ field for each log. If this field exists, it is overwritten by the time at which Simple Log Service receives the log.
+        # >  **Note**: The time in a log that is collected by using the web tracking feature is the time at which Simple Log Service receives the log. You do not need to configure the __time__ field for each log. If this field exists, it is overwritten by the time at which Simple Log Service receives the log.
+        # 
+        # This parameter is required.
         self.logs = logs
         # The source of the logs.
+        # 
+        # This parameter is required.
         self.source = source
         # The tags of the logs.
         self.tags = tags
@@ -15650,11 +16400,15 @@ class TagResourcesRequestTags(TeaModel):
         # *   The key must be `1 to 128` characters in length.
         # *   The key cannot contain `"http://"` or `"https://"`.
         # *   The key cannot start with `"acs:"` or `"aliyun"`.
+        # 
+        # This parameter is required.
         self.key = key
         # The value of the tag. The value must meet the following requirements:
         # 
         # *   The value must be `1 to 128` characters in length.
         # *   The value cannot contain `"http://"` or `"https://"`.
+        # 
+        # This parameter is required.
         self.value = value
 
     def validate(self):
@@ -15689,10 +16443,16 @@ class TagResourcesRequest(TeaModel):
         tags: List[TagResourcesRequestTags] = None,
     ):
         # The resource IDs. You can specify only one resource and add tags to the resource.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
         # The type of the resource. Set the value to project.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The tags that you want to add to the resource. Up to 20 tags are supported at a time. Each tag is a key-value pair.
+        # 
+        # This parameter is required.
         self.tags = tags
 
     def validate(self):
@@ -15773,6 +16533,7 @@ class UntagResourcesRequest(TeaModel):
         tags: List[str] = None,
     ):
         self.all = all
+        # This parameter is required.
         self.resource_id = resource_id
         self.resource_type = resource_type
         self.tags = tags
@@ -15850,9 +16611,12 @@ class UpdateAlertRequest(TeaModel):
         display_name: str = None,
         schedule: Schedule = None,
     ):
+        # This parameter is required.
         self.configuration = configuration
         self.description = description
+        # This parameter is required.
         self.display_name = display_name
+        # This parameter is required.
         self.schedule = schedule
 
     def validate(self):
@@ -16197,12 +16961,18 @@ class UpdateDashboardRequest(TeaModel):
         # The attributes of the dashboard.
         self.attribute = attribute
         # The charts on the dashboard.
+        # 
+        # This parameter is required.
         self.charts = charts
         # The name of the dashboard.
+        # 
+        # This parameter is required.
         self.dashboard_name = dashboard_name
         # The description of the dashboard.
         self.description = description
         # The display name of the dashboard.
+        # 
+        # This parameter is required.
         self.display_name = display_name
 
     def validate(self):
@@ -16289,8 +17059,10 @@ class UpdateETLRequest(TeaModel):
         description: str = None,
         display_name: str = None,
     ):
+        # This parameter is required.
         self.configuration = configuration
         self.description = description
+        # This parameter is required.
         self.display_name = display_name
 
     def validate(self):
@@ -16369,17 +17141,23 @@ class UpdateIndexRequestLine(TeaModel):
         # 
         # *   true
         # *   false
+        # 
+        # This parameter is required.
         self.case_sensitive = case_sensitive
         # Specifies whether to include Chinese characters. Valid values:
         # 
         # *   true
         # *   false
+        # 
+        # This parameter is required.
         self.chn = chn
         # The excluded fields. You cannot specify both include_keys and exclude_keys.
         self.exclude_keys = exclude_keys
         # The included fields. You cannot specify both include_keys and exclude_keys.
         self.include_keys = include_keys
         # The delimiters that are used to split text.
+        # 
+        # This parameter is required.
         self.token = token
 
     def validate(self):
@@ -16442,6 +17220,8 @@ class UpdateIndexRequest(TeaModel):
         # The maximum length of a field value that can be retained.
         self.max_text_len = max_text_len
         # The retention period of data. Unit: days. Valid values: 7, 30, and 90.
+        # 
+        # This parameter is required.
         self.ttl = ttl
 
     def validate(self):
@@ -16565,10 +17345,12 @@ class UpdateLogStoreRequest(TeaModel):
         self.enable_tracking = enable_tracking
         # The data structure of the encryption configuration.
         self.encrypt_conf = encrypt_conf
-        # The retention period of data in the hot storage tier of the Logstore. Minimum value: 30. Unit: day. You can specify a value that ranges from 30 to the value of ttl. Hot data that is stored for longer than the period specified by hot_ttl is converted to cold data. For more information, see [Enable hot and cold-tiered storage for a Logstore](~~308645~~).
+        # The retention period of data in the hot storage tier of the Logstore. Minimum value: 30. Unit: day. You can specify a value that ranges from 30 to the value of ttl. Hot data that is stored for longer than the period specified by hot_ttl is converted to cold data. For more information, see [Enable hot and cold-tiered storage for a Logstore](https://help.aliyun.com/document_detail/308645.html).
         self.hot_ttl = hot_ttl
         self.infrequent_access_ttl = infrequent_access_ttl
         # The name of the Logstore.
+        # 
+        # This parameter is required.
         self.logstore_name = logstore_name
         # The maximum number of shards into which existing shards can be automatically split. Valid values: 1 to 64.
         # 
@@ -16589,6 +17371,8 @@ class UpdateLogStoreRequest(TeaModel):
         # *   Metrics: metrics.
         self.telemetry_type = telemetry_type
         # The retention period of data. Unit: day. Valid values: 1 to 3650. If you set ttl to 3650, data is permanently stored.
+        # 
+        # This parameter is required.
         self.ttl = ttl
 
     def validate(self):
@@ -16695,6 +17479,7 @@ class UpdateLogStoreMeteringModeRequest(TeaModel):
         self,
         metering_mode: str = None,
     ):
+        # This parameter is required.
         self.metering_mode = metering_mode
 
     def validate(self):
@@ -16757,6 +17542,8 @@ class UpdateLoggingRequestLoggingDetails(TeaModel):
         type: str = None,
     ):
         # The name of the Logstore to which you want to save service logs.
+        # 
+        # This parameter is required.
         self.logstore = logstore
         # The type of service logs. Valid values:
         # 
@@ -16768,6 +17555,8 @@ class UpdateLoggingRequestLoggingDetails(TeaModel):
         # *   logtail_status: the status logs of Logtail.
         # *   scheduledsqlalert: the operational logs of Scheduled SQL jobs.
         # *   etl_alert: the operational logs of data transformation jobs.
+        # 
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -16801,8 +17590,12 @@ class UpdateLoggingRequest(TeaModel):
         logging_project: str = None,
     ):
         # The configurations of service logs.
+        # 
+        # This parameter is required.
         self.logging_details = logging_details
         # The name of the project to which you want to save service logs.
+        # 
+        # This parameter is required.
         self.logging_project = logging_project
 
     def validate(self):
@@ -16884,12 +17677,18 @@ class UpdateLogtailPipelineConfigRequest(TeaModel):
         # The aggregation plug-ins.
         self.aggregators = aggregators
         # The name of the configuration.
+        # 
+        # This parameter is required.
         self.config_name = config_name
         # The data output plug-ins.
+        # 
+        # This parameter is required.
         self.flushers = flushers
         # The global configuration.
         self.global_ = global_
         # The data source plug-ins.
+        # 
+        # This parameter is required.
         self.inputs = inputs
         # The sample log.
         self.log_sample = log_sample
@@ -17020,6 +17819,8 @@ class UpdateMachineGroupRequest(TeaModel):
         # The attribute of the machine group. This parameter is empty by default.
         self.group_attribute = group_attribute
         # The name of the machine group.
+        # 
+        # This parameter is required.
         self.group_name = group_name
         # The type of the machine group. Set the value to an empty string.
         self.group_type = group_type
@@ -17027,11 +17828,15 @@ class UpdateMachineGroupRequest(TeaModel):
         # 
         # *   ip: The machine group uses IP addresses as identifiers.
         # *   userdefined: The machine group uses custom identifiers.
+        # 
+        # This parameter is required.
         self.machine_identify_type = machine_identify_type
         # The identifiers of the machines in the machine group.
         # 
         # *   If you set machineIdentifyType to ip, enter the IP addresses of the machines.
         # *   If you set machineIdentifyType to userdefined, enter a custom identifier.
+        # 
+        # This parameter is required.
         self.machine_list = machine_list
 
     def validate(self):
@@ -17114,6 +17919,8 @@ class UpdateMachineGroupMachineRequest(TeaModel):
         # The operation on the machine. Valid values: add and delete. A value of add specifies to add the machine to the machine group. A value of delete specifies to remove the machine from the machine group.
         self.action = action
         # The machines to be added or removed.
+        # 
+        # This parameter is required.
         self.body = body
 
     def validate(self):
@@ -17141,6 +17948,67 @@ class UpdateMachineGroupMachineRequest(TeaModel):
 
 
 class UpdateMachineGroupMachineResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        return self
+
+
+class UpdateMetricStoreMeteringModeRequest(TeaModel):
+    def __init__(
+        self,
+        metering_mode: str = None,
+    ):
+        # This parameter is required.
+        self.metering_mode = metering_mode
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.metering_mode is not None:
+            result['meteringMode'] = self.metering_mode
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('meteringMode') is not None:
+            self.metering_mode = m.get('meteringMode')
+        return self
+
+
+class UpdateMetricStoreMeteringModeResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
@@ -17329,8 +18197,10 @@ class UpdateOSSIngestionRequest(TeaModel):
         display_name: str = None,
         schedule: Schedule = None,
     ):
+        # This parameter is required.
         self.configuration = configuration
         self.description = description
+        # This parameter is required.
         self.display_name = display_name
         self.schedule = schedule
 
@@ -17411,8 +18281,12 @@ class UpdateOssExternalStoreRequestParameterColumns(TeaModel):
         type: str = None,
     ):
         # The name of the field.
+        # 
+        # This parameter is required.
         self.name = name
         # The type of the field.
+        # 
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -17450,16 +18324,28 @@ class UpdateOssExternalStoreRequestParameter(TeaModel):
         objects: List[str] = None,
     ):
         # The AccessKey ID of your account.
+        # 
+        # This parameter is required.
         self.accessid = accessid
         # The AccessKey secret of your account.
+        # 
+        # This parameter is required.
         self.accesskey = accesskey
         # The name of the OSS bucket.
+        # 
+        # This parameter is required.
         self.bucket = bucket
         # The fields that are associated to the external store.
+        # 
+        # This parameter is required.
         self.columns = columns
         # The Object Storage Service (OSS) endpoint.
+        # 
+        # This parameter is required.
         self.endpoint = endpoint
         # The names of the OSS objects that are associated to the external store.
+        # 
+        # This parameter is required.
         self.objects = objects
 
     def validate(self):
@@ -17518,10 +18404,16 @@ class UpdateOssExternalStoreRequest(TeaModel):
         store_type: str = None,
     ):
         # The name of the external store.
+        # 
+        # This parameter is required.
         self.external_store_name = external_store_name
         # The parameters that are configured for the external store.
+        # 
+        # This parameter is required.
         self.parameter = parameter
         # The type of the external store. Set the value to oss.
+        # 
+        # This parameter is required.
         self.store_type = store_type
 
     def validate(self):
@@ -17593,6 +18485,8 @@ class UpdateProjectRequest(TeaModel):
         description: str = None,
     ):
         # The description of the project. The default value is an empty string.
+        # 
+        # This parameter is required.
         self.description = description
 
     def validate(self):
@@ -17662,20 +18556,32 @@ class UpdateRdsExternalStoreRequestParameter(TeaModel):
         vpc_id: str = None,
     ):
         # The name of the database in the ApsaraDB RDS for MySQL instance.
+        # 
+        # This parameter is required.
         self.db = db
         # The internal or public endpoint of the ApsaraDB RDS for MySQL instance.
         self.host = host
         # The ID of the ApsaraDB RDS for MySQL instance.
         self.instance_id = instance_id
         # The password that is used to log on to the ApsaraDB RDS for MySQL instance.
+        # 
+        # This parameter is required.
         self.password = password
         # The internal or public port of the ApsaraDB RDS for MySQL instance.
+        # 
+        # This parameter is required.
         self.port = port
         # The region where the ApsaraDB RDS for MySQL instance resides. Valid values: cn-qingdao, cn-beijing, and cn-hangzhou.
+        # 
+        # This parameter is required.
         self.region = region
         # The name of the database table in the ApsaraDB RDS for MySQL instance.
+        # 
+        # This parameter is required.
         self.table = table
         # The username that is used to log on to the ApsaraDB RDS for MySQL instance.
+        # 
+        # This parameter is required.
         self.username = username
         # The ID of the VPC to which the ApsaraDB RDS for MySQL instance belongs.
         self.vpc_id = vpc_id
@@ -17740,10 +18646,16 @@ class UpdateRdsExternalStoreRequest(TeaModel):
         store_type: str = None,
     ):
         # The name of the external store.
+        # 
+        # This parameter is required.
         self.external_store_name = external_store_name
         # The parameter struct.
+        # 
+        # This parameter is required.
         self.parameter = parameter
         # The storage type. Set the value to rds-vpc, which indicates an ApsaraDB RDS for MySQL database in a virtual private cloud (VPC).
+        # 
+        # This parameter is required.
         self.store_type = store_type
 
     def validate(self):
@@ -17819,14 +18731,22 @@ class UpdateSavedSearchRequest(TeaModel):
         topic: str = None,
     ):
         # The display name.
+        # 
+        # This parameter is required.
         self.display_name = display_name
         # The name of the Logstore to which the saved search belongs.
+        # 
+        # This parameter is required.
         self.logstore = logstore
         # The name of the saved search. The name must be 3 to 63 characters in length.
+        # 
+        # This parameter is required.
         self.savedsearch_name = savedsearch_name
         # The search statement or the query statement of the saved search. A query statement consists of a search statement and an analytic statement in the Search statement|Analytic statement format.
         # 
         # For more information, see Log search overview and Log analysis overview.
+        # 
+        # This parameter is required.
         self.search_query = search_query
         # The topic of the logs.
         self.topic = topic
@@ -17908,9 +18828,12 @@ class UpdateScheduledSQLRequest(TeaModel):
         display_name: str = None,
         schedule: Schedule = None,
     ):
+        # This parameter is required.
         self.configuration = configuration
         self.description = description
+        # This parameter is required.
         self.display_name = display_name
+        # This parameter is required.
         self.schedule = schedule
 
     def validate(self):
@@ -17989,7 +18912,9 @@ class UpdateSqlInstanceRequest(TeaModel):
         cu: int = None,
         use_as_default: bool = None,
     ):
+        # This parameter is required.
         self.cu = cu
+        # This parameter is required.
         self.use_as_default = use_as_default
 
     def validate(self):
@@ -18017,6 +18942,82 @@ class UpdateSqlInstanceRequest(TeaModel):
 
 
 class UpdateSqlInstanceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        return self
+
+
+class UpdateStoreViewRequest(TeaModel):
+    def __init__(
+        self,
+        store_type: str = None,
+        stores: List[StoreViewStore] = None,
+    ):
+        # This parameter is required.
+        self.store_type = store_type
+        # This parameter is required.
+        self.stores = stores
+
+    def validate(self):
+        if self.stores:
+            for k in self.stores:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.store_type is not None:
+            result['storeType'] = self.store_type
+        result['stores'] = []
+        if self.stores is not None:
+            for k in self.stores:
+                result['stores'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('storeType') is not None:
+            self.store_type = m.get('storeType')
+        self.stores = []
+        if m.get('stores') is not None:
+            for k in m.get('stores'):
+                temp_model = StoreViewStore()
+                self.stores.append(temp_model.from_map(k))
+        return self
+
+
+class UpdateStoreViewResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
@@ -18137,6 +19138,7 @@ class UpsertCollectionPolicyRequestPolicyConfig(TeaModel):
     ):
         self.instance_ids = instance_ids
         self.regions = regions
+        # This parameter is required.
         self.resource_mode = resource_mode
         self.resource_tags = resource_tags
 
@@ -18187,10 +19189,15 @@ class UpsertCollectionPolicyRequest(TeaModel):
         self.attribute = attribute
         self.centralize_config = centralize_config
         self.centralize_enabled = centralize_enabled
+        # This parameter is required.
         self.data_code = data_code
+        # This parameter is required.
         self.enabled = enabled
+        # This parameter is required.
         self.policy_config = policy_config
+        # This parameter is required.
         self.policy_name = policy_name
+        # This parameter is required.
         self.product_code = product_code
 
     def validate(self):
