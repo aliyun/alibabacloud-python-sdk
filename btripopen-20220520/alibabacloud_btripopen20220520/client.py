@@ -47,6 +47,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.AccessTokenResponse:
+        """
+        @summary 换取accessToken接口
+        
+        @param request: AccessTokenRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AccessTokenResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_secret):
@@ -77,6 +85,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.AccessTokenResponse:
+        """
+        @summary 换取accessToken接口
+        
+        @param request: AccessTokenRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AccessTokenResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_secret):
@@ -105,6 +121,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.AccessTokenRequest,
     ) -> btrip_open_20220520_models.AccessTokenResponse:
+        """
+        @summary 换取accessToken接口
+        
+        @param request: AccessTokenRequest
+        @return: AccessTokenResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.access_token_with_options(request, headers, runtime)
@@ -113,6 +135,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.AccessTokenRequest,
     ) -> btrip_open_20220520_models.AccessTokenResponse:
+        """
+        @summary 换取accessToken接口
+        
+        @param request: AccessTokenRequest
+        @return: AccessTokenResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.access_token_with_options_async(request, headers, runtime)
@@ -123,6 +151,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.AddInvoiceEntityHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.AddInvoiceEntityResponse:
+        """
+        @summary 新增发票抬头适用人员
+        
+        @param tmp_req: AddInvoiceEntityRequest
+        @param headers: AddInvoiceEntityHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddInvoiceEntityResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.AddInvoiceEntityShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -164,6 +200,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.AddInvoiceEntityHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.AddInvoiceEntityResponse:
+        """
+        @summary 新增发票抬头适用人员
+        
+        @param tmp_req: AddInvoiceEntityRequest
+        @param headers: AddInvoiceEntityHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddInvoiceEntityResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.AddInvoiceEntityShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -203,6 +247,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.AddInvoiceEntityRequest,
     ) -> btrip_open_20220520_models.AddInvoiceEntityResponse:
+        """
+        @summary 新增发票抬头适用人员
+        
+        @param request: AddInvoiceEntityRequest
+        @return: AddInvoiceEntityResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.AddInvoiceEntityHeaders()
         return self.add_invoice_entity_with_options(request, headers, runtime)
@@ -211,6 +261,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.AddInvoiceEntityRequest,
     ) -> btrip_open_20220520_models.AddInvoiceEntityResponse:
+        """
+        @summary 新增发票抬头适用人员
+        
+        @param request: AddInvoiceEntityRequest
+        @return: AddInvoiceEntityResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.AddInvoiceEntityHeaders()
         return await self.add_invoice_entity_with_options_async(request, headers, runtime)
@@ -221,6 +277,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.AddressGetHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.AddressGetResponse:
+        """
+        @summary 商旅功能页跳转
+        
+        @param request: AddressGetRequest
+        @param headers: AddressGetHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddressGetResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.action_type):
@@ -286,6 +350,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.AddressGetHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.AddressGetResponse:
+        """
+        @summary 商旅功能页跳转
+        
+        @param request: AddressGetRequest
+        @param headers: AddressGetHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddressGetResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.action_type):
@@ -349,6 +421,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.AddressGetRequest,
     ) -> btrip_open_20220520_models.AddressGetResponse:
+        """
+        @summary 商旅功能页跳转
+        
+        @param request: AddressGetRequest
+        @return: AddressGetResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.AddressGetHeaders()
         return self.address_get_with_options(request, headers, runtime)
@@ -357,6 +435,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.AddressGetRequest,
     ) -> btrip_open_20220520_models.AddressGetResponse:
+        """
+        @summary 商旅功能页跳转
+        
+        @param request: AddressGetRequest
+        @return: AddressGetResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.AddressGetHeaders()
         return await self.address_get_with_options_async(request, headers, runtime)
@@ -367,6 +451,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.AirportSearchHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.AirportSearchResponse:
+        """
+        @summary 查询机场数据
+        
+        @param request: AirportSearchRequest
+        @param headers: AirportSearchHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AirportSearchResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.keyword):
@@ -404,6 +496,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.AirportSearchHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.AirportSearchResponse:
+        """
+        @summary 查询机场数据
+        
+        @param request: AirportSearchRequest
+        @param headers: AirportSearchHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AirportSearchResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.keyword):
@@ -439,6 +539,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.AirportSearchRequest,
     ) -> btrip_open_20220520_models.AirportSearchResponse:
+        """
+        @summary 查询机场数据
+        
+        @param request: AirportSearchRequest
+        @return: AirportSearchResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.AirportSearchHeaders()
         return self.airport_search_with_options(request, headers, runtime)
@@ -447,6 +553,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.AirportSearchRequest,
     ) -> btrip_open_20220520_models.AirportSearchResponse:
+        """
+        @summary 查询机场数据
+        
+        @param request: AirportSearchRequest
+        @return: AirportSearchResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.AirportSearchHeaders()
         return await self.airport_search_with_options_async(request, headers, runtime)
@@ -456,6 +568,13 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.AllBaseCityInfoQueryHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.AllBaseCityInfoQueryResponse:
+        """
+        @summary 全量查询商旅城市行政区划编码信息
+        
+        @param headers: AllBaseCityInfoQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AllBaseCityInfoQueryResponse
+        """
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -485,6 +604,13 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.AllBaseCityInfoQueryHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.AllBaseCityInfoQueryResponse:
+        """
+        @summary 全量查询商旅城市行政区划编码信息
+        
+        @param headers: AllBaseCityInfoQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AllBaseCityInfoQueryResponse
+        """
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -510,11 +636,21 @@ class Client(OpenApiClient):
         )
 
     def all_base_city_info_query(self) -> btrip_open_20220520_models.AllBaseCityInfoQueryResponse:
+        """
+        @summary 全量查询商旅城市行政区划编码信息
+        
+        @return: AllBaseCityInfoQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.AllBaseCityInfoQueryHeaders()
         return self.all_base_city_info_query_with_options(headers, runtime)
 
     async def all_base_city_info_query_async(self) -> btrip_open_20220520_models.AllBaseCityInfoQueryResponse:
+        """
+        @summary 全量查询商旅城市行政区划编码信息
+        
+        @return: AllBaseCityInfoQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.AllBaseCityInfoQueryHeaders()
         return await self.all_base_city_info_query_with_options_async(headers, runtime)
@@ -525,6 +661,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.ApplyAddHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.ApplyAddResponse:
+        """
+        @summary 新建出差审批单
+        
+        @param tmp_req: ApplyAddRequest
+        @param headers: ApplyAddHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ApplyAddResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.ApplyAddShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -648,6 +792,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.ApplyAddHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.ApplyAddResponse:
+        """
+        @summary 新建出差审批单
+        
+        @param tmp_req: ApplyAddRequest
+        @param headers: ApplyAddHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ApplyAddResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.ApplyAddShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -769,6 +921,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.ApplyAddRequest,
     ) -> btrip_open_20220520_models.ApplyAddResponse:
+        """
+        @summary 新建出差审批单
+        
+        @param request: ApplyAddRequest
+        @return: ApplyAddResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.ApplyAddHeaders()
         return self.apply_add_with_options(request, headers, runtime)
@@ -777,6 +935,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.ApplyAddRequest,
     ) -> btrip_open_20220520_models.ApplyAddResponse:
+        """
+        @summary 新建出差审批单
+        
+        @param request: ApplyAddRequest
+        @return: ApplyAddResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.ApplyAddHeaders()
         return await self.apply_add_with_options_async(request, headers, runtime)
@@ -787,6 +951,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.ApplyApproveHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.ApplyApproveResponse:
+        """
+        @summary 更新出差审批单（状态）
+        
+        @param request: ApplyApproveRequest
+        @param headers: ApplyApproveHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ApplyApproveResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.apply_id):
@@ -834,6 +1006,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.ApplyApproveHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.ApplyApproveResponse:
+        """
+        @summary 更新出差审批单（状态）
+        
+        @param request: ApplyApproveRequest
+        @param headers: ApplyApproveHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ApplyApproveResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.apply_id):
@@ -879,6 +1059,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.ApplyApproveRequest,
     ) -> btrip_open_20220520_models.ApplyApproveResponse:
+        """
+        @summary 更新出差审批单（状态）
+        
+        @param request: ApplyApproveRequest
+        @return: ApplyApproveResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.ApplyApproveHeaders()
         return self.apply_approve_with_options(request, headers, runtime)
@@ -887,6 +1073,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.ApplyApproveRequest,
     ) -> btrip_open_20220520_models.ApplyApproveResponse:
+        """
+        @summary 更新出差审批单（状态）
+        
+        @param request: ApplyApproveRequest
+        @return: ApplyApproveResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.ApplyApproveHeaders()
         return await self.apply_approve_with_options_async(request, headers, runtime)
@@ -897,6 +1089,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.ApplyExternalNodeStatusUpdateHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.ApplyExternalNodeStatusUpdateResponse:
+        """
+        @summary 外部审批节点状态同步
+        
+        @param tmp_req: ApplyExternalNodeStatusUpdateRequest
+        @param headers: ApplyExternalNodeStatusUpdateHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ApplyExternalNodeStatusUpdateResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.ApplyExternalNodeStatusUpdateShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -940,6 +1140,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.ApplyExternalNodeStatusUpdateHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.ApplyExternalNodeStatusUpdateResponse:
+        """
+        @summary 外部审批节点状态同步
+        
+        @param tmp_req: ApplyExternalNodeStatusUpdateRequest
+        @param headers: ApplyExternalNodeStatusUpdateHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ApplyExternalNodeStatusUpdateResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.ApplyExternalNodeStatusUpdateShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -981,6 +1189,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.ApplyExternalNodeStatusUpdateRequest,
     ) -> btrip_open_20220520_models.ApplyExternalNodeStatusUpdateResponse:
+        """
+        @summary 外部审批节点状态同步
+        
+        @param request: ApplyExternalNodeStatusUpdateRequest
+        @return: ApplyExternalNodeStatusUpdateResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.ApplyExternalNodeStatusUpdateHeaders()
         return self.apply_external_node_status_update_with_options(request, headers, runtime)
@@ -989,6 +1203,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.ApplyExternalNodeStatusUpdateRequest,
     ) -> btrip_open_20220520_models.ApplyExternalNodeStatusUpdateResponse:
+        """
+        @summary 外部审批节点状态同步
+        
+        @param request: ApplyExternalNodeStatusUpdateRequest
+        @return: ApplyExternalNodeStatusUpdateResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.ApplyExternalNodeStatusUpdateHeaders()
         return await self.apply_external_node_status_update_with_options_async(request, headers, runtime)
@@ -999,6 +1219,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.ApplyInvoiceTaskHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.ApplyInvoiceTaskResponse:
+        """
+        @summary 申请发票
+        
+        @param tmp_req: ApplyInvoiceTaskRequest
+        @param headers: ApplyInvoiceTaskHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ApplyInvoiceTaskResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.ApplyInvoiceTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1040,6 +1268,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.ApplyInvoiceTaskHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.ApplyInvoiceTaskResponse:
+        """
+        @summary 申请发票
+        
+        @param tmp_req: ApplyInvoiceTaskRequest
+        @param headers: ApplyInvoiceTaskHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ApplyInvoiceTaskResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.ApplyInvoiceTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1079,6 +1315,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.ApplyInvoiceTaskRequest,
     ) -> btrip_open_20220520_models.ApplyInvoiceTaskResponse:
+        """
+        @summary 申请发票
+        
+        @param request: ApplyInvoiceTaskRequest
+        @return: ApplyInvoiceTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.ApplyInvoiceTaskHeaders()
         return self.apply_invoice_task_with_options(request, headers, runtime)
@@ -1087,6 +1329,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.ApplyInvoiceTaskRequest,
     ) -> btrip_open_20220520_models.ApplyInvoiceTaskResponse:
+        """
+        @summary 申请发票
+        
+        @param request: ApplyInvoiceTaskRequest
+        @return: ApplyInvoiceTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.ApplyInvoiceTaskHeaders()
         return await self.apply_invoice_task_with_options_async(request, headers, runtime)
@@ -1097,6 +1345,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.ApplyListQueryHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.ApplyListQueryResponse:
+        """
+        @summary 查询出差审批单列表
+        
+        @param request: ApplyListQueryRequest
+        @param headers: ApplyListQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ApplyListQueryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.all_apply):
@@ -1154,6 +1410,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.ApplyListQueryHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.ApplyListQueryResponse:
+        """
+        @summary 查询出差审批单列表
+        
+        @param request: ApplyListQueryRequest
+        @param headers: ApplyListQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ApplyListQueryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.all_apply):
@@ -1209,6 +1473,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.ApplyListQueryRequest,
     ) -> btrip_open_20220520_models.ApplyListQueryResponse:
+        """
+        @summary 查询出差审批单列表
+        
+        @param request: ApplyListQueryRequest
+        @return: ApplyListQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.ApplyListQueryHeaders()
         return self.apply_list_query_with_options(request, headers, runtime)
@@ -1217,6 +1487,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.ApplyListQueryRequest,
     ) -> btrip_open_20220520_models.ApplyListQueryResponse:
+        """
+        @summary 查询出差审批单列表
+        
+        @param request: ApplyListQueryRequest
+        @return: ApplyListQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.ApplyListQueryHeaders()
         return await self.apply_list_query_with_options_async(request, headers, runtime)
@@ -1227,6 +1503,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.ApplyModifyHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.ApplyModifyResponse:
+        """
+        @summary 更新出差审批单
+        
+        @param tmp_req: ApplyModifyRequest
+        @param headers: ApplyModifyHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ApplyModifyResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.ApplyModifyShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1346,6 +1630,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.ApplyModifyHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.ApplyModifyResponse:
+        """
+        @summary 更新出差审批单
+        
+        @param tmp_req: ApplyModifyRequest
+        @param headers: ApplyModifyHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ApplyModifyResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.ApplyModifyShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1463,6 +1755,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.ApplyModifyRequest,
     ) -> btrip_open_20220520_models.ApplyModifyResponse:
+        """
+        @summary 更新出差审批单
+        
+        @param request: ApplyModifyRequest
+        @return: ApplyModifyResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.ApplyModifyHeaders()
         return self.apply_modify_with_options(request, headers, runtime)
@@ -1471,6 +1769,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.ApplyModifyRequest,
     ) -> btrip_open_20220520_models.ApplyModifyResponse:
+        """
+        @summary 更新出差审批单
+        
+        @param request: ApplyModifyRequest
+        @return: ApplyModifyResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.ApplyModifyHeaders()
         return await self.apply_modify_with_options_async(request, headers, runtime)
@@ -1481,6 +1785,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.ApplyQueryHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.ApplyQueryResponse:
+        """
+        @summary 查询出差审批单详情
+        
+        @param request: ApplyQueryRequest
+        @param headers: ApplyQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ApplyQueryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.apply_id):
@@ -1524,6 +1836,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.ApplyQueryHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.ApplyQueryResponse:
+        """
+        @summary 查询出差审批单详情
+        
+        @param request: ApplyQueryRequest
+        @param headers: ApplyQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ApplyQueryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.apply_id):
@@ -1565,6 +1885,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.ApplyQueryRequest,
     ) -> btrip_open_20220520_models.ApplyQueryResponse:
+        """
+        @summary 查询出差审批单详情
+        
+        @param request: ApplyQueryRequest
+        @return: ApplyQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.ApplyQueryHeaders()
         return self.apply_query_with_options(request, headers, runtime)
@@ -1573,6 +1899,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.ApplyQueryRequest,
     ) -> btrip_open_20220520_models.ApplyQueryResponse:
+        """
+        @summary 查询出差审批单详情
+        
+        @param request: ApplyQueryRequest
+        @return: ApplyQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.ApplyQueryHeaders()
         return await self.apply_query_with_options_async(request, headers, runtime)
@@ -1583,6 +1915,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.BaseCityInfoSearchHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.BaseCityInfoSearchResponse:
+        """
+        @summary 搜索国内/国际（港澳台）城市基础行政区划数据
+        
+        @param request: BaseCityInfoSearchRequest
+        @param headers: BaseCityInfoSearchHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BaseCityInfoSearchResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.keyword):
@@ -1620,6 +1960,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.BaseCityInfoSearchHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.BaseCityInfoSearchResponse:
+        """
+        @summary 搜索国内/国际（港澳台）城市基础行政区划数据
+        
+        @param request: BaseCityInfoSearchRequest
+        @param headers: BaseCityInfoSearchHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BaseCityInfoSearchResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.keyword):
@@ -1655,6 +2003,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.BaseCityInfoSearchRequest,
     ) -> btrip_open_20220520_models.BaseCityInfoSearchResponse:
+        """
+        @summary 搜索国内/国际（港澳台）城市基础行政区划数据
+        
+        @param request: BaseCityInfoSearchRequest
+        @return: BaseCityInfoSearchResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.BaseCityInfoSearchHeaders()
         return self.base_city_info_search_with_options(request, headers, runtime)
@@ -1663,6 +2017,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.BaseCityInfoSearchRequest,
     ) -> btrip_open_20220520_models.BaseCityInfoSearchResponse:
+        """
+        @summary 搜索国内/国际（港澳台）城市基础行政区划数据
+        
+        @param request: BaseCityInfoSearchRequest
+        @return: BaseCityInfoSearchResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.BaseCityInfoSearchHeaders()
         return await self.base_city_info_search_with_options_async(request, headers, runtime)
@@ -1673,6 +2033,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.BtripBillInfoAdjustHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.BtripBillInfoAdjustResponse:
+        """
+        @summary 商旅账单内容修改
+        
+        @param request: BtripBillInfoAdjustRequest
+        @param headers: BtripBillInfoAdjustHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BtripBillInfoAdjustResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.primary_id):
@@ -1718,6 +2086,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.BtripBillInfoAdjustHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.BtripBillInfoAdjustResponse:
+        """
+        @summary 商旅账单内容修改
+        
+        @param request: BtripBillInfoAdjustRequest
+        @param headers: BtripBillInfoAdjustHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BtripBillInfoAdjustResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.primary_id):
@@ -1761,6 +2137,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.BtripBillInfoAdjustRequest,
     ) -> btrip_open_20220520_models.BtripBillInfoAdjustResponse:
+        """
+        @summary 商旅账单内容修改
+        
+        @param request: BtripBillInfoAdjustRequest
+        @return: BtripBillInfoAdjustResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.BtripBillInfoAdjustHeaders()
         return self.btrip_bill_info_adjust_with_options(request, headers, runtime)
@@ -1769,6 +2151,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.BtripBillInfoAdjustRequest,
     ) -> btrip_open_20220520_models.BtripBillInfoAdjustResponse:
+        """
+        @summary 商旅账单内容修改
+        
+        @param request: BtripBillInfoAdjustRequest
+        @return: BtripBillInfoAdjustResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.BtripBillInfoAdjustHeaders()
         return await self.btrip_bill_info_adjust_with_options_async(request, headers, runtime)
@@ -1779,6 +2167,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.CarApplyAddHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.CarApplyAddResponse:
+        """
+        @summary 同步市内用车审批单
+        
+        @param tmp_req: CarApplyAddRequest
+        @param headers: CarApplyAddHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CarApplyAddResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.CarApplyAddShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1850,6 +2246,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.CarApplyAddHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.CarApplyAddResponse:
+        """
+        @summary 同步市内用车审批单
+        
+        @param tmp_req: CarApplyAddRequest
+        @param headers: CarApplyAddHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CarApplyAddResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.CarApplyAddShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1919,6 +2323,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.CarApplyAddRequest,
     ) -> btrip_open_20220520_models.CarApplyAddResponse:
+        """
+        @summary 同步市内用车审批单
+        
+        @param request: CarApplyAddRequest
+        @return: CarApplyAddResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.CarApplyAddHeaders()
         return self.car_apply_add_with_options(request, headers, runtime)
@@ -1927,6 +2337,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.CarApplyAddRequest,
     ) -> btrip_open_20220520_models.CarApplyAddResponse:
+        """
+        @summary 同步市内用车审批单
+        
+        @param request: CarApplyAddRequest
+        @return: CarApplyAddResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.CarApplyAddHeaders()
         return await self.car_apply_add_with_options_async(request, headers, runtime)
@@ -1937,6 +2353,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.CarApplyModifyHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.CarApplyModifyResponse:
+        """
+        @summary 更新市内用车审批单
+        
+        @param request: CarApplyModifyRequest
+        @param headers: CarApplyModifyHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CarApplyModifyResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.operate_time):
@@ -1980,6 +2404,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.CarApplyModifyHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.CarApplyModifyResponse:
+        """
+        @summary 更新市内用车审批单
+        
+        @param request: CarApplyModifyRequest
+        @param headers: CarApplyModifyHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CarApplyModifyResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.operate_time):
@@ -2021,6 +2453,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.CarApplyModifyRequest,
     ) -> btrip_open_20220520_models.CarApplyModifyResponse:
+        """
+        @summary 更新市内用车审批单
+        
+        @param request: CarApplyModifyRequest
+        @return: CarApplyModifyResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.CarApplyModifyHeaders()
         return self.car_apply_modify_with_options(request, headers, runtime)
@@ -2029,6 +2467,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.CarApplyModifyRequest,
     ) -> btrip_open_20220520_models.CarApplyModifyResponse:
+        """
+        @summary 更新市内用车审批单
+        
+        @param request: CarApplyModifyRequest
+        @return: CarApplyModifyResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.CarApplyModifyHeaders()
         return await self.car_apply_modify_with_options_async(request, headers, runtime)
@@ -2039,6 +2483,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.CarApplyQueryHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.CarApplyQueryResponse:
+        """
+        @summary 查询市内用车审批单
+        
+        @param request: CarApplyQueryRequest
+        @param headers: CarApplyQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CarApplyQueryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.created_end_at):
@@ -2084,6 +2536,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.CarApplyQueryHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.CarApplyQueryResponse:
+        """
+        @summary 查询市内用车审批单
+        
+        @param request: CarApplyQueryRequest
+        @param headers: CarApplyQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CarApplyQueryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.created_end_at):
@@ -2127,6 +2587,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.CarApplyQueryRequest,
     ) -> btrip_open_20220520_models.CarApplyQueryResponse:
+        """
+        @summary 查询市内用车审批单
+        
+        @param request: CarApplyQueryRequest
+        @return: CarApplyQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.CarApplyQueryHeaders()
         return self.car_apply_query_with_options(request, headers, runtime)
@@ -2135,6 +2601,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.CarApplyQueryRequest,
     ) -> btrip_open_20220520_models.CarApplyQueryResponse:
+        """
+        @summary 查询市内用车审批单
+        
+        @param request: CarApplyQueryRequest
+        @return: CarApplyQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.CarApplyQueryHeaders()
         return await self.car_apply_query_with_options_async(request, headers, runtime)
@@ -2145,6 +2617,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.CarBillSettlementQueryHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.CarBillSettlementQueryResponse:
+        """
+        @summary 查询用车记账数据
+        
+        @param request: CarBillSettlementQueryRequest
+        @param headers: CarBillSettlementQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CarBillSettlementQueryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_no):
@@ -2186,6 +2666,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.CarBillSettlementQueryHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.CarBillSettlementQueryResponse:
+        """
+        @summary 查询用车记账数据
+        
+        @param request: CarBillSettlementQueryRequest
+        @param headers: CarBillSettlementQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CarBillSettlementQueryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_no):
@@ -2225,6 +2713,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.CarBillSettlementQueryRequest,
     ) -> btrip_open_20220520_models.CarBillSettlementQueryResponse:
+        """
+        @summary 查询用车记账数据
+        
+        @param request: CarBillSettlementQueryRequest
+        @return: CarBillSettlementQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.CarBillSettlementQueryHeaders()
         return self.car_bill_settlement_query_with_options(request, headers, runtime)
@@ -2233,6 +2727,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.CarBillSettlementQueryRequest,
     ) -> btrip_open_20220520_models.CarBillSettlementQueryResponse:
+        """
+        @summary 查询用车记账数据
+        
+        @param request: CarBillSettlementQueryRequest
+        @return: CarBillSettlementQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.CarBillSettlementQueryHeaders()
         return await self.car_bill_settlement_query_with_options_async(request, headers, runtime)
@@ -2243,6 +2743,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.CarOrderListQueryHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.CarOrderListQueryResponse:
+        """
+        @summary 查询用车订单列表
+        
+        @param request: CarOrderListQueryRequest
+        @param headers: CarOrderListQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CarOrderListQueryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.all_apply):
@@ -2298,6 +2806,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.CarOrderListQueryHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.CarOrderListQueryResponse:
+        """
+        @summary 查询用车订单列表
+        
+        @param request: CarOrderListQueryRequest
+        @param headers: CarOrderListQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CarOrderListQueryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.all_apply):
@@ -2351,6 +2867,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.CarOrderListQueryRequest,
     ) -> btrip_open_20220520_models.CarOrderListQueryResponse:
+        """
+        @summary 查询用车订单列表
+        
+        @param request: CarOrderListQueryRequest
+        @return: CarOrderListQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.CarOrderListQueryHeaders()
         return self.car_order_list_query_with_options(request, headers, runtime)
@@ -2359,6 +2881,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.CarOrderListQueryRequest,
     ) -> btrip_open_20220520_models.CarOrderListQueryResponse:
+        """
+        @summary 查询用车订单列表
+        
+        @param request: CarOrderListQueryRequest
+        @return: CarOrderListQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.CarOrderListQueryHeaders()
         return await self.car_order_list_query_with_options_async(request, headers, runtime)
@@ -2369,6 +2897,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.CarOrderQueryHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.CarOrderQueryResponse:
+        """
+        @summary 用车订单查询
+        
+        @param request: CarOrderQueryRequest
+        @param headers: CarOrderQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CarOrderQueryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.order_id):
@@ -2406,6 +2942,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.CarOrderQueryHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.CarOrderQueryResponse:
+        """
+        @summary 用车订单查询
+        
+        @param request: CarOrderQueryRequest
+        @param headers: CarOrderQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CarOrderQueryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.order_id):
@@ -2441,6 +2985,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.CarOrderQueryRequest,
     ) -> btrip_open_20220520_models.CarOrderQueryResponse:
+        """
+        @summary 用车订单查询
+        
+        @param request: CarOrderQueryRequest
+        @return: CarOrderQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.CarOrderQueryHeaders()
         return self.car_order_query_with_options(request, headers, runtime)
@@ -2449,6 +2999,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.CarOrderQueryRequest,
     ) -> btrip_open_20220520_models.CarOrderQueryResponse:
+        """
+        @summary 用车订单查询
+        
+        @param request: CarOrderQueryRequest
+        @return: CarOrderQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.CarOrderQueryHeaders()
         return await self.car_order_query_with_options_async(request, headers, runtime)
@@ -2458,6 +3014,13 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.CarSceneQueryHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.CarSceneQueryResponse:
+        """
+        @summary 查询企业用车场景
+        
+        @param headers: CarSceneQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CarSceneQueryResponse
+        """
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -2487,6 +3050,13 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.CarSceneQueryHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.CarSceneQueryResponse:
+        """
+        @summary 查询企业用车场景
+        
+        @param headers: CarSceneQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CarSceneQueryResponse
+        """
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -2512,11 +3082,21 @@ class Client(OpenApiClient):
         )
 
     def car_scene_query(self) -> btrip_open_20220520_models.CarSceneQueryResponse:
+        """
+        @summary 查询企业用车场景
+        
+        @return: CarSceneQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.CarSceneQueryHeaders()
         return self.car_scene_query_with_options(headers, runtime)
 
     async def car_scene_query_async(self) -> btrip_open_20220520_models.CarSceneQueryResponse:
+        """
+        @summary 查询企业用车场景
+        
+        @return: CarSceneQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.CarSceneQueryHeaders()
         return await self.car_scene_query_with_options_async(headers, runtime)
@@ -2527,6 +3107,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.CitySearchHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.CitySearchResponse:
+        """
+        @summary 查询行政区划（市，区）基础数据
+        
+        @param request: CitySearchRequest
+        @param headers: CitySearchHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CitySearchResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.keyword):
@@ -2562,6 +3150,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.CitySearchHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.CitySearchResponse:
+        """
+        @summary 查询行政区划（市，区）基础数据
+        
+        @param request: CitySearchRequest
+        @param headers: CitySearchHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CitySearchResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.keyword):
@@ -2595,6 +3191,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.CitySearchRequest,
     ) -> btrip_open_20220520_models.CitySearchResponse:
+        """
+        @summary 查询行政区划（市，区）基础数据
+        
+        @param request: CitySearchRequest
+        @return: CitySearchResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.CitySearchHeaders()
         return self.city_search_with_options(request, headers, runtime)
@@ -2603,6 +3205,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.CitySearchRequest,
     ) -> btrip_open_20220520_models.CitySearchResponse:
+        """
+        @summary 查询行政区划（市，区）基础数据
+        
+        @param request: CitySearchRequest
+        @return: CitySearchResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.CitySearchHeaders()
         return await self.city_search_with_options_async(request, headers, runtime)
@@ -2613,6 +3221,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.CommonApplyQueryHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.CommonApplyQueryResponse:
+        """
+        @summary 查询退改审批信息
+        
+        @param request: CommonApplyQueryRequest
+        @param headers: CommonApplyQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CommonApplyQueryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.apply_id):
@@ -2652,6 +3268,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.CommonApplyQueryHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.CommonApplyQueryResponse:
+        """
+        @summary 查询退改审批信息
+        
+        @param request: CommonApplyQueryRequest
+        @param headers: CommonApplyQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CommonApplyQueryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.apply_id):
@@ -2689,6 +3313,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.CommonApplyQueryRequest,
     ) -> btrip_open_20220520_models.CommonApplyQueryResponse:
+        """
+        @summary 查询退改审批信息
+        
+        @param request: CommonApplyQueryRequest
+        @return: CommonApplyQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.CommonApplyQueryHeaders()
         return self.common_apply_query_with_options(request, headers, runtime)
@@ -2697,6 +3327,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.CommonApplyQueryRequest,
     ) -> btrip_open_20220520_models.CommonApplyQueryResponse:
+        """
+        @summary 查询退改审批信息
+        
+        @param request: CommonApplyQueryRequest
+        @return: CommonApplyQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.CommonApplyQueryHeaders()
         return await self.common_apply_query_with_options_async(request, headers, runtime)
@@ -2707,6 +3343,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.CommonApplySyncHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.CommonApplySyncResponse:
+        """
+        @summary 退改审批结果同步
+        
+        @param request: CommonApplySyncRequest
+        @param headers: CommonApplySyncHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CommonApplySyncResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.apply_id):
@@ -2752,6 +3396,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.CommonApplySyncHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.CommonApplySyncResponse:
+        """
+        @summary 退改审批结果同步
+        
+        @param request: CommonApplySyncRequest
+        @param headers: CommonApplySyncHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CommonApplySyncResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.apply_id):
@@ -2795,6 +3447,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.CommonApplySyncRequest,
     ) -> btrip_open_20220520_models.CommonApplySyncResponse:
+        """
+        @summary 退改审批结果同步
+        
+        @param request: CommonApplySyncRequest
+        @return: CommonApplySyncResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.CommonApplySyncHeaders()
         return self.common_apply_sync_with_options(request, headers, runtime)
@@ -2803,6 +3461,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.CommonApplySyncRequest,
     ) -> btrip_open_20220520_models.CommonApplySyncResponse:
+        """
+        @summary 退改审批结果同步
+        
+        @param request: CommonApplySyncRequest
+        @return: CommonApplySyncResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.CommonApplySyncHeaders()
         return await self.common_apply_sync_with_options_async(request, headers, runtime)
@@ -2813,6 +3477,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.CooperatorFlightBillSettlementQueryHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.CooperatorFlightBillSettlementQueryResponse:
+        """
+        @summary 查询服务商机票记账数据
+        
+        @param request: CooperatorFlightBillSettlementQueryRequest
+        @param headers: CooperatorFlightBillSettlementQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CooperatorFlightBillSettlementQueryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cooperator_id):
@@ -2856,6 +3528,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.CooperatorFlightBillSettlementQueryHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.CooperatorFlightBillSettlementQueryResponse:
+        """
+        @summary 查询服务商机票记账数据
+        
+        @param request: CooperatorFlightBillSettlementQueryRequest
+        @param headers: CooperatorFlightBillSettlementQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CooperatorFlightBillSettlementQueryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cooperator_id):
@@ -2897,6 +3577,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.CooperatorFlightBillSettlementQueryRequest,
     ) -> btrip_open_20220520_models.CooperatorFlightBillSettlementQueryResponse:
+        """
+        @summary 查询服务商机票记账数据
+        
+        @param request: CooperatorFlightBillSettlementQueryRequest
+        @return: CooperatorFlightBillSettlementQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.CooperatorFlightBillSettlementQueryHeaders()
         return self.cooperator_flight_bill_settlement_query_with_options(request, headers, runtime)
@@ -2905,6 +3591,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.CooperatorFlightBillSettlementQueryRequest,
     ) -> btrip_open_20220520_models.CooperatorFlightBillSettlementQueryResponse:
+        """
+        @summary 查询服务商机票记账数据
+        
+        @param request: CooperatorFlightBillSettlementQueryRequest
+        @return: CooperatorFlightBillSettlementQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.CooperatorFlightBillSettlementQueryHeaders()
         return await self.cooperator_flight_bill_settlement_query_with_options_async(request, headers, runtime)
@@ -2915,6 +3607,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.CooperatorHotelBillSettlementQueryHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.CooperatorHotelBillSettlementQueryResponse:
+        """
+        @summary 查询服务商酒店记账数据
+        
+        @param request: CooperatorHotelBillSettlementQueryRequest
+        @param headers: CooperatorHotelBillSettlementQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CooperatorHotelBillSettlementQueryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cooperator_id):
@@ -2958,6 +3658,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.CooperatorHotelBillSettlementQueryHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.CooperatorHotelBillSettlementQueryResponse:
+        """
+        @summary 查询服务商酒店记账数据
+        
+        @param request: CooperatorHotelBillSettlementQueryRequest
+        @param headers: CooperatorHotelBillSettlementQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CooperatorHotelBillSettlementQueryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cooperator_id):
@@ -2999,6 +3707,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.CooperatorHotelBillSettlementQueryRequest,
     ) -> btrip_open_20220520_models.CooperatorHotelBillSettlementQueryResponse:
+        """
+        @summary 查询服务商酒店记账数据
+        
+        @param request: CooperatorHotelBillSettlementQueryRequest
+        @return: CooperatorHotelBillSettlementQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.CooperatorHotelBillSettlementQueryHeaders()
         return self.cooperator_hotel_bill_settlement_query_with_options(request, headers, runtime)
@@ -3007,6 +3721,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.CooperatorHotelBillSettlementQueryRequest,
     ) -> btrip_open_20220520_models.CooperatorHotelBillSettlementQueryResponse:
+        """
+        @summary 查询服务商酒店记账数据
+        
+        @param request: CooperatorHotelBillSettlementQueryRequest
+        @return: CooperatorHotelBillSettlementQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.CooperatorHotelBillSettlementQueryHeaders()
         return await self.cooperator_hotel_bill_settlement_query_with_options_async(request, headers, runtime)
@@ -3016,6 +3736,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.CorpAuthLinkInfoQueryResponse:
+        """
+        @summary 获取关联可调用企业接口
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CorpAuthLinkInfoQueryResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3040,6 +3767,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.CorpAuthLinkInfoQueryResponse:
+        """
+        @summary 获取关联可调用企业接口
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CorpAuthLinkInfoQueryResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3060,11 +3794,21 @@ class Client(OpenApiClient):
         )
 
     def corp_auth_link_info_query(self) -> btrip_open_20220520_models.CorpAuthLinkInfoQueryResponse:
+        """
+        @summary 获取关联可调用企业接口
+        
+        @return: CorpAuthLinkInfoQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.corp_auth_link_info_query_with_options(headers, runtime)
 
     async def corp_auth_link_info_query_async(self) -> btrip_open_20220520_models.CorpAuthLinkInfoQueryResponse:
+        """
+        @summary 获取关联可调用企业接口
+        
+        @return: CorpAuthLinkInfoQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.corp_auth_link_info_query_with_options_async(headers, runtime)
@@ -3075,6 +3819,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.CorpTokenHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.CorpTokenResponse:
+        """
+        @summary 换取CorpToken接口
+        
+        @param request: CorpTokenRequest
+        @param headers: CorpTokenHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CorpTokenResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_secret):
@@ -3114,6 +3866,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.CorpTokenHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.CorpTokenResponse:
+        """
+        @summary 换取CorpToken接口
+        
+        @param request: CorpTokenRequest
+        @param headers: CorpTokenHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CorpTokenResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_secret):
@@ -3151,6 +3911,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.CorpTokenRequest,
     ) -> btrip_open_20220520_models.CorpTokenResponse:
+        """
+        @summary 换取CorpToken接口
+        
+        @param request: CorpTokenRequest
+        @return: CorpTokenResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.CorpTokenHeaders()
         return self.corp_token_with_options(request, headers, runtime)
@@ -3159,6 +3925,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.CorpTokenRequest,
     ) -> btrip_open_20220520_models.CorpTokenResponse:
+        """
+        @summary 换取CorpToken接口
+        
+        @param request: CorpTokenRequest
+        @return: CorpTokenResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.CorpTokenHeaders()
         return await self.corp_token_with_options_async(request, headers, runtime)
@@ -3169,6 +3941,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.CostCenterDeleteHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.CostCenterDeleteResponse:
+        """
+        @summary 删除成本中心
+        
+        @param request: CostCenterDeleteRequest
+        @param headers: CostCenterDeleteHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CostCenterDeleteResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.thirdpart_id):
@@ -3204,6 +3984,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.CostCenterDeleteHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.CostCenterDeleteResponse:
+        """
+        @summary 删除成本中心
+        
+        @param request: CostCenterDeleteRequest
+        @param headers: CostCenterDeleteHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CostCenterDeleteResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.thirdpart_id):
@@ -3237,6 +4025,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.CostCenterDeleteRequest,
     ) -> btrip_open_20220520_models.CostCenterDeleteResponse:
+        """
+        @summary 删除成本中心
+        
+        @param request: CostCenterDeleteRequest
+        @return: CostCenterDeleteResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.CostCenterDeleteHeaders()
         return self.cost_center_delete_with_options(request, headers, runtime)
@@ -3245,6 +4039,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.CostCenterDeleteRequest,
     ) -> btrip_open_20220520_models.CostCenterDeleteResponse:
+        """
+        @summary 删除成本中心
+        
+        @param request: CostCenterDeleteRequest
+        @return: CostCenterDeleteResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.CostCenterDeleteHeaders()
         return await self.cost_center_delete_with_options_async(request, headers, runtime)
@@ -3255,6 +4055,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.CostCenterModifyHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.CostCenterModifyResponse:
+        """
+        @summary 修改成本中心
+        
+        @param request: CostCenterModifyRequest
+        @param headers: CostCenterModifyHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CostCenterModifyResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.alipay_no):
@@ -3300,6 +4108,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.CostCenterModifyHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.CostCenterModifyResponse:
+        """
+        @summary 修改成本中心
+        
+        @param request: CostCenterModifyRequest
+        @param headers: CostCenterModifyHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CostCenterModifyResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.alipay_no):
@@ -3343,6 +4159,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.CostCenterModifyRequest,
     ) -> btrip_open_20220520_models.CostCenterModifyResponse:
+        """
+        @summary 修改成本中心
+        
+        @param request: CostCenterModifyRequest
+        @return: CostCenterModifyResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.CostCenterModifyHeaders()
         return self.cost_center_modify_with_options(request, headers, runtime)
@@ -3351,6 +4173,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.CostCenterModifyRequest,
     ) -> btrip_open_20220520_models.CostCenterModifyResponse:
+        """
+        @summary 修改成本中心
+        
+        @param request: CostCenterModifyRequest
+        @return: CostCenterModifyResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.CostCenterModifyHeaders()
         return await self.cost_center_modify_with_options_async(request, headers, runtime)
@@ -3361,6 +4189,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.CostCenterQueryHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.CostCenterQueryResponse:
+        """
+        @summary 查看成本中心
+        
+        @param request: CostCenterQueryRequest
+        @param headers: CostCenterQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CostCenterQueryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.disable):
@@ -3404,6 +4240,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.CostCenterQueryHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.CostCenterQueryResponse:
+        """
+        @summary 查看成本中心
+        
+        @param request: CostCenterQueryRequest
+        @param headers: CostCenterQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CostCenterQueryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.disable):
@@ -3445,6 +4289,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.CostCenterQueryRequest,
     ) -> btrip_open_20220520_models.CostCenterQueryResponse:
+        """
+        @summary 查看成本中心
+        
+        @param request: CostCenterQueryRequest
+        @return: CostCenterQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.CostCenterQueryHeaders()
         return self.cost_center_query_with_options(request, headers, runtime)
@@ -3453,6 +4303,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.CostCenterQueryRequest,
     ) -> btrip_open_20220520_models.CostCenterQueryResponse:
+        """
+        @summary 查看成本中心
+        
+        @param request: CostCenterQueryRequest
+        @return: CostCenterQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.CostCenterQueryHeaders()
         return await self.cost_center_query_with_options_async(request, headers, runtime)
@@ -3463,6 +4319,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.CostCenterSaveHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.CostCenterSaveResponse:
+        """
+        @summary 保存成本中心
+        
+        @param request: CostCenterSaveRequest
+        @param headers: CostCenterSaveHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CostCenterSaveResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.alipay_no):
@@ -3508,6 +4372,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.CostCenterSaveHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.CostCenterSaveResponse:
+        """
+        @summary 保存成本中心
+        
+        @param request: CostCenterSaveRequest
+        @param headers: CostCenterSaveHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CostCenterSaveResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.alipay_no):
@@ -3551,6 +4423,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.CostCenterSaveRequest,
     ) -> btrip_open_20220520_models.CostCenterSaveResponse:
+        """
+        @summary 保存成本中心
+        
+        @param request: CostCenterSaveRequest
+        @return: CostCenterSaveResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.CostCenterSaveHeaders()
         return self.cost_center_save_with_options(request, headers, runtime)
@@ -3559,6 +4437,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.CostCenterSaveRequest,
     ) -> btrip_open_20220520_models.CostCenterSaveResponse:
+        """
+        @summary 保存成本中心
+        
+        @param request: CostCenterSaveRequest
+        @return: CostCenterSaveResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.CostCenterSaveHeaders()
         return await self.cost_center_save_with_options_async(request, headers, runtime)
@@ -3569,6 +4453,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.CreateSubCorpHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.CreateSubCorpResponse:
+        """
+        @summary 创建子企业
+        
+        @param request: CreateSubCorpRequest
+        @param headers: CreateSubCorpHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSubCorpResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.outer_corp_id):
@@ -3608,6 +4500,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.CreateSubCorpHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.CreateSubCorpResponse:
+        """
+        @summary 创建子企业
+        
+        @param request: CreateSubCorpRequest
+        @param headers: CreateSubCorpHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSubCorpResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.outer_corp_id):
@@ -3645,6 +4545,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.CreateSubCorpRequest,
     ) -> btrip_open_20220520_models.CreateSubCorpResponse:
+        """
+        @summary 创建子企业
+        
+        @param request: CreateSubCorpRequest
+        @return: CreateSubCorpResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.CreateSubCorpHeaders()
         return self.create_sub_corp_with_options(request, headers, runtime)
@@ -3653,6 +4559,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.CreateSubCorpRequest,
     ) -> btrip_open_20220520_models.CreateSubCorpResponse:
+        """
+        @summary 创建子企业
+        
+        @param request: CreateSubCorpRequest
+        @return: CreateSubCorpResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.CreateSubCorpHeaders()
         return await self.create_sub_corp_with_options_async(request, headers, runtime)
@@ -3663,6 +4575,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.DeleteInvoiceEntityHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.DeleteInvoiceEntityResponse:
+        """
+        @summary 删除发票抬头适用人员
+        
+        @param tmp_req: DeleteInvoiceEntityRequest
+        @param headers: DeleteInvoiceEntityHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteInvoiceEntityResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.DeleteInvoiceEntityShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3706,6 +4626,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.DeleteInvoiceEntityHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.DeleteInvoiceEntityResponse:
+        """
+        @summary 删除发票抬头适用人员
+        
+        @param tmp_req: DeleteInvoiceEntityRequest
+        @param headers: DeleteInvoiceEntityHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteInvoiceEntityResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.DeleteInvoiceEntityShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3747,6 +4675,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.DeleteInvoiceEntityRequest,
     ) -> btrip_open_20220520_models.DeleteInvoiceEntityResponse:
+        """
+        @summary 删除发票抬头适用人员
+        
+        @param request: DeleteInvoiceEntityRequest
+        @return: DeleteInvoiceEntityResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.DeleteInvoiceEntityHeaders()
         return self.delete_invoice_entity_with_options(request, headers, runtime)
@@ -3755,6 +4689,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.DeleteInvoiceEntityRequest,
     ) -> btrip_open_20220520_models.DeleteInvoiceEntityResponse:
+        """
+        @summary 删除发票抬头适用人员
+        
+        @param request: DeleteInvoiceEntityRequest
+        @return: DeleteInvoiceEntityResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.DeleteInvoiceEntityHeaders()
         return await self.delete_invoice_entity_with_options_async(request, headers, runtime)
@@ -3765,6 +4705,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.DepartmentSaveHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.DepartmentSaveResponse:
+        """
+        @summary 同步外部平台部门信息至商旅内部
+        
+        @param tmp_req: DepartmentSaveRequest
+        @param headers: DepartmentSaveHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DepartmentSaveResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.DepartmentSaveShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3804,6 +4752,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.DepartmentSaveHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.DepartmentSaveResponse:
+        """
+        @summary 同步外部平台部门信息至商旅内部
+        
+        @param tmp_req: DepartmentSaveRequest
+        @param headers: DepartmentSaveHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DepartmentSaveResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.DepartmentSaveShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3841,6 +4797,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.DepartmentSaveRequest,
     ) -> btrip_open_20220520_models.DepartmentSaveResponse:
+        """
+        @summary 同步外部平台部门信息至商旅内部
+        
+        @param request: DepartmentSaveRequest
+        @return: DepartmentSaveResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.DepartmentSaveHeaders()
         return self.department_save_with_options(request, headers, runtime)
@@ -3849,6 +4811,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.DepartmentSaveRequest,
     ) -> btrip_open_20220520_models.DepartmentSaveResponse:
+        """
+        @summary 同步外部平台部门信息至商旅内部
+        
+        @param request: DepartmentSaveRequest
+        @return: DepartmentSaveResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.DepartmentSaveHeaders()
         return await self.department_save_with_options_async(request, headers, runtime)
@@ -3859,6 +4827,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.EntityAddHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.EntityAddResponse:
+        """
+        @summary 增加成本中心人员信息
+        
+        @param tmp_req: EntityAddRequest
+        @param headers: EntityAddHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EntityAddResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.EntityAddShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3900,6 +4876,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.EntityAddHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.EntityAddResponse:
+        """
+        @summary 增加成本中心人员信息
+        
+        @param tmp_req: EntityAddRequest
+        @param headers: EntityAddHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EntityAddResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.EntityAddShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3939,6 +4923,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.EntityAddRequest,
     ) -> btrip_open_20220520_models.EntityAddResponse:
+        """
+        @summary 增加成本中心人员信息
+        
+        @param request: EntityAddRequest
+        @return: EntityAddResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.EntityAddHeaders()
         return self.entity_add_with_options(request, headers, runtime)
@@ -3947,6 +4937,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.EntityAddRequest,
     ) -> btrip_open_20220520_models.EntityAddResponse:
+        """
+        @summary 增加成本中心人员信息
+        
+        @param request: EntityAddRequest
+        @return: EntityAddResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.EntityAddHeaders()
         return await self.entity_add_with_options_async(request, headers, runtime)
@@ -3957,6 +4953,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.EntityDeleteHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.EntityDeleteResponse:
+        """
+        @summary 删除成本中心人员信息
+        
+        @param tmp_req: EntityDeleteRequest
+        @param headers: EntityDeleteHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EntityDeleteResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.EntityDeleteShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -4002,6 +5006,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.EntityDeleteHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.EntityDeleteResponse:
+        """
+        @summary 删除成本中心人员信息
+        
+        @param tmp_req: EntityDeleteRequest
+        @param headers: EntityDeleteHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EntityDeleteResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.EntityDeleteShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -4045,6 +5057,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.EntityDeleteRequest,
     ) -> btrip_open_20220520_models.EntityDeleteResponse:
+        """
+        @summary 删除成本中心人员信息
+        
+        @param request: EntityDeleteRequest
+        @return: EntityDeleteResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.EntityDeleteHeaders()
         return self.entity_delete_with_options(request, headers, runtime)
@@ -4053,6 +5071,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.EntityDeleteRequest,
     ) -> btrip_open_20220520_models.EntityDeleteResponse:
+        """
+        @summary 删除成本中心人员信息
+        
+        @param request: EntityDeleteRequest
+        @return: EntityDeleteResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.EntityDeleteHeaders()
         return await self.entity_delete_with_options_async(request, headers, runtime)
@@ -4063,6 +5087,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.EntitySetHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.EntitySetResponse:
+        """
+        @summary 设置成本中心人员信息
+        
+        @param tmp_req: EntitySetRequest
+        @param headers: EntitySetHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EntitySetResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.EntitySetShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -4104,6 +5136,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.EntitySetHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.EntitySetResponse:
+        """
+        @summary 设置成本中心人员信息
+        
+        @param tmp_req: EntitySetRequest
+        @param headers: EntitySetHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EntitySetResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.EntitySetShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -4143,6 +5183,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.EntitySetRequest,
     ) -> btrip_open_20220520_models.EntitySetResponse:
+        """
+        @summary 设置成本中心人员信息
+        
+        @param request: EntitySetRequest
+        @return: EntitySetResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.EntitySetHeaders()
         return self.entity_set_with_options(request, headers, runtime)
@@ -4151,6 +5197,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.EntitySetRequest,
     ) -> btrip_open_20220520_models.EntitySetResponse:
+        """
+        @summary 设置成本中心人员信息
+        
+        @param request: EntitySetRequest
+        @return: EntitySetResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.EntitySetHeaders()
         return await self.entity_set_with_options_async(request, headers, runtime)
@@ -4161,6 +5213,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.EstimatedPriceQueryHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.EstimatedPriceQueryResponse:
+        """
+        @summary 预估价格查询
+        
+        @param request: EstimatedPriceQueryRequest
+        @param headers: EstimatedPriceQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EstimatedPriceQueryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.arr_city):
@@ -4210,6 +5270,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.EstimatedPriceQueryHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.EstimatedPriceQueryResponse:
+        """
+        @summary 预估价格查询
+        
+        @param request: EstimatedPriceQueryRequest
+        @param headers: EstimatedPriceQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EstimatedPriceQueryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.arr_city):
@@ -4257,6 +5325,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.EstimatedPriceQueryRequest,
     ) -> btrip_open_20220520_models.EstimatedPriceQueryResponse:
+        """
+        @summary 预估价格查询
+        
+        @param request: EstimatedPriceQueryRequest
+        @return: EstimatedPriceQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.EstimatedPriceQueryHeaders()
         return self.estimated_price_query_with_options(request, headers, runtime)
@@ -4265,6 +5339,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.EstimatedPriceQueryRequest,
     ) -> btrip_open_20220520_models.EstimatedPriceQueryResponse:
+        """
+        @summary 预估价格查询
+        
+        @param request: EstimatedPriceQueryRequest
+        @return: EstimatedPriceQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.EstimatedPriceQueryHeaders()
         return await self.estimated_price_query_with_options_async(request, headers, runtime)
@@ -4275,6 +5355,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.ExceedApplySyncHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.ExceedApplySyncResponse:
+        """
+        @summary 超标审批结果同步
+        
+        @param request: ExceedApplySyncRequest
+        @param headers: ExceedApplySyncHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExceedApplySyncResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.apply_id):
@@ -4320,6 +5408,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.ExceedApplySyncHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.ExceedApplySyncResponse:
+        """
+        @summary 超标审批结果同步
+        
+        @param request: ExceedApplySyncRequest
+        @param headers: ExceedApplySyncHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExceedApplySyncResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.apply_id):
@@ -4363,6 +5459,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.ExceedApplySyncRequest,
     ) -> btrip_open_20220520_models.ExceedApplySyncResponse:
+        """
+        @summary 超标审批结果同步
+        
+        @param request: ExceedApplySyncRequest
+        @return: ExceedApplySyncResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.ExceedApplySyncHeaders()
         return self.exceed_apply_sync_with_options(request, headers, runtime)
@@ -4371,6 +5473,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.ExceedApplySyncRequest,
     ) -> btrip_open_20220520_models.ExceedApplySyncResponse:
+        """
+        @summary 超标审批结果同步
+        
+        @param request: ExceedApplySyncRequest
+        @return: ExceedApplySyncResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.ExceedApplySyncHeaders()
         return await self.exceed_apply_sync_with_options_async(request, headers, runtime)
@@ -4381,6 +5489,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.FlightBillSettlementQueryHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.FlightBillSettlementQueryResponse:
+        """
+        @summary 查询机票记账数据
+        
+        @param request: FlightBillSettlementQueryRequest
+        @param headers: FlightBillSettlementQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FlightBillSettlementQueryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_no):
@@ -4422,6 +5538,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.FlightBillSettlementQueryHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.FlightBillSettlementQueryResponse:
+        """
+        @summary 查询机票记账数据
+        
+        @param request: FlightBillSettlementQueryRequest
+        @param headers: FlightBillSettlementQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FlightBillSettlementQueryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_no):
@@ -4461,6 +5585,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.FlightBillSettlementQueryRequest,
     ) -> btrip_open_20220520_models.FlightBillSettlementQueryResponse:
+        """
+        @summary 查询机票记账数据
+        
+        @param request: FlightBillSettlementQueryRequest
+        @return: FlightBillSettlementQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.FlightBillSettlementQueryHeaders()
         return self.flight_bill_settlement_query_with_options(request, headers, runtime)
@@ -4469,6 +5599,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.FlightBillSettlementQueryRequest,
     ) -> btrip_open_20220520_models.FlightBillSettlementQueryResponse:
+        """
+        @summary 查询机票记账数据
+        
+        @param request: FlightBillSettlementQueryRequest
+        @return: FlightBillSettlementQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.FlightBillSettlementQueryHeaders()
         return await self.flight_bill_settlement_query_with_options_async(request, headers, runtime)
@@ -4479,6 +5615,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.FlightCancelOrderHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.FlightCancelOrderResponse:
+        """
+        @summary 航班订单取消
+        
+        @param request: FlightCancelOrderRequest
+        @param headers: FlightCancelOrderHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FlightCancelOrderResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dis_order_id):
@@ -4514,6 +5658,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.FlightCancelOrderHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.FlightCancelOrderResponse:
+        """
+        @summary 航班订单取消
+        
+        @param request: FlightCancelOrderRequest
+        @param headers: FlightCancelOrderHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FlightCancelOrderResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dis_order_id):
@@ -4547,6 +5699,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.FlightCancelOrderRequest,
     ) -> btrip_open_20220520_models.FlightCancelOrderResponse:
+        """
+        @summary 航班订单取消
+        
+        @param request: FlightCancelOrderRequest
+        @return: FlightCancelOrderResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.FlightCancelOrderHeaders()
         return self.flight_cancel_order_with_options(request, headers, runtime)
@@ -4555,6 +5713,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.FlightCancelOrderRequest,
     ) -> btrip_open_20220520_models.FlightCancelOrderResponse:
+        """
+        @summary 航班订单取消
+        
+        @param request: FlightCancelOrderRequest
+        @return: FlightCancelOrderResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.FlightCancelOrderHeaders()
         return await self.flight_cancel_order_with_options_async(request, headers, runtime)
@@ -4565,6 +5729,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.FlightCancelOrderV2Headers,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.FlightCancelOrderV2Response:
+        """
+        @summary 机票订单取消
+        
+        @param request: FlightCancelOrderV2Request
+        @param headers: FlightCancelOrderV2Headers
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FlightCancelOrderV2Response
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.isv_name):
@@ -4604,6 +5776,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.FlightCancelOrderV2Headers,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.FlightCancelOrderV2Response:
+        """
+        @summary 机票订单取消
+        
+        @param request: FlightCancelOrderV2Request
+        @param headers: FlightCancelOrderV2Headers
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FlightCancelOrderV2Response
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.isv_name):
@@ -4641,6 +5821,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.FlightCancelOrderV2Request,
     ) -> btrip_open_20220520_models.FlightCancelOrderV2Response:
+        """
+        @summary 机票订单取消
+        
+        @param request: FlightCancelOrderV2Request
+        @return: FlightCancelOrderV2Response
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.FlightCancelOrderV2Headers()
         return self.flight_cancel_order_v2with_options(request, headers, runtime)
@@ -4649,6 +5835,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.FlightCancelOrderV2Request,
     ) -> btrip_open_20220520_models.FlightCancelOrderV2Response:
+        """
+        @summary 机票订单取消
+        
+        @param request: FlightCancelOrderV2Request
+        @return: FlightCancelOrderV2Response
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.FlightCancelOrderV2Headers()
         return await self.flight_cancel_order_v2with_options_async(request, headers, runtime)
@@ -4659,6 +5851,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.FlightCreateOrderHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.FlightCreateOrderResponse:
+        """
+        @summary 航班订单创建
+        
+        @param tmp_req: FlightCreateOrderRequest
+        @param headers: FlightCreateOrderHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FlightCreateOrderResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.FlightCreateOrderShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -4738,6 +5938,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.FlightCreateOrderHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.FlightCreateOrderResponse:
+        """
+        @summary 航班订单创建
+        
+        @param tmp_req: FlightCreateOrderRequest
+        @param headers: FlightCreateOrderHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FlightCreateOrderResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.FlightCreateOrderShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -4815,6 +6023,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.FlightCreateOrderRequest,
     ) -> btrip_open_20220520_models.FlightCreateOrderResponse:
+        """
+        @summary 航班订单创建
+        
+        @param request: FlightCreateOrderRequest
+        @return: FlightCreateOrderResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.FlightCreateOrderHeaders()
         return self.flight_create_order_with_options(request, headers, runtime)
@@ -4823,6 +6037,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.FlightCreateOrderRequest,
     ) -> btrip_open_20220520_models.FlightCreateOrderResponse:
+        """
+        @summary 航班订单创建
+        
+        @param request: FlightCreateOrderRequest
+        @return: FlightCreateOrderResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.FlightCreateOrderHeaders()
         return await self.flight_create_order_with_options_async(request, headers, runtime)
@@ -4833,6 +6053,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.FlightCreateOrderV2Headers,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.FlightCreateOrderV2Response:
+        """
+        @summary 机票订单创建
+        
+        @param tmp_req: FlightCreateOrderV2Request
+        @param headers: FlightCreateOrderV2Headers
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FlightCreateOrderV2Response
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.FlightCreateOrderV2ShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -4892,6 +6120,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.FlightCreateOrderV2Headers,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.FlightCreateOrderV2Response:
+        """
+        @summary 机票订单创建
+        
+        @param tmp_req: FlightCreateOrderV2Request
+        @param headers: FlightCreateOrderV2Headers
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FlightCreateOrderV2Response
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.FlightCreateOrderV2ShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -4949,6 +6185,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.FlightCreateOrderV2Request,
     ) -> btrip_open_20220520_models.FlightCreateOrderV2Response:
+        """
+        @summary 机票订单创建
+        
+        @param request: FlightCreateOrderV2Request
+        @return: FlightCreateOrderV2Response
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.FlightCreateOrderV2Headers()
         return self.flight_create_order_v2with_options(request, headers, runtime)
@@ -4957,6 +6199,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.FlightCreateOrderV2Request,
     ) -> btrip_open_20220520_models.FlightCreateOrderV2Response:
+        """
+        @summary 机票订单创建
+        
+        @param request: FlightCreateOrderV2Request
+        @return: FlightCreateOrderV2Response
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.FlightCreateOrderV2Headers()
         return await self.flight_create_order_v2with_options_async(request, headers, runtime)
@@ -4967,6 +6215,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.FlightExceedApplyQueryHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.FlightExceedApplyQueryResponse:
+        """
+        @summary 查询飞机超标审批详情
+        
+        @param request: FlightExceedApplyQueryRequest
+        @param headers: FlightExceedApplyQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FlightExceedApplyQueryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.apply_id):
@@ -5002,6 +6258,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.FlightExceedApplyQueryHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.FlightExceedApplyQueryResponse:
+        """
+        @summary 查询飞机超标审批详情
+        
+        @param request: FlightExceedApplyQueryRequest
+        @param headers: FlightExceedApplyQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FlightExceedApplyQueryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.apply_id):
@@ -5035,6 +6299,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.FlightExceedApplyQueryRequest,
     ) -> btrip_open_20220520_models.FlightExceedApplyQueryResponse:
+        """
+        @summary 查询飞机超标审批详情
+        
+        @param request: FlightExceedApplyQueryRequest
+        @return: FlightExceedApplyQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.FlightExceedApplyQueryHeaders()
         return self.flight_exceed_apply_query_with_options(request, headers, runtime)
@@ -5043,6 +6313,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.FlightExceedApplyQueryRequest,
     ) -> btrip_open_20220520_models.FlightExceedApplyQueryResponse:
+        """
+        @summary 查询飞机超标审批详情
+        
+        @param request: FlightExceedApplyQueryRequest
+        @return: FlightExceedApplyQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.FlightExceedApplyQueryHeaders()
         return await self.flight_exceed_apply_query_with_options_async(request, headers, runtime)
@@ -5053,6 +6329,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.FlightItineraryScanQueryHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.FlightItineraryScanQueryResponse:
+        """
+        @summary 查询机票行程单扫描件
+        
+        @param request: FlightItineraryScanQueryRequest
+        @param headers: FlightItineraryScanQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FlightItineraryScanQueryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.bill_date):
@@ -5100,6 +6384,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.FlightItineraryScanQueryHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.FlightItineraryScanQueryResponse:
+        """
+        @summary 查询机票行程单扫描件
+        
+        @param request: FlightItineraryScanQueryRequest
+        @param headers: FlightItineraryScanQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FlightItineraryScanQueryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.bill_date):
@@ -5145,6 +6437,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.FlightItineraryScanQueryRequest,
     ) -> btrip_open_20220520_models.FlightItineraryScanQueryResponse:
+        """
+        @summary 查询机票行程单扫描件
+        
+        @param request: FlightItineraryScanQueryRequest
+        @return: FlightItineraryScanQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.FlightItineraryScanQueryHeaders()
         return self.flight_itinerary_scan_query_with_options(request, headers, runtime)
@@ -5153,6 +6451,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.FlightItineraryScanQueryRequest,
     ) -> btrip_open_20220520_models.FlightItineraryScanQueryResponse:
+        """
+        @summary 查询机票行程单扫描件
+        
+        @param request: FlightItineraryScanQueryRequest
+        @return: FlightItineraryScanQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.FlightItineraryScanQueryHeaders()
         return await self.flight_itinerary_scan_query_with_options_async(request, headers, runtime)
@@ -5163,6 +6467,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.FlightListingSearchHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.FlightListingSearchResponse:
+        """
+        @summary 航班列表搜索
+        
+        @param request: FlightListingSearchRequest
+        @param headers: FlightListingSearchHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FlightListingSearchResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.airline_code):
@@ -5206,6 +6518,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.FlightListingSearchHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.FlightListingSearchResponse:
+        """
+        @summary 航班列表搜索
+        
+        @param request: FlightListingSearchRequest
+        @param headers: FlightListingSearchHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FlightListingSearchResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.airline_code):
@@ -5247,6 +6567,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.FlightListingSearchRequest,
     ) -> btrip_open_20220520_models.FlightListingSearchResponse:
+        """
+        @summary 航班列表搜索
+        
+        @param request: FlightListingSearchRequest
+        @return: FlightListingSearchResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.FlightListingSearchHeaders()
         return self.flight_listing_search_with_options(request, headers, runtime)
@@ -5255,6 +6581,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.FlightListingSearchRequest,
     ) -> btrip_open_20220520_models.FlightListingSearchResponse:
+        """
+        @summary 航班列表搜索
+        
+        @param request: FlightListingSearchRequest
+        @return: FlightListingSearchResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.FlightListingSearchHeaders()
         return await self.flight_listing_search_with_options_async(request, headers, runtime)
@@ -5265,6 +6597,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.FlightListingSearchV2Headers,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.FlightListingSearchV2Response:
+        """
+        @summary 航班列表搜索
+        
+        @param tmp_req: FlightListingSearchV2Request
+        @param headers: FlightListingSearchV2Headers
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FlightListingSearchV2Response
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.FlightListingSearchV2ShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -5326,6 +6666,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.FlightListingSearchV2Headers,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.FlightListingSearchV2Response:
+        """
+        @summary 航班列表搜索
+        
+        @param tmp_req: FlightListingSearchV2Request
+        @param headers: FlightListingSearchV2Headers
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FlightListingSearchV2Response
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.FlightListingSearchV2ShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -5385,6 +6733,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.FlightListingSearchV2Request,
     ) -> btrip_open_20220520_models.FlightListingSearchV2Response:
+        """
+        @summary 航班列表搜索
+        
+        @param request: FlightListingSearchV2Request
+        @return: FlightListingSearchV2Response
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.FlightListingSearchV2Headers()
         return self.flight_listing_search_v2with_options(request, headers, runtime)
@@ -5393,6 +6747,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.FlightListingSearchV2Request,
     ) -> btrip_open_20220520_models.FlightListingSearchV2Response:
+        """
+        @summary 航班列表搜索
+        
+        @param request: FlightListingSearchV2Request
+        @return: FlightListingSearchV2Response
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.FlightListingSearchV2Headers()
         return await self.flight_listing_search_v2with_options_async(request, headers, runtime)
@@ -5403,6 +6763,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.FlightModifyApplyV2Headers,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.FlightModifyApplyV2Response:
+        """
+        @summary 机票改签申请
+        
+        @param tmp_req: FlightModifyApplyV2Request
+        @param headers: FlightModifyApplyV2Headers
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FlightModifyApplyV2Response
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.FlightModifyApplyV2ShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -5462,6 +6830,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.FlightModifyApplyV2Headers,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.FlightModifyApplyV2Response:
+        """
+        @summary 机票改签申请
+        
+        @param tmp_req: FlightModifyApplyV2Request
+        @param headers: FlightModifyApplyV2Headers
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FlightModifyApplyV2Response
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.FlightModifyApplyV2ShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -5519,6 +6895,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.FlightModifyApplyV2Request,
     ) -> btrip_open_20220520_models.FlightModifyApplyV2Response:
+        """
+        @summary 机票改签申请
+        
+        @param request: FlightModifyApplyV2Request
+        @return: FlightModifyApplyV2Response
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.FlightModifyApplyV2Headers()
         return self.flight_modify_apply_v2with_options(request, headers, runtime)
@@ -5527,6 +6909,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.FlightModifyApplyV2Request,
     ) -> btrip_open_20220520_models.FlightModifyApplyV2Response:
+        """
+        @summary 机票改签申请
+        
+        @param request: FlightModifyApplyV2Request
+        @return: FlightModifyApplyV2Response
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.FlightModifyApplyV2Headers()
         return await self.flight_modify_apply_v2with_options_async(request, headers, runtime)
@@ -5537,6 +6925,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.FlightModifyCancelV2Headers,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.FlightModifyCancelV2Response:
+        """
+        @summary 机票改签取消
+        
+        @param request: FlightModifyCancelV2Request
+        @param headers: FlightModifyCancelV2Headers
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FlightModifyCancelV2Response
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.isv_name):
@@ -5580,6 +6976,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.FlightModifyCancelV2Headers,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.FlightModifyCancelV2Response:
+        """
+        @summary 机票改签取消
+        
+        @param request: FlightModifyCancelV2Request
+        @param headers: FlightModifyCancelV2Headers
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FlightModifyCancelV2Response
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.isv_name):
@@ -5621,6 +7025,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.FlightModifyCancelV2Request,
     ) -> btrip_open_20220520_models.FlightModifyCancelV2Response:
+        """
+        @summary 机票改签取消
+        
+        @param request: FlightModifyCancelV2Request
+        @return: FlightModifyCancelV2Response
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.FlightModifyCancelV2Headers()
         return self.flight_modify_cancel_v2with_options(request, headers, runtime)
@@ -5629,6 +7039,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.FlightModifyCancelV2Request,
     ) -> btrip_open_20220520_models.FlightModifyCancelV2Response:
+        """
+        @summary 机票改签取消
+        
+        @param request: FlightModifyCancelV2Request
+        @return: FlightModifyCancelV2Response
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.FlightModifyCancelV2Headers()
         return await self.flight_modify_cancel_v2with_options_async(request, headers, runtime)
@@ -5639,6 +7055,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.FlightModifyListingSearchV2Headers,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.FlightModifyListingSearchV2Response:
+        """
+        @summary 机票改签列表搜索
+        
+        @param tmp_req: FlightModifyListingSearchV2Request
+        @param headers: FlightModifyListingSearchV2Headers
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FlightModifyListingSearchV2Response
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.FlightModifyListingSearchV2ShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -5706,6 +7130,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.FlightModifyListingSearchV2Headers,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.FlightModifyListingSearchV2Response:
+        """
+        @summary 机票改签列表搜索
+        
+        @param tmp_req: FlightModifyListingSearchV2Request
+        @param headers: FlightModifyListingSearchV2Headers
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FlightModifyListingSearchV2Response
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.FlightModifyListingSearchV2ShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -5771,6 +7203,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.FlightModifyListingSearchV2Request,
     ) -> btrip_open_20220520_models.FlightModifyListingSearchV2Response:
+        """
+        @summary 机票改签列表搜索
+        
+        @param request: FlightModifyListingSearchV2Request
+        @return: FlightModifyListingSearchV2Response
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.FlightModifyListingSearchV2Headers()
         return self.flight_modify_listing_search_v2with_options(request, headers, runtime)
@@ -5779,6 +7217,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.FlightModifyListingSearchV2Request,
     ) -> btrip_open_20220520_models.FlightModifyListingSearchV2Response:
+        """
+        @summary 机票改签列表搜索
+        
+        @param request: FlightModifyListingSearchV2Request
+        @return: FlightModifyListingSearchV2Response
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.FlightModifyListingSearchV2Headers()
         return await self.flight_modify_listing_search_v2with_options_async(request, headers, runtime)
@@ -5789,6 +7233,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.FlightModifyOrderDetailV2Headers,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.FlightModifyOrderDetailV2Response:
+        """
+        @summary 机票改签详情
+        
+        @param request: FlightModifyOrderDetailV2Request
+        @param headers: FlightModifyOrderDetailV2Headers
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FlightModifyOrderDetailV2Response
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.isv_name):
@@ -5830,6 +7282,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.FlightModifyOrderDetailV2Headers,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.FlightModifyOrderDetailV2Response:
+        """
+        @summary 机票改签详情
+        
+        @param request: FlightModifyOrderDetailV2Request
+        @param headers: FlightModifyOrderDetailV2Headers
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FlightModifyOrderDetailV2Response
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.isv_name):
@@ -5869,6 +7329,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.FlightModifyOrderDetailV2Request,
     ) -> btrip_open_20220520_models.FlightModifyOrderDetailV2Response:
+        """
+        @summary 机票改签详情
+        
+        @param request: FlightModifyOrderDetailV2Request
+        @return: FlightModifyOrderDetailV2Response
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.FlightModifyOrderDetailV2Headers()
         return self.flight_modify_order_detail_v2with_options(request, headers, runtime)
@@ -5877,6 +7343,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.FlightModifyOrderDetailV2Request,
     ) -> btrip_open_20220520_models.FlightModifyOrderDetailV2Response:
+        """
+        @summary 机票改签详情
+        
+        @param request: FlightModifyOrderDetailV2Request
+        @return: FlightModifyOrderDetailV2Response
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.FlightModifyOrderDetailV2Headers()
         return await self.flight_modify_order_detail_v2with_options_async(request, headers, runtime)
@@ -5887,6 +7359,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.FlightModifyOtaSearchV2Headers,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.FlightModifyOtaSearchV2Response:
+        """
+        @summary 机票改签报价搜索
+        
+        @param tmp_req: FlightModifyOtaSearchV2Request
+        @param headers: FlightModifyOtaSearchV2Headers
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FlightModifyOtaSearchV2Response
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.FlightModifyOtaSearchV2ShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -5948,6 +7428,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.FlightModifyOtaSearchV2Headers,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.FlightModifyOtaSearchV2Response:
+        """
+        @summary 机票改签报价搜索
+        
+        @param tmp_req: FlightModifyOtaSearchV2Request
+        @param headers: FlightModifyOtaSearchV2Headers
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FlightModifyOtaSearchV2Response
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.FlightModifyOtaSearchV2ShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -6007,6 +7495,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.FlightModifyOtaSearchV2Request,
     ) -> btrip_open_20220520_models.FlightModifyOtaSearchV2Response:
+        """
+        @summary 机票改签报价搜索
+        
+        @param request: FlightModifyOtaSearchV2Request
+        @return: FlightModifyOtaSearchV2Response
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.FlightModifyOtaSearchV2Headers()
         return self.flight_modify_ota_search_v2with_options(request, headers, runtime)
@@ -6015,6 +7509,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.FlightModifyOtaSearchV2Request,
     ) -> btrip_open_20220520_models.FlightModifyOtaSearchV2Response:
+        """
+        @summary 机票改签报价搜索
+        
+        @param request: FlightModifyOtaSearchV2Request
+        @return: FlightModifyOtaSearchV2Response
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.FlightModifyOtaSearchV2Headers()
         return await self.flight_modify_ota_search_v2with_options_async(request, headers, runtime)
@@ -6025,6 +7525,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.FlightModifyPayV2Headers,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.FlightModifyPayV2Response:
+        """
+        @summary 机票改签支付
+        
+        @param tmp_req: FlightModifyPayV2Request
+        @param headers: FlightModifyPayV2Headers
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FlightModifyPayV2Response
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.FlightModifyPayV2ShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -6076,6 +7584,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.FlightModifyPayV2Headers,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.FlightModifyPayV2Response:
+        """
+        @summary 机票改签支付
+        
+        @param tmp_req: FlightModifyPayV2Request
+        @param headers: FlightModifyPayV2Headers
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FlightModifyPayV2Response
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.FlightModifyPayV2ShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -6125,6 +7641,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.FlightModifyPayV2Request,
     ) -> btrip_open_20220520_models.FlightModifyPayV2Response:
+        """
+        @summary 机票改签支付
+        
+        @param request: FlightModifyPayV2Request
+        @return: FlightModifyPayV2Response
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.FlightModifyPayV2Headers()
         return self.flight_modify_pay_v2with_options(request, headers, runtime)
@@ -6133,6 +7655,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.FlightModifyPayV2Request,
     ) -> btrip_open_20220520_models.FlightModifyPayV2Response:
+        """
+        @summary 机票改签支付
+        
+        @param request: FlightModifyPayV2Request
+        @return: FlightModifyPayV2Response
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.FlightModifyPayV2Headers()
         return await self.flight_modify_pay_v2with_options_async(request, headers, runtime)
@@ -6143,6 +7671,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.FlightOrderDetailInfoHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.FlightOrderDetailInfoResponse:
+        """
+        @summary 航班订单明细信息
+        
+        @param request: FlightOrderDetailInfoRequest
+        @param headers: FlightOrderDetailInfoHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FlightOrderDetailInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dis_order_id):
@@ -6178,6 +7714,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.FlightOrderDetailInfoHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.FlightOrderDetailInfoResponse:
+        """
+        @summary 航班订单明细信息
+        
+        @param request: FlightOrderDetailInfoRequest
+        @param headers: FlightOrderDetailInfoHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FlightOrderDetailInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dis_order_id):
@@ -6211,6 +7755,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.FlightOrderDetailInfoRequest,
     ) -> btrip_open_20220520_models.FlightOrderDetailInfoResponse:
+        """
+        @summary 航班订单明细信息
+        
+        @param request: FlightOrderDetailInfoRequest
+        @return: FlightOrderDetailInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.FlightOrderDetailInfoHeaders()
         return self.flight_order_detail_info_with_options(request, headers, runtime)
@@ -6219,6 +7769,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.FlightOrderDetailInfoRequest,
     ) -> btrip_open_20220520_models.FlightOrderDetailInfoResponse:
+        """
+        @summary 航班订单明细信息
+        
+        @param request: FlightOrderDetailInfoRequest
+        @return: FlightOrderDetailInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.FlightOrderDetailInfoHeaders()
         return await self.flight_order_detail_info_with_options_async(request, headers, runtime)
@@ -6229,6 +7785,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.FlightOrderDetailV2Headers,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.FlightOrderDetailV2Response:
+        """
+        @summary 机票订单详情
+        
+        @param request: FlightOrderDetailV2Request
+        @param headers: FlightOrderDetailV2Headers
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FlightOrderDetailV2Response
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.isv_name):
@@ -6268,6 +7832,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.FlightOrderDetailV2Headers,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.FlightOrderDetailV2Response:
+        """
+        @summary 机票订单详情
+        
+        @param request: FlightOrderDetailV2Request
+        @param headers: FlightOrderDetailV2Headers
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FlightOrderDetailV2Response
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.isv_name):
@@ -6305,6 +7877,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.FlightOrderDetailV2Request,
     ) -> btrip_open_20220520_models.FlightOrderDetailV2Response:
+        """
+        @summary 机票订单详情
+        
+        @param request: FlightOrderDetailV2Request
+        @return: FlightOrderDetailV2Response
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.FlightOrderDetailV2Headers()
         return self.flight_order_detail_v2with_options(request, headers, runtime)
@@ -6313,6 +7891,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.FlightOrderDetailV2Request,
     ) -> btrip_open_20220520_models.FlightOrderDetailV2Response:
+        """
+        @summary 机票订单详情
+        
+        @param request: FlightOrderDetailV2Request
+        @return: FlightOrderDetailV2Response
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.FlightOrderDetailV2Headers()
         return await self.flight_order_detail_v2with_options_async(request, headers, runtime)
@@ -6323,6 +7907,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.FlightOrderListQueryHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.FlightOrderListQueryResponse:
+        """
+        @summary 查询机票订单列表
+        
+        @param request: FlightOrderListQueryRequest
+        @param headers: FlightOrderListQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FlightOrderListQueryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.all_apply):
@@ -6378,6 +7970,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.FlightOrderListQueryHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.FlightOrderListQueryResponse:
+        """
+        @summary 查询机票订单列表
+        
+        @param request: FlightOrderListQueryRequest
+        @param headers: FlightOrderListQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FlightOrderListQueryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.all_apply):
@@ -6431,6 +8031,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.FlightOrderListQueryRequest,
     ) -> btrip_open_20220520_models.FlightOrderListQueryResponse:
+        """
+        @summary 查询机票订单列表
+        
+        @param request: FlightOrderListQueryRequest
+        @return: FlightOrderListQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.FlightOrderListQueryHeaders()
         return self.flight_order_list_query_with_options(request, headers, runtime)
@@ -6439,6 +8045,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.FlightOrderListQueryRequest,
     ) -> btrip_open_20220520_models.FlightOrderListQueryResponse:
+        """
+        @summary 查询机票订单列表
+        
+        @param request: FlightOrderListQueryRequest
+        @return: FlightOrderListQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.FlightOrderListQueryHeaders()
         return await self.flight_order_list_query_with_options_async(request, headers, runtime)
@@ -6449,6 +8061,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.FlightOrderQueryHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.FlightOrderQueryResponse:
+        """
+        @summary 查询机票订单详情（含票信息）
+        
+        @param request: FlightOrderQueryRequest
+        @param headers: FlightOrderQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FlightOrderQueryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.order_id):
@@ -6486,6 +8106,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.FlightOrderQueryHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.FlightOrderQueryResponse:
+        """
+        @summary 查询机票订单详情（含票信息）
+        
+        @param request: FlightOrderQueryRequest
+        @param headers: FlightOrderQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FlightOrderQueryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.order_id):
@@ -6521,6 +8149,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.FlightOrderQueryRequest,
     ) -> btrip_open_20220520_models.FlightOrderQueryResponse:
+        """
+        @summary 查询机票订单详情（含票信息）
+        
+        @param request: FlightOrderQueryRequest
+        @return: FlightOrderQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.FlightOrderQueryHeaders()
         return self.flight_order_query_with_options(request, headers, runtime)
@@ -6529,6 +8163,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.FlightOrderQueryRequest,
     ) -> btrip_open_20220520_models.FlightOrderQueryResponse:
+        """
+        @summary 查询机票订单详情（含票信息）
+        
+        @param request: FlightOrderQueryRequest
+        @return: FlightOrderQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.FlightOrderQueryHeaders()
         return await self.flight_order_query_with_options_async(request, headers, runtime)
@@ -6539,6 +8179,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.FlightOtaItemDetailHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.FlightOtaItemDetailResponse:
+        """
+        @summary 查询退改规则行李额
+        
+        @param request: FlightOtaItemDetailRequest
+        @param headers: FlightOtaItemDetailHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FlightOtaItemDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.isv_name):
@@ -6576,6 +8224,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.FlightOtaItemDetailHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.FlightOtaItemDetailResponse:
+        """
+        @summary 查询退改规则行李额
+        
+        @param request: FlightOtaItemDetailRequest
+        @param headers: FlightOtaItemDetailHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FlightOtaItemDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.isv_name):
@@ -6611,6 +8267,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.FlightOtaItemDetailRequest,
     ) -> btrip_open_20220520_models.FlightOtaItemDetailResponse:
+        """
+        @summary 查询退改规则行李额
+        
+        @param request: FlightOtaItemDetailRequest
+        @return: FlightOtaItemDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.FlightOtaItemDetailHeaders()
         return self.flight_ota_item_detail_with_options(request, headers, runtime)
@@ -6619,6 +8281,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.FlightOtaItemDetailRequest,
     ) -> btrip_open_20220520_models.FlightOtaItemDetailResponse:
+        """
+        @summary 查询退改规则行李额
+        
+        @param request: FlightOtaItemDetailRequest
+        @return: FlightOtaItemDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.FlightOtaItemDetailHeaders()
         return await self.flight_ota_item_detail_with_options_async(request, headers, runtime)
@@ -6629,6 +8297,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.FlightOtaSearchHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.FlightOtaSearchResponse:
+        """
+        @summary 航班最低价搜索
+        
+        @param request: FlightOtaSearchRequest
+        @param headers: FlightOtaSearchHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FlightOtaSearchResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.airline_code):
@@ -6676,6 +8352,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.FlightOtaSearchHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.FlightOtaSearchResponse:
+        """
+        @summary 航班最低价搜索
+        
+        @param request: FlightOtaSearchRequest
+        @param headers: FlightOtaSearchHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FlightOtaSearchResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.airline_code):
@@ -6721,6 +8405,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.FlightOtaSearchRequest,
     ) -> btrip_open_20220520_models.FlightOtaSearchResponse:
+        """
+        @summary 航班最低价搜索
+        
+        @param request: FlightOtaSearchRequest
+        @return: FlightOtaSearchResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.FlightOtaSearchHeaders()
         return self.flight_ota_search_with_options(request, headers, runtime)
@@ -6729,6 +8419,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.FlightOtaSearchRequest,
     ) -> btrip_open_20220520_models.FlightOtaSearchResponse:
+        """
+        @summary 航班最低价搜索
+        
+        @param request: FlightOtaSearchRequest
+        @return: FlightOtaSearchResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.FlightOtaSearchHeaders()
         return await self.flight_ota_search_with_options_async(request, headers, runtime)
@@ -6739,6 +8435,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.FlightOtaSearchV2Headers,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.FlightOtaSearchV2Response:
+        """
+        @summary 单航班报价搜索
+        
+        @param tmp_req: FlightOtaSearchV2Request
+        @param headers: FlightOtaSearchV2Headers
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FlightOtaSearchV2Response
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.FlightOtaSearchV2ShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -6792,6 +8496,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.FlightOtaSearchV2Headers,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.FlightOtaSearchV2Response:
+        """
+        @summary 单航班报价搜索
+        
+        @param tmp_req: FlightOtaSearchV2Request
+        @param headers: FlightOtaSearchV2Headers
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FlightOtaSearchV2Response
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.FlightOtaSearchV2ShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -6843,6 +8555,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.FlightOtaSearchV2Request,
     ) -> btrip_open_20220520_models.FlightOtaSearchV2Response:
+        """
+        @summary 单航班报价搜索
+        
+        @param request: FlightOtaSearchV2Request
+        @return: FlightOtaSearchV2Response
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.FlightOtaSearchV2Headers()
         return self.flight_ota_search_v2with_options(request, headers, runtime)
@@ -6851,6 +8569,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.FlightOtaSearchV2Request,
     ) -> btrip_open_20220520_models.FlightOtaSearchV2Response:
+        """
+        @summary 单航班报价搜索
+        
+        @param request: FlightOtaSearchV2Request
+        @return: FlightOtaSearchV2Response
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.FlightOtaSearchV2Headers()
         return await self.flight_ota_search_v2with_options_async(request, headers, runtime)
@@ -6861,6 +8585,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.FlightPayOrderHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.FlightPayOrderResponse:
+        """
+        @summary 航班订单支付
+        
+        @param tmp_req: FlightPayOrderRequest
+        @param headers: FlightPayOrderHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FlightPayOrderResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.FlightPayOrderShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -6908,6 +8640,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.FlightPayOrderHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.FlightPayOrderResponse:
+        """
+        @summary 航班订单支付
+        
+        @param tmp_req: FlightPayOrderRequest
+        @param headers: FlightPayOrderHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FlightPayOrderResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.FlightPayOrderShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -6953,6 +8693,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.FlightPayOrderRequest,
     ) -> btrip_open_20220520_models.FlightPayOrderResponse:
+        """
+        @summary 航班订单支付
+        
+        @param request: FlightPayOrderRequest
+        @return: FlightPayOrderResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.FlightPayOrderHeaders()
         return self.flight_pay_order_with_options(request, headers, runtime)
@@ -6961,6 +8707,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.FlightPayOrderRequest,
     ) -> btrip_open_20220520_models.FlightPayOrderResponse:
+        """
+        @summary 航班订单支付
+        
+        @param request: FlightPayOrderRequest
+        @return: FlightPayOrderResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.FlightPayOrderHeaders()
         return await self.flight_pay_order_with_options_async(request, headers, runtime)
@@ -6971,6 +8723,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.FlightPayOrderV2Headers,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.FlightPayOrderV2Response:
+        """
+        @summary 机票订单支付
+        
+        @param request: FlightPayOrderV2Request
+        @param headers: FlightPayOrderV2Headers
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FlightPayOrderV2Response
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.isv_name):
@@ -7014,6 +8774,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.FlightPayOrderV2Headers,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.FlightPayOrderV2Response:
+        """
+        @summary 机票订单支付
+        
+        @param request: FlightPayOrderV2Request
+        @param headers: FlightPayOrderV2Headers
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FlightPayOrderV2Response
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.isv_name):
@@ -7055,6 +8823,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.FlightPayOrderV2Request,
     ) -> btrip_open_20220520_models.FlightPayOrderV2Response:
+        """
+        @summary 机票订单支付
+        
+        @param request: FlightPayOrderV2Request
+        @return: FlightPayOrderV2Response
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.FlightPayOrderV2Headers()
         return self.flight_pay_order_v2with_options(request, headers, runtime)
@@ -7063,6 +8837,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.FlightPayOrderV2Request,
     ) -> btrip_open_20220520_models.FlightPayOrderV2Response:
+        """
+        @summary 机票订单支付
+        
+        @param request: FlightPayOrderV2Request
+        @return: FlightPayOrderV2Response
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.FlightPayOrderV2Headers()
         return await self.flight_pay_order_v2with_options_async(request, headers, runtime)
@@ -7073,6 +8853,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.FlightRefundApplyHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.FlightRefundApplyResponse:
+        """
+        @summary 航班退票申请
+        
+        @param tmp_req: FlightRefundApplyRequest
+        @param headers: FlightRefundApplyHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FlightRefundApplyResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.FlightRefundApplyShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -7142,6 +8930,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.FlightRefundApplyHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.FlightRefundApplyResponse:
+        """
+        @summary 航班退票申请
+        
+        @param tmp_req: FlightRefundApplyRequest
+        @param headers: FlightRefundApplyHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FlightRefundApplyResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.FlightRefundApplyShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -7209,6 +9005,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.FlightRefundApplyRequest,
     ) -> btrip_open_20220520_models.FlightRefundApplyResponse:
+        """
+        @summary 航班退票申请
+        
+        @param request: FlightRefundApplyRequest
+        @return: FlightRefundApplyResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.FlightRefundApplyHeaders()
         return self.flight_refund_apply_with_options(request, headers, runtime)
@@ -7217,6 +9019,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.FlightRefundApplyRequest,
     ) -> btrip_open_20220520_models.FlightRefundApplyResponse:
+        """
+        @summary 航班退票申请
+        
+        @param request: FlightRefundApplyRequest
+        @return: FlightRefundApplyResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.FlightRefundApplyHeaders()
         return await self.flight_refund_apply_with_options_async(request, headers, runtime)
@@ -7227,6 +9035,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.FlightRefundApplyV2Headers,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.FlightRefundApplyV2Response:
+        """
+        @summary 机票退票申请
+        
+        @param tmp_req: FlightRefundApplyV2Request
+        @param headers: FlightRefundApplyV2Headers
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FlightRefundApplyV2Response
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.FlightRefundApplyV2ShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -7290,6 +9106,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.FlightRefundApplyV2Headers,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.FlightRefundApplyV2Response:
+        """
+        @summary 机票退票申请
+        
+        @param tmp_req: FlightRefundApplyV2Request
+        @param headers: FlightRefundApplyV2Headers
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FlightRefundApplyV2Response
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.FlightRefundApplyV2ShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -7351,6 +9175,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.FlightRefundApplyV2Request,
     ) -> btrip_open_20220520_models.FlightRefundApplyV2Response:
+        """
+        @summary 机票退票申请
+        
+        @param request: FlightRefundApplyV2Request
+        @return: FlightRefundApplyV2Response
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.FlightRefundApplyV2Headers()
         return self.flight_refund_apply_v2with_options(request, headers, runtime)
@@ -7359,6 +9189,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.FlightRefundApplyV2Request,
     ) -> btrip_open_20220520_models.FlightRefundApplyV2Response:
+        """
+        @summary 机票退票申请
+        
+        @param request: FlightRefundApplyV2Request
+        @return: FlightRefundApplyV2Response
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.FlightRefundApplyV2Headers()
         return await self.flight_refund_apply_v2with_options_async(request, headers, runtime)
@@ -7369,6 +9205,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.FlightRefundDetailHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.FlightRefundDetailResponse:
+        """
+        @summary 航班退票详情
+        
+        @param request: FlightRefundDetailRequest
+        @param headers: FlightRefundDetailHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FlightRefundDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dis_order_id):
@@ -7406,6 +9250,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.FlightRefundDetailHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.FlightRefundDetailResponse:
+        """
+        @summary 航班退票详情
+        
+        @param request: FlightRefundDetailRequest
+        @param headers: FlightRefundDetailHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FlightRefundDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dis_order_id):
@@ -7441,6 +9293,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.FlightRefundDetailRequest,
     ) -> btrip_open_20220520_models.FlightRefundDetailResponse:
+        """
+        @summary 航班退票详情
+        
+        @param request: FlightRefundDetailRequest
+        @return: FlightRefundDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.FlightRefundDetailHeaders()
         return self.flight_refund_detail_with_options(request, headers, runtime)
@@ -7449,6 +9307,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.FlightRefundDetailRequest,
     ) -> btrip_open_20220520_models.FlightRefundDetailResponse:
+        """
+        @summary 航班退票详情
+        
+        @param request: FlightRefundDetailRequest
+        @return: FlightRefundDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.FlightRefundDetailHeaders()
         return await self.flight_refund_detail_with_options_async(request, headers, runtime)
@@ -7459,6 +9323,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.FlightRefundDetailV2Headers,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.FlightRefundDetailV2Response:
+        """
+        @summary 机票退票详情
+        
+        @param request: FlightRefundDetailV2Request
+        @param headers: FlightRefundDetailV2Headers
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FlightRefundDetailV2Response
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.isv_name):
@@ -7498,6 +9370,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.FlightRefundDetailV2Headers,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.FlightRefundDetailV2Response:
+        """
+        @summary 机票退票详情
+        
+        @param request: FlightRefundDetailV2Request
+        @param headers: FlightRefundDetailV2Headers
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FlightRefundDetailV2Response
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.isv_name):
@@ -7535,6 +9415,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.FlightRefundDetailV2Request,
     ) -> btrip_open_20220520_models.FlightRefundDetailV2Response:
+        """
+        @summary 机票退票详情
+        
+        @param request: FlightRefundDetailV2Request
+        @return: FlightRefundDetailV2Response
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.FlightRefundDetailV2Headers()
         return self.flight_refund_detail_v2with_options(request, headers, runtime)
@@ -7543,6 +9429,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.FlightRefundDetailV2Request,
     ) -> btrip_open_20220520_models.FlightRefundDetailV2Response:
+        """
+        @summary 机票退票详情
+        
+        @param request: FlightRefundDetailV2Request
+        @return: FlightRefundDetailV2Response
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.FlightRefundDetailV2Headers()
         return await self.flight_refund_detail_v2with_options_async(request, headers, runtime)
@@ -7553,6 +9445,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.FlightRefundPreCalHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.FlightRefundPreCalResponse:
+        """
+        @summary 机票退票预计算
+        
+        @param tmp_req: FlightRefundPreCalRequest
+        @param headers: FlightRefundPreCalHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FlightRefundPreCalResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.FlightRefundPreCalShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -7596,6 +9496,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.FlightRefundPreCalHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.FlightRefundPreCalResponse:
+        """
+        @summary 机票退票预计算
+        
+        @param tmp_req: FlightRefundPreCalRequest
+        @param headers: FlightRefundPreCalHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FlightRefundPreCalResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.FlightRefundPreCalShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -7637,6 +9545,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.FlightRefundPreCalRequest,
     ) -> btrip_open_20220520_models.FlightRefundPreCalResponse:
+        """
+        @summary 机票退票预计算
+        
+        @param request: FlightRefundPreCalRequest
+        @return: FlightRefundPreCalResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.FlightRefundPreCalHeaders()
         return self.flight_refund_pre_cal_with_options(request, headers, runtime)
@@ -7645,6 +9559,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.FlightRefundPreCalRequest,
     ) -> btrip_open_20220520_models.FlightRefundPreCalResponse:
+        """
+        @summary 机票退票预计算
+        
+        @param request: FlightRefundPreCalRequest
+        @return: FlightRefundPreCalResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.FlightRefundPreCalHeaders()
         return await self.flight_refund_pre_cal_with_options_async(request, headers, runtime)
@@ -7655,6 +9575,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.FlightRefundPreCalV2Headers,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.FlightRefundPreCalV2Response:
+        """
+        @summary 机票退票费用预计算
+        
+        @param tmp_req: FlightRefundPreCalV2Request
+        @param headers: FlightRefundPreCalV2Headers
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FlightRefundPreCalV2Response
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.FlightRefundPreCalV2ShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -7708,6 +9636,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.FlightRefundPreCalV2Headers,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.FlightRefundPreCalV2Response:
+        """
+        @summary 机票退票费用预计算
+        
+        @param tmp_req: FlightRefundPreCalV2Request
+        @param headers: FlightRefundPreCalV2Headers
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FlightRefundPreCalV2Response
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.FlightRefundPreCalV2ShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -7759,6 +9695,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.FlightRefundPreCalV2Request,
     ) -> btrip_open_20220520_models.FlightRefundPreCalV2Response:
+        """
+        @summary 机票退票费用预计算
+        
+        @param request: FlightRefundPreCalV2Request
+        @return: FlightRefundPreCalV2Response
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.FlightRefundPreCalV2Headers()
         return self.flight_refund_pre_cal_v2with_options(request, headers, runtime)
@@ -7767,6 +9709,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.FlightRefundPreCalV2Request,
     ) -> btrip_open_20220520_models.FlightRefundPreCalV2Response:
+        """
+        @summary 机票退票费用预计算
+        
+        @param request: FlightRefundPreCalV2Request
+        @return: FlightRefundPreCalV2Response
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.FlightRefundPreCalV2Headers()
         return await self.flight_refund_pre_cal_v2with_options_async(request, headers, runtime)
@@ -7777,6 +9725,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.FlightSearchListHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.FlightSearchListResponse:
+        """
+        @summary 航班列表搜索
+        
+        @param request: FlightSearchListRequest
+        @param headers: FlightSearchListHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FlightSearchListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.airline_code):
@@ -7838,6 +9794,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.FlightSearchListHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.FlightSearchListResponse:
+        """
+        @summary 航班列表搜索
+        
+        @param request: FlightSearchListRequest
+        @param headers: FlightSearchListHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FlightSearchListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.airline_code):
@@ -7897,6 +9861,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.FlightSearchListRequest,
     ) -> btrip_open_20220520_models.FlightSearchListResponse:
+        """
+        @summary 航班列表搜索
+        
+        @param request: FlightSearchListRequest
+        @return: FlightSearchListResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.FlightSearchListHeaders()
         return self.flight_search_list_with_options(request, headers, runtime)
@@ -7905,6 +9875,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.FlightSearchListRequest,
     ) -> btrip_open_20220520_models.FlightSearchListResponse:
+        """
+        @summary 航班列表搜索
+        
+        @param request: FlightSearchListRequest
+        @return: FlightSearchListResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.FlightSearchListHeaders()
         return await self.flight_search_list_with_options_async(request, headers, runtime)
@@ -7915,6 +9891,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.GroupCorpTokenHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.GroupCorpTokenResponse:
+        """
+        @summary 换取GroupCorpToken接口
+        
+        @param request: GroupCorpTokenRequest
+        @param headers: GroupCorpTokenHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GroupCorpTokenResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_secret):
@@ -7954,6 +9938,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.GroupCorpTokenHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.GroupCorpTokenResponse:
+        """
+        @summary 换取GroupCorpToken接口
+        
+        @param request: GroupCorpTokenRequest
+        @param headers: GroupCorpTokenHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GroupCorpTokenResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_secret):
@@ -7991,6 +9983,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.GroupCorpTokenRequest,
     ) -> btrip_open_20220520_models.GroupCorpTokenResponse:
+        """
+        @summary 换取GroupCorpToken接口
+        
+        @param request: GroupCorpTokenRequest
+        @return: GroupCorpTokenResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.GroupCorpTokenHeaders()
         return self.group_corp_token_with_options(request, headers, runtime)
@@ -7999,6 +9997,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.GroupCorpTokenRequest,
     ) -> btrip_open_20220520_models.GroupCorpTokenResponse:
+        """
+        @summary 换取GroupCorpToken接口
+        
+        @param request: GroupCorpTokenRequest
+        @return: GroupCorpTokenResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.GroupCorpTokenHeaders()
         return await self.group_corp_token_with_options_async(request, headers, runtime)
@@ -8009,6 +10013,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.GroupDepartSaveHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.GroupDepartSaveResponse:
+        """
+        @summary 集团部门同步
+        
+        @param tmp_req: GroupDepartSaveRequest
+        @param headers: GroupDepartSaveHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GroupDepartSaveResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.GroupDepartSaveShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -8060,6 +10072,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.GroupDepartSaveHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.GroupDepartSaveResponse:
+        """
+        @summary 集团部门同步
+        
+        @param tmp_req: GroupDepartSaveRequest
+        @param headers: GroupDepartSaveHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GroupDepartSaveResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.GroupDepartSaveShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -8109,6 +10129,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.GroupDepartSaveRequest,
     ) -> btrip_open_20220520_models.GroupDepartSaveResponse:
+        """
+        @summary 集团部门同步
+        
+        @param request: GroupDepartSaveRequest
+        @return: GroupDepartSaveResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.GroupDepartSaveHeaders()
         return self.group_depart_save_with_options(request, headers, runtime)
@@ -8117,6 +10143,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.GroupDepartSaveRequest,
     ) -> btrip_open_20220520_models.GroupDepartSaveResponse:
+        """
+        @summary 集团部门同步
+        
+        @param request: GroupDepartSaveRequest
+        @return: GroupDepartSaveResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.GroupDepartSaveHeaders()
         return await self.group_depart_save_with_options_async(request, headers, runtime)
@@ -8127,6 +10159,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.GroupUserSaveHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.GroupUserSaveResponse:
+        """
+        @summary 集团人员同步
+        
+        @param tmp_req: GroupUserSaveRequest
+        @param headers: GroupUserSaveHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GroupUserSaveResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.GroupUserSaveShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -8186,6 +10226,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.GroupUserSaveHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.GroupUserSaveResponse:
+        """
+        @summary 集团人员同步
+        
+        @param tmp_req: GroupUserSaveRequest
+        @param headers: GroupUserSaveHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GroupUserSaveResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.GroupUserSaveShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -8243,6 +10291,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.GroupUserSaveRequest,
     ) -> btrip_open_20220520_models.GroupUserSaveResponse:
+        """
+        @summary 集团人员同步
+        
+        @param request: GroupUserSaveRequest
+        @return: GroupUserSaveResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.GroupUserSaveHeaders()
         return self.group_user_save_with_options(request, headers, runtime)
@@ -8251,6 +10305,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.GroupUserSaveRequest,
     ) -> btrip_open_20220520_models.GroupUserSaveResponse:
+        """
+        @summary 集团人员同步
+        
+        @param request: GroupUserSaveRequest
+        @return: GroupUserSaveResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.GroupUserSaveHeaders()
         return await self.group_user_save_with_options_async(request, headers, runtime)
@@ -8261,6 +10321,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.HotelAskingPriceHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.HotelAskingPriceResponse:
+        """
+        @summary 酒店起价
+        
+        @param tmp_req: HotelAskingPriceRequest
+        @param headers: HotelAskingPriceHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: HotelAskingPriceResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.HotelAskingPriceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -8322,6 +10390,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.HotelAskingPriceHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.HotelAskingPriceResponse:
+        """
+        @summary 酒店起价
+        
+        @param tmp_req: HotelAskingPriceRequest
+        @param headers: HotelAskingPriceHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: HotelAskingPriceResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.HotelAskingPriceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -8381,6 +10457,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.HotelAskingPriceRequest,
     ) -> btrip_open_20220520_models.HotelAskingPriceResponse:
+        """
+        @summary 酒店起价
+        
+        @param request: HotelAskingPriceRequest
+        @return: HotelAskingPriceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.HotelAskingPriceHeaders()
         return self.hotel_asking_price_with_options(request, headers, runtime)
@@ -8389,6 +10471,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.HotelAskingPriceRequest,
     ) -> btrip_open_20220520_models.HotelAskingPriceResponse:
+        """
+        @summary 酒店起价
+        
+        @param request: HotelAskingPriceRequest
+        @return: HotelAskingPriceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.HotelAskingPriceHeaders()
         return await self.hotel_asking_price_with_options_async(request, headers, runtime)
@@ -8399,6 +10487,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.HotelBillSettlementQueryHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.HotelBillSettlementQueryResponse:
+        """
+        @summary 查询酒店记账数据
+        
+        @param request: HotelBillSettlementQueryRequest
+        @param headers: HotelBillSettlementQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: HotelBillSettlementQueryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_no):
@@ -8440,6 +10536,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.HotelBillSettlementQueryHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.HotelBillSettlementQueryResponse:
+        """
+        @summary 查询酒店记账数据
+        
+        @param request: HotelBillSettlementQueryRequest
+        @param headers: HotelBillSettlementQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: HotelBillSettlementQueryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_no):
@@ -8479,6 +10583,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.HotelBillSettlementQueryRequest,
     ) -> btrip_open_20220520_models.HotelBillSettlementQueryResponse:
+        """
+        @summary 查询酒店记账数据
+        
+        @param request: HotelBillSettlementQueryRequest
+        @return: HotelBillSettlementQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.HotelBillSettlementQueryHeaders()
         return self.hotel_bill_settlement_query_with_options(request, headers, runtime)
@@ -8487,6 +10597,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.HotelBillSettlementQueryRequest,
     ) -> btrip_open_20220520_models.HotelBillSettlementQueryResponse:
+        """
+        @summary 查询酒店记账数据
+        
+        @param request: HotelBillSettlementQueryRequest
+        @return: HotelBillSettlementQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.HotelBillSettlementQueryHeaders()
         return await self.hotel_bill_settlement_query_with_options_async(request, headers, runtime)
@@ -8497,6 +10613,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.HotelCityCodeListHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.HotelCityCodeListResponse:
+        """
+        @summary 酒店城市列表
+        
+        @param request: HotelCityCodeListRequest
+        @param headers: HotelCityCodeListHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: HotelCityCodeListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.country_code):
@@ -8532,6 +10656,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.HotelCityCodeListHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.HotelCityCodeListResponse:
+        """
+        @summary 酒店城市列表
+        
+        @param request: HotelCityCodeListRequest
+        @param headers: HotelCityCodeListHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: HotelCityCodeListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.country_code):
@@ -8565,6 +10697,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.HotelCityCodeListRequest,
     ) -> btrip_open_20220520_models.HotelCityCodeListResponse:
+        """
+        @summary 酒店城市列表
+        
+        @param request: HotelCityCodeListRequest
+        @return: HotelCityCodeListResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.HotelCityCodeListHeaders()
         return self.hotel_city_code_list_with_options(request, headers, runtime)
@@ -8573,6 +10711,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.HotelCityCodeListRequest,
     ) -> btrip_open_20220520_models.HotelCityCodeListResponse:
+        """
+        @summary 酒店城市列表
+        
+        @param request: HotelCityCodeListRequest
+        @return: HotelCityCodeListResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.HotelCityCodeListHeaders()
         return await self.hotel_city_code_list_with_options_async(request, headers, runtime)
@@ -8583,6 +10727,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.HotelExceedApplyQueryHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.HotelExceedApplyQueryResponse:
+        """
+        @summary 查询酒店超标审批详情
+        
+        @param request: HotelExceedApplyQueryRequest
+        @param headers: HotelExceedApplyQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: HotelExceedApplyQueryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.apply_id):
@@ -8618,6 +10770,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.HotelExceedApplyQueryHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.HotelExceedApplyQueryResponse:
+        """
+        @summary 查询酒店超标审批详情
+        
+        @param request: HotelExceedApplyQueryRequest
+        @param headers: HotelExceedApplyQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: HotelExceedApplyQueryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.apply_id):
@@ -8651,6 +10811,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.HotelExceedApplyQueryRequest,
     ) -> btrip_open_20220520_models.HotelExceedApplyQueryResponse:
+        """
+        @summary 查询酒店超标审批详情
+        
+        @param request: HotelExceedApplyQueryRequest
+        @return: HotelExceedApplyQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.HotelExceedApplyQueryHeaders()
         return self.hotel_exceed_apply_query_with_options(request, headers, runtime)
@@ -8659,6 +10825,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.HotelExceedApplyQueryRequest,
     ) -> btrip_open_20220520_models.HotelExceedApplyQueryResponse:
+        """
+        @summary 查询酒店超标审批详情
+        
+        @param request: HotelExceedApplyQueryRequest
+        @return: HotelExceedApplyQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.HotelExceedApplyQueryHeaders()
         return await self.hotel_exceed_apply_query_with_options_async(request, headers, runtime)
@@ -8669,6 +10841,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.HotelGoodsQueryHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.HotelGoodsQueryResponse:
+        """
+        @summary 酒店详情页报价接口(直连)
+        
+        @param request: HotelGoodsQueryRequest
+        @param headers: HotelGoodsQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: HotelGoodsQueryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.adult_num):
@@ -8726,6 +10906,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.HotelGoodsQueryHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.HotelGoodsQueryResponse:
+        """
+        @summary 酒店详情页报价接口(直连)
+        
+        @param request: HotelGoodsQueryRequest
+        @param headers: HotelGoodsQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: HotelGoodsQueryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.adult_num):
@@ -8781,6 +10969,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.HotelGoodsQueryRequest,
     ) -> btrip_open_20220520_models.HotelGoodsQueryResponse:
+        """
+        @summary 酒店详情页报价接口(直连)
+        
+        @param request: HotelGoodsQueryRequest
+        @return: HotelGoodsQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.HotelGoodsQueryHeaders()
         return self.hotel_goods_query_with_options(request, headers, runtime)
@@ -8789,6 +10983,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.HotelGoodsQueryRequest,
     ) -> btrip_open_20220520_models.HotelGoodsQueryResponse:
+        """
+        @summary 酒店详情页报价接口(直连)
+        
+        @param request: HotelGoodsQueryRequest
+        @return: HotelGoodsQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.HotelGoodsQueryHeaders()
         return await self.hotel_goods_query_with_options_async(request, headers, runtime)
@@ -8799,6 +10999,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.HotelIndexInfoHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.HotelIndexInfoResponse:
+        """
+        @summary 获取酒店清单
+        
+        @param request: HotelIndexInfoRequest
+        @param headers: HotelIndexInfoHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: HotelIndexInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.city_code):
@@ -8840,6 +11048,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.HotelIndexInfoHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.HotelIndexInfoResponse:
+        """
+        @summary 获取酒店清单
+        
+        @param request: HotelIndexInfoRequest
+        @param headers: HotelIndexInfoHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: HotelIndexInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.city_code):
@@ -8879,6 +11095,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.HotelIndexInfoRequest,
     ) -> btrip_open_20220520_models.HotelIndexInfoResponse:
+        """
+        @summary 获取酒店清单
+        
+        @param request: HotelIndexInfoRequest
+        @return: HotelIndexInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.HotelIndexInfoHeaders()
         return self.hotel_index_info_with_options(request, headers, runtime)
@@ -8887,6 +11109,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.HotelIndexInfoRequest,
     ) -> btrip_open_20220520_models.HotelIndexInfoResponse:
+        """
+        @summary 获取酒店清单
+        
+        @param request: HotelIndexInfoRequest
+        @return: HotelIndexInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.HotelIndexInfoHeaders()
         return await self.hotel_index_info_with_options_async(request, headers, runtime)
@@ -8897,6 +11125,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.HotelOrderCancelHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.HotelOrderCancelResponse:
+        """
+        @summary 酒店订单取消
+        
+        @param request: HotelOrderCancelRequest
+        @param headers: HotelOrderCancelHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: HotelOrderCancelResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.btrip_order_id):
@@ -8934,6 +11170,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.HotelOrderCancelHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.HotelOrderCancelResponse:
+        """
+        @summary 酒店订单取消
+        
+        @param request: HotelOrderCancelRequest
+        @param headers: HotelOrderCancelHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: HotelOrderCancelResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.btrip_order_id):
@@ -8969,6 +11213,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.HotelOrderCancelRequest,
     ) -> btrip_open_20220520_models.HotelOrderCancelResponse:
+        """
+        @summary 酒店订单取消
+        
+        @param request: HotelOrderCancelRequest
+        @return: HotelOrderCancelResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.HotelOrderCancelHeaders()
         return self.hotel_order_cancel_with_options(request, headers, runtime)
@@ -8977,6 +11227,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.HotelOrderCancelRequest,
     ) -> btrip_open_20220520_models.HotelOrderCancelResponse:
+        """
+        @summary 酒店订单取消
+        
+        @param request: HotelOrderCancelRequest
+        @return: HotelOrderCancelResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.HotelOrderCancelHeaders()
         return await self.hotel_order_cancel_with_options_async(request, headers, runtime)
@@ -8987,6 +11243,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.HotelOrderCreateHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.HotelOrderCreateResponse:
+        """
+        @summary 酒店订单创建
+        
+        @param tmp_req: HotelOrderCreateRequest
+        @param headers: HotelOrderCreateHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: HotelOrderCreateResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.HotelOrderCreateShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -9072,6 +11336,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.HotelOrderCreateHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.HotelOrderCreateResponse:
+        """
+        @summary 酒店订单创建
+        
+        @param tmp_req: HotelOrderCreateRequest
+        @param headers: HotelOrderCreateHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: HotelOrderCreateResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.HotelOrderCreateShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -9155,6 +11427,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.HotelOrderCreateRequest,
     ) -> btrip_open_20220520_models.HotelOrderCreateResponse:
+        """
+        @summary 酒店订单创建
+        
+        @param request: HotelOrderCreateRequest
+        @return: HotelOrderCreateResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.HotelOrderCreateHeaders()
         return self.hotel_order_create_with_options(request, headers, runtime)
@@ -9163,6 +11441,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.HotelOrderCreateRequest,
     ) -> btrip_open_20220520_models.HotelOrderCreateResponse:
+        """
+        @summary 酒店订单创建
+        
+        @param request: HotelOrderCreateRequest
+        @return: HotelOrderCreateResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.HotelOrderCreateHeaders()
         return await self.hotel_order_create_with_options_async(request, headers, runtime)
@@ -9173,6 +11457,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.HotelOrderDetailInfoHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.HotelOrderDetailInfoResponse:
+        """
+        @summary 酒店订单明细信息
+        
+        @param request: HotelOrderDetailInfoRequest
+        @param headers: HotelOrderDetailInfoHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: HotelOrderDetailInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.btrip_order_id):
@@ -9210,6 +11502,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.HotelOrderDetailInfoHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.HotelOrderDetailInfoResponse:
+        """
+        @summary 酒店订单明细信息
+        
+        @param request: HotelOrderDetailInfoRequest
+        @param headers: HotelOrderDetailInfoHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: HotelOrderDetailInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.btrip_order_id):
@@ -9245,6 +11545,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.HotelOrderDetailInfoRequest,
     ) -> btrip_open_20220520_models.HotelOrderDetailInfoResponse:
+        """
+        @summary 酒店订单明细信息
+        
+        @param request: HotelOrderDetailInfoRequest
+        @return: HotelOrderDetailInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.HotelOrderDetailInfoHeaders()
         return self.hotel_order_detail_info_with_options(request, headers, runtime)
@@ -9253,6 +11559,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.HotelOrderDetailInfoRequest,
     ) -> btrip_open_20220520_models.HotelOrderDetailInfoResponse:
+        """
+        @summary 酒店订单明细信息
+        
+        @param request: HotelOrderDetailInfoRequest
+        @return: HotelOrderDetailInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.HotelOrderDetailInfoHeaders()
         return await self.hotel_order_detail_info_with_options_async(request, headers, runtime)
@@ -9263,6 +11575,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.HotelOrderListQueryHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.HotelOrderListQueryResponse:
+        """
+        @summary 查询酒店订单列表
+        
+        @param request: HotelOrderListQueryRequest
+        @param headers: HotelOrderListQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: HotelOrderListQueryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.all_apply):
@@ -9318,6 +11638,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.HotelOrderListQueryHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.HotelOrderListQueryResponse:
+        """
+        @summary 查询酒店订单列表
+        
+        @param request: HotelOrderListQueryRequest
+        @param headers: HotelOrderListQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: HotelOrderListQueryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.all_apply):
@@ -9371,6 +11699,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.HotelOrderListQueryRequest,
     ) -> btrip_open_20220520_models.HotelOrderListQueryResponse:
+        """
+        @summary 查询酒店订单列表
+        
+        @param request: HotelOrderListQueryRequest
+        @return: HotelOrderListQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.HotelOrderListQueryHeaders()
         return self.hotel_order_list_query_with_options(request, headers, runtime)
@@ -9379,6 +11713,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.HotelOrderListQueryRequest,
     ) -> btrip_open_20220520_models.HotelOrderListQueryResponse:
+        """
+        @summary 查询酒店订单列表
+        
+        @param request: HotelOrderListQueryRequest
+        @return: HotelOrderListQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.HotelOrderListQueryHeaders()
         return await self.hotel_order_list_query_with_options_async(request, headers, runtime)
@@ -9389,6 +11729,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.HotelOrderPayHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.HotelOrderPayResponse:
+        """
+        @summary 酒店订单支付
+        
+        @param request: HotelOrderPayRequest
+        @param headers: HotelOrderPayHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: HotelOrderPayResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.btrip_order_id):
@@ -9436,6 +11784,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.HotelOrderPayHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.HotelOrderPayResponse:
+        """
+        @summary 酒店订单支付
+        
+        @param request: HotelOrderPayRequest
+        @param headers: HotelOrderPayHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: HotelOrderPayResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.btrip_order_id):
@@ -9481,6 +11837,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.HotelOrderPayRequest,
     ) -> btrip_open_20220520_models.HotelOrderPayResponse:
+        """
+        @summary 酒店订单支付
+        
+        @param request: HotelOrderPayRequest
+        @return: HotelOrderPayResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.HotelOrderPayHeaders()
         return self.hotel_order_pay_with_options(request, headers, runtime)
@@ -9489,6 +11851,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.HotelOrderPayRequest,
     ) -> btrip_open_20220520_models.HotelOrderPayResponse:
+        """
+        @summary 酒店订单支付
+        
+        @param request: HotelOrderPayRequest
+        @return: HotelOrderPayResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.HotelOrderPayHeaders()
         return await self.hotel_order_pay_with_options_async(request, headers, runtime)
@@ -9499,6 +11867,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.HotelOrderPreValidateHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.HotelOrderPreValidateResponse:
+        """
+        @summary 酒店下单前校验
+        
+        @param tmp_req: HotelOrderPreValidateRequest
+        @param headers: HotelOrderPreValidateHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: HotelOrderPreValidateResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.HotelOrderPreValidateShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -9564,6 +11940,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.HotelOrderPreValidateHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.HotelOrderPreValidateResponse:
+        """
+        @summary 酒店下单前校验
+        
+        @param tmp_req: HotelOrderPreValidateRequest
+        @param headers: HotelOrderPreValidateHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: HotelOrderPreValidateResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.HotelOrderPreValidateShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -9627,6 +12011,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.HotelOrderPreValidateRequest,
     ) -> btrip_open_20220520_models.HotelOrderPreValidateResponse:
+        """
+        @summary 酒店下单前校验
+        
+        @param request: HotelOrderPreValidateRequest
+        @return: HotelOrderPreValidateResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.HotelOrderPreValidateHeaders()
         return self.hotel_order_pre_validate_with_options(request, headers, runtime)
@@ -9635,6 +12025,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.HotelOrderPreValidateRequest,
     ) -> btrip_open_20220520_models.HotelOrderPreValidateResponse:
+        """
+        @summary 酒店下单前校验
+        
+        @param request: HotelOrderPreValidateRequest
+        @return: HotelOrderPreValidateResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.HotelOrderPreValidateHeaders()
         return await self.hotel_order_pre_validate_with_options_async(request, headers, runtime)
@@ -9645,6 +12041,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.HotelOrderQueryHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.HotelOrderQueryResponse:
+        """
+        @summary 酒店订单查询
+        
+        @param request: HotelOrderQueryRequest
+        @param headers: HotelOrderQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: HotelOrderQueryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.order_id):
@@ -9680,6 +12084,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.HotelOrderQueryHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.HotelOrderQueryResponse:
+        """
+        @summary 酒店订单查询
+        
+        @param request: HotelOrderQueryRequest
+        @param headers: HotelOrderQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: HotelOrderQueryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.order_id):
@@ -9713,6 +12125,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.HotelOrderQueryRequest,
     ) -> btrip_open_20220520_models.HotelOrderQueryResponse:
+        """
+        @summary 酒店订单查询
+        
+        @param request: HotelOrderQueryRequest
+        @return: HotelOrderQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.HotelOrderQueryHeaders()
         return self.hotel_order_query_with_options(request, headers, runtime)
@@ -9721,6 +12139,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.HotelOrderQueryRequest,
     ) -> btrip_open_20220520_models.HotelOrderQueryResponse:
+        """
+        @summary 酒店订单查询
+        
+        @param request: HotelOrderQueryRequest
+        @return: HotelOrderQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.HotelOrderQueryHeaders()
         return await self.hotel_order_query_with_options_async(request, headers, runtime)
@@ -9731,6 +12155,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.HotelPricePullHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.HotelPricePullResponse:
+        """
+        @summary 酒店拉动态拉取价格接口(落地)
+        
+        @param tmp_req: HotelPricePullRequest
+        @param headers: HotelPricePullHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: HotelPricePullResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.HotelPricePullShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -9780,6 +12212,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.HotelPricePullHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.HotelPricePullResponse:
+        """
+        @summary 酒店拉动态拉取价格接口(落地)
+        
+        @param tmp_req: HotelPricePullRequest
+        @param headers: HotelPricePullHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: HotelPricePullResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.HotelPricePullShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -9827,6 +12267,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.HotelPricePullRequest,
     ) -> btrip_open_20220520_models.HotelPricePullResponse:
+        """
+        @summary 酒店拉动态拉取价格接口(落地)
+        
+        @param request: HotelPricePullRequest
+        @return: HotelPricePullResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.HotelPricePullHeaders()
         return self.hotel_price_pull_with_options(request, headers, runtime)
@@ -9835,6 +12281,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.HotelPricePullRequest,
     ) -> btrip_open_20220520_models.HotelPricePullResponse:
+        """
+        @summary 酒店拉动态拉取价格接口(落地)
+        
+        @param request: HotelPricePullRequest
+        @return: HotelPricePullResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.HotelPricePullHeaders()
         return await self.hotel_price_pull_with_options_async(request, headers, runtime)
@@ -9845,6 +12297,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.HotelRoomInfoHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.HotelRoomInfoResponse:
+        """
+        @summary 获取酒店静态房型详情
+        
+        @param tmp_req: HotelRoomInfoRequest
+        @param headers: HotelRoomInfoHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: HotelRoomInfoResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.HotelRoomInfoShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -9884,6 +12344,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.HotelRoomInfoHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.HotelRoomInfoResponse:
+        """
+        @summary 获取酒店静态房型详情
+        
+        @param tmp_req: HotelRoomInfoRequest
+        @param headers: HotelRoomInfoHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: HotelRoomInfoResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.HotelRoomInfoShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -9921,6 +12389,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.HotelRoomInfoRequest,
     ) -> btrip_open_20220520_models.HotelRoomInfoResponse:
+        """
+        @summary 获取酒店静态房型详情
+        
+        @param request: HotelRoomInfoRequest
+        @return: HotelRoomInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.HotelRoomInfoHeaders()
         return self.hotel_room_info_with_options(request, headers, runtime)
@@ -9929,6 +12403,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.HotelRoomInfoRequest,
     ) -> btrip_open_20220520_models.HotelRoomInfoResponse:
+        """
+        @summary 获取酒店静态房型详情
+        
+        @param request: HotelRoomInfoRequest
+        @return: HotelRoomInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.HotelRoomInfoHeaders()
         return await self.hotel_room_info_with_options_async(request, headers, runtime)
@@ -9939,6 +12419,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.HotelSearchHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.HotelSearchResponse:
+        """
+        @summary 酒店列表搜索接口(直连)
+        
+        @param tmp_req: HotelSearchRequest
+        @param headers: HotelSearchHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: HotelSearchResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.HotelSearchShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -10022,6 +12510,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.HotelSearchHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.HotelSearchResponse:
+        """
+        @summary 酒店列表搜索接口(直连)
+        
+        @param tmp_req: HotelSearchRequest
+        @param headers: HotelSearchHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: HotelSearchResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.HotelSearchShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -10103,6 +12599,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.HotelSearchRequest,
     ) -> btrip_open_20220520_models.HotelSearchResponse:
+        """
+        @summary 酒店列表搜索接口(直连)
+        
+        @param request: HotelSearchRequest
+        @return: HotelSearchResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.HotelSearchHeaders()
         return self.hotel_search_with_options(request, headers, runtime)
@@ -10111,6 +12613,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.HotelSearchRequest,
     ) -> btrip_open_20220520_models.HotelSearchResponse:
+        """
+        @summary 酒店列表搜索接口(直连)
+        
+        @param request: HotelSearchRequest
+        @return: HotelSearchResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.HotelSearchHeaders()
         return await self.hotel_search_with_options_async(request, headers, runtime)
@@ -10121,6 +12629,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.HotelStaticInfoHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.HotelStaticInfoResponse:
+        """
+        @summary 查询酒店静态详情
+        
+        @param tmp_req: HotelStaticInfoRequest
+        @param headers: HotelStaticInfoHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: HotelStaticInfoResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.HotelStaticInfoShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -10160,6 +12676,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.HotelStaticInfoHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.HotelStaticInfoResponse:
+        """
+        @summary 查询酒店静态详情
+        
+        @param tmp_req: HotelStaticInfoRequest
+        @param headers: HotelStaticInfoHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: HotelStaticInfoResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.HotelStaticInfoShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -10197,6 +12721,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.HotelStaticInfoRequest,
     ) -> btrip_open_20220520_models.HotelStaticInfoResponse:
+        """
+        @summary 查询酒店静态详情
+        
+        @param request: HotelStaticInfoRequest
+        @return: HotelStaticInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.HotelStaticInfoHeaders()
         return self.hotel_static_info_with_options(request, headers, runtime)
@@ -10205,6 +12735,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.HotelStaticInfoRequest,
     ) -> btrip_open_20220520_models.HotelStaticInfoResponse:
+        """
+        @summary 查询酒店静态详情
+        
+        @param request: HotelStaticInfoRequest
+        @return: HotelStaticInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.HotelStaticInfoHeaders()
         return await self.hotel_static_info_with_options_async(request, headers, runtime)
@@ -10215,6 +12751,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.IeFlightBillSettlementQueryHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.IeFlightBillSettlementQueryResponse:
+        """
+        @summary 查询国际机票记账数据
+        
+        @param request: IeFlightBillSettlementQueryRequest
+        @param headers: IeFlightBillSettlementQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: IeFlightBillSettlementQueryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_no):
@@ -10256,6 +12800,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.IeFlightBillSettlementQueryHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.IeFlightBillSettlementQueryResponse:
+        """
+        @summary 查询国际机票记账数据
+        
+        @param request: IeFlightBillSettlementQueryRequest
+        @param headers: IeFlightBillSettlementQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: IeFlightBillSettlementQueryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_no):
@@ -10295,6 +12847,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.IeFlightBillSettlementQueryRequest,
     ) -> btrip_open_20220520_models.IeFlightBillSettlementQueryResponse:
+        """
+        @summary 查询国际机票记账数据
+        
+        @param request: IeFlightBillSettlementQueryRequest
+        @return: IeFlightBillSettlementQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.IeFlightBillSettlementQueryHeaders()
         return self.ie_flight_bill_settlement_query_with_options(request, headers, runtime)
@@ -10303,6 +12861,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.IeFlightBillSettlementQueryRequest,
     ) -> btrip_open_20220520_models.IeFlightBillSettlementQueryResponse:
+        """
+        @summary 查询国际机票记账数据
+        
+        @param request: IeFlightBillSettlementQueryRequest
+        @return: IeFlightBillSettlementQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.IeFlightBillSettlementQueryHeaders()
         return await self.ie_flight_bill_settlement_query_with_options_async(request, headers, runtime)
@@ -10313,6 +12877,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.IeHotelBillSettlementQueryHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.IeHotelBillSettlementQueryResponse:
+        """
+        @summary 查询国际/中国港澳台酒店记账数据
+        
+        @param request: IeHotelBillSettlementQueryRequest
+        @param headers: IeHotelBillSettlementQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: IeHotelBillSettlementQueryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.category):
@@ -10356,6 +12928,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.IeHotelBillSettlementQueryHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.IeHotelBillSettlementQueryResponse:
+        """
+        @summary 查询国际/中国港澳台酒店记账数据
+        
+        @param request: IeHotelBillSettlementQueryRequest
+        @param headers: IeHotelBillSettlementQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: IeHotelBillSettlementQueryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.category):
@@ -10397,6 +12977,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.IeHotelBillSettlementQueryRequest,
     ) -> btrip_open_20220520_models.IeHotelBillSettlementQueryResponse:
+        """
+        @summary 查询国际/中国港澳台酒店记账数据
+        
+        @param request: IeHotelBillSettlementQueryRequest
+        @return: IeHotelBillSettlementQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.IeHotelBillSettlementQueryHeaders()
         return self.ie_hotel_bill_settlement_query_with_options(request, headers, runtime)
@@ -10405,6 +12991,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.IeHotelBillSettlementQueryRequest,
     ) -> btrip_open_20220520_models.IeHotelBillSettlementQueryResponse:
+        """
+        @summary 查询国际/中国港澳台酒店记账数据
+        
+        @param request: IeHotelBillSettlementQueryRequest
+        @return: IeHotelBillSettlementQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.IeHotelBillSettlementQueryHeaders()
         return await self.ie_hotel_bill_settlement_query_with_options_async(request, headers, runtime)
@@ -10415,6 +13007,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.InsInvoiceScanQueryHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.InsInvoiceScanQueryResponse:
+        """
+        @summary 查询保险电子发票
+        
+        @param request: InsInvoiceScanQueryRequest
+        @param headers: InsInvoiceScanQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InsInvoiceScanQueryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.bill_date):
@@ -10458,6 +13058,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.InsInvoiceScanQueryHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.InsInvoiceScanQueryResponse:
+        """
+        @summary 查询保险电子发票
+        
+        @param request: InsInvoiceScanQueryRequest
+        @param headers: InsInvoiceScanQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InsInvoiceScanQueryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.bill_date):
@@ -10499,6 +13107,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.InsInvoiceScanQueryRequest,
     ) -> btrip_open_20220520_models.InsInvoiceScanQueryResponse:
+        """
+        @summary 查询保险电子发票
+        
+        @param request: InsInvoiceScanQueryRequest
+        @return: InsInvoiceScanQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.InsInvoiceScanQueryHeaders()
         return self.ins_invoice_scan_query_with_options(request, headers, runtime)
@@ -10507,6 +13121,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.InsInvoiceScanQueryRequest,
     ) -> btrip_open_20220520_models.InsInvoiceScanQueryResponse:
+        """
+        @summary 查询保险电子发票
+        
+        @param request: InsInvoiceScanQueryRequest
+        @return: InsInvoiceScanQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.InsInvoiceScanQueryHeaders()
         return await self.ins_invoice_scan_query_with_options_async(request, headers, runtime)
@@ -10517,6 +13137,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.InsureOrderApplyHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.InsureOrderApplyResponse:
+        """
+        @summary 保险订单申请
+        
+        @param request: InsureOrderApplyRequest
+        @param headers: InsureOrderApplyHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InsureOrderApplyResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.btrip_user_id):
@@ -10564,6 +13192,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.InsureOrderApplyHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.InsureOrderApplyResponse:
+        """
+        @summary 保险订单申请
+        
+        @param request: InsureOrderApplyRequest
+        @param headers: InsureOrderApplyHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InsureOrderApplyResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.btrip_user_id):
@@ -10609,6 +13245,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.InsureOrderApplyRequest,
     ) -> btrip_open_20220520_models.InsureOrderApplyResponse:
+        """
+        @summary 保险订单申请
+        
+        @param request: InsureOrderApplyRequest
+        @return: InsureOrderApplyResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.InsureOrderApplyHeaders()
         return self.insure_order_apply_with_options(request, headers, runtime)
@@ -10617,6 +13259,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.InsureOrderApplyRequest,
     ) -> btrip_open_20220520_models.InsureOrderApplyResponse:
+        """
+        @summary 保险订单申请
+        
+        @param request: InsureOrderApplyRequest
+        @return: InsureOrderApplyResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.InsureOrderApplyHeaders()
         return await self.insure_order_apply_with_options_async(request, headers, runtime)
@@ -10628,6 +13276,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.InsureOrderCancelHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.InsureOrderCancelResponse:
+        """
+        @summary 保险订单取消
+        
+        @param request: InsureOrderCancelRequest
+        @param headers: InsureOrderCancelHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InsureOrderCancelResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.btrip_user_id):
@@ -10670,6 +13326,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.InsureOrderCancelHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.InsureOrderCancelResponse:
+        """
+        @summary 保险订单取消
+        
+        @param request: InsureOrderCancelRequest
+        @param headers: InsureOrderCancelHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InsureOrderCancelResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.btrip_user_id):
@@ -10710,6 +13374,12 @@ class Client(OpenApiClient):
         ins_order_id: str,
         request: btrip_open_20220520_models.InsureOrderCancelRequest,
     ) -> btrip_open_20220520_models.InsureOrderCancelResponse:
+        """
+        @summary 保险订单取消
+        
+        @param request: InsureOrderCancelRequest
+        @return: InsureOrderCancelResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.InsureOrderCancelHeaders()
         return self.insure_order_cancel_with_options(ins_order_id, request, headers, runtime)
@@ -10719,6 +13389,12 @@ class Client(OpenApiClient):
         ins_order_id: str,
         request: btrip_open_20220520_models.InsureOrderCancelRequest,
     ) -> btrip_open_20220520_models.InsureOrderCancelResponse:
+        """
+        @summary 保险订单取消
+        
+        @param request: InsureOrderCancelRequest
+        @return: InsureOrderCancelResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.InsureOrderCancelHeaders()
         return await self.insure_order_cancel_with_options_async(ins_order_id, request, headers, runtime)
@@ -10729,6 +13405,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.InsureOrderCreateHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.InsureOrderCreateResponse:
+        """
+        @summary 保险订单创建
+        
+        @param tmp_req: InsureOrderCreateRequest
+        @param headers: InsureOrderCreateHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InsureOrderCreateResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.InsureOrderCreateShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -10786,6 +13470,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.InsureOrderCreateHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.InsureOrderCreateResponse:
+        """
+        @summary 保险订单创建
+        
+        @param tmp_req: InsureOrderCreateRequest
+        @param headers: InsureOrderCreateHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InsureOrderCreateResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.InsureOrderCreateShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -10841,6 +13533,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.InsureOrderCreateRequest,
     ) -> btrip_open_20220520_models.InsureOrderCreateResponse:
+        """
+        @summary 保险订单创建
+        
+        @param request: InsureOrderCreateRequest
+        @return: InsureOrderCreateResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.InsureOrderCreateHeaders()
         return self.insure_order_create_with_options(request, headers, runtime)
@@ -10849,6 +13547,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.InsureOrderCreateRequest,
     ) -> btrip_open_20220520_models.InsureOrderCreateResponse:
+        """
+        @summary 保险订单创建
+        
+        @param request: InsureOrderCreateRequest
+        @return: InsureOrderCreateResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.InsureOrderCreateHeaders()
         return await self.insure_order_create_with_options_async(request, headers, runtime)
@@ -10859,6 +13563,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.InsureOrderDetailHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.InsureOrderDetailResponse:
+        """
+        @summary 保险订单查询
+        
+        @param request: InsureOrderDetailRequest
+        @param headers: InsureOrderDetailHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InsureOrderDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.btrip_user_id):
@@ -10902,6 +13614,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.InsureOrderDetailHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.InsureOrderDetailResponse:
+        """
+        @summary 保险订单查询
+        
+        @param request: InsureOrderDetailRequest
+        @param headers: InsureOrderDetailHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InsureOrderDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.btrip_user_id):
@@ -10943,6 +13663,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.InsureOrderDetailRequest,
     ) -> btrip_open_20220520_models.InsureOrderDetailResponse:
+        """
+        @summary 保险订单查询
+        
+        @param request: InsureOrderDetailRequest
+        @return: InsureOrderDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.InsureOrderDetailHeaders()
         return self.insure_order_detail_with_options(request, headers, runtime)
@@ -10951,6 +13677,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.InsureOrderDetailRequest,
     ) -> btrip_open_20220520_models.InsureOrderDetailResponse:
+        """
+        @summary 保险订单查询
+        
+        @param request: InsureOrderDetailRequest
+        @return: InsureOrderDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.InsureOrderDetailHeaders()
         return await self.insure_order_detail_with_options_async(request, headers, runtime)
@@ -10962,6 +13694,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.InsureOrderPayHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.InsureOrderPayResponse:
+        """
+        @summary 保险订单支付
+        
+        @param request: InsureOrderPayRequest
+        @param headers: InsureOrderPayHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InsureOrderPayResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.btrip_user_id):
@@ -11010,6 +13750,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.InsureOrderPayHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.InsureOrderPayResponse:
+        """
+        @summary 保险订单支付
+        
+        @param request: InsureOrderPayRequest
+        @param headers: InsureOrderPayHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InsureOrderPayResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.btrip_user_id):
@@ -11056,6 +13804,12 @@ class Client(OpenApiClient):
         ins_order_id: str,
         request: btrip_open_20220520_models.InsureOrderPayRequest,
     ) -> btrip_open_20220520_models.InsureOrderPayResponse:
+        """
+        @summary 保险订单支付
+        
+        @param request: InsureOrderPayRequest
+        @return: InsureOrderPayResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.InsureOrderPayHeaders()
         return self.insure_order_pay_with_options(ins_order_id, request, headers, runtime)
@@ -11065,6 +13819,12 @@ class Client(OpenApiClient):
         ins_order_id: str,
         request: btrip_open_20220520_models.InsureOrderPayRequest,
     ) -> btrip_open_20220520_models.InsureOrderPayResponse:
+        """
+        @summary 保险订单支付
+        
+        @param request: InsureOrderPayRequest
+        @return: InsureOrderPayResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.InsureOrderPayHeaders()
         return await self.insure_order_pay_with_options_async(ins_order_id, request, headers, runtime)
@@ -11076,6 +13836,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.InsureOrderRefundHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.InsureOrderRefundResponse:
+        """
+        @summary 保险订单退保
+        
+        @param tmp_req: InsureOrderRefundRequest
+        @param headers: InsureOrderRefundHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InsureOrderRefundResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.InsureOrderRefundShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -11130,6 +13898,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.InsureOrderRefundHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.InsureOrderRefundResponse:
+        """
+        @summary 保险订单退保
+        
+        @param tmp_req: InsureOrderRefundRequest
+        @param headers: InsureOrderRefundHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InsureOrderRefundResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.InsureOrderRefundShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -11182,6 +13958,12 @@ class Client(OpenApiClient):
         ins_order_id: str,
         request: btrip_open_20220520_models.InsureOrderRefundRequest,
     ) -> btrip_open_20220520_models.InsureOrderRefundResponse:
+        """
+        @summary 保险订单退保
+        
+        @param request: InsureOrderRefundRequest
+        @return: InsureOrderRefundResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.InsureOrderRefundHeaders()
         return self.insure_order_refund_with_options(ins_order_id, request, headers, runtime)
@@ -11191,6 +13973,12 @@ class Client(OpenApiClient):
         ins_order_id: str,
         request: btrip_open_20220520_models.InsureOrderRefundRequest,
     ) -> btrip_open_20220520_models.InsureOrderRefundResponse:
+        """
+        @summary 保险订单退保
+        
+        @param request: InsureOrderRefundRequest
+        @return: InsureOrderRefundResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.InsureOrderRefundHeaders()
         return await self.insure_order_refund_with_options_async(ins_order_id, request, headers, runtime)
@@ -11201,6 +13989,13 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.InsureOrderUrlDetailHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.InsureOrderUrlDetailResponse:
+        """
+        @summary 查询保单详情链接
+        
+        @param headers: InsureOrderUrlDetailHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InsureOrderUrlDetailResponse
+        """
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -11231,6 +14026,13 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.InsureOrderUrlDetailHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.InsureOrderUrlDetailResponse:
+        """
+        @summary 查询保单详情链接
+        
+        @param headers: InsureOrderUrlDetailHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InsureOrderUrlDetailResponse
+        """
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -11259,6 +14061,11 @@ class Client(OpenApiClient):
         self,
         ins_order_id: str,
     ) -> btrip_open_20220520_models.InsureOrderUrlDetailResponse:
+        """
+        @summary 查询保单详情链接
+        
+        @return: InsureOrderUrlDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.InsureOrderUrlDetailHeaders()
         return self.insure_order_url_detail_with_options(ins_order_id, headers, runtime)
@@ -11267,6 +14074,11 @@ class Client(OpenApiClient):
         self,
         ins_order_id: str,
     ) -> btrip_open_20220520_models.InsureOrderUrlDetailResponse:
+        """
+        @summary 查询保单详情链接
+        
+        @return: InsureOrderUrlDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.InsureOrderUrlDetailHeaders()
         return await self.insure_order_url_detail_with_options_async(ins_order_id, headers, runtime)
@@ -11277,6 +14089,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.InsureRefundDetailHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.InsureRefundDetailResponse:
+        """
+        @summary 退保详情查询
+        
+        @param request: InsureRefundDetailRequest
+        @param headers: InsureRefundDetailHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InsureRefundDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.apply_id):
@@ -11324,6 +14144,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.InsureRefundDetailHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.InsureRefundDetailResponse:
+        """
+        @summary 退保详情查询
+        
+        @param request: InsureRefundDetailRequest
+        @param headers: InsureRefundDetailHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InsureRefundDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.apply_id):
@@ -11369,6 +14197,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.InsureRefundDetailRequest,
     ) -> btrip_open_20220520_models.InsureRefundDetailResponse:
+        """
+        @summary 退保详情查询
+        
+        @param request: InsureRefundDetailRequest
+        @return: InsureRefundDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.InsureRefundDetailHeaders()
         return self.insure_refund_detail_with_options(request, headers, runtime)
@@ -11377,6 +14211,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.InsureRefundDetailRequest,
     ) -> btrip_open_20220520_models.InsureRefundDetailResponse:
+        """
+        @summary 退保详情查询
+        
+        @param request: InsureRefundDetailRequest
+        @return: InsureRefundDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.InsureRefundDetailHeaders()
         return await self.insure_refund_detail_with_options_async(request, headers, runtime)
@@ -11387,6 +14227,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.IntlFlightCreateOrderHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.IntlFlightCreateOrderResponse:
+        """
+        @summary 国际机票创建订单
+        
+        @param tmp_req: IntlFlightCreateOrderRequest
+        @param headers: IntlFlightCreateOrderHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: IntlFlightCreateOrderResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.IntlFlightCreateOrderShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -11458,6 +14306,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.IntlFlightCreateOrderHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.IntlFlightCreateOrderResponse:
+        """
+        @summary 国际机票创建订单
+        
+        @param tmp_req: IntlFlightCreateOrderRequest
+        @param headers: IntlFlightCreateOrderHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: IntlFlightCreateOrderResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.IntlFlightCreateOrderShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -11527,6 +14383,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.IntlFlightCreateOrderRequest,
     ) -> btrip_open_20220520_models.IntlFlightCreateOrderResponse:
+        """
+        @summary 国际机票创建订单
+        
+        @param request: IntlFlightCreateOrderRequest
+        @return: IntlFlightCreateOrderResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.IntlFlightCreateOrderHeaders()
         return self.intl_flight_create_order_with_options(request, headers, runtime)
@@ -11535,6 +14397,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.IntlFlightCreateOrderRequest,
     ) -> btrip_open_20220520_models.IntlFlightCreateOrderResponse:
+        """
+        @summary 国际机票创建订单
+        
+        @param request: IntlFlightCreateOrderRequest
+        @return: IntlFlightCreateOrderResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.IntlFlightCreateOrderHeaders()
         return await self.intl_flight_create_order_with_options_async(request, headers, runtime)
@@ -11545,6 +14413,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.IntlFlightInventoryPriceCheckHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.IntlFlightInventoryPriceCheckResponse:
+        """
+        @summary 国际机票验舱验价
+        
+        @param tmp_req: IntlFlightInventoryPriceCheckRequest
+        @param headers: IntlFlightInventoryPriceCheckHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: IntlFlightInventoryPriceCheckResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.IntlFlightInventoryPriceCheckShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -11596,6 +14472,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.IntlFlightInventoryPriceCheckHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.IntlFlightInventoryPriceCheckResponse:
+        """
+        @summary 国际机票验舱验价
+        
+        @param tmp_req: IntlFlightInventoryPriceCheckRequest
+        @param headers: IntlFlightInventoryPriceCheckHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: IntlFlightInventoryPriceCheckResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.IntlFlightInventoryPriceCheckShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -11645,6 +14529,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.IntlFlightInventoryPriceCheckRequest,
     ) -> btrip_open_20220520_models.IntlFlightInventoryPriceCheckResponse:
+        """
+        @summary 国际机票验舱验价
+        
+        @param request: IntlFlightInventoryPriceCheckRequest
+        @return: IntlFlightInventoryPriceCheckResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.IntlFlightInventoryPriceCheckHeaders()
         return self.intl_flight_inventory_price_check_with_options(request, headers, runtime)
@@ -11653,6 +14543,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.IntlFlightInventoryPriceCheckRequest,
     ) -> btrip_open_20220520_models.IntlFlightInventoryPriceCheckResponse:
+        """
+        @summary 国际机票验舱验价
+        
+        @param request: IntlFlightInventoryPriceCheckRequest
+        @return: IntlFlightInventoryPriceCheckResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.IntlFlightInventoryPriceCheckHeaders()
         return await self.intl_flight_inventory_price_check_with_options_async(request, headers, runtime)
@@ -11663,6 +14559,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.IntlFlightListingSearchHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.IntlFlightListingSearchResponse:
+        """
+        @summary 国际机票航班搜索
+        
+        @param tmp_req: IntlFlightListingSearchRequest
+        @param headers: IntlFlightListingSearchHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: IntlFlightListingSearchResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.IntlFlightListingSearchShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -11732,6 +14636,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.IntlFlightListingSearchHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.IntlFlightListingSearchResponse:
+        """
+        @summary 国际机票航班搜索
+        
+        @param tmp_req: IntlFlightListingSearchRequest
+        @param headers: IntlFlightListingSearchHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: IntlFlightListingSearchResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.IntlFlightListingSearchShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -11799,6 +14711,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.IntlFlightListingSearchRequest,
     ) -> btrip_open_20220520_models.IntlFlightListingSearchResponse:
+        """
+        @summary 国际机票航班搜索
+        
+        @param request: IntlFlightListingSearchRequest
+        @return: IntlFlightListingSearchResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.IntlFlightListingSearchHeaders()
         return self.intl_flight_listing_search_with_options(request, headers, runtime)
@@ -11807,6 +14725,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.IntlFlightListingSearchRequest,
     ) -> btrip_open_20220520_models.IntlFlightListingSearchResponse:
+        """
+        @summary 国际机票航班搜索
+        
+        @param request: IntlFlightListingSearchRequest
+        @return: IntlFlightListingSearchResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.IntlFlightListingSearchHeaders()
         return await self.intl_flight_listing_search_with_options_async(request, headers, runtime)
@@ -11817,6 +14741,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.IntlFlightOrderCancelHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.IntlFlightOrderCancelResponse:
+        """
+        @summary 国际机票订单取消
+        
+        @param request: IntlFlightOrderCancelRequest
+        @param headers: IntlFlightOrderCancelHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: IntlFlightOrderCancelResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.isv_name):
@@ -11858,6 +14790,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.IntlFlightOrderCancelHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.IntlFlightOrderCancelResponse:
+        """
+        @summary 国际机票订单取消
+        
+        @param request: IntlFlightOrderCancelRequest
+        @param headers: IntlFlightOrderCancelHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: IntlFlightOrderCancelResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.isv_name):
@@ -11897,6 +14837,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.IntlFlightOrderCancelRequest,
     ) -> btrip_open_20220520_models.IntlFlightOrderCancelResponse:
+        """
+        @summary 国际机票订单取消
+        
+        @param request: IntlFlightOrderCancelRequest
+        @return: IntlFlightOrderCancelResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.IntlFlightOrderCancelHeaders()
         return self.intl_flight_order_cancel_with_options(request, headers, runtime)
@@ -11905,6 +14851,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.IntlFlightOrderCancelRequest,
     ) -> btrip_open_20220520_models.IntlFlightOrderCancelResponse:
+        """
+        @summary 国际机票订单取消
+        
+        @param request: IntlFlightOrderCancelRequest
+        @return: IntlFlightOrderCancelResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.IntlFlightOrderCancelHeaders()
         return await self.intl_flight_order_cancel_with_options_async(request, headers, runtime)
@@ -11915,6 +14867,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.IntlFlightOrderDetailHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.IntlFlightOrderDetailResponse:
+        """
+        @summary 国际机票订单详情
+        
+        @param request: IntlFlightOrderDetailRequest
+        @param headers: IntlFlightOrderDetailHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: IntlFlightOrderDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.isv_name):
@@ -11954,6 +14914,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.IntlFlightOrderDetailHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.IntlFlightOrderDetailResponse:
+        """
+        @summary 国际机票订单详情
+        
+        @param request: IntlFlightOrderDetailRequest
+        @param headers: IntlFlightOrderDetailHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: IntlFlightOrderDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.isv_name):
@@ -11991,6 +14959,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.IntlFlightOrderDetailRequest,
     ) -> btrip_open_20220520_models.IntlFlightOrderDetailResponse:
+        """
+        @summary 国际机票订单详情
+        
+        @param request: IntlFlightOrderDetailRequest
+        @return: IntlFlightOrderDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.IntlFlightOrderDetailHeaders()
         return self.intl_flight_order_detail_with_options(request, headers, runtime)
@@ -11999,6 +14973,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.IntlFlightOrderDetailRequest,
     ) -> btrip_open_20220520_models.IntlFlightOrderDetailResponse:
+        """
+        @summary 国际机票订单详情
+        
+        @param request: IntlFlightOrderDetailRequest
+        @return: IntlFlightOrderDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.IntlFlightOrderDetailHeaders()
         return await self.intl_flight_order_detail_with_options_async(request, headers, runtime)
@@ -12009,6 +14989,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.IntlFlightOrderPayHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.IntlFlightOrderPayResponse:
+        """
+        @summary 国际机票订单支付
+        
+        @param tmp_req: IntlFlightOrderPayRequest
+        @param headers: IntlFlightOrderPayHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: IntlFlightOrderPayResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.IntlFlightOrderPayShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -12056,6 +15044,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.IntlFlightOrderPayHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.IntlFlightOrderPayResponse:
+        """
+        @summary 国际机票订单支付
+        
+        @param tmp_req: IntlFlightOrderPayRequest
+        @param headers: IntlFlightOrderPayHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: IntlFlightOrderPayResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.IntlFlightOrderPayShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -12101,6 +15097,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.IntlFlightOrderPayRequest,
     ) -> btrip_open_20220520_models.IntlFlightOrderPayResponse:
+        """
+        @summary 国际机票订单支付
+        
+        @param request: IntlFlightOrderPayRequest
+        @return: IntlFlightOrderPayResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.IntlFlightOrderPayHeaders()
         return self.intl_flight_order_pay_with_options(request, headers, runtime)
@@ -12109,6 +15111,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.IntlFlightOrderPayRequest,
     ) -> btrip_open_20220520_models.IntlFlightOrderPayResponse:
+        """
+        @summary 国际机票订单支付
+        
+        @param request: IntlFlightOrderPayRequest
+        @return: IntlFlightOrderPayResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.IntlFlightOrderPayHeaders()
         return await self.intl_flight_order_pay_with_options_async(request, headers, runtime)
@@ -12119,6 +15127,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.IntlFlightOrderPayCheckHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.IntlFlightOrderPayCheckResponse:
+        """
+        @summary 国际机票订单支付前校验
+        
+        @param request: IntlFlightOrderPayCheckRequest
+        @param headers: IntlFlightOrderPayCheckHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: IntlFlightOrderPayCheckResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.isv_name):
@@ -12158,6 +15174,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.IntlFlightOrderPayCheckHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.IntlFlightOrderPayCheckResponse:
+        """
+        @summary 国际机票订单支付前校验
+        
+        @param request: IntlFlightOrderPayCheckRequest
+        @param headers: IntlFlightOrderPayCheckHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: IntlFlightOrderPayCheckResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.isv_name):
@@ -12195,6 +15219,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.IntlFlightOrderPayCheckRequest,
     ) -> btrip_open_20220520_models.IntlFlightOrderPayCheckResponse:
+        """
+        @summary 国际机票订单支付前校验
+        
+        @param request: IntlFlightOrderPayCheckRequest
+        @return: IntlFlightOrderPayCheckResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.IntlFlightOrderPayCheckHeaders()
         return self.intl_flight_order_pay_check_with_options(request, headers, runtime)
@@ -12203,6 +15233,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.IntlFlightOrderPayCheckRequest,
     ) -> btrip_open_20220520_models.IntlFlightOrderPayCheckResponse:
+        """
+        @summary 国际机票订单支付前校验
+        
+        @param request: IntlFlightOrderPayCheckRequest
+        @return: IntlFlightOrderPayCheckResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.IntlFlightOrderPayCheckHeaders()
         return await self.intl_flight_order_pay_check_with_options_async(request, headers, runtime)
@@ -12214,6 +15250,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.IntlFlightOtaItemDetailHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.IntlFlightOtaItemDetailResponse:
+        """
+        @summary 国际机票报价商品详情
+        
+        @param request: IntlFlightOtaItemDetailRequest
+        @param headers: IntlFlightOtaItemDetailHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: IntlFlightOtaItemDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.btrip_user_id):
@@ -12258,6 +15302,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.IntlFlightOtaItemDetailHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.IntlFlightOtaItemDetailResponse:
+        """
+        @summary 国际机票报价商品详情
+        
+        @param request: IntlFlightOtaItemDetailRequest
+        @param headers: IntlFlightOtaItemDetailHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: IntlFlightOtaItemDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.btrip_user_id):
@@ -12300,6 +15352,12 @@ class Client(OpenApiClient):
         ota_item_id: str,
         request: btrip_open_20220520_models.IntlFlightOtaItemDetailRequest,
     ) -> btrip_open_20220520_models.IntlFlightOtaItemDetailResponse:
+        """
+        @summary 国际机票报价商品详情
+        
+        @param request: IntlFlightOtaItemDetailRequest
+        @return: IntlFlightOtaItemDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.IntlFlightOtaItemDetailHeaders()
         return self.intl_flight_ota_item_detail_with_options(ota_item_id, request, headers, runtime)
@@ -12309,6 +15367,12 @@ class Client(OpenApiClient):
         ota_item_id: str,
         request: btrip_open_20220520_models.IntlFlightOtaItemDetailRequest,
     ) -> btrip_open_20220520_models.IntlFlightOtaItemDetailResponse:
+        """
+        @summary 国际机票报价商品详情
+        
+        @param request: IntlFlightOtaItemDetailRequest
+        @return: IntlFlightOtaItemDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.IntlFlightOtaItemDetailHeaders()
         return await self.intl_flight_ota_item_detail_with_options_async(ota_item_id, request, headers, runtime)
@@ -12319,6 +15383,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.IntlFlightOtaSearchHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.IntlFlightOtaSearchResponse:
+        """
+        @summary 国际机票航班报价查询
+        
+        @param tmp_req: IntlFlightOtaSearchRequest
+        @param headers: IntlFlightOtaSearchHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: IntlFlightOtaSearchResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.IntlFlightOtaSearchShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -12380,6 +15452,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.IntlFlightOtaSearchHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.IntlFlightOtaSearchResponse:
+        """
+        @summary 国际机票航班报价查询
+        
+        @param tmp_req: IntlFlightOtaSearchRequest
+        @param headers: IntlFlightOtaSearchHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: IntlFlightOtaSearchResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.IntlFlightOtaSearchShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -12439,6 +15519,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.IntlFlightOtaSearchRequest,
     ) -> btrip_open_20220520_models.IntlFlightOtaSearchResponse:
+        """
+        @summary 国际机票航班报价查询
+        
+        @param request: IntlFlightOtaSearchRequest
+        @return: IntlFlightOtaSearchResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.IntlFlightOtaSearchHeaders()
         return self.intl_flight_ota_search_with_options(request, headers, runtime)
@@ -12447,6 +15533,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.IntlFlightOtaSearchRequest,
     ) -> btrip_open_20220520_models.IntlFlightOtaSearchResponse:
+        """
+        @summary 国际机票航班报价查询
+        
+        @param request: IntlFlightOtaSearchRequest
+        @return: IntlFlightOtaSearchResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.IntlFlightOtaSearchHeaders()
         return await self.intl_flight_ota_search_with_options_async(request, headers, runtime)
@@ -12458,6 +15550,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.IntlFlightSegmentAvailableCertHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.IntlFlightSegmentAvailableCertResponse:
+        """
+        @summary 国际机票航班可用证件查询
+        
+        @param request: IntlFlightSegmentAvailableCertRequest
+        @param headers: IntlFlightSegmentAvailableCertHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: IntlFlightSegmentAvailableCertResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.isv_name):
@@ -12500,6 +15600,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.IntlFlightSegmentAvailableCertHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.IntlFlightSegmentAvailableCertResponse:
+        """
+        @summary 国际机票航班可用证件查询
+        
+        @param request: IntlFlightSegmentAvailableCertRequest
+        @param headers: IntlFlightSegmentAvailableCertHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: IntlFlightSegmentAvailableCertResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.isv_name):
@@ -12540,6 +15648,12 @@ class Client(OpenApiClient):
         ota_item_id: str,
         request: btrip_open_20220520_models.IntlFlightSegmentAvailableCertRequest,
     ) -> btrip_open_20220520_models.IntlFlightSegmentAvailableCertResponse:
+        """
+        @summary 国际机票航班可用证件查询
+        
+        @param request: IntlFlightSegmentAvailableCertRequest
+        @return: IntlFlightSegmentAvailableCertResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.IntlFlightSegmentAvailableCertHeaders()
         return self.intl_flight_segment_available_cert_with_options(ota_item_id, request, headers, runtime)
@@ -12549,6 +15663,12 @@ class Client(OpenApiClient):
         ota_item_id: str,
         request: btrip_open_20220520_models.IntlFlightSegmentAvailableCertRequest,
     ) -> btrip_open_20220520_models.IntlFlightSegmentAvailableCertResponse:
+        """
+        @summary 国际机票航班可用证件查询
+        
+        @param request: IntlFlightSegmentAvailableCertRequest
+        @return: IntlFlightSegmentAvailableCertResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.IntlFlightSegmentAvailableCertHeaders()
         return await self.intl_flight_segment_available_cert_with_options_async(ota_item_id, request, headers, runtime)
@@ -12559,6 +15679,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.InvoiceAddHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.InvoiceAddResponse:
+        """
+        @summary 新增发票配置
+        
+        @param request: InvoiceAddRequest
+        @param headers: InvoiceAddHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InvoiceAddResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.address):
@@ -12610,6 +15738,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.InvoiceAddHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.InvoiceAddResponse:
+        """
+        @summary 新增发票配置
+        
+        @param request: InvoiceAddRequest
+        @param headers: InvoiceAddHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InvoiceAddResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.address):
@@ -12659,6 +15795,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.InvoiceAddRequest,
     ) -> btrip_open_20220520_models.InvoiceAddResponse:
+        """
+        @summary 新增发票配置
+        
+        @param request: InvoiceAddRequest
+        @return: InvoiceAddResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.InvoiceAddHeaders()
         return self.invoice_add_with_options(request, headers, runtime)
@@ -12667,6 +15809,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.InvoiceAddRequest,
     ) -> btrip_open_20220520_models.InvoiceAddResponse:
+        """
+        @summary 新增发票配置
+        
+        @param request: InvoiceAddRequest
+        @return: InvoiceAddResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.InvoiceAddHeaders()
         return await self.invoice_add_with_options_async(request, headers, runtime)
@@ -12677,6 +15825,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.InvoiceDeleteHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.InvoiceDeleteResponse:
+        """
+        @summary 删除发票抬头
+        
+        @param request: InvoiceDeleteRequest
+        @param headers: InvoiceDeleteHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InvoiceDeleteResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.third_part_id):
@@ -12712,6 +15868,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.InvoiceDeleteHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.InvoiceDeleteResponse:
+        """
+        @summary 删除发票抬头
+        
+        @param request: InvoiceDeleteRequest
+        @param headers: InvoiceDeleteHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InvoiceDeleteResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.third_part_id):
@@ -12745,6 +15909,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.InvoiceDeleteRequest,
     ) -> btrip_open_20220520_models.InvoiceDeleteResponse:
+        """
+        @summary 删除发票抬头
+        
+        @param request: InvoiceDeleteRequest
+        @return: InvoiceDeleteResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.InvoiceDeleteHeaders()
         return self.invoice_delete_with_options(request, headers, runtime)
@@ -12753,6 +15923,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.InvoiceDeleteRequest,
     ) -> btrip_open_20220520_models.InvoiceDeleteResponse:
+        """
+        @summary 删除发票抬头
+        
+        @param request: InvoiceDeleteRequest
+        @return: InvoiceDeleteResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.InvoiceDeleteHeaders()
         return await self.invoice_delete_with_options_async(request, headers, runtime)
@@ -12763,6 +15939,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.InvoiceModifyHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.InvoiceModifyResponse:
+        """
+        @summary 修改发票配置
+        
+        @param request: InvoiceModifyRequest
+        @param headers: InvoiceModifyHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InvoiceModifyResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.address):
@@ -12814,6 +15998,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.InvoiceModifyHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.InvoiceModifyResponse:
+        """
+        @summary 修改发票配置
+        
+        @param request: InvoiceModifyRequest
+        @param headers: InvoiceModifyHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InvoiceModifyResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.address):
@@ -12863,6 +16055,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.InvoiceModifyRequest,
     ) -> btrip_open_20220520_models.InvoiceModifyResponse:
+        """
+        @summary 修改发票配置
+        
+        @param request: InvoiceModifyRequest
+        @return: InvoiceModifyResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.InvoiceModifyHeaders()
         return self.invoice_modify_with_options(request, headers, runtime)
@@ -12871,6 +16069,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.InvoiceModifyRequest,
     ) -> btrip_open_20220520_models.InvoiceModifyResponse:
+        """
+        @summary 修改发票配置
+        
+        @param request: InvoiceModifyRequest
+        @return: InvoiceModifyResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.InvoiceModifyHeaders()
         return await self.invoice_modify_with_options_async(request, headers, runtime)
@@ -12881,6 +16085,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.InvoiceRuleAddHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.InvoiceRuleAddResponse:
+        """
+        @summary 新增发票抬头可用员工
+        
+        @param tmp_req: InvoiceRuleAddRequest
+        @param headers: InvoiceRuleAddHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InvoiceRuleAddResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.InvoiceRuleAddShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -12922,6 +16134,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.InvoiceRuleAddHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.InvoiceRuleAddResponse:
+        """
+        @summary 新增发票抬头可用员工
+        
+        @param tmp_req: InvoiceRuleAddRequest
+        @param headers: InvoiceRuleAddHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InvoiceRuleAddResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.InvoiceRuleAddShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -12961,6 +16181,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.InvoiceRuleAddRequest,
     ) -> btrip_open_20220520_models.InvoiceRuleAddResponse:
+        """
+        @summary 新增发票抬头可用员工
+        
+        @param request: InvoiceRuleAddRequest
+        @return: InvoiceRuleAddResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.InvoiceRuleAddHeaders()
         return self.invoice_rule_add_with_options(request, headers, runtime)
@@ -12969,6 +16195,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.InvoiceRuleAddRequest,
     ) -> btrip_open_20220520_models.InvoiceRuleAddResponse:
+        """
+        @summary 新增发票抬头可用员工
+        
+        @param request: InvoiceRuleAddRequest
+        @return: InvoiceRuleAddResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.InvoiceRuleAddHeaders()
         return await self.invoice_rule_add_with_options_async(request, headers, runtime)
@@ -12979,6 +16211,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.InvoiceRuleDeleteHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.InvoiceRuleDeleteResponse:
+        """
+        @summary 删除发票抬头可用员工
+        
+        @param tmp_req: InvoiceRuleDeleteRequest
+        @param headers: InvoiceRuleDeleteHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InvoiceRuleDeleteResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.InvoiceRuleDeleteShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -13022,6 +16262,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.InvoiceRuleDeleteHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.InvoiceRuleDeleteResponse:
+        """
+        @summary 删除发票抬头可用员工
+        
+        @param tmp_req: InvoiceRuleDeleteRequest
+        @param headers: InvoiceRuleDeleteHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InvoiceRuleDeleteResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.InvoiceRuleDeleteShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -13063,6 +16311,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.InvoiceRuleDeleteRequest,
     ) -> btrip_open_20220520_models.InvoiceRuleDeleteResponse:
+        """
+        @summary 删除发票抬头可用员工
+        
+        @param request: InvoiceRuleDeleteRequest
+        @return: InvoiceRuleDeleteResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.InvoiceRuleDeleteHeaders()
         return self.invoice_rule_delete_with_options(request, headers, runtime)
@@ -13071,6 +16325,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.InvoiceRuleDeleteRequest,
     ) -> btrip_open_20220520_models.InvoiceRuleDeleteResponse:
+        """
+        @summary 删除发票抬头可用员工
+        
+        @param request: InvoiceRuleDeleteRequest
+        @return: InvoiceRuleDeleteResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.InvoiceRuleDeleteHeaders()
         return await self.invoice_rule_delete_with_options_async(request, headers, runtime)
@@ -13081,6 +16341,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.InvoiceRuleSaveHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.InvoiceRuleSaveResponse:
+        """
+        @summary 保存发票规则
+        
+        @param tmp_req: InvoiceRuleSaveRequest
+        @param headers: InvoiceRuleSaveHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InvoiceRuleSaveResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.InvoiceRuleSaveShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -13126,6 +16394,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.InvoiceRuleSaveHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.InvoiceRuleSaveResponse:
+        """
+        @summary 保存发票规则
+        
+        @param tmp_req: InvoiceRuleSaveRequest
+        @param headers: InvoiceRuleSaveHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InvoiceRuleSaveResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.InvoiceRuleSaveShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -13169,6 +16445,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.InvoiceRuleSaveRequest,
     ) -> btrip_open_20220520_models.InvoiceRuleSaveResponse:
+        """
+        @summary 保存发票规则
+        
+        @param request: InvoiceRuleSaveRequest
+        @return: InvoiceRuleSaveResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.InvoiceRuleSaveHeaders()
         return self.invoice_rule_save_with_options(request, headers, runtime)
@@ -13177,6 +16459,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.InvoiceRuleSaveRequest,
     ) -> btrip_open_20220520_models.InvoiceRuleSaveResponse:
+        """
+        @summary 保存发票规则
+        
+        @param request: InvoiceRuleSaveRequest
+        @return: InvoiceRuleSaveResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.InvoiceRuleSaveHeaders()
         return await self.invoice_rule_save_with_options_async(request, headers, runtime)
@@ -13187,6 +16475,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.InvoiceSearchHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.InvoiceSearchResponse:
+        """
+        @summary 搜索用户可用发票抬头
+        
+        @param request: InvoiceSearchRequest
+        @param headers: InvoiceSearchHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InvoiceSearchResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.third_part_id):
@@ -13226,6 +16522,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.InvoiceSearchHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.InvoiceSearchResponse:
+        """
+        @summary 搜索用户可用发票抬头
+        
+        @param request: InvoiceSearchRequest
+        @param headers: InvoiceSearchHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InvoiceSearchResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.third_part_id):
@@ -13263,6 +16567,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.InvoiceSearchRequest,
     ) -> btrip_open_20220520_models.InvoiceSearchResponse:
+        """
+        @summary 搜索用户可用发票抬头
+        
+        @param request: InvoiceSearchRequest
+        @return: InvoiceSearchResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.InvoiceSearchHeaders()
         return self.invoice_search_with_options(request, headers, runtime)
@@ -13271,6 +16581,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.InvoiceSearchRequest,
     ) -> btrip_open_20220520_models.InvoiceSearchResponse:
+        """
+        @summary 搜索用户可用发票抬头
+        
+        @param request: InvoiceSearchRequest
+        @return: InvoiceSearchResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.InvoiceSearchHeaders()
         return await self.invoice_search_with_options_async(request, headers, runtime)
@@ -13281,6 +16597,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.IsvRuleSaveHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.IsvRuleSaveResponse:
+        """
+        @summary 员工特殊角色修改
+        
+        @param tmp_req: IsvRuleSaveRequest
+        @param headers: IsvRuleSaveHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: IsvRuleSaveResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.IsvRuleSaveShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -13330,6 +16654,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.IsvRuleSaveHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.IsvRuleSaveResponse:
+        """
+        @summary 员工特殊角色修改
+        
+        @param tmp_req: IsvRuleSaveRequest
+        @param headers: IsvRuleSaveHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: IsvRuleSaveResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.IsvRuleSaveShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -13377,6 +16709,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.IsvRuleSaveRequest,
     ) -> btrip_open_20220520_models.IsvRuleSaveResponse:
+        """
+        @summary 员工特殊角色修改
+        
+        @param request: IsvRuleSaveRequest
+        @return: IsvRuleSaveResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.IsvRuleSaveHeaders()
         return self.isv_rule_save_with_options(request, headers, runtime)
@@ -13385,6 +16723,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.IsvRuleSaveRequest,
     ) -> btrip_open_20220520_models.IsvRuleSaveResponse:
+        """
+        @summary 员工特殊角色修改
+        
+        @param request: IsvRuleSaveRequest
+        @return: IsvRuleSaveResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.IsvRuleSaveHeaders()
         return await self.isv_rule_save_with_options_async(request, headers, runtime)
@@ -13395,6 +16739,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.IsvUserSaveHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.IsvUserSaveResponse:
+        """
+        @summary 用户同步
+        
+        @param tmp_req: IsvUserSaveRequest
+        @param headers: IsvUserSaveHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: IsvUserSaveResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.IsvUserSaveShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -13434,6 +16786,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.IsvUserSaveHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.IsvUserSaveResponse:
+        """
+        @summary 用户同步
+        
+        @param tmp_req: IsvUserSaveRequest
+        @param headers: IsvUserSaveHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: IsvUserSaveResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.IsvUserSaveShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -13471,6 +16831,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.IsvUserSaveRequest,
     ) -> btrip_open_20220520_models.IsvUserSaveResponse:
+        """
+        @summary 用户同步
+        
+        @param request: IsvUserSaveRequest
+        @return: IsvUserSaveResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.IsvUserSaveHeaders()
         return self.isv_user_save_with_options(request, headers, runtime)
@@ -13479,6 +16845,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.IsvUserSaveRequest,
     ) -> btrip_open_20220520_models.IsvUserSaveResponse:
+        """
+        @summary 用户同步
+        
+        @param request: IsvUserSaveRequest
+        @return: IsvUserSaveResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.IsvUserSaveHeaders()
         return await self.isv_user_save_with_options_async(request, headers, runtime)
@@ -13489,6 +16861,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.MealBillSettlementQueryHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.MealBillSettlementQueryResponse:
+        """
+        @summary 查询因公用餐记账数据
+        
+        @param request: MealBillSettlementQueryRequest
+        @param headers: MealBillSettlementQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MealBillSettlementQueryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_no):
@@ -13530,6 +16910,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.MealBillSettlementQueryHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.MealBillSettlementQueryResponse:
+        """
+        @summary 查询因公用餐记账数据
+        
+        @param request: MealBillSettlementQueryRequest
+        @param headers: MealBillSettlementQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MealBillSettlementQueryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_no):
@@ -13569,6 +16957,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.MealBillSettlementQueryRequest,
     ) -> btrip_open_20220520_models.MealBillSettlementQueryResponse:
+        """
+        @summary 查询因公用餐记账数据
+        
+        @param request: MealBillSettlementQueryRequest
+        @return: MealBillSettlementQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.MealBillSettlementQueryHeaders()
         return self.meal_bill_settlement_query_with_options(request, headers, runtime)
@@ -13577,6 +16971,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.MealBillSettlementQueryRequest,
     ) -> btrip_open_20220520_models.MealBillSettlementQueryResponse:
+        """
+        @summary 查询因公用餐记账数据
+        
+        @param request: MealBillSettlementQueryRequest
+        @return: MealBillSettlementQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.MealBillSettlementQueryHeaders()
         return await self.meal_bill_settlement_query_with_options_async(request, headers, runtime)
@@ -13588,6 +16988,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.MealOrderDetailQueryHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.MealOrderDetailQueryResponse:
+        """
+        @summary 获取用餐订单详情
+        
+        @param request: MealOrderDetailQueryRequest
+        @param headers: MealOrderDetailQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MealOrderDetailQueryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.user_id):
@@ -13624,6 +17032,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.MealOrderDetailQueryHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.MealOrderDetailQueryResponse:
+        """
+        @summary 获取用餐订单详情
+        
+        @param request: MealOrderDetailQueryRequest
+        @param headers: MealOrderDetailQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MealOrderDetailQueryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.user_id):
@@ -13658,6 +17074,12 @@ class Client(OpenApiClient):
         order_id: str,
         request: btrip_open_20220520_models.MealOrderDetailQueryRequest,
     ) -> btrip_open_20220520_models.MealOrderDetailQueryResponse:
+        """
+        @summary 获取用餐订单详情
+        
+        @param request: MealOrderDetailQueryRequest
+        @return: MealOrderDetailQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.MealOrderDetailQueryHeaders()
         return self.meal_order_detail_query_with_options(order_id, request, headers, runtime)
@@ -13667,6 +17089,12 @@ class Client(OpenApiClient):
         order_id: str,
         request: btrip_open_20220520_models.MealOrderDetailQueryRequest,
     ) -> btrip_open_20220520_models.MealOrderDetailQueryResponse:
+        """
+        @summary 获取用餐订单详情
+        
+        @param request: MealOrderDetailQueryRequest
+        @return: MealOrderDetailQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.MealOrderDetailQueryHeaders()
         return await self.meal_order_detail_query_with_options_async(order_id, request, headers, runtime)
@@ -13677,6 +17105,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.MealOrderListQueryHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.MealOrderListQueryResponse:
+        """
+        @summary 获取用餐订单列表
+        
+        @param request: MealOrderListQueryRequest
+        @param headers: MealOrderListQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MealOrderListQueryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.user_id):
@@ -13712,6 +17148,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.MealOrderListQueryHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.MealOrderListQueryResponse:
+        """
+        @summary 获取用餐订单列表
+        
+        @param request: MealOrderListQueryRequest
+        @param headers: MealOrderListQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MealOrderListQueryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.user_id):
@@ -13745,6 +17189,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.MealOrderListQueryRequest,
     ) -> btrip_open_20220520_models.MealOrderListQueryResponse:
+        """
+        @summary 获取用餐订单列表
+        
+        @param request: MealOrderListQueryRequest
+        @return: MealOrderListQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.MealOrderListQueryHeaders()
         return self.meal_order_list_query_with_options(request, headers, runtime)
@@ -13753,6 +17203,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.MealOrderListQueryRequest,
     ) -> btrip_open_20220520_models.MealOrderListQueryResponse:
+        """
+        @summary 获取用餐订单列表
+        
+        @param request: MealOrderListQueryRequest
+        @return: MealOrderListQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.MealOrderListQueryHeaders()
         return await self.meal_order_list_query_with_options_async(request, headers, runtime)
@@ -13763,6 +17219,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.MonthBillConfirmHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.MonthBillConfirmResponse:
+        """
+        @summary 月账单确认
+        
+        @param request: MonthBillConfirmRequest
+        @param headers: MonthBillConfirmHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MonthBillConfirmResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.mail_bill_date):
@@ -13800,6 +17264,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.MonthBillConfirmHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.MonthBillConfirmResponse:
+        """
+        @summary 月账单确认
+        
+        @param request: MonthBillConfirmRequest
+        @param headers: MonthBillConfirmHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MonthBillConfirmResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.mail_bill_date):
@@ -13835,6 +17307,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.MonthBillConfirmRequest,
     ) -> btrip_open_20220520_models.MonthBillConfirmResponse:
+        """
+        @summary 月账单确认
+        
+        @param request: MonthBillConfirmRequest
+        @return: MonthBillConfirmResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.MonthBillConfirmHeaders()
         return self.month_bill_confirm_with_options(request, headers, runtime)
@@ -13843,6 +17321,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.MonthBillConfirmRequest,
     ) -> btrip_open_20220520_models.MonthBillConfirmResponse:
+        """
+        @summary 月账单确认
+        
+        @param request: MonthBillConfirmRequest
+        @return: MonthBillConfirmResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.MonthBillConfirmHeaders()
         return await self.month_bill_confirm_with_options_async(request, headers, runtime)
@@ -13853,6 +17337,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.MonthBillGetHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.MonthBillGetResponse:
+        """
+        @summary 查询企业月账单
+        
+        @param request: MonthBillGetRequest
+        @param headers: MonthBillGetHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MonthBillGetResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.bill_month):
@@ -13888,6 +17380,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.MonthBillGetHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.MonthBillGetResponse:
+        """
+        @summary 查询企业月账单
+        
+        @param request: MonthBillGetRequest
+        @param headers: MonthBillGetHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MonthBillGetResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.bill_month):
@@ -13921,6 +17421,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.MonthBillGetRequest,
     ) -> btrip_open_20220520_models.MonthBillGetResponse:
+        """
+        @summary 查询企业月账单
+        
+        @param request: MonthBillGetRequest
+        @return: MonthBillGetResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.MonthBillGetHeaders()
         return self.month_bill_get_with_options(request, headers, runtime)
@@ -13929,6 +17435,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.MonthBillGetRequest,
     ) -> btrip_open_20220520_models.MonthBillGetResponse:
+        """
+        @summary 查询企业月账单
+        
+        @param request: MonthBillGetRequest
+        @return: MonthBillGetResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.MonthBillGetHeaders()
         return await self.month_bill_get_with_options_async(request, headers, runtime)
@@ -13939,6 +17451,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.ProjectAddHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.ProjectAddResponse:
+        """
+        @summary 添加项目
+        
+        @param request: ProjectAddRequest
+        @param headers: ProjectAddHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ProjectAddResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.code):
@@ -13982,6 +17502,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.ProjectAddHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.ProjectAddResponse:
+        """
+        @summary 添加项目
+        
+        @param request: ProjectAddRequest
+        @param headers: ProjectAddHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ProjectAddResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.code):
@@ -14023,6 +17551,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.ProjectAddRequest,
     ) -> btrip_open_20220520_models.ProjectAddResponse:
+        """
+        @summary 添加项目
+        
+        @param request: ProjectAddRequest
+        @return: ProjectAddResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.ProjectAddHeaders()
         return self.project_add_with_options(request, headers, runtime)
@@ -14031,6 +17565,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.ProjectAddRequest,
     ) -> btrip_open_20220520_models.ProjectAddResponse:
+        """
+        @summary 添加项目
+        
+        @param request: ProjectAddRequest
+        @return: ProjectAddResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.ProjectAddHeaders()
         return await self.project_add_with_options_async(request, headers, runtime)
@@ -14041,6 +17581,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.ProjectDeleteHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.ProjectDeleteResponse:
+        """
+        @summary 删除项目
+        
+        @param request: ProjectDeleteRequest
+        @param headers: ProjectDeleteHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ProjectDeleteResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.third_part_id):
@@ -14076,6 +17624,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.ProjectDeleteHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.ProjectDeleteResponse:
+        """
+        @summary 删除项目
+        
+        @param request: ProjectDeleteRequest
+        @param headers: ProjectDeleteHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ProjectDeleteResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.third_part_id):
@@ -14109,6 +17665,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.ProjectDeleteRequest,
     ) -> btrip_open_20220520_models.ProjectDeleteResponse:
+        """
+        @summary 删除项目
+        
+        @param request: ProjectDeleteRequest
+        @return: ProjectDeleteResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.ProjectDeleteHeaders()
         return self.project_delete_with_options(request, headers, runtime)
@@ -14117,6 +17679,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.ProjectDeleteRequest,
     ) -> btrip_open_20220520_models.ProjectDeleteResponse:
+        """
+        @summary 删除项目
+        
+        @param request: ProjectDeleteRequest
+        @return: ProjectDeleteResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.ProjectDeleteHeaders()
         return await self.project_delete_with_options_async(request, headers, runtime)
@@ -14127,6 +17695,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.ProjectModifyHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.ProjectModifyResponse:
+        """
+        @summary 变更项目
+        
+        @param request: ProjectModifyRequest
+        @param headers: ProjectModifyHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ProjectModifyResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.code):
@@ -14170,6 +17746,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.ProjectModifyHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.ProjectModifyResponse:
+        """
+        @summary 变更项目
+        
+        @param request: ProjectModifyRequest
+        @param headers: ProjectModifyHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ProjectModifyResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.code):
@@ -14211,6 +17795,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.ProjectModifyRequest,
     ) -> btrip_open_20220520_models.ProjectModifyResponse:
+        """
+        @summary 变更项目
+        
+        @param request: ProjectModifyRequest
+        @return: ProjectModifyResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.ProjectModifyHeaders()
         return self.project_modify_with_options(request, headers, runtime)
@@ -14219,6 +17809,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.ProjectModifyRequest,
     ) -> btrip_open_20220520_models.ProjectModifyResponse:
+        """
+        @summary 变更项目
+        
+        @param request: ProjectModifyRequest
+        @return: ProjectModifyResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.ProjectModifyHeaders()
         return await self.project_modify_with_options_async(request, headers, runtime)
@@ -14229,6 +17825,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.QueryReimbursementOrderHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.QueryReimbursementOrderResponse:
+        """
+        @summary 报销单查询
+        
+        @param request: QueryReimbursementOrderRequest
+        @param headers: QueryReimbursementOrderHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryReimbursementOrderResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.reimb_order_no):
@@ -14266,6 +17870,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.QueryReimbursementOrderHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.QueryReimbursementOrderResponse:
+        """
+        @summary 报销单查询
+        
+        @param request: QueryReimbursementOrderRequest
+        @param headers: QueryReimbursementOrderHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryReimbursementOrderResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.reimb_order_no):
@@ -14301,6 +17913,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.QueryReimbursementOrderRequest,
     ) -> btrip_open_20220520_models.QueryReimbursementOrderResponse:
+        """
+        @summary 报销单查询
+        
+        @param request: QueryReimbursementOrderRequest
+        @return: QueryReimbursementOrderResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.QueryReimbursementOrderHeaders()
         return self.query_reimbursement_order_with_options(request, headers, runtime)
@@ -14309,6 +17927,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.QueryReimbursementOrderRequest,
     ) -> btrip_open_20220520_models.QueryReimbursementOrderResponse:
+        """
+        @summary 报销单查询
+        
+        @param request: QueryReimbursementOrderRequest
+        @return: QueryReimbursementOrderResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.QueryReimbursementOrderHeaders()
         return await self.query_reimbursement_order_with_options_async(request, headers, runtime)
@@ -14319,6 +17943,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.SyncSingleUserHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.SyncSingleUserResponse:
+        """
+        @summary 单个人员同步
+        
+        @param tmp_req: SyncSingleUserRequest
+        @param headers: SyncSingleUserHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SyncSingleUserResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.SyncSingleUserShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -14378,6 +18010,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.SyncSingleUserHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.SyncSingleUserResponse:
+        """
+        @summary 单个人员同步
+        
+        @param tmp_req: SyncSingleUserRequest
+        @param headers: SyncSingleUserHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SyncSingleUserResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.SyncSingleUserShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -14435,6 +18075,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.SyncSingleUserRequest,
     ) -> btrip_open_20220520_models.SyncSingleUserResponse:
+        """
+        @summary 单个人员同步
+        
+        @param request: SyncSingleUserRequest
+        @return: SyncSingleUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.SyncSingleUserHeaders()
         return self.sync_single_user_with_options(request, headers, runtime)
@@ -14443,6 +18089,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.SyncSingleUserRequest,
     ) -> btrip_open_20220520_models.SyncSingleUserResponse:
+        """
+        @summary 单个人员同步
+        
+        @param request: SyncSingleUserRequest
+        @return: SyncSingleUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.SyncSingleUserHeaders()
         return await self.sync_single_user_with_options_async(request, headers, runtime)
@@ -14453,6 +18105,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.SyncThirdUserMappingHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.SyncThirdUserMappingResponse:
+        """
+        @summary 同步三方用户映射关系
+        
+        @param request: SyncThirdUserMappingRequest
+        @param headers: SyncThirdUserMappingHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SyncThirdUserMappingResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.status):
@@ -14494,6 +18154,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.SyncThirdUserMappingHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.SyncThirdUserMappingResponse:
+        """
+        @summary 同步三方用户映射关系
+        
+        @param request: SyncThirdUserMappingRequest
+        @param headers: SyncThirdUserMappingHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SyncThirdUserMappingResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.status):
@@ -14533,6 +18201,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.SyncThirdUserMappingRequest,
     ) -> btrip_open_20220520_models.SyncThirdUserMappingResponse:
+        """
+        @summary 同步三方用户映射关系
+        
+        @param request: SyncThirdUserMappingRequest
+        @return: SyncThirdUserMappingResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.SyncThirdUserMappingHeaders()
         return self.sync_third_user_mapping_with_options(request, headers, runtime)
@@ -14541,6 +18215,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.SyncThirdUserMappingRequest,
     ) -> btrip_open_20220520_models.SyncThirdUserMappingResponse:
+        """
+        @summary 同步三方用户映射关系
+        
+        @param request: SyncThirdUserMappingRequest
+        @return: SyncThirdUserMappingResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.SyncThirdUserMappingHeaders()
         return await self.sync_third_user_mapping_with_options_async(request, headers, runtime)
@@ -14551,6 +18231,13 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.TBAccountInfoQueryHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.TBAccountInfoQueryResponse:
+        """
+        @summary 查询淘宝账号信息
+        
+        @param headers: TBAccountInfoQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TBAccountInfoQueryResponse
+        """
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -14581,6 +18268,13 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.TBAccountInfoQueryHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.TBAccountInfoQueryResponse:
+        """
+        @summary 查询淘宝账号信息
+        
+        @param headers: TBAccountInfoQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TBAccountInfoQueryResponse
+        """
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -14609,6 +18303,11 @@ class Client(OpenApiClient):
         self,
         user_id: str,
     ) -> btrip_open_20220520_models.TBAccountInfoQueryResponse:
+        """
+        @summary 查询淘宝账号信息
+        
+        @return: TBAccountInfoQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.TBAccountInfoQueryHeaders()
         return self.t_baccount_info_query_with_options(user_id, headers, runtime)
@@ -14617,6 +18316,11 @@ class Client(OpenApiClient):
         self,
         user_id: str,
     ) -> btrip_open_20220520_models.TBAccountInfoQueryResponse:
+        """
+        @summary 查询淘宝账号信息
+        
+        @return: TBAccountInfoQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.TBAccountInfoQueryHeaders()
         return await self.t_baccount_info_query_with_options_async(user_id, headers, runtime)
@@ -14627,6 +18331,13 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.TBAccountUnbindHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.TBAccountUnbindResponse:
+        """
+        @summary 解绑淘宝账号
+        
+        @param headers: TBAccountUnbindHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TBAccountUnbindResponse
+        """
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -14657,6 +18368,13 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.TBAccountUnbindHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.TBAccountUnbindResponse:
+        """
+        @summary 解绑淘宝账号
+        
+        @param headers: TBAccountUnbindHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TBAccountUnbindResponse
+        """
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -14685,6 +18403,11 @@ class Client(OpenApiClient):
         self,
         user_id: str,
     ) -> btrip_open_20220520_models.TBAccountUnbindResponse:
+        """
+        @summary 解绑淘宝账号
+        
+        @return: TBAccountUnbindResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.TBAccountUnbindHeaders()
         return self.t_baccount_unbind_with_options(user_id, headers, runtime)
@@ -14693,6 +18416,11 @@ class Client(OpenApiClient):
         self,
         user_id: str,
     ) -> btrip_open_20220520_models.TBAccountUnbindResponse:
+        """
+        @summary 解绑淘宝账号
+        
+        @return: TBAccountUnbindResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.TBAccountUnbindHeaders()
         return await self.t_baccount_unbind_with_options_async(user_id, headers, runtime)
@@ -14703,6 +18431,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.TicketChangingApplyHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.TicketChangingApplyResponse:
+        """
+        @summary 机票改签申请
+        
+        @param tmp_req: TicketChangingApplyRequest
+        @param headers: TicketChangingApplyHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TicketChangingApplyResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.TicketChangingApplyShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -14756,6 +18492,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.TicketChangingApplyHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.TicketChangingApplyResponse:
+        """
+        @summary 机票改签申请
+        
+        @param tmp_req: TicketChangingApplyRequest
+        @param headers: TicketChangingApplyHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TicketChangingApplyResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.TicketChangingApplyShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -14807,6 +18551,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.TicketChangingApplyRequest,
     ) -> btrip_open_20220520_models.TicketChangingApplyResponse:
+        """
+        @summary 机票改签申请
+        
+        @param request: TicketChangingApplyRequest
+        @return: TicketChangingApplyResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.TicketChangingApplyHeaders()
         return self.ticket_changing_apply_with_options(request, headers, runtime)
@@ -14815,6 +18565,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.TicketChangingApplyRequest,
     ) -> btrip_open_20220520_models.TicketChangingApplyResponse:
+        """
+        @summary 机票改签申请
+        
+        @param request: TicketChangingApplyRequest
+        @return: TicketChangingApplyResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.TicketChangingApplyHeaders()
         return await self.ticket_changing_apply_with_options_async(request, headers, runtime)
@@ -14825,6 +18581,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.TicketChangingCancelHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.TicketChangingCancelResponse:
+        """
+        @summary 机票改签取消
+        
+        @param request: TicketChangingCancelRequest
+        @param headers: TicketChangingCancelHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TicketChangingCancelResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dis_order_id):
@@ -14862,6 +18626,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.TicketChangingCancelHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.TicketChangingCancelResponse:
+        """
+        @summary 机票改签取消
+        
+        @param request: TicketChangingCancelRequest
+        @param headers: TicketChangingCancelHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TicketChangingCancelResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dis_order_id):
@@ -14897,6 +18669,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.TicketChangingCancelRequest,
     ) -> btrip_open_20220520_models.TicketChangingCancelResponse:
+        """
+        @summary 机票改签取消
+        
+        @param request: TicketChangingCancelRequest
+        @return: TicketChangingCancelResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.TicketChangingCancelHeaders()
         return self.ticket_changing_cancel_with_options(request, headers, runtime)
@@ -14905,6 +18683,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.TicketChangingCancelRequest,
     ) -> btrip_open_20220520_models.TicketChangingCancelResponse:
+        """
+        @summary 机票改签取消
+        
+        @param request: TicketChangingCancelRequest
+        @return: TicketChangingCancelResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.TicketChangingCancelHeaders()
         return await self.ticket_changing_cancel_with_options_async(request, headers, runtime)
@@ -14915,6 +18699,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.TicketChangingDetailHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.TicketChangingDetailResponse:
+        """
+        @summary 机票改签详情
+        
+        @param request: TicketChangingDetailRequest
+        @param headers: TicketChangingDetailHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TicketChangingDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dis_order_id):
@@ -14952,6 +18744,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.TicketChangingDetailHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.TicketChangingDetailResponse:
+        """
+        @summary 机票改签详情
+        
+        @param request: TicketChangingDetailRequest
+        @param headers: TicketChangingDetailHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TicketChangingDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dis_order_id):
@@ -14987,6 +18787,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.TicketChangingDetailRequest,
     ) -> btrip_open_20220520_models.TicketChangingDetailResponse:
+        """
+        @summary 机票改签详情
+        
+        @param request: TicketChangingDetailRequest
+        @return: TicketChangingDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.TicketChangingDetailHeaders()
         return self.ticket_changing_detail_with_options(request, headers, runtime)
@@ -14995,6 +18801,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.TicketChangingDetailRequest,
     ) -> btrip_open_20220520_models.TicketChangingDetailResponse:
+        """
+        @summary 机票改签详情
+        
+        @param request: TicketChangingDetailRequest
+        @return: TicketChangingDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.TicketChangingDetailHeaders()
         return await self.ticket_changing_detail_with_options_async(request, headers, runtime)
@@ -15005,6 +18817,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.TicketChangingEnquiryHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.TicketChangingEnquiryResponse:
+        """
+        @summary 机票改签询价
+        
+        @param request: TicketChangingEnquiryRequest
+        @param headers: TicketChangingEnquiryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TicketChangingEnquiryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.arr_city):
@@ -15052,6 +18872,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.TicketChangingEnquiryHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.TicketChangingEnquiryResponse:
+        """
+        @summary 机票改签询价
+        
+        @param request: TicketChangingEnquiryRequest
+        @param headers: TicketChangingEnquiryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TicketChangingEnquiryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.arr_city):
@@ -15097,6 +18925,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.TicketChangingEnquiryRequest,
     ) -> btrip_open_20220520_models.TicketChangingEnquiryResponse:
+        """
+        @summary 机票改签询价
+        
+        @param request: TicketChangingEnquiryRequest
+        @return: TicketChangingEnquiryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.TicketChangingEnquiryHeaders()
         return self.ticket_changing_enquiry_with_options(request, headers, runtime)
@@ -15105,6 +18939,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.TicketChangingEnquiryRequest,
     ) -> btrip_open_20220520_models.TicketChangingEnquiryResponse:
+        """
+        @summary 机票改签询价
+        
+        @param request: TicketChangingEnquiryRequest
+        @return: TicketChangingEnquiryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.TicketChangingEnquiryHeaders()
         return await self.ticket_changing_enquiry_with_options_async(request, headers, runtime)
@@ -15115,6 +18955,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.TicketChangingFlightListHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.TicketChangingFlightListResponse:
+        """
+        @summary 机票改签可改签航班列表
+        
+        @param tmp_req: TicketChangingFlightListRequest
+        @param headers: TicketChangingFlightListHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TicketChangingFlightListResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.TicketChangingFlightListShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -15164,6 +19012,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.TicketChangingFlightListHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.TicketChangingFlightListResponse:
+        """
+        @summary 机票改签可改签航班列表
+        
+        @param tmp_req: TicketChangingFlightListRequest
+        @param headers: TicketChangingFlightListHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TicketChangingFlightListResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.TicketChangingFlightListShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -15211,6 +19067,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.TicketChangingFlightListRequest,
     ) -> btrip_open_20220520_models.TicketChangingFlightListResponse:
+        """
+        @summary 机票改签可改签航班列表
+        
+        @param request: TicketChangingFlightListRequest
+        @return: TicketChangingFlightListResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.TicketChangingFlightListHeaders()
         return self.ticket_changing_flight_list_with_options(request, headers, runtime)
@@ -15219,6 +19081,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.TicketChangingFlightListRequest,
     ) -> btrip_open_20220520_models.TicketChangingFlightListResponse:
+        """
+        @summary 机票改签可改签航班列表
+        
+        @param request: TicketChangingFlightListRequest
+        @return: TicketChangingFlightListResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.TicketChangingFlightListHeaders()
         return await self.ticket_changing_flight_list_with_options_async(request, headers, runtime)
@@ -15229,6 +19097,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.TicketChangingPayHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.TicketChangingPayResponse:
+        """
+        @summary 机票改签航班支付
+        
+        @param tmp_req: TicketChangingPayRequest
+        @param headers: TicketChangingPayHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TicketChangingPayResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.TicketChangingPayShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -15278,6 +19154,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.TicketChangingPayHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.TicketChangingPayResponse:
+        """
+        @summary 机票改签航班支付
+        
+        @param tmp_req: TicketChangingPayRequest
+        @param headers: TicketChangingPayHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TicketChangingPayResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.TicketChangingPayShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -15325,6 +19209,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.TicketChangingPayRequest,
     ) -> btrip_open_20220520_models.TicketChangingPayResponse:
+        """
+        @summary 机票改签航班支付
+        
+        @param request: TicketChangingPayRequest
+        @return: TicketChangingPayResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.TicketChangingPayHeaders()
         return self.ticket_changing_pay_with_options(request, headers, runtime)
@@ -15333,6 +19223,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.TicketChangingPayRequest,
     ) -> btrip_open_20220520_models.TicketChangingPayResponse:
+        """
+        @summary 机票改签航班支付
+        
+        @param request: TicketChangingPayRequest
+        @return: TicketChangingPayResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.TicketChangingPayHeaders()
         return await self.ticket_changing_pay_with_options_async(request, headers, runtime)
@@ -15343,6 +19239,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.TrainApplyChangeHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.TrainApplyChangeResponse:
+        """
+        @summary 火车票改签申请
+        
+        @param tmp_req: TrainApplyChangeRequest
+        @param headers: TrainApplyChangeHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TrainApplyChangeResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.TrainApplyChangeShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -15396,6 +19300,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.TrainApplyChangeHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.TrainApplyChangeResponse:
+        """
+        @summary 火车票改签申请
+        
+        @param tmp_req: TrainApplyChangeRequest
+        @param headers: TrainApplyChangeHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TrainApplyChangeResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.TrainApplyChangeShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -15447,6 +19359,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.TrainApplyChangeRequest,
     ) -> btrip_open_20220520_models.TrainApplyChangeResponse:
+        """
+        @summary 火车票改签申请
+        
+        @param request: TrainApplyChangeRequest
+        @return: TrainApplyChangeResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.TrainApplyChangeHeaders()
         return self.train_apply_change_with_options(request, headers, runtime)
@@ -15455,6 +19373,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.TrainApplyChangeRequest,
     ) -> btrip_open_20220520_models.TrainApplyChangeResponse:
+        """
+        @summary 火车票改签申请
+        
+        @param request: TrainApplyChangeRequest
+        @return: TrainApplyChangeResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.TrainApplyChangeHeaders()
         return await self.train_apply_change_with_options_async(request, headers, runtime)
@@ -15465,6 +19389,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.TrainApplyRefundHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.TrainApplyRefundResponse:
+        """
+        @summary 火车票退票申请
+        
+        @param tmp_req: TrainApplyRefundRequest
+        @param headers: TrainApplyRefundHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TrainApplyRefundResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.TrainApplyRefundShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -15510,6 +19442,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.TrainApplyRefundHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.TrainApplyRefundResponse:
+        """
+        @summary 火车票退票申请
+        
+        @param tmp_req: TrainApplyRefundRequest
+        @param headers: TrainApplyRefundHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TrainApplyRefundResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.TrainApplyRefundShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -15553,6 +19493,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.TrainApplyRefundRequest,
     ) -> btrip_open_20220520_models.TrainApplyRefundResponse:
+        """
+        @summary 火车票退票申请
+        
+        @param request: TrainApplyRefundRequest
+        @return: TrainApplyRefundResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.TrainApplyRefundHeaders()
         return self.train_apply_refund_with_options(request, headers, runtime)
@@ -15561,6 +19507,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.TrainApplyRefundRequest,
     ) -> btrip_open_20220520_models.TrainApplyRefundResponse:
+        """
+        @summary 火车票退票申请
+        
+        @param request: TrainApplyRefundRequest
+        @return: TrainApplyRefundResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.TrainApplyRefundHeaders()
         return await self.train_apply_refund_with_options_async(request, headers, runtime)
@@ -15571,6 +19523,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.TrainBillSettlementQueryHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.TrainBillSettlementQueryResponse:
+        """
+        @summary 查询火车票记账数据
+        
+        @param request: TrainBillSettlementQueryRequest
+        @param headers: TrainBillSettlementQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TrainBillSettlementQueryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_no):
@@ -15612,6 +19572,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.TrainBillSettlementQueryHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.TrainBillSettlementQueryResponse:
+        """
+        @summary 查询火车票记账数据
+        
+        @param request: TrainBillSettlementQueryRequest
+        @param headers: TrainBillSettlementQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TrainBillSettlementQueryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_no):
@@ -15651,6 +19619,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.TrainBillSettlementQueryRequest,
     ) -> btrip_open_20220520_models.TrainBillSettlementQueryResponse:
+        """
+        @summary 查询火车票记账数据
+        
+        @param request: TrainBillSettlementQueryRequest
+        @return: TrainBillSettlementQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.TrainBillSettlementQueryHeaders()
         return self.train_bill_settlement_query_with_options(request, headers, runtime)
@@ -15659,6 +19633,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.TrainBillSettlementQueryRequest,
     ) -> btrip_open_20220520_models.TrainBillSettlementQueryResponse:
+        """
+        @summary 查询火车票记账数据
+        
+        @param request: TrainBillSettlementQueryRequest
+        @return: TrainBillSettlementQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.TrainBillSettlementQueryHeaders()
         return await self.train_bill_settlement_query_with_options_async(request, headers, runtime)
@@ -15669,6 +19649,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.TrainExceedApplyQueryHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.TrainExceedApplyQueryResponse:
+        """
+        @summary 查询火车超标审批详情
+        
+        @param request: TrainExceedApplyQueryRequest
+        @param headers: TrainExceedApplyQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TrainExceedApplyQueryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.apply_id):
@@ -15704,6 +19692,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.TrainExceedApplyQueryHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.TrainExceedApplyQueryResponse:
+        """
+        @summary 查询火车超标审批详情
+        
+        @param request: TrainExceedApplyQueryRequest
+        @param headers: TrainExceedApplyQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TrainExceedApplyQueryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.apply_id):
@@ -15737,6 +19733,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.TrainExceedApplyQueryRequest,
     ) -> btrip_open_20220520_models.TrainExceedApplyQueryResponse:
+        """
+        @summary 查询火车超标审批详情
+        
+        @param request: TrainExceedApplyQueryRequest
+        @return: TrainExceedApplyQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.TrainExceedApplyQueryHeaders()
         return self.train_exceed_apply_query_with_options(request, headers, runtime)
@@ -15745,6 +19747,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.TrainExceedApplyQueryRequest,
     ) -> btrip_open_20220520_models.TrainExceedApplyQueryResponse:
+        """
+        @summary 查询火车超标审批详情
+        
+        @param request: TrainExceedApplyQueryRequest
+        @return: TrainExceedApplyQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.TrainExceedApplyQueryHeaders()
         return await self.train_exceed_apply_query_with_options_async(request, headers, runtime)
@@ -15755,6 +19763,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.TrainFeeCalculateChangeHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.TrainFeeCalculateChangeResponse:
+        """
+        @summary 火车票改签费用预估
+        
+        @param tmp_req: TrainFeeCalculateChangeRequest
+        @param headers: TrainFeeCalculateChangeHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TrainFeeCalculateChangeResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.TrainFeeCalculateChangeShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -15798,6 +19814,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.TrainFeeCalculateChangeHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.TrainFeeCalculateChangeResponse:
+        """
+        @summary 火车票改签费用预估
+        
+        @param tmp_req: TrainFeeCalculateChangeRequest
+        @param headers: TrainFeeCalculateChangeHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TrainFeeCalculateChangeResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.TrainFeeCalculateChangeShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -15839,6 +19863,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.TrainFeeCalculateChangeRequest,
     ) -> btrip_open_20220520_models.TrainFeeCalculateChangeResponse:
+        """
+        @summary 火车票改签费用预估
+        
+        @param request: TrainFeeCalculateChangeRequest
+        @return: TrainFeeCalculateChangeResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.TrainFeeCalculateChangeHeaders()
         return self.train_fee_calculate_change_with_options(request, headers, runtime)
@@ -15847,6 +19877,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.TrainFeeCalculateChangeRequest,
     ) -> btrip_open_20220520_models.TrainFeeCalculateChangeResponse:
+        """
+        @summary 火车票改签费用预估
+        
+        @param request: TrainFeeCalculateChangeRequest
+        @return: TrainFeeCalculateChangeResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.TrainFeeCalculateChangeHeaders()
         return await self.train_fee_calculate_change_with_options_async(request, headers, runtime)
@@ -15857,6 +19893,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.TrainFeeCalculateRefundHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.TrainFeeCalculateRefundResponse:
+        """
+        @summary 火车票退票费用预估
+        
+        @param tmp_req: TrainFeeCalculateRefundRequest
+        @param headers: TrainFeeCalculateRefundHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TrainFeeCalculateRefundResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.TrainFeeCalculateRefundShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -15900,6 +19944,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.TrainFeeCalculateRefundHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.TrainFeeCalculateRefundResponse:
+        """
+        @summary 火车票退票费用预估
+        
+        @param tmp_req: TrainFeeCalculateRefundRequest
+        @param headers: TrainFeeCalculateRefundHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TrainFeeCalculateRefundResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.TrainFeeCalculateRefundShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -15941,6 +19993,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.TrainFeeCalculateRefundRequest,
     ) -> btrip_open_20220520_models.TrainFeeCalculateRefundResponse:
+        """
+        @summary 火车票退票费用预估
+        
+        @param request: TrainFeeCalculateRefundRequest
+        @return: TrainFeeCalculateRefundResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.TrainFeeCalculateRefundHeaders()
         return self.train_fee_calculate_refund_with_options(request, headers, runtime)
@@ -15949,6 +20007,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.TrainFeeCalculateRefundRequest,
     ) -> btrip_open_20220520_models.TrainFeeCalculateRefundResponse:
+        """
+        @summary 火车票退票费用预估
+        
+        @param request: TrainFeeCalculateRefundRequest
+        @return: TrainFeeCalculateRefundResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.TrainFeeCalculateRefundHeaders()
         return await self.train_fee_calculate_refund_with_options_async(request, headers, runtime)
@@ -15959,6 +20023,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.TrainNoInfoSearchHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.TrainNoInfoSearchResponse:
+        """
+        @summary 火车票车次详情查询
+        
+        @param request: TrainNoInfoSearchRequest
+        @param headers: TrainNoInfoSearchHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TrainNoInfoSearchResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.arr_location):
@@ -16008,6 +20080,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.TrainNoInfoSearchHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.TrainNoInfoSearchResponse:
+        """
+        @summary 火车票车次详情查询
+        
+        @param request: TrainNoInfoSearchRequest
+        @param headers: TrainNoInfoSearchHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TrainNoInfoSearchResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.arr_location):
@@ -16055,6 +20135,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.TrainNoInfoSearchRequest,
     ) -> btrip_open_20220520_models.TrainNoInfoSearchResponse:
+        """
+        @summary 火车票车次详情查询
+        
+        @param request: TrainNoInfoSearchRequest
+        @return: TrainNoInfoSearchResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.TrainNoInfoSearchHeaders()
         return self.train_no_info_search_with_options(request, headers, runtime)
@@ -16063,6 +20149,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.TrainNoInfoSearchRequest,
     ) -> btrip_open_20220520_models.TrainNoInfoSearchResponse:
+        """
+        @summary 火车票车次详情查询
+        
+        @param request: TrainNoInfoSearchRequest
+        @return: TrainNoInfoSearchResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.TrainNoInfoSearchHeaders()
         return await self.train_no_info_search_with_options_async(request, headers, runtime)
@@ -16073,6 +20165,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.TrainNoListSearchHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.TrainNoListSearchResponse:
+        """
+        @summary 火车票车次列表查询
+        
+        @param tmp_req: TrainNoListSearchRequest
+        @param headers: TrainNoListSearchHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TrainNoListSearchResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.TrainNoListSearchShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -16120,6 +20220,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.TrainNoListSearchHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.TrainNoListSearchResponse:
+        """
+        @summary 火车票车次列表查询
+        
+        @param tmp_req: TrainNoListSearchRequest
+        @param headers: TrainNoListSearchHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TrainNoListSearchResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.TrainNoListSearchShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -16165,6 +20273,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.TrainNoListSearchRequest,
     ) -> btrip_open_20220520_models.TrainNoListSearchResponse:
+        """
+        @summary 火车票车次列表查询
+        
+        @param request: TrainNoListSearchRequest
+        @return: TrainNoListSearchResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.TrainNoListSearchHeaders()
         return self.train_no_list_search_with_options(request, headers, runtime)
@@ -16173,6 +20287,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.TrainNoListSearchRequest,
     ) -> btrip_open_20220520_models.TrainNoListSearchResponse:
+        """
+        @summary 火车票车次列表查询
+        
+        @param request: TrainNoListSearchRequest
+        @return: TrainNoListSearchResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.TrainNoListSearchHeaders()
         return await self.train_no_list_search_with_options_async(request, headers, runtime)
@@ -16183,6 +20303,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.TrainOrderCancelHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.TrainOrderCancelResponse:
+        """
+        @summary 火车票订单取消
+        
+        @param request: TrainOrderCancelRequest
+        @param headers: TrainOrderCancelHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TrainOrderCancelResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.change_order_id):
@@ -16224,6 +20352,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.TrainOrderCancelHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.TrainOrderCancelResponse:
+        """
+        @summary 火车票订单取消
+        
+        @param request: TrainOrderCancelRequest
+        @param headers: TrainOrderCancelHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TrainOrderCancelResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.change_order_id):
@@ -16263,6 +20399,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.TrainOrderCancelRequest,
     ) -> btrip_open_20220520_models.TrainOrderCancelResponse:
+        """
+        @summary 火车票订单取消
+        
+        @param request: TrainOrderCancelRequest
+        @return: TrainOrderCancelResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.TrainOrderCancelHeaders()
         return self.train_order_cancel_with_options(request, headers, runtime)
@@ -16271,6 +20413,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.TrainOrderCancelRequest,
     ) -> btrip_open_20220520_models.TrainOrderCancelResponse:
+        """
+        @summary 火车票订单取消
+        
+        @param request: TrainOrderCancelRequest
+        @return: TrainOrderCancelResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.TrainOrderCancelHeaders()
         return await self.train_order_cancel_with_options_async(request, headers, runtime)
@@ -16281,6 +20429,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.TrainOrderChangeConfirmHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.TrainOrderChangeConfirmResponse:
+        """
+        @summary 火车票改签确认
+        
+        @param request: TrainOrderChangeConfirmRequest
+        @param headers: TrainOrderChangeConfirmHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TrainOrderChangeConfirmResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.change_apply_id):
@@ -16324,6 +20480,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.TrainOrderChangeConfirmHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.TrainOrderChangeConfirmResponse:
+        """
+        @summary 火车票改签确认
+        
+        @param request: TrainOrderChangeConfirmRequest
+        @param headers: TrainOrderChangeConfirmHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TrainOrderChangeConfirmResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.change_apply_id):
@@ -16365,6 +20529,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.TrainOrderChangeConfirmRequest,
     ) -> btrip_open_20220520_models.TrainOrderChangeConfirmResponse:
+        """
+        @summary 火车票改签确认
+        
+        @param request: TrainOrderChangeConfirmRequest
+        @return: TrainOrderChangeConfirmResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.TrainOrderChangeConfirmHeaders()
         return self.train_order_change_confirm_with_options(request, headers, runtime)
@@ -16373,6 +20543,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.TrainOrderChangeConfirmRequest,
     ) -> btrip_open_20220520_models.TrainOrderChangeConfirmResponse:
+        """
+        @summary 火车票改签确认
+        
+        @param request: TrainOrderChangeConfirmRequest
+        @return: TrainOrderChangeConfirmResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.TrainOrderChangeConfirmHeaders()
         return await self.train_order_change_confirm_with_options_async(request, headers, runtime)
@@ -16383,6 +20559,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.TrainOrderCreateHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.TrainOrderCreateResponse:
+        """
+        @summary 火车票正向预订
+        
+        @param tmp_req: TrainOrderCreateRequest
+        @param headers: TrainOrderCreateHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TrainOrderCreateResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.TrainOrderCreateShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -16446,6 +20630,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.TrainOrderCreateHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.TrainOrderCreateResponse:
+        """
+        @summary 火车票正向预订
+        
+        @param tmp_req: TrainOrderCreateRequest
+        @param headers: TrainOrderCreateHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TrainOrderCreateResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.TrainOrderCreateShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -16507,6 +20699,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.TrainOrderCreateRequest,
     ) -> btrip_open_20220520_models.TrainOrderCreateResponse:
+        """
+        @summary 火车票正向预订
+        
+        @param request: TrainOrderCreateRequest
+        @return: TrainOrderCreateResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.TrainOrderCreateHeaders()
         return self.train_order_create_with_options(request, headers, runtime)
@@ -16515,6 +20713,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.TrainOrderCreateRequest,
     ) -> btrip_open_20220520_models.TrainOrderCreateResponse:
+        """
+        @summary 火车票正向预订
+        
+        @param request: TrainOrderCreateRequest
+        @return: TrainOrderCreateResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.TrainOrderCreateHeaders()
         return await self.train_order_create_with_options_async(request, headers, runtime)
@@ -16525,6 +20729,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.TrainOrderDetailQueryHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.TrainOrderDetailQueryResponse:
+        """
+        @summary 火车票订单详情
+        
+        @param request: TrainOrderDetailQueryRequest
+        @param headers: TrainOrderDetailQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TrainOrderDetailQueryResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.order_id):
@@ -16562,6 +20774,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.TrainOrderDetailQueryHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.TrainOrderDetailQueryResponse:
+        """
+        @summary 火车票订单详情
+        
+        @param request: TrainOrderDetailQueryRequest
+        @param headers: TrainOrderDetailQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TrainOrderDetailQueryResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.order_id):
@@ -16597,6 +20817,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.TrainOrderDetailQueryRequest,
     ) -> btrip_open_20220520_models.TrainOrderDetailQueryResponse:
+        """
+        @summary 火车票订单详情
+        
+        @param request: TrainOrderDetailQueryRequest
+        @return: TrainOrderDetailQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.TrainOrderDetailQueryHeaders()
         return self.train_order_detail_query_with_options(request, headers, runtime)
@@ -16605,6 +20831,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.TrainOrderDetailQueryRequest,
     ) -> btrip_open_20220520_models.TrainOrderDetailQueryResponse:
+        """
+        @summary 火车票订单详情
+        
+        @param request: TrainOrderDetailQueryRequest
+        @return: TrainOrderDetailQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.TrainOrderDetailQueryHeaders()
         return await self.train_order_detail_query_with_options_async(request, headers, runtime)
@@ -16615,6 +20847,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.TrainOrderListQueryHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.TrainOrderListQueryResponse:
+        """
+        @summary 查询火车票订单列表
+        
+        @param request: TrainOrderListQueryRequest
+        @param headers: TrainOrderListQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TrainOrderListQueryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.all_apply):
@@ -16670,6 +20910,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.TrainOrderListQueryHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.TrainOrderListQueryResponse:
+        """
+        @summary 查询火车票订单列表
+        
+        @param request: TrainOrderListQueryRequest
+        @param headers: TrainOrderListQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TrainOrderListQueryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.all_apply):
@@ -16723,6 +20971,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.TrainOrderListQueryRequest,
     ) -> btrip_open_20220520_models.TrainOrderListQueryResponse:
+        """
+        @summary 查询火车票订单列表
+        
+        @param request: TrainOrderListQueryRequest
+        @return: TrainOrderListQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.TrainOrderListQueryHeaders()
         return self.train_order_list_query_with_options(request, headers, runtime)
@@ -16731,6 +20985,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.TrainOrderListQueryRequest,
     ) -> btrip_open_20220520_models.TrainOrderListQueryResponse:
+        """
+        @summary 查询火车票订单列表
+        
+        @param request: TrainOrderListQueryRequest
+        @return: TrainOrderListQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.TrainOrderListQueryHeaders()
         return await self.train_order_list_query_with_options_async(request, headers, runtime)
@@ -16741,6 +21001,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.TrainOrderPayHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.TrainOrderPayResponse:
+        """
+        @summary 火车票订单支付
+        
+        @param request: TrainOrderPayRequest
+        @param headers: TrainOrderPayHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TrainOrderPayResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.order_id):
@@ -16780,6 +21048,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.TrainOrderPayHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.TrainOrderPayResponse:
+        """
+        @summary 火车票订单支付
+        
+        @param request: TrainOrderPayRequest
+        @param headers: TrainOrderPayHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TrainOrderPayResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.order_id):
@@ -16817,6 +21093,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.TrainOrderPayRequest,
     ) -> btrip_open_20220520_models.TrainOrderPayResponse:
+        """
+        @summary 火车票订单支付
+        
+        @param request: TrainOrderPayRequest
+        @return: TrainOrderPayResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.TrainOrderPayHeaders()
         return self.train_order_pay_with_options(request, headers, runtime)
@@ -16825,6 +21107,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.TrainOrderPayRequest,
     ) -> btrip_open_20220520_models.TrainOrderPayResponse:
+        """
+        @summary 火车票订单支付
+        
+        @param request: TrainOrderPayRequest
+        @return: TrainOrderPayResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.TrainOrderPayHeaders()
         return await self.train_order_pay_with_options_async(request, headers, runtime)
@@ -16835,6 +21123,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.TrainOrderQueryHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.TrainOrderQueryResponse:
+        """
+        @summary 查询火车票订单详情（含票信息）
+        
+        @param request: TrainOrderQueryRequest
+        @param headers: TrainOrderQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TrainOrderQueryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.order_id):
@@ -16872,6 +21168,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.TrainOrderQueryHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.TrainOrderQueryResponse:
+        """
+        @summary 查询火车票订单详情（含票信息）
+        
+        @param request: TrainOrderQueryRequest
+        @param headers: TrainOrderQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TrainOrderQueryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.order_id):
@@ -16907,6 +21211,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.TrainOrderQueryRequest,
     ) -> btrip_open_20220520_models.TrainOrderQueryResponse:
+        """
+        @summary 查询火车票订单详情（含票信息）
+        
+        @param request: TrainOrderQueryRequest
+        @return: TrainOrderQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.TrainOrderQueryHeaders()
         return self.train_order_query_with_options(request, headers, runtime)
@@ -16915,6 +21225,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.TrainOrderQueryRequest,
     ) -> btrip_open_20220520_models.TrainOrderQueryResponse:
+        """
+        @summary 查询火车票订单详情（含票信息）
+        
+        @param request: TrainOrderQueryRequest
+        @return: TrainOrderQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.TrainOrderQueryHeaders()
         return await self.train_order_query_with_options_async(request, headers, runtime)
@@ -16925,6 +21241,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.TrainOrderQueryV2Headers,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.TrainOrderQueryV2Response:
+        """
+        @summary 火车票订单查询V2
+        
+        @param request: TrainOrderQueryV2Request
+        @param headers: TrainOrderQueryV2Headers
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TrainOrderQueryV2Response
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.order_id):
@@ -16962,6 +21286,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.TrainOrderQueryV2Headers,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.TrainOrderQueryV2Response:
+        """
+        @summary 火车票订单查询V2
+        
+        @param request: TrainOrderQueryV2Request
+        @param headers: TrainOrderQueryV2Headers
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TrainOrderQueryV2Response
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.order_id):
@@ -16997,6 +21329,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.TrainOrderQueryV2Request,
     ) -> btrip_open_20220520_models.TrainOrderQueryV2Response:
+        """
+        @summary 火车票订单查询V2
+        
+        @param request: TrainOrderQueryV2Request
+        @return: TrainOrderQueryV2Response
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.TrainOrderQueryV2Headers()
         return self.train_order_query_v2with_options(request, headers, runtime)
@@ -17005,6 +21343,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.TrainOrderQueryV2Request,
     ) -> btrip_open_20220520_models.TrainOrderQueryV2Response:
+        """
+        @summary 火车票订单查询V2
+        
+        @param request: TrainOrderQueryV2Request
+        @return: TrainOrderQueryV2Response
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.TrainOrderQueryV2Headers()
         return await self.train_order_query_v2with_options_async(request, headers, runtime)
@@ -17015,6 +21359,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.TrainStationSearchHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.TrainStationSearchResponse:
+        """
+        @summary 查询火车站数据
+        
+        @param request: TrainStationSearchRequest
+        @param headers: TrainStationSearchHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TrainStationSearchResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.keyword):
@@ -17050,6 +21402,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.TrainStationSearchHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.TrainStationSearchResponse:
+        """
+        @summary 查询火车站数据
+        
+        @param request: TrainStationSearchRequest
+        @param headers: TrainStationSearchHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TrainStationSearchResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.keyword):
@@ -17083,6 +21443,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.TrainStationSearchRequest,
     ) -> btrip_open_20220520_models.TrainStationSearchResponse:
+        """
+        @summary 查询火车站数据
+        
+        @param request: TrainStationSearchRequest
+        @return: TrainStationSearchResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.TrainStationSearchHeaders()
         return self.train_station_search_with_options(request, headers, runtime)
@@ -17091,6 +21457,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.TrainStationSearchRequest,
     ) -> btrip_open_20220520_models.TrainStationSearchResponse:
+        """
+        @summary 查询火车站数据
+        
+        @param request: TrainStationSearchRequest
+        @return: TrainStationSearchResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.TrainStationSearchHeaders()
         return await self.train_station_search_with_options_async(request, headers, runtime)
@@ -17101,6 +21473,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.TrainStopoverSearchHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.TrainStopoverSearchResponse:
+        """
+        @summary 火车票经停站查询
+        
+        @param request: TrainStopoverSearchRequest
+        @param headers: TrainStopoverSearchHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TrainStopoverSearchResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.arr_station):
@@ -17142,6 +21522,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.TrainStopoverSearchHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.TrainStopoverSearchResponse:
+        """
+        @summary 火车票经停站查询
+        
+        @param request: TrainStopoverSearchRequest
+        @param headers: TrainStopoverSearchHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TrainStopoverSearchResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.arr_station):
@@ -17181,6 +21569,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.TrainStopoverSearchRequest,
     ) -> btrip_open_20220520_models.TrainStopoverSearchResponse:
+        """
+        @summary 火车票经停站查询
+        
+        @param request: TrainStopoverSearchRequest
+        @return: TrainStopoverSearchResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.TrainStopoverSearchHeaders()
         return self.train_stopover_search_with_options(request, headers, runtime)
@@ -17189,6 +21583,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.TrainStopoverSearchRequest,
     ) -> btrip_open_20220520_models.TrainStopoverSearchResponse:
+        """
+        @summary 火车票经停站查询
+        
+        @param request: TrainStopoverSearchRequest
+        @return: TrainStopoverSearchResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.TrainStopoverSearchHeaders()
         return await self.train_stopover_search_with_options_async(request, headers, runtime)
@@ -17199,6 +21599,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.TrainTicketScanQueryHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.TrainTicketScanQueryResponse:
+        """
+        @summary 查询火车票凭证扫描件
+        
+        @param request: TrainTicketScanQueryRequest
+        @param headers: TrainTicketScanQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TrainTicketScanQueryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.bill_date):
@@ -17246,6 +21654,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.TrainTicketScanQueryHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.TrainTicketScanQueryResponse:
+        """
+        @summary 查询火车票凭证扫描件
+        
+        @param request: TrainTicketScanQueryRequest
+        @param headers: TrainTicketScanQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TrainTicketScanQueryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.bill_date):
@@ -17291,6 +21707,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.TrainTicketScanQueryRequest,
     ) -> btrip_open_20220520_models.TrainTicketScanQueryResponse:
+        """
+        @summary 查询火车票凭证扫描件
+        
+        @param request: TrainTicketScanQueryRequest
+        @return: TrainTicketScanQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.TrainTicketScanQueryHeaders()
         return self.train_ticket_scan_query_with_options(request, headers, runtime)
@@ -17299,6 +21721,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.TrainTicketScanQueryRequest,
     ) -> btrip_open_20220520_models.TrainTicketScanQueryResponse:
+        """
+        @summary 查询火车票凭证扫描件
+        
+        @param request: TrainTicketScanQueryRequest
+        @return: TrainTicketScanQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.TrainTicketScanQueryHeaders()
         return await self.train_ticket_scan_query_with_options_async(request, headers, runtime)
@@ -17309,6 +21737,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.TravelStandardListQueryHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.TravelStandardListQueryResponse:
+        """
+        @summary 查询差标列表
+        
+        @param request: TravelStandardListQueryRequest
+        @param headers: TravelStandardListQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TravelStandardListQueryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.from_group):
@@ -17350,6 +21786,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.TravelStandardListQueryHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.TravelStandardListQueryResponse:
+        """
+        @summary 查询差标列表
+        
+        @param request: TravelStandardListQueryRequest
+        @param headers: TravelStandardListQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TravelStandardListQueryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.from_group):
@@ -17389,6 +21833,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.TravelStandardListQueryRequest,
     ) -> btrip_open_20220520_models.TravelStandardListQueryResponse:
+        """
+        @summary 查询差标列表
+        
+        @param request: TravelStandardListQueryRequest
+        @return: TravelStandardListQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.TravelStandardListQueryHeaders()
         return self.travel_standard_list_query_with_options(request, headers, runtime)
@@ -17397,6 +21847,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.TravelStandardListQueryRequest,
     ) -> btrip_open_20220520_models.TravelStandardListQueryResponse:
+        """
+        @summary 查询差标列表
+        
+        @param request: TravelStandardListQueryRequest
+        @return: TravelStandardListQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.TravelStandardListQueryHeaders()
         return await self.travel_standard_list_query_with_options_async(request, headers, runtime)
@@ -17407,6 +21863,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.TravelStandardQueryHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.TravelStandardQueryResponse:
+        """
+        @summary 查询差标详情
+        
+        @param tmp_req: TravelStandardQueryRequest
+        @param headers: TravelStandardQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TravelStandardQueryResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.TravelStandardQueryShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -17450,6 +21914,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.TravelStandardQueryHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.TravelStandardQueryResponse:
+        """
+        @summary 查询差标详情
+        
+        @param tmp_req: TravelStandardQueryRequest
+        @param headers: TravelStandardQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TravelStandardQueryResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.TravelStandardQueryShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -17491,6 +21963,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.TravelStandardQueryRequest,
     ) -> btrip_open_20220520_models.TravelStandardQueryResponse:
+        """
+        @summary 查询差标详情
+        
+        @param request: TravelStandardQueryRequest
+        @return: TravelStandardQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.TravelStandardQueryHeaders()
         return self.travel_standard_query_with_options(request, headers, runtime)
@@ -17499,6 +21977,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.TravelStandardQueryRequest,
     ) -> btrip_open_20220520_models.TravelStandardQueryResponse:
+        """
+        @summary 查询差标详情
+        
+        @param request: TravelStandardQueryRequest
+        @return: TravelStandardQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.TravelStandardQueryHeaders()
         return await self.travel_standard_query_with_options_async(request, headers, runtime)
@@ -17509,6 +21993,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.UserQueryHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.UserQueryResponse:
+        """
+        @summary 人员查询
+        
+        @param request: UserQueryRequest
+        @param headers: UserQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UserQueryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.modified_time_greater_or_equal_than):
@@ -17550,6 +22042,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.UserQueryHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.UserQueryResponse:
+        """
+        @summary 人员查询
+        
+        @param request: UserQueryRequest
+        @param headers: UserQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UserQueryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.modified_time_greater_or_equal_than):
@@ -17589,6 +22089,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.UserQueryRequest,
     ) -> btrip_open_20220520_models.UserQueryResponse:
+        """
+        @summary 人员查询
+        
+        @param request: UserQueryRequest
+        @return: UserQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.UserQueryHeaders()
         return self.user_query_with_options(request, headers, runtime)
@@ -17597,6 +22103,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.UserQueryRequest,
     ) -> btrip_open_20220520_models.UserQueryResponse:
+        """
+        @summary 人员查询
+        
+        @param request: UserQueryRequest
+        @return: UserQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.UserQueryHeaders()
         return await self.user_query_with_options_async(request, headers, runtime)
@@ -17607,6 +22119,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.VatInvoiceScanQueryHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.VatInvoiceScanQueryResponse:
+        """
+        @summary 查询增值税发票扫描件
+        
+        @param request: VatInvoiceScanQueryRequest
+        @param headers: VatInvoiceScanQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VatInvoiceScanQueryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.bill_date):
@@ -17650,6 +22170,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.VatInvoiceScanQueryHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.VatInvoiceScanQueryResponse:
+        """
+        @summary 查询增值税发票扫描件
+        
+        @param request: VatInvoiceScanQueryRequest
+        @param headers: VatInvoiceScanQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VatInvoiceScanQueryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.bill_date):
@@ -17691,6 +22219,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.VatInvoiceScanQueryRequest,
     ) -> btrip_open_20220520_models.VatInvoiceScanQueryResponse:
+        """
+        @summary 查询增值税发票扫描件
+        
+        @param request: VatInvoiceScanQueryRequest
+        @return: VatInvoiceScanQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.VatInvoiceScanQueryHeaders()
         return self.vat_invoice_scan_query_with_options(request, headers, runtime)
@@ -17699,6 +22233,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.VatInvoiceScanQueryRequest,
     ) -> btrip_open_20220520_models.VatInvoiceScanQueryResponse:
+        """
+        @summary 查询增值税发票扫描件
+        
+        @param request: VatInvoiceScanQueryRequest
+        @return: VatInvoiceScanQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.VatInvoiceScanQueryHeaders()
         return await self.vat_invoice_scan_query_with_options_async(request, headers, runtime)
@@ -17709,6 +22249,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.WaitApplyInvoiceTaskDetailQueryHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.WaitApplyInvoiceTaskDetailQueryResponse:
+        """
+        @summary 查询账期待申请的发票数据
+        
+        @param request: WaitApplyInvoiceTaskDetailQueryRequest
+        @param headers: WaitApplyInvoiceTaskDetailQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: WaitApplyInvoiceTaskDetailQueryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.bill_date):
@@ -17744,6 +22292,14 @@ class Client(OpenApiClient):
         headers: btrip_open_20220520_models.WaitApplyInvoiceTaskDetailQueryHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.WaitApplyInvoiceTaskDetailQueryResponse:
+        """
+        @summary 查询账期待申请的发票数据
+        
+        @param request: WaitApplyInvoiceTaskDetailQueryRequest
+        @param headers: WaitApplyInvoiceTaskDetailQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: WaitApplyInvoiceTaskDetailQueryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.bill_date):
@@ -17777,6 +22333,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.WaitApplyInvoiceTaskDetailQueryRequest,
     ) -> btrip_open_20220520_models.WaitApplyInvoiceTaskDetailQueryResponse:
+        """
+        @summary 查询账期待申请的发票数据
+        
+        @param request: WaitApplyInvoiceTaskDetailQueryRequest
+        @return: WaitApplyInvoiceTaskDetailQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.WaitApplyInvoiceTaskDetailQueryHeaders()
         return self.wait_apply_invoice_task_detail_query_with_options(request, headers, runtime)
@@ -17785,6 +22347,12 @@ class Client(OpenApiClient):
         self,
         request: btrip_open_20220520_models.WaitApplyInvoiceTaskDetailQueryRequest,
     ) -> btrip_open_20220520_models.WaitApplyInvoiceTaskDetailQueryResponse:
+        """
+        @summary 查询账期待申请的发票数据
+        
+        @param request: WaitApplyInvoiceTaskDetailQueryRequest
+        @return: WaitApplyInvoiceTaskDetailQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.WaitApplyInvoiceTaskDetailQueryHeaders()
         return await self.wait_apply_invoice_task_detail_query_with_options_async(request, headers, runtime)

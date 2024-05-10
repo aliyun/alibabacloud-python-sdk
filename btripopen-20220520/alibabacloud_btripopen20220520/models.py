@@ -5233,6 +5233,7 @@ class AccessTokenRequest(TeaModel):
         self,
         app_secret: str = None,
     ):
+        # This parameter is required.
         self.app_secret = app_secret
 
     def validate(self):
@@ -5478,8 +5479,11 @@ class AddInvoiceEntityRequestEntities(TeaModel):
         entity_name: str = None,
         entity_type: str = None,
     ):
+        # This parameter is required.
         self.entity_id = entity_id
+        # This parameter is required.
         self.entity_name = entity_name
+        # This parameter is required.
         self.entity_type = entity_type
 
     def validate(self):
@@ -5516,7 +5520,9 @@ class AddInvoiceEntityRequest(TeaModel):
         entities: List[AddInvoiceEntityRequestEntities] = None,
         third_part_id: str = None,
     ):
+        # This parameter is required.
         self.entities = entities
+        # This parameter is required.
         self.third_part_id = third_part_id
 
     def validate(self):
@@ -5557,7 +5563,9 @@ class AddInvoiceEntityShrinkRequest(TeaModel):
         entities_shrink: str = None,
         third_part_id: str = None,
     ):
+        # This parameter is required.
         self.entities_shrink = entities_shrink
+        # This parameter is required.
         self.third_part_id = third_part_id
 
     def validate(self):
@@ -5771,6 +5779,7 @@ class AddressGetRequest(TeaModel):
         use_booking_proxy: int = None,
         user_id: str = None,
     ):
+        # This parameter is required.
         self.action_type = action_type
         self.arr_city_code = arr_city_code
         self.arr_city_name = arr_city_name
@@ -5786,6 +5795,7 @@ class AddressGetRequest(TeaModel):
         self.traveler_id = traveler_id
         self.type = type
         self.use_booking_proxy = use_booking_proxy
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -6034,6 +6044,7 @@ class AirportSearchRequest(TeaModel):
         keyword: str = None,
         type: int = None,
     ):
+        # This parameter is required.
         self.keyword = keyword
         self.type = type
 
@@ -6928,15 +6939,20 @@ class ApplyAddRequestItineraryList(TeaModel):
         traffic_type: int = None,
         trip_way: int = None,
     ):
+        # This parameter is required.
         self.arr_city = arr_city
         self.arr_city_code = arr_city_code
+        # This parameter is required.
         self.arr_date = arr_date
         self.attribute = attribute
         self.cost_center_id = cost_center_id
+        # This parameter is required.
         self.dep_city = dep_city
         self.dep_city_code = dep_city_code
+        # This parameter is required.
         self.dep_date = dep_date
         self.invoice_id = invoice_id
+        # This parameter is required.
         self.itinerary_id = itinerary_id
         self.itinerary_travel_standard = itinerary_travel_standard
         self.need_hotel = need_hotel
@@ -6945,7 +6961,9 @@ class ApplyAddRequestItineraryList(TeaModel):
         self.project_title = project_title
         self.third_part_invoice_id = third_part_invoice_id
         self.thirdpart_cost_center_id = thirdpart_cost_center_id
+        # This parameter is required.
         self.traffic_type = traffic_type
+        # This parameter is required.
         self.trip_way = trip_way
 
     def validate(self):
@@ -7087,19 +7105,25 @@ class ApplyAddRequestItinerarySetList(TeaModel):
         thirdpart_cost_center_id: str = None,
         traffic_type: int = None,
     ):
+        # This parameter is required.
         self.arr_date = arr_date
         self.attribute = attribute
+        # This parameter is required.
         self.city_code_set = city_code_set
+        # This parameter is required.
         self.city_set = city_set
         self.cost_center_id = cost_center_id
+        # This parameter is required.
         self.dep_date = dep_date
         self.invoice_id = invoice_id
+        # This parameter is required.
         self.itinerary_id = itinerary_id
         self.itinerary_travel_standard = itinerary_travel_standard
         self.project_code = project_code
         self.project_title = project_title
         self.third_part_invoice_id = third_part_invoice_id
         self.thirdpart_cost_center_id = thirdpart_cost_center_id
+        # This parameter is required.
         self.traffic_type = traffic_type
 
     def validate(self):
@@ -7275,7 +7299,9 @@ class ApplyAddRequestTravelerStandardCarCitySet(TeaModel):
         city_code: str = None,
         city_name: str = None,
     ):
+        # This parameter is required.
         self.city_code = city_code
+        # This parameter is required.
         self.city_name = city_name
 
     def validate(self):
@@ -7591,6 +7617,7 @@ class ApplyAddRequest(TeaModel):
         self.payment_department_name = payment_department_name
         self.status = status
         self.sub_corp_id = sub_corp_id
+        # This parameter is required.
         self.thirdpart_apply_id = thirdpart_apply_id
         self.thirdpart_business_id = thirdpart_business_id
         self.thirdpart_depart_id = thirdpart_depart_id
@@ -7598,11 +7625,14 @@ class ApplyAddRequest(TeaModel):
         self.train_budget = train_budget
         self.traveler_list = traveler_list
         self.traveler_standard = traveler_standard
+        # This parameter is required.
         self.trip_cause = trip_cause
         self.trip_day = trip_day
+        # This parameter is required.
         self.trip_title = trip_title
         self.type = type
         self.union_no = union_no
+        # This parameter is required.
         self.user_id = user_id
         self.user_name = user_name
         self.vehicle_budget = vehicle_budget
@@ -7882,6 +7912,7 @@ class ApplyAddShrinkRequest(TeaModel):
         self.payment_department_name = payment_department_name
         self.status = status
         self.sub_corp_id = sub_corp_id
+        # This parameter is required.
         self.thirdpart_apply_id = thirdpart_apply_id
         self.thirdpart_business_id = thirdpart_business_id
         self.thirdpart_depart_id = thirdpart_depart_id
@@ -7889,11 +7920,14 @@ class ApplyAddShrinkRequest(TeaModel):
         self.train_budget = train_budget
         self.traveler_list_shrink = traveler_list_shrink
         self.traveler_standard_shrink = traveler_standard_shrink
+        # This parameter is required.
         self.trip_cause = trip_cause
         self.trip_day = trip_day
+        # This parameter is required.
         self.trip_title = trip_title
         self.type = type
         self.union_no = union_no
+        # This parameter is required.
         self.user_id = user_id
         self.user_name = user_name
         self.vehicle_budget = vehicle_budget
@@ -8242,11 +8276,15 @@ class ApplyApproveRequest(TeaModel):
         user_id: str = None,
         user_name: str = None,
     ):
+        # This parameter is required.
         self.apply_id = apply_id
         self.note = note
+        # This parameter is required.
         self.operate_time = operate_time
+        # This parameter is required.
         self.status = status
         self.sub_corp_id = sub_corp_id
+        # This parameter is required.
         self.user_id = user_id
         self.user_name = user_name
 
@@ -8484,8 +8522,10 @@ class ApplyExternalNodeStatusUpdateRequest(TeaModel):
         operation_records: List[ApplyExternalNodeStatusUpdateRequestOperationRecords] = None,
         process_action_result: str = None,
     ):
+        # This parameter is required.
         self.node_id = node_id
         self.operation_records = operation_records
+        # This parameter is required.
         self.process_action_result = process_action_result
 
     def validate(self):
@@ -8531,8 +8571,10 @@ class ApplyExternalNodeStatusUpdateShrinkRequest(TeaModel):
         operation_records_shrink: str = None,
         process_action_result: str = None,
     ):
+        # This parameter is required.
         self.node_id = node_id
         self.operation_records_shrink = operation_records_shrink
+        # This parameter is required.
         self.process_action_result = process_action_result
 
     def validate(self):
@@ -8728,6 +8770,7 @@ class ApplyInvoiceTaskRequestInvoiceTaskList(TeaModel):
         self.hotel_special_invoice_fee = hotel_special_invoice_fee
         self.international_flight_invoice_fee = international_flight_invoice_fee
         self.international_hotel_invoice_fee = international_hotel_invoice_fee
+        # This parameter is required.
         self.invoice_third_part_id = invoice_third_part_id
         self.invoice_type = invoice_type
         self.mail_address = mail_address
@@ -8848,7 +8891,9 @@ class ApplyInvoiceTaskRequest(TeaModel):
         bill_date: str = None,
         invoice_task_list: List[ApplyInvoiceTaskRequestInvoiceTaskList] = None,
     ):
+        # This parameter is required.
         self.bill_date = bill_date
+        # This parameter is required.
         self.invoice_task_list = invoice_task_list
 
     def validate(self):
@@ -8889,7 +8934,9 @@ class ApplyInvoiceTaskShrinkRequest(TeaModel):
         bill_date: str = None,
         invoice_task_list_shrink: str = None,
     ):
+        # This parameter is required.
         self.bill_date = bill_date
+        # This parameter is required.
         self.invoice_task_list_shrink = invoice_task_list_shrink
 
     def validate(self):
@@ -10418,15 +10465,20 @@ class ApplyModifyRequestItineraryList(TeaModel):
         traffic_type: int = None,
         trip_way: int = None,
     ):
+        # This parameter is required.
         self.arr_city = arr_city
         self.arr_city_code = arr_city_code
+        # This parameter is required.
         self.arr_date = arr_date
         self.attribute = attribute
         self.cost_center_id = cost_center_id
+        # This parameter is required.
         self.dep_city = dep_city
         self.dep_city_code = dep_city_code
+        # This parameter is required.
         self.dep_date = dep_date
         self.invoice_id = invoice_id
+        # This parameter is required.
         self.itinerary_id = itinerary_id
         self.itinerary_travel_standard = itinerary_travel_standard
         self.need_hotel = need_hotel
@@ -10435,7 +10487,9 @@ class ApplyModifyRequestItineraryList(TeaModel):
         self.project_title = project_title
         self.third_part_invoice_id = third_part_invoice_id
         self.thirdpart_cost_center_id = thirdpart_cost_center_id
+        # This parameter is required.
         self.traffic_type = traffic_type
+        # This parameter is required.
         self.trip_way = trip_way
 
     def validate(self):
@@ -10765,7 +10819,9 @@ class ApplyModifyRequestTravelerStandardCarCitySet(TeaModel):
         city_code: str = None,
         city_name: str = None,
     ):
+        # This parameter is required.
         self.city_code = city_code
+        # This parameter is required.
         self.city_name = city_name
 
     def validate(self):
@@ -11074,6 +11130,7 @@ class ApplyModifyRequest(TeaModel):
         self.status = status
         # 子企业Id
         self.sub_corp_id = sub_corp_id
+        # This parameter is required.
         self.thirdpart_apply_id = thirdpart_apply_id
         self.thirdpart_business_id = thirdpart_business_id
         self.thirdpart_depart_id = thirdpart_depart_id
@@ -11081,10 +11138,13 @@ class ApplyModifyRequest(TeaModel):
         self.train_budget = train_budget
         self.traveler_list = traveler_list
         self.traveler_standard = traveler_standard
+        # This parameter is required.
         self.trip_cause = trip_cause
         self.trip_day = trip_day
+        # This parameter is required.
         self.trip_title = trip_title
         self.union_no = union_no
+        # This parameter is required.
         self.user_id = user_id
         self.user_name = user_name
         self.vehicle_budget = vehicle_budget
@@ -11354,6 +11414,7 @@ class ApplyModifyShrinkRequest(TeaModel):
         self.status = status
         # 子企业Id
         self.sub_corp_id = sub_corp_id
+        # This parameter is required.
         self.thirdpart_apply_id = thirdpart_apply_id
         self.thirdpart_business_id = thirdpart_business_id
         self.thirdpart_depart_id = thirdpart_depart_id
@@ -11361,10 +11422,13 @@ class ApplyModifyShrinkRequest(TeaModel):
         self.train_budget = train_budget
         self.traveler_list_shrink = traveler_list_shrink
         self.traveler_standard_shrink = traveler_standard_shrink
+        # This parameter is required.
         self.trip_cause = trip_cause
         self.trip_day = trip_day
+        # This parameter is required.
         self.trip_title = trip_title
         self.union_no = union_no
+        # This parameter is required.
         self.user_id = user_id
         self.user_name = user_name
         self.vehicle_budget = vehicle_budget
@@ -13185,7 +13249,9 @@ class BaseCityInfoSearchRequest(TeaModel):
         keyword: str = None,
         region: str = None,
     ):
+        # This parameter is required.
         self.keyword = keyword
+        # This parameter is required.
         self.region = region
 
     def validate(self):
@@ -13407,6 +13473,7 @@ class BtripBillInfoAdjustRequest(TeaModel):
         third_part_project_id: str = None,
         user_id: str = None,
     ):
+        # This parameter is required.
         self.primary_id = primary_id
         self.third_part_cost_center_id = third_part_cost_center_id
         self.third_part_department_id = third_part_department_id
@@ -13585,7 +13652,9 @@ class CarApplyAddRequestTravelerStandardCarCitySet(TeaModel):
         city_code: str = None,
         city_name: str = None,
     ):
+        # This parameter is required.
         self.city_code = city_code
+        # This parameter is required.
         self.city_name = city_name
 
     def validate(self):
@@ -13619,6 +13688,7 @@ class CarApplyAddRequestTravelerStandard(TeaModel):
         user_id: str = None,
     ):
         self.car_city_set = car_city_set
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -13674,22 +13744,32 @@ class CarApplyAddRequest(TeaModel):
         traveler_standard: List[CarApplyAddRequestTravelerStandard] = None,
         user_id: str = None,
     ):
+        # This parameter is required.
         self.cause = cause
+        # This parameter is required.
         self.city = city
         self.city_code_set = city_code_set
+        # This parameter is required.
         self.date = date
         self.finished_date = finished_date
         self.project_code = project_code
         self.project_name = project_name
+        # This parameter is required.
         self.status = status
+        # This parameter is required.
         self.third_part_apply_id = third_part_apply_id
         self.third_part_cost_center_id = third_part_cost_center_id
         self.third_part_invoice_id = third_part_invoice_id
+        # This parameter is required.
         self.times_total = times_total
+        # This parameter is required.
         self.times_type = times_type
+        # This parameter is required.
         self.times_used = times_used
+        # This parameter is required.
         self.title = title
         self.traveler_standard = traveler_standard
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -13805,22 +13885,32 @@ class CarApplyAddShrinkRequest(TeaModel):
         traveler_standard_shrink: str = None,
         user_id: str = None,
     ):
+        # This parameter is required.
         self.cause = cause
+        # This parameter is required.
         self.city = city
         self.city_code_set = city_code_set
+        # This parameter is required.
         self.date = date
         self.finished_date = finished_date
         self.project_code = project_code
         self.project_name = project_name
+        # This parameter is required.
         self.status = status
+        # This parameter is required.
         self.third_part_apply_id = third_part_apply_id
         self.third_part_cost_center_id = third_part_cost_center_id
         self.third_part_invoice_id = third_part_invoice_id
+        # This parameter is required.
         self.times_total = times_total
+        # This parameter is required.
         self.times_type = times_type
+        # This parameter is required.
         self.times_used = times_used
+        # This parameter is required.
         self.title = title
         self.traveler_standard_shrink = traveler_standard_shrink
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -14049,8 +14139,11 @@ class CarApplyModifyRequest(TeaModel):
     ):
         self.operate_time = operate_time
         self.remark = remark
+        # This parameter is required.
         self.status = status
+        # This parameter is required.
         self.third_part_apply_id = third_part_apply_id
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -14804,9 +14897,13 @@ class CarBillSettlementQueryRequest(TeaModel):
         period_end: str = None,
         period_start: str = None,
     ):
+        # This parameter is required.
         self.page_no = page_no
+        # This parameter is required.
         self.page_size = page_size
+        # This parameter is required.
         self.period_end = period_end
+        # This parameter is required.
         self.period_start = period_start
 
     def validate(self):
@@ -17187,6 +17284,7 @@ class CitySearchRequest(TeaModel):
         self,
         keyword: str = None,
     ):
+        # This parameter is required.
         self.keyword = keyword
 
     def validate(self):
@@ -17424,7 +17522,9 @@ class CommonApplyQueryRequest(TeaModel):
         biz_category: int = None,
         user_id: str = None,
     ):
+        # This parameter is required.
         self.apply_id = apply_id
+        # This parameter is required.
         self.biz_category = biz_category
         self.user_id = user_id
 
@@ -17686,11 +17786,14 @@ class CommonApplySyncRequest(TeaModel):
         thirdparty_flow_id: str = None,
         user_id: str = None,
     ):
+        # This parameter is required.
         self.apply_id = apply_id
         self.biz_category = biz_category
         self.remark = remark
+        # This parameter is required.
         self.status = status
         self.thirdparty_flow_id = thirdparty_flow_id
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -17875,9 +17978,13 @@ class CooperatorFlightBillSettlementQueryRequest(TeaModel):
         period_start: str = None,
     ):
         self.cooperator_id = cooperator_id
+        # This parameter is required.
         self.page_no = page_no
+        # This parameter is required.
         self.page_size = page_size
+        # This parameter is required.
         self.period_end = period_end
+        # This parameter is required.
         self.period_start = period_start
 
     def validate(self):
@@ -18776,8 +18883,11 @@ class CooperatorHotelBillSettlementQueryRequest(TeaModel):
         period_start: str = None,
     ):
         self.cooperator_id = cooperator_id
+        # This parameter is required.
         self.page_no = page_no
+        # This parameter is required.
         self.page_size = page_size
+        # This parameter is required.
         self.period_end = period_end
         self.period_start = period_start
 
@@ -19766,7 +19876,9 @@ class CorpTokenRequest(TeaModel):
         type: int = None,
     ):
         self.app_secret = app_secret
+        # This parameter is required.
         self.corp_id = corp_id
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -20018,6 +20130,7 @@ class CostCenterDeleteRequest(TeaModel):
         self,
         thirdpart_id: str = None,
     ):
+        # This parameter is required.
         self.thirdpart_id = thirdpart_id
 
     def validate(self):
@@ -20179,8 +20292,11 @@ class CostCenterModifyRequest(TeaModel):
         self.alipay_no = alipay_no
         self.disable = disable
         self.number = number
+        # This parameter is required.
         self.scope = scope
+        # This parameter is required.
         self.thirdpart_id = thirdpart_id
+        # This parameter is required.
         self.title = title
 
     def validate(self):
@@ -20699,8 +20815,11 @@ class CostCenterSaveRequest(TeaModel):
         self.alipay_no = alipay_no
         self.disable = disable
         self.number = number
+        # This parameter is required.
         self.scope = scope
+        # This parameter is required.
         self.thirdpart_id = thirdpart_id
+        # This parameter is required.
         self.title = title
 
     def validate(self):
@@ -20911,8 +21030,11 @@ class CreateSubCorpRequest(TeaModel):
         outer_corp_name: str = None,
         user_id: str = None,
     ):
+        # This parameter is required.
         self.outer_corp_id = outer_corp_id
+        # This parameter is required.
         self.outer_corp_name = outer_corp_name
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -21145,6 +21267,7 @@ class DeleteInvoiceEntityRequest(TeaModel):
     ):
         self.del_all = del_all
         self.entities = entities
+        # This parameter is required.
         self.third_part_id = third_part_id
 
     def validate(self):
@@ -21192,6 +21315,7 @@ class DeleteInvoiceEntityShrinkRequest(TeaModel):
     ):
         self.del_all = del_all
         self.entities_shrink = entities_shrink
+        # This parameter is required.
         self.third_part_id = third_part_id
 
     def validate(self):
@@ -21401,6 +21525,7 @@ class DepartmentSaveRequestDepartList(TeaModel):
         third_depart_pid: str = None,
     ):
         self.depart_id = depart_id
+        # This parameter is required.
         self.depart_name = depart_name
         self.depart_pid = depart_pid
         self.manager_ids = manager_ids
@@ -21686,6 +21811,7 @@ class EntityAddRequest(TeaModel):
         thirdpart_id: str = None,
     ):
         self.entity_dolist = entity_dolist
+        # This parameter is required.
         self.thirdpart_id = thirdpart_id
 
     def validate(self):
@@ -21727,6 +21853,7 @@ class EntityAddShrinkRequest(TeaModel):
         thirdpart_id: str = None,
     ):
         self.entity_dolist_shrink = entity_dolist_shrink
+        # This parameter is required.
         self.thirdpart_id = thirdpart_id
 
     def validate(self):
@@ -21926,7 +22053,9 @@ class EntityDeleteRequestEntityDOList(TeaModel):
         entity_id: str = None,
         entity_type: str = None,
     ):
+        # This parameter is required.
         self.entity_id = entity_id
+        # This parameter is required.
         self.entity_type = entity_type
 
     def validate(self):
@@ -21960,8 +22089,10 @@ class EntityDeleteRequest(TeaModel):
         entity_dolist: List[EntityDeleteRequestEntityDOList] = None,
         thirdpart_id: str = None,
     ):
+        # This parameter is required.
         self.del_all = del_all
         self.entity_dolist = entity_dolist
+        # This parameter is required.
         self.thirdpart_id = thirdpart_id
 
     def validate(self):
@@ -22007,8 +22138,10 @@ class EntityDeleteShrinkRequest(TeaModel):
         entity_dolist_shrink: str = None,
         thirdpart_id: str = None,
     ):
+        # This parameter is required.
         self.del_all = del_all
         self.entity_dolist_shrink = entity_dolist_shrink
+        # This parameter is required.
         self.thirdpart_id = thirdpart_id
 
     def validate(self):
@@ -22218,7 +22351,9 @@ class EntitySetRequestEntityDOList(TeaModel):
         entity_id: str = None,
         entity_type: str = None,
     ):
+        # This parameter is required.
         self.entity_id = entity_id
+        # This parameter is required.
         self.entity_type = entity_type
 
     def validate(self):
@@ -22252,6 +22387,7 @@ class EntitySetRequest(TeaModel):
         thirdpart_id: str = None,
     ):
         self.entity_dolist = entity_dolist
+        # This parameter is required.
         self.thirdpart_id = thirdpart_id
 
     def validate(self):
@@ -22293,6 +22429,7 @@ class EntitySetShrinkRequest(TeaModel):
         thirdpart_id: str = None,
     ):
         self.entity_dolist_shrink = entity_dolist_shrink
+        # This parameter is required.
         self.thirdpart_id = thirdpart_id
 
     def validate(self):
@@ -22510,13 +22647,19 @@ class EstimatedPriceQueryRequest(TeaModel):
         sub_corp_id: str = None,
         user_id: str = None,
     ):
+        # This parameter is required.
         self.arr_city = arr_city
+        # This parameter is required.
         self.category = category
+        # This parameter is required.
         self.dep_city = dep_city
+        # This parameter is required.
         self.end_time = end_time
         self.itinerary_id = itinerary_id
+        # This parameter is required.
         self.start_time = start_time
         self.sub_corp_id = sub_corp_id
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -23054,11 +23197,14 @@ class ExceedApplySyncRequest(TeaModel):
         thirdparty_flow_id: str = None,
         user_id: str = None,
     ):
+        # This parameter is required.
         self.apply_id = apply_id
         self.biz_category = biz_category
         self.remark = remark
+        # This parameter is required.
         self.status = status
         self.thirdparty_flow_id = thirdparty_flow_id
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -23241,9 +23387,13 @@ class FlightBillSettlementQueryRequest(TeaModel):
         period_end: str = None,
         period_start: str = None,
     ):
+        # This parameter is required.
         self.page_no = page_no
+        # This parameter is required.
         self.page_size = page_size
+        # This parameter is required.
         self.period_end = period_end
+        # This parameter is required.
         self.period_start = period_start
 
     def validate(self):
@@ -24086,6 +24236,7 @@ class FlightCancelOrderRequest(TeaModel):
         self,
         dis_order_id: str = None,
     ):
+        # This parameter is required.
         self.dis_order_id = dis_order_id
 
     def validate(self):
@@ -24293,6 +24444,7 @@ class FlightCancelOrderV2Request(TeaModel):
         order_id: str = None,
         out_order_id: str = None,
     ):
+        # This parameter is required.
         self.isv_name = isv_name
         self.order_id = order_id
         self.out_order_id = out_order_id
@@ -24496,7 +24648,9 @@ class FlightCreateOrderRequestContactInfo(TeaModel):
         contact_phone: str = None,
     ):
         self.contact_email = contact_email
+        # This parameter is required.
         self.contact_name = contact_name
+        # This parameter is required.
         self.contact_phone = contact_phone
 
     def validate(self):
@@ -24545,17 +24699,23 @@ class FlightCreateOrderRequestTravelerInfoList(TeaModel):
     ):
         self.birthday = birthday
         self.cert_nation = cert_nation
+        # This parameter is required.
         self.cert_no = cert_no
+        # This parameter is required.
         self.cert_type = cert_type
         self.cert_valid_date = cert_valid_date
+        # This parameter is required.
         self.name = name
         # 国籍
         self.nationality = nationality
         # 国籍二字码
         self.nationality_code = nationality_code
+        # This parameter is required.
         self.out_user_id = out_user_id
+        # This parameter is required.
         self.phone = phone
         self.sex = sex
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -24646,23 +24806,34 @@ class FlightCreateOrderRequest(TeaModel):
         trip_type: int = None,
     ):
         self.arr_airport_code = arr_airport_code
+        # This parameter is required.
         self.arr_city_code = arr_city_code
         self.auto_pay = auto_pay
         self.buyer_name = buyer_name
+        # This parameter is required.
         self.buyer_unique_key = buyer_unique_key
+        # This parameter is required.
         self.contact_info = contact_info
         self.dep_airport_code = dep_airport_code
+        # This parameter is required.
         self.dep_city_code = dep_city_code
+        # This parameter is required.
         self.dep_date = dep_date
+        # This parameter is required.
         self.dis_order_id = dis_order_id
         self.order_attr = order_attr
+        # This parameter is required.
         self.order_params = order_params
+        # This parameter is required.
         self.ota_item_id = ota_item_id
+        # This parameter is required.
         self.price = price
         self.receipt_address = receipt_address
         self.receipt_target = receipt_target
         self.receipt_title = receipt_title
+        # This parameter is required.
         self.traveler_info_list = traveler_info_list
+        # This parameter is required.
         self.trip_type = trip_type
 
     def validate(self):
@@ -24792,23 +24963,34 @@ class FlightCreateOrderShrinkRequest(TeaModel):
         trip_type: int = None,
     ):
         self.arr_airport_code = arr_airport_code
+        # This parameter is required.
         self.arr_city_code = arr_city_code
         self.auto_pay = auto_pay
         self.buyer_name = buyer_name
+        # This parameter is required.
         self.buyer_unique_key = buyer_unique_key
+        # This parameter is required.
         self.contact_info_shrink = contact_info_shrink
         self.dep_airport_code = dep_airport_code
+        # This parameter is required.
         self.dep_city_code = dep_city_code
+        # This parameter is required.
         self.dep_date = dep_date
+        # This parameter is required.
         self.dis_order_id = dis_order_id
         self.order_attr_shrink = order_attr_shrink
+        # This parameter is required.
         self.order_params = order_params
+        # This parameter is required.
         self.ota_item_id = ota_item_id
+        # This parameter is required.
         self.price = price
         self.receipt_address = receipt_address
         self.receipt_target = receipt_target
         self.receipt_title = receipt_title
+        # This parameter is required.
         self.traveler_info_list_shrink = traveler_info_list_shrink
+        # This parameter is required.
         self.trip_type = trip_type
 
     def validate(self):
@@ -25174,24 +25356,32 @@ class FlightCreateOrderV2RequestTravelers(TeaModel):
         user_id: str = None,
         user_type: int = None,
     ):
+        # This parameter is required.
         self.birthday = birthday
         self.cert_nation = cert_nation
+        # This parameter is required.
         self.cert_no = cert_no
+        # This parameter is required.
         self.cert_type = cert_type
         self.cert_valid_date = cert_valid_date
         self.cost_center_name = cost_center_name
         self.cost_center_number = cost_center_number
         self.dept_id = dept_id
         self.dept_name = dept_name
+        # This parameter is required.
         self.gender = gender
         self.invoice_title = invoice_title
         self.nationality = nationality
         self.nationality_code = nationality_code
+        # This parameter is required.
         self.passenger_name = passenger_name
+        # This parameter is required.
         self.passenger_type = passenger_type
+        # This parameter is required.
         self.phone = phone
         self.project_code = project_code
         self.project_title = project_title
+        # This parameter is required.
         self.user_id = user_id
         self.user_type = user_type
 
@@ -25309,11 +25499,16 @@ class FlightCreateOrderV2Request(TeaModel):
         self.async_create_order_mode = async_create_order_mode
         self.btrip_user_id = btrip_user_id
         self.buyer_name = buyer_name
+        # This parameter is required.
         self.contact_info = contact_info
+        # This parameter is required.
         self.isv_name = isv_name
+        # This parameter is required.
         self.ota_item_id = ota_item_id
+        # This parameter is required.
         self.out_order_id = out_order_id
         self.total_price_cent = total_price_cent
+        # This parameter is required.
         self.travelers = travelers
 
     def validate(self):
@@ -25401,11 +25596,16 @@ class FlightCreateOrderV2ShrinkRequest(TeaModel):
         self.async_create_order_mode = async_create_order_mode
         self.btrip_user_id = btrip_user_id
         self.buyer_name = buyer_name
+        # This parameter is required.
         self.contact_info_shrink = contact_info_shrink
+        # This parameter is required.
         self.isv_name = isv_name
+        # This parameter is required.
         self.ota_item_id = ota_item_id
+        # This parameter is required.
         self.out_order_id = out_order_id
         self.total_price_cent = total_price_cent
+        # This parameter is required.
         self.travelers_shrink = travelers_shrink
 
     def validate(self):
@@ -25662,6 +25862,7 @@ class FlightExceedApplyQueryRequest(TeaModel):
         self,
         apply_id: int = None,
     ):
+        # This parameter is required.
         self.apply_id = apply_id
 
     def validate(self):
@@ -26142,6 +26343,7 @@ class FlightItineraryScanQueryRequest(TeaModel):
         page_size: int = None,
         ticket_no: str = None,
     ):
+        # This parameter is required.
         self.bill_date = bill_date
         self.bill_id = bill_id
         self.invoice_sub_task_id = invoice_sub_task_id
@@ -26689,9 +26891,12 @@ class FlightListingSearchRequest(TeaModel):
         dep_date: str = None,
     ):
         self.airline_code = airline_code
+        # This parameter is required.
         self.arr_city_code = arr_city_code
         self.cabin_class = cabin_class
+        # This parameter is required.
         self.dep_city_code = dep_city_code
+        # This parameter is required.
         self.dep_date = dep_date
 
     def validate(self):
@@ -28608,8 +28813,11 @@ class FlightListingSearchV2RequestSearchJourneys(TeaModel):
         dep_date: str = None,
         selected_flights: List[FlightListingSearchV2RequestSearchJourneysSelectedFlights] = None,
     ):
+        # This parameter is required.
         self.arr_city_code = arr_city_code
+        # This parameter is required.
         self.dep_city_code = dep_city_code
+        # This parameter is required.
         self.dep_date = dep_date
         self.selected_flights = selected_flights
 
@@ -28671,13 +28879,17 @@ class FlightListingSearchV2Request(TeaModel):
         self.airline_code = airline_code
         self.cabin_type_list = cabin_type_list
         self.direct_only = direct_only
+        # This parameter is required.
         self.isv_name = isv_name
         self.need_multi_class_price = need_multi_class_price
         self.need_query_service_fee = need_query_service_fee
         self.need_share_flight = need_share_flight
         self.need_ycbest_price = need_ycbest_price
+        # This parameter is required.
         self.search_journeys = search_journeys
+        # This parameter is required.
         self.search_mode = search_mode
+        # This parameter is required.
         self.trip_type = trip_type
 
     def validate(self):
@@ -28766,13 +28978,17 @@ class FlightListingSearchV2ShrinkRequest(TeaModel):
         self.airline_code = airline_code
         self.cabin_type_list_shrink = cabin_type_list_shrink
         self.direct_only = direct_only
+        # This parameter is required.
         self.isv_name = isv_name
         self.need_multi_class_price = need_multi_class_price
         self.need_query_service_fee = need_query_service_fee
         self.need_share_flight = need_share_flight
         self.need_ycbest_price = need_ycbest_price
+        # This parameter is required.
         self.search_journeys_shrink = search_journeys_shrink
+        # This parameter is required.
         self.search_mode = search_mode
+        # This parameter is required.
         self.trip_type = trip_type
 
     def validate(self):
@@ -34982,6 +35198,7 @@ class FlightOrderDetailInfoRequest(TeaModel):
         self,
         dis_order_id: str = None,
     ):
+        # This parameter is required.
         self.dis_order_id = dis_order_id
 
     def validate(self):
@@ -35650,6 +35867,7 @@ class FlightOrderDetailV2Request(TeaModel):
         order_id: int = None,
         out_order_id: str = None,
     ):
+        # This parameter is required.
         self.isv_name = isv_name
         self.order_id = order_id
         self.out_order_id = out_order_id
@@ -37984,6 +38202,7 @@ class FlightOrderQueryRequest(TeaModel):
         order_id: int = None,
         user_id: str = None,
     ):
+        # This parameter is required.
         self.order_id = order_id
         self.user_id = user_id
 
@@ -39154,7 +39373,9 @@ class FlightOtaItemDetailRequest(TeaModel):
         isv_name: str = None,
         ota_item_id: str = None,
     ):
+        # This parameter is required.
         self.isv_name = isv_name
+        # This parameter is required.
         self.ota_item_id = ota_item_id
 
     def validate(self):
@@ -40179,11 +40400,15 @@ class FlightOtaSearchRequest(TeaModel):
         flight_no: str = None,
     ):
         self.airline_code = airline_code
+        # This parameter is required.
         self.arr_city_code = arr_city_code
         self.cabin_class = cabin_class
         self.carrier_flight_no = carrier_flight_no
+        # This parameter is required.
         self.dep_city_code = dep_city_code
+        # This parameter is required.
         self.dep_date = dep_date
+        # This parameter is required.
         self.flight_no = flight_no
 
     def validate(self):
@@ -43458,6 +43683,7 @@ class FlightOtaSearchV2RequestSearchJourneysSelectedFlights(TeaModel):
         self.dep_airport_code = dep_airport_code
         self.dep_city_code = dep_city_code
         self.flight_time = flight_time
+        # This parameter is required.
         self.market_flight_no = market_flight_no
         self.operate_flight_no = operate_flight_no
 
@@ -43513,9 +43739,13 @@ class FlightOtaSearchV2RequestSearchJourneys(TeaModel):
         dep_date: str = None,
         selected_flights: List[FlightOtaSearchV2RequestSearchJourneysSelectedFlights] = None,
     ):
+        # This parameter is required.
         self.arr_city_code = arr_city_code
+        # This parameter is required.
         self.dep_city_code = dep_city_code
+        # This parameter is required.
         self.dep_date = dep_date
+        # This parameter is required.
         self.selected_flights = selected_flights
 
     def validate(self):
@@ -43571,10 +43801,14 @@ class FlightOtaSearchV2Request(TeaModel):
     ):
         self.cabin_type_list = cabin_type_list
         self.direct_only = direct_only
+        # This parameter is required.
         self.isv_name = isv_name
         self.need_share_flight = need_share_flight
+        # This parameter is required.
         self.search_journeys = search_journeys
+        # This parameter is required.
         self.search_mode = search_mode
+        # This parameter is required.
         self.trip_type = trip_type
 
     def validate(self):
@@ -43642,10 +43876,14 @@ class FlightOtaSearchV2ShrinkRequest(TeaModel):
     ):
         self.cabin_type_list_shrink = cabin_type_list_shrink
         self.direct_only = direct_only
+        # This parameter is required.
         self.isv_name = isv_name
         self.need_share_flight = need_share_flight
+        # This parameter is required.
         self.search_journeys_shrink = search_journeys_shrink
+        # This parameter is required.
         self.search_mode = search_mode
+        # This parameter is required.
         self.trip_type = trip_type
 
     def validate(self):
@@ -44664,10 +44902,14 @@ class FlightPayOrderRequest(TeaModel):
         personal_pay_price: int = None,
         total_pay_price: int = None,
     ):
+        # This parameter is required.
         self.corp_pay_price = corp_pay_price
+        # This parameter is required.
         self.dis_order_id = dis_order_id
         self.extra = extra
+        # This parameter is required.
         self.personal_pay_price = personal_pay_price
+        # This parameter is required.
         self.total_pay_price = total_pay_price
 
     def validate(self):
@@ -44715,10 +44957,14 @@ class FlightPayOrderShrinkRequest(TeaModel):
         personal_pay_price: int = None,
         total_pay_price: int = None,
     ):
+        # This parameter is required.
         self.corp_pay_price = corp_pay_price
+        # This parameter is required.
         self.dis_order_id = dis_order_id
         self.extra_shrink = extra_shrink
+        # This parameter is required.
         self.personal_pay_price = personal_pay_price
+        # This parameter is required.
         self.total_pay_price = total_pay_price
 
     def validate(self):
@@ -45207,17 +45453,24 @@ class FlightRefundApplyRequest(TeaModel):
         total_refund_price: int = None,
     ):
         self.corp_refund_price = corp_refund_price
+        # This parameter is required.
         self.dis_order_id = dis_order_id
+        # This parameter is required.
         self.dis_sub_order_id = dis_sub_order_id
+        # This parameter is required.
         self.display_refund_money = display_refund_money
         self.extra = extra
+        # This parameter is required.
         self.is_voluntary = is_voluntary
+        # This parameter is required.
         self.item_unit_ids = item_unit_ids
         self.passenger_segment_info_list = passenger_segment_info_list
         self.personal_refund_price = personal_refund_price
         self.reason_detail = reason_detail
+        # This parameter is required.
         self.reason_type = reason_type
         self.refund_voucher_info = refund_voucher_info
+        # This parameter is required.
         self.session_id = session_id
         self.total_refund_price = total_refund_price
 
@@ -45320,17 +45573,24 @@ class FlightRefundApplyShrinkRequest(TeaModel):
         total_refund_price: int = None,
     ):
         self.corp_refund_price = corp_refund_price
+        # This parameter is required.
         self.dis_order_id = dis_order_id
+        # This parameter is required.
         self.dis_sub_order_id = dis_sub_order_id
+        # This parameter is required.
         self.display_refund_money = display_refund_money
         self.extra_shrink = extra_shrink
+        # This parameter is required.
         self.is_voluntary = is_voluntary
+        # This parameter is required.
         self.item_unit_ids = item_unit_ids
         self.passenger_segment_info_list_shrink = passenger_segment_info_list_shrink
         self.personal_refund_price = personal_refund_price
         self.reason_detail = reason_detail
+        # This parameter is required.
         self.reason_type = reason_type
         self.refund_voucher_info_shrink = refund_voucher_info_shrink
+        # This parameter is required.
         self.session_id = session_id
         self.total_refund_price = total_refund_price
 
@@ -46003,7 +46263,9 @@ class FlightRefundDetailRequest(TeaModel):
         dis_order_id: str = None,
         dis_sub_order_id: str = None,
     ):
+        # This parameter is required.
         self.dis_order_id = dis_order_id
+        # This parameter is required.
         self.dis_sub_order_id = dis_sub_order_id
 
     def validate(self):
@@ -46978,8 +47240,11 @@ class FlightRefundPreCalRequestPassengerSegmentInfoList(TeaModel):
         passenger_name: str = None,
         user_id: str = None,
     ):
+        # This parameter is required.
         self.flight_no = flight_no
+        # This parameter is required.
         self.passenger_name = passenger_name
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -47017,8 +47282,10 @@ class FlightRefundPreCalRequest(TeaModel):
         is_voluntary: str = None,
         passenger_segment_info_list: List[FlightRefundPreCalRequestPassengerSegmentInfoList] = None,
     ):
+        # This parameter is required.
         self.dis_order_id = dis_order_id
         self.is_voluntary = is_voluntary
+        # This parameter is required.
         self.passenger_segment_info_list = passenger_segment_info_list
 
     def validate(self):
@@ -47064,8 +47331,10 @@ class FlightRefundPreCalShrinkRequest(TeaModel):
         is_voluntary: str = None,
         passenger_segment_info_list_shrink: str = None,
     ):
+        # This parameter is required.
         self.dis_order_id = dis_order_id
         self.is_voluntary = is_voluntary
+        # This parameter is required.
         self.passenger_segment_info_list_shrink = passenger_segment_info_list_shrink
 
     def validate(self):
@@ -47897,18 +48166,22 @@ class FlightSearchListRequest(TeaModel):
         trip_type: str = None,
     ):
         self.airline_code = airline_code
+        # This parameter is required.
         self.arr_city_code = arr_city_code
         self.arr_city_name = arr_city_name
         self.arr_date = arr_date
         self.cabin_class = cabin_class
+        # This parameter is required.
         self.dep_city_code = dep_city_code
         self.dep_city_name = dep_city_name
+        # This parameter is required.
         self.dep_date = dep_date
         self.flight_no = flight_no
         self.need_multi_class_price = need_multi_class_price
         self.transfer_city_code = transfer_city_code
         self.transfer_flight_no = transfer_flight_no
         self.transfer_leave_date = transfer_leave_date
+        # This parameter is required.
         self.trip_type = trip_type
 
     def validate(self):
@@ -52697,8 +52970,11 @@ class GroupCorpTokenRequest(TeaModel):
         corp_id: str = None,
         sub_corp_id: str = None,
     ):
+        # This parameter is required.
         self.app_secret = app_secret
+        # This parameter is required.
         self.corp_id = corp_id
+        # This parameter is required.
         self.sub_corp_id = sub_corp_id
 
     def validate(self):
@@ -52914,10 +53190,13 @@ class GroupDepartSaveRequest(TeaModel):
         sub_corp_id_list: List[str] = None,
         sync_group: bool = None,
     ):
+        # This parameter is required.
         self.dept_name = dept_name
         self.manager_ids = manager_ids
+        # This parameter is required.
         self.outer_dept_id = outer_dept_id
         self.outer_dept_pid = outer_dept_pid
+        # This parameter is required.
         self.status = status
         self.sub_corp_id_list = sub_corp_id_list
         self.sync_group = sync_group
@@ -52977,10 +53256,13 @@ class GroupDepartSaveShrinkRequest(TeaModel):
         sub_corp_id_list_shrink: str = None,
         sync_group: bool = None,
     ):
+        # This parameter is required.
         self.dept_name = dept_name
         self.manager_ids = manager_ids
+        # This parameter is required.
         self.outer_dept_id = outer_dept_id
         self.outer_dept_pid = outer_dept_pid
+        # This parameter is required.
         self.status = status
         self.sub_corp_id_list_shrink = sub_corp_id_list_shrink
         self.sync_group = sync_group
@@ -53217,9 +53499,11 @@ class GroupUserSaveRequestSubCorpIdList(TeaModel):
     ):
         self.depart_ids = depart_ids
         self.email = email
+        # This parameter is required.
         self.leave_status = leave_status
         self.manager_user_id = manager_user_id
         self.position_level = position_level
+        # This parameter is required.
         self.sub_corp_id = sub_corp_id
 
     def validate(self):
@@ -53283,8 +53567,11 @@ class GroupUserSaveRequest(TeaModel):
         self.job_no = job_no
         self.phone = phone
         self.real_name_en = real_name_en
+        # This parameter is required.
         self.sub_corp_id_list = sub_corp_id_list
+        # This parameter is required.
         self.user_id = user_id
+        # This parameter is required.
         self.user_name = user_name
 
     def validate(self):
@@ -53381,8 +53668,11 @@ class GroupUserSaveShrinkRequest(TeaModel):
         self.job_no = job_no
         self.phone = phone
         self.real_name_en = real_name_en
+        # This parameter is required.
         self.sub_corp_id_list_shrink = sub_corp_id_list_shrink
+        # This parameter is required.
         self.user_id = user_id
+        # This parameter is required.
         self.user_name = user_name
 
     def validate(self):
@@ -53584,7 +53874,9 @@ class HotelAskingPriceRequest(TeaModel):
     ):
         self.adult_num = adult_num
         self.btrip_user_id = btrip_user_id
+        # This parameter is required.
         self.check_in_date = check_in_date
+        # This parameter is required.
         self.check_out_date = check_out_date
         self.city_code = city_code
         self.city_name = city_name
@@ -53592,6 +53884,7 @@ class HotelAskingPriceRequest(TeaModel):
         self.hotel_star = hotel_star
         self.is_protocol = is_protocol
         self.payment_type = payment_type
+        # This parameter is required.
         self.shids = shids
         self.sort_code = sort_code
 
@@ -53677,7 +53970,9 @@ class HotelAskingPriceShrinkRequest(TeaModel):
     ):
         self.adult_num = adult_num
         self.btrip_user_id = btrip_user_id
+        # This parameter is required.
         self.check_in_date = check_in_date
+        # This parameter is required.
         self.check_out_date = check_out_date
         self.city_code = city_code
         self.city_name = city_name
@@ -53685,6 +53980,7 @@ class HotelAskingPriceShrinkRequest(TeaModel):
         self.hotel_star = hotel_star
         self.is_protocol = is_protocol
         self.payment_type = payment_type
+        # This parameter is required.
         self.shids_shrink = shids_shrink
         self.sort_code = sort_code
 
@@ -53991,9 +54287,13 @@ class HotelBillSettlementQueryRequest(TeaModel):
         period_end: str = None,
         period_start: str = None,
     ):
+        # This parameter is required.
         self.page_no = page_no
+        # This parameter is required.
         self.page_size = page_size
+        # This parameter is required.
         self.period_end = period_end
+        # This parameter is required.
         self.period_start = period_start
 
     def validate(self):
@@ -55003,6 +55303,7 @@ class HotelExceedApplyQueryRequest(TeaModel):
         self,
         apply_id: int = None,
     ):
+        # This parameter is required.
         self.apply_id = apply_id
 
     def validate(self):
@@ -55334,11 +55635,15 @@ class HotelGoodsQueryRequest(TeaModel):
     ):
         self.adult_num = adult_num
         self.agreement_price = agreement_price
+        # This parameter is required.
         self.begin_date = begin_date
         self.breakfast_included = breakfast_included
+        # This parameter is required.
         self.btrip_user_id = btrip_user_id
         self.city_code = city_code
+        # This parameter is required.
         self.end_date = end_date
+        # This parameter is required.
         self.hotel_id = hotel_id
         self.pay_over_type = pay_over_type
         self.payment_type = payment_type
@@ -56443,6 +56748,7 @@ class HotelIndexInfoRequest(TeaModel):
     ):
         self.city_code = city_code
         self.hotel_status = hotel_status
+        # This parameter is required.
         self.page_size = page_size
         self.page_token = page_token
 
@@ -57053,7 +57359,9 @@ class HotelOrderCreateRequestOccupantInfoList(TeaModel):
         self.employee_type = employee_type
         self.first_name = first_name
         self.last_name = last_name
+        # This parameter is required.
         self.name = name
+        # This parameter is required.
         self.phone = phone
         self.room_no = room_no
         self.staff_no = staff_no
@@ -57261,27 +57569,44 @@ class HotelOrderCreateRequest(TeaModel):
         total_order_price: int = None,
         validate_res_key: str = None,
     ):
+        # This parameter is required.
         self.btrip_user_id = btrip_user_id
+        # This parameter is required.
         self.check_in = check_in
+        # This parameter is required.
         self.check_out = check_out
         self.contract_email = contract_email
         self.contract_name = contract_name
+        # This parameter is required.
         self.contract_phone = contract_phone
+        # This parameter is required.
         self.corp_pay_price = corp_pay_price
+        # This parameter is required.
         self.dis_order_id = dis_order_id
         self.extra = extra
         self.invoice_info = invoice_info
+        # This parameter is required.
         self.item_id = item_id
+        # This parameter is required.
         self.itinerary_no = itinerary_no
+        # This parameter is required.
         self.occupant_info_list = occupant_info_list
+        # This parameter is required.
         self.person_pay_price = person_pay_price
         self.promotion_info = promotion_info
+        # This parameter is required.
         self.rate_plan_id = rate_plan_id
+        # This parameter is required.
         self.room_id = room_id
+        # This parameter is required.
         self.room_num = room_num
+        # This parameter is required.
         self.seller_id = seller_id
+        # This parameter is required.
         self.shid = shid
+        # This parameter is required.
         self.total_order_price = total_order_price
+        # This parameter is required.
         self.validate_res_key = validate_res_key
 
     def validate(self):
@@ -57428,27 +57753,44 @@ class HotelOrderCreateShrinkRequest(TeaModel):
         total_order_price: int = None,
         validate_res_key: str = None,
     ):
+        # This parameter is required.
         self.btrip_user_id = btrip_user_id
+        # This parameter is required.
         self.check_in = check_in
+        # This parameter is required.
         self.check_out = check_out
         self.contract_email = contract_email
         self.contract_name = contract_name
+        # This parameter is required.
         self.contract_phone = contract_phone
+        # This parameter is required.
         self.corp_pay_price = corp_pay_price
+        # This parameter is required.
         self.dis_order_id = dis_order_id
         self.extra = extra
         self.invoice_info_shrink = invoice_info_shrink
+        # This parameter is required.
         self.item_id = item_id
+        # This parameter is required.
         self.itinerary_no = itinerary_no
+        # This parameter is required.
         self.occupant_info_list_shrink = occupant_info_list_shrink
+        # This parameter is required.
         self.person_pay_price = person_pay_price
         self.promotion_info_shrink = promotion_info_shrink
+        # This parameter is required.
         self.rate_plan_id = rate_plan_id
+        # This parameter is required.
         self.room_id = room_id
+        # This parameter is required.
         self.room_num = room_num
+        # This parameter is required.
         self.seller_id = seller_id
+        # This parameter is required.
         self.shid = shid
+        # This parameter is required.
         self.total_order_price = total_order_price
+        # This parameter is required.
         self.validate_res_key = validate_res_key
 
     def validate(self):
@@ -59567,12 +59909,18 @@ class HotelOrderPayRequest(TeaModel):
         total_price: int = None,
     ):
         # 供应商订单号（取自创单返回的订单号）
+        # 
+        # This parameter is required.
         self.btrip_order_id = btrip_order_id
+        # This parameter is required.
         self.btrip_user_id = btrip_user_id
+        # This parameter is required.
         self.company_pay_fee = company_pay_fee
+        # This parameter is required.
         self.person_pay_fee = person_pay_fee
         self.third_pay_account = third_pay_account
         self.third_trade_no = third_trade_no
+        # This parameter is required.
         self.total_price = total_price
 
     def validate(self):
@@ -59870,18 +60218,29 @@ class HotelOrderPreValidateRequest(TeaModel):
         seller_id: int = None,
         shid: int = None,
     ):
+        # This parameter is required.
         self.btrip_user_id = btrip_user_id
+        # This parameter is required.
         self.check_in = check_in
+        # This parameter is required.
         self.check_out = check_out
+        # This parameter is required.
         self.daily_list = daily_list
+        # This parameter is required.
         self.item_id = item_id
         self.number_of_adults_per_room = number_of_adults_per_room
         self.occupant_info_list = occupant_info_list
+        # This parameter is required.
         self.rate_plan_id = rate_plan_id
+        # This parameter is required.
         self.room_id = room_id
+        # This parameter is required.
         self.room_num = room_num
+        # This parameter is required.
         self.search_room_price = search_room_price
+        # This parameter is required.
         self.seller_id = seller_id
+        # This parameter is required.
         self.shid = shid
 
     def validate(self):
@@ -59986,18 +60345,29 @@ class HotelOrderPreValidateShrinkRequest(TeaModel):
         seller_id: int = None,
         shid: int = None,
     ):
+        # This parameter is required.
         self.btrip_user_id = btrip_user_id
+        # This parameter is required.
         self.check_in = check_in
+        # This parameter is required.
         self.check_out = check_out
+        # This parameter is required.
         self.daily_list_shrink = daily_list_shrink
+        # This parameter is required.
         self.item_id = item_id
         self.number_of_adults_per_room = number_of_adults_per_room
         self.occupant_info_list_shrink = occupant_info_list_shrink
+        # This parameter is required.
         self.rate_plan_id = rate_plan_id
+        # This parameter is required.
         self.room_id = room_id
+        # This parameter is required.
         self.room_num = room_num
+        # This parameter is required.
         self.search_room_price = search_room_price
+        # This parameter is required.
         self.seller_id = seller_id
+        # This parameter is required.
         self.shid = shid
 
     def validate(self):
@@ -60632,6 +61002,7 @@ class HotelOrderQueryRequest(TeaModel):
         self,
         order_id: int = None,
     ):
+        # This parameter is required.
         self.order_id = order_id
 
     def validate(self):
@@ -62039,6 +62410,7 @@ class HotelRoomInfoRequest(TeaModel):
         self,
         room_ids: List[int] = None,
     ):
+        # This parameter is required.
         self.room_ids = room_ids
 
     def validate(self):
@@ -62066,6 +62438,7 @@ class HotelRoomInfoShrinkRequest(TeaModel):
         self,
         room_ids_shrink: str = None,
     ):
+        # This parameter is required.
         self.room_ids_shrink = room_ids_shrink
 
     def validate(self):
@@ -62618,7 +62991,9 @@ class HotelSearchRequest(TeaModel):
         self.adult_num = adult_num
         self.brand_code = brand_code
         self.btrip_user_id = btrip_user_id
+        # This parameter is required.
         self.check_in_date = check_in_date
+        # This parameter is required.
         self.check_out_date = check_out_date
         self.city_code = city_code
         self.dir = dir
@@ -62630,11 +63005,14 @@ class HotelSearchRequest(TeaModel):
         self.location = location
         self.max_price = max_price
         self.min_price = min_price
+        # This parameter is required.
         self.page_no = page_no
+        # This parameter is required.
         self.page_size = page_size
         self.pay_over_type = pay_over_type
         self.payment_type = payment_type
         self.shids = shids
+        # This parameter is required.
         self.sort_code = sort_code
         self.super_man = super_man
 
@@ -62771,7 +63149,9 @@ class HotelSearchShrinkRequest(TeaModel):
         self.adult_num = adult_num
         self.brand_code_shrink = brand_code_shrink
         self.btrip_user_id = btrip_user_id
+        # This parameter is required.
         self.check_in_date = check_in_date
+        # This parameter is required.
         self.check_out_date = check_out_date
         self.city_code = city_code
         self.dir = dir
@@ -62783,11 +63163,14 @@ class HotelSearchShrinkRequest(TeaModel):
         self.location = location
         self.max_price = max_price
         self.min_price = min_price
+        # This parameter is required.
         self.page_no = page_no
+        # This parameter is required.
         self.page_size = page_size
         self.pay_over_type = pay_over_type
         self.payment_type = payment_type
         self.shids_shrink = shids_shrink
+        # This parameter is required.
         self.sort_code = sort_code
         self.super_man = super_man
 
@@ -63297,6 +63680,7 @@ class HotelStaticInfoRequest(TeaModel):
         self,
         hotel_ids: List[str] = None,
     ):
+        # This parameter is required.
         self.hotel_ids = hotel_ids
 
     def validate(self):
@@ -63324,6 +63708,7 @@ class HotelStaticInfoShrinkRequest(TeaModel):
         self,
         hotel_ids_shrink: str = None,
     ):
+        # This parameter is required.
         self.hotel_ids_shrink = hotel_ids_shrink
 
     def validate(self):
@@ -64195,9 +64580,13 @@ class IeFlightBillSettlementQueryRequest(TeaModel):
         period_end: str = None,
         period_start: str = None,
     ):
+        # This parameter is required.
         self.page_no = page_no
+        # This parameter is required.
         self.page_size = page_size
+        # This parameter is required.
         self.period_end = period_end
+        # This parameter is required.
         self.period_start = period_start
 
     def validate(self):
@@ -64991,9 +65380,12 @@ class IeHotelBillSettlementQueryRequest(TeaModel):
         period_start: str = None,
     ):
         self.category = category
+        # This parameter is required.
         self.page_no = page_no
         self.page_size = page_size
+        # This parameter is required.
         self.period_end = period_end
+        # This parameter is required.
         self.period_start = period_start
 
     def validate(self):
@@ -66376,8 +66768,10 @@ class InsureOrderApplyRequest(TeaModel):
         out_sub_order_id: str = None,
         supplier_code: str = None,
     ):
+        # This parameter is required.
         self.btrip_user_id = btrip_user_id
         self.buyer_name = buyer_name
+        # This parameter is required.
         self.ins_order_id = ins_order_id
         self.isv_name = isv_name
         self.out_order_id = out_order_id
@@ -66655,6 +67049,7 @@ class InsureOrderCancelRequest(TeaModel):
         isv_name: str = None,
         supplier_code: str = None,
     ):
+        # This parameter is required.
         self.btrip_user_id = btrip_user_id
         self.buyer_name = buyer_name
         self.isv_name = isv_name
@@ -67075,12 +67470,16 @@ class InsureOrderCreateRequest(TeaModel):
         out_sub_order_id: str = None,
         supplier_code: str = None,
     ):
+        # This parameter is required.
         self.applicant = applicant
         self.btrip_user_id = btrip_user_id
         self.buyer_name = buyer_name
+        # This parameter is required.
         self.ins_person_and_segment_list = ins_person_and_segment_list
+        # This parameter is required.
         self.isv_name = isv_name
         self.out_ins_order_id = out_ins_order_id
+        # This parameter is required.
         self.out_order_id = out_order_id
         self.out_sub_order_id = out_sub_order_id
         self.supplier_code = supplier_code
@@ -67161,12 +67560,16 @@ class InsureOrderCreateShrinkRequest(TeaModel):
         out_sub_order_id: str = None,
         supplier_code: str = None,
     ):
+        # This parameter is required.
         self.applicant_shrink = applicant_shrink
         self.btrip_user_id = btrip_user_id
         self.buyer_name = buyer_name
+        # This parameter is required.
         self.ins_person_and_segment_list_shrink = ins_person_and_segment_list_shrink
+        # This parameter is required.
         self.isv_name = isv_name
         self.out_ins_order_id = out_ins_order_id
+        # This parameter is required.
         self.out_order_id = out_order_id
         self.out_sub_order_id = out_sub_order_id
         self.supplier_code = supplier_code
@@ -67463,8 +67866,10 @@ class InsureOrderDetailRequest(TeaModel):
         isv_name: str = None,
         supplier_code: str = None,
     ):
+        # This parameter is required.
         self.btrip_user_id = btrip_user_id
         self.buyer_name = buyer_name
+        # This parameter is required.
         self.ins_order_id = ins_order_id
         self.isv_name = isv_name
         self.supplier_code = supplier_code
@@ -67986,11 +68391,13 @@ class InsureOrderPayRequest(TeaModel):
         payment_amount: int = None,
         supplier_code: str = None,
     ):
+        # This parameter is required.
         self.btrip_user_id = btrip_user_id
         self.buyer_name = buyer_name
         self.isv_name = isv_name
         self.out_order_id = out_order_id
         self.out_sub_order_id = out_sub_order_id
+        # This parameter is required.
         self.payment_amount = payment_amount
         self.supplier_code = supplier_code
 
@@ -69305,9 +69712,13 @@ class IntlFlightCreateOrderRequestContactInfo(TeaModel):
         contact_phone: str = None,
         send_msg_to_passenger: bool = None,
     ):
+        # This parameter is required.
         self.contact_email = contact_email
+        # This parameter is required.
         self.contact_name = contact_name
+        # This parameter is required.
         self.contact_phone = contact_phone
+        # This parameter is required.
         self.send_msg_to_passenger = send_msg_to_passenger
 
     def validate(self):
@@ -69348,7 +69759,9 @@ class IntlFlightCreateOrderRequestCostCenter(TeaModel):
         cost_center_name: str = None,
         cost_center_number: str = None,
     ):
+        # This parameter is required.
         self.cost_center_name = cost_center_name
+        # This parameter is required.
         self.cost_center_number = cost_center_number
 
     def validate(self):
@@ -69385,9 +69798,12 @@ class IntlFlightCreateOrderRequestPassengerListCertInfo(TeaModel):
         name: str = None,
     ):
         self.cert_nation = cert_nation
+        # This parameter is required.
         self.cert_no = cert_no
+        # This parameter is required.
         self.cert_type = cert_type
         self.cert_valid_date = cert_valid_date
+        # This parameter is required.
         self.name = name
 
     def validate(self):
@@ -69436,9 +69852,12 @@ class IntlFlightCreateOrderRequestPassengerListSubsidiaryCertInfoList(TeaModel):
         name: str = None,
     ):
         self.cert_nation = cert_nation
+        # This parameter is required.
         self.cert_no = cert_no
+        # This parameter is required.
         self.cert_type = cert_type
         self.cert_valid_date = cert_valid_date
+        # This parameter is required.
         self.name = name
 
     def validate(self):
@@ -69503,9 +69922,11 @@ class IntlFlightCreateOrderRequestPassengerList(TeaModel):
         user_id: str = None,
         user_type: int = None,
     ):
+        # This parameter is required.
         self.birthday = birthday
         self.cascade_dept_mask = cascade_dept_mask
         self.cascade_dept_name = cascade_dept_name
+        # This parameter is required.
         self.cert_info = cert_info
         self.cost_center_name = cost_center_name
         self.cost_center_number = cost_center_number
@@ -69518,11 +69939,14 @@ class IntlFlightCreateOrderRequestPassengerList(TeaModel):
         self.mobile_country_code = mobile_country_code
         self.nationality = nationality
         self.nationality_code = nationality_code
+        # This parameter is required.
         self.passenger_type = passenger_type
+        # This parameter is required.
         self.phone = phone
         self.project_code = project_code
         self.project_title = project_title
         self.subsidiary_cert_info_list = subsidiary_cert_info_list
+        # This parameter is required.
         self.user_id = user_id
         self.user_type = user_type
 
@@ -69660,6 +70084,7 @@ class IntlFlightCreateOrderRequest(TeaModel):
         user_name: str = None,
     ):
         self.async_create_order_key = async_create_order_key
+        # This parameter is required.
         self.async_create_order_mode = async_create_order_mode
         self.contact_info = contact_info
         self.cost_center = cost_center
@@ -69779,6 +70204,7 @@ class IntlFlightCreateOrderShrinkRequest(TeaModel):
         user_name: str = None,
     ):
         self.async_create_order_key = async_create_order_key
+        # This parameter is required.
         self.async_create_order_mode = async_create_order_mode
         self.contact_info_shrink = contact_info_shrink
         self.cost_center_shrink = cost_center_shrink
@@ -70077,9 +70503,12 @@ class IntlFlightInventoryPriceCheckRequestPassengerListCertInfo(TeaModel):
         name: str = None,
     ):
         self.cert_nation = cert_nation
+        # This parameter is required.
         self.cert_no = cert_no
+        # This parameter is required.
         self.cert_type = cert_type
         self.cert_valid_date = cert_valid_date
+        # This parameter is required.
         self.name = name
 
     def validate(self):
@@ -70195,9 +70624,11 @@ class IntlFlightInventoryPriceCheckRequestPassengerList(TeaModel):
         user_id: str = None,
         user_type: int = None,
     ):
+        # This parameter is required.
         self.birthday = birthday
         self.cascade_dept_mask = cascade_dept_mask
         self.cascade_dept_name = cascade_dept_name
+        # This parameter is required.
         self.cert_info = cert_info
         self.cost_center_name = cost_center_name
         self.cost_center_number = cost_center_number
@@ -70210,11 +70641,14 @@ class IntlFlightInventoryPriceCheckRequestPassengerList(TeaModel):
         self.mobile_country_code = mobile_country_code
         self.nationality = nationality
         self.nationality_code = nationality_code
+        # This parameter is required.
         self.passenger_type = passenger_type
+        # This parameter is required.
         self.phone = phone
         self.project_code = project_code
         self.project_title = project_title
         self.subsidiary_cert_info_list = subsidiary_cert_info_list
+        # This parameter is required.
         self.user_id = user_id
         self.user_type = user_type
 
@@ -70347,7 +70781,9 @@ class IntlFlightInventoryPriceCheckRequest(TeaModel):
         self.isv_name = isv_name
         self.language = language
         self.order_price = order_price
+        # This parameter is required.
         self.ota_item_id = ota_item_id
+        # This parameter is required.
         self.passenger_list = passenger_list
         self.user_id = user_id
         self.user_name = user_name
@@ -70418,7 +70854,9 @@ class IntlFlightInventoryPriceCheckShrinkRequest(TeaModel):
         self.isv_name = isv_name
         self.language = language
         self.order_price = order_price
+        # This parameter is required.
         self.ota_item_id = ota_item_id
+        # This parameter is required.
         self.passenger_list_shrink = passenger_list_shrink
         self.user_id = user_id
         self.user_name = user_name
@@ -70806,11 +71244,15 @@ class IntlFlightListingSearchRequestSearchJourneysSelectedFlights(TeaModel):
         operate_flight_no: str = None,
     ):
         self.arr_airport_code = arr_airport_code
+        # This parameter is required.
         self.arr_city_code = arr_city_code
         self.cabin_type = cabin_type
         self.dep_airport_code = dep_airport_code
+        # This parameter is required.
         self.dep_city_code = dep_city_code
+        # This parameter is required.
         self.flight_time = flight_time
+        # This parameter is required.
         self.market_flight_no = market_flight_no
         self.operate_flight_no = operate_flight_no
 
@@ -70870,8 +71312,11 @@ class IntlFlightListingSearchRequestSearchJourneys(TeaModel):
         dep_date: str = None,
         selected_flights: List[IntlFlightListingSearchRequestSearchJourneysSelectedFlights] = None,
     ):
+        # This parameter is required.
         self.arr_city_code = arr_city_code
+        # This parameter is required.
         self.dep_city_code = dep_city_code
+        # This parameter is required.
         self.dep_date = dep_date
         self.selected_flights = selected_flights
 
@@ -70923,9 +71368,13 @@ class IntlFlightListingSearchRequestSearchPassengerList(TeaModel):
         full_name: str = None,
         type: int = None,
     ):
+        # This parameter is required.
         self.cert_no = cert_no
+        # This parameter is required.
         self.cert_type = cert_type
+        # This parameter is required.
         self.full_name = full_name
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -70981,18 +71430,24 @@ class IntlFlightListingSearchRequest(TeaModel):
     ):
         self.btrip_user_id = btrip_user_id
         self.buyer_name = buyer_name
+        # This parameter is required.
         self.cabin_type = cabin_type
         self.direct_only = direct_only
+        # This parameter is required.
         self.isv_name = isv_name
         self.language = language
         self.need_share_flight = need_share_flight
+        # This parameter is required.
         self.out_wheel_search = out_wheel_search
         self.query_record_id = query_record_id
+        # This parameter is required.
         self.search_journeys = search_journeys
+        # This parameter is required.
         self.search_mode = search_mode
         self.search_passenger_list = search_passenger_list
         self.supplier_code = supplier_code
         self.token = token
+        # This parameter is required.
         self.trip_type = trip_type
 
     def validate(self):
@@ -71109,18 +71564,24 @@ class IntlFlightListingSearchShrinkRequest(TeaModel):
     ):
         self.btrip_user_id = btrip_user_id
         self.buyer_name = buyer_name
+        # This parameter is required.
         self.cabin_type = cabin_type
         self.direct_only = direct_only
+        # This parameter is required.
         self.isv_name = isv_name
         self.language = language
         self.need_share_flight = need_share_flight
+        # This parameter is required.
         self.out_wheel_search = out_wheel_search
         self.query_record_id = query_record_id
+        # This parameter is required.
         self.search_journeys_shrink = search_journeys_shrink
+        # This parameter is required.
         self.search_mode = search_mode
         self.search_passenger_list_shrink = search_passenger_list_shrink
         self.supplier_code = supplier_code
         self.token = token
+        # This parameter is required.
         self.trip_type = trip_type
 
     def validate(self):
@@ -75947,11 +76408,15 @@ class IntlFlightOtaSearchRequestSearchJourneysSelectedFlights(TeaModel):
         operate_flight_no: str = None,
     ):
         self.arr_airport_code = arr_airport_code
+        # This parameter is required.
         self.arr_city_code = arr_city_code
         self.cabin_type = cabin_type
         self.dep_airport_code = dep_airport_code
+        # This parameter is required.
         self.dep_city_code = dep_city_code
+        # This parameter is required.
         self.flight_time = flight_time
+        # This parameter is required.
         self.market_flight_no = market_flight_no
         self.operate_flight_no = operate_flight_no
 
@@ -76011,9 +76476,13 @@ class IntlFlightOtaSearchRequestSearchJourneys(TeaModel):
         dep_date: str = None,
         selected_flights: List[IntlFlightOtaSearchRequestSearchJourneysSelectedFlights] = None,
     ):
+        # This parameter is required.
         self.arr_city_code = arr_city_code
+        # This parameter is required.
         self.dep_city_code = dep_city_code
+        # This parameter is required.
         self.dep_date = dep_date
+        # This parameter is required.
         self.selected_flights = selected_flights
 
     def validate(self):
@@ -76064,9 +76533,13 @@ class IntlFlightOtaSearchRequestSearchPassengerList(TeaModel):
         full_name: str = None,
         type: int = None,
     ):
+        # This parameter is required.
         self.cert_no = cert_no
+        # This parameter is required.
         self.cert_type = cert_type
+        # This parameter is required.
         self.full_name = full_name
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -76118,14 +76591,17 @@ class IntlFlightOtaSearchRequest(TeaModel):
     ):
         self.btrip_user_id = btrip_user_id
         self.buyer_name = buyer_name
+        # This parameter is required.
         self.cabin_type = cabin_type
         self.direct_only = direct_only
         self.isv_name = isv_name
         self.language = language
         self.need_share_flight = need_share_flight
+        # This parameter is required.
         self.search_journeys = search_journeys
         self.search_passenger_list = search_passenger_list
         self.supplier_code = supplier_code
+        # This parameter is required.
         self.trip_type = trip_type
 
     def validate(self):
@@ -76222,14 +76698,17 @@ class IntlFlightOtaSearchShrinkRequest(TeaModel):
     ):
         self.btrip_user_id = btrip_user_id
         self.buyer_name = buyer_name
+        # This parameter is required.
         self.cabin_type = cabin_type
         self.direct_only = direct_only
         self.isv_name = isv_name
         self.language = language
         self.need_share_flight = need_share_flight
+        # This parameter is required.
         self.search_journeys_shrink = search_journeys_shrink
         self.search_passenger_list_shrink = search_passenger_list_shrink
         self.supplier_code = supplier_code
+        # This parameter is required.
         self.trip_type = trip_type
 
     def validate(self):
@@ -77877,8 +78356,11 @@ class InvoiceAddRequest(TeaModel):
         self.bank_no = bank_no
         self.tax_no = tax_no
         self.tel = tel
+        # This parameter is required.
         self.third_part_id = third_part_id
+        # This parameter is required.
         self.title = title
+        # This parameter is required.
         self.type = type
         self.unit_type = unit_type
 
@@ -78065,6 +78547,7 @@ class InvoiceDeleteRequest(TeaModel):
         self,
         third_part_id: str = None,
     ):
+        # This parameter is required.
         self.third_part_id = third_part_id
 
     def validate(self):
@@ -78231,8 +78714,11 @@ class InvoiceModifyRequest(TeaModel):
         self.bank_no = bank_no
         self.tax_no = tax_no
         self.tel = tel
+        # This parameter is required.
         self.third_part_id = third_part_id
+        # This parameter is required.
         self.title = title
+        # This parameter is required.
         self.type = type
         self.unit_type = unit_type
 
@@ -78421,8 +78907,11 @@ class InvoiceRuleAddRequestEntities(TeaModel):
         entity_name: str = None,
         entity_type: str = None,
     ):
+        # This parameter is required.
         self.entity_id = entity_id
+        # This parameter is required.
         self.entity_name = entity_name
+        # This parameter is required.
         self.entity_type = entity_type
 
     def validate(self):
@@ -78459,7 +78948,9 @@ class InvoiceRuleAddRequest(TeaModel):
         entities: List[InvoiceRuleAddRequestEntities] = None,
         third_part_id: str = None,
     ):
+        # This parameter is required.
         self.entities = entities
+        # This parameter is required.
         self.third_part_id = third_part_id
 
     def validate(self):
@@ -78500,7 +78991,9 @@ class InvoiceRuleAddShrinkRequest(TeaModel):
         entities_shrink: str = None,
         third_part_id: str = None,
     ):
+        # This parameter is required.
         self.entities_shrink = entities_shrink
+        # This parameter is required.
         self.third_part_id = third_part_id
 
     def validate(self):
@@ -78736,6 +79229,7 @@ class InvoiceRuleDeleteRequest(TeaModel):
     ):
         self.del_all = del_all
         self.entities = entities
+        # This parameter is required.
         self.third_part_id = third_part_id
 
     def validate(self):
@@ -78783,6 +79277,7 @@ class InvoiceRuleDeleteShrinkRequest(TeaModel):
     ):
         self.del_all = del_all
         self.entities_shrink = entities_shrink
+        # This parameter is required.
         self.third_part_id = third_part_id
 
     def validate(self):
@@ -79030,6 +79525,7 @@ class InvoiceRuleSaveRequest(TeaModel):
         self.all_employe = all_employe
         self.entities = entities
         self.scope = scope
+        # This parameter is required.
         self.third_part_id = third_part_id
 
     def validate(self):
@@ -79083,6 +79579,7 @@ class InvoiceRuleSaveShrinkRequest(TeaModel):
         self.all_employe = all_employe
         self.entities_shrink = entities_shrink
         self.scope = scope
+        # This parameter is required.
         self.third_part_id = third_part_id
 
     def validate(self):
@@ -79508,7 +80005,9 @@ class IsvRuleSaveRequestBookuserList(TeaModel):
         entity_id: str = None,
         entity_type: int = None,
     ):
+        # This parameter is required.
         self.entity_id = entity_id
+        # This parameter is required.
         self.entity_type = entity_type
 
     def validate(self):
@@ -79546,10 +80045,13 @@ class IsvRuleSaveRequest(TeaModel):
         user_id: str = None,
     ):
         self.apply_need = apply_need
+        # This parameter is required.
         self.book_type = book_type
         self.bookuser_list = bookuser_list
         self.rule_need = rule_need
+        # This parameter is required.
         self.status = status
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -79611,10 +80113,13 @@ class IsvRuleSaveShrinkRequest(TeaModel):
         user_id: str = None,
     ):
         self.apply_need = apply_need
+        # This parameter is required.
         self.book_type = book_type
         self.bookuser_list_shrink = bookuser_list_shrink
         self.rule_need = rule_need
+        # This parameter is required.
         self.status = status
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -79880,7 +80385,9 @@ class IsvUserSaveRequestUserList(TeaModel):
         self.real_name_en = real_name_en
         self.third_depart_id = third_depart_id
         self.third_depart_id_list = third_depart_id_list
+        # This parameter is required.
         self.user_id = user_id
+        # This parameter is required.
         self.user_name = user_name
         self.user_nick = user_nick
 
@@ -80186,9 +80693,13 @@ class MealBillSettlementQueryRequest(TeaModel):
         period_end: str = None,
         period_start: str = None,
     ):
+        # This parameter is required.
         self.page_no = page_no
+        # This parameter is required.
         self.page_size = page_size
+        # This parameter is required.
         self.period_end = period_end
+        # This parameter is required.
         self.period_start = period_start
 
     def validate(self):
@@ -81333,6 +81844,7 @@ class MonthBillConfirmRequest(TeaModel):
         mail_bill_date: int = None,
         user_id: str = None,
     ):
+        # This parameter is required.
         self.mail_bill_date = mail_bill_date
         self.user_id = user_id
 
@@ -81804,9 +82316,12 @@ class ProjectAddRequest(TeaModel):
         third_part_id: str = None,
         third_part_invoice_id: str = None,
     ):
+        # This parameter is required.
         self.code = code
+        # This parameter is required.
         self.project_name = project_name
         self.third_part_cost_center_id = third_part_cost_center_id
+        # This parameter is required.
         self.third_part_id = third_part_id
         self.third_part_invoice_id = third_part_invoice_id
 
@@ -81988,6 +82503,7 @@ class ProjectDeleteRequest(TeaModel):
         self,
         third_part_id: str = None,
     ):
+        # This parameter is required.
         self.third_part_id = third_part_id
 
     def validate(self):
@@ -82151,8 +82667,10 @@ class ProjectModifyRequest(TeaModel):
         third_part_invoice_id: str = None,
     ):
         self.code = code
+        # This parameter is required.
         self.project_name = project_name
         self.third_part_cost_center_id = third_part_cost_center_id
+        # This parameter is required.
         self.third_part_id = third_part_id
         self.third_part_invoice_id = third_part_invoice_id
 
@@ -82329,6 +82847,7 @@ class QueryReimbursementOrderRequest(TeaModel):
         reimb_order_no: str = None,
         sub_corp_id: str = None,
     ):
+        # This parameter is required.
         self.reimb_order_no = reimb_order_no
         self.sub_corp_id = sub_corp_id
 
@@ -83032,7 +83551,9 @@ class SyncSingleUserRequest(TeaModel):
         self.position_level = position_level
         self.real_name_en = real_name_en
         self.third_depart_id_list = third_depart_id_list
+        # This parameter is required.
         self.user_id = user_id
+        # This parameter is required.
         self.user_name = user_name
 
     def validate(self):
@@ -83119,7 +83640,9 @@ class SyncSingleUserShrinkRequest(TeaModel):
         self.position_level = position_level
         self.real_name_en = real_name_en
         self.third_depart_id_list_shrink = third_depart_id_list_shrink
+        # This parameter is required.
         self.user_id = user_id
+        # This parameter is required.
         self.user_name = user_name
 
     def validate(self):
@@ -83321,9 +83844,13 @@ class SyncThirdUserMappingRequest(TeaModel):
         third_user_id: str = None,
         user_id: str = None,
     ):
+        # This parameter is required.
         self.status = status
+        # This parameter is required.
         self.third_channel_type = third_channel_type
+        # This parameter is required.
         self.third_user_id = third_user_id
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -83787,8 +84314,11 @@ class TicketChangingApplyRequestModifyFlightInfoListPassengerInfoList(TeaModel):
         out_user_id: str = None,
         passenger_name: str = None,
     ):
+        # This parameter is required.
         self.origin_flight_no = origin_flight_no
+        # This parameter is required.
         self.out_user_id = out_user_id
+        # This parameter is required.
         self.passenger_name = passenger_name
 
     def validate(self):
@@ -83829,11 +84359,16 @@ class TicketChangingApplyRequestModifyFlightInfoList(TeaModel):
         flight_no: str = None,
         passenger_info_list: List[TicketChangingApplyRequestModifyFlightInfoListPassengerInfoList] = None,
     ):
+        # This parameter is required.
         self.arr_city = arr_city
         self.cabin = cabin
+        # This parameter is required.
         self.dep_city = dep_city
+        # This parameter is required.
         self.dep_date = dep_date
+        # This parameter is required.
         self.flight_no = flight_no
+        # This parameter is required.
         self.passenger_info_list = passenger_info_list
 
     def validate(self):
@@ -83896,12 +84431,17 @@ class TicketChangingApplyRequest(TeaModel):
         session_id: str = None,
         whether_retry: bool = None,
     ):
+        # This parameter is required.
         self.dis_order_id = dis_order_id
+        # This parameter is required.
         self.dis_sub_order_id = dis_sub_order_id
         self.is_voluntary = is_voluntary
+        # This parameter is required.
         self.modify_flight_info_list = modify_flight_info_list
+        # This parameter is required.
         self.ota_item_id = ota_item_id
         self.reason = reason
+        # This parameter is required.
         self.session_id = session_id
         self.whether_retry = whether_retry
 
@@ -83973,12 +84513,17 @@ class TicketChangingApplyShrinkRequest(TeaModel):
         session_id: str = None,
         whether_retry: bool = None,
     ):
+        # This parameter is required.
         self.dis_order_id = dis_order_id
+        # This parameter is required.
         self.dis_sub_order_id = dis_sub_order_id
         self.is_voluntary = is_voluntary
+        # This parameter is required.
         self.modify_flight_info_list_shrink = modify_flight_info_list_shrink
+        # This parameter is required.
         self.ota_item_id = ota_item_id
         self.reason = reason
+        # This parameter is required.
         self.session_id = session_id
         self.whether_retry = whether_retry
 
@@ -85096,12 +85641,19 @@ class TicketChangingEnquiryRequest(TeaModel):
         modify_flight_no: str = None,
         session_id: str = None,
     ):
+        # This parameter is required.
         self.arr_city = arr_city
+        # This parameter is required.
         self.dep_city = dep_city
+        # This parameter is required.
         self.dis_order_id = dis_order_id
+        # This parameter is required.
         self.is_voluntary = is_voluntary
+        # This parameter is required.
         self.modify_depart_date = modify_depart_date
+        # This parameter is required.
         self.modify_flight_no = modify_flight_no
+        # This parameter is required.
         self.session_id = session_id
 
     def validate(self):
@@ -86669,10 +87221,13 @@ class TicketChangingFlightListRequestTravelerInfoList(TeaModel):
         type: str = None,
         user_id: str = None,
     ):
+        # This parameter is required.
         self.arr_city = arr_city
+        # This parameter is required.
         self.dep_city = dep_city
         self.name = name
         self.type = type
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -86723,7 +87278,9 @@ class TicketChangingFlightListRequest(TeaModel):
     ):
         self.arr_city = arr_city
         self.dep_city = dep_city
+        # This parameter is required.
         self.dep_date = dep_date
+        # This parameter is required.
         self.dis_order_id = dis_order_id
         self.is_voluntary = is_voluntary
         self.traveler_info_list = traveler_info_list
@@ -86788,7 +87345,9 @@ class TicketChangingFlightListShrinkRequest(TeaModel):
     ):
         self.arr_city = arr_city
         self.dep_city = dep_city
+        # This parameter is required.
         self.dep_date = dep_date
+        # This parameter is required.
         self.dis_order_id = dis_order_id
         self.is_voluntary = is_voluntary
         self.traveler_info_list_shrink = traveler_info_list_shrink
@@ -87517,10 +88076,13 @@ class TicketChangingPayRequest(TeaModel):
         total_pay_price: int = None,
     ):
         self.corp_pay_price = corp_pay_price
+        # This parameter is required.
         self.dis_order_id = dis_order_id
+        # This parameter is required.
         self.dis_sub_order_id = dis_sub_order_id
         self.extra = extra
         self.personal_pay_price = personal_pay_price
+        # This parameter is required.
         self.total_pay_price = total_pay_price
 
     def validate(self):
@@ -87574,10 +88136,13 @@ class TicketChangingPayShrinkRequest(TeaModel):
         total_pay_price: int = None,
     ):
         self.corp_pay_price = corp_pay_price
+        # This parameter is required.
         self.dis_order_id = dis_order_id
+        # This parameter is required.
         self.dis_sub_order_id = dis_sub_order_id
         self.extra_shrink = extra_shrink
         self.personal_pay_price = personal_pay_price
+        # This parameter is required.
         self.total_pay_price = total_pay_price
 
     def validate(self):
@@ -87812,9 +88377,13 @@ class TrainApplyChangeRequestChangeTrainInfoSChangeTicketInfoSPassengerInfo(TeaM
         passenger_id: str = None,
         passenger_name: str = None,
     ):
+        # This parameter is required.
         self.passenger_cert_no = passenger_cert_no
+        # This parameter is required.
         self.passenger_cert_type = passenger_cert_type
+        # This parameter is required.
         self.passenger_id = passenger_id
+        # This parameter is required.
         self.passenger_name = passenger_name
 
     def validate(self):
@@ -87857,9 +88426,13 @@ class TrainApplyChangeRequestChangeTrainInfoSChangeTicketInfoS(TeaModel):
         ticket_price: str = None,
         ticket_type: str = None,
     ):
+        # This parameter is required.
         self.passenger_info = passenger_info
+        # This parameter is required.
         self.seat_type = seat_type
+        # This parameter is required.
         self.ticket_price = ticket_price
+        # This parameter is required.
         self.ticket_type = ticket_type
 
     def validate(self):
@@ -87909,14 +88482,21 @@ class TrainApplyChangeRequestChangeTrainInfoS(TeaModel):
         original_train_no: str = None,
         train_no: str = None,
     ):
+        # This parameter is required.
         self.arr_station_code = arr_station_code
+        # This parameter is required.
         self.change_ticket_info_s = change_ticket_info_s
         self.choose_bed_s = choose_bed_s
         self.choose_seat_s = choose_seat_s
+        # This parameter is required.
         self.dep_station_code = dep_station_code
+        # This parameter is required.
         self.dep_time = dep_time
+        # This parameter is required.
         self.original_dep_time = original_dep_time
+        # This parameter is required.
         self.original_train_no = original_train_no
+        # This parameter is required.
         self.train_no = train_no
 
     def validate(self):
@@ -87991,11 +88571,15 @@ class TrainApplyChangeRequest(TeaModel):
         out_order_id: str = None,
     ):
         self.accept_no_seat = accept_no_seat
+        # This parameter is required.
         self.change_train_info_s = change_train_info_s
         self.force_match = force_match
         self.is_pay_now = is_pay_now
+        # This parameter is required.
         self.order_id = order_id
+        # This parameter is required.
         self.out_change_apply_id = out_change_apply_id
+        # This parameter is required.
         self.out_order_id = out_order_id
 
     def validate(self):
@@ -88062,11 +88646,15 @@ class TrainApplyChangeShrinkRequest(TeaModel):
         out_order_id: str = None,
     ):
         self.accept_no_seat = accept_no_seat
+        # This parameter is required.
         self.change_train_info_sshrink = change_train_info_sshrink
         self.force_match = force_match
         self.is_pay_now = is_pay_now
+        # This parameter is required.
         self.order_id = order_id
+        # This parameter is required.
         self.out_change_apply_id = out_change_apply_id
+        # This parameter is required.
         self.out_order_id = out_order_id
 
     def validate(self):
@@ -88301,9 +88889,13 @@ class TrainApplyRefundRequestRefundTrainInfosRefundPassengerInfos(TeaModel):
         passenger_id: str = None,
         passenger_name: str = None,
     ):
+        # This parameter is required.
         self.passenger_cert_no = passenger_cert_no
+        # This parameter is required.
         self.passenger_cert_type = passenger_cert_type
+        # This parameter is required.
         self.passenger_id = passenger_id
+        # This parameter is required.
         self.passenger_name = passenger_name
 
     def validate(self):
@@ -88345,8 +88937,11 @@ class TrainApplyRefundRequestRefundTrainInfos(TeaModel):
         refund_passenger_infos: List[TrainApplyRefundRequestRefundTrainInfosRefundPassengerInfos] = None,
         train_no: str = None,
     ):
+        # This parameter is required.
         self.dep_time = dep_time
+        # This parameter is required.
         self.refund_passenger_infos = refund_passenger_infos
+        # This parameter is required.
         self.train_no = train_no
 
     def validate(self):
@@ -88393,9 +88988,13 @@ class TrainApplyRefundRequest(TeaModel):
         out_refund_id: str = None,
         refund_train_infos: List[TrainApplyRefundRequestRefundTrainInfos] = None,
     ):
+        # This parameter is required.
         self.order_id = order_id
+        # This parameter is required.
         self.out_order_id = out_order_id
+        # This parameter is required.
         self.out_refund_id = out_refund_id
+        # This parameter is required.
         self.refund_train_infos = refund_train_infos
 
     def validate(self):
@@ -88446,9 +89045,13 @@ class TrainApplyRefundShrinkRequest(TeaModel):
         out_refund_id: str = None,
         refund_train_infos_shrink: str = None,
     ):
+        # This parameter is required.
         self.order_id = order_id
+        # This parameter is required.
         self.out_order_id = out_order_id
+        # This parameter is required.
         self.out_refund_id = out_refund_id
+        # This parameter is required.
         self.refund_train_infos_shrink = refund_train_infos_shrink
 
     def validate(self):
@@ -88660,9 +89263,13 @@ class TrainBillSettlementQueryRequest(TeaModel):
         period_end: str = None,
         period_start: str = None,
     ):
+        # This parameter is required.
         self.page_no = page_no
+        # This parameter is required.
         self.page_size = page_size
+        # This parameter is required.
         self.period_end = period_end
+        # This parameter is required.
         self.period_start = period_start
 
     def validate(self):
@@ -89367,6 +89974,7 @@ class TrainExceedApplyQueryRequest(TeaModel):
         self,
         apply_id: int = None,
     ):
+        # This parameter is required.
         self.apply_id = apply_id
 
     def validate(self):
@@ -89723,8 +90331,11 @@ class TrainFeeCalculateChangeRequestChangeTrainDetailsPassengerInfo(TeaModel):
         passenger_cert_type: str = None,
         passenger_name: str = None,
     ):
+        # This parameter is required.
         self.passenger_cert_no = passenger_cert_no
+        # This parameter is required.
         self.passenger_cert_type = passenger_cert_type
+        # This parameter is required.
         self.passenger_name = passenger_name
 
     def validate(self):
@@ -89767,13 +90378,21 @@ class TrainFeeCalculateChangeRequestChangeTrainDetails(TeaModel):
         seat_type: str = None,
         train_no: str = None,
     ):
+        # This parameter is required.
         self.arr_station_code = arr_station_code
+        # This parameter is required.
         self.dep_station_code = dep_station_code
+        # This parameter is required.
         self.dep_time = dep_time
+        # This parameter is required.
         self.original_dep_time = original_dep_time
+        # This parameter is required.
         self.original_train_no = original_train_no
+        # This parameter is required.
         self.passenger_info = passenger_info
+        # This parameter is required.
         self.seat_type = seat_type
+        # This parameter is required.
         self.train_no = train_no
 
     def validate(self):
@@ -89833,8 +90452,11 @@ class TrainFeeCalculateChangeRequest(TeaModel):
         distribute_order_id: str = None,
         order_id: str = None,
     ):
+        # This parameter is required.
         self.change_train_details = change_train_details
+        # This parameter is required.
         self.distribute_order_id = distribute_order_id
+        # This parameter is required.
         self.order_id = order_id
 
     def validate(self):
@@ -89880,8 +90502,11 @@ class TrainFeeCalculateChangeShrinkRequest(TeaModel):
         distribute_order_id: str = None,
         order_id: str = None,
     ):
+        # This parameter is required.
         self.change_train_details_shrink = change_train_details_shrink
+        # This parameter is required.
         self.distribute_order_id = distribute_order_id
+        # This parameter is required.
         self.order_id = order_id
 
     def validate(self):
@@ -90271,9 +90896,13 @@ class TrainFeeCalculateRefundRequestRefundTrainInfosRefundPassengerInfos(TeaMode
         passenger_id: str = None,
         passenger_name: str = None,
     ):
+        # This parameter is required.
         self.passenger_cert_no = passenger_cert_no
+        # This parameter is required.
         self.passenger_cert_type = passenger_cert_type
+        # This parameter is required.
         self.passenger_id = passenger_id
+        # This parameter is required.
         self.passenger_name = passenger_name
 
     def validate(self):
@@ -90317,10 +90946,15 @@ class TrainFeeCalculateRefundRequestRefundTrainInfos(TeaModel):
         refund_passenger_infos: List[TrainFeeCalculateRefundRequestRefundTrainInfosRefundPassengerInfos] = None,
         train_no: str = None,
     ):
+        # This parameter is required.
         self.arr_station_code = arr_station_code
+        # This parameter is required.
         self.dep_station_code = dep_station_code
+        # This parameter is required.
         self.dep_time = dep_time
+        # This parameter is required.
         self.refund_passenger_infos = refund_passenger_infos
+        # This parameter is required.
         self.train_no = train_no
 
     def validate(self):
@@ -90374,8 +91008,11 @@ class TrainFeeCalculateRefundRequest(TeaModel):
         order_id: str = None,
         refund_train_infos: List[TrainFeeCalculateRefundRequestRefundTrainInfos] = None,
     ):
+        # This parameter is required.
         self.distribute_order_id = distribute_order_id
+        # This parameter is required.
         self.order_id = order_id
+        # This parameter is required.
         self.refund_train_infos = refund_train_infos
 
     def validate(self):
@@ -90421,8 +91058,11 @@ class TrainFeeCalculateRefundShrinkRequest(TeaModel):
         order_id: str = None,
         refund_train_infos_shrink: str = None,
     ):
+        # This parameter is required.
         self.distribute_order_id = distribute_order_id
+        # This parameter is required.
         self.order_id = order_id
+        # This parameter is required.
         self.refund_train_infos_shrink = refund_train_infos_shrink
 
     def validate(self):
@@ -90810,8 +91450,11 @@ class TrainNoInfoSearchRequest(TeaModel):
         order_id: str = None,
         train_no: str = None,
     ):
+        # This parameter is required.
         self.arr_location = arr_location
+        # This parameter is required.
         self.dep_date = dep_date
+        # This parameter is required.
         self.dep_location = dep_location
         self.line_key = line_key
         self.middle_date = middle_date
@@ -91446,9 +92089,13 @@ class TrainNoListSearchRequest(TeaModel):
         option: TrainNoListSearchRequestOption = None,
         order_id: str = None,
     ):
+        # This parameter is required.
         self.arr_location = arr_location
+        # This parameter is required.
         self.dep_date = dep_date
+        # This parameter is required.
         self.dep_location = dep_location
+        # This parameter is required.
         self.option = option
         self.order_id = order_id
 
@@ -91499,9 +92146,13 @@ class TrainNoListSearchShrinkRequest(TeaModel):
         option_shrink: str = None,
         order_id: str = None,
     ):
+        # This parameter is required.
         self.arr_location = arr_location
+        # This parameter is required.
         self.dep_date = dep_date
+        # This parameter is required.
         self.dep_location = dep_location
+        # This parameter is required.
         self.option_shrink = option_shrink
         self.order_id = order_id
 
@@ -92152,8 +92803,10 @@ class TrainOrderCancelRequest(TeaModel):
         out_order_id: str = None,
     ):
         self.change_order_id = change_order_id
+        # This parameter is required.
         self.order_id = order_id
         self.out_change_order_id = out_change_order_id
+        # This parameter is required.
         self.out_order_id = out_order_id
 
     def validate(self):
@@ -92383,10 +93036,15 @@ class TrainOrderChangeConfirmRequest(TeaModel):
         out_change_apply_id: str = None,
         out_order_id: str = None,
     ):
+        # This parameter is required.
         self.change_apply_id = change_apply_id
+        # This parameter is required.
         self.change_settle_amount = change_settle_amount
+        # This parameter is required.
         self.order_id = order_id
+        # This parameter is required.
         self.out_change_apply_id = out_change_apply_id
+        # This parameter is required.
         self.out_order_id = out_order_id
 
     def validate(self):
@@ -92613,9 +93271,13 @@ class TrainOrderCreateRequestBookTrainInfosBookTicketInfos(TeaModel):
         ticket_price: int = None,
         ticket_type: str = None,
     ):
+        # This parameter is required.
         self.passenger_id = passenger_id
+        # This parameter is required.
         self.seat_type = seat_type
+        # This parameter is required.
         self.ticket_price = ticket_price
+        # This parameter is required.
         self.ticket_type = ticket_type
 
     def validate(self):
@@ -92661,12 +93323,17 @@ class TrainOrderCreateRequestBookTrainInfos(TeaModel):
         dep_time: str = None,
         train_no: str = None,
     ):
+        # This parameter is required.
         self.arr_station_code = arr_station_code
+        # This parameter is required.
         self.book_ticket_infos = book_ticket_infos
         self.choose_beds = choose_beds
         self.choose_seats = choose_seats
+        # This parameter is required.
         self.dep_station_code = dep_station_code
+        # This parameter is required.
         self.dep_time = dep_time
+        # This parameter is required.
         self.train_no = train_no
 
     def validate(self):
@@ -92761,8 +93428,11 @@ class TrainOrderCreateRequestContactInfo(TeaModel):
         passenger_mobile: str = None,
         passenger_name: str = None,
     ):
+        # This parameter is required.
         self.passenger_id = passenger_id
+        # This parameter is required.
         self.passenger_mobile = passenger_mobile
+        # This parameter is required.
         self.passenger_name = passenger_name
 
     def validate(self):
@@ -92888,10 +93558,14 @@ class TrainOrderCreateRequestPassengerOpenInfoS(TeaModel):
     ):
         self.cost_center_info = cost_center_info
         self.country_code = country_code
+        # This parameter is required.
         self.passenger_cert_no = passenger_cert_no
+        # This parameter is required.
         self.passenger_cert_type = passenger_cert_type
+        # This parameter is required.
         self.passenger_id = passenger_id
         self.passenger_mobile = passenger_mobile
+        # This parameter is required.
         self.passenger_name = passenger_name
         self.valid_date_end = valid_date_end
 
@@ -92960,14 +93634,20 @@ class TrainOrderCreateRequest(TeaModel):
         passenger_open_info_s: List[TrainOrderCreateRequestPassengerOpenInfoS] = None,
     ):
         self.accept_no_seat = accept_no_seat
+        # This parameter is required.
         self.book_train_infos = book_train_infos
+        # This parameter is required.
         self.btrip_user_id = btrip_user_id
+        # This parameter is required.
         self.btrip_user_name = btrip_user_name
         self.business_info = business_info
+        # This parameter is required.
         self.contact_info = contact_info
         self.force_match = force_match
         self.is_pay_now = is_pay_now
+        # This parameter is required.
         self.out_order_id = out_order_id
+        # This parameter is required.
         self.passenger_open_info_s = passenger_open_info_s
 
     def validate(self):
@@ -93064,14 +93744,20 @@ class TrainOrderCreateShrinkRequest(TeaModel):
         passenger_open_info_sshrink: str = None,
     ):
         self.accept_no_seat = accept_no_seat
+        # This parameter is required.
         self.book_train_infos_shrink = book_train_infos_shrink
+        # This parameter is required.
         self.btrip_user_id = btrip_user_id
+        # This parameter is required.
         self.btrip_user_name = btrip_user_name
         self.business_info_shrink = business_info_shrink
+        # This parameter is required.
         self.contact_info_shrink = contact_info_shrink
         self.force_match = force_match
         self.is_pay_now = is_pay_now
+        # This parameter is required.
         self.out_order_id = out_order_id
+        # This parameter is required.
         self.passenger_open_info_sshrink = passenger_open_info_sshrink
 
     def validate(self):
@@ -93316,7 +94002,9 @@ class TrainOrderDetailQueryRequest(TeaModel):
         order_id: str = None,
         out_order_id: str = None,
     ):
+        # This parameter is required.
         self.order_id = order_id
+        # This parameter is required.
         self.out_order_id = out_order_id
 
     def validate(self):
@@ -95250,8 +95938,11 @@ class TrainOrderPayRequest(TeaModel):
         out_order_id: str = None,
         pay_amount: int = None,
     ):
+        # This parameter is required.
         self.order_id = order_id
+        # This parameter is required.
         self.out_order_id = out_order_id
+        # This parameter is required.
         self.pay_amount = pay_amount
 
     def validate(self):
@@ -95462,6 +96153,7 @@ class TrainOrderQueryRequest(TeaModel):
         order_id: int = None,
         user_id: str = None,
     ):
+        # This parameter is required.
         self.order_id = order_id
         self.user_id = user_id
 
@@ -96448,6 +97140,7 @@ class TrainOrderQueryV2Request(TeaModel):
         order_id: int = None,
         user_id: str = None,
     ):
+        # This parameter is required.
         self.order_id = order_id
         self.user_id = user_id
 
@@ -97690,6 +98383,7 @@ class TrainStationSearchRequest(TeaModel):
         self,
         keyword: str = None,
     ):
+        # This parameter is required.
         self.keyword = keyword
 
     def validate(self):
@@ -97922,9 +98616,13 @@ class TrainStopoverSearchRequest(TeaModel):
         train_date: str = None,
         train_no: str = None,
     ):
+        # This parameter is required.
         self.arr_station = arr_station
+        # This parameter is required.
         self.dep_station = dep_station
+        # This parameter is required.
         self.train_date = train_date
+        # This parameter is required.
         self.train_no = train_no
 
     def validate(self):
@@ -98168,6 +98866,7 @@ class TrainTicketScanQueryRequest(TeaModel):
         serial_number: str = None,
         ticket_no: str = None,
     ):
+        # This parameter is required.
         self.bill_date = bill_date
         self.bill_id = bill_id
         self.invoice_sub_task_id = invoice_sub_task_id
@@ -98543,6 +99242,7 @@ class TravelStandardListQueryHeaders(TeaModel):
         x_acs_btrip_corp_token: str = None,
     ):
         self.common_headers = common_headers
+        # This parameter is required.
         self.x_acs_btrip_corp_token = x_acs_btrip_corp_token
 
     def validate(self):
@@ -98578,7 +99278,9 @@ class TravelStandardListQueryRequest(TeaModel):
         rule_name: str = None,
     ):
         self.from_group = from_group
+        # This parameter is required.
         self.page_no = page_no
+        # This parameter is required.
         self.page_size = page_size
         self.rule_name = rule_name
 
@@ -98977,8 +99679,11 @@ class TravelStandardQueryRequest(TeaModel):
         rule_code: int = None,
         service_type_list: List[str] = None,
     ):
+        # This parameter is required.
         self.from_group = from_group
+        # This parameter is required.
         self.rule_code = rule_code
+        # This parameter is required.
         self.service_type_list = service_type_list
 
     def validate(self):
@@ -99016,8 +99721,11 @@ class TravelStandardQueryShrinkRequest(TeaModel):
         rule_code: int = None,
         service_type_list_shrink: str = None,
     ):
+        # This parameter is required.
         self.from_group = from_group
+        # This parameter is required.
         self.rule_code = rule_code
+        # This parameter is required.
         self.service_type_list_shrink = service_type_list_shrink
 
     def validate(self):
@@ -99631,6 +100339,7 @@ class VatInvoiceScanQueryRequest(TeaModel):
         page_no: int = None,
         page_size: int = None,
     ):
+        # This parameter is required.
         self.bill_date = bill_date
         self.bill_id = bill_id
         self.invoice_sub_task_id = invoice_sub_task_id
@@ -99785,6 +100494,7 @@ class VatInvoiceScanQueryResponseBodyModuleItems(TeaModel):
         tax_amount: str = None,
         tax_rate: str = None,
         total_amount_in_words: str = None,
+        xml_oss_url: str = None,
     ):
         self.amount_with_tax = amount_with_tax
         self.amount_without_tax = amount_without_tax
@@ -99820,6 +100530,7 @@ class VatInvoiceScanQueryResponseBodyModuleItems(TeaModel):
         self.tax_amount = tax_amount
         self.tax_rate = tax_rate
         self.total_amount_in_words = total_amount_in_words
+        self.xml_oss_url = xml_oss_url
 
     def validate(self):
         if self.invoice_details:
@@ -99901,6 +100612,8 @@ class VatInvoiceScanQueryResponseBodyModuleItems(TeaModel):
             result['tax_rate'] = self.tax_rate
         if self.total_amount_in_words is not None:
             result['total_amount_in_words'] = self.total_amount_in_words
+        if self.xml_oss_url is not None:
+            result['xml_oss_url'] = self.xml_oss_url
         return result
 
     def from_map(self, m: dict = None):
@@ -99974,6 +100687,8 @@ class VatInvoiceScanQueryResponseBodyModuleItems(TeaModel):
             self.tax_rate = m.get('tax_rate')
         if m.get('total_amount_in_words') is not None:
             self.total_amount_in_words = m.get('total_amount_in_words')
+        if m.get('xml_oss_url') is not None:
+            self.xml_oss_url = m.get('xml_oss_url')
         return self
 
 
@@ -100176,6 +100891,7 @@ class WaitApplyInvoiceTaskDetailQueryRequest(TeaModel):
         self,
         bill_date: str = None,
     ):
+        # This parameter is required.
         self.bill_date = bill_date
 
     def validate(self):
