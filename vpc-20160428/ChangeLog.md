@@ -5,6 +5,13 @@
 - Update API ModifySslVpnServer: update response param.
 
 
+2024-05-10 Version: 6.6.4
+- Update API CreateSslVpnServer: add param IDaaSApplicationId.
+- Update API DescribeSslVpnServers: update response param.
+- Update API ModifySslVpnServer: add param IDaaSApplicationId.
+- Update API ModifySslVpnServer: update response param.
+
+
 2024-05-07 Version: 6.6.3
 - Update API DescribeNatGateways: update response param.
 - Update API GetNatGatewayAttribute: update response param.
