@@ -16,11 +16,15 @@ class ActivateRouterInterfaceRequest(TeaModel):
         self.owner_id = owner_id
         # The region ID of the router interface.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the router interface.
+        # 
+        # This parameter is required.
         self.router_interface_id = router_interface_id
 
     def validate(self):
@@ -139,10 +143,14 @@ class ActiveFlowLogRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The ID of the flow log.
+        # 
+        # This parameter is required.
         self.flow_log_id = flow_log_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region where you want to create the flow log. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # The ID of the region where you want to create the flow log. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -286,16 +294,22 @@ class AddBgpNetworkRequest(TeaModel):
         # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
         # The CIDR block of the virtual private cloud (VPC) or vSwitch that you want to connect to a data center.
+        # 
+        # This parameter is required.
         self.dst_cidr_block = dst_cidr_block
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the virtual border router (VBR) group.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the router that is associated with the router interface.
+        # 
+        # This parameter is required.
         self.router_id = router_id
         # The ID of the VPC.
         self.vpc_id = vpc_id
@@ -435,6 +449,8 @@ class AddCommonBandwidthPackageIpRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The ID of the Internet Shared Bandwidth instance.
+        # 
+        # This parameter is required.
         self.bandwidth_package_id = bandwidth_package_id
         # The client token that is used to ensure the idempotence of the request.
         # 
@@ -444,7 +460,9 @@ class AddCommonBandwidthPackageIpRequest(TeaModel):
         self.client_token = client_token
         # The EIP ID.
         # 
-        # You can call the [DescribeEipAddresses](~~36018~~) operation to query EIP IDs.
+        # You can call the [DescribeEipAddresses](https://help.aliyun.com/document_detail/36018.html) operation to query EIP IDs.
+        # 
+        # This parameter is required.
         self.ip_instance_id = ip_instance_id
         # The type of IP address. Set the value to **EIP** to associate EIPs with the Internet Shared Bandwidth instance.
         self.ip_type = ip_type
@@ -452,7 +470,9 @@ class AddCommonBandwidthPackageIpRequest(TeaModel):
         self.owner_id = owner_id
         # The region ID of the Internet Shared Bandwidth instance.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -592,6 +612,8 @@ class AddCommonBandwidthPackageIpsRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The ID of the Internet Shared Bandwidth instance.
+        # 
+        # This parameter is required.
         self.bandwidth_package_id = bandwidth_package_id
         # The client token that is used to ensure the idempotence of the request.
         # 
@@ -602,6 +624,8 @@ class AddCommonBandwidthPackageIpsRequest(TeaModel):
         # The list of EIPs that you want to associate with the Internet Shared Bandwidth instance.
         # 
         # You can specify at most 10 EIP IDs at a time.
+        # 
+        # This parameter is required.
         self.ip_instance_ids = ip_instance_ids
         # The type of the IP address. Set the value to **EIP** to associate EIPs with the EIP bandwidth plan.
         self.ip_type = ip_type
@@ -609,7 +633,9 @@ class AddCommonBandwidthPackageIpsRequest(TeaModel):
         self.owner_id = owner_id
         # The region ID of the Internet Shared Bandwidth instance.
         # 
-        # You can call the [DescribeRegions](~~448570~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/448570.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -747,16 +773,22 @@ class AddGlobalAccelerationInstanceIpRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The ID of the shared-bandwidth GA instance.
+        # 
+        # This parameter is required.
         self.global_acceleration_instance_id = global_acceleration_instance_id
-        # The EIP ID. You can call the [DescribeEipAddresses](~~36018~~) operation to query EIP IDs.
+        # The EIP ID. You can call the [DescribeEipAddresses](https://help.aliyun.com/document_detail/36018.html) operation to query EIP IDs.
         # 
         # >  Make sure that the billing method of the EIP is pay-as-you-go, and the EIP and the shared-bandwidth GA instance belong to the same region.
+        # 
+        # This parameter is required.
         self.ip_instance_id = ip_instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region of the shared-bandwidth GA instance.
         # 
         # You can call the **DescribeRegions** operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -888,15 +920,21 @@ class AddIPv6TranslatorAclListEntryRequest(TeaModel):
     ):
         # The remarks of the ACL entry.
         # 
-        # It must be 2 to 100 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
+        # It must be 2 to 100 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
         self.acl_entry_comment = acl_entry_comment
         # The IPv6 address or IPv6 CIDR block that you want to add to the ACL entry, for example, 12XX:0:0:XXXX::0102 or 12XX:0:0:XXXX::/60.
+        # 
+        # This parameter is required.
         self.acl_entry_ip = acl_entry_ip
         # The ID of the ACL to which you want to add the IP entry.
+        # 
+        # This parameter is required.
         self.acl_id = acl_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the ACL.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -1063,8 +1101,12 @@ class AddPublicIpAddressPoolCidrBlockRequest(TeaModel):
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The ID of the IP address pool.
+        # 
+        # This parameter is required.
         self.public_ip_address_pool_id = public_ip_address_pool_id
         # The region ID of the IP address pool to which you want to add the CIDR block.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -1229,15 +1271,21 @@ class AddSourcesToTrafficMirrorSessionRequest(TeaModel):
         self.owner_id = owner_id
         # The ID of the region to which the traffic mirror session belongs.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
         # 
-        # For more information about regions that support traffic mirroring, see [Overview of traffic mirroring](~~207513~~).
+        # For more information about regions that support traffic mirroring, see [Overview of traffic mirroring](https://help.aliyun.com/document_detail/207513.html).
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the traffic mirror session.
+        # 
+        # This parameter is required.
         self.traffic_mirror_session_id = traffic_mirror_session_id
         # The ID of the traffic mirror source. You can specify only an elastic network interface (ENI) as the traffic mirror source. The default value of **N** is **1**, which indicates that you can add only one traffic mirror source to a traffic mirror session.
+        # 
+        # This parameter is required.
         self.traffic_mirror_source_ids = traffic_mirror_source_ids
 
     def validate(self):
@@ -1422,7 +1470,7 @@ class AllocateEipAddressRequest(TeaModel):
         # *   **BGP** (default): BGP (Multi-ISP) All regions support BGP (Multi-ISP) EIPs.
         # *   **BGP_PRO**: BGP (Multi-ISP) Pro Only the following regions support BGP (Multi-ISP) Pro lines: China (Hong Kong), Singapore, Japan (Tokyo), Malaysia (Kuala Lumpur), Philippines (Manila), Indonesia (Jakarta), and Thailand (Bangkok).
         # 
-        # For more information about BGP (Multi-ISP) and BGP (Multi-ISP) Pro, see the "Line types" section of [What is EIP?](~~32321~~)
+        # For more information about BGP (Multi-ISP) and BGP (Multi-ISP) Pro, see the "Line types" section of [What is EIP?](https://help.aliyun.com/document_detail/32321.html)
         # 
         # *   If you are allowed to use single-ISP bandwidth, you can also choose one of the following values:
         # 
@@ -1461,7 +1509,7 @@ class AllocateEipAddressRequest(TeaModel):
         self.ip_address = ip_address
         # The EIP name.
         # 
-        # The name must be 1 to 128 characters in length and start with a letter, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-).
+        # The name must be 1 to 128 characters in length and start with a letter, and can contain letters, digits, periods (.), underscores (_), and hyphens (-).
         # 
         # >  You cannot specify this parameter if you create a subscription EIP.
         self.name = name
@@ -1488,11 +1536,13 @@ class AllocateEipAddressRequest(TeaModel):
         # 
         # The EIP is allocated from the IP address pool.
         # 
-        # By default, the IP address pool feature is unavailable. To use the IP address pool, apply for the privilege in the Quota Center console. For more information, see the "Request a quota increase in the Quota Center console" section in [Manage EIP quotas](~~108213~~).
+        # By default, the IP address pool feature is unavailable. To use the IP address pool, apply for the privilege in the Quota Center console. For more information, see the "Request a quota increase in the Quota Center console" section in [Manage EIP quotas](https://help.aliyun.com/document_detail/108213.html).
         self.public_ip_address_pool_id = public_ip_address_pool_id
         # The ID of the region to which the EIP belongs.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the region ID.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -1509,7 +1559,7 @@ class AllocateEipAddressRequest(TeaModel):
         # 
         # When the service type of the IP address pool specified by **PublicIpAddressPoolId** is CloudBox, the default value is the zone of the IP address pool.
         # 
-        # For more information, see [ListPublicIpAddressPools](~~429433~~).
+        # For more information, see [ListPublicIpAddressPools](https://help.aliyun.com/document_detail/429433.html).
         self.zone = zone
 
     def validate(self):
@@ -1766,7 +1816,7 @@ class AllocateEipAddressProRequest(TeaModel):
         # *   **BGP** (default): BGP (Multi-ISP) line The BGP (Multi-ISP) line is supported in all regions.
         # *   **BGP_PRO**: BGP (Multi-ISP) Pro line The BGP (Multi-ISP) Pro line is supported in the China (Hong Kong), Singapore, Malaysia (Kuala Lumpur), Philippines (Manila), Indonesia (Jakarta), and Thailand (Bangkok) regions.
         # 
-        # For more information about the BGP (Multi-ISP) line and BGP (Multi-ISP) Pro line, see the "Line types" section of [What is EIP?](~~32321~~)
+        # For more information about the BGP (Multi-ISP) line and BGP (Multi-ISP) Pro line, see the "Line types" section of [What is EIP?](https://help.aliyun.com/document_detail/32321.html)
         # 
         # *   If you are allowed to use single-ISP bandwidth, you can also choose one of the following values:
         # 
@@ -1829,11 +1879,13 @@ class AllocateEipAddressProRequest(TeaModel):
         # 
         # The EIP is allocated from the IP address pool.
         # 
-        # By default, you cannot use the IP address pool. To use this feature, apply for the privilege in the Quota Center console. For more information, see the "Request a quota increase in the Quota Center console" section of [Manage EIP quotas](~~108213~~).
+        # By default, you cannot use the IP address pool. To use this feature, apply for the privilege in the Quota Center console. For more information, see the "Request a quota increase in the Quota Center console" section of [Manage EIP quotas](https://help.aliyun.com/document_detail/108213.html).
         self.public_ip_address_pool_id = public_ip_address_pool_id
         # The ID of the region to which the EIP belongs.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the region ID.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group to which the EIP belongs.
         self.resource_group_id = resource_group_id
@@ -2078,6 +2130,8 @@ class AllocateEipSegmentAddressRequest(TeaModel):
         # *   **24**: applies for 256 contiguous EIPs in each call.
         # 
         # >  Some IP address are reserved for specific purposes. Therefore, the actual number of the contiguous EIPs may be one, three, or four less than the expected number.
+        # 
+        # This parameter is required.
         self.eip_mask = eip_mask
         # The metering method of the contiguous EIP group. Valid values:
         # 
@@ -2089,7 +2143,7 @@ class AllocateEipSegmentAddressRequest(TeaModel):
         # *   **BGP** (default): BGP (Multi-ISP) line The BGP (Multi-ISP) line is supported in all regions.
         # *   **BGP_PRO**: BGP (Multi-ISP) Pro line BGP (Multi-ISP) Pro line is supported only in the China (Hong Kong), Singapore, Japan (Tokyo), Malaysia (Kuala Lumpur), Philippines (Manila), Indonesia (Jakarta), and Thailand (Bangkok) regions.
         # 
-        # For more information about the BGP (Multi-ISP) line and BGP (Multi-ISP) Pro line, see [EIP line types](~~32321~~).
+        # For more information about the BGP (Multi-ISP) line and BGP (Multi-ISP) Pro line, see [EIP line types](https://help.aliyun.com/document_detail/32321.html).
         # 
         # If you are allowed to use single-ISP bandwidth, you can also use one of the following values:
         # 
@@ -2108,7 +2162,9 @@ class AllocateEipSegmentAddressRequest(TeaModel):
         self.owner_id = owner_id
         # The ID of the region in which the contiguous EIP group resides.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the region ID.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
@@ -2335,6 +2391,8 @@ class AllocateIpv6AddressRequest(TeaModel):
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The resource group ID. For more information about resource groups, see related documentation.
         self.resource_group_id = resource_group_id
@@ -2343,6 +2401,8 @@ class AllocateIpv6AddressRequest(TeaModel):
         # The tag list.
         self.tag = tag
         # The ID of the vSwitch to which the IPv6 address belongs.
+        # 
+        # This parameter is required.
         self.v_switch_id = v_switch_id
 
     def validate(self):
@@ -2526,6 +2586,8 @@ class AllocateIpv6InternetBandwidthRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The Internet bandwidth of the IPv6 gateway. Unit: Mbit/s. Valid values: **1 to 5000**.
+        # 
+        # This parameter is required.
         self.bandwidth = bandwidth
         # The client token that is used to ensure the idempotence of the request.
         # 
@@ -2539,12 +2601,18 @@ class AllocateIpv6InternetBandwidthRequest(TeaModel):
         # *   **PayByBandwidth** (default): pay-by-bandwidth
         self.internet_charge_type = internet_charge_type
         # The ID of the IPv6 address.
+        # 
+        # This parameter is required.
         self.ipv_6address_id = ipv_6address_id
         # The ID of the IPv6 gateway.
+        # 
+        # This parameter is required.
         self.ipv_6gateway_id = ipv_6gateway_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region where the IPv6 gateway is deployed. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # The ID of the region where the IPv6 gateway is deployed. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -2728,7 +2796,9 @@ class AllocateVpcIpv6CidrRequest(TeaModel):
         self.owner_id = owner_id
         # The region ID of the VPC.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -2951,10 +3021,16 @@ class ApplyPhysicalConnectionLOARequest(TeaModel):
         # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
         # The name of the customer company that requires the Express Connect circuit.
+        # 
+        # This parameter is required.
         self.company_name = company_name
         # The time when construction started. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+        # 
+        # This parameter is required.
         self.construction_time = construction_time
         # The ID of the Express Connect circuit.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The type of the Express Connect circuit. Valid values:
         # 
@@ -2962,6 +3038,8 @@ class ApplyPhysicalConnectionLOARequest(TeaModel):
         # *   **MPLSVPN**: MPLSVPN line
         # *   **FIBRE**: fiber line
         # *   **Other**: other types
+        # 
+        # This parameter is required.
         self.line_type = line_type
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -2971,11 +3049,15 @@ class ApplyPhysicalConnectionLOARequest(TeaModel):
         self.peer_location = peer_location
         # The region ID of the Express Connect circuit.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The construction company.
+        # 
+        # This parameter is required.
         self.si = si
 
     def validate(self):
@@ -3145,6 +3227,8 @@ class AssociateEipAddressRequest(TeaModel):
         vpc_id: str = None,
     ):
         # The ID of the EIP that you want to associate with an instance.
+        # 
+        # This parameter is required.
         self.allocation_id = allocation_id
         # The client token that is used to ensure the idempotence of the request.
         # 
@@ -3155,6 +3239,8 @@ class AssociateEipAddressRequest(TeaModel):
         # The ID of the instance with which you want to associate the EIP.
         # 
         # You can enter the ID of a NAT gateway, CLB instance, ECS instance, secondary ENI, HAVIP, or IP address.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The ID of the region in which the instance with which you want to associate the EIP resides.
         # 
@@ -3187,7 +3273,7 @@ class AssociateEipAddressRequest(TeaModel):
         self.private_ip_address = private_ip_address
         # The ID of the region to which the EIP belongs.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the region ID.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -3351,11 +3437,15 @@ class AssociateEipAddressBatchRequest(TeaModel):
         # The ID of the instance with which you want to associate the EIPs.
         # 
         # The instance can be a NAT gateway or a secondary ENI.
+        # 
+        # This parameter is required.
         self.binded_instance_id = binded_instance_id
         # The type of the instance with which you want to associate the EIPs. Valid values:
         # 
         # *   **Nat**: NAT gateway
         # *   **NetworkInterface**: secondary ENI
+        # 
+        # This parameter is required.
         self.binded_instance_type = binded_instance_type
         # The client token that is used to ensure the idempotence of the request.
         # 
@@ -3366,13 +3456,17 @@ class AssociateEipAddressBatchRequest(TeaModel):
         # The EIPs to be associated with the instance.
         # 
         # You must enter at least one EIP. You can enter up to 50 EIPs.
+        # 
+        # This parameter is required.
         self.instance_ids = instance_ids
         # The association mode. Set the value to **MULTI_BINDED**, which specifies the Multi-EIP-to-ENI mode.
         # 
         # This parameter is required only when **BindedInstanceType** is set to **NetworkInterface**.
         self.mode = mode
         self.owner_id = owner_id
-        # The ID of the region to which the EIPs belong. You can call the [DescribeRegions](~~36063~~) operation to query the region ID.
+        # The ID of the region to which the EIPs belong. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -3518,8 +3612,12 @@ class AssociateHaVipRequest(TeaModel):
         # >  If you do not set this parameter, the system uses **RequestId** as **ClientToken**. The value of **RequestId** in each API request may be different.
         self.client_token = client_token
         # The ID of the HAVIP.
+        # 
+        # This parameter is required.
         self.ha_vip_id = ha_vip_id
         # The ID of the ECS instance to be associated with the HAVIP.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The type of the instance to be associated with the HAVIP. Valid values:
         # 
@@ -3530,7 +3628,9 @@ class AssociateHaVipRequest(TeaModel):
         self.owner_id = owner_id
         # The ID of the region to which the HAVIP belongs.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -3715,10 +3815,14 @@ class AssociateNetworkAclRequest(TeaModel):
         # Specifies whether to perform only a dry run, without performing the actual request.
         self.dry_run = dry_run
         # The ID of the network ACL.
+        # 
+        # This parameter is required.
         self.network_acl_id = network_acl_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the network ACL. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # The region ID of the network ACL. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The information about the associated resources.
         self.resource = resource
@@ -3915,18 +4019,26 @@ class AssociatePhysicalConnectionToVirtualBorderRouterRequest(TeaModel):
         # The two IP addresses must fall within the same subnet.
         self.peering_subnet_mask = peering_subnet_mask
         # The ID of the Express Connect circuit.
+        # 
+        # This parameter is required.
         self.physical_connection_id = physical_connection_id
         # The region ID of the Express Connect circuit.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the VBR.
+        # 
+        # This parameter is required.
         self.vbr_id = vbr_id
         # The VLAN ID of the VBR. Valid values: **0 to 2999**.
         # 
         # >  Only the Express Connect circuit owner can specify this parameter. Two VBRs associated with the same Express Connect circuit cannot use the same VLAN ID.
+        # 
+        # This parameter is required.
         self.vlan_id = vlan_id
 
     def validate(self):
@@ -4104,13 +4216,19 @@ class AssociateRouteTableRequest(TeaModel):
         self.owner_id = owner_id
         # The region ID of the VPC to which the route table belongs.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the route table.
+        # 
+        # This parameter is required.
         self.route_table_id = route_table_id
         # The ID of the vSwitch.
+        # 
+        # This parameter is required.
         self.v_switch_id = v_switch_id
 
     def validate(self):
@@ -4258,6 +4376,8 @@ class AssociateRouteTableWithGatewayRequest(TeaModel):
         # The ID of the IPv4 gateway.
         # 
         # The IPv4 gateway must be in the **Activated** state.
+        # 
+        # This parameter is required.
         self.gateway_id = gateway_id
         # The type of a gateway to be associated with a route table.
         self.gateway_type = gateway_type
@@ -4265,11 +4385,15 @@ class AssociateRouteTableWithGatewayRequest(TeaModel):
         self.owner_id = owner_id
         # The region ID of the IPv4 gateway with which you want to associate the gateway route table.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the gateway route table.
+        # 
+        # This parameter is required.
         self.route_table_id = route_table_id
 
     def validate(self):
@@ -4420,16 +4544,22 @@ class AssociateRouteTablesWithVpcGatewayEndpointRequest(TeaModel):
         # *   **false** (default): performs a dry run and sends the request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
         # The ID of the gateway endpoint to be associated with the route table.
+        # 
+        # This parameter is required.
         self.endpoint_id = endpoint_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the gateway endpoint.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the route table. Valid values of **N** are **1** to **20**, which specifies that you can associate a gateway endpoint with at most 20 route tables at a time.
+        # 
+        # This parameter is required.
         self.route_table_ids = route_table_ids
 
     def validate(self):
@@ -4593,7 +4723,9 @@ class AssociateVpcCidrBlockRequest(TeaModel):
         self.owner_id = owner_id
         # The region ID of the VPC to which you want to add a secondary CIDR block.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the region ID.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -4611,6 +4743,8 @@ class AssociateVpcCidrBlockRequest(TeaModel):
         self.secondary_cidr_block = secondary_cidr_block
         self.secondary_cidr_mask = secondary_cidr_mask
         # The ID of the VPC to which you want to add a secondary CIDR block.
+        # 
+        # This parameter is required.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -4757,11 +4891,15 @@ class AssociateVpnGatewayWithCertificateRequest(TeaModel):
         vpn_gateway_id: str = None,
     ):
         # The ID of the certificate.
+        # 
+        # This parameter is required.
         self.certificate_id = certificate_id
         # The type of the certificate. Valid values:
         # 
         # *   **Encryption**\
         # *   **Signature**\
+        # 
+        # This parameter is required.
         self.certificate_type = certificate_type
         # The client token that is used to ensure the idempotence of the request.
         # 
@@ -4776,11 +4914,15 @@ class AssociateVpnGatewayWithCertificateRequest(TeaModel):
         self.dry_run = dry_run
         # The region ID of the VPN gateway.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the VPN gateway.
         # 
         # > You can associate only VPN gateways of the SM type with certificates.
+        # 
+        # This parameter is required.
         self.vpn_gateway_id = vpn_gateway_id
 
     def validate(self):
@@ -4912,6 +5054,8 @@ class AttachDhcpOptionsSetToVpcRequest(TeaModel):
         # >  If you do not set this parameter, the system uses **RequestId** as **ClientToken**. **RequestId** may be different for each API request.
         self.client_token = client_token
         # The ID of the DHCP options set.
+        # 
+        # This parameter is required.
         self.dhcp_options_set_id = dhcp_options_set_id
         # Specifies whether to check the request without performing the operation. Valid values:
         # 
@@ -4921,11 +5065,15 @@ class AttachDhcpOptionsSetToVpcRequest(TeaModel):
         self.dry_run = dry_run
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region to which the DHCP options set belongs. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # The region to which the DHCP options set belongs. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the VPC to be associated with the DHCP options set.
+        # 
+        # This parameter is required.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -5065,15 +5213,21 @@ class AttachVbrToVpconnRequest(TeaModel):
         self.dry_run = dry_run
         # The region ID of the hosted connection.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The client token that is used to ensure the idempotence of the request.
         # 
         # You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.token = token
         # The ID of the VBR.
+        # 
+        # This parameter is required.
         self.vbr_id = vbr_id
         # The ID of the hosted connection.
+        # 
+        # This parameter is required.
         self.vpconn_id = vpconn_id
 
     def validate(self):
@@ -5200,12 +5354,18 @@ class CancelCommonBandwidthPackageIpBandwidthRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The ID of the Internet Shared Bandwidth instance.
+        # 
+        # This parameter is required.
         self.bandwidth_package_id = bandwidth_package_id
         # The ID of the EIP that is associated with the Internet Shared Bandwidth instance.
+        # 
+        # This parameter is required.
         self.eip_id = eip_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the Internet Shared Bandwidth instance. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # The region ID of the Internet Shared Bandwidth instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -5341,10 +5501,14 @@ class CancelPhysicalConnectionRequest(TeaModel):
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The ID of the Express Connect circuit.
+        # 
+        # This parameter is required.
         self.physical_connection_id = physical_connection_id
         # The region ID of the Express Connect circuit.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -5472,19 +5636,27 @@ class ChangeResourceGroupRequest(TeaModel):
     ):
         # The ID of the new resource group.
         # 
-        # >  You can use resource groups to manage resources within your Alibaba Cloud account by group. This helps you resolve issues such as resource grouping and permission management for your Alibaba Cloud account. For more information, see [What is Resource Management?](~~94475~~)
+        # >  You can use resource groups to manage resources within your Alibaba Cloud account by group. This helps you resolve issues such as resource grouping and permission management for your Alibaba Cloud account. For more information, see [What is Resource Management?](https://help.aliyun.com/document_detail/94475.html)
+        # 
+        # This parameter is required.
         self.new_resource_group_id = new_resource_group_id
         # The ID of the region to which the new resource group belongs.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to obtain the region ID.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to obtain the region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the Express Connect circuit whose resource group you want to modify.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
         # The type of the resource. Valid values:
         # 
         # *   **PHYSICALCONNECTION**: Express Connect circuit.
         # *   **VIRTUALBORDERROUTER**: virtual border router (VBR).
         # *   **ROUTERINTERFACE**: router interface.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
 
     def validate(self):
@@ -5608,14 +5780,20 @@ class CheckCanAllocateVpcPrivateIpAddressRequest(TeaModel):
         self.owner_account = owner_account
         self.owner_id = owner_id
         # To query whether a private IP address is available, the private IP address must belong to the vSwitch specified by the **VSwitchId** parameter.
+        # 
+        # This parameter is required.
         self.private_ip_address = private_ip_address
         # The region ID of the vSwitch to which the private IP address that you want to query belongs.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the vSwitch to which the private IP address to be queried belongs.
+        # 
+        # This parameter is required.
         self.v_switch_id = v_switch_id
 
     def validate(self):
@@ -5763,7 +5941,9 @@ class CheckVpnBgpEnabledRequest(TeaModel):
         self.owner_account = owner_account
         # The region ID of the IPsec-VPN connection.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -5911,12 +6091,14 @@ class CompletePhysicalConnectionLOARequest(TeaModel):
         # *   **false**\
         self.finish_work = finish_work
         # The ID of the Express Connect circuit.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The circuit code provided by the connectivity provider.
         self.line_code = line_code
         # The label of the cable in the data center.
         self.line_label = line_label
-        # The contact information about line O\&M.
+        # The contact information about line O\\&M.
         self.line_spcontact_info = line_spcontact_info
         # The ISP. Valid values:
         # 
@@ -5929,7 +6111,9 @@ class CompletePhysicalConnectionLOARequest(TeaModel):
         self.owner_id = owner_id
         # The region ID of the Express Connect circuit.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -6087,10 +6271,14 @@ class ConfirmPhysicalConnectionRequest(TeaModel):
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The ID of the Express Connect circuit.
+        # 
+        # This parameter is required.
         self.physical_connection_id = physical_connection_id
         # The region ID of the Express Connect circuit.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -6220,11 +6408,15 @@ class ConnectRouterInterfaceRequest(TeaModel):
         self.owner_id = owner_id
         # The ID of the region where the router interface is deployed.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the initiator router interface.
+        # 
+        # This parameter is required.
         self.router_interface_id = router_interface_id
 
     def validate(self):
@@ -6343,11 +6535,15 @@ class ConvertBandwidthPackageRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The ID of the NAT service plan.
+        # 
+        # This parameter is required.
         self.bandwidth_package_id = bandwidth_package_id
-        # The client token that is used to ensure the idempotency of the request. You can use the client to generate a client token. Make sure that a unique client token is used for each request. The **token** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~36569~~).
+        # The client token that is used to ensure the idempotency of the request. You can use the client to generate a client token. Make sure that a unique client token is used for each request. The **token** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/36569.html).
         self.client_token = client_token
         self.owner_id = owner_id
-        # The region where the NAT gateway resides. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # The region where the NAT gateway resides. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -6493,14 +6689,20 @@ class CopyNetworkAclEntriesRequest(TeaModel):
         # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
         # The ID of the network ACL.
+        # 
+        # This parameter is required.
         self.network_acl_id = network_acl_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the network ACL. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # The region ID of the network ACL. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the network ACL whose rules you want to copy.
+        # 
+        # This parameter is required.
         self.source_network_acl_id = source_network_acl_id
 
     def validate(self):
@@ -6677,21 +6879,27 @@ class CreateBgpGroupRequest(TeaModel):
         self.local_asn = local_asn
         # The name of the BGP group.
         # 
-        # The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
+        # The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The ASN of the gateway device in the data center.
+        # 
+        # This parameter is required.
         self.peer_asn = peer_asn
         # The region ID of the VBR.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The maximum number of routes supported by a BGP peer. Default value: **110**.
         self.route_quota = route_quota
         # The ID of the VBR.
+        # 
+        # This parameter is required.
         self.router_id = router_id
 
     def validate(self):
@@ -6868,6 +7076,8 @@ class CreateBgpPeerRequest(TeaModel):
         # The parameter specifies the maximum number of network devices that a packet can traverse from the source to the destination. Set a value based on your network topology.
         self.bfd_multi_hop = bfd_multi_hop
         # The ID of the BGP group.
+        # 
+        # This parameter is required.
         self.bgp_group_id = bgp_group_id
         # The client token that is used to ensure the idempotence of the request.
         # 
@@ -6891,7 +7101,9 @@ class CreateBgpPeerRequest(TeaModel):
         self.peer_ip_address = peer_ip_address
         # The ID of the region to which the BGP group belongs.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -7054,6 +7266,8 @@ class CreateCommonBandwidthPackageRequest(TeaModel):
         # The maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
         # 
         # Valid values: **1** to **1000**. Default value: **1**.
+        # 
+        # This parameter is required.
         self.bandwidth = bandwidth
         # The client token that is used to ensure the idempotence of the request.
         # 
@@ -7087,7 +7301,7 @@ class CreateCommonBandwidthPackageRequest(TeaModel):
         self.internet_charge_type = internet_charge_type
         # The name of the Internet Shared Bandwidth instance.
         # 
-        # The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). The name must start with a letter.
+        # The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -7099,7 +7313,9 @@ class CreateCommonBandwidthPackageRequest(TeaModel):
         self.ratio = ratio
         # The region ID of the Internet Shared Bandwidth instance.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -7349,6 +7565,8 @@ class CreateCustomerGatewayRequest(TeaModel):
         # The description must be 1 to 100 characters in length, and cannot start with `http://` or `https://`.
         self.description = description
         # The public IP address of the gateway device in the data center.
+        # 
+        # This parameter is required.
         self.ip_address = ip_address
         # The name of the customer gateway.
         # 
@@ -7358,11 +7576,13 @@ class CreateCustomerGatewayRequest(TeaModel):
         self.owner_id = owner_id
         # The region ID of the customer gateway.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group to which the customer gateway belongs.
         # 
-        # - You can call the [ListResourceGroups](~~158855~~) operation to query the resource group list.
+        # - You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query the resource group list.
         # 
         # - If you do not specify a resource group, the customer gateway will belong to the default resource group after being created.
         self.resource_group_id = resource_group_id
@@ -7581,13 +7801,17 @@ class CreateDefaultVSwitchRequest(TeaModel):
         self.owner_id = owner_id
         # The region ID of the default vSwitch.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The zone ID of the default vSwitch.
         # 
-        # You can call the [DescribeZones](~~36064~~) operation to query the most recent zone list.
+        # You can call the [DescribeZones](https://help.aliyun.com/document_detail/36064.html) operation to query the most recent zone list.
+        # 
+        # This parameter is required.
         self.zone_id = zone_id
 
     def validate(self):
@@ -7746,7 +7970,9 @@ class CreateDefaultVpcRequest(TeaModel):
         self.owner_id = owner_id
         # The ID of the region to which the default VPC belongs.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -7965,7 +8191,7 @@ class CreateDhcpOptionsSetRequest(TeaModel):
         self.dhcp_options_set_description = dhcp_options_set_description
         # The name of the DHCP options set.
         # 
-        # The name must be 1 to 128 characters in length and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
+        # The name must be 1 to 128 characters in length and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
         self.dhcp_options_set_name = dhcp_options_set_name
         # The root domain. For example, you can set the value to example.com.
         # 
@@ -7999,7 +8225,9 @@ class CreateDhcpOptionsSetRequest(TeaModel):
         self.owner_id = owner_id
         # The region to which the DHCP options set belongs.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group to which the DHCP options set belongs.
         self.resource_group_id = resource_group_id
@@ -8198,6 +8426,8 @@ class CreateExpressCloudConnectionRequest(TeaModel):
         # The bandwidth for ECC, which corresponds to the bandwidth for the underlying circuit.
         # 
         # Unit: Mbit/s.
+        # 
+        # This parameter is required.
         self.bandwidth = bandwidth
         # The email address of the contact who applies for ECC.
         self.contact_mail = contact_mail
@@ -8210,10 +8440,12 @@ class CreateExpressCloudConnectionRequest(TeaModel):
         # The ID card number of the contact who applies for ECC.
         self.idcard_no = idcard_no
         # The Internet service provider (ISP) for the data center.
+        # 
+        # This parameter is required.
         self.idc_sp = idc_sp
         # The name of the ECC instance.
         # 
-        # The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). It must start with a letter but cannot start with `http://` or `https://`.
+        # The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter but cannot start with `http://` or `https://`.
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -8222,6 +8454,8 @@ class CreateExpressCloudConnectionRequest(TeaModel):
         # The geographical location of the data center.
         # 
         # > It must be accurate to house number-floor-room number-server rack number.
+        # 
+        # This parameter is required.
         self.peer_location = peer_location
         # The port of the Express Connect circuit. Valid values:
         # 
@@ -8234,6 +8468,8 @@ class CreateExpressCloudConnectionRequest(TeaModel):
         # The ID of the standby Express Connect circuit.
         self.redundant_ecc_id = redundant_ecc_id
         # The region ID of the ECC instance.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -8410,6 +8646,7 @@ class CreateExpressConnectTrafficQosRequest(TeaModel):
         self.owner_id = owner_id
         self.qos_description = qos_description
         self.qos_name = qos_name
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
 
@@ -8549,10 +8786,13 @@ class CreateExpressConnectTrafficQosQueueRequest(TeaModel):
         self.client_token = client_token
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # This parameter is required.
         self.qos_id = qos_id
         self.queue_description = queue_description
         self.queue_name = queue_name
+        # This parameter is required.
         self.queue_type = queue_type
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
 
@@ -8722,10 +8962,15 @@ class CreateExpressConnectTrafficQosRuleRequest(TeaModel):
         self.match_dscp = match_dscp
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # This parameter is required.
         self.priority = priority
+        # This parameter is required.
         self.protocol = protocol
+        # This parameter is required.
         self.qos_id = qos_id
+        # This parameter is required.
         self.queue_id = queue_id
+        # This parameter is required.
         self.region_id = region_id
         self.remarking_dscp = remarking_dscp
         self.resource_owner_account = resource_owner_account
@@ -8930,14 +9175,18 @@ class CreateFailoverTestJobRequest(TeaModel):
     ):
         self.client_token = client_token
         self.description = description
+        # This parameter is required.
         self.job_duration = job_duration
+        # This parameter is required.
         self.job_type = job_type
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.region_id = region_id
+        # This parameter is required.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
+        # This parameter is required.
         self.resource_type = resource_type
 
     def validate(self):
@@ -9145,9 +9394,11 @@ class CreateFlowLogRequest(TeaModel):
         self.flow_log_name = flow_log_name
         # The name of the Logstore that stores the captured traffic data.
         # 
-        # *   The name can contain only lowercase letters, digits, hyphens (-), and underscores (\_).
+        # *   The name can contain only lowercase letters, digits, hyphens (-), and underscores (_).
         # *   The name must start and end with a lowercase letter or a digit.
         # *   The name must be 3 to 63 characters in length.
+        # 
+        # This parameter is required.
         self.log_store_name = log_store_name
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -9156,12 +9407,18 @@ class CreateFlowLogRequest(TeaModel):
         # *   The name can contain only lowercase letters, digits, and hyphens (-).
         # *   The name must start and end with a lowercase letter or a digit.
         # *   The name must be 3 to 63 characters in length.
+        # 
+        # This parameter is required.
         self.project_name = project_name
-        # The ID of the region where you want to create the flow log. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # The ID of the region where you want to create the flow log. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
         # The ID of the resource whose traffic you want to capture.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -9170,6 +9427,8 @@ class CreateFlowLogRequest(TeaModel):
         # *   **NetworkInterface**: elastic network interface (ENI)
         # *   **VSwitch**: all ENIs in a vSwitch
         # *   **VPC**: all ENIs in a virtual private cloud (VPC)
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The tag of the resource.
         self.tag = tag
@@ -9183,6 +9442,8 @@ class CreateFlowLogRequest(TeaModel):
         # *   **All**: all traffic
         # *   **Allow**: traffic that is allowed
         # *   **Drop**: traffic that is rejected
+        # 
+        # This parameter is required.
         self.traffic_type = traffic_type
 
     def validate(self):
@@ -9392,6 +9653,8 @@ class CreateForwardEntryRequest(TeaModel):
         self.client_token = client_token
         # *   The EIP that can be accessed over the Internet when you configure a DNAT entry for an Internet NAT gateway.
         # *   The NAT IP address that can be accessed by external networks when you configure a DNAT entry for a VPC NAT gateway.
+        # 
+        # This parameter is required.
         self.external_ip = external_ip
         # *   The external port range that is used for port forwarding when you configure a DNAT entry for an Internet NAT gateway.
         # 
@@ -9400,12 +9663,16 @@ class CreateForwardEntryRequest(TeaModel):
         #     *   If you set **ExternalPort** to a port range, you must also set **InternalPort** to a port range, and the number of ports specified by these parameters must be the same. For example, if you set **ExternalPort** to `10/20`, you can set **InternalPort** to `80/90`.
         # 
         # *   The port that can be accessed by external networks when you configure a DNAT entry for a VPC NAT gateway. Valid values: **1** to **65535**.
+        # 
+        # This parameter is required.
         self.external_port = external_port
         # The name of the DNAT entry.
         # 
         # The name must be 2 to 128 characters in length. It must start with a letter but cannot start with `http://` or `https://`.
         self.forward_entry_name = forward_entry_name
         # The ID of the DNAT table.
+        # 
+        # This parameter is required.
         self.forward_table_id = forward_table_id
         # *   The private IP address of the ECS instance that needs to communicate with the Internet when you configure a DNAT entry for an Internet NAT gateway. The private IP address must meet the following requirements:
         # 
@@ -9413,15 +9680,21 @@ class CreateForwardEntryRequest(TeaModel):
         #     *   The DNAT entry takes effect only if the private IP address is assigned to an ECS instance and the ECS instance is not associated with an EIP.
         # 
         # *   The private IP address that uses DNAT when you add a DNAT entry to a VPC NAT gateway.
+        # 
+        # This parameter is required.
         self.internal_ip = internal_ip
         # *   The internal port or port range that is used for port forwarding when you configure a DNAT entry for an Internet NAT gateway. Valid values: **1** to **65535**.
         # *   The port of the destination ECS instance to be mapped when you configure a DNAT entry for a VPC NAT gateway. Valid values: **1** to **65535**.
+        # 
+        # This parameter is required.
         self.internal_port = internal_port
         # The protocol. Valid values:
         # 
         # *   **TCP**\
         # *   **UDP**\
         # *   **Any** If you set **IpProtocol** to **Any**, you must also set **ExternalPort** and **InternalPort** to **Any** to implement DNAT IP mapping.
+        # 
+        # This parameter is required.
         self.ip_protocol = ip_protocol
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -9434,7 +9707,9 @@ class CreateForwardEntryRequest(TeaModel):
         self.port_break = port_break
         # The region ID of the NAT gateway.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to obtain the region ID.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to obtain the region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -9608,8 +9883,12 @@ class CreateFullNatEntryRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The backend IP address to be modified in FULLNAT address translation.
+        # 
+        # This parameter is required.
         self.access_ip = access_ip
         # The backend port to be modified in the mapping of FULLNAT port. Valid values: **1** to **65535**.
+        # 
+        # This parameter is required.
         self.access_port = access_port
         # The client token that is used to ensure the idempotence of the request.
         # 
@@ -9629,23 +9908,35 @@ class CreateFullNatEntryRequest(TeaModel):
         # The FULLNAT entry name. The name must be 2 to 128 characters in length. It must start with a letter but cannot start with http:// or https://.
         self.full_nat_entry_name = full_nat_entry_name
         # The ID of the FULLNAT table to which the FULLNAT entry belongs.
+        # 
+        # This parameter is required.
         self.full_nat_table_id = full_nat_table_id
         # The protocol of the packets that are forwarded by the port. Valid values:
         # 
         # *   **TCP**\
         # *   **UDP**\
+        # 
+        # This parameter is required.
         self.ip_protocol = ip_protocol
         # The NAT IP address that provides address translation.
+        # 
+        # This parameter is required.
         self.nat_ip = nat_ip
         # The frontend port to be modified in the mapping of FULLNAT port. Valid values: **1** to **65535**.
+        # 
+        # This parameter is required.
         self.nat_ip_port = nat_ip_port
         # The elastic network interface (ENI) ID.
+        # 
+        # This parameter is required.
         self.network_interface_id = network_interface_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the Virtual Private Cloud (VPC) NAT gateway to which the FULLNAT entry to be added belongs.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -9822,6 +10113,8 @@ class CreateGlobalAccelerationInstanceRequest(TeaModel):
         service_location: str = None,
     ):
         # The maximum bandwidth of the GA instance. Set the value to **10**. Unit: Mbit/s.
+        # 
+        # This parameter is required.
         self.bandwidth = bandwidth
         # The bandwidth type. Valid values:
         # 
@@ -9838,13 +10131,15 @@ class CreateGlobalAccelerationInstanceRequest(TeaModel):
         self.description = description
         # The name of the GA instance.
         # 
-        # The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
+        # The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the GA instance.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -9854,6 +10149,8 @@ class CreateGlobalAccelerationInstanceRequest(TeaModel):
         # *   **north-america**\
         # *   **asia-pacific**\
         # *   **europe**\
+        # 
+        # This parameter is required.
         self.service_location = service_location
 
     def validate(self):
@@ -10076,7 +10373,9 @@ class CreateHaVipRequest(TeaModel):
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the HAVIP. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # The region ID of the HAVIP. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group to which the HAVIP belongs.
         self.resource_group_id = resource_group_id
@@ -10085,6 +10384,8 @@ class CreateHaVipRequest(TeaModel):
         # The tag of the resource.
         self.tag = tag
         # The ID of the vSwitch to which the HAVIP belongs.
+        # 
+        # This parameter is required.
         self.v_switch_id = v_switch_id
 
     def validate(self):
@@ -10256,14 +10557,17 @@ class CreateHighReliablePhysicalConnectionRequestApList(TeaModel):
         region_id: str = None,
         type: str = None,
     ):
+        # This parameter is required.
         self.access_point_id = access_point_id
         self.bandwidth = bandwidth
         self.circuit_code = circuit_code
         self.description = description
+        # This parameter is required.
         self.line_operator = line_operator
         self.name = name
         self.peer_location = peer_location
         self.port_num = port_num
+        # This parameter is required.
         self.region_id = region_id
         self.type = type
 
@@ -10375,13 +10679,16 @@ class CreateHighReliablePhysicalConnectionRequest(TeaModel):
         tag: List[CreateHighReliablePhysicalConnectionRequestTag] = None,
     ):
         self.accept_language = accept_language
+        # This parameter is required.
         self.ap_list = ap_list
         self.client_token = client_token
         self.device_advanced_capacity = device_advanced_capacity
         self.dry_run = dry_run
+        # This parameter is required.
         self.high_reliable_type = high_reliable_type
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # This parameter is required.
         self.port_type = port_type
         self.region_id = region_id
         self.resource_group_id = resource_group_id
@@ -10735,7 +11042,7 @@ class CreateIPv6TranslatorRequest(TeaModel):
         # *   If the billing cycle is **Month**, valid values are **1** to **9**.
         # *   If the billing cycle is **Year**, set the value to **3**.
         self.duration = duration
-        # The name of the IPv6 Translation Service instance. The default name is the instance ID. It must be 2 to 100 characters in length and must start with a letter. It can contain letters, digits, periods (.), underscores (\_), and hyphens (-). It cannot start with `http://` or `https://`.
+        # The name of the IPv6 Translation Service instance. The default name is the instance ID. It must be 2 to 100 characters in length and must start with a letter. It can contain letters, digits, periods (.), underscores (_), and hyphens (-). It cannot start with `http://` or `https://`.
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -10749,7 +11056,9 @@ class CreateIPv6TranslatorRequest(TeaModel):
         # *   **Month** (default)
         # *   **Year**\
         self.pricing_cycle = pricing_cycle
-        # The region of the IPv6 Translation Service instance. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # The region of the IPv6 Translation Service instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -10933,11 +11242,15 @@ class CreateIPv6TranslatorAclListRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The ACL name.
+        # 
+        # This parameter is required.
         self.acl_name = acl_name
         self.client_token = client_token
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region of the IPv6 Translation Service instance. You can call the DescribeRegions operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -11095,27 +11408,37 @@ class CreateIPv6TranslatorEntryRequest(TeaModel):
         # *   **black**: a blacklist. IPv6 addresses in the ACL are not allowed to access backend services.
         self.acl_type = acl_type
         # The port that is used by the IPv6 address allocated to the IPv6 Translation Service instance.
+        # 
+        # This parameter is required.
         self.allocate_ipv_6port = allocate_ipv_6port
         # The public IPv4 address that needs to provide IPv6 services.
+        # 
+        # This parameter is required.
         self.backend_ipv_4addr = backend_ipv_4addr
         # The port of the public IPv4 address that needs to provide IPv6 services.
+        # 
+        # This parameter is required.
         self.backend_ipv_4port = backend_ipv_4port
         # The maximum bandwidth specified in the IPv6 mapping entry. Valid values:
         # 
-        # *   \-1 (default): does not limit the maximum bandwidth specified in the IPv6 mapping entry.
+        # *   \\-1 (default): does not limit the maximum bandwidth specified in the IPv6 mapping entry.
         # *   1 to 200: the bandwidth value specified in the IPv6 mapping entry. Unit: Mbit/s.
         # 
         # > The sum of the maximum bandwidth values specified in all IPv6 entries cannot exceed the maximum bandwidth supported by the instance.
         self.entry_bandwidth = entry_bandwidth
         # The description of the IPv6 mapping entry.
         self.entry_description = entry_description
-        # The name of the IPv6 mapping entry. It must be 2 to 100 characters in length and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). It must start with a letter. It cannot start with `http://` or `https://`.
+        # The name of the IPv6 mapping entry. It must be 2 to 100 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter. It cannot start with `http://` or `https://`.
         self.entry_name = entry_name
         # The ID of the IPv6 Translation Service instance.
+        # 
+        # This parameter is required.
         self.ipv_6translator_id = ipv_6translator_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region of the IPv6 Translation Service instance. You can call the **DescribeRegions** operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -11123,6 +11446,8 @@ class CreateIPv6TranslatorEntryRequest(TeaModel):
         # 
         # *   **tcp**\
         # *   **udp**\
+        # 
+        # This parameter is required.
         self.trans_protocol = trans_protocol
 
     def validate(self):
@@ -11300,6 +11625,8 @@ class CreateIpsecServerRequest(TeaModel):
         # The client CIDR block from which an IP address is allocated to the virtual network interface controller (NIC) of the client.
         # 
         # >  The client CIDR block must not overlap with the CIDR blocks of the VPC.
+        # 
+        # This parameter is required.
         self.client_ip_pool = client_ip_pool
         # The client token that is used to ensure the idempotence of the request.
         # 
@@ -11342,12 +11669,14 @@ class CreateIpsecServerRequest(TeaModel):
         # The local CIDR blocks, which are the CIDR blocks of the virtual private cloud (VPC) for the client to access.
         # 
         # Multiple CIDR blocks are separated with commas (,). Example: 192.168.1.0/24,192.168.2.0/24.
+        # 
+        # This parameter is required.
         self.local_subnet = local_subnet
         # The pre-shared key.
         # 
         # The pre-shared key is used for identity authentication between the IPsec server and the client. The key must be 1 to 100 characters in length.
         # 
-        # If you do not specify a pre-shared key, the system randomly generates a 16-character string as the pre-shared key. You can call the [ListIpsecServers](~~205453~~) operation to query the pre-shared keys that are generated by the system.
+        # If you do not specify a pre-shared key, the system randomly generates a 16-character string as the pre-shared key. You can call the [ListIpsecServers](https://help.aliyun.com/document_detail/205453.html) operation to query the pre-shared keys that are generated by the system.
         # 
         # >  The pre-shared key of the IPsec server must be the same as the client key. Otherwise, the IPsec server cannot be connected to the client.
         self.psk = psk
@@ -11356,8 +11685,12 @@ class CreateIpsecServerRequest(TeaModel):
         # >  This parameter is required.
         self.psk_enabled = psk_enabled
         # The ID of the region where the VPN gateway is deployed.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the VPN gateway.
+        # 
+        # This parameter is required.
         self.vpn_gateway_id = vpn_gateway_id
 
     def validate(self):
@@ -11608,7 +11941,9 @@ class CreateIpv4GatewayRequest(TeaModel):
         self.owner_id = owner_id
         # The ID of the region where you want to create the IPv4 gateway.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -11619,6 +11954,8 @@ class CreateIpv4GatewayRequest(TeaModel):
         # The ID of the VPC where you want to create the IPv4 gateway.
         # 
         # You can create only one IPv4 gateway in a VPC.
+        # 
+        # This parameter is required.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -11802,22 +12139,28 @@ class CreateIpv6EgressOnlyRuleRequest(TeaModel):
         # The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
         self.description = description
         # The ID of the IPv6 address for which you want to create an egress-only rule.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The type of the instance for which you want to create an egress-only rule.
         # 
         # Default value: **Ipv6Address**\
         self.instance_type = instance_type
         # The ID of the IPv6 gateway.
+        # 
+        # This parameter is required.
         self.ipv_6gateway_id = ipv_6gateway_id
         # The name of the egress-only rule.
         # 
-        # The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+        # The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The ID of the region in which the IPv6 gateway is deployed.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the region ID.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -12024,11 +12367,13 @@ class CreateIpv6GatewayRequest(TeaModel):
         self.description = description
         # The name of the IPv6 gateway.
         # 
-        # The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+        # The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the IPv6 gateway. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # The region ID of the IPv6 gateway. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group to which the IPv6 gateway belongs.
         self.resource_group_id = resource_group_id
@@ -12037,6 +12382,8 @@ class CreateIpv6GatewayRequest(TeaModel):
         # The tags.
         self.tag = tag
         # The ID of the VPC in which you want to create the IPv6 gateway.
+        # 
+        # This parameter is required.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -12284,13 +12631,13 @@ class CreateNatGatewayRequest(TeaModel):
         # 
         # Set the value to **PostPaid** (pay-as-you-go), which is the default value.
         # 
-        # For more information, see [Internet NAT gateway billing](~~48126~~) and [VPC NAT gateway billing](~~270913~~).
+        # For more information, see [Internet NAT gateway billing](https://help.aliyun.com/document_detail/48126.html) and [VPC NAT gateway billing](https://help.aliyun.com/document_detail/270913.html).
         self.instance_charge_type = instance_charge_type
         # The metering method of the NAT gateway. Set the value to **PayByLcu**, which specifies the pay-by-CU metering method.
         self.internet_charge_type = internet_charge_type
         # The name of the NAT gateway.
         # 
-        # The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). The name must start with a letter.
+        # The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
         # 
         # If this parameter is not set, the system assigns a default name to the NAT gateway.
         self.name = name
@@ -12307,13 +12654,15 @@ class CreateNatGatewayRequest(TeaModel):
         self.pricing_cycle = pricing_cycle
         # The region ID of the NAT gateway.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to obtain the region ID.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to obtain the region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # Specifies whether to enable the firewall feature. Valid values:
         # 
-        # *   **false** (default)><notice>This parameter is deprecated.></notice>
+        # *   **false** (default)>Notice: This parameter is deprecated.
         self.security_protection_enabled = security_protection_enabled
         # Subscription Internet NAT gateways are no longer available for purchase. Ignore this parameter.
         self.spec = spec
@@ -12326,9 +12675,11 @@ class CreateNatGatewayRequest(TeaModel):
         # *   To attach the NAT gateway to an existing vSwitch, make sure that the zone to which the vSwitch belongs supports NAT gateways. In addition, the vSwitch must have idle IP addresses.
         # *   If no vSwitch exists in the VPC, create a vSwitch in a zone that supports NAT gateways. Then, specify the vSwitch for the NAT gateway.
         # 
-        # >  You can call the [ListEnhanhcedNatGatewayAvailableZones](~~182292~~) operation to query zones that support NAT gateways. You can call the [DescribeVSwitches](~~35748~~) operation to query idle IP addresses in a vSwitch.
+        # >  You can call the [ListEnhanhcedNatGatewayAvailableZones](https://help.aliyun.com/document_detail/182292.html) operation to query zones that support NAT gateways. You can call the [DescribeVSwitches](https://help.aliyun.com/document_detail/35748.html) operation to query idle IP addresses in a vSwitch.
         self.v_switch_id = v_switch_id
         # The ID of the VPC where you want to create the NAT gateway.
+        # 
+        # This parameter is required.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -12657,12 +13008,16 @@ class CreateNatIpRequest(TeaModel):
         # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
         # The ID of the Virtual Private Cloud (VPC) NAT gateway for which you want to create the NAT IP address.
+        # 
+        # This parameter is required.
         self.nat_gateway_id = nat_gateway_id
         # The NAT IP address that you want to create.
         # 
         # If you do not specify an IP address, the system randomly allocates an IP address from the specified CIDR block.
         self.nat_ip = nat_ip
         # The CIDR block to which the NAT IP address belongs.
+        # 
+        # This parameter is required.
         self.nat_ip_cidr = nat_ip_cidr
         # The description of the NAT IP address.
         # 
@@ -12670,13 +13025,15 @@ class CreateNatIpRequest(TeaModel):
         self.nat_ip_description = nat_ip_description
         # The name of the NAT IP address.
         # 
-        # The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). It must start with a letter. The name must start with a letter and cannot start with `http://` or `https://`.
+        # The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter. The name must start with a letter and cannot start with `http://` or `https://`.
         self.nat_ip_name = nat_ip_name
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the NAT gateway to which the NAT IP address that you want to create belongs.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent list of regions.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent list of regions.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -12855,6 +13212,8 @@ class CreateNatIpCidrRequest(TeaModel):
         # *   **false**(default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
         # The ID of the Virtual Private Cloud (VPC) NAT gateway with which you want to associate the CIDR block.
+        # 
+        # This parameter is required.
         self.nat_gateway_id = nat_gateway_id
         # The NAT CIDR block that you want to associate with the NAT gateway.
         # 
@@ -12863,7 +13222,9 @@ class CreateNatIpCidrRequest(TeaModel):
         # *   The NAT CIDR block must fall within 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16, or their subnets.
         # *   The subnet mask must be 16 to 32 bits in length.
         # *   The NAT CIDR block cannot overlap with the private CIDR block of the VPC to which the NAT gateway belongs. If you want to use other IP addresses from the private CIDR block of the VPC to provide NAT services, create a vSwitch and attach the vSwitch to another VPC NAT gateway.
-        # *   If you want to use public IP addresses to provide NAT services, make sure that the public IP addresses fall within a customer CIDR block of the VPC to which the VPC NAT gateway belongs. For more information, see [What is customer CIDR block?](~~185311~~).
+        # *   If you want to use public IP addresses to provide NAT services, make sure that the public IP addresses fall within a customer CIDR block of the VPC to which the VPC NAT gateway belongs. For more information, see [What is customer CIDR block?](https://help.aliyun.com/document_detail/185311.html).
+        # 
+        # This parameter is required.
         self.nat_ip_cidr = nat_ip_cidr
         # The description of the NAT CIDR block.
         # 
@@ -12871,13 +13232,15 @@ class CreateNatIpCidrRequest(TeaModel):
         self.nat_ip_cidr_description = nat_ip_cidr_description
         # The name of the CIDR block.
         # 
-        # The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). It must start with a letter. The name must start with a letter and cannot start with `http://` or `https://`.
+        # The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter. The name must start with a letter and cannot start with `http://` or `https://`.
         self.nat_ip_cidr_name = nat_ip_cidr_name
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the NAT gateway with which you want to associate the CIDR block.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -13095,7 +13458,9 @@ class CreateNetworkAclRequest(TeaModel):
         self.owner_id = owner_id
         # The region ID of the network ACL.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -13107,10 +13472,12 @@ class CreateNetworkAclRequest(TeaModel):
         # 
         # ecs.c1, ecs.c2, ecs.c4, ecs.c5, ecs.ce4, ecs.cm4, ecs.d1, ecs.e3, ecs.e4, ecs.ga1, ecs.gn4, ecs.gn5, ecs.i1, ecs.m1, ecs.m2, ecs.mn4, ecs.n1, ecs.n2, ecs.n4, ecs.s1, ecs.s2, ecs.s3, ecs.se1, ecs.sn1, ecs.sn2, ecs.t1, and ecs.xn4.
         # 
-        # *   For more information about how to upgrade an ECS instance, see [Upgrade subscription instances](~~25438~~) and [Change the specifications of pay-as-you-go instances](~~60051~~).
-        # *   For more information about how to release an ECS instance, see [Release an ECS instance](~~25442~~).
+        # *   For more information about how to upgrade an ECS instance, see [Upgrade subscription instances](https://help.aliyun.com/document_detail/25438.html) and [Change the specifications of pay-as-you-go instances](https://help.aliyun.com/document_detail/60051.html).
+        # *   For more information about how to release an ECS instance, see [Release an ECS instance](https://help.aliyun.com/document_detail/25442.html).
         # 
         # >  If the VPC contains an ECS instance that does not support network ACLs, upgrade the ECS instance.
+        # 
+        # This parameter is required.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -13746,6 +14113,8 @@ class CreatePhysicalConnectionRequest(TeaModel):
         bandwidth: int = None,
     ):
         # The access point ID of the Express Connect circuit.
+        # 
+        # This parameter is required.
         self.access_point_id = access_point_id
         # The circuit code of the Express Connect circuit. The circuit code is provided by the connectivity provider.
         self.circuit_code = circuit_code
@@ -13769,10 +14138,12 @@ class CreatePhysicalConnectionRequest(TeaModel):
         # *   **CO**: other connectivity providers in the Chinese mainland.
         # *   **Equinix**: Equinix.
         # *   **Other**: other connectivity providers outside the Chinese mainland.
+        # 
+        # This parameter is required.
         self.line_operator = line_operator
         # The name of the Express Connect circuit.
         # 
-        # The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+        # The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -13794,7 +14165,9 @@ class CreatePhysicalConnectionRequest(TeaModel):
         self.redundant_physical_connection_id = redundant_physical_connection_id
         # The region ID of the Express Connect circuit.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group to which the Express Connect circuit belongs.
         self.resource_group_id = resource_group_id
@@ -14021,6 +14394,8 @@ class CreatePhysicalConnectionOccupancyOrderRequest(TeaModel):
         # *   If **PricingCycle** is set to **Year**, set **Period** to a value from **1 to 5**.
         self.period = period
         # The ID of the Express Connect circuit.
+        # 
+        # This parameter is required.
         self.physical_connection_id = physical_connection_id
         # The billing cycle of the subscription. Valid values:
         # 
@@ -14029,7 +14404,9 @@ class CreatePhysicalConnectionOccupancyOrderRequest(TeaModel):
         self.pricing_cycle = pricing_cycle
         # The region ID of the Express Connect circuit.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -14216,6 +14593,8 @@ class CreatePhysicalConnectionSetupOrderRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The ID of the access point.
+        # 
+        # This parameter is required.
         self.access_point_id = access_point_id
         # Specifies whether to enable automatic payment. Valid values:
         # 
@@ -14236,6 +14615,8 @@ class CreatePhysicalConnectionSetupOrderRequest(TeaModel):
         # *   **CO**: other connectivity providers in the Chinese mainland
         # *   **Equinix**: Equinix
         # *   **Other**: other connectivity providers outside the Chinese mainland
+        # 
+        # This parameter is required.
         self.line_operator = line_operator
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -14255,7 +14636,9 @@ class CreatePhysicalConnectionSetupOrderRequest(TeaModel):
         self.redundant_physical_connection_id = redundant_physical_connection_id
         # The region ID of the Express Connect circuit.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -14486,7 +14869,7 @@ class CreatePublicIpAddressPoolRequest(TeaModel):
         # *   **BGP** (default)
         # *   **BGP_PRO**\
         # 
-        # For more information about BGP (Multi-ISP) lines and BGP (Multi-ISP) Pro lines, see the "Line types" section in the [What is EIP?](~~32321~~) topic.
+        # For more information about BGP (Multi-ISP) lines and BGP (Multi-ISP) Pro lines, see the "Line types" section in the [What is EIP?](https://help.aliyun.com/document_detail/32321.html) topic.
         # 
         # *   If you are allowed to use single-ISP bandwidth, you can also use one of the following values:
         # 
@@ -14501,11 +14884,13 @@ class CreatePublicIpAddressPoolRequest(TeaModel):
         self.isp = isp
         # The name of the IP address pool.
         # 
-        # This parameter is optional. The name must be 1 to 128 characters in length and can contain digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+        # This parameter is optional. The name must be 1 to 128 characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The ID of the region where you want to create the IP address pool.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group to which the IP address pool belongs.
         self.resource_group_id = resource_group_id
@@ -14712,6 +15097,8 @@ class CreateRouteEntriesRequestRouteEntries(TeaModel):
         # 
         # *   The destination CIDR block is not 100.64.0.0/10 or a subset of 100.64.0.0/10.
         # *   The destination CIDR block of the custom route entry is different from the destination CIDR blocks of other route entries in the same route table.
+        # 
+        # This parameter is required.
         self.dst_cidr_block = dst_cidr_block
         # The IP version. You can specify up to 50 IP versions. Valid values:
         # 
@@ -14723,6 +15110,8 @@ class CreateRouteEntriesRequestRouteEntries(TeaModel):
         # The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
         self.name = name
         # The next hop ID of the custom route entry. You can specify up to 50 next hop IDs.
+        # 
+        # This parameter is required.
         self.next_hop = next_hop
         # The type of next hop. You can specify up to 50 next hop types. Valid values:
         # 
@@ -14735,8 +15124,12 @@ class CreateRouteEntriesRequestRouteEntries(TeaModel):
         # *   **NatGateway**: a NAT gateway.
         # *   **Attachment**: a transit router.
         # *   **VpcPeer**: a VPC peering connection.
+        # 
+        # This parameter is required.
         self.next_hop_type = next_hop_type
         # The ID of the route table to which you want to add a custom route entry. You can specify up to 50 route table IDs.
+        # 
+        # This parameter is required.
         self.route_table_id = route_table_id
 
     def validate(self):
@@ -14797,11 +15190,13 @@ class CreateRouteEntriesRequest(TeaModel):
         self.owner_id = owner_id
         # The region ID of the route table.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The route entries.
+        # 
+        # This parameter is required.
         self.route_entries = route_entries
 
     def validate(self):
@@ -15079,6 +15474,8 @@ class CreateRouteEntryRequest(TeaModel):
         # 
         # *   The destination CIDR block is not 100.64.0.0/10 or a subset of 100.64.0.0/10.
         # *   The destination CIDR block of the custom route entry is different from the destination CIDR blocks of other route entries in the same route table.
+        # 
+        # This parameter is required.
         self.destination_cidr_block = destination_cidr_block
         # The ID of the next hop.
         self.next_hop_id = next_hop_id
@@ -15100,7 +15497,7 @@ class CreateRouteEntryRequest(TeaModel):
         self.owner_id = owner_id
         # The region ID of the route table.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -15109,6 +15506,8 @@ class CreateRouteEntryRequest(TeaModel):
         # The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
         self.route_entry_name = route_entry_name
         # The ID of the route table to which you want to add a custom route entry.
+        # 
+        # This parameter is required.
         self.route_table_id = route_table_id
 
     def validate(self):
@@ -15336,7 +15735,9 @@ class CreateRouteTableRequest(TeaModel):
         self.owner_id = owner_id
         # The region ID of the virtual private cloud (VPC) to which the custom route table belongs.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -15354,10 +15755,12 @@ class CreateRouteTableRequest(TeaModel):
         # 
         # You must upgrade or release the ECS instance before you can create a custom route table for the VPC.
         # 
-        # *   For more information about how to upgrade an ECS instance, see [Upgrade subscription instances](~~25438~~) and [Change specifications of pay-as-you-go instances](~~60051~~).
-        # *   For more information about how to release an ECS instance, see [Release an ECS instance](~~25442~~).
+        # *   For more information about how to upgrade an ECS instance, see [Upgrade subscription instances](https://help.aliyun.com/document_detail/25438.html) and [Change specifications of pay-as-you-go instances](https://help.aliyun.com/document_detail/60051.html).
+        # *   For more information about how to release an ECS instance, see [Release an ECS instance](https://help.aliyun.com/document_detail/25442.html).
         # 
         # >  If a custom route table is created for a VPC that contains an ECS instance from one of the preceding instance families, you must upgrade or release the ECS instance. Otherwise, the custom route table cannot work as expected.
+        # 
+        # This parameter is required.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -15578,7 +15981,7 @@ class CreateRouterInterfaceRequest(TeaModel):
     ):
         # The ID of the access point to which the VBR belongs.
         # 
-        # You can call the [DescribeAccessPoints](~~36062~~) operation to obtain the IDs of access points.
+        # You can call the [DescribeAccessPoints](https://help.aliyun.com/document_detail/36062.html) operation to obtain the IDs of access points.
         # 
         # >  This parameter is required if the VBR is connected to an Express Connect circuit.
         self.access_point_id = access_point_id
@@ -15630,7 +16033,7 @@ class CreateRouterInterfaceRequest(TeaModel):
         self.instance_charge_type = instance_charge_type
         # The name of the router interface.
         # 
-        # The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-).
+        # The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-).
         self.name = name
         # The ID of the access point to which the peer belongs.
         # 
@@ -15641,6 +16044,8 @@ class CreateRouterInterfaceRequest(TeaModel):
         # The ID of the Alibaba Cloud account to which the peer router interface belongs.
         self.opposite_interface_owner_id = opposite_interface_owner_id
         # The ID of the region in which the acceptor is deployed.
+        # 
+        # This parameter is required.
         self.opposite_region_id = opposite_region_id
         # The ID of the peer router.
         self.opposite_router_id = opposite_router_id
@@ -15667,11 +16072,13 @@ class CreateRouterInterfaceRequest(TeaModel):
         self.pricing_cycle = pricing_cycle
         # The ID of the region to which the router interface belongs.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to obtain the region ID.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to obtain the region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group.
         # 
-        # For more information about resource group, see [What is Resource Management?](~~94475~~)
+        # For more information about resource group, see [What is Resource Management?](https://help.aliyun.com/document_detail/94475.html)
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -15679,13 +16086,19 @@ class CreateRouterInterfaceRequest(TeaModel):
         # 
         # *   **InitiatingSide**: requester
         # *   **AcceptingSide**: acceptor
+        # 
+        # This parameter is required.
         self.role = role
         # The ID of the router that is associated with the router interface.
+        # 
+        # This parameter is required.
         self.router_id = router_id
         # The type of router that is associated with the router interface. Valid values:
         # 
         # *   **VRouter**\
         # *   **VBR**\
+        # 
+        # This parameter is required.
         self.router_type = router_type
         # The specification of the router interface and the corresponding bandwidth. Valid values:
         # 
@@ -15703,6 +16116,8 @@ class CreateRouterInterfaceRequest(TeaModel):
         # *   **Xlarge.1**: 10,000 Mbit/s
         # 
         # >  If **Role** is set to **AcceptingSide**, set **Spec** to **Negative**. This indicates that you do not need to specify the specification when you create an acceptor router interface.
+        # 
+        # This parameter is required.
         self.spec = spec
         # The tag to add to the resource.
         self.tags = tags
@@ -15967,7 +16382,7 @@ class CreateSnatEntryRequest(TeaModel):
         self.owner_id = owner_id
         # The region ID of the NAT gateway.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
         # 
         # Valid values:
         # 
@@ -15984,6 +16399,8 @@ class CreateSnatEntryRequest(TeaModel):
         #     <!-- -->
         # 
         #     .
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -15996,8 +16413,12 @@ class CreateSnatEntryRequest(TeaModel):
         # >  If you specify multiple EIPs in the SNAT IP address pool, the service connection is allocated to multiple EIPs by using the hashing algorithm. The traffic of each EIP may be different. Therefore, we recommend that you associate the EIPs with an Internet Shared Bandwidth instance to prevent service interruptions caused by bandwidth exhaustion.
         # 
         # *   When you add SNAT entries for a VPC NAT gateway, this parameter specifies the NAT IP addresses in the SNAT entry. Separate multiple NAT IP addresses with commas (,).
+        # 
+        # This parameter is required.
         self.snat_ip = snat_ip
         # The ID of the SNAT table.
+        # 
+        # This parameter is required.
         self.snat_table_id = snat_table_id
         # You can specify the CIDR block of a VPC, a vSwitch, or an ECS instance or enter a custom CIDR block.
         # 
@@ -16186,11 +16607,15 @@ class CreateSslVpnClientCertRequest(TeaModel):
         self.owner_id = owner_id
         # The ID of the region where the VPN gateway is created.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the SSL server.
+        # 
+        # This parameter is required.
         self.ssl_vpn_server_id = ssl_vpn_server_id
 
     def validate(self):
@@ -16332,6 +16757,7 @@ class CreateSslVpnServerRequest(TeaModel):
         client_token: str = None,
         compress: bool = None,
         enable_multi_factor_auth: bool = None,
+        idaa_sapplication_id: str = None,
         idaa_sinstance_id: str = None,
         idaa_sregion_id: str = None,
         local_subnet: str = None,
@@ -16395,8 +16821,10 @@ class CreateSslVpnServerRequest(TeaModel):
         # 
         # > - The subnet mask of the client CIDR block must be 16 to 29 bits in length.
         # > - Make sure that the local CIDR block and the client CIDR block do not overlap with each other.
-        # > - We recommend that you use 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16, or one of their subnets as the client CIDR block. If you want to specify a public CIDR block as the client CIDR block, you must specify the public CIDR block as the user CIDR block of the virtual private cloud (VPC). This way, the VPC can access the public CIDR block. For more information, see [VPC FAQ](~~185311~~).
+        # > - We recommend that you use 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16, or one of their subnets as the client CIDR block. If you want to specify a public CIDR block as the client CIDR block, you must specify the public CIDR block as the user CIDR block of the virtual private cloud (VPC). This way, the VPC can access the public CIDR block. For more information, see [VPC FAQ](https://help.aliyun.com/document_detail/185311.html).
         # > - After you create an SSL server, the system automatically adds routes that point to the client CIDR block to the VPC route table, which is not displayed in the console by default. Do not add routes that point to the client CIDR block to the VPC route table again. Otherwise, SSL-VPN connections cannot work as expected.
+        # 
+        # This parameter is required.
         self.client_ip_pool = client_ip_pool
         # The client token that is used to ensure the idempotence of the request.
         # 
@@ -16417,6 +16845,7 @@ class CreateSslVpnServerRequest(TeaModel):
         # > - Two-factor authentication supports only earlier versions of IDaaS instances. If you do not have and cannot create earlier versions of IDaaS instances, you cannot enable two-factor authentication.
         # > - If two-factor authentication is already enabled for existing SSL servers, you can continue to use two-factor authentication.
         self.enable_multi_factor_auth = enable_multi_factor_auth
+        self.idaa_sapplication_id = idaa_sapplication_id
         # The Identity as a Service (IDaaS) instance ID.
         self.idaa_sinstance_id = idaa_sinstance_id
         # The ID of the region where the IDaaS instance is created.
@@ -16434,6 +16863,8 @@ class CreateSslVpnServerRequest(TeaModel):
         # *   169.254.0.0~169.254.255.255
         # *   224.0.0.0~239.255.255.255
         # *   255.0.0.0~255.255.255.255
+        # 
+        # This parameter is required.
         self.local_subnet = local_subnet
         # The SSL server name.
         # 
@@ -16452,11 +16883,15 @@ class CreateSslVpnServerRequest(TeaModel):
         self.proto = proto
         # The region ID of the VPN gateway.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the VPN gateway.
+        # 
+        # This parameter is required.
         self.vpn_gateway_id = vpn_gateway_id
 
     def validate(self):
@@ -16478,6 +16913,8 @@ class CreateSslVpnServerRequest(TeaModel):
             result['Compress'] = self.compress
         if self.enable_multi_factor_auth is not None:
             result['EnableMultiFactorAuth'] = self.enable_multi_factor_auth
+        if self.idaa_sapplication_id is not None:
+            result['IDaaSApplicationId'] = self.idaa_sapplication_id
         if self.idaa_sinstance_id is not None:
             result['IDaaSInstanceId'] = self.idaa_sinstance_id
         if self.idaa_sregion_id is not None:
@@ -16516,6 +16953,8 @@ class CreateSslVpnServerRequest(TeaModel):
             self.compress = m.get('Compress')
         if m.get('EnableMultiFactorAuth') is not None:
             self.enable_multi_factor_auth = m.get('EnableMultiFactorAuth')
+        if m.get('IDaaSApplicationId') is not None:
+            self.idaa_sapplication_id = m.get('IDaaSApplicationId')
         if m.get('IDaaSInstanceId') is not None:
             self.idaa_sinstance_id = m.get('IDaaSInstanceId')
         if m.get('IDaaSRegionId') is not None:
@@ -16869,7 +17308,9 @@ class CreateTrafficMirrorFilterRequest(TeaModel):
         self.owner_id = owner_id
         # The ID of the region to which the mirrored traffic belongs.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list. For more information about regions that support traffic mirroring, see [Overview of traffic mirroring](~~207513~~).
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list. For more information about regions that support traffic mirroring, see [Overview of traffic mirroring](https://help.aliyun.com/document_detail/207513.html).
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group to which the mirrored traffic belongs.
         self.resource_group_id = resource_group_id
@@ -17260,11 +17701,15 @@ class CreateTrafficMirrorFilterRulesRequest(TeaModel):
         self.owner_id = owner_id
         # The ID of the region to which the mirrored traffic belongs.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list. For more information about regions that support traffic mirroring, see [Overview of traffic mirroring](~~207513~~).
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list. For more information about regions that support traffic mirroring, see [Overview of traffic mirroring](https://help.aliyun.com/document_detail/207513.html).
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the filter.
+        # 
+        # This parameter is required.
         self.traffic_mirror_filter_id = traffic_mirror_filter_id
 
     def validate(self):
@@ -17583,8 +18028,12 @@ class CreateTrafficMirrorSessionRequest(TeaModel):
         # The priority of the traffic mirror session. Valid values: **1** to **32766**.
         # 
         # A smaller value indicates a higher priority. You cannot specify identical priorities for traffic mirror sessions that are created in the same region by using the same account.
+        # 
+        # This parameter is required.
         self.priority = priority
-        # The ID of the region to which the traffic mirror session belongs. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list. For more information about regions that support traffic mirroring, see [Overview of traffic mirroring](~~207513~~).
+        # The ID of the region to which the traffic mirror session belongs. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list. For more information about regions that support traffic mirroring, see [Overview of traffic mirroring](https://help.aliyun.com/document_detail/207513.html).
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group to which the mirrored traffic belongs.
         self.resource_group_id = resource_group_id
@@ -17593,6 +18042,8 @@ class CreateTrafficMirrorSessionRequest(TeaModel):
         # The tag of the resource.
         self.tag = tag
         # The ID of the filter.
+        # 
+        # This parameter is required.
         self.traffic_mirror_filter_id = traffic_mirror_filter_id
         # The description of the traffic mirror session.
         # 
@@ -17603,13 +18054,19 @@ class CreateTrafficMirrorSessionRequest(TeaModel):
         # The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
         self.traffic_mirror_session_name = traffic_mirror_session_name
         # The ID of the traffic mirror source. You can specify only an elastic network interface (ENI) as the traffic mirror source. The default value of **N** is **1**, which indicates that you can add only one traffic mirror source to a traffic mirror session.
+        # 
+        # This parameter is required.
         self.traffic_mirror_source_ids = traffic_mirror_source_ids
         # The ID of the traffic mirror destination. You can specify only an elastic network interface (ENI) or a Server Load Balancer (SLB) instance as a traffic mirror destination.
+        # 
+        # This parameter is required.
         self.traffic_mirror_target_id = traffic_mirror_target_id
         # The type of the traffic mirror destination. Valid values:
         # 
         # *   **NetworkInterface**: an ENI
         # *   **SLB**: an SLB instance
+        # 
+        # This parameter is required.
         self.traffic_mirror_target_type = traffic_mirror_target_type
         # The VXLAN network identifier (VNI). Valid values: **0** to **16777215**.
         # 
@@ -17861,6 +18318,8 @@ class CreateVSwitchRequest(TeaModel):
         # *   The subnet mask of the CIDR block must be 16 to 29 bits in length.
         # *   The CIDR block of the vSwitch must fall within the CIDR block of the VPC to which the vSwitch belongs.
         # *   The CIDR block of a vSwitch cannot be the same as the destination CIDR block in a route entry of the VPC. However, it can be a subset of the destination CIDR block.
+        # 
+        # This parameter is required.
         self.cidr_block = cidr_block
         # The client token that is used to ensure the idempotence of the request.
         # 
@@ -17878,7 +18337,7 @@ class CreateVSwitchRequest(TeaModel):
         self.owner_id = owner_id
         # The region ID of the vSwitch.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -17889,12 +18348,16 @@ class CreateVSwitchRequest(TeaModel):
         # The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
         self.v_switch_name = v_switch_name
         # The ID of the VPC where you want to create the vSwitch.
+        # 
+        # This parameter is required.
         self.vpc_id = vpc_id
         # The IPv6 CIDR block of the VPC.
         self.vpc_ipv_6cidr_block = vpc_ipv_6cidr_block
         # The zone ID of the vSwitch.
         # 
-        # You can call the [DescribeZones](~~36064~~) operation to query the most recent zone list.
+        # You can call the [DescribeZones](https://help.aliyun.com/document_detail/36064.html) operation to query the most recent zone list.
+        # 
+        # This parameter is required.
         self.zone_id = zone_id
 
     def validate(self):
@@ -18131,7 +18594,9 @@ class CreateVSwitchCidrReservationRequest(TeaModel):
         self.owner_id = owner_id
         # The ID of the region where the vSwitch is deployed.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -18157,13 +18622,15 @@ class CreateVSwitchCidrReservationRequest(TeaModel):
         self.v_switch_cidr_reservation_mask = v_switch_cidr_reservation_mask
         # The name of the reserved CIDR block.
         # 
-        # The name must be 2 to 128 characters in length and can contain digits, underscores (\_), and hyphens (-). It must start with a letter.
+        # The name must be 2 to 128 characters in length and can contain digits, underscores (_), and hyphens (-). It must start with a letter.
         self.v_switch_cidr_reservation_name = v_switch_cidr_reservation_name
         # The type of reserved CIDR block. Set the value to **prefix**.
         # 
         # >  When a user or a cloud service allocates a CIDR block to an elastic network interface (ENI), the CIDR block must be allocated from the reserved CIDR block. If the reserved CIDR block is exhausted, an error is returned.
         self.v_switch_cidr_reservation_type = v_switch_cidr_reservation_type
         # The ID of the vSwitch to which the reserved CIDR block belongs.
+        # 
+        # This parameter is required.
         self.v_switch_id = v_switch_id
 
     def validate(self):
@@ -18361,12 +18828,18 @@ class CreateVbrHaRequest(TeaModel):
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The ID of the other VBR in the VBR failover group.
+        # 
+        # This parameter is required.
         self.peer_vbr_id = peer_vbr_id
         # The ID of the region in which the VBR is deployed.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the VBR.
+        # 
+        # This parameter is required.
         self.vbr_id = vbr_id
 
     def validate(self):
@@ -18529,24 +19002,34 @@ class CreateVcoRouteEntryRequest(TeaModel):
         # The description of the destination-based route.
         self.description = description
         # The next hop of the destination-based route.
+        # 
+        # This parameter is required.
         self.next_hop = next_hop
         # The tunneling protocol. Set the value to **Ipsec**, which specifies the IPsec tunneling protocol.
         self.overlay_mode = overlay_mode
         self.owner_account = owner_account
         # The ID of the region where the IPsec-VPN connection is established.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The destination CIDR block of the destination-based route.
+        # 
+        # This parameter is required.
         self.route_dest = route_dest
         # The ID of the IPsec-VPN connection.
+        # 
+        # This parameter is required.
         self.vpn_connection_id = vpn_connection_id
         # The weight of the destination-based route. Valid values:
         # 
         # *   **0**: a low priority
         # *   **100**: a high priority
+        # 
+        # This parameter is required.
         self.weight = weight
 
     def validate(self):
@@ -18842,7 +19325,7 @@ class CreateVirtualBorderRouterRequest(TeaModel):
         self.local_ipv_6gateway_ip = local_ipv_6gateway_ip
         # The name of the VBR.
         # 
-        # The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). The name must start with a letter.
+        # The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -18865,14 +19348,18 @@ class CreateVirtualBorderRouterRequest(TeaModel):
         # The ID of the Express Connect circuit.
         # 
         # You can create a VBR for a dedicated connection or a hosted connection.
+        # 
+        # This parameter is required.
         self.physical_connection_id = physical_connection_id
         # The region ID of the Express Connect circuit.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The resource group ID.
         # 
-        # For more information about resource group, see [What is Resource Management?](~~94475~~)
+        # For more information about resource group, see [What is Resource Management?](https://help.aliyun.com/document_detail/94475.html)
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -18885,6 +19372,8 @@ class CreateVirtualBorderRouterRequest(TeaModel):
         # The VLAN ID of the VBR. Valid values: **0 to 2999**.
         # 
         # >  Only the owner of the Express Connect circuit can set this parameter. The VLAN IDs of two VBRs of the same the Express Connect circuit must be different.
+        # 
+        # This parameter is required.
         self.vlan_id = vlan_id
 
     def validate(self):
@@ -19083,11 +19572,11 @@ class CreateVirtualPhysicalConnectionRequestTag(TeaModel):
     ):
         # The tag key. You can specify at most 20 tag keys. The tag key cannot be an empty string.
         # 
-        # The key can be up to 64 characters in length and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The key must start with a letter but cannot start with `aliyun` or `acs:`. The key cannot contain `http://` or `https://`.
+        # The key can be up to 64 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The key must start with a letter but cannot start with `aliyun` or `acs:`. The key cannot contain `http://` or `https://`.
         self.key = key
         # The tag value. You can specify at most 20 tag values. The tag value can be an empty string.
         # 
-        # The value can be up to 128 characters in length and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The value must start with a letter but cannot start with `aliyun` or `acs:`. The value cannot contain `http://` or `https://`.
+        # The value can be up to 128 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The value must start with a letter but cannot start with `aliyun` or `acs:`. The value cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -19141,18 +19630,24 @@ class CreateVirtualPhysicalConnectionRequest(TeaModel):
         self.dry_run = dry_run
         # The name of the hosted connection.
         # 
-        # The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+        # The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
         self.name = name
         # The payer for the hosted connection. Valid values:
         # 
         # *   **PayByPhysicalConnectionOwner**: The partner pays for the hosted connection.
         # *   **PayByVirtualPhysicalConnectionOwner**: The tenant pays for the hosted connection.
+        # 
+        # This parameter is required.
         self.order_mode = order_mode
         # The ID of the Express Connect circuit over which the hosted connection is created.
+        # 
+        # This parameter is required.
         self.physical_connection_id = physical_connection_id
         # The region ID of the hosted connection.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to obtain the region ID.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to obtain the region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group to which the hosted connection belongs.
         self.resource_group_id = resource_group_id
@@ -19163,6 +19658,8 @@ class CreateVirtualPhysicalConnectionRequest(TeaModel):
         # >  **2G**, **5G**, **8G**, and **10G** are unavailable by default. If you want to use these bandwidth values, contact your account manager.
         # 
         # **M** indicates Mbit/s and **G** indicates Gbit/s.
+        # 
+        # This parameter is required.
         self.spec = spec
         # The tags.
         self.tag = tag
@@ -19176,8 +19673,12 @@ class CreateVirtualPhysicalConnectionRequest(TeaModel):
         # 
         # *   If the VLAN ID is set to **0**, it indicates that the switch port of the virtual border router (VBR) is a Layer 3 router interface instead of a VLAN interface. When a Layer 3 router interface is used, each Express Connect circuit corresponds to a VBR.
         # *   If the VLAN ID is set to a value from **1** to **2999**, the switch port of the VBR is a Layer 3 VLAN subinterface. When a Layer 3 VLAN subinterface is used, each VLAN ID corresponds to one VBR. In this case, the Express Connect circuit with which the VBR is associated can be used to connect to virtual private clouds (VPCs) that belong to different Alibaba Cloud accounts. VBRs in different VLANs are isolated from each other at Layer 2.
+        # 
+        # This parameter is required.
         self.vlan_id = vlan_id
         # The Alibaba Cloud account ID of the tenant.
+        # 
+        # This parameter is required.
         self.vpconn_ali_uid = vpconn_ali_uid
 
     def validate(self):
@@ -19432,11 +19933,13 @@ class CreateVpcRequest(TeaModel):
         self.owner_id = owner_id
         # The ID of the region to which the VPC belongs.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group.
         # 
-        # For more information about resource groups, see [What is a resource group?](~~94475~~)
+        # For more information about resource groups, see [What is a resource group?](https://help.aliyun.com/document_detail/94475.html)
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -19444,7 +19947,7 @@ class CreateVpcRequest(TeaModel):
         self.tag = tag
         # The user CIDR block. Separate user CIDR blocks with commas (,). You can specify up to three user CIDR blocks.
         # 
-        # For more information about user CIDR blocks, see the `What is a user CIDR block?` section in [VPC FAQ](~~185311~~).
+        # For more information about user CIDR blocks, see the `What is a user CIDR block?` section in [VPC FAQ](https://help.aliyun.com/document_detail/185311.html).
         self.user_cidr = user_cidr
         # The name of the VPC.
         # 
@@ -19726,23 +20229,29 @@ class CreateVpcGatewayEndpointRequest(TeaModel):
         self.owner_id = owner_id
         # The access policy for the cloud service.
         # 
-        # For more information about the syntax and structure of the access policy, see [Policy syntax and structure](~~93739~~).
+        # For more information about the syntax and structure of the access policy, see [Policy syntax and structure](https://help.aliyun.com/document_detail/93739.html).
         self.policy_document = policy_document
         # The region ID of the gateway endpoint.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group to which the gateway endpoint belongs.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The name of the endpoint service.
+        # 
+        # This parameter is required.
         self.service_name = service_name
         # The tags of the resource.
         self.tag = tag
         # The ID of the virtual private cloud (VPC) where you want to create the gateway endpoint.
         # 
         # The VPC and gateway endpoint must be deployed in the same region.
+        # 
+        # This parameter is required.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -20055,7 +20564,9 @@ class CreateVpcPrefixListRequest(TeaModel):
         self.prefix_list_name = prefix_list_name
         # The ID of the region where you want to create the prefix list.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group to which the prefix list belongs.
         self.resource_group_id = resource_group_id
@@ -20257,13 +20768,17 @@ class CreateVpconnFromVbrRequest(TeaModel):
         self.order_mode = order_mode
         # The region ID of the hosted connection.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The client token that is used to ensure the idempotence of the request.
         # 
         # You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.token = token
         # The ID of the associated VBR.
+        # 
+        # This parameter is required.
         self.vbr_id = vbr_id
 
     def validate(self):
@@ -20465,7 +20980,7 @@ class CreateVpnAttachmentRequest(TeaModel):
         # 
         # *   **LocalBgpIp:** the BGP IP address on the Alibaba Cloud side. This IP address must fall within the CIDR block range of the IPsec tunnel.
         # 
-        # > *   Before you configure BGP, we recommend that you learn about how BGP works and the limits. For more information, see [BGP dynamic routing ](~~170235~~).
+        # > *   Before you configure BGP, we recommend that you learn about how BGP works and the limits. For more information, see [BGP dynamic routing ](https://help.aliyun.com/document_detail/170235.html).
         # > *   We recommend that you use a private ASN to establish a connection with Alibaba Cloud over BGP. Refer to the relevant documentation for the private ASN range.
         self.bgp_config = bgp_config
         # The client token that is used to ensure the idempotence of the request.
@@ -20475,6 +20990,8 @@ class CreateVpnAttachmentRequest(TeaModel):
         # > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
         # The ID of the customer gateway.
+        # 
+        # This parameter is required.
         self.customer_gateway_id = customer_gateway_id
         # Specifies whether to immediately start IPsec negotiations after the configuration takes effect. Valid values:
         # 
@@ -20512,8 +21029,8 @@ class CreateVpnAttachmentRequest(TeaModel):
         # 
         # *   **IkeConfig.Psk**: The pre-shared key that is used for authentication between the VPN gateway and the data center.
         # 
-        #     *   It must be 1 to 100 characters in length, and can contain letters, digits, and the following characters: ``~!`@#$%^&*()_-+={}[]|;:\",.<>/?``
-        #     *   If you do not specify a pre-shared key, the system generates a random 16-character string as the pre-shared key. You can call the [DescribeVpnConnection](~~448847~~) operation to query the pre-shared key that is generated by the system.
+        #     *   It must be 1 to 100 characters in length, and can contain letters, digits, and the following characters: ``~!`@#$%^&*()_-+={}[]|;:\\",.<>/?``
+        #     *   If you do not specify a pre-shared key, the system generates a random 16-character string as the pre-shared key. You can call the [DescribeVpnConnection](https://help.aliyun.com/document_detail/448847.html) operation to query the pre-shared key that is generated by the system.
         # 
         #     > The pre-shared key of the IPsec-VPN connection must be the same as the authentication key of the data center. Otherwise, a connection cannot be established between the data center and the VPN gateway.
         # 
@@ -20548,6 +21065,8 @@ class CreateVpnAttachmentRequest(TeaModel):
         # 
         # *   If you set **LocalSubnet** and **RemoteSubnet** to 0.0.0.0/0, the routing mode of the IPsec-VPN connection is set to Destination Routing Mode.
         # *   If you set **LocalSubnet** and **RemoteSubnet** to specific CIDR blocks, the routing mode of the IPsec-VPN connection is set to Protected Data Flows.
+        # 
+        # This parameter is required.
         self.local_subnet = local_subnet
         # The name of the IPsec-VPN connection.
         # 
@@ -20561,7 +21080,9 @@ class CreateVpnAttachmentRequest(TeaModel):
         self.owner_account = owner_account
         # The ID of the region where the IPsec-VPN connection is established.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent list of regions.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent list of regions.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The peer CA certificate when a ShangMi (SM) VPN gateway is used to create the IPsec-VPN connection.
         self.remote_ca_cert = remote_ca_cert
@@ -20573,10 +21094,12 @@ class CreateVpnAttachmentRequest(TeaModel):
         # 
         # *   If you set **LocalSubnet** and **RemoteSubnet** to 0.0.0.0/0, the routing mode of the IPsec-VPN connection is set to Destination Routing Mode.
         # *   If you set **LocalSubnet** and **RemoteSubnet** to specific CIDR blocks, the routing mode of the IPsec-VPN connection is set to Protected Data Flows.
+        # 
+        # This parameter is required.
         self.remote_subnet = remote_subnet
         # The ID of the resource group to which the IPsec-VPN connection belongs.
         # 
-        # *   You can call the [ListResourceGroups](~~158855~~) operation to query resource group IDs.
+        # *   You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query resource group IDs.
         # *   If you do not specify a resource group ID, the IPsec-VPN connection belongs to the default resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
@@ -20865,7 +21388,7 @@ class CreateVpnConnectionRequestTunnelOptionsSpecificationTunnelBgpConfig(TeaMod
         # The ASN on the Alibaba Cloud side. Valid values: **1** to **4294967295**. Default value: **45104**.
         # 
         # > *   If you set **EnableTunnelsBgp** to **true**, this parameter is required.
-        # >*   Before you configure BGP, we recommend that you learn about how BGP works and its limits. For more information, see [VPN Gateway supports BGP dynamic routing](~~170235~~).
+        # >*   Before you configure BGP, we recommend that you learn about how BGP works and its limits. For more information, see [VPN Gateway supports BGP dynamic routing](https://help.aliyun.com/document_detail/170235.html).
         # >*   We recommend that you use a private ASN to establish a connection with Alibaba Cloud over BGP. For information about the range of private ASNs, see the relevant documentation.
         self.local_asn = local_asn
         # The BGP address on the Alibaba Cloud side. The address is an IP address that falls within the BGP CIDR block range.
@@ -20933,7 +21456,7 @@ class CreateVpnConnectionRequestTunnelOptionsSpecificationTunnelIkeConfig(TeaMod
         # *   **main**: This mode offers higher security during negotiations.
         # *   **aggressive**: This mode is faster and has a higher success rate.
         self.ike_mode = ike_mode
-        # The DH key exchange algorithm that is used in Phase 1 negotiations. Default value: **group2**.\
+        # The DH key exchange algorithm that is used in Phase 1 negotiations. Default value: **group2**.\\
         # Valid values: **group1**, **group2**, **group5**, and **group14**.
         self.ike_pfs = ike_pfs
         # The version of the IKE protocol. Valid values: **ikev1** and **ikev2**. Default value: **ikev1**.
@@ -20946,8 +21469,8 @@ class CreateVpnConnectionRequestTunnelOptionsSpecificationTunnelIkeConfig(TeaMod
         self.local_id = local_id
         # The pre-shared key, which is used for identity authentication between the tunnel and the tunnel peer.
         # 
-        # *   The key must be 1 to 100 characters in length and can contain digits, letters, and the following characters: ``~!\`@#$%^&*()_-+={}[]|;:\",.<>/?``
-        # *   If you do not specify a pre-shared key, the system generates a random 16-character string as the pre-shared key. You can call the [DescribeVpnConnection](~~448847~~) operation to query the pre-shared key that is generated by the system.
+        # *   The key must be 1 to 100 characters in length and can contain digits, letters, and the following characters: ``~!\\`@#$%^&*()_-+={}[]|;:\\",.<>/?``
+        # *   If you do not specify a pre-shared key, the system generates a random 16-character string as the pre-shared key. You can call the [DescribeVpnConnection](https://help.aliyun.com/document_detail/448847.html) operation to query the pre-shared key that is generated by the system.
         # 
         # >  The tunnel and the tunnel peer must use the same pre-shared key. Otherwise, the tunnel cannot be established.
         self.psk = psk
@@ -21212,7 +21735,7 @@ class CreateVpnConnectionRequest(TeaModel):
         # 
         # *   **LocalBgpIp**: the BGP address on the Alibaba Cloud side. This IP address must fall within the CIDR block range of the IPsec tunnel.
         # 
-        # >*   Before you configure BGP, we recommend that you learn about how BGP works and its limits. For more information, see [VPN Gateway supports BGP dynamic routing](~~170235~~).
+        # >*   Before you configure BGP, we recommend that you learn about how BGP works and its limits. For more information, see [VPN Gateway supports BGP dynamic routing](https://help.aliyun.com/document_detail/170235.html).
         # >*   We recommend that you use a private ASN to establish a connection with Alibaba Cloud over BGP. For information about the range of private ASNs, see the relevant documentation.
         self.bgp_config = bgp_config
         # The client token that is used to ensure the idempotence of the request.
@@ -21264,9 +21787,9 @@ class CreateVpnConnectionRequest(TeaModel):
         # 
         # *   **IkeConfig.Psk**: The pre-shared key that is used for authentication between the VPN gateway and the on-premises database.
         # 
-        #     *   The key must be 1 to 100 characters in length and can contain digits, letters, and the following characters: ``~!\`@#$%^&*()_-+={}[]|;:\",.<>/?``
+        #     *   The key must be 1 to 100 characters in length and can contain digits, letters, and the following characters: ``~!\\`@#$%^&*()_-+={}[]|;:\\",.<>/?``
         # 
-        #     *   If you do not specify a pre-shared key, the system generates a random 16-character string as the pre-shared key. You can call the [DescribeVpnConnection](~~448847~~) operation to query the pre-shared key that is generated by the system.
+        #     *   If you do not specify a pre-shared key, the system generates a random 16-character string as the pre-shared key. You can call the [DescribeVpnConnection](https://help.aliyun.com/document_detail/448847.html) operation to query the pre-shared key that is generated by the system.
         # 
         #          >The pre-shared key of the IPsec-VPN connection must be the same as the authentication key of the on-premises database. Otherwise, the on-premises database and the VPN gateway cannot establish a connection.
         # 
@@ -21319,6 +21842,8 @@ class CreateVpnConnectionRequest(TeaModel):
         # 
         # *   If you set **LocalSubnet** and **RemoteSubnet** to 0.0.0.0/0, the routing mode of the IPsec-VPN connection is set to Destination Routing Mode.
         # *   If you set **LocalSubnet** and **RemoteSubnet** to specific CIDR blocks, the routing mode of the IPsec-VPN connection is set to Protected Data Flows.
+        # 
+        # This parameter is required.
         self.local_subnet = local_subnet
         # The name of the IPsec-VPN connection.
         # 
@@ -21326,7 +21851,9 @@ class CreateVpnConnectionRequest(TeaModel):
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region where the IPsec-VPN connection is created. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # The ID of the region where the IPsec-VPN connection is created. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # This parameter is available if you create an IPsec-VPN connection in single-tunnel mode.
         # 
@@ -21343,6 +21870,8 @@ class CreateVpnConnectionRequest(TeaModel):
         # 
         # *   If you set **LocalSubnet** and **RemoteSubnet** to 0.0.0.0/0, the routing mode of the IPsec-VPN connection is set to Destination Routing Mode.
         # *   If you set **LocalSubnet** and **RemoteSubnet** to specific CIDR blocks, the routing mode of the IPsec-VPN connection is set to Protected Data Flows.
+        # 
+        # This parameter is required.
         self.remote_subnet = remote_subnet
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -21358,6 +21887,8 @@ class CreateVpnConnectionRequest(TeaModel):
         # *   If you create an IPsec-VPN connection in dual-tunnel mode, you need to configure an active tunnel and a standby tunnel. Each IPsec-VPN connection supports only one active tunnel and one standby tunnel.
         self.tunnel_options_specification = tunnel_options_specification
         # The ID of the VPN gateway.
+        # 
+        # This parameter is required.
         self.vpn_gateway_id = vpn_gateway_id
 
     def validate(self):
@@ -21613,7 +22144,9 @@ class CreateVpnGatewayRequest(TeaModel):
         # *   If you want to create a public VPN gateway, valid values are **10**, **100**, **200**, **500**, and **1000**.
         # *   If you want to create a private VPN gateway, valid values are **200** and **1000**.
         # 
-        # >  The maximum bandwidth supported by VPN gateways in some regions is 200 Mbit/s. For more information, see [VPN gateway limits](~~65290~~).
+        # >  The maximum bandwidth supported by VPN gateways in some regions is 200 Mbit/s. For more information, see [VPN gateway limits](https://help.aliyun.com/document_detail/65290.html).
+        # 
+        # This parameter is required.
         self.bandwidth = bandwidth
         # The client token that is used to ensure the idempotence of the request.
         # 
@@ -21627,7 +22160,7 @@ class CreateVpnGatewayRequest(TeaModel):
         # *   You need to specify two vSwitches in different zones in the virtual private cloud (VPC) that is associated with the VPN gateway to implement disaster recovery across zones.
         # *   For a region that supports only one zone, disaster recovery across zones is not supported. We recommend that you specify two vSwitches in the zone to implement high availability. You can specify the same vSwitch.
         # 
-        # For more information about the regions and zones that support the IPsec-VPN connections in dual-tunnel mode, see [IPsec-VPN connections support the dual-tunnel mode](~~2358946~~).
+        # For more information about the regions and zones that support the IPsec-VPN connections in dual-tunnel mode, see [IPsec-VPN connections support the dual-tunnel mode](https://help.aliyun.com/document_detail/2358946.html).
         self.disaster_recovery_vswitch_id = disaster_recovery_vswitch_id
         # Specifies whether to enable the IPsec-VPN feature. Valid values:
         # 
@@ -21643,7 +22176,7 @@ class CreateVpnGatewayRequest(TeaModel):
         self.instance_charge_type = instance_charge_type
         # The name of the VPN gateway. The default value is the ID of the VPN gateway.
         # 
-        # The name must be 2 to 100 characters in length and cannot start with `http://` or `https://`. It must start with a letter and can contain letters, digits, underscores (\_), hyphens (-), and periods (.). Other special characters are not supported.
+        # The name must be 2 to 100 characters in length and cannot start with `http://` or `https://`. It must start with a letter and can contain letters, digits, underscores (_), hyphens (-), and periods (.). Other special characters are not supported.
         self.name = name
         # The network type of the VPN gateway. Valid values:
         # 
@@ -21654,11 +22187,13 @@ class CreateVpnGatewayRequest(TeaModel):
         self.owner_id = owner_id
         # The subscription duration. Unit: month. Valid values: **1** to **9**, **12**, **24**, and **36**.
         self.period = period
-        # The region ID of the VPN gateway. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # The region ID of the VPN gateway. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group to which the VPN gateway belongs.
         # 
-        # *   You can call the [ListResourceGroups](~~158855~~) operation to query resource group IDs.
+        # *   You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query resource group IDs.
         # 
         # *   If you do not specify a resource group ID, the VPN gateway belongs to the default resource group.
         # 
@@ -21676,6 +22211,8 @@ class CreateVpnGatewayRequest(TeaModel):
         # *   If you call this operation in a region that supports the IPsec-VPN connections in single-tunnel mode and do not specify a vSwitch, the system automatically specifies a vSwitch.
         self.v_switch_id = v_switch_id
         # The ID of the virtual private cloud (VPC) where you want to create the VPN gateway.
+        # 
+        # This parameter is required.
         self.vpc_id = vpc_id
         # The type of the VPN gateway. Valid values:
         # 
@@ -21900,6 +22437,8 @@ class CreateVpnPbrRouteEntryRequest(TeaModel):
         # The description must be 1 to 100 characters in length, and cannot start with http:// or https://.
         self.description = description
         # The next hop of the policy-based route.
+        # 
+        # This parameter is required.
         self.next_hop = next_hop
         # The tunneling protocol. Set the value to **Ipsec**.
         self.overlay_mode = overlay_mode
@@ -21913,27 +22452,39 @@ class CreateVpnPbrRouteEntryRequest(TeaModel):
         # 
         # *   **true**\
         # *   **false**\
+        # 
+        # This parameter is required.
         self.publish_vpc = publish_vpc
-        # The region ID of the VPN gateway. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # The region ID of the VPN gateway. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The destination CIDR block of the policy-based route.
+        # 
+        # This parameter is required.
         self.route_dest = route_dest
         # The source CIDR block of the policy-based route.
+        # 
+        # This parameter is required.
         self.route_source = route_source
         # The VPN gateway ID.
+        # 
+        # This parameter is required.
         self.vpn_gateway_id = vpn_gateway_id
         # The weight of the policy-based route.
         # 
         # If you use the same VPN gateway to establish active/standby IPsec-VPN connections, you can configure route weights to specify which connection is active. A value of 100 specifies the active connection, whereas a value of 0 specifies the standby connection.
         # 
-        # You can configure health checks to automatically check the connectivity of IPsec-VPN connections. If the active connection is down, the standby connection automatically takes over. For more information, see [CreateVpnConnection](~~120391~~).
+        # You can configure health checks to automatically check the connectivity of IPsec-VPN connections. If the active connection is down, the standby connection automatically takes over. For more information, see [CreateVpnConnection](https://help.aliyun.com/document_detail/120391.html).
         # 
         # *   **100**: The IPsec-VPN connection associated with the policy-based route serves as an active connection.
         # *   **0**: The IPsec-VPN connection associated with the policy-based route serves as a standby connection.
         # 
         # >  If you specify active/standby IPsec-VPN connections, the active policy-based route and the standby policy-based route must have the same source and destination CIDR blocks.
+        # 
+        # This parameter is required.
         self.weight = weight
 
     def validate(self):
@@ -22187,6 +22738,8 @@ class CreateVpnRouteEntryRequest(TeaModel):
         # The description must be **1** to **100** characters in length, and cannot start with `http://` or `https://`.
         self.description = description
         # The next hop of the destination-based route.
+        # 
+        # This parameter is required.
         self.next_hop = next_hop
         # The tunneling protocol. The value is set to **Ipsec**, which indicates the IPsec tunneling protocol.
         self.overlay_mode = overlay_mode
@@ -22196,21 +22749,31 @@ class CreateVpnRouteEntryRequest(TeaModel):
         # 
         # *   **true**\
         # *   **false**\
+        # 
+        # This parameter is required.
         self.publish_vpc = publish_vpc
         # The ID of the region where the VPN gateway is created.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The destination CIDR block of the destination-based route.
+        # 
+        # This parameter is required.
         self.route_dest = route_dest
         # The ID of the VPN gateway.
+        # 
+        # This parameter is required.
         self.vpn_gateway_id = vpn_gateway_id
         # The weight of the destination-based route. Valid values:
         # 
         # *   **100**: a high priority
         # *   **0**: a low priority
+        # 
+        # This parameter is required.
         self.weight = weight
 
     def validate(self):
@@ -22426,11 +22989,15 @@ class DeactivateRouterInterfaceRequest(TeaModel):
         self.owner_id = owner_id
         # The ID of the region where the router interface is deployed.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the router interface.
+        # 
+        # This parameter is required.
         self.router_interface_id = router_interface_id
 
     def validate(self):
@@ -22549,10 +23116,14 @@ class DeactiveFlowLogRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The ID of the flow log.
+        # 
+        # This parameter is required.
         self.flow_log_id = flow_log_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region where you want to create the flow log. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # The ID of the region where you want to create the flow log. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -22688,6 +23259,8 @@ class DeleteBgpGroupRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The ID of the BGP group.
+        # 
+        # This parameter is required.
         self.bgp_group_id = bgp_group_id
         # The client token that is used to ensure the idempotence of the request.
         # 
@@ -22699,7 +23272,9 @@ class DeleteBgpGroupRequest(TeaModel):
         self.owner_id = owner_id
         # The region ID of the BGP group.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -22836,16 +23411,22 @@ class DeleteBgpNetworkRequest(TeaModel):
         # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
         # The CIDR block of the virtual private cloud (VPC) or vSwitch that you want to connect to a data center.
+        # 
+        # This parameter is required.
         self.dst_cidr_block = dst_cidr_block
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the BGP group.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the VBR.
+        # 
+        # This parameter is required.
         self.router_id = router_id
 
     def validate(self):
@@ -22977,6 +23558,8 @@ class DeleteBgpPeerRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The ID of the BGP peer.
+        # 
+        # This parameter is required.
         self.bgp_peer_id = bgp_peer_id
         # The client token that is used to ensure the idempotence of the request.
         # 
@@ -22988,7 +23571,9 @@ class DeleteBgpPeerRequest(TeaModel):
         self.owner_id = owner_id
         # The region ID of the BGP group.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -23118,6 +23703,8 @@ class DeleteCommonBandwidthPackageRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The ID of the Internet Shared Bandwidth instance.
+        # 
+        # This parameter is required.
         self.bandwidth_package_id = bandwidth_package_id
         # Specifies whether to forcefully delete the Internet Shared Bandwidth instance. Valid values:
         # 
@@ -23128,7 +23715,9 @@ class DeleteCommonBandwidthPackageRequest(TeaModel):
         self.owner_id = owner_id
         # The ID of the region where the Internet Shared Bandwidth instance is created.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -23264,10 +23853,14 @@ class DeleteCustomerGatewayRequest(TeaModel):
         # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
         # The ID of the customer gateway.
+        # 
+        # This parameter is required.
         self.customer_gateway_id = customer_gateway_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the customer gateway. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # The region ID of the customer gateway. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -23404,6 +23997,8 @@ class DeleteDhcpOptionsSetRequest(TeaModel):
         # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
         # The ID of the DHCP options set to be deleted.
+        # 
+        # This parameter is required.
         self.dhcp_options_set_id = dhcp_options_set_id
         # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         # 
@@ -23413,7 +24008,9 @@ class DeleteDhcpOptionsSetRequest(TeaModel):
         self.dry_run = dry_run
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region of the DHCP options set to be deleted. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # The region of the DHCP options set to be deleted. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -23548,7 +24145,9 @@ class DeleteExpressConnectTrafficQosRequest(TeaModel):
         self.client_token = client_token
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # This parameter is required.
         self.qos_id = qos_id
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
 
@@ -23674,8 +24273,11 @@ class DeleteExpressConnectTrafficQosQueueRequest(TeaModel):
         self.client_token = client_token
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # This parameter is required.
         self.qos_id = qos_id
+        # This parameter is required.
         self.queue_id = queue_id
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
 
@@ -23806,10 +24408,14 @@ class DeleteExpressConnectTrafficQosRuleRequest(TeaModel):
         self.client_token = client_token
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # This parameter is required.
         self.qos_id = qos_id
+        # This parameter is required.
         self.queue_id = queue_id
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
+        # This parameter is required.
         self.rule_id = rule_id
 
     def validate(self):
@@ -23939,6 +24545,7 @@ class DeleteFailoverTestJobRequest(TeaModel):
         resource_owner_account: str = None,
     ):
         self.client_token = client_token
+        # This parameter is required.
         self.job_id = job_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -24064,10 +24671,14 @@ class DeleteFlowLogRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The ID of the flow log.
+        # 
+        # This parameter is required.
         self.flow_log_id = flow_log_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the flow log. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # The region ID of the flow log. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -24210,14 +24821,20 @@ class DeleteForwardEntryRequest(TeaModel):
         # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
         # The ID of the DNAT entry to be deleted.
+        # 
+        # This parameter is required.
         self.forward_entry_id = forward_entry_id
         # The ID of the DNAT table to which the DNAT entry belongs.
+        # 
+        # This parameter is required.
         self.forward_table_id = forward_table_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the NAT gateway.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -24364,14 +24981,20 @@ class DeleteFullNatEntryRequest(TeaModel):
         # *   **false**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
         # The ID of the FULLNAT entry that you want to delete.
+        # 
+        # This parameter is required.
         self.full_nat_entry_id = full_nat_entry_id
         # The ID of the FULLNAT table to which the FULLNAT entry to be deleted belongs.
+        # 
+        # This parameter is required.
         self.full_nat_table_id = full_nat_table_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the VPC NAT gateway to which the FULLNAT entry to be deleted belongs.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent list of regions.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent list of regions.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -24508,12 +25131,16 @@ class DeleteGlobalAccelerationInstanceRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The ID of the GA instance.
+        # 
+        # This parameter is required.
         self.global_acceleration_instance_id = global_acceleration_instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the GA instance.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -24645,10 +25272,14 @@ class DeleteHaVipRequest(TeaModel):
         # >  If you do not set this parameter, the system uses **RequestId** as **ClientToken**. The value of **RequestId** in each API request may be different.
         self.client_token = client_token
         # The ID of the HAVIP that you want to delete.
+        # 
+        # This parameter is required.
         self.ha_vip_id = ha_vip_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region where the HAVIP is deployed. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # The ID of the region where the HAVIP is deployed. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -24782,10 +25413,14 @@ class DeleteIPv6TranslatorRequest(TeaModel):
         # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         self.client_token = client_token
         # The ID of the IPv6 Translation Service instance.
+        # 
+        # This parameter is required.
         self.ipv_6translator_id = ipv_6translator_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the IPv6 Translation Service instance.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -24915,6 +25550,8 @@ class DeleteIPv6TranslatorAclListRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The ID of the ACL that you want to delete.
+        # 
+        # This parameter is required.
         self.acl_id = acl_id
         # The client token that is used to ensure the idempotence of the request.
         # 
@@ -24923,6 +25560,8 @@ class DeleteIPv6TranslatorAclListRequest(TeaModel):
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region of the IPv6 translation service instance.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -25065,6 +25704,8 @@ class DeleteIPv6TranslatorEntryRequest(TeaModel):
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region of the IPv6 Translation Service instance. You can call the **DescribeRegions** operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -25206,8 +25847,12 @@ class DeleteIpsecServerRequest(TeaModel):
         # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
         # The ID of the IPsec server.
+        # 
+        # This parameter is required.
         self.ipsec_server_id = ipsec_server_id
         # The ID of the region where the IPsec server is created.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -25335,12 +25980,16 @@ class DeleteIpv4GatewayRequest(TeaModel):
         # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
         # The ID of the IPv4 gateway that you want to delete.
+        # 
+        # This parameter is required.
         self.ipv_4gateway_id = ipv_4gateway_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the IPv4 gateway that you want to delete.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -25480,10 +26129,14 @@ class DeleteIpv6EgressOnlyRuleRequest(TeaModel):
         # >  If you do not specify this parameter, the system automatically uses the value of **RequestId** as the **client token**. The value of **RequestId** is different for each API request.
         self.client_token = client_token
         # The ID of the egress-only rule that you want to delete.
+        # 
+        # This parameter is required.
         self.ipv_6egress_only_rule_id = ipv_6egress_only_rule_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the IPv6 gateway. You can call the [DescribeRegions](~~448570~~) operation to query the most recent region list.
+        # The region ID of the IPv6 gateway. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/448570.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -25612,10 +26265,14 @@ class DeleteIpv6GatewayRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The ID of the IPv6 gateway that you want to delete.
+        # 
+        # This parameter is required.
         self.ipv_6gateway_id = ipv_6gateway_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the IPv6 gateway. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # The region ID of the IPv6 gateway. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -25750,7 +26407,9 @@ class DeleteIpv6InternetBandwidthRequest(TeaModel):
         self.owner_id = owner_id
         # The region ID of the IPv6 gateway.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -25896,12 +26555,16 @@ class DeleteNatGatewayRequest(TeaModel):
         #     *   If the NAT gateway is associated with an EIP, disassociate the EIP from the NAT gateway first.
         self.force = force
         # The ID of the NAT gateway that you want to delete.
+        # 
+        # This parameter is required.
         self.nat_gateway_id = nat_gateway_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the NAT gateway.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -26043,12 +26706,16 @@ class DeleteNatIpRequest(TeaModel):
         # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
         # The ID of the NAT IP address that you want to delete.
+        # 
+        # This parameter is required.
         self.nat_ip_id = nat_ip_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the NAT gateway to which the NAT IP address that you want to delete belongs.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -26195,17 +26862,23 @@ class DeleteNatIpCidrRequest(TeaModel):
         # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
         # The ID of the NAT gateway to which the NAT CIDR block to be deleted belongs.
+        # 
+        # This parameter is required.
         self.nat_gateway_id = nat_gateway_id
         # The NAT CIDR block to be deleted.
         # 
         # *   Before you delete a NAT CIDR block, you must delete all NAT IP addresses from the CIDR block.
         # *   The default NAT CIDR block cannot be deleted.
+        # 
+        # This parameter is required.
         self.nat_ip_cidr = nat_ip_cidr
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the NAT gateway to which the NAT CIDR block to be deleted belongs.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -26356,12 +27029,16 @@ class DeleteNetworkAclRequest(TeaModel):
         # **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
         # The ID of the network ACL.
+        # 
+        # This parameter is required.
         self.network_acl_id = network_acl_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the network ACL.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -26501,10 +27178,14 @@ class DeletePhysicalConnectionRequest(TeaModel):
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The ID of the Express Connect circuit.
+        # 
+        # This parameter is required.
         self.physical_connection_id = physical_connection_id
         # The region ID of the Express Connect circuit.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -26646,8 +27327,12 @@ class DeletePublicIpAddressPoolRequest(TeaModel):
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The ID of the IP address pool.
+        # 
+        # This parameter is required.
         self.public_ip_address_pool_id = public_ip_address_pool_id
         # The ID of the region where you want to create the IP address pool.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -26783,6 +27468,8 @@ class DeletePublicIpAddressPoolCidrBlockRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The CIDR block.
+        # 
+        # This parameter is required.
         self.cidr_block = cidr_block
         # The client token that is used to ensure the idempotence of the request.
         # 
@@ -26796,8 +27483,12 @@ class DeletePublicIpAddressPoolCidrBlockRequest(TeaModel):
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The ID of the IP address pool.
+        # 
+        # This parameter is required.
         self.public_ip_address_pool_id = public_ip_address_pool_id
         # The region ID of the IP address pool from which you want to delete a CIDR block.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -26944,6 +27635,8 @@ class DeleteRouteEntriesRequestRouteEntries(TeaModel):
         # >  If **RouteEntryId** is not specified, **DstCidrBlock** and **NextHop** are required.
         self.route_entry_id = route_entry_id
         # The ID of the route table to which the routes to be deleted belongs. You can specify up to 50 route table IDs.
+        # 
+        # This parameter is required.
         self.route_table_id = route_table_id
 
     def validate(self):
@@ -26992,7 +27685,7 @@ class DeleteRouteEntriesRequest(TeaModel):
         self.owner_id = owner_id
         # The region ID of the route table.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -27263,7 +27956,7 @@ class DeleteRouteEntryRequest(TeaModel):
         self.owner_id = owner_id
         # The region ID of the route table.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -27419,11 +28112,15 @@ class DeleteRouteTableRequest(TeaModel):
         self.owner_id = owner_id
         # The region ID of the virtual private cloud (VPC) to which the custom route table belongs.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the custom route table.
+        # 
+        # This parameter is required.
         self.route_table_id = route_table_id
 
     def validate(self):
@@ -27556,11 +28253,15 @@ class DeleteRouterInterfaceRequest(TeaModel):
         self.owner_id = owner_id
         # The ID of the region where the router interface is deployed.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the router interface.
+        # 
+        # This parameter is required.
         self.router_interface_id = router_interface_id
 
     def validate(self):
@@ -27698,13 +28399,19 @@ class DeleteSnatEntryRequest(TeaModel):
         self.owner_id = owner_id
         # The region ID of the NAT gateway.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the SNAT entry that you want to delete.
+        # 
+        # This parameter is required.
         self.snat_entry_id = snat_entry_id
         # The ID of the SNAT table to which the SNAT entry belongs.
+        # 
+        # This parameter is required.
         self.snat_table_id = snat_table_id
 
     def validate(self):
@@ -27845,11 +28552,15 @@ class DeleteSslVpnClientCertRequest(TeaModel):
         self.owner_id = owner_id
         # The ID of the region where the SSL client certificate is created.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the SSL client certificate.
+        # 
+        # This parameter is required.
         self.ssl_vpn_client_cert_id = ssl_vpn_client_cert_id
 
     def validate(self):
@@ -27986,11 +28697,15 @@ class DeleteSslVpnServerRequest(TeaModel):
         self.owner_id = owner_id
         # The region ID of the SSL server.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the SSL server.
+        # 
+        # This parameter is required.
         self.ssl_vpn_server_id = ssl_vpn_server_id
 
     def validate(self):
@@ -28131,11 +28846,15 @@ class DeleteTrafficMirrorFilterRequest(TeaModel):
         self.dry_run = dry_run
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region to which the mirrored traffic belongs. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list. For more information about regions that support traffic mirroring, see [Overview of traffic mirroring](~~207513~~).
+        # The ID of the region to which the mirrored traffic belongs. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list. For more information about regions that support traffic mirroring, see [Overview of traffic mirroring](https://help.aliyun.com/document_detail/207513.html).
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the filter.
+        # 
+        # This parameter is required.
         self.traffic_mirror_filter_id = traffic_mirror_filter_id
 
     def validate(self):
@@ -28281,13 +29000,19 @@ class DeleteTrafficMirrorFilterRulesRequest(TeaModel):
         self.dry_run = dry_run
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region to which the mirrored traffic belongs. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list. For more information about regions that support traffic mirroring, see [Overview of traffic mirroring](~~207513~~).
+        # The ID of the region to which the mirrored traffic belongs. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list. For more information about regions that support traffic mirroring, see [Overview of traffic mirroring](https://help.aliyun.com/document_detail/207513.html).
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the filter.
+        # 
+        # This parameter is required.
         self.traffic_mirror_filter_id = traffic_mirror_filter_id
         # The ID of the inbound or outbound rule.
+        # 
+        # This parameter is required.
         self.traffic_mirror_filter_rule_ids = traffic_mirror_filter_rule_ids
 
     def validate(self):
@@ -28436,11 +29161,15 @@ class DeleteTrafficMirrorSessionRequest(TeaModel):
         self.dry_run = dry_run
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region to which the traffic mirror session belongs. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list. For more information about regions that support traffic mirroring, see [Overview of traffic mirroring](~~207513~~).
+        # The ID of the region to which the traffic mirror session belongs. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list. For more information about regions that support traffic mirroring, see [Overview of traffic mirroring](https://help.aliyun.com/document_detail/207513.html).
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the traffic mirror session.
+        # 
+        # This parameter is required.
         self.traffic_mirror_session_id = traffic_mirror_session_id
 
     def validate(self):
@@ -28574,11 +29303,13 @@ class DeleteVSwitchRequest(TeaModel):
         self.owner_id = owner_id
         # The region ID of the vSwitch.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the vSwitch that you want to delete.
+        # 
+        # This parameter is required.
         self.v_switch_id = v_switch_id
 
     def validate(self):
@@ -28704,11 +29435,15 @@ class DeleteVSwitchCidrReservationRequest(TeaModel):
         self.owner_id = owner_id
         # The ID of the region where the vSwitch is deployed.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the reserved CIDR block.
+        # 
+        # This parameter is required.
         self.v_switch_cidr_reservation_id = v_switch_cidr_reservation_id
 
     def validate(self):
@@ -28838,10 +29573,14 @@ class DeleteVbrHaRequest(TeaModel):
         # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
         # The ID of the VBR failover group.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The ID of the region in which the VBR is deployed.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -28980,24 +29719,34 @@ class DeleteVcoRouteEntryRequest(TeaModel):
         # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
         # The next hop of the destination-based route that you want to delete.
+        # 
+        # This parameter is required.
         self.next_hop = next_hop
         # The tunneling protocol. Set the value to **Ipsec**, which specifies the IPsec tunneling protocol.
         self.overlay_mode = overlay_mode
         self.owner_account = owner_account
         # The ID of the region where the IPsec-VPN connection is established.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The destination CIDR block of the destination-based route that you want to delete.
+        # 
+        # This parameter is required.
         self.route_dest = route_dest
         # The ID of the IPsec-VPN attachment.
+        # 
+        # This parameter is required.
         self.vpn_connection_id = vpn_connection_id
         # The weight of the destination-based route that you want to delete. Valid values:
         # 
         # *   **0**: a low priority
         # *   **100**: a high priority
+        # 
+        # This parameter is required.
         self.weight = weight
 
     def validate(self):
@@ -29142,11 +29891,15 @@ class DeleteVirtualBorderRouterRequest(TeaModel):
         self.client_token = client_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the VBR. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # The region ID of the VBR. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the VBR.
+        # 
+        # This parameter is required.
         self.vbr_id = vbr_id
 
     def validate(self):
@@ -29293,11 +30046,13 @@ class DeleteVpcRequest(TeaModel):
         self.owner_id = owner_id
         # The ID of the region where the VPC is deployed.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the VPC that you want to delete.
+        # 
+        # This parameter is required.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -29439,12 +30194,16 @@ class DeleteVpcGatewayEndpointRequest(TeaModel):
         # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
         # The ID of the gateway endpoint.
+        # 
+        # This parameter is required.
         self.endpoint_id = endpoint_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the gateway endpoint.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -29592,10 +30351,14 @@ class DeleteVpcPrefixListRequest(TeaModel):
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The ID of the prefix list that you want to delete.
+        # 
+        # This parameter is required.
         self.prefix_list_id = prefix_list_id
         # The region ID of the prefix list.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -29736,11 +30499,15 @@ class DeleteVpnAttachmentRequest(TeaModel):
         self.owner_account = owner_account
         # The ID of the region where the IPsec-VPN connection is established.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the IPsec-VPN connection.
+        # 
+        # This parameter is required.
         self.vpn_connection_id = vpn_connection_id
 
     def validate(self):
@@ -29897,11 +30664,15 @@ class DeleteVpnConnectionRequest(TeaModel):
         self.owner_id = owner_id
         # The ID of the region where the IPsec-VPN connection is created.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the IPsec-VPN connection.
+        # 
+        # This parameter is required.
         self.vpn_connection_id = vpn_connection_id
 
     def validate(self):
@@ -30038,11 +30809,15 @@ class DeleteVpnGatewayRequest(TeaModel):
         self.owner_id = owner_id
         # The region ID of the VPN gateway.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the VPN gateway.
+        # 
+        # This parameter is required.
         self.vpn_gateway_id = vpn_gateway_id
 
     def validate(self):
@@ -30182,6 +30957,8 @@ class DeleteVpnPbrRouteEntryRequest(TeaModel):
         # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
         # The next hop of the policy-based route.
+        # 
+        # This parameter is required.
         self.next_hop = next_hop
         # The tunneling protocol. Set the value to **Ipsec**.
         self.overlay_mode = overlay_mode
@@ -30195,17 +30972,27 @@ class DeleteVpnPbrRouteEntryRequest(TeaModel):
         # 
         #         If you specify this parameter, set the value to the priority configured for the policy-based route. Otherwise, the operation cannot be performed.
         self.priority = priority
-        # The ID of the region where the VPN gateway is created. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # The ID of the region where the VPN gateway is created. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The destination CIDR block of the policy-based route.
+        # 
+        # This parameter is required.
         self.route_dest = route_dest
         # The source CIDR block of the policy-based route.
+        # 
+        # This parameter is required.
         self.route_source = route_source
         # The ID of the VPN gateway.
+        # 
+        # This parameter is required.
         self.vpn_gateway_id = vpn_gateway_id
         # The weight of the policy-based route.
+        # 
+        # This parameter is required.
         self.weight = weight
 
     def validate(self):
@@ -30367,23 +31154,33 @@ class DeleteVpnRouteEntryRequest(TeaModel):
         # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
         # The next hop of the destination-based route.
+        # 
+        # This parameter is required.
         self.next_hop = next_hop
         # The tunneling protocol. Set the value to **Ipsec**.
         self.overlay_mode = overlay_mode
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region where the VPN gateway is created. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # The ID of the region where the VPN gateway is created. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The destination CIDR block of the destination-based route.
+        # 
+        # This parameter is required.
         self.route_dest = route_dest
         # The ID of the VPN gateway.
+        # 
+        # This parameter is required.
         self.vpn_gateway_id = vpn_gateway_id
         # The weight of the destination-based route. Valid values:
         # 
         # *   **0**: a low priority
         # *   **100**: a high priority
+        # 
+        # This parameter is required.
         self.weight = weight
 
     def validate(self):
@@ -30534,14 +31331,20 @@ class DeletionProtectionRequest(TeaModel):
         # >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** may be different for each API request.
         self.client_token = client_token
         # The ID of the instance for which you want to enable deletion protection.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         self.owner_id = owner_id
         # Specifies whether to enable deletion protection. Valid values:
         # 
         # *   **true**: yes
         # *   **false**: no
+        # 
+        # This parameter is required.
         self.protection_enable = protection_enable
-        # The ID of the region where the instance for which you want to enable deletion protection is deployed. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # The ID of the region where the instance for which you want to enable deletion protection is deployed. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -30550,6 +31353,8 @@ class DeletionProtectionRequest(TeaModel):
         # *   **EIP**: Elastic IP Address (EIP)
         # *   **CBWP**: EIP bandwidth plan
         # *   **NATGW**: NAT gateway
+        # 
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -30682,18 +31487,26 @@ class Describe95TrafficRequest(TeaModel):
         resource_type: str = None,
     ):
         # The date in UTC+8. Format: year-month-day.
+        # 
+        # This parameter is required.
         self.day = day
         # The resource ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the resource.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The resource type. Set the value to cbwp, which specifies Internet Shared Bandwidth.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
 
     def validate(self):
@@ -30841,7 +31654,7 @@ class Describe95TrafficResponseBodyTraffic95Summary(TeaModel):
         # The peak bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
         self.bandwidth = bandwidth
         # The daily peak bandwidth. Unit: Mbit/s.
-        # <props="china"> For more information, see [Daily peak bandwidth](~~89729~~).</props>
+        # <props="china"> For more information, see [Daily peak bandwidth](https://help.aliyun.com/document_detail/89729.html).
         self.fifth_peak_bandwidth = fifth_peak_bandwidth
         # The resource ID.
         self.instance_id = instance_id
@@ -30999,7 +31812,9 @@ class DescribeAccessPointsRequest(TeaModel):
         self.page_size = page_size
         # The region ID of the access point.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -31372,7 +32187,9 @@ class DescribeBgpGroupsRequest(TeaModel):
         self.page_size = page_size
         # The ID of the region in which the VBR is deployed.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to obtain the region ID.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to obtain the region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -31716,7 +32533,9 @@ class DescribeBgpNetworksRequest(TeaModel):
         self.page_size = page_size
         # The region ID of the BGP group.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -31986,7 +32805,9 @@ class DescribeBgpPeersRequest(TeaModel):
         self.page_size = page_size
         # The region ID of the BGP group to which the BGP peer that you want to query belongs.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to obtain the region ID.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to obtain the region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -32105,6 +32926,8 @@ class DescribeBgpPeersResponseBodyBgpPeersBgpPeer(TeaModel):
         # *   **false**\
         self.enable_bfd = enable_bfd
         # The time when the BGP peer is modified.
+        # 
+        # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.gmt_modified = gmt_modified
         # The hold time.
         self.hold = hold
@@ -32459,7 +33282,9 @@ class DescribeCommonBandwidthPackagesRequest(TeaModel):
         self.page_size = page_size
         # The ID of the region where the Internet Shared Bandwidth instance resides.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the region ID.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -33134,12 +33959,16 @@ class DescribeCustomerGatewayRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The ID of the customer gateway.
+        # 
+        # This parameter is required.
         self.customer_gateway_id = customer_gateway_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The ID of the region where the customer gateway is deployed.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -33288,7 +34117,7 @@ class DescribeCustomerGatewayResponseBody(TeaModel):
         self.request_id = request_id
         # The ID of the resource group to which the customer gateway belongs.
         # 
-        # You can call the [ListResourceGroups](~~158855~~) operation to query resource groups.
+        # You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query resource groups.
         self.resource_group_id = resource_group_id
         # The list of tags added to the customer gateway.
         self.tags = tags
@@ -33461,11 +34290,13 @@ class DescribeCustomerGatewaysRequest(TeaModel):
         self.page_size = page_size
         # The ID of the region where the customer gateway is deployed.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group to which the customer gateway belongs.
         # 
-        # You can call the [ListResourceGroups](~~158855~~) operation to query the resource group list.
+        # You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query the resource group list.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -33641,7 +34472,7 @@ class DescribeCustomerGatewaysResponseBodyCustomerGatewaysCustomerGateway(TeaMod
         self.name = name
         # The ID of the resource group to which the customer gateway belongs.
         # 
-        # You can call the [ListResourceGroups](~~158855~~) operation to query the resource group information.
+        # You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query the resource group information.
         self.resource_group_id = resource_group_id
         # The list of tags added to the customer gateway.
         self.tags = tags
@@ -33847,11 +34678,15 @@ class DescribeEcGrantRelationRequest(TeaModel):
         # 
         # *   If you set **InstanceType** to **VBR**, specify a VBR ID.
         # *   If you set **InstanceType** to **VPC**, specify a VPC ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The type of instance. Valid values:
         # 
         # *   **VBR**: queries the permissions that are granted to a VBR.
         # *   **VPC**: queries the permissions that are granted from a VPC.
+        # 
+        # This parameter is required.
         self.instance_type = instance_type
         # The page number. Default value: **1**.
         self.page_number = page_number
@@ -34236,7 +35071,7 @@ class DescribeEipAddressesRequest(TeaModel):
         # *   **NetworkInterface**: a secondary ENI.
         # *   **IpAddress**: an IP address.
         # 
-        # >  Each ECS instance, CLB instance, HAVIP, and IP address can be associated with only one EIP. A NAT gateway can be associated with multiple EIPs. The number of EIPs that you can associate with a secondary ENI depends on the association mode. For more information, see [Associate EIPs with and disassociate EIPs from cloud resources](~~72125~~).
+        # >  Each ECS instance, CLB instance, HAVIP, and IP address can be associated with only one EIP. A NAT gateway can be associated with multiple EIPs. The number of EIPs that you can associate with a secondary ENI depends on the association mode. For more information, see [Associate EIPs with and disassociate EIPs from cloud resources](https://help.aliyun.com/document_detail/72125.html).
         self.associated_instance_type = associated_instance_type
         # The billing method of the EIP. Valid values:
         # 
@@ -34256,14 +35091,14 @@ class DescribeEipAddressesRequest(TeaModel):
         self.eip_address = eip_address
         # The name of the EIP.
         # 
-        # The name must be 1 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). The name must start with a letter.
+        # The name must be 1 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
         self.eip_name = eip_name
         # The line type. Valid values:
         # 
         # *   **BGP** (default): Border Gateway Protocol (BGP) (Multi-ISP) lines. All regions support BGP (Multi-ISP) EIPs.
         # *   **BGP_PRO**: BGP (Multi-ISP) Pro lines. Only the following regions support BGP (Multi-ISP) Pro lines: China (Hong Kong), Singapore, Japan (Tokyo), Malaysia (Kuala Lumpur), Philippines (Manila), Indonesia (Jakarta), and Thailand (Bangkok).
         # 
-        # For more information about BGP (Multi-ISP) and BGP (Multi-ISP) Pro, see the [Line types](~~32321~~) section of the "What is EIP?" topic.
+        # For more information about BGP (Multi-ISP) and BGP (Multi-ISP) Pro, see the [Line types](https://help.aliyun.com/document_detail/32321.html) section of the "What is EIP?" topic.
         # 
         # If you are allowed to use single-ISP bandwidth, you can also use one of the following values:
         # 
@@ -34296,7 +35131,9 @@ class DescribeEipAddressesRequest(TeaModel):
         self.public_ip_address_pool_id = public_ip_address_pool_id
         # The region ID of the EIP.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the region ID.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group to which the EIP belongs.
         self.resource_group_id = resource_group_id
@@ -34715,7 +35552,7 @@ class DescribeEipAddressesResponseBodyEipAddressesEipAddress(TeaModel):
         # *   **BGP**: BGP (Multi-ISP). The BGP (Multi-ISP) line is supported in all regions.
         # *   **BGP_PRO**: BGP (Multi-ISP) Pro lines. BGP (Multi-ISP) Pro line is supported only in the China (Hong Kong), Singapore, Japan (Tokyo), Malaysia (Kuala Lumpur), Philippines (Manila), Indonesia (Jakarta), and Thailand (Bangkok) regions.
         # 
-        # For more information about BGP (Multi-ISP) and BGP (Multi-ISP) Pro, see the [Line types](~~32321~~) section of the "What is EIP?" topic.
+        # For more information about BGP (Multi-ISP) and BGP (Multi-ISP) Pro, see the [Line types](https://help.aliyun.com/document_detail/32321.html) section of the "What is EIP?" topic.
         # 
         # If you are allowed to use single-ISP bandwidth, one of the following values may be returned:
         # 
@@ -35155,10 +35992,14 @@ class DescribeEipGatewayInfoRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The ID of the secondary ENI that is associated with the EIP.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region to which the EIP that you want to query belongs. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # The region to which the EIP that you want to query belongs. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -35386,10 +36227,14 @@ class DescribeEipMonitorDataRequest(TeaModel):
         start_time: str = None,
     ):
         # The ID of the EIP.
+        # 
+        # This parameter is required.
         self.allocation_id = allocation_id
         # The end of the time range to query. The time must be in UTC. Specify the time in the ISO 8601 standard in the `YYYY-MM-DDThh:mm:ssZ` format. For example, `2013-01-10T12:00:00Z` specifies 20:00:00 (UTC+8) on January 10, 2013.
         # 
         # If the value of seconds (ss) is not 00, the end time is automatically rounded up to the next minute.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -35398,13 +36243,15 @@ class DescribeEipMonitorDataRequest(TeaModel):
         # *   If the value of **(EndTime** - **StartTime**)/**Period** is greater than 200, a maximum of 200 monitoring data entries are returned at a time.
         # *   If the value of (**EndTime** - **StartTime**)/**Period** is less than or equal to 200, only the monitoring data collected between the start time and end time is returned.
         self.period = period
-        # The ID of the region to which the EIP belongs. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # The ID of the region to which the EIP belongs. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The beginning of the time range to query. The time must be in UTC. Specify the time in the ISO 8601 standard in `YYYY-MM-DDThh:mm:ssZ` format. For example, `2013-01-10T12:00:00Z` specifies 20:00:00 (UTC+8) on January 10, 2013.
         # 
         # If the value of seconds (ss) is not 00, the start time is automatically rounded up to the next minute.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -35659,7 +36506,9 @@ class DescribeEipSegmentRequest(TeaModel):
         self.page_number = page_number
         # The number of entries per page. Maximum value: **50**. Default value: **10**.
         self.page_size = page_size
-        # The ID of the region to which the contiguous EIP group belongs. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # The ID of the region to which the contiguous EIP group belongs. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -35960,6 +36809,7 @@ class DescribeExpressConnectTrafficQosRequest(TeaModel):
         self.owner_id = owner_id
         self.qos_id_list = qos_id_list
         self.qos_name_list = qos_name_list
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
 
@@ -36327,6 +37177,7 @@ class DescribeExpressConnectTrafficQosQueueRequest(TeaModel):
         self.qos_id = qos_id
         self.queue_id_list = queue_id_list
         self.queue_name_list = queue_name_list
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
 
@@ -36672,6 +37523,7 @@ class DescribeExpressConnectTrafficQosRuleRequest(TeaModel):
         self.owner_id = owner_id
         self.qos_id = qos_id
         self.queue_id = queue_id
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.rule_id_list = rule_id_list
@@ -36939,6 +37791,7 @@ class DescribeFailoverTestJobRequest(TeaModel):
         resource_owner_account: str = None,
     ):
         self.client_token = client_token
+        # This parameter is required.
         self.job_id = job_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -37523,7 +38376,9 @@ class DescribeFlowLogsRequest(TeaModel):
         self.project_name = project_name
         # The region ID of the flow log.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group to which the flow log belongs.
         self.resource_group_id = resource_group_id
@@ -38120,7 +38975,7 @@ class DescribeForwardTableEntriesRequest(TeaModel):
         self.forward_entry_id = forward_entry_id
         # The name of the DNAT entry.
         # 
-        # The name must be 2 to 128 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). It must start with a letter.
+        # The name must be 2 to 128 characters in length, and can contain digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
         self.forward_entry_name = forward_entry_name
         # The ID of the DNAT table.
         # 
@@ -38156,7 +39011,9 @@ class DescribeForwardTableEntriesRequest(TeaModel):
         self.page_size = page_size
         # The ID of the region where you want to create the NAT gateway.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -38521,7 +39378,9 @@ class DescribeGlobalAccelerationInstancesRequest(TeaModel):
         self.page_number = page_number
         # The number of entries to return on each page. Maximum value: **100**. Default value: **10**.
         self.page_size = page_size
-        # The region ID of the GA instance. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # The region ID of the GA instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -39077,12 +39936,16 @@ class DescribeGrantRulesToCenRequest(TeaModel):
         # >  If you do not specify this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
         self.client_token = client_token
         # The ID of the network instance that you want to query.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The type of the network instance. Valid values:
         # 
         # *   **VPC**\
         # *   **VBR**\
         # *   **CCN**\
+        # 
+        # This parameter is required.
         self.instance_type = instance_type
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -39091,6 +39954,8 @@ class DescribeGrantRulesToCenRequest(TeaModel):
         # The number of entries to return on each page. Maximum value: **50**. Default value: **10**.
         self.page_size = page_size
         # The region ID of the network instance that you want to query.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group to which the network instance belongs.
         self.resource_group_id = resource_group_id
@@ -39441,7 +40306,9 @@ class DescribeHaVipsRequest(TeaModel):
         self.page_size = page_size
         # The region ID of the HAVIP.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group to which the HAVIP belongs.
         self.resource_group_id = resource_group_id
@@ -39941,6 +40808,8 @@ class DescribeHighDefinitionMonitorLogAttributeRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The ID of the instance whose fine-grained monitoring configurations you want to query.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The type of the instance. Set the value to **EIP**.
         self.instance_type = instance_type
@@ -39948,7 +40817,9 @@ class DescribeHighDefinitionMonitorLogAttributeRequest(TeaModel):
         self.owner_id = owner_id
         # The region ID of the instance.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -40117,6 +40988,8 @@ class DescribeIPv6TranslatorAclListAttributesRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The ACL ID.
+        # 
+        # This parameter is required.
         self.acl_id = acl_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -40125,6 +40998,8 @@ class DescribeIPv6TranslatorAclListAttributesRequest(TeaModel):
         # The number of entries to return on each page. Maximum value: **50**. Default value: **10**.
         self.page_size = page_size
         # The region of the ACL.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -40391,6 +41266,8 @@ class DescribeIPv6TranslatorAclListsRequest(TeaModel):
         # The number of entries to return on each page. Maximum value: **50**. Default value: **10**.
         self.page_size = page_size
         # The region of the ACL.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -40678,6 +41555,8 @@ class DescribeIPv6TranslatorEntriesRequest(TeaModel):
         # The number of entries to return on each page. Maximum value: **50**. Default value: **10**.
         self.page_size = page_size
         # The region of the IPv6 Translation Service instance. You can call the **DescribeRegions** operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -41082,7 +41961,9 @@ class DescribeIPv6TranslatorsRequest(TeaModel):
         # *   **Prepay**: subscription
         # *   **Postpay**: pay-as-you-go
         self.pay_type = pay_type
-        # The region of the IPv6 Translation Service instance. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # The region of the IPv6 Translation Service instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -41555,7 +42436,7 @@ class DescribeIpv6AddressesRequest(TeaModel):
         self.ipv_6internet_bandwidth_id = ipv_6internet_bandwidth_id
         # The name of the IPv6 address that you want to query.
         # 
-        # The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+        # The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
         self.name = name
         # The type of communication supported by the IPv6 address. Valid values:
         # 
@@ -41568,7 +42449,9 @@ class DescribeIpv6AddressesRequest(TeaModel):
         self.page_number = page_number
         # The number of entries to return per page. Maximum value: **50**. Default value: **10**.
         self.page_size = page_size
-        # The ID of the region in which you want to query IPv6 addresses. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # The ID of the region in which you want to query IPv6 addresses. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group to which the IPv6 gateway belongs.
         self.resource_group_id = resource_group_id
@@ -42199,6 +43082,8 @@ class DescribeIpv6EgressOnlyRulesRequest(TeaModel):
         # The ID of the egress-only rule that you want to query.
         self.ipv_6egress_only_rule_id = ipv_6egress_only_rule_id
         # The ID of the IPv6 gateway.
+        # 
+        # This parameter is required.
         self.ipv_6gateway_id = ipv_6gateway_id
         # The name of the rule.
         self.name = name
@@ -42208,7 +43093,9 @@ class DescribeIpv6EgressOnlyRulesRequest(TeaModel):
         self.page_number = page_number
         # The number of entries to return on each page. Maximum value: **50**. Default value: **10**.
         self.page_size = page_size
-        # The ID of the region where the IPv6 gateway is deployed. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # The ID of the region where the IPv6 gateway is deployed. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -42485,10 +43372,14 @@ class DescribeIpv6GatewayAttributeRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The ID of the IPv6 gateway that you want to query.
+        # 
+        # This parameter is required.
         self.ipv_6gateway_id = ipv_6gateway_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region where the IPv6 gateway is deployed. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # The ID of the region where the IPv6 gateway is deployed. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -42541,11 +43432,11 @@ class DescribeIpv6GatewayAttributeResponseBodyTagsTag(TeaModel):
     ):
         # The key of tag N. You can specify at most 20 tag keys. The tag key cannot be an empty string.
         # 
-        # The tag key can be up to 128 characters in length. It must start with a letter and can contain digits, periods (.), underscores (\_), and hyphens (-). It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+        # The tag key can be up to 128 characters in length. It must start with a letter and can contain digits, periods (.), underscores (_), and hyphens (-). It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.key = key
         # The value of tag N. You can specify at most 20 tag values. The tag value can be an empty string.
         # 
-        # The tag value can be up to 128 characters in length. It must start with a letter and can contain digits, periods (.), underscores (\_), and hyphens (-). It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+        # The tag value can be up to 128 characters in length. It must start with a letter and can contain digits, periods (.), underscores (_), and hyphens (-). It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -42837,7 +43728,7 @@ class DescribeIpv6GatewaysRequest(TeaModel):
         self.ipv_6gateway_id = ipv_6gateway_id
         # The name of the IPv6 gateway.
         # 
-        # The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). It must start with a letter. The name must start with a letter and cannot start with `http://` or `https://`.
+        # The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter. The name must start with a letter and cannot start with `http://` or `https://`.
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -42845,7 +43736,9 @@ class DescribeIpv6GatewaysRequest(TeaModel):
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The ID of the region in which the IPv6 gateway is deployed. You can call the [DescribeRegions](~~36063~~) operation to query the region ID.
+        # The ID of the region in which the IPv6 gateway is deployed. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group to which the IPv6 gateway belongs.
         self.resource_group_id = resource_group_id
@@ -43340,7 +44233,9 @@ class DescribeNatGatewaysRequest(TeaModel):
         self.page_size = page_size
         # The region ID of the NAT gateways that you want to query.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group to which the NAT gateway belongs.
         self.resource_group_id = resource_group_id
@@ -44237,12 +45132,16 @@ class DescribeNetworkAclAttributesRequest(TeaModel):
         # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
         # The ID of the network ACL.
+        # 
+        # This parameter is required.
         self.network_acl_id = network_acl_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the network ACL.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -44992,7 +45891,9 @@ class DescribeNetworkAclsRequest(TeaModel):
         self.page_size = page_size
         # The region ID of the network ACL.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the associated instance.
         self.resource_id = resource_id
@@ -45785,12 +46686,16 @@ class DescribePhysicalConnectionLOARequest(TeaModel):
         # >  If you do not set this parameter, the system automatically uses **RequestId** as **ClientToken**. **RequestId** may be different for each API request.
         self.client_token = client_token
         # The ID of the Express Connect circuit.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the Express Connect circuit.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -45966,7 +46871,7 @@ class DescribePhysicalConnectionLOAResponseBodyPhysicalConnectionLOAType(TeaMode
         self.line_code = line_code
         # The label of the cable in the data center.
         self.line_label = line_label
-        # The contact information about line O\&M.
+        # The contact information about line O\\&M.
         self.line_spcontact_info = line_spcontact_info
         # The ISP. Valid values:
         # 
@@ -46237,11 +47142,11 @@ class DescribePhysicalConnectionsRequestTags(TeaModel):
     ):
         # The key of tag N to add to the resource. You can specify at most 20 tag keys. The tag key cannot be an empty string.
         # 
-        # It can be up to 64 characters in length and can contain digits, periods (.), underscores (\_), and hyphens (-). It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+        # It can be up to 64 characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.key = key
         # The value of tag N to add to the resource. You can specify at most 20 tag values. The tag value can be an empty string.
         # 
-        # It can be up to 128 characters in length and can contain digits, periods (.), underscores (\_), and hyphens (-). It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+        # It can be up to 128 characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -46303,7 +47208,9 @@ class DescribePhysicalConnectionsRequest(TeaModel):
         self.page_size = page_size
         # The region ID of the Express Connect circuit.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group to which the Express Connect circuit belongs.
         self.resource_group_id = resource_group_id
@@ -46401,11 +47308,11 @@ class DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnec
     ):
         # The key of tag N added to the resource. You can specify at most 20 tag keys. The tag key cannot be an empty string.
         # 
-        # It can be up to 64 characters in length and can contain digits, periods (.), underscores (\_), and hyphens (-). It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+        # It can be up to 64 characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.key = key
         # The value of tag N added to the resource. You can specify at most 20 tag values. The tag value can be an empty string.
         # 
-        # It can be up to 128 characters in length and can contain digits, periods (.), underscores (\_), and hyphens (-). It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+        # It can be up to 128 characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -46974,7 +47881,9 @@ class DescribePublicIpAddressRequest(TeaModel):
         # 
         # Valid values: **1** to **100**. Default value: **100**.
         self.page_size = page_size
-        # The region that you want to query. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # The region that you want to query. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -47426,7 +48335,9 @@ class DescribeRouteEntryListRequest(TeaModel):
         self.owner_id = owner_id
         # The region ID of the route table.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -47445,6 +48356,8 @@ class DescribeRouteEntryListRequest(TeaModel):
         # *   **ECR**: Express Connect Router (ECR) routes.
         self.route_entry_type = route_entry_type
         # The ID of the route table that you want to query.
+        # 
+        # This parameter is required.
         self.route_table_id = route_table_id
         # Specifies whether to host the route. If the parameter is empty, the route is not hosted.
         # 
@@ -47724,6 +48637,8 @@ class DescribeRouteEntryListResponseBodyRouteEntrysRouteEntry(TeaModel):
         # The destination CIDR block of the route.
         self.destination_cidr_block = destination_cidr_block
         # The time when the route was modified. The time follows the ISO 8601 standard in the `YYYY-MM-DDThh:mm:ssZ` format. The time is displayed in UTC.
+        # 
+        # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.gmt_modified = gmt_modified
         # The IP version. Valid values: Valid values:
         # 
@@ -48017,6 +48932,8 @@ class DescribeRouteTableListRequest(TeaModel):
         # *   **Custom**\
         self.page_size = page_size
         # The number of entries per page.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The details of the route table.
         self.resource_group_id = resource_group_id
@@ -48032,7 +48949,7 @@ class DescribeRouteTableListRequest(TeaModel):
         self.route_table_type = route_table_type
         # The region ID of the VPC to which the route table belongs.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
         self.router_id = router_id
         # The ID of the resource group to which the route table to be queried belongs.
         self.router_type = router_type
@@ -48564,7 +49481,7 @@ class DescribeRouteTablesRequest(TeaModel):
         self.page_size = page_size
         # The region ID of the VPC to which the route table belongs.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
         self.region_id = region_id
         # The ID of the resource group to which the route table to be queried belongs.
         self.resource_group_id = resource_group_id
@@ -48574,7 +49491,7 @@ class DescribeRouteTablesRequest(TeaModel):
         self.route_table_id = route_table_id
         # The name of the route table that you want to query.
         # 
-        # The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-).
+        # The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-).
         self.route_table_name = route_table_name
         # The ID of the router to which the route table belongs.
         self.router_id = router_id
@@ -48801,7 +49718,7 @@ class DescribeRouteTablesResponseBodyRouteTablesRouteTableRouteEntrysRouteEntry(
         self.route_entry_id = route_entry_id
         # The route name.
         # 
-        # The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-).
+        # The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-).
         self.route_entry_name = route_entry_name
         # The route table ID.
         self.route_table_id = route_table_id
@@ -49173,11 +50090,15 @@ class DescribeRouterInterfaceAttributeRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The ID of the router interface.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         self.owner_id = owner_id
         # The ID of the region to which the router interface belongs.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -49226,11 +50147,11 @@ class DescribeRouterInterfaceAttributeResponseBodyTagsTags(TeaModel):
     ):
         # The key of tag N added to the resource. You must enter at least one tag key and at most 20 tag keys. The tag key cannot be an empty string.
         # 
-        # The tag key can be up to 64 characters in length and can contain digits, periods (.), underscores (\_), and hyphens (-). It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+        # The tag key can be up to 64 characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.key = key
         # The value of tag N added to the resource. You can specify at most 20 tag values. The tag value can be an empty string.
         # 
-        # It can be up to 128 characters in length and can contain digits, periods (.), underscores (\_), and hyphens (-). It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+        # It can be up to 128 characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -49475,7 +50396,7 @@ class DescribeRouterInterfaceAttributeResponseBody(TeaModel):
         self.reservation_order_type = reservation_order_type
         # The resource group ID.
         # 
-        # For more information about resource groups, see [What is a resource group?](~~94475~~)
+        # For more information about resource groups, see [What is a resource group?](https://help.aliyun.com/document_detail/94475.html)
         self.resource_group_id = resource_group_id
         # The role of the router interface in the peering connection.
         self.role = role
@@ -49821,11 +50742,11 @@ class DescribeRouterInterfacesRequestTags(TeaModel):
     ):
         # The key of the resource tag. At least one tag key must be entered, and a maximum of 20 tag keys are supported. If this value needs to be passed in, it cannot be an empty string.
         # 
-        # A tag key can support up to 128 characters, cannot start with \"aliyun\" or \"acs:\", and cannot contain \"http://\" or \"https://\".
+        # A tag key can support up to 128 characters, cannot start with \\"aliyun\\" or \\"acs:\\", and cannot contain \\"http://\\" or \\"https://\\".
         self.key = key
         # The value of the resource tag. A maximum of 20 tag values can be entered. If this value needs to be passed in, an empty string can be entered.
         # 
-        # A maximum of 128 characters are supported, it cannot start with \"aliyun\" or \"acs:\", and it cannot contain \"http://\" or \"https://\".
+        # A maximum of 128 characters are supported, it cannot start with \\"aliyun\\" or \\"acs:\\", and it cannot contain \\"http://\\" or \\"https://\\".
         self.value = value
 
     def validate(self):
@@ -49880,11 +50801,13 @@ class DescribeRouterInterfacesRequest(TeaModel):
         self.page_size = page_size
         # The region ID of the router interface.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # Resource Group ID.
         # 
-        # For more information about resource groups, please refer to [What is a Resource Group?](~~94475~~)
+        # For more information about resource groups, please refer to [What is a Resource Group?](https://help.aliyun.com/document_detail/94475.html)
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -49972,11 +50895,11 @@ class DescribeRouterInterfacesResponseBodyRouterInterfaceSetRouterInterfaceTypeT
     ):
         # The key of the resource tag. At least one tag key must be entered, and a maximum of 20 tag keys are supported. If this value needs to be passed in, it cannot be an empty string.
         # 
-        # A tag key can support up to 128 characters, cannot start with \"aliyun\" or \"acs:\", and cannot contain \"http://\" or \"https://\".
+        # A tag key can support up to 128 characters, cannot start with \\"aliyun\\" or \\"acs:\\", and cannot contain \\"http://\\" or \\"https://\\".
         self.key = key
         # The value of the resource tag. A maximum of 20 tag values can be entered. If this value needs to be passed in, an empty string can be entered.
         # 
-        # A maximum of 128 characters are supported, it cannot start with \"aliyun\" or \"acs:\", and it cannot contain \"http://\" or \"https://\".
+        # A maximum of 128 characters are supported, it cannot start with \\"aliyun\\" or \\"acs:\\", and it cannot contain \\"http://\\" or \\"https://\\".
         self.value = value
 
     def validate(self):
@@ -50168,7 +51091,7 @@ class DescribeRouterInterfacesResponseBodyRouterInterfaceSetRouterInterfaceType(
         self.reservation_order_type = reservation_order_type
         # Resource Group ID.
         # 
-        # For more information about resource groups, please refer to [What is a Resource Group?](~~94475~~)
+        # For more information about resource groups, please refer to [What is a Resource Group?](https://help.aliyun.com/document_detail/94475.html)
         self.resource_group_id = resource_group_id
         # Indicates whether the router interface is the initiator or acceptor of the peering connection.
         self.role = role
@@ -50521,11 +51444,15 @@ class DescribeServerRelatedGlobalAccelerationInstancesRequest(TeaModel):
         self.owner_id = owner_id
         # The region ID of the GA instance.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the backend service instance.
+        # 
+        # This parameter is required.
         self.server_id = server_id
         # The type of the backend service instance. Valid values:
         # 
@@ -50769,7 +51696,9 @@ class DescribeSnatTableEntriesRequest(TeaModel):
         self.page_size = page_size
         # The ID of the region where you want to create the NAT gateway.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -50777,7 +51706,7 @@ class DescribeSnatTableEntriesRequest(TeaModel):
         self.snat_entry_id = snat_entry_id
         # The name of the SNAT entry.
         # 
-        # The name must be 2 to 128 characters in length, and can contain digits, underscores (\_), and hyphens (-). The name must start with a letter.
+        # The name must be 2 to 128 characters in length, and can contain digits, underscores (_), and hyphens (-). The name must start with a letter.
         self.snat_entry_name = snat_entry_name
         # *   When you query SNAT entries of Internet NAT gateways, this parameter specifies the EIP in an SNAT entry.
         # *   When you query SNAT entries of VPC NAT gateways, this parameter specifies the NAT IP address in an SNAT entry.
@@ -51101,11 +52030,15 @@ class DescribeSslVpnClientCertRequest(TeaModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the SSL client certificate. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # The region ID of the SSL client certificate. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the SSL client certificate that you want to query.
+        # 
+        # This parameter is required.
         self.ssl_vpn_client_cert_id = ssl_vpn_client_cert_id
 
     def validate(self):
@@ -51191,7 +52124,7 @@ class DescribeSslVpnClientCertResponseBody(TeaModel):
         # 
         # The SSL client certificate is the same as the resource group of the SSL server associated with it.
         # 
-        # You can call the [ListResourceGroups](~~158855~~) operation to query the resource group information.
+        # You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query the resource group information.
         self.resource_group_id = resource_group_id
         # The ID of the SSL client certificate.
         self.ssl_vpn_client_cert_id = ssl_vpn_client_cert_id
@@ -51338,12 +52271,14 @@ class DescribeSslVpnClientCertsRequest(TeaModel):
         self.page_size = page_size
         # The region ID of the SSL client certificate.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group to which the SSL client certificate belongs.
         # 
         # The SSL client certificate is the same as the resource group of the SSL server associated with it.
-        # You can call the [DescribeSslVpnServers](~~2526933~~) operation to query the ID of the resource group to which the SSL server belongs.
+        # You can call the [DescribeSslVpnServers](https://help.aliyun.com/document_detail/2526933.html) operation to query the ID of the resource group to which the SSL server belongs.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -51438,7 +52373,7 @@ class DescribeSslVpnClientCertsResponseBodySslVpnClientCertKeysSslVpnClientCertK
         self.region_id = region_id
         # The ID of the resource group to which the SSL client certificate belongs.
         # 
-        # You can call the [ListResourceGroups](~~158855~~) operation to query the resource group information.
+        # You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query the resource group information.
         self.resource_group_id = resource_group_id
         # The ID of the SSL client certificate.
         self.ssl_vpn_client_cert_id = ssl_vpn_client_cert_id
@@ -51653,11 +52588,15 @@ class DescribeSslVpnClientsRequest(TeaModel):
         self.page_size = page_size
         # The region ID of the VPN gateway.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the VPN gateway.
+        # 
+        # This parameter is required.
         self.vpn_gateway_id = vpn_gateway_id
 
     def validate(self):
@@ -51937,13 +52876,15 @@ class DescribeSslVpnServersRequest(TeaModel):
         self.page_size = page_size
         # The region ID of the SSL server.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group to which the SSL server belongs.
         # 
         # The SSL server has the same resource group as its associated VPN gateway instance.
         # 
-        # You can call the [DescribeVpnGateway](~~2526915~~) operation to query the ID of the resource group to which the VPN gateway instance belongs.
+        # You can call the [DescribeVpnGateway](https://help.aliyun.com/document_detail/2526915.html) operation to query the ID of the resource group to which the VPN gateway instance belongs.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -52021,7 +52962,9 @@ class DescribeSslVpnServersResponseBodySslVpnServersSslVpnServer(TeaModel):
         connections: int = None,
         create_time: int = None,
         enable_multi_factor_auth: bool = None,
+        idaa_sapplication_id: str = None,
         idaa_sinstance_id: str = None,
+        idaa_sinstance_version: str = None,
         idaa_sregion_id: str = None,
         internet_ip: str = None,
         local_subnet: str = None,
@@ -52052,8 +52995,10 @@ class DescribeSslVpnServersResponseBodySslVpnServersSslVpnServer(TeaModel):
         # *   **true**\
         # *   **false** (default)
         self.enable_multi_factor_auth = enable_multi_factor_auth
+        self.idaa_sapplication_id = idaa_sapplication_id
         # The ID of the IDaaS instance.
         self.idaa_sinstance_id = idaa_sinstance_id
+        self.idaa_sinstance_version = idaa_sinstance_version
         # The ID of the region where the IDaaS instance is created.
         self.idaa_sregion_id = idaa_sregion_id
         # The public IP address of the VPN gateway.
@@ -52072,7 +53017,7 @@ class DescribeSslVpnServersResponseBodySslVpnServersSslVpnServer(TeaModel):
         self.region_id = region_id
         # The ID of the resource group to which the SSL server belongs.
         # 
-        # You can call the [ListResourceGroups](~~158855~~) operation to query the resource group information.
+        # You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query the resource group information.
         self.resource_group_id = resource_group_id
         # The ID of the SSL server.
         self.ssl_vpn_server_id = ssl_vpn_server_id
@@ -52100,8 +53045,12 @@ class DescribeSslVpnServersResponseBodySslVpnServersSslVpnServer(TeaModel):
             result['CreateTime'] = self.create_time
         if self.enable_multi_factor_auth is not None:
             result['EnableMultiFactorAuth'] = self.enable_multi_factor_auth
+        if self.idaa_sapplication_id is not None:
+            result['IDaaSApplicationId'] = self.idaa_sapplication_id
         if self.idaa_sinstance_id is not None:
             result['IDaaSInstanceId'] = self.idaa_sinstance_id
+        if self.idaa_sinstance_version is not None:
+            result['IDaaSInstanceVersion'] = self.idaa_sinstance_version
         if self.idaa_sregion_id is not None:
             result['IDaaSRegionId'] = self.idaa_sregion_id
         if self.internet_ip is not None:
@@ -52140,8 +53089,12 @@ class DescribeSslVpnServersResponseBodySslVpnServersSslVpnServer(TeaModel):
             self.create_time = m.get('CreateTime')
         if m.get('EnableMultiFactorAuth') is not None:
             self.enable_multi_factor_auth = m.get('EnableMultiFactorAuth')
+        if m.get('IDaaSApplicationId') is not None:
+            self.idaa_sapplication_id = m.get('IDaaSApplicationId')
         if m.get('IDaaSInstanceId') is not None:
             self.idaa_sinstance_id = m.get('IDaaSInstanceId')
+        if m.get('IDaaSInstanceVersion') is not None:
+            self.idaa_sinstance_version = m.get('IDaaSInstanceVersion')
         if m.get('IDaaSRegionId') is not None:
             self.idaa_sregion_id = m.get('IDaaSRegionId')
         if m.get('InternetIp') is not None:
@@ -52328,7 +53281,9 @@ class DescribeTagKeysRequest(TeaModel):
         self.owner_id = owner_id
         # The region ID of the resource.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
@@ -52588,7 +53543,9 @@ class DescribeTagKeysForExpressConnectRequest(TeaModel):
         self.owner_id = owner_id
         # The ID of the region to which the resource resides.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to obtain the region ID.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to obtain the region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The IDs of the resources. You can specify up to 20 resource IDs.
         self.resource_id = resource_id
@@ -52819,11 +53776,11 @@ class DescribeTagsRequestTag(TeaModel):
     ):
         # The key of the tag that is added to the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
         # 
-        # The key cannot exceed 64 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). The key must start with a letter but cannot start with `aliyun` or `acs:`. The key cannot contain `http://` or `https://`.
+        # The key cannot exceed 64 characters in length, and can contain digits, periods (.), underscores (_), and hyphens (-). The key must start with a letter but cannot start with `aliyun` or `acs:`. The key cannot contain `http://` or `https://`.
         self.key = key
         # The value of the tag that is added to the resource. You can specify up to 20 tag values. The tag value can be an empty string.
         # 
-        # The tag value cannot exceed 128 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). The key must start with a letter but cannot start with `aliyun` or `acs:`. The key cannot contain `http://` or `https://`.
+        # The tag value cannot exceed 128 characters in length, and can contain digits, periods (.), underscores (_), and hyphens (-). The key must start with a letter but cannot start with `aliyun` or `acs:`. The key cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -52875,7 +53832,9 @@ class DescribeTagsRequest(TeaModel):
         self.owner_id = owner_id
         # The ID of the region to which the resource belongs.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
@@ -53134,7 +54093,9 @@ class DescribeVRoutersRequest(TeaModel):
         self.page_size = page_size
         # The region ID of the vRouter that you want to query.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -53442,11 +54403,13 @@ class DescribeVSwitchAttributesRequest(TeaModel):
         self.owner_id = owner_id
         # The region ID of the virtual private cloud (VPC) to which the custom route table belongs.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the vSwitch.
+        # 
+        # This parameter is required.
         self.v_switch_id = v_switch_id
 
     def validate(self):
@@ -53892,7 +54855,7 @@ class DescribeVSwitchesRequest(TeaModel):
         self.page_number = page_number
         # The number of entries to return on each page. Maximum value: **50**. Default value: **10**.
         self.page_size = page_size
-        # The region ID of the vSwitch. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # The region ID of the vSwitch. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
         # 
         # >  You must set at least one of **RegionId** and **VpcId**.
         self.region_id = region_id
@@ -53916,7 +54879,7 @@ class DescribeVSwitchesRequest(TeaModel):
         # 
         # >  You must set at least one of **RegionId** and **VpcId**.
         self.vpc_id = vpc_id
-        # The ID of the zone to which the vSwitches belong. You can call the [DescribeZones](~~36064~~) operation to query the most recent zone list.
+        # The ID of the zone to which the vSwitches belong. You can call the [DescribeZones](https://help.aliyun.com/document_detail/36064.html) operation to query the most recent zone list.
         self.zone_id = zone_id
 
     def validate(self):
@@ -54445,6 +55408,8 @@ class DescribeVbrHaRequest(TeaModel):
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The ID of the region in which the VBR is deployed.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -54661,7 +55626,9 @@ class DescribeVcoRouteEntriesRequest(TeaModel):
         self.page_size = page_size
         # The region ID of the IPsec-VPN connection.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent list of regions.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent list of regions.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -54671,6 +55638,8 @@ class DescribeVcoRouteEntriesRequest(TeaModel):
         # *   **bgp**: a BGP route
         self.route_entry_type = route_entry_type
         # The ID of the IPsec-VPN connection.
+        # 
+        # This parameter is required.
         self.vpn_connection_id = vpn_connection_id
 
     def validate(self):
@@ -55043,11 +56012,13 @@ class DescribeVirtualBorderRoutersRequest(TeaModel):
         self.page_number = page_number
         # The number of entries per page. Valid values: **1 to 50**. Default value: **10**.
         self.page_size = page_size
-        # The ID of the region in which the VBR is deployed. You can call the [DescribeRegions](~~36063~~) operation to obtain the region ID.
+        # The ID of the region in which the VBR is deployed. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to obtain the region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The resource group ID.
         # 
-        # For more information about resource groups, see [What is a resource group?](~~94475~~)
+        # For more information about resource groups, see [What is a resource group?](https://help.aliyun.com/document_detail/94475.html)
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -56009,8 +56980,12 @@ class DescribeVirtualBorderRoutersForPhysicalConnectionRequest(TeaModel):
         # The number of entries per page. Maximum value: **50**. Default value: **10**.
         self.page_size = page_size
         # The ID of the Express Connect circuit.
+        # 
+        # This parameter is required.
         self.physical_connection_id = physical_connection_id
-        # The region in which the Express Connect circuit is deployed. You can call the [DescribeRegions](~~36063~~) operation to obtain the region ID.
+        # The region in which the Express Connect circuit is deployed. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to obtain the region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -56440,11 +57415,15 @@ class DescribeVpcAttributeRequest(TeaModel):
         self.owner_id = owner_id
         # The ID of the region where the VPC is deployed.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the VPC that you want to query.
+        # 
+        # This parameter is required.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -57349,7 +58328,9 @@ class DescribeVpcsRequest(TeaModel):
         self.page_size = page_size
         # The region ID of the VPC.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group to which the VPC to be queried belongs.
         self.resource_group_id = resource_group_id
@@ -57811,7 +58792,7 @@ class DescribeVpcsResponseBodyVpcsVpc(TeaModel):
         self.vrouter_id = vrouter_id
         # The vSwitches in the VPC.
         # 
-        # You can query up to 300 vSwitches in the VPC. The information about the latest vSwitches is returned. If you want to query the information about all vSwitches in a VPC, call the [DescribeVSwitches](~~35748~~) operation.
+        # You can query up to 300 vSwitches in the VPC. The information about the latest vSwitches is returned. If you want to query the information about all vSwitches in a VPC, call the [DescribeVSwitches](https://help.aliyun.com/document_detail/35748.html) operation.
         self.v_switch_ids = v_switch_ids
         # The VPC ID.
         self.vpc_id = vpc_id
@@ -58105,7 +59086,9 @@ class DescribeVpnAttachmentsRequest(TeaModel):
         self.page_size = page_size
         # The ID of the region where the IPsec-VPN connection is established.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -58358,11 +59341,15 @@ class DescribeVpnConnectionRequest(TeaModel):
         self.owner_id = owner_id
         # The ID of the region where the IPsec-VPN connection is created.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the IPsec-VPN connection.
+        # 
+        # This parameter is required.
         self.vpn_connection_id = vpn_connection_id
 
     def validate(self):
@@ -58881,7 +59868,7 @@ class DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptions(T
         self.tunnel_ipsec_config = tunnel_ipsec_config
         # The zone where the tunnel is deployed.
         # 
-        # You can call [DescribeZones](~~36064~~) to query zone IDs.
+        # You can call [DescribeZones](https://help.aliyun.com/document_detail/36064.html) to query zone IDs.
         self.zone_no = zone_no
 
     def validate(self):
@@ -59262,7 +60249,7 @@ class DescribeVpnConnectionResponseBody(TeaModel):
         self.request_id = request_id
         # The ID of the resource group to which the IPsec-VPN connection belongs.
         # 
-        # You can call the [ListResourceGroups](~~158855~~) operation to query the resource group information.
+        # You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query the resource group information.
         self.resource_group_id = resource_group_id
         # The bandwidth specification of the IPsec-VPN connection. Unit: **Mbit/s**.
         self.spec = spec
@@ -59306,7 +60293,7 @@ class DescribeVpnConnectionResponseBody(TeaModel):
         self.vpn_gateway_id = vpn_gateway_id
         # The ID of the zone where the IPsec-VPN connection is deployed.
         # 
-        # You can call [DescribeZones](~~36064~~) to query zone IDs and mapping between zone IDs and zone names.
+        # You can call [DescribeZones](https://help.aliyun.com/document_detail/36064.html) to query zone IDs and mapping between zone IDs and zone names.
         self.zone_no = zone_no
 
     def validate(self):
@@ -59539,7 +60526,9 @@ class DescribeVpnConnectionLogsRequest(TeaModel):
         self.page_size = page_size
         # The ID of the region to which the IPsec-VPN connection belongs.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -59550,6 +60539,8 @@ class DescribeVpnConnectionLogsRequest(TeaModel):
         # The tunnel ID of the IPsec-VPN connection. You can specify this parameter only for IPsec-VPN connections in dual-tunnel mode.
         self.tunnel_id = tunnel_id
         # The ID of the IPsec-VPN connection.
+        # 
+        # This parameter is required.
         self.vpn_connection_id = vpn_connection_id
 
     def validate(self):
@@ -59823,11 +60814,13 @@ class DescribeVpnConnectionsRequest(TeaModel):
         self.page_size = page_size
         # The ID of the region where the IPsec-VPN connection is created.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group to which the IPsec-VPN connection belongs.
         # 
-        # You can call the [ListResourceGroups](~~158855~~) operation to query the resource group ID.
+        # You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query the resource group ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -60759,7 +61752,7 @@ class DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnection(TeaModel):
         self.remote_subnet = remote_subnet
         # The ID of the resource group to which the IPsec-VPN connection belongs.
         # 
-        # You can call the [ListResourceGroups](~~158855~~) operation to query the resource group information.
+        # You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query the resource group information.
         self.resource_group_id = resource_group_id
         # The bandwidth specification of the IPsec-VPN connection. Unit: **Mbit/s**.
         self.spec = spec
@@ -61110,11 +62103,15 @@ class DescribeVpnCrossAccountAuthorizationsRequest(TeaModel):
         self.page_size = page_size
         # The ID of the region to which the IPsec-VPN connection belongs.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the IPsec-VPN connection.
+        # 
+        # This parameter is required.
         self.vpn_connection_id = vpn_connection_id
 
     def validate(self):
@@ -61357,11 +62354,15 @@ class DescribeVpnGatewayRequest(TeaModel):
         self.owner_id = owner_id
         # The region ID of the VPN gateway.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the VPN gateway.
+        # 
+        # This parameter is required.
         self.vpn_gateway_id = vpn_gateway_id
 
     def validate(self):
@@ -61686,7 +62687,7 @@ class DescribeVpnGatewayResponseBody(TeaModel):
         self.reservation_data = reservation_data
         # The ID of the resource group to which the VPN gateway belongs.
         # 
-        # You can call the [ListResourceGroups](~~158855~~) operation to query resource groups.
+        # You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query resource groups.
         self.resource_group_id = resource_group_id
         # The maximum bandwidth of the VPN gateway. Unit: Mbit/s.
         self.spec = spec
@@ -61939,9 +62940,11 @@ class DescribeVpnGatewayAvailableZonesRequest(TeaModel):
         self.accept_language = accept_language
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # This parameter is required.
         self.spec = spec
 
     def validate(self):
@@ -62188,11 +63191,13 @@ class DescribeVpnGatewaysRequest(TeaModel):
         self.page_size = page_size
         # The region ID of the VPN gateway.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group to which the VPN gateway belongs.
         # 
-        #  You can call the [ListResourceGroups](~~158855~~) operation to query the resource group list.
+        #  You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query the resource group list.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -62570,7 +63575,7 @@ class DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGateway(TeaModel):
         self.reservation_data = reservation_data
         # The ID of the resource group to which the VPN gateway belongs.
         # 
-        # You can call the [ListResourceGroups](~~158855~~) operation to query the resource group information.
+        # You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query the resource group information.
         self.resource_group_id = resource_group_id
         # The maximum bandwidth of the VPN gateway. **M** indicates Mbit/s.
         self.spec = spec
@@ -62918,11 +63923,15 @@ class DescribeVpnPbrRouteEntriesRequest(TeaModel):
         self.page_size = page_size
         # The region ID of the VPN gateway.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the VPN gateway.
+        # 
+        # This parameter is required.
         self.vpn_gateway_id = vpn_gateway_id
 
     def validate(self):
@@ -63228,7 +64237,9 @@ class DescribeVpnRouteEntriesRequest(TeaModel):
         self.page_size = page_size
         # The ID of the region where the VPN gateway is created.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -63238,6 +64249,8 @@ class DescribeVpnRouteEntriesRequest(TeaModel):
         # *   **System**: system
         self.route_entry_type = route_entry_type
         # The ID of the VPN gateway.
+        # 
+        # This parameter is required.
         self.vpn_gateway_id = vpn_gateway_id
 
     def validate(self):
@@ -63566,7 +64579,9 @@ class DescribeVpnSslServerLogsRequest(TeaModel):
         self.page_number = page_number
         # The number of entries to return on each page. Maximum value: **50**. Default value: **10**.
         self.page_size = page_size
-        # The ID of the region where the SSL server is created. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # The ID of the region where the SSL server is created. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -63577,6 +64592,8 @@ class DescribeVpnSslServerLogsRequest(TeaModel):
         # >  If you specify **To**, you must also specify **From** or **MinutePeriod**.
         self.to = to
         # The ID of the SSL server.
+        # 
+        # This parameter is required.
         self.vpn_ssl_server_id = vpn_ssl_server_id
 
     def validate(self):
@@ -63800,7 +64817,9 @@ class DescribeZonesRequest(TeaModel):
         self.accept_language = accept_language
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the zone. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # The region ID of the zone. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -64026,6 +65045,8 @@ class DetachDhcpOptionsSetFromVpcRequest(TeaModel):
         # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
         # The ID of the DHCP options set to be disassociated from a VPC.
+        # 
+        # This parameter is required.
         self.dhcp_options_set_id = dhcp_options_set_id
         # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         # 
@@ -64035,11 +65056,15 @@ class DetachDhcpOptionsSetFromVpcRequest(TeaModel):
         self.dry_run = dry_run
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region to which the DHCP options set belongs. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # The region to which the DHCP options set belongs. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the VPC.
+        # 
+        # This parameter is required.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -64176,6 +65201,7 @@ class DiagnoseVpnConnectionsRequest(TeaModel):
     ):
         self.page_number = page_number
         self.page_size = page_size
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_id = resource_owner_id
         self.tunnel_ids = tunnel_ids
@@ -64424,15 +65450,23 @@ class DiagnoseVpnGatewayRequest(TeaModel):
         self.ipsec_extend_info = ipsec_extend_info
         # The region ID of the VPN gateway.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource to be diagnosed.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
         # The type of the resource.
         # 
         # Set the value to **Ipsec**, which specifies an IPsec-VPN connection.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The ID of the VPN gateway.
+        # 
+        # This parameter is required.
         self.vpn_gateway_id = vpn_gateway_id
 
     def validate(self):
@@ -64565,8 +65599,12 @@ class DisableNatGatewayEcsMetricRequest(TeaModel):
         # **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
         # The ID of the NAT gateway for which you want to disable ECS traffic monitoring.
+        # 
+        # This parameter is required.
         self.nat_gateway_id = nat_gateway_id
-        # The region ID of the NAT gateway. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # The region ID of the NAT gateway. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -64687,11 +65725,15 @@ class DisableVpcClassicLinkRequest(TeaModel):
         self.owner_id = owner_id
         # The region ID of the VPC for which you want to disable ClassicLink.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the VPC for which you want to disable ClassicLink.
+        # 
+        # This parameter is required.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -64833,6 +65875,8 @@ class DissociateRouteTableFromGatewayRequest(TeaModel):
         # *   **false** (default): sends the request. After the request passes the precheck, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
         # The ID of the IPv4 gateway.
+        # 
+        # This parameter is required.
         self.gateway_id = gateway_id
         # The type of a gateway to be disassociated from a route table.
         self.gateway_type = gateway_type
@@ -64840,11 +65884,15 @@ class DissociateRouteTableFromGatewayRequest(TeaModel):
         self.owner_id = owner_id
         # The region ID of the IPv4 gateway from which you want to disassociate the gateway route table.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the gateway route table.
+        # 
+        # This parameter is required.
         self.route_table_id = route_table_id
 
     def validate(self):
@@ -64995,16 +66043,22 @@ class DissociateRouteTablesFromVpcGatewayEndpointRequest(TeaModel):
         # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
         # The ID of the gateway endpoint to be disassociated from the route table.
+        # 
+        # This parameter is required.
         self.endpoint_id = endpoint_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the gateway endpoint.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the route table. Valid values of **N** are **1** to **20**, which specifies that you can disassociate a gateway endpoint from at most 20 route tables at a time.
+        # 
+        # This parameter is required.
         self.route_table_ids = route_table_ids
 
     def validate(self):
@@ -65140,12 +66194,16 @@ class DissociateVpnGatewayWithCertificateRequest(TeaModel):
     ):
         # The certificate ID.
         # 
-        # >  The certificate ID refers to the ID generated after the SSL certificate is associated with a VPN gateway. It is not the ID of the certificate itself. You can call [ListVpnCertificateAssociations](~~448813~~) to query certificate IDs.
+        # >  The certificate ID refers to the ID generated after the SSL certificate is associated with a VPN gateway. It is not the ID of the certificate itself. You can call [ListVpnCertificateAssociations](https://help.aliyun.com/document_detail/448813.html) to query certificate IDs.
+        # 
+        # This parameter is required.
         self.certificate_id = certificate_id
         # The certificate type. Valid values:
         # 
         # *   **Encryption**\
         # *   **Signature**\
+        # 
+        # This parameter is required.
         self.certificate_type = certificate_type
         # The client token that is used to ensure the idempotence of the request.
         # 
@@ -65160,9 +66218,13 @@ class DissociateVpnGatewayWithCertificateRequest(TeaModel):
         self.dry_run = dry_run
         # The region ID of the VPN gateway.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the VPN gateway.
+        # 
+        # This parameter is required.
         self.vpn_gateway_id = vpn_gateway_id
 
     def validate(self):
@@ -65288,11 +66350,15 @@ class DownloadVpnConnectionConfigRequest(TeaModel):
         self.owner_id = owner_id
         # The ID of the region where the IPsec-VPN connection is created.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the IPsec-VPN connection.
+        # 
+        # This parameter is required.
         self.vpn_connection_id = vpn_connection_id
 
     def validate(self):
@@ -65875,8 +66941,12 @@ class EnableNatGatewayEcsMetricRequest(TeaModel):
         # **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
         # The ID of the NAT gateway for which you want to enable ECS traffic monitoring.
+        # 
+        # This parameter is required.
         self.nat_gateway_id = nat_gateway_id
-        # The region ID of the NAT gateway. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # The region ID of the NAT gateway. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -66002,10 +67072,14 @@ class EnablePhysicalConnectionRequest(TeaModel):
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The ID of the Express Connect circuit.
+        # 
+        # This parameter is required.
         self.physical_connection_id = physical_connection_id
         # The region where the Express Connect circuit is deployed.
         # 
         # You can call the DescribeRegions operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -66148,11 +67222,15 @@ class EnableVpcClassicLinkRequest(TeaModel):
         self.owner_id = owner_id
         # The region ID of the VPC for which you want to enable ClassicLink.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the VPC.
+        # 
+        # This parameter is required.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -66293,12 +67371,16 @@ class EnableVpcIpv4GatewayRequest(TeaModel):
         # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
         # The ID of the IPv4 gateway that you want to activate.
+        # 
+        # This parameter is required.
         self.ipv_4gateway_id = ipv_4gateway_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the IPv4 gateway.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent list of regions.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent list of regions.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -66437,12 +67519,16 @@ class GetDhcpOptionsSetRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The ID of the DHCP options set.
+        # 
+        # This parameter is required.
         self.dhcp_options_set_id = dhcp_options_set_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the DHCP options set that you want to query.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -66792,7 +67878,9 @@ class GetFlowLogServiceStatusRequest(TeaModel):
         self.owner_id = owner_id
         # The region ID of the flow log.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -66846,7 +67934,7 @@ class GetFlowLogServiceStatusResponseBody(TeaModel):
         # Indicates whether the flow log feature is enabled. Valid values:
         # 
         # *   **true**: yes
-        # *   **false**: no You can call the [OpenFlowLogService](~~449637~~) operation to enable the flow log feature.
+        # *   **false**: no You can call the [OpenFlowLogService](https://help.aliyun.com/document_detail/449637.html) operation to enable the flow log feature.
         self.enabled = enabled
         # The ID of the request.
         self.request_id = request_id
@@ -66927,12 +68015,16 @@ class GetIpv4GatewayAttributeRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The ID of the IPv4 gateway.
+        # 
+        # This parameter is required.
         self.ipv_4gateway_id = ipv_4gateway_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the IPv4 gateway.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -67180,12 +68272,16 @@ class GetNatGatewayAttributeRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The ID of the NAT gateway.
+        # 
+        # This parameter is required.
         self.nat_gateway_id = nat_gateway_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The ID of the region where the NAT gateway is deployed.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -67876,7 +68972,9 @@ class GetPhysicalConnectionServiceStatusRequest(TeaModel):
         self.owner_id = owner_id
         # The ID of the region for which you want to query the status of outbound data transfer billing.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -68016,7 +69114,7 @@ class GetTrafficMirrorServiceStatusRequest(TeaModel):
         self.owner_id = owner_id
         # The ID of the region to which the mirrored traffic belongs.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -68163,11 +69261,15 @@ class GetVSwitchCidrReservationUsageRequest(TeaModel):
         self.owner_id = owner_id
         # The region ID of the vSwitch.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the reserved CIDR block.
+        # 
+        # This parameter is required.
         self.v_switch_cidr_reservation_id = v_switch_cidr_reservation_id
 
     def validate(self):
@@ -68400,12 +69502,16 @@ class GetVpcGatewayEndpointAttributeRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The ID of the gateway endpoint.
+        # 
+        # This parameter is required.
         self.endpoint_id = endpoint_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the gateway endpoint.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -68668,10 +69774,14 @@ class GetVpcPrefixListAssociationsRequest(TeaModel):
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The ID of the prefix list that you want to query.
+        # 
+        # This parameter is required.
         self.prefix_list_id = prefix_list_id
         # The region ID of the prefix list.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -68941,10 +70051,14 @@ class GetVpcPrefixListEntriesRequest(TeaModel):
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The ID of the prefix list that you want to query.
+        # 
+        # This parameter is required.
         self.prefix_list_id = prefix_list_id
         # The region ID of the prefix list.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -69170,7 +70284,9 @@ class GetVpcRouteEntrySummaryRequest(TeaModel):
         self.owner_id = owner_id
         # The region ID of the route table.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -69181,10 +70297,14 @@ class GetVpcRouteEntrySummaryRequest(TeaModel):
         # *   **System**: a system route
         # *   **BGP**: a BGP route
         # *   **CEN**: a Cloud Enterprise Network (CEN) route
+        # 
+        # This parameter is required.
         self.route_entry_type = route_entry_type
         # The ID of the route table that you want to query.
         self.route_table_id = route_table_id
         # The ID of the virtual private cloud (VPC) to which the route table belongs.
+        # 
+        # This parameter is required.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -69421,11 +70541,13 @@ class GetVpnGatewayDiagnoseResultRequest(TeaModel):
         self.client_token = client_token
         # The ID of the diagnostic operation.
         # 
-        # When you call the [DiagnoseVpnGateway](~~469751~~) operation, the system returns a corresponding ID.
+        # When you call the [DiagnoseVpnGateway](https://help.aliyun.com/document_detail/469751.html) operation, the system returns a corresponding ID.
         self.diagnose_id = diagnose_id
         # The region ID of the VPN gateway.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the VPN gateway.
         self.vpn_gateway_id = vpn_gateway_id
@@ -69479,7 +70601,7 @@ class GetVpnGatewayDiagnoseResultResponseBodyDiagnoseResult(TeaModel):
         # *   **VcoUserInternetIpConnectivity**: Internet connectivity of the customer gateway.
         # *   **VcoPrivateConnectivity**: private network connectivity.
         # 
-        # For more information about the diagnostic items, see [Background information about quick diagnostics](~~190330~~).
+        # For more information about the diagnostic items, see [Background information about quick diagnostics](https://help.aliyun.com/document_detail/190330.html).
         self.diagnose_name = diagnose_name
         # The diagnostic result.
         # 
@@ -69531,7 +70653,7 @@ class GetVpnGatewayDiagnoseResultResponseBodyDiagnoseResult(TeaModel):
         # *   **warning**\
         # *   **error**\
         # 
-        # For more information, see [Background information about quick diagnostics](~~190330~~).
+        # For more information, see [Background information about quick diagnostics](https://help.aliyun.com/document_detail/190330.html).
         self.diagnose_result_level = diagnose_result_level
 
     def validate(self):
@@ -69723,8 +70845,12 @@ class GrantInstanceToCenRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The ID of the CEN instance to which you want to grant permissions.
+        # 
+        # This parameter is required.
         self.cen_id = cen_id
         # The user ID (UID) of the Apsara Stack tenant account to which the CEN instance belongs.
+        # 
+        # This parameter is required.
         self.cen_owner_id = cen_owner_id
         # The client token that is used to ensure the idempotence of the request.
         # 
@@ -69733,17 +70859,23 @@ class GrantInstanceToCenRequest(TeaModel):
         # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
         # The ID of the network instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The type of the network instance. Valid values:
         # 
         # *   **VPC**\
         # *   **VBR**\
+        # 
+        # This parameter is required.
         self.instance_type = instance_type
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The ID of the region where the network instance is deployed.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -69887,18 +71019,28 @@ class GrantInstanceToVbrRequest(TeaModel):
         # 
         # *   **All**: Permissions on the VPC are granted to all VBRs that belong to the specified region and Alibaba Cloud account. In this case, you can leave **VbrInstanceIds** empty.
         # *   **Specify**: Permissions on the VPC are granted to the specified VBRs. **VbrInstanceIds** must be assigned a value.
+        # 
+        # This parameter is required.
         self.grant_type = grant_type
         # The ID of the VPC.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The ID of the region where the VPC is deployed.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The information about the VBRs.
         self.vbr_instance_ids = vbr_instance_ids
         # The ID of the Alibaba Cloud account to which the VBR belongs.
+        # 
+        # This parameter is required.
         self.vbr_owner_uid = vbr_owner_uid
         # The ID of the region where the VBR is deployed.
+        # 
+        # This parameter is required.
         self.vbr_region_no = vbr_region_no
 
     def validate(self):
@@ -69955,18 +71097,28 @@ class GrantInstanceToVbrShrinkRequest(TeaModel):
         # 
         # *   **All**: Permissions on the VPC are granted to all VBRs that belong to the specified region and Alibaba Cloud account. In this case, you can leave **VbrInstanceIds** empty.
         # *   **Specify**: Permissions on the VPC are granted to the specified VBRs. **VbrInstanceIds** must be assigned a value.
+        # 
+        # This parameter is required.
         self.grant_type = grant_type
         # The ID of the VPC.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The ID of the region where the VPC is deployed.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The information about the VBRs.
         self.vbr_instance_ids_shrink = vbr_instance_ids_shrink
         # The ID of the Alibaba Cloud account to which the VBR belongs.
+        # 
+        # This parameter is required.
         self.vbr_owner_uid = vbr_owner_uid
         # The ID of the region where the VBR is deployed.
+        # 
+        # This parameter is required.
         self.vbr_region_no = vbr_region_no
 
     def validate(self):
@@ -70085,7 +71237,7 @@ class ListBusinessAccessPointsRequest(TeaModel):
     ):
         # The region ID of the Express Connect circuit.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -70289,11 +71441,11 @@ class ListDhcpOptionsSetsRequestTags(TeaModel):
     ):
         # The tag key. You can specify up to 20 tag keys. The tag key cannot be an empty string.
         # 
-        # The tag key can be up to 64 characters in length and can contain digits, periods (.), underscores (\_), and hyphens (-). The tag key must start with a letter but cannot start with `aliyun` or `acs:`. The tag key cannot contain `http://` or `https://`.
+        # The tag key can be up to 64 characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). The tag key must start with a letter but cannot start with `aliyun` or `acs:`. The tag key cannot contain `http://` or `https://`.
         self.key = key
         # The tag value. You can specify at most 20 tag values. The tag value can be an empty string.
         # 
-        # The tag value can be up to 128 characters in length and can contain digits, periods (.), underscores (\_), and hyphens (-). The tag value must start with a letter but cannot start with `aliyun` or `acs:`. The tag value cannot contain `http://` or `https://`.
+        # The tag value can be up to 128 characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). The tag value must start with a letter but cannot start with `aliyun` or `acs:`. The tag value cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -70340,7 +71492,7 @@ class ListDhcpOptionsSetsRequest(TeaModel):
         self.dhcp_options_set_id = dhcp_options_set_id
         # The name of the DHCP options set.
         # 
-        # The name must be 1 to 128 characters in length and can contain digits, underscores (\_), and hyphens (-). It must start with a letter.
+        # The name must be 1 to 128 characters in length and can contain digits, underscores (_), and hyphens (-). It must start with a letter.
         # 
         # Valid values:
         # 
@@ -70373,7 +71525,9 @@ class ListDhcpOptionsSetsRequest(TeaModel):
         self.owner_id = owner_id
         # The region ID of the DHCP options sets that you want to query.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group to which the DHCP options set belongs.
         self.resource_group_id = resource_group_id
@@ -70804,9 +71958,11 @@ class ListEnhanhcedNatGatewayAvailableZonesRequest(TeaModel):
         self.owner_id = owner_id
         # The ID of the region that you want to query.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
         # 
         # In this example, zones that support NAT gateways in the UAE (Dubai) region are queried.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -71012,7 +72168,7 @@ class ListFullNatEntriesRequest(TeaModel):
         self.full_nat_entry_id = full_nat_entry_id
         # The name of the FULLNAT entry that you want to query. You can specify at most 20 names.
         # 
-        # The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). The name must start with a letter.
+        # The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
         self.full_nat_entry_names = full_nat_entry_names
         # The ID of the FULLNAT table to which the FULLNAT entries to be queried belong.
         # 
@@ -71044,7 +72200,9 @@ class ListFullNatEntriesRequest(TeaModel):
         self.owner_id = owner_id
         # The region ID of the virtual private cloud (VPC) NAT gateway to which the FULLNAT entries to be queried belong.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -71160,7 +72318,7 @@ class ListFullNatEntriesResponseBodyFullNatEntries(TeaModel):
         self.full_nat_entry_id = full_nat_entry_id
         # The name of the FULLNAT entry.
         # 
-        # The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). The name must start with a letter.
+        # The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
         self.full_nat_entry_name = full_nat_entry_name
         # The status of the FULLNAT entry. Valid values:
         # 
@@ -71391,6 +72549,8 @@ class ListGatewayRouteTableEntriesRequest(TeaModel):
         # The destination CIDR block of the route entry in the gateway route table.
         self.destination_cidr_block = destination_cidr_block
         # The ID of the gateway route table that you want to query.
+        # 
+        # This parameter is required.
         self.gateway_route_table_id = gateway_route_table_id
         # The number of entries to return on each page. Valid values: **1** to **100**. Default value: **10**.
         self.max_results = max_results
@@ -71403,7 +72563,9 @@ class ListGatewayRouteTableEntriesRequest(TeaModel):
         self.owner_id = owner_id
         # The region ID of the gateway route table.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent list of regions.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent list of regions.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -71538,7 +72700,7 @@ class ListGatewayRouteTableEntriesResponseBodyGatewayRouteEntryModels(TeaModel):
         self.destination_cidr_block = destination_cidr_block
         # The name of the route entry.
         # 
-        # The name must be 2 to 128 characters in length and can contain letter, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
+        # The name must be 2 to 128 characters in length and can contain letter, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
         self.name = name
         # The ID of the next hop.
         self.next_hop_id = next_hop_id
@@ -71809,6 +72971,8 @@ class ListIpsecServerLogsRequest(TeaModel):
         # >  If you specify **From**, you must also specify **To** or **MinutePeriod**.
         self.from_ = from_
         # The ID of the IPsec server.
+        # 
+        # This parameter is required.
         self.ipsec_server_id = ipsec_server_id
         # The interval at which log data is queried. Valid values: **1** to **10**. Unit: minutes.
         # 
@@ -71820,7 +72984,9 @@ class ListIpsecServerLogsRequest(TeaModel):
         self.page_size = page_size
         # The ID of the region where the IPsec server is created.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to obtain the region ID.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to obtain the region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The end of the time range to query. The value must be a unix timestamp. For example, 1671004344 specifies 15:52:24 (UTC+8) on December 14, 2022.
         # 
@@ -72006,13 +73172,15 @@ class ListIpsecServersRequest(TeaModel):
         self.next_token = next_token
         # The ID of the region where the IPsec server is created.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group to which the IPsec server belongs.
         # 
         # The IPsec server has the same resource group as its associated VPN gateway instance.
         # 
-        # You can call the [DescribeVpnGateway](~~2526915~~) operation to query the ID of the resource group to which the VPN gateway instance belongs.
+        # You can call the [DescribeVpnGateway](https://help.aliyun.com/document_detail/2526915.html) operation to query the ID of the resource group to which the VPN gateway instance belongs.
         self.resource_group_id = resource_group_id
         # The ID of the VPN gateway.
         self.vpn_gateway_id = vpn_gateway_id
@@ -72255,7 +73423,7 @@ class ListIpsecServersResponseBodyIpsecServers(TeaModel):
         self.region_id = region_id
         # The ID of the resource group to which the IPsec server belongs.
         # 
-        # You can call the [ListResourceGroups](~~158855~~) operation to query the resource group information.
+        # You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query the resource group information.
         self.resource_group_id = resource_group_id
         # The ID of the VPN gateway.
         self.vpn_gateway_id = vpn_gateway_id
@@ -72469,11 +73637,11 @@ class ListIpv4GatewaysRequestTags(TeaModel):
     ):
         # The tag key. You can specify at most 20 tag keys. The tag key cannot be an empty string.
         # 
-        # The key cannot exceed 64 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). The key must start with a letter but cannot start with `aliyun` or `acs:`. The key cannot contain `http://` or `https://`.
+        # The key cannot exceed 64 characters in length, and can contain digits, periods (.), underscores (_), and hyphens (-). The key must start with a letter but cannot start with `aliyun` or `acs:`. The key cannot contain `http://` or `https://`.
         self.key = key
         # The tag value. You can specify at most 20 tag values. It can be an empty string.
         # 
-        # The tag value cannot exceed 128 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). It must start with a letter but cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+        # The tag value cannot exceed 128 characters in length, and can contain digits, periods (.), underscores (_), and hyphens (-). It must start with a letter but cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -72533,7 +73701,9 @@ class ListIpv4GatewaysRequest(TeaModel):
         self.owner_id = owner_id
         # The ID of the region where the IPv4 gateways to be queried are deployed.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group to which the IPv4 gateway belongs.
         self.resource_group_id = resource_group_id
@@ -72892,6 +74062,8 @@ class ListNatIpCidrsRequest(TeaModel):
         # The number of entries to return on each page. Valid values: **1** to **100**. Default value: **20**.
         self.max_results = max_results
         # The ID of the VPC NAT gateway that you want to query.
+        # 
+        # This parameter is required.
         self.nat_gateway_id = nat_gateway_id
         # The CIDR block of the NAT gateway that you want to query.
         self.nat_ip_cidr = nat_ip_cidr
@@ -72910,7 +74082,9 @@ class ListNatIpCidrsRequest(TeaModel):
         self.owner_id = owner_id
         # The region ID of the Virtual Private Cloud (VPC) NAT gateway that you want to query.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -73200,6 +74374,8 @@ class ListNatIpsRequest(TeaModel):
         # The number of entries to return on each page. Valid values: **1** to **100**. Default value: **20**.
         self.max_results = max_results
         # The ID of the NAT gateway.
+        # 
+        # This parameter is required.
         self.nat_gateway_id = nat_gateway_id
         # The CIDR block to which the IP address belongs.
         self.nat_ip_cidr = nat_ip_cidr
@@ -73222,7 +74398,9 @@ class ListNatIpsRequest(TeaModel):
         self.owner_id = owner_id
         # The ID of the region where the NAT gateway is deployed.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -73495,11 +74673,11 @@ class ListPrefixListsRequestTags(TeaModel):
     ):
         # The tag key. You can specify up to 20 tag keys. The tag key cannot be an empty string.
         # 
-        # The key cannot exceed 64 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). The key must start with a letter but cannot start with `aliyun` or `acs:`. The key cannot contain `http://` or `https://`.
+        # The key cannot exceed 64 characters in length, and can contain digits, periods (.), underscores (_), and hyphens (-). The key must start with a letter but cannot start with `aliyun` or `acs:`. The key cannot contain `http://` or `https://`.
         self.key = key
         # The tag value. You can specify up to 20 tag values. The tag value can be an empty string.
         # 
-        # The tag value cannot exceed 128 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). The key must start with a letter but cannot start with `aliyun` or `acs:`. The key cannot contain `http://` or `https://`.
+        # The tag value cannot exceed 128 characters in length, and can contain digits, periods (.), underscores (_), and hyphens (-). The key must start with a letter but cannot start with `aliyun` or `acs:`. The key cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -73558,7 +74736,9 @@ class ListPrefixListsRequest(TeaModel):
         self.prefix_list_name = prefix_list_name
         # The ID of the region where you want to query prefix lists.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group to which the prefix list belongs.
         self.resource_group_id = resource_group_id
@@ -73959,8 +75139,12 @@ class ListPublicIpAddressPoolCidrBlocksRequest(TeaModel):
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The ID of the IP address pool.
+        # 
+        # This parameter is required.
         self.public_ip_address_pool_id = public_ip_address_pool_id
         # The region ID of the CIDR blocks.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -74257,7 +75441,7 @@ class ListPublicIpAddressPoolsRequest(TeaModel):
         # *   **BGP** (default): BGP (Multi-ISP) line
         # *   **BGP_PRO**: BGP (Multi-ISP) Pro line
         # 
-        # For more information about the BGP (Multi-ISP) line and BGP (Multi-ISP) Pro line, see the "Line types" section of [What is EIP?](~~32321~~)
+        # For more information about the BGP (Multi-ISP) line and BGP (Multi-ISP) Pro line, see the "Line types" section of [What is EIP?](https://help.aliyun.com/document_detail/32321.html)
         # 
         # If you are allowed to use single-ISP bandwidth, you can also choose one of the following values:
         # 
@@ -74274,7 +75458,7 @@ class ListPublicIpAddressPoolsRequest(TeaModel):
         self.max_results = max_results
         # The name of the IP address pool.
         # 
-        # If you enter a name, the name must be 1 to 128 characters in length and can contain digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+        # If you enter a name, the name must be 1 to 128 characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
         self.name = name
         # The pagination token that is used in the next request to retrieve a new page of results.
         # 
@@ -74289,7 +75473,9 @@ class ListPublicIpAddressPoolsRequest(TeaModel):
         self.public_ip_address_pool_ids = public_ip_address_pool_ids
         # The ID of the region in which the IP address pool that you want to query resides.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the region ID.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group to which the IP address pool belongs.
         self.resource_group_id = resource_group_id
@@ -74469,7 +75655,7 @@ class ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolList(TeaModel):
         # *   **BGP**: BGP (Multi-ISP)
         # *   **BGP_PRO**: BGP (Multi-ISP) Pro
         # 
-        # For more information about BGP (Multi-ISP) and BGP (Multi-ISP) Pro, see [EIP line types](~~32321~~).
+        # For more information about BGP (Multi-ISP) and BGP (Multi-ISP) Pro, see [EIP line types](https://help.aliyun.com/document_detail/32321.html).
         # 
         # If you are allowed to use single-ISP bandwidth, one of the following values may be returned:
         # 
@@ -74727,13 +75913,13 @@ class ListTagResourcesRequestTag(TeaModel):
     ):
         # The key of the tag that is added to the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
         # 
-        # The key can be up to 64 characters in length and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The key must start with a letter but cannot start with `aliyun` or `acs:`. The key cannot contain `http://` or `https://`.
+        # The key can be up to 64 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The key must start with a letter but cannot start with `aliyun` or `acs:`. The key cannot contain `http://` or `https://`.
         # 
         # >  Specify at least one of the **ResourceId.N** and **Tag.N** parameters (**Tag.N.Key** and **Tag.N.Value**).
         self.key = key
         # The value of the tag that is added to the resource. You can specify up to 20 tag values. The tag value can be an empty string.
         # 
-        # The value can be up to 128 characters in length and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The value must start with a letter but cannot start with `aliyun` or `acs:`. The value cannot contain `http://` or `https://`.
+        # The value can be up to 128 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The value must start with a letter but cannot start with `aliyun` or `acs:`. The value cannot contain `http://` or `https://`.
         # 
         # >  Specify at least one of the **ResourceId.N** and **Tag.N** parameters (**Tag.N.Key** and **Tag.N.Value**).
         self.value = value
@@ -74787,7 +75973,9 @@ class ListTagResourcesRequest(TeaModel):
         self.owner_id = owner_id
         # The region ID of the resource.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The resource ID. You can specify up to 20 resource IDs.
         self.resource_id = resource_id
@@ -74802,10 +75990,12 @@ class ListTagResourcesRequest(TeaModel):
         # *   **VpnGateway**\
         # *   **NATGATEWAY**\
         # *   **COMMONBANDWIDTHPACKAGE**: EIP bandwidth plan
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The tag value. You can specify up to 20 tag values. It can be an empty string.
         # 
-        # The value can be up to 128 characters in length and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The value must start with a letter but cannot start with `aliyun` or `acs:`. The value cannot contain `http://` or `https://`.
+        # The value can be up to 128 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The value must start with a letter but cannot start with `aliyun` or `acs:`. The value cannot contain `http://` or `https://`.
         # 
         # >  You must specify at least one of **ResourceId.N** and **Tag.N** (**Tag.N.Key** and **Tag.N.Value**).
         self.tag = tag
@@ -75118,7 +76308,9 @@ class ListTagResourcesForExpressConnectRequest(TeaModel):
         self.owner_id = owner_id
         # The ID of the region to which the resource resides.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to obtain the region ID.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to obtain the region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The resource IDs.
         self.resource_id = resource_id
@@ -75129,6 +76321,8 @@ class ListTagResourcesForExpressConnectRequest(TeaModel):
         # *   **PHYSICALCONNECTION**: Express Connect circuit.
         # *   **VIRTUALBORDERROUTER**: virtual border router (VBR).
         # *   **ROUTERINTERFACE**: router interface.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The tags.
         self.tag = tag
@@ -75440,7 +76634,9 @@ class ListTrafficMirrorFiltersRequest(TeaModel):
         self.owner_id = owner_id
         # The ID of the region to which the mirrored traffic belongs.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list. For more information about regions that support traffic mirroring, see [Overview of traffic mirroring](~~207513~~).
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list. For more information about regions that support traffic mirroring, see [Overview of traffic mirroring](https://help.aliyun.com/document_detail/207513.html).
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group to which the mirrored traffic belongs.
         self.resource_group_id = resource_group_id
@@ -76022,11 +77218,11 @@ class ListTrafficMirrorSessionsRequestTags(TeaModel):
     ):
         # The tag key. You can specify at most 20 tag keys. The tag key cannot be an empty string.
         # 
-        # The key cannot exceed 64 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). The key must start with a letter but cannot start with `aliyun` or `acs:`. The key cannot contain `http://` or `https://`.
+        # The key cannot exceed 64 characters in length, and can contain digits, periods (.), underscores (_), and hyphens (-). The key must start with a letter but cannot start with `aliyun` or `acs:`. The key cannot contain `http://` or `https://`.
         self.key = key
         # The tag value. You can specify at most 20 tag values. The tag value can be an empty string.
         # 
-        # The tag value cannot exceed 128 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). It must start with a letter but cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+        # The tag value cannot exceed 128 characters in length, and can contain digits, periods (.), underscores (_), and hyphens (-). It must start with a letter but cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -76092,7 +77288,9 @@ class ListTrafficMirrorSessionsRequest(TeaModel):
         # 
         # A smaller value indicates a higher priority. You cannot specify identical priorities for traffic mirror sessions that are created in the same region by using the same account.
         self.priority = priority
-        # The ID of the region to which the traffic mirror session belongs. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list. For more information about regions that support traffic mirroring, see [Overview of traffic mirroring](~~207513~~).
+        # The ID of the region to which the traffic mirror session belongs. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list. For more information about regions that support traffic mirroring, see [Overview of traffic mirroring](https://help.aliyun.com/document_detail/207513.html).
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group to which the mirrored traffic belongs.
         self.resource_group_id = resource_group_id
@@ -76571,7 +77769,9 @@ class ListVSwitchCidrReservationsRequest(TeaModel):
         self.owner_id = owner_id
         # The region ID of the vSwitch.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -76937,11 +78137,11 @@ class ListVirtualPhysicalConnectionsRequestTags(TeaModel):
     ):
         # The key of tag N to add to the resource. You can specify at most 20 tag keys. The tag key cannot be an empty string.
         # 
-        # It can be up to 64 characters in length and can contain digits, periods (.), underscores (\_), and hyphens (-). It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+        # It can be up to 64 characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.key = key
         # The value of tag N to add to the resource. You can specify at most 20 tag values. The tag value can be an empty string.
         # 
-        # It can be up to 128 characters in length and can contain digits, periods (.), underscores (\_), and hyphens (-). It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+        # It can be up to 128 characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -77002,7 +78202,9 @@ class ListVirtualPhysicalConnectionsRequest(TeaModel):
         self.physical_connection_id = physical_connection_id
         # The region ID of the hosted connection.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group to which the hosted connection belongs.
         self.resource_group_id = resource_group_id
@@ -77103,11 +78305,11 @@ class ListVirtualPhysicalConnectionsResponseBodyVirtualPhysicalConnectionsTags(T
     ):
         # The key of tag N that is added to the resource. You can specify at most 20 tag keys. The tag key cannot be an empty string.
         # 
-        # It can be up to 64 characters in length and can contain digits, periods (.), underscores (\_), and hyphens (-). It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+        # It can be up to 64 characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.key = key
         # The value of tag N that is added to the resource. You can specify at most 20 tag values. The tag value can be an empty string.
         # 
-        # It can be up to 128 characters in length and can contain digits, periods (.), underscores (\_), and hyphens (-). It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+        # It can be up to 128 characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -77567,7 +78769,9 @@ class ListVpcEndpointServicesByEndUserRequest(TeaModel):
         self.owner_id = owner_id
         # The region ID of the gateway endpoint.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -77797,11 +79001,11 @@ class ListVpcGatewayEndpointsRequestTags(TeaModel):
     ):
         # The key of tag N added to the resource. You can specify at most 20 tag keys. It cannot be an empty string.
         # 
-        # The key cannot exceed 64 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). The key must start with a letter but cannot start with `aliyun` or `acs:`. The key cannot contain `http://` or `https://`.
+        # The key cannot exceed 64 characters in length, and can contain digits, periods (.), underscores (_), and hyphens (-). The key must start with a letter but cannot start with `aliyun` or `acs:`. The key cannot contain `http://` or `https://`.
         self.key = key
         # The value of tag N added to the resource. You can specify at most 20 tag values. The tag value can be an empty string.
         # 
-        # The tag value cannot exceed 128 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). The key must start with a letter but cannot start with `aliyun` or `acs:`. The key cannot contain `http://` or `https://`.
+        # The tag value cannot exceed 128 characters in length, and can contain digits, periods (.), underscores (_), and hyphens (-). The key must start with a letter but cannot start with `aliyun` or `acs:`. The key cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -77861,7 +79065,9 @@ class ListVpcGatewayEndpointsRequest(TeaModel):
         self.owner_id = owner_id
         # The region ID of the gateway endpoint.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group to which the gateway endpoint belongs.
         self.resource_group_id = resource_group_id
@@ -78015,7 +79221,7 @@ class ListVpcGatewayEndpointsResponseBodyEndpoints(TeaModel):
         self.endpoint_status = endpoint_status
         # The access policy for the cloud service.
         # 
-        # For more information about the syntax and structure of the access policy, see [Policy syntax and structure](~~93739~~).
+        # For more information about the syntax and structure of the access policy, see [Policy syntax and structure](https://help.aliyun.com/document_detail/93739.html).
         self.policy_document = policy_document
         # The ID of the resource group to which the gateway endpoint belongs.
         self.resource_group_id = resource_group_id
@@ -78230,7 +79436,9 @@ class ListVpnCertificateAssociationsRequest(TeaModel):
         self.next_token = next_token
         # The region ID of the VPN gateway.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The list of VPN gateway IDs.
         # 
@@ -78468,6 +79676,8 @@ class ModifyBgpGroupAttributeRequest(TeaModel):
         # The authentication key of the BGP group.
         self.auth_key = auth_key
         # The BGP group ID.
+        # 
+        # This parameter is required.
         self.bgp_group_id = bgp_group_id
         # Specifies whether to clear the secret key. Valid values:
         # 
@@ -78501,7 +79711,7 @@ class ModifyBgpGroupAttributeRequest(TeaModel):
         self.local_asn = local_asn
         # The BGP group name.
         # 
-        # The name must be 2 to 128 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+        # The name must be 2 to 128 characters in length, and can contain digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -78509,7 +79719,9 @@ class ModifyBgpGroupAttributeRequest(TeaModel):
         self.peer_asn = peer_asn
         # The region ID of the BGP group.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -78683,6 +79895,8 @@ class ModifyBgpPeerAttributeRequest(TeaModel):
         # The ID of the BGP group to which the BGP peer that you want to modify belongs.
         self.bgp_group_id = bgp_group_id
         # The ID of the BGP peer that you want to modify.
+        # 
+        # This parameter is required.
         self.bgp_peer_id = bgp_peer_id
         # The client token that is used to ensure the idempotence of the request.
         # 
@@ -78701,7 +79915,9 @@ class ModifyBgpPeerAttributeRequest(TeaModel):
         self.peer_ip_address = peer_ip_address
         # The region ID of the BGP group to which the BGP peer that you want to modify belongs.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -78848,16 +80064,20 @@ class ModifyCommonBandwidthPackageAttributeRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The ID of the EIP bandwidth plan.
+        # 
+        # This parameter is required.
         self.bandwidth_package_id = bandwidth_package_id
         # The description of the EIP bandwidth plan. The description must be 2 to 256 characters in length. It must start with a letter but cannot start with `http://` or `https://`.
         self.description = description
-        # The name of the EIP bandwidth plan. The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). It must start with a letter. It cannot start with `http://` or `https://`.
+        # The name of the EIP bandwidth plan. The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter. It cannot start with `http://` or `https://`.
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The ID of the region where the EIP bandwidth plan is created.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -78992,14 +80212,22 @@ class ModifyCommonBandwidthPackageIpBandwidthRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
+        # 
+        # This parameter is required.
         self.bandwidth = bandwidth
         # The ID of the Internet Shared Bandwidth instance.
+        # 
+        # This parameter is required.
         self.bandwidth_package_id = bandwidth_package_id
         # The ID of the EIP that is associated with the Internet Shared Bandwidth instance.
+        # 
+        # This parameter is required.
         self.eip_id = eip_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the Internet Shared Bandwidth instance. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # The region ID of the Internet Shared Bandwidth instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -79135,14 +80363,20 @@ class ModifyCommonBandwidthPackageSpecRequest(TeaModel):
         # The maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
         # 
         # Valid values: **1** to **1000**.
+        # 
+        # This parameter is required.
         self.bandwidth = bandwidth
         # The ID of the Internet Shared Bandwidth instance.
+        # 
+        # This parameter is required.
         self.bandwidth_package_id = bandwidth_package_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the Internet Shared Bandwidth instance.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -79285,6 +80519,8 @@ class ModifyCustomerGatewayAttributeRequest(TeaModel):
         # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
         # The ID of the customer gateway.
+        # 
+        # This parameter is required.
         self.customer_gateway_id = customer_gateway_id
         # The description of the customer gateway.
         # 
@@ -79298,7 +80534,9 @@ class ModifyCustomerGatewayAttributeRequest(TeaModel):
         self.owner_id = owner_id
         # The ID of the region where the customer gateway is deployed.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -79384,7 +80622,7 @@ class ModifyCustomerGatewayAttributeResponseBody(TeaModel):
         self.request_id = request_id
         # The ID of the resource group to which the customer gateway belongs.
         # 
-        # You can call the [ListResourceGroups](~~158855~~) operation to query resource groups.
+        # You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query resource groups.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -79486,6 +80724,8 @@ class ModifyEipAddressAttributeRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The ID of the pay-as-you-go EIP.
+        # 
+        # This parameter is required.
         self.allocation_id = allocation_id
         # The new maximum bandwidth of the EIP. Valid values:
         # 
@@ -79498,13 +80738,13 @@ class ModifyEipAddressAttributeRequest(TeaModel):
         self.description = description
         # The new name of the EIP.
         # 
-        # The name must be 1 to 128 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-).
+        # The name must be 1 to 128 characters in length, and can contain digits, periods (.), underscores (_), and hyphens (-).
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the EIP.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -79652,6 +80892,8 @@ class ModifyExpressCloudConnectionAttributeRequest(TeaModel):
         # Descriptions of ECC.
         self.description = description
         # The ID of the ECC instance.
+        # 
+        # This parameter is required.
         self.ecc_id = ecc_id
         # The name of the ECC instance.
         self.name = name
@@ -79660,6 +80902,8 @@ class ModifyExpressCloudConnectionAttributeRequest(TeaModel):
         # The on-premises IP address when the SAG device is connected to the cloud.
         self.pe_ip = pe_ip
         # The region ID of the ECC instance.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -79807,10 +81051,14 @@ class ModifyExpressCloudConnectionBandwidthRequest(TeaModel):
         # The bandwidth of the ECC instance.
         self.bandwidth = bandwidth
         # The ID of the ECC instance.
+        # 
+        # This parameter is required.
         self.ecc_id = ecc_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -80013,8 +81261,10 @@ class ModifyExpressConnectTrafficQosRequest(TeaModel):
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.qos_description = qos_description
+        # This parameter is required.
         self.qos_id = qos_id
         self.qos_name = qos_name
+        # This parameter is required.
         self.region_id = region_id
         self.remove_instance_list = remove_instance_list
         self.resource_owner_account = resource_owner_account
@@ -80178,10 +81428,13 @@ class ModifyExpressConnectTrafficQosQueueRequest(TeaModel):
         self.client_token = client_token
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # This parameter is required.
         self.qos_id = qos_id
         self.queue_description = queue_description
+        # This parameter is required.
         self.queue_id = queue_id
         self.queue_name = queue_name
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
 
@@ -80342,12 +81595,16 @@ class ModifyExpressConnectTrafficQosRuleRequest(TeaModel):
         self.owner_id = owner_id
         self.priority = priority
         self.protocol = protocol
+        # This parameter is required.
         self.qos_id = qos_id
+        # This parameter is required.
         self.queue_id = queue_id
+        # This parameter is required.
         self.region_id = region_id
         self.remarking_dscp = remarking_dscp
         self.resource_owner_account = resource_owner_account
         self.rule_description = rule_description
+        # This parameter is required.
         self.rule_id = rule_id
         self.rule_name = rule_name
         self.src_cidr = src_cidr
@@ -80538,6 +81795,8 @@ class ModifyFlowLogAttributeRequest(TeaModel):
         # The description must be 1 to 256 characters in length and cannot start with `http://` or `https://`.
         self.description = description
         # The ID of the flow log.
+        # 
+        # This parameter is required.
         self.flow_log_id = flow_log_id
         # The new name of the flow log.
         # 
@@ -80547,7 +81806,9 @@ class ModifyFlowLogAttributeRequest(TeaModel):
         self.owner_id = owner_id
         # The ID of the region where the flow log is created.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -80720,12 +81981,16 @@ class ModifyForwardEntryRequest(TeaModel):
         # *   The port that is accessed by external networks when you modify DNAT entries of VPC NAT gateways. Valid values: **1** to **65535**.
         self.external_port = external_port
         # The ID of the DNAT entry.
+        # 
+        # This parameter is required.
         self.forward_entry_id = forward_entry_id
         # The new name of the DNAT entry.
         # 
         # The name must be 2 to 128 characters in length. It must start with a letter but cannot start with `http://` or `https://`.
         self.forward_entry_name = forward_entry_name
         # The ID of the DNAT table to which the DNAT entry belongs.
+        # 
+        # This parameter is required.
         self.forward_table_id = forward_table_id
         # *   The private IP address of the ECS instance that uses DNAT entries to communicate with the Internet when you modify DNAT entries of Internet NAT gateways.
         # *   The private IP address that uses DNAT entries to communicate when you modify DNAT entries of VPC NAT gateways.
@@ -80748,7 +82013,9 @@ class ModifyForwardEntryRequest(TeaModel):
         self.port_break = port_break
         # The region ID of the NAT gateway.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -80939,12 +82206,16 @@ class ModifyFullNatEntryAttributeRequest(TeaModel):
         # You can leave this parameter empty or enter a description. If you enter a description, the description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
         self.full_nat_entry_description = full_nat_entry_description
         # The ID of the FULLNAT entry to be modified.
+        # 
+        # This parameter is required.
         self.full_nat_entry_id = full_nat_entry_id
         # The new name of the FULLNAT entry.
         # 
         # The name must be 2 to 128 characters in length. It must start with a letter but cannot start with `http://` or `https://`.
         self.full_nat_entry_name = full_nat_entry_name
         # The ID of the FULLNAT table to be modified.
+        # 
+        # This parameter is required.
         self.full_nat_table_id = full_nat_table_id
         # The protocol of the packets that are forwarded by the port. Valid values:
         # 
@@ -80961,7 +82232,9 @@ class ModifyFullNatEntryAttributeRequest(TeaModel):
         self.owner_id = owner_id
         # The region ID of the Virtual Private Cloud (VPC) NAT gateway to which the FULLNAT entry to be modified belongs.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -81136,16 +82409,20 @@ class ModifyGlobalAccelerationInstanceAttributesRequest(TeaModel):
         # The description must be 2 to 256 characters in length. It must start with a letter but cannot start with `http://` or `https://`.
         self.description = description
         # The ID of the GA instance.
+        # 
+        # This parameter is required.
         self.global_acceleration_instance_id = global_acceleration_instance_id
         # The name of the GA instance.
         # 
-        # The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). It cannot start with `http://` or `https://`.
+        # The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It cannot start with `http://` or `https://`.
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the GA instance.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -81279,14 +82556,20 @@ class ModifyGlobalAccelerationInstanceSpecRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The maximum bandwidth of the GA instance. Unit: Mbit/s. Set the value to **10**.
+        # 
+        # This parameter is required.
         self.bandwidth = bandwidth
         # The ID of the GA instance.
+        # 
+        # This parameter is required.
         self.global_acceleration_instance_id = global_acceleration_instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the GA instance.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -81428,6 +82711,8 @@ class ModifyHaVipAttributeRequest(TeaModel):
         # The description must be 1 to 256 characters in length and cannot start with `http://` or `https://`.
         self.description = description
         # The ID of the HAVIP.
+        # 
+        # This parameter is required.
         self.ha_vip_id = ha_vip_id
         # The name of the HAVIP.
         # 
@@ -81437,7 +82722,9 @@ class ModifyHaVipAttributeRequest(TeaModel):
         self.owner_id = owner_id
         # The ID of the region to which the HAVIP belongs.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -81576,8 +82863,12 @@ class ModifyIPv6TranslatorAclAttributeRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The ID of the ACL that you want to modify.
+        # 
+        # This parameter is required.
         self.acl_id = acl_id
         # The name of the ACL.
+        # 
+        # This parameter is required.
         self.acl_name = acl_name
         # The client token that is used to ensure the idempotence of the request.
         # 
@@ -81586,6 +82877,8 @@ class ModifyIPv6TranslatorAclAttributeRequest(TeaModel):
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region of the IPv6 Translation Service instance. You can call the DescribeRegions operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -81721,15 +83014,23 @@ class ModifyIPv6TranslatorAclListEntryRequest(TeaModel):
     ):
         # The remarks of the ACL rule.
         # 
-        # It must be 2 to 100 characters in length, and can contain digits, underscores (\_), and hyphens (-). It must start with a letter.
+        # It must be 2 to 100 characters in length, and can contain digits, underscores (_), and hyphens (-). It must start with a letter.
+        # 
+        # This parameter is required.
         self.acl_entry_comment = acl_entry_comment
         # The ID of the ACL rule to which the IP entry belongs.
+        # 
+        # This parameter is required.
         self.acl_entry_id = acl_entry_id
         # The ID of the ACL to which the IP entry belongs.
+        # 
+        # This parameter is required.
         self.acl_id = acl_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region of the ACL.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -81868,15 +83169,19 @@ class ModifyIPv6TranslatorAttributeRequest(TeaModel):
         # 
         # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         self.client_token = client_token
-        # The description of IPv6 Translation Service. This parameter is empty by default. It must be 2 to 100 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). It cannot start with http:// or [https://](https://。).
+        # The description of IPv6 Translation Service. This parameter is empty by default. It must be 2 to 100 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It cannot start with http:// or [https://](https://。).
         self.description = description
         # The ID of the IPv6 Translation Service instance.
+        # 
+        # This parameter is required.
         self.ipv_6translator_id = ipv_6translator_id
-        # The name of the IPv6 Translation Service instance. The default name is the instance ID. It must be 2 to 100 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). It cannot start with http:// or [https://](https://。).
+        # The name of the IPv6 Translation Service instance. The default name is the instance ID. It must be 2 to 100 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It cannot start with http:// or [https://](https://。).
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region of the IPv6 Translation Service instance. You can call the **DescribeRegions** operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -82021,16 +83326,22 @@ class ModifyIPv6TranslatorBandwidthRequest(TeaModel):
         # *   **false** (default)
         self.auto_pay = auto_pay
         # The maximum bandwidth of the IPv6 Translation Service instance. Valid values: **1** to **200**. Unit: Mbit/s.
+        # 
+        # This parameter is required.
         self.bandwidth = bandwidth
         # The client token that is used to ensure the idempotence of the request.
         # 
         # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         self.client_token = client_token
         # The ID of the IPv6 Translation Service instance.
+        # 
+        # This parameter is required.
         self.ipv_6translator_id = ipv_6translator_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region of the IPv6 Translation Service instance. You can call the **DescribeRegions** operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -82208,15 +83519,19 @@ class ModifyIPv6TranslatorEntryRequest(TeaModel):
         # 
         # > The sum of maximum bandwidth values specified in all IPv6 entries cannot exceed the maximum bandwidth supported by the instance.
         self.entry_bandwidth = entry_bandwidth
-        # The description of the IPv6 mapping entry. It must be 2 to 100 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). It must start with a letter. It cannot start with http:// or [https://](https://。).
+        # The description of the IPv6 mapping entry. It must be 2 to 100 characters in length, and can contain digits, periods (.), underscores (_), and hyphens (-). It must start with a letter. It cannot start with http:// or [https://](https://。).
         self.entry_description = entry_description
-        # The name of the IPv6 mapping entry. It must be 2 to 100 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). It must start with a letter. It cannot start with http:// or [https://](https://。).
+        # The name of the IPv6 mapping entry. It must be 2 to 100 characters in length, and can contain digits, periods (.), underscores (_), and hyphens (-). It must start with a letter. It cannot start with http:// or [https://](https://。).
         self.entry_name = entry_name
         # The ID of the IPv6 mapping entry.
+        # 
+        # This parameter is required.
         self.ipv_6translator_entry_id = ipv_6translator_entry_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region of the IPv6 Translation Service instance. You can call the DescribeRegions operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -82389,17 +83704,21 @@ class ModifyIpv6AddressAttributeRequest(TeaModel):
     ):
         # The description of the IPv6 address.
         # 
-        # It must be 2 to 256 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). It must start with a letter. The name must start with a letter and cannot start with `http://` or `https://`.
+        # It must be 2 to 256 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter. The name must start with a letter and cannot start with `http://` or `https://`.
         self.description = description
         # The ID of the IPv6 address.
+        # 
+        # This parameter is required.
         self.ipv_6address_id = ipv_6address_id
         # The name of the IPv6 address.
         # 
-        # The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter. The name must start with a letter and cannot start with `http://` or `https://`.
+        # The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter. The name must start with a letter and cannot start with `http://` or `https://`.
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the IPv6 address. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # The region ID of the IPv6 address. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -82536,14 +83855,18 @@ class ModifyIpv6GatewayAttributeRequest(TeaModel):
         # The description of the IPv6 gateway.
         self.description = description
         # The ID of the IPv6 gateway that you want to modify.
+        # 
+        # This parameter is required.
         self.ipv_6gateway_id = ipv_6gateway_id
         # The name of the IPv6 gateway.
         # 
-        # It must be 2 to 256 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). It must start with a letter. The name must start with a letter and cannot start with `http://` or `https://`.
+        # It must be 2 to 256 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter. The name must start with a letter and cannot start with `http://` or `https://`.
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the IPv6 gateway. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # The region ID of the IPv6 gateway. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -82682,6 +84005,8 @@ class ModifyIpv6InternetBandwidthRequest(TeaModel):
         # 
         # *   If the billing method is pay-by-data-transfer, valid values are **1** to **1000**.
         # *   If the billing method is pay-by-bandwidth, valid values are **1** to **2000**.
+        # 
+        # This parameter is required.
         self.bandwidth = bandwidth
         # The client token that is used to ensure the idempotence of the request.
         # 
@@ -82697,7 +84022,9 @@ class ModifyIpv6InternetBandwidthRequest(TeaModel):
         self.ipv_6internet_bandwidth_id = ipv_6internet_bandwidth_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region where the IPv6 gateway is deployed. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # The ID of the region where the IPv6 gateway is deployed. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -82882,7 +84209,7 @@ class ModifyNatGatewayAttributeRequest(TeaModel):
         # 
         # **Description**\
         # 
-        # *   If EipBindMode is set to MULTI_BINDED when the NAT gateway is created, you can change the value of this parameter from **MULTI_BINDED** to **NAT**. If EipBindMode is set to NAT when the NAT gateway is created, you cannot change the value of this parameter from **NAT** to **MULTI_BINDED**. For more information about **MULTI_BINDED**, see [CreateNatGateway](~~120219~~).
+        # *   If EipBindMode is set to MULTI_BINDED when the NAT gateway is created, you can change the value of this parameter from **MULTI_BINDED** to **NAT**. If EipBindMode is set to NAT when the NAT gateway is created, you cannot change the value of this parameter from **NAT** to **MULTI_BINDED**. For more information about **MULTI_BINDED**, see [CreateNatGateway](https://help.aliyun.com/document_detail/120219.html).
         # 
         # *   When the mode in which the NAT gateway is associated with an EIP is being changed, a transient connection that lasts a few seconds may occur. If the number of EIPs with which the NAT gateway is associated increases, the transient connection lasts longer. You can change the mode only for a NAT gateway that is associated with up to five EIPs. We recommend that you change the mode during off-peak hours.
         # *   After the mode is changed to **NAT**, the Internet NAT gateway is compatible with the IPv4 gateway. However, if you associate an EIP with the NAT gateway, the EIP occupies one private IP address on the vSwitch of the NAT gateway. Make sure that the vSwitch has sufficient private IP addresses. Otherwise, the EIP fails to be associated with the NAT gateway.
@@ -82899,12 +84226,16 @@ class ModifyNatGatewayAttributeRequest(TeaModel):
         # The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
         self.name = name
         # The ID of the NAT gateway.
+        # 
+        # This parameter is required.
         self.nat_gateway_id = nat_gateway_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the NAT gateway.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -83001,7 +84332,7 @@ class ModifyNatGatewayAttributeShrinkRequest(TeaModel):
         # 
         # **Description**\
         # 
-        # *   If EipBindMode is set to MULTI_BINDED when the NAT gateway is created, you can change the value of this parameter from **MULTI_BINDED** to **NAT**. If EipBindMode is set to NAT when the NAT gateway is created, you cannot change the value of this parameter from **NAT** to **MULTI_BINDED**. For more information about **MULTI_BINDED**, see [CreateNatGateway](~~120219~~).
+        # *   If EipBindMode is set to MULTI_BINDED when the NAT gateway is created, you can change the value of this parameter from **MULTI_BINDED** to **NAT**. If EipBindMode is set to NAT when the NAT gateway is created, you cannot change the value of this parameter from **NAT** to **MULTI_BINDED**. For more information about **MULTI_BINDED**, see [CreateNatGateway](https://help.aliyun.com/document_detail/120219.html).
         # 
         # *   When the mode in which the NAT gateway is associated with an EIP is being changed, a transient connection that lasts a few seconds may occur. If the number of EIPs with which the NAT gateway is associated increases, the transient connection lasts longer. You can change the mode only for a NAT gateway that is associated with up to five EIPs. We recommend that you change the mode during off-peak hours.
         # *   After the mode is changed to **NAT**, the Internet NAT gateway is compatible with the IPv4 gateway. However, if you associate an EIP with the NAT gateway, the EIP occupies one private IP address on the vSwitch of the NAT gateway. Make sure that the vSwitch has sufficient private IP addresses. Otherwise, the EIP fails to be associated with the NAT gateway.
@@ -83018,12 +84349,16 @@ class ModifyNatGatewayAttributeShrinkRequest(TeaModel):
         # The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
         self.name = name
         # The ID of the NAT gateway.
+        # 
+        # This parameter is required.
         self.nat_gateway_id = nat_gateway_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the NAT gateway.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -83184,12 +84519,16 @@ class ModifyNatGatewaySpecRequest(TeaModel):
         # You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters.
         self.client_token = client_token
         # The ID of the Internet NAT gateway that you want to upgrade.
+        # 
+        # This parameter is required.
         self.nat_gateway_id = nat_gateway_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The ID of the region where the Internet NAT gateway is deployed.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -83198,6 +84537,8 @@ class ModifyNatGatewaySpecRequest(TeaModel):
         # *   **Small**: small
         # *   **Middle**: medium
         # *   **Large**: large
+        # 
+        # This parameter is required.
         self.spec = spec
 
     def validate(self):
@@ -83351,16 +84692,20 @@ class ModifyNatIpAttributeRequest(TeaModel):
         # The description must be 2 to 256 characters in length and start with a letter. The description cannot start with `http://` or `https://`.
         self.nat_ip_description = nat_ip_description
         # The ID of the NAT IP address that you want to modify.
+        # 
+        # This parameter is required.
         self.nat_ip_id = nat_ip_id
         # The name of the NAT IP address that you want to modify.
         # 
-        # The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). It must start with a letter. The name must start with a letter and cannot start with `http://` or `https://`.
+        # The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter. The name must start with a letter and cannot start with `http://` or `https://`.
         self.nat_ip_name = nat_ip_name
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the NAT gateway to which the NAT IP address that you want to modify belongs.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -83517,8 +84862,12 @@ class ModifyNatIpCidrAttributeRequest(TeaModel):
         # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
         # The ID of the Virtual Private Cloud (VPC) NAT gateway to which the NAT CIDR block belongs.
+        # 
+        # This parameter is required.
         self.nat_gateway_id = nat_gateway_id
         # The NAT CIDR block whose name and description you want to modify.
+        # 
+        # This parameter is required.
         self.nat_ip_cidr = nat_ip_cidr
         # The new description of the NAT CIDR block.
         # 
@@ -83526,13 +84875,15 @@ class ModifyNatIpCidrAttributeRequest(TeaModel):
         self.nat_ip_cidr_description = nat_ip_cidr_description
         # The new name of the NAT CIDR block.
         # 
-        # The name must be 2 to 128 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). It must start with a letter.
+        # The name must be 2 to 128 characters in length, and can contain digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
         self.nat_ip_cidr_name = nat_ip_cidr_name
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the NAT gateway to which the NAT CIDR block belongs.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -83696,6 +85047,8 @@ class ModifyNetworkAclAttributesRequest(TeaModel):
         # *   **false**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
         # The ID of the network ACL.
+        # 
+        # This parameter is required.
         self.network_acl_id = network_acl_id
         # The name of the network ACL.
         # 
@@ -83705,7 +85058,9 @@ class ModifyNetworkAclAttributesRequest(TeaModel):
         self.owner_id = owner_id
         # The region ID of the network ACL.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -83877,13 +85232,15 @@ class ModifyPhysicalConnectionAttributeRequest(TeaModel):
         self.line_operator = line_operator
         # The name of the Express Connect circuit.
         # 
-        # The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). It must start with a letter but cannot start with `http://` or `https://`.
+        # The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter but cannot start with `http://` or `https://`.
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The geographical location of the data center.
         self.peer_location = peer_location
         # The ID of the Express Connect circuit.
+        # 
+        # This parameter is required.
         self.physical_connection_id = physical_connection_id
         # The port type of the Express Connect circuit. Valid values:
         # 
@@ -83901,7 +85258,9 @@ class ModifyPhysicalConnectionAttributeRequest(TeaModel):
         self.redundant_physical_connection_id = redundant_physical_connection_id
         # The region ID of the Express Connect circuit.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -84079,11 +85438,15 @@ class ModifyRouteEntryRequest(TeaModel):
         self.owner_id = owner_id
         # The ID of the region to which the route belongs.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the custom route entry.
+        # 
+        # This parameter is required.
         self.route_entry_id = route_entry_id
         # The name of the route entry.
         # 
@@ -84235,11 +85598,15 @@ class ModifyRouteTableAttributesRequest(TeaModel):
         self.owner_id = owner_id
         # The region ID of the virtual private cloud (VPC) to which the custom route table belongs.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the route table.
+        # 
+        # This parameter is required.
         self.route_table_id = route_table_id
         # The name of the route table.
         # 
@@ -84408,7 +85775,7 @@ class ModifyRouterInterfaceAttributeRequest(TeaModel):
         self.health_check_target_ip = health_check_target_ip
         # The name of the router interface.
         # 
-        # The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). The name must start with a letter.
+        # The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
         self.name = name
         # The ID of the peer router interface.
         self.opposite_interface_id = opposite_interface_id
@@ -84424,11 +85791,15 @@ class ModifyRouterInterfaceAttributeRequest(TeaModel):
         self.owner_id = owner_id
         # The region ID of the router interface.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the router interface.
+        # 
+        # This parameter is required.
         self.router_interface_id = router_interface_id
 
     def validate(self):
@@ -84602,11 +85973,15 @@ class ModifyRouterInterfaceSpecRequest(TeaModel):
         self.owner_id = owner_id
         # The ID of the region where the router interface is deployed.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the router interface.
+        # 
+        # This parameter is required.
         self.router_interface_id = router_interface_id
         # The specification of the router interface. Valid specifications and bandwidth values:
         # 
@@ -84624,6 +85999,8 @@ class ModifyRouterInterfaceSpecRequest(TeaModel):
         # *   **Xlarge.1**: 10,000 Mbit/s
         # 
         # >  When **Role** is set to **AcceptingSide**, set **Spec** to **Negative**.
+        # 
+        # This parameter is required.
         self.spec = spec
 
     def validate(self):
@@ -84789,11 +86166,15 @@ class ModifySnatEntryRequest(TeaModel):
         self.owner_id = owner_id
         # The region ID of the NAT gateway.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to obtain the region ID.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to obtain the region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the SNAT entry that you want to modify.
+        # 
+        # This parameter is required.
         self.snat_entry_id = snat_entry_id
         # The name of the SNAT entry.
         # 
@@ -84806,6 +86187,8 @@ class ModifySnatEntryRequest(TeaModel):
         # *   When you modify an SNAT entry of a VPC NAT gateway, this parameter specifies the NAT IP address in the SNAT entry.
         self.snat_ip = snat_ip
         # The ID of the SNAT table to which the SNAT entry belongs.
+        # 
+        # This parameter is required.
         self.snat_table_id = snat_table_id
 
     def validate(self):
@@ -84963,11 +86346,15 @@ class ModifySslVpnClientCertRequest(TeaModel):
         self.owner_id = owner_id
         # The ID of the region where the SSL client certificate is created.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the SSL-VPN client certificate.
+        # 
+        # This parameter is required.
         self.ssl_vpn_client_cert_id = ssl_vpn_client_cert_id
 
     def validate(self):
@@ -85109,6 +86496,7 @@ class ModifySslVpnServerRequest(TeaModel):
         client_token: str = None,
         compress: bool = None,
         enable_multi_factor_auth: bool = None,
+        idaa_sapplication_id: str = None,
         idaa_sinstance_id: str = None,
         idaa_sregion_id: str = None,
         local_subnet: str = None,
@@ -85150,6 +86538,7 @@ class ModifySslVpnServerRequest(TeaModel):
         # > *   Two-factor authentication supports only IDaaS instances of earlier versions. If you do not have and cannot create IDaaS instances of earlier versions, you cannot enable two-factor authentication.
         # > *   For existing SSL servers, if two-factor authentication is already enabled, you can continue to use two-factor authentication.
         self.enable_multi_factor_auth = enable_multi_factor_auth
+        self.idaa_sapplication_id = idaa_sapplication_id
         # The ID of the Identity as a Service (IDaaS) instance.
         self.idaa_sinstance_id = idaa_sinstance_id
         # The ID of the region where the IDaaS instance is created.
@@ -85173,11 +86562,15 @@ class ModifySslVpnServerRequest(TeaModel):
         self.proto = proto
         # The region ID of the VPN gateway.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the SSL server.
+        # 
+        # This parameter is required.
         self.ssl_vpn_server_id = ssl_vpn_server_id
 
     def validate(self):
@@ -85199,6 +86592,8 @@ class ModifySslVpnServerRequest(TeaModel):
             result['Compress'] = self.compress
         if self.enable_multi_factor_auth is not None:
             result['EnableMultiFactorAuth'] = self.enable_multi_factor_auth
+        if self.idaa_sapplication_id is not None:
+            result['IDaaSApplicationId'] = self.idaa_sapplication_id
         if self.idaa_sinstance_id is not None:
             result['IDaaSInstanceId'] = self.idaa_sinstance_id
         if self.idaa_sregion_id is not None:
@@ -85237,6 +86632,8 @@ class ModifySslVpnServerRequest(TeaModel):
             self.compress = m.get('Compress')
         if m.get('EnableMultiFactorAuth') is not None:
             self.enable_multi_factor_auth = m.get('EnableMultiFactorAuth')
+        if m.get('IDaaSApplicationId') is not None:
+            self.idaa_sapplication_id = m.get('IDaaSApplicationId')
         if m.get('IDaaSInstanceId') is not None:
             self.idaa_sinstance_id = m.get('IDaaSInstanceId')
         if m.get('IDaaSRegionId') is not None:
@@ -85273,7 +86670,9 @@ class ModifySslVpnServerResponseBody(TeaModel):
         connections: int = None,
         create_time: int = None,
         enable_multi_factor_auth: bool = None,
+        idaa_sapplication_id: str = None,
         idaa_sinstance_id: str = None,
+        idaa_sinstance_version: str = None,
         internet_ip: str = None,
         local_subnet: str = None,
         max_connections: int = None,
@@ -85301,8 +86700,10 @@ class ModifySslVpnServerResponseBody(TeaModel):
         # *   **true**\
         # *   **false** (default)
         self.enable_multi_factor_auth = enable_multi_factor_auth
+        self.idaa_sapplication_id = idaa_sapplication_id
         # The ID of the IDaaS instance.
         self.idaa_sinstance_id = idaa_sinstance_id
+        self.idaa_sinstance_version = idaa_sinstance_version
         # The public IP address.
         self.internet_ip = internet_ip
         # The CIDR block of the client.
@@ -85321,7 +86722,7 @@ class ModifySslVpnServerResponseBody(TeaModel):
         self.request_id = request_id
         # The ID of the resource group to which the SSL server belongs.
         # 
-        # The SSL server and the VPN gateway associated with the SSL server belong to the same resource group. You can call the [ListResourceGroups](~~158855~~) operation to query resource groups.
+        # The SSL server and the VPN gateway associated with the SSL server belong to the same resource group. You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query resource groups.
         self.resource_group_id = resource_group_id
         # The ID of the SSL server.
         self.ssl_vpn_server_id = ssl_vpn_server_id
@@ -85349,8 +86750,12 @@ class ModifySslVpnServerResponseBody(TeaModel):
             result['CreateTime'] = self.create_time
         if self.enable_multi_factor_auth is not None:
             result['EnableMultiFactorAuth'] = self.enable_multi_factor_auth
+        if self.idaa_sapplication_id is not None:
+            result['IDaaSApplicationId'] = self.idaa_sapplication_id
         if self.idaa_sinstance_id is not None:
             result['IDaaSInstanceId'] = self.idaa_sinstance_id
+        if self.idaa_sinstance_version is not None:
+            result['IDaaSInstanceVersion'] = self.idaa_sinstance_version
         if self.internet_ip is not None:
             result['InternetIp'] = self.internet_ip
         if self.local_subnet is not None:
@@ -85389,8 +86794,12 @@ class ModifySslVpnServerResponseBody(TeaModel):
             self.create_time = m.get('CreateTime')
         if m.get('EnableMultiFactorAuth') is not None:
             self.enable_multi_factor_auth = m.get('EnableMultiFactorAuth')
+        if m.get('IDaaSApplicationId') is not None:
+            self.idaa_sapplication_id = m.get('IDaaSApplicationId')
         if m.get('IDaaSInstanceId') is not None:
             self.idaa_sinstance_id = m.get('IDaaSInstanceId')
+        if m.get('IDaaSInstanceVersion') is not None:
+            self.idaa_sinstance_version = m.get('IDaaSInstanceVersion')
         if m.get('InternetIp') is not None:
             self.internet_ip = m.get('InternetIp')
         if m.get('LocalSubnet') is not None:
@@ -85539,8 +86948,8 @@ class ModifyTunnelAttributeRequestTunnelOptionsSpecificationTunnelIkeConfig(TeaM
         self.local_id = local_id
         # The pre-shared key that is used to verify identities between the tunnel and peer.
         # 
-        # *   It must be 1 to 100 characters in length, and can contain letters, digits, and the following characters: ``~!`@#$%^&*()_-+={}[]|;:\",.<>/?``
-        # *   If you do not specify a pre-shared key, the system generates a random 16-character string as the pre-shared key. You can call the [DescribeVpnConnection](~~120374~~) operation to query the pre-shared key that is generated by the system.
+        # *   It must be 1 to 100 characters in length, and can contain letters, digits, and the following characters: ``~!`@#$%^&*()_-+={}[]|;:\\",.<>/?``
+        # *   If you do not specify a pre-shared key, the system generates a random 16-character string as the pre-shared key. You can call the [DescribeVpnConnection](https://help.aliyun.com/document_detail/120374.html) operation to query the pre-shared key that is generated by the system.
         # 
         # >  The pre-shared key that is configured for the tunnel and the tunnel peer must be the same. Otherwise, the system cannot establish the tunnel.
         self.psk = psk
@@ -85678,7 +87087,7 @@ class ModifyTunnelAttributeRequestTunnelOptionsSpecification(TeaModel):
         self.remote_ca_certificate = remote_ca_certificate
         # The Border Gateway Protocol (BGP) configurations of the tunnel.
         # 
-        # If the BGP feature is not enabled for the tunnel, you must call the [ModifyVpnConnectionAttribute](~~120381~~) operation to enable the BGP feature for the tunnel and configure BGP.
+        # If the BGP feature is not enabled for the tunnel, you must call the [ModifyVpnConnectionAttribute](https://help.aliyun.com/document_detail/120381.html) operation to enable the BGP feature for the tunnel and configure BGP.
         self.tunnel_bgp_config = tunnel_bgp_config
         # The configurations of IKE Phase 1.
         self.tunnel_ike_config = tunnel_ike_config
@@ -85756,15 +87165,19 @@ class ModifyTunnelAttributeRequest(TeaModel):
         self.owner_id = owner_id
         # The ID of the region in which the IPsec connection is established.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the region ID.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The tunnel ID.
+        # 
+        # This parameter is required.
         self.tunnel_id = tunnel_id
         # The tunnel configurations.
         self.tunnel_options_specification = tunnel_options_specification
         # The ID of the IPsec connection.
+        # 
+        # This parameter is required.
         self.vpn_connection_id = vpn_connection_id
 
     def validate(self):
@@ -86222,11 +87635,13 @@ class ModifyVRouterAttributeRequest(TeaModel):
         self.owner_id = owner_id
         # The region ID of the vRouter.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The vRouter ID.
+        # 
+        # This parameter is required.
         self.vrouter_id = vrouter_id
         # The name of the vRouter.
         # 
@@ -86380,11 +87795,13 @@ class ModifyVSwitchAttributeRequest(TeaModel):
         self.ipv_6cidr_block = ipv_6cidr_block
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region where the vSwitch is deployed. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # The ID of the region where the vSwitch is deployed. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the vSwitch.
+        # 
+        # This parameter is required.
         self.v_switch_id = v_switch_id
         # The new name for the vSwitch.
         # 
@@ -86540,7 +87957,9 @@ class ModifyVSwitchCidrReservationAttributeRequest(TeaModel):
         self.owner_id = owner_id
         # The ID of the region where the vSwitch is deployed.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -86549,10 +87968,12 @@ class ModifyVSwitchCidrReservationAttributeRequest(TeaModel):
         # The description must be 2 to 256 characters in length. It must start with a letter and cannot start with `http://` or `https://`.
         self.v_switch_cidr_reservation_description = v_switch_cidr_reservation_description
         # The ID of the reserved CIDR block.
+        # 
+        # This parameter is required.
         self.v_switch_cidr_reservation_id = v_switch_cidr_reservation_id
         # The new name of the reserved CIDR block.
         # 
-        # The name must be 2 to 128 characters in length and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
+        # The name must be 2 to 128 characters in length and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
         self.v_switch_cidr_reservation_name = v_switch_cidr_reservation_name
 
     def validate(self):
@@ -86697,26 +88118,38 @@ class ModifyVcoRouteEntryWeightRequest(TeaModel):
         # 
         # *   **0**: a low priority
         # *   **100**: a high priority
+        # 
+        # This parameter is required.
         self.new_weight = new_weight
         # The next hop of the destination-based route that you want to modify.
+        # 
+        # This parameter is required.
         self.next_hop = next_hop
         # The tunneling protocol. Set the value to **Ipsec**, which specifies the IPsec tunneling protocol.
         self.overlay_mode = overlay_mode
         self.owner_account = owner_account
         # The ID of the region where the IPsec-VPN connection is established.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The destination CIDR block of the destination-based route that you want to modify.
+        # 
+        # This parameter is required.
         self.route_dest = route_dest
         # The ID of the IPsec-VPN connection.
+        # 
+        # This parameter is required.
         self.vpn_connection_id = vpn_connection_id
         # The current weight of the destination-based route that you want to modify. Valid values:
         # 
         # *   **0**: a low priority
         # *   **100**: a high priority
+        # 
+        # This parameter is required.
         self.weight = weight
 
     def validate(self):
@@ -86921,7 +88354,7 @@ class ModifyVirtualBorderRouterAttributeRequest(TeaModel):
         self.min_tx_interval = min_tx_interval
         # The name of the VBR.
         # 
-        # The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). The name must start with a letter. It cannot start with `http://` or `https://`.
+        # The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter. It cannot start with `http://` or `https://`.
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -86944,12 +88377,16 @@ class ModifyVirtualBorderRouterAttributeRequest(TeaModel):
         self.peering_subnet_mask = peering_subnet_mask
         # The region ID of the VBR.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.sitelink_enable = sitelink_enable
         # The VBR ID.
+        # 
+        # This parameter is required.
         self.vbr_id = vbr_id
         # The VLAN ID of the VBR. Valid values: **0 to 2999**.
         # 
@@ -87183,11 +88620,13 @@ class ModifyVpcAttributeRequest(TeaModel):
         self.owner_id = owner_id
         # The region ID of the VPC.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the VPC that you want to modify.
+        # 
+        # This parameter is required.
         self.vpc_id = vpc_id
         # The new name of the VPC.
         # 
@@ -87440,12 +88879,16 @@ class ModifyVpcPrefixListRequest(TeaModel):
         # The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
         self.prefix_list_description = prefix_list_description
         # The ID of the prefix list.
+        # 
+        # This parameter is required.
         self.prefix_list_id = prefix_list_id
         # The new name of the prefix list.
         # 
         # The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
         self.prefix_list_name = prefix_list_name
         # The region ID of the prefix list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The information about CIDR blocks to be deleted to the prefix list.
         self.remove_prefix_list_entry = remove_prefix_list_entry
@@ -87659,7 +89102,7 @@ class ModifyVpnAttachmentAttributeRequest(TeaModel):
         # 
         # *   **LocalBgpIp:** the BGP IP address on the Alibaba Cloud side. This IP address must fall within the CIDR block of the IPsec tunnel.
         # 
-        # > - Before you configure BGP, we recommend that you learn how BGP dynamic routing works and the limits of using BGP dynamic routing. For more information, see [BGP dynamic routing ](~~170235~~).
+        # > - Before you configure BGP, we recommend that you learn how BGP dynamic routing works and the limits of using BGP dynamic routing. For more information, see [BGP dynamic routing ](https://help.aliyun.com/document_detail/170235.html).
         # > - We recommend that you use a private ASN to establish a connection with Alibaba Cloud over BGP. Refer to the relevant documentation for the private ASN range.
         self.bgp_config = bgp_config
         # The client token that is used to ensure the idempotence of the request.
@@ -87709,8 +89152,8 @@ class ModifyVpnAttachmentAttributeRequest(TeaModel):
         # 
         # *   **IkeConfig.Psk**: The pre-shared key that is used for authentication between the VPN gateway and the data center.
         # 
-        #     *   The pre-shared key must be 1 to 100 characters in length and can contain letters, digits, and the following characters: ``~ ! ` @ # $ % ^ & * () _ - + = {} [] | ; : \" , . < > / ?``
-        #     *   If you do not specify a pre-shared key, the system generates a random 16-character string as the pre-shared key. You can call the [DescribeVpnConnection](~~120374~~) operation to query the pre-shared key that is generated by the system.
+        #     *   The pre-shared key must be 1 to 100 characters in length and can contain letters, digits, and the following characters: ``~ ! ` @ # $ % ^ & * () _ - + = {} [] | ; : \\" , . < > / ?``
+        #     *   If you do not specify a pre-shared key, the system generates a random 16-character string as the pre-shared key. You can call the [DescribeVpnConnection](https://help.aliyun.com/document_detail/120374.html) operation to query the pre-shared key that is generated by the system.
         # 
         #     >The pre-shared key of the IPsec-VPN connection must be the same as the authentication key of the data center. Otherwise, you cannot establish a connection between the data center and the VPN gateway.
         # 
@@ -87758,7 +89201,9 @@ class ModifyVpnAttachmentAttributeRequest(TeaModel):
         self.owner_account = owner_account
         # The ID of the region in which the IPsec-VPN connection is established.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The peer CA certificate when a ShangMi (SM) VPN gateway is used to create the IPsec-VPN connection.
         self.remote_ca_cert = remote_ca_cert
@@ -87774,6 +89219,8 @@ class ModifyVpnAttachmentAttributeRequest(TeaModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the IPsec-VPN connection.
+        # 
+        # This parameter is required.
         self.vpn_connection_id = vpn_connection_id
 
     def validate(self):
@@ -88228,7 +89675,7 @@ class ModifyVpnAttachmentAttributeResponseBody(TeaModel):
         self.request_id = request_id
         # The ID of the resource group to which the IPsec-VPN connection belongs.
         # 
-        # You can call the [ListResourceGroups](~~158855~~) operation to query resource groups.
+        # You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query resource groups.
         self.resource_group_id = resource_group_id
         # The bandwidth specification of the IPsec-VPN connection.
         # 
@@ -88416,7 +89863,7 @@ class ModifyVpnConnectionAttributeRequestTunnelOptionsSpecificationTunnelBgpConf
         # The ASN of the tunnel on the Alibaba Cloud side. Valid values: **1** to **4294967295**. Default value: **45104**.
         # 
         # > - You can specify or modify this parameter if BGP is enabled for the IPsec-VPN connection (**EnableTunnelsBgp** is set to **true**).
-        # > - Before you configure BGP, we recommend that you learn about how BGP works and its limits. For more information, see [VPN Gateway supports BGP dynamic routing](~~170235~~).
+        # > - Before you configure BGP, we recommend that you learn about how BGP works and its limits. For more information, see [VPN Gateway supports BGP dynamic routing](https://help.aliyun.com/document_detail/170235.html).
         # > - We recommend that you use a private ASN to establish a connection with Alibaba Cloud over BGP. For information about the range of private ASNs, see the relevant documentation.
         self.local_asn = local_asn
         # The BGP IP address of the tunnel on the Alibaba Cloud side. The address is an IP address that falls within the BGP CIDR block range.
@@ -88494,8 +89941,8 @@ class ModifyVpnConnectionAttributeRequestTunnelOptionsSpecificationTunnelIkeConf
         self.local_id = local_id
         # The pre-shared key, which is used for identity authentication between the tunnel and the tunnel peer.
         # 
-        # *   The key must be 1 to 100 characters in length and can contain digits, letters, and the following characters: ``~!\`@#$%^&*()_-+={}[]|;:\",.<>/?``
-        # *   If you do not specify a pre-shared key, the system generates a random 16-character string as the pre-shared key. You can call the [DescribeVpnConnection](~~448847~~) operation to query the pre-shared key that is generated by the system.
+        # *   The key must be 1 to 100 characters in length and can contain digits, letters, and the following characters: ``~!\\`@#$%^&*()_-+={}[]|;:\\",.<>/?``
+        # *   If you do not specify a pre-shared key, the system generates a random 16-character string as the pre-shared key. You can call the [DescribeVpnConnection](https://help.aliyun.com/document_detail/448847.html) operation to query the pre-shared key that is generated by the system.
         # 
         # >  The tunnel and the tunnel peer must use the same pre-shared key. Otherwise, the tunnel cannot be established.
         self.psk = psk
@@ -88758,7 +90205,7 @@ class ModifyVpnConnectionAttributeRequest(TeaModel):
         # *   **LocalBgpIp**: the BGP IP address on the Alibaba Cloud side. This IP address must fall within the CIDR block range of the IPsec tunnel.
         # 
         # > - This parameter is required when the VPN gateway has dynamic BGP enabled.
-        # > - Before you configure BGP, we recommend that you learn about how BGP works and its limits. For more information, see [BGP dynamic routing ](~~170235~~).
+        # > - Before you configure BGP, we recommend that you learn about how BGP works and its limits. For more information, see [BGP dynamic routing ](https://help.aliyun.com/document_detail/170235.html).
         # > - We recommend that you use a private ASN to establish a connection with Alibaba Cloud over BGP. For information about the range of private ASNs, see the relevant documentation.
         self.bgp_config = bgp_config
         # The client token that is used to ensure the idempotence of the request.
@@ -88806,8 +90253,8 @@ class ModifyVpnConnectionAttributeRequest(TeaModel):
         # 
         # *   **IkeConfig.Psk**: the pre-shared key that is used for authentication between the VPN gateway and the data center.
         # 
-        #     *   It must be 1 to 100 characters in length, and can contain letters, digits, and the following characters: ``~!`@#$%^&*()_-+={}[]|;:\",.<>/?``
-        #     *   If you do not specify a pre-shared key, the system generates a random 16-character string as the pre-shared key. You can call the [DescribeVpnConnection](~~448847~~) operation to query the pre-shared key that is generated by the system.
+        #     *   It must be 1 to 100 characters in length, and can contain letters, digits, and the following characters: ``~!`@#$%^&*()_-+={}[]|;:\\",.<>/?``
+        #     *   If you do not specify a pre-shared key, the system generates a random 16-character string as the pre-shared key. You can call the [DescribeVpnConnection](https://help.aliyun.com/document_detail/448847.html) operation to query the pre-shared key that is generated by the system.
         # 
         #      > The pre-shared key of the IPsec-VPN connection must be the same as the authentication key of the on-premises database. Otherwise, the on-premises database and the VPN gateway cannot establish a connection.
         # 
@@ -88869,7 +90316,9 @@ class ModifyVpnConnectionAttributeRequest(TeaModel):
         self.owner_id = owner_id
         # The ID of the region in which the IPsec-VPN connection is created.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # You can specify this parameter if you modify the configuration of a single-tunnel IPsec-VPN connection.
         # 
@@ -88893,6 +90342,8 @@ class ModifyVpnConnectionAttributeRequest(TeaModel):
         # You can specify the parameters in **TunnelOptionsSpecification** if you modify the configuration of a dual-tunnel IPsec-VPN connection. You can modify both the active and standby tunnels of the IPsec-VPN connection.
         self.tunnel_options_specification = tunnel_options_specification
         # The ID of the IPsec-VPN connection.
+        # 
+        # This parameter is required.
         self.vpn_connection_id = vpn_connection_id
 
     def validate(self):
@@ -89711,7 +91162,7 @@ class ModifyVpnConnectionAttributeResponseBody(TeaModel):
         self.request_id = request_id
         # The ID of the resource group to which the IPsec-VPN connection belongs.
         # 
-        # The IPsec-VPN connection and the VPN gateway associated with the IPsec-VPN connection belong to the same resource group. You can call the [ListResourceGroups](~~158855~~) operation to query resource groups.
+        # The IPsec-VPN connection and the VPN gateway associated with the IPsec-VPN connection belong to the same resource group. You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query resource groups.
         self.resource_group_id = resource_group_id
         # The tunnel configuration of the IPsec-VPN connection.
         # 
@@ -89908,15 +91359,19 @@ class ModifyVpnGatewayAttributeRequest(TeaModel):
         self.description = description
         # The new name of the VPN gateway.
         # 
-        # The name must be 2 to 100 characters in length and cannot start with `http://` or `https://`. It must start with a letter and can contain letters, digits, underscores (\_), hyphens (-), and periods (.). Other characters are not supported.
+        # The name must be 2 to 100 characters in length and cannot start with `http://` or `https://`. It must start with a letter and can contain letters, digits, underscores (_), hyphens (-), and periods (.). Other characters are not supported.
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region where the VPN gateway is created. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # The ID of the region where the VPN gateway is created. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the VPN gateway.
+        # 
+        # This parameter is required.
         self.vpn_gateway_id = vpn_gateway_id
 
     def validate(self):
@@ -90047,7 +91502,7 @@ class ModifyVpnGatewayAttributeResponseBody(TeaModel):
         self.request_id = request_id
         # VPN网关实例所属的资源组ID。
         # 
-        # 您可以调用[ListResourceGroups](~~158855~~)接口查询资源组信息。
+        # 您可以调用[ListResourceGroups](https://help.aliyun.com/document_detail/158855.html)接口查询资源组信息。
         self.resource_group_id = resource_group_id
         # The maximum bandwidth of the VPN gateway. Unit: Mbit/s.
         self.spec = spec
@@ -90245,29 +91700,43 @@ class ModifyVpnPbrRouteEntryAttributeRequest(TeaModel):
         # >  You must specify at least one of **NewPriority** and **NewWeight**.
         self.new_weight = new_weight
         # The next hop of the policy-based route.
+        # 
+        # This parameter is required.
         self.next_hop = next_hop
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The original priority of the policy-based route. Valid values: **1** to **100**.
         # 
         # A smaller value indicates a higher priority.
+        # 
+        # This parameter is required.
         self.priority = priority
         # The region ID of the VPN gateway.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The destination CIDR block of the policy-based route.
+        # 
+        # This parameter is required.
         self.route_dest = route_dest
         # The source CIDR block of the policy-based route.
+        # 
+        # This parameter is required.
         self.route_source = route_source
         # The ID of the VPN gateway.
+        # 
+        # This parameter is required.
         self.vpn_gateway_id = vpn_gateway_id
         # The original weight of the policy-based route. Valid values:
         # 
         # *   **100**: The IPsec-VPN connection associated with the policy-based route serves as an active connection.
         # *   **0**: The IPsec-VPN connection associated with the policy-based route serves as a standby connection.
+        # 
+        # This parameter is required.
         self.weight = weight
 
     def validate(self):
@@ -90437,8 +91906,12 @@ class ModifyVpnPbrRouteEntryPriorityRequest(TeaModel):
         # The new priority of the policy-based route. Valid values: **1** to **100**.
         # 
         # A smaller value indicates a higher priority.
+        # 
+        # This parameter is required.
         self.new_priority = new_priority
         # The next hop of the policy-based route.
+        # 
+        # This parameter is required.
         self.next_hop = next_hop
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -90448,17 +91921,27 @@ class ModifyVpnPbrRouteEntryPriorityRequest(TeaModel):
         self.priority = priority
         # The ID of the region where the VPN gateway is created.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The destination CIDR block of the policy-based route.
+        # 
+        # This parameter is required.
         self.route_dest = route_dest
         # The source CIDR block of the policy-based route.
+        # 
+        # This parameter is required.
         self.route_source = route_source
         # The ID of the VPN gateway.
+        # 
+        # This parameter is required.
         self.vpn_gateway_id = vpn_gateway_id
         # The weight of the policy-based route. Valid values:
+        # 
+        # This parameter is required.
         self.weight = weight
 
     def validate(self):
@@ -90626,8 +92109,12 @@ class ModifyVpnPbrRouteEntryWeightRequest(TeaModel):
         # 
         # *   **100**: The IPsec-VPN connection associated with the policy-based route serves as an active connection.
         # *   **0**: The IPsec-VPN connection associated with the policy-based route serves as a standby connection.
+        # 
+        # This parameter is required.
         self.new_weight = new_weight
         # The next hop of the policy-based route.
+        # 
+        # This parameter is required.
         self.next_hop = next_hop
         # The tunneling protocol. The value is set to **Ipsec**, which indicates the IPsec tunneling protocol.
         self.overlay_mode = overlay_mode
@@ -90641,20 +92128,30 @@ class ModifyVpnPbrRouteEntryWeightRequest(TeaModel):
         # 
         #         If you specify this parameter, set the value to the priority that was assigned to the policy-based route. Otherwise, the operation fails.
         self.priority = priority
-        # The ID of the region where the VPN gateway is created. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # The ID of the region where the VPN gateway is created. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The destination CIDR block of the policy-based route.
+        # 
+        # This parameter is required.
         self.route_dest = route_dest
         # The source CIDR block of the policy-based route.
+        # 
+        # This parameter is required.
         self.route_source = route_source
         # The ID of the VPN gateway.
+        # 
+        # This parameter is required.
         self.vpn_gateway_id = vpn_gateway_id
         # The original weight of the policy-based route. Valid values:
         # 
         # *   **100**: The IPsec-VPN connection associated with the policy-based route serves as an active connection.
         # *   **0**: The IPsec-VPN connection associated with the policy-based route serves as a standby connection.
+        # 
+        # This parameter is required.
         self.weight = weight
 
     def validate(self):
@@ -90824,25 +92321,37 @@ class ModifyVpnRouteEntryWeightRequest(TeaModel):
         # 
         # *   **0**: a low priority
         # *   **100**: a high priority
+        # 
+        # This parameter is required.
         self.new_weight = new_weight
         # The next hop of the destination-based route.
+        # 
+        # This parameter is required.
         self.next_hop = next_hop
         # The tunneling protocol. Set the value to **Ipsec**.
         self.overlay_mode = overlay_mode
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region where the VPN gateway is created. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # The ID of the region where the VPN gateway is created. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The destination CIDR block of the destination-based route.
+        # 
+        # This parameter is required.
         self.route_dest = route_dest
         # The ID of the VPN gateway.
+        # 
+        # This parameter is required.
         self.vpn_gateway_id = vpn_gateway_id
         # The previous weight of the destination-based route. Valid values:
         # 
         # *   **0**: a low priority
         # *   **100**: a high priority
+        # 
+        # This parameter is required.
         self.weight = weight
 
     def validate(self):
@@ -90992,15 +92501,21 @@ class MoveResourceGroupRequest(TeaModel):
     ):
         # The ID of the resource group to which you want to move the resource.
         # 
-        # >  You can use resource groups to facilitate resource grouping and permission management for an Alibaba Cloud. For more information, see [What is resource management?](~~94475~~)
+        # >  You can use resource groups to facilitate resource grouping and permission management for an Alibaba Cloud. For more information, see [What is resource management?](https://help.aliyun.com/document_detail/94475.html)
+        # 
+        # This parameter is required.
         self.new_resource_group_id = new_resource_group_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The ID of the region to which the cloud resource belongs.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The resource ID.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -91019,6 +92534,8 @@ class MoveResourceGroupRequest(TeaModel):
         # *   **IPv6Gateway**\
         # *   **DhcpOptionsSet**\
         # *   **GatewayEndpoint**\
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
 
     def validate(self):
@@ -91151,14 +92668,20 @@ class MoveVpnResourceGroupRequest(TeaModel):
         resource_type: str = None,
     ):
         # The ID of the resource.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The ID of the new resource group.
+        # 
+        # This parameter is required.
         self.new_resource_group_id = new_resource_group_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the resource.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -91173,6 +92696,8 @@ class MoveVpnResourceGroupRequest(TeaModel):
         # *   **VpnAttachment**: IPsec-VPN connection
         # 
         #     An IPsec-VPN connection associated with a transit router or not associate with a resource.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
 
     def validate(self):
@@ -91312,7 +92837,9 @@ class OpenFlowLogServiceRequest(TeaModel):
         self.owner_id = owner_id
         # The region ID of the flow log.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -91453,7 +92980,9 @@ class OpenPhysicalConnectionServiceRequest(TeaModel):
         self.owner_id = owner_id
         # The ID of the region where the Express Connect circuit is deployed.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -91583,7 +93112,7 @@ class OpenTrafficMirrorServiceRequest(TeaModel):
         self.owner_id = owner_id
         # The ID of the region to which the mirrored traffic belongs.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -91733,6 +93262,8 @@ class PublishVpnRouteEntryRequest(TeaModel):
         # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
         # The next hop of the VPN gateway route.
+        # 
+        # This parameter is required.
         self.next_hop = next_hop
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -91740,21 +93271,31 @@ class PublishVpnRouteEntryRequest(TeaModel):
         # 
         # *   **true**\
         # *   **false**\
+        # 
+        # This parameter is required.
         self.publish_vpc = publish_vpc
         # The ID of the region where the VPN gateway is created.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The destination CIDR block of the VPN gateway route.
+        # 
+        # This parameter is required.
         self.route_dest = route_dest
         # The type of the VPN gateway route. Valid values:
         # 
         # *   **pbr**: policy-based route
         # *   **dbr**: destination-based route
+        # 
+        # This parameter is required.
         self.route_type = route_type
         # The ID of the VPN gateway.
+        # 
+        # This parameter is required.
         self.vpn_gateway_id = vpn_gateway_id
 
     def validate(self):
@@ -91902,10 +93443,14 @@ class RecoverPhysicalConnectionRequest(TeaModel):
         # The ID of the Express Connect circuit.
         # 
         # >  You can resume only shared Express Connect circuits by calling this API operation.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region ID of the Express Connect circuit.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The client token that is used to ensure the idempotence of the request.
         # 
@@ -92032,11 +93577,15 @@ class RecoverVirtualBorderRouterRequest(TeaModel):
         self.owner_id = owner_id
         # The region ID of the VBR.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the VBR.
+        # 
+        # This parameter is required.
         self.vbr_id = vbr_id
 
     def validate(self):
@@ -92163,10 +93712,12 @@ class ReleaseEipAddressRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The ID of the EIP that you want to release.
+        # 
+        # This parameter is required.
         self.allocation_id = allocation_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region to which the EIP belongs. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # The ID of the region to which the EIP belongs. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -92299,13 +93850,17 @@ class ReleaseEipSegmentAddressRequest(TeaModel):
         self.client_token = client_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the contiguous EIPs. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # The region ID of the contiguous EIPs. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the contiguous EIP group to be released.
         # 
         # The system releases all EIPs in the group.
+        # 
+        # This parameter is required.
         self.segment_instance_id = segment_instance_id
 
     def validate(self):
@@ -92445,10 +94000,14 @@ class ReleaseIpv6AddressRequest(TeaModel):
         # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
         # The ID of the IPv6 address.
+        # 
+        # This parameter is required.
         self.ipv_6address_id = ipv_6address_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -92583,6 +94142,8 @@ class RemoveCommonBandwidthPackageIpRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The ID of the Internet Shared Bandwidth instance.
+        # 
+        # This parameter is required.
         self.bandwidth_package_id = bandwidth_package_id
         # The client token that is used to ensure the idempotence of the request.
         # 
@@ -92592,13 +94153,17 @@ class RemoveCommonBandwidthPackageIpRequest(TeaModel):
         self.client_token = client_token
         # The EIP ID.
         # 
-        # You can call the [DescribeEipAddresses](~~36018~~) operation to query EIP IDs.
+        # You can call the [DescribeEipAddresses](https://help.aliyun.com/document_detail/36018.html) operation to query EIP IDs.
+        # 
+        # This parameter is required.
         self.ip_instance_id = ip_instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the Internet Shared Bandwidth instance.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -92732,16 +94297,22 @@ class RemoveGlobalAccelerationInstanceIpRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The ID of the shared-bandwidth instance.
+        # 
+        # This parameter is required.
         self.global_acceleration_instance_id = global_acceleration_instance_id
         # The ID of the EIP.
         # 
         # To query the EIP ID, call DescribeEipAddresses.
+        # 
+        # This parameter is required.
         self.ip_instance_id = ip_instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The ID of the region where the shared-bandwidth instance is located.
         # 
         # To query the region ID, call DescribeRegions.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -92872,8 +94443,12 @@ class RemoveIPv6TranslatorAclListEntryRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The ID of the ACL entry to be deleted.
+        # 
+        # This parameter is required.
         self.acl_entry_id = acl_entry_id
         # The ID of the ACL to which the ACL entry belongs.
+        # 
+        # This parameter is required.
         self.acl_id = acl_id
         # The client token that is used to ensure the idempotence of the request.
         # 
@@ -92882,6 +94457,8 @@ class RemoveIPv6TranslatorAclListEntryRequest(TeaModel):
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region of the ACL.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -93029,13 +94606,19 @@ class RemoveSourcesFromTrafficMirrorSessionRequest(TeaModel):
         self.dry_run = dry_run
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region to which the traffic mirror session belongs. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list. For more information about regions that support traffic mirroring, see [Overview of traffic mirroring](~~207513~~).
+        # The ID of the region to which the traffic mirror session belongs. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list. For more information about regions that support traffic mirroring, see [Overview of traffic mirroring](https://help.aliyun.com/document_detail/207513.html).
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the traffic mirror session from which you want to delete a traffic mirror source.
+        # 
+        # This parameter is required.
         self.traffic_mirror_session_id = traffic_mirror_session_id
         # The ID of the traffic mirror source to be deleted. Maximum value of N: 10.
+        # 
+        # This parameter is required.
         self.traffic_mirror_source_ids = traffic_mirror_source_ids
 
     def validate(self):
@@ -93179,6 +94762,8 @@ class ReplaceVpcDhcpOptionsSetRequest(TeaModel):
         # >  If you do not set this parameter, the system uses **RequestId** as **ClientToken**. **RequestId** may be different for each API request.
         self.client_token = client_token
         # The ID of the new DHCP options set.
+        # 
+        # This parameter is required.
         self.dhcp_options_set_id = dhcp_options_set_id
         # Specifies whether to check the request without performing the operation. Valid values:
         # 
@@ -93187,11 +94772,15 @@ class ReplaceVpcDhcpOptionsSetRequest(TeaModel):
         self.dry_run = dry_run
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region to which the DHCP options set belongs. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # The region to which the DHCP options set belongs. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the associated VPC.
+        # 
+        # This parameter is required.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -93343,12 +94932,18 @@ class RetryVpcPrefixListAssociationRequest(TeaModel):
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The ID of the prefix list that you want to re-apply.
+        # 
+        # This parameter is required.
         self.prefix_list_id = prefix_list_id
         # The region ID of the prefix list that you want to re-apply.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the associated resource.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -93356,6 +94951,8 @@ class RetryVpcPrefixListAssociationRequest(TeaModel):
         # 
         # *   **vpcRouteTable**: VPC route table
         # *   **trRouteTable**: route table of a transit router
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
 
     def validate(self):
@@ -93498,8 +95095,12 @@ class RevokeInstanceFromCenRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The ID of the CEN instance to which the network instance is attached.
+        # 
+        # This parameter is required.
         self.cen_id = cen_id
         # The user ID (UID) of the Apsara Stack tenant account to which the CEN instance belongs.
+        # 
+        # This parameter is required.
         self.cen_owner_id = cen_owner_id
         # The client token that is used to ensure the idempotence of the request.
         # 
@@ -93508,18 +95109,24 @@ class RevokeInstanceFromCenRequest(TeaModel):
         # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
         # The ID of the network instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The type of the network instance. Valid values:
         # 
         # *   **VPC**\
         # *   **VBR**\
         # *   **CCN**\
+        # 
+        # This parameter is required.
         self.instance_type = instance_type
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The ID of the region where the network instance is deployed.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -93663,18 +95270,28 @@ class RevokeInstanceFromVbrRequest(TeaModel):
         # 
         # *   **ALL**: Permissions on the VPC are revoked for all VBRs in the specified region. **VbrInstanceIds** can be left empty.
         # *   **Specify**: Permissions on the VPC are revoked for the specified VBRs. **VbrInstanceIds** must be assigned a value.
+        # 
+        # This parameter is required.
         self.grant_type = grant_type
         # The VPC ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The ID of the region where the VPC is deployed.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The IDs of the VBRs for which you want to revoke the permissions.
         self.vbr_instance_ids = vbr_instance_ids
         # The ID of the Alibaba Cloud account to which the VBR belongs.
+        # 
+        # This parameter is required.
         self.vbr_owner_uid = vbr_owner_uid
         # The ID of the region where the VBR is deployed.
+        # 
+        # This parameter is required.
         self.vbr_region_no = vbr_region_no
 
     def validate(self):
@@ -93731,18 +95348,28 @@ class RevokeInstanceFromVbrShrinkRequest(TeaModel):
         # 
         # *   **ALL**: Permissions on the VPC are revoked for all VBRs in the specified region. **VbrInstanceIds** can be left empty.
         # *   **Specify**: Permissions on the VPC are revoked for the specified VBRs. **VbrInstanceIds** must be assigned a value.
+        # 
+        # This parameter is required.
         self.grant_type = grant_type
         # The VPC ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The ID of the region where the VPC is deployed.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The IDs of the VBRs for which you want to revoke the permissions.
         self.vbr_instance_ids_shrink = vbr_instance_ids_shrink
         # The ID of the Alibaba Cloud account to which the VBR belongs.
+        # 
+        # This parameter is required.
         self.vbr_owner_uid = vbr_owner_uid
         # The ID of the region where the VBR is deployed.
+        # 
+        # This parameter is required.
         self.vbr_region_no = vbr_region_no
 
     def validate(self):
@@ -93944,10 +95571,16 @@ class SecondApplyPhysicalConnectionLOARequest(TeaModel):
         # >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
         self.client_token = client_token
         # The name of the customer company that requires the Express Connect circuit.
+        # 
+        # This parameter is required.
         self.company_name = company_name
         # The time when construction started. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+        # 
+        # This parameter is required.
         self.construction_time = construction_time
         # The ID of the Express Connect circuit.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The type of Express Connect circuit. Valid values:
         # 
@@ -93955,6 +95588,8 @@ class SecondApplyPhysicalConnectionLOARequest(TeaModel):
         # *   **MPLSVPN**\
         # *   **FIBRE**\
         # *   **Other**\
+        # 
+        # This parameter is required.
         self.line_type = line_type
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -93962,11 +95597,15 @@ class SecondApplyPhysicalConnectionLOARequest(TeaModel):
         self.pminfo = pminfo
         # The geographic location where the Express Connect circuit is deployed.
         self.peer_location = peer_location
-        # The region where the Express Connect circuit is deployed. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # The region where the Express Connect circuit is deployed. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The construction company.
+        # 
+        # This parameter is required.
         self.si = si
 
     def validate(self):
@@ -94133,18 +95772,26 @@ class SetHighDefinitionMonitorLogStatusRequest(TeaModel):
         status: str = None,
     ):
         # The ID of the instance for which you want to configure fine-grained monitoring.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The instance type. Set the value to **EIP**.
         self.instance_type = instance_type
         # The name of the Simple Log Service (SLS) project.
+        # 
+        # This parameter is required.
         self.log_project = log_project
         # The name of the Logstore.
+        # 
+        # This parameter is required.
         self.log_store = log_store
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the instance.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -94152,6 +95799,8 @@ class SetHighDefinitionMonitorLogStatusRequest(TeaModel):
         # 
         # *   **ON**\
         # *   **OFF**\
+        # 
+        # This parameter is required.
         self.status = status
 
     def validate(self):
@@ -94300,6 +95949,7 @@ class StartFailoverTestJobRequest(TeaModel):
         resource_owner_account: str = None,
     ):
         self.client_token = client_token
+        # This parameter is required.
         self.job_id = job_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -94425,6 +96075,7 @@ class StopFailoverTestJobRequest(TeaModel):
         resource_owner_account: str = None,
     ):
         self.client_token = client_token
+        # This parameter is required.
         self.job_id = job_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -94598,9 +96249,13 @@ class TagResourcesRequest(TeaModel):
         self.owner_id = owner_id
         # The region ID of the resource.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The resource ID. You can specify at most 20 IDs.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -94613,8 +96268,12 @@ class TagResourcesRequest(TeaModel):
         # *   **VpnGateway**: a VPN gateway
         # *   **NATGATEWAY**: a NAT gateway
         # *   **COMMONBANDWIDTHPACKAGE**: an EIP bandwidth plan
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The tag information.
+        # 
+        # This parameter is required.
         self.tag = tag
 
     def validate(self):
@@ -94797,9 +96456,13 @@ class TagResourcesForExpressConnectRequest(TeaModel):
         self.owner_id = owner_id
         # The ID of the region in which the resource is deployed.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to obtain the region ID.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to obtain the region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The resource IDs. You can specify up to 20 resource IDs.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -94808,8 +96471,12 @@ class TagResourcesForExpressConnectRequest(TeaModel):
         # *   **PHYSICALCONNECTION**: Express Connect circuit.
         # *   **VIRTUALBORDERROUTER**: virtual border router (VBR).
         # *   **ROUTERINTERFACE**: router interface.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The tags to add to the resource.
+        # 
+        # This parameter is required.
         self.tag = tag
 
     def validate(self):
@@ -94957,10 +96624,14 @@ class TerminatePhysicalConnectionRequest(TeaModel):
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The ID of the Express Connect circuit.
+        # 
+        # This parameter is required.
         self.physical_connection_id = physical_connection_id
         # The region ID of the Express Connect circuit.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -95099,11 +96770,15 @@ class TerminateVirtualBorderRouterRequest(TeaModel):
         self.owner_id = owner_id
         # The region ID of the VBR.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the VBR.
+        # 
+        # This parameter is required.
         self.vbr_id = vbr_id
 
     def validate(self):
@@ -95241,9 +96916,13 @@ class UnTagResourcesRequest(TeaModel):
         self.owner_id = owner_id
         # The region ID of the resource.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The resource ID. You can specify up to 20 resource IDs.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -95256,10 +96935,12 @@ class UnTagResourcesRequest(TeaModel):
         # *   **VpnGateway**\
         # *   **NATGATEWAY**\
         # *   **COMMONBANDWIDTHPACKAGE**: EIP bandwidth plan
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The key of the tag that you want to remove. You can specify at most 20 tag keys. It can be an empty string.
         # 
-        # The key cannot exceed 64 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). The key must start with a letter but cannot start with `aliyun` or `acs:`. The key cannot contain `http://` or `https://`.
+        # The key cannot exceed 64 characters in length, and can contain digits, periods (.), underscores (_), and hyphens (-). The key must start with a letter but cannot start with `aliyun` or `acs:`. The key cannot contain `http://` or `https://`.
         self.tag_key = tag_key
 
     def validate(self):
@@ -95399,6 +97080,8 @@ class UnassociateEipAddressRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The ID of the EIP that you want to disassociate.
+        # 
+        # This parameter is required.
         self.allocation_id = allocation_id
         # The client token that is used to ensure the idempotence of the request.
         # 
@@ -95425,7 +97108,7 @@ class UnassociateEipAddressRequest(TeaModel):
         self.owner_id = owner_id
         # The private IP address of the ECS instance or the secondary ENI from which you want to disassociate the EIP.
         self.private_ip_address = private_ip_address
-        # The ID of the region to which the EIP belongs. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # The ID of the region to which the EIP belongs. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -95571,6 +97254,8 @@ class UnassociateGlobalAccelerationInstanceRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The ID of the GA instance.
+        # 
+        # This parameter is required.
         self.global_acceleration_instance_id = global_acceleration_instance_id
         # The backend server type. Valid values:
         # 
@@ -95582,7 +97267,9 @@ class UnassociateGlobalAccelerationInstanceRequest(TeaModel):
         self.owner_id = owner_id
         # The region ID of the GA instance.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -95724,8 +97411,12 @@ class UnassociateHaVipRequest(TeaModel):
         # >  If you set the value to **False**, you cannot disassociate the HAVIP from the primary instance.
         self.force = force
         # The ID of the HAVIP that you want to disassociate.
+        # 
+        # This parameter is required.
         self.ha_vip_id = ha_vip_id
         # The ID of the ECS instance or ENI from which you want to disassociate the HAVIP.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The type of the instance from which you want to disassociate the HAVIP. Valid values:
         # 
@@ -95738,7 +97429,9 @@ class UnassociateHaVipRequest(TeaModel):
         self.owner_id = owner_id
         # The region ID of the HAVIP.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -95931,12 +97624,16 @@ class UnassociateNetworkAclRequest(TeaModel):
         # **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
         # The ID of the network ACL that you want to disassociate from a resource.
+        # 
+        # This parameter is required.
         self.network_acl_id = network_acl_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the network ACL.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The information about the associated resource.
         self.resource = resource
@@ -96093,14 +97790,20 @@ class UnassociatePhysicalConnectionFromVirtualBorderRouterRequest(TeaModel):
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The ID of the Express Connect circuit.
+        # 
+        # This parameter is required.
         self.physical_connection_id = physical_connection_id
         # The region ID of the Express Connect circuit.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the VBR that you want to disassociate from the Express Connect circuit.
+        # 
+        # This parameter is required.
         self.vbr_id = vbr_id
 
     def validate(self):
@@ -96242,13 +97945,19 @@ class UnassociateRouteTableRequest(TeaModel):
         self.owner_id = owner_id
         # The region ID of the virtual private cloud (VPC) to which the custom route table belongs.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the route table.
+        # 
+        # This parameter is required.
         self.route_table_id = route_table_id
         # The ID of the vSwitch from which you want to disassociate the route table.
+        # 
+        # This parameter is required.
         self.v_switch_id = v_switch_id
 
     def validate(self):
@@ -96388,7 +98097,9 @@ class UnassociateVpcCidrBlockRequest(TeaModel):
         self.owner_id = owner_id
         # The region ID of the VPC to which the secondary CIDR block to be deleted belongs.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -96397,6 +98108,8 @@ class UnassociateVpcCidrBlockRequest(TeaModel):
         # >  You must set one of the **SecondaryCidrBlock** and **Ipv6CidrBlock** parameters.
         self.secondary_cidr_block = secondary_cidr_block
         # The ID of the VPC from which you want to delete a secondary CIDR block.
+        # 
+        # This parameter is required.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -96538,9 +98251,13 @@ class UntagResourcesForExpressConnectRequest(TeaModel):
         self.owner_id = owner_id
         # The ID of the region in which the resource is deployed.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to obtain the region ID.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to obtain the region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The IDs of the resources from which you want to remove tags.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -96549,6 +98266,8 @@ class UntagResourcesForExpressConnectRequest(TeaModel):
         # *   **PHYSICALCONNECTION**: Express Connect circuit.
         # *   **VIRTUALBORDERROUTER**: virtual border router (VBR).
         # *   **ROUTERINTERFACE**: router interface.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The tags to remove from the specified resource.
         self.tag_key = tag_key
@@ -96703,10 +98422,12 @@ class UpdateDhcpOptionsSetAttributeRequest(TeaModel):
         # The description must be 2 to 256 characters in length. It must start with a letter and cannot start with `http://` or `https://`. You can also leave the description empty.
         self.dhcp_options_set_description = dhcp_options_set_description
         # The ID of the DHCP options set.
+        # 
+        # This parameter is required.
         self.dhcp_options_set_id = dhcp_options_set_id
         # The name of the DHCP options set.
         # 
-        # The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). The name must start with a letter.
+        # The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
         self.dhcp_options_set_name = dhcp_options_set_name
         # The root domain. For example, you can set the value to example.com.
         # 
@@ -96738,7 +98459,9 @@ class UpdateDhcpOptionsSetAttributeRequest(TeaModel):
         self.lease_time = lease_time
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region where the DHCP options set is deployed. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # The region where the DHCP options set is deployed. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -96901,6 +98624,7 @@ class UpdateFailoverTestJobRequest(TeaModel):
         self.client_token = client_token
         self.description = description
         self.job_duration = job_duration
+        # This parameter is required.
         self.job_id = job_id
         self.name = name
         self.owner_account = owner_account
@@ -97062,6 +98786,8 @@ class UpdateGatewayRouteTableEntryAttributeRequest(TeaModel):
         # The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
         self.description = description
         # The destination CIDR block of the route entry in the gateway route table.
+        # 
+        # This parameter is required.
         self.destination_cidr_block = destination_cidr_block
         # Specifies whether to precheck only this request. Valid values:
         # 
@@ -97074,7 +98800,7 @@ class UpdateGatewayRouteTableEntryAttributeRequest(TeaModel):
         self.ipv_4gateway_route_table_id = ipv_4gateway_route_table_id
         # The name of the gateway route table.
         # 
-        # The name must be 2 to 128 characters in length and can contain letter, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
+        # The name must be 2 to 128 characters in length and can contain letter, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
         self.name = name
         # The new next hop ID of the route entry.
         # 
@@ -97089,12 +98815,16 @@ class UpdateGatewayRouteTableEntryAttributeRequest(TeaModel):
         # *   **Instance**: Elastic Compute Service (ECS) instance
         # *   **NetworkInterface**: elastic network interface (ENI)
         # *   **Local**: local next hop
+        # 
+        # This parameter is required.
         self.next_hop_type = next_hop_type
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The ID of the region to which the gateway route table that you want to modify belongs.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -97295,6 +99025,8 @@ class UpdateIpsecServerRequest(TeaModel):
         # *   **IpsecLifetime**: the SA lifetime determined by Phase 2 negotiation. Unit: seconds. Valid values: **0** to **86400**. Default value: **86400**.
         self.ipsec_config = ipsec_config
         # The IPsec server ID.
+        # 
+        # This parameter is required.
         self.ipsec_server_id = ipsec_server_id
         # The IPsec server name.
         # 
@@ -97308,7 +99040,7 @@ class UpdateIpsecServerRequest(TeaModel):
         # 
         # The pre-shared key is used for identity authentication between the IPsec server and the client. The key must be 1 to 100 characters in length.
         # 
-        # If you do not specify a pre-shared key, the system randomly generates a 16-character string as the pre-shared key. You can call the [ListIpsecServers](~~205453~~) operation to query the pre-shared keys that are generated by the system.
+        # If you do not specify a pre-shared key, the system randomly generates a 16-character string as the pre-shared key. You can call the [ListIpsecServers](https://help.aliyun.com/document_detail/205453.html) operation to query the pre-shared keys that are generated by the system.
         # 
         # >  The pre-shared key of the IPsec server must be the same as the client key. Otherwise, the IPsec server cannot be connected to the client.
         self.psk = psk
@@ -97316,7 +99048,9 @@ class UpdateIpsecServerRequest(TeaModel):
         self.psk_enabled = psk_enabled
         # The ID of the region where the IPsec server is created.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -97480,6 +99214,8 @@ class UpdateIpv4GatewayAttributeRequest(TeaModel):
         # The new description of the IPv4 gateway.
         self.ipv_4gateway_description = ipv_4gateway_description
         # The ID of the IPv4 gateway whose name or description you want to modify.
+        # 
+        # This parameter is required.
         self.ipv_4gateway_id = ipv_4gateway_id
         # The new name of the IPv4 gateway.
         self.ipv_4gateway_name = ipv_4gateway_name
@@ -97487,7 +99223,9 @@ class UpdateIpv4GatewayAttributeRequest(TeaModel):
         self.owner_id = owner_id
         # The region ID of the IPv4 gateway whose name or description you want to modify.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -97644,20 +99382,28 @@ class UpdateNatGatewayNatTypeRequest(TeaModel):
         # **false**: sends the API request. This is the default value. After the request passes the precheck, a 2XX HTTP status code is returned and the Internet NAT gateway is upgraded.
         self.dry_run = dry_run
         # The ID of the standard NAT gateway to be upgraded.
+        # 
+        # This parameter is required.
         self.nat_gateway_id = nat_gateway_id
         # The type of Internet NAT gateway. Set the value to **Enhanced**, which specifies an enhanced Internet NAT gateway.
+        # 
+        # This parameter is required.
         self.nat_type = nat_type
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The ID of the region where the NAT gateway that you want to upgrade is deployed.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The vSwitch to which the enhanced Internet NAT gateway belongs.
         # 
         # >  If you do not set this parameter, the system generates an Internet NAT gateway in a random vSwitch of a virtual private cloud (VPC).
+        # 
+        # This parameter is required.
         self.v_switch_id = v_switch_id
 
     def validate(self):
@@ -98027,12 +99773,16 @@ class UpdateNetworkAclEntriesRequest(TeaModel):
         # The information about the inbound rule.
         self.ingress_acl_entries = ingress_acl_entries
         # The ID of the network ACL.
+        # 
+        # This parameter is required.
         self.network_acl_id = network_acl_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the network ACL.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -98232,13 +99982,17 @@ class UpdatePublicIpAddressPoolAttributeRequest(TeaModel):
         self.dry_run = dry_run
         # The name of the IP address pool.
         # 
-        # This parameter is optional. The name must be 1 to 128 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+        # This parameter is optional. The name must be 1 to 128 characters in length, and can contain digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The ID of the IP address pool.
+        # 
+        # This parameter is required.
         self.public_ip_address_pool_id = public_ip_address_pool_id
         # The region ID of the IP address pool that you want to modify.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -98397,7 +100151,9 @@ class UpdateTrafficMirrorFilterAttributeRequest(TeaModel):
         self.owner_id = owner_id
         # The ID of the region to which the mirrored traffic belongs.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list. For more information about regions that support traffic mirroring, see [Overview of traffic mirroring](~~207513~~).
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list. For more information about regions that support traffic mirroring, see [Overview of traffic mirroring](https://help.aliyun.com/document_detail/207513.html).
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -98406,6 +100162,8 @@ class UpdateTrafficMirrorFilterAttributeRequest(TeaModel):
         # The description must be 1 to 256 characters in length and cannot start with `http://` or `https://`.
         self.traffic_mirror_filter_description = traffic_mirror_filter_description
         # The ID of the filter.
+        # 
+        # This parameter is required.
         self.traffic_mirror_filter_id = traffic_mirror_filter_id
         # The name of the filter.
         # 
@@ -98586,7 +100344,9 @@ class UpdateTrafficMirrorFilterRuleAttributeRequest(TeaModel):
         self.protocol = protocol
         # The ID of the region to which the mirrored traffic belongs.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list. For more information about regions that support traffic mirroring, see [Overview of traffic mirroring](~~207513~~).
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list. For more information about regions that support traffic mirroring, see [Overview of traffic mirroring](https://help.aliyun.com/document_detail/207513.html).
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -98602,6 +100362,8 @@ class UpdateTrafficMirrorFilterRuleAttributeRequest(TeaModel):
         # >  If you set **Protocol** to **ICMP**, you cannot change the port range.
         self.source_port_range = source_port_range
         # The ID of the inbound or outbound rule.
+        # 
+        # This parameter is required.
         self.traffic_mirror_filter_rule_id = traffic_mirror_filter_rule_id
 
     def validate(self):
@@ -98796,7 +100558,9 @@ class UpdateTrafficMirrorSessionAttributeRequest(TeaModel):
         # 
         # A smaller value indicates a higher priority. You cannot specify identical priorities for traffic mirror sessions that are created in the same region by using the same account.
         self.priority = priority
-        # The region ID of the traffic mirror session. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list. For more information about the regions that support traffic mirroring, see [Overview of traffic mirroring](~~207513~~).
+        # The region ID of the traffic mirror session. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list. For more information about the regions that support traffic mirroring, see [Overview of traffic mirroring](https://help.aliyun.com/document_detail/207513.html).
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -98807,6 +100571,8 @@ class UpdateTrafficMirrorSessionAttributeRequest(TeaModel):
         # The description must be 1 to 256 characters in length and cannot start with `http://` or `https://`.
         self.traffic_mirror_session_description = traffic_mirror_session_description
         # The ID of the traffic mirror session.
+        # 
+        # This parameter is required.
         self.traffic_mirror_session_id = traffic_mirror_session_id
         # The new name of the traffic mirror session.
         # 
@@ -98990,6 +100756,8 @@ class UpdateVirtualBorderBandwidthRequest(TeaModel):
         virtual_border_router_id: str = None,
     ):
         # The new maximum bandwidth value for the VBR. Unit: Mbit/s.
+        # 
+        # This parameter is required.
         self.bandwidth = bandwidth
         # The client token that is used to ensure the idempotence of the request.
         # 
@@ -99001,11 +100769,15 @@ class UpdateVirtualBorderBandwidthRequest(TeaModel):
         self.owner_id = owner_id
         # The region ID of the VBR.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the VBR.
+        # 
+        # This parameter is required.
         self.virtual_border_router_id = virtual_border_router_id
 
     def validate(self):
@@ -99180,10 +100952,14 @@ class UpdateVirtualPhysicalConnectionRequest(TeaModel):
         # **M** indicates Mbit/s and **G** indicates Gbit/s.
         self.expect_spec = expect_spec
         # The ID of the hosted connection over Express Connect circuit.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region ID of the hosted connection.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to obtain the region ID.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to obtain the region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The client token that is used to ensure the idempotence of the request.
         # 
@@ -99195,6 +100971,8 @@ class UpdateVirtualPhysicalConnectionRequest(TeaModel):
         # 
         # *   If the VLAN ID is set to **0**, it indicates that the switch port of the virtual border router (VBR) is a Layer 3 router interface instead of a VLAN interface. When a Layer 3 router interface is used, each Express Connect circuit corresponds to a VBR.
         # *   If the VLAN ID is set to a value from **1** to **2999**, the switch port of the VBR is a Layer 3 VLAN subinterface. When a Layer 3 VLAN subinterface is used, each VLAN ID corresponds to one VBR. In this case, the Express Connect circuit with which the VBR is associated can be used to connect to virtual private clouds (VPCs) that belong to different Alibaba Cloud accounts. VBRs in different VLANs are isolated from each other at Layer 2.
+        # 
+        # This parameter is required.
         self.vlan_id = vlan_id
 
     def validate(self):
@@ -99347,6 +101125,8 @@ class UpdateVpcGatewayEndpointAttributeRequest(TeaModel):
         # The description must be 1 to 255 characters in length.
         self.endpoint_description = endpoint_description
         # The ID of the gateway endpoint that you want to modify.
+        # 
+        # This parameter is required.
         self.endpoint_id = endpoint_id
         # The new name of the gateway endpoint.
         # 
@@ -99356,11 +101136,13 @@ class UpdateVpcGatewayEndpointAttributeRequest(TeaModel):
         self.owner_id = owner_id
         # The access policy for the cloud service.
         # 
-        # For more information about the syntax and structure of the access policy, see [Policy syntax and structure](~~93739~~).
+        # For more information about the syntax and structure of the access policy, see [Policy syntax and structure](https://help.aliyun.com/document_detail/93739.html).
         self.policy_document = policy_document
         # The region ID of the gateway endpoint.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -99518,7 +101300,7 @@ class VpcDescribeVpcNatGatewayNetworkInterfaceQuotaRequest(TeaModel):
         self.owner_id = owner_id
         # The region ID of the VPC NAT gateway.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
