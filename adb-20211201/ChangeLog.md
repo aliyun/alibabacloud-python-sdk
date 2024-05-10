@@ -1,3 +1,7 @@
+2024-05-10 Version: 1.3.5
+- Update API CreateOssSubDirectory: update param DBClusterId.
+
+
 2024-05-09 Version: 1.3.4
 - Update API CreateDBCluster: add param ProductForm.
 - Update API CreateDBCluster: add param ReservedNodeCount.
