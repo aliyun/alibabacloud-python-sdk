@@ -1980,12 +1980,20 @@ class AddAliClusterIdsToPrometheusGlobalViewRequest(TeaModel):
         region_id: str = None,
     ):
         # The IDs of clusters. Separate multiple IDs with commas (,).
+        # 
+        # This parameter is required.
         self.cluster_ids = cluster_ids
         # The ID of the global aggregation instance.
+        # 
+        # This parameter is required.
         self.global_view_cluster_id = global_view_cluster_id
         # The name of the global aggregation instance.
+        # 
+        # This parameter is required.
         self.group_name = group_name
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -2165,10 +2173,16 @@ class AddGrafanaRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the Container Service for Kubernetes (ACK) cluster.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # The abbreviation of the software that is supported by Application Real-Time Monitoring Service (ARMS). Valid values (case-insensitive): `ASM`, `IoT`, and `Flink`.
+        # 
+        # This parameter is required.
         self.integration = integration
         # The ID of the region.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -2283,10 +2297,16 @@ class AddIntegrationRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of an Alibaba Cloud Container Service for Kubernetes cluster.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # The software abbreviation that is supported by ARMS. Valid values (case-insensitive): `ASM`, `IoT`, and `Flink`.
+        # 
+        # This parameter is required.
         self.integration = integration
         # The region ID of the instance.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -2452,10 +2472,16 @@ class AddPrometheusGlobalViewRequest(TeaModel):
         tag: List[AddPrometheusGlobalViewRequestTag] = None,
     ):
         # The queried global aggregation instances. The value is a JSON string.
+        # 
+        # This parameter is required.
         self.clusters = clusters
         # The name of the aggregation instance.
+        # 
+        # This parameter is required.
         self.group_name = group_name
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
@@ -2696,12 +2722,18 @@ class AddPrometheusGlobalViewByAliClusterIdsRequest(TeaModel):
         region_id: str = None,
     ):
         # The IDs of clusters. Separate multiple IDs with commas (,).
+        # 
+        # This parameter is required.
         self.cluster_ids = cluster_ids
         # The name of the global aggregation instance.
+        # 
+        # This parameter is required.
         self.group_name = group_name
         # The identifier to identify the service if custom dashboards are created for the specified clusters.
         self.product_code = product_code
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -2880,8 +2912,11 @@ class AddPrometheusInstanceRequest(TeaModel):
         region_id: str = None,
         type: str = None,
     ):
+        # This parameter is required.
         self.name = name
+        # This parameter is required.
         self.region_id = region_id
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -3015,12 +3050,20 @@ class AddPrometheusIntegrationRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the Prometheus instance. Only a Prometheus instance for Container Service or a Prometheus instance for ECS is supported.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # The type of the integration.
+        # 
+        # This parameter is required.
         self.integration_type = integration_type
         # The configurations of the exporter. The value is a JSON string.
+        # 
+        # This parameter is required.
         self.param = param
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -3190,10 +3233,16 @@ class AddPrometheusRemoteWriteRequest(TeaModel):
         remote_write_yaml: str = None,
     ):
         # The ID of the Prometheus instance. Only a Prometheus instance for Container Service or a Prometheus instance for ECS is supported.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The details of the remote write configuration item. Specify the value in the YAML format.
+        # 
+        # This parameter is required.
         self.remote_write_yaml = remote_write_yaml
 
     def validate(self):
@@ -3332,10 +3381,16 @@ class AddRecordingRuleRequest(TeaModel):
         rule_yaml: str = None,
     ):
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The custom recording rule. The value is in the YAML format.
+        # 
+        # This parameter is required.
         self.rule_yaml = rule_yaml
 
     def validate(self):
@@ -3464,11 +3519,16 @@ class AddTagToFlinkClusterRequest(TeaModel):
         resource_group_id: str = None,
         target_user_id: str = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
+        # This parameter is required.
         self.flink_work_space_id = flink_work_space_id
+        # This parameter is required.
         self.flink_work_space_name = flink_work_space_name
+        # This parameter is required.
         self.region_id = region_id
         self.resource_group_id = resource_group_id
+        # This parameter is required.
         self.target_user_id = target_user_id
 
     def validate(self):
@@ -3607,12 +3667,20 @@ class AppendInstancesToPrometheusGlobalViewRequest(TeaModel):
         region_id: str = None,
     ):
         # The list of global aggregation instances. The value is a JSON string.
+        # 
+        # This parameter is required.
         self.clusters = clusters
         # The ID of the global aggregation instance.
+        # 
+        # This parameter is required.
         self.global_view_cluster_id = global_view_cluster_id
         # The name of the global aggregation instance.
+        # 
+        # This parameter is required.
         self.group_name = group_name
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -3798,10 +3866,16 @@ class ApplyScenarioRequest(TeaModel):
         update_option: bool = None,
     ):
         # The ID of the application.
+        # 
+        # This parameter is required.
         self.app_id = app_id
         # The configuration of the business monitoring job. The value is a JSON string. For more information about this parameter, see the following additional information about the **Config** parameter.
+        # 
+        # This parameter is required.
         self.config = config
         # The name of the business monitoring job.
+        # 
+        # This parameter is required.
         self.name = name
         # The ID of the region.
         self.region_id = region_id
@@ -3838,6 +3912,8 @@ class ApplyScenarioRequest(TeaModel):
         # 
         # *   `true`: update
         # *   `false`: insert
+        # 
+        # This parameter is required.
         self.update_option = update_option
 
     def validate(self):
@@ -3916,10 +3992,16 @@ class ApplyScenarioShrinkRequest(TeaModel):
         update_option: bool = None,
     ):
         # The ID of the application.
+        # 
+        # This parameter is required.
         self.app_id = app_id
         # The configuration of the business monitoring job. The value is a JSON string. For more information about this parameter, see the following additional information about the **Config** parameter.
+        # 
+        # This parameter is required.
         self.config_shrink = config_shrink
         # The name of the business monitoring job.
+        # 
+        # This parameter is required.
         self.name = name
         # The ID of the region.
         self.region_id = region_id
@@ -3956,6 +4038,8 @@ class ApplyScenarioShrinkRequest(TeaModel):
         # 
         # *   `true`: update
         # *   `false`: insert
+        # 
+        # This parameter is required.
         self.update_option = update_option
 
     def validate(self):
@@ -4103,10 +4187,16 @@ class BindPrometheusGrafanaInstanceRequest(TeaModel):
         resource_group_id: str = None,
     ):
         # The ID of the Prometheus instance.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # The ID of the Grafana workspace.
+        # 
+        # This parameter is required.
         self.grafana_instance_id = grafana_instance_id
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group to which the Prometheus instance belongs.
         self.resource_group_id = resource_group_id
@@ -4244,9 +4334,12 @@ class BlockAlarmNotificationRequest(TeaModel):
         region_id: str = None,
         timeout: int = None,
     ):
+        # This parameter is required.
         self.alarm_id = alarm_id
         self.handler_id = handler_id
+        # This parameter is required.
         self.region_id = region_id
+        # This parameter is required.
         self.timeout = timeout
 
     def validate(self):
@@ -4381,9 +4474,12 @@ class ChangeAlarmSeverityRequest(TeaModel):
         region_id: str = None,
         severity: str = None,
     ):
+        # This parameter is required.
         self.alarm_id = alarm_id
         self.handler_id = handler_id
+        # This parameter is required.
         self.region_id = region_id
+        # This parameter is required.
         self.severity = severity
 
     def validate(self):
@@ -4519,10 +4615,16 @@ class ChangeResourceGroupRequest(TeaModel):
         resource_type: str = None,
     ):
         # The ID of the new resource group. You can view the available resource groups in the Resource Management console.
+        # 
+        # This parameter is required.
         self.new_resource_group_id = new_resource_group_id
         # The region ID of the resource.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The resource ID.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
         # The resource type.
         self.resource_type = resource_type
@@ -4810,6 +4912,8 @@ class CheckServiceStatusRequest(TeaModel):
         # The region ID.
         self.region_id = region_id
         # The service code of an Alibaba Cloud service. The service code of Managed Service for Prometheus is prometheus.
+        # 
+        # This parameter is required.
         self.svc_code = svc_code
 
     def validate(self):
@@ -4922,8 +5026,10 @@ class ClaimAlarmRequest(TeaModel):
         handler_id: int = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.alarm_id = alarm_id
         self.handler_id = handler_id
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -5054,8 +5160,10 @@ class CloseAlarmRequest(TeaModel):
         region_id: str = None,
         solution: str = None,
     ):
+        # This parameter is required.
         self.alarm_id = alarm_id
         self.handler_id = handler_id
+        # This parameter is required.
         self.region_id = region_id
         self.solution = solution
 
@@ -5192,6 +5300,8 @@ class ConfigAppRequest(TeaModel):
         type: str = None,
     ):
         # The process identifier (PID) of the application. Separate multiple PIDs with commas (,).
+        # 
+        # This parameter is required.
         self.app_ids = app_ids
         # Specifies whether to turn on or off the main switch of the ARMS agent. The monitoring stops after the switch is turned off. If you do not specify this parameter, the main switch status of the ARMS agent is queried.
         # 
@@ -5199,6 +5309,8 @@ class ConfigAppRequest(TeaModel):
         # *   `false`: turns off the switch
         self.enable = enable
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The type of the application. Set the value to **TRACE**.
         self.type = type
@@ -5333,6 +5445,8 @@ class CreateAlertContactRequest(TeaModel):
         # The mobile number of the alert contact. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
         self.phone_num = phone_num
         # The ID of the region. Set the value to `cn-hangzhou`.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group. You can obtain the resource group ID in the **Resource Management** console.
         self.resource_group_id = resource_group_id
@@ -5469,8 +5583,10 @@ class CreateAlertContactGroupRequest(TeaModel):
         contact_ids: str = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.contact_group_name = contact_group_name
         self.contact_ids = contact_ids
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -5647,7 +5763,10 @@ class CreateDispatchRuleRequest(TeaModel):
         # *   `_aliyun_arms_alert_rule_id`: alert rule ID
         # *   `_aliyun_arms_alert_type`: alert type
         # *   `_aliyun_arms_alert_level`: alert severity
+        # 
+        # This parameter is required.
         self.dispatch_rule = dispatch_rule
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -5760,12 +5879,20 @@ class CreateEnvCustomJobRequest(TeaModel):
         # The language. Valid values: zh and en. Default value: zh.
         self.aliyun_lang = aliyun_lang
         # The YAML configuration string of the custom job.
+        # 
+        # This parameter is required.
         self.config_yaml = config_yaml
         # The name of the custom job.
+        # 
+        # This parameter is required.
         self.custom_job_name = custom_job_name
         # The ID of the environment instance.
+        # 
+        # This parameter is required.
         self.environment_id = environment_id
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -5906,12 +6033,18 @@ class CreateEnvPodMonitorRequest(TeaModel):
         # The language. Valid values: zh and en. Default value: zh.
         self.aliyun_lang = aliyun_lang
         # The YAML configuration string of the PodMonitor.
+        # 
+        # This parameter is required.
         self.config_yaml = config_yaml
         # Specifies whether to perform only a dry run, without performing the actual request.
         self.dry_run = dry_run
         # The ID of the environment instance.
+        # 
+        # This parameter is required.
         self.environment_id = environment_id
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -6103,12 +6236,18 @@ class CreateEnvServiceMonitorRequest(TeaModel):
         # The language. Valid values: zh and en. Default value: zh.
         self.aliyun_lang = aliyun_lang
         # The YAML configuration string of the ServiceMonitor.
+        # 
+        # This parameter is required.
         self.config_yaml = config_yaml
         # Specifies whether to perform only a dry run, without performing the actual request.
         self.dry_run = dry_run
         # The ID of the environment instance.
+        # 
+        # This parameter is required.
         self.environment_id = environment_id
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -6371,20 +6510,28 @@ class CreateEnvironmentRequest(TeaModel):
         #     .
         self.aliyun_lang = aliyun_lang
         # The ID of the resource bound to the environment, such as the container ID or VPC ID. For a Cloud environment, specify the region ID.
+        # 
+        # This parameter is required.
         self.bind_resource_id = bind_resource_id
         # The name of the environment.
+        # 
+        # This parameter is required.
         self.environment_name = environment_name
         # The subtype of the environment. Valid values:
         # 
         # *   CS: ACK, One
         # *   ECS: ECS
         # *   Cloud: cloud service
+        # 
+        # This parameter is required.
         self.environment_sub_type = environment_sub_type
         # The type of the environment. Valid values:
         # 
         # *   CS: ACK
         # *   ECS: ECS
         # *   Cloud: cloud service
+        # 
+        # This parameter is required.
         self.environment_type = environment_type
         # The payable resource plan. Valid values:
         # 
@@ -6400,6 +6547,8 @@ class CreateEnvironmentRequest(TeaModel):
         # The ID of the Prometheus instance. If no Prometheus instance is created, call the InitEnvironment operation to initialize a storage instance.
         self.prometheus_instance_id = prometheus_instance_id
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -6612,10 +6761,14 @@ class CreateGrafanaWorkspaceRequest(TeaModel):
     ):
         self.aliyun_lang = aliyun_lang
         self.description = description
+        # This parameter is required.
         self.grafana_version = grafana_version
+        # This parameter is required.
         self.grafana_workspace_edition = grafana_workspace_edition
+        # This parameter is required.
         self.grafana_workspace_name = grafana_workspace_name
         self.password = password
+        # This parameter is required.
         self.region_id = region_id
         self.resource_group_id = resource_group_id
         self.tags = tags
@@ -6695,10 +6848,14 @@ class CreateGrafanaWorkspaceShrinkRequest(TeaModel):
     ):
         self.aliyun_lang = aliyun_lang
         self.description = description
+        # This parameter is required.
         self.grafana_version = grafana_version
+        # This parameter is required.
         self.grafana_workspace_edition = grafana_workspace_edition
+        # This parameter is required.
         self.grafana_workspace_name = grafana_workspace_name
         self.password = password
+        # This parameter is required.
         self.region_id = region_id
         self.resource_group_id = resource_group_id
         self.tags_shrink = tags_shrink
@@ -6873,11 +7030,15 @@ class CreateIntegrationRequest(TeaModel):
         # The description of the alert integration.
         self.description = description
         # The name of the alert integration.
+        # 
+        # This parameter is required.
         self.integration_name = integration_name
         # The service of the alert integration. Valid values:
         # 
         # *   CLOUD_MONITOR: CloudMonitor
         # *   LOG_SERVICE: Log Service
+        # 
+        # This parameter is required.
         self.integration_product_type = integration_product_type
         # The period of time within which alert events are automatically cleared. Unit: seconds. Default value: 300.
         self.recover_time = recover_time
@@ -7181,7 +7342,7 @@ class CreateOrUpdateAlertRuleRequest(TeaModel):
         self.alert_check_type = alert_check_type
         # The alert contact group ID of the Prometheus alert rule. Valid values:
         # 
-        # *   \-1: custom PromQL
+        # *   \\-1: custom PromQL
         # *   1: Kubernetes load
         # *   15: Kubernetes node
         self.alert_group = alert_group
@@ -7191,6 +7352,8 @@ class CreateOrUpdateAlertRuleRequest(TeaModel):
         # *   If you specify this parameter, the specified alert rule is modified.
         self.alert_id = alert_id
         # The name of the alert rule.
+        # 
+        # This parameter is required.
         self.alert_name = alert_name
         # Alarm Notification Channel Configuration. Used for compatibility with legacy rules.
         self.alert_piplines = alert_piplines
@@ -7231,6 +7394,8 @@ class CreateOrUpdateAlertRuleRequest(TeaModel):
         # *   prometheus monitoring alert
         # *   application monitoring alert
         # *   browser monitoring alert
+        # 
+        # This parameter is required.
         self.alert_type = alert_type
         # The annotations of the Prometheus alert rule.
         self.annotations = annotations
@@ -7301,6 +7466,8 @@ class CreateOrUpdateAlertRuleRequest(TeaModel):
         # The PromQL statement of the Prometheus alert rule.
         self.prom_ql = prom_ql
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The list of tags.
         self.tags = tags
@@ -7618,7 +7785,7 @@ class CreateOrUpdateAlertRuleResponseBodyAlertRuleFiltersCustomSLSFilters(TeaMod
         self.key = key
         # The logical operator of the filter condition. Valid values:
         # 
-        # *   \=: equal to
+        # *   \\=: equal to
         # *   not: not equal to
         self.opt = opt
         # Indicates whether this filter condition was displayed on the frontend.
@@ -7879,7 +8046,7 @@ class CreateOrUpdateAlertRuleResponseBodyAlertRule(TeaModel):
         self.alert_check_type = alert_check_type
         # The alert contact group ID of the Prometheus alert rule. Valid values:
         # 
-        # *   \-1: custom PromQL
+        # *   \\-1: custom PromQL
         # *   1: Kubernetes load
         # *   15: Kubernetes node
         self.alert_group = alert_group
@@ -8200,6 +8367,8 @@ class CreateOrUpdateContactRequest(TeaModel):
         # *   If you specify this parameter, the specified alert contact is modified.
         self.contact_id = contact_id
         # The name of the alert contact.
+        # 
+        # This parameter is required.
         self.contact_name = contact_name
         self.corp_user_id = corp_user_id
         # The webhook URL of the DingTalk chatbot.
@@ -8449,6 +8618,8 @@ class CreateOrUpdateContactGroupRequest(TeaModel):
         # *   If you specify this parameter, the specified alert contact group is modified.
         self.contact_group_id = contact_group_id
         # The name of the alert contact group.
+        # 
+        # This parameter is required.
         self.contact_group_name = contact_group_name
         # The ID of the contact that you want to add to the contact group. Separate multiple IDs with commas (,).
         self.contact_ids = contact_ids
@@ -8878,11 +9049,15 @@ class CreateOrUpdateIMRobotRequest(TeaModel):
         # Specifies whether to enable the Outgoing feature.
         self.enable_outgoing = enable_outgoing
         # The webhook URL of the IM chatbot.
+        # 
+        # This parameter is required.
         self.robot_address = robot_address
         # The ID of the IM chatbot.
         # > If you do not specify the parameter, a new IM chatbot is created.
         self.robot_id = robot_id
         # The name of the IM chatbot.
+        # 
+        # This parameter is required.
         self.robot_name = robot_name
         # The token required to enable the Outgoing feature.
         self.token = token
@@ -9179,6 +9354,8 @@ class CreateOrUpdateNotificationPolicyRequest(TeaModel):
         # ```
         self.matching_rules = matching_rules
         # The name of the notification policy.
+        # 
+        # This parameter is required.
         self.name = name
         # An array of notification rule objects. Format:
         # 
@@ -9196,6 +9373,8 @@ class CreateOrUpdateNotificationPolicyRequest(TeaModel):
         #                     "tts"
         #                 ],
         #      }]
+        # 
+        # This parameter is required.
         self.notify_rule = notify_rule
         # The notification template. The default notification template is provided below the table.
         self.notify_template = notify_template
@@ -9844,6 +10023,8 @@ class CreateOrUpdateSilencePolicyRequest(TeaModel):
         #     	 ]
         self.matching_rules = matching_rules
         # The name of the silence policy.
+        # 
+        # This parameter is required.
         self.name = name
         # The ID of the region.
         self.region_id = region_id
@@ -10109,16 +10290,20 @@ class CreateOrUpdateWebhookContactRequest(TeaModel):
         self.biz_headers = biz_headers
         # The parameters in the HTTP request.
         self.biz_params = biz_params
-        # The notification template that is sent when an alert is triggered. This parameter is required if the **Method** parameter is set to **Post**. You can use the `$content` placeholder to specify the notification content. The content cannot exceed 500 characters in length. For more information, see [Variable description of a notification template](~~251834~~).\\
+        # The notification template that is sent when an alert is triggered. This parameter is required if the **Method** parameter is set to **Post**. You can use the `$content` placeholder to specify the notification content. The content cannot exceed 500 characters in length. For more information, see [Variable description of a notification template](https://help.aliyun.com/document_detail/251834.html).\\\\
         self.body = body
         # The HTTP request method.
         # 
         # *   Post
         # *   Get
+        # 
+        # This parameter is required.
         self.method = method
-        # The notification template that is sent when an alert is resolved. This parameter is required if the **Method** parameter is set to **Post**. You can use the `$content` placeholder to specify the notification content. The content cannot exceed 500 characters in length. For more information, see [Variable description of a notification template](~~251834~~).
+        # The notification template that is sent when an alert is resolved. This parameter is required if the **Method** parameter is set to **Post**. You can use the `$content` placeholder to specify the notification content. The content cannot exceed 500 characters in length. For more information, see [Variable description of a notification template](https://help.aliyun.com/document_detail/251834.html).
         self.recover_body = recover_body
         # The URL of the HTTP request **method**.
+        # 
+        # This parameter is required.
         self.url = url
         # The ID of the webhook alert contact.
         # 
@@ -10126,6 +10311,8 @@ class CreateOrUpdateWebhookContactRequest(TeaModel):
         # * If you specify this parameter, the specified webhook alert contact is modified.
         self.webhook_id = webhook_id
         # The name of the webhook alert contact.
+        # 
+        # This parameter is required.
         self.webhook_name = webhook_name
 
     def validate(self):
@@ -10413,15 +10600,21 @@ class CreatePrometheusAlertRuleRequest(TeaModel):
         tags: List[CreatePrometheusAlertRuleRequestTags] = None,
         type: str = None,
     ):
+        # This parameter is required.
         self.alert_name = alert_name
         self.annotations = annotations
+        # This parameter is required.
         self.cluster_id = cluster_id
         self.dispatch_rule_id = dispatch_rule_id
+        # This parameter is required.
         self.duration = duration
+        # This parameter is required.
         self.expression = expression
         self.labels = labels
+        # This parameter is required.
         self.message = message
         self.notify_type = notify_type
+        # This parameter is required.
         self.region_id = region_id
         self.tags = tags
         self.type = type
@@ -10834,12 +11027,16 @@ class CreatePrometheusInstanceRequest(TeaModel):
         # * cloud-product(Not supported): Prometheus instance for Alibaba Cloud services outside China.
         # * global-view: Prometheus instance for GlobalView.
         # * aliyun-cs(Not supported): Prometheus instance for Container Service for Kubernetes (ACK).
+        # 
+        # This parameter is required.
         self.cluster_type = cluster_type
         # Data storage duration (in days).
         self.duration = duration
         # The ID of the Grafana dedicated instance. This parameter is available if you set the ClusterType parameter to ecs.
         self.grafana_instance_id = grafana_instance_id
         # The ID of the region. If you use a Prometheus instance to monitor an Alibaba Cloud service in China, this parameter must be set to cn-shanghai.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the custom resource group. You can configure this parameter to bind the instance to the resource group.
         self.resource_group_id = resource_group_id
@@ -11034,16 +11231,24 @@ class CreatePrometheusMonitoringRequest(TeaModel):
         type: str = None,
     ):
         # The ID of the Prometheus instance.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # The monitoring configuration. Specify a YAML string.
+        # 
+        # This parameter is required.
         self.config_yaml = config_yaml
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The status of the monitoring configuration. Valid values: run and stop. Default value: run. This parameter is not available if the Type parameter is set to Probe.
         self.status = status
         # The type of the monitoring configuration. 
         # Valid values for a Prometheus instance for Container Service: serviceMonitor, podMonitor, customJob, and probe. 
         # Valid values for a Prometheus instance for ECS: customJob and probe.
+        # 
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -11217,12 +11422,18 @@ class CreateRetcodeAppRequest(TeaModel):
         tags: List[CreateRetcodeAppRequestTags] = None,
     ):
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group. You can obtain the resource group ID in the **Resource Management** console.
         self.resource_group_id = resource_group_id
         # The name of the application that is monitored by Browser Monitoring.
+        # 
+        # This parameter is required.
         self.retcode_app_name = retcode_app_name
         # The site type.
+        # 
+        # This parameter is required.
         self.retcode_app_type = retcode_app_type
         # The list of tags.
         self.tags = tags
@@ -11550,11 +11761,14 @@ class CreateRumAppRequest(TeaModel):
         tag: List[CreateRumAppRequestTag] = None,
     ):
         self.app_group = app_group
+        # This parameter is required.
         self.app_name = app_name
         self.description = description
         self.package_name = package_name
+        # This parameter is required.
         self.region_id = region_id
         self.resource_group_id = resource_group_id
+        # This parameter is required.
         self.site_type = site_type
         self.source = source
         self.tag = tag
@@ -11741,6 +11955,7 @@ class CreateRumUploadFileUrlRequest(TeaModel):
         self.content_type = content_type
         self.file_name = file_name
         self.pid = pid
+        # This parameter is required.
         self.region_id = region_id
         self.sourcemap_type = sourcemap_type
         self.uuid = uuid
@@ -12166,8 +12381,11 @@ class CreateSyntheticTaskRequestMonitorList(TeaModel):
         monitor_type: int = None,
         net_service_id: int = None,
     ):
+        # This parameter is required.
         self.city_code = city_code
+        # This parameter is required.
         self.monitor_type = monitor_type
+        # This parameter is required.
         self.net_service_id = net_service_id
 
     def validate(self):
@@ -12832,17 +13050,25 @@ class CreateSyntheticTaskRequest(TeaModel):
         self.common_param = common_param
         self.download = download
         self.extend_interval = extend_interval
+        # This parameter is required.
         self.interval_time = interval_time
+        # This parameter is required.
         self.interval_type = interval_type
+        # This parameter is required.
         self.ip_type = ip_type
+        # This parameter is required.
         self.monitor_list = monitor_list
         self.navigation = navigation
         self.net = net
         self.protocol = protocol
+        # This parameter is required.
         self.region_id = region_id
+        # This parameter is required.
         self.task_name = task_name
+        # This parameter is required.
         self.task_type = task_type
         self.update_task = update_task
+        # This parameter is required.
         self.url = url
 
     def validate(self):
@@ -12969,17 +13195,25 @@ class CreateSyntheticTaskShrinkRequest(TeaModel):
         self.common_param_shrink = common_param_shrink
         self.download_shrink = download_shrink
         self.extend_interval_shrink = extend_interval_shrink
+        # This parameter is required.
         self.interval_time = interval_time
+        # This parameter is required.
         self.interval_type = interval_type
+        # This parameter is required.
         self.ip_type = ip_type
+        # This parameter is required.
         self.monitor_list_shrink = monitor_list_shrink
         self.navigation_shrink = navigation_shrink
         self.net_shrink = net_shrink
         self.protocol_shrink = protocol_shrink
+        # This parameter is required.
         self.region_id = region_id
+        # This parameter is required.
         self.task_name = task_name
+        # This parameter is required.
         self.task_type = task_type
         self.update_task = update_task
+        # This parameter is required.
         self.url = url
 
     def validate(self):
@@ -13181,9 +13415,12 @@ class CreateTimingSyntheticTaskRequestAvailableAssertions(TeaModel):
         target: str = None,
         type: str = None,
     ):
+        # This parameter is required.
         self.expect = expect
+        # This parameter is required.
         self.operator = operator
         self.target = target
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -13225,8 +13462,11 @@ class CreateTimingSyntheticTaskRequestCommonSettingCustomHostHosts(TeaModel):
         ip_type: int = None,
         ips: List[str] = None,
     ):
+        # This parameter is required.
         self.domain = domain
+        # This parameter is required.
         self.ip_type = ip_type
+        # This parameter is required.
         self.ips = ips
 
     def validate(self):
@@ -13263,7 +13503,9 @@ class CreateTimingSyntheticTaskRequestCommonSettingCustomHost(TeaModel):
         hosts: List[CreateTimingSyntheticTaskRequestCommonSettingCustomHostHosts] = None,
         select_type: int = None,
     ):
+        # This parameter is required.
         self.hosts = hosts
+        # This parameter is required.
         self.select_type = select_type
 
     def validate(self):
@@ -13465,7 +13707,9 @@ class CreateTimingSyntheticTaskRequestCustomPeriod(TeaModel):
         end_hour: int = None,
         start_hour: int = None,
     ):
+        # This parameter is required.
         self.end_hour = end_hour
+        # This parameter is required.
         self.start_hour = start_hour
 
     def validate(self):
@@ -13543,6 +13787,7 @@ class CreateTimingSyntheticTaskRequestMonitorConfApiHTTP(TeaModel):
         self.protocol_alpn_protocol = protocol_alpn_protocol
         self.request_body = request_body
         self.request_headers = request_headers
+        # This parameter is required.
         self.target_url = target_url
         self.timeout = timeout
 
@@ -13631,6 +13876,7 @@ class CreateTimingSyntheticTaskRequestMonitorConfFileDownload(TeaModel):
         self.monitor_timeout = monitor_timeout
         self.quick_protocol = quick_protocol
         self.redirection = redirection
+        # This parameter is required.
         self.target_url = target_url
         self.transmission_size = transmission_size
         self.validate_keywords = validate_keywords
@@ -13737,6 +13983,7 @@ class CreateTimingSyntheticTaskRequestMonitorConfNetDNS(TeaModel):
         self.dns_server_ip_type = dns_server_ip_type
         self.ns_server = ns_server
         self.query_method = query_method
+        # This parameter is required.
         self.target_url = target_url
         self.timeout = timeout
 
@@ -13793,6 +14040,7 @@ class CreateTimingSyntheticTaskRequestMonitorConfNetICMP(TeaModel):
         self.package_num = package_num
         self.package_size = package_size
         self.split_package = split_package
+        # This parameter is required.
         self.target_url = target_url
         self.timeout = timeout
         self.tracert_enable = tracert_enable
@@ -13864,6 +14112,7 @@ class CreateTimingSyntheticTaskRequestMonitorConfNetTCP(TeaModel):
     ):
         self.connect_times = connect_times
         self.interval = interval
+        # This parameter is required.
         self.target_url = target_url
         self.timeout = timeout
         self.tracert_enable = tracert_enable
@@ -14015,6 +14264,7 @@ class CreateTimingSyntheticTaskRequestMonitorConfWebsite(TeaModel):
         self.page_tamper = page_tamper
         self.redirection = redirection
         self.slow_element_threshold = slow_element_threshold
+        # This parameter is required.
         self.target_url = target_url
         self.verify_string_blacklist = verify_string_blacklist
         self.verify_string_whitelist = verify_string_whitelist
@@ -14202,8 +14452,11 @@ class CreateTimingSyntheticTaskRequestMonitors(TeaModel):
         client_type: int = None,
         operator_code: str = None,
     ):
+        # This parameter is required.
         self.city_code = city_code
+        # This parameter is required.
         self.client_type = client_type
+        # This parameter is required.
         self.operator_code = operator_code
 
     def validate(self):
@@ -14286,14 +14539,21 @@ class CreateTimingSyntheticTaskRequest(TeaModel):
         self.available_assertions = available_assertions
         self.common_setting = common_setting
         self.custom_period = custom_period
+        # This parameter is required.
         self.frequency = frequency
+        # This parameter is required.
         self.monitor_category = monitor_category
+        # This parameter is required.
         self.monitor_conf = monitor_conf
+        # This parameter is required.
         self.monitors = monitors
+        # This parameter is required.
         self.name = name
+        # This parameter is required.
         self.region_id = region_id
         self.resource_group_id = resource_group_id
         self.tags = tags
+        # This parameter is required.
         self.task_type = task_type
 
     def validate(self):
@@ -14414,14 +14674,21 @@ class CreateTimingSyntheticTaskShrinkRequest(TeaModel):
         self.available_assertions_shrink = available_assertions_shrink
         self.common_setting_shrink = common_setting_shrink
         self.custom_period_shrink = custom_period_shrink
+        # This parameter is required.
         self.frequency = frequency
+        # This parameter is required.
         self.monitor_category = monitor_category
+        # This parameter is required.
         self.monitor_conf_shrink = monitor_conf_shrink
+        # This parameter is required.
         self.monitors_shrink = monitors_shrink
+        # This parameter is required.
         self.name = name
+        # This parameter is required.
         self.region_id = region_id
         self.resource_group_id = resource_group_id
         self.tags_shrink = tags_shrink
+        # This parameter is required.
         self.task_type = task_type
 
     def validate(self):
@@ -14629,8 +14896,12 @@ class CreateWebhookRequest(TeaModel):
         url: str = None,
     ):
         # The notification template that is sent when an alert is triggered. This parameter is required if the **Method** parameter is set to **Post**. You can use the $content placeholder to specify the notification content. The content cannot exceed 500 characters in length.
+        # 
+        # This parameter is required.
         self.body = body
         # The name of the contact.
+        # 
+        # This parameter is required.
         self.contact_name = contact_name
         # The HTTP request header.
         self.http_headers = http_headers
@@ -14640,12 +14911,18 @@ class CreateWebhookRequest(TeaModel):
         # 
         # *   `Get`
         # *   `Post`
+        # 
+        # This parameter is required.
         self.method = method
         # The notification template that is sent when an alert is resolved. This parameter is required if the **Method** parameter is set to **Post**. You can use the $content placeholder to specify the notification content. The content cannot exceed 500 characters in length.
         self.recover_body = recover_body
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The URL of the request **method**.
+        # 
+        # This parameter is required.
         self.url = url
 
     def validate(self):
@@ -14781,6 +15058,8 @@ class DelAuthTokenRequest(TeaModel):
         # The cluster ID.
         self.cluster_id = cluster_id
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -14892,12 +15171,16 @@ class DeleteAddonReleaseRequest(TeaModel):
         release_name: str = None,
     ):
         # Environment ID.
+        # 
+        # This parameter is required.
         self.environment_id = environment_id
         # Whether to be forcibly deleted. The default value is false.
         self.force = force
         # The region ID.
         self.region_id = region_id
         # Name of Release.
+        # 
+        # This parameter is required.
         self.release_name = release_name
 
     def validate(self):
@@ -15039,8 +15322,12 @@ class DeleteAlertContactRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the alert contact.
+        # 
+        # This parameter is required.
         self.contact_id = contact_id
         # The ID of the region.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -15153,8 +15440,12 @@ class DeleteAlertContactGroupRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the alert contact group.
+        # 
+        # This parameter is required.
         self.contact_group_id = contact_group_id
         # The ID of the region.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -15269,6 +15560,8 @@ class DeleteAlertRuleRequest(TeaModel):
         # 
         # *   `true`: The specified data is deleted.
         # *   `false`: The specified data fails to be deleted.
+        # 
+        # This parameter is required.
         self.alert_id = alert_id
 
     def validate(self):
@@ -15376,7 +15669,9 @@ class DeleteAlertRulesRequest(TeaModel):
         alert_ids: str = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.alert_ids = alert_ids
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -15618,7 +15913,9 @@ class DeleteCmsExporterRequest(TeaModel):
         cluster_id: str = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -15725,6 +16022,8 @@ class DeleteContactRequest(TeaModel):
         contact_id: int = None,
     ):
         # The operation that you want to perform. Set the value to **DeleteContact**.
+        # 
+        # This parameter is required.
         self.contact_id = contact_id
 
     def validate(self):
@@ -15827,6 +16126,8 @@ class DeleteContactGroupRequest(TeaModel):
         contact_group_id: int = None,
     ):
         # The ID of the alert contact group.
+        # 
+        # This parameter is required.
         self.contact_group_id = contact_group_id
 
     def validate(self):
@@ -15934,7 +16235,9 @@ class DeleteDispatchRuleRequest(TeaModel):
         id: str = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.id = id
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -16043,10 +16346,16 @@ class DeleteEnvCustomJobRequest(TeaModel):
         region_id: str = None,
     ):
         # Custom job name.
+        # 
+        # This parameter is required.
         self.custom_job_name = custom_job_name
         # Environment ID.
+        # 
+        # This parameter is required.
         self.environment_id = environment_id
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -16176,12 +16485,20 @@ class DeleteEnvPodMonitorRequest(TeaModel):
         region_id: str = None,
     ):
         # Environment instance ID.
+        # 
+        # This parameter is required.
         self.environment_id = environment_id
         # The namespace where podMonitor is located
+        # 
+        # This parameter is required.
         self.namespace = namespace
         # PodMonitor name.
+        # 
+        # This parameter is required.
         self.pod_monitor_name = pod_monitor_name
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -16315,12 +16632,20 @@ class DeleteEnvServiceMonitorRequest(TeaModel):
         service_monitor_name: str = None,
     ):
         # Environment instance ID.
+        # 
+        # This parameter is required.
         self.environment_id = environment_id
         # The name of the namespace.
+        # 
+        # This parameter is required.
         self.namespace = namespace
         # The ID of the region.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # ServiceMonitor name.
+        # 
+        # This parameter is required.
         self.service_monitor_name = service_monitor_name
 
     def validate(self):
@@ -16455,8 +16780,12 @@ class DeleteEnvironmentRequest(TeaModel):
         # cascade delete Prometheus instance.
         self.delete_prom_instance = delete_prom_instance
         # The ID of the environment instance.
+        # 
+        # This parameter is required.
         self.environment_id = environment_id
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -16584,7 +16913,9 @@ class DeleteEnvironmentFeatureRequest(TeaModel):
         feature_name: str = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.environment_id = environment_id
+        # This parameter is required.
         self.feature_name = feature_name
         self.region_id = region_id
 
@@ -16824,10 +17155,16 @@ class DeleteGrafanaResourceRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the cluster.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # The name of the cluster.
+        # 
+        # This parameter is required.
         self.cluster_name = cluster_name
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -16954,7 +17291,9 @@ class DeleteGrafanaWorkspaceRequest(TeaModel):
         grafana_workspace_id: str = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.grafana_workspace_id = grafana_workspace_id
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -17085,6 +17424,8 @@ class DeleteIMRobotRequest(TeaModel):
         robot_id: int = None,
     ):
         # The ID of the IM chatbot.
+        # 
+        # This parameter is required.
         self.robot_id = robot_id
 
     def validate(self):
@@ -17194,10 +17535,16 @@ class DeleteIntegrationRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the ACK cluster.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # The abbreviation of the software that is supported by Application Real-Time Monitoring Service (ARMS). Valid values (case-insensitive): `ASM`, `IoT`, and `Flink`.
+        # 
+        # This parameter is required.
         self.integration = integration
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -17323,6 +17670,7 @@ class DeleteIntegrationsRequest(TeaModel):
         self,
         integration_id: int = None,
     ):
+        # This parameter is required.
         self.integration_id = integration_id
 
     def validate(self):
@@ -17425,6 +17773,8 @@ class DeleteNotificationPolicyRequest(TeaModel):
         id: int = None,
     ):
         # Deletes a notification policy based on its ID.
+        # 
+        # This parameter is required.
         self.id = id
 
     def validate(self):
@@ -17533,6 +17883,8 @@ class DeletePrometheusAlertRuleRequest(TeaModel):
         # 
         # *   `true`: The alert rule was deleted.
         # *   `false`: The alert rule failed to be deleted.
+        # 
+        # This parameter is required.
         self.alert_id = alert_id
         self.cluster_id = cluster_id
 
@@ -17654,8 +18006,12 @@ class DeletePrometheusGlobalViewRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the global aggregation instance.
+        # 
+        # This parameter is required.
         self.global_view_cluster_id = global_view_cluster_id
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -17781,12 +18137,18 @@ class DeletePrometheusIntegrationRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the Prometheus instance. Only a Prometheus instance for Container Service or a Prometheus instance for ECS is supported.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # The ID of the exporter.
         self.instance_id = instance_id
         # The type of the integration.
+        # 
+        # This parameter is required.
         self.integration_type = integration_type
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -17920,14 +18282,22 @@ class DeletePrometheusMonitoringRequest(TeaModel):
         type: str = None,
     ):
         # The ID of the Prometheus instance.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # The name of the monitoring configuration.
+        # 
+        # This parameter is required.
         self.monitoring_name = monitoring_name
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The type of the monitoring configuration. 
         # Valid values for a Prometheus instance for Container Service: serviceMonitor, podMonitor, customJob, and probe. 
         # Valid values for a Prometheus instance for ECS: customJob and probe.
+        # 
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -18060,10 +18430,16 @@ class DeletePrometheusRemoteWriteRequest(TeaModel):
         remote_write_names: str = None,
     ):
         # The ID of the Prometheus instance. Only a Prometheus instance for Container Service or a Prometheus instance for ECS is supported.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The names of the remote write configuration items that you want to delete. Separate configuration items with commas (,).
+        # 
+        # This parameter is required.
         self.remote_write_names = remote_write_names
 
     def validate(self):
@@ -18204,8 +18580,12 @@ class DeleteRetcodeAppRequest(TeaModel):
         # The name of the application.
         self.app_name = app_name
         # The process identifier (PID) of the application.
+        # 
+        # This parameter is required.
         self.pid = pid
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -18351,7 +18731,9 @@ class DeleteRumAppRequest(TeaModel):
         region_id: str = None,
     ):
         self.app_group = app_group
+        # This parameter is required.
         self.app_id = app_id
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -18498,6 +18880,7 @@ class DeleteRumUploadFileRequest(TeaModel):
     ):
         self.file_name = file_name
         self.pid = pid
+        # This parameter is required.
         self.region_id = region_id
         self.uuid = uuid
         self.version_id = version_id
@@ -18646,6 +19029,8 @@ class DeleteScenarioRequest(TeaModel):
         # The ID of the region.
         self.region_id = region_id
         # The ID of the business monitoring job. You can obtain the ID by calling the ListScenario operation.
+        # 
+        # This parameter is required.
         self.scenario_id = scenario_id
 
     def validate(self):
@@ -18757,6 +19142,8 @@ class DeleteSilencePolicyRequest(TeaModel):
         id: int = None,
     ):
         # The ID of the request.
+        # 
+        # This parameter is required.
         self.id = id
 
     def validate(self):
@@ -18865,8 +19252,11 @@ class DeleteSourceMapRequest(TeaModel):
         pid: str = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.fid_list = fid_list
+        # This parameter is required.
         self.pid = pid
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -18904,8 +19294,11 @@ class DeleteSourceMapShrinkRequest(TeaModel):
         pid: str = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.fid_list_shrink = fid_list_shrink
+        # This parameter is required.
         self.pid = pid
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -19016,7 +19409,9 @@ class DeleteSyntheticTaskRequest(TeaModel):
         region_id: str = None,
         task_ids: List[str] = None,
     ):
+        # This parameter is required.
         self.region_id = region_id
+        # This parameter is required.
         self.task_ids = task_ids
 
     def validate(self):
@@ -19337,18 +19732,26 @@ class DeleteTraceAppRequest(TeaModel):
         region_id: str = None,
         type: str = None,
     ):
-        # The ID of the application that you want to delete. You can call the SearchTraceAppByName operation to query the application ID. For more information, see [SearchTraceAppByName](~~130676~~).
+        # The ID of the application that you want to delete. You can call the SearchTraceAppByName operation to query the application ID. For more information, see [SearchTraceAppByName](https://help.aliyun.com/document_detail/130676.html).
+        # 
+        # This parameter is required.
         self.app_id = app_id
         # The reason(s) to delete application.
         self.delete_reason = delete_reason
         # The PID of the application. For more information about how to query the PID, see [QueryMetricByPage](https://www.alibabacloud.com/help/zh/doc-detail/186100.htm?spm=a2cdw.13409063.0.0.7a72281f0bkTfx#title-imy-7gj-qhr).
+        # 
+        # This parameter is required.
         self.pid = pid
         # The ID of the region in which the application is located.
+        # 
+        # This parameter is required.
         self.region_id = region_id
-        # The type of the application that you want to delete. You can call the SearchTraceAppByName operation to query the application type. For more information, see [SearchTraceAppByName](~~130676~~). Valid values:
+        # The type of the application that you want to delete. You can call the SearchTraceAppByName operation to query the application type. For more information, see [SearchTraceAppByName](https://help.aliyun.com/document_detail/130676.html). Valid values:
         # 
         # *   `TRACE`: Application Monitoring
         # *   `RETCODE`: frontend monitoring
+        # 
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -19398,18 +19801,26 @@ class DeleteTraceAppShrinkRequest(TeaModel):
         region_id: str = None,
         type: str = None,
     ):
-        # The ID of the application that you want to delete. You can call the SearchTraceAppByName operation to query the application ID. For more information, see [SearchTraceAppByName](~~130676~~).
+        # The ID of the application that you want to delete. You can call the SearchTraceAppByName operation to query the application ID. For more information, see [SearchTraceAppByName](https://help.aliyun.com/document_detail/130676.html).
+        # 
+        # This parameter is required.
         self.app_id = app_id
         # The reason(s) to delete application.
         self.delete_reason_shrink = delete_reason_shrink
         # The PID of the application. For more information about how to query the PID, see [QueryMetricByPage](https://www.alibabacloud.com/help/zh/doc-detail/186100.htm?spm=a2cdw.13409063.0.0.7a72281f0bkTfx#title-imy-7gj-qhr).
+        # 
+        # This parameter is required.
         self.pid = pid
         # The ID of the region in which the application is located.
+        # 
+        # This parameter is required.
         self.region_id = region_id
-        # The type of the application that you want to delete. You can call the SearchTraceAppByName operation to query the application type. For more information, see [SearchTraceAppByName](~~130676~~). Valid values:
+        # The type of the application that you want to delete. You can call the SearchTraceAppByName operation to query the application type. For more information, see [SearchTraceAppByName](https://help.aliyun.com/document_detail/130676.html). Valid values:
         # 
         # *   `TRACE`: Application Monitoring
         # *   `RETCODE`: frontend monitoring
+        # 
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -19555,6 +19966,8 @@ class DeleteWebhookContactRequest(TeaModel):
         webhook_id: int = None,
     ):
         # The ID of the webhook alert contact.
+        # 
+        # This parameter is required.
         self.webhook_id = webhook_id
 
     def validate(self):
@@ -19664,10 +20077,14 @@ class DescribeAddonReleaseRequest(TeaModel):
         release_name: str = None,
     ):
         # The environment ID.
+        # 
+        # This parameter is required.
         self.environment_id = environment_id
         # The region ID.
         self.region_id = region_id
         # The name of the add-on release.
+        # 
+        # This parameter is required.
         self.release_name = release_name
 
     def validate(self):
@@ -20079,10 +20496,14 @@ class DescribeContactGroupsRequest(TeaModel):
         # *   `true`
         self.is_detail = is_detail
         # The number of the page to return.
+        # 
+        # This parameter is required.
         self.page = page
         # The region ID.
         self.region_id = region_id
         # The number of alert contact groups displayed on each page.
+        # 
+        # This parameter is required.
         self.size = size
 
     def validate(self):
@@ -20392,12 +20813,16 @@ class DescribeContactsRequest(TeaModel):
         # The email address of the alert contact.
         self.email = email
         # The number of the page to return.
+        # 
+        # This parameter is required.
         self.page = page
         # The mobile number of the alert contact.
         self.phone = phone
         # The region ID.
         self.region_id = region_id
         # The number of alert contacts to return on each page.
+        # 
+        # This parameter is required.
         self.size = size
         # Specifies whether to return redundant information.
         self.verbose = verbose
@@ -20677,8 +21102,12 @@ class DescribeDispatchRuleRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the dispatch policy.
+        # 
+        # This parameter is required.
         self.id = id
         # The ID of the region.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -21168,12 +21597,18 @@ class DescribeEnvCustomJobRequest(TeaModel):
         region_id: str = None,
     ):
         # The name of the custom job.
+        # 
+        # This parameter is required.
         self.custom_job_name = custom_job_name
         # Specifies whether to return the encrypted YAML string.
         self.encrypt_yaml = encrypt_yaml
         # The ID of the environment instance.
+        # 
+        # This parameter is required.
         self.environment_id = environment_id
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -21365,12 +21800,20 @@ class DescribeEnvPodMonitorRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the environment instance.
+        # 
+        # This parameter is required.
         self.environment_id = environment_id
         # The namespace where the PodMonitor is located.
+        # 
+        # This parameter is required.
         self.namespace = namespace
         # The name of the PodMonitor.
+        # 
+        # This parameter is required.
         self.pod_monitor_name = pod_monitor_name
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -21569,12 +22012,20 @@ class DescribeEnvServiceMonitorRequest(TeaModel):
         service_monitor_name: str = None,
     ):
         # The ID of the environment instance.
+        # 
+        # This parameter is required.
         self.environment_id = environment_id
         # The namespace where the ServiceMonitor is located.
+        # 
+        # This parameter is required.
         self.namespace = namespace
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The name of the ServiceMonitor.
+        # 
+        # This parameter is required.
         self.service_monitor_name = service_monitor_name
 
     def validate(self):
@@ -21771,8 +22222,12 @@ class DescribeEnvironmentRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the environment instance.
+        # 
+        # This parameter is required.
         self.environment_id = environment_id
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -22148,6 +22603,8 @@ class DescribeEnvironmentFeatureRequest(TeaModel):
     ):
         self.aliyun_lang = aliyun_lang
         # The environment ID.
+        # 
+        # This parameter is required.
         self.environment_id = environment_id
         # The name of the feature.
         # 
@@ -22168,6 +22625,8 @@ class DescribeEnvironmentFeatureRequest(TeaModel):
         #     <!-- -->
         # 
         #     <!-- -->
+        # 
+        # This parameter is required.
         self.feature_name = feature_name
         # The region ID.
         self.region_id = region_id
@@ -22571,12 +23030,16 @@ class DescribeIMRobotsRequest(TeaModel):
         size: int = None,
     ):
         # The number of the page to return.
+        # 
+        # This parameter is required.
         self.page = page
         # The chatbot IDs.
         self.robot_ids = robot_ids
         # The name of the IM chatbot.
         self.robot_name = robot_name
         # The number of IM chatbots to return on each page.
+        # 
+        # This parameter is required.
         self.size = size
 
     def validate(self):
@@ -22886,6 +23349,8 @@ class DescribePrometheusAlertRuleRequest(TeaModel):
         cluster_id: str = None,
     ):
         # The ID of the alert rule. You can call the ListPrometheusAlertRules operation to query the ID of the alert rule.
+        # 
+        # This parameter is required.
         self.alert_id = alert_id
         self.cluster_id = cluster_id
 
@@ -23319,8 +23784,12 @@ class DescribeWebhookContactsRequest(TeaModel):
         # The ID of the alert contact.
         self.contact_ids = contact_ids
         # The number of the page to return.
+        # 
+        # This parameter is required.
         self.page = page
         # The number of alert contacts displayed on each page.
+        # 
+        # This parameter is required.
         self.size = size
         # The name of the webhook alert contact.
         self.webhook_name = webhook_name
@@ -23610,10 +24079,14 @@ class EnableMetricRequest(TeaModel):
         region_id: str = None,
     ):
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # Enable metric name.
         self.drop_metric = drop_metric
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -23755,6 +24228,8 @@ class GetAgentDownloadUrlRequest(TeaModel):
         region_id: str = None,
     ):
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -23931,12 +24406,18 @@ class GetAlertRulesRequest(TeaModel):
         # The ID of the monitored cluster.
         self.cluster_id = cluster_id
         # The number of the page to return.
+        # 
+        # This parameter is required.
         self.page = page
         # You do not need to configure this parameter.
         self.product_code = product_code
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The number of alert rules to return on each page.
+        # 
+        # This parameter is required.
         self.size = size
         # The list of tags.
         self.tags = tags
@@ -24169,7 +24650,7 @@ class GetAlertRulesResponseBodyPageBeanAlertRulesFiltersCustomSLSFilters(TeaMode
         self.key = key
         # The logical operator of the filter condition. Valid values:
         # 
-        # *   \=: equal to
+        # *   \\=: equal to
         # *   not: not equal to
         self.opt = opt
         # Indicates whether this filter condition was displayed on the frontend.
@@ -24429,7 +24910,7 @@ class GetAlertRulesResponseBodyPageBeanAlertRules(TeaModel):
         self.alert_check_type = alert_check_type
         # The ID of the alert contact group to which the alert rule belongs. Valid values:
         # 
-        # *   \-1: custom PromQL
+        # *   \\-1: custom PromQL
         # *   1: Kubernetes load
         # *   15: Kubernetes node
         self.alert_group = alert_group
@@ -24802,10 +25283,14 @@ class GetAppApiByPageRequest(TeaModel):
         # The time interval between the data shards to be queried. Unit: milliseconds. Minimum value: 60000. Maximum value: 2147483647.
         self.interval_mills = interval_mills
         # The process identifier (PID) of the application. For information about how to obtain a PID, see [Obtain the PID of an application](https://www.alibabacloud.com/help/zh/doc-detail/186100.htm?spm=a2cdw.13409063.0.0.7a72281f0bkTfx#title-imy-7gj-qhr).
+        # 
+        # This parameter is required.
         self.pid = pid
         # The number of entries to return on each page. This parameter is no longer supported. The number of entries to return on each page. Default value: 10.
         self.page_size = page_size
         # The ID of the region.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The beginning of the time range to query. Unit: milliseconds.
         self.start_time = start_time
@@ -25029,9 +25514,11 @@ class GetAppJVMConfigRequest(TeaModel):
         self.end_time = end_time
         # The ID of the application.
         # 
-        # Log on to the **ARMS console**. In the left-side navigation pane, choose **Application Monitoring** > **Applications**. On the **Applications** page, click the name of an application. The URL in the address bar contains the process ID (PID) of the application. The PID is indicated in the pid=xxx format. The PID is usually percent encoded as xxx%40xxx. You must modify this value to remove the percent encoding. For example, if the PID in the URL is eb4zdose6v%409781be0f44d\*\*\*\*, you must replace %40 with an at sign (@) to obtain eb4zdose6v@9781be0f44d\*\*\*\*.
+        # Log on to the **ARMS console**. In the left-side navigation pane, choose **Application Monitoring** > **Applications**. On the **Applications** page, click the name of an application. The URL in the address bar contains the process ID (PID) of the application. The PID is indicated in the pid=xxx format. The PID is usually percent encoded as xxx%40xxx. You must modify this value to remove the percent encoding. For example, if the PID in the URL is eb4zdose6v%409781be0f44d\\*\\*\\*\\*, you must replace %40 with an at sign (@) to obtain eb4zdose6v@9781be0f44d\\*\\*\\*\\*.
         self.pid = pid
         # The ID of the region.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The start time of the call method.
         self.start_time = start_time
@@ -25246,8 +25733,12 @@ class GetAuthTokenRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the cluster.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -25656,8 +26147,12 @@ class GetClusterAllUrlRequest(TeaModel):
         region_id: str = None,
     ):
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # The region ID. Default value: cn-hangzhou.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -25960,12 +26455,16 @@ class GetExploreUrlRequest(TeaModel):
         type: str = None,
     ):
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # The query statement that corresponds to the data source.
         self.expression = expression
         # The region ID.
         self.region_id = region_id
         # The type of the Grafana data source.
+        # 
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -26102,7 +26601,9 @@ class GetGrafanaWorkspaceRequest(TeaModel):
         region_id: str = None,
     ):
         self.aliyun_lang = aliyun_lang
+        # This parameter is required.
         self.grafana_workspace_id = grafana_workspace_id
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -26241,8 +26742,11 @@ class GetIntegrationStateRequest(TeaModel):
         integration: str = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
+        # This parameter is required.
         self.integration = integration
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -26371,10 +26875,16 @@ class GetManagedPrometheusStatusRequest(TeaModel):
         vpc_id: str = None,
     ):
         # The ID of the ASK cluster. This parameter is required if the ClusterType parameter is set to ask.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # The type of the monitoring object. Valid values: ask , acs , one and ecs.
+        # 
+        # This parameter is required.
         self.cluster_type = cluster_type
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group to which the Prometheus instance belongs.
         self.resource_group_id = resource_group_id
@@ -26533,10 +27043,14 @@ class GetMultipleTraceRequest(TeaModel):
         # The time when the trace ends. The value is a timestamp. Unit: milliseconds.
         self.end_time = end_time
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The start time of the trace. The value is a timestamp. Unit: milliseconds.
         self.start_time = start_time
         # The trace IDs.
+        # 
+        # This parameter is required.
         self.trace_ids = trace_ids
 
     def validate(self):
@@ -26742,7 +27256,7 @@ class GetMultipleTraceResponseBodyMultiCallChainInfosSpans(TeaModel):
         # *   18: SOFARPC provision
         # *   11: Distributed Service Framework (DSF) call
         # *   12: DSF provision
-        # *   \-1: unknown call
+        # *   \\-1: unknown call
         self.rpc_type = rpc_type
         # The IP address of the host where the application resides.
         self.service_ip = service_ip
@@ -26983,6 +27497,8 @@ class GetOnCallSchedulesDetailRequest(TeaModel):
         # The date on which the shift ends. Format: `yyyy-MM-dd`.
         self.end_time = end_time
         # The ID of the scheduling policy.
+        # 
+        # This parameter is required.
         self.id = id
         # The date from which the shift starts. Format: `yyyy-MM-dd`.
         self.start_time = start_time
@@ -27568,6 +28084,8 @@ class GetPrometheusApiTokenRequest(TeaModel):
         region_id: str = None,
     ):
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -27673,8 +28191,12 @@ class GetPrometheusGlobalViewRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the global aggregation instance.
+        # 
+        # This parameter is required.
         self.global_view_cluster_id = global_view_cluster_id
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -27798,8 +28320,12 @@ class GetPrometheusInstanceRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the Prometheus instance.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -28174,12 +28700,20 @@ class GetPrometheusIntegrationRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the Prometheus instance. Only a Prometheus instance for Container Service or a Prometheus instance for ECS is supported.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # The exporter ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The type of the integration.
+        # 
+        # This parameter is required.
         self.integration_type = integration_type
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -28455,14 +28989,22 @@ class GetPrometheusMonitoringRequest(TeaModel):
         type: str = None,
     ):
         # The ID of the Prometheus instance.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # The name of the monitoring configuration.
+        # 
+        # This parameter is required.
         self.monitoring_name = monitoring_name
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The type of the monitoring configuration. 
         # Valid values for a Prometheus instance for Container Service: serviceMonitor, podMonitor, customJob, and probe. 
         # Valid values for a Prometheus instance for ECS: customJob and probe.
+        # 
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -28653,10 +29195,16 @@ class GetPrometheusRemoteWriteRequest(TeaModel):
         remote_write_name: str = None,
     ):
         # The ID of the Prometheus instance. Only a Prometheus instance for Container Service or a Prometheus instance for ECS is supported.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The name of the remote write configuration item.
+        # 
+        # This parameter is required.
         self.remote_write_name = remote_write_name
 
     def validate(self):
@@ -28838,8 +29386,12 @@ class GetRecordingRuleRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the cluster.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -29241,10 +29793,15 @@ class GetRetcodeDataByQueryRequest(TeaModel):
         region_id: str = None,
         to: int = None,
     ):
+        # This parameter is required.
         self.from_ = from_
+        # This parameter is required.
         self.pid = pid
+        # This parameter is required.
         self.query = query
+        # This parameter is required.
         self.region_id = region_id
+        # This parameter is required.
         self.to = to
 
     def validate(self):
@@ -29381,6 +29938,7 @@ class GetRetcodeLogstoreRequest(TeaModel):
         pid: str = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.pid = pid
         self.region_id = region_id
 
@@ -29572,6 +30130,8 @@ class GetRetcodeShareUrlRequest(TeaModel):
         # The process identifier (PID) of the application. 
         # 
         # Log on to the **ARMS console**. In the left-side navigation pane, choose **Browser Monitoring** > **Browser Monitoring**. On the Browser Monitoring page, click the name of an application. The URL in the address bar contains the process ID (PID) of the application. The PID is indicated in the `pid=xxx` format. The PID is usually percent encoded as `xxx%40xxx`. You must modify this value to remove the percent encoding. For example, if the PID in the URL is `eb4zdose6v%409781be0f44d****`, you must replace `%40` with @ to obtain `eb4zdose6v@9781be0f44d****`.
+        # 
+        # This parameter is required.
         self.pid = pid
 
     def validate(self):
@@ -29679,6 +30239,7 @@ class GetRumAppInfoRequest(TeaModel):
     ):
         self.app_group = app_group
         self.pid = pid
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -30074,6 +30635,7 @@ class GetRumAppsRequest(TeaModel):
         self.app_group = app_group
         self.app_id = app_id
         self.app_name = app_name
+        # This parameter is required.
         self.region_id = region_id
         self.resource_group_id = resource_group_id
         self.tags = tags
@@ -30469,6 +31031,7 @@ class GetRumDataForPageRequest(TeaModel):
         self.page_size = page_size
         self.pid = pid
         self.query = query
+        # This parameter is required.
         self.region_id = region_id
         self.start_time = start_time
 
@@ -30696,6 +31259,7 @@ class GetRumExceptionStackRequest(TeaModel):
         self.exception_binary_images = exception_binary_images
         self.exception_stack = exception_stack
         self.exception_thread_id = exception_thread_id
+        # This parameter is required.
         self.pid = pid
         self.region_id = region_id
 
@@ -30878,6 +31442,7 @@ class GetRumUploadFilesRequest(TeaModel):
     ):
         self.app_type = app_type
         self.pid = pid
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -31078,6 +31643,7 @@ class GetSourceMapInfoRequest(TeaModel):
     ):
         self.ascending_sequence = ascending_sequence
         self.edition = edition
+        # This parameter is required.
         self.id = id
         self.keyword = keyword
         self.order_field = order_field
@@ -31271,12 +31837,18 @@ class GetStackRequest(TeaModel):
         # The process identifier (PID) of the application. For more information about how to obtain the PID, see [Obtain the PID of an application](https://www.alibabacloud.com/help/zh/doc-detail/186100.htm?spm=a2cdw.13409063.0.0.7a72281f0bkTfx#title-imy-7gj-qhr).
         self.pid = pid
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the remote procedure call (RPC) mode. You can obtain the ID by calling the **GetTrace** operation.
+        # 
+        # This parameter is required.
         self.rpc_id = rpc_id
         # The start time of the call method.
         self.start_time = start_time
         # The trace ID. You can log on to the Application Real-Time Monitoring Service (ARMS) console and obtain the trace ID on the **Trace Query** page.
+        # 
+        # This parameter is required.
         self.trace_id = trace_id
 
     def validate(self):
@@ -31525,12 +32097,18 @@ class GetSyntheticMonitorsRequestFilter(TeaModel):
         task_type: int = None,
     ):
         # The type of the monitoring point. Valid values: 1: PC. 2: mobile device.
+        # 
+        # This parameter is required.
         self.monitor_category = monitor_category
         # The network type. Valid values: 1: private network. 2: Internet.
+        # 
+        # This parameter is required.
         self.network = network
         # The type of the monitoring task. Valid values:
         # 
         # 1: ICMP. 2: TCP. 3: DNS. 4: HTTP. 5: website speed. 6: file download.
+        # 
+        # This parameter is required.
         self.task_type = task_type
 
     def validate(self):
@@ -31568,6 +32146,8 @@ class GetSyntheticMonitorsRequest(TeaModel):
         region_id: str = None,
     ):
         # The query conditions.
+        # 
+        # This parameter is required.
         self.filter = filter
         # The region ID.
         self.region_id = region_id
@@ -31605,6 +32185,8 @@ class GetSyntheticMonitorsShrinkRequest(TeaModel):
         region_id: str = None,
     ):
         # The query conditions.
+        # 
+        # This parameter is required.
         self.filter_shrink = filter_shrink
         # The region ID.
         self.region_id = region_id
@@ -31831,6 +32413,8 @@ class GetSyntheticTaskDetailRequest(TeaModel):
         # 地域ID。默认为cn-hangzhou。
         self.region_id = region_id
         # 云拨测任务ID。
+        # 
+        # This parameter is required.
         self.task_id = task_id
 
     def validate(self):
@@ -33357,6 +33941,7 @@ class GetSyntheticTaskMonitorsRequest(TeaModel):
         self,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -35070,12 +35655,16 @@ class GetTraceRequest(TeaModel):
         # > If the ID of the trace is 30 characters in length, this parameter is optional. Otherwise, this parameter is required.
         self.end_time = end_time
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The beginning of the time range to query. Unit: milliseconds.
         # 
         # > If the ID of the trace is 30 characters in length, this parameter is optional. Otherwise, this parameter is required.
         self.start_time = start_time
         # The trace ID. You can log on to the ARMS console and obtain the trace ID on the **Trace Query** page or **Interface Snapshot** tab.
+        # 
+        # This parameter is required.
         self.trace_id = trace_id
 
     def validate(self):
@@ -35558,8 +36147,12 @@ class GetTraceAppRequest(TeaModel):
         tags: List[GetTraceAppRequestTags] = None,
     ):
         # The process identifier (PID) of the application. For more information about how to obtain the PID, see [Obtain the PID of an application](https://www.alibabacloud.com/help/zh/doc-detail/186100.htm?spm=a2cdw.13409063.0.0.7a72281f0bkTfx#title-imy-7gj-qhr).
+        # 
+        # This parameter is required.
         self.pid = pid
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The list of tags.
         self.tags = tags
@@ -35893,8 +36486,12 @@ class ImportAppAlertRulesRequest(TeaModel):
         # *   `false`: disables the alert rule.
         self.is_auto_start = is_auto_start
         # The process identifiers (PIDs) of the applications associated with the alert rule. The value must be a JSON array. For more information about how to obtain the PID, see [Obtain the PID of an application](~~186100#section-bkl-3j6-ezg~~).
+        # 
+        # This parameter is required.
         self.pids = pids
         # The ID of the region where the associated applications reside.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The list of tags.
         self.tags = tags
@@ -36045,6 +36642,8 @@ class InitEnvironmentRequest(TeaModel):
         # Whether to create a Token in order to enhance the security of data retrieval.
         self.create_auth_token = create_auth_token
         # The ID of the environment instance.
+        # 
+        # This parameter is required.
         self.environment_id = environment_id
         # Whether agents or exporters are managed. Valid values:
         # 
@@ -36053,6 +36652,8 @@ class InitEnvironmentRequest(TeaModel):
         # *   agent-exproter: Agents and exporters are managed. By default, managed agents and exporters are provided for cloud services.
         self.managed_type = managed_type
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -36194,14 +36795,20 @@ class InstallAddonRequest(TeaModel):
         values: str = None,
     ):
         # The version of the add-on.
+        # 
+        # This parameter is required.
         self.addon_version = addon_version
         # The language. Valid values: zh and en. Default value: zh.
         self.aliyun_lang = aliyun_lang
         # Specifies whether to perform only a dry run, without performing the actual request. Default value: false.
         self.dry_run = dry_run
         # The environment ID.
+        # 
+        # This parameter is required.
         self.environment_id = environment_id
         # The name of the add-on.
+        # 
+        # This parameter is required.
         self.name = name
         # The region ID.
         self.region_id = region_id
@@ -36591,10 +37198,12 @@ class InstallCmsExporterRequest(TeaModel):
         enable_tag: bool = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
         self.cms_args = cms_args
         self.direct_args = direct_args
         self.enable_tag = enable_tag
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -36723,6 +37332,8 @@ class InstallEnvironmentFeatureRequest(TeaModel):
         # The metadata of the feature.
         self.config = config
         # The environment ID.
+        # 
+        # This parameter is required.
         self.environment_id = environment_id
         # The name of the feature.
         # 
@@ -36743,8 +37354,12 @@ class InstallEnvironmentFeatureRequest(TeaModel):
         #     <!-- -->
         # 
         #     <!-- -->
+        # 
+        # This parameter is required.
         self.feature_name = feature_name
         # The version of the feature.
+        # 
+        # This parameter is required.
         self.feature_version = feature_version
         # The region ID of the feature.
         self.region = region
@@ -36948,6 +37563,8 @@ class InstallManagedPrometheusRequest(TeaModel):
         #     <!-- -->
         # 
         #     <!-- -->
+        # 
+        # This parameter is required.
         self.cluster_type = cluster_type
         # The ID of the Grafana workspace used by the ASK cluster or ECS instance. If you set the value to free or leave the parameter empty, a shared Grafana workspace is used.
         self.grafana_instance_id = grafana_instance_id
@@ -36958,10 +37575,16 @@ class InstallManagedPrometheusRequest(TeaModel):
         # The ID of the resource group to which the Prometheus instance belongs.
         self.resource_group_id = resource_group_id
         # The security group of the ASK cluster or ECS instance.
+        # 
+        # This parameter is required.
         self.security_group_id = security_group_id
         # The vSwitch used by the ASK cluster or ECS instance.
+        # 
+        # This parameter is required.
         self.v_switch_id = v_switch_id
         # The virtual private cloud (VPC) where the ASK cluster or ECS instance resides.
+        # 
+        # This parameter is required.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -37126,12 +37749,18 @@ class ListActivatedAlertsRequest(TeaModel):
         region_id: str = None,
     ):
         # The number of the page to return. Default value: `1`.
+        # 
+        # This parameter is required.
         self.current_page = current_page
         # The filter condition in the `{"key":"value"}`format. You must specify the `key` and `value` of the filter condition.
         self.filter = filter
         # The number of entries to return on each page. Default value: `10`.
+        # 
+        # This parameter is required.
         self.page_size = page_size
         # The ID of the region.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -37501,6 +38130,8 @@ class ListAddonReleasesRequest(TeaModel):
         # Name of Addon.
         self.addon_name = addon_name
         # Environment instance ID.
+        # 
+        # This parameter is required.
         self.environment_id = environment_id
         # The region ID.
         self.region_id = region_id
@@ -38512,6 +39143,7 @@ class ListAlertEventsRequest(TeaModel):
         end_time: str = None,
         matching_conditions: str = None,
         page: int = None,
+        show_notification_policies: bool = None,
         size: int = None,
         start_time: str = None,
         status: str = None,
@@ -38523,8 +39155,13 @@ class ListAlertEventsRequest(TeaModel):
         # The list of matching conditions.
         self.matching_conditions = matching_conditions
         # The number of the page to return.
+        # 
+        # This parameter is required.
         self.page = page
+        self.show_notification_policies = show_notification_policies
         # The number of entries to return on each page.
+        # 
+        # This parameter is required.
         self.size = size
         # The start time of the alert events that you want to query. Specify the time in the YYYY-MM-DD HH:mm:ss format.
         self.start_time = start_time
@@ -38552,6 +39189,8 @@ class ListAlertEventsRequest(TeaModel):
             result['MatchingConditions'] = self.matching_conditions
         if self.page is not None:
             result['Page'] = self.page
+        if self.show_notification_policies is not None:
+            result['ShowNotificationPolicies'] = self.show_notification_policies
         if self.size is not None:
             result['Size'] = self.size
         if self.start_time is not None:
@@ -38570,6 +39209,8 @@ class ListAlertEventsRequest(TeaModel):
             self.matching_conditions = m.get('MatchingConditions')
         if m.get('Page') is not None:
             self.page = m.get('Page')
+        if m.get('ShowNotificationPolicies') is not None:
+            self.show_notification_policies = m.get('ShowNotificationPolicies')
         if m.get('Size') is not None:
             self.size = m.get('Size')
         if m.get('StartTime') is not None:
@@ -38632,6 +39273,39 @@ class ListAlertEventsResponseBodyPageBeanEventsAlarms(TeaModel):
         return self
 
 
+class ListAlertEventsResponseBodyPageBeanEventsNotificationPolicies(TeaModel):
+    def __init__(
+        self,
+        id: int = None,
+        name: str = None,
+    ):
+        self.id = id
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
 class ListAlertEventsResponseBodyPageBeanEvents(TeaModel):
     def __init__(
         self,
@@ -38645,10 +39319,12 @@ class ListAlertEventsResponseBodyPageBeanEvents(TeaModel):
         integration_name: str = None,
         integration_type: str = None,
         labels: str = None,
+        notification_policies: List[ListAlertEventsResponseBodyPageBeanEventsNotificationPolicies] = None,
         receive_time: str = None,
         severity: str = None,
         start_time: str = None,
         status: str = None,
+        trigger_count: int = None,
     ):
         # The list of associated alerts.
         self.alarms = alarms
@@ -38670,6 +39346,7 @@ class ListAlertEventsResponseBodyPageBeanEvents(TeaModel):
         self.integration_type = integration_type
         # The list of tags.
         self.labels = labels
+        self.notification_policies = notification_policies
         # The time when the alert event was received.
         self.receive_time = receive_time
         # The severity level of the alert. Valid value:
@@ -38688,10 +39365,15 @@ class ListAlertEventsResponseBodyPageBeanEvents(TeaModel):
         # *   Silenced
         # *   Resolved
         self.status = status
+        self.trigger_count = trigger_count
 
     def validate(self):
         if self.alarms:
             for k in self.alarms:
+                if k:
+                    k.validate()
+        if self.notification_policies:
+            for k in self.notification_policies:
                 if k:
                     k.validate()
 
@@ -38723,6 +39405,10 @@ class ListAlertEventsResponseBodyPageBeanEvents(TeaModel):
             result['IntegrationType'] = self.integration_type
         if self.labels is not None:
             result['Labels'] = self.labels
+        result['NotificationPolicies'] = []
+        if self.notification_policies is not None:
+            for k in self.notification_policies:
+                result['NotificationPolicies'].append(k.to_map() if k else None)
         if self.receive_time is not None:
             result['ReceiveTime'] = self.receive_time
         if self.severity is not None:
@@ -38731,6 +39417,8 @@ class ListAlertEventsResponseBodyPageBeanEvents(TeaModel):
             result['StartTime'] = self.start_time
         if self.status is not None:
             result['Status'] = self.status
+        if self.trigger_count is not None:
+            result['TriggerCount'] = self.trigger_count
         return result
 
     def from_map(self, m: dict = None):
@@ -38758,6 +39446,11 @@ class ListAlertEventsResponseBodyPageBeanEvents(TeaModel):
             self.integration_type = m.get('IntegrationType')
         if m.get('Labels') is not None:
             self.labels = m.get('Labels')
+        self.notification_policies = []
+        if m.get('NotificationPolicies') is not None:
+            for k in m.get('NotificationPolicies'):
+                temp_model = ListAlertEventsResponseBodyPageBeanEventsNotificationPolicies()
+                self.notification_policies.append(temp_model.from_map(k))
         if m.get('ReceiveTime') is not None:
             self.receive_time = m.get('ReceiveTime')
         if m.get('Severity') is not None:
@@ -38766,6 +39459,8 @@ class ListAlertEventsResponseBodyPageBeanEvents(TeaModel):
             self.start_time = m.get('StartTime')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('TriggerCount') is not None:
+            self.trigger_count = m.get('TriggerCount')
         return self
 
 
@@ -38949,6 +39644,8 @@ class ListAlertsRequest(TeaModel):
         # *   ARMS_INSIGHTS
         self.integration_type = integration_type
         # The number of the page to return.
+        # 
+        # This parameter is required.
         self.page = page
         # The ID of the region.
         self.region_id = region_id
@@ -38965,6 +39662,8 @@ class ListAlertsRequest(TeaModel):
         # *   `true`: The events are queried.
         self.show_events = show_events
         # The number of alerts to return on each page.
+        # 
+        # This parameter is required.
         self.size = size
         # The start time of the alert sending history that you want to query. Specify the time in the `YYYY-MM-DD HH:mm:ss` format.
         self.start_time = start_time
@@ -39524,6 +40223,8 @@ class ListClusterFromGrafanaRequest(TeaModel):
         region_id: str = None,
     ):
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -39791,7 +40492,9 @@ class ListCmsInstancesRequest(TeaModel):
         region_id: str = None,
         type_filter: str = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
+        # This parameter is required.
         self.region_id = region_id
         self.type_filter = type_filter
 
@@ -40581,6 +41284,8 @@ class ListDashboardsByNameRequest(TeaModel):
         # The abbreviation of the Alibaba Cloud service name.
         self.product_code = product_code
         # The ID of the region.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -40733,6 +41438,7 @@ class ListDispatchRuleRequest(TeaModel):
         system: bool = None,
     ):
         self.name = name
+        # This parameter is required.
         self.region_id = region_id
         self.system = system
 
@@ -40895,8 +41601,12 @@ class ListEnvCustomJobsRequest(TeaModel):
         # Specifies whether to return the encrypted YAML string.
         self.encrypt_yaml = encrypt_yaml
         # The ID of the environment instance.
+        # 
+        # This parameter is required.
         self.environment_id = environment_id
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -41180,8 +41890,12 @@ class ListEnvPodMonitorsRequest(TeaModel):
         region_id: str = None,
     ):
         # The environment ID.
+        # 
+        # This parameter is required.
         self.environment_id = environment_id
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -41475,8 +42189,12 @@ class ListEnvServiceMonitorsRequest(TeaModel):
         region_id: str = None,
     ):
         # The environment ID.
+        # 
+        # This parameter is required.
         self.environment_id = environment_id
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -41781,6 +42499,8 @@ class ListEnvironmentDashboardsRequest(TeaModel):
         # Name of Addon,One of AddonName and Scene must be filled in.
         self.addon_name = addon_name
         # The ID of the environment instance.
+        # 
+        # This parameter is required.
         self.environment_id = environment_id
         # The region ID of the instance.
         self.region_id = region_id
@@ -42033,6 +42753,7 @@ class ListEnvironmentFeaturesRequest(TeaModel):
         environment_id: str = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.environment_id = environment_id
         self.region_id = region_id
 
@@ -43014,8 +43735,12 @@ class ListEscalationPoliciesRequest(TeaModel):
         # The name of the escalation policy.
         self.name = name
         # The number of the page to return.
+        # 
+        # This parameter is required.
         self.page = page
         # The number of entries to return on each page.
+        # 
+        # This parameter is required.
         self.size = size
 
     def validate(self):
@@ -43226,8 +43951,12 @@ class ListEventBridgeIntegrationsRequest(TeaModel):
         # The name of the EventBridge integration.
         self.name = name
         # The number of the page to return.
+        # 
+        # This parameter is required.
         self.page = page
         # The number of entries to return on each page.
+        # 
+        # This parameter is required.
         self.size = size
 
     def validate(self):
@@ -43477,6 +44206,7 @@ class ListGrafanaWorkspaceRequest(TeaModel):
         tags: List[ListGrafanaWorkspaceRequestTags] = None,
     ):
         self.aliyun_lang = aliyun_lang
+        # This parameter is required.
         self.region_id = region_id
         self.resource_group_id = resource_group_id
         self.tags = tags
@@ -43530,6 +44260,7 @@ class ListGrafanaWorkspaceShrinkRequest(TeaModel):
         tags_shrink: str = None,
     ):
         self.aliyun_lang = aliyun_lang
+        # This parameter is required.
         self.region_id = region_id
         self.resource_group_id = resource_group_id
         self.tags_shrink = tags_shrink
@@ -43682,6 +44413,8 @@ class ListInsightsEventsRequest(TeaModel):
         start_time: str = None,
     ):
         # The end of the time range to query. The value is a timestamp.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The types of the events that you want to query. Separate multiple event types with commas (,). If you do not specify this parameter, all events are queried.
         # 
@@ -43693,8 +44426,12 @@ class ListInsightsEventsRequest(TeaModel):
         # The ID of the application.
         self.pid = pid
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The start of the time range to query. The value is a timestamp.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -43897,9 +44634,12 @@ class ListIntegrationRequest(TeaModel):
         size: int = None,
     ):
         self.integration_name = integration_name
+        # This parameter is required.
         self.integration_product_type = integration_product_type
         self.is_detail = is_detail
+        # This parameter is required.
         self.page = page
+        # This parameter is required.
         self.size = size
 
     def validate(self):
@@ -44242,10 +44982,14 @@ class ListNotificationPoliciesRequest(TeaModel):
         # The name of the notification policy.
         self.name = name
         # The number of the page to return.
+        # 
+        # This parameter is required.
         self.page = page
         # The ID of the region.
         self.region_id = region_id
         # The number of entries to return on each page.
+        # 
+        # This parameter is required.
         self.size = size
 
     def validate(self):
@@ -44890,8 +45634,12 @@ class ListOnCallSchedulesRequest(TeaModel):
         # The name of the scheduling policy.
         self.name = name
         # The number of the page to return.
+        # 
+        # This parameter is required.
         self.page = page
         # The number of entries to return on each page.
+        # 
+        # This parameter is required.
         self.size = size
 
     def validate(self):
@@ -45143,9 +45891,11 @@ class ListPrometheusAlertRulesRequest(TeaModel):
         tags: List[ListPrometheusAlertRulesRequestTags] = None,
         type: str = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
         self.match_expressions = match_expressions
         self.name = name
+        # This parameter is required.
         self.region_id = region_id
         self.status = status
         self.tags = tags
@@ -45534,6 +46284,7 @@ class ListPrometheusAlertTemplatesRequest(TeaModel):
         region_id: str = None,
     ):
         self.cluster_id = cluster_id
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -45799,6 +46550,7 @@ class ListPrometheusGlobalViewRequest(TeaModel):
         self,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -45950,6 +46702,8 @@ class ListPrometheusInstanceByTagAndResourceGroupIdRequest(TeaModel):
         tag: List[ListPrometheusInstanceByTagAndResourceGroupIdRequestTag] = None,
     ):
         # The region ID of the Prometheus instance.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -46374,11 +47128,15 @@ class ListPrometheusInstancesRequest(TeaModel):
         # - Edge Kubernetes
         self.cluster_type = cluster_type
         # The ID of the region.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # Specifies whether to query global aggregation instances. Valid values:
         # 
         # *   true
         # *   false
+        # 
+        # This parameter is required.
         self.show_global_view = show_global_view
 
     def validate(self):
@@ -46507,10 +47265,16 @@ class ListPrometheusIntegrationRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the Prometheus instance. Only aliyun-cs and ecs instances are supported.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # The integration type.
+        # 
+        # This parameter is required.
         self.integration_type = integration_type
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -46794,8 +47558,12 @@ class ListPrometheusMonitoringRequest(TeaModel):
         type: str = None,
     ):
         # The ID of the Prometheus instance.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # The region ID. Default value: `cn-hangzhou`.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The type of the monitoring configuration. Valid values for a Prometheus instance for Container Service: serviceMonitor, podMonitor, customJob, and probe. Valid values for a Prometheus instance for ECS: customJob and probe.
         self.type = type
@@ -46989,8 +47757,12 @@ class ListPrometheusRemoteWritesRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the Prometheus instance. Only a Prometheus instance for Container Service or a Prometheus instance for ECS is supported.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -47207,6 +47979,8 @@ class ListRetcodeAppsRequest(TeaModel):
         tags: List[ListRetcodeAppsRequestTags] = None,
     ):
         # The ID of the region.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group. You can obtain the resource group ID in the **Resource Management** console.
         self.resource_group_id = resource_group_id
@@ -47463,8 +48237,12 @@ class ListScenarioRequest(TeaModel):
         sign: str = None,
     ):
         # The ID of the application.
+        # 
+        # This parameter is required.
         self.app_id = app_id
         # The name of the business monitoring job.
+        # 
+        # This parameter is required.
         self.name = name
         # The ID of the region.
         self.region_id = region_id
@@ -47699,10 +48477,14 @@ class ListSilencePoliciesRequest(TeaModel):
         # The name of the silence policy.
         self.name = name
         # The number of the page to return.
+        # 
+        # This parameter is required.
         self.page = page
         # The ID of the region.
         self.region_id = region_id
         # The number of entries to return on each page.
+        # 
+        # This parameter is required.
         self.size = size
 
     def validate(self):
@@ -49273,6 +50055,8 @@ class ListTraceAppsRequest(TeaModel):
         # The region ID.
         self.region = region
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
@@ -49640,10 +50424,16 @@ class ManageGetRecordingRuleRequest(TeaModel):
         region_id: str = None,
     ):
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # The user ID.
+        # 
+        # This parameter is required.
         self.query_user_id = query_user_id
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -49773,12 +50563,20 @@ class ManageRecordingRuleRequest(TeaModel):
         rule_yaml: str = None,
     ):
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # The user ID.
+        # 
+        # This parameter is required.
         self.query_user_id = query_user_id
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The recording rule.
+        # 
+        # This parameter is required.
         self.rule_yaml = rule_yaml
 
     def validate(self):
@@ -49909,6 +50707,8 @@ class OpenArmsDefaultSLRRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the region.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -50014,6 +50814,8 @@ class OpenArmsServiceSecondVersionRequest(TeaModel):
         type: str = None,
     ):
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The type of the service. Valid values:
         # 
@@ -50022,6 +50824,8 @@ class OpenArmsServiceSecondVersionRequest(TeaModel):
         # *   `arms_web`: Browser Monitoring
         # *   `prometheus_monitor`: Managed Service for Prometheus
         # *   `synthetic_post`: Synthetic Monitoring
+        # 
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -50134,6 +50938,8 @@ class OpenVClusterRequest(TeaModel):
         region_id: str = None,
     ):
         # The type of the cluster. For cloud services, set this parameter to `cloud-product-prometheus`.
+        # 
+        # This parameter is required.
         self.cluster_type = cluster_type
         # The length of the cluster ID. Default value: 10.
         self.length = length
@@ -50142,6 +50948,8 @@ class OpenVClusterRequest(TeaModel):
         # Specifies whether to create or query a virtual cluster. This parameter provides backward compatibility.
         self.recreate_switch = recreate_switch
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -50262,6 +51070,8 @@ class OpenXtraceDefaultSLRRequest(TeaModel):
         region_id: str = None,
     ):
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -50372,12 +51182,20 @@ class QueryAppMetadataRequest(TeaModel):
         region_id: str = None,
     ):
         # The list of metadata IDs. Separate multiple IDs with commas (,).
+        # 
+        # This parameter is required.
         self.meta_ids = meta_ids
         # The metadata type. Valid values: sql: obtains an SQL statement based on sqlId exception: obtains the exception stack based on exceptionId
+        # 
+        # This parameter is required.
         self.meta_type = meta_type
         # The process identifier (PID) of the application. For more information about how to obtain the PID, see "Obtain the PID of an application."
+        # 
+        # This parameter is required.
         self.pid = pid
         # The region ID. Default value: cn-hangzhou.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -50538,20 +51356,28 @@ class QueryAppTopologyRequest(TeaModel):
         # The name of the database.
         self.db_name = db_name
         # The end of the time range to query. Unit: milliseconds.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The filter conditions.
         self.filters = filters
         # The ID of the application.
         # 
-        # Log on to the **ARMS console**. In the left-side navigation pane, choose **Browser Monitoring** > **Browser Monitoring**. On the Browser Monitoring page, click the name of an application. The URL in the address bar contains the process ID (PID) of the application. The PID is indicated in the pid=xxx format. The PID is usually percent encoded as xxx%40xxx. You must modify this value to remove the percent encoding. For example, if the PID in the URL is eb4zdose6v%409781be0f44d\*\*\*\*, you must replace %40 with an at sign (@) to obtain eb4zdose6v@9781be0f44d\*\*\*\*.
+        # Log on to the **ARMS console**. In the left-side navigation pane, choose **Browser Monitoring** > **Browser Monitoring**. On the Browser Monitoring page, click the name of an application. The URL in the address bar contains the process ID (PID) of the application. The PID is indicated in the pid=xxx format. The PID is usually percent encoded as xxx%40xxx. You must modify this value to remove the percent encoding. For example, if the PID in the URL is eb4zdose6v%409781be0f44d\\*\\*\\*\\*, you must replace %40 with an at sign (@) to obtain eb4zdose6v@9781be0f44d\\*\\*\\*\\*.
         self.pid = pid
         # The ID of the region.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # RPC interface name.
         self.rpc = rpc
         # The start of the time range to query. Unit: milliseconds.
+        # 
+        # This parameter is required.
         self.start_time = start_time
         # The type kind of topology.
+        # 
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -50631,20 +51457,28 @@ class QueryAppTopologyShrinkRequest(TeaModel):
         # The name of the database.
         self.db_name = db_name
         # The end of the time range to query. Unit: milliseconds.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The filter conditions.
         self.filters_shrink = filters_shrink
         # The ID of the application.
         # 
-        # Log on to the **ARMS console**. In the left-side navigation pane, choose **Browser Monitoring** > **Browser Monitoring**. On the Browser Monitoring page, click the name of an application. The URL in the address bar contains the process ID (PID) of the application. The PID is indicated in the pid=xxx format. The PID is usually percent encoded as xxx%40xxx. You must modify this value to remove the percent encoding. For example, if the PID in the URL is eb4zdose6v%409781be0f44d\*\*\*\*, you must replace %40 with an at sign (@) to obtain eb4zdose6v@9781be0f44d\*\*\*\*.
+        # Log on to the **ARMS console**. In the left-side navigation pane, choose **Browser Monitoring** > **Browser Monitoring**. On the Browser Monitoring page, click the name of an application. The URL in the address bar contains the process ID (PID) of the application. The PID is indicated in the pid=xxx format. The PID is usually percent encoded as xxx%40xxx. You must modify this value to remove the percent encoding. For example, if the PID in the URL is eb4zdose6v%409781be0f44d\\*\\*\\*\\*, you must replace %40 with an at sign (@) to obtain eb4zdose6v@9781be0f44d\\*\\*\\*\\*.
         self.pid = pid
         # The ID of the region.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # RPC interface name.
         self.rpc = rpc
         # The start of the time range to query. Unit: milliseconds.
+        # 
+        # This parameter is required.
         self.start_time = start_time
         # The type kind of topology.
+        # 
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -50858,13 +51692,17 @@ class QueryCommercialUsageRequest(TeaModel):
     ):
         self.advanced_filters = advanced_filters
         self.dimensions = dimensions
+        # This parameter is required.
         self.end_time = end_time
         self.interval_in_sec = interval_in_sec
         self.measures = measures
+        # This parameter is required.
         self.metric = metric
         self.order = order
         self.order_by = order_by
+        # This parameter is required.
         self.query_type = query_type
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -51116,6 +51954,8 @@ class QueryMetricByPageRequest(TeaModel):
         # The dimensions of the metric that you want to query.
         self.dimensions = dimensions
         # The end of the time range to query. Unit: milliseconds.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The filter conditions.
         self.filters = filters
@@ -51124,6 +51964,8 @@ class QueryMetricByPageRequest(TeaModel):
         # The measures of the metric that you want to query.
         self.measures = measures
         # The metric that you want to query. You cannot specify a custom metric. For more information, see the "Application monitoring metrics that can be queried" section.
+        # 
+        # This parameter is required.
         self.metric = metric
         # The order in which measures are sorted. Valid values:
         # 
@@ -51137,6 +51979,8 @@ class QueryMetricByPageRequest(TeaModel):
         # The number of entries to return on each page. This parameter is no longer supported. The number of entries to return on each page.
         self.page_size = page_size
         # The start of the time range to query. Unit: milliseconds.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -51532,12 +52376,16 @@ class QueryReleaseMetricRequest(TeaModel):
         release_start_time: int = None,
         service: str = None,
     ):
+        # This parameter is required.
         self.change_order_id = change_order_id
         self.create_time = create_time
         self.metric_type = metric_type
+        # This parameter is required.
         self.pid = pid
         self.proxy_user_id = proxy_user_id
+        # This parameter is required.
         self.release_end_time = release_end_time
+        # This parameter is required.
         self.release_start_time = release_start_time
         self.service = service
 
@@ -51672,12 +52520,20 @@ class RemoveAliClusterIdsFromPrometheusGlobalViewRequest(TeaModel):
         region_id: str = None,
     ):
         # The IDs of clusters. Separate multiple IDs with commas (,).
+        # 
+        # This parameter is required.
         self.cluster_ids = cluster_ids
         # The ID of the global aggregation instance.
+        # 
+        # This parameter is required.
         self.global_view_cluster_id = global_view_cluster_id
         # The name of the global aggregation instance.
+        # 
+        # This parameter is required.
         self.group_name = group_name
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -51856,12 +52712,20 @@ class RemoveSourcesFromPrometheusGlobalViewRequest(TeaModel):
         source_names: str = None,
     ):
         # The ID of the global aggregation instance.
+        # 
+        # This parameter is required.
         self.global_view_cluster_id = global_view_cluster_id
         # The name of the global aggregation instance.
+        # 
+        # This parameter is required.
         self.group_name = group_name
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The list of custom data sources. You can specify multiple data sources and separate them with commas (,).
+        # 
+        # This parameter is required.
         self.source_names = source_names
 
     def validate(self):
@@ -52040,7 +52904,9 @@ class RestartEnvironmentFeatureRequest(TeaModel):
         feature_name: str = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.environment_id = environment_id
+        # This parameter is required.
         self.feature_name = feature_name
         self.region_id = region_id
 
@@ -52228,7 +53094,9 @@ class SaveTraceAppConfigRequest(TeaModel):
     ):
         # The ID of the application.
         # 
-        # Log on to the **ARMS console**. In the left-side navigation pane, choose **Application Monitoring** > **Applications**. On the **Applications** page, click the name of an application. The URL in the address bar contains the process ID (PID) of the application. The PID is indicated in the pid=xxx format. The PID is usually percent encoded as xxx%40xxx. You must modify this value to remove the percent encoding. For example, if the PID in the URL is eb4zdose6v%409781be0f44d\*\*\*\*, you must replace %40 with an at sign (@) to obtain eb4zdose6v@9781be0f44d\*\*\*\*.
+        # Log on to the **ARMS console**. In the left-side navigation pane, choose **Application Monitoring** > **Applications**. On the **Applications** page, click the name of an application. The URL in the address bar contains the process ID (PID) of the application. The PID is indicated in the pid=xxx format. The PID is usually percent encoded as xxx%40xxx. You must modify this value to remove the percent encoding. For example, if the PID in the URL is eb4zdose6v%409781be0f44d\\*\\*\\*\\*, you must replace %40 with an at sign (@) to obtain eb4zdose6v@9781be0f44d\\*\\*\\*\\*.
+        # 
+        # This parameter is required.
         self.pid = pid
         # The settings of Application Monitoring.
         self.settings = settings
@@ -52389,6 +53257,8 @@ class SearchAlertContactRequest(TeaModel):
         # The mobile number of the alert contact.
         self.phone = phone
         # The ID of the region. Set the value to `cn-hangzhou`.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -52692,13 +53562,15 @@ class SearchAlertContactGroupRequest(TeaModel):
         self.contact_group_ids = contact_group_ids
         # The name of the alert contact group.
         self.contact_group_name = contact_group_name
-        # The ID of the alert contact. You can call the SearchAlertContact operation to query the contact IDs. For more information, see [SearchAlertContact](~~130703~~).
+        # The ID of the alert contact. You can call the SearchAlertContact operation to query the contact IDs. For more information, see [SearchAlertContact](https://help.aliyun.com/document_detail/130703.html).
         self.contact_id = contact_id
         # The name of the alert contact.
         self.contact_name = contact_name
         # Specifies whether to return all alert contacts in the queried alert contact group. By default, not all alert contacts are returned.
         self.is_detail = is_detail
         # The ID of the region. Default value: `cn-hangzhou`.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -52994,7 +53866,7 @@ class SearchAlertHistoriesRequest(TeaModel):
         region_id: str = None,
         start_time: int = None,
     ):
-        # The ID of the alert rule. You can call the SearchAlertRules operation and view the `Id` parameter in the response. For more information, see [SearchAlertRules](~~175825~~).
+        # The ID of the alert rule. You can call the SearchAlertRules operation and view the `Id` parameter in the response. For more information, see [SearchAlertRules](https://help.aliyun.com/document_detail/175825.html).
         self.alert_id = alert_id
         # The type of the alert rule. Valid values:
         # 
@@ -53014,6 +53886,8 @@ class SearchAlertHistoriesRequest(TeaModel):
         # The number of entries to return on each page. Default value: `10`.
         self.page_size = page_size
         # The ID of the region. Default value: `cn-hangzhou`.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The beginning of the time range to query. The value is a UNIX timestamp of the LONG data type. Unit: milliseconds. The default value is 10 minutes before the current time.
         self.start_time = start_time
@@ -53379,6 +54253,8 @@ class SearchAlertRulesRequest(TeaModel):
         # The process identifier (PID) of the application that is associated with the alert rule. For more information about how to obtain the PID, see [Obtain the PID of an application](https://help.aliyun.com/document_detail/186100.html?spm=a2c4g.11186623.6.792.1b50654cqcDPyk#title-imy-7gj-qhr).
         self.pid = pid
         # The region ID of the alert data. For more information about the mappings between **RegionId** and **SystemRegionId**, see the detailed description below the table.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group. You can obtain the resource group ID in the **Resource Management** console.
         self.resource_group_id = resource_group_id
@@ -54173,7 +55049,7 @@ class SearchEventsRequest(TeaModel):
         region_id: str = None,
         start_time: int = None,
     ):
-        # The ID of the alert rule. You can call the SearchAlertRules operation and view the `Id` parameter in the response. For more information, see [SearchAlertRules](~~175825~~).
+        # The ID of the alert rule. You can call the SearchAlertRules operation and view the `Id` parameter in the response. For more information, see [SearchAlertRules](https://help.aliyun.com/document_detail/175825.html).
         self.alert_id = alert_id
         # The type of the alert rule. Valid values:
         # 
@@ -54205,6 +55081,8 @@ class SearchEventsRequest(TeaModel):
         # The process identifier (PID) of the application that is associated with the alert rule.
         self.pid = pid
         # The ID of the region.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The beginning of the time range to query. Specify a UNIX timestamp of the LONG data type, in milliseconds. The default value is 10 minutes before the current time.
         self.start_time = start_time
@@ -54554,6 +55432,8 @@ class SearchRetcodeAppByPageRequest(TeaModel):
         # The number of entries to return on each page.
         self.page_size = page_size
         # The ID of the region.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group. You can obtain the resource group ID in the **Resource Management** console.
         self.resource_group_id = resource_group_id
@@ -55286,6 +56166,8 @@ class SearchTraceAppByPageRequest(TeaModel):
         # The number of entries to return on each page. Default value: `10`.
         self.page_size = page_size
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
@@ -55727,6 +56609,8 @@ class SearchTracesRequest(TeaModel):
         tag: List[SearchTracesRequestTag] = None,
     ):
         # The end of the time range to query. Unit: milliseconds.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The filter conditions.
         self.exclusion_filters = exclusion_filters
@@ -55737,6 +56621,8 @@ class SearchTracesRequest(TeaModel):
         # The application ID.
         self.pid = pid
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # Specifies whether to sort the query results in chronological order or reverse chronological order. Default value: `false`.
         # 
@@ -55748,6 +56634,8 @@ class SearchTracesRequest(TeaModel):
         # The name of the application.
         self.service_name = service_name
         # The beginning of the time range to query. Unit: milliseconds.
+        # 
+        # This parameter is required.
         self.start_time = start_time
         # The list of tags.
         self.tag = tag
@@ -56076,6 +56964,8 @@ class SearchTracesByPageRequest(TeaModel):
         tags: List[SearchTracesByPageRequestTags] = None,
     ):
         # The end of the time range to query. Unit: milliseconds.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The filter conditions.
         self.exclusion_filters = exclusion_filters
@@ -56095,6 +56985,8 @@ class SearchTracesByPageRequest(TeaModel):
         # The application ID.
         self.pid = pid
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # Specifies whether to sort the query results in chronological order or reverse chronological order. Default value: `false`.
         # 
@@ -56106,6 +56998,8 @@ class SearchTracesByPageRequest(TeaModel):
         # The name of the application.
         self.service_name = service_name
         # The beginning of the time range to query. Unit: milliseconds.
+        # 
+        # This parameter is required.
         self.start_time = start_time
         # The tags.
         self.tags = tags
@@ -56404,8 +57298,12 @@ class SendTTSVerifyLinkRequest(TeaModel):
         phone: str = None,
     ):
         # The ID of the alert contact.
+        # 
+        # This parameter is required.
         self.contact_id = contact_id
         # The mobile number of the alert contact.
+        # 
+        # This parameter is required.
         self.phone = phone
 
     def validate(self):
@@ -56528,6 +57426,8 @@ class SetRetcodeShareStatusRequest(TeaModel):
         # 
         # *   `true`: Turn on the switch.
         # *   `false`: Turn off the switch.
+        # 
+        # This parameter is required.
         self.status = status
 
     def validate(self):
@@ -56643,7 +57543,9 @@ class StartAlertRequest(TeaModel):
         alert_id: str = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.alert_id = alert_id
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -56903,8 +57805,12 @@ class StopAlertRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the alert rule.
+        # 
+        # This parameter is required.
         self.alert_id = alert_id
         # The ID of the region.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -57019,6 +57925,8 @@ class StopTimingSyntheticTaskRequest(TeaModel):
         # The region ID.
         self.region_id = region_id
         # The task IDs.
+        # 
+        # This parameter is required.
         self.task_ids = task_ids
 
     def validate(self):
@@ -57054,6 +57962,8 @@ class StopTimingSyntheticTaskShrinkRequest(TeaModel):
         # The region ID.
         self.region_id = region_id
         # The task IDs.
+        # 
+        # This parameter is required.
         self.task_ids_shrink = task_ids_shrink
 
     def validate(self):
@@ -57285,10 +58195,16 @@ class SyncRecordingRulesRequest(TeaModel):
         target_clusters: str = None,
     ):
         # The ID of the cluster whose aggregation rule you want to synchronize.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # The ID of the region. The destination region can be the same as the source region.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The IDs of clusters to which you want to synchronize the aggregation rule.
+        # 
+        # This parameter is required.
         self.target_clusters = target_clusters
 
     def validate(self):
@@ -57452,6 +58368,8 @@ class TagResourcesRequest(TeaModel):
         tag: List[TagResourcesRequestTag] = None,
     ):
         # The resource IDs. You can specify a maximum of 50 resource IDs.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
         # The type of the ARMS resources for which you want to modify tags. Valid values:
         # 
@@ -57462,8 +58380,12 @@ class TagResourcesRequest(TeaModel):
         # *   ALERTRULE: Application Monitoring alert rule
         # *   PROMETHEUSALERTRULE: Managed Service for Prometheus alert rule
         # *   XTRACEAPP: Managed Service for OpenTelemetry
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The tags to add to the resource. You can specify a maximum of 20 tags.
+        # 
+        # This parameter is required.
         self.tag = tag
 
     def validate(self):
@@ -57590,8 +58512,12 @@ class UninstallManagedPrometheusRequest(TeaModel):
         # The ID of the ASK cluster. This parameter is required if the ClusterType parameter is set to ask.
         self.cluster_id = cluster_id
         # The type of the monitoring object. Valid values: ask and ecs.
+        # 
+        # This parameter is required.
         self.cluster_type = cluster_type
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group to which the Prometheus instance belongs.
         self.resource_group_id = resource_group_id
@@ -57743,8 +58669,12 @@ class UninstallPromClusterRequest(TeaModel):
         # - en
         self.aliyun_lang = aliyun_lang
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # The region ID. Default value: cn-hangzhou.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -57917,6 +58847,8 @@ class UntagResourcesRequest(TeaModel):
         # Default value: false.
         self.all = all
         # The resource IDs. You can specify a maximum of 50 resource IDs.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
         # The type of the ARMS resources for which you want to modify tags. Valid values:
         # 
@@ -57927,6 +58859,8 @@ class UntagResourcesRequest(TeaModel):
         # *   ALERTRULE: Application Monitoring alert rule
         # *   PROMETHEUSALERTRULE: Managed Service for Prometheus alert rule
         # *   XTRACEAPP: Managed Service for OpenTelemetry
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The tag keys. You can specify a maximum of 20 tag keys.
         self.tag_key = tag_key
@@ -58064,11 +58998,13 @@ class UpdateAlertContactRequest(TeaModel):
         region_id: str = None,
         system_noc: bool = None,
     ):
-        # The ID of the alert contact to be updated. You can call the SearchAlertContact operation to query the contact ID. For more information, see [SearchAlertContact](~~130703~~).
+        # The ID of the alert contact to be updated. You can call the SearchAlertContact operation to query the contact ID. For more information, see [SearchAlertContact](https://help.aliyun.com/document_detail/130703.html).
+        # 
+        # This parameter is required.
         self.contact_id = contact_id
         # The new name of the alert contact.
         self.contact_name = contact_name
-        # The new webhook URL of the DingTalk chatbot. For more information, see [Configure a DingTalk chatbot to send alert notifications](~~106247~~). You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
+        # The new webhook URL of the DingTalk chatbot. For more information, see [Configure a DingTalk chatbot to send alert notifications](https://help.aliyun.com/document_detail/106247.html). You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
         # 
         # >  If you do not specify this parameter, the original parameter value is deleted. If you specify this parameter, the original parameter value is updated.
         self.ding_robot_webhook_url = ding_robot_webhook_url
@@ -58081,6 +59017,8 @@ class UpdateAlertContactRequest(TeaModel):
         # >  If you do not specify this parameter, the original parameter value is deleted. If you specify this parameter, the original parameter value is updated.
         self.phone_num = phone_num
         # The ID of the region. Set the value to `cn-hangzhou`.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # Specifies whether the alert contact receives system notifications. Valid values:
         # 
@@ -58220,12 +59158,18 @@ class UpdateAlertContactGroupRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the alert contact group.
+        # 
+        # This parameter is required.
         self.contact_group_id = contact_group_id
         # The name of the alert contact group.
+        # 
+        # This parameter is required.
         self.contact_group_name = contact_group_name
         # The ID of the alert contact.
         self.contact_ids = contact_ids
         # The ID of the region.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -58349,6 +59293,8 @@ class UpdateAlertRuleRequest(TeaModel):
         templage_alert_config: str = None,
     ):
         # The ID of the alert rule.
+        # 
+        # This parameter is required.
         self.alert_id = alert_id
         # The IDs of the alert contact groups. The value must be a JSON array.
         self.contact_group_ids = contact_group_ids
@@ -58358,8 +59304,12 @@ class UpdateAlertRuleRequest(TeaModel):
         # *   `false`: disables the alert rule.
         self.is_auto_start = is_auto_start
         # The ID of the region.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The configurations of the alert template based on which you want to create an alert rule. The value must be a JSON string. You must set at least one of the **TemplateAlertId** and **TemplageAlertConfig** parameters. If you set both parameters, the **TemplateAlertId** parameter prevails. For more information about the TemplageAlertConfig parameter, see the following **additional information about the TemplageAlertConfig parameter**.
+        # 
+        # This parameter is required.
         self.templage_alert_config = templage_alert_config
 
     def validate(self):
@@ -58554,7 +59504,10 @@ class UpdateDispatchRuleRequest(TeaModel):
         # *   `_aliyun_arms_alert_rule_id`: alert rule ID
         # *   `_aliyun_arms_alert_type`: alert type
         # *   `_aliyun_arms_alert_level`: alert severity
+        # 
+        # This parameter is required.
         self.dispatch_rule = dispatch_rule
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -58670,10 +59623,16 @@ class UpdateEnvCustomJobRequest(TeaModel):
         # The YAML configuration string.
         self.config_yaml = config_yaml
         # The name of the custom job.
+        # 
+        # This parameter is required.
         self.custom_job_name = custom_job_name
         # The environment ID.
+        # 
+        # This parameter is required.
         self.environment_id = environment_id
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The status of the custom job. Valid values: run and stop.
         self.status = status
@@ -58822,16 +59781,26 @@ class UpdateEnvPodMonitorRequest(TeaModel):
         # The language. Valid values: zh and en. Default value: zh.
         self.aliyun_lang = aliyun_lang
         # The YAML configuration string.
+        # 
+        # This parameter is required.
         self.config_yaml = config_yaml
         # Specifies whether to perform only a dry run, without performing the actual request.
         self.dry_run = dry_run
         # The environment ID.
+        # 
+        # This parameter is required.
         self.environment_id = environment_id
         # The namespace where the PodMonitor is located.
+        # 
+        # This parameter is required.
         self.namespace = namespace
         # The name of the PodMonitor.
+        # 
+        # This parameter is required.
         self.pod_monitor_name = pod_monitor_name
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -59019,16 +59988,26 @@ class UpdateEnvServiceMonitorRequest(TeaModel):
         # The language. Valid values: zh and en. Default value: zh.
         self.aliyun_lang = aliyun_lang
         # The YAML configuration string.
+        # 
+        # This parameter is required.
         self.config_yaml = config_yaml
         # Specifies whether to perform only a dry run, without performing the actual request.
         self.dry_run = dry_run
         # The environment ID.
+        # 
+        # This parameter is required.
         self.environment_id = environment_id
         # The namespace where the ServiceMonitor is located.
+        # 
+        # This parameter is required.
         self.namespace = namespace
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The name of the ServiceMonitor.
+        # 
+        # This parameter is required.
         self.service_monitor_name = service_monitor_name
 
     def validate(self):
@@ -59214,6 +60193,8 @@ class UpdateEnvironmentRequest(TeaModel):
         # The language. Valid values: zh and en. Default value: zh.
         self.aliyun_lang = aliyun_lang
         # The environment ID.
+        # 
+        # This parameter is required.
         self.environment_id = environment_id
         # The environment name.
         self.environment_name = environment_name
@@ -59222,6 +60203,8 @@ class UpdateEnvironmentRequest(TeaModel):
         # * When the EnvironmentType is a different value, please enter a null value.
         self.fee_package = fee_package
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -59361,8 +60344,10 @@ class UpdateGrafanaWorkspaceRequest(TeaModel):
     ):
         self.aliyun_lang = aliyun_lang
         self.description = description
+        # This parameter is required.
         self.grafana_workspace_id = grafana_workspace_id
         self.grafana_workspace_name = grafana_workspace_name
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -59509,8 +60494,11 @@ class UpdateGrafanaWorkspaceVersionRequest(TeaModel):
         region_id: str = None,
     ):
         self.aliyun_lang = aliyun_lang
+        # This parameter is required.
         self.grafana_version = grafana_version
+        # This parameter is required.
         self.grafana_workspace_id = grafana_workspace_id
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -59684,13 +60672,19 @@ class UpdateIntegrationRequest(TeaModel):
         # > Only the Log Service alert integration supports the parameter.
         self.initiative_recover_value = initiative_recover_value
         # The ID of the alert integration.
+        # 
+        # This parameter is required.
         self.integration_id = integration_id
         # The name of the alert integration.
+        # 
+        # This parameter is required.
         self.integration_name = integration_name
         # The service of the alert integration. Valid values:
         # 
         # *   CLOUD_MONITOR: CloudMonitor
         # *   LOG_SERVICE: Log Service
+        # 
+        # This parameter is required.
         self.integration_product_type = integration_product_type
         # The activity of the alert integration
         self.liveness = liveness
@@ -60182,16 +61176,23 @@ class UpdatePrometheusAlertRuleRequest(TeaModel):
         tags: List[UpdatePrometheusAlertRuleRequestTags] = None,
         type: str = None,
     ):
+        # This parameter is required.
         self.alert_id = alert_id
+        # This parameter is required.
         self.alert_name = alert_name
         self.annotations = annotations
+        # This parameter is required.
         self.cluster_id = cluster_id
         self.dispatch_rule_id = dispatch_rule_id
+        # This parameter is required.
         self.duration = duration
+        # This parameter is required.
         self.expression = expression
         self.labels = labels
+        # This parameter is required.
         self.message = message
         self.notify_type = notify_type
+        # This parameter is required.
         self.region_id = region_id
         self.tags = tags
         self.type = type
@@ -60558,16 +61559,22 @@ class UpdatePrometheusGlobalViewRequest(TeaModel):
         # - false
         self.all_sub_clusters_success = all_sub_clusters_success
         # The ID of the Prometheus instance.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # The name of the global aggregation instance.
         self.group_name = group_name
         # The region ID of the global aggregation instance.
         self.most_region_id = most_region_id
         # The ID of the region in which the Prometheus instance resides.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group to which the Prometheus instance belongs.
         self.resource_group_id = resource_group_id
         # The data sources of the Prometheus instance for GlobalView.
+        # 
+        # This parameter is required.
         self.sub_clusters_json = sub_clusters_json
 
     def validate(self):
@@ -60813,8 +61820,12 @@ class UpdatePrometheusInstanceRequest(TeaModel):
         # The number of days for automatic archiving after storage expiration (optional values: 60, 90, 180, 365). 0 means not archive.
         self.archive_duration = archive_duration
         # The ID of the Prometheus instance.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # The ID of the region.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -60957,14 +61968,22 @@ class UpdatePrometheusIntegrationRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the Prometheus instance. Only a Prometheus instance for Container Service or a Prometheus instance for ECS is supported.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # The exporter ID.
         self.instance_id = instance_id
         # The type of the integration.
+        # 
+        # This parameter is required.
         self.integration_type = integration_type
         # The configurations of the exporter. The value is a JSON string.
+        # 
+        # This parameter is required.
         self.param = param
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -61140,16 +62159,26 @@ class UpdatePrometheusMonitoringRequest(TeaModel):
         type: str = None,
     ):
         # The ID of the Prometheus instance.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # The monitoring configuration. Specify a YAML string.
+        # 
+        # This parameter is required.
         self.config_yaml = config_yaml
         # The name of the monitoring configuration.
+        # 
+        # This parameter is required.
         self.monitoring_name = monitoring_name
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The type of the monitoring configuration. 
         # Valid values for a Prometheus instance for Container Service: serviceMonitor, podMonitor, customJob, and probe. 
         # Valid values for a Prometheus instance for ECS: customJob and probe.
+        # 
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -61288,17 +62317,27 @@ class UpdatePrometheusMonitoringStatusRequest(TeaModel):
         type: str = None,
     ):
         # The ID of the Prometheus instance.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # The name of the monitoring configuration.
+        # 
+        # This parameter is required.
         self.monitoring_name = monitoring_name
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The status of the monitoring configuration. Valid values: run and stop.
+        # 
+        # This parameter is required.
         self.status = status
         # The type of the monitoring configuration. 
         # Valid values for a Prometheus instance for Container Service: serviceMonitor, podMonitor, and customJob. 
         # Valid value for a Prometheus instance for ECS: customJob. 
         # The status of probe cannot be modified.
+        # 
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -61436,12 +62475,20 @@ class UpdatePrometheusRemoteWriteRequest(TeaModel):
         remote_write_yaml: str = None,
     ):
         # The ID of the Prometheus instance.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The name of the remote write configuration item.
+        # 
+        # This parameter is required.
         self.remote_write_name = remote_write_name
         # The remote write configuration. Specify the value in the YAML format.
+        # 
+        # This parameter is required.
         self.remote_write_yaml = remote_write_yaml
 
     def validate(self):
@@ -61593,7 +62640,9 @@ class UpdateRumAppRequest(TeaModel):
         self.description = description
         self.is_subscribe = is_subscribe
         self.nickname = nickname
+        # This parameter is required.
         self.pid = pid
+        # This parameter is required.
         self.region_id = region_id
         self.restart = restart
         self.service_domain_operation_json = service_domain_operation_json
@@ -61810,6 +62859,7 @@ class UpdateRumFileStatusRequest(TeaModel):
     ):
         self.file_name = file_name
         self.pid = pid
+        # This parameter is required.
         self.region_id = region_id
         self.size = size
         self.status = status
@@ -63547,10 +64597,16 @@ class UpdateWebhookRequest(TeaModel):
         url: str = None,
     ):
         # The notification template that is sent when an alert is triggered. This parameter is required if the **Method** parameter is set to **Post**. You can use the $content placeholder to specify the notification content. The content cannot exceed 500 characters in length.
+        # 
+        # This parameter is required.
         self.body = body
         # The ID of the webhook alert contact. You can call the **SearchAlertContact** operation to obtain the ID.
+        # 
+        # This parameter is required.
         self.contact_id = contact_id
         # The name of the webhook alert contact.
+        # 
+        # This parameter is required.
         self.contact_name = contact_name
         # The HTTP request headers.
         self.http_headers = http_headers
@@ -63560,12 +64616,18 @@ class UpdateWebhookRequest(TeaModel):
         # 
         # *   `Get`
         # *   `Post`
+        # 
+        # This parameter is required.
         self.method = method
         # The notification template that is sent when an alert is resolved. This parameter is required if the **Method** parameter is set to **Post**. You can use the $content placeholder to specify the notification content. The content cannot exceed 500 characters in length.
         self.recover_body = recover_body
         # The ID of the region.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The URL of the HTTP request method.
+        # 
+        # This parameter is required.
         self.url = url
 
     def validate(self):
@@ -63710,16 +64772,24 @@ class UpgradeAddonReleaseRequest(TeaModel):
         values: str = None,
     ):
         # Version of Addon.
+        # 
+        # This parameter is required.
         self.addon_version = addon_version
         # Whether to pre-check this request.
         self.dry_run = dry_run
         # Environment ID.
+        # 
+        # This parameter is required.
         self.environment_id = environment_id
         # The ID of the region.
         self.region_id = region_id
         # The name of Release.
+        # 
+        # This parameter is required.
         self.release_name = release_name
         # Metadata information.
+        # 
+        # This parameter is required.
         self.values = values
 
     def validate(self):
@@ -63870,7 +64940,9 @@ class UpgradeEnvironmentFeatureRequest(TeaModel):
         values: str = None,
     ):
         self.aliyun_lang = aliyun_lang
+        # This parameter is required.
         self.environment_id = environment_id
+        # This parameter is required.
         self.feature_name = feature_name
         self.feature_version = feature_version
         self.region_id = region_id
@@ -64024,12 +65096,18 @@ class UploadRequest(TeaModel):
         # The content of the SourceMap file.
         self.file = file
         # The name of the SourceMap file.
+        # 
+        # This parameter is required.
         self.file_name = file_name
         # The application ID.
         # 
-        # Log on to the **ARMS console**. In the left-side navigation pane, choose **Browser Monitoring** > **Browser Monitoring**. On the Browser Monitoring page, click the name of an application. The URL in the address bar contains the process ID (PID) of the application. The PID is indicated in the pid=xxx format. The PID is usually percent encoded as xxx%40xxx. You must modify this value to remove the percent encoding. For example, if the PID in the URL is eb4zdose6v%409781be0f44d\*\*\*\*, you must replace %40 with @ to obtain eb4zdose6v@9781be0f44d\*\*\*\*.
+        # Log on to the **ARMS console**. In the left-side navigation pane, choose **Browser Monitoring** > **Browser Monitoring**. On the Browser Monitoring page, click the name of an application. The URL in the address bar contains the process ID (PID) of the application. The PID is indicated in the pid=xxx format. The PID is usually percent encoded as xxx%40xxx. You must modify this value to remove the percent encoding. For example, if the PID in the URL is eb4zdose6v%409781be0f44d\\*\\*\\*\\*, you must replace %40 with @ to obtain eb4zdose6v@9781be0f44d\\*\\*\\*\\*.
+        # 
+        # This parameter is required.
         self.pid = pid
         # The ID of the region to which the SourceMap file is uploaded.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # We recommend that you do not specify this parameter.
         self.version = version
