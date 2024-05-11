@@ -47,7 +47,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eventbridge_20200401_models.CreateApiDestinationResponse:
         """
-        You can call this API operation to create an API destination.
+        @summary Creates an API destination.
+        
+        @description You can call this API operation to create an API destination.
         
         @param tmp_req: CreateApiDestinationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -92,7 +94,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eventbridge_20200401_models.CreateApiDestinationResponse:
         """
-        You can call this API operation to create an API destination.
+        @summary Creates an API destination.
+        
+        @description You can call this API operation to create an API destination.
         
         @param tmp_req: CreateApiDestinationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -136,7 +140,9 @@ class Client(OpenApiClient):
         request: eventbridge_20200401_models.CreateApiDestinationRequest,
     ) -> eventbridge_20200401_models.CreateApiDestinationResponse:
         """
-        You can call this API operation to create an API destination.
+        @summary Creates an API destination.
+        
+        @description You can call this API operation to create an API destination.
         
         @param request: CreateApiDestinationRequest
         @return: CreateApiDestinationResponse
@@ -149,7 +155,9 @@ class Client(OpenApiClient):
         request: eventbridge_20200401_models.CreateApiDestinationRequest,
     ) -> eventbridge_20200401_models.CreateApiDestinationResponse:
         """
-        You can call this API operation to create an API destination.
+        @summary Creates an API destination.
+        
+        @description You can call this API operation to create an API destination.
         
         @param request: CreateApiDestinationRequest
         @return: CreateApiDestinationResponse
@@ -163,7 +171,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eventbridge_20200401_models.CreateConnectionResponse:
         """
-        You can call this API operation to create a connection.
+        @summary Creates a connection.
+        
+        @description You can call this API operation to create a connection.
         
         @param tmp_req: CreateConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -210,7 +220,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eventbridge_20200401_models.CreateConnectionResponse:
         """
-        You can call this API operation to create a connection.
+        @summary Creates a connection.
+        
+        @description You can call this API operation to create a connection.
         
         @param tmp_req: CreateConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -256,7 +268,9 @@ class Client(OpenApiClient):
         request: eventbridge_20200401_models.CreateConnectionRequest,
     ) -> eventbridge_20200401_models.CreateConnectionResponse:
         """
-        You can call this API operation to create a connection.
+        @summary Creates a connection.
+        
+        @description You can call this API operation to create a connection.
         
         @param request: CreateConnectionRequest
         @return: CreateConnectionResponse
@@ -269,7 +283,9 @@ class Client(OpenApiClient):
         request: eventbridge_20200401_models.CreateConnectionRequest,
     ) -> eventbridge_20200401_models.CreateConnectionResponse:
         """
-        You can call this API operation to create a connection.
+        @summary Creates a connection.
+        
+        @description You can call this API operation to create a connection.
         
         @param request: CreateConnectionRequest
         @return: CreateConnectionResponse
@@ -283,7 +299,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eventbridge_20200401_models.CreateEventBusResponse:
         """
-        You can call this API operation to create an event bus.
+        @summary Creates an event bus.
+        
+        @description You can call this API operation to create an event bus.
         
         @param request: CreateEventBusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -320,7 +338,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eventbridge_20200401_models.CreateEventBusResponse:
         """
-        You can call this API operation to create an event bus.
+        @summary Creates an event bus.
+        
+        @description You can call this API operation to create an event bus.
         
         @param request: CreateEventBusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -356,7 +376,9 @@ class Client(OpenApiClient):
         request: eventbridge_20200401_models.CreateEventBusRequest,
     ) -> eventbridge_20200401_models.CreateEventBusResponse:
         """
-        You can call this API operation to create an event bus.
+        @summary Creates an event bus.
+        
+        @description You can call this API operation to create an event bus.
         
         @param request: CreateEventBusRequest
         @return: CreateEventBusResponse
@@ -369,7 +391,9 @@ class Client(OpenApiClient):
         request: eventbridge_20200401_models.CreateEventBusRequest,
     ) -> eventbridge_20200401_models.CreateEventBusResponse:
         """
-        You can call this API operation to create an event bus.
+        @summary Creates an event bus.
+        
+        @description You can call this API operation to create an event bus.
         
         @param request: CreateEventBusRequest
         @return: CreateEventBusResponse
@@ -383,7 +407,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eventbridge_20200401_models.CreateEventSourceResponse:
         """
-        You can call this operation to create an event source.
+        @summary Creates an event source.
+        
+        @description You can call this operation to create an event source.
         
         @param tmp_req: CreateEventSourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -452,7 +478,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eventbridge_20200401_models.CreateEventSourceResponse:
         """
-        You can call this operation to create an event source.
+        @summary Creates an event source.
+        
+        @description You can call this operation to create an event source.
         
         @param tmp_req: CreateEventSourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -520,7 +548,9 @@ class Client(OpenApiClient):
         request: eventbridge_20200401_models.CreateEventSourceRequest,
     ) -> eventbridge_20200401_models.CreateEventSourceResponse:
         """
-        You can call this operation to create an event source.
+        @summary Creates an event source.
+        
+        @description You can call this operation to create an event source.
         
         @param request: CreateEventSourceRequest
         @return: CreateEventSourceResponse
@@ -533,7 +563,9 @@ class Client(OpenApiClient):
         request: eventbridge_20200401_models.CreateEventSourceRequest,
     ) -> eventbridge_20200401_models.CreateEventSourceResponse:
         """
-        You can call this operation to create an event source.
+        @summary Creates an event source.
+        
+        @description You can call this operation to create an event source.
         
         @param request: CreateEventSourceRequest
         @return: CreateEventSourceResponse
@@ -547,7 +579,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eventbridge_20200401_models.CreateEventStreamingResponse:
         """
-        You can call this API operation to create an event stream.
+        @summary Creates an event stream.
+        
+        @description You can call this API operation to create an event stream.
         
         @param tmp_req: CreateEventStreamingRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -604,7 +638,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eventbridge_20200401_models.CreateEventStreamingResponse:
         """
-        You can call this API operation to create an event stream.
+        @summary Creates an event stream.
+        
+        @description You can call this API operation to create an event stream.
         
         @param tmp_req: CreateEventStreamingRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -660,7 +696,9 @@ class Client(OpenApiClient):
         request: eventbridge_20200401_models.CreateEventStreamingRequest,
     ) -> eventbridge_20200401_models.CreateEventStreamingResponse:
         """
-        You can call this API operation to create an event stream.
+        @summary Creates an event stream.
+        
+        @description You can call this API operation to create an event stream.
         
         @param request: CreateEventStreamingRequest
         @return: CreateEventStreamingResponse
@@ -673,7 +711,9 @@ class Client(OpenApiClient):
         request: eventbridge_20200401_models.CreateEventStreamingRequest,
     ) -> eventbridge_20200401_models.CreateEventStreamingResponse:
         """
-        You can call this API operation to create an event stream.
+        @summary Creates an event stream.
+        
+        @description You can call this API operation to create an event stream.
         
         @param request: CreateEventStreamingRequest
         @return: CreateEventStreamingResponse
@@ -687,7 +727,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eventbridge_20200401_models.CreateRuleResponse:
         """
-        You can call this API operation to create an event rule.
+        @summary Creates an event rule.
+        
+        @description You can call this API operation to create an event rule.
         
         @param tmp_req: CreateRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -736,7 +778,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eventbridge_20200401_models.CreateRuleResponse:
         """
-        You can call this API operation to create an event rule.
+        @summary Creates an event rule.
+        
+        @description You can call this API operation to create an event rule.
         
         @param tmp_req: CreateRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -784,7 +828,9 @@ class Client(OpenApiClient):
         request: eventbridge_20200401_models.CreateRuleRequest,
     ) -> eventbridge_20200401_models.CreateRuleResponse:
         """
-        You can call this API operation to create an event rule.
+        @summary Creates an event rule.
+        
+        @description You can call this API operation to create an event rule.
         
         @param request: CreateRuleRequest
         @return: CreateRuleResponse
@@ -797,7 +843,9 @@ class Client(OpenApiClient):
         request: eventbridge_20200401_models.CreateRuleRequest,
     ) -> eventbridge_20200401_models.CreateRuleResponse:
         """
-        You can call this API operation to create an event rule.
+        @summary Creates an event rule.
+        
+        @description You can call this API operation to create an event rule.
         
         @param request: CreateRuleRequest
         @return: CreateRuleResponse
@@ -811,7 +859,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eventbridge_20200401_models.CreateServiceLinkedRoleForProductResponse:
         """
-        You can call this API operation to create a service-linked role for your cloud service.
+        @summary Creates a service-linked role for your cloud service.
+        
+        @description You can call this API operation to create a service-linked role for your cloud service.
         
         @param request: CreateServiceLinkedRoleForProductRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -846,7 +896,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eventbridge_20200401_models.CreateServiceLinkedRoleForProductResponse:
         """
-        You can call this API operation to create a service-linked role for your cloud service.
+        @summary Creates a service-linked role for your cloud service.
+        
+        @description You can call this API operation to create a service-linked role for your cloud service.
         
         @param request: CreateServiceLinkedRoleForProductRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -880,7 +932,9 @@ class Client(OpenApiClient):
         request: eventbridge_20200401_models.CreateServiceLinkedRoleForProductRequest,
     ) -> eventbridge_20200401_models.CreateServiceLinkedRoleForProductResponse:
         """
-        You can call this API operation to create a service-linked role for your cloud service.
+        @summary Creates a service-linked role for your cloud service.
+        
+        @description You can call this API operation to create a service-linked role for your cloud service.
         
         @param request: CreateServiceLinkedRoleForProductRequest
         @return: CreateServiceLinkedRoleForProductResponse
@@ -893,7 +947,9 @@ class Client(OpenApiClient):
         request: eventbridge_20200401_models.CreateServiceLinkedRoleForProductRequest,
     ) -> eventbridge_20200401_models.CreateServiceLinkedRoleForProductResponse:
         """
-        You can call this API operation to create a service-linked role for your cloud service.
+        @summary Creates a service-linked role for your cloud service.
+        
+        @description You can call this API operation to create a service-linked role for your cloud service.
         
         @param request: CreateServiceLinkedRoleForProductRequest
         @return: CreateServiceLinkedRoleForProductResponse
@@ -907,7 +963,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eventbridge_20200401_models.DeleteApiDestinationResponse:
         """
-        You can call this API operation to delete an API destination.
+        @summary Deletes an API destination.
+        
+        @description You can call this API operation to delete an API destination.
         
         @param request: DeleteApiDestinationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -942,7 +1000,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eventbridge_20200401_models.DeleteApiDestinationResponse:
         """
-        You can call this API operation to delete an API destination.
+        @summary Deletes an API destination.
+        
+        @description You can call this API operation to delete an API destination.
         
         @param request: DeleteApiDestinationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -976,7 +1036,9 @@ class Client(OpenApiClient):
         request: eventbridge_20200401_models.DeleteApiDestinationRequest,
     ) -> eventbridge_20200401_models.DeleteApiDestinationResponse:
         """
-        You can call this API operation to delete an API destination.
+        @summary Deletes an API destination.
+        
+        @description You can call this API operation to delete an API destination.
         
         @param request: DeleteApiDestinationRequest
         @return: DeleteApiDestinationResponse
@@ -989,7 +1051,9 @@ class Client(OpenApiClient):
         request: eventbridge_20200401_models.DeleteApiDestinationRequest,
     ) -> eventbridge_20200401_models.DeleteApiDestinationResponse:
         """
-        You can call this API operation to delete an API destination.
+        @summary Deletes an API destination.
+        
+        @description You can call this API operation to delete an API destination.
         
         @param request: DeleteApiDestinationRequest
         @return: DeleteApiDestinationResponse
@@ -1003,7 +1067,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eventbridge_20200401_models.DeleteConnectionResponse:
         """
-        You can call this API operation to delete a connection.
+        @summary Deletes a connection.
+        
+        @description You can call this API operation to delete a connection.
         
         @param request: DeleteConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1038,7 +1104,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eventbridge_20200401_models.DeleteConnectionResponse:
         """
-        You can call this API operation to delete a connection.
+        @summary Deletes a connection.
+        
+        @description You can call this API operation to delete a connection.
         
         @param request: DeleteConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1072,7 +1140,9 @@ class Client(OpenApiClient):
         request: eventbridge_20200401_models.DeleteConnectionRequest,
     ) -> eventbridge_20200401_models.DeleteConnectionResponse:
         """
-        You can call this API operation to delete a connection.
+        @summary Deletes a connection.
+        
+        @description You can call this API operation to delete a connection.
         
         @param request: DeleteConnectionRequest
         @return: DeleteConnectionResponse
@@ -1085,7 +1155,9 @@ class Client(OpenApiClient):
         request: eventbridge_20200401_models.DeleteConnectionRequest,
     ) -> eventbridge_20200401_models.DeleteConnectionResponse:
         """
-        You can call this API operation to delete a connection.
+        @summary Deletes a connection.
+        
+        @description You can call this API operation to delete a connection.
         
         @param request: DeleteConnectionRequest
         @return: DeleteConnectionResponse
@@ -1099,7 +1171,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eventbridge_20200401_models.DeleteEventBusResponse:
         """
-        You can call this API operation to delete an event bus.
+        @summary Deletes an event bus.
+        
+        @description You can call this API operation to delete an event bus.
         
         @param request: DeleteEventBusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1134,7 +1208,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eventbridge_20200401_models.DeleteEventBusResponse:
         """
-        You can call this API operation to delete an event bus.
+        @summary Deletes an event bus.
+        
+        @description You can call this API operation to delete an event bus.
         
         @param request: DeleteEventBusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1168,7 +1244,9 @@ class Client(OpenApiClient):
         request: eventbridge_20200401_models.DeleteEventBusRequest,
     ) -> eventbridge_20200401_models.DeleteEventBusResponse:
         """
-        You can call this API operation to delete an event bus.
+        @summary Deletes an event bus.
+        
+        @description You can call this API operation to delete an event bus.
         
         @param request: DeleteEventBusRequest
         @return: DeleteEventBusResponse
@@ -1181,7 +1259,9 @@ class Client(OpenApiClient):
         request: eventbridge_20200401_models.DeleteEventBusRequest,
     ) -> eventbridge_20200401_models.DeleteEventBusResponse:
         """
-        You can call this API operation to delete an event bus.
+        @summary Deletes an event bus.
+        
+        @description You can call this API operation to delete an event bus.
         
         @param request: DeleteEventBusRequest
         @return: DeleteEventBusResponse
@@ -1195,7 +1275,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eventbridge_20200401_models.DeleteEventSourceResponse:
         """
-        You can call this API operation to delete an event source.
+        @summary Deletes an event source.
+        
+        @description You can call this API operation to delete an event source.
         
         @param request: DeleteEventSourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1232,7 +1314,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eventbridge_20200401_models.DeleteEventSourceResponse:
         """
-        You can call this API operation to delete an event source.
+        @summary Deletes an event source.
+        
+        @description You can call this API operation to delete an event source.
         
         @param request: DeleteEventSourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1268,7 +1352,9 @@ class Client(OpenApiClient):
         request: eventbridge_20200401_models.DeleteEventSourceRequest,
     ) -> eventbridge_20200401_models.DeleteEventSourceResponse:
         """
-        You can call this API operation to delete an event source.
+        @summary Deletes an event source.
+        
+        @description You can call this API operation to delete an event source.
         
         @param request: DeleteEventSourceRequest
         @return: DeleteEventSourceResponse
@@ -1281,7 +1367,9 @@ class Client(OpenApiClient):
         request: eventbridge_20200401_models.DeleteEventSourceRequest,
     ) -> eventbridge_20200401_models.DeleteEventSourceResponse:
         """
-        You can call this API operation to delete an event source.
+        @summary Deletes an event source.
+        
+        @description You can call this API operation to delete an event source.
         
         @param request: DeleteEventSourceRequest
         @return: DeleteEventSourceResponse
@@ -1295,7 +1383,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eventbridge_20200401_models.DeleteEventStreamingResponse:
         """
-        You can call this API operation to delete an event stream.
+        @summary Deletes an event stream.
+        
+        @description You can call this API operation to delete an event stream.
         
         @param request: DeleteEventStreamingRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1330,7 +1420,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eventbridge_20200401_models.DeleteEventStreamingResponse:
         """
-        You can call this API operation to delete an event stream.
+        @summary Deletes an event stream.
+        
+        @description You can call this API operation to delete an event stream.
         
         @param request: DeleteEventStreamingRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1364,7 +1456,9 @@ class Client(OpenApiClient):
         request: eventbridge_20200401_models.DeleteEventStreamingRequest,
     ) -> eventbridge_20200401_models.DeleteEventStreamingResponse:
         """
-        You can call this API operation to delete an event stream.
+        @summary Deletes an event stream.
+        
+        @description You can call this API operation to delete an event stream.
         
         @param request: DeleteEventStreamingRequest
         @return: DeleteEventStreamingResponse
@@ -1377,7 +1471,9 @@ class Client(OpenApiClient):
         request: eventbridge_20200401_models.DeleteEventStreamingRequest,
     ) -> eventbridge_20200401_models.DeleteEventStreamingResponse:
         """
-        You can call this API operation to delete an event stream.
+        @summary Deletes an event stream.
+        
+        @description You can call this API operation to delete an event stream.
         
         @param request: DeleteEventStreamingRequest
         @return: DeleteEventStreamingResponse
@@ -1391,7 +1487,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eventbridge_20200401_models.DeleteRuleResponse:
         """
-        You can call this API operation to delete an event rule.
+        @summary Deletes an event rule.
+        
+        @description You can call this API operation to delete an event rule.
         
         @param request: DeleteRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1428,7 +1526,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eventbridge_20200401_models.DeleteRuleResponse:
         """
-        You can call this API operation to delete an event rule.
+        @summary Deletes an event rule.
+        
+        @description You can call this API operation to delete an event rule.
         
         @param request: DeleteRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1464,7 +1564,9 @@ class Client(OpenApiClient):
         request: eventbridge_20200401_models.DeleteRuleRequest,
     ) -> eventbridge_20200401_models.DeleteRuleResponse:
         """
-        You can call this API operation to delete an event rule.
+        @summary Deletes an event rule.
+        
+        @description You can call this API operation to delete an event rule.
         
         @param request: DeleteRuleRequest
         @return: DeleteRuleResponse
@@ -1477,7 +1579,9 @@ class Client(OpenApiClient):
         request: eventbridge_20200401_models.DeleteRuleRequest,
     ) -> eventbridge_20200401_models.DeleteRuleResponse:
         """
-        You can call this API operation to delete an event rule.
+        @summary Deletes an event rule.
+        
+        @description You can call this API operation to delete an event rule.
         
         @param request: DeleteRuleRequest
         @return: DeleteRuleResponse
@@ -1491,7 +1595,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eventbridge_20200401_models.DeleteTargetsResponse:
         """
-        You can call this API operation to delete one or more event targets of an event rule.
+        @summary Deletes one or more event targets of an event rule.
+        
+        @description You can call this API operation to delete one or more event targets of an event rule.
         
         @param tmp_req: DeleteTargetsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1534,7 +1640,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eventbridge_20200401_models.DeleteTargetsResponse:
         """
-        You can call this API operation to delete one or more event targets of an event rule.
+        @summary Deletes one or more event targets of an event rule.
+        
+        @description You can call this API operation to delete one or more event targets of an event rule.
         
         @param tmp_req: DeleteTargetsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1576,7 +1684,9 @@ class Client(OpenApiClient):
         request: eventbridge_20200401_models.DeleteTargetsRequest,
     ) -> eventbridge_20200401_models.DeleteTargetsResponse:
         """
-        You can call this API operation to delete one or more event targets of an event rule.
+        @summary Deletes one or more event targets of an event rule.
+        
+        @description You can call this API operation to delete one or more event targets of an event rule.
         
         @param request: DeleteTargetsRequest
         @return: DeleteTargetsResponse
@@ -1589,7 +1699,9 @@ class Client(OpenApiClient):
         request: eventbridge_20200401_models.DeleteTargetsRequest,
     ) -> eventbridge_20200401_models.DeleteTargetsResponse:
         """
-        You can call this API operation to delete one or more event targets of an event rule.
+        @summary Deletes one or more event targets of an event rule.
+        
+        @description You can call this API operation to delete one or more event targets of an event rule.
         
         @param request: DeleteTargetsRequest
         @return: DeleteTargetsResponse
@@ -1603,7 +1715,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eventbridge_20200401_models.DisableRuleResponse:
         """
-        You can call this API operation to disable an event rule.
+        @summary Disables an event rule.
+        
+        @description You can call this API operation to disable an event rule.
         
         @param request: DisableRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1640,7 +1754,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eventbridge_20200401_models.DisableRuleResponse:
         """
-        You can call this API operation to disable an event rule.
+        @summary Disables an event rule.
+        
+        @description You can call this API operation to disable an event rule.
         
         @param request: DisableRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1676,7 +1792,9 @@ class Client(OpenApiClient):
         request: eventbridge_20200401_models.DisableRuleRequest,
     ) -> eventbridge_20200401_models.DisableRuleResponse:
         """
-        You can call this API operation to disable an event rule.
+        @summary Disables an event rule.
+        
+        @description You can call this API operation to disable an event rule.
         
         @param request: DisableRuleRequest
         @return: DisableRuleResponse
@@ -1689,7 +1807,9 @@ class Client(OpenApiClient):
         request: eventbridge_20200401_models.DisableRuleRequest,
     ) -> eventbridge_20200401_models.DisableRuleResponse:
         """
-        You can call this API operation to disable an event rule.
+        @summary Disables an event rule.
+        
+        @description You can call this API operation to disable an event rule.
         
         @param request: DisableRuleRequest
         @return: DisableRuleResponse
@@ -1703,7 +1823,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eventbridge_20200401_models.EnableRuleResponse:
         """
-        You can call this API operation to enable an event rule.
+        @summary Enables an event rule.
+        
+        @description You can call this API operation to enable an event rule.
         
         @param request: EnableRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1740,7 +1862,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eventbridge_20200401_models.EnableRuleResponse:
         """
-        You can call this API operation to enable an event rule.
+        @summary Enables an event rule.
+        
+        @description You can call this API operation to enable an event rule.
         
         @param request: EnableRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1776,7 +1900,9 @@ class Client(OpenApiClient):
         request: eventbridge_20200401_models.EnableRuleRequest,
     ) -> eventbridge_20200401_models.EnableRuleResponse:
         """
-        You can call this API operation to enable an event rule.
+        @summary Enables an event rule.
+        
+        @description You can call this API operation to enable an event rule.
         
         @param request: EnableRuleRequest
         @return: EnableRuleResponse
@@ -1789,7 +1915,9 @@ class Client(OpenApiClient):
         request: eventbridge_20200401_models.EnableRuleRequest,
     ) -> eventbridge_20200401_models.EnableRuleResponse:
         """
-        You can call this API operation to enable an event rule.
+        @summary Enables an event rule.
+        
+        @description You can call this API operation to enable an event rule.
         
         @param request: EnableRuleRequest
         @return: EnableRuleResponse
@@ -1797,13 +1925,357 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.enable_rule_with_options_async(request, runtime)
 
+    def event_center_check_enabled_on_default_bus_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> eventbridge_20200401_models.EventCenterCheckEnabledOnDefaultBusResponse:
+        """
+        @summary EventCenterCheckEnabledOnDefaultBus
+        
+        @param request: EventCenterCheckEnabledOnDefaultBusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EventCenterCheckEnabledOnDefaultBusResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='EventCenterCheckEnabledOnDefaultBus',
+            version='2020-04-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.EventCenterCheckEnabledOnDefaultBusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def event_center_check_enabled_on_default_bus_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> eventbridge_20200401_models.EventCenterCheckEnabledOnDefaultBusResponse:
+        """
+        @summary EventCenterCheckEnabledOnDefaultBus
+        
+        @param request: EventCenterCheckEnabledOnDefaultBusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EventCenterCheckEnabledOnDefaultBusResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='EventCenterCheckEnabledOnDefaultBus',
+            version='2020-04-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.EventCenterCheckEnabledOnDefaultBusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def event_center_check_enabled_on_default_bus(self) -> eventbridge_20200401_models.EventCenterCheckEnabledOnDefaultBusResponse:
+        """
+        @summary EventCenterCheckEnabledOnDefaultBus
+        
+        @return: EventCenterCheckEnabledOnDefaultBusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.event_center_check_enabled_on_default_bus_with_options(runtime)
+
+    async def event_center_check_enabled_on_default_bus_async(self) -> eventbridge_20200401_models.EventCenterCheckEnabledOnDefaultBusResponse:
+        """
+        @summary EventCenterCheckEnabledOnDefaultBus
+        
+        @return: EventCenterCheckEnabledOnDefaultBusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.event_center_check_enabled_on_default_bus_with_options_async(runtime)
+
+    def event_center_disable_on_default_bus_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> eventbridge_20200401_models.EventCenterDisableOnDefaultBusResponse:
+        """
+        @summary EventCenterDisableOnDefaultBus
+        
+        @param request: EventCenterDisableOnDefaultBusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EventCenterDisableOnDefaultBusResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='EventCenterDisableOnDefaultBus',
+            version='2020-04-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.EventCenterDisableOnDefaultBusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def event_center_disable_on_default_bus_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> eventbridge_20200401_models.EventCenterDisableOnDefaultBusResponse:
+        """
+        @summary EventCenterDisableOnDefaultBus
+        
+        @param request: EventCenterDisableOnDefaultBusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EventCenterDisableOnDefaultBusResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='EventCenterDisableOnDefaultBus',
+            version='2020-04-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.EventCenterDisableOnDefaultBusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def event_center_disable_on_default_bus(self) -> eventbridge_20200401_models.EventCenterDisableOnDefaultBusResponse:
+        """
+        @summary EventCenterDisableOnDefaultBus
+        
+        @return: EventCenterDisableOnDefaultBusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.event_center_disable_on_default_bus_with_options(runtime)
+
+    async def event_center_disable_on_default_bus_async(self) -> eventbridge_20200401_models.EventCenterDisableOnDefaultBusResponse:
+        """
+        @summary EventCenterDisableOnDefaultBus
+        
+        @return: EventCenterDisableOnDefaultBusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.event_center_disable_on_default_bus_with_options_async(runtime)
+
+    def event_center_enable_on_default_bus_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> eventbridge_20200401_models.EventCenterEnableOnDefaultBusResponse:
+        """
+        @summary EventCenterEnableOnDefaultBus
+        
+        @param request: EventCenterEnableOnDefaultBusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EventCenterEnableOnDefaultBusResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='EventCenterEnableOnDefaultBus',
+            version='2020-04-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.EventCenterEnableOnDefaultBusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def event_center_enable_on_default_bus_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> eventbridge_20200401_models.EventCenterEnableOnDefaultBusResponse:
+        """
+        @summary EventCenterEnableOnDefaultBus
+        
+        @param request: EventCenterEnableOnDefaultBusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EventCenterEnableOnDefaultBusResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='EventCenterEnableOnDefaultBus',
+            version='2020-04-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.EventCenterEnableOnDefaultBusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def event_center_enable_on_default_bus(self) -> eventbridge_20200401_models.EventCenterEnableOnDefaultBusResponse:
+        """
+        @summary EventCenterEnableOnDefaultBus
+        
+        @return: EventCenterEnableOnDefaultBusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.event_center_enable_on_default_bus_with_options(runtime)
+
+    async def event_center_enable_on_default_bus_async(self) -> eventbridge_20200401_models.EventCenterEnableOnDefaultBusResponse:
+        """
+        @summary EventCenterEnableOnDefaultBus
+        
+        @return: EventCenterEnableOnDefaultBusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.event_center_enable_on_default_bus_with_options_async(runtime)
+
+    def event_center_query_events_with_options(
+        self,
+        tmp_req: eventbridge_20200401_models.EventCenterQueryEventsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eventbridge_20200401_models.EventCenterQueryEventsResponse:
+        """
+        @summary EventCenterQueryEvents
+        
+        @param tmp_req: EventCenterQueryEventsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EventCenterQueryEventsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = eventbridge_20200401_models.EventCenterQueryEventsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.body):
+            request.body_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.body, 'Body', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.bus_name):
+            query['BusName'] = request.bus_name
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        body = {}
+        if not UtilClient.is_unset(request.body_shrink):
+            body['Body'] = request.body_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='EventCenterQueryEvents',
+            version='2020-04-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.EventCenterQueryEventsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def event_center_query_events_with_options_async(
+        self,
+        tmp_req: eventbridge_20200401_models.EventCenterQueryEventsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eventbridge_20200401_models.EventCenterQueryEventsResponse:
+        """
+        @summary EventCenterQueryEvents
+        
+        @param tmp_req: EventCenterQueryEventsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EventCenterQueryEventsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = eventbridge_20200401_models.EventCenterQueryEventsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.body):
+            request.body_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.body, 'Body', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.bus_name):
+            query['BusName'] = request.bus_name
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        body = {}
+        if not UtilClient.is_unset(request.body_shrink):
+            body['Body'] = request.body_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='EventCenterQueryEvents',
+            version='2020-04-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.EventCenterQueryEventsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def event_center_query_events(
+        self,
+        request: eventbridge_20200401_models.EventCenterQueryEventsRequest,
+    ) -> eventbridge_20200401_models.EventCenterQueryEventsResponse:
+        """
+        @summary EventCenterQueryEvents
+        
+        @param request: EventCenterQueryEventsRequest
+        @return: EventCenterQueryEventsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.event_center_query_events_with_options(request, runtime)
+
+    async def event_center_query_events_async(
+        self,
+        request: eventbridge_20200401_models.EventCenterQueryEventsRequest,
+    ) -> eventbridge_20200401_models.EventCenterQueryEventsResponse:
+        """
+        @summary EventCenterQueryEvents
+        
+        @param request: EventCenterQueryEventsRequest
+        @return: EventCenterQueryEventsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.event_center_query_events_with_options_async(request, runtime)
+
     def get_api_destination_with_options(
         self,
         request: eventbridge_20200401_models.GetApiDestinationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eventbridge_20200401_models.GetApiDestinationResponse:
         """
-        You can call this API operation to query the information about an API destination.
+        @summary Queries the information about an API destination.
+        
+        @description You can call this API operation to query the information about an API destination.
         
         @param request: GetApiDestinationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1838,7 +2310,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eventbridge_20200401_models.GetApiDestinationResponse:
         """
-        You can call this API operation to query the information about an API destination.
+        @summary Queries the information about an API destination.
+        
+        @description You can call this API operation to query the information about an API destination.
         
         @param request: GetApiDestinationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1872,7 +2346,9 @@ class Client(OpenApiClient):
         request: eventbridge_20200401_models.GetApiDestinationRequest,
     ) -> eventbridge_20200401_models.GetApiDestinationResponse:
         """
-        You can call this API operation to query the information about an API destination.
+        @summary Queries the information about an API destination.
+        
+        @description You can call this API operation to query the information about an API destination.
         
         @param request: GetApiDestinationRequest
         @return: GetApiDestinationResponse
@@ -1885,7 +2361,9 @@ class Client(OpenApiClient):
         request: eventbridge_20200401_models.GetApiDestinationRequest,
     ) -> eventbridge_20200401_models.GetApiDestinationResponse:
         """
-        You can call this API operation to query the information about an API destination.
+        @summary Queries the information about an API destination.
+        
+        @description You can call this API operation to query the information about an API destination.
         
         @param request: GetApiDestinationRequest
         @return: GetApiDestinationResponse
@@ -1899,7 +2377,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eventbridge_20200401_models.GetConnectionResponse:
         """
-        You can call this API operation to query the configurations of a connection.
+        @summary Queries the configurations of a connection.
+        
+        @description You can call this API operation to query the configurations of a connection.
         
         @param request: GetConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1934,7 +2414,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eventbridge_20200401_models.GetConnectionResponse:
         """
-        You can call this API operation to query the configurations of a connection.
+        @summary Queries the configurations of a connection.
+        
+        @description You can call this API operation to query the configurations of a connection.
         
         @param request: GetConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1968,7 +2450,9 @@ class Client(OpenApiClient):
         request: eventbridge_20200401_models.GetConnectionRequest,
     ) -> eventbridge_20200401_models.GetConnectionResponse:
         """
-        You can call this API operation to query the configurations of a connection.
+        @summary Queries the configurations of a connection.
+        
+        @description You can call this API operation to query the configurations of a connection.
         
         @param request: GetConnectionRequest
         @return: GetConnectionResponse
@@ -1981,7 +2465,9 @@ class Client(OpenApiClient):
         request: eventbridge_20200401_models.GetConnectionRequest,
     ) -> eventbridge_20200401_models.GetConnectionResponse:
         """
-        You can call this API operation to query the configurations of a connection.
+        @summary Queries the configurations of a connection.
+        
+        @description You can call this API operation to query the configurations of a connection.
         
         @param request: GetConnectionRequest
         @return: GetConnectionResponse
@@ -1995,7 +2481,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eventbridge_20200401_models.GetEventBusResponse:
         """
-        You can call this API operation to query the detailed information about an event bus.
+        @summary Queries the detailed information about an event bus.
+        
+        @description You can call this API operation to query the detailed information about an event bus.
         
         @param request: GetEventBusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2030,7 +2518,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eventbridge_20200401_models.GetEventBusResponse:
         """
-        You can call this API operation to query the detailed information about an event bus.
+        @summary Queries the detailed information about an event bus.
+        
+        @description You can call this API operation to query the detailed information about an event bus.
         
         @param request: GetEventBusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2064,7 +2554,9 @@ class Client(OpenApiClient):
         request: eventbridge_20200401_models.GetEventBusRequest,
     ) -> eventbridge_20200401_models.GetEventBusResponse:
         """
-        You can call this API operation to query the detailed information about an event bus.
+        @summary Queries the detailed information about an event bus.
+        
+        @description You can call this API operation to query the detailed information about an event bus.
         
         @param request: GetEventBusRequest
         @return: GetEventBusResponse
@@ -2077,7 +2569,9 @@ class Client(OpenApiClient):
         request: eventbridge_20200401_models.GetEventBusRequest,
     ) -> eventbridge_20200401_models.GetEventBusResponse:
         """
-        You can call this API operation to query the detailed information about an event bus.
+        @summary Queries the detailed information about an event bus.
+        
+        @description You can call this API operation to query the detailed information about an event bus.
         
         @param request: GetEventBusRequest
         @return: GetEventBusResponse
@@ -2091,7 +2585,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eventbridge_20200401_models.GetEventStreamingResponse:
         """
-        You can call this API operation to query the details of an event stream.
+        @summary Queries the details of an event stream.
+        
+        @description You can call this API operation to query the details of an event stream.
         
         @param request: GetEventStreamingRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2126,7 +2622,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eventbridge_20200401_models.GetEventStreamingResponse:
         """
-        You can call this API operation to query the details of an event stream.
+        @summary Queries the details of an event stream.
+        
+        @description You can call this API operation to query the details of an event stream.
         
         @param request: GetEventStreamingRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2160,7 +2658,9 @@ class Client(OpenApiClient):
         request: eventbridge_20200401_models.GetEventStreamingRequest,
     ) -> eventbridge_20200401_models.GetEventStreamingResponse:
         """
-        You can call this API operation to query the details of an event stream.
+        @summary Queries the details of an event stream.
+        
+        @description You can call this API operation to query the details of an event stream.
         
         @param request: GetEventStreamingRequest
         @return: GetEventStreamingResponse
@@ -2173,7 +2673,9 @@ class Client(OpenApiClient):
         request: eventbridge_20200401_models.GetEventStreamingRequest,
     ) -> eventbridge_20200401_models.GetEventStreamingResponse:
         """
-        You can call this API operation to query the details of an event stream.
+        @summary Queries the details of an event stream.
+        
+        @description You can call this API operation to query the details of an event stream.
         
         @param request: GetEventStreamingRequest
         @return: GetEventStreamingResponse
@@ -2187,7 +2689,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eventbridge_20200401_models.GetRuleResponse:
         """
-        You can call this API operation to query the details of an event rule.
+        @summary Queries the details of an event rule.
+        
+        @description You can call this API operation to query the details of an event rule.
         
         @param request: GetRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2224,7 +2728,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eventbridge_20200401_models.GetRuleResponse:
         """
-        You can call this API operation to query the details of an event rule.
+        @summary Queries the details of an event rule.
+        
+        @description You can call this API operation to query the details of an event rule.
         
         @param request: GetRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2260,7 +2766,9 @@ class Client(OpenApiClient):
         request: eventbridge_20200401_models.GetRuleRequest,
     ) -> eventbridge_20200401_models.GetRuleResponse:
         """
-        You can call this API operation to query the details of an event rule.
+        @summary Queries the details of an event rule.
+        
+        @description You can call this API operation to query the details of an event rule.
         
         @param request: GetRuleRequest
         @return: GetRuleResponse
@@ -2273,7 +2781,9 @@ class Client(OpenApiClient):
         request: eventbridge_20200401_models.GetRuleRequest,
     ) -> eventbridge_20200401_models.GetRuleResponse:
         """
-        You can call this API operation to query the details of an event rule.
+        @summary Queries the details of an event rule.
+        
+        @description You can call this API operation to query the details of an event rule.
         
         @param request: GetRuleRequest
         @return: GetRuleResponse
@@ -2286,7 +2796,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eventbridge_20200401_models.ListAliyunOfficialEventSourcesResponse:
         """
-        You can call this API operation to query all Alibaba Cloud service event sources.
+        @summary Queries all Alibaba Cloud service event sources.
+        
+        @description You can call this API operation to query all Alibaba Cloud service event sources.
         
         @param request: ListAliyunOfficialEventSourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2314,7 +2826,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eventbridge_20200401_models.ListAliyunOfficialEventSourcesResponse:
         """
-        You can call this API operation to query all Alibaba Cloud service event sources.
+        @summary Queries all Alibaba Cloud service event sources.
+        
+        @description You can call this API operation to query all Alibaba Cloud service event sources.
         
         @param request: ListAliyunOfficialEventSourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2339,7 +2853,9 @@ class Client(OpenApiClient):
 
     def list_aliyun_official_event_sources(self) -> eventbridge_20200401_models.ListAliyunOfficialEventSourcesResponse:
         """
-        You can call this API operation to query all Alibaba Cloud service event sources.
+        @summary Queries all Alibaba Cloud service event sources.
+        
+        @description You can call this API operation to query all Alibaba Cloud service event sources.
         
         @return: ListAliyunOfficialEventSourcesResponse
         """
@@ -2348,7 +2864,9 @@ class Client(OpenApiClient):
 
     async def list_aliyun_official_event_sources_async(self) -> eventbridge_20200401_models.ListAliyunOfficialEventSourcesResponse:
         """
-        You can call this API operation to query all Alibaba Cloud service event sources.
+        @summary Queries all Alibaba Cloud service event sources.
+        
+        @description You can call this API operation to query all Alibaba Cloud service event sources.
         
         @return: ListAliyunOfficialEventSourcesResponse
         """
@@ -2361,7 +2879,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eventbridge_20200401_models.ListApiDestinationsResponse:
         """
-        You can use this API operation to query a list of API destinations.
+        @summary Queries a list of API destinations.
+        
+        @description You can use this API operation to query a list of API destinations.
         
         @param request: ListApiDestinationsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2402,7 +2922,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eventbridge_20200401_models.ListApiDestinationsResponse:
         """
-        You can use this API operation to query a list of API destinations.
+        @summary Queries a list of API destinations.
+        
+        @description You can use this API operation to query a list of API destinations.
         
         @param request: ListApiDestinationsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2442,7 +2964,9 @@ class Client(OpenApiClient):
         request: eventbridge_20200401_models.ListApiDestinationsRequest,
     ) -> eventbridge_20200401_models.ListApiDestinationsResponse:
         """
-        You can use this API operation to query a list of API destinations.
+        @summary Queries a list of API destinations.
+        
+        @description You can use this API operation to query a list of API destinations.
         
         @param request: ListApiDestinationsRequest
         @return: ListApiDestinationsResponse
@@ -2455,7 +2979,9 @@ class Client(OpenApiClient):
         request: eventbridge_20200401_models.ListApiDestinationsRequest,
     ) -> eventbridge_20200401_models.ListApiDestinationsResponse:
         """
-        You can use this API operation to query a list of API destinations.
+        @summary Queries a list of API destinations.
+        
+        @description You can use this API operation to query a list of API destinations.
         
         @param request: ListApiDestinationsRequest
         @return: ListApiDestinationsResponse
@@ -2469,7 +2995,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eventbridge_20200401_models.ListConnectionsResponse:
         """
-        You can call this API operation to query connections.
+        @summary Queries connections.
+        
+        @description You can call this API operation to query connections.
         
         @param request: ListConnectionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2508,7 +3036,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eventbridge_20200401_models.ListConnectionsResponse:
         """
-        You can call this API operation to query connections.
+        @summary Queries connections.
+        
+        @description You can call this API operation to query connections.
         
         @param request: ListConnectionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2546,7 +3076,9 @@ class Client(OpenApiClient):
         request: eventbridge_20200401_models.ListConnectionsRequest,
     ) -> eventbridge_20200401_models.ListConnectionsResponse:
         """
-        You can call this API operation to query connections.
+        @summary Queries connections.
+        
+        @description You can call this API operation to query connections.
         
         @param request: ListConnectionsRequest
         @return: ListConnectionsResponse
@@ -2559,7 +3091,9 @@ class Client(OpenApiClient):
         request: eventbridge_20200401_models.ListConnectionsRequest,
     ) -> eventbridge_20200401_models.ListConnectionsResponse:
         """
-        You can call this API operation to query connections.
+        @summary Queries connections.
+        
+        @description You can call this API operation to query connections.
         
         @param request: ListConnectionsRequest
         @return: ListConnectionsResponse
@@ -2573,7 +3107,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eventbridge_20200401_models.ListEventBusesResponse:
         """
-        You can call this API operation to query all event buses.
+        @summary Queries all event buses.
+        
+        @description You can call this API operation to query all event buses.
         
         @param request: ListEventBusesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2612,7 +3148,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eventbridge_20200401_models.ListEventBusesResponse:
         """
-        You can call this API operation to query all event buses.
+        @summary Queries all event buses.
+        
+        @description You can call this API operation to query all event buses.
         
         @param request: ListEventBusesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2650,7 +3188,9 @@ class Client(OpenApiClient):
         request: eventbridge_20200401_models.ListEventBusesRequest,
     ) -> eventbridge_20200401_models.ListEventBusesResponse:
         """
-        You can call this API operation to query all event buses.
+        @summary Queries all event buses.
+        
+        @description You can call this API operation to query all event buses.
         
         @param request: ListEventBusesRequest
         @return: ListEventBusesResponse
@@ -2663,7 +3203,9 @@ class Client(OpenApiClient):
         request: eventbridge_20200401_models.ListEventBusesRequest,
     ) -> eventbridge_20200401_models.ListEventBusesResponse:
         """
-        You can call this API operation to query all event buses.
+        @summary Queries all event buses.
+        
+        @description You can call this API operation to query all event buses.
         
         @param request: ListEventBusesRequest
         @return: ListEventBusesResponse
@@ -2677,7 +3219,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eventbridge_20200401_models.ListEventStreamingsResponse:
         """
-        You can call this API operation to query event streams.
+        @summary Queries event streams.
+        
+        @description You can call this API operation to query event streams.
         
         @param request: ListEventStreamingsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2720,7 +3264,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eventbridge_20200401_models.ListEventStreamingsResponse:
         """
-        You can call this API operation to query event streams.
+        @summary Queries event streams.
+        
+        @description You can call this API operation to query event streams.
         
         @param request: ListEventStreamingsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2762,7 +3308,9 @@ class Client(OpenApiClient):
         request: eventbridge_20200401_models.ListEventStreamingsRequest,
     ) -> eventbridge_20200401_models.ListEventStreamingsResponse:
         """
-        You can call this API operation to query event streams.
+        @summary Queries event streams.
+        
+        @description You can call this API operation to query event streams.
         
         @param request: ListEventStreamingsRequest
         @return: ListEventStreamingsResponse
@@ -2775,7 +3323,9 @@ class Client(OpenApiClient):
         request: eventbridge_20200401_models.ListEventStreamingsRequest,
     ) -> eventbridge_20200401_models.ListEventStreamingsResponse:
         """
-        You can call this API operation to query event streams.
+        @summary Queries event streams.
+        
+        @description You can call this API operation to query event streams.
         
         @param request: ListEventStreamingsRequest
         @return: ListEventStreamingsResponse
@@ -2789,7 +3339,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eventbridge_20200401_models.ListRulesResponse:
         """
-        You can call this API operation to query all rules of an event bus.
+        @summary Queries all rules of an event bus.
+        
+        @description You can call this API operation to query all rules of an event bus.
         
         @param request: ListRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2830,7 +3382,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eventbridge_20200401_models.ListRulesResponse:
         """
-        You can call this API operation to query all rules of an event bus.
+        @summary Queries all rules of an event bus.
+        
+        @description You can call this API operation to query all rules of an event bus.
         
         @param request: ListRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2870,7 +3424,9 @@ class Client(OpenApiClient):
         request: eventbridge_20200401_models.ListRulesRequest,
     ) -> eventbridge_20200401_models.ListRulesResponse:
         """
-        You can call this API operation to query all rules of an event bus.
+        @summary Queries all rules of an event bus.
+        
+        @description You can call this API operation to query all rules of an event bus.
         
         @param request: ListRulesRequest
         @return: ListRulesResponse
@@ -2883,7 +3439,9 @@ class Client(OpenApiClient):
         request: eventbridge_20200401_models.ListRulesRequest,
     ) -> eventbridge_20200401_models.ListRulesResponse:
         """
-        You can call this API operation to query all rules of an event bus.
+        @summary Queries all rules of an event bus.
+        
+        @description You can call this API operation to query all rules of an event bus.
         
         @param request: ListRulesRequest
         @return: ListRulesResponse
@@ -2896,6 +3454,13 @@ class Client(OpenApiClient):
         request: eventbridge_20200401_models.ListTargetsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eventbridge_20200401_models.ListTargetsResponse:
+        """
+        @summary Queries all event targets of an event rule.
+        
+        @param request: ListTargetsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTargetsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.arn):
@@ -2932,6 +3497,13 @@ class Client(OpenApiClient):
         request: eventbridge_20200401_models.ListTargetsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eventbridge_20200401_models.ListTargetsResponse:
+        """
+        @summary Queries all event targets of an event rule.
+        
+        @param request: ListTargetsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTargetsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.arn):
@@ -2967,6 +3539,12 @@ class Client(OpenApiClient):
         self,
         request: eventbridge_20200401_models.ListTargetsRequest,
     ) -> eventbridge_20200401_models.ListTargetsResponse:
+        """
+        @summary Queries all event targets of an event rule.
+        
+        @param request: ListTargetsRequest
+        @return: ListTargetsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_targets_with_options(request, runtime)
 
@@ -2974,6 +3552,12 @@ class Client(OpenApiClient):
         self,
         request: eventbridge_20200401_models.ListTargetsRequest,
     ) -> eventbridge_20200401_models.ListTargetsResponse:
+        """
+        @summary Queries all event targets of an event rule.
+        
+        @param request: ListTargetsRequest
+        @return: ListTargetsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_targets_with_options_async(request, runtime)
 
@@ -2983,7 +3567,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eventbridge_20200401_models.ListUserDefinedEventSourcesResponse:
         """
-        You can call this API operation to query custom event sources.
+        @summary Queries all custom event sources.
+        
+        @description You can call this API operation to query custom event sources.
         
         @param request: ListUserDefinedEventSourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3024,7 +3610,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eventbridge_20200401_models.ListUserDefinedEventSourcesResponse:
         """
-        You can call this API operation to query custom event sources.
+        @summary Queries all custom event sources.
+        
+        @description You can call this API operation to query custom event sources.
         
         @param request: ListUserDefinedEventSourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3064,7 +3652,9 @@ class Client(OpenApiClient):
         request: eventbridge_20200401_models.ListUserDefinedEventSourcesRequest,
     ) -> eventbridge_20200401_models.ListUserDefinedEventSourcesResponse:
         """
-        You can call this API operation to query custom event sources.
+        @summary Queries all custom event sources.
+        
+        @description You can call this API operation to query custom event sources.
         
         @param request: ListUserDefinedEventSourcesRequest
         @return: ListUserDefinedEventSourcesResponse
@@ -3077,7 +3667,9 @@ class Client(OpenApiClient):
         request: eventbridge_20200401_models.ListUserDefinedEventSourcesRequest,
     ) -> eventbridge_20200401_models.ListUserDefinedEventSourcesResponse:
         """
-        You can call this API operation to query custom event sources.
+        @summary Queries all custom event sources.
+        
+        @description You can call this API operation to query custom event sources.
         
         @param request: ListUserDefinedEventSourcesRequest
         @return: ListUserDefinedEventSourcesResponse
@@ -3091,7 +3683,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eventbridge_20200401_models.PauseEventStreamingResponse:
         """
-        You can call this API operation to stop an event stream that is running.
+        @summary Stops an event stream that is running.
+        
+        @description You can call this API operation to stop an event stream that is running.
         
         @param request: PauseEventStreamingRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3126,7 +3720,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eventbridge_20200401_models.PauseEventStreamingResponse:
         """
-        You can call this API operation to stop an event stream that is running.
+        @summary Stops an event stream that is running.
+        
+        @description You can call this API operation to stop an event stream that is running.
         
         @param request: PauseEventStreamingRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3160,7 +3756,9 @@ class Client(OpenApiClient):
         request: eventbridge_20200401_models.PauseEventStreamingRequest,
     ) -> eventbridge_20200401_models.PauseEventStreamingResponse:
         """
-        You can call this API operation to stop an event stream that is running.
+        @summary Stops an event stream that is running.
+        
+        @description You can call this API operation to stop an event stream that is running.
         
         @param request: PauseEventStreamingRequest
         @return: PauseEventStreamingResponse
@@ -3173,7 +3771,9 @@ class Client(OpenApiClient):
         request: eventbridge_20200401_models.PauseEventStreamingRequest,
     ) -> eventbridge_20200401_models.PauseEventStreamingResponse:
         """
-        You can call this API operation to stop an event stream that is running.
+        @summary Stops an event stream that is running.
+        
+        @description You can call this API operation to stop an event stream that is running.
         
         @param request: PauseEventStreamingRequest
         @return: PauseEventStreamingResponse
@@ -3187,7 +3787,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eventbridge_20200401_models.PutTargetsResponse:
         """
-        You can call this API operation to create or update event targets under a rule.
+        @summary Creates or updates event targets under a rule.
+        
+        @description You can call this API operation to create or update event targets under a rule.
         
         @param tmp_req: PutTargetsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3230,7 +3832,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eventbridge_20200401_models.PutTargetsResponse:
         """
-        You can call this API operation to create or update event targets under a rule.
+        @summary Creates or updates event targets under a rule.
+        
+        @description You can call this API operation to create or update event targets under a rule.
         
         @param tmp_req: PutTargetsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3272,7 +3876,9 @@ class Client(OpenApiClient):
         request: eventbridge_20200401_models.PutTargetsRequest,
     ) -> eventbridge_20200401_models.PutTargetsResponse:
         """
-        You can call this API operation to create or update event targets under a rule.
+        @summary Creates or updates event targets under a rule.
+        
+        @description You can call this API operation to create or update event targets under a rule.
         
         @param request: PutTargetsRequest
         @return: PutTargetsResponse
@@ -3285,7 +3891,9 @@ class Client(OpenApiClient):
         request: eventbridge_20200401_models.PutTargetsRequest,
     ) -> eventbridge_20200401_models.PutTargetsResponse:
         """
-        You can call this API operation to create or update event targets under a rule.
+        @summary Creates or updates event targets under a rule.
+        
+        @description You can call this API operation to create or update event targets under a rule.
         
         @param request: PutTargetsRequest
         @return: PutTargetsResponse
@@ -3299,7 +3907,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eventbridge_20200401_models.QueryEventResponse:
         """
-        You can call this API operation to query the content of an event.
+        @summary Queries the content of an event.
+        
+        @description You can call this API operation to query the content of an event.
         
         @param request: QueryEventRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3338,7 +3948,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eventbridge_20200401_models.QueryEventResponse:
         """
-        You can call this API operation to query the content of an event.
+        @summary Queries the content of an event.
+        
+        @description You can call this API operation to query the content of an event.
         
         @param request: QueryEventRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3376,7 +3988,9 @@ class Client(OpenApiClient):
         request: eventbridge_20200401_models.QueryEventRequest,
     ) -> eventbridge_20200401_models.QueryEventResponse:
         """
-        You can call this API operation to query the content of an event.
+        @summary Queries the content of an event.
+        
+        @description You can call this API operation to query the content of an event.
         
         @param request: QueryEventRequest
         @return: QueryEventResponse
@@ -3389,7 +4003,9 @@ class Client(OpenApiClient):
         request: eventbridge_20200401_models.QueryEventRequest,
     ) -> eventbridge_20200401_models.QueryEventResponse:
         """
-        You can call this API operation to query the content of an event.
+        @summary Queries the content of an event.
+        
+        @description You can call this API operation to query the content of an event.
         
         @param request: QueryEventRequest
         @return: QueryEventResponse
@@ -3403,7 +4019,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eventbridge_20200401_models.QueryEventTracesResponse:
         """
-        You can call this API operation to query event traces.
+        @summary Queries event traces.
+        
+        @description You can call this API operation to query event traces.
         
         @param request: QueryEventTracesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3440,7 +4058,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eventbridge_20200401_models.QueryEventTracesResponse:
         """
-        You can call this API operation to query event traces.
+        @summary Queries event traces.
+        
+        @description You can call this API operation to query event traces.
         
         @param request: QueryEventTracesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3476,7 +4096,9 @@ class Client(OpenApiClient):
         request: eventbridge_20200401_models.QueryEventTracesRequest,
     ) -> eventbridge_20200401_models.QueryEventTracesResponse:
         """
-        You can call this API operation to query event traces.
+        @summary Queries event traces.
+        
+        @description You can call this API operation to query event traces.
         
         @param request: QueryEventTracesRequest
         @return: QueryEventTracesResponse
@@ -3489,7 +4111,9 @@ class Client(OpenApiClient):
         request: eventbridge_20200401_models.QueryEventTracesRequest,
     ) -> eventbridge_20200401_models.QueryEventTracesResponse:
         """
-        You can call this API operation to query event traces.
+        @summary Queries event traces.
+        
+        @description You can call this API operation to query event traces.
         
         @param request: QueryEventTracesRequest
         @return: QueryEventTracesResponse
@@ -3503,7 +4127,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eventbridge_20200401_models.QueryTracedEventByEventIdResponse:
         """
-        You can call this API operation to query event traces by event ID.
+        @summary Queries event traces by event ID.
+        
+        @description You can call this API operation to query event traces by event ID.
         
         @param request: QueryTracedEventByEventIdRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3542,7 +4168,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eventbridge_20200401_models.QueryTracedEventByEventIdResponse:
         """
-        You can call this API operation to query event traces by event ID.
+        @summary Queries event traces by event ID.
+        
+        @description You can call this API operation to query event traces by event ID.
         
         @param request: QueryTracedEventByEventIdRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3580,7 +4208,9 @@ class Client(OpenApiClient):
         request: eventbridge_20200401_models.QueryTracedEventByEventIdRequest,
     ) -> eventbridge_20200401_models.QueryTracedEventByEventIdResponse:
         """
-        You can call this API operation to query event traces by event ID.
+        @summary Queries event traces by event ID.
+        
+        @description You can call this API operation to query event traces by event ID.
         
         @param request: QueryTracedEventByEventIdRequest
         @return: QueryTracedEventByEventIdResponse
@@ -3593,7 +4223,9 @@ class Client(OpenApiClient):
         request: eventbridge_20200401_models.QueryTracedEventByEventIdRequest,
     ) -> eventbridge_20200401_models.QueryTracedEventByEventIdResponse:
         """
-        You can call this API operation to query event traces by event ID.
+        @summary Queries event traces by event ID.
+        
+        @description You can call this API operation to query event traces by event ID.
         
         @param request: QueryTracedEventByEventIdRequest
         @return: QueryTracedEventByEventIdResponse
@@ -3607,7 +4239,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eventbridge_20200401_models.QueryTracedEventsResponse:
         """
-        You can call this API operation to query event traces by time range.
+        @summary Queries event traces by time range.
+        
+        @description You can call this API operation to query event traces by time range.
         
         @param request: QueryTracedEventsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3656,7 +4290,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eventbridge_20200401_models.QueryTracedEventsResponse:
         """
-        You can call this API operation to query event traces by time range.
+        @summary Queries event traces by time range.
+        
+        @description You can call this API operation to query event traces by time range.
         
         @param request: QueryTracedEventsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3704,7 +4340,9 @@ class Client(OpenApiClient):
         request: eventbridge_20200401_models.QueryTracedEventsRequest,
     ) -> eventbridge_20200401_models.QueryTracedEventsResponse:
         """
-        You can call this API operation to query event traces by time range.
+        @summary Queries event traces by time range.
+        
+        @description You can call this API operation to query event traces by time range.
         
         @param request: QueryTracedEventsRequest
         @return: QueryTracedEventsResponse
@@ -3717,7 +4355,9 @@ class Client(OpenApiClient):
         request: eventbridge_20200401_models.QueryTracedEventsRequest,
     ) -> eventbridge_20200401_models.QueryTracedEventsResponse:
         """
-        You can call this API operation to query event traces by time range.
+        @summary Queries event traces by time range.
+        
+        @description You can call this API operation to query event traces by time range.
         
         @param request: QueryTracedEventsRequest
         @return: QueryTracedEventsResponse
@@ -3731,7 +4371,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eventbridge_20200401_models.StartEventStreamingResponse:
         """
-        You can call this API operation to enable a created or deactivated event stream.
+        @summary Enables a created or deactivated event stream.
+        
+        @description You can call this API operation to enable a created or deactivated event stream.
         
         @param request: StartEventStreamingRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3766,7 +4408,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eventbridge_20200401_models.StartEventStreamingResponse:
         """
-        You can call this API operation to enable a created or deactivated event stream.
+        @summary Enables a created or deactivated event stream.
+        
+        @description You can call this API operation to enable a created or deactivated event stream.
         
         @param request: StartEventStreamingRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3800,7 +4444,9 @@ class Client(OpenApiClient):
         request: eventbridge_20200401_models.StartEventStreamingRequest,
     ) -> eventbridge_20200401_models.StartEventStreamingResponse:
         """
-        You can call this API operation to enable a created or deactivated event stream.
+        @summary Enables a created or deactivated event stream.
+        
+        @description You can call this API operation to enable a created or deactivated event stream.
         
         @param request: StartEventStreamingRequest
         @return: StartEventStreamingResponse
@@ -3813,7 +4459,9 @@ class Client(OpenApiClient):
         request: eventbridge_20200401_models.StartEventStreamingRequest,
     ) -> eventbridge_20200401_models.StartEventStreamingResponse:
         """
-        You can call this API operation to enable a created or deactivated event stream.
+        @summary Enables a created or deactivated event stream.
+        
+        @description You can call this API operation to enable a created or deactivated event stream.
         
         @param request: StartEventStreamingRequest
         @return: StartEventStreamingResponse
@@ -3827,7 +4475,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eventbridge_20200401_models.TestEventPatternResponse:
         """
-        You can call this API operation to check whether the event pattern matches the provided JSON format.
+        @summary Checks whether the event pattern matches the provided JSON format.
+        
+        @description You can call this API operation to check whether the event pattern matches the provided JSON format.
         
         @param request: TestEventPatternRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3864,7 +4514,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eventbridge_20200401_models.TestEventPatternResponse:
         """
-        You can call this API operation to check whether the event pattern matches the provided JSON format.
+        @summary Checks whether the event pattern matches the provided JSON format.
+        
+        @description You can call this API operation to check whether the event pattern matches the provided JSON format.
         
         @param request: TestEventPatternRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3900,7 +4552,9 @@ class Client(OpenApiClient):
         request: eventbridge_20200401_models.TestEventPatternRequest,
     ) -> eventbridge_20200401_models.TestEventPatternResponse:
         """
-        You can call this API operation to check whether the event pattern matches the provided JSON format.
+        @summary Checks whether the event pattern matches the provided JSON format.
+        
+        @description You can call this API operation to check whether the event pattern matches the provided JSON format.
         
         @param request: TestEventPatternRequest
         @return: TestEventPatternResponse
@@ -3913,7 +4567,9 @@ class Client(OpenApiClient):
         request: eventbridge_20200401_models.TestEventPatternRequest,
     ) -> eventbridge_20200401_models.TestEventPatternResponse:
         """
-        You can call this API operation to check whether the event pattern matches the provided JSON format.
+        @summary Checks whether the event pattern matches the provided JSON format.
+        
+        @description You can call this API operation to check whether the event pattern matches the provided JSON format.
         
         @param request: TestEventPatternRequest
         @return: TestEventPatternResponse
@@ -3927,7 +4583,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eventbridge_20200401_models.UpdateApiDestinationResponse:
         """
-        You can call this API operation to update an API destination.
+        @summary Updates an API destination.
+        
+        @description You can call this API operation to update an API destination.
         
         @param tmp_req: UpdateApiDestinationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3972,7 +4630,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eventbridge_20200401_models.UpdateApiDestinationResponse:
         """
-        You can call this API operation to update an API destination.
+        @summary Updates an API destination.
+        
+        @description You can call this API operation to update an API destination.
         
         @param tmp_req: UpdateApiDestinationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4016,7 +4676,9 @@ class Client(OpenApiClient):
         request: eventbridge_20200401_models.UpdateApiDestinationRequest,
     ) -> eventbridge_20200401_models.UpdateApiDestinationResponse:
         """
-        You can call this API operation to update an API destination.
+        @summary Updates an API destination.
+        
+        @description You can call this API operation to update an API destination.
         
         @param request: UpdateApiDestinationRequest
         @return: UpdateApiDestinationResponse
@@ -4029,7 +4691,9 @@ class Client(OpenApiClient):
         request: eventbridge_20200401_models.UpdateApiDestinationRequest,
     ) -> eventbridge_20200401_models.UpdateApiDestinationResponse:
         """
-        You can call this API operation to update an API destination.
+        @summary Updates an API destination.
+        
+        @description You can call this API operation to update an API destination.
         
         @param request: UpdateApiDestinationRequest
         @return: UpdateApiDestinationResponse
@@ -4043,7 +4707,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eventbridge_20200401_models.UpdateConnectionResponse:
         """
-        You can call this API operation to update a connection.
+        @summary Updates a connection.
+        
+        @description You can call this API operation to update a connection.
         
         @param tmp_req: UpdateConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4090,7 +4756,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eventbridge_20200401_models.UpdateConnectionResponse:
         """
-        You can call this API operation to update a connection.
+        @summary Updates a connection.
+        
+        @description You can call this API operation to update a connection.
         
         @param tmp_req: UpdateConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4136,7 +4804,9 @@ class Client(OpenApiClient):
         request: eventbridge_20200401_models.UpdateConnectionRequest,
     ) -> eventbridge_20200401_models.UpdateConnectionResponse:
         """
-        You can call this API operation to update a connection.
+        @summary Updates a connection.
+        
+        @description You can call this API operation to update a connection.
         
         @param request: UpdateConnectionRequest
         @return: UpdateConnectionResponse
@@ -4149,7 +4819,9 @@ class Client(OpenApiClient):
         request: eventbridge_20200401_models.UpdateConnectionRequest,
     ) -> eventbridge_20200401_models.UpdateConnectionResponse:
         """
-        You can call this API operation to update a connection.
+        @summary Updates a connection.
+        
+        @description You can call this API operation to update a connection.
         
         @param request: UpdateConnectionRequest
         @return: UpdateConnectionResponse
@@ -4163,7 +4835,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eventbridge_20200401_models.UpdateEventBusResponse:
         """
-        You can call this API operation to modify an event bus.
+        @summary Modifies an event bus.
+        
+        @description You can call this API operation to modify an event bus.
         
         @param request: UpdateEventBusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4200,7 +4874,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eventbridge_20200401_models.UpdateEventBusResponse:
         """
-        You can call this API operation to modify an event bus.
+        @summary Modifies an event bus.
+        
+        @description You can call this API operation to modify an event bus.
         
         @param request: UpdateEventBusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4236,7 +4912,9 @@ class Client(OpenApiClient):
         request: eventbridge_20200401_models.UpdateEventBusRequest,
     ) -> eventbridge_20200401_models.UpdateEventBusResponse:
         """
-        You can call this API operation to modify an event bus.
+        @summary Modifies an event bus.
+        
+        @description You can call this API operation to modify an event bus.
         
         @param request: UpdateEventBusRequest
         @return: UpdateEventBusResponse
@@ -4249,7 +4927,9 @@ class Client(OpenApiClient):
         request: eventbridge_20200401_models.UpdateEventBusRequest,
     ) -> eventbridge_20200401_models.UpdateEventBusResponse:
         """
-        You can call this API operation to modify an event bus.
+        @summary Modifies an event bus.
+        
+        @description You can call this API operation to modify an event bus.
         
         @param request: UpdateEventBusRequest
         @return: UpdateEventBusResponse
@@ -4263,7 +4943,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eventbridge_20200401_models.UpdateEventSourceResponse:
         """
-        You can call this API operation to update an event source.
+        @summary Updates an event source.
+        
+        @description You can call this API operation to update an event source.
         
         @param tmp_req: UpdateEventSourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4332,7 +5014,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eventbridge_20200401_models.UpdateEventSourceResponse:
         """
-        You can call this API operation to update an event source.
+        @summary Updates an event source.
+        
+        @description You can call this API operation to update an event source.
         
         @param tmp_req: UpdateEventSourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4400,7 +5084,9 @@ class Client(OpenApiClient):
         request: eventbridge_20200401_models.UpdateEventSourceRequest,
     ) -> eventbridge_20200401_models.UpdateEventSourceResponse:
         """
-        You can call this API operation to update an event source.
+        @summary Updates an event source.
+        
+        @description You can call this API operation to update an event source.
         
         @param request: UpdateEventSourceRequest
         @return: UpdateEventSourceResponse
@@ -4413,7 +5099,9 @@ class Client(OpenApiClient):
         request: eventbridge_20200401_models.UpdateEventSourceRequest,
     ) -> eventbridge_20200401_models.UpdateEventSourceResponse:
         """
-        You can call this API operation to update an event source.
+        @summary Updates an event source.
+        
+        @description You can call this API operation to update an event source.
         
         @param request: UpdateEventSourceRequest
         @return: UpdateEventSourceResponse
@@ -4427,7 +5115,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eventbridge_20200401_models.UpdateEventStreamingResponse:
         """
-        You can call this API operation to modify the information about an event stream, such as the basic information and the information about the event source, event filtering rule, and event target.
+        @summary Modifies the information about an event stream, such as the basic information and the information about the event source, event filtering rule, and event target.
+        
+        @description You can call this API operation to modify the information about an event stream, such as the basic information and the information about the event source, event filtering rule, and event target.
         
         @param tmp_req: UpdateEventStreamingRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4484,7 +5174,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eventbridge_20200401_models.UpdateEventStreamingResponse:
         """
-        You can call this API operation to modify the information about an event stream, such as the basic information and the information about the event source, event filtering rule, and event target.
+        @summary Modifies the information about an event stream, such as the basic information and the information about the event source, event filtering rule, and event target.
+        
+        @description You can call this API operation to modify the information about an event stream, such as the basic information and the information about the event source, event filtering rule, and event target.
         
         @param tmp_req: UpdateEventStreamingRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4540,7 +5232,9 @@ class Client(OpenApiClient):
         request: eventbridge_20200401_models.UpdateEventStreamingRequest,
     ) -> eventbridge_20200401_models.UpdateEventStreamingResponse:
         """
-        You can call this API operation to modify the information about an event stream, such as the basic information and the information about the event source, event filtering rule, and event target.
+        @summary Modifies the information about an event stream, such as the basic information and the information about the event source, event filtering rule, and event target.
+        
+        @description You can call this API operation to modify the information about an event stream, such as the basic information and the information about the event source, event filtering rule, and event target.
         
         @param request: UpdateEventStreamingRequest
         @return: UpdateEventStreamingResponse
@@ -4553,7 +5247,9 @@ class Client(OpenApiClient):
         request: eventbridge_20200401_models.UpdateEventStreamingRequest,
     ) -> eventbridge_20200401_models.UpdateEventStreamingResponse:
         """
-        You can call this API operation to modify the information about an event stream, such as the basic information and the information about the event source, event filtering rule, and event target.
+        @summary Modifies the information about an event stream, such as the basic information and the information about the event source, event filtering rule, and event target.
+        
+        @description You can call this API operation to modify the information about an event stream, such as the basic information and the information about the event source, event filtering rule, and event target.
         
         @param request: UpdateEventStreamingRequest
         @return: UpdateEventStreamingResponse
@@ -4567,7 +5263,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eventbridge_20200401_models.UpdateRuleResponse:
         """
-        You can call this API operation to update the configurations of an event rule.
+        @summary Updates the configurations of an event rule.
+        
+        @description You can call this API operation to update the configurations of an event rule.
         
         @param request: UpdateRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4610,7 +5308,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eventbridge_20200401_models.UpdateRuleResponse:
         """
-        You can call this API operation to update the configurations of an event rule.
+        @summary Updates the configurations of an event rule.
+        
+        @description You can call this API operation to update the configurations of an event rule.
         
         @param request: UpdateRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4652,7 +5352,9 @@ class Client(OpenApiClient):
         request: eventbridge_20200401_models.UpdateRuleRequest,
     ) -> eventbridge_20200401_models.UpdateRuleResponse:
         """
-        You can call this API operation to update the configurations of an event rule.
+        @summary Updates the configurations of an event rule.
+        
+        @description You can call this API operation to update the configurations of an event rule.
         
         @param request: UpdateRuleRequest
         @return: UpdateRuleResponse
@@ -4665,7 +5367,9 @@ class Client(OpenApiClient):
         request: eventbridge_20200401_models.UpdateRuleRequest,
     ) -> eventbridge_20200401_models.UpdateRuleResponse:
         """
-        You can call this API operation to update the configurations of an event rule.
+        @summary Updates the configurations of an event rule.
+        
+        @description You can call this API operation to update the configurations of an event rule.
         
         @param request: UpdateRuleRequest
         @return: UpdateRuleResponse

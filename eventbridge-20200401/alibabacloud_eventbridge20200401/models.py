@@ -11,6 +11,8 @@ class CreateApiDestinationRequestHttpApiParameters(TeaModel):
         method: str = None,
     ):
         # The endpoint of the API destination. The endpoint can be up to 127 characters in length.
+        # 
+        # This parameter is required.
         self.endpoint = endpoint
         # The HTTP request method. Valid values:
         # 
@@ -20,6 +22,8 @@ class CreateApiDestinationRequestHttpApiParameters(TeaModel):
         # *   DELETE
         # *   PUT
         # *   PATCH
+        # 
+        # This parameter is required.
         self.method = method
 
     def validate(self):
@@ -55,15 +59,21 @@ class CreateApiDestinationRequest(TeaModel):
         http_api_parameters: CreateApiDestinationRequestHttpApiParameters = None,
     ):
         # The name of the API destination. The name must be 2 to 127 characters in length.
+        # 
+        # This parameter is required.
         self.api_destination_name = api_destination_name
         # The name of the connection. The name must be 2 to 127 characters in length.
         # 
         # > 
         # >  Before you configure this parameter, you must call the CreateConnection operation to create a connection. Then, set this parameter to the name of the connection that you created.
+        # 
+        # This parameter is required.
         self.connection_name = connection_name
         # The description of the API destination. The description can be up to 255 characters in length.
         self.description = description
         # The parameters that are configured for the API destination.
+        # 
+        # This parameter is required.
         self.http_api_parameters = http_api_parameters
 
     def validate(self):
@@ -109,15 +119,21 @@ class CreateApiDestinationShrinkRequest(TeaModel):
         http_api_parameters_shrink: str = None,
     ):
         # The name of the API destination. The name must be 2 to 127 characters in length.
+        # 
+        # This parameter is required.
         self.api_destination_name = api_destination_name
         # The name of the connection. The name must be 2 to 127 characters in length.
         # 
         # > 
         # >  Before you configure this parameter, you must call the CreateConnection operation to create a connection. Then, set this parameter to the name of the connection that you created.
+        # 
+        # This parameter is required.
         self.connection_name = connection_name
         # The description of the API destination. The description can be up to 255 characters in length.
         self.description = description
         # The parameters that are configured for the API destination.
+        # 
+        # This parameter is required.
         self.http_api_parameters_shrink = http_api_parameters_shrink
 
     def validate(self):
@@ -720,6 +736,8 @@ class CreateConnectionRequestNetworkParameters(TeaModel):
         # PublicNetwork and PrivateNetwork.
         # 
         # *   Note: If you set this parameter to PrivateNetwork, you must configure VpcId, VswitcheId, and SecurityGroupId.
+        # 
+        # This parameter is required.
         self.network_type = network_type
         # The ID of the security group.
         self.security_group_id = security_group_id
@@ -771,10 +789,14 @@ class CreateConnectionRequest(TeaModel):
         # The parameters that are configured for authentication.
         self.auth_parameters = auth_parameters
         # The name of the connection. The name must be 2 to 127 characters in length.
+        # 
+        # This parameter is required.
         self.connection_name = connection_name
         # The description of the connection. The description can be up to 255 characters in length.
         self.description = description
         # The parameters that are configured for the network.
+        # 
+        # This parameter is required.
         self.network_parameters = network_parameters
 
     def validate(self):
@@ -825,10 +847,14 @@ class CreateConnectionShrinkRequest(TeaModel):
         # The parameters that are configured for authentication.
         self.auth_parameters_shrink = auth_parameters_shrink
         # The name of the connection. The name must be 2 to 127 characters in length.
+        # 
+        # This parameter is required.
         self.connection_name = connection_name
         # The description of the connection. The description can be up to 255 characters in length.
         self.description = description
         # The parameters that are configured for the network.
+        # 
+        # This parameter is required.
         self.network_parameters_shrink = network_parameters_shrink
 
     def validate(self):
@@ -992,6 +1018,8 @@ class CreateEventBusRequest(TeaModel):
         # The description of the event bus.
         self.description = description
         # The name of the event bus.
+        # 
+        # This parameter is required.
         self.event_bus_name = event_bus_name
 
     def validate(self):
@@ -1180,7 +1208,7 @@ class CreateEventSourceRequestSourceHttpEventParameters(TeaModel):
         # 
         # *   HTTP
         # *   HTTPS
-        # *   HTTP\&HTTPS
+        # *   HTTP\\&HTTPS
         self.type = type
 
     def validate(self):
@@ -1362,11 +1390,11 @@ class CreateEventSourceRequestSourceRabbitMQParameters(TeaModel):
     ):
         # The ID of the Message Queue for RabbitMQ instance. For more information, see Limits.
         self.instance_id = instance_id
-        # The name of the queue on the Message Queue for RabbitMQ instance. For more information, see [Limits](~~163289~~).
+        # The name of the queue on the Message Queue for RabbitMQ instance. For more information, see [Limits](https://help.aliyun.com/document_detail/163289.html).
         self.queue_name = queue_name
         # The ID of the region where the Message Queue for RabbitMQ instance resides.
         self.region_id = region_id
-        # The name of the vhost of the Message Queue for RabbitMQ instance. For more information, see [Limits](~~163289~~).
+        # The name of the vhost of the Message Queue for RabbitMQ instance. For more information, see [Limits](https://help.aliyun.com/document_detail/163289.html).
         self.virtual_host_name = virtual_host_name
 
     def validate(self):
@@ -1427,7 +1455,7 @@ class CreateEventSourceRequestSourceRocketMQParameters(TeaModel):
         self.group_id = group_id
         # The endpoint that is used to access the Message Queue for Apache RocketMQ instance.
         self.instance_endpoint = instance_endpoint
-        # The ID of the Message Queue for Apache RocketMQ instance. For more information, see [Limits](~~163289~~).
+        # The ID of the Message Queue for Apache RocketMQ instance. For more information, see [Limits](https://help.aliyun.com/document_detail/163289.html).
         self.instance_id = instance_id
         # None.
         self.instance_network = instance_network
@@ -1437,8 +1465,8 @@ class CreateEventSourceRequestSourceRocketMQParameters(TeaModel):
         self.instance_security_group_id = instance_security_group_id
         # The type of the Message Queue for Apache RocketMQ instance. Valid values:
         # 
-        # *   Cloud\_4: Message Queue for Apache RocketMQ 4.0 instance.
-        # *   Cloud\_5: Message Queue for Apache RocketMQ 5.0 instance.
+        # *   Cloud_4: Message Queue for Apache RocketMQ 4.0 instance.
+        # *   Cloud_5: Message Queue for Apache RocketMQ 5.0 instance.
         self.instance_type = instance_type
         # The username that is used to access the Message Queue for Apache RocketMQ instance.
         self.instance_username = instance_username
@@ -1454,7 +1482,7 @@ class CreateEventSourceRequestSourceRocketMQParameters(TeaModel):
         self.tag = tag
         # The timestamp that specifies the time from which messages are consumed. This parameter is valid only if you set Offset to CONSUME_FROM_TIMESTAMP.
         self.timestamp = timestamp
-        # The name of the topic on the Message Queue for Apache RocketMQ instance. For more information, see [Limits](~~163289~~).
+        # The name of the topic on the Message Queue for Apache RocketMQ instance. For more information, see [Limits](https://help.aliyun.com/document_detail/163289.html).
         self.topic = topic
 
     def validate(self):
@@ -1644,8 +1672,12 @@ class CreateEventSourceRequest(TeaModel):
         # The description of the event source.
         self.description = description
         # The name of the event bus with which the event source is associated.
+        # 
+        # This parameter is required.
         self.event_bus_name = event_bus_name
         # The name of the event source.
+        # 
+        # This parameter is required.
         self.event_source_name = event_source_name
         # The parameters that are configured if the event source is HTTP events.
         self.source_http_event_parameters = source_http_event_parameters
@@ -1755,8 +1787,12 @@ class CreateEventSourceShrinkRequest(TeaModel):
         # The description of the event source.
         self.description = description
         # The name of the event bus with which the event source is associated.
+        # 
+        # This parameter is required.
         self.event_bus_name = event_bus_name
         # The name of the event source.
+        # 
+        # This parameter is required.
         self.event_source_name = event_source_name
         # The parameters that are configured if the event source is HTTP events.
         self.source_http_event_parameters_shrink = source_http_event_parameters_shrink
@@ -2141,7 +2177,7 @@ class CreateEventStreamingRequestSinkSinkDataHubParametersBody(TeaModel):
         template: str = None,
         value: str = None,
     ):
-        # The format into which you want to transform events.
+        # The method that you want to use to transform events.
         self.form = form
         # None.
         self.template = template
@@ -2183,7 +2219,7 @@ class CreateEventStreamingRequestSinkSinkDataHubParametersProject(TeaModel):
         template: str = None,
         value: str = None,
     ):
-        # The format into which you want to transform events. Default value: CONSTANT.
+        # The method that you want to use to transform events. Default value: CONSTANT.
         self.form = form
         # None.
         self.template = template
@@ -2225,7 +2261,7 @@ class CreateEventStreamingRequestSinkSinkDataHubParametersRoleName(TeaModel):
         template: str = None,
         value: str = None,
     ):
-        # The format into which you want to transform events. Default value: CONSTANT.
+        # The method that you want to use to transform events. Default value: CONSTANT.
         self.form = form
         # None.
         self.template = template
@@ -2267,7 +2303,7 @@ class CreateEventStreamingRequestSinkSinkDataHubParametersTopic(TeaModel):
         template: str = None,
         value: str = None,
     ):
-        # The format into which you want to transform events. Default value: CONSTANT.
+        # The method that you want to use to transform events. Default value: CONSTANT.
         self.form = form
         # None.
         self.template = template
@@ -2309,7 +2345,7 @@ class CreateEventStreamingRequestSinkSinkDataHubParametersTopicSchema(TeaModel):
         template: str = None,
         value: str = None,
     ):
-        # The format into which you want to transform events.
+        # The method that you want to use to transform events.
         self.form = form
         # The template based on which you want to transform events.
         self.template = template
@@ -2351,7 +2387,7 @@ class CreateEventStreamingRequestSinkSinkDataHubParametersTopicType(TeaModel):
         template: str = None,
         value: str = None,
     ):
-        # The format into which you want to transform events. Default value: CONSTANT.
+        # The method that you want to use to transform events. Default value: CONSTANT.
         self.form = form
         # None.
         self.template = template
@@ -2479,7 +2515,7 @@ class CreateEventStreamingRequestSinkSinkFcParametersBody(TeaModel):
         template: str = None,
         value: str = None,
     ):
-        # The format into which you want to transform events.
+        # The method that you want to use to transform events.
         self.form = form
         # The template based on which you want to transform events.
         self.template = template
@@ -2521,7 +2557,7 @@ class CreateEventStreamingRequestSinkSinkFcParametersConcurrency(TeaModel):
         template: str = None,
         value: str = None,
     ):
-        # The format into which you want to transform events. Default value: CONSTANT.
+        # The method that you want to use to transform events. Default value: CONSTANT.
         self.form = form
         # The template based on which you want to transform events.
         self.template = template
@@ -2563,7 +2599,7 @@ class CreateEventStreamingRequestSinkSinkFcParametersFunctionName(TeaModel):
         template: str = None,
         value: str = None,
     ):
-        # The format into which you want to transform events. Default value: CONSTANT.
+        # The method that you want to use to transform events. Default value: CONSTANT.
         self.form = form
         # The template based on which you want to transform events.
         self.template = template
@@ -2605,11 +2641,11 @@ class CreateEventStreamingRequestSinkSinkFcParametersInvocationType(TeaModel):
         template: str = None,
         value: str = None,
     ):
-        # The format into which you want to transform events. Default value: CONSTANT.
+        # The method that you want to use to transform events. Default value: CONSTANT.
         self.form = form
         # The template based on which you want to transform events.
         self.template = template
-        # The invocation method. Valid values: Sync and Async.
+        # The invocation mode. Valid values: Sync and Async.
         self.value = value
 
     def validate(self):
@@ -2647,7 +2683,7 @@ class CreateEventStreamingRequestSinkSinkFcParametersQualifier(TeaModel):
         template: str = None,
         value: str = None,
     ):
-        # The format into which you want to transform events. Default value: CONSTANT.
+        # The method that you want to use to transform events. Default value: CONSTANT.
         self.form = form
         # The template based on which you want to transform events.
         self.template = template
@@ -2689,7 +2725,7 @@ class CreateEventStreamingRequestSinkSinkFcParametersServiceName(TeaModel):
         template: str = None,
         value: str = None,
     ):
-        # The format into which you want to transform events. Default value: CONSTANT.
+        # The method that you want to use to transform events. Default value: CONSTANT.
         self.form = form
         # The template based on which you want to transform events.
         self.template = template
@@ -2740,7 +2776,7 @@ class CreateEventStreamingRequestSinkSinkFcParameters(TeaModel):
         self.concurrency = concurrency
         # The function name.
         self.function_name = function_name
-        # The invocation method. Valid values: Sync and Async.
+        # The invocation mode. Valid values: Sync and Async.
         self.invocation_type = invocation_type
         # The service version.
         self.qualifier = qualifier
@@ -2811,7 +2847,7 @@ class CreateEventStreamingRequestSinkSinkFnfParametersExecutionName(TeaModel):
         template: str = None,
         value: str = None,
     ):
-        # The format into which you want to transform events. Default value: CONSTANT.
+        # The method that you want to use to transform events. Default value: CONSTANT.
         self.form = form
         # The template based on which you want to transform events.
         self.template = template
@@ -2853,7 +2889,7 @@ class CreateEventStreamingRequestSinkSinkFnfParametersFlowName(TeaModel):
         template: str = None,
         value: str = None,
     ):
-        # The format into which you want to transform events. Default value: CONSTANT.
+        # The method that you want to use to transform events. Default value: CONSTANT.
         self.form = form
         # The template based on which you want to transform events.
         self.template = template
@@ -2895,7 +2931,7 @@ class CreateEventStreamingRequestSinkSinkFnfParametersInput(TeaModel):
         template: str = None,
         value: str = None,
     ):
-        # The format into which you want to transform events. Default value: CONSTANT.
+        # The method that you want to use to transform events. Default value: CONSTANT.
         self.form = form
         # The template based on which you want to transform events.
         self.template = template
@@ -2937,7 +2973,7 @@ class CreateEventStreamingRequestSinkSinkFnfParametersRoleName(TeaModel):
         template: str = None,
         value: str = None,
     ):
-        # The format into which you want to transform events. Default value: CONSTANT.
+        # The method that you want to use to transform events. Default value: CONSTANT.
         self.form = form
         # The template based on which you want to transform events.
         self.template = template
@@ -3039,7 +3075,7 @@ class CreateEventStreamingRequestSinkSinkKafkaParametersAcks(TeaModel):
         template: str = None,
         value: str = None,
     ):
-        # The format into which you want to transform events. Default value: CONSTANT.
+        # The method that you want to use to transform events. Default value: CONSTANT.
         self.form = form
         # The template based on which you want to transform events.
         self.template = template
@@ -3085,11 +3121,11 @@ class CreateEventStreamingRequestSinkSinkKafkaParametersInstanceId(TeaModel):
         template: str = None,
         value: str = None,
     ):
-        # The format into which you want to transform events. Default value: CONSTANT.
+        # The method that you want to use to transform events. Default value: CONSTANT.
         self.form = form
         # The template based on which you want to transform events.
         self.template = template
-        # The instance ID.
+        # The ID of the ApsaraMQ for Kafka instance.
         self.value = value
 
     def validate(self):
@@ -3127,7 +3163,7 @@ class CreateEventStreamingRequestSinkSinkKafkaParametersKey(TeaModel):
         template: str = None,
         value: str = None,
     ):
-        # The format into which you want to transform events. Default value: CONSTANT.
+        # The method that you want to use to transform events. Default value: CONSTANT.
         self.form = form
         # The template based on which you want to transform events.
         self.template = template
@@ -3169,11 +3205,11 @@ class CreateEventStreamingRequestSinkSinkKafkaParametersTopic(TeaModel):
         template: str = None,
         value: str = None,
     ):
-        # The format into which you want to transform events. Default value: CONSTANT.
+        # The method that you want to use to transform events. Default value: CONSTANT.
         self.form = form
         # The template based on which you want to transform events.
         self.template = template
-        # The topic name.
+        # The name of the topic on the ApsaraMQ for Kafka instance.
         self.value = value
 
     def validate(self):
@@ -3211,7 +3247,7 @@ class CreateEventStreamingRequestSinkSinkKafkaParametersValue(TeaModel):
         template: str = None,
         value: str = None,
     ):
-        # The format into which you want to transform events.
+        # The method that you want to use to transform events.
         self.form = form
         # The template based on which you want to transform events.
         self.template = template
@@ -3255,17 +3291,17 @@ class CreateEventStreamingRequestSinkSinkKafkaParameters(TeaModel):
         topic: CreateEventStreamingRequestSinkSinkKafkaParametersTopic = None,
         value: CreateEventStreamingRequestSinkSinkKafkaParametersValue = None,
     ):
-        # The acknowledgement (ACK) mode.
+        # The acknowledgment (ACK) mode.
         # 
         # *   If you set this parameter to 0, no response is returned from the broker. In this mode, the performance is high, but the risk of data loss is also high.
         # *   If you set this parameter to 1, a response is returned when data is written to the leader. In this mode, the performance and the risk of data loss are moderate. Data loss may occur if a failure occurs on the leader.
         # *   If you set this parameter to all, a response is returned when data is written to the leader and synchronized to the followers. In this mode, the performance is low, but the risk of data loss is also low. Data loss occurs if the leader and the followers fail at the same time.
         self.acks = acks
-        # The ID of the Message Queue for Apache Kafka instance.
+        # The ID of the ApsaraMQ for Kafka instance.
         self.instance_id = instance_id
         # The message key.
         self.key = key
-        # The topic name.
+        # The name of the topic on the ApsaraMQ for Kafka instance.
         self.topic = topic
         # The message body.
         self.value = value
@@ -3327,7 +3363,7 @@ class CreateEventStreamingRequestSinkSinkMNSParametersBody(TeaModel):
         template: str = None,
         value: str = None,
     ):
-        # The format into which you want to transform events.
+        # The method that you want to use to transform events.
         self.form = form
         # The template based on which you want to transform events.
         self.template = template
@@ -3369,11 +3405,11 @@ class CreateEventStreamingRequestSinkSinkMNSParametersIsBase64Encode(TeaModel):
         template: str = None,
         value: str = None,
     ):
-        # The format into which you want to transform events. Default value: CONSTANT.
+        # The method that you want to use to transform events. Default value: CONSTANT.
         self.form = form
         # The template based on which you want to transform events.
         self.template = template
-        # Specifies that Base64 encoding is enabled.
+        # Specifies whether to enable Base64 encoding.
         self.value = value
 
     def validate(self):
@@ -3411,7 +3447,7 @@ class CreateEventStreamingRequestSinkSinkMNSParametersQueueName(TeaModel):
         template: str = None,
         value: str = None,
     ):
-        # The format into which you want to transform events. Default value: CONSTANT.
+        # The method that you want to use to transform events. Default value: CONSTANT.
         self.form = form
         # The template based on which you want to transform events.
         self.template = template
@@ -3453,7 +3489,7 @@ class CreateEventStreamingRequestSinkSinkMNSParameters(TeaModel):
         is_base_64encode: CreateEventStreamingRequestSinkSinkMNSParametersIsBase64Encode = None,
         queue_name: CreateEventStreamingRequestSinkSinkMNSParametersQueueName = None,
     ):
-        # The message body.
+        # The message content.
         self.body = body
         # Specifies whether to enable Base64 encoding.
         self.is_base_64encode = is_base_64encode
@@ -3503,8 +3539,11 @@ class CreateEventStreamingRequestSinkSinkPrometheusParametersAuthorizationType(T
         template: str = None,
         value: str = None,
     ):
+        # The method that you want to use to transform events. Default value: CONSTANT.
         self.form = form
+        # None.
         self.template = template
+        # The authentication method.
         self.value = value
 
     def validate(self):
@@ -3542,8 +3581,11 @@ class CreateEventStreamingRequestSinkSinkPrometheusParametersData(TeaModel):
         template: str = None,
         value: str = None,
     ):
+        # The method that you want to use to transform events. Default value: JSAONPATH.
         self.form = form
+        # The template based on which you want to transform events.
         self.template = template
+        # The metric data.
         self.value = value
 
     def validate(self):
@@ -3581,8 +3623,11 @@ class CreateEventStreamingRequestSinkSinkPrometheusParametersNetworkType(TeaMode
         template: str = None,
         value: str = None,
     ):
+        # The method that you want to use to transform events. Default value: CONSTANT.
         self.form = form
+        # None.
         self.template = template
+        # The network type.
         self.value = value
 
     def validate(self):
@@ -3620,8 +3665,11 @@ class CreateEventStreamingRequestSinkSinkPrometheusParametersPassword(TeaModel):
         template: str = None,
         value: str = None,
     ):
+        # The method that you want to use to transform events. Default value: CONSTANT.
         self.form = form
+        # None.
         self.template = template
+        # The password.
         self.value = value
 
     def validate(self):
@@ -3659,8 +3707,11 @@ class CreateEventStreamingRequestSinkSinkPrometheusParametersSecurityGroupId(Tea
         template: str = None,
         value: str = None,
     ):
+        # The method that you want to use to transform events. Default value: CONSTANT.
         self.form = form
+        # None.
         self.template = template
+        # The ID of the security group to which the Managed Service for Prometheus instance belongs.
         self.value = value
 
     def validate(self):
@@ -3698,8 +3749,11 @@ class CreateEventStreamingRequestSinkSinkPrometheusParametersURL(TeaModel):
         template: str = None,
         value: str = None,
     ):
+        # The method that you want to use to transform events. Default value: CONSTANT.
         self.form = form
+        # None.
         self.template = template
+        # The URL for the remote write configuration item of the Managed Service for Prometheus instance.
         self.value = value
 
     def validate(self):
@@ -3737,8 +3791,11 @@ class CreateEventStreamingRequestSinkSinkPrometheusParametersUsername(TeaModel):
         template: str = None,
         value: str = None,
     ):
+        # The method that you want to use to transform events. Default value: CONSTANT.
         self.form = form
+        # None.
         self.template = template
+        # The username.
         self.value = value
 
     def validate(self):
@@ -3776,8 +3833,11 @@ class CreateEventStreamingRequestSinkSinkPrometheusParametersVSwitchId(TeaModel)
         template: str = None,
         value: str = None,
     ):
+        # The method that you want to use to transform events. Default value: CONSTANT.
         self.form = form
+        # None.
         self.template = template
+        # The ID of the vSwitch with which the Managed Service for Prometheus instance is associated.
         self.value = value
 
     def validate(self):
@@ -3815,8 +3875,11 @@ class CreateEventStreamingRequestSinkSinkPrometheusParametersVpcId(TeaModel):
         template: str = None,
         value: str = None,
     ):
+        # The method that you want to use to transform events. Default value: CONSTANT.
         self.form = form
+        # None.
         self.template = template
+        # The ID of the VPC to which the Managed Service for Prometheus instance belongs.
         self.value = value
 
     def validate(self):
@@ -3860,14 +3923,23 @@ class CreateEventStreamingRequestSinkSinkPrometheusParameters(TeaModel):
         v_switch_id: CreateEventStreamingRequestSinkSinkPrometheusParametersVSwitchId = None,
         vpc_id: CreateEventStreamingRequestSinkSinkPrometheusParametersVpcId = None,
     ):
+        # The authentication method.
         self.authorization_type = authorization_type
+        # The metric data.
         self.data = data
+        # The network type.
         self.network_type = network_type
+        # The password.
         self.password = password
+        # The ID of the security group to which the Managed Service for Prometheus instance belongs.
         self.security_group_id = security_group_id
+        # The URL for the remote write configuration item of the Managed Service for Prometheus instance.
         self.url = url
+        # The username.
         self.username = username
+        # The ID of the vSwitch with which the Managed Service for Prometheus instance is associated.
         self.v_switch_id = v_switch_id
+        # The ID of the VPC to which the Managed Service for Prometheus instance belongs.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -3955,7 +4027,7 @@ class CreateEventStreamingRequestSinkSinkRabbitMQParametersBody(TeaModel):
         template: str = None,
         value: str = None,
     ):
-        # The format into which you want to transform events.
+        # The method that you want to use to transform events.
         self.form = form
         # The template based on which you want to transform events.
         self.template = template
@@ -3997,11 +4069,11 @@ class CreateEventStreamingRequestSinkSinkRabbitMQParametersExchange(TeaModel):
         template: str = None,
         value: str = None,
     ):
-        # The format into which you want to transform events. Default value: CONSTANT.
+        # The method that you want to use to transform events. Default value: CONSTANT.
         self.form = form
         # The template based on which you want to transform events.
         self.template = template
-        # The name of the exchange on the Message Queue for RabbitMQ instance.
+        # The name of the exchange on the ApsaraMQ for RabbitMQ instance.
         self.value = value
 
     def validate(self):
@@ -4039,11 +4111,11 @@ class CreateEventStreamingRequestSinkSinkRabbitMQParametersInstanceId(TeaModel):
         template: str = None,
         value: str = None,
     ):
-        # The format into which you want to transform events. Default value: CONSTANT.
+        # The method that you want to use to transform events. Default value: CONSTANT.
         self.form = form
         # The template based on which you want to transform events.
         self.template = template
-        # The ID of the Message Queue for RabbitMQ instance.
+        # The ID of the ApsaraMQ for RabbitMQ instance.
         self.value = value
 
     def validate(self):
@@ -4081,7 +4153,7 @@ class CreateEventStreamingRequestSinkSinkRabbitMQParametersMessageId(TeaModel):
         template: str = None,
         value: str = None,
     ):
-        # The format into which you want to transform events.
+        # The method that you want to use to transform events.
         self.form = form
         # The template based on which you want to transform events.
         self.template = template
@@ -4123,7 +4195,7 @@ class CreateEventStreamingRequestSinkSinkRabbitMQParametersProperties(TeaModel):
         template: str = None,
         value: str = None,
     ):
-        # The format into which you want to transform events.
+        # The method that you want to use to transform events.
         self.form = form
         # The template based on which you want to transform events.
         self.template = template
@@ -4165,11 +4237,11 @@ class CreateEventStreamingRequestSinkSinkRabbitMQParametersQueueName(TeaModel):
         template: str = None,
         value: str = None,
     ):
-        # The format into which you want to transform events. Default value: CONSTANT.
+        # The method that you want to use to transform events. Default value: CONSTANT.
         self.form = form
         # The template based on which you want to transform events.
         self.template = template
-        # The name of the queue on the Message Queue for RabbitMQ instance.
+        # The name of the queue on the ApsaraMQ for RabbitMQ instance.
         self.value = value
 
     def validate(self):
@@ -4207,7 +4279,7 @@ class CreateEventStreamingRequestSinkSinkRabbitMQParametersRoutingKey(TeaModel):
         template: str = None,
         value: str = None,
     ):
-        # The format into which you want to transform events. Default value: CONSTANT.
+        # The method that you want to use to transform events. Default value: CONSTANT.
         self.form = form
         # The template based on which you want to transform events.
         self.template = template
@@ -4249,7 +4321,7 @@ class CreateEventStreamingRequestSinkSinkRabbitMQParametersTargetType(TeaModel):
         template: str = None,
         value: str = None,
     ):
-        # The format into which you want to transform events. Default value: CONSTANT.
+        # The method that you want to use to transform events. Default value: CONSTANT.
         self.form = form
         # The template based on which you want to transform events.
         self.template = template
@@ -4294,11 +4366,11 @@ class CreateEventStreamingRequestSinkSinkRabbitMQParametersVirtualHostName(TeaMo
         template: str = None,
         value: str = None,
     ):
-        # The format into which you want to transform events. Default value: CONSTANT.
+        # The method that you want to use to transform events. Default value: CONSTANT.
         self.form = form
         # The template based on which you want to transform events.
         self.template = template
-        # The name of the vhost of the Message Queue for RabbitMQ instance.
+        # The name of the vhost to which the ApsaraMQ for RabbitMQ instance belongs.
         self.value = value
 
     def validate(self):
@@ -4342,23 +4414,23 @@ class CreateEventStreamingRequestSinkSinkRabbitMQParameters(TeaModel):
         target_type: CreateEventStreamingRequestSinkSinkRabbitMQParametersTargetType = None,
         virtual_host_name: CreateEventStreamingRequestSinkSinkRabbitMQParametersVirtualHostName = None,
     ):
-        # The message body.
+        # The message content.
         self.body = body
-        # The exchange to which you want to deliver events. This parameter is available only if you set TargetType to Exchange.
+        # The exchange mode. This parameter is required only if you set TargetType to Exchange.
         self.exchange = exchange
-        # The information about the Message Queue for RabbitMQ instance.
+        # The ID of the ApsaraMQ for RabbitMQ instance.
         self.instance_id = instance_id
         # The message ID.
         self.message_id = message_id
         # The properties that you want to use to filter messages.
         self.properties = properties
-        # The queue to which you want to deliver events. This parameter is available only if you set TargetType to Queue.
+        # The queue mode. This parameter is required only if you set TargetType to Queue.
         self.queue_name = queue_name
-        # The rule that you want to use to route messages. This parameter is available only if you set TargetType to Exchange.
+        # The rule that you want to use to route messages. This parameter is required only if you set TargetType to Exchange.
         self.routing_key = routing_key
         # The type of the resource to which you want to deliver events.
         self.target_type = target_type
-        # The name of the vhost of the Message Queue for RabbitMQ instance.
+        # The name of the vhost to which the ApsaraMQ for RabbitMQ instance belongs.
         self.virtual_host_name = virtual_host_name
 
     def validate(self):
@@ -4446,7 +4518,7 @@ class CreateEventStreamingRequestSinkSinkRocketMQParametersBody(TeaModel):
         template: str = None,
         value: str = None,
     ):
-        # The format into which you want to transform events.
+        # The method that you want to use to transform events.
         self.form = form
         # The template based on which you want to transform events.
         self.template = template
@@ -4488,11 +4560,11 @@ class CreateEventStreamingRequestSinkSinkRocketMQParametersInstanceEndpoint(TeaM
         template: str = None,
         value: str = None,
     ):
-        # The format into which you want to transform events. Default value: CONSTANT.
+        # The method that you want to use to transform events. Default value: CONSTANT.
         self.form = form
         # None.
         self.template = template
-        # The instance endpoint.
+        # The endpoint that is used to access the ApsaraMQ for RocketMQ instance.
         self.value = value
 
     def validate(self):
@@ -4530,11 +4602,11 @@ class CreateEventStreamingRequestSinkSinkRocketMQParametersInstanceId(TeaModel):
         template: str = None,
         value: str = None,
     ):
-        # The format into which you want to transform events. Default value: CONSTANT.
+        # The method that you want to use to transform events. Default value: CONSTANT.
         self.form = form
         # The template based on which you want to transform events.
         self.template = template
-        # The ID of the Message Queue for Apache RocketMQ instance.
+        # The ID of the ApsaraMQ for RocketMQ instance.
         self.value = value
 
     def validate(self):
@@ -4572,11 +4644,11 @@ class CreateEventStreamingRequestSinkSinkRocketMQParametersInstancePassword(TeaM
         template: str = None,
         value: str = None,
     ):
-        # The format into which you want to transform events. Default value: CONSTANT.
+        # The method that you want to use to transform events. Default value: CONSTANT.
         self.form = form
         # None.
         self.template = template
-        # The instance password.
+        # The password that is used to access the ApsaraMQ for RocketMQ instance.
         self.value = value
 
     def validate(self):
@@ -4614,11 +4686,11 @@ class CreateEventStreamingRequestSinkSinkRocketMQParametersInstanceType(TeaModel
         template: str = None,
         value: str = None,
     ):
-        # The format into which you want to transform events. Default value: CONSTANT.
+        # The method that you want to use to transform events. Default value: CONSTANT.
         self.form = form
         # None.
         self.template = template
-        # The instance type.
+        # The type of the ApsaraMQ for RocketMQ instance.
         self.value = value
 
     def validate(self):
@@ -4656,11 +4728,11 @@ class CreateEventStreamingRequestSinkSinkRocketMQParametersInstanceUsername(TeaM
         template: str = None,
         value: str = None,
     ):
-        # The format into which you want to transform events. Default value: CONSTANT.
+        # The method that you want to use to transform events. Default value: CONSTANT.
         self.form = form
         # None.
         self.template = template
-        # The instance username.
+        # The username that is used to access the ApsaraMQ for RocketMQ instance.
         self.value = value
 
     def validate(self):
@@ -4698,7 +4770,7 @@ class CreateEventStreamingRequestSinkSinkRocketMQParametersKeys(TeaModel):
         template: str = None,
         value: str = None,
     ):
-        # The format into which you want to transform events.
+        # The method that you want to use to transform events.
         self.form = form
         # The template based on which you want to transform events.
         self.template = template
@@ -4740,14 +4812,14 @@ class CreateEventStreamingRequestSinkSinkRocketMQParametersNetwork(TeaModel):
         template: str = None,
         value: str = None,
     ):
-        # The format into which you want to transform events. Default value: CONSTANT.
+        # The method that you want to use to transform events. Default value: CONSTANT.
         self.form = form
         # None.
         self.template = template
         # The network type. Valid values:
         # 
-        # *   PublicNetwork
-        # *   PrivateNetwork
+        # *   PublicNetwork and
+        # *   PrivateNetwork.
         self.value = value
 
     def validate(self):
@@ -4785,7 +4857,7 @@ class CreateEventStreamingRequestSinkSinkRocketMQParametersProperties(TeaModel):
         template: str = None,
         value: str = None,
     ):
-        # The format into which you want to transform events.
+        # The method that you want to use to transform events.
         self.form = form
         # The template based on which you want to transform events.
         self.template = template
@@ -4827,11 +4899,11 @@ class CreateEventStreamingRequestSinkSinkRocketMQParametersSecurityGroupId(TeaMo
         template: str = None,
         value: str = None,
     ):
-        # The format into which you want to transform events. Default value: CONSTANT.
+        # The method that you want to use to transform events. Default value: CONSTANT.
         self.form = form
         # None.
         self.template = template
-        # The security group ID.
+        # The ID of the security group to which the ApsaraMQ for RocketMQ instance belongs.
         self.value = value
 
     def validate(self):
@@ -4869,7 +4941,7 @@ class CreateEventStreamingRequestSinkSinkRocketMQParametersTags(TeaModel):
         template: str = None,
         value: str = None,
     ):
-        # The format into which you want to transform events.
+        # The method that you want to use to transform events.
         self.form = form
         # The template based on which you want to transform events.
         self.template = template
@@ -4911,11 +4983,11 @@ class CreateEventStreamingRequestSinkSinkRocketMQParametersTopic(TeaModel):
         template: str = None,
         value: str = None,
     ):
-        # The format into which you want to transform events. Default value: CONSTANT.
+        # The method that you want to use to transform events. Default value: CONSTANT.
         self.form = form
         # The template based on which you want to transform events.
         self.template = template
-        # The name of the topic on the Message Queue for Apache RocketMQ instance.
+        # The name of the topic on the ApsaraMQ for RocketMQ instance.
         self.value = value
 
     def validate(self):
@@ -4953,11 +5025,11 @@ class CreateEventStreamingRequestSinkSinkRocketMQParametersVSwitchIds(TeaModel):
         template: str = None,
         value: str = None,
     ):
-        # The format into which you want to transform events. Default value: CONSTANT.
+        # The method that you want to use to transform events. Default value: CONSTANT.
         self.form = form
         # None.
         self.template = template
-        # The vSwitch ID.
+        # The ID of the vSwitch with which the ApsaraMQ for RocketMQ instance is associated.
         self.value = value
 
     def validate(self):
@@ -4995,11 +5067,11 @@ class CreateEventStreamingRequestSinkSinkRocketMQParametersVpcId(TeaModel):
         template: str = None,
         value: str = None,
     ):
-        # The format into which you want to transform events. Default value: CONSTANT.
+        # The method that you want to use to transform events. Default value: CONSTANT.
         self.form = form
         # None.
         self.template = template
-        # The VPC ID.
+        # The ID of the VPC to which the ApsaraMQ for RocketMQ instance belongs.
         self.value = value
 
     def validate(self):
@@ -5048,36 +5120,36 @@ class CreateEventStreamingRequestSinkSinkRocketMQParameters(TeaModel):
         v_switch_ids: CreateEventStreamingRequestSinkSinkRocketMQParametersVSwitchIds = None,
         vpc_id: CreateEventStreamingRequestSinkSinkRocketMQParametersVpcId = None,
     ):
-        # The message body.
+        # The message content.
         self.body = body
-        # The instance endpoint.
+        # The endpoint that is used to access the ApsaraMQ for RocketMQ instance.
         self.instance_endpoint = instance_endpoint
-        # The parameters that are configured if you specify the event target as Message Queue for Apache RocketMQ.
+        # The ID of the ApsaraMQ for RocketMQ instance.
         self.instance_id = instance_id
-        # The instance password.
+        # The password that is used to access the ApsaraMQ for RocketMQ instance.
         self.instance_password = instance_password
-        # The instance type.
+        # The type of the ApsaraMQ for RocketMQ instance.
         self.instance_type = instance_type
-        # The instance username.
+        # The username that is used to access the ApsaraMQ for RocketMQ instance.
         self.instance_username = instance_username
         # The keys that you want to use to filter messages.
         self.keys = keys
         # The network type. Valid values:
         # 
-        # *   PublicNetwork
-        # *   PrivateNetwork
+        # *   PublicNetwork and
+        # *   PrivateNetwork.
         self.network = network
         # The properties that you want to use to filter messages.
         self.properties = properties
-        # The security group ID.
+        # The ID of the security group to which the ApsaraMQ for RocketMQ instance belongs.
         self.security_group_id = security_group_id
         # The tags that you want to use to filter messages.
         self.tags = tags
-        # The topic on the Message Queue for Apache RocketMQ instance.
+        # The name of the topic on the ApsaraMQ for RocketMQ instance.
         self.topic = topic
-        # The vSwitch ID.
+        # The ID of the vSwitch with which the ApsaraMQ for RocketMQ instance is associated.
         self.v_switch_ids = v_switch_ids
-        # The VPC ID.
+        # The ID of the VPC to which the ApsaraMQ for RocketMQ instance belongs.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -5200,7 +5272,7 @@ class CreateEventStreamingRequestSinkSinkSLSParametersBody(TeaModel):
         template: str = None,
         value: str = None,
     ):
-        # The format into which you want to transform events.
+        # The method that you want to use to transform events.
         self.form = form
         # The template based on which you want to transform events.
         self.template = template
@@ -5242,7 +5314,7 @@ class CreateEventStreamingRequestSinkSinkSLSParametersLogStore(TeaModel):
         template: str = None,
         value: str = None,
     ):
-        # The format into which you want to transform events. Default value: CONSTANT.
+        # The method that you want to use to transform events. Default value: CONSTANT.
         self.form = form
         # None.
         self.template = template
@@ -5284,7 +5356,7 @@ class CreateEventStreamingRequestSinkSinkSLSParametersProject(TeaModel):
         template: str = None,
         value: str = None,
     ):
-        # The format into which you want to transform events. Default value: CONSTANT.
+        # The method that you want to use to transform events. Default value: CONSTANT.
         self.form = form
         # None.
         self.template = template
@@ -5326,11 +5398,11 @@ class CreateEventStreamingRequestSinkSinkSLSParametersRoleName(TeaModel):
         template: str = None,
         value: str = None,
     ):
-        # The format into which you want to transform events. Default value: CONSTANT.
+        # The method that you want to use to transform events. Default value: CONSTANT.
         self.form = form
         # None.
         self.template = template
-        # The role name. If you want to authorize EventBridge to use this role to read logs in Log Service, you must select Alibaba Cloud Service for Selected Trusted Entity and EventBridge for Select Trusted Service when you create the role in the RAM console.
+        # The role name. If you want to authorize EventBridge to use this role to read logs in Simple Log Service, you must select Alibaba Cloud Service for Selected Trusted Entity and EventBridge for Select Trusted Service when you create the role in the RAM console.
         self.value = value
 
     def validate(self):
@@ -5368,11 +5440,11 @@ class CreateEventStreamingRequestSinkSinkSLSParametersTopic(TeaModel):
         template: str = None,
         value: str = None,
     ):
-        # The format into which you want to transform events. Default value: CONSTANT.
+        # The method that you want to use to transform events. Default value: CONSTANT.
         self.form = form
         # None.
         self.template = template
-        # The topic that you want to use to store logs. This parameter corresponds to the **topic** reserved field in Simple Log Service.
+        # The topic that you want to use to store logs. This parameter corresponds to the reserved field **topic** in Simple Log Service.
         self.value = value
 
     def validate(self):
@@ -5418,9 +5490,9 @@ class CreateEventStreamingRequestSinkSinkSLSParameters(TeaModel):
         self.log_store = log_store
         # The Simple Log Service project.
         self.project = project
-        # The role name. If you want to authorize EventBridge to use this role to read logs in Log Service, you must select Alibaba Cloud Service for Selected Trusted Entity and EventBridge for Select Trusted Service when you create the role in the Resource Access Management (RAM) console.
+        # The role name. If you want to authorize EventBridge to use this role to read logs in Simple Log Service, you must select Alibaba Cloud Service for Selected Trusted Entity and EventBridge for Select Trusted Service when you create the role in the RAM console.
         self.role_name = role_name
-        # The topic that you want to use to store logs. This parameter corresponds to the **topic** reserved field in Simple Log Service.
+        # The topic that you want to use to store logs. This parameter corresponds to the reserved field **topic** in Simple Log Service.
         self.topic = topic
 
     def validate(self):
@@ -5486,22 +5558,23 @@ class CreateEventStreamingRequestSink(TeaModel):
         sink_rocket_mqparameters: CreateEventStreamingRequestSinkSinkRocketMQParameters = None,
         sink_slsparameters: CreateEventStreamingRequestSinkSinkSLSParameters = None,
     ):
-        # The parameters that are configured if you specify the event target as DataHub.
+        # The parameters that are configured if you specify DataHub as the event target.
         self.sink_data_hub_parameters = sink_data_hub_parameters
-        # The parameters that are configured if you specify the event target as Function Compute.
+        # The parameters that are configured if you specify Function Compute as the event target.
         self.sink_fc_parameters = sink_fc_parameters
-        # The parameters that are configured if you specify the event target as Serverless Workflow.
+        # The parameters that are configured if you specify CloudFlow as the event target.
         self.sink_fnf_parameters = sink_fnf_parameters
-        # The parameters that are configured if you specify the event target as Message Queue for Apache Kafka.
+        # The parameters that are configured if you specify ApsaraMQ for Kafka as the event target.
         self.sink_kafka_parameters = sink_kafka_parameters
-        # The parameters that are configured if you specify the event target as MNS.
+        # The parameters that are configured if you specify MNS as the event target.
         self.sink_mnsparameters = sink_mnsparameters
+        # The parameters that are configured if you specify Managed Service for Prometheus as the event target.
         self.sink_prometheus_parameters = sink_prometheus_parameters
-        # The parameters that are configured if you specify the event target as Message Queue for RabbitMQ.
+        # The parameters that are configured if you specify ApsaraMQ for RabbitMQ as the event target.
         self.sink_rabbit_mqparameters = sink_rabbit_mqparameters
-        # The parameters that are configured if you specify the event target as Message Queue for Apache RocketMQ.
+        # The parameters that are configured if you specify ApsaraMQ for RocketMQ as the event target.
         self.sink_rocket_mqparameters = sink_rocket_mqparameters
-        # The parameters that are configured if you specify the event target as Simple Log Service.
+        # The parameters that are configured if you specify Simple Log Service as the event target.
         self.sink_slsparameters = sink_slsparameters
 
     def validate(self):
@@ -5668,22 +5741,22 @@ class CreateEventStreamingRequestSourceSourceKafkaParameters(TeaModel):
     ):
         # The group ID of the consumer that subscribes to the topic.
         self.consumer_group = consumer_group
-        # The ID of the Message Queue for Apache Kafka instance.
+        # The ID of the ApsaraMQ for Kafka instance.
         self.instance_id = instance_id
-        # The network setting. Default value: Default. The value PublicNetwork specifies a virtual private cloud (VPC).
+        # The network type. Default value: Default. The value PublicNetwork specifies a virtual private cloud (VPC).
         self.network = network
-        # The offset.
+        # The offset from which messages are consumed.
         self.offset_reset = offset_reset
-        # The ID of the region where the Message Queue for Apache Kafka instance resides.
+        # The ID of the region where the ApsaraMQ for Kafka instance resides.
         self.region_id = region_id
-        # The security group ID.
+        # The ID of the security group to which the ApsaraMQ for Kafka instance belongs.
         self.security_group_id = security_group_id
-        # The topic name.
+        # The name of the topic on the ApsaraMQ for Kafka instance.
         self.topic = topic
-        # The vSwitch ID.
+        # The ID of the vSwitch with which the ApsaraMQ for Kafka instance is associated.
         self.v_switch_ids = v_switch_ids
         self.value_data_type = value_data_type
-        # The VPC ID.
+        # The ID of the VPC to which the ApsaraMQ for Kafka instance belongs.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -5793,9 +5866,9 @@ class CreateEventStreamingRequestSourceSourceMQTTParameters(TeaModel):
         topic: str = None,
     ):
         self.body_data_type = body_data_type
-        # The ID of the Message Queue for MQTT instance.
+        # The ID of the ApsaraMQ for MQTT instance.
         self.instance_id = instance_id
-        # The ID of the region where the Message Queue for MQTT instance resides.
+        # The ID of the region where the ApsaraMQ for MQTT instance resides.
         self.region_id = region_id
         # The topic from which messages are sent.
         self.topic = topic
@@ -5840,8 +5913,11 @@ class CreateEventStreamingRequestSourceSourcePrometheusParameters(TeaModel):
         labels: str = None,
         region_id: str = None,
     ):
+        # The cluster ID.
         self.cluster_id = cluster_id
+        # The data type.
         self.data_type = data_type
+        # The labels.
         self.labels = labels
         self.region_id = region_id
 
@@ -5885,13 +5961,13 @@ class CreateEventStreamingRequestSourceSourceRabbitMQParameters(TeaModel):
         region_id: str = None,
         virtual_host_name: str = None,
     ):
-        # The ID of the Message Queue for RabbitMQ instance.
+        # The ID of the ApsaraMQ for RabbitMQ instance.
         self.instance_id = instance_id
-        # The queue name of the Message Queue for RabbitMQ instance.
+        # The name of the queue on the ApsaraMQ for RabbitMQ instance.
         self.queue_name = queue_name
-        # The ID of the region where the Message Queue for RabbitMQ instance resides. You can call the [DescribeRegions](~~62010~~) operation to query the most recent region list.
+        # The ID of the region where the ApsaraMQ for RabbitMQ instance resides. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/62010.html) operation to query the most recent region list.
         self.region_id = region_id
-        # The vhost name of the Message Queue for RabbitMQ instance.
+        # The name of the vhost to which the ApsaraMQ for RabbitMQ instance belongs.
         self.virtual_host_name = virtual_host_name
 
     def validate(self):
@@ -5958,28 +6034,28 @@ class CreateEventStreamingRequestSourceSourceRocketMQParameters(TeaModel):
         self.filter_sql = filter_sql
         # The method that you want to use to filter messages.
         self.filter_type = filter_type
-        # The ID of the consumer group on the Message Queue for Apache RocketMQ instance.
+        # The ID of the consumer group on the ApsaraMQ for RocketMQ instance.
         self.group_id = group_id
-        # The instance endpoint.
+        # The endpoint that is used to access the ApsaraMQ for RocketMQ instance.
         self.instance_endpoint = instance_endpoint
-        # The ID of the Message Queue for Apache RocketMQ instance.
+        # The ID of the ApsaraMQ for RocketMQ instance.
         self.instance_id = instance_id
-        # The network type of the Message Queue for Apache RocketMQ instance. Valid values:
+        # The network type. Valid values:
         # 
-        # *   PublicNetwork
-        # *   PrivateNetwork
+        # *   PublicNetwork and
+        # *   PrivateNetwork.
         self.instance_network = instance_network
-        # The instance password.
+        # The password that is used to access the ApsaraMQ for RocketMQ instance.
         self.instance_password = instance_password
-        # The security group ID of the Message Queue for Apache RocketMQ instance.
+        # The ID of the security group to which the ApsaraMQ for RocketMQ instance belongs.
         self.instance_security_group_id = instance_security_group_id
-        # The instance type.
+        # The type of the ApsaraMQ for RocketMQ instance.
         self.instance_type = instance_type
-        # The instance username.
+        # The username that is used to access the ApsaraMQ for RocketMQ instance.
         self.instance_username = instance_username
-        # The vSwitch ID of the Message Queue for Apache RocketMQ instance.
+        # The ID of the vSwitch with which the ApsaraMQ for RocketMQ instance is associated.
         self.instance_vswitch_ids = instance_vswitch_ids
-        # The VPC ID of the Message Queue for Apache RocketMQ instance.
+        # The ID of the VPC to which the ApsaraMQ for RocketMQ instance belongs.
         self.instance_vpc_id = instance_vpc_id
         # The network type. Valid values: PublicNetwork and PrivateNetwork.
         self.network = network
@@ -5991,7 +6067,7 @@ class CreateEventStreamingRequestSourceSourceRocketMQParameters(TeaModel):
         # 
         # Default value: CONSUME_FROM_LAST_OFFSET.
         self.offset = offset
-        # The ID of the region where the Message Queue for Apache RocketMQ instance resides.
+        # The ID of the region where the ApsaraMQ for RocketMQ instance resides.
         self.region_id = region_id
         # The security group ID of the cross-border task.
         self.security_group_id = security_group_id
@@ -5999,7 +6075,7 @@ class CreateEventStreamingRequestSourceSourceRocketMQParameters(TeaModel):
         self.tag = tag
         # The timestamp that specifies the time from which messages are consumed. This parameter is valid only if you set Offset to CONSUME_FROM_TIMESTAMP.
         self.timestamp = timestamp
-        # The name of the topic on the Message Queue for Apache RocketMQ instance.
+        # The name of the topic on the ApsaraMQ for RocketMQ instance.
         self.topic = topic
         # The vSwitch ID of the cross-border task.
         self.v_switch_ids = v_switch_ids
@@ -6118,13 +6194,13 @@ class CreateEventStreamingRequestSourceSourceSLSParameters(TeaModel):
         project: str = None,
         role_name: str = None,
     ):
-        # The consumer offset. The value begin specifies the earliest offset, and the value end specifies the latest offset. You can also specify a time in seconds to start consumption.
+        # The consumer offset. The value begin specifies the earliest offset. The value end specifies the latest offset. You can also specify a time in seconds to start consumption.
         self.consume_position = consume_position
-        # The Log Service Logstore.
+        # The Simple Log Service Logstore.
         self.log_store = log_store
-        # The Log Service project.
+        # The Simple Log Service project.
         self.project = project
-        # The role name. If you want to authorize EventBridge to use this role to read logs in Log Service, you must select Alibaba Cloud Service for Selected Trusted Entity and EventBridge for Select Trusted Service when you create the role in the Resource Access Management (RAM) console.
+        # The role name. If you want to authorize EventBridge to use this role to read logs in Simple Log Service, you must select Alibaba Cloud Service for Selected Trusted Entity and EventBridge for Select Trusted Service when you create the role in the Resource Access Management (RAM) console.
         self.role_name = role_name
 
     def validate(self):
@@ -6173,18 +6249,19 @@ class CreateEventStreamingRequestSource(TeaModel):
     ):
         # The parameters that are configured if you specify Data Transmission Service (DTS) as the event source.
         self.source_dtsparameters = source_dtsparameters
-        # The parameters that are configured if you specify Message Queue for Apache Kafka as the event source.
+        # The parameters that are configured if you specify ApsaraMQ for Kafka as the event source.
         self.source_kafka_parameters = source_kafka_parameters
         # The parameters that are configured if you specify Message Service (MNS) as the event source.
         self.source_mnsparameters = source_mnsparameters
-        # The parameters that are configured if you specify Message Queue for MQTT as the event source.
+        # The parameters that are configured if you specify ApsaraMQ for MQTT as the event source.
         self.source_mqttparameters = source_mqttparameters
+        # Parameters that are configured if you specify Managed Service for Prometheus as the event source.
         self.source_prometheus_parameters = source_prometheus_parameters
-        # The parameters that are configured if you specify Message Queue for RabbitMQ as the event source.
+        # The parameters that are configured if you specify ApsaraMQ for RabbitMQ as the event source.
         self.source_rabbit_mqparameters = source_rabbit_mqparameters
-        # The parameters that are configured if you specify Message Queue for Apache RocketMQ as the event source.
+        # The parameters that are configured if you specify ApsaraMQ for RocketMQ as the event source.
         self.source_rocket_mqparameters = source_rocket_mqparameters
-        # The parameters that are configured if you specify Log Service as the event source.
+        # The parameters that are configured if you specify Simple Log Service as the event source.
         self.source_slsparameters = source_slsparameters
 
     def validate(self):
@@ -6299,14 +6376,22 @@ class CreateEventStreamingRequest(TeaModel):
         # The description of the event stream.
         self.description = description
         # The name of the event stream.
+        # 
+        # This parameter is required.
         self.event_streaming_name = event_streaming_name
         # The rule that is used to filter events. If you leave this parameter empty, all events are matched.
+        # 
+        # This parameter is required.
         self.filter_pattern = filter_pattern
         # The parameters that are configured for the runtime environment.
         self.run_options = run_options
         # The event target. You must and can specify only one event target.
+        # 
+        # This parameter is required.
         self.sink = sink
         # The event provider, which is also known as the event source. You must and can specify only one event source.
+        # 
+        # This parameter is required.
         self.source = source
         self.transforms = transforms
 
@@ -6385,14 +6470,22 @@ class CreateEventStreamingShrinkRequest(TeaModel):
         # The description of the event stream.
         self.description = description
         # The name of the event stream.
+        # 
+        # This parameter is required.
         self.event_streaming_name = event_streaming_name
         # The rule that is used to filter events. If you leave this parameter empty, all events are matched.
+        # 
+        # This parameter is required.
         self.filter_pattern = filter_pattern
         # The parameters that are configured for the runtime environment.
         self.run_options_shrink = run_options_shrink
         # The event target. You must and can specify only one event target.
+        # 
+        # This parameter is required.
         self.sink_shrink = sink_shrink
         # The event provider, which is also known as the event source. You must and can specify only one event source.
+        # 
+        # This parameter is required.
         self.source_shrink = source_shrink
         self.transforms_shrink = transforms_shrink
 
@@ -6665,12 +6758,16 @@ class CreateRuleRequestEventTargets(TeaModel):
         # The fault tolerance policy. Valid values: ALL: allows fault tolerance. If an error occurs, the event processing is not blocked. If the message fails to be sent after the maximum number of retries specified by the retry policy is reached, the message is delivered to the dead-letter queue or discarded based on your configurations. NONE: does not allow fault tolerance. If an error occurs and the message fails to be sent after the maximum number of retries specified by the retry policy is reached, the event processing is blocked.
         self.errors_tolerance = errors_tolerance
         # The ID of the custom event target.
+        # 
+        # This parameter is required.
         self.id = id
         # The parameters that are configured for the event target.
         self.param_list = param_list
         # The retry policy that is used to push events. Valid values: BACKOFF_RETRY: backoff retry. If an event failed to be pushed, it can be retried up to three times. The interval between two consecutive retries is a random value between 10 and 20 seconds. EXPONENTIAL_DECAY_RETRY: exponential decay retry. If an event failed to be pushed, it can be retried up to 176 times. The interval between two consecutive retries exponentially increases to 512 seconds, and the total retry time is one day. The specific retry intervals are 1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 512, ..., and 512 seconds. The interval of 512 seconds is used for 167 retries.
         self.push_retry_strategy = push_retry_strategy
         # The type of the event target. For more information, see [Event target parameters.](https://www.alibabacloud.com/help/en/eventbridge/latest/event-target-parameters)
+        # 
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -6741,14 +6838,20 @@ class CreateRuleRequest(TeaModel):
         # The description of the event bus.
         self.description = description
         # The name of the event bus.
+        # 
+        # This parameter is required.
         self.event_bus_name = event_bus_name
         # The event targets.
         self.event_targets = event_targets
         # The event pattern, in JSON format. Valid values: stringEqual and stringExpression. You can specify up to five expressions in the map data structure in each field.
         # 
         # You can specify up to five expressions in the map data structure in each field.
+        # 
+        # This parameter is required.
         self.filter_pattern = filter_pattern
         # The name of the event rule.
+        # 
+        # This parameter is required.
         self.rule_name = rule_name
         # The status of the event rule. Valid values: ENABLE: enables the event rule. It is the default status of the event rule. DISABLE: disables the event rule.
         self.status = status
@@ -6814,14 +6917,20 @@ class CreateRuleShrinkRequest(TeaModel):
         # The description of the event bus.
         self.description = description
         # The name of the event bus.
+        # 
+        # This parameter is required.
         self.event_bus_name = event_bus_name
         # The event targets.
         self.event_targets_shrink = event_targets_shrink
         # The event pattern, in JSON format. Valid values: stringEqual and stringExpression. You can specify up to five expressions in the map data structure in each field.
         # 
         # You can specify up to five expressions in the map data structure in each field.
+        # 
+        # This parameter is required.
         self.filter_pattern = filter_pattern
         # The name of the event rule.
+        # 
+        # This parameter is required.
         self.rule_name = rule_name
         # The status of the event rule. Valid values: ENABLE: enables the event rule. It is the default status of the event rule. DISABLE: disables the event rule.
         self.status = status
@@ -6999,6 +7108,8 @@ class CreateServiceLinkedRoleForProductRequest(TeaModel):
         product_name: str = None,
     ):
         # The name of the cloud service or the name of the service-linked role with which the cloud service is associated.
+        # 
+        # This parameter is required.
         self.product_name = product_name
 
     def validate(self):
@@ -7123,6 +7234,8 @@ class DeleteApiDestinationRequest(TeaModel):
         api_destination_name: str = None,
     ):
         # The name of the API destination.
+        # 
+        # This parameter is required.
         self.api_destination_name = api_destination_name
 
     def validate(self):
@@ -7234,6 +7347,8 @@ class DeleteConnectionRequest(TeaModel):
         connection_name: str = None,
     ):
         # The name of the connection that you want to delete.
+        # 
+        # This parameter is required.
         self.connection_name = connection_name
 
     def validate(self):
@@ -7345,6 +7460,8 @@ class DeleteEventBusRequest(TeaModel):
         event_bus_name: str = None,
     ):
         # The name of the event bus.
+        # 
+        # This parameter is required.
         self.event_bus_name = event_bus_name
 
     def validate(self):
@@ -7465,6 +7582,8 @@ class DeleteEventSourceRequest(TeaModel):
     ):
         self.event_bus_name = event_bus_name
         # The name of the event source.
+        # 
+        # This parameter is required.
         self.event_source_name = event_source_name
 
     def validate(self):
@@ -7587,6 +7706,8 @@ class DeleteEventStreamingRequest(TeaModel):
         event_streaming_name: str = None,
     ):
         # The name of the event stream that you want to delete.
+        # 
+        # This parameter is required.
         self.event_streaming_name = event_streaming_name
 
     def validate(self):
@@ -7706,8 +7827,12 @@ class DeleteRuleRequest(TeaModel):
         rule_name: str = None,
     ):
         # The name of the event bus.
+        # 
+        # This parameter is required.
         self.event_bus_name = event_bus_name
         # The name of the event rule that you want to delete.
+        # 
+        # This parameter is required.
         self.rule_name = rule_name
 
     def validate(self):
@@ -7832,8 +7957,12 @@ class DeleteTargetsRequest(TeaModel):
         target_ids: List[str] = None,
     ):
         # The name of the event bus.
+        # 
+        # This parameter is required.
         self.event_bus_name = event_bus_name
         # The name of the event rule.
+        # 
+        # This parameter is required.
         self.rule_name = rule_name
         # The IDs of the event targets that you want to delete.
         self.target_ids = target_ids
@@ -7874,8 +8003,12 @@ class DeleteTargetsShrinkRequest(TeaModel):
         target_ids_shrink: str = None,
     ):
         # The name of the event bus.
+        # 
+        # This parameter is required.
         self.event_bus_name = event_bus_name
         # The name of the event rule.
+        # 
+        # This parameter is required.
         self.rule_name = rule_name
         # The IDs of the event targets that you want to delete.
         self.target_ids_shrink = target_ids_shrink
@@ -8099,8 +8232,12 @@ class DisableRuleRequest(TeaModel):
         rule_name: str = None,
     ):
         # The name of the event bus.
+        # 
+        # This parameter is required.
         self.event_bus_name = event_bus_name
         # The name of the event rule.
+        # 
+        # This parameter is required.
         self.rule_name = rule_name
 
     def validate(self):
@@ -8224,8 +8361,12 @@ class EnableRuleRequest(TeaModel):
         rule_name: str = None,
     ):
         # The name of the event bus.
+        # 
+        # This parameter is required.
         self.event_bus_name = event_bus_name
         # The name of the event rule.
+        # 
+        # This parameter is required.
         self.rule_name = rule_name
 
     def validate(self):
@@ -8342,12 +8483,897 @@ class EnableRuleResponse(TeaModel):
         return self
 
 
+class EventCenterCheckEnabledOnDefaultBusResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        enabled: bool = None,
+    ):
+        self.enabled = enabled
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        return self
+
+
+class EventCenterCheckEnabledOnDefaultBusResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: EventCenterCheckEnabledOnDefaultBusResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = EventCenterCheckEnabledOnDefaultBusResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class EventCenterCheckEnabledOnDefaultBusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: EventCenterCheckEnabledOnDefaultBusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = EventCenterCheckEnabledOnDefaultBusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class EventCenterDisableOnDefaultBusResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class EventCenterDisableOnDefaultBusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: EventCenterDisableOnDefaultBusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = EventCenterDisableOnDefaultBusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class EventCenterEnableOnDefaultBusResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class EventCenterEnableOnDefaultBusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: EventCenterEnableOnDefaultBusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = EventCenterEnableOnDefaultBusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class EventCenterQueryEventsRequestBodyParametersCalculations(TeaModel):
+    def __init__(
+        self,
+        column: str = None,
+        op: str = None,
+    ):
+        self.column = column
+        self.op = op
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.column is not None:
+            result['Column'] = self.column
+        if self.op is not None:
+            result['Op'] = self.op
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Column') is not None:
+            self.column = m.get('Column')
+        if m.get('Op') is not None:
+            self.op = m.get('Op')
+        return self
+
+
+class EventCenterQueryEventsRequestBodyParametersFilters(TeaModel):
+    def __init__(
+        self,
+        column: str = None,
+        op: str = None,
+        values: List[str] = None,
+    ):
+        self.column = column
+        self.op = op
+        self.values = values
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.column is not None:
+            result['Column'] = self.column
+        if self.op is not None:
+            result['Op'] = self.op
+        if self.values is not None:
+            result['Values'] = self.values
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Column') is not None:
+            self.column = m.get('Column')
+        if m.get('Op') is not None:
+            self.op = m.get('Op')
+        if m.get('Values') is not None:
+            self.values = m.get('Values')
+        return self
+
+
+class EventCenterQueryEventsRequestBodyParametersOrders(TeaModel):
+    def __init__(
+        self,
+        column: str = None,
+        desc: bool = None,
+        op: str = None,
+    ):
+        self.column = column
+        self.desc = desc
+        self.op = op
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.column is not None:
+            result['Column'] = self.column
+        if self.desc is not None:
+            result['Desc'] = self.desc
+        if self.op is not None:
+            result['Op'] = self.op
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Column') is not None:
+            self.column = m.get('Column')
+        if m.get('Desc') is not None:
+            self.desc = m.get('Desc')
+        if m.get('Op') is not None:
+            self.op = m.get('Op')
+        return self
+
+
+class EventCenterQueryEventsRequestBodyParameters(TeaModel):
+    def __init__(
+        self,
+        breakdowns: List[str] = None,
+        calculations: List[EventCenterQueryEventsRequestBodyParametersCalculations] = None,
+        end_time: int = None,
+        filter_combination: str = None,
+        filters: List[EventCenterQueryEventsRequestBodyParametersFilters] = None,
+        granularity: int = None,
+        limit: int = None,
+        offset: int = None,
+        orders: List[EventCenterQueryEventsRequestBodyParametersOrders] = None,
+        start_time: int = None,
+        time_range: int = None,
+    ):
+        self.breakdowns = breakdowns
+        self.calculations = calculations
+        self.end_time = end_time
+        self.filter_combination = filter_combination
+        self.filters = filters
+        self.granularity = granularity
+        self.limit = limit
+        self.offset = offset
+        self.orders = orders
+        self.start_time = start_time
+        self.time_range = time_range
+
+    def validate(self):
+        if self.calculations:
+            for k in self.calculations:
+                if k:
+                    k.validate()
+        if self.filters:
+            for k in self.filters:
+                if k:
+                    k.validate()
+        if self.orders:
+            for k in self.orders:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.breakdowns is not None:
+            result['Breakdowns'] = self.breakdowns
+        result['Calculations'] = []
+        if self.calculations is not None:
+            for k in self.calculations:
+                result['Calculations'].append(k.to_map() if k else None)
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.filter_combination is not None:
+            result['FilterCombination'] = self.filter_combination
+        result['Filters'] = []
+        if self.filters is not None:
+            for k in self.filters:
+                result['Filters'].append(k.to_map() if k else None)
+        if self.granularity is not None:
+            result['Granularity'] = self.granularity
+        if self.limit is not None:
+            result['Limit'] = self.limit
+        if self.offset is not None:
+            result['Offset'] = self.offset
+        result['Orders'] = []
+        if self.orders is not None:
+            for k in self.orders:
+                result['Orders'].append(k.to_map() if k else None)
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.time_range is not None:
+            result['TimeRange'] = self.time_range
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Breakdowns') is not None:
+            self.breakdowns = m.get('Breakdowns')
+        self.calculations = []
+        if m.get('Calculations') is not None:
+            for k in m.get('Calculations'):
+                temp_model = EventCenterQueryEventsRequestBodyParametersCalculations()
+                self.calculations.append(temp_model.from_map(k))
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('FilterCombination') is not None:
+            self.filter_combination = m.get('FilterCombination')
+        self.filters = []
+        if m.get('Filters') is not None:
+            for k in m.get('Filters'):
+                temp_model = EventCenterQueryEventsRequestBodyParametersFilters()
+                self.filters.append(temp_model.from_map(k))
+        if m.get('Granularity') is not None:
+            self.granularity = m.get('Granularity')
+        if m.get('Limit') is not None:
+            self.limit = m.get('Limit')
+        if m.get('Offset') is not None:
+            self.offset = m.get('Offset')
+        self.orders = []
+        if m.get('Orders') is not None:
+            for k in m.get('Orders'):
+                temp_model = EventCenterQueryEventsRequestBodyParametersOrders()
+                self.orders.append(temp_model.from_map(k))
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('TimeRange') is not None:
+            self.time_range = m.get('TimeRange')
+        return self
+
+
+class EventCenterQueryEventsRequestBody(TeaModel):
+    def __init__(
+        self,
+        parameters: EventCenterQueryEventsRequestBodyParameters = None,
+        query_type: str = None,
+        schema_id: str = None,
+    ):
+        # This parameter is required.
+        self.parameters = parameters
+        # This parameter is required.
+        self.query_type = query_type
+        # Schema ID。
+        # 
+        # This parameter is required.
+        self.schema_id = schema_id
+
+    def validate(self):
+        if self.parameters:
+            self.parameters.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.parameters is not None:
+            result['Parameters'] = self.parameters.to_map()
+        if self.query_type is not None:
+            result['QueryType'] = self.query_type
+        if self.schema_id is not None:
+            result['SchemaId'] = self.schema_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Parameters') is not None:
+            temp_model = EventCenterQueryEventsRequestBodyParameters()
+            self.parameters = temp_model.from_map(m['Parameters'])
+        if m.get('QueryType') is not None:
+            self.query_type = m.get('QueryType')
+        if m.get('SchemaId') is not None:
+            self.schema_id = m.get('SchemaId')
+        return self
+
+
+class EventCenterQueryEventsRequest(TeaModel):
+    def __init__(
+        self,
+        body: EventCenterQueryEventsRequestBody = None,
+        bus_name: str = None,
+        max_results: int = None,
+        next_token: str = None,
+    ):
+        # This parameter is required.
+        self.body = body
+        self.bus_name = bus_name
+        # 本次读取的最大数据量，默认值为100。
+        self.max_results = max_results
+        # 用来标记当前开始读取的位置。置空表示从头开始。
+        self.next_token = next_token
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.body is not None:
+            result['Body'] = self.body.to_map()
+        if self.bus_name is not None:
+            result['BusName'] = self.bus_name
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Body') is not None:
+            temp_model = EventCenterQueryEventsRequestBody()
+            self.body = temp_model.from_map(m['Body'])
+        if m.get('BusName') is not None:
+            self.bus_name = m.get('BusName')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        return self
+
+
+class EventCenterQueryEventsShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        body_shrink: str = None,
+        bus_name: str = None,
+        max_results: int = None,
+        next_token: str = None,
+    ):
+        # This parameter is required.
+        self.body_shrink = body_shrink
+        self.bus_name = bus_name
+        # 本次读取的最大数据量，默认值为100。
+        self.max_results = max_results
+        # 用来标记当前开始读取的位置。置空表示从头开始。
+        self.next_token = next_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.body_shrink is not None:
+            result['Body'] = self.body_shrink
+        if self.bus_name is not None:
+            result['BusName'] = self.bus_name
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Body') is not None:
+            self.body_shrink = m.get('Body')
+        if m.get('BusName') is not None:
+            self.bus_name = m.get('BusName')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        return self
+
+
+class EventCenterQueryEventsResponseBodyDataTable(TeaModel):
+    def __init__(
+        self,
+        row_data: Dict[str, Any] = None,
+    ):
+        self.row_data = row_data
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.row_data is not None:
+            result['RowData'] = self.row_data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RowData') is not None:
+            self.row_data = m.get('RowData')
+        return self
+
+
+class EventCenterQueryEventsResponseBodyDataTimeSeries(TeaModel):
+    def __init__(
+        self,
+        row_data: Dict[str, Any] = None,
+        time: str = None,
+    ):
+        self.row_data = row_data
+        self.time = time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.row_data is not None:
+            result['RowData'] = self.row_data
+        if self.time is not None:
+            result['Time'] = self.time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RowData') is not None:
+            self.row_data = m.get('RowData')
+        if m.get('Time') is not None:
+            self.time = m.get('Time')
+        return self
+
+
+class EventCenterQueryEventsResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        table: List[EventCenterQueryEventsResponseBodyDataTable] = None,
+        time_series: List[EventCenterQueryEventsResponseBodyDataTimeSeries] = None,
+        total_count: int = None,
+    ):
+        self.max_results = max_results
+        self.next_token = next_token
+        self.table = table
+        self.time_series = time_series
+        self.total_count = total_count
+
+    def validate(self):
+        if self.table:
+            for k in self.table:
+                if k:
+                    k.validate()
+        if self.time_series:
+            for k in self.time_series:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        result['Table'] = []
+        if self.table is not None:
+            for k in self.table:
+                result['Table'].append(k.to_map() if k else None)
+        result['TimeSeries'] = []
+        if self.time_series is not None:
+            for k in self.time_series:
+                result['TimeSeries'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        self.table = []
+        if m.get('Table') is not None:
+            for k in m.get('Table'):
+                temp_model = EventCenterQueryEventsResponseBodyDataTable()
+                self.table.append(temp_model.from_map(k))
+        self.time_series = []
+        if m.get('TimeSeries') is not None:
+            for k in m.get('TimeSeries'):
+                temp_model = EventCenterQueryEventsResponseBodyDataTimeSeries()
+                self.time_series.append(temp_model.from_map(k))
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class EventCenterQueryEventsResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: EventCenterQueryEventsResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = EventCenterQueryEventsResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class EventCenterQueryEventsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: EventCenterQueryEventsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = EventCenterQueryEventsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetApiDestinationRequest(TeaModel):
     def __init__(
         self,
         api_destination_name: str = None,
     ):
         # The name of the API destination.
+        # 
+        # This parameter is required.
         self.api_destination_name = api_destination_name
 
     def validate(self):
@@ -8569,6 +9595,8 @@ class GetConnectionRequest(TeaModel):
         connection_name: str = None,
     ):
         # The connection name.
+        # 
+        # This parameter is required.
         self.connection_name = connection_name
 
     def validate(self):
@@ -9268,6 +10296,8 @@ class GetEventBusRequest(TeaModel):
         event_bus_name: str = None,
     ):
         # The name of the event bus.
+        # 
+        # This parameter is required.
         self.event_bus_name = event_bus_name
 
     def validate(self):
@@ -9444,6 +10474,8 @@ class GetEventStreamingRequest(TeaModel):
         event_streaming_name: str = None,
     ):
         # The name of the event stream whose details you want to query.
+        # 
+        # This parameter is required.
         self.event_streaming_name = event_streaming_name
 
     def validate(self):
@@ -11941,6 +12973,7 @@ class GetEventStreamingResponseBodyDataSourceSourceKafkaParameters(TeaModel):
         self.topic = topic
         # The vSwitch ID.
         self.v_switch_ids = v_switch_ids
+        # The encoding or decoding format. Valid values: Json, Text, and Binary. The value Json indicates that bytes are decoded into UTF-8 strings and then parsed into JSON format. The value Text indicates that bytes are decoded into UTF-8 strings and then put into the payload. The value Binary indicates that bytes are encoded into Base64 strings and put into the payload.
         self.value_data_type = value_data_type
         # The ID of the virtual private cloud (VPC).
         self.vpc_id = vpc_id
@@ -12373,7 +13406,7 @@ class GetEventStreamingResponseBodyDataSource(TeaModel):
     ):
         # The parameters that are returned if the event source is Data Transmission Service (DTS).
         self.source_dtsparameters = source_dtsparameters
-        # Source Kafka Parameters
+        # The parameters that are returned if ApsaraMQ for Kafka is specified as the event source.
         self.source_kafka_parameters = source_kafka_parameters
         # Source MNS Parameters
         self.source_mnsparameters = source_mnsparameters
@@ -12463,6 +13496,7 @@ class GetEventStreamingResponseBodyDataTransforms(TeaModel):
         self,
         arn: str = None,
     ):
+        # The Alibaba Cloud Resource Name (ARN) of the cloud service, such as the ARN of a Function Compute function.
         self.arn = arn
 
     def validate(self):
@@ -12684,8 +13718,12 @@ class GetRuleRequest(TeaModel):
         rule_name: str = None,
     ):
         # The name of the event bus.
+        # 
+        # This parameter is required.
         self.event_bus_name = event_bus_name
         # The name of the event rule.
+        # 
+        # This parameter is required.
         self.rule_name = rule_name
 
     def validate(self):
@@ -12748,9 +13786,9 @@ class GetRuleResponseBodyDataTargetsParamList(TeaModel):
         template: str = None,
         value: str = None,
     ):
-        # The method that is used to deliver events to the event target. For more information, see [Limits](~~163289~~).
+        # The method that is used to deliver events to the event target. For more information, see [Limits](https://help.aliyun.com/document_detail/163289.html).
         self.form = form
-        # The resource key of the event target. For more information, see [Limits](~~163289~~).
+        # The resource key of the event target. For more information, see [Limits](https://help.aliyun.com/document_detail/163289.html).
         self.resource_key = resource_key
         # The template based on which events are delivered to the event target.
         self.template = template
@@ -12818,7 +13856,7 @@ class GetRuleResponseBodyDataTargets(TeaModel):
         self.push_retry_strategy = push_retry_strategy
         # The transformer that is used to push events.
         self.push_selector = push_selector
-        # The type of the event target. For more information, see [Event target parameters](~~185887~~).
+        # The type of the event target. For more information, see [Event target parameters](https://help.aliyun.com/document_detail/185887.html).
         self.type = type
 
     def validate(self):
@@ -17978,6 +19016,8 @@ class ListRulesRequest(TeaModel):
         rule_name_prefix: str = None,
     ):
         # The name of the event bus.
+        # 
+        # This parameter is required.
         self.event_bus_name = event_bus_name
         # The maximum number of entries to be returned in a single call. You can use this parameter and the NextToken parameter to implement paging. A maximum of 100 entries can be returned in a single call.
         self.limit = limit
@@ -18443,7 +19483,7 @@ class ListTargetsResponseBodyDataTargets(TeaModel):
         self.param_list = param_list
         # The name of the event rule.
         self.rule_name = rule_name
-        # The type of the event target. For more information, see [Event target parameters](~~183698~~).
+        # The type of the event target. For more information, see [Event target parameters](https://help.aliyun.com/document_detail/183698.html).
         self.type = type
 
     def validate(self):
@@ -18741,7 +19781,7 @@ class ListUserDefinedEventSourcesResponseBodyDataEventSourceListSourceHttpEventP
         # 
         # *   HTTP
         # *   HTTPS
-        # *   HTTP\&HTTPS
+        # *   HTTP\\&HTTPS
         self.type = type
         # The internal request URL.
         self.vpc_web_hook_url = vpc_web_hook_url
@@ -18931,13 +19971,13 @@ class ListUserDefinedEventSourcesResponseBodyDataEventSourceListSourceRabbitMQPa
         region_id: str = None,
         virtual_host_name: str = None,
     ):
-        # The ID of the Message Queue for RabbitMQ instance. For more information, see [Limits](~~163289~~).
+        # The ID of the Message Queue for RabbitMQ instance. For more information, see [Limits](https://help.aliyun.com/document_detail/163289.html).
         self.instance_id = instance_id
-        # The name of the queue on the Message Queue for RabbitMQ instance. For more information, see [Limits](~~163289~~).
+        # The name of the queue on the Message Queue for RabbitMQ instance. For more information, see [Limits](https://help.aliyun.com/document_detail/163289.html).
         self.queue_name = queue_name
         # The ID of the region where the Message Queue for RabbitMQ instance resides.
         self.region_id = region_id
-        # The name of the vhost of the Message Queue for RabbitMQ instance. For more information, see [Limits](~~163289~~).
+        # The name of the vhost of the Message Queue for RabbitMQ instance. For more information, see [Limits](https://help.aliyun.com/document_detail/163289.html).
         self.virtual_host_name = virtual_host_name
 
     def validate(self):
@@ -18998,7 +20038,7 @@ class ListUserDefinedEventSourcesResponseBodyDataEventSourceListSourceRocketMQPa
         self.group_id = group_id
         # The endpoint that is used to access the Message Queue for Apache RocketMQ instance.
         self.instance_endpoint = instance_endpoint
-        # The ID of the Message Queue for Apache RocketMQ instance. For more information, see [Limits](~~163289~~).
+        # The ID of the Message Queue for Apache RocketMQ instance. For more information, see [Limits](https://help.aliyun.com/document_detail/163289.html).
         self.instance_id = instance_id
         # The type of network over which the Message Queue for Apache RocketMQ instance is accessed.
         self.instance_network = instance_network
@@ -19006,7 +20046,7 @@ class ListUserDefinedEventSourcesResponseBodyDataEventSourceListSourceRocketMQPa
         self.instance_password = instance_password
         # The ID of the security group to which the Message Queue for Apache RocketMQ instance belongs.
         self.instance_security_group_id = instance_security_group_id
-        # The instance type. Valid values: CLOUD\_4, CLOUD\_5, and SELF_BUILT. The value CLOUD\_4 indicates that the instance is a Message Queue for Apache RocketMQ 4.0 instance. The value CLOUD\_5 indicates that the instance is a Message Queue for Apache RocketMQ 5.0 instance. The value SELF_BUILT indicates that the instance is a self-managed RocketMQ instance.
+        # The instance type. Valid values: CLOUD_4, CLOUD_5, and SELF_BUILT. The value CLOUD_4 indicates that the instance is a Message Queue for Apache RocketMQ 4.0 instance. The value CLOUD_5 indicates that the instance is a Message Queue for Apache RocketMQ 5.0 instance. The value SELF_BUILT indicates that the instance is a self-managed RocketMQ instance.
         self.instance_type = instance_type
         # The username that is used to access the Message Queue for Apache RocketMQ instance.
         self.instance_username = instance_username
@@ -19028,7 +20068,7 @@ class ListUserDefinedEventSourcesResponseBodyDataEventSourceListSourceRocketMQPa
         self.tag = tag
         # The timestamp that indicates the time from which messages are consumed. This parameter is valid only if Offset is set to CONSUME_FROM_TIMESTAMP.
         self.timestamp = timestamp
-        # The name of the topic on the Message Queue for Apache RocketMQ instance. For more information, see [Limits](~~163289~~).
+        # The name of the topic on the Message Queue for Apache RocketMQ instance. For more information, see [Limits](https://help.aliyun.com/document_detail/163289.html).
         self.topic = topic
 
     def validate(self):
@@ -19497,6 +20537,8 @@ class PauseEventStreamingRequest(TeaModel):
         event_streaming_name: str = None,
     ):
         # The name of the event stream that you want to stop.
+        # 
+        # This parameter is required.
         self.event_streaming_name = event_streaming_name
 
     def validate(self):
@@ -19708,6 +20750,8 @@ class PutTargetsRequestTargets(TeaModel):
         # * **NONE**: does not ignore the error. Fault tolerance is prohibited. If an error occurs and the message exceeds the number of retries specified by the retry policy, event processing is blocked.
         self.errors_tolerance = errors_tolerance
         # The ID of the custom event target.
+        # 
+        # This parameter is required.
         self.id = id
         # The parameters that are configured for the event target.
         self.param_list = param_list
@@ -19718,6 +20762,8 @@ class PutTargetsRequestTargets(TeaModel):
         # * **EXPONENTIAL_DECAY_RETRY**: exponential decay retry. The request can be retried up to 176 times. The interval between two consecutive retries exponentially increases to 512 seconds, and the total retry time is one day. The specific retry intervals are 1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 512, ..., and 512 seconds. The interval of 512 seconds can be used up to one hundred and sixty-seven times in total.
         self.push_retry_strategy = push_retry_strategy
         # The type of the event target. For more information, see [Event target parameters.](https://www.alibabacloud.com/help/en/eventbridge/latest/event-target-parameters)
+        # 
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -19783,10 +20829,16 @@ class PutTargetsRequest(TeaModel):
         targets: List[PutTargetsRequestTargets] = None,
     ):
         # The name of the event bus.
+        # 
+        # This parameter is required.
         self.event_bus_name = event_bus_name
         # The name of the event rule.
+        # 
+        # This parameter is required.
         self.rule_name = rule_name
         # The event targets to be created or updated. For more information, see [Limits.](https://www.alibabacloud.com/help/en/eventbridge/latest/limits)
+        # 
+        # This parameter is required.
         self.targets = targets
 
     def validate(self):
@@ -19833,10 +20885,16 @@ class PutTargetsShrinkRequest(TeaModel):
         targets_shrink: str = None,
     ):
         # The name of the event bus.
+        # 
+        # This parameter is required.
         self.event_bus_name = event_bus_name
         # The name of the event rule.
+        # 
+        # This parameter is required.
         self.rule_name = rule_name
         # The event targets to be created or updated. For more information, see [Limits.](https://www.alibabacloud.com/help/en/eventbridge/latest/limits)
+        # 
+        # This parameter is required.
         self.targets_shrink = targets_shrink
 
     def validate(self):
@@ -20068,8 +21126,12 @@ class QueryEventRequest(TeaModel):
         event_source: str = None,
     ):
         # The name of the event bus.
+        # 
+        # This parameter is required.
         self.event_bus_name = event_bus_name
         # The event ID.
+        # 
+        # This parameter is required.
         self.event_id = event_id
         # EventSource is required for querying default bus events.
         self.event_source = event_source
@@ -20206,8 +21268,12 @@ class QueryEventTracesRequest(TeaModel):
         event_id: str = None,
     ):
         # The name of the event bus.
+        # 
+        # This parameter is required.
         self.event_bus_name = event_bus_name
         # The event ID.
+        # 
+        # This parameter is required.
         self.event_id = event_id
 
     def validate(self):
@@ -20452,8 +21518,12 @@ class QueryTracedEventByEventIdRequest(TeaModel):
         event_source: str = None,
     ):
         # The name of the event bus.
+        # 
+        # This parameter is required.
         self.event_bus_name = event_bus_name
         # The event ID.
+        # 
+        # This parameter is required.
         self.event_id = event_id
         # The name of the event source.
         self.event_source = event_source
@@ -20710,8 +21780,12 @@ class QueryTracedEventsRequest(TeaModel):
         start_time: int = None,
     ):
         # The end of the time range when event traces are queried. Unit: milliseconds.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The name of the event bus.
+        # 
+        # This parameter is required.
         self.event_bus_name = event_bus_name
         # The name of the event source.
         self.event_source = event_source
@@ -20724,6 +21798,8 @@ class QueryTracedEventsRequest(TeaModel):
         # If you configure Limit and excess return values exist, this parameter is returned.
         self.next_token = next_token
         # The beginning of the time range to query event traces. Unit: milliseconds.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -20985,6 +22061,8 @@ class StartEventStreamingRequest(TeaModel):
         event_streaming_name: str = None,
     ):
         # The name of the event stream that you want to enable.
+        # 
+        # This parameter is required.
         self.event_streaming_name = event_streaming_name
 
     def validate(self):
@@ -21104,8 +22182,12 @@ class TestEventPatternRequest(TeaModel):
         event_pattern: str = None,
     ):
         # The event.
+        # 
+        # This parameter is required.
         self.event = event
         # The event pattern.
+        # 
+        # This parameter is required.
         self.event_pattern = event_pattern
 
     def validate(self):
@@ -21310,6 +22392,8 @@ class UpdateApiDestinationRequest(TeaModel):
         http_api_parameters: UpdateApiDestinationRequestHttpApiParameters = None,
     ):
         # The name of the API destination. The name must be 2 to 127 characters in length.
+        # 
+        # This parameter is required.
         self.api_destination_name = api_destination_name
         # The name of the connection. The name must be 2 to 127 characters in length.
         # 
@@ -21363,6 +22447,8 @@ class UpdateApiDestinationShrinkRequest(TeaModel):
         http_api_parameters_shrink: str = None,
     ):
         # The name of the API destination. The name must be 2 to 127 characters in length.
+        # 
+        # This parameter is required.
         self.api_destination_name = api_destination_name
         # The name of the connection. The name must be 2 to 127 characters in length.
         # 
@@ -21943,6 +23029,8 @@ class UpdateConnectionRequestNetworkParameters(TeaModel):
         # PrivateNetwork: virtual private cloud (VPC).
         # 
         # Note: If you set this parameter to PrivateNetwork, you must configure VpcId, VswitcheId, and SecurityGroupId.
+        # 
+        # This parameter is required.
         self.network_type = network_type
         # The ID of the security group.
         self.security_group_id = security_group_id
@@ -21994,10 +23082,14 @@ class UpdateConnectionRequest(TeaModel):
         # The parameters that are configured for authentication.
         self.auth_parameters = auth_parameters
         # The name of the connection that you want to update. The name must be 2 to 127 characters in length.
+        # 
+        # This parameter is required.
         self.connection_name = connection_name
         # The description of the connection. The description can be up to 255 characters in length.
         self.description = description
         # The parameters that are configured for the network.
+        # 
+        # This parameter is required.
         self.network_parameters = network_parameters
 
     def validate(self):
@@ -22048,10 +23140,14 @@ class UpdateConnectionShrinkRequest(TeaModel):
         # The parameters that are configured for authentication.
         self.auth_parameters_shrink = auth_parameters_shrink
         # The name of the connection that you want to update. The name must be 2 to 127 characters in length.
+        # 
+        # This parameter is required.
         self.connection_name = connection_name
         # The description of the connection. The description can be up to 255 characters in length.
         self.description = description
         # The parameters that are configured for the network.
+        # 
+        # This parameter is required.
         self.network_parameters_shrink = network_parameters_shrink
 
     def validate(self):
@@ -22178,6 +23274,8 @@ class UpdateEventBusRequest(TeaModel):
         # The description of the event bus.
         self.description = description
         # The name of the event bus.
+        # 
+        # This parameter is required.
         self.event_bus_name = event_bus_name
 
     def validate(self):
@@ -22329,7 +23427,7 @@ class UpdateEventSourceRequestSourceHttpEventParameters(TeaModel):
         # 
         # *   HTTP
         # *   HTTPS
-        # *   HTTP\&HTTPS
+        # *   HTTP\\&HTTPS
         self.type = type
 
     def validate(self):
@@ -22509,13 +23607,13 @@ class UpdateEventSourceRequestSourceRabbitMQParameters(TeaModel):
         region_id: str = None,
         virtual_host_name: str = None,
     ):
-        # The ID of the Message Queue for RabbitMQ instance. For more information, see [Limits](~~163289~~).
+        # The ID of the Message Queue for RabbitMQ instance. For more information, see [Limits](https://help.aliyun.com/document_detail/163289.html).
         self.instance_id = instance_id
-        # The name of the queue on the Message Queue for RabbitMQ instance. For more information, see [Limits](~~163289~~).
+        # The name of the queue on the Message Queue for RabbitMQ instance. For more information, see [Limits](https://help.aliyun.com/document_detail/163289.html).
         self.queue_name = queue_name
         # The ID of the region where the Message Queue for RabbitMQ instance resides.
         self.region_id = region_id
-        # The name of the vhost of the Message Queue for RabbitMQ instance. For more information, see [Limits](~~163289~~).
+        # The name of the vhost of the Message Queue for RabbitMQ instance. For more information, see [Limits](https://help.aliyun.com/document_detail/163289.html).
         self.virtual_host_name = virtual_host_name
 
     def validate(self):
@@ -22576,7 +23674,7 @@ class UpdateEventSourceRequestSourceRocketMQParameters(TeaModel):
         self.group_id = group_id
         # The endpoint that is used to access the Message Queue for Apache RocketMQ instance.
         self.instance_endpoint = instance_endpoint
-        # The ID of the Message Queue for Apache RocketMQ instance. For more information, see [Limits](~~163289~~).
+        # The ID of the Message Queue for Apache RocketMQ instance. For more information, see [Limits](https://help.aliyun.com/document_detail/163289.html).
         self.instance_id = instance_id
         # None.
         self.instance_network = instance_network
@@ -22586,8 +23684,8 @@ class UpdateEventSourceRequestSourceRocketMQParameters(TeaModel):
         self.instance_security_group_id = instance_security_group_id
         # The type of the Message Queue for Apache RocketMQ instance. Valid values:
         # 
-        # *   Cloud\_4: Message Queue for Apache RocketMQ 4.0 instance.
-        # *   Cloud\_5: Message Queue for Apache RocketMQ 5.0 instance.
+        # *   Cloud_4: Message Queue for Apache RocketMQ 4.0 instance.
+        # *   Cloud_5: Message Queue for Apache RocketMQ 5.0 instance.
         self.instance_type = instance_type
         # The username that is used to access the Message Queue for Apache RocketMQ instance.
         self.instance_username = instance_username
@@ -22609,7 +23707,7 @@ class UpdateEventSourceRequestSourceRocketMQParameters(TeaModel):
         self.tag = tag
         # The timestamp that specifies the time from which messages are consumed. This parameter is valid only if you set Offset to CONSUME_FROM_TIMESTAMP.
         self.timestamp = timestamp
-        # The name of the topic on the Message Queue for Apache RocketMQ instance. For more information, see [Limits](~~163289~~).
+        # The name of the topic on the Message Queue for Apache RocketMQ instance. For more information, see [Limits](https://help.aliyun.com/document_detail/163289.html).
         self.topic = topic
 
     def validate(self):
@@ -22799,8 +23897,12 @@ class UpdateEventSourceRequest(TeaModel):
         # The description of the event source.
         self.description = description
         # The event bus with which the event source is associated.
+        # 
+        # This parameter is required.
         self.event_bus_name = event_bus_name
         # The name of the event source.
+        # 
+        # This parameter is required.
         self.event_source_name = event_source_name
         # The parameters that are configured if the event source is HTTP events.
         self.source_http_event_parameters = source_http_event_parameters
@@ -22910,8 +24012,12 @@ class UpdateEventSourceShrinkRequest(TeaModel):
         # The description of the event source.
         self.description = description
         # The event bus with which the event source is associated.
+        # 
+        # This parameter is required.
         self.event_bus_name = event_bus_name
         # The name of the event source.
+        # 
+        # This parameter is required.
         self.event_source_name = event_source_name
         # The parameters that are configured if the event source is HTTP events.
         self.source_http_event_parameters_shrink = source_http_event_parameters_shrink
@@ -23090,9 +24196,9 @@ class UpdateEventStreamingRequestRunOptionsBatchWindow(TeaModel):
         count_based_window: int = None,
         time_based_window: int = None,
     ):
-        # The maximum number of events that is allowed in the batch window. If the value specified by this parameter is reached, the data in the batch window is pushed to the downstream application. If multiple batch windows exist, data is pushed if triggering conditions are met in one of the windows.
+        # The maximum number of events that are allowed in the batch window. When this threshold is reached, data in the window is pushed to the downstream service. If multiple batch windows exist, data is pushed if triggering conditions are met in one of the windows.
         self.count_based_window = count_based_window
-        # The maximum period of time during which events are allowed in the batch window. Unit: seconds. If the value specified by this parameter is reached, the data in the batch window is pushed to the downstream application. If multiple batch windows exist, data is pushed if triggering conditions are met in one of the windows.
+        # The maximum period of time during which events are allowed in the batch window. Unit: seconds. When this threshold is reached, data in the window is pushed to the downstream service. If multiple batch windows exist, data is pushed if triggering conditions are met in one of the windows.
         self.time_based_window = time_based_window
 
     def validate(self):
@@ -23154,11 +24260,11 @@ class UpdateEventStreamingRequestRunOptionsRetryStrategy(TeaModel):
         maximum_retry_attempts: int = None,
         push_retry_strategy: str = None,
     ):
-        # The maximum period of time during which retries are performed.
+        # The maximum timeout period for a retry.
         self.maximum_event_age_in_seconds = maximum_event_age_in_seconds
         # The maximum number of retries.
         self.maximum_retry_attempts = maximum_retry_attempts
-        # The retry policy that is used if an event failed to be pushed. Valid values: BACKOFF_RETRY and EXPONENTIAL_DECAY_RETRY.
+        # The retry policy. Valid values: BACKOFF_RETRY and EXPONENTIAL_DECAY_RETRY.
         self.push_retry_strategy = push_retry_strategy
 
     def validate(self):
@@ -23198,15 +24304,15 @@ class UpdateEventStreamingRequestRunOptions(TeaModel):
         maximum_tasks: int = None,
         retry_strategy: UpdateEventStreamingRequestRunOptionsRetryStrategy = None,
     ):
-        # The information about the batch window.
+        # The batch window.
         self.batch_window = batch_window
-        # Specifies whether to enable dead-letter queues. By default, dead-letter queues are disabled. Messages that fail to be pushed are discarded after the maximum number of retries specified by the retry policy is reached.
+        # Specifies whether to enable dead-letter queues. By default, dead-letter queues are disabled. Events that fail to be pushed are discarded after the maximum number of retries that is specified by the retry policy is reached.
         self.dead_letter_queue = dead_letter_queue
-        # The fault tolerance policy. The value NONE specifies that faults are not tolerated, and the value All specifies that all faults are tolerated.
+        # The exception tolerance policy. Valid values: NONE and ALL.
         self.errors_tolerance = errors_tolerance
-        # The concurrency level.
+        # The maximum number of concurrent tasks.
         self.maximum_tasks = maximum_tasks
-        # The information about the retry policy that is used if the event fails to be pushed.
+        # The retry policy that you want to use if events fail to be pushed.
         self.retry_strategy = retry_strategy
 
     def validate(self):
@@ -23260,11 +24366,11 @@ class UpdateEventStreamingRequestSinkSinkFcParametersBody(TeaModel):
         template: str = None,
         value: str = None,
     ):
-        # The method that is used to transform events.
+        # The method that you want to use to transform events.
         self.form = form
-        # The template based on which events are transformed.
+        # The template based on which you want to transform events.
         self.template = template
-        # The value before event transformation.
+        # The value before transformation.
         self.value = value
 
     def validate(self):
@@ -23302,7 +24408,7 @@ class UpdateEventStreamingRequestSinkSinkFcParametersConcurrency(TeaModel):
         template: str = None,
         value: str = None,
     ):
-        # The method that is used to transform events. Default value: CONSTANT.
+        # The method that you want to use to transform events. Default value: CONSTANT.
         self.form = form
         # None.
         self.template = template
@@ -23344,11 +24450,11 @@ class UpdateEventStreamingRequestSinkSinkFcParametersFunctionName(TeaModel):
         template: str = None,
         value: str = None,
     ):
-        # The method that is used to transform events. Default value: CONSTANT.
+        # The method that you want to use to transform events. Default value: CONSTANT.
         self.form = form
         # None.
         self.template = template
-        # The name of the Function Compute function.
+        # The function name.
         self.value = value
 
     def validate(self):
@@ -23386,11 +24492,11 @@ class UpdateEventStreamingRequestSinkSinkFcParametersInvocationType(TeaModel):
         template: str = None,
         value: str = None,
     ):
-        # The method that is used to transform events. Default value: CONSTANT.
+        # The method that you want to use to transform events. Default value: CONSTANT.
         self.form = form
         # None.
         self.template = template
-        # The invocation type. Valid values: Sync and Async.
+        # The invocation mode.
         self.value = value
 
     def validate(self):
@@ -23428,7 +24534,7 @@ class UpdateEventStreamingRequestSinkSinkFcParametersQualifier(TeaModel):
         template: str = None,
         value: str = None,
     ):
-        # The method that is used to transform events. Default value: CONSTANT.
+        # The method that you want to use to transform events. Default value: CONSTANT.
         self.form = form
         # None.
         self.template = template
@@ -23470,11 +24576,11 @@ class UpdateEventStreamingRequestSinkSinkFcParametersServiceName(TeaModel):
         template: str = None,
         value: str = None,
     ):
-        # The method that is used to transform events. Default value: CONSTANT.
+        # The method that you want to use to transform events. Default value: CONSTANT.
         self.form = form
         # None.
         self.template = template
-        # The name of the Function Compute service.
+        # The service name.
         self.value = value
 
     def validate(self):
@@ -23515,17 +24621,17 @@ class UpdateEventStreamingRequestSinkSinkFcParameters(TeaModel):
         qualifier: UpdateEventStreamingRequestSinkSinkFcParametersQualifier = None,
         service_name: UpdateEventStreamingRequestSinkSinkFcParametersServiceName = None,
     ):
-        # The message body that is sent to the function.
+        # The message body that you want to deliver to the function.
         self.body = body
-        # The information about the delivery concurrency.
+        # The delivery concurrency. Minimum value: 1.
         self.concurrency = concurrency
-        # The information about the Function Compute function.
+        # The function name.
         self.function_name = function_name
-        # The information about the invocation type.
+        # The invocation mode. Valid values: Sync and Async.
         self.invocation_type = invocation_type
-        # The information about the service to which the function belongs.
+        # The alias of the service to which the function belongs.
         self.qualifier = qualifier
-        # The information about the Function Compute service.
+        # The service name.
         self.service_name = service_name
 
     def validate(self):
@@ -23592,8 +24698,11 @@ class UpdateEventStreamingRequestSinkSinkFnfParametersExecutionName(TeaModel):
         template: str = None,
         value: str = None,
     ):
+        # The method that you want to use to transform events. Default value: CONSTANT.
         self.form = form
+        # The template based on which you want to transform events.
         self.template = template
+        # The execution name.
         self.value = value
 
     def validate(self):
@@ -23631,8 +24740,11 @@ class UpdateEventStreamingRequestSinkSinkFnfParametersFlowName(TeaModel):
         template: str = None,
         value: str = None,
     ):
+        # The method that you want to use to transform events. Default value: CONSTANT.
         self.form = form
+        # The template based on which you want to transform events.
         self.template = template
+        # The flow name.
         self.value = value
 
     def validate(self):
@@ -23670,8 +24782,11 @@ class UpdateEventStreamingRequestSinkSinkFnfParametersInput(TeaModel):
         template: str = None,
         value: str = None,
     ):
+        # The method that you want to use to transform events. Default value: CONSTANT.
         self.form = form
+        # The template based on which you want to transform events.
         self.template = template
+        # The input information of the execution.
         self.value = value
 
     def validate(self):
@@ -23709,8 +24824,11 @@ class UpdateEventStreamingRequestSinkSinkFnfParametersRoleName(TeaModel):
         template: str = None,
         value: str = None,
     ):
+        # The method that you want to use to transform events. Default value: CONSTANT.
         self.form = form
+        # The template based on which you want to transform events.
         self.template = template
+        # The role name.
         self.value = value
 
     def validate(self):
@@ -23749,9 +24867,13 @@ class UpdateEventStreamingRequestSinkSinkFnfParameters(TeaModel):
         input: UpdateEventStreamingRequestSinkSinkFnfParametersInput = None,
         role_name: UpdateEventStreamingRequestSinkSinkFnfParametersRoleName = None,
     ):
+        # The execution name.
         self.execution_name = execution_name
+        # The flow name.
         self.flow_name = flow_name
+        # The input information of the execution.
         self.input = input
+        # The role name.
         self.role_name = role_name
 
     def validate(self):
@@ -23804,11 +24926,15 @@ class UpdateEventStreamingRequestSinkSinkKafkaParametersAcks(TeaModel):
         template: str = None,
         value: str = None,
     ):
-        # The method that is used to transform events. Default value: CONSTANT.
+        # The method that you want to use to transform events. Default value: CONSTANT.
         self.form = form
         # None.
         self.template = template
-        # The ACK mode. If you set this parameter to 0, no response is returned from the broker. In this mode, the performance is high, but the risk of data loss is also high. If you set this parameter to 1, a response is returned when data is written to the leader. In this mode, the performance and the risk of data loss are moderate. Data loss may occur if a failure occurs on the leader. If you set this parameter to all, a response is returned when data is written to the leader and synchronized to the followers. In this mode, the performance is low, but the risk of data loss is also low. Data loss occurs if the leader and the followers fail at the same time.
+        # The ACK mode.
+        # 
+        # *   If you set this parameter to 0, no response is returned from the broker. In this mode, the performance is high, but the risk of data loss is also high.
+        # *   If you set this parameter to 1, a response is returned when data is written to the leader. In this mode, the performance and the risk of data loss are moderate. Data loss may occur if a failure occurs on the leader.
+        # *   If you set this parameter to all, a response is returned when data is written to the leader and synchronized to the followers. In this mode, the performance is low, but the risk of data loss is also low. Data loss occurs if the leader and the followers fail at the same time.
         self.value = value
 
     def validate(self):
@@ -23846,11 +24972,11 @@ class UpdateEventStreamingRequestSinkSinkKafkaParametersInstanceId(TeaModel):
         template: str = None,
         value: str = None,
     ):
-        # The method that is used to transform events. Default value: CONSTANT.
+        # The method that you want to use to transform events. Default value: CONSTANT.
         self.form = form
         # None.
         self.template = template
-        # The ID of the Message Queue for Apache Kafka instance.
+        # The ID of the ApsaraMQ for Kafka instance.
         self.value = value
 
     def validate(self):
@@ -23888,7 +25014,7 @@ class UpdateEventStreamingRequestSinkSinkKafkaParametersKey(TeaModel):
         template: str = None,
         value: str = None,
     ):
-        # The method that is used to transform events. Default value: CONSTANT.
+        # The method that you want to use to transform events. Default value: CONSTANT.
         self.form = form
         # None.
         self.template = template
@@ -23930,11 +25056,11 @@ class UpdateEventStreamingRequestSinkSinkKafkaParametersTopic(TeaModel):
         template: str = None,
         value: str = None,
     ):
-        # The method that is used to transform events. Default value: CONSTANT.
+        # The method that you want to use to transform events. Default value: CONSTANT.
         self.form = form
         # None.
         self.template = template
-        # The name of the topic in Message Queue for Apache Kafka instance.
+        # The name of the topic on the ApsaraMQ for Kafka instance.
         self.value = value
 
     def validate(self):
@@ -23972,11 +25098,11 @@ class UpdateEventStreamingRequestSinkSinkKafkaParametersValue(TeaModel):
         template: str = None,
         value: str = None,
     ):
-        # The method that is used to transform events.
+        # The method that you want to use to transform events.
         self.form = form
-        # The template based on which events are transformed.
+        # The template based on which you want to transform events.
         self.template = template
-        # The value before event transformation.
+        # The value before transformation.
         self.value = value
 
     def validate(self):
@@ -24016,15 +25142,19 @@ class UpdateEventStreamingRequestSinkSinkKafkaParameters(TeaModel):
         topic: UpdateEventStreamingRequestSinkSinkKafkaParametersTopic = None,
         value: UpdateEventStreamingRequestSinkSinkKafkaParametersValue = None,
     ):
-        # The information about the acknowledgment (ACK) mode. If you set this parameter to 0, no response is returned from the broker. In this mode, the performance is high, but the risk of data loss is also high. If you set this parameter to 1, a response is returned when data is written to the leader. In this mode, the performance and the risk of data loss are moderate. Data loss may occur if a failure occurs on the leader. If you set this parameter to all, a response is returned when data is written to the leader and synchronized to the followers. In this mode, the performance is low, but the risk of data loss is also low. Data loss occurs if the leader and the followers fail at the same time.
+        # The acknowledgment (ACK) mode.
+        # 
+        # *   If you set this parameter to 0, no response is returned from the broker. In this mode, the performance is high, but the risk of data loss is also high.
+        # *   If you set this parameter to 1, a response is returned when data is written to the leader. In this mode, the performance and the risk of data loss are moderate. Data loss may occur if a failure occurs on the leader.
+        # *   If you set this parameter to all, a response is returned when data is written to the leader and synchronized to the followers. In this mode, the performance is low, but the risk of data loss is also low. Data loss occurs if the leader and the followers fail at the same time.
         self.acks = acks
-        # The information about the Message Queue for Apache Kafka instance.
+        # The ID of the ApsaraMQ for Kafka instance.
         self.instance_id = instance_id
-        # The information about the message key.
+        # The message key.
         self.key = key
-        # The information about the topic in Message Queue for Apache Kafka instance.
+        # The name of the topic on the ApsaraMQ for Kafka instance.
         self.topic = topic
-        # The information about the message value.
+        # The message body.
         self.value = value
 
     def validate(self):
@@ -24084,11 +25214,11 @@ class UpdateEventStreamingRequestSinkSinkMNSParametersBody(TeaModel):
         template: str = None,
         value: str = None,
     ):
-        # The method that is used to transform events.
+        # The method that you want to use to transform events.
         self.form = form
-        # The template based on which events are transformed.
+        # The template based on which you want to transform events.
         self.template = template
-        # The value before event transformation.
+        # The value before transformation.
         self.value = value
 
     def validate(self):
@@ -24126,11 +25256,11 @@ class UpdateEventStreamingRequestSinkSinkMNSParametersIsBase64Encode(TeaModel):
         template: str = None,
         value: str = None,
     ):
-        # The method that is used to transform events. Default value: CONSTANT.
+        # The method that you want to use to transform events. Default value: CONSTANT.
         self.form = form
         # None.
         self.template = template
-        # Specifies that Base64 encoding is enabled.
+        # Specifies whether to enable Base64 encoding.
         self.value = value
 
     def validate(self):
@@ -24168,11 +25298,11 @@ class UpdateEventStreamingRequestSinkSinkMNSParametersQueueName(TeaModel):
         template: str = None,
         value: str = None,
     ):
-        # The method that is used to transform events. Default value: CONSTANT.
+        # The method that you want to use to transform events. Default value: CONSTANT.
         self.form = form
         # None.
         self.template = template
-        # The name of the queue in MNS.
+        # The name of the MNS queue.
         self.value = value
 
     def validate(self):
@@ -24214,7 +25344,7 @@ class UpdateEventStreamingRequestSinkSinkMNSParameters(TeaModel):
         self.body = body
         # Specifies whether to enable Base64 encoding.
         self.is_base_64encode = is_base_64encode
-        # The information about the MNS queue.
+        # The name of the MNS queue.
         self.queue_name = queue_name
 
     def validate(self):
@@ -24260,8 +25390,11 @@ class UpdateEventStreamingRequestSinkSinkPrometheusParametersAuthorizationType(T
         template: str = None,
         value: str = None,
     ):
+        # The method that you want to use to transform events. Default value: CONSTANT.
         self.form = form
+        # None.
         self.template = template
+        # The authentication method.
         self.value = value
 
     def validate(self):
@@ -24299,8 +25432,11 @@ class UpdateEventStreamingRequestSinkSinkPrometheusParametersData(TeaModel):
         template: str = None,
         value: str = None,
     ):
+        # The method that you want to use to transform events. Default value: JSONPATH.
         self.form = form
+        # None.
         self.template = template
+        # The metric data.
         self.value = value
 
     def validate(self):
@@ -24338,8 +25474,11 @@ class UpdateEventStreamingRequestSinkSinkPrometheusParametersNetworkType(TeaMode
         template: str = None,
         value: str = None,
     ):
+        # The method that you want to use to transform events. Default value: CONSTANT.
         self.form = form
+        # None.
         self.template = template
+        # The network type.
         self.value = value
 
     def validate(self):
@@ -24377,8 +25516,11 @@ class UpdateEventStreamingRequestSinkSinkPrometheusParametersPassword(TeaModel):
         template: str = None,
         value: str = None,
     ):
+        # The method that you want to use to transform events. Default value: CONSTANT.
         self.form = form
+        # None.
         self.template = template
+        # The password.
         self.value = value
 
     def validate(self):
@@ -24416,8 +25558,11 @@ class UpdateEventStreamingRequestSinkSinkPrometheusParametersSecurityGroupId(Tea
         template: str = None,
         value: str = None,
     ):
+        # The method that you want to use to transform events. Default value: CONSTANT.
         self.form = form
+        # None.
         self.template = template
+        # The ID of the security group to which the Managed Service for Prometheus instance belongs.
         self.value = value
 
     def validate(self):
@@ -24455,8 +25600,11 @@ class UpdateEventStreamingRequestSinkSinkPrometheusParametersURL(TeaModel):
         template: str = None,
         value: str = None,
     ):
+        # The method that you want to use to transform events. Default value: CONSTANT.
         self.form = form
+        # None.
         self.template = template
+        # The URL for the remote write configuration item of the Managed Service for Prometheus instance.
         self.value = value
 
     def validate(self):
@@ -24494,8 +25642,11 @@ class UpdateEventStreamingRequestSinkSinkPrometheusParametersUsername(TeaModel):
         template: str = None,
         value: str = None,
     ):
+        # The method that you want to use to transform events. Default value: CONSTANT.
         self.form = form
+        # None.
         self.template = template
+        # The username.
         self.value = value
 
     def validate(self):
@@ -24533,8 +25684,11 @@ class UpdateEventStreamingRequestSinkSinkPrometheusParametersVSwitchId(TeaModel)
         template: str = None,
         value: str = None,
     ):
+        # The method that you want to use to transform events. Default value: CONSTANT.
         self.form = form
+        # None.
         self.template = template
+        # The ID of the vSwitch with which the Managed Service for Prometheus instance is associated.
         self.value = value
 
     def validate(self):
@@ -24572,8 +25726,11 @@ class UpdateEventStreamingRequestSinkSinkPrometheusParametersVpcId(TeaModel):
         template: str = None,
         value: str = None,
     ):
+        # The method that you want to use to transform events. Default value: CONSTANT.
         self.form = form
+        # None.
         self.template = template
+        # The ID of the VPC to which the Managed Service for Prometheus instance belongs.
         self.value = value
 
     def validate(self):
@@ -24617,14 +25774,23 @@ class UpdateEventStreamingRequestSinkSinkPrometheusParameters(TeaModel):
         v_switch_id: UpdateEventStreamingRequestSinkSinkPrometheusParametersVSwitchId = None,
         vpc_id: UpdateEventStreamingRequestSinkSinkPrometheusParametersVpcId = None,
     ):
+        # The authentication method.
         self.authorization_type = authorization_type
+        # The metric data.
         self.data = data
+        # The network type.
         self.network_type = network_type
+        # The password.
         self.password = password
+        # The ID of the security group to which the Managed Service for Prometheus instance belongs.
         self.security_group_id = security_group_id
+        # The URL for the remote write configuration item of the Managed Service for Prometheus instance.
         self.url = url
+        # The username.
         self.username = username
+        # The ID of the vSwitch with which the Managed Service for Prometheus instance is associated.
         self.v_switch_id = v_switch_id
+        # The ID of the VPC to which the Managed Service for Prometheus instance belongs.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -24712,11 +25878,11 @@ class UpdateEventStreamingRequestSinkSinkRabbitMQParametersBody(TeaModel):
         template: str = None,
         value: str = None,
     ):
-        # The method that is used to transform events.
+        # The method that you want to use to transform events.
         self.form = form
-        # The template based on which events are transformed.
+        # The template based on which you want to transform events.
         self.template = template
-        # The value before event transformation.
+        # The value before transformation.
         self.value = value
 
     def validate(self):
@@ -24754,11 +25920,11 @@ class UpdateEventStreamingRequestSinkSinkRabbitMQParametersExchange(TeaModel):
         template: str = None,
         value: str = None,
     ):
-        # The method that is used to transform events. Default value: CONSTANT.
+        # The method that you want to use to transform events. Default value: CONSTANT.
         self.form = form
         # None.
         self.template = template
-        # The name of the exchange in the Message Queue for RabbitMQ instance.
+        # The name of the exchange on the ApsaraMQ for RabbitMQ instance.
         self.value = value
 
     def validate(self):
@@ -24796,11 +25962,11 @@ class UpdateEventStreamingRequestSinkSinkRabbitMQParametersInstanceId(TeaModel):
         template: str = None,
         value: str = None,
     ):
-        # The method that is used to transform events. Default value: CONSTANT.
+        # The method that you want to use to transform events. Default value: CONSTANT.
         self.form = form
         # None.
         self.template = template
-        # The ID of the Message Queue for RabbitMQ instance.
+        # The ID of the ApsaraMQ for RabbitMQ instance.
         self.value = value
 
     def validate(self):
@@ -24838,11 +26004,11 @@ class UpdateEventStreamingRequestSinkSinkRabbitMQParametersMessageId(TeaModel):
         template: str = None,
         value: str = None,
     ):
-        # The method that is used to transform events.
+        # The method that you want to use to transform events.
         self.form = form
-        # The template based on which events are transformed.
+        # The template based on which you want to transform events.
         self.template = template
-        # The value before event transformation.
+        # The value before transformation.
         self.value = value
 
     def validate(self):
@@ -24880,11 +26046,11 @@ class UpdateEventStreamingRequestSinkSinkRabbitMQParametersProperties(TeaModel):
         template: str = None,
         value: str = None,
     ):
-        # The method that is used to transform events.
+        # The method that you want to use to transform events.
         self.form = form
-        # The template based on which events are transformed.
+        # The template based on which you want to transform events.
         self.template = template
-        # The value before event transformation.
+        # The value before transformation.
         self.value = value
 
     def validate(self):
@@ -24922,11 +26088,11 @@ class UpdateEventStreamingRequestSinkSinkRabbitMQParametersQueueName(TeaModel):
         template: str = None,
         value: str = None,
     ):
-        # The method that is used to transform events. Default value: CONSTANT.
+        # The method that you want to use to transform events. Default value: CONSTANT.
         self.form = form
         # None.
         self.template = template
-        # The name of the queue in the Message Queue for RabbitMQ instance.
+        # The name of the queue on the ApsaraMQ for RabbitMQ instance.
         self.value = value
 
     def validate(self):
@@ -24964,11 +26130,11 @@ class UpdateEventStreamingRequestSinkSinkRabbitMQParametersRoutingKey(TeaModel):
         template: str = None,
         value: str = None,
     ):
-        # The method that is used to transform events. Default value: CONSTANT.
+        # The method that you want to use to transform events. Default value: CONSTANT.
         self.form = form
         # None.
         self.template = template
-        # The routing rule of the message.
+        # The rule that you want to use to route messages.
         self.value = value
 
     def validate(self):
@@ -25006,11 +26172,14 @@ class UpdateEventStreamingRequestSinkSinkRabbitMQParametersTargetType(TeaModel):
         template: str = None,
         value: str = None,
     ):
-        # The method that is used to transform events. Default value: CONSTANT.
+        # The method that you want to use to transform events. Default value: CONSTANT.
         self.form = form
         # None.
         self.template = template
-        # The type of the resource to which events are delivered. Valid values: Exchange: exchanges. Queue: queues.
+        # The type of the resource to which you want to deliver events. Valid values:
+        # 
+        # *   Exchange
+        # *   Queue
         self.value = value
 
     def validate(self):
@@ -25048,11 +26217,11 @@ class UpdateEventStreamingRequestSinkSinkRabbitMQParametersVirtualHostName(TeaMo
         template: str = None,
         value: str = None,
     ):
-        # The method that is used to transform events. Default value: CONSTANT.
+        # The method that you want to use to transform events. Default value: CONSTANT.
         self.form = form
         # None.
         self.template = template
-        # The vhost name of the Message Queue for RabbitMQ instance.
+        # The name of the vhost to which the ApsaraMQ for RabbitMQ instance belongs.
         self.value = value
 
     def validate(self):
@@ -25098,21 +26267,21 @@ class UpdateEventStreamingRequestSinkSinkRabbitMQParameters(TeaModel):
     ):
         # The message content.
         self.body = body
-        # The information about the exchange to which events are delivered. This parameter is available only if you set TargetType to Exchange.
+        # The exchange mode. This parameter is required only if you set TargetType to Exchange.
         self.exchange = exchange
-        # The information about the Message Queue for RabbitMQ instance.
+        # The ID of the ApsaraMQ for RabbitMQ instance.
         self.instance_id = instance_id
         # The message ID.
         self.message_id = message_id
-        # The properties that are used to filter messages.
+        # The attributes that you want to use to filter messages.
         self.properties = properties
-        # The information about the queue to which events are delivered. This parameter is available only if you set TargetType to Queue.
+        # The queue mode. This parameter is required only if you set TargetType to Queue.
         self.queue_name = queue_name
-        # The information about the routing rule of the message. This parameter is available only if you set TargetType to Exchange.
+        # The rule that you want to use to route messages. This parameter is required only if you set TargetType to Exchange.
         self.routing_key = routing_key
-        # The information about the type of the resource to which events are delivered.
+        # The type of the resource to which you want to deliver events.
         self.target_type = target_type
-        # The information about the vhost of the Message Queue for RabbitMQ instance.
+        # The name of the vhost to which the ApsaraMQ for RabbitMQ instance belongs.
         self.virtual_host_name = virtual_host_name
 
     def validate(self):
@@ -25200,11 +26369,11 @@ class UpdateEventStreamingRequestSinkSinkRocketMQParametersBody(TeaModel):
         template: str = None,
         value: str = None,
     ):
-        # The method that is used to transform events.
+        # The method that you want to use to transform events.
         self.form = form
-        # The template based on which events are transformed.
+        # The template based on which you want to transform events.
         self.template = template
-        # The value before event transformation.
+        # The value before transformation.
         self.value = value
 
     def validate(self):
@@ -25242,11 +26411,11 @@ class UpdateEventStreamingRequestSinkSinkRocketMQParametersInstanceId(TeaModel):
         template: str = None,
         value: str = None,
     ):
-        # The method that is used to transform events. Default value: CONSTANT.
+        # The method that you want to use to transform events. Default value: CONSTANT.
         self.form = form
         # None.
         self.template = template
-        # The ID of the Message Queue for Apache RocketMQ instance.
+        # The ID of the ApsaraMQ for RocketMQ instance.
         self.value = value
 
     def validate(self):
@@ -25284,11 +26453,11 @@ class UpdateEventStreamingRequestSinkSinkRocketMQParametersKeys(TeaModel):
         template: str = None,
         value: str = None,
     ):
-        # The method that is used to transform events.
+        # The method that you want to use to transform events.
         self.form = form
-        # The template based on which events are transformed.
+        # The template based on which you want to transform events.
         self.template = template
-        # The value before event transformation.
+        # The value before transformation.
         self.value = value
 
     def validate(self):
@@ -25326,11 +26495,11 @@ class UpdateEventStreamingRequestSinkSinkRocketMQParametersProperties(TeaModel):
         template: str = None,
         value: str = None,
     ):
-        # The method that is used to transform events.
+        # The method that you want to use to transform events.
         self.form = form
-        # The template based on which events are transformed.
+        # The template based on which you want to transform events.
         self.template = template
-        # The value before event transformation.
+        # The value before transformation.
         self.value = value
 
     def validate(self):
@@ -25368,11 +26537,11 @@ class UpdateEventStreamingRequestSinkSinkRocketMQParametersTags(TeaModel):
         template: str = None,
         value: str = None,
     ):
-        # The method that is used to transform events.
+        # The method that you want to use to transform events.
         self.form = form
-        # The template based on which events are transformed.
+        # The template based on which you want to transform events.
         self.template = template
-        # The value before event transformation.
+        # The value before transformation.
         self.value = value
 
     def validate(self):
@@ -25410,11 +26579,11 @@ class UpdateEventStreamingRequestSinkSinkRocketMQParametersTopic(TeaModel):
         template: str = None,
         value: str = None,
     ):
-        # The method that is used to transform events. Default value: CONSTANT.
+        # The method that you want to use to transform events. Default value: CONSTANT.
         self.form = form
         # None.
         self.template = template
-        # The name of the topic in the Message Queue for Apache RocketMQ instance.
+        # The topic on the ApsaraMQ for RocketMQ instance.
         self.value = value
 
     def validate(self):
@@ -25457,15 +26626,15 @@ class UpdateEventStreamingRequestSinkSinkRocketMQParameters(TeaModel):
     ):
         # The message content.
         self.body = body
-        # The parameters that are configured if the event target is Message Queue for Apache RocketMQ.
+        # The ID of the ApsaraMQ for RocketMQ instance.
         self.instance_id = instance_id
-        # The properties that are used to filter messages.
+        # The attributes that you want to use to filter messages.
         self.keys = keys
-        # The properties that are used to filter messages.
+        # The attributes that you want to use to filter messages.
         self.properties = properties
-        # The properties that are used to filter messages.
+        # The attributes that you want to use to filter messages.
         self.tags = tags
-        # The information about the topic in the Message Queue for Apache RocketMQ instance.
+        # The topic on the ApsaraMQ for RocketMQ instance.
         self.topic = topic
 
     def validate(self):
@@ -25532,11 +26701,11 @@ class UpdateEventStreamingRequestSinkSinkSLSParametersBody(TeaModel):
         template: str = None,
         value: str = None,
     ):
-        # The method that is used to transform events.
+        # The method that you want to use to transform events.
         self.form = form
-        # The template based on which events are transformed.
+        # The template based on which you want to transform events.
         self.template = template
-        # The value before event transformation.
+        # The value before transformation.
         self.value = value
 
     def validate(self):
@@ -25574,11 +26743,11 @@ class UpdateEventStreamingRequestSinkSinkSLSParametersLogStore(TeaModel):
         template: str = None,
         value: str = None,
     ):
-        # The method that is used to transform events. Default value: CONSTANT.
+        # The method that you want to use to transform events. Default value: CONSTANT.
         self.form = form
         # None.
         self.template = template
-        # The Log Service Logstore.
+        # The Simple Log Service Logstore.
         self.value = value
 
     def validate(self):
@@ -25616,11 +26785,11 @@ class UpdateEventStreamingRequestSinkSinkSLSParametersProject(TeaModel):
         template: str = None,
         value: str = None,
     ):
-        # The method that is used to transform events. Default value: CONSTANT.
+        # The method that you want to use to transform events. Default value: CONSTANT.
         self.form = form
         # None.
         self.template = template
-        # The Log Service project.
+        # The Simple Log Service project.
         self.value = value
 
     def validate(self):
@@ -25658,11 +26827,11 @@ class UpdateEventStreamingRequestSinkSinkSLSParametersRoleName(TeaModel):
         template: str = None,
         value: str = None,
     ):
-        # The method that is used to transform events. Default value: CONSTANT.
+        # The method that you want to use to transform events. Default value: CONSTANT.
         self.form = form
         # None.
         self.template = template
-        # The role name. If you want to authorize EventBridge to use this role to read logs in Log Service, you must select Alibaba Cloud Service for Selected Trusted Entity and EventBridge for Select Trusted Service when you create the role in the RAM console.
+        # The role name. If you want to authorize EventBridge to use this role to read logs in Simple Log Service, you must select Alibaba Cloud Service for Selected Trusted Entity and EventBridge for Select Trusted Service when you create the role in the RAM console.
         self.value = value
 
     def validate(self):
@@ -25700,11 +26869,11 @@ class UpdateEventStreamingRequestSinkSinkSLSParametersTopic(TeaModel):
         template: str = None,
         value: str = None,
     ):
-        # The method that is used to transform events. Default value: CONSTANT.
+        # The method that you want to use to transform events. Default value: CONSTANT.
         self.form = form
         # None.
         self.template = template
-        # The name of the topic in which logs are stored. The topic corresponds to the topic reserved field in Log Service.
+        # The topic that you want to use to store logs. This parameter corresponds to the reserved field topic in Simple Log Service.
         self.value = value
 
     def validate(self):
@@ -25746,13 +26915,13 @@ class UpdateEventStreamingRequestSinkSinkSLSParameters(TeaModel):
     ):
         # The message body that is sent to Log Service.
         self.body = body
-        # The information about the Log Service Logstore.
+        # The Simple Log Service Logstore.
         self.log_store = log_store
-        # The information about the Log Service project.
+        # The Simple Log Service project.
         self.project = project
-        # The information about the role. If you want to authorize EventBridge to use this role to read logs in Log Service, you must select Alibaba Cloud Service for Selected Trusted Entity and EventBridge for Select Trusted Service when you create the role in the RAM console.
+        # The role name. If you want to authorize EventBridge to use this role to read logs in Simple Log Service, you must select Alibaba Cloud Service for Selected Trusted Entity and EventBridge for Select Trusted Service when you create the role in the RAM console.
         self.role_name = role_name
-        # The information about the topic in which logs are stored. The topic corresponds to the topic reserved field in Log Service.
+        # The topic that you want to use to store logs. This parameter corresponds to the reserved field topic in Simple Log Service.
         self.topic = topic
 
     def validate(self):
@@ -25817,19 +26986,21 @@ class UpdateEventStreamingRequestSink(TeaModel):
         sink_rocket_mqparameters: UpdateEventStreamingRequestSinkSinkRocketMQParameters = None,
         sink_slsparameters: UpdateEventStreamingRequestSinkSinkSLSParameters = None,
     ):
-        # The parameters that are configured if the event target is Function Compute.
+        # The parameters that are configured if you specify Function Compute as the event target.
         self.sink_fc_parameters = sink_fc_parameters
+        # The parameters that are configured if you specify CloudFlow as the event target.
         self.sink_fnf_parameters = sink_fnf_parameters
-        # The parameters that are configured if the event target is Message Queue for Apache Kafka.
+        # The parameters that are configured if you specify ApsaraMQ for Kafka as the event target.
         self.sink_kafka_parameters = sink_kafka_parameters
-        # The parameters that are configured if the event target is MNS.
+        # The parameters that are configured if you specify MNS as the event target.
         self.sink_mnsparameters = sink_mnsparameters
+        # The parameters that are configured if you specify Managed Service for Prometheus as the event target.
         self.sink_prometheus_parameters = sink_prometheus_parameters
-        # The parameters that are configured if the event target is Message Queue for RabbitMQ.
+        # The parameters that are configured if you specify ApsaraMQ for RabbitMQ as the event target.
         self.sink_rabbit_mqparameters = sink_rabbit_mqparameters
-        # Sink RocketMQ Parameters
+        # The parameters that are configured if you specify ApsaraMQ for RocketMQ as the event target.
         self.sink_rocket_mqparameters = sink_rocket_mqparameters
-        # Sink SLS Parameters
+        # The parameters that are configured if you specify Simple Log Service as the event target.
         self.sink_slsparameters = sink_slsparameters
 
     def validate(self):
@@ -25989,22 +27160,23 @@ class UpdateEventStreamingRequestSourceSourceKafkaParameters(TeaModel):
     ):
         # The group ID of the consumer that subscribes to the topic.
         self.consumer_group = consumer_group
-        # The ID of the Message Queue for Apache Kafka instance.
+        # The ID of the ApsaraMQ for Kafka instance.
         self.instance_id = instance_id
         # The network setting. Default value: Default. The value PublicNetwork specifies a virtual private cloud (VPC).
         self.network = network
-        # The offset.
+        # The offset from which messages are consumed.
         self.offset_reset = offset_reset
-        # The ID of the region where the Message Queue for Apache Kafka instance resides.
+        # The ID of the region where the ApsaraMQ for Kafka instance resides.
         self.region_id = region_id
-        # The security group ID.
+        # The ID of the security group to which the ApsaraMQ for Kafka instance belongs.
         self.security_group_id = security_group_id
-        # The topic name.
+        # The name of the topic on the ApsaraMQ for Kafka instance.
         self.topic = topic
-        # The vSwitch ID.
+        # The ID of the vSwitch with which the ApsaraMQ for Kafka instance is associated.
         self.v_switch_ids = v_switch_ids
+        # The encoding or decoding method. Valid values: Json, Text, and Binary. The value Json specifies that binary data is decoded into strings based on UTF-8 encoding and then parsed into the JSON format. The value Text specifies that binary data is decoded into strings based on UTF-8 encoding and then put into the payload. The value Binary specifies that binary data is encoded into strings based on Base64 encoding and then put into the payload.
         self.value_data_type = value_data_type
-        # The VPC ID.
+        # The ID of the VPC to which the ApsaraMQ for Kafka instance belongs.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -26112,11 +27284,11 @@ class UpdateEventStreamingRequestSourceSourceMQTTParameters(TeaModel):
         region_id: str = None,
         topic: str = None,
     ):
-        # The ID of the Message Queue for MQTT instance.
+        # The ID of the ApsaraMQ for MQTT instance.
         self.instance_id = instance_id
-        # The ID of the region where the Message Queue for MQTT instance resides.
+        # The ID of the region where the ApsaraMQ for MQTT instance resides.
         self.region_id = region_id
-        # The topic name.
+        # The name of the topic on the ApsaraMQ for MQTT instance.
         self.topic = topic
 
     def validate(self):
@@ -26155,8 +27327,11 @@ class UpdateEventStreamingRequestSourceSourcePrometheusParameters(TeaModel):
         labels: str = None,
         region_id: str = None,
     ):
+        # The cluster ID.
         self.cluster_id = cluster_id
+        # The data type.
         self.data_type = data_type
+        # The labels.
         self.labels = labels
         self.region_id = region_id
 
@@ -26200,13 +27375,13 @@ class UpdateEventStreamingRequestSourceSourceRabbitMQParameters(TeaModel):
         region_id: str = None,
         virtual_host_name: str = None,
     ):
-        # The ID of the Message Queue for RabbitMQ instance.
+        # The ID of the ApsaraMQ for RabbitMQ instance.
         self.instance_id = instance_id
-        # The name of the queue on the Message Queue for RabbitMQ instance.
+        # The name of the queue on the ApsaraMQ for RabbitMQ instance.
         self.queue_name = queue_name
-        # The ID of the region where the Message Queue for RabbitMQ instance resides.
+        # The ID of the region where the ApsaraMQ for RabbitMQ instance resides.
         self.region_id = region_id
-        # The name of the vhost of the Message Queue for RabbitMQ instance.
+        # The name of the vhost to which the ApsaraMQ for RabbitMQ instance belongs.
         self.virtual_host_name = virtual_host_name
 
     def validate(self):
@@ -26263,27 +27438,27 @@ class UpdateEventStreamingRequestSourceSourceRocketMQParameters(TeaModel):
     ):
         # The authentication method.
         self.auth_type = auth_type
-        # The ID of the consumer group on the Message Queue for Apache RocketMQ instance.
+        # The ID of the consumer group on the ApsaraMQ for RocketMQ instance.
         self.group_id = group_id
-        # The instance endpoint.
+        # The endpoint that is used to access the ApsaraMQ for RocketMQ instance.
         self.instance_endpoint = instance_endpoint
-        # The ID of the Message Queue for Apache RocketMQ instance.
+        # The ID of the ApsaraMQ for RocketMQ instance.
         self.instance_id = instance_id
-        # The network type of the instance. Valid values:
+        # The network type of the ApsaraMQ for RocketMQ instance. Valid values:
         # 
         # PublicNetwork and PrivateNetwork.
         self.instance_network = instance_network
-        # The instance password.
+        # The password that is used to access the ApsaraMQ for RocketMQ instance.
         self.instance_password = instance_password
-        # The security group ID of the instance.
+        # The ID of the security group to which the ApsaraMQ for RocketMQ instance belongs.
         self.instance_security_group_id = instance_security_group_id
-        # The instance type.
+        # The type of the ApsaraMQ for RocketMQ instance.
         self.instance_type = instance_type
-        # The instance username.
+        # The username that is used to access the ApsaraMQ for RocketMQ instance.
         self.instance_username = instance_username
-        # The vSwitch ID of the instance.
+        # The ID of the vSwitch with which the ApsaraMQ for RocketMQ instance is associated.
         self.instance_vswitch_ids = instance_vswitch_ids
-        # The VPC ID of the instance.
+        # The ID of the VPC to which the ApsaraMQ for RocketMQ instance belongs.
         self.instance_vpc_id = instance_vpc_id
         # The offset from which messages are consumed. Valid values:
         # 
@@ -26293,13 +27468,13 @@ class UpdateEventStreamingRequestSourceSourceRocketMQParameters(TeaModel):
         # 
         # Default value: CONSUMEFROMLASTOFFSET.
         self.offset = offset
-        # The ID of the region where the Message Queue for Apache RocketMQ instance resides.
+        # The ID of the region where the ApsaraMQ for RocketMQ instance resides.
         self.region_id = region_id
         # The tag that you want to use to filter messages.
         self.tag = tag
         # The timestamp that specifies the time from which messages are consumed. This parameter is valid only if you set Offset to CONSUMEFROMTIMESTAMP.
         self.timestamp = timestamp
-        # The topic name.
+        # The name of the topic on the ApsaraMQ for RocketMQ instance.
         self.topic = topic
 
     def validate(self):
@@ -26387,7 +27562,7 @@ class UpdateEventStreamingRequestSourceSourceSLSParameters(TeaModel):
         self,
         role_name: str = None,
     ):
-        # The role name. If you want to authorize EventBridge to use this role to read logs in Log Service, you must select Alibaba Cloud Service for Selected Trusted Entity and EventBridge for Select Trusted Service when you create the role in the Resource Access Management (RAM) console.
+        # The role name. If you want to authorize EventBridge to use this role to read logs in Simple Log Service, you must select Alibaba Cloud Service for Selected Trusted Entity and EventBridge for Select Trusted Service when you create the role in the Resource Access Management (RAM) console.
         self.role_name = role_name
 
     def validate(self):
@@ -26424,18 +27599,19 @@ class UpdateEventStreamingRequestSource(TeaModel):
     ):
         # The parameters that are configured if you specify Data Transmission Service (DTS) as the event source.
         self.source_dtsparameters = source_dtsparameters
-        # The parameters that are configured if you specify Message Queue for Apache Kafka as the event source.
+        # The parameters that are configured if you specify ApsaraMQ for Kafka as the event source.
         self.source_kafka_parameters = source_kafka_parameters
         # The parameters that are configured if you specify Message Service (MNS) as the event source.
         self.source_mnsparameters = source_mnsparameters
-        # The parameters that are configured if you specify Message Queue for MQTT as the event source.
+        # The parameters that are configured if you specify ApsaraMQ for MQTT as the event source.
         self.source_mqttparameters = source_mqttparameters
+        # The parameters that are configured if you specify Managed Service for Prometheus as the event source.
         self.source_prometheus_parameters = source_prometheus_parameters
-        # The parameters that are configured if you specify Message Queue for RabbitMQ as the event source.
+        # The parameters that are configured if you specify ApsaraMQ for RabbitMQ as the event source.
         self.source_rabbit_mqparameters = source_rabbit_mqparameters
-        # The parameters that are configured if you specify Message Queue for Apache RocketMQ as the event source.
+        # The parameters that are configured if you specify ApsaraMQ for RocketMQ as the event source.
         self.source_rocket_mqparameters = source_rocket_mqparameters
-        # The parameters that are configured if you specify Log Service as the event source.
+        # The parameters that are configured if you specify Simple Log Service as the event source.
         self.source_slsparameters = source_slsparameters
 
     def validate(self):
@@ -26550,14 +27726,22 @@ class UpdateEventStreamingRequest(TeaModel):
         # The description of the event stream.
         self.description = description
         # The name of the event stream.
+        # 
+        # This parameter is required.
         self.event_streaming_name = event_streaming_name
         # The rule that is used to filter events. If you leave this parameter empty, all events are matched.
+        # 
+        # This parameter is required.
         self.filter_pattern = filter_pattern
         # The parameters that are configured for the runtime environment.
         self.run_options = run_options
         # The event target. You must and can specify only one event target.
+        # 
+        # This parameter is required.
         self.sink = sink
-        # The event source, which is also known as the event source. You must and can specify only one event source.
+        # The event provider, which is also known as the event source. You must and can specify only one event source.
+        # 
+        # This parameter is required.
         self.source = source
         self.transforms = transforms
 
@@ -26636,14 +27820,22 @@ class UpdateEventStreamingShrinkRequest(TeaModel):
         # The description of the event stream.
         self.description = description
         # The name of the event stream.
+        # 
+        # This parameter is required.
         self.event_streaming_name = event_streaming_name
         # The rule that is used to filter events. If you leave this parameter empty, all events are matched.
+        # 
+        # This parameter is required.
         self.filter_pattern = filter_pattern
         # The parameters that are configured for the runtime environment.
         self.run_options_shrink = run_options_shrink
         # The event target. You must and can specify only one event target.
+        # 
+        # This parameter is required.
         self.sink_shrink = sink_shrink
-        # The event source, which is also known as the event source. You must and can specify only one event source.
+        # The event provider, which is also known as the event source. You must and can specify only one event source.
+        # 
+        # This parameter is required.
         self.source_shrink = source_shrink
         self.transforms_shrink = transforms_shrink
 
@@ -26793,12 +27985,18 @@ class UpdateRuleRequest(TeaModel):
         # The description of the event bus.
         self.description = description
         # The name of the event bus.
+        # 
+        # This parameter is required.
         self.event_bus_name = event_bus_name
         # The event pattern, in JSON format. Valid values: stringEqual stringExpression Each field can have a maximum of five expressions in the map data structure.
         # 
         # Each field can have a maximum of five expressions in the map data structure.
+        # 
+        # This parameter is required.
         self.filter_pattern = filter_pattern
         # The name of the event rule.
+        # 
+        # This parameter is required.
         self.rule_name = rule_name
         # The status of the event rule. Valid values: ENABLE: The event rule is enabled. It is the default state of the event rule. DISABLE: The event rule is disabled.
         self.status = status

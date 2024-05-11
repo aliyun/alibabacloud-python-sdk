@@ -1,3 +1,23 @@
+2024-05-11 Version: 4.1.0
+- Support API EventCenterCheckEnabledOnDefaultBus.
+- Support API EventCenterDisableOnDefaultBus.
+- Support API EventCenterEnableOnDefaultBus.
+- Support API EventCenterQueryEvents.
+- Update API CreateEventBus: update response param.
+- Update API CreateEventStreaming: update param Source.
+- Update API CreateServiceLinkedRoleForProduct: update response param.
+- Update API DeleteEventBus: update response param.
+- Update API DeleteEventSource: add param EventBusName.
+- Update API DeleteEventSource: update response param.
+- Update API DeleteRule: update response param.
+- Update API DeleteTargets: update response param.
+- Update API GetEventStreaming: update response param.
+- Update API ListEventBuses: update response param.
+- Update API ListEventStreamings: update response param.
+- Update API UpdateEventStreaming: update param Source.
+- Update API UpdateRule: update response param.
+
+
 2024-04-09 Version: 4.0.1
 - Update API CreateEventBus: update response param.
 - Update API CreateEventStreaming: update param Source.
