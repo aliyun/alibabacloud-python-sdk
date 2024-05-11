@@ -66,6 +66,13 @@ class Client(OpenApiClient):
         request: green_20220302_models.DescribeFileModerationResultRequest,
         runtime: util_models.RuntimeOptions,
     ) -> green_20220302_models.DescribeFileModerationResultResponse:
+        """
+        @summary 文档审核结果
+        
+        @param request: DescribeFileModerationResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFileModerationResultResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.service):
@@ -96,6 +103,13 @@ class Client(OpenApiClient):
         request: green_20220302_models.DescribeFileModerationResultRequest,
         runtime: util_models.RuntimeOptions,
     ) -> green_20220302_models.DescribeFileModerationResultResponse:
+        """
+        @summary 文档审核结果
+        
+        @param request: DescribeFileModerationResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFileModerationResultResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.service):
@@ -125,6 +139,12 @@ class Client(OpenApiClient):
         self,
         request: green_20220302_models.DescribeFileModerationResultRequest,
     ) -> green_20220302_models.DescribeFileModerationResultResponse:
+        """
+        @summary 文档审核结果
+        
+        @param request: DescribeFileModerationResultRequest
+        @return: DescribeFileModerationResultResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_file_moderation_result_with_options(request, runtime)
 
@@ -132,6 +152,12 @@ class Client(OpenApiClient):
         self,
         request: green_20220302_models.DescribeFileModerationResultRequest,
     ) -> green_20220302_models.DescribeFileModerationResultResponse:
+        """
+        @summary 文档审核结果
+        
+        @param request: DescribeFileModerationResultRequest
+        @return: DescribeFileModerationResultResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_file_moderation_result_with_options_async(request, runtime)
 
@@ -140,6 +166,13 @@ class Client(OpenApiClient):
         request: green_20220302_models.DescribeImageModerationResultRequest,
         runtime: util_models.RuntimeOptions,
     ) -> green_20220302_models.DescribeImageModerationResultResponse:
+        """
+        @summary 查询异步检测结果
+        
+        @param request: DescribeImageModerationResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeImageModerationResultResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.req_id):
@@ -168,6 +201,13 @@ class Client(OpenApiClient):
         request: green_20220302_models.DescribeImageModerationResultRequest,
         runtime: util_models.RuntimeOptions,
     ) -> green_20220302_models.DescribeImageModerationResultResponse:
+        """
+        @summary 查询异步检测结果
+        
+        @param request: DescribeImageModerationResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeImageModerationResultResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.req_id):
@@ -195,6 +235,12 @@ class Client(OpenApiClient):
         self,
         request: green_20220302_models.DescribeImageModerationResultRequest,
     ) -> green_20220302_models.DescribeImageModerationResultResponse:
+        """
+        @summary 查询异步检测结果
+        
+        @param request: DescribeImageModerationResultRequest
+        @return: DescribeImageModerationResultResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_image_moderation_result_with_options(request, runtime)
 
@@ -202,6 +248,12 @@ class Client(OpenApiClient):
         self,
         request: green_20220302_models.DescribeImageModerationResultRequest,
     ) -> green_20220302_models.DescribeImageModerationResultResponse:
+        """
+        @summary 查询异步检测结果
+        
+        @param request: DescribeImageModerationResultRequest
+        @return: DescribeImageModerationResultResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_image_moderation_result_with_options_async(request, runtime)
 
@@ -210,6 +262,13 @@ class Client(OpenApiClient):
         request: green_20220302_models.DescribeImageResultExtRequest,
         runtime: util_models.RuntimeOptions,
     ) -> green_20220302_models.DescribeImageResultExtResponse:
+        """
+        @summary 查询检测结果辅助信息
+        
+        @param request: DescribeImageResultExtRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeImageResultExtResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.info_type):
@@ -240,6 +299,13 @@ class Client(OpenApiClient):
         request: green_20220302_models.DescribeImageResultExtRequest,
         runtime: util_models.RuntimeOptions,
     ) -> green_20220302_models.DescribeImageResultExtResponse:
+        """
+        @summary 查询检测结果辅助信息
+        
+        @param request: DescribeImageResultExtRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeImageResultExtResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.info_type):
@@ -269,6 +335,12 @@ class Client(OpenApiClient):
         self,
         request: green_20220302_models.DescribeImageResultExtRequest,
     ) -> green_20220302_models.DescribeImageResultExtResponse:
+        """
+        @summary 查询检测结果辅助信息
+        
+        @param request: DescribeImageResultExtRequest
+        @return: DescribeImageResultExtResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_image_result_ext_with_options(request, runtime)
 
@@ -276,6 +348,12 @@ class Client(OpenApiClient):
         self,
         request: green_20220302_models.DescribeImageResultExtRequest,
     ) -> green_20220302_models.DescribeImageResultExtResponse:
+        """
+        @summary 查询检测结果辅助信息
+        
+        @param request: DescribeImageResultExtRequest
+        @return: DescribeImageResultExtResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_image_result_ext_with_options_async(request, runtime)
 
@@ -283,6 +361,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> green_20220302_models.DescribeUploadTokenResponse:
+        """
+        @summary 查询上传token
+        
+        @param request: DescribeUploadTokenRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUploadTokenResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='DescribeUploadToken',
@@ -304,6 +389,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> green_20220302_models.DescribeUploadTokenResponse:
+        """
+        @summary 查询上传token
+        
+        @param request: DescribeUploadTokenRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUploadTokenResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='DescribeUploadToken',
@@ -322,10 +414,20 @@ class Client(OpenApiClient):
         )
 
     def describe_upload_token(self) -> green_20220302_models.DescribeUploadTokenResponse:
+        """
+        @summary 查询上传token
+        
+        @return: DescribeUploadTokenResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_upload_token_with_options(runtime)
 
     async def describe_upload_token_async(self) -> green_20220302_models.DescribeUploadTokenResponse:
+        """
+        @summary 查询上传token
+        
+        @return: DescribeUploadTokenResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_upload_token_with_options_async(runtime)
 
@@ -334,6 +436,13 @@ class Client(OpenApiClient):
         request: green_20220302_models.DescribeUrlModerationResultRequest,
         runtime: util_models.RuntimeOptions,
     ) -> green_20220302_models.DescribeUrlModerationResultResponse:
+        """
+        @summary 查询 url 检测结果
+        
+        @param request: DescribeUrlModerationResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUrlModerationResultResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.req_id):
@@ -362,6 +471,13 @@ class Client(OpenApiClient):
         request: green_20220302_models.DescribeUrlModerationResultRequest,
         runtime: util_models.RuntimeOptions,
     ) -> green_20220302_models.DescribeUrlModerationResultResponse:
+        """
+        @summary 查询 url 检测结果
+        
+        @param request: DescribeUrlModerationResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUrlModerationResultResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.req_id):
@@ -389,6 +505,12 @@ class Client(OpenApiClient):
         self,
         request: green_20220302_models.DescribeUrlModerationResultRequest,
     ) -> green_20220302_models.DescribeUrlModerationResultResponse:
+        """
+        @summary 查询 url 检测结果
+        
+        @param request: DescribeUrlModerationResultRequest
+        @return: DescribeUrlModerationResultResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_url_moderation_result_with_options(request, runtime)
 
@@ -396,6 +518,12 @@ class Client(OpenApiClient):
         self,
         request: green_20220302_models.DescribeUrlModerationResultRequest,
     ) -> green_20220302_models.DescribeUrlModerationResultResponse:
+        """
+        @summary 查询 url 检测结果
+        
+        @param request: DescribeUrlModerationResultRequest
+        @return: DescribeUrlModerationResultResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_url_moderation_result_with_options_async(request, runtime)
 
@@ -404,6 +532,13 @@ class Client(OpenApiClient):
         request: green_20220302_models.FileModerationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> green_20220302_models.FileModerationResponse:
+        """
+        @summary 文档审核
+        
+        @param request: FileModerationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FileModerationResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.service):
@@ -434,6 +569,13 @@ class Client(OpenApiClient):
         request: green_20220302_models.FileModerationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> green_20220302_models.FileModerationResponse:
+        """
+        @summary 文档审核
+        
+        @param request: FileModerationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FileModerationResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.service):
@@ -463,6 +605,12 @@ class Client(OpenApiClient):
         self,
         request: green_20220302_models.FileModerationRequest,
     ) -> green_20220302_models.FileModerationResponse:
+        """
+        @summary 文档审核
+        
+        @param request: FileModerationRequest
+        @return: FileModerationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.file_moderation_with_options(request, runtime)
 
@@ -470,6 +618,12 @@ class Client(OpenApiClient):
         self,
         request: green_20220302_models.FileModerationRequest,
     ) -> green_20220302_models.FileModerationResponse:
+        """
+        @summary 文档审核
+        
+        @param request: FileModerationRequest
+        @return: FileModerationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.file_moderation_with_options_async(request, runtime)
 
@@ -478,6 +632,13 @@ class Client(OpenApiClient):
         request: green_20220302_models.ImageAsyncModerationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> green_20220302_models.ImageAsyncModerationResponse:
+        """
+        @summary 图片异步检测
+        
+        @param request: ImageAsyncModerationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ImageAsyncModerationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.service):
@@ -508,6 +669,13 @@ class Client(OpenApiClient):
         request: green_20220302_models.ImageAsyncModerationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> green_20220302_models.ImageAsyncModerationResponse:
+        """
+        @summary 图片异步检测
+        
+        @param request: ImageAsyncModerationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ImageAsyncModerationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.service):
@@ -537,6 +705,12 @@ class Client(OpenApiClient):
         self,
         request: green_20220302_models.ImageAsyncModerationRequest,
     ) -> green_20220302_models.ImageAsyncModerationResponse:
+        """
+        @summary 图片异步检测
+        
+        @param request: ImageAsyncModerationRequest
+        @return: ImageAsyncModerationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.image_async_moderation_with_options(request, runtime)
 
@@ -544,6 +718,12 @@ class Client(OpenApiClient):
         self,
         request: green_20220302_models.ImageAsyncModerationRequest,
     ) -> green_20220302_models.ImageAsyncModerationResponse:
+        """
+        @summary 图片异步检测
+        
+        @param request: ImageAsyncModerationRequest
+        @return: ImageAsyncModerationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.image_async_moderation_with_options_async(request, runtime)
 
@@ -552,6 +732,13 @@ class Client(OpenApiClient):
         request: green_20220302_models.ImageModerationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> green_20220302_models.ImageModerationResponse:
+        """
+        @summary 图片审核
+        
+        @param request: ImageModerationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ImageModerationResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.service):
@@ -582,6 +769,13 @@ class Client(OpenApiClient):
         request: green_20220302_models.ImageModerationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> green_20220302_models.ImageModerationResponse:
+        """
+        @summary 图片审核
+        
+        @param request: ImageModerationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ImageModerationResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.service):
@@ -611,6 +805,12 @@ class Client(OpenApiClient):
         self,
         request: green_20220302_models.ImageModerationRequest,
     ) -> green_20220302_models.ImageModerationResponse:
+        """
+        @summary 图片审核
+        
+        @param request: ImageModerationRequest
+        @return: ImageModerationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.image_moderation_with_options(request, runtime)
 
@@ -618,6 +818,12 @@ class Client(OpenApiClient):
         self,
         request: green_20220302_models.ImageModerationRequest,
     ) -> green_20220302_models.ImageModerationResponse:
+        """
+        @summary 图片审核
+        
+        @param request: ImageModerationRequest
+        @return: ImageModerationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.image_moderation_with_options_async(request, runtime)
 
@@ -626,6 +832,13 @@ class Client(OpenApiClient):
         request: green_20220302_models.TextModerationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> green_20220302_models.TextModerationResponse:
+        """
+        @summary 文本审核
+        
+        @param request: TextModerationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TextModerationResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.service):
@@ -656,6 +869,13 @@ class Client(OpenApiClient):
         request: green_20220302_models.TextModerationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> green_20220302_models.TextModerationResponse:
+        """
+        @summary 文本审核
+        
+        @param request: TextModerationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TextModerationResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.service):
@@ -685,6 +905,12 @@ class Client(OpenApiClient):
         self,
         request: green_20220302_models.TextModerationRequest,
     ) -> green_20220302_models.TextModerationResponse:
+        """
+        @summary 文本审核
+        
+        @param request: TextModerationRequest
+        @return: TextModerationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.text_moderation_with_options(request, runtime)
 
@@ -692,6 +918,12 @@ class Client(OpenApiClient):
         self,
         request: green_20220302_models.TextModerationRequest,
     ) -> green_20220302_models.TextModerationResponse:
+        """
+        @summary 文本审核
+        
+        @param request: TextModerationRequest
+        @return: TextModerationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.text_moderation_with_options_async(request, runtime)
 
@@ -700,6 +932,13 @@ class Client(OpenApiClient):
         request: green_20220302_models.TextModerationPlusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> green_20220302_models.TextModerationPlusResponse:
+        """
+        @summary 文本检测Plus版
+        
+        @param request: TextModerationPlusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TextModerationPlusResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.service):
@@ -730,6 +969,13 @@ class Client(OpenApiClient):
         request: green_20220302_models.TextModerationPlusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> green_20220302_models.TextModerationPlusResponse:
+        """
+        @summary 文本检测Plus版
+        
+        @param request: TextModerationPlusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TextModerationPlusResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.service):
@@ -759,6 +1005,12 @@ class Client(OpenApiClient):
         self,
         request: green_20220302_models.TextModerationPlusRequest,
     ) -> green_20220302_models.TextModerationPlusResponse:
+        """
+        @summary 文本检测Plus版
+        
+        @param request: TextModerationPlusRequest
+        @return: TextModerationPlusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.text_moderation_plus_with_options(request, runtime)
 
@@ -766,6 +1018,12 @@ class Client(OpenApiClient):
         self,
         request: green_20220302_models.TextModerationPlusRequest,
     ) -> green_20220302_models.TextModerationPlusResponse:
+        """
+        @summary 文本检测Plus版
+        
+        @param request: TextModerationPlusRequest
+        @return: TextModerationPlusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.text_moderation_plus_with_options_async(request, runtime)
 
@@ -774,6 +1032,13 @@ class Client(OpenApiClient):
         request: green_20220302_models.UrlAsyncModerationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> green_20220302_models.UrlAsyncModerationResponse:
+        """
+        @summary url异步检测
+        
+        @param request: UrlAsyncModerationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UrlAsyncModerationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.service):
@@ -804,6 +1069,13 @@ class Client(OpenApiClient):
         request: green_20220302_models.UrlAsyncModerationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> green_20220302_models.UrlAsyncModerationResponse:
+        """
+        @summary url异步检测
+        
+        @param request: UrlAsyncModerationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UrlAsyncModerationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.service):
@@ -833,6 +1105,12 @@ class Client(OpenApiClient):
         self,
         request: green_20220302_models.UrlAsyncModerationRequest,
     ) -> green_20220302_models.UrlAsyncModerationResponse:
+        """
+        @summary url异步检测
+        
+        @param request: UrlAsyncModerationRequest
+        @return: UrlAsyncModerationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.url_async_moderation_with_options(request, runtime)
 
@@ -840,6 +1118,12 @@ class Client(OpenApiClient):
         self,
         request: green_20220302_models.UrlAsyncModerationRequest,
     ) -> green_20220302_models.UrlAsyncModerationResponse:
+        """
+        @summary url异步检测
+        
+        @param request: UrlAsyncModerationRequest
+        @return: UrlAsyncModerationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.url_async_moderation_with_options_async(request, runtime)
 
@@ -848,6 +1132,13 @@ class Client(OpenApiClient):
         request: green_20220302_models.VideoModerationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> green_20220302_models.VideoModerationResponse:
+        """
+        @summary 视频检测任务提交
+        
+        @param request: VideoModerationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VideoModerationResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.service):
@@ -878,6 +1169,13 @@ class Client(OpenApiClient):
         request: green_20220302_models.VideoModerationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> green_20220302_models.VideoModerationResponse:
+        """
+        @summary 视频检测任务提交
+        
+        @param request: VideoModerationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VideoModerationResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.service):
@@ -907,6 +1205,12 @@ class Client(OpenApiClient):
         self,
         request: green_20220302_models.VideoModerationRequest,
     ) -> green_20220302_models.VideoModerationResponse:
+        """
+        @summary 视频检测任务提交
+        
+        @param request: VideoModerationRequest
+        @return: VideoModerationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.video_moderation_with_options(request, runtime)
 
@@ -914,6 +1218,12 @@ class Client(OpenApiClient):
         self,
         request: green_20220302_models.VideoModerationRequest,
     ) -> green_20220302_models.VideoModerationResponse:
+        """
+        @summary 视频检测任务提交
+        
+        @param request: VideoModerationRequest
+        @return: VideoModerationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.video_moderation_with_options_async(request, runtime)
 
@@ -922,6 +1232,13 @@ class Client(OpenApiClient):
         request: green_20220302_models.VideoModerationCancelRequest,
         runtime: util_models.RuntimeOptions,
     ) -> green_20220302_models.VideoModerationCancelResponse:
+        """
+        @summary 取消视频直播流检测
+        
+        @param request: VideoModerationCancelRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VideoModerationCancelResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.service):
@@ -952,6 +1269,13 @@ class Client(OpenApiClient):
         request: green_20220302_models.VideoModerationCancelRequest,
         runtime: util_models.RuntimeOptions,
     ) -> green_20220302_models.VideoModerationCancelResponse:
+        """
+        @summary 取消视频直播流检测
+        
+        @param request: VideoModerationCancelRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VideoModerationCancelResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.service):
@@ -981,6 +1305,12 @@ class Client(OpenApiClient):
         self,
         request: green_20220302_models.VideoModerationCancelRequest,
     ) -> green_20220302_models.VideoModerationCancelResponse:
+        """
+        @summary 取消视频直播流检测
+        
+        @param request: VideoModerationCancelRequest
+        @return: VideoModerationCancelResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.video_moderation_cancel_with_options(request, runtime)
 
@@ -988,6 +1318,12 @@ class Client(OpenApiClient):
         self,
         request: green_20220302_models.VideoModerationCancelRequest,
     ) -> green_20220302_models.VideoModerationCancelResponse:
+        """
+        @summary 取消视频直播流检测
+        
+        @param request: VideoModerationCancelRequest
+        @return: VideoModerationCancelResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.video_moderation_cancel_with_options_async(request, runtime)
 
@@ -996,6 +1332,13 @@ class Client(OpenApiClient):
         request: green_20220302_models.VideoModerationResultRequest,
         runtime: util_models.RuntimeOptions,
     ) -> green_20220302_models.VideoModerationResultResponse:
+        """
+        @summary 获取视频检测结果
+        
+        @param request: VideoModerationResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VideoModerationResultResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.service):
@@ -1026,6 +1369,13 @@ class Client(OpenApiClient):
         request: green_20220302_models.VideoModerationResultRequest,
         runtime: util_models.RuntimeOptions,
     ) -> green_20220302_models.VideoModerationResultResponse:
+        """
+        @summary 获取视频检测结果
+        
+        @param request: VideoModerationResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VideoModerationResultResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.service):
@@ -1055,6 +1405,12 @@ class Client(OpenApiClient):
         self,
         request: green_20220302_models.VideoModerationResultRequest,
     ) -> green_20220302_models.VideoModerationResultResponse:
+        """
+        @summary 获取视频检测结果
+        
+        @param request: VideoModerationResultRequest
+        @return: VideoModerationResultResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.video_moderation_result_with_options(request, runtime)
 
@@ -1062,6 +1418,12 @@ class Client(OpenApiClient):
         self,
         request: green_20220302_models.VideoModerationResultRequest,
     ) -> green_20220302_models.VideoModerationResultResponse:
+        """
+        @summary 获取视频检测结果
+        
+        @param request: VideoModerationResultRequest
+        @return: VideoModerationResultResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.video_moderation_result_with_options_async(request, runtime)
 
@@ -1070,6 +1432,13 @@ class Client(OpenApiClient):
         request: green_20220302_models.VoiceModerationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> green_20220302_models.VoiceModerationResponse:
+        """
+        @summary 语音审核
+        
+        @param request: VoiceModerationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VoiceModerationResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.service):
@@ -1100,6 +1469,13 @@ class Client(OpenApiClient):
         request: green_20220302_models.VoiceModerationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> green_20220302_models.VoiceModerationResponse:
+        """
+        @summary 语音审核
+        
+        @param request: VoiceModerationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VoiceModerationResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.service):
@@ -1129,6 +1505,12 @@ class Client(OpenApiClient):
         self,
         request: green_20220302_models.VoiceModerationRequest,
     ) -> green_20220302_models.VoiceModerationResponse:
+        """
+        @summary 语音审核
+        
+        @param request: VoiceModerationRequest
+        @return: VoiceModerationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.voice_moderation_with_options(request, runtime)
 
@@ -1136,6 +1518,12 @@ class Client(OpenApiClient):
         self,
         request: green_20220302_models.VoiceModerationRequest,
     ) -> green_20220302_models.VoiceModerationResponse:
+        """
+        @summary 语音审核
+        
+        @param request: VoiceModerationRequest
+        @return: VoiceModerationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.voice_moderation_with_options_async(request, runtime)
 
@@ -1144,6 +1532,13 @@ class Client(OpenApiClient):
         request: green_20220302_models.VoiceModerationCancelRequest,
         runtime: util_models.RuntimeOptions,
     ) -> green_20220302_models.VoiceModerationCancelResponse:
+        """
+        @summary 取消检测
+        
+        @param request: VoiceModerationCancelRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VoiceModerationCancelResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.service):
@@ -1174,6 +1569,13 @@ class Client(OpenApiClient):
         request: green_20220302_models.VoiceModerationCancelRequest,
         runtime: util_models.RuntimeOptions,
     ) -> green_20220302_models.VoiceModerationCancelResponse:
+        """
+        @summary 取消检测
+        
+        @param request: VoiceModerationCancelRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VoiceModerationCancelResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.service):
@@ -1203,6 +1605,12 @@ class Client(OpenApiClient):
         self,
         request: green_20220302_models.VoiceModerationCancelRequest,
     ) -> green_20220302_models.VoiceModerationCancelResponse:
+        """
+        @summary 取消检测
+        
+        @param request: VoiceModerationCancelRequest
+        @return: VoiceModerationCancelResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.voice_moderation_cancel_with_options(request, runtime)
 
@@ -1210,6 +1618,12 @@ class Client(OpenApiClient):
         self,
         request: green_20220302_models.VoiceModerationCancelRequest,
     ) -> green_20220302_models.VoiceModerationCancelResponse:
+        """
+        @summary 取消检测
+        
+        @param request: VoiceModerationCancelRequest
+        @return: VoiceModerationCancelResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.voice_moderation_cancel_with_options_async(request, runtime)
 
@@ -1218,6 +1632,13 @@ class Client(OpenApiClient):
         request: green_20220302_models.VoiceModerationResultRequest,
         runtime: util_models.RuntimeOptions,
     ) -> green_20220302_models.VoiceModerationResultResponse:
+        """
+        @summary 语音检测结果获取接口
+        
+        @param request: VoiceModerationResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VoiceModerationResultResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.service):
@@ -1248,6 +1669,13 @@ class Client(OpenApiClient):
         request: green_20220302_models.VoiceModerationResultRequest,
         runtime: util_models.RuntimeOptions,
     ) -> green_20220302_models.VoiceModerationResultResponse:
+        """
+        @summary 语音检测结果获取接口
+        
+        @param request: VoiceModerationResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VoiceModerationResultResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.service):
@@ -1277,6 +1705,12 @@ class Client(OpenApiClient):
         self,
         request: green_20220302_models.VoiceModerationResultRequest,
     ) -> green_20220302_models.VoiceModerationResultResponse:
+        """
+        @summary 语音检测结果获取接口
+        
+        @param request: VoiceModerationResultRequest
+        @return: VoiceModerationResultResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.voice_moderation_result_with_options(request, runtime)
 
@@ -1284,5 +1718,11 @@ class Client(OpenApiClient):
         self,
         request: green_20220302_models.VoiceModerationResultRequest,
     ) -> green_20220302_models.VoiceModerationResultResponse:
+        """
+        @summary 语音检测结果获取接口
+        
+        @param request: VoiceModerationResultRequest
+        @return: VoiceModerationResultResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.voice_moderation_result_with_options_async(request, runtime)
