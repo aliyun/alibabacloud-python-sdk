@@ -261,6 +261,7 @@ class Spec(TeaModel):
         self.head = head
         self.input_channel = input_channel
         self.loss = loss
+        # This parameter is required.
         self.name = name
         self.neck = neck
         self.num_landmarks = num_landmarks
@@ -335,7 +336,9 @@ class ModelSpecification(TeaModel):
         meta_data: MetaData = None,
         spec: Spec = None,
     ):
+        # This parameter is required.
         self.meta_data = meta_data
+        # This parameter is required.
         self.spec = spec
 
     def validate(self):
@@ -454,7 +457,9 @@ class Hyperparameters(TeaModel):
         self.backup_interval = backup_interval
         self.batch_size = batch_size
         self.data_loader_workers = data_loader_workers
+        # This parameter is required.
         self.evaluator = evaluator
+        # This parameter is required.
         self.input_size = input_size
         self.max_epoch = max_epoch
         self.optimization = optimization
@@ -579,7 +584,9 @@ class Runtime(TeaModel):
         hyperparameters: Hyperparameters = None,
         resource: Resource = None,
     ):
+        # This parameter is required.
         self.hyperparameters = hyperparameters
+        # This parameter is required.
         self.resource = resource
 
     def validate(self):
@@ -625,10 +632,15 @@ class TrainingSpecification(TeaModel):
         validation_split: float = None,
     ):
         self.dataset_name = dataset_name
+        # This parameter is required.
         self.endpoint = endpoint
+        # This parameter is required.
         self.model_specification = model_specification
+        # This parameter is required.
         self.runtime = runtime
+        # This parameter is required.
         self.source_uri = source_uri
+        # This parameter is required.
         self.target_uri = target_uri
         self.transforms = transforms
         self.validation_source_uri = validation_source_uri
@@ -859,8 +871,11 @@ class AssumeRoleChainNode(TeaModel):
         role: str = None,
         type: str = None,
     ):
+        # This parameter is required.
         self.owner_id = owner_id
+        # This parameter is required.
         self.role = role
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -1060,18 +1075,18 @@ class Binding(TeaModel):
         self,
         create_time: str = None,
         dataset_name: str = None,
-        detail: str = None,
         phase: str = None,
         project_name: str = None,
+        reason: str = None,
         state: str = None,
         uri: str = None,
         update_time: str = None,
     ):
         self.create_time = create_time
         self.dataset_name = dataset_name
-        self.detail = detail
         self.phase = phase
         self.project_name = project_name
+        self.reason = reason
         self.state = state
         self.uri = uri
         self.update_time = update_time
@@ -1089,12 +1104,12 @@ class Binding(TeaModel):
             result['CreateTime'] = self.create_time
         if self.dataset_name is not None:
             result['DatasetName'] = self.dataset_name
-        if self.detail is not None:
-            result['Detail'] = self.detail
         if self.phase is not None:
             result['Phase'] = self.phase
         if self.project_name is not None:
             result['ProjectName'] = self.project_name
+        if self.reason is not None:
+            result['Reason'] = self.reason
         if self.state is not None:
             result['State'] = self.state
         if self.uri is not None:
@@ -1109,12 +1124,12 @@ class Binding(TeaModel):
             self.create_time = m.get('CreateTime')
         if m.get('DatasetName') is not None:
             self.dataset_name = m.get('DatasetName')
-        if m.get('Detail') is not None:
-            self.detail = m.get('Detail')
         if m.get('Phase') is not None:
             self.phase = m.get('Phase')
         if m.get('ProjectName') is not None:
             self.project_name = m.get('ProjectName')
+        if m.get('Reason') is not None:
+            self.reason = m.get('Reason')
         if m.get('State') is not None:
             self.state = m.get('State')
         if m.get('URI') is not None:
@@ -1879,6 +1894,7 @@ class InputOSS(TeaModel):
         match_expressions: List[str] = None,
         prefix: str = None,
     ):
+        # This parameter is required.
         self.bucket = bucket
         self.match_expressions = match_expressions
         self.prefix = prefix
@@ -3839,31 +3855,55 @@ class InputFileFigures(TeaModel):
 class InputFile(TeaModel):
     def __init__(
         self,
+        addresses: List[Address] = None,
+        album: str = None,
+        album_artist: str = None,
+        artist: str = None,
+        composer: str = None,
         content_type: str = None,
         custom_id: str = None,
         custom_labels: Dict[str, Any] = None,
         figures: List[InputFileFigures] = None,
         file_hash: str = None,
+        labels: List[Label] = None,
         lat_long: str = None,
         media_type: str = None,
         ossuri: str = None,
+        performer: str = None,
         produce_time: str = None,
+        title: str = None,
         uri: str = None,
     ):
+        self.addresses = addresses
+        self.album = album
+        self.album_artist = album_artist
+        self.artist = artist
+        self.composer = composer
         self.content_type = content_type
         self.custom_id = custom_id
         self.custom_labels = custom_labels
         self.figures = figures
         self.file_hash = file_hash
+        self.labels = labels
         self.lat_long = lat_long
         self.media_type = media_type
         self.ossuri = ossuri
+        self.performer = performer
         self.produce_time = produce_time
+        self.title = title
         self.uri = uri
 
     def validate(self):
+        if self.addresses:
+            for k in self.addresses:
+                if k:
+                    k.validate()
         if self.figures:
             for k in self.figures:
+                if k:
+                    k.validate()
+        if self.labels:
+            for k in self.labels:
                 if k:
                     k.validate()
 
@@ -3873,6 +3913,18 @@ class InputFile(TeaModel):
             return _map
 
         result = dict()
+        result['Addresses'] = []
+        if self.addresses is not None:
+            for k in self.addresses:
+                result['Addresses'].append(k.to_map() if k else None)
+        if self.album is not None:
+            result['Album'] = self.album
+        if self.album_artist is not None:
+            result['AlbumArtist'] = self.album_artist
+        if self.artist is not None:
+            result['Artist'] = self.artist
+        if self.composer is not None:
+            result['Composer'] = self.composer
         if self.content_type is not None:
             result['ContentType'] = self.content_type
         if self.custom_id is not None:
@@ -3885,20 +3937,41 @@ class InputFile(TeaModel):
                 result['Figures'].append(k.to_map() if k else None)
         if self.file_hash is not None:
             result['FileHash'] = self.file_hash
+        result['Labels'] = []
+        if self.labels is not None:
+            for k in self.labels:
+                result['Labels'].append(k.to_map() if k else None)
         if self.lat_long is not None:
             result['LatLong'] = self.lat_long
         if self.media_type is not None:
             result['MediaType'] = self.media_type
         if self.ossuri is not None:
             result['OSSURI'] = self.ossuri
+        if self.performer is not None:
+            result['Performer'] = self.performer
         if self.produce_time is not None:
             result['ProduceTime'] = self.produce_time
+        if self.title is not None:
+            result['Title'] = self.title
         if self.uri is not None:
             result['URI'] = self.uri
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.addresses = []
+        if m.get('Addresses') is not None:
+            for k in m.get('Addresses'):
+                temp_model = Address()
+                self.addresses.append(temp_model.from_map(k))
+        if m.get('Album') is not None:
+            self.album = m.get('Album')
+        if m.get('AlbumArtist') is not None:
+            self.album_artist = m.get('AlbumArtist')
+        if m.get('Artist') is not None:
+            self.artist = m.get('Artist')
+        if m.get('Composer') is not None:
+            self.composer = m.get('Composer')
         if m.get('ContentType') is not None:
             self.content_type = m.get('ContentType')
         if m.get('CustomId') is not None:
@@ -3912,14 +3985,23 @@ class InputFile(TeaModel):
                 self.figures.append(temp_model.from_map(k))
         if m.get('FileHash') is not None:
             self.file_hash = m.get('FileHash')
+        self.labels = []
+        if m.get('Labels') is not None:
+            for k in m.get('Labels'):
+                temp_model = Label()
+                self.labels.append(temp_model.from_map(k))
         if m.get('LatLong') is not None:
             self.lat_long = m.get('LatLong')
         if m.get('MediaType') is not None:
             self.media_type = m.get('MediaType')
         if m.get('OSSURI') is not None:
             self.ossuri = m.get('OSSURI')
+        if m.get('Performer') is not None:
+            self.performer = m.get('Performer')
         if m.get('ProduceTime') is not None:
             self.produce_time = m.get('ProduceTime')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
         if m.get('URI') is not None:
             self.uri = m.get('URI')
         return self
@@ -4086,6 +4168,99 @@ class LocationDateCluster(TeaModel):
         return self
 
 
+class Message(TeaModel):
+    def __init__(
+        self,
+        assistant_type: str = None,
+        content: str = None,
+        create_time: str = None,
+        dataset_name: str = None,
+        language: str = None,
+        regenerate: bool = None,
+        reply: str = None,
+        score: float = None,
+        source_uri: str = None,
+        suggestion: str = None,
+        tone: str = None,
+        topic: str = None,
+    ):
+        self.assistant_type = assistant_type
+        self.content = content
+        self.create_time = create_time
+        self.dataset_name = dataset_name
+        self.language = language
+        self.regenerate = regenerate
+        self.reply = reply
+        self.score = score
+        self.source_uri = source_uri
+        self.suggestion = suggestion
+        self.tone = tone
+        self.topic = topic
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.assistant_type is not None:
+            result['AssistantType'] = self.assistant_type
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.dataset_name is not None:
+            result['DatasetName'] = self.dataset_name
+        if self.language is not None:
+            result['Language'] = self.language
+        if self.regenerate is not None:
+            result['Regenerate'] = self.regenerate
+        if self.reply is not None:
+            result['Reply'] = self.reply
+        if self.score is not None:
+            result['Score'] = self.score
+        if self.source_uri is not None:
+            result['SourceURI'] = self.source_uri
+        if self.suggestion is not None:
+            result['Suggestion'] = self.suggestion
+        if self.tone is not None:
+            result['Tone'] = self.tone
+        if self.topic is not None:
+            result['Topic'] = self.topic
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AssistantType') is not None:
+            self.assistant_type = m.get('AssistantType')
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('DatasetName') is not None:
+            self.dataset_name = m.get('DatasetName')
+        if m.get('Language') is not None:
+            self.language = m.get('Language')
+        if m.get('Regenerate') is not None:
+            self.regenerate = m.get('Regenerate')
+        if m.get('Reply') is not None:
+            self.reply = m.get('Reply')
+        if m.get('Score') is not None:
+            self.score = m.get('Score')
+        if m.get('SourceURI') is not None:
+            self.source_uri = m.get('SourceURI')
+        if m.get('Suggestion') is not None:
+            self.suggestion = m.get('Suggestion')
+        if m.get('Tone') is not None:
+            self.tone = m.get('Tone')
+        if m.get('Topic') is not None:
+            self.topic = m.get('Topic')
+        return self
+
+
 class Notification(TeaModel):
     def __init__(
         self,
@@ -4181,7 +4356,9 @@ class PresetReference(TeaModel):
         name: str = None,
         type: str = None,
     ):
+        # This parameter is required.
         self.name = name
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -4208,6 +4385,39 @@ class PresetReference(TeaModel):
         return self
 
 
+class ProjectTags(TeaModel):
+    def __init__(
+        self,
+        tag_key: str = None,
+        tag_value: str = None,
+    ):
+        self.tag_key = tag_key
+        self.tag_value = tag_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+        if self.tag_value is not None:
+            result['TagValue'] = self.tag_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+        if m.get('TagValue') is not None:
+            self.tag_value = m.get('TagValue')
+        return self
+
+
 class Project(TeaModel):
     def __init__(
         self,
@@ -4225,6 +4435,7 @@ class Project(TeaModel):
         project_name: str = None,
         project_queries_per_second: int = None,
         service_role: str = None,
+        tags: List[ProjectTags] = None,
         template_id: str = None,
         total_file_size: int = None,
         update_time: str = None,
@@ -4243,12 +4454,16 @@ class Project(TeaModel):
         self.project_name = project_name
         self.project_queries_per_second = project_queries_per_second
         self.service_role = service_role
+        self.tags = tags
         self.template_id = template_id
         self.total_file_size = total_file_size
         self.update_time = update_time
 
     def validate(self):
-        pass
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -4284,6 +4499,10 @@ class Project(TeaModel):
             result['ProjectQueriesPerSecond'] = self.project_queries_per_second
         if self.service_role is not None:
             result['ServiceRole'] = self.service_role
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         if self.template_id is not None:
             result['TemplateId'] = self.template_id
         if self.total_file_size is not None:
@@ -4322,6 +4541,11 @@ class Project(TeaModel):
             self.project_queries_per_second = m.get('ProjectQueriesPerSecond')
         if m.get('ServiceRole') is not None:
             self.service_role = m.get('ServiceRole')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = ProjectTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('TemplateId') is not None:
             self.template_id = m.get('TemplateId')
         if m.get('TotalFileSize') is not None:
@@ -4852,6 +5076,7 @@ class TargetImageAnimations(TeaModel):
         uri: str = None,
         width: float = None,
     ):
+        # This parameter is required.
         self.format = format
         self.frame_rate = frame_rate
         self.height = height
@@ -4859,6 +5084,7 @@ class TargetImageAnimations(TeaModel):
         self.number = number
         self.scale_type = scale_type
         self.start_time = start_time
+        # This parameter is required.
         self.uri = uri
         self.width = width
 
@@ -4926,12 +5152,14 @@ class TargetImageSnapshots(TeaModel):
         uri: str = None,
         width: float = None,
     ):
+        # This parameter is required.
         self.format = format
         self.height = height
         self.interval = interval
         self.number = number
         self.scale_type = scale_type
         self.start_time = start_time
+        # This parameter is required.
         self.uri = uri
         self.width = width
 
@@ -4999,6 +5227,7 @@ class TargetImageSprites(TeaModel):
         tile_width: int = None,
         uri: str = None,
     ):
+        # This parameter is required.
         self.format = format
         self.interval = interval
         self.margin = margin
@@ -5010,6 +5239,7 @@ class TargetImageSprites(TeaModel):
         self.start_time = start_time
         self.tile_height = tile_height
         self.tile_width = tile_width
+        # This parameter is required.
         self.uri = uri
 
     def validate(self):
@@ -5951,10 +6181,14 @@ class AddImageMosaicRequestTargetsBoundary(TeaModel):
         x: float = None,
         y: float = None,
     ):
+        # This parameter is required.
         self.height = height
         self.refer_pos = refer_pos
+        # This parameter is required.
         self.width = width
+        # This parameter is required.
         self.x = x
+        # This parameter is required.
         self.y = y
 
     def validate(self):
@@ -6004,10 +6238,12 @@ class AddImageMosaicRequestTargets(TeaModel):
         type: str = None,
     ):
         self.blur_radius = blur_radius
+        # This parameter is required.
         self.boundary = boundary
         self.color = color
         self.mosaic_radius = mosaic_radius
         self.sigma = sigma
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -6065,10 +6301,14 @@ class AddImageMosaicRequest(TeaModel):
     ):
         self.credential_config = credential_config
         self.image_format = image_format
+        # This parameter is required.
         self.project_name = project_name
         self.quality = quality
+        # This parameter is required.
         self.source_uri = source_uri
+        # This parameter is required.
         self.target_uri = target_uri
+        # This parameter is required.
         self.targets = targets
 
     def validate(self):
@@ -6139,10 +6379,14 @@ class AddImageMosaicShrinkRequest(TeaModel):
     ):
         self.credential_config_shrink = credential_config_shrink
         self.image_format = image_format
+        # This parameter is required.
         self.project_name = project_name
         self.quality = quality
+        # This parameter is required.
         self.source_uri = source_uri
+        # This parameter is required.
         self.target_uri = target_uri
+        # This parameter is required.
         self.targets_shrink = targets_shrink
 
     def validate(self):
@@ -6292,9 +6536,13 @@ class AddStoryFilesRequest(TeaModel):
         object_id: str = None,
         project_name: str = None,
     ):
+        # This parameter is required.
         self.dataset_name = dataset_name
+        # This parameter is required.
         self.files = files
+        # This parameter is required.
         self.object_id = object_id
+        # This parameter is required.
         self.project_name = project_name
 
     def validate(self):
@@ -6345,9 +6593,13 @@ class AddStoryFilesShrinkRequest(TeaModel):
         object_id: str = None,
         project_name: str = None,
     ):
+        # This parameter is required.
         self.dataset_name = dataset_name
+        # This parameter is required.
         self.files_shrink = files_shrink
+        # This parameter is required.
         self.object_id = object_id
+        # This parameter is required.
         self.project_name = project_name
 
     def validate(self):
@@ -6511,7 +6763,9 @@ class AttachOSSBucketRequest(TeaModel):
         project_name: str = None,
     ):
         self.description = description
+        # This parameter is required.
         self.ossbucket = ossbucket
+        # This parameter is required.
         self.project_name = project_name
 
     def validate(self):
@@ -6617,8 +6871,11 @@ class BatchDeleteFileMetaRequest(TeaModel):
         project_name: str = None,
         uris: List[str] = None,
     ):
+        # This parameter is required.
         self.dataset_name = dataset_name
+        # This parameter is required.
         self.project_name = project_name
+        # This parameter is required.
         self.uris = uris
 
     def validate(self):
@@ -6656,8 +6913,11 @@ class BatchDeleteFileMetaShrinkRequest(TeaModel):
         project_name: str = None,
         uris_shrink: str = None,
     ):
+        # This parameter is required.
         self.dataset_name = dataset_name
+        # This parameter is required.
         self.project_name = project_name
+        # This parameter is required.
         self.uris_shrink = uris_shrink
 
     def validate(self):
@@ -6763,8 +7023,11 @@ class BatchGetFigureClusterRequest(TeaModel):
         object_ids: List[str] = None,
         project_name: str = None,
     ):
+        # This parameter is required.
         self.dataset_name = dataset_name
+        # This parameter is required.
         self.object_ids = object_ids
+        # This parameter is required.
         self.project_name = project_name
 
     def validate(self):
@@ -6802,8 +7065,11 @@ class BatchGetFigureClusterShrinkRequest(TeaModel):
         object_ids_shrink: str = None,
         project_name: str = None,
     ):
+        # This parameter is required.
         self.dataset_name = dataset_name
+        # This parameter is required.
         self.object_ids_shrink = object_ids_shrink
+        # This parameter is required.
         self.project_name = project_name
 
     def validate(self):
@@ -6923,8 +7189,11 @@ class BatchGetFileMetaRequest(TeaModel):
         project_name: str = None,
         uris: List[str] = None,
     ):
+        # This parameter is required.
         self.dataset_name = dataset_name
+        # This parameter is required.
         self.project_name = project_name
+        # This parameter is required.
         self.uris = uris
 
     def validate(self):
@@ -6962,8 +7231,11 @@ class BatchGetFileMetaShrinkRequest(TeaModel):
         project_name: str = None,
         uris_shrink: str = None,
     ):
+        # This parameter is required.
         self.dataset_name = dataset_name
+        # This parameter is required.
         self.project_name = project_name
+        # This parameter is required.
         self.uris_shrink = uris_shrink
 
     def validate(self):
@@ -7083,11 +7355,16 @@ class BatchIndexFileMetaRequest(TeaModel):
         files: List[InputFile] = None,
         notification: Notification = None,
         project_name: str = None,
+        user_data: str = None,
     ):
+        # This parameter is required.
         self.dataset_name = dataset_name
+        # This parameter is required.
         self.files = files
         self.notification = notification
+        # This parameter is required.
         self.project_name = project_name
+        self.user_data = user_data
 
     def validate(self):
         if self.files:
@@ -7113,6 +7390,8 @@ class BatchIndexFileMetaRequest(TeaModel):
             result['Notification'] = self.notification.to_map()
         if self.project_name is not None:
             result['ProjectName'] = self.project_name
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
         return result
 
     def from_map(self, m: dict = None):
@@ -7129,6 +7408,8 @@ class BatchIndexFileMetaRequest(TeaModel):
             self.notification = temp_model.from_map(m['Notification'])
         if m.get('ProjectName') is not None:
             self.project_name = m.get('ProjectName')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
         return self
 
 
@@ -7139,11 +7420,16 @@ class BatchIndexFileMetaShrinkRequest(TeaModel):
         files_shrink: str = None,
         notification_shrink: str = None,
         project_name: str = None,
+        user_data: str = None,
     ):
+        # This parameter is required.
         self.dataset_name = dataset_name
+        # This parameter is required.
         self.files_shrink = files_shrink
         self.notification_shrink = notification_shrink
+        # This parameter is required.
         self.project_name = project_name
+        self.user_data = user_data
 
     def validate(self):
         pass
@@ -7162,6 +7448,8 @@ class BatchIndexFileMetaShrinkRequest(TeaModel):
             result['Notification'] = self.notification_shrink
         if self.project_name is not None:
             result['ProjectName'] = self.project_name
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
         return result
 
     def from_map(self, m: dict = None):
@@ -7174,6 +7462,8 @@ class BatchIndexFileMetaShrinkRequest(TeaModel):
             self.notification_shrink = m.get('Notification')
         if m.get('ProjectName') is not None:
             self.project_name = m.get('ProjectName')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
         return self
 
 
@@ -7258,8 +7548,11 @@ class BatchUpdateFileMetaRequest(TeaModel):
         files: List[InputFile] = None,
         project_name: str = None,
     ):
+        # This parameter is required.
         self.dataset_name = dataset_name
+        # This parameter is required.
         self.files = files
+        # This parameter is required.
         self.project_name = project_name
 
     def validate(self):
@@ -7305,8 +7598,11 @@ class BatchUpdateFileMetaShrinkRequest(TeaModel):
         files_shrink: str = None,
         project_name: str = None,
     ):
+        # This parameter is required.
         self.dataset_name = dataset_name
+        # This parameter is required.
         self.files_shrink = files_shrink
+        # This parameter is required.
         self.project_name = project_name
 
     def validate(self):
@@ -7499,6 +7795,7 @@ class CompareImageFacesRequest(TeaModel):
         source: CompareImageFacesRequestSource = None,
     ):
         self.credential_config = credential_config
+        # This parameter is required.
         self.project_name = project_name
         self.source = source
 
@@ -7543,6 +7840,7 @@ class CompareImageFacesShrinkRequest(TeaModel):
         source_shrink: str = None,
     ):
         self.credential_config_shrink = credential_config_shrink
+        # This parameter is required.
         self.project_name = project_name
         self.source_shrink = source_shrink
 
@@ -7661,6 +7959,7 @@ class CreateArchiveFileInspectionTaskRequest(TeaModel):
         self.credential_config = credential_config
         self.notification = notification
         self.password = password
+        # This parameter is required.
         self.project_name = project_name
         self.source_uri = source_uri
         self.user_data = user_data
@@ -7723,6 +8022,7 @@ class CreateArchiveFileInspectionTaskShrinkRequest(TeaModel):
         self.credential_config_shrink = credential_config_shrink
         self.notification_shrink = notification_shrink
         self.password = password
+        # This parameter is required.
         self.project_name = project_name
         self.source_uri = source_uri
         self.user_data = user_data
@@ -7855,6 +8155,7 @@ class CreateBatchRequestActions(TeaModel):
         parameters: List[str] = None,
     ):
         self.fast_fail_policy = fast_fail_policy
+        # This parameter is required.
         self.name = name
         self.parameters = parameters
 
@@ -7927,10 +8228,14 @@ class CreateBatchRequest(TeaModel):
         service_role: str = None,
         tags: Dict[str, Any] = None,
     ):
+        # This parameter is required.
         self.actions = actions
+        # This parameter is required.
         self.input = input
         self.notification = notification
+        # This parameter is required.
         self.project_name = project_name
+        # This parameter is required.
         self.service_role = service_role
         self.tags = tags
 
@@ -7998,10 +8303,14 @@ class CreateBatchShrinkRequest(TeaModel):
         service_role: str = None,
         tags_shrink: str = None,
     ):
+        # This parameter is required.
         self.actions_shrink = actions_shrink
+        # This parameter is required.
         self.input_shrink = input_shrink
         self.notification_shrink = notification_shrink
+        # This parameter is required.
         self.project_name = project_name
+        # This parameter is required.
         self.service_role = service_role
         self.tags_shrink = tags_shrink
 
@@ -8126,8 +8435,11 @@ class CreateBindingRequest(TeaModel):
         project_name: str = None,
         uri: str = None,
     ):
+        # This parameter is required.
         self.dataset_name = dataset_name
+        # This parameter is required.
         self.project_name = project_name
+        # This parameter is required.
         self.uri = uri
 
     def validate(self):
@@ -8250,16 +8562,21 @@ class CreateCompressPointCloudTaskRequest(TeaModel):
         target_uri: str = None,
         user_data: str = None,
     ):
+        # This parameter is required.
         self.compress_method = compress_method
         self.credential_config = credential_config
         self.kdtree_option = kdtree_option
         self.notification = notification
         self.octree_option = octree_option
+        # This parameter is required.
         self.point_cloud_fields = point_cloud_fields
         self.point_cloud_file_format = point_cloud_file_format
+        # This parameter is required.
         self.project_name = project_name
+        # This parameter is required.
         self.source_uri = source_uri
         self.tags = tags
+        # This parameter is required.
         self.target_uri = target_uri
         self.user_data = user_data
 
@@ -8354,16 +8671,21 @@ class CreateCompressPointCloudTaskShrinkRequest(TeaModel):
         target_uri: str = None,
         user_data: str = None,
     ):
+        # This parameter is required.
         self.compress_method = compress_method
         self.credential_config_shrink = credential_config_shrink
         self.kdtree_option_shrink = kdtree_option_shrink
         self.notification_shrink = notification_shrink
         self.octree_option_shrink = octree_option_shrink
+        # This parameter is required.
         self.point_cloud_fields_shrink = point_cloud_fields_shrink
         self.point_cloud_file_format = point_cloud_file_format
+        # This parameter is required.
         self.project_name = project_name
+        # This parameter is required.
         self.source_uri = source_uri
         self.tags_shrink = tags_shrink
+        # This parameter is required.
         self.target_uri = target_uri
         self.user_data = user_data
 
@@ -8516,6 +8838,7 @@ class CreateCustomizedStoryRequestCover(TeaModel):
         self,
         uri: str = None,
     ):
+        # This parameter is required.
         self.uri = uri
 
     def validate(self):
@@ -8543,6 +8866,7 @@ class CreateCustomizedStoryRequestFiles(TeaModel):
         self,
         uri: str = None,
     ):
+        # This parameter is required.
         self.uri = uri
 
     def validate(self):
@@ -8577,13 +8901,20 @@ class CreateCustomizedStoryRequest(TeaModel):
         story_sub_type: str = None,
         story_type: str = None,
     ):
+        # This parameter is required.
         self.cover = cover
         self.custom_labels = custom_labels
+        # This parameter is required.
         self.dataset_name = dataset_name
+        # This parameter is required.
         self.files = files
+        # This parameter is required.
         self.project_name = project_name
+        # This parameter is required.
         self.story_name = story_name
+        # This parameter is required.
         self.story_sub_type = story_sub_type
+        # This parameter is required.
         self.story_type = story_type
 
     def validate(self):
@@ -8657,13 +8988,20 @@ class CreateCustomizedStoryShrinkRequest(TeaModel):
         story_sub_type: str = None,
         story_type: str = None,
     ):
+        # This parameter is required.
         self.cover_shrink = cover_shrink
         self.custom_labels_shrink = custom_labels_shrink
+        # This parameter is required.
         self.dataset_name = dataset_name
+        # This parameter is required.
         self.files_shrink = files_shrink
+        # This parameter is required.
         self.project_name = project_name
+        # This parameter is required.
         self.story_name = story_name
+        # This parameter is required.
         self.story_sub_type = story_sub_type
+        # This parameter is required.
         self.story_type = story_type
 
     def validate(self):
@@ -8806,8 +9144,10 @@ class CreateDatasetRequest(TeaModel):
         self.dataset_max_file_count = dataset_max_file_count
         self.dataset_max_relation_count = dataset_max_relation_count
         self.dataset_max_total_file_size = dataset_max_total_file_size
+        # This parameter is required.
         self.dataset_name = dataset_name
         self.description = description
+        # This parameter is required.
         self.project_name = project_name
         self.template_id = template_id
 
@@ -8939,6 +9279,242 @@ class CreateDatasetResponse(TeaModel):
         return self
 
 
+class CreateDecodeBlindWatermarkTaskRequest(TeaModel):
+    def __init__(
+        self,
+        image_quality: int = None,
+        model: str = None,
+        notification: Notification = None,
+        original_image_uri: str = None,
+        project_name: str = None,
+        source_uri: str = None,
+        strength_level: str = None,
+        target_uri: str = None,
+        watermark_type: str = None,
+    ):
+        self.image_quality = image_quality
+        self.model = model
+        self.notification = notification
+        self.original_image_uri = original_image_uri
+        # This parameter is required.
+        self.project_name = project_name
+        # This parameter is required.
+        self.source_uri = source_uri
+        self.strength_level = strength_level
+        self.target_uri = target_uri
+        self.watermark_type = watermark_type
+
+    def validate(self):
+        if self.notification:
+            self.notification.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_quality is not None:
+            result['ImageQuality'] = self.image_quality
+        if self.model is not None:
+            result['Model'] = self.model
+        if self.notification is not None:
+            result['Notification'] = self.notification.to_map()
+        if self.original_image_uri is not None:
+            result['OriginalImageURI'] = self.original_image_uri
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.source_uri is not None:
+            result['SourceURI'] = self.source_uri
+        if self.strength_level is not None:
+            result['StrengthLevel'] = self.strength_level
+        if self.target_uri is not None:
+            result['TargetURI'] = self.target_uri
+        if self.watermark_type is not None:
+            result['WatermarkType'] = self.watermark_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageQuality') is not None:
+            self.image_quality = m.get('ImageQuality')
+        if m.get('Model') is not None:
+            self.model = m.get('Model')
+        if m.get('Notification') is not None:
+            temp_model = Notification()
+            self.notification = temp_model.from_map(m['Notification'])
+        if m.get('OriginalImageURI') is not None:
+            self.original_image_uri = m.get('OriginalImageURI')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('SourceURI') is not None:
+            self.source_uri = m.get('SourceURI')
+        if m.get('StrengthLevel') is not None:
+            self.strength_level = m.get('StrengthLevel')
+        if m.get('TargetURI') is not None:
+            self.target_uri = m.get('TargetURI')
+        if m.get('WatermarkType') is not None:
+            self.watermark_type = m.get('WatermarkType')
+        return self
+
+
+class CreateDecodeBlindWatermarkTaskShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        image_quality: int = None,
+        model: str = None,
+        notification_shrink: str = None,
+        original_image_uri: str = None,
+        project_name: str = None,
+        source_uri: str = None,
+        strength_level: str = None,
+        target_uri: str = None,
+        watermark_type: str = None,
+    ):
+        self.image_quality = image_quality
+        self.model = model
+        self.notification_shrink = notification_shrink
+        self.original_image_uri = original_image_uri
+        # This parameter is required.
+        self.project_name = project_name
+        # This parameter is required.
+        self.source_uri = source_uri
+        self.strength_level = strength_level
+        self.target_uri = target_uri
+        self.watermark_type = watermark_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_quality is not None:
+            result['ImageQuality'] = self.image_quality
+        if self.model is not None:
+            result['Model'] = self.model
+        if self.notification_shrink is not None:
+            result['Notification'] = self.notification_shrink
+        if self.original_image_uri is not None:
+            result['OriginalImageURI'] = self.original_image_uri
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.source_uri is not None:
+            result['SourceURI'] = self.source_uri
+        if self.strength_level is not None:
+            result['StrengthLevel'] = self.strength_level
+        if self.target_uri is not None:
+            result['TargetURI'] = self.target_uri
+        if self.watermark_type is not None:
+            result['WatermarkType'] = self.watermark_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageQuality') is not None:
+            self.image_quality = m.get('ImageQuality')
+        if m.get('Model') is not None:
+            self.model = m.get('Model')
+        if m.get('Notification') is not None:
+            self.notification_shrink = m.get('Notification')
+        if m.get('OriginalImageURI') is not None:
+            self.original_image_uri = m.get('OriginalImageURI')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('SourceURI') is not None:
+            self.source_uri = m.get('SourceURI')
+        if m.get('StrengthLevel') is not None:
+            self.strength_level = m.get('StrengthLevel')
+        if m.get('TargetURI') is not None:
+            self.target_uri = m.get('TargetURI')
+        if m.get('WatermarkType') is not None:
+            self.watermark_type = m.get('WatermarkType')
+        return self
+
+
+class CreateDecodeBlindWatermarkTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        event_id: str = None,
+        request_id: str = None,
+        task_id: str = None,
+    ):
+        self.event_id = event_id
+        self.request_id = request_id
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.event_id is not None:
+            result['EventId'] = self.event_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EventId') is not None:
+            self.event_id = m.get('EventId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class CreateDecodeBlindWatermarkTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateDecodeBlindWatermarkTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateDecodeBlindWatermarkTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateFacesSearchingTaskRequestSources(TeaModel):
     def __init__(
         self,
@@ -8976,9 +9552,11 @@ class CreateFacesSearchingTaskRequest(TeaModel):
         sources: List[CreateFacesSearchingTaskRequestSources] = None,
         user_data: str = None,
     ):
+        # This parameter is required.
         self.dataset_name = dataset_name
         self.max_result = max_result
         self.notification = notification
+        # This parameter is required.
         self.project_name = project_name
         self.sources = sources
         self.user_data = user_data
@@ -9044,9 +9622,11 @@ class CreateFacesSearchingTaskShrinkRequest(TeaModel):
         sources_shrink: str = None,
         user_data: str = None,
     ):
+        # This parameter is required.
         self.dataset_name = dataset_name
         self.max_result = max_result
         self.notification_shrink = notification_shrink
+        # This parameter is required.
         self.project_name = project_name
         self.sources_shrink = sources_shrink
         self.user_data = user_data
@@ -9180,8 +9760,10 @@ class CreateFigureClusteringTaskRequest(TeaModel):
         tags: Dict[str, Any] = None,
         user_data: str = None,
     ):
+        # This parameter is required.
         self.dataset_name = dataset_name
         self.notification = notification
+        # This parameter is required.
         self.project_name = project_name
         self.tags = tags
         self.user_data = user_data
@@ -9233,8 +9815,10 @@ class CreateFigureClusteringTaskShrinkRequest(TeaModel):
         tags_shrink: str = None,
         user_data: str = None,
     ):
+        # This parameter is required.
         self.dataset_name = dataset_name
         self.notification_shrink = notification_shrink
+        # This parameter is required.
         self.project_name = project_name
         self.tags_shrink = tags_shrink
         self.user_data = user_data
@@ -9367,12 +9951,15 @@ class CreateFigureClustersMergingTaskRequest(TeaModel):
         to: str = None,
         user_data: str = None,
     ):
+        # This parameter is required.
         self.dataset_name = dataset_name
         self.from_ = from_
         self.froms = froms
         self.notification = notification
+        # This parameter is required.
         self.project_name = project_name
         self.tags = tags
+        # This parameter is required.
         self.to = to
         self.user_data = user_data
 
@@ -9438,12 +10025,15 @@ class CreateFigureClustersMergingTaskShrinkRequest(TeaModel):
         to: str = None,
         user_data: str = None,
     ):
+        # This parameter is required.
         self.dataset_name = dataset_name
         self.from_ = from_
         self.froms_shrink = froms_shrink
         self.notification_shrink = notification_shrink
+        # This parameter is required.
         self.project_name = project_name
         self.tags_shrink = tags_shrink
+        # This parameter is required.
         self.to = to
         self.user_data = user_data
 
@@ -9629,9 +10219,11 @@ class CreateFileCompressionTaskRequest(TeaModel):
         self.compressed_format = compressed_format
         self.credential_config = credential_config
         self.notification = notification
+        # This parameter is required.
         self.project_name = project_name
         self.source_manifest_uri = source_manifest_uri
         self.sources = sources
+        # This parameter is required.
         self.target_uri = target_uri
         self.user_data = user_data
 
@@ -9712,9 +10304,11 @@ class CreateFileCompressionTaskShrinkRequest(TeaModel):
         self.compressed_format = compressed_format
         self.credential_config_shrink = credential_config_shrink
         self.notification_shrink = notification_shrink
+        # This parameter is required.
         self.project_name = project_name
         self.source_manifest_uri = source_manifest_uri
         self.sources_shrink = sources_shrink
+        # This parameter is required.
         self.target_uri = target_uri
         self.user_data = user_data
 
@@ -9861,8 +10455,10 @@ class CreateFileUncompressionTaskRequest(TeaModel):
         self.credential_config = credential_config
         self.notification = notification
         self.password = password
+        # This parameter is required.
         self.project_name = project_name
         self.selected_files = selected_files
+        # This parameter is required.
         self.source_uri = source_uri
         self.target_uri = target_uri
         self.user_data = user_data
@@ -9935,8 +10531,10 @@ class CreateFileUncompressionTaskShrinkRequest(TeaModel):
         self.credential_config_shrink = credential_config_shrink
         self.notification_shrink = notification_shrink
         self.password = password
+        # This parameter is required.
         self.project_name = project_name
         self.selected_files_shrink = selected_files_shrink
+        # This parameter is required.
         self.source_uri = source_uri
         self.target_uri = target_uri
         self.user_data = user_data
@@ -10087,8 +10685,10 @@ class CreateImageModerationTaskRequest(TeaModel):
         self.max_frames = max_frames
         # 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
         self.notification = notification
+        # This parameter is required.
         self.project_name = project_name
         self.scenes = scenes
+        # This parameter is required.
         self.source_uri = source_uri
         self.tags = tags
         self.user_data = user_data
@@ -10168,8 +10768,10 @@ class CreateImageModerationTaskShrinkRequest(TeaModel):
         self.max_frames = max_frames
         # 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
         self.notification_shrink = notification_shrink
+        # This parameter is required.
         self.project_name = project_name
         self.scenes_shrink = scenes_shrink
+        # This parameter is required.
         self.source_uri = source_uri
         self.tags_shrink = tags_shrink
         self.user_data = user_data
@@ -10313,6 +10915,7 @@ class CreateImageSplicingTaskRequestSources(TeaModel):
         uri: str = None,
     ):
         self.rotate = rotate
+        # This parameter is required.
         self.uri = uri
 
     def validate(self):
@@ -10366,11 +10969,14 @@ class CreateImageSplicingTaskRequest(TeaModel):
         self.margin = margin
         self.notification = notification
         self.padding = padding
+        # This parameter is required.
         self.project_name = project_name
         self.quality = quality
         self.scale_type = scale_type
+        # This parameter is required.
         self.sources = sources
         self.tags = tags
+        # This parameter is required.
         self.target_uri = target_uri
         self.user_data = user_data
 
@@ -10491,11 +11097,14 @@ class CreateImageSplicingTaskShrinkRequest(TeaModel):
         self.margin = margin
         self.notification_shrink = notification_shrink
         self.padding = padding
+        # This parameter is required.
         self.project_name = project_name
         self.quality = quality
         self.scale_type = scale_type
+        # This parameter is required.
         self.sources_shrink = sources_shrink
         self.tags_shrink = tags_shrink
+        # This parameter is required.
         self.target_uri = target_uri
         self.user_data = user_data
 
@@ -10662,6 +11271,7 @@ class CreateImageToPDFTaskRequestSources(TeaModel):
         uri: str = None,
     ):
         self.rotate = rotate
+        # This parameter is required.
         self.uri = uri
 
     def validate(self):
@@ -10701,9 +11311,12 @@ class CreateImageToPDFTaskRequest(TeaModel):
     ):
         self.credential_config = credential_config
         self.notification = notification
+        # This parameter is required.
         self.project_name = project_name
+        # This parameter is required.
         self.sources = sources
         self.tags = tags
+        # This parameter is required.
         self.target_uri = target_uri
         self.user_data = user_data
 
@@ -10778,9 +11391,12 @@ class CreateImageToPDFTaskShrinkRequest(TeaModel):
     ):
         self.credential_config_shrink = credential_config_shrink
         self.notification_shrink = notification_shrink
+        # This parameter is required.
         self.project_name = project_name
+        # This parameter is required.
         self.sources_shrink = sources_shrink
         self.tags_shrink = tags_shrink
+        # This parameter is required.
         self.target_uri = target_uri
         self.user_data = user_data
 
@@ -10915,8 +11531,11 @@ class CreateLocationDateClusteringTaskRequestDateOptions(TeaModel):
         max_days: int = None,
         min_days: int = None,
     ):
+        # This parameter is required.
         self.gap_days = gap_days
+        # This parameter is required.
         self.max_days = max_days
+        # This parameter is required.
         self.min_days = min_days
 
     def validate(self):
@@ -10952,6 +11571,7 @@ class CreateLocationDateClusteringTaskRequestLocationOptions(TeaModel):
         self,
         location_date_cluster_levels: List[str] = None,
     ):
+        # This parameter is required.
         self.location_date_cluster_levels = location_date_cluster_levels
 
     def validate(self):
@@ -10985,10 +11605,14 @@ class CreateLocationDateClusteringTaskRequest(TeaModel):
         tags: Dict[str, Any] = None,
         user_data: str = None,
     ):
+        # This parameter is required.
         self.dataset_name = dataset_name
+        # This parameter is required.
         self.date_options = date_options
+        # This parameter is required.
         self.location_options = location_options
         self.notification = notification
+        # This parameter is required.
         self.project_name = project_name
         self.tags = tags
         self.user_data = user_data
@@ -11056,10 +11680,14 @@ class CreateLocationDateClusteringTaskShrinkRequest(TeaModel):
         tags_shrink: str = None,
         user_data: str = None,
     ):
+        # This parameter is required.
         self.dataset_name = dataset_name
+        # This parameter is required.
         self.date_options_shrink = date_options_shrink
+        # This parameter is required.
         self.location_options_shrink = location_options_shrink
         self.notification_shrink = notification_shrink
+        # This parameter is required.
         self.project_name = project_name
         self.tags_shrink = tags_shrink
         self.user_data = user_data
@@ -11424,9 +12052,12 @@ class CreateMediaConvertTaskRequest(TeaModel):
         self.credential_config = credential_config
         # 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
         self.notification = notification
+        # This parameter is required.
         self.project_name = project_name
+        # This parameter is required.
         self.sources = sources
         self.tags = tags
+        # This parameter is required.
         self.targets = targets
         self.user_data = user_data
 
@@ -11517,9 +12148,12 @@ class CreateMediaConvertTaskShrinkRequest(TeaModel):
         self.credential_config_shrink = credential_config_shrink
         # 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
         self.notification_shrink = notification_shrink
+        # This parameter is required.
         self.project_name = project_name
+        # This parameter is required.
         self.sources_shrink = sources_shrink
         self.tags_shrink = tags_shrink
+        # This parameter is required.
         self.targets_shrink = targets_shrink
         self.user_data = user_data
 
@@ -11702,6 +12336,7 @@ class CreateOfficeConversionTaskRequest(TeaModel):
         self.paper_horizontal = paper_horizontal
         self.paper_size = paper_size
         self.password = password
+        # This parameter is required.
         self.project_name = project_name
         self.quality = quality
         self.scale_percentage = scale_percentage
@@ -11709,9 +12344,11 @@ class CreateOfficeConversionTaskRequest(TeaModel):
         self.sheet_index = sheet_index
         self.show_comments = show_comments
         self.source_type = source_type
+        # This parameter is required.
         self.source_uri = source_uri
         self.start_page = start_page
         self.tags = tags
+        # This parameter is required.
         self.target_type = target_type
         self.target_uri = target_uri
         self.target_uriprefix = target_uriprefix
@@ -11917,6 +12554,7 @@ class CreateOfficeConversionTaskShrinkRequest(TeaModel):
         self.paper_horizontal = paper_horizontal
         self.paper_size = paper_size
         self.password = password
+        # This parameter is required.
         self.project_name = project_name
         self.quality = quality
         self.scale_percentage = scale_percentage
@@ -11924,9 +12562,11 @@ class CreateOfficeConversionTaskShrinkRequest(TeaModel):
         self.sheet_index = sheet_index
         self.show_comments = show_comments
         self.source_type = source_type
+        # This parameter is required.
         self.source_uri = source_uri
         self.start_page = start_page
         self.tags_shrink = tags_shrink
+        # This parameter is required.
         self.target_type = target_type
         self.target_uri = target_uri
         self.target_uriprefix = target_uriprefix
@@ -12174,6 +12814,7 @@ class CreateProjectRequest(TeaModel):
         self.dataset_max_total_file_size = dataset_max_total_file_size
         self.description = description
         self.project_max_dataset_count = project_max_dataset_count
+        # This parameter is required.
         self.project_name = project_name
         self.service_role = service_role
         self.template_id = template_id
@@ -12319,8 +12960,10 @@ class CreateSimilarImageClusteringTaskRequest(TeaModel):
         tags: Dict[str, Any] = None,
         user_data: str = None,
     ):
+        # This parameter is required.
         self.dataset_name = dataset_name
         self.notification = notification
+        # This parameter is required.
         self.project_name = project_name
         self.tags = tags
         self.user_data = user_data
@@ -12372,8 +13015,10 @@ class CreateSimilarImageClusteringTaskShrinkRequest(TeaModel):
         tags_shrink: str = None,
         user_data: str = None,
     ):
+        # This parameter is required.
         self.dataset_name = dataset_name
         self.notification_shrink = notification_shrink
+        # This parameter is required.
         self.project_name = project_name
         self.tags_shrink = tags_shrink
         self.user_data = user_data
@@ -12518,6 +13163,7 @@ class CreateStoryRequest(TeaModel):
         self.address = address
         self.custom_id = custom_id
         self.custom_labels = custom_labels
+        # This parameter is required.
         self.dataset_name = dataset_name
         self.max_file_count = max_file_count
         self.min_file_count = min_file_count
@@ -12525,11 +13171,13 @@ class CreateStoryRequest(TeaModel):
         self.notification = notification
         self.notify_topic_name = notify_topic_name
         self.object_id = object_id
+        # This parameter is required.
         self.project_name = project_name
         self.story_end_time = story_end_time
         self.story_name = story_name
         self.story_start_time = story_start_time
         self.story_sub_type = story_sub_type
+        # This parameter is required.
         self.story_type = story_type
         self.tags = tags
         self.user_data = user_data
@@ -12647,6 +13295,7 @@ class CreateStoryShrinkRequest(TeaModel):
         self.address_shrink = address_shrink
         self.custom_id = custom_id
         self.custom_labels_shrink = custom_labels_shrink
+        # This parameter is required.
         self.dataset_name = dataset_name
         self.max_file_count = max_file_count
         self.min_file_count = min_file_count
@@ -12654,11 +13303,13 @@ class CreateStoryShrinkRequest(TeaModel):
         self.notification_shrink = notification_shrink
         self.notify_topic_name = notify_topic_name
         self.object_id = object_id
+        # This parameter is required.
         self.project_name = project_name
         self.story_end_time = story_end_time
         self.story_name = story_name
         self.story_start_time = story_start_time
         self.story_sub_type = story_sub_type
+        # This parameter is required.
         self.story_type = story_type
         self.tags_shrink = tags_shrink
         self.user_data = user_data
@@ -12835,6 +13486,7 @@ class CreateTriggerRequestActions(TeaModel):
         parameters: List[str] = None,
     ):
         self.fast_fail_policy = fast_fail_policy
+        # This parameter is required.
         self.name = name
         self.parameters = parameters
 
@@ -12907,10 +13559,14 @@ class CreateTriggerRequest(TeaModel):
         service_role: str = None,
         tags: Dict[str, Any] = None,
     ):
+        # This parameter is required.
         self.actions = actions
+        # This parameter is required.
         self.input = input
         self.notification = notification
+        # This parameter is required.
         self.project_name = project_name
+        # This parameter is required.
         self.service_role = service_role
         self.tags = tags
 
@@ -12978,10 +13634,14 @@ class CreateTriggerShrinkRequest(TeaModel):
         service_role: str = None,
         tags_shrink: str = None,
     ):
+        # This parameter is required.
         self.actions_shrink = actions_shrink
+        # This parameter is required.
         self.input_shrink = input_shrink
         self.notification_shrink = notification_shrink
+        # This parameter is required.
         self.project_name = project_name
+        # This parameter is required.
         self.service_role = service_role
         self.tags_shrink = tags_shrink
 
@@ -13112,7 +13772,9 @@ class CreateVideoLabelClassificationTaskRequest(TeaModel):
         self.credential_config = credential_config
         # 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
         self.notification = notification
+        # This parameter is required.
         self.project_name = project_name
+        # This parameter is required.
         self.source_uri = source_uri
         self.tags = tags
         self.user_data = user_data
@@ -13175,7 +13837,9 @@ class CreateVideoLabelClassificationTaskShrinkRequest(TeaModel):
         self.credential_config_shrink = credential_config_shrink
         # 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
         self.notification_shrink = notification_shrink
+        # This parameter is required.
         self.project_name = project_name
+        # This parameter is required.
         self.source_uri = source_uri
         self.tags_shrink = tags_shrink
         self.user_data = user_data
@@ -13318,8 +13982,10 @@ class CreateVideoModerationTaskRequest(TeaModel):
         self.max_frames = max_frames
         # 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
         self.notification = notification
+        # This parameter is required.
         self.project_name = project_name
         self.scenes = scenes
+        # This parameter is required.
         self.source_uri = source_uri
         self.tags = tags
         self.user_data = user_data
@@ -13399,8 +14065,10 @@ class CreateVideoModerationTaskShrinkRequest(TeaModel):
         self.max_frames = max_frames
         # 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
         self.notification_shrink = notification_shrink
+        # This parameter is required.
         self.project_name = project_name
         self.scenes_shrink = scenes_shrink
+        # This parameter is required.
         self.source_uri = source_uri
         self.tags_shrink = tags_shrink
         self.user_data = user_data
@@ -13543,7 +14211,9 @@ class DeleteBatchRequest(TeaModel):
         id: str = None,
         project_name: str = None,
     ):
+        # This parameter is required.
         self.id = id
+        # This parameter is required.
         self.project_name = project_name
 
     def validate(self):
@@ -13645,8 +14315,11 @@ class DeleteBindingRequest(TeaModel):
         project_name: str = None,
         uri: str = None,
     ):
+        # This parameter is required.
         self.dataset_name = dataset_name
+        # This parameter is required.
         self.project_name = project_name
+        # This parameter is required.
         self.uri = uri
 
     def validate(self):
@@ -13751,7 +14424,9 @@ class DeleteDatasetRequest(TeaModel):
         dataset_name: str = None,
         project_name: str = None,
     ):
+        # This parameter is required.
         self.dataset_name = dataset_name
+        # This parameter is required.
         self.project_name = project_name
 
     def validate(self):
@@ -13853,8 +14528,11 @@ class DeleteFileMetaRequest(TeaModel):
         project_name: str = None,
         uri: str = None,
     ):
+        # This parameter is required.
         self.dataset_name = dataset_name
+        # This parameter is required.
         self.project_name = project_name
+        # This parameter is required.
         self.uri = uri
 
     def validate(self):
@@ -13960,8 +14638,11 @@ class DeleteLocationDateClusterRequest(TeaModel):
         object_id: str = None,
         project_name: str = None,
     ):
+        # This parameter is required.
         self.dataset_name = dataset_name
+        # This parameter is required.
         self.object_id = object_id
+        # This parameter is required.
         self.project_name = project_name
 
     def validate(self):
@@ -14065,6 +14746,7 @@ class DeleteProjectRequest(TeaModel):
         self,
         project_name: str = None,
     ):
+        # This parameter is required.
         self.project_name = project_name
 
     def validate(self):
@@ -14162,8 +14844,11 @@ class DeleteStoryRequest(TeaModel):
         object_id: str = None,
         project_name: str = None,
     ):
+        # This parameter is required.
         self.dataset_name = dataset_name
+        # This parameter is required.
         self.object_id = object_id
+        # This parameter is required.
         self.project_name = project_name
 
     def validate(self):
@@ -14268,7 +14953,9 @@ class DeleteTriggerRequest(TeaModel):
         id: str = None,
         project_name: str = None,
     ):
+        # This parameter is required.
         self.id = id
+        # This parameter is required.
         self.project_name = project_name
 
     def validate(self):
@@ -14368,6 +15055,7 @@ class DetachOSSBucketRequest(TeaModel):
         self,
         ossbucket: str = None,
     ):
+        # This parameter is required.
         self.ossbucket = ossbucket
 
     def validate(self):
@@ -14467,6 +15155,7 @@ class DetectImageBodiesRequest(TeaModel):
         source_uri: str = None,
     ):
         self.credential_config = credential_config
+        # This parameter is required.
         self.project_name = project_name
         self.sensitivity = sensitivity
         self.source_uri = source_uri
@@ -14514,6 +15203,7 @@ class DetectImageBodiesShrinkRequest(TeaModel):
         source_uri: str = None,
     ):
         self.credential_config_shrink = credential_config_shrink
+        # This parameter is required.
         self.project_name = project_name
         self.sensitivity = sensitivity
         self.source_uri = source_uri
@@ -14640,7 +15330,9 @@ class DetectImageCarsRequest(TeaModel):
         source_uri: str = None,
     ):
         self.credential_config = credential_config
+        # This parameter is required.
         self.project_name = project_name
+        # This parameter is required.
         self.source_uri = source_uri
 
     def validate(self):
@@ -14681,7 +15373,9 @@ class DetectImageCarsShrinkRequest(TeaModel):
         source_uri: str = None,
     ):
         self.credential_config_shrink = credential_config_shrink
+        # This parameter is required.
         self.project_name = project_name
+        # This parameter is required.
         self.source_uri = source_uri
 
     def validate(self):
@@ -14718,6 +15412,7 @@ class DetectImageCarsResponseBody(TeaModel):
         cars: List[Car] = None,
         request_id: str = None,
     ):
+        # This parameter is required.
         self.cars = cars
         self.request_id = request_id
 
@@ -14802,7 +15497,9 @@ class DetectImageCodesRequest(TeaModel):
         source_uri: str = None,
     ):
         self.credential_config = credential_config
+        # This parameter is required.
         self.project_name = project_name
+        # This parameter is required.
         self.source_uri = source_uri
 
     def validate(self):
@@ -14843,7 +15540,9 @@ class DetectImageCodesShrinkRequest(TeaModel):
         source_uri: str = None,
     ):
         self.credential_config_shrink = credential_config_shrink
+        # This parameter is required.
         self.project_name = project_name
+        # This parameter is required.
         self.source_uri = source_uri
 
     def validate(self):
@@ -14880,6 +15579,7 @@ class DetectImageCodesResponseBody(TeaModel):
         codes: List[Codes] = None,
         request_id: str = None,
     ):
+        # This parameter is required.
         self.codes = codes
         self.request_id = request_id
 
@@ -14966,6 +15666,7 @@ class DetectImageCroppingRequest(TeaModel):
     ):
         self.aspect_ratios = aspect_ratios
         self.credential_config = credential_config
+        # This parameter is required.
         self.project_name = project_name
         self.source_uri = source_uri
 
@@ -15013,6 +15714,7 @@ class DetectImageCroppingShrinkRequest(TeaModel):
     ):
         self.aspect_ratios = aspect_ratios
         self.credential_config_shrink = credential_config_shrink
+        # This parameter is required.
         self.project_name = project_name
         self.source_uri = source_uri
 
@@ -15138,6 +15840,7 @@ class DetectImageFacesRequest(TeaModel):
         source_uri: str = None,
     ):
         self.credential_config = credential_config
+        # This parameter is required.
         self.project_name = project_name
         self.source_uri = source_uri
 
@@ -15179,6 +15882,7 @@ class DetectImageFacesShrinkRequest(TeaModel):
         source_uri: str = None,
     ):
         self.credential_config_shrink = credential_config_shrink
+        # This parameter is required.
         self.project_name = project_name
         self.source_uri = source_uri
 
@@ -15301,7 +16005,9 @@ class DetectImageLabelsRequest(TeaModel):
         threshold: float = None,
     ):
         self.credential_config = credential_config
+        # This parameter is required.
         self.project_name = project_name
+        # This parameter is required.
         self.source_uri = source_uri
         self.threshold = threshold
 
@@ -15348,7 +16054,9 @@ class DetectImageLabelsShrinkRequest(TeaModel):
         threshold: float = None,
     ):
         self.credential_config_shrink = credential_config_shrink
+        # This parameter is required.
         self.project_name = project_name
+        # This parameter is required.
         self.source_uri = source_uri
         self.threshold = threshold
 
@@ -15474,6 +16182,7 @@ class DetectImageScoreRequest(TeaModel):
         source_uri: str = None,
     ):
         self.credential_config = credential_config
+        # This parameter is required.
         self.project_name = project_name
         self.source_uri = source_uri
 
@@ -15515,6 +16224,7 @@ class DetectImageScoreShrinkRequest(TeaModel):
         source_uri: str = None,
     ):
         self.credential_config_shrink = credential_config_shrink
+        # This parameter is required.
         self.project_name = project_name
         self.source_uri = source_uri
 
@@ -15657,7 +16367,9 @@ class DetectImageTextsRequest(TeaModel):
         source_uri: str = None,
     ):
         self.credential_config = credential_config
+        # This parameter is required.
         self.project_name = project_name
+        # This parameter is required.
         self.source_uri = source_uri
 
     def validate(self):
@@ -15698,7 +16410,9 @@ class DetectImageTextsShrinkRequest(TeaModel):
         source_uri: str = None,
     ):
         self.credential_config_shrink = credential_config_shrink
+        # This parameter is required.
         self.project_name = project_name
+        # This parameter is required.
         self.source_uri = source_uri
 
     def validate(self):
@@ -16144,7 +16858,9 @@ class DetectTextAnomalyRequest(TeaModel):
         content: str = None,
         project_name: str = None,
     ):
+        # This parameter is required.
         self.content = content
+        # This parameter is required.
         self.project_name = project_name
 
     def validate(self):
@@ -16245,6 +16961,134 @@ class DetectTextAnomalyResponse(TeaModel):
         return self
 
 
+class EncodeBlindWatermarkRequest(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        image_quality: int = None,
+        project_name: str = None,
+        source_uri: str = None,
+        strength_level: str = None,
+        target_uri: str = None,
+    ):
+        self.content = content
+        self.image_quality = image_quality
+        # This parameter is required.
+        self.project_name = project_name
+        # This parameter is required.
+        self.source_uri = source_uri
+        self.strength_level = strength_level
+        # This parameter is required.
+        self.target_uri = target_uri
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.image_quality is not None:
+            result['ImageQuality'] = self.image_quality
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.source_uri is not None:
+            result['SourceURI'] = self.source_uri
+        if self.strength_level is not None:
+            result['StrengthLevel'] = self.strength_level
+        if self.target_uri is not None:
+            result['TargetURI'] = self.target_uri
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('ImageQuality') is not None:
+            self.image_quality = m.get('ImageQuality')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('SourceURI') is not None:
+            self.source_uri = m.get('SourceURI')
+        if m.get('StrengthLevel') is not None:
+            self.strength_level = m.get('StrengthLevel')
+        if m.get('TargetURI') is not None:
+            self.target_uri = m.get('TargetURI')
+        return self
+
+
+class EncodeBlindWatermarkResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class EncodeBlindWatermarkResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: EncodeBlindWatermarkResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = EncodeBlindWatermarkResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ExtractDocumentTextRequest(TeaModel):
     def __init__(
         self,
@@ -16254,8 +17098,10 @@ class ExtractDocumentTextRequest(TeaModel):
         source_uri: str = None,
     ):
         self.credential_config = credential_config
+        # This parameter is required.
         self.project_name = project_name
         self.source_type = source_type
+        # This parameter is required.
         self.source_uri = source_uri
 
     def validate(self):
@@ -16301,8 +17147,10 @@ class ExtractDocumentTextShrinkRequest(TeaModel):
         source_uri: str = None,
     ):
         self.credential_config_shrink = credential_config_shrink
+        # This parameter is required.
         self.project_name = project_name
         self.source_type = source_type
+        # This parameter is required.
         self.source_uri = source_uri
 
     def validate(self):
@@ -16423,11 +17271,14 @@ class FuzzyQueryRequest(TeaModel):
         sort: str = None,
         with_fields: List[str] = None,
     ):
+        # This parameter is required.
         self.dataset_name = dataset_name
         self.max_results = max_results
         self.next_token = next_token
         self.order = order
+        # This parameter is required.
         self.project_name = project_name
+        # This parameter is required.
         self.query = query
         self.sort = sort
         self.with_fields = with_fields
@@ -16492,11 +17343,14 @@ class FuzzyQueryShrinkRequest(TeaModel):
         sort: str = None,
         with_fields_shrink: str = None,
     ):
+        # This parameter is required.
         self.dataset_name = dataset_name
         self.max_results = max_results
         self.next_token = next_token
         self.order = order
+        # This parameter is required.
         self.project_name = project_name
+        # This parameter is required.
         self.query = query
         self.sort = sort
         self.with_fields_shrink = with_fields_shrink
@@ -16558,6 +17412,7 @@ class FuzzyQueryResponseBody(TeaModel):
         total_hits: int = None,
     ):
         self.files = files
+        # This parameter is required.
         self.next_token = next_token
         self.request_id = request_id
         self.total_hits = total_hits
@@ -16650,6 +17505,7 @@ class GenerateVideoPlaylistRequestSourceSubtitles(TeaModel):
         uri: str = None,
     ):
         self.language = language
+        # This parameter is required.
         self.uri = uri
 
     def validate(self):
@@ -16779,12 +17635,15 @@ class GenerateVideoPlaylistRequest(TeaModel):
         self.master_uri = master_uri
         self.notification = notification
         self.overwrite_policy = overwrite_policy
+        # This parameter is required.
         self.project_name = project_name
         self.source_duration = source_duration
         self.source_start_time = source_start_time
         self.source_subtitles = source_subtitles
+        # This parameter is required.
         self.source_uri = source_uri
         self.tags = tags
+        # This parameter is required.
         self.targets = targets
         self.user_data = user_data
 
@@ -16895,12 +17754,15 @@ class GenerateVideoPlaylistShrinkRequest(TeaModel):
         self.master_uri = master_uri
         self.notification_shrink = notification_shrink
         self.overwrite_policy = overwrite_policy
+        # This parameter is required.
         self.project_name = project_name
         self.source_duration = source_duration
         self.source_start_time = source_start_time
         self.source_subtitles_shrink = source_subtitles_shrink
+        # This parameter is required.
         self.source_uri = source_uri
         self.tags_shrink = tags_shrink
+        # This parameter is required.
         self.targets_shrink = targets_shrink
         self.user_data = user_data
 
@@ -17114,7 +17976,6 @@ class GenerateVideoPlaylistResponseBody(TeaModel):
         request_id: str = None,
         subtitle_playlist: List[GenerateVideoPlaylistResponseBodySubtitlePlaylist] = None,
         token: str = None,
-        uri: str = None,
         video_playlist: List[GenerateVideoPlaylistResponseBodyVideoPlaylist] = None,
     ):
         # 转码文件列表。
@@ -17125,7 +17986,6 @@ class GenerateVideoPlaylistResponseBody(TeaModel):
         # 转码文件列表。
         self.subtitle_playlist = subtitle_playlist
         self.token = token
-        self.uri = uri
         # 转码文件列表。
         self.video_playlist = video_playlist
 
@@ -17165,8 +18025,6 @@ class GenerateVideoPlaylistResponseBody(TeaModel):
                 result['SubtitlePlaylist'].append(k.to_map() if k else None)
         if self.token is not None:
             result['Token'] = self.token
-        if self.uri is not None:
-            result['URI'] = self.uri
         result['VideoPlaylist'] = []
         if self.video_playlist is not None:
             for k in self.video_playlist:
@@ -17193,8 +18051,6 @@ class GenerateVideoPlaylistResponseBody(TeaModel):
                 self.subtitle_playlist.append(temp_model.from_map(k))
         if m.get('Token') is not None:
             self.token = m.get('Token')
-        if m.get('URI') is not None:
-            self.uri = m.get('URI')
         self.video_playlist = []
         if m.get('VideoPlaylist') is not None:
             for k in m.get('VideoPlaylist'):
@@ -17275,8 +18131,10 @@ class GenerateWebofficeTokenRequest(TeaModel):
         self.password = password
         self.permission = permission
         self.preview_pages = preview_pages
+        # This parameter is required.
         self.project_name = project_name
         self.referer = referer
+        # This parameter is required.
         self.source_uri = source_uri
         self.user = user
         self.user_data = user_data
@@ -17407,8 +18265,10 @@ class GenerateWebofficeTokenShrinkRequest(TeaModel):
         self.password = password
         self.permission_shrink = permission_shrink
         self.preview_pages = preview_pages
+        # This parameter is required.
         self.project_name = project_name
         self.referer = referer
+        # This parameter is required.
         self.source_uri = source_uri
         self.user_shrink = user_shrink
         self.user_data = user_data
@@ -17598,7 +18458,9 @@ class GetBatchRequest(TeaModel):
         id: str = None,
         project_name: str = None,
     ):
+        # This parameter is required.
         self.id = id
+        # This parameter is required.
         self.project_name = project_name
 
     def validate(self):
@@ -17708,8 +18570,11 @@ class GetBindingRequest(TeaModel):
         project_name: str = None,
         uri: str = None,
     ):
+        # This parameter is required.
         self.dataset_name = dataset_name
+        # This parameter is required.
         self.project_name = project_name
+        # This parameter is required.
         self.uri = uri
 
     def validate(self):
@@ -17816,6 +18681,143 @@ class GetBindingResponse(TeaModel):
         return self
 
 
+class GetDRMLicenseRequest(TeaModel):
+    def __init__(
+        self,
+        key_id: str = None,
+        notify_endpoint: str = None,
+        notify_topic_name: str = None,
+        project_name: str = None,
+        protection_system: str = None,
+    ):
+        self.key_id = key_id
+        self.notify_endpoint = notify_endpoint
+        self.notify_topic_name = notify_topic_name
+        self.project_name = project_name
+        self.protection_system = protection_system
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key_id is not None:
+            result['KeyId'] = self.key_id
+        if self.notify_endpoint is not None:
+            result['NotifyEndpoint'] = self.notify_endpoint
+        if self.notify_topic_name is not None:
+            result['NotifyTopicName'] = self.notify_topic_name
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.protection_system is not None:
+            result['ProtectionSystem'] = self.protection_system
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('KeyId') is not None:
+            self.key_id = m.get('KeyId')
+        if m.get('NotifyEndpoint') is not None:
+            self.notify_endpoint = m.get('NotifyEndpoint')
+        if m.get('NotifyTopicName') is not None:
+            self.notify_topic_name = m.get('NotifyTopicName')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('ProtectionSystem') is not None:
+            self.protection_system = m.get('ProtectionSystem')
+        return self
+
+
+class GetDRMLicenseResponseBody(TeaModel):
+    def __init__(
+        self,
+        device_info: str = None,
+        license: str = None,
+        request_id: str = None,
+        states: int = None,
+    ):
+        self.device_info = device_info
+        self.license = license
+        self.request_id = request_id
+        self.states = states
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.device_info is not None:
+            result['DeviceInfo'] = self.device_info
+        if self.license is not None:
+            result['License'] = self.license
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.states is not None:
+            result['States'] = self.states
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeviceInfo') is not None:
+            self.device_info = m.get('DeviceInfo')
+        if m.get('License') is not None:
+            self.license = m.get('License')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('States') is not None:
+            self.states = m.get('States')
+        return self
+
+
+class GetDRMLicenseResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetDRMLicenseResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetDRMLicenseResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetDatasetRequest(TeaModel):
     def __init__(
         self,
@@ -17823,7 +18825,9 @@ class GetDatasetRequest(TeaModel):
         project_name: str = None,
         with_statistics: bool = None,
     ):
+        # This parameter is required.
         self.dataset_name = dataset_name
+        # This parameter is required.
         self.project_name = project_name
         self.with_statistics = with_statistics
 
@@ -17931,6 +18935,182 @@ class GetDatasetResponse(TeaModel):
         return self
 
 
+class GetDecodeBlindWatermarkResultRequest(TeaModel):
+    def __init__(
+        self,
+        project_name: str = None,
+        task_id: str = None,
+        task_type: str = None,
+    ):
+        # This parameter is required.
+        self.project_name = project_name
+        # This parameter is required.
+        self.task_id = task_id
+        # This parameter is required.
+        self.task_type = task_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.task_type is not None:
+            result['TaskType'] = self.task_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('TaskType') is not None:
+            self.task_type = m.get('TaskType')
+        return self
+
+
+class GetDecodeBlindWatermarkResultResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        content: str = None,
+        end_time: str = None,
+        event_id: str = None,
+        message: str = None,
+        project_name: str = None,
+        request_id: str = None,
+        start_time: str = None,
+        status: str = None,
+        task_id: str = None,
+        task_type: str = None,
+        user_data: str = None,
+    ):
+        self.code = code
+        self.content = content
+        self.end_time = end_time
+        self.event_id = event_id
+        self.message = message
+        self.project_name = project_name
+        self.request_id = request_id
+        self.start_time = start_time
+        self.status = status
+        self.task_id = task_id
+        self.task_type = task_type
+        self.user_data = user_data
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.event_id is not None:
+            result['EventId'] = self.event_id
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.task_type is not None:
+            result['TaskType'] = self.task_type
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('EventId') is not None:
+            self.event_id = m.get('EventId')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('TaskType') is not None:
+            self.task_type = m.get('TaskType')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
+        return self
+
+
+class GetDecodeBlindWatermarkResultResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetDecodeBlindWatermarkResultResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetDecodeBlindWatermarkResultResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetFigureClusterRequest(TeaModel):
     def __init__(
         self,
@@ -17938,8 +19118,11 @@ class GetFigureClusterRequest(TeaModel):
         object_id: str = None,
         project_name: str = None,
     ):
+        # This parameter is required.
         self.dataset_name = dataset_name
+        # This parameter is required.
         self.object_id = object_id
+        # This parameter is required.
         self.project_name = project_name
 
     def validate(self):
@@ -18053,8 +19236,11 @@ class GetFileMetaRequest(TeaModel):
         project_name: str = None,
         uri: str = None,
     ):
+        # This parameter is required.
         self.dataset_name = dataset_name
+        # This parameter is required.
         self.project_name = project_name
+        # This parameter is required.
         self.uri = uri
 
     def validate(self):
@@ -18174,8 +19360,11 @@ class GetImageModerationResultRequest(TeaModel):
         task_id: str = None,
         task_type: str = None,
     ):
+        # This parameter is required.
         self.project_name = project_name
+        # This parameter is required.
         self.task_id = task_id
+        # This parameter is required.
         self.task_type = task_type
 
     def validate(self):
@@ -18474,6 +19663,7 @@ class GetOSSBucketAttachmentRequest(TeaModel):
         self,
         ossbucket: str = None,
     ):
+        # This parameter is required.
         self.ossbucket = ossbucket
 
     def validate(self):
@@ -18594,6 +19784,7 @@ class GetProjectRequest(TeaModel):
         project_name: str = None,
         with_statistics: bool = None,
     ):
+        # This parameter is required.
         self.project_name = project_name
         self.with_statistics = with_statistics
 
@@ -18704,8 +19895,11 @@ class GetStoryRequest(TeaModel):
         object_id: str = None,
         project_name: str = None,
     ):
+        # This parameter is required.
         self.dataset_name = dataset_name
+        # This parameter is required.
         self.object_id = object_id
+        # This parameter is required.
         self.project_name = project_name
 
     def validate(self):
@@ -18820,9 +20014,12 @@ class GetTaskRequest(TeaModel):
         task_id: str = None,
         task_type: str = None,
     ):
+        # This parameter is required.
         self.project_name = project_name
         self.request_definition = request_definition
+        # This parameter is required.
         self.task_id = task_id
+        # This parameter is required.
         self.task_type = task_type
 
     def validate(self):
@@ -19009,7 +20206,9 @@ class GetTriggerRequest(TeaModel):
         id: str = None,
         project_name: str = None,
     ):
+        # This parameter is required.
         self.id = id
+        # This parameter is required.
         self.project_name = project_name
 
     def validate(self):
@@ -19119,8 +20318,11 @@ class GetVideoLabelClassificationResultRequest(TeaModel):
         task_id: str = None,
         task_type: str = None,
     ):
+        # This parameter is required.
         self.project_name = project_name
+        # This parameter is required.
         self.task_id = task_id
+        # This parameter is required.
         self.task_type = task_type
 
     def validate(self):
@@ -19300,8 +20502,11 @@ class GetVideoModerationResultRequest(TeaModel):
         task_id: str = None,
         task_type: str = None,
     ):
+        # This parameter is required.
         self.project_name = project_name
+        # This parameter is required.
         self.task_id = task_id
+        # This parameter is required.
         self.task_type = task_type
 
     def validate(self):
@@ -19602,11 +20807,16 @@ class IndexFileMetaRequest(TeaModel):
         file: InputFile = None,
         notification: Notification = None,
         project_name: str = None,
+        user_data: str = None,
     ):
+        # This parameter is required.
         self.dataset_name = dataset_name
+        # This parameter is required.
         self.file = file
         self.notification = notification
+        # This parameter is required.
         self.project_name = project_name
+        self.user_data = user_data
 
     def validate(self):
         if self.file:
@@ -19628,6 +20838,8 @@ class IndexFileMetaRequest(TeaModel):
             result['Notification'] = self.notification.to_map()
         if self.project_name is not None:
             result['ProjectName'] = self.project_name
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
         return result
 
     def from_map(self, m: dict = None):
@@ -19642,6 +20854,8 @@ class IndexFileMetaRequest(TeaModel):
             self.notification = temp_model.from_map(m['Notification'])
         if m.get('ProjectName') is not None:
             self.project_name = m.get('ProjectName')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
         return self
 
 
@@ -19652,11 +20866,16 @@ class IndexFileMetaShrinkRequest(TeaModel):
         file_shrink: str = None,
         notification_shrink: str = None,
         project_name: str = None,
+        user_data: str = None,
     ):
+        # This parameter is required.
         self.dataset_name = dataset_name
+        # This parameter is required.
         self.file_shrink = file_shrink
         self.notification_shrink = notification_shrink
+        # This parameter is required.
         self.project_name = project_name
+        self.user_data = user_data
 
     def validate(self):
         pass
@@ -19675,6 +20894,8 @@ class IndexFileMetaShrinkRequest(TeaModel):
             result['Notification'] = self.notification_shrink
         if self.project_name is not None:
             result['ProjectName'] = self.project_name
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
         return result
 
     def from_map(self, m: dict = None):
@@ -19687,6 +20908,8 @@ class IndexFileMetaShrinkRequest(TeaModel):
             self.notification_shrink = m.get('Notification')
         if m.get('ProjectName') is not None:
             self.project_name = m.get('ProjectName')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
         return self
 
 
@@ -19778,6 +21001,7 @@ class ListBatchesRequest(TeaModel):
         self.max_results = max_results
         self.next_token = next_token
         self.order = order
+        # This parameter is required.
         self.project_name = project_name
         self.sort = sort
         self.state = state
@@ -19923,9 +21147,11 @@ class ListBindingsRequest(TeaModel):
         next_token: str = None,
         project_name: str = None,
     ):
+        # This parameter is required.
         self.dataset_name = dataset_name
         self.max_results = max_results
         self.next_token = next_token
+        # This parameter is required.
         self.project_name = project_name
 
     def validate(self):
@@ -20059,6 +21285,7 @@ class ListDatasetsRequest(TeaModel):
         self.max_results = max_results
         self.next_token = next_token
         self.prefix = prefix
+        # This parameter is required.
         self.project_name = project_name
 
     def validate(self):
@@ -20313,6 +21540,7 @@ class ListRegionsRequest(TeaModel):
         self,
         accept_language: str = None,
     ):
+        # This parameter is required.
         self.accept_language = accept_language
 
     def validate(self):
@@ -20436,6 +21664,7 @@ class ListTasksRequest(TeaModel):
         self.max_results = max_results
         self.next_token = next_token
         self.order = order
+        # This parameter is required.
         self.project_name = project_name
         self.request_definition = request_definition
         self.sort = sort
@@ -20528,6 +21757,7 @@ class ListTasksShrinkRequest(TeaModel):
         self.max_results = max_results
         self.next_token = next_token
         self.order = order
+        # This parameter is required.
         self.project_name = project_name
         self.request_definition = request_definition
         self.sort = sort
@@ -20710,6 +21940,7 @@ class ListTriggersRequest(TeaModel):
         self.max_results = max_results
         self.next_token = next_token
         self.order = order
+        # This parameter is required.
         self.project_name = project_name
         self.sort = sort
         self.state = state
@@ -20863,10 +22094,12 @@ class QueryFigureClustersRequest(TeaModel):
     ):
         self.create_time_range = create_time_range
         self.custom_labels = custom_labels
+        # This parameter is required.
         self.dataset_name = dataset_name
         self.max_results = max_results
         self.next_token = next_token
         self.order = order
+        # This parameter is required.
         self.project_name = project_name
         self.sort = sort
         self.update_time_range = update_time_range
@@ -20949,10 +22182,12 @@ class QueryFigureClustersShrinkRequest(TeaModel):
     ):
         self.create_time_range_shrink = create_time_range_shrink
         self.custom_labels = custom_labels
+        # This parameter is required.
         self.dataset_name = dataset_name
         self.max_results = max_results
         self.next_token = next_token
         self.order = order
+        # This parameter is required.
         self.project_name = project_name
         self.sort = sort
         self.update_time_range_shrink = update_time_range_shrink
@@ -21130,6 +22365,7 @@ class QueryLocationDateClustersRequest(TeaModel):
         self.address = address
         self.create_time_range = create_time_range
         self.custom_labels = custom_labels
+        # This parameter is required.
         self.dataset_name = dataset_name
         self.location_date_cluster_end_time_range = location_date_cluster_end_time_range
         self.location_date_cluster_levels = location_date_cluster_levels
@@ -21138,6 +22374,7 @@ class QueryLocationDateClustersRequest(TeaModel):
         self.next_token = next_token
         self.object_id = object_id
         self.order = order
+        # This parameter is required.
         self.project_name = project_name
         self.sort = sort
         self.title = title
@@ -21255,6 +22492,7 @@ class QueryLocationDateClustersShrinkRequest(TeaModel):
         self.address_shrink = address_shrink
         self.create_time_range_shrink = create_time_range_shrink
         self.custom_labels = custom_labels
+        # This parameter is required.
         self.dataset_name = dataset_name
         self.location_date_cluster_end_time_range_shrink = location_date_cluster_end_time_range_shrink
         self.location_date_cluster_levels_shrink = location_date_cluster_levels_shrink
@@ -21263,6 +22501,7 @@ class QueryLocationDateClustersShrinkRequest(TeaModel):
         self.next_token = next_token
         self.object_id = object_id
         self.order = order
+        # This parameter is required.
         self.project_name = project_name
         self.sort = sort
         self.title = title
@@ -21444,10 +22683,12 @@ class QuerySimilarImageClustersRequest(TeaModel):
         sort: str = None,
     ):
         self.custom_labels = custom_labels
+        # This parameter is required.
         self.dataset_name = dataset_name
         self.max_results = max_results
         self.next_token = next_token
         self.order = order
+        # This parameter is required.
         self.project_name = project_name
         self.sort = sort
 
@@ -21605,12 +22846,14 @@ class QueryStoriesRequest(TeaModel):
     ):
         self.create_time_range = create_time_range
         self.custom_labels = custom_labels
+        # This parameter is required.
         self.dataset_name = dataset_name
         self.figure_cluster_ids = figure_cluster_ids
         self.max_results = max_results
         self.next_token = next_token
         self.object_id = object_id
         self.order = order
+        # This parameter is required.
         self.project_name = project_name
         self.sort = sort
         self.story_end_time_range = story_end_time_range
@@ -21730,12 +22973,14 @@ class QueryStoriesShrinkRequest(TeaModel):
     ):
         self.create_time_range_shrink = create_time_range_shrink
         self.custom_labels = custom_labels
+        # This parameter is required.
         self.dataset_name = dataset_name
         self.figure_cluster_ids_shrink = figure_cluster_ids_shrink
         self.max_results = max_results
         self.next_token = next_token
         self.object_id = object_id
         self.order = order
+        # This parameter is required.
         self.project_name = project_name
         self.sort = sort
         self.story_end_time_range_shrink = story_end_time_range_shrink
@@ -21921,9 +23166,12 @@ class RefreshWebofficeTokenRequest(TeaModel):
         project_name: str = None,
         refresh_token: str = None,
     ):
+        # This parameter is required.
         self.access_token = access_token
         self.credential_config = credential_config
+        # This parameter is required.
         self.project_name = project_name
+        # This parameter is required.
         self.refresh_token = refresh_token
 
     def validate(self):
@@ -21968,9 +23216,12 @@ class RefreshWebofficeTokenShrinkRequest(TeaModel):
         project_name: str = None,
         refresh_token: str = None,
     ):
+        # This parameter is required.
         self.access_token = access_token
         self.credential_config_shrink = credential_config_shrink
+        # This parameter is required.
         self.project_name = project_name
+        # This parameter is required.
         self.refresh_token = refresh_token
 
     def validate(self):
@@ -22132,9 +23383,13 @@ class RemoveStoryFilesRequest(TeaModel):
         object_id: str = None,
         project_name: str = None,
     ):
+        # This parameter is required.
         self.dataset_name = dataset_name
+        # This parameter is required.
         self.files = files
+        # This parameter is required.
         self.object_id = object_id
+        # This parameter is required.
         self.project_name = project_name
 
     def validate(self):
@@ -22185,9 +23440,13 @@ class RemoveStoryFilesShrinkRequest(TeaModel):
         object_id: str = None,
         project_name: str = None,
     ):
+        # This parameter is required.
         self.dataset_name = dataset_name
+        # This parameter is required.
         self.files_shrink = files_shrink
+        # This parameter is required.
         self.object_id = object_id
+        # This parameter is required.
         self.project_name = project_name
 
     def validate(self):
@@ -22296,7 +23555,9 @@ class ResumeBatchRequest(TeaModel):
         id: str = None,
         project_name: str = None,
     ):
+        # This parameter is required.
         self.id = id
+        # This parameter is required.
         self.project_name = project_name
 
     def validate(self):
@@ -22397,7 +23658,9 @@ class ResumeTriggerRequest(TeaModel):
         id: str = None,
         project_name: str = None,
     ):
+        # This parameter is required.
         self.id = id
+        # This parameter is required.
         self.project_name = project_name
 
     def validate(self):
@@ -22501,7 +23764,9 @@ class SearchImageFigureClusterRequest(TeaModel):
         source_uri: str = None,
     ):
         self.credential_config = credential_config
+        # This parameter is required.
         self.dataset_name = dataset_name
+        # This parameter is required.
         self.project_name = project_name
         self.source_uri = source_uri
 
@@ -22548,7 +23813,9 @@ class SearchImageFigureClusterShrinkRequest(TeaModel):
         source_uri: str = None,
     ):
         self.credential_config_shrink = credential_config_shrink
+        # This parameter is required.
         self.dataset_name = dataset_name
+        # This parameter is required.
         self.project_name = project_name
         self.source_uri = source_uri
 
@@ -22718,11 +23985,14 @@ class SemanticQueryRequest(TeaModel):
         query: str = None,
         with_fields: List[str] = None,
     ):
+        # This parameter is required.
         self.dataset_name = dataset_name
         self.max_results = max_results
         self.media_types = media_types
         self.next_token = next_token
+        # This parameter is required.
         self.project_name = project_name
+        # This parameter is required.
         self.query = query
         self.with_fields = with_fields
 
@@ -22781,11 +24051,14 @@ class SemanticQueryShrinkRequest(TeaModel):
         query: str = None,
         with_fields_shrink: str = None,
     ):
+        # This parameter is required.
         self.dataset_name = dataset_name
         self.max_results = max_results
         self.media_types_shrink = media_types_shrink
         self.next_token = next_token
+        # This parameter is required.
         self.project_name = project_name
+        # This parameter is required.
         self.query = query
         self.with_fields_shrink = with_fields_shrink
 
@@ -22963,10 +24236,12 @@ class SimpleQueryRequest(TeaModel):
         without_total_hits: bool = None,
     ):
         self.aggregations = aggregations
+        # This parameter is required.
         self.dataset_name = dataset_name
         self.max_results = max_results
         self.next_token = next_token
         self.order = order
+        # This parameter is required.
         self.project_name = project_name
         self.query = query
         self.sort = sort
@@ -23055,10 +24330,12 @@ class SimpleQueryShrinkRequest(TeaModel):
         without_total_hits: bool = None,
     ):
         self.aggregations_shrink = aggregations_shrink
+        # This parameter is required.
         self.dataset_name = dataset_name
         self.max_results = max_results
         self.next_token = next_token
         self.order = order
+        # This parameter is required.
         self.project_name = project_name
         self.query_shrink = query_shrink
         self.sort = sort
@@ -23218,6 +24495,7 @@ class SimpleQueryResponseBody(TeaModel):
     ):
         self.aggregations = aggregations
         self.files = files
+        # This parameter is required.
         self.next_token = next_token
         self.request_id = request_id
         self.total_hits = total_hits
@@ -23322,7 +24600,9 @@ class SuspendBatchRequest(TeaModel):
         id: str = None,
         project_name: str = None,
     ):
+        # This parameter is required.
         self.id = id
+        # This parameter is required.
         self.project_name = project_name
 
     def validate(self):
@@ -23423,7 +24703,9 @@ class SuspendTriggerRequest(TeaModel):
         id: str = None,
         project_name: str = None,
     ):
+        # This parameter is required.
         self.id = id
+        # This parameter is required.
         self.project_name = project_name
 
     def validate(self):
@@ -23561,8 +24843,10 @@ class UpdateBatchRequest(TeaModel):
         tags: Dict[str, Any] = None,
     ):
         self.actions = actions
+        # This parameter is required.
         self.id = id
         self.input = input
+        # This parameter is required.
         self.project_name = project_name
         self.tags = tags
 
@@ -23623,8 +24907,10 @@ class UpdateBatchShrinkRequest(TeaModel):
         tags_shrink: str = None,
     ):
         self.actions_shrink = actions_shrink
+        # This parameter is required.
         self.id = id
         self.input_shrink = input_shrink
+        # This parameter is required.
         self.project_name = project_name
         self.tags_shrink = tags_shrink
 
@@ -23750,8 +25036,10 @@ class UpdateDatasetRequest(TeaModel):
         self.dataset_max_file_count = dataset_max_file_count
         self.dataset_max_relation_count = dataset_max_relation_count
         self.dataset_max_total_file_size = dataset_max_total_file_size
+        # This parameter is required.
         self.dataset_name = dataset_name
         self.description = description
+        # This parameter is required.
         self.project_name = project_name
         self.template_id = template_id
 
@@ -23890,8 +25178,11 @@ class UpdateFigureClusterRequest(TeaModel):
         figure_cluster: FigureClusterForReq = None,
         project_name: str = None,
     ):
+        # This parameter is required.
         self.dataset_name = dataset_name
+        # This parameter is required.
         self.figure_cluster = figure_cluster
+        # This parameter is required.
         self.project_name = project_name
 
     def validate(self):
@@ -23931,8 +25222,11 @@ class UpdateFigureClusterShrinkRequest(TeaModel):
         figure_cluster_shrink: str = None,
         project_name: str = None,
     ):
+        # This parameter is required.
         self.dataset_name = dataset_name
+        # This parameter is required.
         self.figure_cluster_shrink = figure_cluster_shrink
+        # This parameter is required.
         self.project_name = project_name
 
     def validate(self):
@@ -24038,8 +25332,11 @@ class UpdateFileMetaRequest(TeaModel):
         file: InputFile = None,
         project_name: str = None,
     ):
+        # This parameter is required.
         self.dataset_name = dataset_name
+        # This parameter is required.
         self.file = file
+        # This parameter is required.
         self.project_name = project_name
 
     def validate(self):
@@ -24079,8 +25376,11 @@ class UpdateFileMetaShrinkRequest(TeaModel):
         file_shrink: str = None,
         project_name: str = None,
     ):
+        # This parameter is required.
         self.dataset_name = dataset_name
+        # This parameter is required.
         self.file_shrink = file_shrink
+        # This parameter is required.
         self.project_name = project_name
 
     def validate(self):
@@ -24191,8 +25491,11 @@ class UpdateLocationDateClusterRequest(TeaModel):
     ):
         self.custom_id = custom_id
         self.custom_labels = custom_labels
+        # This parameter is required.
         self.dataset_name = dataset_name
+        # This parameter is required.
         self.object_id = object_id
+        # This parameter is required.
         self.project_name = project_name
         self.title = title
 
@@ -24248,8 +25551,11 @@ class UpdateLocationDateClusterShrinkRequest(TeaModel):
     ):
         self.custom_id = custom_id
         self.custom_labels_shrink = custom_labels_shrink
+        # This parameter is required.
         self.dataset_name = dataset_name
+        # This parameter is required.
         self.object_id = object_id
+        # This parameter is required.
         self.project_name = project_name
         self.title = title
 
@@ -24382,6 +25688,7 @@ class UpdateProjectRequest(TeaModel):
         self.dataset_max_total_file_size = dataset_max_total_file_size
         self.description = description
         self.project_max_dataset_count = project_max_dataset_count
+        # This parameter is required.
         self.project_name = project_name
         self.service_role = service_role
         self.template_id = template_id
@@ -24559,8 +25866,11 @@ class UpdateStoryRequest(TeaModel):
         self.cover = cover
         self.custom_id = custom_id
         self.custom_labels = custom_labels
+        # This parameter is required.
         self.dataset_name = dataset_name
+        # This parameter is required.
         self.object_id = object_id
+        # This parameter is required.
         self.project_name = project_name
         self.story_name = story_name
 
@@ -24624,8 +25934,11 @@ class UpdateStoryShrinkRequest(TeaModel):
         self.cover_shrink = cover_shrink
         self.custom_id = custom_id
         self.custom_labels_shrink = custom_labels_shrink
+        # This parameter is required.
         self.dataset_name = dataset_name
+        # This parameter is required.
         self.object_id = object_id
+        # This parameter is required.
         self.project_name = project_name
         self.story_name = story_name
 
@@ -24784,8 +26097,10 @@ class UpdateTriggerRequest(TeaModel):
         tags: Dict[str, Any] = None,
     ):
         self.actions = actions
+        # This parameter is required.
         self.id = id
         self.input = input
+        # This parameter is required.
         self.project_name = project_name
         self.tags = tags
 
@@ -24846,8 +26161,10 @@ class UpdateTriggerShrinkRequest(TeaModel):
         tags_shrink: str = None,
     ):
         self.actions_shrink = actions_shrink
+        # This parameter is required.
         self.id = id
         self.input_shrink = input_shrink
+        # This parameter is required.
         self.project_name = project_name
         self.tags_shrink = tags_shrink
 

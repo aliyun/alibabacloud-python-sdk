@@ -49,6 +49,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.AddImageMosaicRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.AddImageMosaicResponse:
+        """
+        @summary 图片打马赛克算子
+        
+        @param tmp_req: AddImageMosaicRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddImageMosaicResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.AddImageMosaicShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -95,6 +102,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.AddImageMosaicRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.AddImageMosaicResponse:
+        """
+        @summary 图片打马赛克算子
+        
+        @param tmp_req: AddImageMosaicRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddImageMosaicResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.AddImageMosaicShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -140,6 +154,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.AddImageMosaicRequest,
     ) -> imm_20200930_models.AddImageMosaicResponse:
+        """
+        @summary 图片打马赛克算子
+        
+        @param request: AddImageMosaicRequest
+        @return: AddImageMosaicResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_image_mosaic_with_options(request, runtime)
 
@@ -147,6 +167,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.AddImageMosaicRequest,
     ) -> imm_20200930_models.AddImageMosaicResponse:
+        """
+        @summary 图片打马赛克算子
+        
+        @param request: AddImageMosaicRequest
+        @return: AddImageMosaicResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_image_mosaic_with_options_async(request, runtime)
 
@@ -155,6 +181,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.AddStoryFilesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.AddStoryFilesResponse:
+        """
+        @summary 为故事新增文件
+        
+        @param tmp_req: AddStoryFilesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddStoryFilesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.AddStoryFilesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -193,6 +226,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.AddStoryFilesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.AddStoryFilesResponse:
+        """
+        @summary 为故事新增文件
+        
+        @param tmp_req: AddStoryFilesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddStoryFilesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.AddStoryFilesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -230,6 +270,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.AddStoryFilesRequest,
     ) -> imm_20200930_models.AddStoryFilesResponse:
+        """
+        @summary 为故事新增文件
+        
+        @param request: AddStoryFilesRequest
+        @return: AddStoryFilesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_story_files_with_options(request, runtime)
 
@@ -237,6 +283,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.AddStoryFilesRequest,
     ) -> imm_20200930_models.AddStoryFilesResponse:
+        """
+        @summary 为故事新增文件
+        
+        @param request: AddStoryFilesRequest
+        @return: AddStoryFilesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_story_files_with_options_async(request, runtime)
 
@@ -245,6 +297,13 @@ class Client(OpenApiClient):
         request: imm_20200930_models.AttachOSSBucketRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.AttachOSSBucketResponse:
+        """
+        @summary 绑定ossbucket
+        
+        @param request: AttachOSSBucketRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AttachOSSBucketResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -277,6 +336,13 @@ class Client(OpenApiClient):
         request: imm_20200930_models.AttachOSSBucketRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.AttachOSSBucketResponse:
+        """
+        @summary 绑定ossbucket
+        
+        @param request: AttachOSSBucketRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AttachOSSBucketResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -308,6 +374,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.AttachOSSBucketRequest,
     ) -> imm_20200930_models.AttachOSSBucketResponse:
+        """
+        @summary 绑定ossbucket
+        
+        @param request: AttachOSSBucketRequest
+        @return: AttachOSSBucketResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.attach_ossbucket_with_options(request, runtime)
 
@@ -315,6 +387,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.AttachOSSBucketRequest,
     ) -> imm_20200930_models.AttachOSSBucketResponse:
+        """
+        @summary 绑定ossbucket
+        
+        @param request: AttachOSSBucketRequest
+        @return: AttachOSSBucketResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.attach_ossbucket_with_options_async(request, runtime)
 
@@ -323,6 +401,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.BatchDeleteFileMetaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.BatchDeleteFileMetaResponse:
+        """
+        @summary 批量删除文件元信息
+        
+        @param tmp_req: BatchDeleteFileMetaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchDeleteFileMetaResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.BatchDeleteFileMetaShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -359,6 +444,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.BatchDeleteFileMetaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.BatchDeleteFileMetaResponse:
+        """
+        @summary 批量删除文件元信息
+        
+        @param tmp_req: BatchDeleteFileMetaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchDeleteFileMetaResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.BatchDeleteFileMetaShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -394,6 +486,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.BatchDeleteFileMetaRequest,
     ) -> imm_20200930_models.BatchDeleteFileMetaResponse:
+        """
+        @summary 批量删除文件元信息
+        
+        @param request: BatchDeleteFileMetaRequest
+        @return: BatchDeleteFileMetaResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.batch_delete_file_meta_with_options(request, runtime)
 
@@ -401,6 +499,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.BatchDeleteFileMetaRequest,
     ) -> imm_20200930_models.BatchDeleteFileMetaResponse:
+        """
+        @summary 批量删除文件元信息
+        
+        @param request: BatchDeleteFileMetaRequest
+        @return: BatchDeleteFileMetaResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.batch_delete_file_meta_with_options_async(request, runtime)
 
@@ -409,6 +513,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.BatchGetFigureClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.BatchGetFigureClusterResponse:
+        """
+        @summary 批量获取分组信息
+        
+        @param tmp_req: BatchGetFigureClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchGetFigureClusterResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.BatchGetFigureClusterShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -445,6 +556,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.BatchGetFigureClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.BatchGetFigureClusterResponse:
+        """
+        @summary 批量获取分组信息
+        
+        @param tmp_req: BatchGetFigureClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchGetFigureClusterResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.BatchGetFigureClusterShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -480,6 +598,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.BatchGetFigureClusterRequest,
     ) -> imm_20200930_models.BatchGetFigureClusterResponse:
+        """
+        @summary 批量获取分组信息
+        
+        @param request: BatchGetFigureClusterRequest
+        @return: BatchGetFigureClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.batch_get_figure_cluster_with_options(request, runtime)
 
@@ -487,6 +611,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.BatchGetFigureClusterRequest,
     ) -> imm_20200930_models.BatchGetFigureClusterResponse:
+        """
+        @summary 批量获取分组信息
+        
+        @param request: BatchGetFigureClusterRequest
+        @return: BatchGetFigureClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.batch_get_figure_cluster_with_options_async(request, runtime)
 
@@ -495,6 +625,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.BatchGetFileMetaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.BatchGetFileMetaResponse:
+        """
+        @summary 批量获取文件元信息
+        
+        @param tmp_req: BatchGetFileMetaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchGetFileMetaResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.BatchGetFileMetaShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -531,6 +668,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.BatchGetFileMetaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.BatchGetFileMetaResponse:
+        """
+        @summary 批量获取文件元信息
+        
+        @param tmp_req: BatchGetFileMetaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchGetFileMetaResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.BatchGetFileMetaShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -566,6 +710,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.BatchGetFileMetaRequest,
     ) -> imm_20200930_models.BatchGetFileMetaResponse:
+        """
+        @summary 批量获取文件元信息
+        
+        @param request: BatchGetFileMetaRequest
+        @return: BatchGetFileMetaResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.batch_get_file_meta_with_options(request, runtime)
 
@@ -573,6 +723,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.BatchGetFileMetaRequest,
     ) -> imm_20200930_models.BatchGetFileMetaResponse:
+        """
+        @summary 批量获取文件元信息
+        
+        @param request: BatchGetFileMetaRequest
+        @return: BatchGetFileMetaResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.batch_get_file_meta_with_options_async(request, runtime)
 
@@ -581,6 +737,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.BatchIndexFileMetaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.BatchIndexFileMetaResponse:
+        """
+        @summary 批量索引文件元信息
+        
+        @param tmp_req: BatchIndexFileMetaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchIndexFileMetaResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.BatchIndexFileMetaShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -597,6 +760,8 @@ class Client(OpenApiClient):
             query['Notification'] = request.notification_shrink
         if not UtilClient.is_unset(request.project_name):
             query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -621,6 +786,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.BatchIndexFileMetaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.BatchIndexFileMetaResponse:
+        """
+        @summary 批量索引文件元信息
+        
+        @param tmp_req: BatchIndexFileMetaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchIndexFileMetaResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.BatchIndexFileMetaShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -637,6 +809,8 @@ class Client(OpenApiClient):
             query['Notification'] = request.notification_shrink
         if not UtilClient.is_unset(request.project_name):
             query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -660,6 +834,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.BatchIndexFileMetaRequest,
     ) -> imm_20200930_models.BatchIndexFileMetaResponse:
+        """
+        @summary 批量索引文件元信息
+        
+        @param request: BatchIndexFileMetaRequest
+        @return: BatchIndexFileMetaResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.batch_index_file_meta_with_options(request, runtime)
 
@@ -667,6 +847,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.BatchIndexFileMetaRequest,
     ) -> imm_20200930_models.BatchIndexFileMetaResponse:
+        """
+        @summary 批量索引文件元信息
+        
+        @param request: BatchIndexFileMetaRequest
+        @return: BatchIndexFileMetaResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.batch_index_file_meta_with_options_async(request, runtime)
 
@@ -675,6 +861,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.BatchUpdateFileMetaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.BatchUpdateFileMetaResponse:
+        """
+        @summary 批量更新文件元信息
+        
+        @param tmp_req: BatchUpdateFileMetaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchUpdateFileMetaResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.BatchUpdateFileMetaShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -711,6 +904,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.BatchUpdateFileMetaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.BatchUpdateFileMetaResponse:
+        """
+        @summary 批量更新文件元信息
+        
+        @param tmp_req: BatchUpdateFileMetaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchUpdateFileMetaResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.BatchUpdateFileMetaShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -746,6 +946,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.BatchUpdateFileMetaRequest,
     ) -> imm_20200930_models.BatchUpdateFileMetaResponse:
+        """
+        @summary 批量更新文件元信息
+        
+        @param request: BatchUpdateFileMetaRequest
+        @return: BatchUpdateFileMetaResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.batch_update_file_meta_with_options(request, runtime)
 
@@ -753,6 +959,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.BatchUpdateFileMetaRequest,
     ) -> imm_20200930_models.BatchUpdateFileMetaResponse:
+        """
+        @summary 批量更新文件元信息
+        
+        @param request: BatchUpdateFileMetaRequest
+        @return: BatchUpdateFileMetaResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.batch_update_file_meta_with_options_async(request, runtime)
 
@@ -761,6 +973,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.CompareImageFacesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.CompareImageFacesResponse:
+        """
+        @summary 以脸搜分组
+        
+        @param tmp_req: CompareImageFacesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CompareImageFacesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.CompareImageFacesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -799,6 +1018,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.CompareImageFacesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.CompareImageFacesResponse:
+        """
+        @summary 以脸搜分组
+        
+        @param tmp_req: CompareImageFacesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CompareImageFacesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.CompareImageFacesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -836,6 +1062,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.CompareImageFacesRequest,
     ) -> imm_20200930_models.CompareImageFacesResponse:
+        """
+        @summary 以脸搜分组
+        
+        @param request: CompareImageFacesRequest
+        @return: CompareImageFacesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.compare_image_faces_with_options(request, runtime)
 
@@ -843,6 +1075,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.CompareImageFacesRequest,
     ) -> imm_20200930_models.CompareImageFacesResponse:
+        """
+        @summary 以脸搜分组
+        
+        @param request: CompareImageFacesRequest
+        @return: CompareImageFacesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.compare_image_faces_with_options_async(request, runtime)
 
@@ -851,6 +1089,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.CreateArchiveFileInspectionTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.CreateArchiveFileInspectionTaskResponse:
+        """
+        @summary 创建查看压缩包内文件列表任务
+        
+        @param tmp_req: CreateArchiveFileInspectionTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateArchiveFileInspectionTaskResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.CreateArchiveFileInspectionTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -895,6 +1140,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.CreateArchiveFileInspectionTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.CreateArchiveFileInspectionTaskResponse:
+        """
+        @summary 创建查看压缩包内文件列表任务
+        
+        @param tmp_req: CreateArchiveFileInspectionTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateArchiveFileInspectionTaskResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.CreateArchiveFileInspectionTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -938,6 +1190,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.CreateArchiveFileInspectionTaskRequest,
     ) -> imm_20200930_models.CreateArchiveFileInspectionTaskResponse:
+        """
+        @summary 创建查看压缩包内文件列表任务
+        
+        @param request: CreateArchiveFileInspectionTaskRequest
+        @return: CreateArchiveFileInspectionTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_archive_file_inspection_task_with_options(request, runtime)
 
@@ -945,6 +1203,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.CreateArchiveFileInspectionTaskRequest,
     ) -> imm_20200930_models.CreateArchiveFileInspectionTaskResponse:
+        """
+        @summary 创建查看压缩包内文件列表任务
+        
+        @param request: CreateArchiveFileInspectionTaskRequest
+        @return: CreateArchiveFileInspectionTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_archive_file_inspection_task_with_options_async(request, runtime)
 
@@ -953,6 +1217,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.CreateBatchRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.CreateBatchResponse:
+        """
+        @summary 创建数据接入
+        
+        @param tmp_req: CreateBatchRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateBatchResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.CreateBatchShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1001,6 +1272,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.CreateBatchRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.CreateBatchResponse:
+        """
+        @summary 创建数据接入
+        
+        @param tmp_req: CreateBatchRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateBatchResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.CreateBatchShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1048,6 +1326,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.CreateBatchRequest,
     ) -> imm_20200930_models.CreateBatchResponse:
+        """
+        @summary 创建数据接入
+        
+        @param request: CreateBatchRequest
+        @return: CreateBatchResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_batch_with_options(request, runtime)
 
@@ -1055,6 +1339,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.CreateBatchRequest,
     ) -> imm_20200930_models.CreateBatchResponse:
+        """
+        @summary 创建数据接入
+        
+        @param request: CreateBatchRequest
+        @return: CreateBatchResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_batch_with_options_async(request, runtime)
 
@@ -1063,6 +1353,13 @@ class Client(OpenApiClient):
         request: imm_20200930_models.CreateBindingRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.CreateBindingResponse:
+        """
+        @summary 创建绑定
+        
+        @param request: CreateBindingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateBindingResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dataset_name):
@@ -1095,6 +1392,13 @@ class Client(OpenApiClient):
         request: imm_20200930_models.CreateBindingRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.CreateBindingResponse:
+        """
+        @summary 创建绑定
+        
+        @param request: CreateBindingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateBindingResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dataset_name):
@@ -1126,6 +1430,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.CreateBindingRequest,
     ) -> imm_20200930_models.CreateBindingResponse:
+        """
+        @summary 创建绑定
+        
+        @param request: CreateBindingRequest
+        @return: CreateBindingResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_binding_with_options(request, runtime)
 
@@ -1133,6 +1443,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.CreateBindingRequest,
     ) -> imm_20200930_models.CreateBindingResponse:
+        """
+        @summary 创建绑定
+        
+        @param request: CreateBindingRequest
+        @return: CreateBindingResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_binding_with_options_async(request, runtime)
 
@@ -1141,6 +1457,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.CreateCompressPointCloudTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.CreateCompressPointCloudTaskResponse:
+        """
+        @summary 创建点云压缩任务
+        
+        @param tmp_req: CreateCompressPointCloudTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateCompressPointCloudTaskResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.CreateCompressPointCloudTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1205,6 +1528,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.CreateCompressPointCloudTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.CreateCompressPointCloudTaskResponse:
+        """
+        @summary 创建点云压缩任务
+        
+        @param tmp_req: CreateCompressPointCloudTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateCompressPointCloudTaskResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.CreateCompressPointCloudTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1268,6 +1598,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.CreateCompressPointCloudTaskRequest,
     ) -> imm_20200930_models.CreateCompressPointCloudTaskResponse:
+        """
+        @summary 创建点云压缩任务
+        
+        @param request: CreateCompressPointCloudTaskRequest
+        @return: CreateCompressPointCloudTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_compress_point_cloud_task_with_options(request, runtime)
 
@@ -1275,6 +1611,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.CreateCompressPointCloudTaskRequest,
     ) -> imm_20200930_models.CreateCompressPointCloudTaskResponse:
+        """
+        @summary 创建点云压缩任务
+        
+        @param request: CreateCompressPointCloudTaskRequest
+        @return: CreateCompressPointCloudTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_compress_point_cloud_task_with_options_async(request, runtime)
 
@@ -1283,6 +1625,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.CreateCustomizedStoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.CreateCustomizedStoryResponse:
+        """
+        @summary 创建自定义故事
+        
+        @param tmp_req: CreateCustomizedStoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateCustomizedStoryResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.CreateCustomizedStoryShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1333,6 +1682,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.CreateCustomizedStoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.CreateCustomizedStoryResponse:
+        """
+        @summary 创建自定义故事
+        
+        @param tmp_req: CreateCustomizedStoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateCustomizedStoryResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.CreateCustomizedStoryShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1382,6 +1738,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.CreateCustomizedStoryRequest,
     ) -> imm_20200930_models.CreateCustomizedStoryResponse:
+        """
+        @summary 创建自定义故事
+        
+        @param request: CreateCustomizedStoryRequest
+        @return: CreateCustomizedStoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_customized_story_with_options(request, runtime)
 
@@ -1389,6 +1751,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.CreateCustomizedStoryRequest,
     ) -> imm_20200930_models.CreateCustomizedStoryResponse:
+        """
+        @summary 创建自定义故事
+        
+        @param request: CreateCustomizedStoryRequest
+        @return: CreateCustomizedStoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_customized_story_with_options_async(request, runtime)
 
@@ -1397,6 +1765,13 @@ class Client(OpenApiClient):
         request: imm_20200930_models.CreateDatasetRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.CreateDatasetResponse:
+        """
+        @summary 创建数据集
+        
+        @param request: CreateDatasetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDatasetResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dataset_max_bind_count):
@@ -1441,6 +1816,13 @@ class Client(OpenApiClient):
         request: imm_20200930_models.CreateDatasetRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.CreateDatasetResponse:
+        """
+        @summary 创建数据集
+        
+        @param request: CreateDatasetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDatasetResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dataset_max_bind_count):
@@ -1484,6 +1866,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.CreateDatasetRequest,
     ) -> imm_20200930_models.CreateDatasetResponse:
+        """
+        @summary 创建数据集
+        
+        @param request: CreateDatasetRequest
+        @return: CreateDatasetResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_dataset_with_options(request, runtime)
 
@@ -1491,14 +1879,163 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.CreateDatasetRequest,
     ) -> imm_20200930_models.CreateDatasetResponse:
+        """
+        @summary 创建数据集
+        
+        @param request: CreateDatasetRequest
+        @return: CreateDatasetResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_dataset_with_options_async(request, runtime)
+
+    def create_decode_blind_watermark_task_with_options(
+        self,
+        tmp_req: imm_20200930_models.CreateDecodeBlindWatermarkTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.CreateDecodeBlindWatermarkTaskResponse:
+        """
+        @summary 提取盲水印
+        
+        @param tmp_req: CreateDecodeBlindWatermarkTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDecodeBlindWatermarkTaskResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.CreateDecodeBlindWatermarkTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.notification):
+            request.notification_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.notification, 'Notification', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.image_quality):
+            query['ImageQuality'] = request.image_quality
+        if not UtilClient.is_unset(request.model):
+            query['Model'] = request.model
+        if not UtilClient.is_unset(request.notification_shrink):
+            query['Notification'] = request.notification_shrink
+        if not UtilClient.is_unset(request.original_image_uri):
+            query['OriginalImageURI'] = request.original_image_uri
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.source_uri):
+            query['SourceURI'] = request.source_uri
+        if not UtilClient.is_unset(request.strength_level):
+            query['StrengthLevel'] = request.strength_level
+        if not UtilClient.is_unset(request.target_uri):
+            query['TargetURI'] = request.target_uri
+        if not UtilClient.is_unset(request.watermark_type):
+            query['WatermarkType'] = request.watermark_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDecodeBlindWatermarkTask',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.CreateDecodeBlindWatermarkTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_decode_blind_watermark_task_with_options_async(
+        self,
+        tmp_req: imm_20200930_models.CreateDecodeBlindWatermarkTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.CreateDecodeBlindWatermarkTaskResponse:
+        """
+        @summary 提取盲水印
+        
+        @param tmp_req: CreateDecodeBlindWatermarkTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDecodeBlindWatermarkTaskResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.CreateDecodeBlindWatermarkTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.notification):
+            request.notification_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.notification, 'Notification', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.image_quality):
+            query['ImageQuality'] = request.image_quality
+        if not UtilClient.is_unset(request.model):
+            query['Model'] = request.model
+        if not UtilClient.is_unset(request.notification_shrink):
+            query['Notification'] = request.notification_shrink
+        if not UtilClient.is_unset(request.original_image_uri):
+            query['OriginalImageURI'] = request.original_image_uri
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.source_uri):
+            query['SourceURI'] = request.source_uri
+        if not UtilClient.is_unset(request.strength_level):
+            query['StrengthLevel'] = request.strength_level
+        if not UtilClient.is_unset(request.target_uri):
+            query['TargetURI'] = request.target_uri
+        if not UtilClient.is_unset(request.watermark_type):
+            query['WatermarkType'] = request.watermark_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDecodeBlindWatermarkTask',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.CreateDecodeBlindWatermarkTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_decode_blind_watermark_task(
+        self,
+        request: imm_20200930_models.CreateDecodeBlindWatermarkTaskRequest,
+    ) -> imm_20200930_models.CreateDecodeBlindWatermarkTaskResponse:
+        """
+        @summary 提取盲水印
+        
+        @param request: CreateDecodeBlindWatermarkTaskRequest
+        @return: CreateDecodeBlindWatermarkTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_decode_blind_watermark_task_with_options(request, runtime)
+
+    async def create_decode_blind_watermark_task_async(
+        self,
+        request: imm_20200930_models.CreateDecodeBlindWatermarkTaskRequest,
+    ) -> imm_20200930_models.CreateDecodeBlindWatermarkTaskResponse:
+        """
+        @summary 提取盲水印
+        
+        @param request: CreateDecodeBlindWatermarkTaskRequest
+        @return: CreateDecodeBlindWatermarkTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_decode_blind_watermark_task_with_options_async(request, runtime)
 
     def create_faces_searching_task_with_options(
         self,
         tmp_req: imm_20200930_models.CreateFacesSearchingTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.CreateFacesSearchingTaskResponse:
+        """
+        @summary 以脸搜图
+        
+        @param tmp_req: CreateFacesSearchingTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateFacesSearchingTaskResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.CreateFacesSearchingTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1543,6 +2080,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.CreateFacesSearchingTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.CreateFacesSearchingTaskResponse:
+        """
+        @summary 以脸搜图
+        
+        @param tmp_req: CreateFacesSearchingTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateFacesSearchingTaskResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.CreateFacesSearchingTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1586,6 +2130,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.CreateFacesSearchingTaskRequest,
     ) -> imm_20200930_models.CreateFacesSearchingTaskResponse:
+        """
+        @summary 以脸搜图
+        
+        @param request: CreateFacesSearchingTaskRequest
+        @return: CreateFacesSearchingTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_faces_searching_task_with_options(request, runtime)
 
@@ -1593,6 +2143,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.CreateFacesSearchingTaskRequest,
     ) -> imm_20200930_models.CreateFacesSearchingTaskResponse:
+        """
+        @summary 以脸搜图
+        
+        @param request: CreateFacesSearchingTaskRequest
+        @return: CreateFacesSearchingTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_faces_searching_task_with_options_async(request, runtime)
 
@@ -1601,6 +2157,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.CreateFigureClusteringTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.CreateFigureClusteringTaskResponse:
+        """
+        @summary 聚类
+        
+        @param tmp_req: CreateFigureClusteringTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateFigureClusteringTaskResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.CreateFigureClusteringTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1643,6 +2206,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.CreateFigureClusteringTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.CreateFigureClusteringTaskResponse:
+        """
+        @summary 聚类
+        
+        @param tmp_req: CreateFigureClusteringTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateFigureClusteringTaskResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.CreateFigureClusteringTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1684,6 +2254,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.CreateFigureClusteringTaskRequest,
     ) -> imm_20200930_models.CreateFigureClusteringTaskResponse:
+        """
+        @summary 聚类
+        
+        @param request: CreateFigureClusteringTaskRequest
+        @return: CreateFigureClusteringTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_figure_clustering_task_with_options(request, runtime)
 
@@ -1691,6 +2267,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.CreateFigureClusteringTaskRequest,
     ) -> imm_20200930_models.CreateFigureClusteringTaskResponse:
+        """
+        @summary 聚类
+        
+        @param request: CreateFigureClusteringTaskRequest
+        @return: CreateFigureClusteringTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_figure_clustering_task_with_options_async(request, runtime)
 
@@ -1699,6 +2281,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.CreateFigureClustersMergingTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.CreateFigureClustersMergingTaskResponse:
+        """
+        @summary 合并聚类
+        
+        @param tmp_req: CreateFigureClustersMergingTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateFigureClustersMergingTaskResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.CreateFigureClustersMergingTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1749,6 +2338,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.CreateFigureClustersMergingTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.CreateFigureClustersMergingTaskResponse:
+        """
+        @summary 合并聚类
+        
+        @param tmp_req: CreateFigureClustersMergingTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateFigureClustersMergingTaskResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.CreateFigureClustersMergingTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1798,6 +2394,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.CreateFigureClustersMergingTaskRequest,
     ) -> imm_20200930_models.CreateFigureClustersMergingTaskResponse:
+        """
+        @summary 合并聚类
+        
+        @param request: CreateFigureClustersMergingTaskRequest
+        @return: CreateFigureClustersMergingTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_figure_clusters_merging_task_with_options(request, runtime)
 
@@ -1805,6 +2407,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.CreateFigureClustersMergingTaskRequest,
     ) -> imm_20200930_models.CreateFigureClustersMergingTaskResponse:
+        """
+        @summary 合并聚类
+        
+        @param request: CreateFigureClustersMergingTaskRequest
+        @return: CreateFigureClustersMergingTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_figure_clusters_merging_task_with_options_async(request, runtime)
 
@@ -1813,6 +2421,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.CreateFileCompressionTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.CreateFileCompressionTaskResponse:
+        """
+        @summary 压缩/打包下载API
+        
+        @param tmp_req: CreateFileCompressionTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateFileCompressionTaskResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.CreateFileCompressionTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1863,6 +2478,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.CreateFileCompressionTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.CreateFileCompressionTaskResponse:
+        """
+        @summary 压缩/打包下载API
+        
+        @param tmp_req: CreateFileCompressionTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateFileCompressionTaskResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.CreateFileCompressionTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1912,6 +2534,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.CreateFileCompressionTaskRequest,
     ) -> imm_20200930_models.CreateFileCompressionTaskResponse:
+        """
+        @summary 压缩/打包下载API
+        
+        @param request: CreateFileCompressionTaskRequest
+        @return: CreateFileCompressionTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_file_compression_task_with_options(request, runtime)
 
@@ -1919,6 +2547,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.CreateFileCompressionTaskRequest,
     ) -> imm_20200930_models.CreateFileCompressionTaskResponse:
+        """
+        @summary 压缩/打包下载API
+        
+        @param request: CreateFileCompressionTaskRequest
+        @return: CreateFileCompressionTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_file_compression_task_with_options_async(request, runtime)
 
@@ -1927,6 +2561,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.CreateFileUncompressionTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.CreateFileUncompressionTaskResponse:
+        """
+        @summary 在线解压API
+        
+        @param tmp_req: CreateFileUncompressionTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateFileUncompressionTaskResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.CreateFileUncompressionTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1977,6 +2618,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.CreateFileUncompressionTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.CreateFileUncompressionTaskResponse:
+        """
+        @summary 在线解压API
+        
+        @param tmp_req: CreateFileUncompressionTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateFileUncompressionTaskResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.CreateFileUncompressionTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -2026,6 +2674,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.CreateFileUncompressionTaskRequest,
     ) -> imm_20200930_models.CreateFileUncompressionTaskResponse:
+        """
+        @summary 在线解压API
+        
+        @param request: CreateFileUncompressionTaskRequest
+        @return: CreateFileUncompressionTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_file_uncompression_task_with_options(request, runtime)
 
@@ -2033,6 +2687,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.CreateFileUncompressionTaskRequest,
     ) -> imm_20200930_models.CreateFileUncompressionTaskResponse:
+        """
+        @summary 在线解压API
+        
+        @param request: CreateFileUncompressionTaskRequest
+        @return: CreateFileUncompressionTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_file_uncompression_task_with_options_async(request, runtime)
 
@@ -2041,6 +2701,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.CreateImageModerationTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.CreateImageModerationTaskResponse:
+        """
+        @summary 创建图片检测
+        
+        @param tmp_req: CreateImageModerationTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateImageModerationTaskResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.CreateImageModerationTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -2095,6 +2762,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.CreateImageModerationTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.CreateImageModerationTaskResponse:
+        """
+        @summary 创建图片检测
+        
+        @param tmp_req: CreateImageModerationTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateImageModerationTaskResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.CreateImageModerationTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -2148,6 +2822,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.CreateImageModerationTaskRequest,
     ) -> imm_20200930_models.CreateImageModerationTaskResponse:
+        """
+        @summary 创建图片检测
+        
+        @param request: CreateImageModerationTaskRequest
+        @return: CreateImageModerationTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_image_moderation_task_with_options(request, runtime)
 
@@ -2155,6 +2835,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.CreateImageModerationTaskRequest,
     ) -> imm_20200930_models.CreateImageModerationTaskResponse:
+        """
+        @summary 创建图片检测
+        
+        @param request: CreateImageModerationTaskRequest
+        @return: CreateImageModerationTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_image_moderation_task_with_options_async(request, runtime)
 
@@ -2163,6 +2849,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.CreateImageSplicingTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.CreateImageSplicingTaskResponse:
+        """
+        @summary 图片拼接
+        
+        @param tmp_req: CreateImageSplicingTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateImageSplicingTaskResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.CreateImageSplicingTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -2229,6 +2922,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.CreateImageSplicingTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.CreateImageSplicingTaskResponse:
+        """
+        @summary 图片拼接
+        
+        @param tmp_req: CreateImageSplicingTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateImageSplicingTaskResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.CreateImageSplicingTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -2294,6 +2994,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.CreateImageSplicingTaskRequest,
     ) -> imm_20200930_models.CreateImageSplicingTaskResponse:
+        """
+        @summary 图片拼接
+        
+        @param request: CreateImageSplicingTaskRequest
+        @return: CreateImageSplicingTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_image_splicing_task_with_options(request, runtime)
 
@@ -2301,6 +3007,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.CreateImageSplicingTaskRequest,
     ) -> imm_20200930_models.CreateImageSplicingTaskResponse:
+        """
+        @summary 图片拼接
+        
+        @param request: CreateImageSplicingTaskRequest
+        @return: CreateImageSplicingTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_image_splicing_task_with_options_async(request, runtime)
 
@@ -2309,6 +3021,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.CreateImageToPDFTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.CreateImageToPDFTaskResponse:
+        """
+        @summary 图片转PDF
+        
+        @param tmp_req: CreateImageToPDFTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateImageToPDFTaskResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.CreateImageToPDFTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -2359,6 +3078,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.CreateImageToPDFTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.CreateImageToPDFTaskResponse:
+        """
+        @summary 图片转PDF
+        
+        @param tmp_req: CreateImageToPDFTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateImageToPDFTaskResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.CreateImageToPDFTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -2408,6 +3134,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.CreateImageToPDFTaskRequest,
     ) -> imm_20200930_models.CreateImageToPDFTaskResponse:
+        """
+        @summary 图片转PDF
+        
+        @param request: CreateImageToPDFTaskRequest
+        @return: CreateImageToPDFTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_image_to_pdftask_with_options(request, runtime)
 
@@ -2415,6 +3147,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.CreateImageToPDFTaskRequest,
     ) -> imm_20200930_models.CreateImageToPDFTaskResponse:
+        """
+        @summary 图片转PDF
+        
+        @param request: CreateImageToPDFTaskRequest
+        @return: CreateImageToPDFTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_image_to_pdftask_with_options_async(request, runtime)
 
@@ -2423,6 +3161,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.CreateLocationDateClusteringTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.CreateLocationDateClusteringTaskResponse:
+        """
+        @summary 创建时空聚类任务
+        
+        @param tmp_req: CreateLocationDateClusteringTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateLocationDateClusteringTaskResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.CreateLocationDateClusteringTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -2473,6 +3218,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.CreateLocationDateClusteringTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.CreateLocationDateClusteringTaskResponse:
+        """
+        @summary 创建时空聚类任务
+        
+        @param tmp_req: CreateLocationDateClusteringTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateLocationDateClusteringTaskResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.CreateLocationDateClusteringTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -2522,6 +3274,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.CreateLocationDateClusteringTaskRequest,
     ) -> imm_20200930_models.CreateLocationDateClusteringTaskResponse:
+        """
+        @summary 创建时空聚类任务
+        
+        @param request: CreateLocationDateClusteringTaskRequest
+        @return: CreateLocationDateClusteringTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_location_date_clustering_task_with_options(request, runtime)
 
@@ -2529,6 +3287,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.CreateLocationDateClusteringTaskRequest,
     ) -> imm_20200930_models.CreateLocationDateClusteringTaskResponse:
+        """
+        @summary 创建时空聚类任务
+        
+        @param request: CreateLocationDateClusteringTaskRequest
+        @return: CreateLocationDateClusteringTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_location_date_clustering_task_with_options_async(request, runtime)
 
@@ -2537,6 +3301,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.CreateMediaConvertTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.CreateMediaConvertTaskResponse:
+        """
+        @summary 创建转码服务
+        
+        @param tmp_req: CreateMediaConvertTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMediaConvertTaskResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.CreateMediaConvertTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -2591,6 +3362,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.CreateMediaConvertTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.CreateMediaConvertTaskResponse:
+        """
+        @summary 创建转码服务
+        
+        @param tmp_req: CreateMediaConvertTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMediaConvertTaskResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.CreateMediaConvertTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -2644,6 +3422,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.CreateMediaConvertTaskRequest,
     ) -> imm_20200930_models.CreateMediaConvertTaskResponse:
+        """
+        @summary 创建转码服务
+        
+        @param request: CreateMediaConvertTaskRequest
+        @return: CreateMediaConvertTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_media_convert_task_with_options(request, runtime)
 
@@ -2651,6 +3435,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.CreateMediaConvertTaskRequest,
     ) -> imm_20200930_models.CreateMediaConvertTaskResponse:
+        """
+        @summary 创建转码服务
+        
+        @param request: CreateMediaConvertTaskRequest
+        @return: CreateMediaConvertTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_media_convert_task_with_options_async(request, runtime)
 
@@ -2659,6 +3449,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.CreateOfficeConversionTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.CreateOfficeConversionTaskResponse:
+        """
+        @summary 创建文档转换任务
+        
+        @param tmp_req: CreateOfficeConversionTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateOfficeConversionTaskResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.CreateOfficeConversionTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -2757,6 +3554,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.CreateOfficeConversionTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.CreateOfficeConversionTaskResponse:
+        """
+        @summary 创建文档转换任务
+        
+        @param tmp_req: CreateOfficeConversionTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateOfficeConversionTaskResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.CreateOfficeConversionTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -2854,6 +3658,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.CreateOfficeConversionTaskRequest,
     ) -> imm_20200930_models.CreateOfficeConversionTaskResponse:
+        """
+        @summary 创建文档转换任务
+        
+        @param request: CreateOfficeConversionTaskRequest
+        @return: CreateOfficeConversionTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_office_conversion_task_with_options(request, runtime)
 
@@ -2861,6 +3671,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.CreateOfficeConversionTaskRequest,
     ) -> imm_20200930_models.CreateOfficeConversionTaskResponse:
+        """
+        @summary 创建文档转换任务
+        
+        @param request: CreateOfficeConversionTaskRequest
+        @return: CreateOfficeConversionTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_office_conversion_task_with_options_async(request, runtime)
 
@@ -2869,6 +3685,13 @@ class Client(OpenApiClient):
         request: imm_20200930_models.CreateProjectRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.CreateProjectResponse:
+        """
+        @summary 创建项目
+        
+        @param request: CreateProjectRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateProjectResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dataset_max_bind_count):
@@ -2915,6 +3738,13 @@ class Client(OpenApiClient):
         request: imm_20200930_models.CreateProjectRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.CreateProjectResponse:
+        """
+        @summary 创建项目
+        
+        @param request: CreateProjectRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateProjectResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dataset_max_bind_count):
@@ -2960,6 +3790,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.CreateProjectRequest,
     ) -> imm_20200930_models.CreateProjectResponse:
+        """
+        @summary 创建项目
+        
+        @param request: CreateProjectRequest
+        @return: CreateProjectResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_project_with_options(request, runtime)
 
@@ -2967,6 +3803,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.CreateProjectRequest,
     ) -> imm_20200930_models.CreateProjectResponse:
+        """
+        @summary 创建项目
+        
+        @param request: CreateProjectRequest
+        @return: CreateProjectResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_project_with_options_async(request, runtime)
 
@@ -2975,6 +3817,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.CreateSimilarImageClusteringTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.CreateSimilarImageClusteringTaskResponse:
+        """
+        @summary 创建相似图片聚类任务
+        
+        @param tmp_req: CreateSimilarImageClusteringTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSimilarImageClusteringTaskResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.CreateSimilarImageClusteringTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3017,6 +3866,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.CreateSimilarImageClusteringTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.CreateSimilarImageClusteringTaskResponse:
+        """
+        @summary 创建相似图片聚类任务
+        
+        @param tmp_req: CreateSimilarImageClusteringTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSimilarImageClusteringTaskResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.CreateSimilarImageClusteringTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3058,6 +3914,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.CreateSimilarImageClusteringTaskRequest,
     ) -> imm_20200930_models.CreateSimilarImageClusteringTaskResponse:
+        """
+        @summary 创建相似图片聚类任务
+        
+        @param request: CreateSimilarImageClusteringTaskRequest
+        @return: CreateSimilarImageClusteringTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_similar_image_clustering_task_with_options(request, runtime)
 
@@ -3065,6 +3927,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.CreateSimilarImageClusteringTaskRequest,
     ) -> imm_20200930_models.CreateSimilarImageClusteringTaskResponse:
+        """
+        @summary 创建相似图片聚类任务
+        
+        @param request: CreateSimilarImageClusteringTaskRequest
+        @return: CreateSimilarImageClusteringTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_similar_image_clustering_task_with_options_async(request, runtime)
 
@@ -3073,6 +3941,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.CreateStoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.CreateStoryResponse:
+        """
+        @summary 创建一个 Story
+        
+        @param tmp_req: CreateStoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateStoryResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.CreateStoryShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3145,6 +4020,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.CreateStoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.CreateStoryResponse:
+        """
+        @summary 创建一个 Story
+        
+        @param tmp_req: CreateStoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateStoryResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.CreateStoryShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3216,6 +4098,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.CreateStoryRequest,
     ) -> imm_20200930_models.CreateStoryResponse:
+        """
+        @summary 创建一个 Story
+        
+        @param request: CreateStoryRequest
+        @return: CreateStoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_story_with_options(request, runtime)
 
@@ -3223,6 +4111,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.CreateStoryRequest,
     ) -> imm_20200930_models.CreateStoryResponse:
+        """
+        @summary 创建一个 Story
+        
+        @param request: CreateStoryRequest
+        @return: CreateStoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_story_with_options_async(request, runtime)
 
@@ -3231,6 +4125,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.CreateTriggerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.CreateTriggerResponse:
+        """
+        @summary 创建数据接入
+        
+        @param tmp_req: CreateTriggerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTriggerResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.CreateTriggerShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3279,6 +4180,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.CreateTriggerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.CreateTriggerResponse:
+        """
+        @summary 创建数据接入
+        
+        @param tmp_req: CreateTriggerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTriggerResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.CreateTriggerShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3326,6 +4234,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.CreateTriggerRequest,
     ) -> imm_20200930_models.CreateTriggerResponse:
+        """
+        @summary 创建数据接入
+        
+        @param request: CreateTriggerRequest
+        @return: CreateTriggerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_trigger_with_options(request, runtime)
 
@@ -3333,6 +4247,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.CreateTriggerRequest,
     ) -> imm_20200930_models.CreateTriggerResponse:
+        """
+        @summary 创建数据接入
+        
+        @param request: CreateTriggerRequest
+        @return: CreateTriggerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_trigger_with_options_async(request, runtime)
 
@@ -3341,6 +4261,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.CreateVideoLabelClassificationTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.CreateVideoLabelClassificationTaskResponse:
+        """
+        @summary 检测视频中的内容
+        
+        @param tmp_req: CreateVideoLabelClassificationTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateVideoLabelClassificationTaskResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.CreateVideoLabelClassificationTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3387,6 +4314,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.CreateVideoLabelClassificationTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.CreateVideoLabelClassificationTaskResponse:
+        """
+        @summary 检测视频中的内容
+        
+        @param tmp_req: CreateVideoLabelClassificationTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateVideoLabelClassificationTaskResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.CreateVideoLabelClassificationTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3432,6 +4366,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.CreateVideoLabelClassificationTaskRequest,
     ) -> imm_20200930_models.CreateVideoLabelClassificationTaskResponse:
+        """
+        @summary 检测视频中的内容
+        
+        @param request: CreateVideoLabelClassificationTaskRequest
+        @return: CreateVideoLabelClassificationTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_video_label_classification_task_with_options(request, runtime)
 
@@ -3439,6 +4379,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.CreateVideoLabelClassificationTaskRequest,
     ) -> imm_20200930_models.CreateVideoLabelClassificationTaskResponse:
+        """
+        @summary 检测视频中的内容
+        
+        @param request: CreateVideoLabelClassificationTaskRequest
+        @return: CreateVideoLabelClassificationTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_video_label_classification_task_with_options_async(request, runtime)
 
@@ -3447,6 +4393,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.CreateVideoModerationTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.CreateVideoModerationTaskResponse:
+        """
+        @summary 创建视频检测
+        
+        @param tmp_req: CreateVideoModerationTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateVideoModerationTaskResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.CreateVideoModerationTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3501,6 +4454,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.CreateVideoModerationTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.CreateVideoModerationTaskResponse:
+        """
+        @summary 创建视频检测
+        
+        @param tmp_req: CreateVideoModerationTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateVideoModerationTaskResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.CreateVideoModerationTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3554,6 +4514,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.CreateVideoModerationTaskRequest,
     ) -> imm_20200930_models.CreateVideoModerationTaskResponse:
+        """
+        @summary 创建视频检测
+        
+        @param request: CreateVideoModerationTaskRequest
+        @return: CreateVideoModerationTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_video_moderation_task_with_options(request, runtime)
 
@@ -3561,6 +4527,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.CreateVideoModerationTaskRequest,
     ) -> imm_20200930_models.CreateVideoModerationTaskResponse:
+        """
+        @summary 创建视频检测
+        
+        @param request: CreateVideoModerationTaskRequest
+        @return: CreateVideoModerationTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_video_moderation_task_with_options_async(request, runtime)
 
@@ -3569,6 +4541,13 @@ class Client(OpenApiClient):
         request: imm_20200930_models.DeleteBatchRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.DeleteBatchResponse:
+        """
+        @summary 删除数据接入实例
+        
+        @param request: DeleteBatchRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteBatchResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.id):
@@ -3599,6 +4578,13 @@ class Client(OpenApiClient):
         request: imm_20200930_models.DeleteBatchRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.DeleteBatchResponse:
+        """
+        @summary 删除数据接入实例
+        
+        @param request: DeleteBatchRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteBatchResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.id):
@@ -3628,6 +4614,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.DeleteBatchRequest,
     ) -> imm_20200930_models.DeleteBatchResponse:
+        """
+        @summary 删除数据接入实例
+        
+        @param request: DeleteBatchRequest
+        @return: DeleteBatchResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_batch_with_options(request, runtime)
 
@@ -3635,6 +4627,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.DeleteBatchRequest,
     ) -> imm_20200930_models.DeleteBatchResponse:
+        """
+        @summary 删除数据接入实例
+        
+        @param request: DeleteBatchRequest
+        @return: DeleteBatchResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_batch_with_options_async(request, runtime)
 
@@ -3643,6 +4641,13 @@ class Client(OpenApiClient):
         request: imm_20200930_models.DeleteBindingRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.DeleteBindingResponse:
+        """
+        @summary 删除绑定
+        
+        @param request: DeleteBindingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteBindingResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dataset_name):
@@ -3675,6 +4680,13 @@ class Client(OpenApiClient):
         request: imm_20200930_models.DeleteBindingRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.DeleteBindingResponse:
+        """
+        @summary 删除绑定
+        
+        @param request: DeleteBindingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteBindingResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dataset_name):
@@ -3706,6 +4718,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.DeleteBindingRequest,
     ) -> imm_20200930_models.DeleteBindingResponse:
+        """
+        @summary 删除绑定
+        
+        @param request: DeleteBindingRequest
+        @return: DeleteBindingResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_binding_with_options(request, runtime)
 
@@ -3713,6 +4731,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.DeleteBindingRequest,
     ) -> imm_20200930_models.DeleteBindingResponse:
+        """
+        @summary 删除绑定
+        
+        @param request: DeleteBindingRequest
+        @return: DeleteBindingResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_binding_with_options_async(request, runtime)
 
@@ -3721,6 +4745,13 @@ class Client(OpenApiClient):
         request: imm_20200930_models.DeleteDatasetRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.DeleteDatasetResponse:
+        """
+        @summary 删除媒体集
+        
+        @param request: DeleteDatasetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDatasetResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dataset_name):
@@ -3751,6 +4782,13 @@ class Client(OpenApiClient):
         request: imm_20200930_models.DeleteDatasetRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.DeleteDatasetResponse:
+        """
+        @summary 删除媒体集
+        
+        @param request: DeleteDatasetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDatasetResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dataset_name):
@@ -3780,6 +4818,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.DeleteDatasetRequest,
     ) -> imm_20200930_models.DeleteDatasetResponse:
+        """
+        @summary 删除媒体集
+        
+        @param request: DeleteDatasetRequest
+        @return: DeleteDatasetResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_dataset_with_options(request, runtime)
 
@@ -3787,6 +4831,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.DeleteDatasetRequest,
     ) -> imm_20200930_models.DeleteDatasetResponse:
+        """
+        @summary 删除媒体集
+        
+        @param request: DeleteDatasetRequest
+        @return: DeleteDatasetResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_dataset_with_options_async(request, runtime)
 
@@ -3795,6 +4845,13 @@ class Client(OpenApiClient):
         request: imm_20200930_models.DeleteFileMetaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.DeleteFileMetaResponse:
+        """
+        @summary 删除文件元信息
+        
+        @param request: DeleteFileMetaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteFileMetaResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dataset_name):
@@ -3827,6 +4884,13 @@ class Client(OpenApiClient):
         request: imm_20200930_models.DeleteFileMetaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.DeleteFileMetaResponse:
+        """
+        @summary 删除文件元信息
+        
+        @param request: DeleteFileMetaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteFileMetaResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dataset_name):
@@ -3858,6 +4922,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.DeleteFileMetaRequest,
     ) -> imm_20200930_models.DeleteFileMetaResponse:
+        """
+        @summary 删除文件元信息
+        
+        @param request: DeleteFileMetaRequest
+        @return: DeleteFileMetaResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_file_meta_with_options(request, runtime)
 
@@ -3865,6 +4935,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.DeleteFileMetaRequest,
     ) -> imm_20200930_models.DeleteFileMetaResponse:
+        """
+        @summary 删除文件元信息
+        
+        @param request: DeleteFileMetaRequest
+        @return: DeleteFileMetaResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_file_meta_with_options_async(request, runtime)
 
@@ -3873,6 +4949,13 @@ class Client(OpenApiClient):
         request: imm_20200930_models.DeleteLocationDateClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.DeleteLocationDateClusterResponse:
+        """
+        @summary 删除时空聚类
+        
+        @param request: DeleteLocationDateClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteLocationDateClusterResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dataset_name):
@@ -3907,6 +4990,13 @@ class Client(OpenApiClient):
         request: imm_20200930_models.DeleteLocationDateClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.DeleteLocationDateClusterResponse:
+        """
+        @summary 删除时空聚类
+        
+        @param request: DeleteLocationDateClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteLocationDateClusterResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dataset_name):
@@ -3940,6 +5030,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.DeleteLocationDateClusterRequest,
     ) -> imm_20200930_models.DeleteLocationDateClusterResponse:
+        """
+        @summary 删除时空聚类
+        
+        @param request: DeleteLocationDateClusterRequest
+        @return: DeleteLocationDateClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_location_date_cluster_with_options(request, runtime)
 
@@ -3947,6 +5043,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.DeleteLocationDateClusterRequest,
     ) -> imm_20200930_models.DeleteLocationDateClusterResponse:
+        """
+        @summary 删除时空聚类
+        
+        @param request: DeleteLocationDateClusterRequest
+        @return: DeleteLocationDateClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_location_date_cluster_with_options_async(request, runtime)
 
@@ -3955,6 +5057,13 @@ class Client(OpenApiClient):
         request: imm_20200930_models.DeleteProjectRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.DeleteProjectResponse:
+        """
+        @summary 删除项目
+        
+        @param request: DeleteProjectRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteProjectResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.project_name):
@@ -3983,6 +5092,13 @@ class Client(OpenApiClient):
         request: imm_20200930_models.DeleteProjectRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.DeleteProjectResponse:
+        """
+        @summary 删除项目
+        
+        @param request: DeleteProjectRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteProjectResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.project_name):
@@ -4010,6 +5126,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.DeleteProjectRequest,
     ) -> imm_20200930_models.DeleteProjectResponse:
+        """
+        @summary 删除项目
+        
+        @param request: DeleteProjectRequest
+        @return: DeleteProjectResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_project_with_options(request, runtime)
 
@@ -4017,6 +5139,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.DeleteProjectRequest,
     ) -> imm_20200930_models.DeleteProjectResponse:
+        """
+        @summary 删除项目
+        
+        @param request: DeleteProjectRequest
+        @return: DeleteProjectResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_project_with_options_async(request, runtime)
 
@@ -4025,6 +5153,13 @@ class Client(OpenApiClient):
         request: imm_20200930_models.DeleteStoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.DeleteStoryResponse:
+        """
+        @summary 删除一个 Story
+        
+        @param request: DeleteStoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteStoryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dataset_name):
@@ -4057,6 +5192,13 @@ class Client(OpenApiClient):
         request: imm_20200930_models.DeleteStoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.DeleteStoryResponse:
+        """
+        @summary 删除一个 Story
+        
+        @param request: DeleteStoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteStoryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dataset_name):
@@ -4088,6 +5230,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.DeleteStoryRequest,
     ) -> imm_20200930_models.DeleteStoryResponse:
+        """
+        @summary 删除一个 Story
+        
+        @param request: DeleteStoryRequest
+        @return: DeleteStoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_story_with_options(request, runtime)
 
@@ -4095,6 +5243,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.DeleteStoryRequest,
     ) -> imm_20200930_models.DeleteStoryResponse:
+        """
+        @summary 删除一个 Story
+        
+        @param request: DeleteStoryRequest
+        @return: DeleteStoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_story_with_options_async(request, runtime)
 
@@ -4103,6 +5257,13 @@ class Client(OpenApiClient):
         request: imm_20200930_models.DeleteTriggerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.DeleteTriggerResponse:
+        """
+        @summary 删除数据接入实例
+        
+        @param request: DeleteTriggerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteTriggerResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.id):
@@ -4133,6 +5294,13 @@ class Client(OpenApiClient):
         request: imm_20200930_models.DeleteTriggerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.DeleteTriggerResponse:
+        """
+        @summary 删除数据接入实例
+        
+        @param request: DeleteTriggerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteTriggerResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.id):
@@ -4162,6 +5330,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.DeleteTriggerRequest,
     ) -> imm_20200930_models.DeleteTriggerResponse:
+        """
+        @summary 删除数据接入实例
+        
+        @param request: DeleteTriggerRequest
+        @return: DeleteTriggerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_trigger_with_options(request, runtime)
 
@@ -4169,6 +5343,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.DeleteTriggerRequest,
     ) -> imm_20200930_models.DeleteTriggerResponse:
+        """
+        @summary 删除数据接入实例
+        
+        @param request: DeleteTriggerRequest
+        @return: DeleteTriggerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_trigger_with_options_async(request, runtime)
 
@@ -4177,6 +5357,13 @@ class Client(OpenApiClient):
         request: imm_20200930_models.DetachOSSBucketRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.DetachOSSBucketResponse:
+        """
+        @summary 解绑ossbucket
+        
+        @param request: DetachOSSBucketRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetachOSSBucketResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ossbucket):
@@ -4205,6 +5392,13 @@ class Client(OpenApiClient):
         request: imm_20200930_models.DetachOSSBucketRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.DetachOSSBucketResponse:
+        """
+        @summary 解绑ossbucket
+        
+        @param request: DetachOSSBucketRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetachOSSBucketResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ossbucket):
@@ -4232,6 +5426,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.DetachOSSBucketRequest,
     ) -> imm_20200930_models.DetachOSSBucketResponse:
+        """
+        @summary 解绑ossbucket
+        
+        @param request: DetachOSSBucketRequest
+        @return: DetachOSSBucketResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.detach_ossbucket_with_options(request, runtime)
 
@@ -4239,6 +5439,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.DetachOSSBucketRequest,
     ) -> imm_20200930_models.DetachOSSBucketResponse:
+        """
+        @summary 解绑ossbucket
+        
+        @param request: DetachOSSBucketRequest
+        @return: DetachOSSBucketResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.detach_ossbucket_with_options_async(request, runtime)
 
@@ -4247,6 +5453,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.DetectImageBodiesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.DetectImageBodiesResponse:
+        """
+        @summary 人体检测算子
+        
+        @param tmp_req: DetectImageBodiesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetectImageBodiesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.DetectImageBodiesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -4285,6 +5498,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.DetectImageBodiesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.DetectImageBodiesResponse:
+        """
+        @summary 人体检测算子
+        
+        @param tmp_req: DetectImageBodiesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetectImageBodiesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.DetectImageBodiesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -4322,6 +5542,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.DetectImageBodiesRequest,
     ) -> imm_20200930_models.DetectImageBodiesResponse:
+        """
+        @summary 人体检测算子
+        
+        @param request: DetectImageBodiesRequest
+        @return: DetectImageBodiesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.detect_image_bodies_with_options(request, runtime)
 
@@ -4329,6 +5555,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.DetectImageBodiesRequest,
     ) -> imm_20200930_models.DetectImageBodiesResponse:
+        """
+        @summary 人体检测算子
+        
+        @param request: DetectImageBodiesRequest
+        @return: DetectImageBodiesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.detect_image_bodies_with_options_async(request, runtime)
 
@@ -4337,6 +5569,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.DetectImageCarsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.DetectImageCarsResponse:
+        """
+        @summary 检测图片中车辆信息
+        
+        @param tmp_req: DetectImageCarsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetectImageCarsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.DetectImageCarsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -4373,6 +5612,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.DetectImageCarsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.DetectImageCarsResponse:
+        """
+        @summary 检测图片中车辆信息
+        
+        @param tmp_req: DetectImageCarsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetectImageCarsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.DetectImageCarsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -4408,6 +5654,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.DetectImageCarsRequest,
     ) -> imm_20200930_models.DetectImageCarsResponse:
+        """
+        @summary 检测图片中车辆信息
+        
+        @param request: DetectImageCarsRequest
+        @return: DetectImageCarsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.detect_image_cars_with_options(request, runtime)
 
@@ -4415,6 +5667,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.DetectImageCarsRequest,
     ) -> imm_20200930_models.DetectImageCarsResponse:
+        """
+        @summary 检测图片中车辆信息
+        
+        @param request: DetectImageCarsRequest
+        @return: DetectImageCarsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.detect_image_cars_with_options_async(request, runtime)
 
@@ -4423,6 +5681,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.DetectImageCodesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.DetectImageCodesResponse:
+        """
+        @summary 获取图片二维码检测
+        
+        @param tmp_req: DetectImageCodesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetectImageCodesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.DetectImageCodesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -4459,6 +5724,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.DetectImageCodesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.DetectImageCodesResponse:
+        """
+        @summary 获取图片二维码检测
+        
+        @param tmp_req: DetectImageCodesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetectImageCodesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.DetectImageCodesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -4494,6 +5766,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.DetectImageCodesRequest,
     ) -> imm_20200930_models.DetectImageCodesResponse:
+        """
+        @summary 获取图片二维码检测
+        
+        @param request: DetectImageCodesRequest
+        @return: DetectImageCodesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.detect_image_codes_with_options(request, runtime)
 
@@ -4501,6 +5779,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.DetectImageCodesRequest,
     ) -> imm_20200930_models.DetectImageCodesResponse:
+        """
+        @summary 获取图片二维码检测
+        
+        @param request: DetectImageCodesRequest
+        @return: DetectImageCodesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.detect_image_codes_with_options_async(request, runtime)
 
@@ -4509,6 +5793,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.DetectImageCroppingRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.DetectImageCroppingResponse:
+        """
+        @summary 获取图片裁剪信息
+        
+        @param tmp_req: DetectImageCroppingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetectImageCroppingResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.DetectImageCroppingShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -4547,6 +5838,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.DetectImageCroppingRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.DetectImageCroppingResponse:
+        """
+        @summary 获取图片裁剪信息
+        
+        @param tmp_req: DetectImageCroppingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetectImageCroppingResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.DetectImageCroppingShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -4584,6 +5882,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.DetectImageCroppingRequest,
     ) -> imm_20200930_models.DetectImageCroppingResponse:
+        """
+        @summary 获取图片裁剪信息
+        
+        @param request: DetectImageCroppingRequest
+        @return: DetectImageCroppingResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.detect_image_cropping_with_options(request, runtime)
 
@@ -4591,6 +5895,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.DetectImageCroppingRequest,
     ) -> imm_20200930_models.DetectImageCroppingResponse:
+        """
+        @summary 获取图片裁剪信息
+        
+        @param request: DetectImageCroppingRequest
+        @return: DetectImageCroppingResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.detect_image_cropping_with_options_async(request, runtime)
 
@@ -4599,6 +5909,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.DetectImageFacesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.DetectImageFacesResponse:
+        """
+        @summary 获取图片人脸信息
+        
+        @param tmp_req: DetectImageFacesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetectImageFacesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.DetectImageFacesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -4635,6 +5952,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.DetectImageFacesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.DetectImageFacesResponse:
+        """
+        @summary 获取图片人脸信息
+        
+        @param tmp_req: DetectImageFacesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetectImageFacesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.DetectImageFacesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -4670,6 +5994,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.DetectImageFacesRequest,
     ) -> imm_20200930_models.DetectImageFacesResponse:
+        """
+        @summary 获取图片人脸信息
+        
+        @param request: DetectImageFacesRequest
+        @return: DetectImageFacesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.detect_image_faces_with_options(request, runtime)
 
@@ -4677,6 +6007,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.DetectImageFacesRequest,
     ) -> imm_20200930_models.DetectImageFacesResponse:
+        """
+        @summary 获取图片人脸信息
+        
+        @param request: DetectImageFacesRequest
+        @return: DetectImageFacesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.detect_image_faces_with_options_async(request, runtime)
 
@@ -4685,6 +6021,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.DetectImageLabelsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.DetectImageLabelsResponse:
+        """
+        @summary 检测图像中的内容
+        
+        @param tmp_req: DetectImageLabelsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetectImageLabelsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.DetectImageLabelsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -4723,6 +6066,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.DetectImageLabelsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.DetectImageLabelsResponse:
+        """
+        @summary 检测图像中的内容
+        
+        @param tmp_req: DetectImageLabelsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetectImageLabelsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.DetectImageLabelsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -4760,6 +6110,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.DetectImageLabelsRequest,
     ) -> imm_20200930_models.DetectImageLabelsResponse:
+        """
+        @summary 检测图像中的内容
+        
+        @param request: DetectImageLabelsRequest
+        @return: DetectImageLabelsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.detect_image_labels_with_options(request, runtime)
 
@@ -4767,6 +6123,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.DetectImageLabelsRequest,
     ) -> imm_20200930_models.DetectImageLabelsResponse:
+        """
+        @summary 检测图像中的内容
+        
+        @param request: DetectImageLabelsRequest
+        @return: DetectImageLabelsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.detect_image_labels_with_options_async(request, runtime)
 
@@ -4775,6 +6137,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.DetectImageScoreRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.DetectImageScoreResponse:
+        """
+        @summary 获取图片打分
+        
+        @param tmp_req: DetectImageScoreRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetectImageScoreResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.DetectImageScoreShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -4811,6 +6180,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.DetectImageScoreRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.DetectImageScoreResponse:
+        """
+        @summary 获取图片打分
+        
+        @param tmp_req: DetectImageScoreRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetectImageScoreResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.DetectImageScoreShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -4846,6 +6222,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.DetectImageScoreRequest,
     ) -> imm_20200930_models.DetectImageScoreResponse:
+        """
+        @summary 获取图片打分
+        
+        @param request: DetectImageScoreRequest
+        @return: DetectImageScoreResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.detect_image_score_with_options(request, runtime)
 
@@ -4853,6 +6235,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.DetectImageScoreRequest,
     ) -> imm_20200930_models.DetectImageScoreResponse:
+        """
+        @summary 获取图片打分
+        
+        @param request: DetectImageScoreRequest
+        @return: DetectImageScoreResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.detect_image_score_with_options_async(request, runtime)
 
@@ -4861,6 +6249,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.DetectImageTextsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.DetectImageTextsResponse:
+        """
+        @summary 进行图片光学字符检测
+        
+        @param tmp_req: DetectImageTextsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetectImageTextsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.DetectImageTextsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -4897,6 +6292,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.DetectImageTextsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.DetectImageTextsResponse:
+        """
+        @summary 进行图片光学字符检测
+        
+        @param tmp_req: DetectImageTextsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetectImageTextsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.DetectImageTextsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -4932,6 +6334,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.DetectImageTextsRequest,
     ) -> imm_20200930_models.DetectImageTextsResponse:
+        """
+        @summary 进行图片光学字符检测
+        
+        @param request: DetectImageTextsRequest
+        @return: DetectImageTextsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.detect_image_texts_with_options(request, runtime)
 
@@ -4939,6 +6347,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.DetectImageTextsRequest,
     ) -> imm_20200930_models.DetectImageTextsResponse:
+        """
+        @summary 进行图片光学字符检测
+        
+        @param request: DetectImageTextsRequest
+        @return: DetectImageTextsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.detect_image_texts_with_options_async(request, runtime)
 
@@ -4947,6 +6361,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.DetectMediaMetaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.DetectMediaMetaResponse:
+        """
+        @summary 获取媒体文件信息
+        
+        @param tmp_req: DetectMediaMetaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetectMediaMetaResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.DetectMediaMetaShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -4983,6 +6404,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.DetectMediaMetaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.DetectMediaMetaResponse:
+        """
+        @summary 获取媒体文件信息
+        
+        @param tmp_req: DetectMediaMetaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetectMediaMetaResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.DetectMediaMetaShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -5018,6 +6446,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.DetectMediaMetaRequest,
     ) -> imm_20200930_models.DetectMediaMetaResponse:
+        """
+        @summary 获取媒体文件信息
+        
+        @param request: DetectMediaMetaRequest
+        @return: DetectMediaMetaResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.detect_media_meta_with_options(request, runtime)
 
@@ -5025,6 +6459,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.DetectMediaMetaRequest,
     ) -> imm_20200930_models.DetectMediaMetaResponse:
+        """
+        @summary 获取媒体文件信息
+        
+        @param request: DetectMediaMetaRequest
+        @return: DetectMediaMetaResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.detect_media_meta_with_options_async(request, runtime)
 
@@ -5033,6 +6473,13 @@ class Client(OpenApiClient):
         request: imm_20200930_models.DetectTextAnomalyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.DetectTextAnomalyResponse:
+        """
+        @summary 检测文本
+        
+        @param request: DetectTextAnomalyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetectTextAnomalyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.content):
@@ -5063,6 +6510,13 @@ class Client(OpenApiClient):
         request: imm_20200930_models.DetectTextAnomalyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.DetectTextAnomalyResponse:
+        """
+        @summary 检测文本
+        
+        @param request: DetectTextAnomalyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetectTextAnomalyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.content):
@@ -5092,6 +6546,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.DetectTextAnomalyRequest,
     ) -> imm_20200930_models.DetectTextAnomalyResponse:
+        """
+        @summary 检测文本
+        
+        @param request: DetectTextAnomalyRequest
+        @return: DetectTextAnomalyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.detect_text_anomaly_with_options(request, runtime)
 
@@ -5099,14 +6559,143 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.DetectTextAnomalyRequest,
     ) -> imm_20200930_models.DetectTextAnomalyResponse:
+        """
+        @summary 检测文本
+        
+        @param request: DetectTextAnomalyRequest
+        @return: DetectTextAnomalyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.detect_text_anomaly_with_options_async(request, runtime)
+
+    def encode_blind_watermark_with_options(
+        self,
+        request: imm_20200930_models.EncodeBlindWatermarkRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.EncodeBlindWatermarkResponse:
+        """
+        @summary 嵌入图片盲水印算子
+        
+        @param request: EncodeBlindWatermarkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EncodeBlindWatermarkResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.content):
+            query['Content'] = request.content
+        if not UtilClient.is_unset(request.image_quality):
+            query['ImageQuality'] = request.image_quality
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.source_uri):
+            query['SourceURI'] = request.source_uri
+        if not UtilClient.is_unset(request.strength_level):
+            query['StrengthLevel'] = request.strength_level
+        if not UtilClient.is_unset(request.target_uri):
+            query['TargetURI'] = request.target_uri
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EncodeBlindWatermark',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.EncodeBlindWatermarkResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def encode_blind_watermark_with_options_async(
+        self,
+        request: imm_20200930_models.EncodeBlindWatermarkRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.EncodeBlindWatermarkResponse:
+        """
+        @summary 嵌入图片盲水印算子
+        
+        @param request: EncodeBlindWatermarkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EncodeBlindWatermarkResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.content):
+            query['Content'] = request.content
+        if not UtilClient.is_unset(request.image_quality):
+            query['ImageQuality'] = request.image_quality
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.source_uri):
+            query['SourceURI'] = request.source_uri
+        if not UtilClient.is_unset(request.strength_level):
+            query['StrengthLevel'] = request.strength_level
+        if not UtilClient.is_unset(request.target_uri):
+            query['TargetURI'] = request.target_uri
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EncodeBlindWatermark',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.EncodeBlindWatermarkResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def encode_blind_watermark(
+        self,
+        request: imm_20200930_models.EncodeBlindWatermarkRequest,
+    ) -> imm_20200930_models.EncodeBlindWatermarkResponse:
+        """
+        @summary 嵌入图片盲水印算子
+        
+        @param request: EncodeBlindWatermarkRequest
+        @return: EncodeBlindWatermarkResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.encode_blind_watermark_with_options(request, runtime)
+
+    async def encode_blind_watermark_async(
+        self,
+        request: imm_20200930_models.EncodeBlindWatermarkRequest,
+    ) -> imm_20200930_models.EncodeBlindWatermarkResponse:
+        """
+        @summary 嵌入图片盲水印算子
+        
+        @param request: EncodeBlindWatermarkRequest
+        @return: EncodeBlindWatermarkResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.encode_blind_watermark_with_options_async(request, runtime)
 
     def extract_document_text_with_options(
         self,
         tmp_req: imm_20200930_models.ExtractDocumentTextRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.ExtractDocumentTextResponse:
+        """
+        @summary 提取文档中的文本
+        
+        @param tmp_req: ExtractDocumentTextRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExtractDocumentTextResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.ExtractDocumentTextShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -5145,6 +6734,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.ExtractDocumentTextRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.ExtractDocumentTextResponse:
+        """
+        @summary 提取文档中的文本
+        
+        @param tmp_req: ExtractDocumentTextRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExtractDocumentTextResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.ExtractDocumentTextShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -5182,6 +6778,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.ExtractDocumentTextRequest,
     ) -> imm_20200930_models.ExtractDocumentTextResponse:
+        """
+        @summary 提取文档中的文本
+        
+        @param request: ExtractDocumentTextRequest
+        @return: ExtractDocumentTextResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.extract_document_text_with_options(request, runtime)
 
@@ -5189,6 +6791,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.ExtractDocumentTextRequest,
     ) -> imm_20200930_models.ExtractDocumentTextResponse:
+        """
+        @summary 提取文档中的文本
+        
+        @param request: ExtractDocumentTextRequest
+        @return: ExtractDocumentTextResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.extract_document_text_with_options_async(request, runtime)
 
@@ -5197,6 +6805,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.FuzzyQueryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.FuzzyQueryResponse:
+        """
+        @summary 对 Dataset 内的元数据进行模糊搜索。
+        
+        @param tmp_req: FuzzyQueryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FuzzyQueryResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.FuzzyQueryShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -5243,6 +6858,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.FuzzyQueryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.FuzzyQueryResponse:
+        """
+        @summary 对 Dataset 内的元数据进行模糊搜索。
+        
+        @param tmp_req: FuzzyQueryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FuzzyQueryResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.FuzzyQueryShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -5288,6 +6910,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.FuzzyQueryRequest,
     ) -> imm_20200930_models.FuzzyQueryResponse:
+        """
+        @summary 对 Dataset 内的元数据进行模糊搜索。
+        
+        @param request: FuzzyQueryRequest
+        @return: FuzzyQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.fuzzy_query_with_options(request, runtime)
 
@@ -5295,6 +6923,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.FuzzyQueryRequest,
     ) -> imm_20200930_models.FuzzyQueryResponse:
+        """
+        @summary 对 Dataset 内的元数据进行模糊搜索。
+        
+        @param request: FuzzyQueryRequest
+        @return: FuzzyQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.fuzzy_query_with_options_async(request, runtime)
 
@@ -5303,6 +6937,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.GenerateVideoPlaylistRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.GenerateVideoPlaylistResponse:
+        """
+        @summary 创建实时转码任务
+        
+        @param tmp_req: GenerateVideoPlaylistRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GenerateVideoPlaylistResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.GenerateVideoPlaylistShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -5365,6 +7006,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.GenerateVideoPlaylistRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.GenerateVideoPlaylistResponse:
+        """
+        @summary 创建实时转码任务
+        
+        @param tmp_req: GenerateVideoPlaylistRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GenerateVideoPlaylistResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.GenerateVideoPlaylistShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -5426,6 +7074,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.GenerateVideoPlaylistRequest,
     ) -> imm_20200930_models.GenerateVideoPlaylistResponse:
+        """
+        @summary 创建实时转码任务
+        
+        @param request: GenerateVideoPlaylistRequest
+        @return: GenerateVideoPlaylistResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.generate_video_playlist_with_options(request, runtime)
 
@@ -5433,6 +7087,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.GenerateVideoPlaylistRequest,
     ) -> imm_20200930_models.GenerateVideoPlaylistResponse:
+        """
+        @summary 创建实时转码任务
+        
+        @param request: GenerateVideoPlaylistRequest
+        @return: GenerateVideoPlaylistResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.generate_video_playlist_with_options_async(request, runtime)
 
@@ -5441,6 +7101,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.GenerateWebofficeTokenRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.GenerateWebofficeTokenResponse:
+        """
+        @summary 获取文档预览编辑凭证
+        
+        @param tmp_req: GenerateWebofficeTokenRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GenerateWebofficeTokenResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.GenerateWebofficeTokenShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -5511,6 +7178,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.GenerateWebofficeTokenRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.GenerateWebofficeTokenResponse:
+        """
+        @summary 获取文档预览编辑凭证
+        
+        @param tmp_req: GenerateWebofficeTokenRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GenerateWebofficeTokenResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.GenerateWebofficeTokenShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -5580,6 +7254,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.GenerateWebofficeTokenRequest,
     ) -> imm_20200930_models.GenerateWebofficeTokenResponse:
+        """
+        @summary 获取文档预览编辑凭证
+        
+        @param request: GenerateWebofficeTokenRequest
+        @return: GenerateWebofficeTokenResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.generate_weboffice_token_with_options(request, runtime)
 
@@ -5587,6 +7267,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.GenerateWebofficeTokenRequest,
     ) -> imm_20200930_models.GenerateWebofficeTokenResponse:
+        """
+        @summary 获取文档预览编辑凭证
+        
+        @param request: GenerateWebofficeTokenRequest
+        @return: GenerateWebofficeTokenResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.generate_weboffice_token_with_options_async(request, runtime)
 
@@ -5595,6 +7281,13 @@ class Client(OpenApiClient):
         request: imm_20200930_models.GetBatchRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.GetBatchResponse:
+        """
+        @summary 获取数据接入实例
+        
+        @param request: GetBatchRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetBatchResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -5625,6 +7318,13 @@ class Client(OpenApiClient):
         request: imm_20200930_models.GetBatchRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.GetBatchResponse:
+        """
+        @summary 获取数据接入实例
+        
+        @param request: GetBatchRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetBatchResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -5654,6 +7354,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.GetBatchRequest,
     ) -> imm_20200930_models.GetBatchResponse:
+        """
+        @summary 获取数据接入实例
+        
+        @param request: GetBatchRequest
+        @return: GetBatchResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_batch_with_options(request, runtime)
 
@@ -5661,6 +7367,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.GetBatchRequest,
     ) -> imm_20200930_models.GetBatchResponse:
+        """
+        @summary 获取数据接入实例
+        
+        @param request: GetBatchRequest
+        @return: GetBatchResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_batch_with_options_async(request, runtime)
 
@@ -5669,6 +7381,13 @@ class Client(OpenApiClient):
         request: imm_20200930_models.GetBindingRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.GetBindingResponse:
+        """
+        @summary 获取绑定
+        
+        @param request: GetBindingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetBindingResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dataset_name):
@@ -5701,6 +7420,13 @@ class Client(OpenApiClient):
         request: imm_20200930_models.GetBindingRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.GetBindingResponse:
+        """
+        @summary 获取绑定
+        
+        @param request: GetBindingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetBindingResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dataset_name):
@@ -5732,6 +7458,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.GetBindingRequest,
     ) -> imm_20200930_models.GetBindingResponse:
+        """
+        @summary 获取绑定
+        
+        @param request: GetBindingRequest
+        @return: GetBindingResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_binding_with_options(request, runtime)
 
@@ -5739,14 +7471,151 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.GetBindingRequest,
     ) -> imm_20200930_models.GetBindingResponse:
+        """
+        @summary 获取绑定
+        
+        @param request: GetBindingRequest
+        @return: GetBindingResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_binding_with_options_async(request, runtime)
+
+    def get_drmlicense_with_options(
+        self,
+        request: imm_20200930_models.GetDRMLicenseRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.GetDRMLicenseResponse:
+        """
+        @deprecated OpenAPI GetDRMLicense is deprecated
+        
+        @summary drmlicense获取
+        
+        @param request: GetDRMLicenseRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDRMLicenseResponse
+        Deprecated
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.key_id):
+            query['KeyId'] = request.key_id
+        if not UtilClient.is_unset(request.notify_endpoint):
+            query['NotifyEndpoint'] = request.notify_endpoint
+        if not UtilClient.is_unset(request.notify_topic_name):
+            query['NotifyTopicName'] = request.notify_topic_name
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.protection_system):
+            query['ProtectionSystem'] = request.protection_system
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDRMLicense',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.GetDRMLicenseResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_drmlicense_with_options_async(
+        self,
+        request: imm_20200930_models.GetDRMLicenseRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.GetDRMLicenseResponse:
+        """
+        @deprecated OpenAPI GetDRMLicense is deprecated
+        
+        @summary drmlicense获取
+        
+        @param request: GetDRMLicenseRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDRMLicenseResponse
+        Deprecated
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.key_id):
+            query['KeyId'] = request.key_id
+        if not UtilClient.is_unset(request.notify_endpoint):
+            query['NotifyEndpoint'] = request.notify_endpoint
+        if not UtilClient.is_unset(request.notify_topic_name):
+            query['NotifyTopicName'] = request.notify_topic_name
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.protection_system):
+            query['ProtectionSystem'] = request.protection_system
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDRMLicense',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.GetDRMLicenseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_drmlicense(
+        self,
+        request: imm_20200930_models.GetDRMLicenseRequest,
+    ) -> imm_20200930_models.GetDRMLicenseResponse:
+        """
+        @deprecated OpenAPI GetDRMLicense is deprecated
+        
+        @summary drmlicense获取
+        
+        @param request: GetDRMLicenseRequest
+        @return: GetDRMLicenseResponse
+        Deprecated
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_drmlicense_with_options(request, runtime)
+
+    async def get_drmlicense_async(
+        self,
+        request: imm_20200930_models.GetDRMLicenseRequest,
+    ) -> imm_20200930_models.GetDRMLicenseResponse:
+        """
+        @deprecated OpenAPI GetDRMLicense is deprecated
+        
+        @summary drmlicense获取
+        
+        @param request: GetDRMLicenseRequest
+        @return: GetDRMLicenseResponse
+        Deprecated
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_drmlicense_with_options_async(request, runtime)
 
     def get_dataset_with_options(
         self,
         request: imm_20200930_models.GetDatasetRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.GetDatasetResponse:
+        """
+        @summary 获取媒体集信息
+        
+        @param request: GetDatasetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDatasetResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dataset_name):
@@ -5779,6 +7648,13 @@ class Client(OpenApiClient):
         request: imm_20200930_models.GetDatasetRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.GetDatasetResponse:
+        """
+        @summary 获取媒体集信息
+        
+        @param request: GetDatasetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDatasetResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dataset_name):
@@ -5810,6 +7686,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.GetDatasetRequest,
     ) -> imm_20200930_models.GetDatasetResponse:
+        """
+        @summary 获取媒体集信息
+        
+        @param request: GetDatasetRequest
+        @return: GetDatasetResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_dataset_with_options(request, runtime)
 
@@ -5817,14 +7699,131 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.GetDatasetRequest,
     ) -> imm_20200930_models.GetDatasetResponse:
+        """
+        @summary 获取媒体集信息
+        
+        @param request: GetDatasetRequest
+        @return: GetDatasetResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_dataset_with_options_async(request, runtime)
+
+    def get_decode_blind_watermark_result_with_options(
+        self,
+        request: imm_20200930_models.GetDecodeBlindWatermarkResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.GetDecodeBlindWatermarkResultResponse:
+        """
+        @summary 获取提取水印的结果
+        
+        @param request: GetDecodeBlindWatermarkResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDecodeBlindWatermarkResultResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.task_type):
+            query['TaskType'] = request.task_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDecodeBlindWatermarkResult',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.GetDecodeBlindWatermarkResultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_decode_blind_watermark_result_with_options_async(
+        self,
+        request: imm_20200930_models.GetDecodeBlindWatermarkResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.GetDecodeBlindWatermarkResultResponse:
+        """
+        @summary 获取提取水印的结果
+        
+        @param request: GetDecodeBlindWatermarkResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDecodeBlindWatermarkResultResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.task_type):
+            query['TaskType'] = request.task_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDecodeBlindWatermarkResult',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.GetDecodeBlindWatermarkResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_decode_blind_watermark_result(
+        self,
+        request: imm_20200930_models.GetDecodeBlindWatermarkResultRequest,
+    ) -> imm_20200930_models.GetDecodeBlindWatermarkResultResponse:
+        """
+        @summary 获取提取水印的结果
+        
+        @param request: GetDecodeBlindWatermarkResultRequest
+        @return: GetDecodeBlindWatermarkResultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_decode_blind_watermark_result_with_options(request, runtime)
+
+    async def get_decode_blind_watermark_result_async(
+        self,
+        request: imm_20200930_models.GetDecodeBlindWatermarkResultRequest,
+    ) -> imm_20200930_models.GetDecodeBlindWatermarkResultResponse:
+        """
+        @summary 获取提取水印的结果
+        
+        @param request: GetDecodeBlindWatermarkResultRequest
+        @return: GetDecodeBlindWatermarkResultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_decode_blind_watermark_result_with_options_async(request, runtime)
 
     def get_figure_cluster_with_options(
         self,
         request: imm_20200930_models.GetFigureClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.GetFigureClusterResponse:
+        """
+        @summary 获取聚类
+        
+        @param request: GetFigureClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetFigureClusterResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dataset_name):
@@ -5857,6 +7856,13 @@ class Client(OpenApiClient):
         request: imm_20200930_models.GetFigureClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.GetFigureClusterResponse:
+        """
+        @summary 获取聚类
+        
+        @param request: GetFigureClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetFigureClusterResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dataset_name):
@@ -5888,6 +7894,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.GetFigureClusterRequest,
     ) -> imm_20200930_models.GetFigureClusterResponse:
+        """
+        @summary 获取聚类
+        
+        @param request: GetFigureClusterRequest
+        @return: GetFigureClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_figure_cluster_with_options(request, runtime)
 
@@ -5895,6 +7907,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.GetFigureClusterRequest,
     ) -> imm_20200930_models.GetFigureClusterResponse:
+        """
+        @summary 获取聚类
+        
+        @param request: GetFigureClusterRequest
+        @return: GetFigureClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_figure_cluster_with_options_async(request, runtime)
 
@@ -5903,6 +7921,13 @@ class Client(OpenApiClient):
         request: imm_20200930_models.GetFileMetaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.GetFileMetaResponse:
+        """
+        @summary 获取文件元信息
+        
+        @param request: GetFileMetaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetFileMetaResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dataset_name):
@@ -5935,6 +7960,13 @@ class Client(OpenApiClient):
         request: imm_20200930_models.GetFileMetaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.GetFileMetaResponse:
+        """
+        @summary 获取文件元信息
+        
+        @param request: GetFileMetaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetFileMetaResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dataset_name):
@@ -5966,6 +7998,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.GetFileMetaRequest,
     ) -> imm_20200930_models.GetFileMetaResponse:
+        """
+        @summary 获取文件元信息
+        
+        @param request: GetFileMetaRequest
+        @return: GetFileMetaResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_file_meta_with_options(request, runtime)
 
@@ -5973,6 +8011,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.GetFileMetaRequest,
     ) -> imm_20200930_models.GetFileMetaResponse:
+        """
+        @summary 获取文件元信息
+        
+        @param request: GetFileMetaRequest
+        @return: GetFileMetaResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_file_meta_with_options_async(request, runtime)
 
@@ -5981,6 +8025,13 @@ class Client(OpenApiClient):
         request: imm_20200930_models.GetImageModerationResultRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.GetImageModerationResultResponse:
+        """
+        @summary 获取图片审核任务结果
+        
+        @param request: GetImageModerationResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetImageModerationResultResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.project_name):
@@ -6013,6 +8064,13 @@ class Client(OpenApiClient):
         request: imm_20200930_models.GetImageModerationResultRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.GetImageModerationResultResponse:
+        """
+        @summary 获取图片审核任务结果
+        
+        @param request: GetImageModerationResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetImageModerationResultResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.project_name):
@@ -6044,6 +8102,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.GetImageModerationResultRequest,
     ) -> imm_20200930_models.GetImageModerationResultResponse:
+        """
+        @summary 获取图片审核任务结果
+        
+        @param request: GetImageModerationResultRequest
+        @return: GetImageModerationResultResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_image_moderation_result_with_options(request, runtime)
 
@@ -6051,6 +8115,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.GetImageModerationResultRequest,
     ) -> imm_20200930_models.GetImageModerationResultResponse:
+        """
+        @summary 获取图片审核任务结果
+        
+        @param request: GetImageModerationResultRequest
+        @return: GetImageModerationResultResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_image_moderation_result_with_options_async(request, runtime)
 
@@ -6059,6 +8129,13 @@ class Client(OpenApiClient):
         request: imm_20200930_models.GetOSSBucketAttachmentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.GetOSSBucketAttachmentResponse:
+        """
+        @summary 获取绑定的ossbucket
+        
+        @param request: GetOSSBucketAttachmentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetOSSBucketAttachmentResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ossbucket):
@@ -6087,6 +8164,13 @@ class Client(OpenApiClient):
         request: imm_20200930_models.GetOSSBucketAttachmentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.GetOSSBucketAttachmentResponse:
+        """
+        @summary 获取绑定的ossbucket
+        
+        @param request: GetOSSBucketAttachmentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetOSSBucketAttachmentResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ossbucket):
@@ -6114,6 +8198,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.GetOSSBucketAttachmentRequest,
     ) -> imm_20200930_models.GetOSSBucketAttachmentResponse:
+        """
+        @summary 获取绑定的ossbucket
+        
+        @param request: GetOSSBucketAttachmentRequest
+        @return: GetOSSBucketAttachmentResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_ossbucket_attachment_with_options(request, runtime)
 
@@ -6121,6 +8211,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.GetOSSBucketAttachmentRequest,
     ) -> imm_20200930_models.GetOSSBucketAttachmentResponse:
+        """
+        @summary 获取绑定的ossbucket
+        
+        @param request: GetOSSBucketAttachmentRequest
+        @return: GetOSSBucketAttachmentResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_ossbucket_attachment_with_options_async(request, runtime)
 
@@ -6129,6 +8225,13 @@ class Client(OpenApiClient):
         request: imm_20200930_models.GetProjectRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.GetProjectResponse:
+        """
+        @summary 获取项目信息
+        
+        @param request: GetProjectRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetProjectResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.project_name):
@@ -6159,6 +8262,13 @@ class Client(OpenApiClient):
         request: imm_20200930_models.GetProjectRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.GetProjectResponse:
+        """
+        @summary 获取项目信息
+        
+        @param request: GetProjectRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetProjectResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.project_name):
@@ -6188,6 +8298,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.GetProjectRequest,
     ) -> imm_20200930_models.GetProjectResponse:
+        """
+        @summary 获取项目信息
+        
+        @param request: GetProjectRequest
+        @return: GetProjectResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_project_with_options(request, runtime)
 
@@ -6195,6 +8311,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.GetProjectRequest,
     ) -> imm_20200930_models.GetProjectResponse:
+        """
+        @summary 获取项目信息
+        
+        @param request: GetProjectRequest
+        @return: GetProjectResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_project_with_options_async(request, runtime)
 
@@ -6203,6 +8325,13 @@ class Client(OpenApiClient):
         request: imm_20200930_models.GetStoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.GetStoryResponse:
+        """
+        @summary 返回一个 Story 的详细信息
+        
+        @param request: GetStoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetStoryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dataset_name):
@@ -6235,6 +8364,13 @@ class Client(OpenApiClient):
         request: imm_20200930_models.GetStoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.GetStoryResponse:
+        """
+        @summary 返回一个 Story 的详细信息
+        
+        @param request: GetStoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetStoryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dataset_name):
@@ -6266,6 +8402,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.GetStoryRequest,
     ) -> imm_20200930_models.GetStoryResponse:
+        """
+        @summary 返回一个 Story 的详细信息
+        
+        @param request: GetStoryRequest
+        @return: GetStoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_story_with_options(request, runtime)
 
@@ -6273,6 +8415,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.GetStoryRequest,
     ) -> imm_20200930_models.GetStoryResponse:
+        """
+        @summary 返回一个 Story 的详细信息
+        
+        @param request: GetStoryRequest
+        @return: GetStoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_story_with_options_async(request, runtime)
 
@@ -6281,6 +8429,13 @@ class Client(OpenApiClient):
         request: imm_20200930_models.GetTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.GetTaskResponse:
+        """
+        @summary 获取任务信息
+        
+        @param request: GetTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.project_name):
@@ -6315,6 +8470,13 @@ class Client(OpenApiClient):
         request: imm_20200930_models.GetTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.GetTaskResponse:
+        """
+        @summary 获取任务信息
+        
+        @param request: GetTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.project_name):
@@ -6348,6 +8510,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.GetTaskRequest,
     ) -> imm_20200930_models.GetTaskResponse:
+        """
+        @summary 获取任务信息
+        
+        @param request: GetTaskRequest
+        @return: GetTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_task_with_options(request, runtime)
 
@@ -6355,6 +8523,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.GetTaskRequest,
     ) -> imm_20200930_models.GetTaskResponse:
+        """
+        @summary 获取任务信息
+        
+        @param request: GetTaskRequest
+        @return: GetTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_task_with_options_async(request, runtime)
 
@@ -6363,6 +8537,13 @@ class Client(OpenApiClient):
         request: imm_20200930_models.GetTriggerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.GetTriggerResponse:
+        """
+        @summary 获取数据接入实例
+        
+        @param request: GetTriggerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTriggerResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -6393,6 +8574,13 @@ class Client(OpenApiClient):
         request: imm_20200930_models.GetTriggerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.GetTriggerResponse:
+        """
+        @summary 获取数据接入实例
+        
+        @param request: GetTriggerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTriggerResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -6422,6 +8610,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.GetTriggerRequest,
     ) -> imm_20200930_models.GetTriggerResponse:
+        """
+        @summary 获取数据接入实例
+        
+        @param request: GetTriggerRequest
+        @return: GetTriggerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_trigger_with_options(request, runtime)
 
@@ -6429,6 +8623,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.GetTriggerRequest,
     ) -> imm_20200930_models.GetTriggerResponse:
+        """
+        @summary 获取数据接入实例
+        
+        @param request: GetTriggerRequest
+        @return: GetTriggerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_trigger_with_options_async(request, runtime)
 
@@ -6437,6 +8637,13 @@ class Client(OpenApiClient):
         request: imm_20200930_models.GetVideoLabelClassificationResultRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.GetVideoLabelClassificationResultResponse:
+        """
+        @summary 获取视频标签检测任务结果
+        
+        @param request: GetVideoLabelClassificationResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetVideoLabelClassificationResultResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.project_name):
@@ -6469,6 +8676,13 @@ class Client(OpenApiClient):
         request: imm_20200930_models.GetVideoLabelClassificationResultRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.GetVideoLabelClassificationResultResponse:
+        """
+        @summary 获取视频标签检测任务结果
+        
+        @param request: GetVideoLabelClassificationResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetVideoLabelClassificationResultResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.project_name):
@@ -6500,6 +8714,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.GetVideoLabelClassificationResultRequest,
     ) -> imm_20200930_models.GetVideoLabelClassificationResultResponse:
+        """
+        @summary 获取视频标签检测任务结果
+        
+        @param request: GetVideoLabelClassificationResultRequest
+        @return: GetVideoLabelClassificationResultResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_video_label_classification_result_with_options(request, runtime)
 
@@ -6507,6 +8727,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.GetVideoLabelClassificationResultRequest,
     ) -> imm_20200930_models.GetVideoLabelClassificationResultResponse:
+        """
+        @summary 获取视频标签检测任务结果
+        
+        @param request: GetVideoLabelClassificationResultRequest
+        @return: GetVideoLabelClassificationResultResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_video_label_classification_result_with_options_async(request, runtime)
 
@@ -6515,6 +8741,13 @@ class Client(OpenApiClient):
         request: imm_20200930_models.GetVideoModerationResultRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.GetVideoModerationResultResponse:
+        """
+        @summary 获取视频审核任务结果
+        
+        @param request: GetVideoModerationResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetVideoModerationResultResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.project_name):
@@ -6547,6 +8780,13 @@ class Client(OpenApiClient):
         request: imm_20200930_models.GetVideoModerationResultRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.GetVideoModerationResultResponse:
+        """
+        @summary 获取视频审核任务结果
+        
+        @param request: GetVideoModerationResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetVideoModerationResultResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.project_name):
@@ -6578,6 +8818,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.GetVideoModerationResultRequest,
     ) -> imm_20200930_models.GetVideoModerationResultResponse:
+        """
+        @summary 获取视频审核任务结果
+        
+        @param request: GetVideoModerationResultRequest
+        @return: GetVideoModerationResultResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_video_moderation_result_with_options(request, runtime)
 
@@ -6585,6 +8831,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.GetVideoModerationResultRequest,
     ) -> imm_20200930_models.GetVideoModerationResultResponse:
+        """
+        @summary 获取视频审核任务结果
+        
+        @param request: GetVideoModerationResultRequest
+        @return: GetVideoModerationResultResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_video_moderation_result_with_options_async(request, runtime)
 
@@ -6593,6 +8845,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.IndexFileMetaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.IndexFileMetaResponse:
+        """
+        @summary 添加文件元信息
+        
+        @param tmp_req: IndexFileMetaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: IndexFileMetaResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.IndexFileMetaShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -6609,6 +8868,8 @@ class Client(OpenApiClient):
             query['Notification'] = request.notification_shrink
         if not UtilClient.is_unset(request.project_name):
             query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6633,6 +8894,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.IndexFileMetaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.IndexFileMetaResponse:
+        """
+        @summary 添加文件元信息
+        
+        @param tmp_req: IndexFileMetaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: IndexFileMetaResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.IndexFileMetaShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -6649,6 +8917,8 @@ class Client(OpenApiClient):
             query['Notification'] = request.notification_shrink
         if not UtilClient.is_unset(request.project_name):
             query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6672,6 +8942,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.IndexFileMetaRequest,
     ) -> imm_20200930_models.IndexFileMetaResponse:
+        """
+        @summary 添加文件元信息
+        
+        @param request: IndexFileMetaRequest
+        @return: IndexFileMetaResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.index_file_meta_with_options(request, runtime)
 
@@ -6679,6 +8955,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.IndexFileMetaRequest,
     ) -> imm_20200930_models.IndexFileMetaResponse:
+        """
+        @summary 添加文件元信息
+        
+        @param request: IndexFileMetaRequest
+        @return: IndexFileMetaResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.index_file_meta_with_options_async(request, runtime)
 
@@ -6687,6 +8969,13 @@ class Client(OpenApiClient):
         request: imm_20200930_models.ListBatchesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.ListBatchesResponse:
+        """
+        @summary 列出数据接入实例
+        
+        @param request: ListBatchesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListBatchesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.max_results):
@@ -6727,6 +9016,13 @@ class Client(OpenApiClient):
         request: imm_20200930_models.ListBatchesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.ListBatchesResponse:
+        """
+        @summary 列出数据接入实例
+        
+        @param request: ListBatchesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListBatchesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.max_results):
@@ -6766,6 +9062,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.ListBatchesRequest,
     ) -> imm_20200930_models.ListBatchesResponse:
+        """
+        @summary 列出数据接入实例
+        
+        @param request: ListBatchesRequest
+        @return: ListBatchesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_batches_with_options(request, runtime)
 
@@ -6773,6 +9075,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.ListBatchesRequest,
     ) -> imm_20200930_models.ListBatchesResponse:
+        """
+        @summary 列出数据接入实例
+        
+        @param request: ListBatchesRequest
+        @return: ListBatchesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_batches_with_options_async(request, runtime)
 
@@ -6781,6 +9089,13 @@ class Client(OpenApiClient):
         request: imm_20200930_models.ListBindingsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.ListBindingsResponse:
+        """
+        @summary 列出绑定
+        
+        @param request: ListBindingsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListBindingsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dataset_name):
@@ -6815,6 +9130,13 @@ class Client(OpenApiClient):
         request: imm_20200930_models.ListBindingsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.ListBindingsResponse:
+        """
+        @summary 列出绑定
+        
+        @param request: ListBindingsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListBindingsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dataset_name):
@@ -6848,6 +9170,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.ListBindingsRequest,
     ) -> imm_20200930_models.ListBindingsResponse:
+        """
+        @summary 列出绑定
+        
+        @param request: ListBindingsRequest
+        @return: ListBindingsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_bindings_with_options(request, runtime)
 
@@ -6855,6 +9183,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.ListBindingsRequest,
     ) -> imm_20200930_models.ListBindingsResponse:
+        """
+        @summary 列出绑定
+        
+        @param request: ListBindingsRequest
+        @return: ListBindingsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_bindings_with_options_async(request, runtime)
 
@@ -6863,6 +9197,13 @@ class Client(OpenApiClient):
         request: imm_20200930_models.ListDatasetsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.ListDatasetsResponse:
+        """
+        @summary 列出媒体集列表
+        
+        @param request: ListDatasetsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDatasetsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.max_results):
@@ -6897,6 +9238,13 @@ class Client(OpenApiClient):
         request: imm_20200930_models.ListDatasetsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.ListDatasetsResponse:
+        """
+        @summary 列出媒体集列表
+        
+        @param request: ListDatasetsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDatasetsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.max_results):
@@ -6930,6 +9278,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.ListDatasetsRequest,
     ) -> imm_20200930_models.ListDatasetsResponse:
+        """
+        @summary 列出媒体集列表
+        
+        @param request: ListDatasetsRequest
+        @return: ListDatasetsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_datasets_with_options(request, runtime)
 
@@ -6937,6 +9291,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.ListDatasetsRequest,
     ) -> imm_20200930_models.ListDatasetsResponse:
+        """
+        @summary 列出媒体集列表
+        
+        @param request: ListDatasetsRequest
+        @return: ListDatasetsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_datasets_with_options_async(request, runtime)
 
@@ -6945,6 +9305,13 @@ class Client(OpenApiClient):
         request: imm_20200930_models.ListProjectsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.ListProjectsResponse:
+        """
+        @summary 获取项目列表
+        
+        @param request: ListProjectsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListProjectsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.max_results):
@@ -6977,6 +9344,13 @@ class Client(OpenApiClient):
         request: imm_20200930_models.ListProjectsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.ListProjectsResponse:
+        """
+        @summary 获取项目列表
+        
+        @param request: ListProjectsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListProjectsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.max_results):
@@ -7008,6 +9382,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.ListProjectsRequest,
     ) -> imm_20200930_models.ListProjectsResponse:
+        """
+        @summary 获取项目列表
+        
+        @param request: ListProjectsRequest
+        @return: ListProjectsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_projects_with_options(request, runtime)
 
@@ -7015,6 +9395,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.ListProjectsRequest,
     ) -> imm_20200930_models.ListProjectsResponse:
+        """
+        @summary 获取项目列表
+        
+        @param request: ListProjectsRequest
+        @return: ListProjectsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_projects_with_options_async(request, runtime)
 
@@ -7023,6 +9409,13 @@ class Client(OpenApiClient):
         request: imm_20200930_models.ListRegionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.ListRegionsResponse:
+        """
+        @summary 获取地区列表
+        
+        @param request: ListRegionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRegionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -7051,6 +9444,13 @@ class Client(OpenApiClient):
         request: imm_20200930_models.ListRegionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.ListRegionsResponse:
+        """
+        @summary 获取地区列表
+        
+        @param request: ListRegionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRegionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -7078,6 +9478,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.ListRegionsRequest,
     ) -> imm_20200930_models.ListRegionsResponse:
+        """
+        @summary 获取地区列表
+        
+        @param request: ListRegionsRequest
+        @return: ListRegionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_regions_with_options(request, runtime)
 
@@ -7085,6 +9491,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.ListRegionsRequest,
     ) -> imm_20200930_models.ListRegionsResponse:
+        """
+        @summary 获取地区列表
+        
+        @param request: ListRegionsRequest
+        @return: ListRegionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_regions_with_options_async(request, runtime)
 
@@ -7093,6 +9505,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.ListTasksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.ListTasksResponse:
+        """
+        @summary 获取任务信息列表
+        
+        @param tmp_req: ListTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTasksResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.ListTasksShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -7149,6 +9568,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.ListTasksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.ListTasksResponse:
+        """
+        @summary 获取任务信息列表
+        
+        @param tmp_req: ListTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTasksResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.ListTasksShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -7204,6 +9630,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.ListTasksRequest,
     ) -> imm_20200930_models.ListTasksResponse:
+        """
+        @summary 获取任务信息列表
+        
+        @param request: ListTasksRequest
+        @return: ListTasksResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_tasks_with_options(request, runtime)
 
@@ -7211,6 +9643,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.ListTasksRequest,
     ) -> imm_20200930_models.ListTasksResponse:
+        """
+        @summary 获取任务信息列表
+        
+        @param request: ListTasksRequest
+        @return: ListTasksResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_tasks_with_options_async(request, runtime)
 
@@ -7219,6 +9657,13 @@ class Client(OpenApiClient):
         request: imm_20200930_models.ListTriggersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.ListTriggersResponse:
+        """
+        @summary 列出数据接入实例
+        
+        @param request: ListTriggersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTriggersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.max_results):
@@ -7259,6 +9704,13 @@ class Client(OpenApiClient):
         request: imm_20200930_models.ListTriggersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.ListTriggersResponse:
+        """
+        @summary 列出数据接入实例
+        
+        @param request: ListTriggersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTriggersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.max_results):
@@ -7298,6 +9750,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.ListTriggersRequest,
     ) -> imm_20200930_models.ListTriggersResponse:
+        """
+        @summary 列出数据接入实例
+        
+        @param request: ListTriggersRequest
+        @return: ListTriggersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_triggers_with_options(request, runtime)
 
@@ -7305,6 +9763,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.ListTriggersRequest,
     ) -> imm_20200930_models.ListTriggersResponse:
+        """
+        @summary 列出数据接入实例
+        
+        @param request: ListTriggersRequest
+        @return: ListTriggersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_triggers_with_options_async(request, runtime)
 
@@ -7313,6 +9777,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.QueryFigureClustersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.QueryFigureClustersResponse:
+        """
+        @summary 查询聚类分组
+        
+        @param tmp_req: QueryFigureClustersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryFigureClustersResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.QueryFigureClustersShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -7365,6 +9836,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.QueryFigureClustersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.QueryFigureClustersResponse:
+        """
+        @summary 查询聚类分组
+        
+        @param tmp_req: QueryFigureClustersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryFigureClustersResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.QueryFigureClustersShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -7416,6 +9894,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.QueryFigureClustersRequest,
     ) -> imm_20200930_models.QueryFigureClustersResponse:
+        """
+        @summary 查询聚类分组
+        
+        @param request: QueryFigureClustersRequest
+        @return: QueryFigureClustersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_figure_clusters_with_options(request, runtime)
 
@@ -7423,6 +9907,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.QueryFigureClustersRequest,
     ) -> imm_20200930_models.QueryFigureClustersResponse:
+        """
+        @summary 查询聚类分组
+        
+        @param request: QueryFigureClustersRequest
+        @return: QueryFigureClustersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_figure_clusters_with_options_async(request, runtime)
 
@@ -7431,6 +9921,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.QueryLocationDateClustersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.QueryLocationDateClustersResponse:
+        """
+        @summary 查找时空分组
+        
+        @param tmp_req: QueryLocationDateClustersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryLocationDateClustersResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.QueryLocationDateClustersShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -7501,6 +9998,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.QueryLocationDateClustersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.QueryLocationDateClustersResponse:
+        """
+        @summary 查找时空分组
+        
+        @param tmp_req: QueryLocationDateClustersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryLocationDateClustersResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.QueryLocationDateClustersShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -7570,6 +10074,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.QueryLocationDateClustersRequest,
     ) -> imm_20200930_models.QueryLocationDateClustersResponse:
+        """
+        @summary 查找时空分组
+        
+        @param request: QueryLocationDateClustersRequest
+        @return: QueryLocationDateClustersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_location_date_clusters_with_options(request, runtime)
 
@@ -7577,6 +10087,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.QueryLocationDateClustersRequest,
     ) -> imm_20200930_models.QueryLocationDateClustersResponse:
+        """
+        @summary 查找时空分组
+        
+        @param request: QueryLocationDateClustersRequest
+        @return: QueryLocationDateClustersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_location_date_clusters_with_options_async(request, runtime)
 
@@ -7585,6 +10101,13 @@ class Client(OpenApiClient):
         request: imm_20200930_models.QuerySimilarImageClustersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.QuerySimilarImageClustersResponse:
+        """
+        @summary 查找相似图片分组
+        
+        @param request: QuerySimilarImageClustersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QuerySimilarImageClustersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.custom_labels):
@@ -7625,6 +10148,13 @@ class Client(OpenApiClient):
         request: imm_20200930_models.QuerySimilarImageClustersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.QuerySimilarImageClustersResponse:
+        """
+        @summary 查找相似图片分组
+        
+        @param request: QuerySimilarImageClustersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QuerySimilarImageClustersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.custom_labels):
@@ -7664,6 +10194,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.QuerySimilarImageClustersRequest,
     ) -> imm_20200930_models.QuerySimilarImageClustersResponse:
+        """
+        @summary 查找相似图片分组
+        
+        @param request: QuerySimilarImageClustersRequest
+        @return: QuerySimilarImageClustersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_similar_image_clusters_with_options(request, runtime)
 
@@ -7671,6 +10207,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.QuerySimilarImageClustersRequest,
     ) -> imm_20200930_models.QuerySimilarImageClustersResponse:
+        """
+        @summary 查找相似图片分组
+        
+        @param request: QuerySimilarImageClustersRequest
+        @return: QuerySimilarImageClustersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_similar_image_clusters_with_options_async(request, runtime)
 
@@ -7679,6 +10221,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.QueryStoriesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.QueryStoriesResponse:
+        """
+        @summary 查找 Story
+        
+        @param tmp_req: QueryStoriesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryStoriesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.QueryStoriesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -7747,6 +10296,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.QueryStoriesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.QueryStoriesResponse:
+        """
+        @summary 查找 Story
+        
+        @param tmp_req: QueryStoriesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryStoriesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.QueryStoriesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -7814,6 +10370,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.QueryStoriesRequest,
     ) -> imm_20200930_models.QueryStoriesResponse:
+        """
+        @summary 查找 Story
+        
+        @param request: QueryStoriesRequest
+        @return: QueryStoriesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_stories_with_options(request, runtime)
 
@@ -7821,6 +10383,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.QueryStoriesRequest,
     ) -> imm_20200930_models.QueryStoriesResponse:
+        """
+        @summary 查找 Story
+        
+        @param request: QueryStoriesRequest
+        @return: QueryStoriesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_stories_with_options_async(request, runtime)
 
@@ -7829,6 +10397,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.RefreshWebofficeTokenRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.RefreshWebofficeTokenResponse:
+        """
+        @summary 刷新文档预览编辑凭证
+        
+        @param tmp_req: RefreshWebofficeTokenRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RefreshWebofficeTokenResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.RefreshWebofficeTokenShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -7867,6 +10442,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.RefreshWebofficeTokenRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.RefreshWebofficeTokenResponse:
+        """
+        @summary 刷新文档预览编辑凭证
+        
+        @param tmp_req: RefreshWebofficeTokenRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RefreshWebofficeTokenResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.RefreshWebofficeTokenShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -7904,6 +10486,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.RefreshWebofficeTokenRequest,
     ) -> imm_20200930_models.RefreshWebofficeTokenResponse:
+        """
+        @summary 刷新文档预览编辑凭证
+        
+        @param request: RefreshWebofficeTokenRequest
+        @return: RefreshWebofficeTokenResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.refresh_weboffice_token_with_options(request, runtime)
 
@@ -7911,6 +10499,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.RefreshWebofficeTokenRequest,
     ) -> imm_20200930_models.RefreshWebofficeTokenResponse:
+        """
+        @summary 刷新文档预览编辑凭证
+        
+        @param request: RefreshWebofficeTokenRequest
+        @return: RefreshWebofficeTokenResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.refresh_weboffice_token_with_options_async(request, runtime)
 
@@ -7919,6 +10513,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.RemoveStoryFilesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.RemoveStoryFilesResponse:
+        """
+        @summary 为故事移除文件
+        
+        @param tmp_req: RemoveStoryFilesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveStoryFilesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.RemoveStoryFilesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -7957,6 +10558,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.RemoveStoryFilesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.RemoveStoryFilesResponse:
+        """
+        @summary 为故事移除文件
+        
+        @param tmp_req: RemoveStoryFilesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveStoryFilesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.RemoveStoryFilesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -7994,6 +10602,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.RemoveStoryFilesRequest,
     ) -> imm_20200930_models.RemoveStoryFilesResponse:
+        """
+        @summary 为故事移除文件
+        
+        @param request: RemoveStoryFilesRequest
+        @return: RemoveStoryFilesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.remove_story_files_with_options(request, runtime)
 
@@ -8001,6 +10615,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.RemoveStoryFilesRequest,
     ) -> imm_20200930_models.RemoveStoryFilesResponse:
+        """
+        @summary 为故事移除文件
+        
+        @param request: RemoveStoryFilesRequest
+        @return: RemoveStoryFilesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.remove_story_files_with_options_async(request, runtime)
 
@@ -8009,6 +10629,13 @@ class Client(OpenApiClient):
         request: imm_20200930_models.ResumeBatchRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.ResumeBatchResponse:
+        """
+        @summary 恢复一个挂起的数据接入任务
+        
+        @param request: ResumeBatchRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResumeBatchResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.id):
@@ -8039,6 +10666,13 @@ class Client(OpenApiClient):
         request: imm_20200930_models.ResumeBatchRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.ResumeBatchResponse:
+        """
+        @summary 恢复一个挂起的数据接入任务
+        
+        @param request: ResumeBatchRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResumeBatchResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.id):
@@ -8068,6 +10702,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.ResumeBatchRequest,
     ) -> imm_20200930_models.ResumeBatchResponse:
+        """
+        @summary 恢复一个挂起的数据接入任务
+        
+        @param request: ResumeBatchRequest
+        @return: ResumeBatchResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.resume_batch_with_options(request, runtime)
 
@@ -8075,6 +10715,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.ResumeBatchRequest,
     ) -> imm_20200930_models.ResumeBatchResponse:
+        """
+        @summary 恢复一个挂起的数据接入任务
+        
+        @param request: ResumeBatchRequest
+        @return: ResumeBatchResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.resume_batch_with_options_async(request, runtime)
 
@@ -8083,6 +10729,13 @@ class Client(OpenApiClient):
         request: imm_20200930_models.ResumeTriggerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.ResumeTriggerResponse:
+        """
+        @summary 恢复一个挂起的数据接入任务
+        
+        @param request: ResumeTriggerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResumeTriggerResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.id):
@@ -8113,6 +10766,13 @@ class Client(OpenApiClient):
         request: imm_20200930_models.ResumeTriggerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.ResumeTriggerResponse:
+        """
+        @summary 恢复一个挂起的数据接入任务
+        
+        @param request: ResumeTriggerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResumeTriggerResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.id):
@@ -8142,6 +10802,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.ResumeTriggerRequest,
     ) -> imm_20200930_models.ResumeTriggerResponse:
+        """
+        @summary 恢复一个挂起的数据接入任务
+        
+        @param request: ResumeTriggerRequest
+        @return: ResumeTriggerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.resume_trigger_with_options(request, runtime)
 
@@ -8149,6 +10815,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.ResumeTriggerRequest,
     ) -> imm_20200930_models.ResumeTriggerResponse:
+        """
+        @summary 恢复一个挂起的数据接入任务
+        
+        @param request: ResumeTriggerRequest
+        @return: ResumeTriggerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.resume_trigger_with_options_async(request, runtime)
 
@@ -8157,6 +10829,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.SearchImageFigureClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.SearchImageFigureClusterResponse:
+        """
+        @summary 以脸搜分组
+        
+        @param tmp_req: SearchImageFigureClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchImageFigureClusterResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.SearchImageFigureClusterShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -8195,6 +10874,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.SearchImageFigureClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.SearchImageFigureClusterResponse:
+        """
+        @summary 以脸搜分组
+        
+        @param tmp_req: SearchImageFigureClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchImageFigureClusterResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.SearchImageFigureClusterShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -8232,6 +10918,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.SearchImageFigureClusterRequest,
     ) -> imm_20200930_models.SearchImageFigureClusterResponse:
+        """
+        @summary 以脸搜分组
+        
+        @param request: SearchImageFigureClusterRequest
+        @return: SearchImageFigureClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.search_image_figure_cluster_with_options(request, runtime)
 
@@ -8239,6 +10931,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.SearchImageFigureClusterRequest,
     ) -> imm_20200930_models.SearchImageFigureClusterResponse:
+        """
+        @summary 以脸搜分组
+        
+        @param request: SearchImageFigureClusterRequest
+        @return: SearchImageFigureClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.search_image_figure_cluster_with_options_async(request, runtime)
 
@@ -8247,6 +10945,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.SemanticQueryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.SemanticQueryResponse:
+        """
+        @summary 通过输入自然语言文字，对 Dataset 内的元数据进行查询与统计分析
+        
+        @param tmp_req: SemanticQueryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SemanticQueryResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.SemanticQueryShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -8293,6 +10998,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.SemanticQueryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.SemanticQueryResponse:
+        """
+        @summary 通过输入自然语言文字，对 Dataset 内的元数据进行查询与统计分析
+        
+        @param tmp_req: SemanticQueryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SemanticQueryResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.SemanticQueryShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -8338,6 +11050,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.SemanticQueryRequest,
     ) -> imm_20200930_models.SemanticQueryResponse:
+        """
+        @summary 通过输入自然语言文字，对 Dataset 内的元数据进行查询与统计分析
+        
+        @param request: SemanticQueryRequest
+        @return: SemanticQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.semantic_query_with_options(request, runtime)
 
@@ -8345,6 +11063,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.SemanticQueryRequest,
     ) -> imm_20200930_models.SemanticQueryResponse:
+        """
+        @summary 通过输入自然语言文字，对 Dataset 内的元数据进行查询与统计分析
+        
+        @param request: SemanticQueryRequest
+        @return: SemanticQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.semantic_query_with_options_async(request, runtime)
 
@@ -8353,6 +11077,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.SimpleQueryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.SimpleQueryResponse:
+        """
+        @summary 通过 JSON 结构的查询语言，对 Dataset 内的元数据进行查询与统计分析。
+        
+        @param tmp_req: SimpleQueryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SimpleQueryResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.SimpleQueryShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -8407,6 +11138,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.SimpleQueryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.SimpleQueryResponse:
+        """
+        @summary 通过 JSON 结构的查询语言，对 Dataset 内的元数据进行查询与统计分析。
+        
+        @param tmp_req: SimpleQueryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SimpleQueryResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.SimpleQueryShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -8460,6 +11198,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.SimpleQueryRequest,
     ) -> imm_20200930_models.SimpleQueryResponse:
+        """
+        @summary 通过 JSON 结构的查询语言，对 Dataset 内的元数据进行查询与统计分析。
+        
+        @param request: SimpleQueryRequest
+        @return: SimpleQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.simple_query_with_options(request, runtime)
 
@@ -8467,6 +11211,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.SimpleQueryRequest,
     ) -> imm_20200930_models.SimpleQueryResponse:
+        """
+        @summary 通过 JSON 结构的查询语言，对 Dataset 内的元数据进行查询与统计分析。
+        
+        @param request: SimpleQueryRequest
+        @return: SimpleQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.simple_query_with_options_async(request, runtime)
 
@@ -8475,6 +11225,13 @@ class Client(OpenApiClient):
         request: imm_20200930_models.SuspendBatchRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.SuspendBatchResponse:
+        """
+        @summary 挂起一个数据接入任务
+        
+        @param request: SuspendBatchRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SuspendBatchResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.id):
@@ -8505,6 +11262,13 @@ class Client(OpenApiClient):
         request: imm_20200930_models.SuspendBatchRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.SuspendBatchResponse:
+        """
+        @summary 挂起一个数据接入任务
+        
+        @param request: SuspendBatchRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SuspendBatchResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.id):
@@ -8534,6 +11298,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.SuspendBatchRequest,
     ) -> imm_20200930_models.SuspendBatchResponse:
+        """
+        @summary 挂起一个数据接入任务
+        
+        @param request: SuspendBatchRequest
+        @return: SuspendBatchResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.suspend_batch_with_options(request, runtime)
 
@@ -8541,6 +11311,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.SuspendBatchRequest,
     ) -> imm_20200930_models.SuspendBatchResponse:
+        """
+        @summary 挂起一个数据接入任务
+        
+        @param request: SuspendBatchRequest
+        @return: SuspendBatchResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.suspend_batch_with_options_async(request, runtime)
 
@@ -8549,6 +11325,13 @@ class Client(OpenApiClient):
         request: imm_20200930_models.SuspendTriggerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.SuspendTriggerResponse:
+        """
+        @summary 挂起一个数据接入任务
+        
+        @param request: SuspendTriggerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SuspendTriggerResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.id):
@@ -8579,6 +11362,13 @@ class Client(OpenApiClient):
         request: imm_20200930_models.SuspendTriggerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.SuspendTriggerResponse:
+        """
+        @summary 挂起一个数据接入任务
+        
+        @param request: SuspendTriggerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SuspendTriggerResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.id):
@@ -8608,6 +11398,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.SuspendTriggerRequest,
     ) -> imm_20200930_models.SuspendTriggerResponse:
+        """
+        @summary 挂起一个数据接入任务
+        
+        @param request: SuspendTriggerRequest
+        @return: SuspendTriggerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.suspend_trigger_with_options(request, runtime)
 
@@ -8615,6 +11411,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.SuspendTriggerRequest,
     ) -> imm_20200930_models.SuspendTriggerResponse:
+        """
+        @summary 挂起一个数据接入任务
+        
+        @param request: SuspendTriggerRequest
+        @return: SuspendTriggerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.suspend_trigger_with_options_async(request, runtime)
 
@@ -8623,6 +11425,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.UpdateBatchRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.UpdateBatchResponse:
+        """
+        @summary 更新数据接入实例
+        
+        @param tmp_req: UpdateBatchRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateBatchResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.UpdateBatchShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -8667,6 +11476,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.UpdateBatchRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.UpdateBatchResponse:
+        """
+        @summary 更新数据接入实例
+        
+        @param tmp_req: UpdateBatchRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateBatchResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.UpdateBatchShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -8710,6 +11526,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.UpdateBatchRequest,
     ) -> imm_20200930_models.UpdateBatchResponse:
+        """
+        @summary 更新数据接入实例
+        
+        @param request: UpdateBatchRequest
+        @return: UpdateBatchResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_batch_with_options(request, runtime)
 
@@ -8717,6 +11539,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.UpdateBatchRequest,
     ) -> imm_20200930_models.UpdateBatchResponse:
+        """
+        @summary 更新数据接入实例
+        
+        @param request: UpdateBatchRequest
+        @return: UpdateBatchResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_batch_with_options_async(request, runtime)
 
@@ -8725,6 +11553,13 @@ class Client(OpenApiClient):
         request: imm_20200930_models.UpdateDatasetRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.UpdateDatasetResponse:
+        """
+        @summary 更新媒体集
+        
+        @param request: UpdateDatasetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDatasetResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dataset_max_bind_count):
@@ -8769,6 +11604,13 @@ class Client(OpenApiClient):
         request: imm_20200930_models.UpdateDatasetRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.UpdateDatasetResponse:
+        """
+        @summary 更新媒体集
+        
+        @param request: UpdateDatasetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDatasetResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dataset_max_bind_count):
@@ -8812,6 +11654,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.UpdateDatasetRequest,
     ) -> imm_20200930_models.UpdateDatasetResponse:
+        """
+        @summary 更新媒体集
+        
+        @param request: UpdateDatasetRequest
+        @return: UpdateDatasetResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_dataset_with_options(request, runtime)
 
@@ -8819,6 +11667,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.UpdateDatasetRequest,
     ) -> imm_20200930_models.UpdateDatasetResponse:
+        """
+        @summary 更新媒体集
+        
+        @param request: UpdateDatasetRequest
+        @return: UpdateDatasetResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_dataset_with_options_async(request, runtime)
 
@@ -8827,6 +11681,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.UpdateFigureClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.UpdateFigureClusterResponse:
+        """
+        @summary 更新聚类
+        
+        @param tmp_req: UpdateFigureClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateFigureClusterResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.UpdateFigureClusterShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -8863,6 +11724,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.UpdateFigureClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.UpdateFigureClusterResponse:
+        """
+        @summary 更新聚类
+        
+        @param tmp_req: UpdateFigureClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateFigureClusterResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.UpdateFigureClusterShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -8898,6 +11766,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.UpdateFigureClusterRequest,
     ) -> imm_20200930_models.UpdateFigureClusterResponse:
+        """
+        @summary 更新聚类
+        
+        @param request: UpdateFigureClusterRequest
+        @return: UpdateFigureClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_figure_cluster_with_options(request, runtime)
 
@@ -8905,6 +11779,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.UpdateFigureClusterRequest,
     ) -> imm_20200930_models.UpdateFigureClusterResponse:
+        """
+        @summary 更新聚类
+        
+        @param request: UpdateFigureClusterRequest
+        @return: UpdateFigureClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_figure_cluster_with_options_async(request, runtime)
 
@@ -8913,6 +11793,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.UpdateFileMetaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.UpdateFileMetaResponse:
+        """
+        @summary 更新文件元信息
+        
+        @param tmp_req: UpdateFileMetaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateFileMetaResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.UpdateFileMetaShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -8949,6 +11836,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.UpdateFileMetaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.UpdateFileMetaResponse:
+        """
+        @summary 更新文件元信息
+        
+        @param tmp_req: UpdateFileMetaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateFileMetaResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.UpdateFileMetaShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -8984,6 +11878,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.UpdateFileMetaRequest,
     ) -> imm_20200930_models.UpdateFileMetaResponse:
+        """
+        @summary 更新文件元信息
+        
+        @param request: UpdateFileMetaRequest
+        @return: UpdateFileMetaResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_file_meta_with_options(request, runtime)
 
@@ -8991,6 +11891,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.UpdateFileMetaRequest,
     ) -> imm_20200930_models.UpdateFileMetaResponse:
+        """
+        @summary 更新文件元信息
+        
+        @param request: UpdateFileMetaRequest
+        @return: UpdateFileMetaResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_file_meta_with_options_async(request, runtime)
 
@@ -8999,6 +11905,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.UpdateLocationDateClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.UpdateLocationDateClusterResponse:
+        """
+        @summary 更新时空聚类
+        
+        @param tmp_req: UpdateLocationDateClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateLocationDateClusterResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.UpdateLocationDateClusterShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -9041,6 +11954,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.UpdateLocationDateClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.UpdateLocationDateClusterResponse:
+        """
+        @summary 更新时空聚类
+        
+        @param tmp_req: UpdateLocationDateClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateLocationDateClusterResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.UpdateLocationDateClusterShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -9082,6 +12002,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.UpdateLocationDateClusterRequest,
     ) -> imm_20200930_models.UpdateLocationDateClusterResponse:
+        """
+        @summary 更新时空聚类
+        
+        @param request: UpdateLocationDateClusterRequest
+        @return: UpdateLocationDateClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_location_date_cluster_with_options(request, runtime)
 
@@ -9089,6 +12015,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.UpdateLocationDateClusterRequest,
     ) -> imm_20200930_models.UpdateLocationDateClusterResponse:
+        """
+        @summary 更新时空聚类
+        
+        @param request: UpdateLocationDateClusterRequest
+        @return: UpdateLocationDateClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_location_date_cluster_with_options_async(request, runtime)
 
@@ -9097,6 +12029,13 @@ class Client(OpenApiClient):
         request: imm_20200930_models.UpdateProjectRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.UpdateProjectResponse:
+        """
+        @summary 更新项目
+        
+        @param request: UpdateProjectRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateProjectResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dataset_max_bind_count):
@@ -9143,6 +12082,13 @@ class Client(OpenApiClient):
         request: imm_20200930_models.UpdateProjectRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.UpdateProjectResponse:
+        """
+        @summary 更新项目
+        
+        @param request: UpdateProjectRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateProjectResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dataset_max_bind_count):
@@ -9188,6 +12134,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.UpdateProjectRequest,
     ) -> imm_20200930_models.UpdateProjectResponse:
+        """
+        @summary 更新项目
+        
+        @param request: UpdateProjectRequest
+        @return: UpdateProjectResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_project_with_options(request, runtime)
 
@@ -9195,6 +12147,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.UpdateProjectRequest,
     ) -> imm_20200930_models.UpdateProjectResponse:
+        """
+        @summary 更新项目
+        
+        @param request: UpdateProjectRequest
+        @return: UpdateProjectResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_project_with_options_async(request, runtime)
 
@@ -9203,6 +12161,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.UpdateStoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.UpdateStoryResponse:
+        """
+        @summary 更新故事
+        
+        @param tmp_req: UpdateStoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateStoryResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.UpdateStoryShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -9249,6 +12214,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.UpdateStoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.UpdateStoryResponse:
+        """
+        @summary 更新故事
+        
+        @param tmp_req: UpdateStoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateStoryResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.UpdateStoryShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -9294,6 +12266,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.UpdateStoryRequest,
     ) -> imm_20200930_models.UpdateStoryResponse:
+        """
+        @summary 更新故事
+        
+        @param request: UpdateStoryRequest
+        @return: UpdateStoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_story_with_options(request, runtime)
 
@@ -9301,6 +12279,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.UpdateStoryRequest,
     ) -> imm_20200930_models.UpdateStoryResponse:
+        """
+        @summary 更新故事
+        
+        @param request: UpdateStoryRequest
+        @return: UpdateStoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_story_with_options_async(request, runtime)
 
@@ -9309,6 +12293,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.UpdateTriggerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.UpdateTriggerResponse:
+        """
+        @summary 更新数据接入实例
+        
+        @param tmp_req: UpdateTriggerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTriggerResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.UpdateTriggerShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -9353,6 +12344,13 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.UpdateTriggerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.UpdateTriggerResponse:
+        """
+        @summary 更新数据接入实例
+        
+        @param tmp_req: UpdateTriggerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTriggerResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.UpdateTriggerShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -9396,6 +12394,12 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.UpdateTriggerRequest,
     ) -> imm_20200930_models.UpdateTriggerResponse:
+        """
+        @summary 更新数据接入实例
+        
+        @param request: UpdateTriggerRequest
+        @return: UpdateTriggerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_trigger_with_options(request, runtime)
 
@@ -9403,5 +12407,11 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.UpdateTriggerRequest,
     ) -> imm_20200930_models.UpdateTriggerResponse:
+        """
+        @summary 更新数据接入实例
+        
+        @param request: UpdateTriggerRequest
+        @return: UpdateTriggerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_trigger_with_options_async(request, runtime)
