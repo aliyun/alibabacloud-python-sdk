@@ -111,9 +111,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.AbolishApiResponse:
         """
-        This operation is intended for API providers and is the opposite of DeployApi.
-        *   An API can be unpublished from a specified runtime environment in under 5 seconds.
-        *   An unpublished API cannot be called in the specified runtime environment.
+        @summary Unpublishes a specified API from a specified runtime environment.
+        
+        @description    This operation is intended for API providers and is the opposite of DeployApi.
+        An API can be unpublished from a specified runtime environment in under 5 seconds.
+        An unpublished API cannot be called in the specified runtime environment.
         
         @param request: AbolishApiRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -154,9 +156,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.AbolishApiResponse:
         """
-        This operation is intended for API providers and is the opposite of DeployApi.
-        *   An API can be unpublished from a specified runtime environment in under 5 seconds.
-        *   An unpublished API cannot be called in the specified runtime environment.
+        @summary Unpublishes a specified API from a specified runtime environment.
+        
+        @description    This operation is intended for API providers and is the opposite of DeployApi.
+        An API can be unpublished from a specified runtime environment in under 5 seconds.
+        An unpublished API cannot be called in the specified runtime environment.
         
         @param request: AbolishApiRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -196,9 +200,11 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.AbolishApiRequest,
     ) -> cloud_api20160714_models.AbolishApiResponse:
         """
-        This operation is intended for API providers and is the opposite of DeployApi.
-        *   An API can be unpublished from a specified runtime environment in under 5 seconds.
-        *   An unpublished API cannot be called in the specified runtime environment.
+        @summary Unpublishes a specified API from a specified runtime environment.
+        
+        @description    This operation is intended for API providers and is the opposite of DeployApi.
+        An API can be unpublished from a specified runtime environment in under 5 seconds.
+        An unpublished API cannot be called in the specified runtime environment.
         
         @param request: AbolishApiRequest
         @return: AbolishApiResponse
@@ -211,9 +217,11 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.AbolishApiRequest,
     ) -> cloud_api20160714_models.AbolishApiResponse:
         """
-        This operation is intended for API providers and is the opposite of DeployApi.
-        *   An API can be unpublished from a specified runtime environment in under 5 seconds.
-        *   An unpublished API cannot be called in the specified runtime environment.
+        @summary Unpublishes a specified API from a specified runtime environment.
+        
+        @description    This operation is intended for API providers and is the opposite of DeployApi.
+        An API can be unpublished from a specified runtime environment in under 5 seconds.
+        An unpublished API cannot be called in the specified runtime environment.
         
         @param request: AbolishApiRequest
         @return: AbolishApiResponse
@@ -226,6 +234,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.AddAccessControlListEntryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.AddAccessControlListEntryResponse:
+        """
+        @summary This feature provides instance-level access control capabilities for dedicated instances. Adds an IP address entry to the access control polocy of an instance.
+        
+        @param request: AddAccessControlListEntryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddAccessControlListEntryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.acl_entrys):
@@ -258,6 +273,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.AddAccessControlListEntryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.AddAccessControlListEntryResponse:
+        """
+        @summary This feature provides instance-level access control capabilities for dedicated instances. Adds an IP address entry to the access control polocy of an instance.
+        
+        @param request: AddAccessControlListEntryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddAccessControlListEntryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.acl_entrys):
@@ -289,6 +311,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.AddAccessControlListEntryRequest,
     ) -> cloud_api20160714_models.AddAccessControlListEntryResponse:
+        """
+        @summary This feature provides instance-level access control capabilities for dedicated instances. Adds an IP address entry to the access control polocy of an instance.
+        
+        @param request: AddAccessControlListEntryRequest
+        @return: AddAccessControlListEntryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_access_control_list_entry_with_options(request, runtime)
 
@@ -296,6 +324,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.AddAccessControlListEntryRequest,
     ) -> cloud_api20160714_models.AddAccessControlListEntryResponse:
+        """
+        @summary This feature provides instance-level access control capabilities for dedicated instances. Adds an IP address entry to the access control polocy of an instance.
+        
+        @param request: AddAccessControlListEntryRequest
+        @return: AddAccessControlListEntryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_access_control_list_entry_with_options_async(request, runtime)
 
@@ -305,10 +339,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.AddIpControlPolicyItemResponse:
         """
-        When you call this operation, note that:
-        *   This operation is intended for API providers.
-        *   An added policy immediately takes effect on all APIs that are bound to the access control list (ACL).
-        *   A maximum of 100 policies can be added to an ACL.
+        @summary Adds a policy to an existing ACL.
+        
+        @description When you call this operation, note that:
+        This operation is intended for API providers.
+        An added policy immediately takes effect on all APIs that are bound to the access control list (ACL).
+        A maximum of 100 policies can be added to an ACL.
         
         @param request: AddIpControlPolicyItemRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -349,10 +385,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.AddIpControlPolicyItemResponse:
         """
-        When you call this operation, note that:
-        *   This operation is intended for API providers.
-        *   An added policy immediately takes effect on all APIs that are bound to the access control list (ACL).
-        *   A maximum of 100 policies can be added to an ACL.
+        @summary Adds a policy to an existing ACL.
+        
+        @description When you call this operation, note that:
+        This operation is intended for API providers.
+        An added policy immediately takes effect on all APIs that are bound to the access control list (ACL).
+        A maximum of 100 policies can be added to an ACL.
         
         @param request: AddIpControlPolicyItemRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -392,10 +430,12 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.AddIpControlPolicyItemRequest,
     ) -> cloud_api20160714_models.AddIpControlPolicyItemResponse:
         """
-        When you call this operation, note that:
-        *   This operation is intended for API providers.
-        *   An added policy immediately takes effect on all APIs that are bound to the access control list (ACL).
-        *   A maximum of 100 policies can be added to an ACL.
+        @summary Adds a policy to an existing ACL.
+        
+        @description When you call this operation, note that:
+        This operation is intended for API providers.
+        An added policy immediately takes effect on all APIs that are bound to the access control list (ACL).
+        A maximum of 100 policies can be added to an ACL.
         
         @param request: AddIpControlPolicyItemRequest
         @return: AddIpControlPolicyItemResponse
@@ -408,10 +448,12 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.AddIpControlPolicyItemRequest,
     ) -> cloud_api20160714_models.AddIpControlPolicyItemResponse:
         """
-        When you call this operation, note that:
-        *   This operation is intended for API providers.
-        *   An added policy immediately takes effect on all APIs that are bound to the access control list (ACL).
-        *   A maximum of 100 policies can be added to an ACL.
+        @summary Adds a policy to an existing ACL.
+        
+        @description When you call this operation, note that:
+        This operation is intended for API providers.
+        An added policy immediately takes effect on all APIs that are bound to the access control list (ACL).
+        A maximum of 100 policies can be added to an ACL.
         
         @param request: AddIpControlPolicyItemRequest
         @return: AddIpControlPolicyItemResponse
@@ -425,9 +467,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.AddTrafficSpecialControlResponse:
         """
-        This API is intended for API providers.
-        *   If the input SpecialKey already exists, the previous configuration is overwritten. Use caution when calling this operation.
-        *   Special throttling policies must be added to an existing throttling policy, and can take effect on all the APIs to which the throttling policy is bound.
+        @summary Adds a custom special policy to a specified throttling policy.
+        
+        @description    This API is intended for API providers.
+        If the input SpecialKey already exists, the previous configuration is overwritten. Use caution when calling this operation.
+        Special throttling policies must be added to an existing throttling policy, and can take effect on all the APIs to which the throttling policy is bound.
         
         @param request: AddTrafficSpecialControlRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -470,9 +514,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.AddTrafficSpecialControlResponse:
         """
-        This API is intended for API providers.
-        *   If the input SpecialKey already exists, the previous configuration is overwritten. Use caution when calling this operation.
-        *   Special throttling policies must be added to an existing throttling policy, and can take effect on all the APIs to which the throttling policy is bound.
+        @summary Adds a custom special policy to a specified throttling policy.
+        
+        @description    This API is intended for API providers.
+        If the input SpecialKey already exists, the previous configuration is overwritten. Use caution when calling this operation.
+        Special throttling policies must be added to an existing throttling policy, and can take effect on all the APIs to which the throttling policy is bound.
         
         @param request: AddTrafficSpecialControlRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -514,9 +560,11 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.AddTrafficSpecialControlRequest,
     ) -> cloud_api20160714_models.AddTrafficSpecialControlResponse:
         """
-        This API is intended for API providers.
-        *   If the input SpecialKey already exists, the previous configuration is overwritten. Use caution when calling this operation.
-        *   Special throttling policies must be added to an existing throttling policy, and can take effect on all the APIs to which the throttling policy is bound.
+        @summary Adds a custom special policy to a specified throttling policy.
+        
+        @description    This API is intended for API providers.
+        If the input SpecialKey already exists, the previous configuration is overwritten. Use caution when calling this operation.
+        Special throttling policies must be added to an existing throttling policy, and can take effect on all the APIs to which the throttling policy is bound.
         
         @param request: AddTrafficSpecialControlRequest
         @return: AddTrafficSpecialControlResponse
@@ -529,9 +577,11 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.AddTrafficSpecialControlRequest,
     ) -> cloud_api20160714_models.AddTrafficSpecialControlResponse:
         """
-        This API is intended for API providers.
-        *   If the input SpecialKey already exists, the previous configuration is overwritten. Use caution when calling this operation.
-        *   Special throttling policies must be added to an existing throttling policy, and can take effect on all the APIs to which the throttling policy is bound.
+        @summary Adds a custom special policy to a specified throttling policy.
+        
+        @description    This API is intended for API providers.
+        If the input SpecialKey already exists, the previous configuration is overwritten. Use caution when calling this operation.
+        Special throttling policies must be added to an existing throttling policy, and can take effect on all the APIs to which the throttling policy is bound.
         
         @param request: AddTrafficSpecialControlRequest
         @return: AddTrafficSpecialControlResponse
@@ -544,6 +594,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.AttachApiProductRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.AttachApiProductResponse:
+        """
+        @summary Attaches APIs to an API product. If the API product does not exist, the system automatically creates the API product.
+        
+        @param request: AttachApiProductRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AttachApiProductResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.api_product_id):
@@ -576,6 +633,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.AttachApiProductRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.AttachApiProductResponse:
+        """
+        @summary Attaches APIs to an API product. If the API product does not exist, the system automatically creates the API product.
+        
+        @param request: AttachApiProductRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AttachApiProductResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.api_product_id):
@@ -607,6 +671,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.AttachApiProductRequest,
     ) -> cloud_api20160714_models.AttachApiProductResponse:
+        """
+        @summary Attaches APIs to an API product. If the API product does not exist, the system automatically creates the API product.
+        
+        @param request: AttachApiProductRequest
+        @return: AttachApiProductResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.attach_api_product_with_options(request, runtime)
 
@@ -614,6 +684,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.AttachApiProductRequest,
     ) -> cloud_api20160714_models.AttachApiProductResponse:
+        """
+        @summary Attaches APIs to an API product. If the API product does not exist, the system automatically creates the API product.
+        
+        @param request: AttachApiProductRequest
+        @return: AttachApiProductResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.attach_api_product_with_options_async(request, runtime)
 
@@ -623,10 +699,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.AttachPluginResponse:
         """
-        This operation is intended for API providers.
-        *   You can only bind plug-ins to published APIs.
-        *   The plug-in takes effect immediately after it is bound to an API.
-        *   If you bind a different plug-in to an API, this plug-in takes effect immediately.
+        @summary Binds a plug-in to an API.
+        
+        @description    This operation is intended for API providers.
+        You can only bind plug-ins to published APIs.
+        The plug-in takes effect immediately after it is bound to an API.
+        If you bind a different plug-in to an API, this plug-in takes effect immediately.
         
         @param request: AttachPluginRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -671,10 +749,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.AttachPluginResponse:
         """
-        This operation is intended for API providers.
-        *   You can only bind plug-ins to published APIs.
-        *   The plug-in takes effect immediately after it is bound to an API.
-        *   If you bind a different plug-in to an API, this plug-in takes effect immediately.
+        @summary Binds a plug-in to an API.
+        
+        @description    This operation is intended for API providers.
+        You can only bind plug-ins to published APIs.
+        The plug-in takes effect immediately after it is bound to an API.
+        If you bind a different plug-in to an API, this plug-in takes effect immediately.
         
         @param request: AttachPluginRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -718,10 +798,12 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.AttachPluginRequest,
     ) -> cloud_api20160714_models.AttachPluginResponse:
         """
-        This operation is intended for API providers.
-        *   You can only bind plug-ins to published APIs.
-        *   The plug-in takes effect immediately after it is bound to an API.
-        *   If you bind a different plug-in to an API, this plug-in takes effect immediately.
+        @summary Binds a plug-in to an API.
+        
+        @description    This operation is intended for API providers.
+        You can only bind plug-ins to published APIs.
+        The plug-in takes effect immediately after it is bound to an API.
+        If you bind a different plug-in to an API, this plug-in takes effect immediately.
         
         @param request: AttachPluginRequest
         @return: AttachPluginResponse
@@ -734,10 +816,12 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.AttachPluginRequest,
     ) -> cloud_api20160714_models.AttachPluginResponse:
         """
-        This operation is intended for API providers.
-        *   You can only bind plug-ins to published APIs.
-        *   The plug-in takes effect immediately after it is bound to an API.
-        *   If you bind a different plug-in to an API, this plug-in takes effect immediately.
+        @summary Binds a plug-in to an API.
+        
+        @description    This operation is intended for API providers.
+        You can only bind plug-ins to published APIs.
+        The plug-in takes effect immediately after it is bound to an API.
+        If you bind a different plug-in to an API, this plug-in takes effect immediately.
         
         @param request: AttachPluginRequest
         @return: AttachPluginResponse
@@ -750,6 +834,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.BatchAbolishApisRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.BatchAbolishApisResponse:
+        """
+        @summary Unpublishes multiple published APIs at a time.
+        
+        @param request: BatchAbolishApisRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchAbolishApisResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.api):
@@ -780,6 +871,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.BatchAbolishApisRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.BatchAbolishApisResponse:
+        """
+        @summary Unpublishes multiple published APIs at a time.
+        
+        @param request: BatchAbolishApisRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchAbolishApisResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.api):
@@ -809,6 +907,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.BatchAbolishApisRequest,
     ) -> cloud_api20160714_models.BatchAbolishApisResponse:
+        """
+        @summary Unpublishes multiple published APIs at a time.
+        
+        @param request: BatchAbolishApisRequest
+        @return: BatchAbolishApisResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.batch_abolish_apis_with_options(request, runtime)
 
@@ -816,6 +920,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.BatchAbolishApisRequest,
     ) -> cloud_api20160714_models.BatchAbolishApisResponse:
+        """
+        @summary Unpublishes multiple published APIs at a time.
+        
+        @param request: BatchAbolishApisRequest
+        @return: BatchAbolishApisResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.batch_abolish_apis_with_options_async(request, runtime)
 
@@ -824,6 +934,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.BatchDeployApisRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.BatchDeployApisResponse:
+        """
+        @summary Publishes multiple APIs at a time.
+        
+        @param request: BatchDeployApisRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchDeployApisResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.api):
@@ -858,6 +975,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.BatchDeployApisRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.BatchDeployApisResponse:
+        """
+        @summary Publishes multiple APIs at a time.
+        
+        @param request: BatchDeployApisRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchDeployApisResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.api):
@@ -891,6 +1015,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.BatchDeployApisRequest,
     ) -> cloud_api20160714_models.BatchDeployApisResponse:
+        """
+        @summary Publishes multiple APIs at a time.
+        
+        @param request: BatchDeployApisRequest
+        @return: BatchDeployApisResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.batch_deploy_apis_with_options(request, runtime)
 
@@ -898,6 +1028,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.BatchDeployApisRequest,
     ) -> cloud_api20160714_models.BatchDeployApisResponse:
+        """
+        @summary Publishes multiple APIs at a time.
+        
+        @param request: BatchDeployApisRequest
+        @return: BatchDeployApisResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.batch_deploy_apis_with_options_async(request, runtime)
 
@@ -906,6 +1042,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.CreateAccessControlListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.CreateAccessControlListResponse:
+        """
+        @summary This feature provides instance-level access control capabilities for dedicated instances. Creates an Access Control List (ACL). Each user is allowed to create five ACLs in each region.
+        
+        @param request: CreateAccessControlListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAccessControlListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.acl_name):
@@ -938,6 +1081,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.CreateAccessControlListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.CreateAccessControlListResponse:
+        """
+        @summary This feature provides instance-level access control capabilities for dedicated instances. Creates an Access Control List (ACL). Each user is allowed to create five ACLs in each region.
+        
+        @param request: CreateAccessControlListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAccessControlListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.acl_name):
@@ -969,6 +1119,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.CreateAccessControlListRequest,
     ) -> cloud_api20160714_models.CreateAccessControlListResponse:
+        """
+        @summary This feature provides instance-level access control capabilities for dedicated instances. Creates an Access Control List (ACL). Each user is allowed to create five ACLs in each region.
+        
+        @param request: CreateAccessControlListRequest
+        @return: CreateAccessControlListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_access_control_list_with_options(request, runtime)
 
@@ -976,6 +1132,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.CreateAccessControlListRequest,
     ) -> cloud_api20160714_models.CreateAccessControlListResponse:
+        """
+        @summary This feature provides instance-level access control capabilities for dedicated instances. Creates an Access Control List (ACL). Each user is allowed to create five ACLs in each region.
+        
+        @param request: CreateAccessControlListRequest
+        @return: CreateAccessControlListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_access_control_list_with_options_async(request, runtime)
 
@@ -985,10 +1147,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.CreateApiResponse:
         """
-        This operation is intended for API providers.
-        *   The name of an API must be unique within an API group.
-        *   A request path must be unique within an API group.
-        *   The QPS limit on this operation is 50 per user.
+        @summary Creates an API.
+        
+        @description    This operation is intended for API providers.
+        The name of an API must be unique within an API group.
+        A request path must be unique within an API group.
+        The QPS limit on this operation is 50 per user.
         
         @param request: CreateApiRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1079,10 +1243,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.CreateApiResponse:
         """
-        This operation is intended for API providers.
-        *   The name of an API must be unique within an API group.
-        *   A request path must be unique within an API group.
-        *   The QPS limit on this operation is 50 per user.
+        @summary Creates an API.
+        
+        @description    This operation is intended for API providers.
+        The name of an API must be unique within an API group.
+        A request path must be unique within an API group.
+        The QPS limit on this operation is 50 per user.
         
         @param request: CreateApiRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1172,10 +1338,12 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.CreateApiRequest,
     ) -> cloud_api20160714_models.CreateApiResponse:
         """
-        This operation is intended for API providers.
-        *   The name of an API must be unique within an API group.
-        *   A request path must be unique within an API group.
-        *   The QPS limit on this operation is 50 per user.
+        @summary Creates an API.
+        
+        @description    This operation is intended for API providers.
+        The name of an API must be unique within an API group.
+        A request path must be unique within an API group.
+        The QPS limit on this operation is 50 per user.
         
         @param request: CreateApiRequest
         @return: CreateApiResponse
@@ -1188,10 +1356,12 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.CreateApiRequest,
     ) -> cloud_api20160714_models.CreateApiResponse:
         """
-        This operation is intended for API providers.
-        *   The name of an API must be unique within an API group.
-        *   A request path must be unique within an API group.
-        *   The QPS limit on this operation is 50 per user.
+        @summary Creates an API.
+        
+        @description    This operation is intended for API providers.
+        The name of an API must be unique within an API group.
+        A request path must be unique within an API group.
+        The QPS limit on this operation is 50 per user.
         
         @param request: CreateApiRequest
         @return: CreateApiResponse
@@ -1204,6 +1374,11 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.CreateApiGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.CreateApiGroupResponse:
+        """
+        @param request: CreateApiGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateApiGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.base_path):
@@ -1242,6 +1417,11 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.CreateApiGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.CreateApiGroupResponse:
+        """
+        @param request: CreateApiGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateApiGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.base_path):
@@ -1279,6 +1459,10 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.CreateApiGroupRequest,
     ) -> cloud_api20160714_models.CreateApiGroupResponse:
+        """
+        @param request: CreateApiGroupRequest
+        @return: CreateApiGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_api_group_with_options(request, runtime)
 
@@ -1286,6 +1470,10 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.CreateApiGroupRequest,
     ) -> cloud_api20160714_models.CreateApiGroupResponse:
+        """
+        @param request: CreateApiGroupRequest
+        @return: CreateApiGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_api_group_with_options_async(request, runtime)
 
@@ -1295,7 +1483,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.CreateApiStageVariableResponse:
         """
-        This operation is intended for API providers.
+        @summary Adds a variable to an environment.
+        
+        @description    This operation is intended for API providers.
         
         @param request: CreateApiStageVariableRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1342,7 +1532,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.CreateApiStageVariableResponse:
         """
-        This operation is intended for API providers.
+        @summary Adds a variable to an environment.
+        
+        @description    This operation is intended for API providers.
         
         @param request: CreateApiStageVariableRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1388,7 +1580,9 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.CreateApiStageVariableRequest,
     ) -> cloud_api20160714_models.CreateApiStageVariableResponse:
         """
-        This operation is intended for API providers.
+        @summary Adds a variable to an environment.
+        
+        @description    This operation is intended for API providers.
         
         @param request: CreateApiStageVariableRequest
         @return: CreateApiStageVariableResponse
@@ -1401,7 +1595,9 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.CreateApiStageVariableRequest,
     ) -> cloud_api20160714_models.CreateApiStageVariableResponse:
         """
-        This operation is intended for API providers.
+        @summary Adds a variable to an environment.
+        
+        @description    This operation is intended for API providers.
         
         @param request: CreateApiStageVariableRequest
         @return: CreateApiStageVariableResponse
@@ -1415,12 +1611,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.CreateAppResponse:
         """
-        This operation is intended for API callers.
-        *   Each application has a key-value pair which is used for identity verification when you call an API.
-        *   An application must be authorized to call an API.
-        *   Each application has only one key-value pair, which can be reset if the pair is leaked.
-        *   A maximum of 1,000 applications can be created for each Alibaba Cloud account.
-        *   You can call this operation up to 50 times per second per account.
+        @summary Creates an application for calling APIs in API Gateway.
+        
+        @description    This operation is intended for API callers.
+        Each application has a key-value pair which is used for identity verification when you call an API.
+        An application must be authorized to call an API.
+        Each application has only one key-value pair, which can be reset if the pair is leaked.
+        A maximum of 1,000 applications can be created for each Alibaba Cloud account.
+        You can call this operation up to 50 times per second per account.
         
         @param request: CreateAppRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1469,12 +1667,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.CreateAppResponse:
         """
-        This operation is intended for API callers.
-        *   Each application has a key-value pair which is used for identity verification when you call an API.
-        *   An application must be authorized to call an API.
-        *   Each application has only one key-value pair, which can be reset if the pair is leaked.
-        *   A maximum of 1,000 applications can be created for each Alibaba Cloud account.
-        *   You can call this operation up to 50 times per second per account.
+        @summary Creates an application for calling APIs in API Gateway.
+        
+        @description    This operation is intended for API callers.
+        Each application has a key-value pair which is used for identity verification when you call an API.
+        An application must be authorized to call an API.
+        Each application has only one key-value pair, which can be reset if the pair is leaked.
+        A maximum of 1,000 applications can be created for each Alibaba Cloud account.
+        You can call this operation up to 50 times per second per account.
         
         @param request: CreateAppRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1522,12 +1722,14 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.CreateAppRequest,
     ) -> cloud_api20160714_models.CreateAppResponse:
         """
-        This operation is intended for API callers.
-        *   Each application has a key-value pair which is used for identity verification when you call an API.
-        *   An application must be authorized to call an API.
-        *   Each application has only one key-value pair, which can be reset if the pair is leaked.
-        *   A maximum of 1,000 applications can be created for each Alibaba Cloud account.
-        *   You can call this operation up to 50 times per second per account.
+        @summary Creates an application for calling APIs in API Gateway.
+        
+        @description    This operation is intended for API callers.
+        Each application has a key-value pair which is used for identity verification when you call an API.
+        An application must be authorized to call an API.
+        Each application has only one key-value pair, which can be reset if the pair is leaked.
+        A maximum of 1,000 applications can be created for each Alibaba Cloud account.
+        You can call this operation up to 50 times per second per account.
         
         @param request: CreateAppRequest
         @return: CreateAppResponse
@@ -1540,12 +1742,14 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.CreateAppRequest,
     ) -> cloud_api20160714_models.CreateAppResponse:
         """
-        This operation is intended for API callers.
-        *   Each application has a key-value pair which is used for identity verification when you call an API.
-        *   An application must be authorized to call an API.
-        *   Each application has only one key-value pair, which can be reset if the pair is leaked.
-        *   A maximum of 1,000 applications can be created for each Alibaba Cloud account.
-        *   You can call this operation up to 50 times per second per account.
+        @summary Creates an application for calling APIs in API Gateway.
+        
+        @description    This operation is intended for API callers.
+        Each application has a key-value pair which is used for identity verification when you call an API.
+        An application must be authorized to call an API.
+        Each application has only one key-value pair, which can be reset if the pair is leaked.
+        A maximum of 1,000 applications can be created for each Alibaba Cloud account.
+        You can call this operation up to 50 times per second per account.
         
         @param request: CreateAppRequest
         @return: CreateAppResponse
@@ -1558,6 +1762,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.CreateBackendRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.CreateBackendResponse:
+        """
+        @summary 创建后端服务
+        
+        @param request: CreateBackendRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateBackendResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backend_name):
@@ -1598,6 +1809,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.CreateBackendRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.CreateBackendResponse:
+        """
+        @summary 创建后端服务
+        
+        @param request: CreateBackendRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateBackendResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backend_name):
@@ -1637,6 +1855,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.CreateBackendRequest,
     ) -> cloud_api20160714_models.CreateBackendResponse:
+        """
+        @summary 创建后端服务
+        
+        @param request: CreateBackendRequest
+        @return: CreateBackendResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_backend_with_options(request, runtime)
 
@@ -1644,6 +1868,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.CreateBackendRequest,
     ) -> cloud_api20160714_models.CreateBackendResponse:
+        """
+        @summary 创建后端服务
+        
+        @param request: CreateBackendRequest
+        @return: CreateBackendResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_backend_with_options_async(request, runtime)
 
@@ -1652,6 +1882,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.CreateBackendModelRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.CreateBackendModelResponse:
+        """
+        @summary 创建后端服务在环境上的配置
+        
+        @param request: CreateBackendModelRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateBackendModelResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backend_id):
@@ -1690,6 +1927,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.CreateBackendModelRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.CreateBackendModelResponse:
+        """
+        @summary 创建后端服务在环境上的配置
+        
+        @param request: CreateBackendModelRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateBackendModelResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backend_id):
@@ -1727,6 +1971,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.CreateBackendModelRequest,
     ) -> cloud_api20160714_models.CreateBackendModelResponse:
+        """
+        @summary 创建后端服务在环境上的配置
+        
+        @param request: CreateBackendModelRequest
+        @return: CreateBackendModelResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_backend_model_with_options(request, runtime)
 
@@ -1734,6 +1984,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.CreateBackendModelRequest,
     ) -> cloud_api20160714_models.CreateBackendModelResponse:
+        """
+        @summary 创建后端服务在环境上的配置
+        
+        @param request: CreateBackendModelRequest
+        @return: CreateBackendModelResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_backend_model_with_options_async(request, runtime)
 
@@ -1742,6 +1998,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.CreateDatasetRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.CreateDatasetResponse:
+        """
+        @summary Creates a custom dataset.
+        
+        @param request: CreateDatasetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDatasetResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dataset_name):
@@ -1776,6 +2039,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.CreateDatasetRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.CreateDatasetResponse:
+        """
+        @summary Creates a custom dataset.
+        
+        @param request: CreateDatasetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDatasetResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dataset_name):
@@ -1809,6 +2079,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.CreateDatasetRequest,
     ) -> cloud_api20160714_models.CreateDatasetResponse:
+        """
+        @summary Creates a custom dataset.
+        
+        @param request: CreateDatasetRequest
+        @return: CreateDatasetResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_dataset_with_options(request, runtime)
 
@@ -1816,6 +2092,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.CreateDatasetRequest,
     ) -> cloud_api20160714_models.CreateDatasetResponse:
+        """
+        @summary Creates a custom dataset.
+        
+        @param request: CreateDatasetRequest
+        @return: CreateDatasetResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_dataset_with_options_async(request, runtime)
 
@@ -1824,6 +2106,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.CreateDatasetItemRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.CreateDatasetItemResponse:
+        """
+        @summary 创建自定义数据集条目
+        
+        @param request: CreateDatasetItemRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDatasetItemResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dataset_id):
@@ -1860,6 +2149,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.CreateDatasetItemRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.CreateDatasetItemResponse:
+        """
+        @summary 创建自定义数据集条目
+        
+        @param request: CreateDatasetItemRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDatasetItemResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dataset_id):
@@ -1895,6 +2191,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.CreateDatasetItemRequest,
     ) -> cloud_api20160714_models.CreateDatasetItemResponse:
+        """
+        @summary 创建自定义数据集条目
+        
+        @param request: CreateDatasetItemRequest
+        @return: CreateDatasetItemResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_dataset_item_with_options(request, runtime)
 
@@ -1902,6 +2204,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.CreateDatasetItemRequest,
     ) -> cloud_api20160714_models.CreateDatasetItemResponse:
+        """
+        @summary 创建自定义数据集条目
+        
+        @param request: CreateDatasetItemRequest
+        @return: CreateDatasetItemResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_dataset_item_with_options_async(request, runtime)
 
@@ -1910,6 +2218,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.CreateInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.CreateInstanceResponse:
+        """
+        @summary 创建网关实例
+        
+        @param request: CreateInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auto_pay):
@@ -1964,6 +2279,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.CreateInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.CreateInstanceResponse:
+        """
+        @summary 创建网关实例
+        
+        @param request: CreateInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auto_pay):
@@ -2017,6 +2339,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.CreateInstanceRequest,
     ) -> cloud_api20160714_models.CreateInstanceResponse:
+        """
+        @summary 创建网关实例
+        
+        @param request: CreateInstanceRequest
+        @return: CreateInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_instance_with_options(request, runtime)
 
@@ -2024,6 +2352,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.CreateInstanceRequest,
     ) -> cloud_api20160714_models.CreateInstanceResponse:
+        """
+        @summary 创建网关实例
+        
+        @param request: CreateInstanceRequest
+        @return: CreateInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_instance_with_options_async(request, runtime)
 
@@ -2032,6 +2366,11 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.CreateIntranetDomainRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.CreateIntranetDomainResponse:
+        """
+        @param request: CreateIntranetDomainRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateIntranetDomainResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_id):
@@ -2062,6 +2401,11 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.CreateIntranetDomainRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.CreateIntranetDomainResponse:
+        """
+        @param request: CreateIntranetDomainRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateIntranetDomainResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_id):
@@ -2091,6 +2435,10 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.CreateIntranetDomainRequest,
     ) -> cloud_api20160714_models.CreateIntranetDomainResponse:
+        """
+        @param request: CreateIntranetDomainRequest
+        @return: CreateIntranetDomainResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_intranet_domain_with_options(request, runtime)
 
@@ -2098,6 +2446,10 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.CreateIntranetDomainRequest,
     ) -> cloud_api20160714_models.CreateIntranetDomainResponse:
+        """
+        @param request: CreateIntranetDomainRequest
+        @return: CreateIntranetDomainResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_intranet_domain_with_options_async(request, runtime)
 
@@ -2107,10 +2459,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.CreateIpControlResponse:
         """
-        This operation is intended for API providers.
-        *   An ACL must be bound to an API to take effect. After an ACL is bound to an API, the ACL takes effect on the API immediately.
-        *   You can add policies to an ACL when you create the ACL.
-        *   If an ACL does not have any policy, the ACL is ineffective.
+        @summary Creates an access control list (ACL) in a region.
+        
+        @description    This operation is intended for API providers.
+        An ACL must be bound to an API to take effect. After an ACL is bound to an API, the ACL takes effect on the API immediately.
+        You can add policies to an ACL when you create the ACL.
+        If an ACL does not have any policy, the ACL is ineffective.
         
         @param request: CreateIpControlRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2153,10 +2507,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.CreateIpControlResponse:
         """
-        This operation is intended for API providers.
-        *   An ACL must be bound to an API to take effect. After an ACL is bound to an API, the ACL takes effect on the API immediately.
-        *   You can add policies to an ACL when you create the ACL.
-        *   If an ACL does not have any policy, the ACL is ineffective.
+        @summary Creates an access control list (ACL) in a region.
+        
+        @description    This operation is intended for API providers.
+        An ACL must be bound to an API to take effect. After an ACL is bound to an API, the ACL takes effect on the API immediately.
+        You can add policies to an ACL when you create the ACL.
+        If an ACL does not have any policy, the ACL is ineffective.
         
         @param request: CreateIpControlRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2198,10 +2554,12 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.CreateIpControlRequest,
     ) -> cloud_api20160714_models.CreateIpControlResponse:
         """
-        This operation is intended for API providers.
-        *   An ACL must be bound to an API to take effect. After an ACL is bound to an API, the ACL takes effect on the API immediately.
-        *   You can add policies to an ACL when you create the ACL.
-        *   If an ACL does not have any policy, the ACL is ineffective.
+        @summary Creates an access control list (ACL) in a region.
+        
+        @description    This operation is intended for API providers.
+        An ACL must be bound to an API to take effect. After an ACL is bound to an API, the ACL takes effect on the API immediately.
+        You can add policies to an ACL when you create the ACL.
+        If an ACL does not have any policy, the ACL is ineffective.
         
         @param request: CreateIpControlRequest
         @return: CreateIpControlResponse
@@ -2214,10 +2572,12 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.CreateIpControlRequest,
     ) -> cloud_api20160714_models.CreateIpControlResponse:
         """
-        This operation is intended for API providers.
-        *   An ACL must be bound to an API to take effect. After an ACL is bound to an API, the ACL takes effect on the API immediately.
-        *   You can add policies to an ACL when you create the ACL.
-        *   If an ACL does not have any policy, the ACL is ineffective.
+        @summary Creates an access control list (ACL) in a region.
+        
+        @description    This operation is intended for API providers.
+        An ACL must be bound to an API to take effect. After an ACL is bound to an API, the ACL takes effect on the API immediately.
+        You can add policies to an ACL when you create the ACL.
+        If an ACL does not have any policy, the ACL is ineffective.
         
         @param request: CreateIpControlRequest
         @return: CreateIpControlResponse
@@ -2230,6 +2590,11 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.CreateLogConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.CreateLogConfigResponse:
+        """
+        @param request: CreateLogConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateLogConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.log_type):
@@ -2264,6 +2629,11 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.CreateLogConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.CreateLogConfigResponse:
+        """
+        @param request: CreateLogConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateLogConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.log_type):
@@ -2297,6 +2667,10 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.CreateLogConfigRequest,
     ) -> cloud_api20160714_models.CreateLogConfigResponse:
+        """
+        @param request: CreateLogConfigRequest
+        @return: CreateLogConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_log_config_with_options(request, runtime)
 
@@ -2304,6 +2678,10 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.CreateLogConfigRequest,
     ) -> cloud_api20160714_models.CreateLogConfigResponse:
+        """
+        @param request: CreateLogConfigRequest
+        @return: CreateLogConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_log_config_with_options_async(request, runtime)
 
@@ -2313,8 +2691,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.CreateModelResponse:
         """
-        For more information about the model definition, see [JSON Schema Draft 4](https://tools.ietf.org/html/draft-zyp-json-schema-04?spm=a2c4g.11186623.2.10.2e977ff7p4BpQd).
-        *   JSON Schema supports only element attributes of the Object type.
+        @summary Creates a model for an API group.
+        
+        @description    For more information about the model definition, see [JSON Schema Draft 4](https://tools.ietf.org/html/draft-zyp-json-schema-04?spm=a2c4g.11186623.2.10.2e977ff7p4BpQd).
+        JSON Schema supports only element attributes of the Object type.
         
         @param request: CreateModelRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2357,8 +2737,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.CreateModelResponse:
         """
-        For more information about the model definition, see [JSON Schema Draft 4](https://tools.ietf.org/html/draft-zyp-json-schema-04?spm=a2c4g.11186623.2.10.2e977ff7p4BpQd).
-        *   JSON Schema supports only element attributes of the Object type.
+        @summary Creates a model for an API group.
+        
+        @description    For more information about the model definition, see [JSON Schema Draft 4](https://tools.ietf.org/html/draft-zyp-json-schema-04?spm=a2c4g.11186623.2.10.2e977ff7p4BpQd).
+        JSON Schema supports only element attributes of the Object type.
         
         @param request: CreateModelRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2400,8 +2782,10 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.CreateModelRequest,
     ) -> cloud_api20160714_models.CreateModelResponse:
         """
-        For more information about the model definition, see [JSON Schema Draft 4](https://tools.ietf.org/html/draft-zyp-json-schema-04?spm=a2c4g.11186623.2.10.2e977ff7p4BpQd).
-        *   JSON Schema supports only element attributes of the Object type.
+        @summary Creates a model for an API group.
+        
+        @description    For more information about the model definition, see [JSON Schema Draft 4](https://tools.ietf.org/html/draft-zyp-json-schema-04?spm=a2c4g.11186623.2.10.2e977ff7p4BpQd).
+        JSON Schema supports only element attributes of the Object type.
         
         @param request: CreateModelRequest
         @return: CreateModelResponse
@@ -2414,8 +2798,10 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.CreateModelRequest,
     ) -> cloud_api20160714_models.CreateModelResponse:
         """
-        For more information about the model definition, see [JSON Schema Draft 4](https://tools.ietf.org/html/draft-zyp-json-schema-04?spm=a2c4g.11186623.2.10.2e977ff7p4BpQd).
-        *   JSON Schema supports only element attributes of the Object type.
+        @summary Creates a model for an API group.
+        
+        @description    For more information about the model definition, see [JSON Schema Draft 4](https://tools.ietf.org/html/draft-zyp-json-schema-04?spm=a2c4g.11186623.2.10.2e977ff7p4BpQd).
+        JSON Schema supports only element attributes of the Object type.
         
         @param request: CreateModelRequest
         @return: CreateModelResponse
@@ -2428,6 +2814,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.CreateMonitorGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.CreateMonitorGroupResponse:
+        """
+        @summary Enables CloudMonitor alerting for a specified API group.
+        
+        @param request: CreateMonitorGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMonitorGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auth):
@@ -2462,6 +2855,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.CreateMonitorGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.CreateMonitorGroupResponse:
+        """
+        @summary Enables CloudMonitor alerting for a specified API group.
+        
+        @param request: CreateMonitorGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMonitorGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auth):
@@ -2495,6 +2895,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.CreateMonitorGroupRequest,
     ) -> cloud_api20160714_models.CreateMonitorGroupResponse:
+        """
+        @summary Enables CloudMonitor alerting for a specified API group.
+        
+        @param request: CreateMonitorGroupRequest
+        @return: CreateMonitorGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_monitor_group_with_options(request, runtime)
 
@@ -2502,6 +2908,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.CreateMonitorGroupRequest,
     ) -> cloud_api20160714_models.CreateMonitorGroupResponse:
+        """
+        @summary Enables CloudMonitor alerting for a specified API group.
+        
+        @param request: CreateMonitorGroupRequest
+        @return: CreateMonitorGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_monitor_group_with_options_async(request, runtime)
 
@@ -2511,10 +2923,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.CreatePluginResponse:
         """
-        This operation is intended for API providers.
-        *   The number of plug-ins of the same type that each user can create is limited. Different limits apply to different plug-in types.
-        *   The plug-in definitions for advanced features are restricted.
-        *   Plug-ins must be bound to APIs to take effect. After a plug-in is bound, it takes effect on that API immediately.
+        @summary Creates a plug-in.
+        
+        @description    This operation is intended for API providers.
+        The number of plug-ins of the same type that each user can create is limited. Different limits apply to different plug-in types.
+        The plug-in definitions for advanced features are restricted.
+        Plug-ins must be bound to APIs to take effect. After a plug-in is bound, it takes effect on that API immediately.
         
         @param request: CreatePluginRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2559,10 +2973,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.CreatePluginResponse:
         """
-        This operation is intended for API providers.
-        *   The number of plug-ins of the same type that each user can create is limited. Different limits apply to different plug-in types.
-        *   The plug-in definitions for advanced features are restricted.
-        *   Plug-ins must be bound to APIs to take effect. After a plug-in is bound, it takes effect on that API immediately.
+        @summary Creates a plug-in.
+        
+        @description    This operation is intended for API providers.
+        The number of plug-ins of the same type that each user can create is limited. Different limits apply to different plug-in types.
+        The plug-in definitions for advanced features are restricted.
+        Plug-ins must be bound to APIs to take effect. After a plug-in is bound, it takes effect on that API immediately.
         
         @param request: CreatePluginRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2606,10 +3022,12 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.CreatePluginRequest,
     ) -> cloud_api20160714_models.CreatePluginResponse:
         """
-        This operation is intended for API providers.
-        *   The number of plug-ins of the same type that each user can create is limited. Different limits apply to different plug-in types.
-        *   The plug-in definitions for advanced features are restricted.
-        *   Plug-ins must be bound to APIs to take effect. After a plug-in is bound, it takes effect on that API immediately.
+        @summary Creates a plug-in.
+        
+        @description    This operation is intended for API providers.
+        The number of plug-ins of the same type that each user can create is limited. Different limits apply to different plug-in types.
+        The plug-in definitions for advanced features are restricted.
+        Plug-ins must be bound to APIs to take effect. After a plug-in is bound, it takes effect on that API immediately.
         
         @param request: CreatePluginRequest
         @return: CreatePluginResponse
@@ -2622,10 +3040,12 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.CreatePluginRequest,
     ) -> cloud_api20160714_models.CreatePluginResponse:
         """
-        This operation is intended for API providers.
-        *   The number of plug-ins of the same type that each user can create is limited. Different limits apply to different plug-in types.
-        *   The plug-in definitions for advanced features are restricted.
-        *   Plug-ins must be bound to APIs to take effect. After a plug-in is bound, it takes effect on that API immediately.
+        @summary Creates a plug-in.
+        
+        @description    This operation is intended for API providers.
+        The number of plug-ins of the same type that each user can create is limited. Different limits apply to different plug-in types.
+        The plug-in definitions for advanced features are restricted.
+        Plug-ins must be bound to APIs to take effect. After a plug-in is bound, it takes effect on that API immediately.
         
         @param request: CreatePluginRequest
         @return: CreatePluginResponse
@@ -2639,10 +3059,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.CreateSignatureResponse:
         """
-        This API is intended for API providers.
-        *   The API operation only creates a key policy. You must call the binding operation to bind the key to an API.
-        *   After the key is bound to the API, requests sent from API Gateway to the backend service contain signature strings. You can specify whether your backend service verifies these signature strings.
-        *   The QPS limit on this operation is 50 per user.
+        @summary Creates a backend signature key.
+        
+        @description    This API is intended for API providers.
+        The API operation only creates a key policy. You must call the binding operation to bind the key to an API.
+        After the key is bound to the API, requests sent from API Gateway to the backend service contain signature strings. You can specify whether your backend service verifies these signature strings.
+        The QPS limit on this operation is 50 per user.
         
         @param request: CreateSignatureRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2683,10 +3105,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.CreateSignatureResponse:
         """
-        This API is intended for API providers.
-        *   The API operation only creates a key policy. You must call the binding operation to bind the key to an API.
-        *   After the key is bound to the API, requests sent from API Gateway to the backend service contain signature strings. You can specify whether your backend service verifies these signature strings.
-        *   The QPS limit on this operation is 50 per user.
+        @summary Creates a backend signature key.
+        
+        @description    This API is intended for API providers.
+        The API operation only creates a key policy. You must call the binding operation to bind the key to an API.
+        After the key is bound to the API, requests sent from API Gateway to the backend service contain signature strings. You can specify whether your backend service verifies these signature strings.
+        The QPS limit on this operation is 50 per user.
         
         @param request: CreateSignatureRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2726,10 +3150,12 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.CreateSignatureRequest,
     ) -> cloud_api20160714_models.CreateSignatureResponse:
         """
-        This API is intended for API providers.
-        *   The API operation only creates a key policy. You must call the binding operation to bind the key to an API.
-        *   After the key is bound to the API, requests sent from API Gateway to the backend service contain signature strings. You can specify whether your backend service verifies these signature strings.
-        *   The QPS limit on this operation is 50 per user.
+        @summary Creates a backend signature key.
+        
+        @description    This API is intended for API providers.
+        The API operation only creates a key policy. You must call the binding operation to bind the key to an API.
+        After the key is bound to the API, requests sent from API Gateway to the backend service contain signature strings. You can specify whether your backend service verifies these signature strings.
+        The QPS limit on this operation is 50 per user.
         
         @param request: CreateSignatureRequest
         @return: CreateSignatureResponse
@@ -2742,10 +3168,12 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.CreateSignatureRequest,
     ) -> cloud_api20160714_models.CreateSignatureResponse:
         """
-        This API is intended for API providers.
-        *   The API operation only creates a key policy. You must call the binding operation to bind the key to an API.
-        *   After the key is bound to the API, requests sent from API Gateway to the backend service contain signature strings. You can specify whether your backend service verifies these signature strings.
-        *   The QPS limit on this operation is 50 per user.
+        @summary Creates a backend signature key.
+        
+        @description    This API is intended for API providers.
+        The API operation only creates a key policy. You must call the binding operation to bind the key to an API.
+        After the key is bound to the API, requests sent from API Gateway to the backend service contain signature strings. You can specify whether your backend service verifies these signature strings.
+        The QPS limit on this operation is 50 per user.
         
         @param request: CreateSignatureRequest
         @return: CreateSignatureResponse
@@ -2759,9 +3187,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.CreateTrafficControlResponse:
         """
-        This API is intended for API providers.
-        *   Throttling policies must be bound to APIs to take effect. After a policy is bound to an API, it goes into effect on that API immediately.
-        *   The QPS limit on this operation is 50 per user.
+        @summary Creates a custom throttling policy.
+        
+        @description    This API is intended for API providers.
+        Throttling policies must be bound to APIs to take effect. After a policy is bound to an API, it goes into effect on that API immediately.
+        The QPS limit on this operation is 50 per user.
         
         @param request: CreateTrafficControlRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2808,9 +3238,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.CreateTrafficControlResponse:
         """
-        This API is intended for API providers.
-        *   Throttling policies must be bound to APIs to take effect. After a policy is bound to an API, it goes into effect on that API immediately.
-        *   The QPS limit on this operation is 50 per user.
+        @summary Creates a custom throttling policy.
+        
+        @description    This API is intended for API providers.
+        Throttling policies must be bound to APIs to take effect. After a policy is bound to an API, it goes into effect on that API immediately.
+        The QPS limit on this operation is 50 per user.
         
         @param request: CreateTrafficControlRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2856,9 +3288,11 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.CreateTrafficControlRequest,
     ) -> cloud_api20160714_models.CreateTrafficControlResponse:
         """
-        This API is intended for API providers.
-        *   Throttling policies must be bound to APIs to take effect. After a policy is bound to an API, it goes into effect on that API immediately.
-        *   The QPS limit on this operation is 50 per user.
+        @summary Creates a custom throttling policy.
+        
+        @description    This API is intended for API providers.
+        Throttling policies must be bound to APIs to take effect. After a policy is bound to an API, it goes into effect on that API immediately.
+        The QPS limit on this operation is 50 per user.
         
         @param request: CreateTrafficControlRequest
         @return: CreateTrafficControlResponse
@@ -2871,9 +3305,11 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.CreateTrafficControlRequest,
     ) -> cloud_api20160714_models.CreateTrafficControlResponse:
         """
-        This API is intended for API providers.
-        *   Throttling policies must be bound to APIs to take effect. After a policy is bound to an API, it goes into effect on that API immediately.
-        *   The QPS limit on this operation is 50 per user.
+        @summary Creates a custom throttling policy.
+        
+        @description    This API is intended for API providers.
+        Throttling policies must be bound to APIs to take effect. After a policy is bound to an API, it goes into effect on that API immediately.
+        The QPS limit on this operation is 50 per user.
         
         @param request: CreateTrafficControlRequest
         @return: CreateTrafficControlResponse
@@ -2886,6 +3322,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DeleteAccessControlListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DeleteAccessControlListResponse:
+        """
+        @summary This feature provides instance-level access control capabilities for dedicated instances. Deletes an access control policy.
+        
+        @param request: DeleteAccessControlListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAccessControlListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.acl_id):
@@ -2916,6 +3359,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DeleteAccessControlListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DeleteAccessControlListResponse:
+        """
+        @summary This feature provides instance-level access control capabilities for dedicated instances. Deletes an access control policy.
+        
+        @param request: DeleteAccessControlListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAccessControlListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.acl_id):
@@ -2945,6 +3395,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DeleteAccessControlListRequest,
     ) -> cloud_api20160714_models.DeleteAccessControlListResponse:
+        """
+        @summary This feature provides instance-level access control capabilities for dedicated instances. Deletes an access control policy.
+        
+        @param request: DeleteAccessControlListRequest
+        @return: DeleteAccessControlListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_access_control_list_with_options(request, runtime)
 
@@ -2952,6 +3408,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DeleteAccessControlListRequest,
     ) -> cloud_api20160714_models.DeleteAccessControlListResponse:
+        """
+        @summary This feature provides instance-level access control capabilities for dedicated instances. Deletes an access control policy.
+        
+        @param request: DeleteAccessControlListRequest
+        @return: DeleteAccessControlListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_access_control_list_with_options_async(request, runtime)
 
@@ -2961,7 +3423,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DeleteAllTrafficSpecialControlResponse:
         """
-        This API is intended for API providers.
+        @summary Deletes all custom special policies of a specified throttling policy.
+        
+        @description    This API is intended for API providers.
         
         @param request: DeleteAllTrafficSpecialControlRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2998,7 +3462,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DeleteAllTrafficSpecialControlResponse:
         """
-        This API is intended for API providers.
+        @summary Deletes all custom special policies of a specified throttling policy.
+        
+        @description    This API is intended for API providers.
         
         @param request: DeleteAllTrafficSpecialControlRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3034,7 +3500,9 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DeleteAllTrafficSpecialControlRequest,
     ) -> cloud_api20160714_models.DeleteAllTrafficSpecialControlResponse:
         """
-        This API is intended for API providers.
+        @summary Deletes all custom special policies of a specified throttling policy.
+        
+        @description    This API is intended for API providers.
         
         @param request: DeleteAllTrafficSpecialControlRequest
         @return: DeleteAllTrafficSpecialControlResponse
@@ -3047,7 +3515,9 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DeleteAllTrafficSpecialControlRequest,
     ) -> cloud_api20160714_models.DeleteAllTrafficSpecialControlResponse:
         """
-        This API is intended for API providers.
+        @summary Deletes all custom special policies of a specified throttling policy.
+        
+        @description    This API is intended for API providers.
         
         @param request: DeleteAllTrafficSpecialControlRequest
         @return: DeleteAllTrafficSpecialControlResponse
@@ -3061,9 +3531,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DeleteApiResponse:
         """
-        This operation is intended for API providers and cannot be undone after it is complete.
-        *   An API that is running in the runtime environment must be unpublished before you can delete the API.****\
-        *   The QPS limit on this operation is 50 per user.
+        @summary Deletes an API.
+        
+        @description    This operation is intended for API providers and cannot be undone after it is complete.
+        An API that is running in the runtime environment must be unpublished before you can delete the API.****\
+        The QPS limit on this operation is 50 per user.
         
         @param request: DeleteApiRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3102,9 +3574,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DeleteApiResponse:
         """
-        This operation is intended for API providers and cannot be undone after it is complete.
-        *   An API that is running in the runtime environment must be unpublished before you can delete the API.****\
-        *   The QPS limit on this operation is 50 per user.
+        @summary Deletes an API.
+        
+        @description    This operation is intended for API providers and cannot be undone after it is complete.
+        An API that is running in the runtime environment must be unpublished before you can delete the API.****\
+        The QPS limit on this operation is 50 per user.
         
         @param request: DeleteApiRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3142,9 +3616,11 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DeleteApiRequest,
     ) -> cloud_api20160714_models.DeleteApiResponse:
         """
-        This operation is intended for API providers and cannot be undone after it is complete.
-        *   An API that is running in the runtime environment must be unpublished before you can delete the API.****\
-        *   The QPS limit on this operation is 50 per user.
+        @summary Deletes an API.
+        
+        @description    This operation is intended for API providers and cannot be undone after it is complete.
+        An API that is running in the runtime environment must be unpublished before you can delete the API.****\
+        The QPS limit on this operation is 50 per user.
         
         @param request: DeleteApiRequest
         @return: DeleteApiResponse
@@ -3157,9 +3633,11 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DeleteApiRequest,
     ) -> cloud_api20160714_models.DeleteApiResponse:
         """
-        This operation is intended for API providers and cannot be undone after it is complete.
-        *   An API that is running in the runtime environment must be unpublished before you can delete the API.****\
-        *   The QPS limit on this operation is 50 per user.
+        @summary Deletes an API.
+        
+        @description    This operation is intended for API providers and cannot be undone after it is complete.
+        An API that is running in the runtime environment must be unpublished before you can delete the API.****\
+        The QPS limit on this operation is 50 per user.
         
         @param request: DeleteApiRequest
         @return: DeleteApiResponse
@@ -3173,11 +3651,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DeleteApiGroupResponse:
         """
-        This operation is intended for API providers.
-        *   An API group that contains APIs cannot be deleted. To delete the API group, you must first delete its APIs.
-        *   After an API group is deleted, the second-level domain name bound to the API group is automatically invalidated.
-        *   If the specified API group does not exist, a success response is returned.
-        *   The QPS limit on this operation is 50 per user.
+        @summary Deletes an API group.
+        
+        @description    This operation is intended for API providers.
+        An API group that contains APIs cannot be deleted. To delete the API group, you must first delete its APIs.
+        After an API group is deleted, the second-level domain name bound to the API group is automatically invalidated.
+        If the specified API group does not exist, a success response is returned.
+        The QPS limit on this operation is 50 per user.
         
         @param request: DeleteApiGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3216,11 +3696,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DeleteApiGroupResponse:
         """
-        This operation is intended for API providers.
-        *   An API group that contains APIs cannot be deleted. To delete the API group, you must first delete its APIs.
-        *   After an API group is deleted, the second-level domain name bound to the API group is automatically invalidated.
-        *   If the specified API group does not exist, a success response is returned.
-        *   The QPS limit on this operation is 50 per user.
+        @summary Deletes an API group.
+        
+        @description    This operation is intended for API providers.
+        An API group that contains APIs cannot be deleted. To delete the API group, you must first delete its APIs.
+        After an API group is deleted, the second-level domain name bound to the API group is automatically invalidated.
+        If the specified API group does not exist, a success response is returned.
+        The QPS limit on this operation is 50 per user.
         
         @param request: DeleteApiGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3258,11 +3740,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DeleteApiGroupRequest,
     ) -> cloud_api20160714_models.DeleteApiGroupResponse:
         """
-        This operation is intended for API providers.
-        *   An API group that contains APIs cannot be deleted. To delete the API group, you must first delete its APIs.
-        *   After an API group is deleted, the second-level domain name bound to the API group is automatically invalidated.
-        *   If the specified API group does not exist, a success response is returned.
-        *   The QPS limit on this operation is 50 per user.
+        @summary Deletes an API group.
+        
+        @description    This operation is intended for API providers.
+        An API group that contains APIs cannot be deleted. To delete the API group, you must first delete its APIs.
+        After an API group is deleted, the second-level domain name bound to the API group is automatically invalidated.
+        If the specified API group does not exist, a success response is returned.
+        The QPS limit on this operation is 50 per user.
         
         @param request: DeleteApiGroupRequest
         @return: DeleteApiGroupResponse
@@ -3275,11 +3759,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DeleteApiGroupRequest,
     ) -> cloud_api20160714_models.DeleteApiGroupResponse:
         """
-        This operation is intended for API providers.
-        *   An API group that contains APIs cannot be deleted. To delete the API group, you must first delete its APIs.
-        *   After an API group is deleted, the second-level domain name bound to the API group is automatically invalidated.
-        *   If the specified API group does not exist, a success response is returned.
-        *   The QPS limit on this operation is 50 per user.
+        @summary Deletes an API group.
+        
+        @description    This operation is intended for API providers.
+        An API group that contains APIs cannot be deleted. To delete the API group, you must first delete its APIs.
+        After an API group is deleted, the second-level domain name bound to the API group is automatically invalidated.
+        If the specified API group does not exist, a success response is returned.
+        The QPS limit on this operation is 50 per user.
         
         @param request: DeleteApiGroupRequest
         @return: DeleteApiGroupResponse
@@ -3292,6 +3778,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DeleteApiProductRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DeleteApiProductResponse:
+        """
+        @summary Deletes an API product. Deleting an API product causes the association between APIs and the deleted API product to be deleted as well. Exercise caution when you delete an API product. If any API in the API product is associated with an application, the API product fails to be deleted.
+        
+        @param request: DeleteApiProductRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteApiProductResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.api_product_id):
@@ -3322,6 +3815,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DeleteApiProductRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DeleteApiProductResponse:
+        """
+        @summary Deletes an API product. Deleting an API product causes the association between APIs and the deleted API product to be deleted as well. Exercise caution when you delete an API product. If any API in the API product is associated with an application, the API product fails to be deleted.
+        
+        @param request: DeleteApiProductRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteApiProductResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.api_product_id):
@@ -3351,6 +3851,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DeleteApiProductRequest,
     ) -> cloud_api20160714_models.DeleteApiProductResponse:
+        """
+        @summary Deletes an API product. Deleting an API product causes the association between APIs and the deleted API product to be deleted as well. Exercise caution when you delete an API product. If any API in the API product is associated with an application, the API product fails to be deleted.
+        
+        @param request: DeleteApiProductRequest
+        @return: DeleteApiProductResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_api_product_with_options(request, runtime)
 
@@ -3358,6 +3864,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DeleteApiProductRequest,
     ) -> cloud_api20160714_models.DeleteApiProductResponse:
+        """
+        @summary Deletes an API product. Deleting an API product causes the association between APIs and the deleted API product to be deleted as well. Exercise caution when you delete an API product. If any API in the API product is associated with an application, the API product fails to be deleted.
+        
+        @param request: DeleteApiProductRequest
+        @return: DeleteApiProductResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_api_product_with_options_async(request, runtime)
 
@@ -3367,7 +3879,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DeleteApiStageVariableResponse:
         """
-        This operation is intended for API providers.
+        @summary Deletes a specified variable in a specified environment.
+        
+        @description    This operation is intended for API providers.
         
         @param request: DeleteApiStageVariableRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3408,7 +3922,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DeleteApiStageVariableResponse:
         """
-        This operation is intended for API providers.
+        @summary Deletes a specified variable in a specified environment.
+        
+        @description    This operation is intended for API providers.
         
         @param request: DeleteApiStageVariableRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3448,7 +3964,9 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DeleteApiStageVariableRequest,
     ) -> cloud_api20160714_models.DeleteApiStageVariableResponse:
         """
-        This operation is intended for API providers.
+        @summary Deletes a specified variable in a specified environment.
+        
+        @description    This operation is intended for API providers.
         
         @param request: DeleteApiStageVariableRequest
         @return: DeleteApiStageVariableResponse
@@ -3461,7 +3979,9 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DeleteApiStageVariableRequest,
     ) -> cloud_api20160714_models.DeleteApiStageVariableResponse:
         """
-        This operation is intended for API providers.
+        @summary Deletes a specified variable in a specified environment.
+        
+        @description    This operation is intended for API providers.
         
         @param request: DeleteApiStageVariableRequest
         @return: DeleteApiStageVariableResponse
@@ -3475,9 +3995,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DeleteAppResponse:
         """
-        This operation is intended for API callers.
-        *   After an application is deleted, the application and its API authorization cannot be restored.
-        *   You can call this operation up to 50 times per second per account.
+        @summary Deletes an application.
+        
+        @description    This operation is intended for API callers.
+        After an application is deleted, the application and its API authorization cannot be restored.
+        You can call this operation up to 50 times per second per account.
         
         @param request: DeleteAppRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3516,9 +4038,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DeleteAppResponse:
         """
-        This operation is intended for API callers.
-        *   After an application is deleted, the application and its API authorization cannot be restored.
-        *   You can call this operation up to 50 times per second per account.
+        @summary Deletes an application.
+        
+        @description    This operation is intended for API callers.
+        After an application is deleted, the application and its API authorization cannot be restored.
+        You can call this operation up to 50 times per second per account.
         
         @param request: DeleteAppRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3556,9 +4080,11 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DeleteAppRequest,
     ) -> cloud_api20160714_models.DeleteAppResponse:
         """
-        This operation is intended for API callers.
-        *   After an application is deleted, the application and its API authorization cannot be restored.
-        *   You can call this operation up to 50 times per second per account.
+        @summary Deletes an application.
+        
+        @description    This operation is intended for API callers.
+        After an application is deleted, the application and its API authorization cannot be restored.
+        You can call this operation up to 50 times per second per account.
         
         @param request: DeleteAppRequest
         @return: DeleteAppResponse
@@ -3571,9 +4097,11 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DeleteAppRequest,
     ) -> cloud_api20160714_models.DeleteAppResponse:
         """
-        This operation is intended for API callers.
-        *   After an application is deleted, the application and its API authorization cannot be restored.
-        *   You can call this operation up to 50 times per second per account.
+        @summary Deletes an application.
+        
+        @description    This operation is intended for API callers.
+        After an application is deleted, the application and its API authorization cannot be restored.
+        You can call this operation up to 50 times per second per account.
         
         @param request: DeleteAppRequest
         @return: DeleteAppResponse
@@ -3586,6 +4114,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DeleteBackendRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DeleteBackendResponse:
+        """
+        @summary Deletes a backend service.
+        
+        @param request: DeleteBackendRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteBackendResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backend_id):
@@ -3616,6 +4151,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DeleteBackendRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DeleteBackendResponse:
+        """
+        @summary Deletes a backend service.
+        
+        @param request: DeleteBackendRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteBackendResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backend_id):
@@ -3645,6 +4187,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DeleteBackendRequest,
     ) -> cloud_api20160714_models.DeleteBackendResponse:
+        """
+        @summary Deletes a backend service.
+        
+        @param request: DeleteBackendRequest
+        @return: DeleteBackendResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_backend_with_options(request, runtime)
 
@@ -3652,6 +4200,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DeleteBackendRequest,
     ) -> cloud_api20160714_models.DeleteBackendResponse:
+        """
+        @summary Deletes a backend service.
+        
+        @param request: DeleteBackendRequest
+        @return: DeleteBackendResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_backend_with_options_async(request, runtime)
 
@@ -3660,6 +4214,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DeleteBackendModelRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DeleteBackendModelResponse:
+        """
+        @summary Deletes the definition of a backend service in an environment. After the definition is deleted, the API that uses the backend service and is published to this environment will be unpublished.
+        
+        @param request: DeleteBackendModelRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteBackendModelResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backend_id):
@@ -3694,6 +4255,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DeleteBackendModelRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DeleteBackendModelResponse:
+        """
+        @summary Deletes the definition of a backend service in an environment. After the definition is deleted, the API that uses the backend service and is published to this environment will be unpublished.
+        
+        @param request: DeleteBackendModelRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteBackendModelResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backend_id):
@@ -3727,6 +4295,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DeleteBackendModelRequest,
     ) -> cloud_api20160714_models.DeleteBackendModelResponse:
+        """
+        @summary Deletes the definition of a backend service in an environment. After the definition is deleted, the API that uses the backend service and is published to this environment will be unpublished.
+        
+        @param request: DeleteBackendModelRequest
+        @return: DeleteBackendModelResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_backend_model_with_options(request, runtime)
 
@@ -3734,6 +4308,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DeleteBackendModelRequest,
     ) -> cloud_api20160714_models.DeleteBackendModelResponse:
+        """
+        @summary Deletes the definition of a backend service in an environment. After the definition is deleted, the API that uses the backend service and is published to this environment will be unpublished.
+        
+        @param request: DeleteBackendModelRequest
+        @return: DeleteBackendModelResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_backend_model_with_options_async(request, runtime)
 
@@ -3742,6 +4322,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DeleteDatasetRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DeleteDatasetResponse:
+        """
+        @summary 删除自定义数据集
+        
+        @param request: DeleteDatasetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDatasetResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dataset_id):
@@ -3772,6 +4359,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DeleteDatasetRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DeleteDatasetResponse:
+        """
+        @summary 删除自定义数据集
+        
+        @param request: DeleteDatasetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDatasetResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dataset_id):
@@ -3801,6 +4395,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DeleteDatasetRequest,
     ) -> cloud_api20160714_models.DeleteDatasetResponse:
+        """
+        @summary 删除自定义数据集
+        
+        @param request: DeleteDatasetRequest
+        @return: DeleteDatasetResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_dataset_with_options(request, runtime)
 
@@ -3808,6 +4408,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DeleteDatasetRequest,
     ) -> cloud_api20160714_models.DeleteDatasetResponse:
+        """
+        @summary 删除自定义数据集
+        
+        @param request: DeleteDatasetRequest
+        @return: DeleteDatasetResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_dataset_with_options_async(request, runtime)
 
@@ -3816,6 +4422,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DeleteDatasetItemRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DeleteDatasetItemResponse:
+        """
+        @summary Deletes a data entry from a custom dataset.
+        
+        @param request: DeleteDatasetItemRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDatasetItemResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dataset_id):
@@ -3848,6 +4461,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DeleteDatasetItemRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DeleteDatasetItemResponse:
+        """
+        @summary Deletes a data entry from a custom dataset.
+        
+        @param request: DeleteDatasetItemRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDatasetItemResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dataset_id):
@@ -3879,6 +4499,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DeleteDatasetItemRequest,
     ) -> cloud_api20160714_models.DeleteDatasetItemResponse:
+        """
+        @summary Deletes a data entry from a custom dataset.
+        
+        @param request: DeleteDatasetItemRequest
+        @return: DeleteDatasetItemResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_dataset_item_with_options(request, runtime)
 
@@ -3886,6 +4512,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DeleteDatasetItemRequest,
     ) -> cloud_api20160714_models.DeleteDatasetItemResponse:
+        """
+        @summary Deletes a data entry from a custom dataset.
+        
+        @param request: DeleteDatasetItemRequest
+        @return: DeleteDatasetItemResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_dataset_item_with_options_async(request, runtime)
 
@@ -3895,9 +4527,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DeleteDomainResponse:
         """
-        This operation is intended for API providers.
-        *   If the specified domain name does not exist, a successful response will still appear.
-        *   Unbinding a domain name from an API group will affect access to the APIs in the group. Exercise caution when using this operation.
+        @summary Unbinds a custom domain name from a specified API group.
+        
+        @description    This operation is intended for API providers.
+        If the specified domain name does not exist, a successful response will still appear.
+        Unbinding a domain name from an API group will affect access to the APIs in the group. Exercise caution when using this operation.
         
         @param request: DeleteDomainRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3936,9 +4570,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DeleteDomainResponse:
         """
-        This operation is intended for API providers.
-        *   If the specified domain name does not exist, a successful response will still appear.
-        *   Unbinding a domain name from an API group will affect access to the APIs in the group. Exercise caution when using this operation.
+        @summary Unbinds a custom domain name from a specified API group.
+        
+        @description    This operation is intended for API providers.
+        If the specified domain name does not exist, a successful response will still appear.
+        Unbinding a domain name from an API group will affect access to the APIs in the group. Exercise caution when using this operation.
         
         @param request: DeleteDomainRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3976,9 +4612,11 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DeleteDomainRequest,
     ) -> cloud_api20160714_models.DeleteDomainResponse:
         """
-        This operation is intended for API providers.
-        *   If the specified domain name does not exist, a successful response will still appear.
-        *   Unbinding a domain name from an API group will affect access to the APIs in the group. Exercise caution when using this operation.
+        @summary Unbinds a custom domain name from a specified API group.
+        
+        @description    This operation is intended for API providers.
+        If the specified domain name does not exist, a successful response will still appear.
+        Unbinding a domain name from an API group will affect access to the APIs in the group. Exercise caution when using this operation.
         
         @param request: DeleteDomainRequest
         @return: DeleteDomainResponse
@@ -3991,9 +4629,11 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DeleteDomainRequest,
     ) -> cloud_api20160714_models.DeleteDomainResponse:
         """
-        This operation is intended for API providers.
-        *   If the specified domain name does not exist, a successful response will still appear.
-        *   Unbinding a domain name from an API group will affect access to the APIs in the group. Exercise caution when using this operation.
+        @summary Unbinds a custom domain name from a specified API group.
+        
+        @description    This operation is intended for API providers.
+        If the specified domain name does not exist, a successful response will still appear.
+        Unbinding a domain name from an API group will affect access to the APIs in the group. Exercise caution when using this operation.
         
         @param request: DeleteDomainRequest
         @return: DeleteDomainResponse
@@ -4006,6 +4646,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DeleteDomainCertificateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DeleteDomainCertificateResponse:
+        """
+        @summary Deletes the SSL certificate of a specified domain name. This operation is intended for API providers. If the SSL certificate does not exist, a success response is still returned. If the specified API group does not exist, the InvalidGroupId.NotFound error is returned. Access over HTTPS is not supported after the SSL certificate is deleted. Exercise caution when using this API operation.
+        
+        @param request: DeleteDomainCertificateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDomainCertificateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.certificate_id):
@@ -4040,6 +4687,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DeleteDomainCertificateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DeleteDomainCertificateResponse:
+        """
+        @summary Deletes the SSL certificate of a specified domain name. This operation is intended for API providers. If the SSL certificate does not exist, a success response is still returned. If the specified API group does not exist, the InvalidGroupId.NotFound error is returned. Access over HTTPS is not supported after the SSL certificate is deleted. Exercise caution when using this API operation.
+        
+        @param request: DeleteDomainCertificateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDomainCertificateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.certificate_id):
@@ -4073,6 +4727,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DeleteDomainCertificateRequest,
     ) -> cloud_api20160714_models.DeleteDomainCertificateResponse:
+        """
+        @summary Deletes the SSL certificate of a specified domain name. This operation is intended for API providers. If the SSL certificate does not exist, a success response is still returned. If the specified API group does not exist, the InvalidGroupId.NotFound error is returned. Access over HTTPS is not supported after the SSL certificate is deleted. Exercise caution when using this API operation.
+        
+        @param request: DeleteDomainCertificateRequest
+        @return: DeleteDomainCertificateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_domain_certificate_with_options(request, runtime)
 
@@ -4080,6 +4740,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DeleteDomainCertificateRequest,
     ) -> cloud_api20160714_models.DeleteDomainCertificateResponse:
+        """
+        @summary Deletes the SSL certificate of a specified domain name. This operation is intended for API providers. If the SSL certificate does not exist, a success response is still returned. If the specified API group does not exist, the InvalidGroupId.NotFound error is returned. Access over HTTPS is not supported after the SSL certificate is deleted. Exercise caution when using this API operation.
+        
+        @param request: DeleteDomainCertificateRequest
+        @return: DeleteDomainCertificateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_domain_certificate_with_options_async(request, runtime)
 
@@ -4088,6 +4754,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DeleteInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DeleteInstanceResponse:
+        """
+        @summary Deletes an API Gateway instance.
+        
+        @param request: DeleteInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -4118,6 +4791,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DeleteInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DeleteInstanceResponse:
+        """
+        @summary Deletes an API Gateway instance.
+        
+        @param request: DeleteInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -4147,6 +4827,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DeleteInstanceRequest,
     ) -> cloud_api20160714_models.DeleteInstanceResponse:
+        """
+        @summary Deletes an API Gateway instance.
+        
+        @param request: DeleteInstanceRequest
+        @return: DeleteInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_instance_with_options(request, runtime)
 
@@ -4154,6 +4840,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DeleteInstanceRequest,
     ) -> cloud_api20160714_models.DeleteInstanceResponse:
+        """
+        @summary Deletes an API Gateway instance.
+        
+        @param request: DeleteInstanceRequest
+        @return: DeleteInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_instance_with_options_async(request, runtime)
 
@@ -4163,9 +4855,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DeleteIpControlResponse:
         """
-        This operation is intended for API providers.
-        *   If the ACL is bound to an API, you must unbind the ACL from the API before you can delete the ACL. Otherwise, an error is returned.
-        *   If you call this operation on an ACL that does not exist, a success message is returned.
+        @summary Deletes an access control list (ACL).
+        
+        @description    This operation is intended for API providers.
+        If the ACL is bound to an API, you must unbind the ACL from the API before you can delete the ACL. Otherwise, an error is returned.
+        If you call this operation on an ACL that does not exist, a success message is returned.
         
         @param request: DeleteIpControlRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4202,9 +4896,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DeleteIpControlResponse:
         """
-        This operation is intended for API providers.
-        *   If the ACL is bound to an API, you must unbind the ACL from the API before you can delete the ACL. Otherwise, an error is returned.
-        *   If you call this operation on an ACL that does not exist, a success message is returned.
+        @summary Deletes an access control list (ACL).
+        
+        @description    This operation is intended for API providers.
+        If the ACL is bound to an API, you must unbind the ACL from the API before you can delete the ACL. Otherwise, an error is returned.
+        If you call this operation on an ACL that does not exist, a success message is returned.
         
         @param request: DeleteIpControlRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4240,9 +4936,11 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DeleteIpControlRequest,
     ) -> cloud_api20160714_models.DeleteIpControlResponse:
         """
-        This operation is intended for API providers.
-        *   If the ACL is bound to an API, you must unbind the ACL from the API before you can delete the ACL. Otherwise, an error is returned.
-        *   If you call this operation on an ACL that does not exist, a success message is returned.
+        @summary Deletes an access control list (ACL).
+        
+        @description    This operation is intended for API providers.
+        If the ACL is bound to an API, you must unbind the ACL from the API before you can delete the ACL. Otherwise, an error is returned.
+        If you call this operation on an ACL that does not exist, a success message is returned.
         
         @param request: DeleteIpControlRequest
         @return: DeleteIpControlResponse
@@ -4255,9 +4953,11 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DeleteIpControlRequest,
     ) -> cloud_api20160714_models.DeleteIpControlResponse:
         """
-        This operation is intended for API providers.
-        *   If the ACL is bound to an API, you must unbind the ACL from the API before you can delete the ACL. Otherwise, an error is returned.
-        *   If you call this operation on an ACL that does not exist, a success message is returned.
+        @summary Deletes an access control list (ACL).
+        
+        @description    This operation is intended for API providers.
+        If the ACL is bound to an API, you must unbind the ACL from the API before you can delete the ACL. Otherwise, an error is returned.
+        If you call this operation on an ACL that does not exist, a success message is returned.
         
         @param request: DeleteIpControlRequest
         @return: DeleteIpControlResponse
@@ -4270,6 +4970,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DeleteLogConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DeleteLogConfigResponse:
+        """
+        @summary Delete the specified log configuration.
+        
+        @param request: DeleteLogConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteLogConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.log_type):
@@ -4300,6 +5007,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DeleteLogConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DeleteLogConfigResponse:
+        """
+        @summary Delete the specified log configuration.
+        
+        @param request: DeleteLogConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteLogConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.log_type):
@@ -4329,6 +5043,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DeleteLogConfigRequest,
     ) -> cloud_api20160714_models.DeleteLogConfigResponse:
+        """
+        @summary Delete the specified log configuration.
+        
+        @param request: DeleteLogConfigRequest
+        @return: DeleteLogConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_log_config_with_options(request, runtime)
 
@@ -4336,6 +5056,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DeleteLogConfigRequest,
     ) -> cloud_api20160714_models.DeleteLogConfigResponse:
+        """
+        @summary Delete the specified log configuration.
+        
+        @param request: DeleteLogConfigRequest
+        @return: DeleteLogConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_log_config_with_options_async(request, runtime)
 
@@ -4344,6 +5070,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DeleteModelRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DeleteModelResponse:
+        """
+        @summary Deletes a model from Model Management for an API group.
+        
+        @param request: DeleteModelRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteModelResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_id):
@@ -4374,6 +5107,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DeleteModelRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DeleteModelResponse:
+        """
+        @summary Deletes a model from Model Management for an API group.
+        
+        @param request: DeleteModelRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteModelResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_id):
@@ -4403,6 +5143,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DeleteModelRequest,
     ) -> cloud_api20160714_models.DeleteModelResponse:
+        """
+        @summary Deletes a model from Model Management for an API group.
+        
+        @param request: DeleteModelRequest
+        @return: DeleteModelResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_model_with_options(request, runtime)
 
@@ -4410,6 +5156,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DeleteModelRequest,
     ) -> cloud_api20160714_models.DeleteModelResponse:
+        """
+        @summary Deletes a model from Model Management for an API group.
+        
+        @param request: DeleteModelRequest
+        @return: DeleteModelResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_model_with_options_async(request, runtime)
 
@@ -4418,6 +5170,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DeleteMonitorGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DeleteMonitorGroupResponse:
+        """
+        @summary Deletes a CloudMonitor application group corresponding to an API group.
+        
+        @param request: DeleteMonitorGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMonitorGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_id):
@@ -4450,6 +5209,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DeleteMonitorGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DeleteMonitorGroupResponse:
+        """
+        @summary Deletes a CloudMonitor application group corresponding to an API group.
+        
+        @param request: DeleteMonitorGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMonitorGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_id):
@@ -4481,6 +5247,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DeleteMonitorGroupRequest,
     ) -> cloud_api20160714_models.DeleteMonitorGroupResponse:
+        """
+        @summary Deletes a CloudMonitor application group corresponding to an API group.
+        
+        @param request: DeleteMonitorGroupRequest
+        @return: DeleteMonitorGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_monitor_group_with_options(request, runtime)
 
@@ -4488,6 +5260,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DeleteMonitorGroupRequest,
     ) -> cloud_api20160714_models.DeleteMonitorGroupResponse:
+        """
+        @summary Deletes a CloudMonitor application group corresponding to an API group.
+        
+        @param request: DeleteMonitorGroupRequest
+        @return: DeleteMonitorGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_monitor_group_with_options_async(request, runtime)
 
@@ -4497,8 +5275,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DeletePluginResponse:
         """
-        This operation is intended for API providers.
-        *   You must first unbind the plug-in from the API. Otherwise, an error is reported when you delete the plug-in.
+        @summary Deletes a plug-in.
+        
+        @description    This operation is intended for API providers.
+        You must first unbind the plug-in from the API. Otherwise, an error is reported when you delete the plug-in.
         
         @param request: DeletePluginRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4537,8 +5317,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DeletePluginResponse:
         """
-        This operation is intended for API providers.
-        *   You must first unbind the plug-in from the API. Otherwise, an error is reported when you delete the plug-in.
+        @summary Deletes a plug-in.
+        
+        @description    This operation is intended for API providers.
+        You must first unbind the plug-in from the API. Otherwise, an error is reported when you delete the plug-in.
         
         @param request: DeletePluginRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4576,8 +5358,10 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DeletePluginRequest,
     ) -> cloud_api20160714_models.DeletePluginResponse:
         """
-        This operation is intended for API providers.
-        *   You must first unbind the plug-in from the API. Otherwise, an error is reported when you delete the plug-in.
+        @summary Deletes a plug-in.
+        
+        @description    This operation is intended for API providers.
+        You must first unbind the plug-in from the API. Otherwise, an error is reported when you delete the plug-in.
         
         @param request: DeletePluginRequest
         @return: DeletePluginResponse
@@ -4590,8 +5374,10 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DeletePluginRequest,
     ) -> cloud_api20160714_models.DeletePluginResponse:
         """
-        This operation is intended for API providers.
-        *   You must first unbind the plug-in from the API. Otherwise, an error is reported when you delete the plug-in.
+        @summary Deletes a plug-in.
+        
+        @description    This operation is intended for API providers.
+        You must first unbind the plug-in from the API. Otherwise, an error is reported when you delete the plug-in.
         
         @param request: DeletePluginRequest
         @return: DeletePluginResponse
@@ -4605,10 +5391,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DeleteSignatureResponse:
         """
-        This API is intended for API providers.
-        *   This API operation deletes an existing backend signature key.
-        *   You cannot delete a key that is bound to an API. To delete the key, you must unbind it first.
-        *   The QPS limit on this operation is 50 per user.
+        @summary Deletes a backend signature key.
+        
+        @description    This API is intended for API providers.
+        This API operation deletes an existing backend signature key.
+        You cannot delete a key that is bound to an API. To delete the key, you must unbind it first.
+        The QPS limit on this operation is 50 per user.
         
         @param request: DeleteSignatureRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4645,10 +5433,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DeleteSignatureResponse:
         """
-        This API is intended for API providers.
-        *   This API operation deletes an existing backend signature key.
-        *   You cannot delete a key that is bound to an API. To delete the key, you must unbind it first.
-        *   The QPS limit on this operation is 50 per user.
+        @summary Deletes a backend signature key.
+        
+        @description    This API is intended for API providers.
+        This API operation deletes an existing backend signature key.
+        You cannot delete a key that is bound to an API. To delete the key, you must unbind it first.
+        The QPS limit on this operation is 50 per user.
         
         @param request: DeleteSignatureRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4684,10 +5474,12 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DeleteSignatureRequest,
     ) -> cloud_api20160714_models.DeleteSignatureResponse:
         """
-        This API is intended for API providers.
-        *   This API operation deletes an existing backend signature key.
-        *   You cannot delete a key that is bound to an API. To delete the key, you must unbind it first.
-        *   The QPS limit on this operation is 50 per user.
+        @summary Deletes a backend signature key.
+        
+        @description    This API is intended for API providers.
+        This API operation deletes an existing backend signature key.
+        You cannot delete a key that is bound to an API. To delete the key, you must unbind it first.
+        The QPS limit on this operation is 50 per user.
         
         @param request: DeleteSignatureRequest
         @return: DeleteSignatureResponse
@@ -4700,10 +5492,12 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DeleteSignatureRequest,
     ) -> cloud_api20160714_models.DeleteSignatureResponse:
         """
-        This API is intended for API providers.
-        *   This API operation deletes an existing backend signature key.
-        *   You cannot delete a key that is bound to an API. To delete the key, you must unbind it first.
-        *   The QPS limit on this operation is 50 per user.
+        @summary Deletes a backend signature key.
+        
+        @description    This API is intended for API providers.
+        This API operation deletes an existing backend signature key.
+        You cannot delete a key that is bound to an API. To delete the key, you must unbind it first.
+        The QPS limit on this operation is 50 per user.
         
         @param request: DeleteSignatureRequest
         @return: DeleteSignatureResponse
@@ -4717,9 +5511,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DeleteTrafficControlResponse:
         """
-        This API is intended for API providers.
-        *   If the throttling policy you want to delete is bound to APIs, you need to unbind the policy first. Otherwise, an error is reported when you delete the policy.
-        *   The QPS limit on this operation is 50 per user.
+        @summary Deletes a custom throttling policy and the special throttling rules in the policy.
+        
+        @description    This API is intended for API providers.
+        If the throttling policy you want to delete is bound to APIs, you need to unbind the policy first. Otherwise, an error is reported when you delete the policy.
+        The QPS limit on this operation is 50 per user.
         
         @param request: DeleteTrafficControlRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4756,9 +5552,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DeleteTrafficControlResponse:
         """
-        This API is intended for API providers.
-        *   If the throttling policy you want to delete is bound to APIs, you need to unbind the policy first. Otherwise, an error is reported when you delete the policy.
-        *   The QPS limit on this operation is 50 per user.
+        @summary Deletes a custom throttling policy and the special throttling rules in the policy.
+        
+        @description    This API is intended for API providers.
+        If the throttling policy you want to delete is bound to APIs, you need to unbind the policy first. Otherwise, an error is reported when you delete the policy.
+        The QPS limit on this operation is 50 per user.
         
         @param request: DeleteTrafficControlRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4794,9 +5592,11 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DeleteTrafficControlRequest,
     ) -> cloud_api20160714_models.DeleteTrafficControlResponse:
         """
-        This API is intended for API providers.
-        *   If the throttling policy you want to delete is bound to APIs, you need to unbind the policy first. Otherwise, an error is reported when you delete the policy.
-        *   The QPS limit on this operation is 50 per user.
+        @summary Deletes a custom throttling policy and the special throttling rules in the policy.
+        
+        @description    This API is intended for API providers.
+        If the throttling policy you want to delete is bound to APIs, you need to unbind the policy first. Otherwise, an error is reported when you delete the policy.
+        The QPS limit on this operation is 50 per user.
         
         @param request: DeleteTrafficControlRequest
         @return: DeleteTrafficControlResponse
@@ -4809,9 +5609,11 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DeleteTrafficControlRequest,
     ) -> cloud_api20160714_models.DeleteTrafficControlResponse:
         """
-        This API is intended for API providers.
-        *   If the throttling policy you want to delete is bound to APIs, you need to unbind the policy first. Otherwise, an error is reported when you delete the policy.
-        *   The QPS limit on this operation is 50 per user.
+        @summary Deletes a custom throttling policy and the special throttling rules in the policy.
+        
+        @description    This API is intended for API providers.
+        If the throttling policy you want to delete is bound to APIs, you need to unbind the policy first. Otherwise, an error is reported when you delete the policy.
+        The QPS limit on this operation is 50 per user.
         
         @param request: DeleteTrafficControlRequest
         @return: DeleteTrafficControlResponse
@@ -4825,8 +5627,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DeleteTrafficSpecialControlResponse:
         """
-        This API is intended for API providers.
-        *   You can obtain the input parameters required in this operation by calling other APIs.
+        @summary Deletes a custom special throttling policy.
+        
+        @description    This API is intended for API providers.
+        You can obtain the input parameters required in this operation by calling other APIs.
         
         @param request: DeleteTrafficSpecialControlRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4867,8 +5671,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DeleteTrafficSpecialControlResponse:
         """
-        This API is intended for API providers.
-        *   You can obtain the input parameters required in this operation by calling other APIs.
+        @summary Deletes a custom special throttling policy.
+        
+        @description    This API is intended for API providers.
+        You can obtain the input parameters required in this operation by calling other APIs.
         
         @param request: DeleteTrafficSpecialControlRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4908,8 +5714,10 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DeleteTrafficSpecialControlRequest,
     ) -> cloud_api20160714_models.DeleteTrafficSpecialControlResponse:
         """
-        This API is intended for API providers.
-        *   You can obtain the input parameters required in this operation by calling other APIs.
+        @summary Deletes a custom special throttling policy.
+        
+        @description    This API is intended for API providers.
+        You can obtain the input parameters required in this operation by calling other APIs.
         
         @param request: DeleteTrafficSpecialControlRequest
         @return: DeleteTrafficSpecialControlResponse
@@ -4922,8 +5730,10 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DeleteTrafficSpecialControlRequest,
     ) -> cloud_api20160714_models.DeleteTrafficSpecialControlResponse:
         """
-        This API is intended for API providers.
-        *   You can obtain the input parameters required in this operation by calling other APIs.
+        @summary Deletes a custom special throttling policy.
+        
+        @description    This API is intended for API providers.
+        You can obtain the input parameters required in this operation by calling other APIs.
         
         @param request: DeleteTrafficSpecialControlRequest
         @return: DeleteTrafficSpecialControlResponse
@@ -4937,9 +5747,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DeployApiResponse:
         """
-        This operation is intended for API providers. Only the API that you have defined and published to a runtime environment can be called.
-        *   An API is published to a cluster in under 5 seconds.
-        *   The QPS limit on this operation is 50 per user.
+        @summary Publishes an API to an environment.
+        
+        @description    This operation is intended for API providers. Only the API that you have defined and published to a runtime environment can be called.
+        An API is published to a cluster in under 5 seconds.
+        The QPS limit on this operation is 50 per user.
         
         @param request: DeployApiRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4982,9 +5794,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DeployApiResponse:
         """
-        This operation is intended for API providers. Only the API that you have defined and published to a runtime environment can be called.
-        *   An API is published to a cluster in under 5 seconds.
-        *   The QPS limit on this operation is 50 per user.
+        @summary Publishes an API to an environment.
+        
+        @description    This operation is intended for API providers. Only the API that you have defined and published to a runtime environment can be called.
+        An API is published to a cluster in under 5 seconds.
+        The QPS limit on this operation is 50 per user.
         
         @param request: DeployApiRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5026,9 +5840,11 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DeployApiRequest,
     ) -> cloud_api20160714_models.DeployApiResponse:
         """
-        This operation is intended for API providers. Only the API that you have defined and published to a runtime environment can be called.
-        *   An API is published to a cluster in under 5 seconds.
-        *   The QPS limit on this operation is 50 per user.
+        @summary Publishes an API to an environment.
+        
+        @description    This operation is intended for API providers. Only the API that you have defined and published to a runtime environment can be called.
+        An API is published to a cluster in under 5 seconds.
+        The QPS limit on this operation is 50 per user.
         
         @param request: DeployApiRequest
         @return: DeployApiResponse
@@ -5041,9 +5857,11 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DeployApiRequest,
     ) -> cloud_api20160714_models.DeployApiResponse:
         """
-        This operation is intended for API providers. Only the API that you have defined and published to a runtime environment can be called.
-        *   An API is published to a cluster in under 5 seconds.
-        *   The QPS limit on this operation is 50 per user.
+        @summary Publishes an API to an environment.
+        
+        @description    This operation is intended for API providers. Only the API that you have defined and published to a runtime environment can be called.
+        An API is published to a cluster in under 5 seconds.
+        The QPS limit on this operation is 50 per user.
         
         @param request: DeployApiRequest
         @return: DeployApiResponse
@@ -5056,6 +5874,11 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeAbolishApiTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeAbolishApiTaskResponse:
+        """
+        @param request: DescribeAbolishApiTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAbolishApiTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.operation_uid):
@@ -5086,6 +5909,11 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeAbolishApiTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeAbolishApiTaskResponse:
+        """
+        @param request: DescribeAbolishApiTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAbolishApiTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.operation_uid):
@@ -5115,6 +5943,10 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribeAbolishApiTaskRequest,
     ) -> cloud_api20160714_models.DescribeAbolishApiTaskResponse:
+        """
+        @param request: DescribeAbolishApiTaskRequest
+        @return: DescribeAbolishApiTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_abolish_api_task_with_options(request, runtime)
 
@@ -5122,6 +5954,10 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribeAbolishApiTaskRequest,
     ) -> cloud_api20160714_models.DescribeAbolishApiTaskResponse:
+        """
+        @param request: DescribeAbolishApiTaskRequest
+        @return: DescribeAbolishApiTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_abolish_api_task_with_options_async(request, runtime)
 
@@ -5130,6 +5966,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeAccessControlListAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeAccessControlListAttributeResponse:
+        """
+        @summary This feature provides instance-level access control for dedicated instances. Queries the details of an access control policy.
+        
+        @param request: DescribeAccessControlListAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAccessControlListAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.acl_id):
@@ -5160,6 +6003,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeAccessControlListAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeAccessControlListAttributeResponse:
+        """
+        @summary This feature provides instance-level access control for dedicated instances. Queries the details of an access control policy.
+        
+        @param request: DescribeAccessControlListAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAccessControlListAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.acl_id):
@@ -5189,6 +6039,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribeAccessControlListAttributeRequest,
     ) -> cloud_api20160714_models.DescribeAccessControlListAttributeResponse:
+        """
+        @summary This feature provides instance-level access control for dedicated instances. Queries the details of an access control policy.
+        
+        @param request: DescribeAccessControlListAttributeRequest
+        @return: DescribeAccessControlListAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_access_control_list_attribute_with_options(request, runtime)
 
@@ -5196,6 +6052,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribeAccessControlListAttributeRequest,
     ) -> cloud_api20160714_models.DescribeAccessControlListAttributeResponse:
+        """
+        @summary This feature provides instance-level access control for dedicated instances. Queries the details of an access control policy.
+        
+        @param request: DescribeAccessControlListAttributeRequest
+        @return: DescribeAccessControlListAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_access_control_list_attribute_with_options_async(request, runtime)
 
@@ -5204,6 +6066,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeAccessControlListsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeAccessControlListsResponse:
+        """
+        @summary This feature provides instance-level access control for dedicated instances. Queries access control policies.
+        
+        @param request: DescribeAccessControlListsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAccessControlListsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.acl_name):
@@ -5240,6 +6109,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeAccessControlListsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeAccessControlListsResponse:
+        """
+        @summary This feature provides instance-level access control for dedicated instances. Queries access control policies.
+        
+        @param request: DescribeAccessControlListsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAccessControlListsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.acl_name):
@@ -5275,6 +6151,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribeAccessControlListsRequest,
     ) -> cloud_api20160714_models.DescribeAccessControlListsResponse:
+        """
+        @summary This feature provides instance-level access control for dedicated instances. Queries access control policies.
+        
+        @param request: DescribeAccessControlListsRequest
+        @return: DescribeAccessControlListsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_access_control_lists_with_options(request, runtime)
 
@@ -5282,6 +6164,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribeAccessControlListsRequest,
     ) -> cloud_api20160714_models.DescribeAccessControlListsResponse:
+        """
+        @summary This feature provides instance-level access control for dedicated instances. Queries access control policies.
+        
+        @param request: DescribeAccessControlListsRequest
+        @return: DescribeAccessControlListsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_access_control_lists_with_options_async(request, runtime)
 
@@ -5291,7 +6179,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeApiResponse:
         """
-        This operation is intended for API providers.
+        @summary Queries the definition of an API.
+        
+        @description    This operation is intended for API providers.
         
         @param request: DescribeApiRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5330,7 +6220,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeApiResponse:
         """
-        This operation is intended for API providers.
+        @summary Queries the definition of an API.
+        
+        @description    This operation is intended for API providers.
         
         @param request: DescribeApiRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5368,7 +6260,9 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeApiRequest,
     ) -> cloud_api20160714_models.DescribeApiResponse:
         """
-        This operation is intended for API providers.
+        @summary Queries the definition of an API.
+        
+        @description    This operation is intended for API providers.
         
         @param request: DescribeApiRequest
         @return: DescribeApiResponse
@@ -5381,7 +6275,9 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeApiRequest,
     ) -> cloud_api20160714_models.DescribeApiResponse:
         """
-        This operation is intended for API providers.
+        @summary Queries the definition of an API.
+        
+        @description    This operation is intended for API providers.
         
         @param request: DescribeApiRequest
         @return: DescribeApiResponse
@@ -5395,10 +6291,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeApiDocResponse:
         """
-        For API callers, the specified API must be a public or authorized private API that has been published to a runtime environment.
-        *   When you call this operation as an API caller, the service information, parameter definitions, and other details of the API you specify are returned.
-        *   When you call this operation as an API provider, the definition of the specified API running in the specified runtime environment is returned. The returned definition takes effect in the runtime environment, and may be different from the definition of the API you modify.
-        *   Before you call this operation as an API provider, ensure that the API to be queried is a public one or that your application has been authorized to call the API, because authentication on API callers is required.
+        @summary Queries the documentation of an API.
+        
+        @description    For API callers, the specified API must be a public or authorized private API that has been published to a runtime environment.
+        When you call this operation as an API caller, the service information, parameter definitions, and other details of the API you specify are returned.
+        When you call this operation as an API provider, the definition of the specified API running in the specified runtime environment is returned. The returned definition takes effect in the runtime environment, and may be different from the definition of the API you modify.
+        Before you call this operation as an API provider, ensure that the API to be queried is a public one or that your application has been authorized to call the API, because authentication on API callers is required.
         
         @param request: DescribeApiDocRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5439,10 +6337,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeApiDocResponse:
         """
-        For API callers, the specified API must be a public or authorized private API that has been published to a runtime environment.
-        *   When you call this operation as an API caller, the service information, parameter definitions, and other details of the API you specify are returned.
-        *   When you call this operation as an API provider, the definition of the specified API running in the specified runtime environment is returned. The returned definition takes effect in the runtime environment, and may be different from the definition of the API you modify.
-        *   Before you call this operation as an API provider, ensure that the API to be queried is a public one or that your application has been authorized to call the API, because authentication on API callers is required.
+        @summary Queries the documentation of an API.
+        
+        @description    For API callers, the specified API must be a public or authorized private API that has been published to a runtime environment.
+        When you call this operation as an API caller, the service information, parameter definitions, and other details of the API you specify are returned.
+        When you call this operation as an API provider, the definition of the specified API running in the specified runtime environment is returned. The returned definition takes effect in the runtime environment, and may be different from the definition of the API you modify.
+        Before you call this operation as an API provider, ensure that the API to be queried is a public one or that your application has been authorized to call the API, because authentication on API callers is required.
         
         @param request: DescribeApiDocRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5482,10 +6382,12 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeApiDocRequest,
     ) -> cloud_api20160714_models.DescribeApiDocResponse:
         """
-        For API callers, the specified API must be a public or authorized private API that has been published to a runtime environment.
-        *   When you call this operation as an API caller, the service information, parameter definitions, and other details of the API you specify are returned.
-        *   When you call this operation as an API provider, the definition of the specified API running in the specified runtime environment is returned. The returned definition takes effect in the runtime environment, and may be different from the definition of the API you modify.
-        *   Before you call this operation as an API provider, ensure that the API to be queried is a public one or that your application has been authorized to call the API, because authentication on API callers is required.
+        @summary Queries the documentation of an API.
+        
+        @description    For API callers, the specified API must be a public or authorized private API that has been published to a runtime environment.
+        When you call this operation as an API caller, the service information, parameter definitions, and other details of the API you specify are returned.
+        When you call this operation as an API provider, the definition of the specified API running in the specified runtime environment is returned. The returned definition takes effect in the runtime environment, and may be different from the definition of the API you modify.
+        Before you call this operation as an API provider, ensure that the API to be queried is a public one or that your application has been authorized to call the API, because authentication on API callers is required.
         
         @param request: DescribeApiDocRequest
         @return: DescribeApiDocResponse
@@ -5498,10 +6400,12 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeApiDocRequest,
     ) -> cloud_api20160714_models.DescribeApiDocResponse:
         """
-        For API callers, the specified API must be a public or authorized private API that has been published to a runtime environment.
-        *   When you call this operation as an API caller, the service information, parameter definitions, and other details of the API you specify are returned.
-        *   When you call this operation as an API provider, the definition of the specified API running in the specified runtime environment is returned. The returned definition takes effect in the runtime environment, and may be different from the definition of the API you modify.
-        *   Before you call this operation as an API provider, ensure that the API to be queried is a public one or that your application has been authorized to call the API, because authentication on API callers is required.
+        @summary Queries the documentation of an API.
+        
+        @description    For API callers, the specified API must be a public or authorized private API that has been published to a runtime environment.
+        When you call this operation as an API caller, the service information, parameter definitions, and other details of the API you specify are returned.
+        When you call this operation as an API provider, the definition of the specified API running in the specified runtime environment is returned. The returned definition takes effect in the runtime environment, and may be different from the definition of the API you modify.
+        Before you call this operation as an API provider, ensure that the API to be queried is a public one or that your application has been authorized to call the API, because authentication on API callers is required.
         
         @param request: DescribeApiDocRequest
         @return: DescribeApiDocResponse
@@ -5515,7 +6419,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeApiGroupResponse:
         """
-        This operation is intended for API providers.
+        @summary You can call this operation to query details about an API group, including the automatically assigned second-level domain name, custom domain name, and SSL certificate.
+        
+        @description    This operation is intended for API providers.
         
         @param request: DescribeApiGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5554,7 +6460,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeApiGroupResponse:
         """
-        This operation is intended for API providers.
+        @summary You can call this operation to query details about an API group, including the automatically assigned second-level domain name, custom domain name, and SSL certificate.
+        
+        @description    This operation is intended for API providers.
         
         @param request: DescribeApiGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5592,7 +6500,9 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeApiGroupRequest,
     ) -> cloud_api20160714_models.DescribeApiGroupResponse:
         """
-        This operation is intended for API providers.
+        @summary You can call this operation to query details about an API group, including the automatically assigned second-level domain name, custom domain name, and SSL certificate.
+        
+        @description    This operation is intended for API providers.
         
         @param request: DescribeApiGroupRequest
         @return: DescribeApiGroupResponse
@@ -5605,7 +6515,9 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeApiGroupRequest,
     ) -> cloud_api20160714_models.DescribeApiGroupResponse:
         """
-        This operation is intended for API providers.
+        @summary You can call this operation to query details about an API group, including the automatically assigned second-level domain name, custom domain name, and SSL certificate.
+        
+        @description    This operation is intended for API providers.
         
         @param request: DescribeApiGroupRequest
         @return: DescribeApiGroupResponse
@@ -5618,6 +6530,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeApiGroupVpcWhitelistRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeApiGroupVpcWhitelistResponse:
+        """
+        @summary Queries the VPC whitelist that is allowed to access an API group.
+        
+        @param request: DescribeApiGroupVpcWhitelistRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApiGroupVpcWhitelistResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_id):
@@ -5648,6 +6567,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeApiGroupVpcWhitelistRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeApiGroupVpcWhitelistResponse:
+        """
+        @summary Queries the VPC whitelist that is allowed to access an API group.
+        
+        @param request: DescribeApiGroupVpcWhitelistRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApiGroupVpcWhitelistResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_id):
@@ -5677,6 +6603,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribeApiGroupVpcWhitelistRequest,
     ) -> cloud_api20160714_models.DescribeApiGroupVpcWhitelistResponse:
+        """
+        @summary Queries the VPC whitelist that is allowed to access an API group.
+        
+        @param request: DescribeApiGroupVpcWhitelistRequest
+        @return: DescribeApiGroupVpcWhitelistResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_api_group_vpc_whitelist_with_options(request, runtime)
 
@@ -5684,6 +6616,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribeApiGroupVpcWhitelistRequest,
     ) -> cloud_api20160714_models.DescribeApiGroupVpcWhitelistResponse:
+        """
+        @summary Queries the VPC whitelist that is allowed to access an API group.
+        
+        @param request: DescribeApiGroupVpcWhitelistRequest
+        @return: DescribeApiGroupVpcWhitelistResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_api_group_vpc_whitelist_with_options_async(request, runtime)
 
@@ -5693,7 +6631,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeApiGroupsResponse:
         """
-        This operation is intended for API providers.
+        @summary Queries existing API groups and their basic information.
+        
+        @description    This operation is intended for API providers.
         
         @param request: DescribeApiGroupsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5744,7 +6684,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeApiGroupsResponse:
         """
-        This operation is intended for API providers.
+        @summary Queries existing API groups and their basic information.
+        
+        @description    This operation is intended for API providers.
         
         @param request: DescribeApiGroupsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5794,7 +6736,9 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeApiGroupsRequest,
     ) -> cloud_api20160714_models.DescribeApiGroupsResponse:
         """
-        This operation is intended for API providers.
+        @summary Queries existing API groups and their basic information.
+        
+        @description    This operation is intended for API providers.
         
         @param request: DescribeApiGroupsRequest
         @return: DescribeApiGroupsResponse
@@ -5807,7 +6751,9 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeApiGroupsRequest,
     ) -> cloud_api20160714_models.DescribeApiGroupsResponse:
         """
-        This operation is intended for API providers.
+        @summary Queries existing API groups and their basic information.
+        
+        @description    This operation is intended for API providers.
         
         @param request: DescribeApiGroupsRequest
         @return: DescribeApiGroupsResponse
@@ -5821,8 +6767,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeApiHistoriesResponse:
         """
-        This operation is intended for API providers. Only APIs that have been published have historical version records.
-        *   This operation allows you to obtain the historical versions of an API. This operation is always called by other operations.
+        @summary Queries the historical versions of a specified API.
+        
+        @description    This operation is intended for API providers. Only APIs that have been published have historical version records.
+        This operation allows you to obtain the historical versions of an API. This operation is always called by other operations.
         
         @param request: DescribeApiHistoriesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5869,8 +6817,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeApiHistoriesResponse:
         """
-        This operation is intended for API providers. Only APIs that have been published have historical version records.
-        *   This operation allows you to obtain the historical versions of an API. This operation is always called by other operations.
+        @summary Queries the historical versions of a specified API.
+        
+        @description    This operation is intended for API providers. Only APIs that have been published have historical version records.
+        This operation allows you to obtain the historical versions of an API. This operation is always called by other operations.
         
         @param request: DescribeApiHistoriesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5916,8 +6866,10 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeApiHistoriesRequest,
     ) -> cloud_api20160714_models.DescribeApiHistoriesResponse:
         """
-        This operation is intended for API providers. Only APIs that have been published have historical version records.
-        *   This operation allows you to obtain the historical versions of an API. This operation is always called by other operations.
+        @summary Queries the historical versions of a specified API.
+        
+        @description    This operation is intended for API providers. Only APIs that have been published have historical version records.
+        This operation allows you to obtain the historical versions of an API. This operation is always called by other operations.
         
         @param request: DescribeApiHistoriesRequest
         @return: DescribeApiHistoriesResponse
@@ -5930,8 +6882,10 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeApiHistoriesRequest,
     ) -> cloud_api20160714_models.DescribeApiHistoriesResponse:
         """
-        This operation is intended for API providers. Only APIs that have been published have historical version records.
-        *   This operation allows you to obtain the historical versions of an API. This operation is always called by other operations.
+        @summary Queries the historical versions of a specified API.
+        
+        @description    This operation is intended for API providers. Only APIs that have been published have historical version records.
+        This operation allows you to obtain the historical versions of an API. This operation is always called by other operations.
         
         @param request: DescribeApiHistoriesRequest
         @return: DescribeApiHistoriesResponse
@@ -5945,9 +6899,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeApiHistoryResponse:
         """
-        Queries the details of a specified historical version of a specified API definition.
-        *   This API is intended for API providers.
-        *   API Gateway records the time and definition of an API every time the API is published. You can use the version number obtained from other operations to query definition details at a certain publication.
+        @summary Queries the details of a specified historical version of a specified API definition.
+        
+        @description Queries the details of a specified historical version of a specified API definition.
+        This API is intended for API providers.
+        API Gateway records the time and definition of an API every time the API is published. You can use the version number obtained from other operations to query definition details at a certain publication.
         
         @param request: DescribeApiHistoryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5990,9 +6946,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeApiHistoryResponse:
         """
-        Queries the details of a specified historical version of a specified API definition.
-        *   This API is intended for API providers.
-        *   API Gateway records the time and definition of an API every time the API is published. You can use the version number obtained from other operations to query definition details at a certain publication.
+        @summary Queries the details of a specified historical version of a specified API definition.
+        
+        @description Queries the details of a specified historical version of a specified API definition.
+        This API is intended for API providers.
+        API Gateway records the time and definition of an API every time the API is published. You can use the version number obtained from other operations to query definition details at a certain publication.
         
         @param request: DescribeApiHistoryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6034,9 +6992,11 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeApiHistoryRequest,
     ) -> cloud_api20160714_models.DescribeApiHistoryResponse:
         """
-        Queries the details of a specified historical version of a specified API definition.
-        *   This API is intended for API providers.
-        *   API Gateway records the time and definition of an API every time the API is published. You can use the version number obtained from other operations to query definition details at a certain publication.
+        @summary Queries the details of a specified historical version of a specified API definition.
+        
+        @description Queries the details of a specified historical version of a specified API definition.
+        This API is intended for API providers.
+        API Gateway records the time and definition of an API every time the API is published. You can use the version number obtained from other operations to query definition details at a certain publication.
         
         @param request: DescribeApiHistoryRequest
         @return: DescribeApiHistoryResponse
@@ -6049,9 +7009,11 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeApiHistoryRequest,
     ) -> cloud_api20160714_models.DescribeApiHistoryResponse:
         """
-        Queries the details of a specified historical version of a specified API definition.
-        *   This API is intended for API providers.
-        *   API Gateway records the time and definition of an API every time the API is published. You can use the version number obtained from other operations to query definition details at a certain publication.
+        @summary Queries the details of a specified historical version of a specified API definition.
+        
+        @description Queries the details of a specified historical version of a specified API definition.
+        This API is intended for API providers.
+        API Gateway records the time and definition of an API every time the API is published. You can use the version number obtained from other operations to query definition details at a certain publication.
         
         @param request: DescribeApiHistoryRequest
         @return: DescribeApiHistoryResponse
@@ -6065,8 +7027,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeApiIpControlsResponse:
         """
-        This operation is intended for API callers.
-        *   If an optional parameter is not specified, all results are returned on separate pages.
+        @summary Queries the access control lists (ACLs) that are bound to all the APIs in an API group in a specified environment.
+        
+        @description    This operation is intended for API callers.
+        If an optional parameter is not specified, all results are returned on separate pages.
         ·
         
         @param request: DescribeApiIpControlsRequest
@@ -6112,8 +7076,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeApiIpControlsResponse:
         """
-        This operation is intended for API callers.
-        *   If an optional parameter is not specified, all results are returned on separate pages.
+        @summary Queries the access control lists (ACLs) that are bound to all the APIs in an API group in a specified environment.
+        
+        @description    This operation is intended for API callers.
+        If an optional parameter is not specified, all results are returned on separate pages.
         ·
         
         @param request: DescribeApiIpControlsRequest
@@ -6158,8 +7124,10 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeApiIpControlsRequest,
     ) -> cloud_api20160714_models.DescribeApiIpControlsResponse:
         """
-        This operation is intended for API callers.
-        *   If an optional parameter is not specified, all results are returned on separate pages.
+        @summary Queries the access control lists (ACLs) that are bound to all the APIs in an API group in a specified environment.
+        
+        @description    This operation is intended for API callers.
+        If an optional parameter is not specified, all results are returned on separate pages.
         ·
         
         @param request: DescribeApiIpControlsRequest
@@ -6173,8 +7141,10 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeApiIpControlsRequest,
     ) -> cloud_api20160714_models.DescribeApiIpControlsResponse:
         """
-        This operation is intended for API callers.
-        *   If an optional parameter is not specified, all results are returned on separate pages.
+        @summary Queries the access control lists (ACLs) that are bound to all the APIs in an API group in a specified environment.
+        
+        @description    This operation is intended for API callers.
+        If an optional parameter is not specified, all results are returned on separate pages.
         ·
         
         @param request: DescribeApiIpControlsRequest
@@ -6189,9 +7159,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeApiLatencyDataResponse:
         """
-        You can call this operation to query the latency metrics in milliseconds for a specified API.
-        *   This API is intended for API providers.
-        *   Only statistics for API calls made in the release environment are collected by default.
+        @summary Queries the response time statistics of an API.
+        
+        @description You can call this operation to query the latency metrics in milliseconds for a specified API.
+        This API is intended for API providers.
+        Only statistics for API calls made in the release environment are collected by default.
         
         @param request: DescribeApiLatencyDataRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6236,9 +7208,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeApiLatencyDataResponse:
         """
-        You can call this operation to query the latency metrics in milliseconds for a specified API.
-        *   This API is intended for API providers.
-        *   Only statistics for API calls made in the release environment are collected by default.
+        @summary Queries the response time statistics of an API.
+        
+        @description You can call this operation to query the latency metrics in milliseconds for a specified API.
+        This API is intended for API providers.
+        Only statistics for API calls made in the release environment are collected by default.
         
         @param request: DescribeApiLatencyDataRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6282,9 +7256,11 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeApiLatencyDataRequest,
     ) -> cloud_api20160714_models.DescribeApiLatencyDataResponse:
         """
-        You can call this operation to query the latency metrics in milliseconds for a specified API.
-        *   This API is intended for API providers.
-        *   Only statistics for API calls made in the release environment are collected by default.
+        @summary Queries the response time statistics of an API.
+        
+        @description You can call this operation to query the latency metrics in milliseconds for a specified API.
+        This API is intended for API providers.
+        Only statistics for API calls made in the release environment are collected by default.
         
         @param request: DescribeApiLatencyDataRequest
         @return: DescribeApiLatencyDataResponse
@@ -6297,9 +7273,11 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeApiLatencyDataRequest,
     ) -> cloud_api20160714_models.DescribeApiLatencyDataResponse:
         """
-        You can call this operation to query the latency metrics in milliseconds for a specified API.
-        *   This API is intended for API providers.
-        *   Only statistics for API calls made in the release environment are collected by default.
+        @summary Queries the response time statistics of an API.
+        
+        @description You can call this operation to query the latency metrics in milliseconds for a specified API.
+        This API is intended for API providers.
+        Only statistics for API calls made in the release environment are collected by default.
         
         @param request: DescribeApiLatencyDataRequest
         @return: DescribeApiLatencyDataResponse
@@ -6312,6 +7290,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeApiMarketAttributesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeApiMarketAttributesResponse:
+        """
+        @summary Queries the Alibaba Cloud Marketplace attributes of an API.
+        
+        @param request: DescribeApiMarketAttributesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApiMarketAttributesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.api_id):
@@ -6344,6 +7329,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeApiMarketAttributesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeApiMarketAttributesResponse:
+        """
+        @summary Queries the Alibaba Cloud Marketplace attributes of an API.
+        
+        @param request: DescribeApiMarketAttributesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApiMarketAttributesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.api_id):
@@ -6375,6 +7367,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribeApiMarketAttributesRequest,
     ) -> cloud_api20160714_models.DescribeApiMarketAttributesResponse:
+        """
+        @summary Queries the Alibaba Cloud Marketplace attributes of an API.
+        
+        @param request: DescribeApiMarketAttributesRequest
+        @return: DescribeApiMarketAttributesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_api_market_attributes_with_options(request, runtime)
 
@@ -6382,6 +7380,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribeApiMarketAttributesRequest,
     ) -> cloud_api20160714_models.DescribeApiMarketAttributesResponse:
+        """
+        @summary Queries the Alibaba Cloud Marketplace attributes of an API.
+        
+        @param request: DescribeApiMarketAttributesRequest
+        @return: DescribeApiMarketAttributesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_api_market_attributes_with_options_async(request, runtime)
 
@@ -6390,6 +7394,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeApiProductApisRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeApiProductApisResponse:
+        """
+        @summary Queries the attached APIs of an API product.
+        
+        @param request: DescribeApiProductApisRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApiProductApisResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.api_product_id):
@@ -6424,6 +7435,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeApiProductApisRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeApiProductApisResponse:
+        """
+        @summary Queries the attached APIs of an API product.
+        
+        @param request: DescribeApiProductApisRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApiProductApisResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.api_product_id):
@@ -6457,6 +7475,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribeApiProductApisRequest,
     ) -> cloud_api20160714_models.DescribeApiProductApisResponse:
+        """
+        @summary Queries the attached APIs of an API product.
+        
+        @param request: DescribeApiProductApisRequest
+        @return: DescribeApiProductApisResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_api_product_apis_with_options(request, runtime)
 
@@ -6464,6 +7488,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribeApiProductApisRequest,
     ) -> cloud_api20160714_models.DescribeApiProductApisResponse:
+        """
+        @summary Queries the attached APIs of an API product.
+        
+        @param request: DescribeApiProductApisRequest
+        @return: DescribeApiProductApisResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_api_product_apis_with_options_async(request, runtime)
 
@@ -6472,6 +7502,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeApiProductsByAppRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeApiProductsByAppResponse:
+        """
+        @summary Queries API products by application.
+        
+        @param request: DescribeApiProductsByAppRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApiProductsByAppResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -6506,6 +7543,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeApiProductsByAppRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeApiProductsByAppResponse:
+        """
+        @summary Queries API products by application.
+        
+        @param request: DescribeApiProductsByAppRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApiProductsByAppResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -6539,6 +7583,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribeApiProductsByAppRequest,
     ) -> cloud_api20160714_models.DescribeApiProductsByAppResponse:
+        """
+        @summary Queries API products by application.
+        
+        @param request: DescribeApiProductsByAppRequest
+        @return: DescribeApiProductsByAppResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_api_products_by_app_with_options(request, runtime)
 
@@ -6546,6 +7596,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribeApiProductsByAppRequest,
     ) -> cloud_api20160714_models.DescribeApiProductsByAppResponse:
+        """
+        @summary Queries API products by application.
+        
+        @param request: DescribeApiProductsByAppRequest
+        @return: DescribeApiProductsByAppResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_api_products_by_app_with_options_async(request, runtime)
 
@@ -6555,8 +7611,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeApiQpsDataResponse:
         """
-        This API is intended for API providers.
-        *   Only statistics for API calls made in the release environment are collected by default.
+        @summary Queries the QPS statistics of an API.
+        
+        @description    This API is intended for API providers.
+        Only statistics for API calls made in the release environment are collected by default.
         
         @param request: DescribeApiQpsDataRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6601,8 +7659,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeApiQpsDataResponse:
         """
-        This API is intended for API providers.
-        *   Only statistics for API calls made in the release environment are collected by default.
+        @summary Queries the QPS statistics of an API.
+        
+        @description    This API is intended for API providers.
+        Only statistics for API calls made in the release environment are collected by default.
         
         @param request: DescribeApiQpsDataRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6646,8 +7706,10 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeApiQpsDataRequest,
     ) -> cloud_api20160714_models.DescribeApiQpsDataResponse:
         """
-        This API is intended for API providers.
-        *   Only statistics for API calls made in the release environment are collected by default.
+        @summary Queries the QPS statistics of an API.
+        
+        @description    This API is intended for API providers.
+        Only statistics for API calls made in the release environment are collected by default.
         
         @param request: DescribeApiQpsDataRequest
         @return: DescribeApiQpsDataResponse
@@ -6660,8 +7722,10 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeApiQpsDataRequest,
     ) -> cloud_api20160714_models.DescribeApiQpsDataResponse:
         """
-        This API is intended for API providers.
-        *   Only statistics for API calls made in the release environment are collected by default.
+        @summary Queries the QPS statistics of an API.
+        
+        @description    This API is intended for API providers.
+        Only statistics for API calls made in the release environment are collected by default.
         
         @param request: DescribeApiQpsDataRequest
         @return: DescribeApiQpsDataResponse
@@ -6675,8 +7739,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeApiSignaturesResponse:
         """
-        This API is intended for API providers.
-        *   The ApiIds parameter is optional. If this parameter is not specified, all results in the specified environment of an API group are returned.
+        @summary Queries the backend signature keys that are bound to the APIs of a specified API group in a specified environment.
+        
+        @description    This API is intended for API providers.
+        The ApiIds parameter is optional. If this parameter is not specified, all results in the specified environment of an API group are returned.
         
         @param request: DescribeApiSignaturesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6721,8 +7787,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeApiSignaturesResponse:
         """
-        This API is intended for API providers.
-        *   The ApiIds parameter is optional. If this parameter is not specified, all results in the specified environment of an API group are returned.
+        @summary Queries the backend signature keys that are bound to the APIs of a specified API group in a specified environment.
+        
+        @description    This API is intended for API providers.
+        The ApiIds parameter is optional. If this parameter is not specified, all results in the specified environment of an API group are returned.
         
         @param request: DescribeApiSignaturesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6766,8 +7834,10 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeApiSignaturesRequest,
     ) -> cloud_api20160714_models.DescribeApiSignaturesResponse:
         """
-        This API is intended for API providers.
-        *   The ApiIds parameter is optional. If this parameter is not specified, all results in the specified environment of an API group are returned.
+        @summary Queries the backend signature keys that are bound to the APIs of a specified API group in a specified environment.
+        
+        @description    This API is intended for API providers.
+        The ApiIds parameter is optional. If this parameter is not specified, all results in the specified environment of an API group are returned.
         
         @param request: DescribeApiSignaturesRequest
         @return: DescribeApiSignaturesResponse
@@ -6780,8 +7850,10 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeApiSignaturesRequest,
     ) -> cloud_api20160714_models.DescribeApiSignaturesResponse:
         """
-        This API is intended for API providers.
-        *   The ApiIds parameter is optional. If this parameter is not specified, all results in the specified environment of an API group are returned.
+        @summary Queries the backend signature keys that are bound to the APIs of a specified API group in a specified environment.
+        
+        @description    This API is intended for API providers.
+        The ApiIds parameter is optional. If this parameter is not specified, all results in the specified environment of an API group are returned.
         
         @param request: DescribeApiSignaturesRequest
         @return: DescribeApiSignaturesResponse
@@ -6795,8 +7867,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeApiTrafficControlsResponse:
         """
-        This API is intended for API providers.
-        *   The ApiIds parameter is optional. If this parameter is not specified, all results in the specified environment of an API group are returned.
+        @summary Queries the throttling policies bound to all members of an API group in a specified environment.
+        
+        @description    This API is intended for API providers.
+        The ApiIds parameter is optional. If this parameter is not specified, all results in the specified environment of an API group are returned.
         
         @param request: DescribeApiTrafficControlsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6841,8 +7915,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeApiTrafficControlsResponse:
         """
-        This API is intended for API providers.
-        *   The ApiIds parameter is optional. If this parameter is not specified, all results in the specified environment of an API group are returned.
+        @summary Queries the throttling policies bound to all members of an API group in a specified environment.
+        
+        @description    This API is intended for API providers.
+        The ApiIds parameter is optional. If this parameter is not specified, all results in the specified environment of an API group are returned.
         
         @param request: DescribeApiTrafficControlsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6886,8 +7962,10 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeApiTrafficControlsRequest,
     ) -> cloud_api20160714_models.DescribeApiTrafficControlsResponse:
         """
-        This API is intended for API providers.
-        *   The ApiIds parameter is optional. If this parameter is not specified, all results in the specified environment of an API group are returned.
+        @summary Queries the throttling policies bound to all members of an API group in a specified environment.
+        
+        @description    This API is intended for API providers.
+        The ApiIds parameter is optional. If this parameter is not specified, all results in the specified environment of an API group are returned.
         
         @param request: DescribeApiTrafficControlsRequest
         @return: DescribeApiTrafficControlsResponse
@@ -6900,8 +7978,10 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeApiTrafficControlsRequest,
     ) -> cloud_api20160714_models.DescribeApiTrafficControlsResponse:
         """
-        This API is intended for API providers.
-        *   The ApiIds parameter is optional. If this parameter is not specified, all results in the specified environment of an API group are returned.
+        @summary Queries the throttling policies bound to all members of an API group in a specified environment.
+        
+        @description    This API is intended for API providers.
+        The ApiIds parameter is optional. If this parameter is not specified, all results in the specified environment of an API group are returned.
         
         @param request: DescribeApiTrafficControlsRequest
         @return: DescribeApiTrafficControlsResponse
@@ -6915,8 +7995,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeApiTrafficDataResponse:
         """
-        This API is intended for API providers.
-        *   Only statistics for API calls made in the release environment are collected by default.
+        @summary Queries the statistics on the traffic of an API.
+        
+        @description    This API is intended for API providers.
+        Only statistics for API calls made in the release environment are collected by default.
         
         @param request: DescribeApiTrafficDataRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6961,8 +8043,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeApiTrafficDataResponse:
         """
-        This API is intended for API providers.
-        *   Only statistics for API calls made in the release environment are collected by default.
+        @summary Queries the statistics on the traffic of an API.
+        
+        @description    This API is intended for API providers.
+        Only statistics for API calls made in the release environment are collected by default.
         
         @param request: DescribeApiTrafficDataRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7006,8 +8090,10 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeApiTrafficDataRequest,
     ) -> cloud_api20160714_models.DescribeApiTrafficDataResponse:
         """
-        This API is intended for API providers.
-        *   Only statistics for API calls made in the release environment are collected by default.
+        @summary Queries the statistics on the traffic of an API.
+        
+        @description    This API is intended for API providers.
+        Only statistics for API calls made in the release environment are collected by default.
         
         @param request: DescribeApiTrafficDataRequest
         @return: DescribeApiTrafficDataResponse
@@ -7020,8 +8106,10 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeApiTrafficDataRequest,
     ) -> cloud_api20160714_models.DescribeApiTrafficDataResponse:
         """
-        This API is intended for API providers.
-        *   Only statistics for API calls made in the release environment are collected by default.
+        @summary Queries the statistics on the traffic of an API.
+        
+        @description    This API is intended for API providers.
+        Only statistics for API calls made in the release environment are collected by default.
         
         @param request: DescribeApiTrafficDataRequest
         @return: DescribeApiTrafficDataResponse
@@ -7035,9 +8123,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeApisResponse:
         """
-        This operation is intended for API callers.
-        *   This operation returns a list of all APIs that are being defined. The basic information about these APIs is also returned in the list.
-        *   This operation returns all APIs that are being edited, regardless of their environments. The returned definitions may be different from the definitions in the environments.
+        @summary Queries a list of APIs that are being defined.
+        
+        @description    This operation is intended for API callers.
+        This operation returns a list of all APIs that are being defined. The basic information about these APIs is also returned in the list.
+        This operation returns all APIs that are being edited, regardless of their environments. The returned definitions may be different from the definitions in the environments.
         
         @param request: DescribeApisRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7098,9 +8188,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeApisResponse:
         """
-        This operation is intended for API callers.
-        *   This operation returns a list of all APIs that are being defined. The basic information about these APIs is also returned in the list.
-        *   This operation returns all APIs that are being edited, regardless of their environments. The returned definitions may be different from the definitions in the environments.
+        @summary Queries a list of APIs that are being defined.
+        
+        @description    This operation is intended for API callers.
+        This operation returns a list of all APIs that are being defined. The basic information about these APIs is also returned in the list.
+        This operation returns all APIs that are being edited, regardless of their environments. The returned definitions may be different from the definitions in the environments.
         
         @param request: DescribeApisRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7160,9 +8252,11 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeApisRequest,
     ) -> cloud_api20160714_models.DescribeApisResponse:
         """
-        This operation is intended for API callers.
-        *   This operation returns a list of all APIs that are being defined. The basic information about these APIs is also returned in the list.
-        *   This operation returns all APIs that are being edited, regardless of their environments. The returned definitions may be different from the definitions in the environments.
+        @summary Queries a list of APIs that are being defined.
+        
+        @description    This operation is intended for API callers.
+        This operation returns a list of all APIs that are being defined. The basic information about these APIs is also returned in the list.
+        This operation returns all APIs that are being edited, regardless of their environments. The returned definitions may be different from the definitions in the environments.
         
         @param request: DescribeApisRequest
         @return: DescribeApisResponse
@@ -7175,9 +8269,11 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeApisRequest,
     ) -> cloud_api20160714_models.DescribeApisResponse:
         """
-        This operation is intended for API callers.
-        *   This operation returns a list of all APIs that are being defined. The basic information about these APIs is also returned in the list.
-        *   This operation returns all APIs that are being edited, regardless of their environments. The returned definitions may be different from the definitions in the environments.
+        @summary Queries a list of APIs that are being defined.
+        
+        @description    This operation is intended for API callers.
+        This operation returns a list of all APIs that are being defined. The basic information about these APIs is also returned in the list.
+        This operation returns all APIs that are being edited, regardless of their environments. The returned definitions may be different from the definitions in the environments.
         
         @param request: DescribeApisRequest
         @return: DescribeApisResponse
@@ -7190,6 +8286,11 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeApisByAppRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeApisByAppResponse:
+        """
+        @param request: DescribeApisByAppRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApisByAppResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.api_name):
@@ -7234,6 +8335,11 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeApisByAppRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeApisByAppResponse:
+        """
+        @param request: DescribeApisByAppRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApisByAppResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.api_name):
@@ -7277,6 +8383,10 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribeApisByAppRequest,
     ) -> cloud_api20160714_models.DescribeApisByAppResponse:
+        """
+        @param request: DescribeApisByAppRequest
+        @return: DescribeApisByAppResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_apis_by_app_with_options(request, runtime)
 
@@ -7284,6 +8394,10 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribeApisByAppRequest,
     ) -> cloud_api20160714_models.DescribeApisByAppResponse:
+        """
+        @param request: DescribeApisByAppRequest
+        @return: DescribeApisByAppResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_apis_by_app_with_options_async(request, runtime)
 
@@ -7292,6 +8406,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeApisByBackendRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeApisByBackendResponse:
+        """
+        @summary Queries APIs in the draft or published state that are created by using a specified backend service.
+        
+        @param request: DescribeApisByBackendRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApisByBackendResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backend_id):
@@ -7328,6 +8449,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeApisByBackendRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeApisByBackendResponse:
+        """
+        @summary Queries APIs in the draft or published state that are created by using a specified backend service.
+        
+        @param request: DescribeApisByBackendRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApisByBackendResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backend_id):
@@ -7363,6 +8491,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribeApisByBackendRequest,
     ) -> cloud_api20160714_models.DescribeApisByBackendResponse:
+        """
+        @summary Queries APIs in the draft or published state that are created by using a specified backend service.
+        
+        @param request: DescribeApisByBackendRequest
+        @return: DescribeApisByBackendResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_apis_by_backend_with_options(request, runtime)
 
@@ -7370,6 +8504,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribeApisByBackendRequest,
     ) -> cloud_api20160714_models.DescribeApisByBackendResponse:
+        """
+        @summary Queries APIs in the draft or published state that are created by using a specified backend service.
+        
+        @param request: DescribeApisByBackendRequest
+        @return: DescribeApisByBackendResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_apis_by_backend_with_options_async(request, runtime)
 
@@ -7379,8 +8519,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeApisByIpControlResponse:
         """
-        This operation is intended for API callers.
-        *   You can specify PageNumber to obtain the result on the specified page.
+        @summary Queries the APIs that are bound to an access control list (ACL).
+        
+        @description    This operation is intended for API callers.
+        You can specify PageNumber to obtain the result on the specified page.
         
         @param request: DescribeApisByIpControlRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7421,8 +8563,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeApisByIpControlResponse:
         """
-        This operation is intended for API callers.
-        *   You can specify PageNumber to obtain the result on the specified page.
+        @summary Queries the APIs that are bound to an access control list (ACL).
+        
+        @description    This operation is intended for API callers.
+        You can specify PageNumber to obtain the result on the specified page.
         
         @param request: DescribeApisByIpControlRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7462,8 +8606,10 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeApisByIpControlRequest,
     ) -> cloud_api20160714_models.DescribeApisByIpControlResponse:
         """
-        This operation is intended for API callers.
-        *   You can specify PageNumber to obtain the result on the specified page.
+        @summary Queries the APIs that are bound to an access control list (ACL).
+        
+        @description    This operation is intended for API callers.
+        You can specify PageNumber to obtain the result on the specified page.
         
         @param request: DescribeApisByIpControlRequest
         @return: DescribeApisByIpControlResponse
@@ -7476,8 +8622,10 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeApisByIpControlRequest,
     ) -> cloud_api20160714_models.DescribeApisByIpControlResponse:
         """
-        This operation is intended for API callers.
-        *   You can specify PageNumber to obtain the result on the specified page.
+        @summary Queries the APIs that are bound to an access control list (ACL).
+        
+        @description    This operation is intended for API callers.
+        You can specify PageNumber to obtain the result on the specified page.
         
         @param request: DescribeApisByIpControlRequest
         @return: DescribeApisByIpControlResponse
@@ -7491,8 +8639,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeApisBySignatureResponse:
         """
-        This API is intended for API providers.
-        *   The results are returned on separate pages. You can specify PageNumber to obtain the result on the specified page.
+        @summary Queries the APIs to which a specified backend signature key is bound.
+        
+        @description    This API is intended for API providers.
+        The results are returned on separate pages. You can specify PageNumber to obtain the result on the specified page.
         
         @param request: DescribeApisBySignatureRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7533,8 +8683,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeApisBySignatureResponse:
         """
-        This API is intended for API providers.
-        *   The results are returned on separate pages. You can specify PageNumber to obtain the result on the specified page.
+        @summary Queries the APIs to which a specified backend signature key is bound.
+        
+        @description    This API is intended for API providers.
+        The results are returned on separate pages. You can specify PageNumber to obtain the result on the specified page.
         
         @param request: DescribeApisBySignatureRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7574,8 +8726,10 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeApisBySignatureRequest,
     ) -> cloud_api20160714_models.DescribeApisBySignatureResponse:
         """
-        This API is intended for API providers.
-        *   The results are returned on separate pages. You can specify PageNumber to obtain the result on the specified page.
+        @summary Queries the APIs to which a specified backend signature key is bound.
+        
+        @description    This API is intended for API providers.
+        The results are returned on separate pages. You can specify PageNumber to obtain the result on the specified page.
         
         @param request: DescribeApisBySignatureRequest
         @return: DescribeApisBySignatureResponse
@@ -7588,8 +8742,10 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeApisBySignatureRequest,
     ) -> cloud_api20160714_models.DescribeApisBySignatureResponse:
         """
-        This API is intended for API providers.
-        *   The results are returned on separate pages. You can specify PageNumber to obtain the result on the specified page.
+        @summary Queries the APIs to which a specified backend signature key is bound.
+        
+        @description    This API is intended for API providers.
+        The results are returned on separate pages. You can specify PageNumber to obtain the result on the specified page.
         
         @param request: DescribeApisBySignatureRequest
         @return: DescribeApisBySignatureResponse
@@ -7603,8 +8759,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeApisByTrafficControlResponse:
         """
-        This API is intended for API providers.
-        *   You can specify PageNumber to obtain the result on the specified page.
+        @summary Queries the APIs to which a specified throttling policy is bound.
+        
+        @description    This API is intended for API providers.
+        You can specify PageNumber to obtain the result on the specified page.
         
         @param request: DescribeApisByTrafficControlRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7645,8 +8803,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeApisByTrafficControlResponse:
         """
-        This API is intended for API providers.
-        *   You can specify PageNumber to obtain the result on the specified page.
+        @summary Queries the APIs to which a specified throttling policy is bound.
+        
+        @description    This API is intended for API providers.
+        You can specify PageNumber to obtain the result on the specified page.
         
         @param request: DescribeApisByTrafficControlRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7686,8 +8846,10 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeApisByTrafficControlRequest,
     ) -> cloud_api20160714_models.DescribeApisByTrafficControlResponse:
         """
-        This API is intended for API providers.
-        *   You can specify PageNumber to obtain the result on the specified page.
+        @summary Queries the APIs to which a specified throttling policy is bound.
+        
+        @description    This API is intended for API providers.
+        You can specify PageNumber to obtain the result on the specified page.
         
         @param request: DescribeApisByTrafficControlRequest
         @return: DescribeApisByTrafficControlResponse
@@ -7700,8 +8862,10 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeApisByTrafficControlRequest,
     ) -> cloud_api20160714_models.DescribeApisByTrafficControlResponse:
         """
-        This API is intended for API providers.
-        *   You can specify PageNumber to obtain the result on the specified page.
+        @summary Queries the APIs to which a specified throttling policy is bound.
+        
+        @description    This API is intended for API providers.
+        You can specify PageNumber to obtain the result on the specified page.
         
         @param request: DescribeApisByTrafficControlRequest
         @return: DescribeApisByTrafficControlResponse
@@ -7714,6 +8878,11 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeApisByVpcAccessRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeApisByVpcAccessResponse:
+        """
+        @param request: DescribeApisByVpcAccessRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApisByVpcAccessResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -7748,6 +8917,11 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeApisByVpcAccessRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeApisByVpcAccessResponse:
+        """
+        @param request: DescribeApisByVpcAccessRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApisByVpcAccessResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -7781,6 +8955,10 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribeApisByVpcAccessRequest,
     ) -> cloud_api20160714_models.DescribeApisByVpcAccessResponse:
+        """
+        @param request: DescribeApisByVpcAccessRequest
+        @return: DescribeApisByVpcAccessResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_apis_by_vpc_access_with_options(request, runtime)
 
@@ -7788,6 +8966,10 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribeApisByVpcAccessRequest,
     ) -> cloud_api20160714_models.DescribeApisByVpcAccessResponse:
+        """
+        @param request: DescribeApisByVpcAccessRequest
+        @return: DescribeApisByVpcAccessResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_apis_by_vpc_access_with_options_async(request, runtime)
 
@@ -7796,6 +8978,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeApisWithStageNameIntegratedByAppRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeApisWithStageNameIntegratedByAppResponse:
+        """
+        @summary Queries APIs by application. The environment information is also returned.
+        
+        @param request: DescribeApisWithStageNameIntegratedByAppRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApisWithStageNameIntegratedByAppResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.api_name):
@@ -7840,6 +9029,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeApisWithStageNameIntegratedByAppRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeApisWithStageNameIntegratedByAppResponse:
+        """
+        @summary Queries APIs by application. The environment information is also returned.
+        
+        @param request: DescribeApisWithStageNameIntegratedByAppRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApisWithStageNameIntegratedByAppResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.api_name):
@@ -7883,6 +9079,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribeApisWithStageNameIntegratedByAppRequest,
     ) -> cloud_api20160714_models.DescribeApisWithStageNameIntegratedByAppResponse:
+        """
+        @summary Queries APIs by application. The environment information is also returned.
+        
+        @param request: DescribeApisWithStageNameIntegratedByAppRequest
+        @return: DescribeApisWithStageNameIntegratedByAppResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_apis_with_stage_name_integrated_by_app_with_options(request, runtime)
 
@@ -7890,6 +9092,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribeApisWithStageNameIntegratedByAppRequest,
     ) -> cloud_api20160714_models.DescribeApisWithStageNameIntegratedByAppResponse:
+        """
+        @summary Queries APIs by application. The environment information is also returned.
+        
+        @param request: DescribeApisWithStageNameIntegratedByAppRequest
+        @return: DescribeApisWithStageNameIntegratedByAppResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_apis_with_stage_name_integrated_by_app_with_options_async(request, runtime)
 
@@ -7898,6 +9106,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeAppRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeAppResponse:
+        """
+        @summary Queries the apps that can be authorized.
+        
+        @param request: DescribeAppRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAppResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -7928,6 +9143,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeAppRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeAppResponse:
+        """
+        @summary Queries the apps that can be authorized.
+        
+        @param request: DescribeAppRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAppResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -7957,6 +9179,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribeAppRequest,
     ) -> cloud_api20160714_models.DescribeAppResponse:
+        """
+        @summary Queries the apps that can be authorized.
+        
+        @param request: DescribeAppRequest
+        @return: DescribeAppResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_app_with_options(request, runtime)
 
@@ -7964,6 +9192,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribeAppRequest,
     ) -> cloud_api20160714_models.DescribeAppResponse:
+        """
+        @summary Queries the apps that can be authorized.
+        
+        @param request: DescribeAppRequest
+        @return: DescribeAppResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_app_with_options_async(request, runtime)
 
@@ -7973,8 +9207,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeAppAttributesResponse:
         """
-        This operation is intended for API callers.
-        *   AppId is optional.
+        @summary Queries apps and their basic information.
+        
+        @description    This operation is intended for API callers.
+        AppId is optional.
         
         @param request: DescribeAppAttributesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8029,8 +9265,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeAppAttributesResponse:
         """
-        This operation is intended for API callers.
-        *   AppId is optional.
+        @summary Queries apps and their basic information.
+        
+        @description    This operation is intended for API callers.
+        AppId is optional.
         
         @param request: DescribeAppAttributesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8084,8 +9322,10 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeAppAttributesRequest,
     ) -> cloud_api20160714_models.DescribeAppAttributesResponse:
         """
-        This operation is intended for API callers.
-        *   AppId is optional.
+        @summary Queries apps and their basic information.
+        
+        @description    This operation is intended for API callers.
+        AppId is optional.
         
         @param request: DescribeAppAttributesRequest
         @return: DescribeAppAttributesResponse
@@ -8098,8 +9338,10 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeAppAttributesRequest,
     ) -> cloud_api20160714_models.DescribeAppAttributesResponse:
         """
-        This operation is intended for API callers.
-        *   AppId is optional.
+        @summary Queries apps and their basic information.
+        
+        @description    This operation is intended for API callers.
+        AppId is optional.
         
         @param request: DescribeAppAttributesRequest
         @return: DescribeAppAttributesResponse
@@ -8113,7 +9355,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeAppSecurityResponse:
         """
-        This operation is intended for API callers.
+        @summary This key is used for authentication when an API call is made.
+        
+        @description    This operation is intended for API callers.
         
         @param request: DescribeAppSecurityRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8152,7 +9396,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeAppSecurityResponse:
         """
-        This operation is intended for API callers.
+        @summary This key is used for authentication when an API call is made.
+        
+        @description    This operation is intended for API callers.
         
         @param request: DescribeAppSecurityRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8190,7 +9436,9 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeAppSecurityRequest,
     ) -> cloud_api20160714_models.DescribeAppSecurityResponse:
         """
-        This operation is intended for API callers.
+        @summary This key is used for authentication when an API call is made.
+        
+        @description    This operation is intended for API callers.
         
         @param request: DescribeAppSecurityRequest
         @return: DescribeAppSecurityResponse
@@ -8203,7 +9451,9 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeAppSecurityRequest,
     ) -> cloud_api20160714_models.DescribeAppSecurityResponse:
         """
-        This operation is intended for API callers.
+        @summary This key is used for authentication when an API call is made.
+        
+        @description    This operation is intended for API callers.
         
         @param request: DescribeAppSecurityRequest
         @return: DescribeAppSecurityResponse
@@ -8217,9 +9467,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeAppsResponse:
         """
-        This API is intended for API providers.
-        *   API providers can use the app IDs or their Apsara Stack tenant accounts to query app information.
-        *   Each provider can call this operation for a maximum of 200 times every day in a region.
+        @summary Queries the apps. App information is returned only to the app owner.
+        
+        @description    This API is intended for API providers.
+        API providers can use the app IDs or their Apsara Stack tenant accounts to query app information.
+        Each provider can call this operation for a maximum of 200 times every day in a region.
         
         @param request: DescribeAppsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8262,9 +9514,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeAppsResponse:
         """
-        This API is intended for API providers.
-        *   API providers can use the app IDs or their Apsara Stack tenant accounts to query app information.
-        *   Each provider can call this operation for a maximum of 200 times every day in a region.
+        @summary Queries the apps. App information is returned only to the app owner.
+        
+        @description    This API is intended for API providers.
+        API providers can use the app IDs or their Apsara Stack tenant accounts to query app information.
+        Each provider can call this operation for a maximum of 200 times every day in a region.
         
         @param request: DescribeAppsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8306,9 +9560,11 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeAppsRequest,
     ) -> cloud_api20160714_models.DescribeAppsResponse:
         """
-        This API is intended for API providers.
-        *   API providers can use the app IDs or their Apsara Stack tenant accounts to query app information.
-        *   Each provider can call this operation for a maximum of 200 times every day in a region.
+        @summary Queries the apps. App information is returned only to the app owner.
+        
+        @description    This API is intended for API providers.
+        API providers can use the app IDs or their Apsara Stack tenant accounts to query app information.
+        Each provider can call this operation for a maximum of 200 times every day in a region.
         
         @param request: DescribeAppsRequest
         @return: DescribeAppsResponse
@@ -8321,9 +9577,11 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeAppsRequest,
     ) -> cloud_api20160714_models.DescribeAppsResponse:
         """
-        This API is intended for API providers.
-        *   API providers can use the app IDs or their Apsara Stack tenant accounts to query app information.
-        *   Each provider can call this operation for a maximum of 200 times every day in a region.
+        @summary Queries the apps. App information is returned only to the app owner.
+        
+        @description    This API is intended for API providers.
+        API providers can use the app IDs or their Apsara Stack tenant accounts to query app information.
+        Each provider can call this operation for a maximum of 200 times every day in a region.
         
         @param request: DescribeAppsRequest
         @return: DescribeAppsResponse
@@ -8336,6 +9594,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeAppsByApiProductRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeAppsByApiProductResponse:
+        """
+        @summary Queries authorized applications by API product.
+        
+        @param request: DescribeAppsByApiProductRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAppsByApiProductResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.api_product_id):
@@ -8372,6 +9637,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeAppsByApiProductRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeAppsByApiProductResponse:
+        """
+        @summary Queries authorized applications by API product.
+        
+        @param request: DescribeAppsByApiProductRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAppsByApiProductResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.api_product_id):
@@ -8407,6 +9679,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribeAppsByApiProductRequest,
     ) -> cloud_api20160714_models.DescribeAppsByApiProductResponse:
+        """
+        @summary Queries authorized applications by API product.
+        
+        @param request: DescribeAppsByApiProductRequest
+        @return: DescribeAppsByApiProductResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_apps_by_api_product_with_options(request, runtime)
 
@@ -8414,6 +9692,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribeAppsByApiProductRequest,
     ) -> cloud_api20160714_models.DescribeAppsByApiProductResponse:
+        """
+        @summary Queries authorized applications by API product.
+        
+        @param request: DescribeAppsByApiProductRequest
+        @return: DescribeAppsByApiProductResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_apps_by_api_product_with_options_async(request, runtime)
 
@@ -8423,8 +9707,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeAuthorizedApisResponse:
         """
-        This operation is intended for API callers.
-        *   The specified application can call all APIs included in the responses.
+        @summary Queries the authorized APIs of a specified APP.
+        
+        @description    This operation is intended for API callers.
+        The specified application can call all APIs included in the responses.
         
         @param request: DescribeAuthorizedApisRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8465,8 +9751,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeAuthorizedApisResponse:
         """
-        This operation is intended for API callers.
-        *   The specified application can call all APIs included in the responses.
+        @summary Queries the authorized APIs of a specified APP.
+        
+        @description    This operation is intended for API callers.
+        The specified application can call all APIs included in the responses.
         
         @param request: DescribeAuthorizedApisRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8506,8 +9794,10 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeAuthorizedApisRequest,
     ) -> cloud_api20160714_models.DescribeAuthorizedApisResponse:
         """
-        This operation is intended for API callers.
-        *   The specified application can call all APIs included in the responses.
+        @summary Queries the authorized APIs of a specified APP.
+        
+        @description    This operation is intended for API callers.
+        The specified application can call all APIs included in the responses.
         
         @param request: DescribeAuthorizedApisRequest
         @return: DescribeAuthorizedApisResponse
@@ -8520,8 +9810,10 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeAuthorizedApisRequest,
     ) -> cloud_api20160714_models.DescribeAuthorizedApisResponse:
         """
-        This operation is intended for API callers.
-        *   The specified application can call all APIs included in the responses.
+        @summary Queries the authorized APIs of a specified APP.
+        
+        @description    This operation is intended for API callers.
+        The specified application can call all APIs included in the responses.
         
         @param request: DescribeAuthorizedApisRequest
         @return: DescribeAuthorizedApisResponse
@@ -8535,8 +9827,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeAuthorizedAppsResponse:
         """
-        This operation is intended for API providers.
-        *   All applications included in the responses have access to the specified API.
+        @summary Queries the current apps.
+        
+        @description    This operation is intended for API providers.
+        All applications included in the responses have access to the specified API.
         
         @param request: DescribeAuthorizedAppsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8587,8 +9881,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeAuthorizedAppsResponse:
         """
-        This operation is intended for API providers.
-        *   All applications included in the responses have access to the specified API.
+        @summary Queries the current apps.
+        
+        @description    This operation is intended for API providers.
+        All applications included in the responses have access to the specified API.
         
         @param request: DescribeAuthorizedAppsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8638,8 +9934,10 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeAuthorizedAppsRequest,
     ) -> cloud_api20160714_models.DescribeAuthorizedAppsResponse:
         """
-        This operation is intended for API providers.
-        *   All applications included in the responses have access to the specified API.
+        @summary Queries the current apps.
+        
+        @description    This operation is intended for API providers.
+        All applications included in the responses have access to the specified API.
         
         @param request: DescribeAuthorizedAppsRequest
         @return: DescribeAuthorizedAppsResponse
@@ -8652,8 +9950,10 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeAuthorizedAppsRequest,
     ) -> cloud_api20160714_models.DescribeAuthorizedAppsResponse:
         """
-        This operation is intended for API providers.
-        *   All applications included in the responses have access to the specified API.
+        @summary Queries the current apps.
+        
+        @description    This operation is intended for API providers.
+        All applications included in the responses have access to the specified API.
         
         @param request: DescribeAuthorizedAppsRequest
         @return: DescribeAuthorizedAppsResponse
@@ -8666,6 +9966,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeBackendInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeBackendInfoResponse:
+        """
+        @summary Queries the information about a backend service and its URL configured for each environment.
+        
+        @param request: DescribeBackendInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeBackendInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backend_id):
@@ -8696,6 +10003,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeBackendInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeBackendInfoResponse:
+        """
+        @summary Queries the information about a backend service and its URL configured for each environment.
+        
+        @param request: DescribeBackendInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeBackendInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backend_id):
@@ -8725,6 +10039,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribeBackendInfoRequest,
     ) -> cloud_api20160714_models.DescribeBackendInfoResponse:
+        """
+        @summary Queries the information about a backend service and its URL configured for each environment.
+        
+        @param request: DescribeBackendInfoRequest
+        @return: DescribeBackendInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_backend_info_with_options(request, runtime)
 
@@ -8732,6 +10052,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribeBackendInfoRequest,
     ) -> cloud_api20160714_models.DescribeBackendInfoResponse:
+        """
+        @summary Queries the information about a backend service and its URL configured for each environment.
+        
+        @param request: DescribeBackendInfoRequest
+        @return: DescribeBackendInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_backend_info_with_options_async(request, runtime)
 
@@ -8740,6 +10066,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeBackendListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeBackendListResponse:
+        """
+        @summary Queries backend services. You can filter backend services by backend service name and backend service type.
+        
+        @param request: DescribeBackendListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeBackendListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backend_name):
@@ -8778,6 +10111,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeBackendListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeBackendListResponse:
+        """
+        @summary Queries backend services. You can filter backend services by backend service name and backend service type.
+        
+        @param request: DescribeBackendListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeBackendListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backend_name):
@@ -8815,6 +10155,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribeBackendListRequest,
     ) -> cloud_api20160714_models.DescribeBackendListResponse:
+        """
+        @summary Queries backend services. You can filter backend services by backend service name and backend service type.
+        
+        @param request: DescribeBackendListRequest
+        @return: DescribeBackendListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_backend_list_with_options(request, runtime)
 
@@ -8822,6 +10168,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribeBackendListRequest,
     ) -> cloud_api20160714_models.DescribeBackendListResponse:
+        """
+        @summary Queries backend services. You can filter backend services by backend service name and backend service type.
+        
+        @param request: DescribeBackendListRequest
+        @return: DescribeBackendListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_backend_list_with_options_async(request, runtime)
 
@@ -8830,6 +10182,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeDatasetInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeDatasetInfoResponse:
+        """
+        @summary Queries the information about a single dataset.
+        
+        @param request: DescribeDatasetInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDatasetInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dataset_id):
@@ -8860,6 +10219,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeDatasetInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeDatasetInfoResponse:
+        """
+        @summary Queries the information about a single dataset.
+        
+        @param request: DescribeDatasetInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDatasetInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dataset_id):
@@ -8889,6 +10255,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribeDatasetInfoRequest,
     ) -> cloud_api20160714_models.DescribeDatasetInfoResponse:
+        """
+        @summary Queries the information about a single dataset.
+        
+        @param request: DescribeDatasetInfoRequest
+        @return: DescribeDatasetInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_dataset_info_with_options(request, runtime)
 
@@ -8896,6 +10268,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribeDatasetInfoRequest,
     ) -> cloud_api20160714_models.DescribeDatasetInfoResponse:
+        """
+        @summary Queries the information about a single dataset.
+        
+        @param request: DescribeDatasetInfoRequest
+        @return: DescribeDatasetInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_dataset_info_with_options_async(request, runtime)
 
@@ -8904,6 +10282,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeDatasetItemInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeDatasetItemInfoResponse:
+        """
+        @summary Queries a data entry in a custom dataset.
+        
+        @param request: DescribeDatasetItemInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDatasetItemInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dataset_id):
@@ -8938,6 +10323,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeDatasetItemInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeDatasetItemInfoResponse:
+        """
+        @summary Queries a data entry in a custom dataset.
+        
+        @param request: DescribeDatasetItemInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDatasetItemInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dataset_id):
@@ -8971,6 +10363,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribeDatasetItemInfoRequest,
     ) -> cloud_api20160714_models.DescribeDatasetItemInfoResponse:
+        """
+        @summary Queries a data entry in a custom dataset.
+        
+        @param request: DescribeDatasetItemInfoRequest
+        @return: DescribeDatasetItemInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_dataset_item_info_with_options(request, runtime)
 
@@ -8978,6 +10376,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribeDatasetItemInfoRequest,
     ) -> cloud_api20160714_models.DescribeDatasetItemInfoResponse:
+        """
+        @summary Queries a data entry in a custom dataset.
+        
+        @param request: DescribeDatasetItemInfoRequest
+        @return: DescribeDatasetItemInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_dataset_item_info_with_options_async(request, runtime)
 
@@ -8986,6 +10390,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeDatasetItemListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeDatasetItemListResponse:
+        """
+        @summary Queries the data entries of a custom dataset.
+        
+        @param request: DescribeDatasetItemListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDatasetItemListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dataset_id):
@@ -9022,6 +10433,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeDatasetItemListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeDatasetItemListResponse:
+        """
+        @summary Queries the data entries of a custom dataset.
+        
+        @param request: DescribeDatasetItemListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDatasetItemListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dataset_id):
@@ -9057,6 +10475,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribeDatasetItemListRequest,
     ) -> cloud_api20160714_models.DescribeDatasetItemListResponse:
+        """
+        @summary Queries the data entries of a custom dataset.
+        
+        @param request: DescribeDatasetItemListRequest
+        @return: DescribeDatasetItemListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_dataset_item_list_with_options(request, runtime)
 
@@ -9064,6 +10488,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribeDatasetItemListRequest,
     ) -> cloud_api20160714_models.DescribeDatasetItemListResponse:
+        """
+        @summary Queries the data entries of a custom dataset.
+        
+        @param request: DescribeDatasetItemListRequest
+        @return: DescribeDatasetItemListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_dataset_item_list_with_options_async(request, runtime)
 
@@ -9072,6 +10502,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeDatasetListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeDatasetListResponse:
+        """
+        @summary Queries custom datasets.
+        
+        @param request: DescribeDatasetListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDatasetListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dataset_ids):
@@ -9108,6 +10545,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeDatasetListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeDatasetListResponse:
+        """
+        @summary Queries custom datasets.
+        
+        @param request: DescribeDatasetListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDatasetListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dataset_ids):
@@ -9143,6 +10587,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribeDatasetListRequest,
     ) -> cloud_api20160714_models.DescribeDatasetListResponse:
+        """
+        @summary Queries custom datasets.
+        
+        @param request: DescribeDatasetListRequest
+        @return: DescribeDatasetListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_dataset_list_with_options(request, runtime)
 
@@ -9150,6 +10600,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribeDatasetListRequest,
     ) -> cloud_api20160714_models.DescribeDatasetListResponse:
+        """
+        @summary Queries custom datasets.
+        
+        @param request: DescribeDatasetListRequest
+        @return: DescribeDatasetListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_dataset_list_with_options_async(request, runtime)
 
@@ -9158,6 +10614,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeDeployApiTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeDeployApiTaskResponse:
+        """
+        @summary Queries the progress of an asynchronous API publishing task.
+        
+        @param request: DescribeDeployApiTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDeployApiTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.operation_uid):
@@ -9188,6 +10651,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeDeployApiTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeDeployApiTaskResponse:
+        """
+        @summary Queries the progress of an asynchronous API publishing task.
+        
+        @param request: DescribeDeployApiTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDeployApiTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.operation_uid):
@@ -9217,6 +10687,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribeDeployApiTaskRequest,
     ) -> cloud_api20160714_models.DescribeDeployApiTaskResponse:
+        """
+        @summary Queries the progress of an asynchronous API publishing task.
+        
+        @param request: DescribeDeployApiTaskRequest
+        @return: DescribeDeployApiTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_deploy_api_task_with_options(request, runtime)
 
@@ -9224,6 +10700,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribeDeployApiTaskRequest,
     ) -> cloud_api20160714_models.DescribeDeployApiTaskResponse:
+        """
+        @summary Queries the progress of an asynchronous API publishing task.
+        
+        @param request: DescribeDeployApiTaskRequest
+        @return: DescribeDeployApiTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_deploy_api_task_with_options_async(request, runtime)
 
@@ -9232,6 +10714,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeDeployedApiRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeDeployedApiResponse:
+        """
+        @summary Queries the definition of an API that takes effect in an environment. The definition may differ from the definition being edited.
+        
+        @param request: DescribeDeployedApiRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDeployedApiResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.api_id):
@@ -9266,6 +10755,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeDeployedApiRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeDeployedApiResponse:
+        """
+        @summary Queries the definition of an API that takes effect in an environment. The definition may differ from the definition being edited.
+        
+        @param request: DescribeDeployedApiRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDeployedApiResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.api_id):
@@ -9299,6 +10795,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribeDeployedApiRequest,
     ) -> cloud_api20160714_models.DescribeDeployedApiResponse:
+        """
+        @summary Queries the definition of an API that takes effect in an environment. The definition may differ from the definition being edited.
+        
+        @param request: DescribeDeployedApiRequest
+        @return: DescribeDeployedApiResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_deployed_api_with_options(request, runtime)
 
@@ -9306,6 +10808,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribeDeployedApiRequest,
     ) -> cloud_api20160714_models.DescribeDeployedApiResponse:
+        """
+        @summary Queries the definition of an API that takes effect in an environment. The definition may differ from the definition being edited.
+        
+        @param request: DescribeDeployedApiRequest
+        @return: DescribeDeployedApiResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_deployed_api_with_options_async(request, runtime)
 
@@ -9315,7 +10823,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeDeployedApisResponse:
         """
-        This operation is intended for API callers.
+        @summary Queries the APIs that are published to and running in an environment.
+        
+        @description    This operation is intended for API callers.
         
         @param request: DescribeDeployedApisRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9370,7 +10880,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeDeployedApisResponse:
         """
-        This operation is intended for API callers.
+        @summary Queries the APIs that are published to and running in an environment.
+        
+        @description    This operation is intended for API callers.
         
         @param request: DescribeDeployedApisRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9424,7 +10936,9 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeDeployedApisRequest,
     ) -> cloud_api20160714_models.DescribeDeployedApisResponse:
         """
-        This operation is intended for API callers.
+        @summary Queries the APIs that are published to and running in an environment.
+        
+        @description    This operation is intended for API callers.
         
         @param request: DescribeDeployedApisRequest
         @return: DescribeDeployedApisResponse
@@ -9437,7 +10951,9 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeDeployedApisRequest,
     ) -> cloud_api20160714_models.DescribeDeployedApisResponse:
         """
-        This operation is intended for API callers.
+        @summary Queries the APIs that are published to and running in an environment.
+        
+        @description    This operation is intended for API callers.
         
         @param request: DescribeDeployedApisRequest
         @return: DescribeDeployedApisResponse
@@ -9450,6 +10966,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeDomainRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeDomainResponse:
+        """
+        @summary Queries the details about a bound custom domain name, including the system assigned second-level domain name, custom domain name, and SSL certificate.
+        
+        @param request: DescribeDomainRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDomainResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -9482,6 +11005,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeDomainRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeDomainResponse:
+        """
+        @summary Queries the details about a bound custom domain name, including the system assigned second-level domain name, custom domain name, and SSL certificate.
+        
+        @param request: DescribeDomainRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDomainResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -9513,6 +11043,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribeDomainRequest,
     ) -> cloud_api20160714_models.DescribeDomainResponse:
+        """
+        @summary Queries the details about a bound custom domain name, including the system assigned second-level domain name, custom domain name, and SSL certificate.
+        
+        @param request: DescribeDomainRequest
+        @return: DescribeDomainResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_domain_with_options(request, runtime)
 
@@ -9520,6 +11056,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribeDomainRequest,
     ) -> cloud_api20160714_models.DescribeDomainResponse:
+        """
+        @summary Queries the details about a bound custom domain name, including the system assigned second-level domain name, custom domain name, and SSL certificate.
+        
+        @param request: DescribeDomainRequest
+        @return: DescribeDomainResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_domain_with_options_async(request, runtime)
 
@@ -9528,6 +11070,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeGroupLatencyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeGroupLatencyResponse:
+        """
+        @summary Queries the average latency of an API group in an environment.
+        
+        @param request: DescribeGroupLatencyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeGroupLatencyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -9564,6 +11113,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeGroupLatencyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeGroupLatencyResponse:
+        """
+        @summary Queries the average latency of an API group in an environment.
+        
+        @param request: DescribeGroupLatencyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeGroupLatencyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -9599,6 +11155,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribeGroupLatencyRequest,
     ) -> cloud_api20160714_models.DescribeGroupLatencyResponse:
+        """
+        @summary Queries the average latency of an API group in an environment.
+        
+        @param request: DescribeGroupLatencyRequest
+        @return: DescribeGroupLatencyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_group_latency_with_options(request, runtime)
 
@@ -9606,6 +11168,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribeGroupLatencyRequest,
     ) -> cloud_api20160714_models.DescribeGroupLatencyResponse:
+        """
+        @summary Queries the average latency of an API group in an environment.
+        
+        @param request: DescribeGroupLatencyRequest
+        @return: DescribeGroupLatencyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_group_latency_with_options_async(request, runtime)
 
@@ -9614,6 +11182,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeGroupQpsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeGroupQpsResponse:
+        """
+        @summary Queries the statistics on the number of requests directed to an API group within a period of time.
+        
+        @param request: DescribeGroupQpsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeGroupQpsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -9650,6 +11225,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeGroupQpsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeGroupQpsResponse:
+        """
+        @summary Queries the statistics on the number of requests directed to an API group within a period of time.
+        
+        @param request: DescribeGroupQpsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeGroupQpsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -9685,6 +11267,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribeGroupQpsRequest,
     ) -> cloud_api20160714_models.DescribeGroupQpsResponse:
+        """
+        @summary Queries the statistics on the number of requests directed to an API group within a period of time.
+        
+        @param request: DescribeGroupQpsRequest
+        @return: DescribeGroupQpsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_group_qps_with_options(request, runtime)
 
@@ -9692,6 +11280,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribeGroupQpsRequest,
     ) -> cloud_api20160714_models.DescribeGroupQpsResponse:
+        """
+        @summary Queries the statistics on the number of requests directed to an API group within a period of time.
+        
+        @param request: DescribeGroupQpsRequest
+        @return: DescribeGroupQpsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_group_qps_with_options_async(request, runtime)
 
@@ -9700,6 +11294,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeGroupTrafficRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeGroupTrafficResponse:
+        """
+        @summary Queries the traffic of an API group.
+        
+        @param request: DescribeGroupTrafficRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeGroupTrafficResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -9736,6 +11337,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeGroupTrafficRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeGroupTrafficResponse:
+        """
+        @summary Queries the traffic of an API group.
+        
+        @param request: DescribeGroupTrafficRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeGroupTrafficResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -9771,6 +11379,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribeGroupTrafficRequest,
     ) -> cloud_api20160714_models.DescribeGroupTrafficResponse:
+        """
+        @summary Queries the traffic of an API group.
+        
+        @param request: DescribeGroupTrafficRequest
+        @return: DescribeGroupTrafficResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_group_traffic_with_options(request, runtime)
 
@@ -9778,6 +11392,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribeGroupTrafficRequest,
     ) -> cloud_api20160714_models.DescribeGroupTrafficResponse:
+        """
+        @summary Queries the traffic of an API group.
+        
+        @param request: DescribeGroupTrafficRequest
+        @return: DescribeGroupTrafficResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_group_traffic_with_options_async(request, runtime)
 
@@ -9786,6 +11406,11 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeHistoryApisRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeHistoryApisResponse:
+        """
+        @param request: DescribeHistoryApisRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeHistoryApisResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.api_id):
@@ -9826,6 +11451,11 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeHistoryApisRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeHistoryApisResponse:
+        """
+        @param request: DescribeHistoryApisRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeHistoryApisResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.api_id):
@@ -9865,6 +11495,10 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribeHistoryApisRequest,
     ) -> cloud_api20160714_models.DescribeHistoryApisResponse:
+        """
+        @param request: DescribeHistoryApisRequest
+        @return: DescribeHistoryApisResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_history_apis_with_options(request, runtime)
 
@@ -9872,6 +11506,10 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribeHistoryApisRequest,
     ) -> cloud_api20160714_models.DescribeHistoryApisResponse:
+        """
+        @param request: DescribeHistoryApisRequest
+        @return: DescribeHistoryApisResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_history_apis_with_options_async(request, runtime)
 
@@ -9880,6 +11518,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeImportOASTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeImportOASTaskResponse:
+        """
+        @summary Queries the result of an OAS API import task.
+        
+        @param request: DescribeImportOASTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeImportOASTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.operation_id):
@@ -9910,6 +11555,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeImportOASTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeImportOASTaskResponse:
+        """
+        @summary Queries the result of an OAS API import task.
+        
+        @param request: DescribeImportOASTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeImportOASTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.operation_id):
@@ -9939,6 +11591,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribeImportOASTaskRequest,
     ) -> cloud_api20160714_models.DescribeImportOASTaskResponse:
+        """
+        @summary Queries the result of an OAS API import task.
+        
+        @param request: DescribeImportOASTaskRequest
+        @return: DescribeImportOASTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_import_oastask_with_options(request, runtime)
 
@@ -9946,6 +11604,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribeImportOASTaskRequest,
     ) -> cloud_api20160714_models.DescribeImportOASTaskResponse:
+        """
+        @summary Queries the result of an OAS API import task.
+        
+        @param request: DescribeImportOASTaskRequest
+        @return: DescribeImportOASTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_import_oastask_with_options_async(request, runtime)
 
@@ -9954,6 +11618,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeInstanceDropConnectionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeInstanceDropConnectionsResponse:
+        """
+        @summary Queries the number of lost connections to a dedicated instance within a period of time.
+        
+        @param request: DescribeInstanceDropConnectionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceDropConnectionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -9990,6 +11661,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeInstanceDropConnectionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeInstanceDropConnectionsResponse:
+        """
+        @summary Queries the number of lost connections to a dedicated instance within a period of time.
+        
+        @param request: DescribeInstanceDropConnectionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceDropConnectionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -10025,6 +11703,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribeInstanceDropConnectionsRequest,
     ) -> cloud_api20160714_models.DescribeInstanceDropConnectionsResponse:
+        """
+        @summary Queries the number of lost connections to a dedicated instance within a period of time.
+        
+        @param request: DescribeInstanceDropConnectionsRequest
+        @return: DescribeInstanceDropConnectionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_instance_drop_connections_with_options(request, runtime)
 
@@ -10032,6 +11716,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribeInstanceDropConnectionsRequest,
     ) -> cloud_api20160714_models.DescribeInstanceDropConnectionsResponse:
+        """
+        @summary Queries the number of lost connections to a dedicated instance within a period of time.
+        
+        @param request: DescribeInstanceDropConnectionsRequest
+        @return: DescribeInstanceDropConnectionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_instance_drop_connections_with_options_async(request, runtime)
 
@@ -10040,6 +11730,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeInstanceDropPacketRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeInstanceDropPacketResponse:
+        """
+        @summary Queries the number of dropped packets within a period of time.
+        
+        @param request: DescribeInstanceDropPacketRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceDropPacketResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -10076,6 +11773,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeInstanceDropPacketRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeInstanceDropPacketResponse:
+        """
+        @summary Queries the number of dropped packets within a period of time.
+        
+        @param request: DescribeInstanceDropPacketRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceDropPacketResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -10111,6 +11815,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribeInstanceDropPacketRequest,
     ) -> cloud_api20160714_models.DescribeInstanceDropPacketResponse:
+        """
+        @summary Queries the number of dropped packets within a period of time.
+        
+        @param request: DescribeInstanceDropPacketRequest
+        @return: DescribeInstanceDropPacketResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_instance_drop_packet_with_options(request, runtime)
 
@@ -10118,6 +11828,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribeInstanceDropPacketRequest,
     ) -> cloud_api20160714_models.DescribeInstanceDropPacketResponse:
+        """
+        @summary Queries the number of dropped packets within a period of time.
+        
+        @param request: DescribeInstanceDropPacketRequest
+        @return: DescribeInstanceDropPacketResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_instance_drop_packet_with_options_async(request, runtime)
 
@@ -10126,6 +11842,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeInstanceHttpCodeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeInstanceHttpCodeResponse:
+        """
+        @summary Queries the distribution of HTTP status codes of requests to a dedicated instance within a period of time.
+        
+        @param request: DescribeInstanceHttpCodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceHttpCodeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -10162,6 +11885,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeInstanceHttpCodeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeInstanceHttpCodeResponse:
+        """
+        @summary Queries the distribution of HTTP status codes of requests to a dedicated instance within a period of time.
+        
+        @param request: DescribeInstanceHttpCodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceHttpCodeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -10197,6 +11927,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribeInstanceHttpCodeRequest,
     ) -> cloud_api20160714_models.DescribeInstanceHttpCodeResponse:
+        """
+        @summary Queries the distribution of HTTP status codes of requests to a dedicated instance within a period of time.
+        
+        @param request: DescribeInstanceHttpCodeRequest
+        @return: DescribeInstanceHttpCodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_instance_http_code_with_options(request, runtime)
 
@@ -10204,6 +11940,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribeInstanceHttpCodeRequest,
     ) -> cloud_api20160714_models.DescribeInstanceHttpCodeResponse:
+        """
+        @summary Queries the distribution of HTTP status codes of requests to a dedicated instance within a period of time.
+        
+        @param request: DescribeInstanceHttpCodeRequest
+        @return: DescribeInstanceHttpCodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_instance_http_code_with_options_async(request, runtime)
 
@@ -10212,6 +11954,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeInstanceLatencyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeInstanceLatencyResponse:
+        """
+        @summary Queries the average latency of a dedicated instance over a period of time.
+        
+        @param request: DescribeInstanceLatencyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceLatencyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -10248,6 +11997,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeInstanceLatencyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeInstanceLatencyResponse:
+        """
+        @summary Queries the average latency of a dedicated instance over a period of time.
+        
+        @param request: DescribeInstanceLatencyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceLatencyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -10283,6 +12039,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribeInstanceLatencyRequest,
     ) -> cloud_api20160714_models.DescribeInstanceLatencyResponse:
+        """
+        @summary Queries the average latency of a dedicated instance over a period of time.
+        
+        @param request: DescribeInstanceLatencyRequest
+        @return: DescribeInstanceLatencyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_instance_latency_with_options(request, runtime)
 
@@ -10290,6 +12052,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribeInstanceLatencyRequest,
     ) -> cloud_api20160714_models.DescribeInstanceLatencyResponse:
+        """
+        @summary Queries the average latency of a dedicated instance over a period of time.
+        
+        @param request: DescribeInstanceLatencyRequest
+        @return: DescribeInstanceLatencyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_instance_latency_with_options_async(request, runtime)
 
@@ -10298,6 +12066,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeInstanceNewConnectionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeInstanceNewConnectionsResponse:
+        """
+        @summary Queries the number of new connections to a dedicated instance within a period of time.
+        
+        @param request: DescribeInstanceNewConnectionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceNewConnectionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -10334,6 +12109,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeInstanceNewConnectionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeInstanceNewConnectionsResponse:
+        """
+        @summary Queries the number of new connections to a dedicated instance within a period of time.
+        
+        @param request: DescribeInstanceNewConnectionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceNewConnectionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -10369,6 +12151,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribeInstanceNewConnectionsRequest,
     ) -> cloud_api20160714_models.DescribeInstanceNewConnectionsResponse:
+        """
+        @summary Queries the number of new connections to a dedicated instance within a period of time.
+        
+        @param request: DescribeInstanceNewConnectionsRequest
+        @return: DescribeInstanceNewConnectionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_instance_new_connections_with_options(request, runtime)
 
@@ -10376,6 +12164,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribeInstanceNewConnectionsRequest,
     ) -> cloud_api20160714_models.DescribeInstanceNewConnectionsResponse:
+        """
+        @summary Queries the number of new connections to a dedicated instance within a period of time.
+        
+        @param request: DescribeInstanceNewConnectionsRequest
+        @return: DescribeInstanceNewConnectionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_instance_new_connections_with_options_async(request, runtime)
 
@@ -10384,6 +12178,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeInstancePacketsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeInstancePacketsResponse:
+        """
+        @summary Queries the numbers of inbound and outbound packets of a dedicated instance within a period of time.
+        
+        @param request: DescribeInstancePacketsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstancePacketsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -10420,6 +12221,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeInstancePacketsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeInstancePacketsResponse:
+        """
+        @summary Queries the numbers of inbound and outbound packets of a dedicated instance within a period of time.
+        
+        @param request: DescribeInstancePacketsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstancePacketsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -10455,6 +12263,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribeInstancePacketsRequest,
     ) -> cloud_api20160714_models.DescribeInstancePacketsResponse:
+        """
+        @summary Queries the numbers of inbound and outbound packets of a dedicated instance within a period of time.
+        
+        @param request: DescribeInstancePacketsRequest
+        @return: DescribeInstancePacketsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_instance_packets_with_options(request, runtime)
 
@@ -10462,6 +12276,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribeInstancePacketsRequest,
     ) -> cloud_api20160714_models.DescribeInstancePacketsResponse:
+        """
+        @summary Queries the numbers of inbound and outbound packets of a dedicated instance within a period of time.
+        
+        @param request: DescribeInstancePacketsRequest
+        @return: DescribeInstancePacketsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_instance_packets_with_options_async(request, runtime)
 
@@ -10470,6 +12290,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeInstanceQpsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeInstanceQpsResponse:
+        """
+        @summary Queries the number of requests to a dedicated instance within a period of time.
+        
+        @param request: DescribeInstanceQpsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceQpsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -10506,6 +12333,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeInstanceQpsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeInstanceQpsResponse:
+        """
+        @summary Queries the number of requests to a dedicated instance within a period of time.
+        
+        @param request: DescribeInstanceQpsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceQpsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -10541,6 +12375,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribeInstanceQpsRequest,
     ) -> cloud_api20160714_models.DescribeInstanceQpsResponse:
+        """
+        @summary Queries the number of requests to a dedicated instance within a period of time.
+        
+        @param request: DescribeInstanceQpsRequest
+        @return: DescribeInstanceQpsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_instance_qps_with_options(request, runtime)
 
@@ -10548,6 +12388,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribeInstanceQpsRequest,
     ) -> cloud_api20160714_models.DescribeInstanceQpsResponse:
+        """
+        @summary Queries the number of requests to a dedicated instance within a period of time.
+        
+        @param request: DescribeInstanceQpsRequest
+        @return: DescribeInstanceQpsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_instance_qps_with_options_async(request, runtime)
 
@@ -10556,6 +12402,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeInstanceSlbConnectRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeInstanceSlbConnectResponse:
+        """
+        @summary Queries the number of concurrent connections to a dedicated instance within a period of time.
+        
+        @param request: DescribeInstanceSlbConnectRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceSlbConnectResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -10592,6 +12445,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeInstanceSlbConnectRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeInstanceSlbConnectResponse:
+        """
+        @summary Queries the number of concurrent connections to a dedicated instance within a period of time.
+        
+        @param request: DescribeInstanceSlbConnectRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceSlbConnectResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -10627,6 +12487,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribeInstanceSlbConnectRequest,
     ) -> cloud_api20160714_models.DescribeInstanceSlbConnectResponse:
+        """
+        @summary Queries the number of concurrent connections to a dedicated instance within a period of time.
+        
+        @param request: DescribeInstanceSlbConnectRequest
+        @return: DescribeInstanceSlbConnectResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_instance_slb_connect_with_options(request, runtime)
 
@@ -10634,6 +12500,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribeInstanceSlbConnectRequest,
     ) -> cloud_api20160714_models.DescribeInstanceSlbConnectResponse:
+        """
+        @summary Queries the number of concurrent connections to a dedicated instance within a period of time.
+        
+        @param request: DescribeInstanceSlbConnectRequest
+        @return: DescribeInstanceSlbConnectResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_instance_slb_connect_with_options_async(request, runtime)
 
@@ -10642,6 +12514,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeInstanceTrafficRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeInstanceTrafficResponse:
+        """
+        @summary Queries the request traffic and response traffic of a dedicated instance within a period of time.
+        
+        @param request: DescribeInstanceTrafficRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceTrafficResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -10678,6 +12557,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeInstanceTrafficRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeInstanceTrafficResponse:
+        """
+        @summary Queries the request traffic and response traffic of a dedicated instance within a period of time.
+        
+        @param request: DescribeInstanceTrafficRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceTrafficResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -10713,6 +12599,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribeInstanceTrafficRequest,
     ) -> cloud_api20160714_models.DescribeInstanceTrafficResponse:
+        """
+        @summary Queries the request traffic and response traffic of a dedicated instance within a period of time.
+        
+        @param request: DescribeInstanceTrafficRequest
+        @return: DescribeInstanceTrafficResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_instance_traffic_with_options(request, runtime)
 
@@ -10720,6 +12612,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribeInstanceTrafficRequest,
     ) -> cloud_api20160714_models.DescribeInstanceTrafficResponse:
+        """
+        @summary Queries the request traffic and response traffic of a dedicated instance within a period of time.
+        
+        @param request: DescribeInstanceTrafficRequest
+        @return: DescribeInstanceTrafficResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_instance_traffic_with_options_async(request, runtime)
 
@@ -10728,6 +12626,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeInstancesResponse:
+        """
+        @summary 查询实例信息
+        
+        @param request: DescribeInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.enable_tag_authorization):
@@ -10764,6 +12669,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeInstancesResponse:
+        """
+        @summary 查询实例信息
+        
+        @param request: DescribeInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.enable_tag_authorization):
@@ -10799,6 +12711,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribeInstancesRequest,
     ) -> cloud_api20160714_models.DescribeInstancesResponse:
+        """
+        @summary 查询实例信息
+        
+        @param request: DescribeInstancesRequest
+        @return: DescribeInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_instances_with_options(request, runtime)
 
@@ -10806,6 +12724,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribeInstancesRequest,
     ) -> cloud_api20160714_models.DescribeInstancesResponse:
+        """
+        @summary 查询实例信息
+        
+        @param request: DescribeInstancesRequest
+        @return: DescribeInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_instances_with_options_async(request, runtime)
 
@@ -10815,8 +12739,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeIpControlPolicyItemsResponse:
         """
-        This operation is intended for API providers.
-        *   You can filter the query results by policy ID.
+        @summary Queries the rule entries of an IP address-based traffic control policy.
+        
+        @description    This operation is intended for API providers.
+        You can filter the query results by policy ID.
         
         @param request: DescribeIpControlPolicyItemsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10859,8 +12785,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeIpControlPolicyItemsResponse:
         """
-        This operation is intended for API providers.
-        *   You can filter the query results by policy ID.
+        @summary Queries the rule entries of an IP address-based traffic control policy.
+        
+        @description    This operation is intended for API providers.
+        You can filter the query results by policy ID.
         
         @param request: DescribeIpControlPolicyItemsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10902,8 +12830,10 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeIpControlPolicyItemsRequest,
     ) -> cloud_api20160714_models.DescribeIpControlPolicyItemsResponse:
         """
-        This operation is intended for API providers.
-        *   You can filter the query results by policy ID.
+        @summary Queries the rule entries of an IP address-based traffic control policy.
+        
+        @description    This operation is intended for API providers.
+        You can filter the query results by policy ID.
         
         @param request: DescribeIpControlPolicyItemsRequest
         @return: DescribeIpControlPolicyItemsResponse
@@ -10916,8 +12846,10 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeIpControlPolicyItemsRequest,
     ) -> cloud_api20160714_models.DescribeIpControlPolicyItemsResponse:
         """
-        This operation is intended for API providers.
-        *   You can filter the query results by policy ID.
+        @summary Queries the rule entries of an IP address-based traffic control policy.
+        
+        @description    This operation is intended for API providers.
+        You can filter the query results by policy ID.
         
         @param request: DescribeIpControlPolicyItemsRequest
         @return: DescribeIpControlPolicyItemsResponse
@@ -10931,10 +12863,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeIpControlsResponse:
         """
-        This operation is intended for API providers.
-        *   This operation is used to query the ACLs in a region. Region is a system parameter.
-        *   You can filter the query results by ACL ID, name, or type.
-        *   This operation cannot be used to query specific policies. If you want to query specific policies, call the [DescribeIpControlPolicyItems](~~DescribeIpControlPolicyItems~~) operation.
+        @summary Queries custom access control lists (ACLs) on separate pages.
+        
+        @description    This operation is intended for API providers.
+        This operation is used to query the ACLs in a region. Region is a system parameter.
+        You can filter the query results by ACL ID, name, or type.
+        This operation cannot be used to query specific policies. If you want to query specific policies, call the [DescribeIpControlPolicyItems](~~DescribeIpControlPolicyItems~~) operation.
         
         @param request: DescribeIpControlsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10979,10 +12913,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeIpControlsResponse:
         """
-        This operation is intended for API providers.
-        *   This operation is used to query the ACLs in a region. Region is a system parameter.
-        *   You can filter the query results by ACL ID, name, or type.
-        *   This operation cannot be used to query specific policies. If you want to query specific policies, call the [DescribeIpControlPolicyItems](~~DescribeIpControlPolicyItems~~) operation.
+        @summary Queries custom access control lists (ACLs) on separate pages.
+        
+        @description    This operation is intended for API providers.
+        This operation is used to query the ACLs in a region. Region is a system parameter.
+        You can filter the query results by ACL ID, name, or type.
+        This operation cannot be used to query specific policies. If you want to query specific policies, call the [DescribeIpControlPolicyItems](~~DescribeIpControlPolicyItems~~) operation.
         
         @param request: DescribeIpControlsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11026,10 +12962,12 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeIpControlsRequest,
     ) -> cloud_api20160714_models.DescribeIpControlsResponse:
         """
-        This operation is intended for API providers.
-        *   This operation is used to query the ACLs in a region. Region is a system parameter.
-        *   You can filter the query results by ACL ID, name, or type.
-        *   This operation cannot be used to query specific policies. If you want to query specific policies, call the [DescribeIpControlPolicyItems](~~DescribeIpControlPolicyItems~~) operation.
+        @summary Queries custom access control lists (ACLs) on separate pages.
+        
+        @description    This operation is intended for API providers.
+        This operation is used to query the ACLs in a region. Region is a system parameter.
+        You can filter the query results by ACL ID, name, or type.
+        This operation cannot be used to query specific policies. If you want to query specific policies, call the [DescribeIpControlPolicyItems](~~DescribeIpControlPolicyItems~~) operation.
         
         @param request: DescribeIpControlsRequest
         @return: DescribeIpControlsResponse
@@ -11042,10 +12980,12 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeIpControlsRequest,
     ) -> cloud_api20160714_models.DescribeIpControlsResponse:
         """
-        This operation is intended for API providers.
-        *   This operation is used to query the ACLs in a region. Region is a system parameter.
-        *   You can filter the query results by ACL ID, name, or type.
-        *   This operation cannot be used to query specific policies. If you want to query specific policies, call the [DescribeIpControlPolicyItems](~~DescribeIpControlPolicyItems~~) operation.
+        @summary Queries custom access control lists (ACLs) on separate pages.
+        
+        @description    This operation is intended for API providers.
+        This operation is used to query the ACLs in a region. Region is a system parameter.
+        You can filter the query results by ACL ID, name, or type.
+        This operation cannot be used to query specific policies. If you want to query specific policies, call the [DescribeIpControlPolicyItems](~~DescribeIpControlPolicyItems~~) operation.
         
         @param request: DescribeIpControlsRequest
         @return: DescribeIpControlsResponse
@@ -11058,6 +12998,11 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeLogConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeLogConfigResponse:
+        """
+        @param request: DescribeLogConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeLogConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.log_type):
@@ -11088,6 +13033,11 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeLogConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeLogConfigResponse:
+        """
+        @param request: DescribeLogConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeLogConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.log_type):
@@ -11117,6 +13067,10 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribeLogConfigRequest,
     ) -> cloud_api20160714_models.DescribeLogConfigResponse:
+        """
+        @param request: DescribeLogConfigRequest
+        @return: DescribeLogConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_log_config_with_options(request, runtime)
 
@@ -11124,6 +13078,10 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribeLogConfigRequest,
     ) -> cloud_api20160714_models.DescribeLogConfigResponse:
+        """
+        @param request: DescribeLogConfigRequest
+        @return: DescribeLogConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_log_config_with_options_async(request, runtime)
 
@@ -11132,6 +13090,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeMarketRemainsQuotaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeMarketRemainsQuotaResponse:
+        """
+        @summary Queries the number of remaining ordered relationships for a purchaser.
+        
+        @param request: DescribeMarketRemainsQuotaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMarketRemainsQuotaResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -11162,6 +13127,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeMarketRemainsQuotaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeMarketRemainsQuotaResponse:
+        """
+        @summary Queries the number of remaining ordered relationships for a purchaser.
+        
+        @param request: DescribeMarketRemainsQuotaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMarketRemainsQuotaResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -11191,6 +13163,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribeMarketRemainsQuotaRequest,
     ) -> cloud_api20160714_models.DescribeMarketRemainsQuotaResponse:
+        """
+        @summary Queries the number of remaining ordered relationships for a purchaser.
+        
+        @param request: DescribeMarketRemainsQuotaRequest
+        @return: DescribeMarketRemainsQuotaResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_market_remains_quota_with_options(request, runtime)
 
@@ -11198,6 +13176,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribeMarketRemainsQuotaRequest,
     ) -> cloud_api20160714_models.DescribeMarketRemainsQuotaResponse:
+        """
+        @summary Queries the number of remaining ordered relationships for a purchaser.
+        
+        @param request: DescribeMarketRemainsQuotaRequest
+        @return: DescribeMarketRemainsQuotaResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_market_remains_quota_with_options_async(request, runtime)
 
@@ -11207,7 +13191,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeModelsResponse:
         """
-        Fuzzy queries are supported.
+        @summary Obtains the created models of an API group.
+        
+        @description    Fuzzy queries are supported.
         
         @param request: DescribeModelsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11252,7 +13238,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeModelsResponse:
         """
-        Fuzzy queries are supported.
+        @summary Obtains the created models of an API group.
+        
+        @description    Fuzzy queries are supported.
         
         @param request: DescribeModelsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11296,7 +13284,9 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeModelsRequest,
     ) -> cloud_api20160714_models.DescribeModelsResponse:
         """
-        Fuzzy queries are supported.
+        @summary Obtains the created models of an API group.
+        
+        @description    Fuzzy queries are supported.
         
         @param request: DescribeModelsRequest
         @return: DescribeModelsResponse
@@ -11309,7 +13299,9 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeModelsRequest,
     ) -> cloud_api20160714_models.DescribeModelsResponse:
         """
-        Fuzzy queries are supported.
+        @summary Obtains the created models of an API group.
+        
+        @description    Fuzzy queries are supported.
         
         @param request: DescribeModelsRequest
         @return: DescribeModelsResponse
@@ -11322,6 +13314,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribePluginApisRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribePluginApisResponse:
+        """
+        @summary 根据查询查询绑定的API列表
+        
+        @param request: DescribePluginApisRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePluginApisResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.api_id):
@@ -11368,6 +13367,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribePluginApisRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribePluginApisResponse:
+        """
+        @summary 根据查询查询绑定的API列表
+        
+        @param request: DescribePluginApisRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePluginApisResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.api_id):
@@ -11413,6 +13419,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribePluginApisRequest,
     ) -> cloud_api20160714_models.DescribePluginApisResponse:
+        """
+        @summary 根据查询查询绑定的API列表
+        
+        @param request: DescribePluginApisRequest
+        @return: DescribePluginApisResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_plugin_apis_with_options(request, runtime)
 
@@ -11420,6 +13432,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribePluginApisRequest,
     ) -> cloud_api20160714_models.DescribePluginApisResponse:
+        """
+        @summary 根据查询查询绑定的API列表
+        
+        @param request: DescribePluginApisRequest
+        @return: DescribePluginApisResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_plugin_apis_with_options_async(request, runtime)
 
@@ -11428,6 +13446,11 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribePluginSchemasRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribePluginSchemasResponse:
+        """
+        @param request: DescribePluginSchemasRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePluginSchemasResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.language):
@@ -11458,6 +13481,11 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribePluginSchemasRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribePluginSchemasResponse:
+        """
+        @param request: DescribePluginSchemasRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePluginSchemasResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.language):
@@ -11487,6 +13515,10 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribePluginSchemasRequest,
     ) -> cloud_api20160714_models.DescribePluginSchemasResponse:
+        """
+        @param request: DescribePluginSchemasRequest
+        @return: DescribePluginSchemasResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_plugin_schemas_with_options(request, runtime)
 
@@ -11494,6 +13526,10 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribePluginSchemasRequest,
     ) -> cloud_api20160714_models.DescribePluginSchemasResponse:
+        """
+        @param request: DescribePluginSchemasRequest
+        @return: DescribePluginSchemasResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_plugin_schemas_with_options_async(request, runtime)
 
@@ -11502,6 +13538,11 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribePluginTemplatesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribePluginTemplatesResponse:
+        """
+        @param request: DescribePluginTemplatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePluginTemplatesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.language):
@@ -11534,6 +13575,11 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribePluginTemplatesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribePluginTemplatesResponse:
+        """
+        @param request: DescribePluginTemplatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePluginTemplatesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.language):
@@ -11565,6 +13611,10 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribePluginTemplatesRequest,
     ) -> cloud_api20160714_models.DescribePluginTemplatesResponse:
+        """
+        @param request: DescribePluginTemplatesRequest
+        @return: DescribePluginTemplatesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_plugin_templates_with_options(request, runtime)
 
@@ -11572,6 +13622,10 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribePluginTemplatesRequest,
     ) -> cloud_api20160714_models.DescribePluginTemplatesResponse:
+        """
+        @param request: DescribePluginTemplatesRequest
+        @return: DescribePluginTemplatesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_plugin_templates_with_options_async(request, runtime)
 
@@ -11581,10 +13635,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribePluginsResponse:
         """
-        This operation supports pagination.
-        *   This operation allows you to query plug-ins by business type.
-        *   This operation allows you to query plug-ins by ID.
-        *   This operation allows you to query plug-ins by name.
+        @summary Queries API Gateway plug-ins and the details of the plug-ins.
+        
+        @description    This operation supports pagination.
+        This operation allows you to query plug-ins by business type.
+        This operation allows you to query plug-ins by ID.
+        This operation allows you to query plug-ins by name.
         
         @param request: DescribePluginsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11631,10 +13687,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribePluginsResponse:
         """
-        This operation supports pagination.
-        *   This operation allows you to query plug-ins by business type.
-        *   This operation allows you to query plug-ins by ID.
-        *   This operation allows you to query plug-ins by name.
+        @summary Queries API Gateway plug-ins and the details of the plug-ins.
+        
+        @description    This operation supports pagination.
+        This operation allows you to query plug-ins by business type.
+        This operation allows you to query plug-ins by ID.
+        This operation allows you to query plug-ins by name.
         
         @param request: DescribePluginsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11680,10 +13738,12 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribePluginsRequest,
     ) -> cloud_api20160714_models.DescribePluginsResponse:
         """
-        This operation supports pagination.
-        *   This operation allows you to query plug-ins by business type.
-        *   This operation allows you to query plug-ins by ID.
-        *   This operation allows you to query plug-ins by name.
+        @summary Queries API Gateway plug-ins and the details of the plug-ins.
+        
+        @description    This operation supports pagination.
+        This operation allows you to query plug-ins by business type.
+        This operation allows you to query plug-ins by ID.
+        This operation allows you to query plug-ins by name.
         
         @param request: DescribePluginsRequest
         @return: DescribePluginsResponse
@@ -11696,10 +13756,12 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribePluginsRequest,
     ) -> cloud_api20160714_models.DescribePluginsResponse:
         """
-        This operation supports pagination.
-        *   This operation allows you to query plug-ins by business type.
-        *   This operation allows you to query plug-ins by ID.
-        *   This operation allows you to query plug-ins by name.
+        @summary Queries API Gateway plug-ins and the details of the plug-ins.
+        
+        @description    This operation supports pagination.
+        This operation allows you to query plug-ins by business type.
+        This operation allows you to query plug-ins by ID.
+        This operation allows you to query plug-ins by name.
         
         @param request: DescribePluginsRequest
         @return: DescribePluginsResponse
@@ -11713,8 +13775,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribePluginsByApiResponse:
         """
-        This operation is intended for API callers.
-        *   This operation supports pagination.
+        @summary Queries the plug-ins that are bound to a running API in an environment.
+        
+        @description    This operation is intended for API callers.
+        This operation supports pagination.
         
         @param request: DescribePluginsByApiRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11759,8 +13823,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribePluginsByApiResponse:
         """
-        This operation is intended for API callers.
-        *   This operation supports pagination.
+        @summary Queries the plug-ins that are bound to a running API in an environment.
+        
+        @description    This operation is intended for API callers.
+        This operation supports pagination.
         
         @param request: DescribePluginsByApiRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11804,8 +13870,10 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribePluginsByApiRequest,
     ) -> cloud_api20160714_models.DescribePluginsByApiResponse:
         """
-        This operation is intended for API callers.
-        *   This operation supports pagination.
+        @summary Queries the plug-ins that are bound to a running API in an environment.
+        
+        @description    This operation is intended for API callers.
+        This operation supports pagination.
         
         @param request: DescribePluginsByApiRequest
         @return: DescribePluginsByApiResponse
@@ -11818,8 +13886,10 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribePluginsByApiRequest,
     ) -> cloud_api20160714_models.DescribePluginsByApiResponse:
         """
-        This operation is intended for API callers.
-        *   This operation supports pagination.
+        @summary Queries the plug-ins that are bound to a running API in an environment.
+        
+        @description    This operation is intended for API callers.
+        This operation supports pagination.
         
         @param request: DescribePluginsByApiRequest
         @return: DescribePluginsByApiResponse
@@ -11832,6 +13902,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribePurchasedApiGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribePurchasedApiGroupResponse:
+        """
+        @summary Queries the details about an API group purchased from Alibaba Cloud Marketplace.
+        
+        @param request: DescribePurchasedApiGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePurchasedApiGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_id):
@@ -11862,6 +13939,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribePurchasedApiGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribePurchasedApiGroupResponse:
+        """
+        @summary Queries the details about an API group purchased from Alibaba Cloud Marketplace.
+        
+        @param request: DescribePurchasedApiGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePurchasedApiGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_id):
@@ -11891,6 +13975,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribePurchasedApiGroupRequest,
     ) -> cloud_api20160714_models.DescribePurchasedApiGroupResponse:
+        """
+        @summary Queries the details about an API group purchased from Alibaba Cloud Marketplace.
+        
+        @param request: DescribePurchasedApiGroupRequest
+        @return: DescribePurchasedApiGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_purchased_api_group_with_options(request, runtime)
 
@@ -11898,6 +13988,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribePurchasedApiGroupRequest,
     ) -> cloud_api20160714_models.DescribePurchasedApiGroupResponse:
+        """
+        @summary Queries the details about an API group purchased from Alibaba Cloud Marketplace.
+        
+        @param request: DescribePurchasedApiGroupRequest
+        @return: DescribePurchasedApiGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_purchased_api_group_with_options_async(request, runtime)
 
@@ -11906,6 +14002,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribePurchasedApiGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribePurchasedApiGroupsResponse:
+        """
+        @summary Queries API groups that are purchased from Alibaba Cloud Marketplace.
+        
+        @param request: DescribePurchasedApiGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePurchasedApiGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -11938,6 +14041,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribePurchasedApiGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribePurchasedApiGroupsResponse:
+        """
+        @summary Queries API groups that are purchased from Alibaba Cloud Marketplace.
+        
+        @param request: DescribePurchasedApiGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePurchasedApiGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -11969,6 +14079,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribePurchasedApiGroupsRequest,
     ) -> cloud_api20160714_models.DescribePurchasedApiGroupsResponse:
+        """
+        @summary Queries API groups that are purchased from Alibaba Cloud Marketplace.
+        
+        @param request: DescribePurchasedApiGroupsRequest
+        @return: DescribePurchasedApiGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_purchased_api_groups_with_options(request, runtime)
 
@@ -11976,6 +14092,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribePurchasedApiGroupsRequest,
     ) -> cloud_api20160714_models.DescribePurchasedApiGroupsResponse:
+        """
+        @summary Queries API groups that are purchased from Alibaba Cloud Marketplace.
+        
+        @param request: DescribePurchasedApiGroupsRequest
+        @return: DescribePurchasedApiGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_purchased_api_groups_with_options_async(request, runtime)
 
@@ -11984,6 +14106,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribePurchasedApisRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribePurchasedApisResponse:
+        """
+        @summary Queries APIs that are purchased from Alibaba Cloud Marketplace.
+        
+        @param request: DescribePurchasedApisRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePurchasedApisResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.api_id):
@@ -12026,6 +14155,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribePurchasedApisRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribePurchasedApisResponse:
+        """
+        @summary Queries APIs that are purchased from Alibaba Cloud Marketplace.
+        
+        @param request: DescribePurchasedApisRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePurchasedApisResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.api_id):
@@ -12067,6 +14203,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribePurchasedApisRequest,
     ) -> cloud_api20160714_models.DescribePurchasedApisResponse:
+        """
+        @summary Queries APIs that are purchased from Alibaba Cloud Marketplace.
+        
+        @param request: DescribePurchasedApisRequest
+        @return: DescribePurchasedApisResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_purchased_apis_with_options(request, runtime)
 
@@ -12074,6 +14216,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribePurchasedApisRequest,
     ) -> cloud_api20160714_models.DescribePurchasedApisResponse:
+        """
+        @summary Queries APIs that are purchased from Alibaba Cloud Marketplace.
+        
+        @param request: DescribePurchasedApisRequest
+        @return: DescribePurchasedApisResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_purchased_apis_with_options_async(request, runtime)
 
@@ -12083,8 +14231,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeRegionsResponse:
         """
-        This operation queries regions in which API Gateway is available.
-        *   This operation is intended for API providers and callers.
+        @summary Queries the Alibaba Cloud regions that are supported by API Gateway.
+        
+        @description This operation queries regions in which API Gateway is available.
+        This operation is intended for API providers and callers.
         
         @param request: DescribeRegionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12121,8 +14271,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeRegionsResponse:
         """
-        This operation queries regions in which API Gateway is available.
-        *   This operation is intended for API providers and callers.
+        @summary Queries the Alibaba Cloud regions that are supported by API Gateway.
+        
+        @description This operation queries regions in which API Gateway is available.
+        This operation is intended for API providers and callers.
         
         @param request: DescribeRegionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12158,8 +14310,10 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeRegionsRequest,
     ) -> cloud_api20160714_models.DescribeRegionsResponse:
         """
-        This operation queries regions in which API Gateway is available.
-        *   This operation is intended for API providers and callers.
+        @summary Queries the Alibaba Cloud regions that are supported by API Gateway.
+        
+        @description This operation queries regions in which API Gateway is available.
+        This operation is intended for API providers and callers.
         
         @param request: DescribeRegionsRequest
         @return: DescribeRegionsResponse
@@ -12172,8 +14326,10 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeRegionsRequest,
     ) -> cloud_api20160714_models.DescribeRegionsResponse:
         """
-        This operation queries regions in which API Gateway is available.
-        *   This operation is intended for API providers and callers.
+        @summary Queries the Alibaba Cloud regions that are supported by API Gateway.
+        
+        @description This operation queries regions in which API Gateway is available.
+        This operation is intended for API providers and callers.
         
         @param request: DescribeRegionsRequest
         @return: DescribeRegionsResponse
@@ -12187,8 +14343,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeSignaturesResponse:
         """
-        This API is intended for API providers.
-        *   This operation is used to query the backend signature keys in a Region. Region is a system parameter.
+        @summary Queries backend signature keys.
+        
+        @description    This API is intended for API providers.
+        This operation is used to query the backend signature keys in a Region. Region is a system parameter.
         
         @param request: DescribeSignaturesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12231,8 +14389,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeSignaturesResponse:
         """
-        This API is intended for API providers.
-        *   This operation is used to query the backend signature keys in a Region. Region is a system parameter.
+        @summary Queries backend signature keys.
+        
+        @description    This API is intended for API providers.
+        This operation is used to query the backend signature keys in a Region. Region is a system parameter.
         
         @param request: DescribeSignaturesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12274,8 +14434,10 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeSignaturesRequest,
     ) -> cloud_api20160714_models.DescribeSignaturesResponse:
         """
-        This API is intended for API providers.
-        *   This operation is used to query the backend signature keys in a Region. Region is a system parameter.
+        @summary Queries backend signature keys.
+        
+        @description    This API is intended for API providers.
+        This operation is used to query the backend signature keys in a Region. Region is a system parameter.
         
         @param request: DescribeSignaturesRequest
         @return: DescribeSignaturesResponse
@@ -12288,8 +14450,10 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeSignaturesRequest,
     ) -> cloud_api20160714_models.DescribeSignaturesResponse:
         """
-        This API is intended for API providers.
-        *   This operation is used to query the backend signature keys in a Region. Region is a system parameter.
+        @summary Queries backend signature keys.
+        
+        @description    This API is intended for API providers.
+        This operation is used to query the backend signature keys in a Region. Region is a system parameter.
         
         @param request: DescribeSignaturesRequest
         @return: DescribeSignaturesResponse
@@ -12303,7 +14467,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeSignaturesByApiResponse:
         """
-        This API is intended for API providers.
+        @summary Queries the backend signature keys that are bound to a specified API.
+        
+        @description    This API is intended for API providers.
         
         @param request: DescribeSignaturesByApiRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12344,7 +14510,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeSignaturesByApiResponse:
         """
-        This API is intended for API providers.
+        @summary Queries the backend signature keys that are bound to a specified API.
+        
+        @description    This API is intended for API providers.
         
         @param request: DescribeSignaturesByApiRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12384,7 +14552,9 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeSignaturesByApiRequest,
     ) -> cloud_api20160714_models.DescribeSignaturesByApiResponse:
         """
-        This API is intended for API providers.
+        @summary Queries the backend signature keys that are bound to a specified API.
+        
+        @description    This API is intended for API providers.
         
         @param request: DescribeSignaturesByApiRequest
         @return: DescribeSignaturesByApiResponse
@@ -12397,7 +14567,9 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeSignaturesByApiRequest,
     ) -> cloud_api20160714_models.DescribeSignaturesByApiResponse:
         """
-        This API is intended for API providers.
+        @summary Queries the backend signature keys that are bound to a specified API.
+        
+        @description    This API is intended for API providers.
         
         @param request: DescribeSignaturesByApiRequest
         @return: DescribeSignaturesByApiResponse
@@ -12410,6 +14582,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeSummaryDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeSummaryDataResponse:
+        """
+        @summary Queries the number of API Gateway resources in a region.
+        
+        @param request: DescribeSummaryDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSummaryDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.security_token):
@@ -12438,6 +14617,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeSummaryDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeSummaryDataResponse:
+        """
+        @summary Queries the number of API Gateway resources in a region.
+        
+        @param request: DescribeSummaryDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSummaryDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.security_token):
@@ -12465,6 +14651,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribeSummaryDataRequest,
     ) -> cloud_api20160714_models.DescribeSummaryDataResponse:
+        """
+        @summary Queries the number of API Gateway resources in a region.
+        
+        @param request: DescribeSummaryDataRequest
+        @return: DescribeSummaryDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_summary_data_with_options(request, runtime)
 
@@ -12472,6 +14664,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribeSummaryDataRequest,
     ) -> cloud_api20160714_models.DescribeSummaryDataResponse:
+        """
+        @summary Queries the number of API Gateway resources in a region.
+        
+        @param request: DescribeSummaryDataRequest
+        @return: DescribeSummaryDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_summary_data_with_options_async(request, runtime)
 
@@ -12481,8 +14679,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeSystemParametersResponse:
         """
-        This API is intended for API callers.
-        *   The response of this API contains the system parameters that are optional in API definitions.
+        @summary Queries the common parameters supported by the system.
+        
+        @description    This API is intended for API callers.
+        The response of this API contains the system parameters that are optional in API definitions.
         
         @param request: DescribeSystemParametersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12517,8 +14717,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeSystemParametersResponse:
         """
-        This API is intended for API callers.
-        *   The response of this API contains the system parameters that are optional in API definitions.
+        @summary Queries the common parameters supported by the system.
+        
+        @description    This API is intended for API callers.
+        The response of this API contains the system parameters that are optional in API definitions.
         
         @param request: DescribeSystemParametersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12552,8 +14754,10 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeSystemParametersRequest,
     ) -> cloud_api20160714_models.DescribeSystemParametersResponse:
         """
-        This API is intended for API callers.
-        *   The response of this API contains the system parameters that are optional in API definitions.
+        @summary Queries the common parameters supported by the system.
+        
+        @description    This API is intended for API callers.
+        The response of this API contains the system parameters that are optional in API definitions.
         
         @param request: DescribeSystemParametersRequest
         @return: DescribeSystemParametersResponse
@@ -12566,8 +14770,10 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeSystemParametersRequest,
     ) -> cloud_api20160714_models.DescribeSystemParametersResponse:
         """
-        This API is intended for API callers.
-        *   The response of this API contains the system parameters that are optional in API definitions.
+        @summary Queries the common parameters supported by the system.
+        
+        @description    This API is intended for API callers.
+        The response of this API contains the system parameters that are optional in API definitions.
         
         @param request: DescribeSystemParametersRequest
         @return: DescribeSystemParametersResponse
@@ -12581,9 +14787,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeTrafficControlsResponse:
         """
-        This API is intended for API providers.
-        *   This API can be used to query all existing throttling policies (including special throttling policies) and their details.
-        *   You can specify query conditions. For example, you can query the throttling policies bound to a specified API or in a specified environment.
+        @summary Queries custom throttling policies and their details. Conditional queries are supported.
+        
+        @description    This API is intended for API providers.
+        This API can be used to query all existing throttling policies (including special throttling policies) and their details.
+        You can specify query conditions. For example, you can query the throttling policies bound to a specified API or in a specified environment.
         
         @param request: DescribeTrafficControlsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12632,9 +14840,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeTrafficControlsResponse:
         """
-        This API is intended for API providers.
-        *   This API can be used to query all existing throttling policies (including special throttling policies) and their details.
-        *   You can specify query conditions. For example, you can query the throttling policies bound to a specified API or in a specified environment.
+        @summary Queries custom throttling policies and their details. Conditional queries are supported.
+        
+        @description    This API is intended for API providers.
+        This API can be used to query all existing throttling policies (including special throttling policies) and their details.
+        You can specify query conditions. For example, you can query the throttling policies bound to a specified API or in a specified environment.
         
         @param request: DescribeTrafficControlsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12682,9 +14892,11 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeTrafficControlsRequest,
     ) -> cloud_api20160714_models.DescribeTrafficControlsResponse:
         """
-        This API is intended for API providers.
-        *   This API can be used to query all existing throttling policies (including special throttling policies) and their details.
-        *   You can specify query conditions. For example, you can query the throttling policies bound to a specified API or in a specified environment.
+        @summary Queries custom throttling policies and their details. Conditional queries are supported.
+        
+        @description    This API is intended for API providers.
+        This API can be used to query all existing throttling policies (including special throttling policies) and their details.
+        You can specify query conditions. For example, you can query the throttling policies bound to a specified API or in a specified environment.
         
         @param request: DescribeTrafficControlsRequest
         @return: DescribeTrafficControlsResponse
@@ -12697,9 +14909,11 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeTrafficControlsRequest,
     ) -> cloud_api20160714_models.DescribeTrafficControlsResponse:
         """
-        This API is intended for API providers.
-        *   This API can be used to query all existing throttling policies (including special throttling policies) and their details.
-        *   You can specify query conditions. For example, you can query the throttling policies bound to a specified API or in a specified environment.
+        @summary Queries custom throttling policies and their details. Conditional queries are supported.
+        
+        @description    This API is intended for API providers.
+        This API can be used to query all existing throttling policies (including special throttling policies) and their details.
+        You can specify query conditions. For example, you can query the throttling policies bound to a specified API or in a specified environment.
         
         @param request: DescribeTrafficControlsRequest
         @return: DescribeTrafficControlsResponse
@@ -12713,7 +14927,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeTrafficControlsByApiResponse:
         """
-        This API is intended for API providers.
+        @summary Queries the throttling policy that is bound to a specific API.
+        
+        @description    This API is intended for API providers.
         
         @param request: DescribeTrafficControlsByApiRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12754,7 +14970,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeTrafficControlsByApiResponse:
         """
-        This API is intended for API providers.
+        @summary Queries the throttling policy that is bound to a specific API.
+        
+        @description    This API is intended for API providers.
         
         @param request: DescribeTrafficControlsByApiRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12794,7 +15012,9 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeTrafficControlsByApiRequest,
     ) -> cloud_api20160714_models.DescribeTrafficControlsByApiResponse:
         """
-        This API is intended for API providers.
+        @summary Queries the throttling policy that is bound to a specific API.
+        
+        @description    This API is intended for API providers.
         
         @param request: DescribeTrafficControlsByApiRequest
         @return: DescribeTrafficControlsByApiResponse
@@ -12807,7 +15027,9 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeTrafficControlsByApiRequest,
     ) -> cloud_api20160714_models.DescribeTrafficControlsByApiResponse:
         """
-        This API is intended for API providers.
+        @summary Queries the throttling policy that is bound to a specific API.
+        
+        @description    This API is intended for API providers.
         
         @param request: DescribeTrafficControlsByApiRequest
         @return: DescribeTrafficControlsByApiResponse
@@ -12820,6 +15042,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeUpdateBackendTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeUpdateBackendTaskResponse:
+        """
+        @summary 查询批量更新API后端元定结果
+        
+        @param request: DescribeUpdateBackendTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUpdateBackendTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.operation_uid):
@@ -12850,6 +15079,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeUpdateBackendTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeUpdateBackendTaskResponse:
+        """
+        @summary 查询批量更新API后端元定结果
+        
+        @param request: DescribeUpdateBackendTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUpdateBackendTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.operation_uid):
@@ -12879,6 +15115,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribeUpdateBackendTaskRequest,
     ) -> cloud_api20160714_models.DescribeUpdateBackendTaskResponse:
+        """
+        @summary 查询批量更新API后端元定结果
+        
+        @param request: DescribeUpdateBackendTaskRequest
+        @return: DescribeUpdateBackendTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_update_backend_task_with_options(request, runtime)
 
@@ -12886,6 +15128,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribeUpdateBackendTaskRequest,
     ) -> cloud_api20160714_models.DescribeUpdateBackendTaskResponse:
+        """
+        @summary 查询批量更新API后端元定结果
+        
+        @param request: DescribeUpdateBackendTaskRequest
+        @return: DescribeUpdateBackendTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_update_backend_task_with_options_async(request, runtime)
 
@@ -12894,6 +15142,11 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeUpdateVpcInfoTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeUpdateVpcInfoTaskResponse:
+        """
+        @param request: DescribeUpdateVpcInfoTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUpdateVpcInfoTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.operation_uid):
@@ -12924,6 +15177,11 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeUpdateVpcInfoTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeUpdateVpcInfoTaskResponse:
+        """
+        @param request: DescribeUpdateVpcInfoTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUpdateVpcInfoTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.operation_uid):
@@ -12953,6 +15211,10 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribeUpdateVpcInfoTaskRequest,
     ) -> cloud_api20160714_models.DescribeUpdateVpcInfoTaskResponse:
+        """
+        @param request: DescribeUpdateVpcInfoTaskRequest
+        @return: DescribeUpdateVpcInfoTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_update_vpc_info_task_with_options(request, runtime)
 
@@ -12960,6 +15222,10 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribeUpdateVpcInfoTaskRequest,
     ) -> cloud_api20160714_models.DescribeUpdateVpcInfoTaskResponse:
+        """
+        @param request: DescribeUpdateVpcInfoTaskRequest
+        @return: DescribeUpdateVpcInfoTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_update_vpc_info_task_with_options_async(request, runtime)
 
@@ -12968,8 +15234,17 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeVpcAccessesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeVpcAccessesResponse:
+        """
+        @summary Queries VPC access authorizations.
+        
+        @param request: DescribeVpcAccessesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVpcAccessesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.accurate_query):
+            query['AccurateQuery'] = request.accurate_query
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.name):
@@ -13012,8 +15287,17 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeVpcAccessesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeVpcAccessesResponse:
+        """
+        @summary Queries VPC access authorizations.
+        
+        @param request: DescribeVpcAccessesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVpcAccessesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.accurate_query):
+            query['AccurateQuery'] = request.accurate_query
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.name):
@@ -13055,6 +15339,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribeVpcAccessesRequest,
     ) -> cloud_api20160714_models.DescribeVpcAccessesResponse:
+        """
+        @summary Queries VPC access authorizations.
+        
+        @param request: DescribeVpcAccessesRequest
+        @return: DescribeVpcAccessesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_vpc_accesses_with_options(request, runtime)
 
@@ -13062,6 +15352,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribeVpcAccessesRequest,
     ) -> cloud_api20160714_models.DescribeVpcAccessesResponse:
+        """
+        @summary Queries VPC access authorizations.
+        
+        @param request: DescribeVpcAccessesRequest
+        @return: DescribeVpcAccessesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_vpc_accesses_with_options_async(request, runtime)
 
@@ -13070,6 +15366,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeZonesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeZonesResponse:
+        """
+        @summary Queries zones in a region.
+        
+        @param request: DescribeZonesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeZonesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.language):
@@ -13100,6 +15403,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeZonesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeZonesResponse:
+        """
+        @summary Queries zones in a region.
+        
+        @param request: DescribeZonesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeZonesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.language):
@@ -13129,6 +15439,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribeZonesRequest,
     ) -> cloud_api20160714_models.DescribeZonesResponse:
+        """
+        @summary Queries zones in a region.
+        
+        @param request: DescribeZonesRequest
+        @return: DescribeZonesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_zones_with_options(request, runtime)
 
@@ -13136,6 +15452,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DescribeZonesRequest,
     ) -> cloud_api20160714_models.DescribeZonesResponse:
+        """
+        @summary Queries zones in a region.
+        
+        @param request: DescribeZonesRequest
+        @return: DescribeZonesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_zones_with_options_async(request, runtime)
 
@@ -13144,6 +15466,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DetachApiProductRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DetachApiProductResponse:
+        """
+        @summary Detaches APIs from an API product.
+        
+        @param request: DetachApiProductRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetachApiProductResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.api_product_id):
@@ -13176,6 +15505,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DetachApiProductRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DetachApiProductResponse:
+        """
+        @summary Detaches APIs from an API product.
+        
+        @param request: DetachApiProductRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetachApiProductResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.api_product_id):
@@ -13207,6 +15543,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DetachApiProductRequest,
     ) -> cloud_api20160714_models.DetachApiProductResponse:
+        """
+        @summary Detaches APIs from an API product.
+        
+        @param request: DetachApiProductRequest
+        @return: DetachApiProductResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.detach_api_product_with_options(request, runtime)
 
@@ -13214,6 +15556,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DetachApiProductRequest,
     ) -> cloud_api20160714_models.DetachApiProductResponse:
+        """
+        @summary Detaches APIs from an API product.
+        
+        @param request: DetachApiProductRequest
+        @return: DetachApiProductResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.detach_api_product_with_options_async(request, runtime)
 
@@ -13222,6 +15570,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DetachPluginRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DetachPluginResponse:
+        """
+        @summary 解绑插件
+        
+        @param request: DetachPluginRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetachPluginResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.api_id):
@@ -13258,6 +15613,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DetachPluginRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DetachPluginResponse:
+        """
+        @summary 解绑插件
+        
+        @param request: DetachPluginRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetachPluginResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.api_id):
@@ -13293,6 +15655,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DetachPluginRequest,
     ) -> cloud_api20160714_models.DetachPluginResponse:
+        """
+        @summary 解绑插件
+        
+        @param request: DetachPluginRequest
+        @return: DetachPluginResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.detach_plugin_with_options(request, runtime)
 
@@ -13300,6 +15668,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DetachPluginRequest,
     ) -> cloud_api20160714_models.DetachPluginResponse:
+        """
+        @summary 解绑插件
+        
+        @param request: DetachPluginRequest
+        @return: DetachPluginResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.detach_plugin_with_options_async(request, runtime)
 
@@ -13308,6 +15682,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DisableInstanceAccessControlRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DisableInstanceAccessControlResponse:
+        """
+        @summary This feature provides instance-level access control capabilities for dedicated API Gateway instances. Disables access control on an instance.
+        
+        @param request: DisableInstanceAccessControlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisableInstanceAccessControlResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.acl_id):
@@ -13342,6 +15723,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DisableInstanceAccessControlRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DisableInstanceAccessControlResponse:
+        """
+        @summary This feature provides instance-level access control capabilities for dedicated API Gateway instances. Disables access control on an instance.
+        
+        @param request: DisableInstanceAccessControlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisableInstanceAccessControlResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.acl_id):
@@ -13375,6 +15763,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DisableInstanceAccessControlRequest,
     ) -> cloud_api20160714_models.DisableInstanceAccessControlResponse:
+        """
+        @summary This feature provides instance-level access control capabilities for dedicated API Gateway instances. Disables access control on an instance.
+        
+        @param request: DisableInstanceAccessControlRequest
+        @return: DisableInstanceAccessControlResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.disable_instance_access_control_with_options(request, runtime)
 
@@ -13382,6 +15776,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DisableInstanceAccessControlRequest,
     ) -> cloud_api20160714_models.DisableInstanceAccessControlResponse:
+        """
+        @summary This feature provides instance-level access control capabilities for dedicated API Gateway instances. Disables access control on an instance.
+        
+        @param request: DisableInstanceAccessControlRequest
+        @return: DisableInstanceAccessControlResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.disable_instance_access_control_with_options_async(request, runtime)
 
@@ -13390,6 +15790,13 @@ class Client(OpenApiClient):
         tmp_req: cloud_api20160714_models.DryRunSwaggerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DryRunSwaggerResponse:
+        """
+        @summary Checks the syntax before Swagger-compliant data is imported.
+        
+        @param tmp_req: DryRunSwaggerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DryRunSwaggerResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = cloud_api20160714_models.DryRunSwaggerShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -13434,6 +15841,13 @@ class Client(OpenApiClient):
         tmp_req: cloud_api20160714_models.DryRunSwaggerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DryRunSwaggerResponse:
+        """
+        @summary Checks the syntax before Swagger-compliant data is imported.
+        
+        @param tmp_req: DryRunSwaggerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DryRunSwaggerResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = cloud_api20160714_models.DryRunSwaggerShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -13477,6 +15891,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DryRunSwaggerRequest,
     ) -> cloud_api20160714_models.DryRunSwaggerResponse:
+        """
+        @summary Checks the syntax before Swagger-compliant data is imported.
+        
+        @param request: DryRunSwaggerRequest
+        @return: DryRunSwaggerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.dry_run_swagger_with_options(request, runtime)
 
@@ -13484,6 +15904,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.DryRunSwaggerRequest,
     ) -> cloud_api20160714_models.DryRunSwaggerResponse:
+        """
+        @summary Checks the syntax before Swagger-compliant data is imported.
+        
+        @param request: DryRunSwaggerRequest
+        @return: DryRunSwaggerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.dry_run_swagger_with_options_async(request, runtime)
 
@@ -13492,6 +15918,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.EnableInstanceAccessControlRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.EnableInstanceAccessControlResponse:
+        """
+        @summary 开启实例的访问控制
+        
+        @param request: EnableInstanceAccessControlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableInstanceAccessControlResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.acl_id):
@@ -13528,6 +15961,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.EnableInstanceAccessControlRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.EnableInstanceAccessControlResponse:
+        """
+        @summary 开启实例的访问控制
+        
+        @param request: EnableInstanceAccessControlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableInstanceAccessControlResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.acl_id):
@@ -13563,6 +16003,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.EnableInstanceAccessControlRequest,
     ) -> cloud_api20160714_models.EnableInstanceAccessControlResponse:
+        """
+        @summary 开启实例的访问控制
+        
+        @param request: EnableInstanceAccessControlRequest
+        @return: EnableInstanceAccessControlResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.enable_instance_access_control_with_options(request, runtime)
 
@@ -13570,6 +16016,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.EnableInstanceAccessControlRequest,
     ) -> cloud_api20160714_models.EnableInstanceAccessControlResponse:
+        """
+        @summary 开启实例的访问控制
+        
+        @param request: EnableInstanceAccessControlRequest
+        @return: EnableInstanceAccessControlResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.enable_instance_access_control_with_options_async(request, runtime)
 
@@ -13578,6 +16030,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.ImportOASRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.ImportOASResponse:
+        """
+        @summary Imports APIs based on the OAS standard.
+        
+        @param request: ImportOASRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ImportOASResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auth_type):
@@ -13626,6 +16085,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.ImportOASRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.ImportOASResponse:
+        """
+        @summary Imports APIs based on the OAS standard.
+        
+        @param request: ImportOASRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ImportOASResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auth_type):
@@ -13673,6 +16139,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.ImportOASRequest,
     ) -> cloud_api20160714_models.ImportOASResponse:
+        """
+        @summary Imports APIs based on the OAS standard.
+        
+        @param request: ImportOASRequest
+        @return: ImportOASResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.import_oaswith_options(request, runtime)
 
@@ -13680,6 +16152,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.ImportOASRequest,
     ) -> cloud_api20160714_models.ImportOASResponse:
+        """
+        @summary Imports APIs based on the OAS standard.
+        
+        @param request: ImportOASRequest
+        @return: ImportOASResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.import_oaswith_options_async(request, runtime)
 
@@ -13689,8 +16167,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.ImportSwaggerResponse:
         """
-        Alibaba Cloud supports extensions based on Swagger 2.0.
-        *   Alibaba Cloud supports Swagger configuration files in JSON and YAML formats.
+        @summary Creates an API by importing Swagger-compliant data.
+        
+        @description    Alibaba Cloud supports extensions based on Swagger 2.0.
+        Alibaba Cloud supports Swagger configuration files in JSON and YAML formats.
         
         @param tmp_req: ImportSwaggerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13743,8 +16223,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.ImportSwaggerResponse:
         """
-        Alibaba Cloud supports extensions based on Swagger 2.0.
-        *   Alibaba Cloud supports Swagger configuration files in JSON and YAML formats.
+        @summary Creates an API by importing Swagger-compliant data.
+        
+        @description    Alibaba Cloud supports extensions based on Swagger 2.0.
+        Alibaba Cloud supports Swagger configuration files in JSON and YAML formats.
         
         @param tmp_req: ImportSwaggerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13796,8 +16278,10 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.ImportSwaggerRequest,
     ) -> cloud_api20160714_models.ImportSwaggerResponse:
         """
-        Alibaba Cloud supports extensions based on Swagger 2.0.
-        *   Alibaba Cloud supports Swagger configuration files in JSON and YAML formats.
+        @summary Creates an API by importing Swagger-compliant data.
+        
+        @description    Alibaba Cloud supports extensions based on Swagger 2.0.
+        Alibaba Cloud supports Swagger configuration files in JSON and YAML formats.
         
         @param request: ImportSwaggerRequest
         @return: ImportSwaggerResponse
@@ -13810,8 +16294,10 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.ImportSwaggerRequest,
     ) -> cloud_api20160714_models.ImportSwaggerResponse:
         """
-        Alibaba Cloud supports extensions based on Swagger 2.0.
-        *   Alibaba Cloud supports Swagger configuration files in JSON and YAML formats.
+        @summary Creates an API by importing Swagger-compliant data.
+        
+        @description    Alibaba Cloud supports extensions based on Swagger 2.0.
+        Alibaba Cloud supports Swagger configuration files in JSON and YAML formats.
         
         @param request: ImportSwaggerRequest
         @return: ImportSwaggerResponse
@@ -13825,15 +16311,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.ListTagResourcesResponse:
         """
-        The Tag.N.Key and Tag.N.Value parameters constitute a key-value pair.
-        *   ResourceId.N must meet all the key-value pairs that are entered. If you enter multiple key-value pairs, resources that contain the specified key-value pairs are returned.
-        *   This operation is used to query resource tags based on conditions. If no relationship matches the conditions, an empty list is returned.
-        *   You can query both user tags and visible system tags.
-        *   In addition to the required parameters, you can also specify ResourceId.N to query the visible resource tags of a specified resource in a region.
-        *   You can also specify Tag.N.Key to query the visible keys of a specified key in a region.
-        *   At least one of ResourceId.N, Tag.N.Key, and Tag.N.Value exists.
-        *   You can query tags of the same type or different types in a single operation.
-        *   You can query all your user types and visible system tags.
+        @summary Queries the visible resource tags.
+        
+        @description    The Tag.N.Key and Tag.N.Value parameters constitute a key-value pair.
+        ResourceId.N must meet all the key-value pairs that are entered. If you enter multiple key-value pairs, resources that contain the specified key-value pairs are returned.
+        This operation is used to query resource tags based on conditions. If no relationship matches the conditions, an empty list is returned.
+        You can query both user tags and visible system tags.
+        In addition to the required parameters, you can also specify ResourceId.N to query the visible resource tags of a specified resource in a region.
+        You can also specify Tag.N.Key to query the visible keys of a specified key in a region.
+        At least one of ResourceId.N, Tag.N.Key, and Tag.N.Value exists.
+        You can query tags of the same type or different types in a single operation.
+        You can query all your user types and visible system tags.
         
         @param request: ListTagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13874,15 +16362,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.ListTagResourcesResponse:
         """
-        The Tag.N.Key and Tag.N.Value parameters constitute a key-value pair.
-        *   ResourceId.N must meet all the key-value pairs that are entered. If you enter multiple key-value pairs, resources that contain the specified key-value pairs are returned.
-        *   This operation is used to query resource tags based on conditions. If no relationship matches the conditions, an empty list is returned.
-        *   You can query both user tags and visible system tags.
-        *   In addition to the required parameters, you can also specify ResourceId.N to query the visible resource tags of a specified resource in a region.
-        *   You can also specify Tag.N.Key to query the visible keys of a specified key in a region.
-        *   At least one of ResourceId.N, Tag.N.Key, and Tag.N.Value exists.
-        *   You can query tags of the same type or different types in a single operation.
-        *   You can query all your user types and visible system tags.
+        @summary Queries the visible resource tags.
+        
+        @description    The Tag.N.Key and Tag.N.Value parameters constitute a key-value pair.
+        ResourceId.N must meet all the key-value pairs that are entered. If you enter multiple key-value pairs, resources that contain the specified key-value pairs are returned.
+        This operation is used to query resource tags based on conditions. If no relationship matches the conditions, an empty list is returned.
+        You can query both user tags and visible system tags.
+        In addition to the required parameters, you can also specify ResourceId.N to query the visible resource tags of a specified resource in a region.
+        You can also specify Tag.N.Key to query the visible keys of a specified key in a region.
+        At least one of ResourceId.N, Tag.N.Key, and Tag.N.Value exists.
+        You can query tags of the same type or different types in a single operation.
+        You can query all your user types and visible system tags.
         
         @param request: ListTagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13922,15 +16412,17 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.ListTagResourcesRequest,
     ) -> cloud_api20160714_models.ListTagResourcesResponse:
         """
-        The Tag.N.Key and Tag.N.Value parameters constitute a key-value pair.
-        *   ResourceId.N must meet all the key-value pairs that are entered. If you enter multiple key-value pairs, resources that contain the specified key-value pairs are returned.
-        *   This operation is used to query resource tags based on conditions. If no relationship matches the conditions, an empty list is returned.
-        *   You can query both user tags and visible system tags.
-        *   In addition to the required parameters, you can also specify ResourceId.N to query the visible resource tags of a specified resource in a region.
-        *   You can also specify Tag.N.Key to query the visible keys of a specified key in a region.
-        *   At least one of ResourceId.N, Tag.N.Key, and Tag.N.Value exists.
-        *   You can query tags of the same type or different types in a single operation.
-        *   You can query all your user types and visible system tags.
+        @summary Queries the visible resource tags.
+        
+        @description    The Tag.N.Key and Tag.N.Value parameters constitute a key-value pair.
+        ResourceId.N must meet all the key-value pairs that are entered. If you enter multiple key-value pairs, resources that contain the specified key-value pairs are returned.
+        This operation is used to query resource tags based on conditions. If no relationship matches the conditions, an empty list is returned.
+        You can query both user tags and visible system tags.
+        In addition to the required parameters, you can also specify ResourceId.N to query the visible resource tags of a specified resource in a region.
+        You can also specify Tag.N.Key to query the visible keys of a specified key in a region.
+        At least one of ResourceId.N, Tag.N.Key, and Tag.N.Value exists.
+        You can query tags of the same type or different types in a single operation.
+        You can query all your user types and visible system tags.
         
         @param request: ListTagResourcesRequest
         @return: ListTagResourcesResponse
@@ -13943,15 +16435,17 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.ListTagResourcesRequest,
     ) -> cloud_api20160714_models.ListTagResourcesResponse:
         """
-        The Tag.N.Key and Tag.N.Value parameters constitute a key-value pair.
-        *   ResourceId.N must meet all the key-value pairs that are entered. If you enter multiple key-value pairs, resources that contain the specified key-value pairs are returned.
-        *   This operation is used to query resource tags based on conditions. If no relationship matches the conditions, an empty list is returned.
-        *   You can query both user tags and visible system tags.
-        *   In addition to the required parameters, you can also specify ResourceId.N to query the visible resource tags of a specified resource in a region.
-        *   You can also specify Tag.N.Key to query the visible keys of a specified key in a region.
-        *   At least one of ResourceId.N, Tag.N.Key, and Tag.N.Value exists.
-        *   You can query tags of the same type or different types in a single operation.
-        *   You can query all your user types and visible system tags.
+        @summary Queries the visible resource tags.
+        
+        @description    The Tag.N.Key and Tag.N.Value parameters constitute a key-value pair.
+        ResourceId.N must meet all the key-value pairs that are entered. If you enter multiple key-value pairs, resources that contain the specified key-value pairs are returned.
+        This operation is used to query resource tags based on conditions. If no relationship matches the conditions, an empty list is returned.
+        You can query both user tags and visible system tags.
+        In addition to the required parameters, you can also specify ResourceId.N to query the visible resource tags of a specified resource in a region.
+        You can also specify Tag.N.Key to query the visible keys of a specified key in a region.
+        At least one of ResourceId.N, Tag.N.Key, and Tag.N.Value exists.
+        You can query tags of the same type or different types in a single operation.
+        You can query all your user types and visible system tags.
         
         @param request: ListTagResourcesRequest
         @return: ListTagResourcesResponse
@@ -13965,11 +16459,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.ModifyApiResponse:
         """
-        *This operation is intended for API providers.**\
-        *   This API operation requires a full update. Updates of partial parameters are not supported.
-        *   When you modify an API name, make sure that the name of each API within the same group is unique.
-        *   When you modify the request path, make sure that each request path within the same group is unique.
-        *   The QPS limit on this operation is 50 per user.
+        @summary Modifies the definition of an API.
+        
+        @description *This operation is intended for API providers.**\
+        This API operation requires a full update. Updates of partial parameters are not supported.
+        When you modify an API name, make sure that the name of each API within the same group is unique.
+        When you modify the request path, make sure that each request path within the same group is unique.
+        The QPS limit on this operation is 50 per user.
         
         @param request: ModifyApiRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14060,11 +16556,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.ModifyApiResponse:
         """
-        *This operation is intended for API providers.**\
-        *   This API operation requires a full update. Updates of partial parameters are not supported.
-        *   When you modify an API name, make sure that the name of each API within the same group is unique.
-        *   When you modify the request path, make sure that each request path within the same group is unique.
-        *   The QPS limit on this operation is 50 per user.
+        @summary Modifies the definition of an API.
+        
+        @description *This operation is intended for API providers.**\
+        This API operation requires a full update. Updates of partial parameters are not supported.
+        When you modify an API name, make sure that the name of each API within the same group is unique.
+        When you modify the request path, make sure that each request path within the same group is unique.
+        The QPS limit on this operation is 50 per user.
         
         @param request: ModifyApiRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14154,11 +16652,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.ModifyApiRequest,
     ) -> cloud_api20160714_models.ModifyApiResponse:
         """
-        *This operation is intended for API providers.**\
-        *   This API operation requires a full update. Updates of partial parameters are not supported.
-        *   When you modify an API name, make sure that the name of each API within the same group is unique.
-        *   When you modify the request path, make sure that each request path within the same group is unique.
-        *   The QPS limit on this operation is 50 per user.
+        @summary Modifies the definition of an API.
+        
+        @description *This operation is intended for API providers.**\
+        This API operation requires a full update. Updates of partial parameters are not supported.
+        When you modify an API name, make sure that the name of each API within the same group is unique.
+        When you modify the request path, make sure that each request path within the same group is unique.
+        The QPS limit on this operation is 50 per user.
         
         @param request: ModifyApiRequest
         @return: ModifyApiResponse
@@ -14171,11 +16671,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.ModifyApiRequest,
     ) -> cloud_api20160714_models.ModifyApiResponse:
         """
-        *This operation is intended for API providers.**\
-        *   This API operation requires a full update. Updates of partial parameters are not supported.
-        *   When you modify an API name, make sure that the name of each API within the same group is unique.
-        *   When you modify the request path, make sure that each request path within the same group is unique.
-        *   The QPS limit on this operation is 50 per user.
+        @summary Modifies the definition of an API.
+        
+        @description *This operation is intended for API providers.**\
+        This API operation requires a full update. Updates of partial parameters are not supported.
+        When you modify an API name, make sure that the name of each API within the same group is unique.
+        When you modify the request path, make sure that each request path within the same group is unique.
+        The QPS limit on this operation is 50 per user.
         
         @param request: ModifyApiRequest
         @return: ModifyApiResponse
@@ -14188,6 +16690,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.ModifyApiConfigurationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.ModifyApiConfigurationResponse:
+        """
+        @summary Modifies the draft definition of an API. This operation is different from the ModifyApi operation. This operation does not require all information about the API. You need to only specify the parameters that you want to modify. For example, if you want to change the authentication method of the API from Anonymous to APP, you specify APP as the value of AuthType and do not need to configure other parameters.
+        
+        @param request: ModifyApiConfigurationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyApiConfigurationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.allow_signature_method):
@@ -14286,6 +16795,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.ModifyApiConfigurationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.ModifyApiConfigurationResponse:
+        """
+        @summary Modifies the draft definition of an API. This operation is different from the ModifyApi operation. This operation does not require all information about the API. You need to only specify the parameters that you want to modify. For example, if you want to change the authentication method of the API from Anonymous to APP, you specify APP as the value of AuthType and do not need to configure other parameters.
+        
+        @param request: ModifyApiConfigurationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyApiConfigurationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.allow_signature_method):
@@ -14383,6 +16899,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.ModifyApiConfigurationRequest,
     ) -> cloud_api20160714_models.ModifyApiConfigurationResponse:
+        """
+        @summary Modifies the draft definition of an API. This operation is different from the ModifyApi operation. This operation does not require all information about the API. You need to only specify the parameters that you want to modify. For example, if you want to change the authentication method of the API from Anonymous to APP, you specify APP as the value of AuthType and do not need to configure other parameters.
+        
+        @param request: ModifyApiConfigurationRequest
+        @return: ModifyApiConfigurationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_api_configuration_with_options(request, runtime)
 
@@ -14390,6 +16912,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.ModifyApiConfigurationRequest,
     ) -> cloud_api20160714_models.ModifyApiConfigurationResponse:
+        """
+        @summary Modifies the draft definition of an API. This operation is different from the ModifyApi operation. This operation does not require all information about the API. You need to only specify the parameters that you want to modify. For example, if you want to change the authentication method of the API from Anonymous to APP, you specify APP as the value of AuthType and do not need to configure other parameters.
+        
+        @param request: ModifyApiConfigurationRequest
+        @return: ModifyApiConfigurationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_api_configuration_with_options_async(request, runtime)
 
@@ -14399,8 +16927,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.ModifyApiGroupResponse:
         """
-        This operation is intended for API providers.
-        *   The QPS limit on this operation is 50 per user.
+        @summary Modifies the name, description, or basepath of an existing API group.
+        
+        @description    This operation is intended for API providers.
+        The QPS limit on this operation is 50 per user.
         
         @param request: ModifyApiGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14461,8 +16991,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.ModifyApiGroupResponse:
         """
-        This operation is intended for API providers.
-        *   The QPS limit on this operation is 50 per user.
+        @summary Modifies the name, description, or basepath of an existing API group.
+        
+        @description    This operation is intended for API providers.
+        The QPS limit on this operation is 50 per user.
         
         @param request: ModifyApiGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14522,8 +17054,10 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.ModifyApiGroupRequest,
     ) -> cloud_api20160714_models.ModifyApiGroupResponse:
         """
-        This operation is intended for API providers.
-        *   The QPS limit on this operation is 50 per user.
+        @summary Modifies the name, description, or basepath of an existing API group.
+        
+        @description    This operation is intended for API providers.
+        The QPS limit on this operation is 50 per user.
         
         @param request: ModifyApiGroupRequest
         @return: ModifyApiGroupResponse
@@ -14536,8 +17070,10 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.ModifyApiGroupRequest,
     ) -> cloud_api20160714_models.ModifyApiGroupResponse:
         """
-        This operation is intended for API providers.
-        *   The QPS limit on this operation is 50 per user.
+        @summary Modifies the name, description, or basepath of an existing API group.
+        
+        @description    This operation is intended for API providers.
+        The QPS limit on this operation is 50 per user.
         
         @param request: ModifyApiGroupRequest
         @return: ModifyApiGroupResponse
@@ -14550,6 +17086,11 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.ModifyApiGroupInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.ModifyApiGroupInstanceResponse:
+        """
+        @param request: ModifyApiGroupInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyApiGroupInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_id):
@@ -14586,6 +17127,11 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.ModifyApiGroupInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.ModifyApiGroupInstanceResponse:
+        """
+        @param request: ModifyApiGroupInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyApiGroupInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_id):
@@ -14621,6 +17167,10 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.ModifyApiGroupInstanceRequest,
     ) -> cloud_api20160714_models.ModifyApiGroupInstanceResponse:
+        """
+        @param request: ModifyApiGroupInstanceRequest
+        @return: ModifyApiGroupInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_api_group_instance_with_options(request, runtime)
 
@@ -14628,6 +17178,10 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.ModifyApiGroupInstanceRequest,
     ) -> cloud_api20160714_models.ModifyApiGroupInstanceResponse:
+        """
+        @param request: ModifyApiGroupInstanceRequest
+        @return: ModifyApiGroupInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_api_group_instance_with_options_async(request, runtime)
 
@@ -14636,6 +17190,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.ModifyApiGroupNetworkPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.ModifyApiGroupNetworkPolicyResponse:
+        """
+        @summary Modifies the network policy of an API group.
+        
+        @param request: ModifyApiGroupNetworkPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyApiGroupNetworkPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_id):
@@ -14678,6 +17239,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.ModifyApiGroupNetworkPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.ModifyApiGroupNetworkPolicyResponse:
+        """
+        @summary Modifies the network policy of an API group.
+        
+        @param request: ModifyApiGroupNetworkPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyApiGroupNetworkPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_id):
@@ -14719,6 +17287,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.ModifyApiGroupNetworkPolicyRequest,
     ) -> cloud_api20160714_models.ModifyApiGroupNetworkPolicyResponse:
+        """
+        @summary Modifies the network policy of an API group.
+        
+        @param request: ModifyApiGroupNetworkPolicyRequest
+        @return: ModifyApiGroupNetworkPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_api_group_network_policy_with_options(request, runtime)
 
@@ -14726,6 +17300,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.ModifyApiGroupNetworkPolicyRequest,
     ) -> cloud_api20160714_models.ModifyApiGroupNetworkPolicyResponse:
+        """
+        @summary Modifies the network policy of an API group.
+        
+        @param request: ModifyApiGroupNetworkPolicyRequest
+        @return: ModifyApiGroupNetworkPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_api_group_network_policy_with_options_async(request, runtime)
 
@@ -14734,6 +17314,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.ModifyApiGroupVpcWhitelistRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.ModifyApiGroupVpcWhitelistResponse:
+        """
+        @summary Modifies the VPC whitelist of an API group.
+        
+        @param request: ModifyApiGroupVpcWhitelistRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyApiGroupVpcWhitelistResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_id):
@@ -14766,6 +17353,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.ModifyApiGroupVpcWhitelistRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.ModifyApiGroupVpcWhitelistResponse:
+        """
+        @summary Modifies the VPC whitelist of an API group.
+        
+        @param request: ModifyApiGroupVpcWhitelistRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyApiGroupVpcWhitelistResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_id):
@@ -14797,6 +17391,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.ModifyApiGroupVpcWhitelistRequest,
     ) -> cloud_api20160714_models.ModifyApiGroupVpcWhitelistResponse:
+        """
+        @summary Modifies the VPC whitelist of an API group.
+        
+        @param request: ModifyApiGroupVpcWhitelistRequest
+        @return: ModifyApiGroupVpcWhitelistResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_api_group_vpc_whitelist_with_options(request, runtime)
 
@@ -14804,6 +17404,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.ModifyApiGroupVpcWhitelistRequest,
     ) -> cloud_api20160714_models.ModifyApiGroupVpcWhitelistResponse:
+        """
+        @summary Modifies the VPC whitelist of an API group.
+        
+        @param request: ModifyApiGroupVpcWhitelistRequest
+        @return: ModifyApiGroupVpcWhitelistResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_api_group_vpc_whitelist_with_options_async(request, runtime)
 
@@ -14813,9 +17419,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.ModifyAppResponse:
         """
-        This operation is intended for API callers.
-        *   **AppName** or **Description** can be modified. If these parameters are not specified, no modifications are made and the operation will directly return a success response.
-        *   You can call this operation up to 50 times per second per account.
+        @summary Modifies a specified application.
+        
+        @description    This operation is intended for API callers.
+        **AppName** or **Description** can be modified. If these parameters are not specified, no modifications are made and the operation will directly return a success response.
+        You can call this operation up to 50 times per second per account.
         
         @param request: ModifyAppRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14860,9 +17468,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.ModifyAppResponse:
         """
-        This operation is intended for API callers.
-        *   **AppName** or **Description** can be modified. If these parameters are not specified, no modifications are made and the operation will directly return a success response.
-        *   You can call this operation up to 50 times per second per account.
+        @summary Modifies a specified application.
+        
+        @description    This operation is intended for API callers.
+        **AppName** or **Description** can be modified. If these parameters are not specified, no modifications are made and the operation will directly return a success response.
+        You can call this operation up to 50 times per second per account.
         
         @param request: ModifyAppRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14906,9 +17516,11 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.ModifyAppRequest,
     ) -> cloud_api20160714_models.ModifyAppResponse:
         """
-        This operation is intended for API callers.
-        *   **AppName** or **Description** can be modified. If these parameters are not specified, no modifications are made and the operation will directly return a success response.
-        *   You can call this operation up to 50 times per second per account.
+        @summary Modifies a specified application.
+        
+        @description    This operation is intended for API callers.
+        **AppName** or **Description** can be modified. If these parameters are not specified, no modifications are made and the operation will directly return a success response.
+        You can call this operation up to 50 times per second per account.
         
         @param request: ModifyAppRequest
         @return: ModifyAppResponse
@@ -14921,9 +17533,11 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.ModifyAppRequest,
     ) -> cloud_api20160714_models.ModifyAppResponse:
         """
-        This operation is intended for API callers.
-        *   **AppName** or **Description** can be modified. If these parameters are not specified, no modifications are made and the operation will directly return a success response.
-        *   You can call this operation up to 50 times per second per account.
+        @summary Modifies a specified application.
+        
+        @description    This operation is intended for API callers.
+        **AppName** or **Description** can be modified. If these parameters are not specified, no modifications are made and the operation will directly return a success response.
+        You can call this operation up to 50 times per second per account.
         
         @param request: ModifyAppRequest
         @return: ModifyAppResponse
@@ -14936,6 +17550,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.ModifyBackendRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.ModifyBackendResponse:
+        """
+        @summary 修改后端服务
+        
+        @param request: ModifyBackendRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyBackendResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backend_id):
@@ -14972,6 +17593,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.ModifyBackendRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.ModifyBackendResponse:
+        """
+        @summary 修改后端服务
+        
+        @param request: ModifyBackendRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyBackendResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backend_id):
@@ -15007,6 +17635,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.ModifyBackendRequest,
     ) -> cloud_api20160714_models.ModifyBackendResponse:
+        """
+        @summary 修改后端服务
+        
+        @param request: ModifyBackendRequest
+        @return: ModifyBackendResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_backend_with_options(request, runtime)
 
@@ -15014,6 +17648,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.ModifyBackendRequest,
     ) -> cloud_api20160714_models.ModifyBackendResponse:
+        """
+        @summary 修改后端服务
+        
+        @param request: ModifyBackendRequest
+        @return: ModifyBackendResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_backend_with_options_async(request, runtime)
 
@@ -15022,6 +17662,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.ModifyBackendModelRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.ModifyBackendModelResponse:
+        """
+        @summary 修改后端服务在环境上的定义
+        
+        @param request: ModifyBackendModelRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyBackendModelResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backend_id):
@@ -15062,6 +17709,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.ModifyBackendModelRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.ModifyBackendModelResponse:
+        """
+        @summary 修改后端服务在环境上的定义
+        
+        @param request: ModifyBackendModelRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyBackendModelResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backend_id):
@@ -15101,6 +17755,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.ModifyBackendModelRequest,
     ) -> cloud_api20160714_models.ModifyBackendModelResponse:
+        """
+        @summary 修改后端服务在环境上的定义
+        
+        @param request: ModifyBackendModelRequest
+        @return: ModifyBackendModelResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_backend_model_with_options(request, runtime)
 
@@ -15108,6 +17768,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.ModifyBackendModelRequest,
     ) -> cloud_api20160714_models.ModifyBackendModelResponse:
+        """
+        @summary 修改后端服务在环境上的定义
+        
+        @param request: ModifyBackendModelRequest
+        @return: ModifyBackendModelResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_backend_model_with_options_async(request, runtime)
 
@@ -15116,6 +17782,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.ModifyDatasetRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.ModifyDatasetResponse:
+        """
+        @summary Modifies the name of a custom dataset.
+        
+        @param request: ModifyDatasetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDatasetResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dataset_id):
@@ -15148,6 +17821,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.ModifyDatasetRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.ModifyDatasetResponse:
+        """
+        @summary Modifies the name of a custom dataset.
+        
+        @param request: ModifyDatasetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDatasetResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dataset_id):
@@ -15179,6 +17859,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.ModifyDatasetRequest,
     ) -> cloud_api20160714_models.ModifyDatasetResponse:
+        """
+        @summary Modifies the name of a custom dataset.
+        
+        @param request: ModifyDatasetRequest
+        @return: ModifyDatasetResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_dataset_with_options(request, runtime)
 
@@ -15186,6 +17872,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.ModifyDatasetRequest,
     ) -> cloud_api20160714_models.ModifyDatasetResponse:
+        """
+        @summary Modifies the name of a custom dataset.
+        
+        @param request: ModifyDatasetRequest
+        @return: ModifyDatasetResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_dataset_with_options_async(request, runtime)
 
@@ -15194,6 +17886,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.ModifyDatasetItemRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.ModifyDatasetItemResponse:
+        """
+        @summary Modifies the expiration time and description of a data entry in a custom dataset.
+        
+        @param request: ModifyDatasetItemRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDatasetItemResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dataset_id):
@@ -15230,6 +17929,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.ModifyDatasetItemRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.ModifyDatasetItemResponse:
+        """
+        @summary Modifies the expiration time and description of a data entry in a custom dataset.
+        
+        @param request: ModifyDatasetItemRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDatasetItemResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dataset_id):
@@ -15265,6 +17971,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.ModifyDatasetItemRequest,
     ) -> cloud_api20160714_models.ModifyDatasetItemResponse:
+        """
+        @summary Modifies the expiration time and description of a data entry in a custom dataset.
+        
+        @param request: ModifyDatasetItemRequest
+        @return: ModifyDatasetItemResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_dataset_item_with_options(request, runtime)
 
@@ -15272,6 +17984,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.ModifyDatasetItemRequest,
     ) -> cloud_api20160714_models.ModifyDatasetItemResponse:
+        """
+        @summary Modifies the expiration time and description of a data entry in a custom dataset.
+        
+        @param request: ModifyDatasetItemRequest
+        @return: ModifyDatasetItemResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_dataset_item_with_options_async(request, runtime)
 
@@ -15280,6 +17998,13 @@ class Client(OpenApiClient):
         tmp_req: cloud_api20160714_models.ModifyInstanceAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.ModifyInstanceAttributeResponse:
+        """
+        @summary 修改API网关实例属性
+        
+        @param tmp_req: ModifyInstanceAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyInstanceAttributeResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = cloud_api20160714_models.ModifyInstanceAttributeShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -15334,6 +18059,13 @@ class Client(OpenApiClient):
         tmp_req: cloud_api20160714_models.ModifyInstanceAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.ModifyInstanceAttributeResponse:
+        """
+        @summary 修改API网关实例属性
+        
+        @param tmp_req: ModifyInstanceAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyInstanceAttributeResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = cloud_api20160714_models.ModifyInstanceAttributeShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -15387,6 +18119,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.ModifyInstanceAttributeRequest,
     ) -> cloud_api20160714_models.ModifyInstanceAttributeResponse:
+        """
+        @summary 修改API网关实例属性
+        
+        @param request: ModifyInstanceAttributeRequest
+        @return: ModifyInstanceAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_instance_attribute_with_options(request, runtime)
 
@@ -15394,6 +18132,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.ModifyInstanceAttributeRequest,
     ) -> cloud_api20160714_models.ModifyInstanceAttributeResponse:
+        """
+        @summary 修改API网关实例属性
+        
+        @param request: ModifyInstanceAttributeRequest
+        @return: ModifyInstanceAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_instance_attribute_with_options_async(request, runtime)
 
@@ -15402,6 +18146,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.ModifyInstanceSpecRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.ModifyInstanceSpecResponse:
+        """
+        @summary Upgrades or downgrades the configurations of an API Gateway instance.
+        
+        @param request: ModifyInstanceSpecRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyInstanceSpecResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auto_pay):
@@ -15440,6 +18191,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.ModifyInstanceSpecRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.ModifyInstanceSpecResponse:
+        """
+        @summary Upgrades or downgrades the configurations of an API Gateway instance.
+        
+        @param request: ModifyInstanceSpecRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyInstanceSpecResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auto_pay):
@@ -15477,6 +18235,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.ModifyInstanceSpecRequest,
     ) -> cloud_api20160714_models.ModifyInstanceSpecResponse:
+        """
+        @summary Upgrades or downgrades the configurations of an API Gateway instance.
+        
+        @param request: ModifyInstanceSpecRequest
+        @return: ModifyInstanceSpecResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_instance_spec_with_options(request, runtime)
 
@@ -15484,6 +18248,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.ModifyInstanceSpecRequest,
     ) -> cloud_api20160714_models.ModifyInstanceSpecResponse:
+        """
+        @summary Upgrades or downgrades the configurations of an API Gateway instance.
+        
+        @param request: ModifyInstanceSpecRequest
+        @return: ModifyInstanceSpecResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_instance_spec_with_options_async(request, runtime)
 
@@ -15492,6 +18262,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.ModifyIntranetDomainPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.ModifyIntranetDomainPolicyResponse:
+        """
+        @summary Modifies the VPC domain name policy of an API group.
+        
+        @param request: ModifyIntranetDomainPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyIntranetDomainPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_id):
@@ -15524,6 +18301,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.ModifyIntranetDomainPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.ModifyIntranetDomainPolicyResponse:
+        """
+        @summary Modifies the VPC domain name policy of an API group.
+        
+        @param request: ModifyIntranetDomainPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyIntranetDomainPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_id):
@@ -15555,6 +18339,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.ModifyIntranetDomainPolicyRequest,
     ) -> cloud_api20160714_models.ModifyIntranetDomainPolicyResponse:
+        """
+        @summary Modifies the VPC domain name policy of an API group.
+        
+        @param request: ModifyIntranetDomainPolicyRequest
+        @return: ModifyIntranetDomainPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_intranet_domain_policy_with_options(request, runtime)
 
@@ -15562,6 +18352,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.ModifyIntranetDomainPolicyRequest,
     ) -> cloud_api20160714_models.ModifyIntranetDomainPolicyResponse:
+        """
+        @summary Modifies the VPC domain name policy of an API group.
+        
+        @param request: ModifyIntranetDomainPolicyRequest
+        @return: ModifyIntranetDomainPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_intranet_domain_policy_with_options_async(request, runtime)
 
@@ -15571,8 +18367,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.ModifyIpControlResponse:
         """
-        This operation is intended for API providers.
-        *   This operation allows you to modify only the name and description of an ACL. You cannot modify the type of the ACL.
+        @summary Modifies an access control list (ACL).
+        
+        @description    This operation is intended for API providers.
+        This operation allows you to modify only the name and description of an ACL. You cannot modify the type of the ACL.
         
         @param request: ModifyIpControlRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15613,8 +18411,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.ModifyIpControlResponse:
         """
-        This operation is intended for API providers.
-        *   This operation allows you to modify only the name and description of an ACL. You cannot modify the type of the ACL.
+        @summary Modifies an access control list (ACL).
+        
+        @description    This operation is intended for API providers.
+        This operation allows you to modify only the name and description of an ACL. You cannot modify the type of the ACL.
         
         @param request: ModifyIpControlRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15654,8 +18454,10 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.ModifyIpControlRequest,
     ) -> cloud_api20160714_models.ModifyIpControlResponse:
         """
-        This operation is intended for API providers.
-        *   This operation allows you to modify only the name and description of an ACL. You cannot modify the type of the ACL.
+        @summary Modifies an access control list (ACL).
+        
+        @description    This operation is intended for API providers.
+        This operation allows you to modify only the name and description of an ACL. You cannot modify the type of the ACL.
         
         @param request: ModifyIpControlRequest
         @return: ModifyIpControlResponse
@@ -15668,8 +18470,10 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.ModifyIpControlRequest,
     ) -> cloud_api20160714_models.ModifyIpControlResponse:
         """
-        This operation is intended for API providers.
-        *   This operation allows you to modify only the name and description of an ACL. You cannot modify the type of the ACL.
+        @summary Modifies an access control list (ACL).
+        
+        @description    This operation is intended for API providers.
+        This operation allows you to modify only the name and description of an ACL. You cannot modify the type of the ACL.
         
         @param request: ModifyIpControlRequest
         @return: ModifyIpControlResponse
@@ -15683,9 +18487,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.ModifyIpControlPolicyItemResponse:
         """
-        This operation is intended for API providers.
-        *   The modification immediately takes effect on all the APIs that are bound to the policy.
-        *   This operation causes a full modification of the content of a policy.
+        @summary Modifies a policy in an access control list (ACL).
+        
+        @description    This operation is intended for API providers.
+        The modification immediately takes effect on all the APIs that are bound to the policy.
+        This operation causes a full modification of the content of a policy.
         
         @param request: ModifyIpControlPolicyItemRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15728,9 +18534,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.ModifyIpControlPolicyItemResponse:
         """
-        This operation is intended for API providers.
-        *   The modification immediately takes effect on all the APIs that are bound to the policy.
-        *   This operation causes a full modification of the content of a policy.
+        @summary Modifies a policy in an access control list (ACL).
+        
+        @description    This operation is intended for API providers.
+        The modification immediately takes effect on all the APIs that are bound to the policy.
+        This operation causes a full modification of the content of a policy.
         
         @param request: ModifyIpControlPolicyItemRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15772,9 +18580,11 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.ModifyIpControlPolicyItemRequest,
     ) -> cloud_api20160714_models.ModifyIpControlPolicyItemResponse:
         """
-        This operation is intended for API providers.
-        *   The modification immediately takes effect on all the APIs that are bound to the policy.
-        *   This operation causes a full modification of the content of a policy.
+        @summary Modifies a policy in an access control list (ACL).
+        
+        @description    This operation is intended for API providers.
+        The modification immediately takes effect on all the APIs that are bound to the policy.
+        This operation causes a full modification of the content of a policy.
         
         @param request: ModifyIpControlPolicyItemRequest
         @return: ModifyIpControlPolicyItemResponse
@@ -15787,9 +18597,11 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.ModifyIpControlPolicyItemRequest,
     ) -> cloud_api20160714_models.ModifyIpControlPolicyItemResponse:
         """
-        This operation is intended for API providers.
-        *   The modification immediately takes effect on all the APIs that are bound to the policy.
-        *   This operation causes a full modification of the content of a policy.
+        @summary Modifies a policy in an access control list (ACL).
+        
+        @description    This operation is intended for API providers.
+        The modification immediately takes effect on all the APIs that are bound to the policy.
+        This operation causes a full modification of the content of a policy.
         
         @param request: ModifyIpControlPolicyItemRequest
         @return: ModifyIpControlPolicyItemResponse
@@ -15802,6 +18614,11 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.ModifyLogConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.ModifyLogConfigResponse:
+        """
+        @param request: ModifyLogConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyLogConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.log_type):
@@ -15836,6 +18653,11 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.ModifyLogConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.ModifyLogConfigResponse:
+        """
+        @param request: ModifyLogConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyLogConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.log_type):
@@ -15869,6 +18691,10 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.ModifyLogConfigRequest,
     ) -> cloud_api20160714_models.ModifyLogConfigResponse:
+        """
+        @param request: ModifyLogConfigRequest
+        @return: ModifyLogConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_log_config_with_options(request, runtime)
 
@@ -15876,6 +18702,10 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.ModifyLogConfigRequest,
     ) -> cloud_api20160714_models.ModifyLogConfigResponse:
+        """
+        @param request: ModifyLogConfigRequest
+        @return: ModifyLogConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_log_config_with_options_async(request, runtime)
 
@@ -15884,6 +18714,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.ModifyModelRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.ModifyModelResponse:
+        """
+        @summary Updates the model of an API group.
+        
+        @param request: ModifyModelRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyModelResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -15920,6 +18757,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.ModifyModelRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.ModifyModelResponse:
+        """
+        @summary Updates the model of an API group.
+        
+        @param request: ModifyModelRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyModelResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -15955,6 +18799,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.ModifyModelRequest,
     ) -> cloud_api20160714_models.ModifyModelResponse:
+        """
+        @summary Updates the model of an API group.
+        
+        @param request: ModifyModelRequest
+        @return: ModifyModelResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_model_with_options(request, runtime)
 
@@ -15962,6 +18812,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.ModifyModelRequest,
     ) -> cloud_api20160714_models.ModifyModelResponse:
+        """
+        @summary Updates the model of an API group.
+        
+        @param request: ModifyModelRequest
+        @return: ModifyModelResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_model_with_options_async(request, runtime)
 
@@ -15971,8 +18827,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.ModifyPluginResponse:
         """
-        This operation is intended for API providers.
-        *   The name of the plug-in must be unique.
+        @summary Modifies the information of a plug-in.
+        
+        @description    This operation is intended for API providers.
+        The name of the plug-in must be unique.
         
         @param request: ModifyPluginRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16017,8 +18875,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.ModifyPluginResponse:
         """
-        This operation is intended for API providers.
-        *   The name of the plug-in must be unique.
+        @summary Modifies the information of a plug-in.
+        
+        @description    This operation is intended for API providers.
+        The name of the plug-in must be unique.
         
         @param request: ModifyPluginRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16062,8 +18922,10 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.ModifyPluginRequest,
     ) -> cloud_api20160714_models.ModifyPluginResponse:
         """
-        This operation is intended for API providers.
-        *   The name of the plug-in must be unique.
+        @summary Modifies the information of a plug-in.
+        
+        @description    This operation is intended for API providers.
+        The name of the plug-in must be unique.
         
         @param request: ModifyPluginRequest
         @return: ModifyPluginResponse
@@ -16076,8 +18938,10 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.ModifyPluginRequest,
     ) -> cloud_api20160714_models.ModifyPluginResponse:
         """
-        This operation is intended for API providers.
-        *   The name of the plug-in must be unique.
+        @summary Modifies the information of a plug-in.
+        
+        @description    This operation is intended for API providers.
+        The name of the plug-in must be unique.
         
         @param request: ModifyPluginRequest
         @return: ModifyPluginResponse
@@ -16091,10 +18955,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.ModifySignatureResponse:
         """
-        This API is intended for API providers.
-        *   This API operation modifies the name, Key value, and Secret value of an existing signature key.
-        *   Note that the modification takes effect immediately. If the key has been bound to an API, you must adjust the backend signature verification based on the new key accordingly.
-        *   The QPS limit on this operation is 50 per user.
+        @summary Modifies a backend signature key.
+        
+        @description    This API is intended for API providers.
+        This API operation modifies the name, Key value, and Secret value of an existing signature key.
+        Note that the modification takes effect immediately. If the key has been bound to an API, you must adjust the backend signature verification based on the new key accordingly.
+        The QPS limit on this operation is 50 per user.
         
         @param request: ModifySignatureRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16137,10 +19003,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.ModifySignatureResponse:
         """
-        This API is intended for API providers.
-        *   This API operation modifies the name, Key value, and Secret value of an existing signature key.
-        *   Note that the modification takes effect immediately. If the key has been bound to an API, you must adjust the backend signature verification based on the new key accordingly.
-        *   The QPS limit on this operation is 50 per user.
+        @summary Modifies a backend signature key.
+        
+        @description    This API is intended for API providers.
+        This API operation modifies the name, Key value, and Secret value of an existing signature key.
+        Note that the modification takes effect immediately. If the key has been bound to an API, you must adjust the backend signature verification based on the new key accordingly.
+        The QPS limit on this operation is 50 per user.
         
         @param request: ModifySignatureRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16182,10 +19050,12 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.ModifySignatureRequest,
     ) -> cloud_api20160714_models.ModifySignatureResponse:
         """
-        This API is intended for API providers.
-        *   This API operation modifies the name, Key value, and Secret value of an existing signature key.
-        *   Note that the modification takes effect immediately. If the key has been bound to an API, you must adjust the backend signature verification based on the new key accordingly.
-        *   The QPS limit on this operation is 50 per user.
+        @summary Modifies a backend signature key.
+        
+        @description    This API is intended for API providers.
+        This API operation modifies the name, Key value, and Secret value of an existing signature key.
+        Note that the modification takes effect immediately. If the key has been bound to an API, you must adjust the backend signature verification based on the new key accordingly.
+        The QPS limit on this operation is 50 per user.
         
         @param request: ModifySignatureRequest
         @return: ModifySignatureResponse
@@ -16198,10 +19068,12 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.ModifySignatureRequest,
     ) -> cloud_api20160714_models.ModifySignatureResponse:
         """
-        This API is intended for API providers.
-        *   This API operation modifies the name, Key value, and Secret value of an existing signature key.
-        *   Note that the modification takes effect immediately. If the key has been bound to an API, you must adjust the backend signature verification based on the new key accordingly.
-        *   The QPS limit on this operation is 50 per user.
+        @summary Modifies a backend signature key.
+        
+        @description    This API is intended for API providers.
+        This API operation modifies the name, Key value, and Secret value of an existing signature key.
+        Note that the modification takes effect immediately. If the key has been bound to an API, you must adjust the backend signature verification based on the new key accordingly.
+        The QPS limit on this operation is 50 per user.
         
         @param request: ModifySignatureRequest
         @return: ModifySignatureResponse
@@ -16215,9 +19087,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.ModifyTrafficControlResponse:
         """
-        This API is intended for API providers.
-        *   The modifications take effect on the bound APIs instantly.
-        *   The QPS limit on this operation is 50 per user.
+        @summary Modifies the settings of a custom throttling policy.
+        
+        @description    This API is intended for API providers.
+        The modifications take effect on the bound APIs instantly.
+        The QPS limit on this operation is 50 per user.
         
         @param request: ModifyTrafficControlRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16266,9 +19140,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.ModifyTrafficControlResponse:
         """
-        This API is intended for API providers.
-        *   The modifications take effect on the bound APIs instantly.
-        *   The QPS limit on this operation is 50 per user.
+        @summary Modifies the settings of a custom throttling policy.
+        
+        @description    This API is intended for API providers.
+        The modifications take effect on the bound APIs instantly.
+        The QPS limit on this operation is 50 per user.
         
         @param request: ModifyTrafficControlRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16316,9 +19192,11 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.ModifyTrafficControlRequest,
     ) -> cloud_api20160714_models.ModifyTrafficControlResponse:
         """
-        This API is intended for API providers.
-        *   The modifications take effect on the bound APIs instantly.
-        *   The QPS limit on this operation is 50 per user.
+        @summary Modifies the settings of a custom throttling policy.
+        
+        @description    This API is intended for API providers.
+        The modifications take effect on the bound APIs instantly.
+        The QPS limit on this operation is 50 per user.
         
         @param request: ModifyTrafficControlRequest
         @return: ModifyTrafficControlResponse
@@ -16331,9 +19209,11 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.ModifyTrafficControlRequest,
     ) -> cloud_api20160714_models.ModifyTrafficControlResponse:
         """
-        This API is intended for API providers.
-        *   The modifications take effect on the bound APIs instantly.
-        *   The QPS limit on this operation is 50 per user.
+        @summary Modifies the settings of a custom throttling policy.
+        
+        @description    This API is intended for API providers.
+        The modifications take effect on the bound APIs instantly.
+        The QPS limit on this operation is 50 per user.
         
         @param request: ModifyTrafficControlRequest
         @return: ModifyTrafficControlResponse
@@ -16346,6 +19226,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.ModifyVpcAccessAndUpdateApisRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.ModifyVpcAccessAndUpdateApisResponse:
+        """
+        @summary Modifies a virtual private cloud (VPC) authorization and updates the metadata of the API associated with the VPC authorization.
+        
+        @param request: ModifyVpcAccessAndUpdateApisRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyVpcAccessAndUpdateApisResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -16390,6 +19277,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.ModifyVpcAccessAndUpdateApisRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.ModifyVpcAccessAndUpdateApisResponse:
+        """
+        @summary Modifies a virtual private cloud (VPC) authorization and updates the metadata of the API associated with the VPC authorization.
+        
+        @param request: ModifyVpcAccessAndUpdateApisRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyVpcAccessAndUpdateApisResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -16433,6 +19327,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.ModifyVpcAccessAndUpdateApisRequest,
     ) -> cloud_api20160714_models.ModifyVpcAccessAndUpdateApisResponse:
+        """
+        @summary Modifies a virtual private cloud (VPC) authorization and updates the metadata of the API associated with the VPC authorization.
+        
+        @param request: ModifyVpcAccessAndUpdateApisRequest
+        @return: ModifyVpcAccessAndUpdateApisResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_vpc_access_and_update_apis_with_options(request, runtime)
 
@@ -16440,6 +19340,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.ModifyVpcAccessAndUpdateApisRequest,
     ) -> cloud_api20160714_models.ModifyVpcAccessAndUpdateApisResponse:
+        """
+        @summary Modifies a virtual private cloud (VPC) authorization and updates the metadata of the API associated with the VPC authorization.
+        
+        @param request: ModifyVpcAccessAndUpdateApisRequest
+        @return: ModifyVpcAccessAndUpdateApisResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_vpc_access_and_update_apis_with_options_async(request, runtime)
 
@@ -16447,6 +19353,11 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.OpenApiGatewayServiceResponse:
+        """
+        @param request: OpenApiGatewayServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OpenApiGatewayServiceResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='OpenApiGatewayService',
@@ -16468,6 +19379,11 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.OpenApiGatewayServiceResponse:
+        """
+        @param request: OpenApiGatewayServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OpenApiGatewayServiceResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='OpenApiGatewayService',
@@ -16486,10 +19402,16 @@ class Client(OpenApiClient):
         )
 
     def open_api_gateway_service(self) -> cloud_api20160714_models.OpenApiGatewayServiceResponse:
+        """
+        @return: OpenApiGatewayServiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.open_api_gateway_service_with_options(runtime)
 
     async def open_api_gateway_service_async(self) -> cloud_api20160714_models.OpenApiGatewayServiceResponse:
+        """
+        @return: OpenApiGatewayServiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.open_api_gateway_service_with_options_async(runtime)
 
@@ -16498,6 +19420,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.QueryRequestLogsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.QueryRequestLogsResponse:
+        """
+        @summary Queries the request logs of a user.
+        
+        @param request: QueryRequestLogsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryRequestLogsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.request_log_id):
@@ -16528,6 +19457,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.QueryRequestLogsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.QueryRequestLogsResponse:
+        """
+        @summary Queries the request logs of a user.
+        
+        @param request: QueryRequestLogsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryRequestLogsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.request_log_id):
@@ -16557,6 +19493,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.QueryRequestLogsRequest,
     ) -> cloud_api20160714_models.QueryRequestLogsResponse:
+        """
+        @summary Queries the request logs of a user.
+        
+        @param request: QueryRequestLogsRequest
+        @return: QueryRequestLogsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_request_logs_with_options(request, runtime)
 
@@ -16564,6 +19506,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.QueryRequestLogsRequest,
     ) -> cloud_api20160714_models.QueryRequestLogsResponse:
+        """
+        @summary Queries the request logs of a user.
+        
+        @param request: QueryRequestLogsRequest
+        @return: QueryRequestLogsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_request_logs_with_options_async(request, runtime)
 
@@ -16573,10 +19521,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.ReactivateDomainResponse:
         """
-        This operation is intended for API providers.
-        *   You must solve the problem that is mentioned in the domain name exception prompt before you can reactivate the domain name.
-        *   A typical reason why a custom domain name becomes abnormal is that the domain name does not have an ICP filing or the domain name is included in a blacklist by the administration. When a custom domain name is abnormal, users cannot use it to access APIs.
-        *   You can call this operation to reactivate the domain name to resume normal access.
+        @summary Reactivates a custom domain name whose validity status is Abnormal.
+        
+        @description    This operation is intended for API providers.
+        You must solve the problem that is mentioned in the domain name exception prompt before you can reactivate the domain name.
+        A typical reason why a custom domain name becomes abnormal is that the domain name does not have an ICP filing or the domain name is included in a blacklist by the administration. When a custom domain name is abnormal, users cannot use it to access APIs.
+        You can call this operation to reactivate the domain name to resume normal access.
         
         @param request: ReactivateDomainRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16615,10 +19565,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.ReactivateDomainResponse:
         """
-        This operation is intended for API providers.
-        *   You must solve the problem that is mentioned in the domain name exception prompt before you can reactivate the domain name.
-        *   A typical reason why a custom domain name becomes abnormal is that the domain name does not have an ICP filing or the domain name is included in a blacklist by the administration. When a custom domain name is abnormal, users cannot use it to access APIs.
-        *   You can call this operation to reactivate the domain name to resume normal access.
+        @summary Reactivates a custom domain name whose validity status is Abnormal.
+        
+        @description    This operation is intended for API providers.
+        You must solve the problem that is mentioned in the domain name exception prompt before you can reactivate the domain name.
+        A typical reason why a custom domain name becomes abnormal is that the domain name does not have an ICP filing or the domain name is included in a blacklist by the administration. When a custom domain name is abnormal, users cannot use it to access APIs.
+        You can call this operation to reactivate the domain name to resume normal access.
         
         @param request: ReactivateDomainRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16656,10 +19608,12 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.ReactivateDomainRequest,
     ) -> cloud_api20160714_models.ReactivateDomainResponse:
         """
-        This operation is intended for API providers.
-        *   You must solve the problem that is mentioned in the domain name exception prompt before you can reactivate the domain name.
-        *   A typical reason why a custom domain name becomes abnormal is that the domain name does not have an ICP filing or the domain name is included in a blacklist by the administration. When a custom domain name is abnormal, users cannot use it to access APIs.
-        *   You can call this operation to reactivate the domain name to resume normal access.
+        @summary Reactivates a custom domain name whose validity status is Abnormal.
+        
+        @description    This operation is intended for API providers.
+        You must solve the problem that is mentioned in the domain name exception prompt before you can reactivate the domain name.
+        A typical reason why a custom domain name becomes abnormal is that the domain name does not have an ICP filing or the domain name is included in a blacklist by the administration. When a custom domain name is abnormal, users cannot use it to access APIs.
+        You can call this operation to reactivate the domain name to resume normal access.
         
         @param request: ReactivateDomainRequest
         @return: ReactivateDomainResponse
@@ -16672,10 +19626,12 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.ReactivateDomainRequest,
     ) -> cloud_api20160714_models.ReactivateDomainResponse:
         """
-        This operation is intended for API providers.
-        *   You must solve the problem that is mentioned in the domain name exception prompt before you can reactivate the domain name.
-        *   A typical reason why a custom domain name becomes abnormal is that the domain name does not have an ICP filing or the domain name is included in a blacklist by the administration. When a custom domain name is abnormal, users cannot use it to access APIs.
-        *   You can call this operation to reactivate the domain name to resume normal access.
+        @summary Reactivates a custom domain name whose validity status is Abnormal.
+        
+        @description    This operation is intended for API providers.
+        You must solve the problem that is mentioned in the domain name exception prompt before you can reactivate the domain name.
+        A typical reason why a custom domain name becomes abnormal is that the domain name does not have an ICP filing or the domain name is included in a blacklist by the administration. When a custom domain name is abnormal, users cannot use it to access APIs.
+        You can call this operation to reactivate the domain name to resume normal access.
         
         @param request: ReactivateDomainRequest
         @return: ReactivateDomainResponse
@@ -16688,6 +19644,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.RemoveAccessControlListEntryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.RemoveAccessControlListEntryResponse:
+        """
+        @summary 删除访问控制策略中IP条目
+        
+        @param request: RemoveAccessControlListEntryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveAccessControlListEntryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.acl_entrys):
@@ -16720,6 +19683,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.RemoveAccessControlListEntryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.RemoveAccessControlListEntryResponse:
+        """
+        @summary 删除访问控制策略中IP条目
+        
+        @param request: RemoveAccessControlListEntryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveAccessControlListEntryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.acl_entrys):
@@ -16751,6 +19721,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.RemoveAccessControlListEntryRequest,
     ) -> cloud_api20160714_models.RemoveAccessControlListEntryResponse:
+        """
+        @summary 删除访问控制策略中IP条目
+        
+        @param request: RemoveAccessControlListEntryRequest
+        @return: RemoveAccessControlListEntryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.remove_access_control_list_entry_with_options(request, runtime)
 
@@ -16758,6 +19734,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.RemoveAccessControlListEntryRequest,
     ) -> cloud_api20160714_models.RemoveAccessControlListEntryResponse:
+        """
+        @summary 删除访问控制策略中IP条目
+        
+        @param request: RemoveAccessControlListEntryRequest
+        @return: RemoveAccessControlListEntryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.remove_access_control_list_entry_with_options_async(request, runtime)
 
@@ -16766,6 +19748,13 @@ class Client(OpenApiClient):
         tmp_req: cloud_api20160714_models.RemoveApiProductsAuthoritiesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.RemoveApiProductsAuthoritiesResponse:
+        """
+        @summary Revokes permissions on API products from an application.
+        
+        @param tmp_req: RemoveApiProductsAuthoritiesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveApiProductsAuthoritiesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = cloud_api20160714_models.RemoveApiProductsAuthoritiesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -16802,6 +19791,13 @@ class Client(OpenApiClient):
         tmp_req: cloud_api20160714_models.RemoveApiProductsAuthoritiesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.RemoveApiProductsAuthoritiesResponse:
+        """
+        @summary Revokes permissions on API products from an application.
+        
+        @param tmp_req: RemoveApiProductsAuthoritiesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveApiProductsAuthoritiesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = cloud_api20160714_models.RemoveApiProductsAuthoritiesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -16837,6 +19833,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.RemoveApiProductsAuthoritiesRequest,
     ) -> cloud_api20160714_models.RemoveApiProductsAuthoritiesResponse:
+        """
+        @summary Revokes permissions on API products from an application.
+        
+        @param request: RemoveApiProductsAuthoritiesRequest
+        @return: RemoveApiProductsAuthoritiesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.remove_api_products_authorities_with_options(request, runtime)
 
@@ -16844,6 +19846,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.RemoveApiProductsAuthoritiesRequest,
     ) -> cloud_api20160714_models.RemoveApiProductsAuthoritiesResponse:
+        """
+        @summary Revokes permissions on API products from an application.
+        
+        @param request: RemoveApiProductsAuthoritiesRequest
+        @return: RemoveApiProductsAuthoritiesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.remove_api_products_authorities_with_options_async(request, runtime)
 
@@ -16853,8 +19861,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.RemoveApisAuthoritiesResponse:
         """
-        This operation is intended for API providers and callers.
-        *   Before you revoke access permissions, check by whom the permissions were granted. API providers can only revoke permissions granted by a Provider, and API callers can only revoke permissions granted by a Consumer.
+        @summary Revokes the access permissions on multiple APIs from a specified application.
+        
+        @description    This operation is intended for API providers and callers.
+        Before you revoke access permissions, check by whom the permissions were granted. API providers can only revoke permissions granted by a Provider, and API callers can only revoke permissions granted by a Consumer.
         
         @param request: RemoveApisAuthoritiesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16899,8 +19909,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.RemoveApisAuthoritiesResponse:
         """
-        This operation is intended for API providers and callers.
-        *   Before you revoke access permissions, check by whom the permissions were granted. API providers can only revoke permissions granted by a Provider, and API callers can only revoke permissions granted by a Consumer.
+        @summary Revokes the access permissions on multiple APIs from a specified application.
+        
+        @description    This operation is intended for API providers and callers.
+        Before you revoke access permissions, check by whom the permissions were granted. API providers can only revoke permissions granted by a Provider, and API callers can only revoke permissions granted by a Consumer.
         
         @param request: RemoveApisAuthoritiesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16944,8 +19956,10 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.RemoveApisAuthoritiesRequest,
     ) -> cloud_api20160714_models.RemoveApisAuthoritiesResponse:
         """
-        This operation is intended for API providers and callers.
-        *   Before you revoke access permissions, check by whom the permissions were granted. API providers can only revoke permissions granted by a Provider, and API callers can only revoke permissions granted by a Consumer.
+        @summary Revokes the access permissions on multiple APIs from a specified application.
+        
+        @description    This operation is intended for API providers and callers.
+        Before you revoke access permissions, check by whom the permissions were granted. API providers can only revoke permissions granted by a Provider, and API callers can only revoke permissions granted by a Consumer.
         
         @param request: RemoveApisAuthoritiesRequest
         @return: RemoveApisAuthoritiesResponse
@@ -16958,8 +19972,10 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.RemoveApisAuthoritiesRequest,
     ) -> cloud_api20160714_models.RemoveApisAuthoritiesResponse:
         """
-        This operation is intended for API providers and callers.
-        *   Before you revoke access permissions, check by whom the permissions were granted. API providers can only revoke permissions granted by a Provider, and API callers can only revoke permissions granted by a Consumer.
+        @summary Revokes the access permissions on multiple APIs from a specified application.
+        
+        @description    This operation is intended for API providers and callers.
+        Before you revoke access permissions, check by whom the permissions were granted. API providers can only revoke permissions granted by a Provider, and API callers can only revoke permissions granted by a Consumer.
         
         @param request: RemoveApisAuthoritiesRequest
         @return: RemoveApisAuthoritiesResponse
@@ -16973,8 +19989,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.RemoveAppsAuthoritiesResponse:
         """
-        This operation is intended for API providers and callers.
-        *   Before you revoke access permissions, check by whom the permissions were granted. API providers can only revoke permissions granted by a Provider, and API callers can only revoke permissions granted by a Consumer.
+        @summary Revokes the access permissions on a specified API from multiple applications. In this case, multiple applications map to a single API.
+        
+        @description    This operation is intended for API providers and callers.
+        Before you revoke access permissions, check by whom the permissions were granted. API providers can only revoke permissions granted by a Provider, and API callers can only revoke permissions granted by a Consumer.
         
         @param request: RemoveAppsAuthoritiesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17017,8 +20035,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.RemoveAppsAuthoritiesResponse:
         """
-        This operation is intended for API providers and callers.
-        *   Before you revoke access permissions, check by whom the permissions were granted. API providers can only revoke permissions granted by a Provider, and API callers can only revoke permissions granted by a Consumer.
+        @summary Revokes the access permissions on a specified API from multiple applications. In this case, multiple applications map to a single API.
+        
+        @description    This operation is intended for API providers and callers.
+        Before you revoke access permissions, check by whom the permissions were granted. API providers can only revoke permissions granted by a Provider, and API callers can only revoke permissions granted by a Consumer.
         
         @param request: RemoveAppsAuthoritiesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17060,8 +20080,10 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.RemoveAppsAuthoritiesRequest,
     ) -> cloud_api20160714_models.RemoveAppsAuthoritiesResponse:
         """
-        This operation is intended for API providers and callers.
-        *   Before you revoke access permissions, check by whom the permissions were granted. API providers can only revoke permissions granted by a Provider, and API callers can only revoke permissions granted by a Consumer.
+        @summary Revokes the access permissions on a specified API from multiple applications. In this case, multiple applications map to a single API.
+        
+        @description    This operation is intended for API providers and callers.
+        Before you revoke access permissions, check by whom the permissions were granted. API providers can only revoke permissions granted by a Provider, and API callers can only revoke permissions granted by a Consumer.
         
         @param request: RemoveAppsAuthoritiesRequest
         @return: RemoveAppsAuthoritiesResponse
@@ -17074,8 +20096,10 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.RemoveAppsAuthoritiesRequest,
     ) -> cloud_api20160714_models.RemoveAppsAuthoritiesResponse:
         """
-        This operation is intended for API providers and callers.
-        *   Before you revoke access permissions, check by whom the permissions were granted. API providers can only revoke permissions granted by a Provider, and API callers can only revoke permissions granted by a Consumer.
+        @summary Revokes the access permissions on a specified API from multiple applications. In this case, multiple applications map to a single API.
+        
+        @description    This operation is intended for API providers and callers.
+        Before you revoke access permissions, check by whom the permissions were granted. API providers can only revoke permissions granted by a Provider, and API callers can only revoke permissions granted by a Consumer.
         
         @param request: RemoveAppsAuthoritiesRequest
         @return: RemoveAppsAuthoritiesResponse
@@ -17089,8 +20113,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.RemoveIpControlApisResponse:
         """
-        This operation is intended for API callers.
-        *   The unbinding takes effect immediately. After the API is unbound from the ACL, the corresponding environment does not have any IP address access control in place for the API.
+        @summary Unbinds an API from an access control list (ACL).
+        
+        @description    This operation is intended for API callers.
+        The unbinding takes effect immediately. After the API is unbound from the ACL, the corresponding environment does not have any IP address access control in place for the API.
         
         @param request: RemoveIpControlApisRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17133,8 +20159,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.RemoveIpControlApisResponse:
         """
-        This operation is intended for API callers.
-        *   The unbinding takes effect immediately. After the API is unbound from the ACL, the corresponding environment does not have any IP address access control in place for the API.
+        @summary Unbinds an API from an access control list (ACL).
+        
+        @description    This operation is intended for API callers.
+        The unbinding takes effect immediately. After the API is unbound from the ACL, the corresponding environment does not have any IP address access control in place for the API.
         
         @param request: RemoveIpControlApisRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17176,8 +20204,10 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.RemoveIpControlApisRequest,
     ) -> cloud_api20160714_models.RemoveIpControlApisResponse:
         """
-        This operation is intended for API callers.
-        *   The unbinding takes effect immediately. After the API is unbound from the ACL, the corresponding environment does not have any IP address access control in place for the API.
+        @summary Unbinds an API from an access control list (ACL).
+        
+        @description    This operation is intended for API callers.
+        The unbinding takes effect immediately. After the API is unbound from the ACL, the corresponding environment does not have any IP address access control in place for the API.
         
         @param request: RemoveIpControlApisRequest
         @return: RemoveIpControlApisResponse
@@ -17190,8 +20220,10 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.RemoveIpControlApisRequest,
     ) -> cloud_api20160714_models.RemoveIpControlApisResponse:
         """
-        This operation is intended for API callers.
-        *   The unbinding takes effect immediately. After the API is unbound from the ACL, the corresponding environment does not have any IP address access control in place for the API.
+        @summary Unbinds an API from an access control list (ACL).
+        
+        @description    This operation is intended for API callers.
+        The unbinding takes effect immediately. After the API is unbound from the ACL, the corresponding environment does not have any IP address access control in place for the API.
         
         @param request: RemoveIpControlApisRequest
         @return: RemoveIpControlApisResponse
@@ -17205,7 +20237,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.RemoveIpControlPolicyItemResponse:
         """
-        This operation is intended for API providers.
+        @summary Removes one or more policies from an access control list (ACL).
+        
+        @description    This operation is intended for API providers.
         
         @param request: RemoveIpControlPolicyItemRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17244,7 +20278,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.RemoveIpControlPolicyItemResponse:
         """
-        This operation is intended for API providers.
+        @summary Removes one or more policies from an access control list (ACL).
+        
+        @description    This operation is intended for API providers.
         
         @param request: RemoveIpControlPolicyItemRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17282,7 +20318,9 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.RemoveIpControlPolicyItemRequest,
     ) -> cloud_api20160714_models.RemoveIpControlPolicyItemResponse:
         """
-        This operation is intended for API providers.
+        @summary Removes one or more policies from an access control list (ACL).
+        
+        @description    This operation is intended for API providers.
         
         @param request: RemoveIpControlPolicyItemRequest
         @return: RemoveIpControlPolicyItemResponse
@@ -17295,7 +20333,9 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.RemoveIpControlPolicyItemRequest,
     ) -> cloud_api20160714_models.RemoveIpControlPolicyItemResponse:
         """
-        This operation is intended for API providers.
+        @summary Removes one or more policies from an access control list (ACL).
+        
+        @description    This operation is intended for API providers.
         
         @param request: RemoveIpControlPolicyItemRequest
         @return: RemoveIpControlPolicyItemResponse
@@ -17309,8 +20349,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.RemoveSignatureApisResponse:
         """
-        This API is intended for API providers.
-        *   The operation takes effect immediately. The request sent from API Gateway to the backend service does not contain the signature string. The corresponding verification step can be removed from the backend.
+        @summary Unbinds a backend signature key from APIs.
+        
+        @description    This API is intended for API providers.
+        The operation takes effect immediately. The request sent from API Gateway to the backend service does not contain the signature string. The corresponding verification step can be removed from the backend.
         
         @param request: RemoveSignatureApisRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17353,8 +20395,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.RemoveSignatureApisResponse:
         """
-        This API is intended for API providers.
-        *   The operation takes effect immediately. The request sent from API Gateway to the backend service does not contain the signature string. The corresponding verification step can be removed from the backend.
+        @summary Unbinds a backend signature key from APIs.
+        
+        @description    This API is intended for API providers.
+        The operation takes effect immediately. The request sent from API Gateway to the backend service does not contain the signature string. The corresponding verification step can be removed from the backend.
         
         @param request: RemoveSignatureApisRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17396,8 +20440,10 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.RemoveSignatureApisRequest,
     ) -> cloud_api20160714_models.RemoveSignatureApisResponse:
         """
-        This API is intended for API providers.
-        *   The operation takes effect immediately. The request sent from API Gateway to the backend service does not contain the signature string. The corresponding verification step can be removed from the backend.
+        @summary Unbinds a backend signature key from APIs.
+        
+        @description    This API is intended for API providers.
+        The operation takes effect immediately. The request sent from API Gateway to the backend service does not contain the signature string. The corresponding verification step can be removed from the backend.
         
         @param request: RemoveSignatureApisRequest
         @return: RemoveSignatureApisResponse
@@ -17410,8 +20456,10 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.RemoveSignatureApisRequest,
     ) -> cloud_api20160714_models.RemoveSignatureApisResponse:
         """
-        This API is intended for API providers.
-        *   The operation takes effect immediately. The request sent from API Gateway to the backend service does not contain the signature string. The corresponding verification step can be removed from the backend.
+        @summary Unbinds a backend signature key from APIs.
+        
+        @description    This API is intended for API providers.
+        The operation takes effect immediately. The request sent from API Gateway to the backend service does not contain the signature string. The corresponding verification step can be removed from the backend.
         
         @param request: RemoveSignatureApisRequest
         @return: RemoveSignatureApisResponse
@@ -17425,8 +20473,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.RemoveTrafficControlApisResponse:
         """
-        This API is intended for API providers.
-        *   This API allows you to unbind a specified throttling policy from up to 100 APIs at a time.
+        @summary Unbinds a specified throttling policy from APIs.
+        
+        @description    This API is intended for API providers.
+        This API allows you to unbind a specified throttling policy from up to 100 APIs at a time.
         
         @param request: RemoveTrafficControlApisRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17469,8 +20519,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.RemoveTrafficControlApisResponse:
         """
-        This API is intended for API providers.
-        *   This API allows you to unbind a specified throttling policy from up to 100 APIs at a time.
+        @summary Unbinds a specified throttling policy from APIs.
+        
+        @description    This API is intended for API providers.
+        This API allows you to unbind a specified throttling policy from up to 100 APIs at a time.
         
         @param request: RemoveTrafficControlApisRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17512,8 +20564,10 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.RemoveTrafficControlApisRequest,
     ) -> cloud_api20160714_models.RemoveTrafficControlApisResponse:
         """
-        This API is intended for API providers.
-        *   This API allows you to unbind a specified throttling policy from up to 100 APIs at a time.
+        @summary Unbinds a specified throttling policy from APIs.
+        
+        @description    This API is intended for API providers.
+        This API allows you to unbind a specified throttling policy from up to 100 APIs at a time.
         
         @param request: RemoveTrafficControlApisRequest
         @return: RemoveTrafficControlApisResponse
@@ -17526,8 +20580,10 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.RemoveTrafficControlApisRequest,
     ) -> cloud_api20160714_models.RemoveTrafficControlApisResponse:
         """
-        This API is intended for API providers.
-        *   This API allows you to unbind a specified throttling policy from up to 100 APIs at a time.
+        @summary Unbinds a specified throttling policy from APIs.
+        
+        @description    This API is intended for API providers.
+        This API allows you to unbind a specified throttling policy from up to 100 APIs at a time.
         
         @param request: RemoveTrafficControlApisRequest
         @return: RemoveTrafficControlApisResponse
@@ -17541,8 +20597,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.RemoveVpcAccessResponse:
         """
-        This API is intended for API providers.
-        *   Revokes the permissions of API Gateway to access your VPC instance.
+        @summary Deletes a VPC authorization without unpublishing the associated APIs.
+        
+        @description    This API is intended for API providers.
+        Revokes the permissions of API Gateway to access your VPC instance.
         >  Deleting an authorization affects the associated API. Before you delete the authorization, make sure that it is not used by the API.
         
         @param request: RemoveVpcAccessRequest
@@ -17586,8 +20644,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.RemoveVpcAccessResponse:
         """
-        This API is intended for API providers.
-        *   Revokes the permissions of API Gateway to access your VPC instance.
+        @summary Deletes a VPC authorization without unpublishing the associated APIs.
+        
+        @description    This API is intended for API providers.
+        Revokes the permissions of API Gateway to access your VPC instance.
         >  Deleting an authorization affects the associated API. Before you delete the authorization, make sure that it is not used by the API.
         
         @param request: RemoveVpcAccessRequest
@@ -17630,8 +20690,10 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.RemoveVpcAccessRequest,
     ) -> cloud_api20160714_models.RemoveVpcAccessResponse:
         """
-        This API is intended for API providers.
-        *   Revokes the permissions of API Gateway to access your VPC instance.
+        @summary Deletes a VPC authorization without unpublishing the associated APIs.
+        
+        @description    This API is intended for API providers.
+        Revokes the permissions of API Gateway to access your VPC instance.
         >  Deleting an authorization affects the associated API. Before you delete the authorization, make sure that it is not used by the API.
         
         @param request: RemoveVpcAccessRequest
@@ -17645,8 +20707,10 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.RemoveVpcAccessRequest,
     ) -> cloud_api20160714_models.RemoveVpcAccessResponse:
         """
-        This API is intended for API providers.
-        *   Revokes the permissions of API Gateway to access your VPC instance.
+        @summary Deletes a VPC authorization without unpublishing the associated APIs.
+        
+        @description    This API is intended for API providers.
+        Revokes the permissions of API Gateway to access your VPC instance.
         >  Deleting an authorization affects the associated API. Before you delete the authorization, make sure that it is not used by the API.
         
         @param request: RemoveVpcAccessRequest
@@ -17660,6 +20724,11 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.RemoveVpcAccessAndAbolishApisRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.RemoveVpcAccessAndAbolishApisResponse:
+        """
+        @param request: RemoveVpcAccessAndAbolishApisRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveVpcAccessAndAbolishApisResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -17696,6 +20765,11 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.RemoveVpcAccessAndAbolishApisRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.RemoveVpcAccessAndAbolishApisResponse:
+        """
+        @param request: RemoveVpcAccessAndAbolishApisRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveVpcAccessAndAbolishApisResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -17731,6 +20805,10 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.RemoveVpcAccessAndAbolishApisRequest,
     ) -> cloud_api20160714_models.RemoveVpcAccessAndAbolishApisResponse:
+        """
+        @param request: RemoveVpcAccessAndAbolishApisRequest
+        @return: RemoveVpcAccessAndAbolishApisResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.remove_vpc_access_and_abolish_apis_with_options(request, runtime)
 
@@ -17738,6 +20816,10 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.RemoveVpcAccessAndAbolishApisRequest,
     ) -> cloud_api20160714_models.RemoveVpcAccessAndAbolishApisResponse:
+        """
+        @param request: RemoveVpcAccessAndAbolishApisRequest
+        @return: RemoveVpcAccessAndAbolishApisResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.remove_vpc_access_and_abolish_apis_with_options_async(request, runtime)
 
@@ -17746,6 +20828,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.ResetAppCodeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.ResetAppCodeResponse:
+        """
+        @summary Resets the AppCode of an app.
+        
+        @param request: ResetAppCodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResetAppCodeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_code):
@@ -17778,6 +20867,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.ResetAppCodeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.ResetAppCodeResponse:
+        """
+        @summary Resets the AppCode of an app.
+        
+        @param request: ResetAppCodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResetAppCodeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_code):
@@ -17809,6 +20905,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.ResetAppCodeRequest,
     ) -> cloud_api20160714_models.ResetAppCodeResponse:
+        """
+        @summary Resets the AppCode of an app.
+        
+        @param request: ResetAppCodeRequest
+        @return: ResetAppCodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.reset_app_code_with_options(request, runtime)
 
@@ -17816,6 +20918,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.ResetAppCodeRequest,
     ) -> cloud_api20160714_models.ResetAppCodeResponse:
+        """
+        @summary Resets the AppCode of an app.
+        
+        @param request: ResetAppCodeRequest
+        @return: ResetAppCodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.reset_app_code_with_options_async(request, runtime)
 
@@ -17825,9 +20933,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.ResetAppSecretResponse:
         """
-        This operation is intended for API callers.
-        *   A new secret is automatically generated after you have called this operation. This secret cannot be customized.
-        *   The results returned by this operation do not contain the application secret. You can obtain the secret by calling DescribeAppSecurity.
+        @summary Resets the key of an application.
+        
+        @description    This operation is intended for API callers.
+        A new secret is automatically generated after you have called this operation. This secret cannot be customized.
+        The results returned by this operation do not contain the application secret. You can obtain the secret by calling DescribeAppSecurity.
         
         @param request: ResetAppSecretRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17868,9 +20978,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.ResetAppSecretResponse:
         """
-        This operation is intended for API callers.
-        *   A new secret is automatically generated after you have called this operation. This secret cannot be customized.
-        *   The results returned by this operation do not contain the application secret. You can obtain the secret by calling DescribeAppSecurity.
+        @summary Resets the key of an application.
+        
+        @description    This operation is intended for API callers.
+        A new secret is automatically generated after you have called this operation. This secret cannot be customized.
+        The results returned by this operation do not contain the application secret. You can obtain the secret by calling DescribeAppSecurity.
         
         @param request: ResetAppSecretRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17910,9 +21022,11 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.ResetAppSecretRequest,
     ) -> cloud_api20160714_models.ResetAppSecretResponse:
         """
-        This operation is intended for API callers.
-        *   A new secret is automatically generated after you have called this operation. This secret cannot be customized.
-        *   The results returned by this operation do not contain the application secret. You can obtain the secret by calling DescribeAppSecurity.
+        @summary Resets the key of an application.
+        
+        @description    This operation is intended for API callers.
+        A new secret is automatically generated after you have called this operation. This secret cannot be customized.
+        The results returned by this operation do not contain the application secret. You can obtain the secret by calling DescribeAppSecurity.
         
         @param request: ResetAppSecretRequest
         @return: ResetAppSecretResponse
@@ -17925,9 +21039,11 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.ResetAppSecretRequest,
     ) -> cloud_api20160714_models.ResetAppSecretResponse:
         """
-        This operation is intended for API callers.
-        *   A new secret is automatically generated after you have called this operation. This secret cannot be customized.
-        *   The results returned by this operation do not contain the application secret. You can obtain the secret by calling DescribeAppSecurity.
+        @summary Resets the key of an application.
+        
+        @description    This operation is intended for API callers.
+        A new secret is automatically generated after you have called this operation. This secret cannot be customized.
+        The results returned by this operation do not contain the application secret. You can obtain the secret by calling DescribeAppSecurity.
         
         @param request: ResetAppSecretRequest
         @return: ResetAppSecretResponse
@@ -17940,6 +21056,11 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.SdkGenerateByAppRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.SdkGenerateByAppResponse:
+        """
+        @param request: SdkGenerateByAppRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SdkGenerateByAppResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -17972,6 +21093,11 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.SdkGenerateByAppRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.SdkGenerateByAppResponse:
+        """
+        @param request: SdkGenerateByAppRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SdkGenerateByAppResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -18003,6 +21129,10 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.SdkGenerateByAppRequest,
     ) -> cloud_api20160714_models.SdkGenerateByAppResponse:
+        """
+        @param request: SdkGenerateByAppRequest
+        @return: SdkGenerateByAppResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.sdk_generate_by_app_with_options(request, runtime)
 
@@ -18010,6 +21140,10 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.SdkGenerateByAppRequest,
     ) -> cloud_api20160714_models.SdkGenerateByAppResponse:
+        """
+        @param request: SdkGenerateByAppRequest
+        @return: SdkGenerateByAppResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.sdk_generate_by_app_with_options_async(request, runtime)
 
@@ -18018,6 +21152,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.SdkGenerateByAppForRegionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.SdkGenerateByAppForRegionResponse:
+        """
+        @summary 生成与App关联的API的SDK
+        
+        @param request: SdkGenerateByAppForRegionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SdkGenerateByAppForRegionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -18050,6 +21191,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.SdkGenerateByAppForRegionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.SdkGenerateByAppForRegionResponse:
+        """
+        @summary 生成与App关联的API的SDK
+        
+        @param request: SdkGenerateByAppForRegionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SdkGenerateByAppForRegionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -18081,6 +21229,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.SdkGenerateByAppForRegionRequest,
     ) -> cloud_api20160714_models.SdkGenerateByAppForRegionResponse:
+        """
+        @summary 生成与App关联的API的SDK
+        
+        @param request: SdkGenerateByAppForRegionRequest
+        @return: SdkGenerateByAppForRegionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.sdk_generate_by_app_for_region_with_options(request, runtime)
 
@@ -18088,6 +21242,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.SdkGenerateByAppForRegionRequest,
     ) -> cloud_api20160714_models.SdkGenerateByAppForRegionResponse:
+        """
+        @summary 生成与App关联的API的SDK
+        
+        @param request: SdkGenerateByAppForRegionRequest
+        @return: SdkGenerateByAppForRegionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.sdk_generate_by_app_for_region_with_options_async(request, runtime)
 
@@ -18096,6 +21256,11 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.SdkGenerateByGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.SdkGenerateByGroupResponse:
+        """
+        @param request: SdkGenerateByGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SdkGenerateByGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_id):
@@ -18128,6 +21293,11 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.SdkGenerateByGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.SdkGenerateByGroupResponse:
+        """
+        @param request: SdkGenerateByGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SdkGenerateByGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_id):
@@ -18159,6 +21329,10 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.SdkGenerateByGroupRequest,
     ) -> cloud_api20160714_models.SdkGenerateByGroupResponse:
+        """
+        @param request: SdkGenerateByGroupRequest
+        @return: SdkGenerateByGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.sdk_generate_by_group_with_options(request, runtime)
 
@@ -18166,6 +21340,10 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.SdkGenerateByGroupRequest,
     ) -> cloud_api20160714_models.SdkGenerateByGroupResponse:
+        """
+        @param request: SdkGenerateByGroupRequest
+        @return: SdkGenerateByGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.sdk_generate_by_group_with_options_async(request, runtime)
 
@@ -18174,6 +21352,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.SetAccessControlListAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.SetAccessControlListAttributeResponse:
+        """
+        @summary 修改访问控制策略的名称
+        
+        @param request: SetAccessControlListAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetAccessControlListAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.acl_id):
@@ -18206,6 +21391,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.SetAccessControlListAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.SetAccessControlListAttributeResponse:
+        """
+        @summary 修改访问控制策略的名称
+        
+        @param request: SetAccessControlListAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetAccessControlListAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.acl_id):
@@ -18237,6 +21429,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.SetAccessControlListAttributeRequest,
     ) -> cloud_api20160714_models.SetAccessControlListAttributeResponse:
+        """
+        @summary 修改访问控制策略的名称
+        
+        @param request: SetAccessControlListAttributeRequest
+        @return: SetAccessControlListAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.set_access_control_list_attribute_with_options(request, runtime)
 
@@ -18244,6 +21442,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.SetAccessControlListAttributeRequest,
     ) -> cloud_api20160714_models.SetAccessControlListAttributeResponse:
+        """
+        @summary 修改访问控制策略的名称
+        
+        @param request: SetAccessControlListAttributeRequest
+        @return: SetAccessControlListAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.set_access_control_list_attribute_with_options_async(request, runtime)
 
@@ -18252,6 +21456,13 @@ class Client(OpenApiClient):
         tmp_req: cloud_api20160714_models.SetApiProductsAuthoritiesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.SetApiProductsAuthoritiesResponse:
+        """
+        @summary 给多个API产品添加APP授权
+        
+        @param tmp_req: SetApiProductsAuthoritiesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetApiProductsAuthoritiesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = cloud_api20160714_models.SetApiProductsAuthoritiesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -18292,6 +21503,13 @@ class Client(OpenApiClient):
         tmp_req: cloud_api20160714_models.SetApiProductsAuthoritiesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.SetApiProductsAuthoritiesResponse:
+        """
+        @summary 给多个API产品添加APP授权
+        
+        @param tmp_req: SetApiProductsAuthoritiesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetApiProductsAuthoritiesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = cloud_api20160714_models.SetApiProductsAuthoritiesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -18331,6 +21549,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.SetApiProductsAuthoritiesRequest,
     ) -> cloud_api20160714_models.SetApiProductsAuthoritiesResponse:
+        """
+        @summary 给多个API产品添加APP授权
+        
+        @param request: SetApiProductsAuthoritiesRequest
+        @return: SetApiProductsAuthoritiesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.set_api_products_authorities_with_options(request, runtime)
 
@@ -18338,6 +21562,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.SetApiProductsAuthoritiesRequest,
     ) -> cloud_api20160714_models.SetApiProductsAuthoritiesResponse:
+        """
+        @summary 给多个API产品添加APP授权
+        
+        @param request: SetApiProductsAuthoritiesRequest
+        @return: SetApiProductsAuthoritiesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.set_api_products_authorities_with_options_async(request, runtime)
 
@@ -18347,9 +21577,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.SetApisAuthoritiesResponse:
         """
-        This operation is intended for API providers and callers.
-        *   API providers can authorize any apps to call their APIs.
-        *   API callers can authorize their own apps to call the APIs that they have purchased.
+        @summary Authorizes a specified application to call multiple APIs.
+        
+        @description    This operation is intended for API providers and callers.
+        API providers can authorize any apps to call their APIs.
+        API callers can authorize their own apps to call the APIs that they have purchased.
         
         @param request: SetApisAuthoritiesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18396,9 +21628,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.SetApisAuthoritiesResponse:
         """
-        This operation is intended for API providers and callers.
-        *   API providers can authorize any apps to call their APIs.
-        *   API callers can authorize their own apps to call the APIs that they have purchased.
+        @summary Authorizes a specified application to call multiple APIs.
+        
+        @description    This operation is intended for API providers and callers.
+        API providers can authorize any apps to call their APIs.
+        API callers can authorize their own apps to call the APIs that they have purchased.
         
         @param request: SetApisAuthoritiesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18444,9 +21678,11 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.SetApisAuthoritiesRequest,
     ) -> cloud_api20160714_models.SetApisAuthoritiesResponse:
         """
-        This operation is intended for API providers and callers.
-        *   API providers can authorize any apps to call their APIs.
-        *   API callers can authorize their own apps to call the APIs that they have purchased.
+        @summary Authorizes a specified application to call multiple APIs.
+        
+        @description    This operation is intended for API providers and callers.
+        API providers can authorize any apps to call their APIs.
+        API callers can authorize their own apps to call the APIs that they have purchased.
         
         @param request: SetApisAuthoritiesRequest
         @return: SetApisAuthoritiesResponse
@@ -18459,9 +21695,11 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.SetApisAuthoritiesRequest,
     ) -> cloud_api20160714_models.SetApisAuthoritiesResponse:
         """
-        This operation is intended for API providers and callers.
-        *   API providers can authorize any apps to call their APIs.
-        *   API callers can authorize their own apps to call the APIs that they have purchased.
+        @summary Authorizes a specified application to call multiple APIs.
+        
+        @description    This operation is intended for API providers and callers.
+        API providers can authorize any apps to call their APIs.
+        API callers can authorize their own apps to call the APIs that they have purchased.
         
         @param request: SetApisAuthoritiesRequest
         @return: SetApisAuthoritiesResponse
@@ -18474,6 +21712,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.SetAppsAuthToApiProductRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.SetAppsAuthToApiProductResponse:
+        """
+        @summary 将多个APP授权给API产品
+        
+        @param request: SetAppsAuthToApiProductRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetAppsAuthToApiProductResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.api_product_id):
@@ -18510,6 +21755,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.SetAppsAuthToApiProductRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.SetAppsAuthToApiProductResponse:
+        """
+        @summary 将多个APP授权给API产品
+        
+        @param request: SetAppsAuthToApiProductRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetAppsAuthToApiProductResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.api_product_id):
@@ -18545,6 +21797,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.SetAppsAuthToApiProductRequest,
     ) -> cloud_api20160714_models.SetAppsAuthToApiProductResponse:
+        """
+        @summary 将多个APP授权给API产品
+        
+        @param request: SetAppsAuthToApiProductRequest
+        @return: SetAppsAuthToApiProductResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.set_apps_auth_to_api_product_with_options(request, runtime)
 
@@ -18552,6 +21810,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.SetAppsAuthToApiProductRequest,
     ) -> cloud_api20160714_models.SetAppsAuthToApiProductResponse:
+        """
+        @summary 将多个APP授权给API产品
+        
+        @param request: SetAppsAuthToApiProductRequest
+        @return: SetAppsAuthToApiProductResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.set_apps_auth_to_api_product_with_options_async(request, runtime)
 
@@ -18561,9 +21825,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.SetAppsAuthoritiesResponse:
         """
-        This operation is intended for API providers and callers.
-        *   API providers can authorize any apps to call their APIs.
-        *   API callers can authorize their own apps to call the APIs that they have purchased.
+        @summary Grants access permissions on a specified API to multiple applications.
+        
+        @description    This operation is intended for API providers and callers.
+        API providers can authorize any apps to call their APIs.
+        API callers can authorize their own apps to call the APIs that they have purchased.
         
         @param request: SetAppsAuthoritiesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18610,9 +21876,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.SetAppsAuthoritiesResponse:
         """
-        This operation is intended for API providers and callers.
-        *   API providers can authorize any apps to call their APIs.
-        *   API callers can authorize their own apps to call the APIs that they have purchased.
+        @summary Grants access permissions on a specified API to multiple applications.
+        
+        @description    This operation is intended for API providers and callers.
+        API providers can authorize any apps to call their APIs.
+        API callers can authorize their own apps to call the APIs that they have purchased.
         
         @param request: SetAppsAuthoritiesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18658,9 +21926,11 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.SetAppsAuthoritiesRequest,
     ) -> cloud_api20160714_models.SetAppsAuthoritiesResponse:
         """
-        This operation is intended for API providers and callers.
-        *   API providers can authorize any apps to call their APIs.
-        *   API callers can authorize their own apps to call the APIs that they have purchased.
+        @summary Grants access permissions on a specified API to multiple applications.
+        
+        @description    This operation is intended for API providers and callers.
+        API providers can authorize any apps to call their APIs.
+        API callers can authorize their own apps to call the APIs that they have purchased.
         
         @param request: SetAppsAuthoritiesRequest
         @return: SetAppsAuthoritiesResponse
@@ -18673,9 +21943,11 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.SetAppsAuthoritiesRequest,
     ) -> cloud_api20160714_models.SetAppsAuthoritiesResponse:
         """
-        This operation is intended for API providers and callers.
-        *   API providers can authorize any apps to call their APIs.
-        *   API callers can authorize their own apps to call the APIs that they have purchased.
+        @summary Grants access permissions on a specified API to multiple applications.
+        
+        @description    This operation is intended for API providers and callers.
+        API providers can authorize any apps to call their APIs.
+        API callers can authorize their own apps to call the APIs that they have purchased.
         
         @param request: SetAppsAuthoritiesRequest
         @return: SetAppsAuthoritiesResponse
@@ -18688,6 +21960,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.SetDomainRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.SetDomainResponse:
+        """
+        @summary Binds a custom domain name to a specified API group.
+        
+        @param request: SetDomainRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetDomainResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.bind_stage_name):
@@ -18726,6 +22005,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.SetDomainRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.SetDomainResponse:
+        """
+        @summary Binds a custom domain name to a specified API group.
+        
+        @param request: SetDomainRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetDomainResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.bind_stage_name):
@@ -18763,6 +22049,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.SetDomainRequest,
     ) -> cloud_api20160714_models.SetDomainResponse:
+        """
+        @summary Binds a custom domain name to a specified API group.
+        
+        @param request: SetDomainRequest
+        @return: SetDomainResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.set_domain_with_options(request, runtime)
 
@@ -18770,6 +22062,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.SetDomainRequest,
     ) -> cloud_api20160714_models.SetDomainResponse:
+        """
+        @summary Binds a custom domain name to a specified API group.
+        
+        @param request: SetDomainRequest
+        @return: SetDomainResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.set_domain_with_options_async(request, runtime)
 
@@ -18779,9 +22077,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.SetDomainCertificateResponse:
         """
-        This operation is intended for API providers.
-        *   The SSL certificate must match the custom domain name.
-        *   After the SSL certificate is bound, HTTPS-based API services become available.
+        @summary Uploads an SSL certificate for a custom domain name.
+        
+        @description    This operation is intended for API providers.
+        The SSL certificate must match the custom domain name.
+        After the SSL certificate is bound, HTTPS-based API services become available.
         
         @param request: SetDomainCertificateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18830,9 +22130,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.SetDomainCertificateResponse:
         """
-        This operation is intended for API providers.
-        *   The SSL certificate must match the custom domain name.
-        *   After the SSL certificate is bound, HTTPS-based API services become available.
+        @summary Uploads an SSL certificate for a custom domain name.
+        
+        @description    This operation is intended for API providers.
+        The SSL certificate must match the custom domain name.
+        After the SSL certificate is bound, HTTPS-based API services become available.
         
         @param request: SetDomainCertificateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18880,9 +22182,11 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.SetDomainCertificateRequest,
     ) -> cloud_api20160714_models.SetDomainCertificateResponse:
         """
-        This operation is intended for API providers.
-        *   The SSL certificate must match the custom domain name.
-        *   After the SSL certificate is bound, HTTPS-based API services become available.
+        @summary Uploads an SSL certificate for a custom domain name.
+        
+        @description    This operation is intended for API providers.
+        The SSL certificate must match the custom domain name.
+        After the SSL certificate is bound, HTTPS-based API services become available.
         
         @param request: SetDomainCertificateRequest
         @return: SetDomainCertificateResponse
@@ -18895,9 +22199,11 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.SetDomainCertificateRequest,
     ) -> cloud_api20160714_models.SetDomainCertificateResponse:
         """
-        This operation is intended for API providers.
-        *   The SSL certificate must match the custom domain name.
-        *   After the SSL certificate is bound, HTTPS-based API services become available.
+        @summary Uploads an SSL certificate for a custom domain name.
+        
+        @description    This operation is intended for API providers.
+        The SSL certificate must match the custom domain name.
+        After the SSL certificate is bound, HTTPS-based API services become available.
         
         @param request: SetDomainCertificateRequest
         @return: SetDomainCertificateResponse
@@ -18910,6 +22216,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.SetDomainWebSocketStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.SetDomainWebSocketStatusResponse:
+        """
+        @summary Enables or disables WebSocket for a custom domain name.
+        
+        @param request: SetDomainWebSocketStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetDomainWebSocketStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.action_value):
@@ -18946,6 +22259,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.SetDomainWebSocketStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.SetDomainWebSocketStatusResponse:
+        """
+        @summary Enables or disables WebSocket for a custom domain name.
+        
+        @param request: SetDomainWebSocketStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetDomainWebSocketStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.action_value):
@@ -18981,6 +22301,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.SetDomainWebSocketStatusRequest,
     ) -> cloud_api20160714_models.SetDomainWebSocketStatusResponse:
+        """
+        @summary Enables or disables WebSocket for a custom domain name.
+        
+        @param request: SetDomainWebSocketStatusRequest
+        @return: SetDomainWebSocketStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.set_domain_web_socket_status_with_options(request, runtime)
 
@@ -18988,6 +22314,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.SetDomainWebSocketStatusRequest,
     ) -> cloud_api20160714_models.SetDomainWebSocketStatusResponse:
+        """
+        @summary Enables or disables WebSocket for a custom domain name.
+        
+        @param request: SetDomainWebSocketStatusRequest
+        @return: SetDomainWebSocketStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.set_domain_web_socket_status_with_options_async(request, runtime)
 
@@ -18996,6 +22328,11 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.SetGroupAuthAppCodeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.SetGroupAuthAppCodeResponse:
+        """
+        @param request: SetGroupAuthAppCodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetGroupAuthAppCodeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auth_app_code):
@@ -19028,6 +22365,11 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.SetGroupAuthAppCodeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.SetGroupAuthAppCodeResponse:
+        """
+        @param request: SetGroupAuthAppCodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetGroupAuthAppCodeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auth_app_code):
@@ -19059,6 +22401,10 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.SetGroupAuthAppCodeRequest,
     ) -> cloud_api20160714_models.SetGroupAuthAppCodeResponse:
+        """
+        @param request: SetGroupAuthAppCodeRequest
+        @return: SetGroupAuthAppCodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.set_group_auth_app_code_with_options(request, runtime)
 
@@ -19066,6 +22412,10 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.SetGroupAuthAppCodeRequest,
     ) -> cloud_api20160714_models.SetGroupAuthAppCodeResponse:
+        """
+        @param request: SetGroupAuthAppCodeRequest
+        @return: SetGroupAuthAppCodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.set_group_auth_app_code_with_options_async(request, runtime)
 
@@ -19075,8 +22425,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.SetIpControlApisResponse:
         """
-        This operation is intended for API callers.
-        *   A maximum of 100 APIs can be bound at a time.
+        @summary Creates a binding relationship between specified access control lists (ACLs) and APIs.
+        
+        @description    This operation is intended for API callers.
+        A maximum of 100 APIs can be bound at a time.
         
         @param request: SetIpControlApisRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19119,8 +22471,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.SetIpControlApisResponse:
         """
-        This operation is intended for API callers.
-        *   A maximum of 100 APIs can be bound at a time.
+        @summary Creates a binding relationship between specified access control lists (ACLs) and APIs.
+        
+        @description    This operation is intended for API callers.
+        A maximum of 100 APIs can be bound at a time.
         
         @param request: SetIpControlApisRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19162,8 +22516,10 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.SetIpControlApisRequest,
     ) -> cloud_api20160714_models.SetIpControlApisResponse:
         """
-        This operation is intended for API callers.
-        *   A maximum of 100 APIs can be bound at a time.
+        @summary Creates a binding relationship between specified access control lists (ACLs) and APIs.
+        
+        @description    This operation is intended for API callers.
+        A maximum of 100 APIs can be bound at a time.
         
         @param request: SetIpControlApisRequest
         @return: SetIpControlApisResponse
@@ -19176,8 +22532,10 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.SetIpControlApisRequest,
     ) -> cloud_api20160714_models.SetIpControlApisResponse:
         """
-        This operation is intended for API callers.
-        *   A maximum of 100 APIs can be bound at a time.
+        @summary Creates a binding relationship between specified access control lists (ACLs) and APIs.
+        
+        @description    This operation is intended for API callers.
+        A maximum of 100 APIs can be bound at a time.
         
         @param request: SetIpControlApisRequest
         @return: SetIpControlApisResponse
@@ -19191,8 +22549,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.SetSignatureApisResponse:
         """
-        This API is intended for API providers.
-        *   This operation allows you to bind a signature key to an API. You can bind signature keys for up to 100 APIs at a time.
+        @summary Binds a signature key to APIs.
+        
+        @description    This API is intended for API providers.
+        This operation allows you to bind a signature key to an API. You can bind signature keys for up to 100 APIs at a time.
         
         @param request: SetSignatureApisRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19235,8 +22595,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.SetSignatureApisResponse:
         """
-        This API is intended for API providers.
-        *   This operation allows you to bind a signature key to an API. You can bind signature keys for up to 100 APIs at a time.
+        @summary Binds a signature key to APIs.
+        
+        @description    This API is intended for API providers.
+        This operation allows you to bind a signature key to an API. You can bind signature keys for up to 100 APIs at a time.
         
         @param request: SetSignatureApisRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19278,8 +22640,10 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.SetSignatureApisRequest,
     ) -> cloud_api20160714_models.SetSignatureApisResponse:
         """
-        This API is intended for API providers.
-        *   This operation allows you to bind a signature key to an API. You can bind signature keys for up to 100 APIs at a time.
+        @summary Binds a signature key to APIs.
+        
+        @description    This API is intended for API providers.
+        This operation allows you to bind a signature key to an API. You can bind signature keys for up to 100 APIs at a time.
         
         @param request: SetSignatureApisRequest
         @return: SetSignatureApisResponse
@@ -19292,8 +22656,10 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.SetSignatureApisRequest,
     ) -> cloud_api20160714_models.SetSignatureApisResponse:
         """
-        This API is intended for API providers.
-        *   This operation allows you to bind a signature key to an API. You can bind signature keys for up to 100 APIs at a time.
+        @summary Binds a signature key to APIs.
+        
+        @description    This API is intended for API providers.
+        This operation allows you to bind a signature key to an API. You can bind signature keys for up to 100 APIs at a time.
         
         @param request: SetSignatureApisRequest
         @return: SetSignatureApisResponse
@@ -19307,8 +22673,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.SetTrafficControlApisResponse:
         """
-        This API is intended for API providers.
-        *   This API allows you to bind a specific throttling policy to up to 100 APIs at a time.
+        @summary Binds a throttling policy to APIs.
+        
+        @description    This API is intended for API providers.
+        This API allows you to bind a specific throttling policy to up to 100 APIs at a time.
         
         @param request: SetTrafficControlApisRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19351,8 +22719,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.SetTrafficControlApisResponse:
         """
-        This API is intended for API providers.
-        *   This API allows you to bind a specific throttling policy to up to 100 APIs at a time.
+        @summary Binds a throttling policy to APIs.
+        
+        @description    This API is intended for API providers.
+        This API allows you to bind a specific throttling policy to up to 100 APIs at a time.
         
         @param request: SetTrafficControlApisRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19394,8 +22764,10 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.SetTrafficControlApisRequest,
     ) -> cloud_api20160714_models.SetTrafficControlApisResponse:
         """
-        This API is intended for API providers.
-        *   This API allows you to bind a specific throttling policy to up to 100 APIs at a time.
+        @summary Binds a throttling policy to APIs.
+        
+        @description    This API is intended for API providers.
+        This API allows you to bind a specific throttling policy to up to 100 APIs at a time.
         
         @param request: SetTrafficControlApisRequest
         @return: SetTrafficControlApisResponse
@@ -19408,8 +22780,10 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.SetTrafficControlApisRequest,
     ) -> cloud_api20160714_models.SetTrafficControlApisResponse:
         """
-        This API is intended for API providers.
-        *   This API allows you to bind a specific throttling policy to up to 100 APIs at a time.
+        @summary Binds a throttling policy to APIs.
+        
+        @description    This API is intended for API providers.
+        This API allows you to bind a specific throttling policy to up to 100 APIs at a time.
         
         @param request: SetTrafficControlApisRequest
         @return: SetTrafficControlApisResponse
@@ -19423,8 +22797,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.SetVpcAccessResponse:
         """
-        This operation is intended for API providers.
-        * This operation is used to authorize API Gateway to access your VPC instance.
+        @summary Creates a virtual private cloud (VPC) access authorization and enables reverse access.
+        
+        @description  This operation is intended for API providers.
+        This operation is used to authorize API Gateway to access your VPC instance.
         
         @param request: SetVpcAccessRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19473,8 +22849,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.SetVpcAccessResponse:
         """
-        This operation is intended for API providers.
-        * This operation is used to authorize API Gateway to access your VPC instance.
+        @summary Creates a virtual private cloud (VPC) access authorization and enables reverse access.
+        
+        @description  This operation is intended for API providers.
+        This operation is used to authorize API Gateway to access your VPC instance.
         
         @param request: SetVpcAccessRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19522,8 +22900,10 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.SetVpcAccessRequest,
     ) -> cloud_api20160714_models.SetVpcAccessResponse:
         """
-        This operation is intended for API providers.
-        * This operation is used to authorize API Gateway to access your VPC instance.
+        @summary Creates a virtual private cloud (VPC) access authorization and enables reverse access.
+        
+        @description  This operation is intended for API providers.
+        This operation is used to authorize API Gateway to access your VPC instance.
         
         @param request: SetVpcAccessRequest
         @return: SetVpcAccessResponse
@@ -19536,8 +22916,10 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.SetVpcAccessRequest,
     ) -> cloud_api20160714_models.SetVpcAccessResponse:
         """
-        This operation is intended for API providers.
-        * This operation is used to authorize API Gateway to access your VPC instance.
+        @summary Creates a virtual private cloud (VPC) access authorization and enables reverse access.
+        
+        @description  This operation is intended for API providers.
+        This operation is used to authorize API Gateway to access your VPC instance.
         
         @param request: SetVpcAccessRequest
         @return: SetVpcAccessResponse
@@ -19550,6 +22932,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.SetWildcardDomainPatternsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.SetWildcardDomainPatternsResponse:
+        """
+        @summary Specifies a wildcard domain name template for a bound custom domain name.
+        
+        @param request: SetWildcardDomainPatternsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetWildcardDomainPatternsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -19584,6 +22973,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.SetWildcardDomainPatternsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.SetWildcardDomainPatternsResponse:
+        """
+        @summary Specifies a wildcard domain name template for a bound custom domain name.
+        
+        @param request: SetWildcardDomainPatternsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetWildcardDomainPatternsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -19617,6 +23013,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.SetWildcardDomainPatternsRequest,
     ) -> cloud_api20160714_models.SetWildcardDomainPatternsResponse:
+        """
+        @summary Specifies a wildcard domain name template for a bound custom domain name.
+        
+        @param request: SetWildcardDomainPatternsRequest
+        @return: SetWildcardDomainPatternsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.set_wildcard_domain_patterns_with_options(request, runtime)
 
@@ -19624,6 +23026,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.SetWildcardDomainPatternsRequest,
     ) -> cloud_api20160714_models.SetWildcardDomainPatternsResponse:
+        """
+        @summary Specifies a wildcard domain name template for a bound custom domain name.
+        
+        @param request: SetWildcardDomainPatternsRequest
+        @return: SetWildcardDomainPatternsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.set_wildcard_domain_patterns_with_options_async(request, runtime)
 
@@ -19633,11 +23041,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.SwitchApiResponse:
         """
-        This API is intended for API providers.
-        *   The historical version can be obtained by calling the **DescribeHistoryApis** operation.
-        *   Only APIs that have been published more than once have historical versions.
-        *   This operation can only be performed on running APIs. Exercise caution when you perform this operation because the operation cannot be undone. The operation takes up to 5 seconds.
-        *   The switch operation is essentially a publish operation. A reason for this operation must be provided.
+        @summary Switches the definition of an API in a specified runtime environment to a historical version.
+        
+        @description    This API is intended for API providers.
+        The historical version can be obtained by calling the **DescribeHistoryApis** operation.
+        Only APIs that have been published more than once have historical versions.
+        This operation can only be performed on running APIs. Exercise caution when you perform this operation because the operation cannot be undone. The operation takes up to 5 seconds.
+        The switch operation is essentially a publish operation. A reason for this operation must be provided.
         
         @param request: SwitchApiRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19682,11 +23092,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.SwitchApiResponse:
         """
-        This API is intended for API providers.
-        *   The historical version can be obtained by calling the **DescribeHistoryApis** operation.
-        *   Only APIs that have been published more than once have historical versions.
-        *   This operation can only be performed on running APIs. Exercise caution when you perform this operation because the operation cannot be undone. The operation takes up to 5 seconds.
-        *   The switch operation is essentially a publish operation. A reason for this operation must be provided.
+        @summary Switches the definition of an API in a specified runtime environment to a historical version.
+        
+        @description    This API is intended for API providers.
+        The historical version can be obtained by calling the **DescribeHistoryApis** operation.
+        Only APIs that have been published more than once have historical versions.
+        This operation can only be performed on running APIs. Exercise caution when you perform this operation because the operation cannot be undone. The operation takes up to 5 seconds.
+        The switch operation is essentially a publish operation. A reason for this operation must be provided.
         
         @param request: SwitchApiRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19730,11 +23142,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.SwitchApiRequest,
     ) -> cloud_api20160714_models.SwitchApiResponse:
         """
-        This API is intended for API providers.
-        *   The historical version can be obtained by calling the **DescribeHistoryApis** operation.
-        *   Only APIs that have been published more than once have historical versions.
-        *   This operation can only be performed on running APIs. Exercise caution when you perform this operation because the operation cannot be undone. The operation takes up to 5 seconds.
-        *   The switch operation is essentially a publish operation. A reason for this operation must be provided.
+        @summary Switches the definition of an API in a specified runtime environment to a historical version.
+        
+        @description    This API is intended for API providers.
+        The historical version can be obtained by calling the **DescribeHistoryApis** operation.
+        Only APIs that have been published more than once have historical versions.
+        This operation can only be performed on running APIs. Exercise caution when you perform this operation because the operation cannot be undone. The operation takes up to 5 seconds.
+        The switch operation is essentially a publish operation. A reason for this operation must be provided.
         
         @param request: SwitchApiRequest
         @return: SwitchApiResponse
@@ -19747,11 +23161,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.SwitchApiRequest,
     ) -> cloud_api20160714_models.SwitchApiResponse:
         """
-        This API is intended for API providers.
-        *   The historical version can be obtained by calling the **DescribeHistoryApis** operation.
-        *   Only APIs that have been published more than once have historical versions.
-        *   This operation can only be performed on running APIs. Exercise caution when you perform this operation because the operation cannot be undone. The operation takes up to 5 seconds.
-        *   The switch operation is essentially a publish operation. A reason for this operation must be provided.
+        @summary Switches the definition of an API in a specified runtime environment to a historical version.
+        
+        @description    This API is intended for API providers.
+        The historical version can be obtained by calling the **DescribeHistoryApis** operation.
+        Only APIs that have been published more than once have historical versions.
+        This operation can only be performed on running APIs. Exercise caution when you perform this operation because the operation cannot be undone. The operation takes up to 5 seconds.
+        The switch operation is essentially a publish operation. A reason for this operation must be provided.
         
         @param request: SwitchApiRequest
         @return: SwitchApiResponse
@@ -19765,11 +23181,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.TagResourcesResponse:
         """
-        All tags (key-value pairs) are applied to all resources of a specified ResourceId, with each resource specified as ResourceId.N.
-        *   Tag.N is a resource tag consisting of a key-value pair: Tag.N.Key and Tag.N.Value.
-        *   If you call this operation to tag multiple resources simultaneously, either all or none of the resources will be tagged.
-        *   If you specify Tag.1.Value in addition to required parameters, you must also specify Tag.1.Key. Otherwise, an InvalidParameter.TagKey error is reported. A tag that has a value must have the corresponding key, but the key can be an empty string.
-        *   If a tag with the same key has been bound to a resource, the new tag will overwrite the existing one.
+        @summary Creates a tag-resource relationship.
+        
+        @description    All tags (key-value pairs) are applied to all resources of a specified ResourceId, with each resource specified as ResourceId.N.
+        Tag.N is a resource tag consisting of a key-value pair: Tag.N.Key and Tag.N.Value.
+        If you call this operation to tag multiple resources simultaneously, either all or none of the resources will be tagged.
+        If you specify Tag.1.Value in addition to required parameters, you must also specify Tag.1.Key. Otherwise, an InvalidParameter.TagKey error is reported. A tag that has a value must have the corresponding key, but the key can be an empty string.
+        If a tag with the same key has been bound to a resource, the new tag will overwrite the existing one.
         
         @param request: TagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19810,11 +23228,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.TagResourcesResponse:
         """
-        All tags (key-value pairs) are applied to all resources of a specified ResourceId, with each resource specified as ResourceId.N.
-        *   Tag.N is a resource tag consisting of a key-value pair: Tag.N.Key and Tag.N.Value.
-        *   If you call this operation to tag multiple resources simultaneously, either all or none of the resources will be tagged.
-        *   If you specify Tag.1.Value in addition to required parameters, you must also specify Tag.1.Key. Otherwise, an InvalidParameter.TagKey error is reported. A tag that has a value must have the corresponding key, but the key can be an empty string.
-        *   If a tag with the same key has been bound to a resource, the new tag will overwrite the existing one.
+        @summary Creates a tag-resource relationship.
+        
+        @description    All tags (key-value pairs) are applied to all resources of a specified ResourceId, with each resource specified as ResourceId.N.
+        Tag.N is a resource tag consisting of a key-value pair: Tag.N.Key and Tag.N.Value.
+        If you call this operation to tag multiple resources simultaneously, either all or none of the resources will be tagged.
+        If you specify Tag.1.Value in addition to required parameters, you must also specify Tag.1.Key. Otherwise, an InvalidParameter.TagKey error is reported. A tag that has a value must have the corresponding key, but the key can be an empty string.
+        If a tag with the same key has been bound to a resource, the new tag will overwrite the existing one.
         
         @param request: TagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19854,11 +23274,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.TagResourcesRequest,
     ) -> cloud_api20160714_models.TagResourcesResponse:
         """
-        All tags (key-value pairs) are applied to all resources of a specified ResourceId, with each resource specified as ResourceId.N.
-        *   Tag.N is a resource tag consisting of a key-value pair: Tag.N.Key and Tag.N.Value.
-        *   If you call this operation to tag multiple resources simultaneously, either all or none of the resources will be tagged.
-        *   If you specify Tag.1.Value in addition to required parameters, you must also specify Tag.1.Key. Otherwise, an InvalidParameter.TagKey error is reported. A tag that has a value must have the corresponding key, but the key can be an empty string.
-        *   If a tag with the same key has been bound to a resource, the new tag will overwrite the existing one.
+        @summary Creates a tag-resource relationship.
+        
+        @description    All tags (key-value pairs) are applied to all resources of a specified ResourceId, with each resource specified as ResourceId.N.
+        Tag.N is a resource tag consisting of a key-value pair: Tag.N.Key and Tag.N.Value.
+        If you call this operation to tag multiple resources simultaneously, either all or none of the resources will be tagged.
+        If you specify Tag.1.Value in addition to required parameters, you must also specify Tag.1.Key. Otherwise, an InvalidParameter.TagKey error is reported. A tag that has a value must have the corresponding key, but the key can be an empty string.
+        If a tag with the same key has been bound to a resource, the new tag will overwrite the existing one.
         
         @param request: TagResourcesRequest
         @return: TagResourcesResponse
@@ -19871,11 +23293,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.TagResourcesRequest,
     ) -> cloud_api20160714_models.TagResourcesResponse:
         """
-        All tags (key-value pairs) are applied to all resources of a specified ResourceId, with each resource specified as ResourceId.N.
-        *   Tag.N is a resource tag consisting of a key-value pair: Tag.N.Key and Tag.N.Value.
-        *   If you call this operation to tag multiple resources simultaneously, either all or none of the resources will be tagged.
-        *   If you specify Tag.1.Value in addition to required parameters, you must also specify Tag.1.Key. Otherwise, an InvalidParameter.TagKey error is reported. A tag that has a value must have the corresponding key, but the key can be an empty string.
-        *   If a tag with the same key has been bound to a resource, the new tag will overwrite the existing one.
+        @summary Creates a tag-resource relationship.
+        
+        @description    All tags (key-value pairs) are applied to all resources of a specified ResourceId, with each resource specified as ResourceId.N.
+        Tag.N is a resource tag consisting of a key-value pair: Tag.N.Key and Tag.N.Value.
+        If you call this operation to tag multiple resources simultaneously, either all or none of the resources will be tagged.
+        If you specify Tag.1.Value in addition to required parameters, you must also specify Tag.1.Key. Otherwise, an InvalidParameter.TagKey error is reported. A tag that has a value must have the corresponding key, but the key can be an empty string.
+        If a tag with the same key has been bound to a resource, the new tag will overwrite the existing one.
         
         @param request: TagResourcesRequest
         @return: TagResourcesResponse
@@ -19889,11 +23313,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.UntagResourcesResponse:
         """
-        If you call this operation to untag multiple resources simultaneously, either all or none of the resources will be untagged.
-        *   If you specify resource IDs without specifying tag keys and set the All parameter to true, all tags bound to the specified resources will be deleted. If a resource does not have any tags, the request is not processed but a success is returned.
-        *   If you specify resource IDs without specifying tag keys and set the All parameter to false, the request is not processed but a success is returned.
-        *   When tag keys are specified, the All parameter is invalid.
-        *   When multiple resources and key-value pairs are specified, the specified tags bound to the resources are deleted.
+        @summary Removes tags from resources.
+        
+        @description    If you call this operation to untag multiple resources simultaneously, either all or none of the resources will be untagged.
+        If you specify resource IDs without specifying tag keys and set the All parameter to true, all tags bound to the specified resources will be deleted. If a resource does not have any tags, the request is not processed but a success is returned.
+        If you specify resource IDs without specifying tag keys and set the All parameter to false, the request is not processed but a success is returned.
+        When tag keys are specified, the All parameter is invalid.
+        When multiple resources and key-value pairs are specified, the specified tags bound to the resources are deleted.
         
         @param request: UntagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19936,11 +23362,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.UntagResourcesResponse:
         """
-        If you call this operation to untag multiple resources simultaneously, either all or none of the resources will be untagged.
-        *   If you specify resource IDs without specifying tag keys and set the All parameter to true, all tags bound to the specified resources will be deleted. If a resource does not have any tags, the request is not processed but a success is returned.
-        *   If you specify resource IDs without specifying tag keys and set the All parameter to false, the request is not processed but a success is returned.
-        *   When tag keys are specified, the All parameter is invalid.
-        *   When multiple resources and key-value pairs are specified, the specified tags bound to the resources are deleted.
+        @summary Removes tags from resources.
+        
+        @description    If you call this operation to untag multiple resources simultaneously, either all or none of the resources will be untagged.
+        If you specify resource IDs without specifying tag keys and set the All parameter to true, all tags bound to the specified resources will be deleted. If a resource does not have any tags, the request is not processed but a success is returned.
+        If you specify resource IDs without specifying tag keys and set the All parameter to false, the request is not processed but a success is returned.
+        When tag keys are specified, the All parameter is invalid.
+        When multiple resources and key-value pairs are specified, the specified tags bound to the resources are deleted.
         
         @param request: UntagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19982,11 +23410,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.UntagResourcesRequest,
     ) -> cloud_api20160714_models.UntagResourcesResponse:
         """
-        If you call this operation to untag multiple resources simultaneously, either all or none of the resources will be untagged.
-        *   If you specify resource IDs without specifying tag keys and set the All parameter to true, all tags bound to the specified resources will be deleted. If a resource does not have any tags, the request is not processed but a success is returned.
-        *   If you specify resource IDs without specifying tag keys and set the All parameter to false, the request is not processed but a success is returned.
-        *   When tag keys are specified, the All parameter is invalid.
-        *   When multiple resources and key-value pairs are specified, the specified tags bound to the resources are deleted.
+        @summary Removes tags from resources.
+        
+        @description    If you call this operation to untag multiple resources simultaneously, either all or none of the resources will be untagged.
+        If you specify resource IDs without specifying tag keys and set the All parameter to true, all tags bound to the specified resources will be deleted. If a resource does not have any tags, the request is not processed but a success is returned.
+        If you specify resource IDs without specifying tag keys and set the All parameter to false, the request is not processed but a success is returned.
+        When tag keys are specified, the All parameter is invalid.
+        When multiple resources and key-value pairs are specified, the specified tags bound to the resources are deleted.
         
         @param request: UntagResourcesRequest
         @return: UntagResourcesResponse
@@ -19999,11 +23429,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.UntagResourcesRequest,
     ) -> cloud_api20160714_models.UntagResourcesResponse:
         """
-        If you call this operation to untag multiple resources simultaneously, either all or none of the resources will be untagged.
-        *   If you specify resource IDs without specifying tag keys and set the All parameter to true, all tags bound to the specified resources will be deleted. If a resource does not have any tags, the request is not processed but a success is returned.
-        *   If you specify resource IDs without specifying tag keys and set the All parameter to false, the request is not processed but a success is returned.
-        *   When tag keys are specified, the All parameter is invalid.
-        *   When multiple resources and key-value pairs are specified, the specified tags bound to the resources are deleted.
+        @summary Removes tags from resources.
+        
+        @description    If you call this operation to untag multiple resources simultaneously, either all or none of the resources will be untagged.
+        If you specify resource IDs without specifying tag keys and set the All parameter to true, all tags bound to the specified resources will be deleted. If a resource does not have any tags, the request is not processed but a success is returned.
+        If you specify resource IDs without specifying tag keys and set the All parameter to false, the request is not processed but a success is returned.
+        When tag keys are specified, the All parameter is invalid.
+        When multiple resources and key-value pairs are specified, the specified tags bound to the resources are deleted.
         
         @param request: UntagResourcesRequest
         @return: UntagResourcesResponse
@@ -20016,6 +23448,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.ValidateVpcConnectivityRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.ValidateVpcConnectivityResponse:
+        """
+        @summary Tests the network connectivity between an API Gateway instance and a port on an Elastic Compute Service (ECS) or Server Load Balance (SLB) instance in a virtual private cloud (VPC) access authorization.
+        
+        @param request: ValidateVpcConnectivityRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ValidateVpcConnectivityResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -20048,6 +23487,13 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.ValidateVpcConnectivityRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.ValidateVpcConnectivityResponse:
+        """
+        @summary Tests the network connectivity between an API Gateway instance and a port on an Elastic Compute Service (ECS) or Server Load Balance (SLB) instance in a virtual private cloud (VPC) access authorization.
+        
+        @param request: ValidateVpcConnectivityRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ValidateVpcConnectivityResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -20079,6 +23525,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.ValidateVpcConnectivityRequest,
     ) -> cloud_api20160714_models.ValidateVpcConnectivityResponse:
+        """
+        @summary Tests the network connectivity between an API Gateway instance and a port on an Elastic Compute Service (ECS) or Server Load Balance (SLB) instance in a virtual private cloud (VPC) access authorization.
+        
+        @param request: ValidateVpcConnectivityRequest
+        @return: ValidateVpcConnectivityResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.validate_vpc_connectivity_with_options(request, runtime)
 
@@ -20086,5 +23538,11 @@ class Client(OpenApiClient):
         self,
         request: cloud_api20160714_models.ValidateVpcConnectivityRequest,
     ) -> cloud_api20160714_models.ValidateVpcConnectivityResponse:
+        """
+        @summary Tests the network connectivity between an API Gateway instance and a port on an Elastic Compute Service (ECS) or Server Load Balance (SLB) instance in a virtual private cloud (VPC) access authorization.
+        
+        @param request: ValidateVpcConnectivityRequest
+        @return: ValidateVpcConnectivityResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.validate_vpc_connectivity_with_options_async(request, runtime)

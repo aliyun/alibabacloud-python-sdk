@@ -1,3 +1,7 @@
+2024-05-11 Version: 4.0.2
+- Update API DescribeVpcAccesses: add param AccurateQuery.
+
+
 2024-05-08 Version: 4.0.1
 - Update API CreateAccessControlList: update response param.
 - Update API DescribeAccessControlListAttribute: update response param.
