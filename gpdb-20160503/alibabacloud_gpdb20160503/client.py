@@ -68,7 +68,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.AllocateInstancePublicConnectionResponse:
         """
-        You can call this operation to apply for a public endpoint for an AnalyticDB for PostgreSQL instance. Both the primary and instance endpoints of an AnalyticDB for PostgreSQL instance can be public endpoints. For more information, see [Endpoints of an instance and its primary coordinator node](~~204879~~).
+        @summary Allocates a public endpoint for an AnalyticDB for PostgreSQL instance.
+        
+        @description You can call this operation to apply for a public endpoint for an AnalyticDB for PostgreSQL instance. Both the primary and instance endpoints of an AnalyticDB for PostgreSQL instance can be public endpoints. For more information, see [Endpoints of an instance and its primary coordinator node](https://help.aliyun.com/document_detail/204879.html).
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -117,7 +119,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.AllocateInstancePublicConnectionResponse:
         """
-        You can call this operation to apply for a public endpoint for an AnalyticDB for PostgreSQL instance. Both the primary and instance endpoints of an AnalyticDB for PostgreSQL instance can be public endpoints. For more information, see [Endpoints of an instance and its primary coordinator node](~~204879~~).
+        @summary Allocates a public endpoint for an AnalyticDB for PostgreSQL instance.
+        
+        @description You can call this operation to apply for a public endpoint for an AnalyticDB for PostgreSQL instance. Both the primary and instance endpoints of an AnalyticDB for PostgreSQL instance can be public endpoints. For more information, see [Endpoints of an instance and its primary coordinator node](https://help.aliyun.com/document_detail/204879.html).
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -165,7 +169,9 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.AllocateInstancePublicConnectionRequest,
     ) -> gpdb_20160503_models.AllocateInstancePublicConnectionResponse:
         """
-        You can call this operation to apply for a public endpoint for an AnalyticDB for PostgreSQL instance. Both the primary and instance endpoints of an AnalyticDB for PostgreSQL instance can be public endpoints. For more information, see [Endpoints of an instance and its primary coordinator node](~~204879~~).
+        @summary Allocates a public endpoint for an AnalyticDB for PostgreSQL instance.
+        
+        @description You can call this operation to apply for a public endpoint for an AnalyticDB for PostgreSQL instance. Both the primary and instance endpoints of an AnalyticDB for PostgreSQL instance can be public endpoints. For more information, see [Endpoints of an instance and its primary coordinator node](https://help.aliyun.com/document_detail/204879.html).
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -180,7 +186,9 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.AllocateInstancePublicConnectionRequest,
     ) -> gpdb_20160503_models.AllocateInstancePublicConnectionResponse:
         """
-        You can call this operation to apply for a public endpoint for an AnalyticDB for PostgreSQL instance. Both the primary and instance endpoints of an AnalyticDB for PostgreSQL instance can be public endpoints. For more information, see [Endpoints of an instance and its primary coordinator node](~~204879~~).
+        @summary Allocates a public endpoint for an AnalyticDB for PostgreSQL instance.
+        
+        @description You can call this operation to apply for a public endpoint for an AnalyticDB for PostgreSQL instance. Both the primary and instance endpoints of an AnalyticDB for PostgreSQL instance can be public endpoints. For more information, see [Endpoints of an instance and its primary coordinator node](https://help.aliyun.com/document_detail/204879.html).
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -195,6 +203,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.CancelUploadDocumentJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.CancelUploadDocumentJobResponse:
+        """
+        @summary 取消上传文档任务
+        
+        @param request: CancelUploadDocumentJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelUploadDocumentJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -237,6 +252,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.CancelUploadDocumentJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.CancelUploadDocumentJobResponse:
+        """
+        @summary 取消上传文档任务
+        
+        @param request: CancelUploadDocumentJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelUploadDocumentJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -278,6 +300,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.CancelUploadDocumentJobRequest,
     ) -> gpdb_20160503_models.CancelUploadDocumentJobResponse:
+        """
+        @summary 取消上传文档任务
+        
+        @param request: CancelUploadDocumentJobRequest
+        @return: CancelUploadDocumentJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.cancel_upload_document_job_with_options(request, runtime)
 
@@ -285,6 +313,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.CancelUploadDocumentJobRequest,
     ) -> gpdb_20160503_models.CancelUploadDocumentJobResponse:
+        """
+        @summary 取消上传文档任务
+        
+        @param request: CancelUploadDocumentJobRequest
+        @return: CancelUploadDocumentJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.cancel_upload_document_job_with_options_async(request, runtime)
 
@@ -293,6 +327,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.CancelUpsertCollectionDataJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.CancelUpsertCollectionDataJobResponse:
+        """
+        @summary 取消上传数据任务
+        
+        @param request: CancelUpsertCollectionDataJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelUpsertCollectionDataJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -335,6 +376,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.CancelUpsertCollectionDataJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.CancelUpsertCollectionDataJobResponse:
+        """
+        @summary 取消上传数据任务
+        
+        @param request: CancelUpsertCollectionDataJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelUpsertCollectionDataJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -376,6 +424,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.CancelUpsertCollectionDataJobRequest,
     ) -> gpdb_20160503_models.CancelUpsertCollectionDataJobResponse:
+        """
+        @summary 取消上传数据任务
+        
+        @param request: CancelUpsertCollectionDataJobRequest
+        @return: CancelUpsertCollectionDataJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.cancel_upsert_collection_data_job_with_options(request, runtime)
 
@@ -383,6 +437,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.CancelUpsertCollectionDataJobRequest,
     ) -> gpdb_20160503_models.CancelUpsertCollectionDataJobResponse:
+        """
+        @summary 取消上传数据任务
+        
+        @param request: CancelUpsertCollectionDataJobRequest
+        @return: CancelUpsertCollectionDataJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.cancel_upsert_collection_data_job_with_options_async(request, runtime)
 
@@ -391,6 +451,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.CheckServiceLinkedRoleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.CheckServiceLinkedRoleResponse:
+        """
+        @summary Queries whether a service-linked role is created.
+        
+        @param request: CheckServiceLinkedRoleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckServiceLinkedRoleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region_id):
@@ -419,6 +486,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.CheckServiceLinkedRoleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.CheckServiceLinkedRoleResponse:
+        """
+        @summary Queries whether a service-linked role is created.
+        
+        @param request: CheckServiceLinkedRoleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckServiceLinkedRoleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region_id):
@@ -446,6 +520,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.CheckServiceLinkedRoleRequest,
     ) -> gpdb_20160503_models.CheckServiceLinkedRoleResponse:
+        """
+        @summary Queries whether a service-linked role is created.
+        
+        @param request: CheckServiceLinkedRoleRequest
+        @return: CheckServiceLinkedRoleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.check_service_linked_role_with_options(request, runtime)
 
@@ -453,6 +533,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.CheckServiceLinkedRoleRequest,
     ) -> gpdb_20160503_models.CheckServiceLinkedRoleResponse:
+        """
+        @summary Queries whether a service-linked role is created.
+        
+        @param request: CheckServiceLinkedRoleRequest
+        @return: CheckServiceLinkedRoleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.check_service_linked_role_with_options_async(request, runtime)
 
@@ -462,8 +548,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.CreateAccountResponse:
         """
-        Before you can use an AnalyticDB for PostgreSQL instance, you must create a privileged account for the instance.
-        *   You can call this operation to create only privileged accounts. For information about how to create other types of accounts, see [Create a database account](~~50206~~).
+        @summary Creates a privileged account for an AnalyticDB for PostgreSQL instance.
+        
+        @description    Before you can use an AnalyticDB for PostgreSQL instance, you must create a privileged account for the instance.
+        You can call this operation to create only privileged accounts. For information about how to create other types of accounts, see [Create a database account](https://help.aliyun.com/document_detail/50206.html).
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -512,8 +600,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.CreateAccountResponse:
         """
-        Before you can use an AnalyticDB for PostgreSQL instance, you must create a privileged account for the instance.
-        *   You can call this operation to create only privileged accounts. For information about how to create other types of accounts, see [Create a database account](~~50206~~).
+        @summary Creates a privileged account for an AnalyticDB for PostgreSQL instance.
+        
+        @description    Before you can use an AnalyticDB for PostgreSQL instance, you must create a privileged account for the instance.
+        You can call this operation to create only privileged accounts. For information about how to create other types of accounts, see [Create a database account](https://help.aliyun.com/document_detail/50206.html).
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -561,8 +651,10 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.CreateAccountRequest,
     ) -> gpdb_20160503_models.CreateAccountResponse:
         """
-        Before you can use an AnalyticDB for PostgreSQL instance, you must create a privileged account for the instance.
-        *   You can call this operation to create only privileged accounts. For information about how to create other types of accounts, see [Create a database account](~~50206~~).
+        @summary Creates a privileged account for an AnalyticDB for PostgreSQL instance.
+        
+        @description    Before you can use an AnalyticDB for PostgreSQL instance, you must create a privileged account for the instance.
+        You can call this operation to create only privileged accounts. For information about how to create other types of accounts, see [Create a database account](https://help.aliyun.com/document_detail/50206.html).
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -577,8 +669,10 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.CreateAccountRequest,
     ) -> gpdb_20160503_models.CreateAccountResponse:
         """
-        Before you can use an AnalyticDB for PostgreSQL instance, you must create a privileged account for the instance.
-        *   You can call this operation to create only privileged accounts. For information about how to create other types of accounts, see [Create a database account](~~50206~~).
+        @summary Creates a privileged account for an AnalyticDB for PostgreSQL instance.
+        
+        @description    Before you can use an AnalyticDB for PostgreSQL instance, you must create a privileged account for the instance.
+        You can call this operation to create only privileged accounts. For information about how to create other types of accounts, see [Create a database account](https://help.aliyun.com/document_detail/50206.html).
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -593,6 +687,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.CreateCollectionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.CreateCollectionResponse:
+        """
+        @summary 创建Collection
+        
+        @param request: CreateCollectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateCollectionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.collection):
@@ -649,6 +750,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.CreateCollectionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.CreateCollectionResponse:
+        """
+        @summary 创建Collection
+        
+        @param request: CreateCollectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateCollectionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.collection):
@@ -704,6 +812,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.CreateCollectionRequest,
     ) -> gpdb_20160503_models.CreateCollectionResponse:
+        """
+        @summary 创建Collection
+        
+        @param request: CreateCollectionRequest
+        @return: CreateCollectionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_collection_with_options(request, runtime)
 
@@ -711,6 +825,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.CreateCollectionRequest,
     ) -> gpdb_20160503_models.CreateCollectionResponse:
+        """
+        @summary 创建Collection
+        
+        @param request: CreateCollectionRequest
+        @return: CreateCollectionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_collection_with_options_async(request, runtime)
 
@@ -720,8 +840,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.CreateDBInstanceResponse:
         """
-        You can call this operation when you need to create AnalyticDB for PostgreSQL instances to meet the requirements of new applications or services.
-        Before you call this operation, make sure that you are familiar with the billing of AnalyticDB for PostgreSQL instances. For more information, see [Billing methods](~~35406~~) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
+        @summary Creates an AnalyticDB for PostgreSQL instance.
+        
+        @description You can call this operation when you need to create AnalyticDB for PostgreSQL instances to meet the requirements of new applications or services.
+        Before you call this operation, make sure that you are familiar with the billing of AnalyticDB for PostgreSQL instances. For more information, see [Billing methods](https://help.aliyun.com/document_detail/35406.html) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
         
@@ -836,8 +958,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.CreateDBInstanceResponse:
         """
-        You can call this operation when you need to create AnalyticDB for PostgreSQL instances to meet the requirements of new applications or services.
-        Before you call this operation, make sure that you are familiar with the billing of AnalyticDB for PostgreSQL instances. For more information, see [Billing methods](~~35406~~) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
+        @summary Creates an AnalyticDB for PostgreSQL instance.
+        
+        @description You can call this operation when you need to create AnalyticDB for PostgreSQL instances to meet the requirements of new applications or services.
+        Before you call this operation, make sure that you are familiar with the billing of AnalyticDB for PostgreSQL instances. For more information, see [Billing methods](https://help.aliyun.com/document_detail/35406.html) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
         
@@ -951,8 +1075,10 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.CreateDBInstanceRequest,
     ) -> gpdb_20160503_models.CreateDBInstanceResponse:
         """
-        You can call this operation when you need to create AnalyticDB for PostgreSQL instances to meet the requirements of new applications or services.
-        Before you call this operation, make sure that you are familiar with the billing of AnalyticDB for PostgreSQL instances. For more information, see [Billing methods](~~35406~~) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
+        @summary Creates an AnalyticDB for PostgreSQL instance.
+        
+        @description You can call this operation when you need to create AnalyticDB for PostgreSQL instances to meet the requirements of new applications or services.
+        Before you call this operation, make sure that you are familiar with the billing of AnalyticDB for PostgreSQL instances. For more information, see [Billing methods](https://help.aliyun.com/document_detail/35406.html) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
         
@@ -967,8 +1093,10 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.CreateDBInstanceRequest,
     ) -> gpdb_20160503_models.CreateDBInstanceResponse:
         """
-        You can call this operation when you need to create AnalyticDB for PostgreSQL instances to meet the requirements of new applications or services.
-        Before you call this operation, make sure that you are familiar with the billing of AnalyticDB for PostgreSQL instances. For more information, see [Billing methods](~~35406~~) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
+        @summary Creates an AnalyticDB for PostgreSQL instance.
+        
+        @description You can call this operation when you need to create AnalyticDB for PostgreSQL instances to meet the requirements of new applications or services.
+        Before you call this operation, make sure that you are familiar with the billing of AnalyticDB for PostgreSQL instances. For more information, see [Billing methods](https://help.aliyun.com/document_detail/35406.html) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
         
@@ -984,9 +1112,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.CreateDBInstancePlanResponse:
         """
-        The plan management feature is supported only for pay-as-you-go instances.
-        *   When you change the compute node specifications or change the number of compute nodes, transient connections may occur. We recommend that you perform these operations during off-peak hours.
-        Before you call this operation, make sure that you are familiar with the billing of AnalyticDB for PostgreSQL. For more information, see [Billing methods](~~35406~~) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
+        @summary Creates a plan for an AnalyticDB for PostgreSQL instance.
+        
+        @description    The plan management feature is supported only for pay-as-you-go instances.
+        When you change the compute node specifications or change the number of compute nodes, transient connections may occur. We recommend that you perform these operations during off-peak hours.
+        Before you call this operation, make sure that you are familiar with the billing of AnalyticDB for PostgreSQL. For more information, see [Billing methods](https://help.aliyun.com/document_detail/35406.html) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
         
         @param request: CreateDBInstancePlanRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1037,9 +1167,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.CreateDBInstancePlanResponse:
         """
-        The plan management feature is supported only for pay-as-you-go instances.
-        *   When you change the compute node specifications or change the number of compute nodes, transient connections may occur. We recommend that you perform these operations during off-peak hours.
-        Before you call this operation, make sure that you are familiar with the billing of AnalyticDB for PostgreSQL. For more information, see [Billing methods](~~35406~~) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
+        @summary Creates a plan for an AnalyticDB for PostgreSQL instance.
+        
+        @description    The plan management feature is supported only for pay-as-you-go instances.
+        When you change the compute node specifications or change the number of compute nodes, transient connections may occur. We recommend that you perform these operations during off-peak hours.
+        Before you call this operation, make sure that you are familiar with the billing of AnalyticDB for PostgreSQL. For more information, see [Billing methods](https://help.aliyun.com/document_detail/35406.html) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
         
         @param request: CreateDBInstancePlanRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1089,9 +1221,11 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.CreateDBInstancePlanRequest,
     ) -> gpdb_20160503_models.CreateDBInstancePlanResponse:
         """
-        The plan management feature is supported only for pay-as-you-go instances.
-        *   When you change the compute node specifications or change the number of compute nodes, transient connections may occur. We recommend that you perform these operations during off-peak hours.
-        Before you call this operation, make sure that you are familiar with the billing of AnalyticDB for PostgreSQL. For more information, see [Billing methods](~~35406~~) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
+        @summary Creates a plan for an AnalyticDB for PostgreSQL instance.
+        
+        @description    The plan management feature is supported only for pay-as-you-go instances.
+        When you change the compute node specifications or change the number of compute nodes, transient connections may occur. We recommend that you perform these operations during off-peak hours.
+        Before you call this operation, make sure that you are familiar with the billing of AnalyticDB for PostgreSQL. For more information, see [Billing methods](https://help.aliyun.com/document_detail/35406.html) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
         
         @param request: CreateDBInstancePlanRequest
         @return: CreateDBInstancePlanResponse
@@ -1104,9 +1238,11 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.CreateDBInstancePlanRequest,
     ) -> gpdb_20160503_models.CreateDBInstancePlanResponse:
         """
-        The plan management feature is supported only for pay-as-you-go instances.
-        *   When you change the compute node specifications or change the number of compute nodes, transient connections may occur. We recommend that you perform these operations during off-peak hours.
-        Before you call this operation, make sure that you are familiar with the billing of AnalyticDB for PostgreSQL. For more information, see [Billing methods](~~35406~~) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
+        @summary Creates a plan for an AnalyticDB for PostgreSQL instance.
+        
+        @description    The plan management feature is supported only for pay-as-you-go instances.
+        When you change the compute node specifications or change the number of compute nodes, transient connections may occur. We recommend that you perform these operations during off-peak hours.
+        Before you call this operation, make sure that you are familiar with the billing of AnalyticDB for PostgreSQL. For more information, see [Billing methods](https://help.aliyun.com/document_detail/35406.html) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
         
         @param request: CreateDBInstancePlanRequest
         @return: CreateDBInstancePlanResponse
@@ -1119,6 +1255,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.CreateDocumentCollectionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.CreateDocumentCollectionResponse:
+        """
+        @summary 创建知识库
+        
+        @param request: CreateDocumentCollectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDocumentCollectionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.collection):
@@ -1175,6 +1318,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.CreateDocumentCollectionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.CreateDocumentCollectionResponse:
+        """
+        @summary 创建知识库
+        
+        @param request: CreateDocumentCollectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDocumentCollectionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.collection):
@@ -1230,6 +1380,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.CreateDocumentCollectionRequest,
     ) -> gpdb_20160503_models.CreateDocumentCollectionResponse:
+        """
+        @summary 创建知识库
+        
+        @param request: CreateDocumentCollectionRequest
+        @return: CreateDocumentCollectionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_document_collection_with_options(request, runtime)
 
@@ -1237,6 +1393,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.CreateDocumentCollectionRequest,
     ) -> gpdb_20160503_models.CreateDocumentCollectionResponse:
+        """
+        @summary 创建知识库
+        
+        @param request: CreateDocumentCollectionRequest
+        @return: CreateDocumentCollectionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_document_collection_with_options_async(request, runtime)
 
@@ -1245,6 +1407,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.CreateNamespaceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.CreateNamespaceResponse:
+        """
+        @summary Creates a vector namespace.
+        
+        @param request: CreateNamespaceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateNamespaceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -1285,6 +1454,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.CreateNamespaceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.CreateNamespaceResponse:
+        """
+        @summary Creates a vector namespace.
+        
+        @param request: CreateNamespaceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateNamespaceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -1324,6 +1500,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.CreateNamespaceRequest,
     ) -> gpdb_20160503_models.CreateNamespaceResponse:
+        """
+        @summary Creates a vector namespace.
+        
+        @param request: CreateNamespaceRequest
+        @return: CreateNamespaceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_namespace_with_options(request, runtime)
 
@@ -1331,6 +1513,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.CreateNamespaceRequest,
     ) -> gpdb_20160503_models.CreateNamespaceResponse:
+        """
+        @summary Creates a vector namespace.
+        
+        @param request: CreateNamespaceRequest
+        @return: CreateNamespaceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_namespace_with_options_async(request, runtime)
 
@@ -1340,7 +1528,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.CreateSampleDataResponse:
         """
-        You can call this operation to load a sample dataset to an AnalyticDB for PostgreSQL instance. Then, you can execute query statements on the sample dataset to experience or test your instance. For more information about query statements, see [Dataset information and query examples](~~452277~~).
+        @summary Creates a sample dataset for an AnalyticDB for PostgreSQL instance.
+        
+        @description You can call this operation to load a sample dataset to an AnalyticDB for PostgreSQL instance. Then, you can execute query statements on the sample dataset to experience or test your instance. For more information about query statements, see [Dataset information and query examples](https://help.aliyun.com/document_detail/452277.html).
         ## Precautions
         - If your instance is in elastic storage mode, the sample dataset is supported only for V6.3.10.3 or later. If your instance is in Serverless mode, the sample dataset is supported only for V1.0.4.0 or later. For more information about how to update the minor engine version of an instance, see [Update the minor engine version](/help/en/analyticdb-for-postgresql/latest/upgrade-the-engine-version).
         - The sample dataset is about 10 GB in size. Make sure that your instance has sufficient storage space.
@@ -1384,7 +1574,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.CreateSampleDataResponse:
         """
-        You can call this operation to load a sample dataset to an AnalyticDB for PostgreSQL instance. Then, you can execute query statements on the sample dataset to experience or test your instance. For more information about query statements, see [Dataset information and query examples](~~452277~~).
+        @summary Creates a sample dataset for an AnalyticDB for PostgreSQL instance.
+        
+        @description You can call this operation to load a sample dataset to an AnalyticDB for PostgreSQL instance. Then, you can execute query statements on the sample dataset to experience or test your instance. For more information about query statements, see [Dataset information and query examples](https://help.aliyun.com/document_detail/452277.html).
         ## Precautions
         - If your instance is in elastic storage mode, the sample dataset is supported only for V6.3.10.3 or later. If your instance is in Serverless mode, the sample dataset is supported only for V1.0.4.0 or later. For more information about how to update the minor engine version of an instance, see [Update the minor engine version](/help/en/analyticdb-for-postgresql/latest/upgrade-the-engine-version).
         - The sample dataset is about 10 GB in size. Make sure that your instance has sufficient storage space.
@@ -1427,7 +1619,9 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.CreateSampleDataRequest,
     ) -> gpdb_20160503_models.CreateSampleDataResponse:
         """
-        You can call this operation to load a sample dataset to an AnalyticDB for PostgreSQL instance. Then, you can execute query statements on the sample dataset to experience or test your instance. For more information about query statements, see [Dataset information and query examples](~~452277~~).
+        @summary Creates a sample dataset for an AnalyticDB for PostgreSQL instance.
+        
+        @description You can call this operation to load a sample dataset to an AnalyticDB for PostgreSQL instance. Then, you can execute query statements on the sample dataset to experience or test your instance. For more information about query statements, see [Dataset information and query examples](https://help.aliyun.com/document_detail/452277.html).
         ## Precautions
         - If your instance is in elastic storage mode, the sample dataset is supported only for V6.3.10.3 or later. If your instance is in Serverless mode, the sample dataset is supported only for V1.0.4.0 or later. For more information about how to update the minor engine version of an instance, see [Update the minor engine version](/help/en/analyticdb-for-postgresql/latest/upgrade-the-engine-version).
         - The sample dataset is about 10 GB in size. Make sure that your instance has sufficient storage space.
@@ -1447,7 +1641,9 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.CreateSampleDataRequest,
     ) -> gpdb_20160503_models.CreateSampleDataResponse:
         """
-        You can call this operation to load a sample dataset to an AnalyticDB for PostgreSQL instance. Then, you can execute query statements on the sample dataset to experience or test your instance. For more information about query statements, see [Dataset information and query examples](~~452277~~).
+        @summary Creates a sample dataset for an AnalyticDB for PostgreSQL instance.
+        
+        @description You can call this operation to load a sample dataset to an AnalyticDB for PostgreSQL instance. Then, you can execute query statements on the sample dataset to experience or test your instance. For more information about query statements, see [Dataset information and query examples](https://help.aliyun.com/document_detail/452277.html).
         ## Precautions
         - If your instance is in elastic storage mode, the sample dataset is supported only for V6.3.10.3 or later. If your instance is in Serverless mode, the sample dataset is supported only for V1.0.4.0 or later. For more information about how to update the minor engine version of an instance, see [Update the minor engine version](/help/en/analyticdb-for-postgresql/latest/upgrade-the-engine-version).
         - The sample dataset is about 10 GB in size. Make sure that your instance has sufficient storage space.
@@ -1467,6 +1663,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.CreateServiceLinkedRoleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.CreateServiceLinkedRoleResponse:
+        """
+        @summary Creates a service-linked role.
+        
+        @param request: CreateServiceLinkedRoleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateServiceLinkedRoleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_id):
@@ -1497,6 +1700,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.CreateServiceLinkedRoleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.CreateServiceLinkedRoleResponse:
+        """
+        @summary Creates a service-linked role.
+        
+        @param request: CreateServiceLinkedRoleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateServiceLinkedRoleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_id):
@@ -1526,6 +1736,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.CreateServiceLinkedRoleRequest,
     ) -> gpdb_20160503_models.CreateServiceLinkedRoleResponse:
+        """
+        @summary Creates a service-linked role.
+        
+        @param request: CreateServiceLinkedRoleRequest
+        @return: CreateServiceLinkedRoleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_service_linked_role_with_options(request, runtime)
 
@@ -1533,6 +1749,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.CreateServiceLinkedRoleRequest,
     ) -> gpdb_20160503_models.CreateServiceLinkedRoleResponse:
+        """
+        @summary Creates a service-linked role.
+        
+        @param request: CreateServiceLinkedRoleRequest
+        @return: CreateServiceLinkedRoleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_service_linked_role_with_options_async(request, runtime)
 
@@ -1541,6 +1763,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.CreateVectorIndexRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.CreateVectorIndexResponse:
+        """
+        @summary 创建向量索引
+        
+        @param request: CreateVectorIndexRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateVectorIndexResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.collection):
@@ -1591,6 +1820,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.CreateVectorIndexRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.CreateVectorIndexResponse:
+        """
+        @summary 创建向量索引
+        
+        @param request: CreateVectorIndexRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateVectorIndexResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.collection):
@@ -1640,6 +1876,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.CreateVectorIndexRequest,
     ) -> gpdb_20160503_models.CreateVectorIndexResponse:
+        """
+        @summary 创建向量索引
+        
+        @param request: CreateVectorIndexRequest
+        @return: CreateVectorIndexResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_vector_index_with_options(request, runtime)
 
@@ -1647,6 +1889,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.CreateVectorIndexRequest,
     ) -> gpdb_20160503_models.CreateVectorIndexResponse:
+        """
+        @summary 创建向量索引
+        
+        @param request: CreateVectorIndexRequest
+        @return: CreateVectorIndexResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_vector_index_with_options_async(request, runtime)
 
@@ -1655,6 +1903,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DeleteCollectionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DeleteCollectionResponse:
+        """
+        @summary Deletes a vector collection.
+        
+        @param request: DeleteCollectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCollectionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.collection):
@@ -1693,6 +1948,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DeleteCollectionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DeleteCollectionResponse:
+        """
+        @summary Deletes a vector collection.
+        
+        @param request: DeleteCollectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCollectionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.collection):
@@ -1730,6 +1992,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.DeleteCollectionRequest,
     ) -> gpdb_20160503_models.DeleteCollectionResponse:
+        """
+        @summary Deletes a vector collection.
+        
+        @param request: DeleteCollectionRequest
+        @return: DeleteCollectionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_collection_with_options(request, runtime)
 
@@ -1737,6 +2005,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.DeleteCollectionRequest,
     ) -> gpdb_20160503_models.DeleteCollectionResponse:
+        """
+        @summary Deletes a vector collection.
+        
+        @param request: DeleteCollectionRequest
+        @return: DeleteCollectionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_collection_with_options_async(request, runtime)
 
@@ -1745,6 +2019,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DeleteCollectionDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DeleteCollectionDataResponse:
+        """
+        @summary Deletes vector data.
+        
+        @param request: DeleteCollectionDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCollectionDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.collection):
@@ -1787,6 +2068,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DeleteCollectionDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DeleteCollectionDataResponse:
+        """
+        @summary Deletes vector data.
+        
+        @param request: DeleteCollectionDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCollectionDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.collection):
@@ -1828,6 +2116,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.DeleteCollectionDataRequest,
     ) -> gpdb_20160503_models.DeleteCollectionDataResponse:
+        """
+        @summary Deletes vector data.
+        
+        @param request: DeleteCollectionDataRequest
+        @return: DeleteCollectionDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_collection_data_with_options(request, runtime)
 
@@ -1835,6 +2129,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.DeleteCollectionDataRequest,
     ) -> gpdb_20160503_models.DeleteCollectionDataResponse:
+        """
+        @summary Deletes vector data.
+        
+        @param request: DeleteCollectionDataRequest
+        @return: DeleteCollectionDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_collection_data_with_options_async(request, runtime)
 
@@ -1844,8 +2144,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DeleteDBInstanceResponse:
         """
-        Subscription instances cannot be manually released. They are automatically released when they expire.
-        *   You can call this operation to release pay-as-you-go instances only when they are in the **Running** state.
+        @summary Releases a pay-as-you-go AnalyticDB for PostgreSQL instance.
+        
+        @description    Subscription instances cannot be manually released. They are automatically released when they expire.
+        You can call this operation to release pay-as-you-go instances only when they are in the **Running** state.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -1888,8 +2190,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DeleteDBInstanceResponse:
         """
-        Subscription instances cannot be manually released. They are automatically released when they expire.
-        *   You can call this operation to release pay-as-you-go instances only when they are in the **Running** state.
+        @summary Releases a pay-as-you-go AnalyticDB for PostgreSQL instance.
+        
+        @description    Subscription instances cannot be manually released. They are automatically released when they expire.
+        You can call this operation to release pay-as-you-go instances only when they are in the **Running** state.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -1931,8 +2235,10 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DeleteDBInstanceRequest,
     ) -> gpdb_20160503_models.DeleteDBInstanceResponse:
         """
-        Subscription instances cannot be manually released. They are automatically released when they expire.
-        *   You can call this operation to release pay-as-you-go instances only when they are in the **Running** state.
+        @summary Releases a pay-as-you-go AnalyticDB for PostgreSQL instance.
+        
+        @description    Subscription instances cannot be manually released. They are automatically released when they expire.
+        You can call this operation to release pay-as-you-go instances only when they are in the **Running** state.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -1947,8 +2253,10 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DeleteDBInstanceRequest,
     ) -> gpdb_20160503_models.DeleteDBInstanceResponse:
         """
-        Subscription instances cannot be manually released. They are automatically released when they expire.
-        *   You can call this operation to release pay-as-you-go instances only when they are in the **Running** state.
+        @summary Releases a pay-as-you-go AnalyticDB for PostgreSQL instance.
+        
+        @description    Subscription instances cannot be manually released. They are automatically released when they expire.
+        You can call this operation to release pay-as-you-go instances only when they are in the **Running** state.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -1964,7 +2272,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DeleteDBInstancePlanResponse:
         """
-        If you no longer need a plan, you can call this operation to delete the plan. The plan management feature is supported only for AnalyticDB for PostgreSQL instances in Serverless mode.
+        @summary Deletes a plan from an AnalyticDB for PostgreSQL instance.
+        
+        @description If you no longer need a plan, you can call this operation to delete the plan. The plan management feature is supported only for AnalyticDB for PostgreSQL instances in Serverless mode.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -2005,7 +2315,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DeleteDBInstancePlanResponse:
         """
-        If you no longer need a plan, you can call this operation to delete the plan. The plan management feature is supported only for AnalyticDB for PostgreSQL instances in Serverless mode.
+        @summary Deletes a plan from an AnalyticDB for PostgreSQL instance.
+        
+        @description If you no longer need a plan, you can call this operation to delete the plan. The plan management feature is supported only for AnalyticDB for PostgreSQL instances in Serverless mode.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -2045,7 +2357,9 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DeleteDBInstancePlanRequest,
     ) -> gpdb_20160503_models.DeleteDBInstancePlanResponse:
         """
-        If you no longer need a plan, you can call this operation to delete the plan. The plan management feature is supported only for AnalyticDB for PostgreSQL instances in Serverless mode.
+        @summary Deletes a plan from an AnalyticDB for PostgreSQL instance.
+        
+        @description If you no longer need a plan, you can call this operation to delete the plan. The plan management feature is supported only for AnalyticDB for PostgreSQL instances in Serverless mode.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -2060,7 +2374,9 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DeleteDBInstancePlanRequest,
     ) -> gpdb_20160503_models.DeleteDBInstancePlanResponse:
         """
-        If you no longer need a plan, you can call this operation to delete the plan. The plan management feature is supported only for AnalyticDB for PostgreSQL instances in Serverless mode.
+        @summary Deletes a plan from an AnalyticDB for PostgreSQL instance.
+        
+        @description If you no longer need a plan, you can call this operation to delete the plan. The plan management feature is supported only for AnalyticDB for PostgreSQL instances in Serverless mode.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -2075,6 +2391,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DeleteDocumentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DeleteDocumentResponse:
+        """
+        @summary 删除文档
+        
+        @param request: DeleteDocumentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDocumentResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.collection):
@@ -2115,6 +2438,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DeleteDocumentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DeleteDocumentResponse:
+        """
+        @summary 删除文档
+        
+        @param request: DeleteDocumentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDocumentResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.collection):
@@ -2154,6 +2484,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.DeleteDocumentRequest,
     ) -> gpdb_20160503_models.DeleteDocumentResponse:
+        """
+        @summary 删除文档
+        
+        @param request: DeleteDocumentRequest
+        @return: DeleteDocumentResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_document_with_options(request, runtime)
 
@@ -2161,6 +2497,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.DeleteDocumentRequest,
     ) -> gpdb_20160503_models.DeleteDocumentResponse:
+        """
+        @summary 删除文档
+        
+        @param request: DeleteDocumentRequest
+        @return: DeleteDocumentResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_document_with_options_async(request, runtime)
 
@@ -2169,6 +2511,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DeleteDocumentCollectionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DeleteDocumentCollectionResponse:
+        """
+        @summary 删除知识库
+        
+        @param request: DeleteDocumentCollectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDocumentCollectionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.collection):
@@ -2207,6 +2556,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DeleteDocumentCollectionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DeleteDocumentCollectionResponse:
+        """
+        @summary 删除知识库
+        
+        @param request: DeleteDocumentCollectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDocumentCollectionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.collection):
@@ -2244,6 +2600,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.DeleteDocumentCollectionRequest,
     ) -> gpdb_20160503_models.DeleteDocumentCollectionResponse:
+        """
+        @summary 删除知识库
+        
+        @param request: DeleteDocumentCollectionRequest
+        @return: DeleteDocumentCollectionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_document_collection_with_options(request, runtime)
 
@@ -2251,6 +2613,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.DeleteDocumentCollectionRequest,
     ) -> gpdb_20160503_models.DeleteDocumentCollectionResponse:
+        """
+        @summary 删除知识库
+        
+        @param request: DeleteDocumentCollectionRequest
+        @return: DeleteDocumentCollectionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_document_collection_with_options_async(request, runtime)
 
@@ -2259,6 +2627,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DeleteNamespaceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DeleteNamespaceResponse:
+        """
+        @summary Deletes a namespace.
+        
+        @param request: DeleteNamespaceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteNamespaceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -2297,6 +2672,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DeleteNamespaceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DeleteNamespaceResponse:
+        """
+        @summary Deletes a namespace.
+        
+        @param request: DeleteNamespaceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteNamespaceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -2334,6 +2716,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.DeleteNamespaceRequest,
     ) -> gpdb_20160503_models.DeleteNamespaceResponse:
+        """
+        @summary Deletes a namespace.
+        
+        @param request: DeleteNamespaceRequest
+        @return: DeleteNamespaceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_namespace_with_options(request, runtime)
 
@@ -2341,6 +2729,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.DeleteNamespaceRequest,
     ) -> gpdb_20160503_models.DeleteNamespaceResponse:
+        """
+        @summary Deletes a namespace.
+        
+        @param request: DeleteNamespaceRequest
+        @return: DeleteNamespaceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_namespace_with_options_async(request, runtime)
 
@@ -2349,6 +2743,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DeleteVectorIndexRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DeleteVectorIndexResponse:
+        """
+        @summary Deletes a vector index.
+        
+        @param request: DeleteVectorIndexRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteVectorIndexResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.collection):
@@ -2389,6 +2790,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DeleteVectorIndexRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DeleteVectorIndexResponse:
+        """
+        @summary Deletes a vector index.
+        
+        @param request: DeleteVectorIndexRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteVectorIndexResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.collection):
@@ -2428,6 +2836,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.DeleteVectorIndexRequest,
     ) -> gpdb_20160503_models.DeleteVectorIndexResponse:
+        """
+        @summary Deletes a vector index.
+        
+        @param request: DeleteVectorIndexRequest
+        @return: DeleteVectorIndexResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_vector_index_with_options(request, runtime)
 
@@ -2435,6 +2849,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.DeleteVectorIndexRequest,
     ) -> gpdb_20160503_models.DeleteVectorIndexResponse:
+        """
+        @summary Deletes a vector index.
+        
+        @param request: DeleteVectorIndexRequest
+        @return: DeleteVectorIndexResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_vector_index_with_options_async(request, runtime)
 
@@ -2444,7 +2864,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeAccountsResponse:
         """
-        This operation is called to query the information of the privileged account in an AnalyticDB for PostgreSQL instance, such as its state, description, and the instance.
+        @summary Queries the information about database accounts for an AnalyticDB for PostgreSQL instance.
+        
+        @description This operation is called to query the information of the privileged account in an AnalyticDB for PostgreSQL instance, such as its state, description, and the instance.
         ## Limit
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered and may affect your business. We recommend that you take note of the limit when you call this operation.
         
@@ -2483,7 +2905,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeAccountsResponse:
         """
-        This operation is called to query the information of the privileged account in an AnalyticDB for PostgreSQL instance, such as its state, description, and the instance.
+        @summary Queries the information about database accounts for an AnalyticDB for PostgreSQL instance.
+        
+        @description This operation is called to query the information of the privileged account in an AnalyticDB for PostgreSQL instance, such as its state, description, and the instance.
         ## Limit
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered and may affect your business. We recommend that you take note of the limit when you call this operation.
         
@@ -2521,7 +2945,9 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeAccountsRequest,
     ) -> gpdb_20160503_models.DescribeAccountsResponse:
         """
-        This operation is called to query the information of the privileged account in an AnalyticDB for PostgreSQL instance, such as its state, description, and the instance.
+        @summary Queries the information about database accounts for an AnalyticDB for PostgreSQL instance.
+        
+        @description This operation is called to query the information of the privileged account in an AnalyticDB for PostgreSQL instance, such as its state, description, and the instance.
         ## Limit
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered and may affect your business. We recommend that you take note of the limit when you call this operation.
         
@@ -2536,7 +2962,9 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeAccountsRequest,
     ) -> gpdb_20160503_models.DescribeAccountsResponse:
         """
-        This operation is called to query the information of the privileged account in an AnalyticDB for PostgreSQL instance, such as its state, description, and the instance.
+        @summary Queries the information about database accounts for an AnalyticDB for PostgreSQL instance.
+        
+        @description This operation is called to query the information of the privileged account in an AnalyticDB for PostgreSQL instance, such as its state, description, and the instance.
         ## Limit
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered and may affect your business. We recommend that you take note of the limit when you call this operation.
         
@@ -2551,6 +2979,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeActiveSQLRecordsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeActiveSQLRecordsResponse:
+        """
+        @summary 获取实例活跃的SQL列表
+        
+        @param request: DescribeActiveSQLRecordsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeActiveSQLRecordsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -2595,6 +3030,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeActiveSQLRecordsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeActiveSQLRecordsResponse:
+        """
+        @summary 获取实例活跃的SQL列表
+        
+        @param request: DescribeActiveSQLRecordsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeActiveSQLRecordsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -2638,6 +3080,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.DescribeActiveSQLRecordsRequest,
     ) -> gpdb_20160503_models.DescribeActiveSQLRecordsResponse:
+        """
+        @summary 获取实例活跃的SQL列表
+        
+        @param request: DescribeActiveSQLRecordsRequest
+        @return: DescribeActiveSQLRecordsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_active_sqlrecords_with_options(request, runtime)
 
@@ -2645,6 +3093,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.DescribeActiveSQLRecordsRequest,
     ) -> gpdb_20160503_models.DescribeActiveSQLRecordsResponse:
+        """
+        @summary 获取实例活跃的SQL列表
+        
+        @param request: DescribeActiveSQLRecordsRequest
+        @return: DescribeActiveSQLRecordsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_active_sqlrecords_with_options_async(request, runtime)
 
@@ -2654,7 +3108,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeAvailableResourcesResponse:
         """
-        When you create an AnalyticDB for PostgreSQL instance, you can call this operation to query the available resources within a zone.
+        @summary Queries the information about available resources of AnalyticDB for PostgreSQL.
+        
+        @description When you create an AnalyticDB for PostgreSQL instance, you can call this operation to query the available resources within a zone.
         
         @param request: DescribeAvailableResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2693,7 +3149,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeAvailableResourcesResponse:
         """
-        When you create an AnalyticDB for PostgreSQL instance, you can call this operation to query the available resources within a zone.
+        @summary Queries the information about available resources of AnalyticDB for PostgreSQL.
+        
+        @description When you create an AnalyticDB for PostgreSQL instance, you can call this operation to query the available resources within a zone.
         
         @param request: DescribeAvailableResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2731,7 +3189,9 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeAvailableResourcesRequest,
     ) -> gpdb_20160503_models.DescribeAvailableResourcesResponse:
         """
-        When you create an AnalyticDB for PostgreSQL instance, you can call this operation to query the available resources within a zone.
+        @summary Queries the information about available resources of AnalyticDB for PostgreSQL.
+        
+        @description When you create an AnalyticDB for PostgreSQL instance, you can call this operation to query the available resources within a zone.
         
         @param request: DescribeAvailableResourcesRequest
         @return: DescribeAvailableResourcesResponse
@@ -2744,7 +3204,9 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeAvailableResourcesRequest,
     ) -> gpdb_20160503_models.DescribeAvailableResourcesResponse:
         """
-        When you create an AnalyticDB for PostgreSQL instance, you can call this operation to query the available resources within a zone.
+        @summary Queries the information about available resources of AnalyticDB for PostgreSQL.
+        
+        @description When you create an AnalyticDB for PostgreSQL instance, you can call this operation to query the available resources within a zone.
         
         @param request: DescribeAvailableResourcesRequest
         @return: DescribeAvailableResourcesResponse
@@ -2758,7 +3220,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeBackupPolicyResponse:
         """
-        You can call this operation to query the backup settings of an AnalyticDB for PostgreSQL instance in elastic storage mode. Periodically backing data can prevent data loss. For more information about how to modify backup policies, see [ModifyBackupPolicy](~~210095~~).
+        @summary Queries the backup policy of an AnalyticDB for PostgreSQL instance.
+        
+        @description You can call this operation to query the backup settings of an AnalyticDB for PostgreSQL instance in elastic storage mode. Periodically backing data can prevent data loss. For more information about how to modify backup policies, see [ModifyBackupPolicy](https://help.aliyun.com/document_detail/210095.html).
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -2795,7 +3259,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeBackupPolicyResponse:
         """
-        You can call this operation to query the backup settings of an AnalyticDB for PostgreSQL instance in elastic storage mode. Periodically backing data can prevent data loss. For more information about how to modify backup policies, see [ModifyBackupPolicy](~~210095~~).
+        @summary Queries the backup policy of an AnalyticDB for PostgreSQL instance.
+        
+        @description You can call this operation to query the backup settings of an AnalyticDB for PostgreSQL instance in elastic storage mode. Periodically backing data can prevent data loss. For more information about how to modify backup policies, see [ModifyBackupPolicy](https://help.aliyun.com/document_detail/210095.html).
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -2831,7 +3297,9 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeBackupPolicyRequest,
     ) -> gpdb_20160503_models.DescribeBackupPolicyResponse:
         """
-        You can call this operation to query the backup settings of an AnalyticDB for PostgreSQL instance in elastic storage mode. Periodically backing data can prevent data loss. For more information about how to modify backup policies, see [ModifyBackupPolicy](~~210095~~).
+        @summary Queries the backup policy of an AnalyticDB for PostgreSQL instance.
+        
+        @description You can call this operation to query the backup settings of an AnalyticDB for PostgreSQL instance in elastic storage mode. Periodically backing data can prevent data loss. For more information about how to modify backup policies, see [ModifyBackupPolicy](https://help.aliyun.com/document_detail/210095.html).
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -2846,7 +3314,9 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeBackupPolicyRequest,
     ) -> gpdb_20160503_models.DescribeBackupPolicyResponse:
         """
-        You can call this operation to query the backup settings of an AnalyticDB for PostgreSQL instance in elastic storage mode. Periodically backing data can prevent data loss. For more information about how to modify backup policies, see [ModifyBackupPolicy](~~210095~~).
+        @summary Queries the backup policy of an AnalyticDB for PostgreSQL instance.
+        
+        @description You can call this operation to query the backup settings of an AnalyticDB for PostgreSQL instance in elastic storage mode. Periodically backing data can prevent data loss. For more information about how to modify backup policies, see [ModifyBackupPolicy](https://help.aliyun.com/document_detail/210095.html).
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -2861,6 +3331,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeCollectionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeCollectionResponse:
+        """
+        @summary Queries the information about a vector collection.
+        
+        @param request: DescribeCollectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCollectionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.collection):
@@ -2899,6 +3376,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeCollectionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeCollectionResponse:
+        """
+        @summary Queries the information about a vector collection.
+        
+        @param request: DescribeCollectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCollectionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.collection):
@@ -2936,6 +3420,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.DescribeCollectionRequest,
     ) -> gpdb_20160503_models.DescribeCollectionResponse:
+        """
+        @summary Queries the information about a vector collection.
+        
+        @param request: DescribeCollectionRequest
+        @return: DescribeCollectionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_collection_with_options(request, runtime)
 
@@ -2943,6 +3433,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.DescribeCollectionRequest,
     ) -> gpdb_20160503_models.DescribeCollectionResponse:
+        """
+        @summary Queries the information about a vector collection.
+        
+        @param request: DescribeCollectionRequest
+        @return: DescribeCollectionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_collection_with_options_async(request, runtime)
 
@@ -2952,7 +3448,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeDBClusterNodeResponse:
         """
-        ##
+        @summary Queries a list of nodes in an AnalyticDB for PostgreSQL instance.
+        
+        @description ##
         You can call this operation to query the information about coordinator and compute nodes in an AnalyticDB for PostgreSQL instance in elastic storage mode or Serverless mode.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
@@ -2992,7 +3490,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeDBClusterNodeResponse:
         """
-        ##
+        @summary Queries a list of nodes in an AnalyticDB for PostgreSQL instance.
+        
+        @description ##
         You can call this operation to query the information about coordinator and compute nodes in an AnalyticDB for PostgreSQL instance in elastic storage mode or Serverless mode.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
@@ -3031,7 +3531,9 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeDBClusterNodeRequest,
     ) -> gpdb_20160503_models.DescribeDBClusterNodeResponse:
         """
-        ##
+        @summary Queries a list of nodes in an AnalyticDB for PostgreSQL instance.
+        
+        @description ##
         You can call this operation to query the information about coordinator and compute nodes in an AnalyticDB for PostgreSQL instance in elastic storage mode or Serverless mode.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
@@ -3047,7 +3549,9 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeDBClusterNodeRequest,
     ) -> gpdb_20160503_models.DescribeDBClusterNodeResponse:
         """
-        ##
+        @summary Queries a list of nodes in an AnalyticDB for PostgreSQL instance.
+        
+        @description ##
         You can call this operation to query the information about coordinator and compute nodes in an AnalyticDB for PostgreSQL instance in elastic storage mode or Serverless mode.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
@@ -3064,7 +3568,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeDBClusterPerformanceResponse:
         """
-        You can query monitoring information only within the last 30 days.
+        @summary Queries the information about performance metrics of an AnalyticDB for PostgreSQL instance within a time range.
+        
+        @description You can query monitoring information only within the last 30 days.
         
         @param request: DescribeDBClusterPerformanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3111,7 +3617,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeDBClusterPerformanceResponse:
         """
-        You can query monitoring information only within the last 30 days.
+        @summary Queries the information about performance metrics of an AnalyticDB for PostgreSQL instance within a time range.
+        
+        @description You can query monitoring information only within the last 30 days.
         
         @param request: DescribeDBClusterPerformanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3157,7 +3665,9 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeDBClusterPerformanceRequest,
     ) -> gpdb_20160503_models.DescribeDBClusterPerformanceResponse:
         """
-        You can query monitoring information only within the last 30 days.
+        @summary Queries the information about performance metrics of an AnalyticDB for PostgreSQL instance within a time range.
+        
+        @description You can query monitoring information only within the last 30 days.
         
         @param request: DescribeDBClusterPerformanceRequest
         @return: DescribeDBClusterPerformanceResponse
@@ -3170,7 +3680,9 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeDBClusterPerformanceRequest,
     ) -> gpdb_20160503_models.DescribeDBClusterPerformanceResponse:
         """
-        You can query monitoring information only within the last 30 days.
+        @summary Queries the information about performance metrics of an AnalyticDB for PostgreSQL instance within a time range.
+        
+        @description You can query monitoring information only within the last 30 days.
         
         @param request: DescribeDBClusterPerformanceRequest
         @return: DescribeDBClusterPerformanceResponse
@@ -3184,7 +3696,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeDBInstanceAttributeResponse:
         """
-        ##
+        @summary Queries the information about an AnalyticDB for PostgreSQL instance.
+        
+        @description ##
         You can call this operation to query the information about an AnalyticDB for PostgreSQL instance, such as the instance type, network type, and instance state.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
@@ -3226,7 +3740,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeDBInstanceAttributeResponse:
         """
-        ##
+        @summary Queries the information about an AnalyticDB for PostgreSQL instance.
+        
+        @description ##
         You can call this operation to query the information about an AnalyticDB for PostgreSQL instance, such as the instance type, network type, and instance state.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
@@ -3267,7 +3783,9 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeDBInstanceAttributeRequest,
     ) -> gpdb_20160503_models.DescribeDBInstanceAttributeResponse:
         """
-        ##
+        @summary Queries the information about an AnalyticDB for PostgreSQL instance.
+        
+        @description ##
         You can call this operation to query the information about an AnalyticDB for PostgreSQL instance, such as the instance type, network type, and instance state.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
@@ -3283,7 +3801,9 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeDBInstanceAttributeRequest,
     ) -> gpdb_20160503_models.DescribeDBInstanceAttributeResponse:
         """
-        ##
+        @summary Queries the information about an AnalyticDB for PostgreSQL instance.
+        
+        @description ##
         You can call this operation to query the information about an AnalyticDB for PostgreSQL instance, such as the instance type, network type, and instance state.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
@@ -3300,7 +3820,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeDBInstanceDataBloatResponse:
         """
-        You can call this operation to query the details of data bloat on an AnalyticDB for PostgreSQL instance in elastic storage mode. The minor version of the instance must be V6.3.10.1 or later. For more information about how to view and update the minor version of an instance, see [View the minor engine version](~~277424~~) and [Update the minor engine version](~~139271~~).
+        @summary Queries the information about data bloat for an AnalyticDB for PostgreSQL instance.
+        
+        @description You can call this operation to query the details of data bloat on an AnalyticDB for PostgreSQL instance in elastic storage mode. The minor version of the instance must be V6.3.10.1 or later. For more information about how to view and update the minor version of an instance, see [View the minor engine version](https://help.aliyun.com/document_detail/277424.html) and [Update the minor engine version](https://help.aliyun.com/document_detail/139271.html).
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -3341,7 +3863,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeDBInstanceDataBloatResponse:
         """
-        You can call this operation to query the details of data bloat on an AnalyticDB for PostgreSQL instance in elastic storage mode. The minor version of the instance must be V6.3.10.1 or later. For more information about how to view and update the minor version of an instance, see [View the minor engine version](~~277424~~) and [Update the minor engine version](~~139271~~).
+        @summary Queries the information about data bloat for an AnalyticDB for PostgreSQL instance.
+        
+        @description You can call this operation to query the details of data bloat on an AnalyticDB for PostgreSQL instance in elastic storage mode. The minor version of the instance must be V6.3.10.1 or later. For more information about how to view and update the minor version of an instance, see [View the minor engine version](https://help.aliyun.com/document_detail/277424.html) and [Update the minor engine version](https://help.aliyun.com/document_detail/139271.html).
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -3381,7 +3905,9 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeDBInstanceDataBloatRequest,
     ) -> gpdb_20160503_models.DescribeDBInstanceDataBloatResponse:
         """
-        You can call this operation to query the details of data bloat on an AnalyticDB for PostgreSQL instance in elastic storage mode. The minor version of the instance must be V6.3.10.1 or later. For more information about how to view and update the minor version of an instance, see [View the minor engine version](~~277424~~) and [Update the minor engine version](~~139271~~).
+        @summary Queries the information about data bloat for an AnalyticDB for PostgreSQL instance.
+        
+        @description You can call this operation to query the details of data bloat on an AnalyticDB for PostgreSQL instance in elastic storage mode. The minor version of the instance must be V6.3.10.1 or later. For more information about how to view and update the minor version of an instance, see [View the minor engine version](https://help.aliyun.com/document_detail/277424.html) and [Update the minor engine version](https://help.aliyun.com/document_detail/139271.html).
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -3396,7 +3922,9 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeDBInstanceDataBloatRequest,
     ) -> gpdb_20160503_models.DescribeDBInstanceDataBloatResponse:
         """
-        You can call this operation to query the details of data bloat on an AnalyticDB for PostgreSQL instance in elastic storage mode. The minor version of the instance must be V6.3.10.1 or later. For more information about how to view and update the minor version of an instance, see [View the minor engine version](~~277424~~) and [Update the minor engine version](~~139271~~).
+        @summary Queries the information about data bloat for an AnalyticDB for PostgreSQL instance.
+        
+        @description You can call this operation to query the details of data bloat on an AnalyticDB for PostgreSQL instance in elastic storage mode. The minor version of the instance must be V6.3.10.1 or later. For more information about how to view and update the minor version of an instance, see [View the minor engine version](https://help.aliyun.com/document_detail/277424.html) and [Update the minor engine version](https://help.aliyun.com/document_detail/139271.html).
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -3412,7 +3940,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeDBInstanceDataSkewResponse:
         """
-        To prevent data skew from affecting your database service, you can call this operation to query the details about data skew on an AnalyticDB for PostgreSQL instance.
+        @summary Queries the information about data skew for an AnalyticDB for PostgreSQL instance.
+        
+        @description To prevent data skew from affecting your database service, you can call this operation to query the details about data skew on an AnalyticDB for PostgreSQL instance.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -3453,7 +3983,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeDBInstanceDataSkewResponse:
         """
-        To prevent data skew from affecting your database service, you can call this operation to query the details about data skew on an AnalyticDB for PostgreSQL instance.
+        @summary Queries the information about data skew for an AnalyticDB for PostgreSQL instance.
+        
+        @description To prevent data skew from affecting your database service, you can call this operation to query the details about data skew on an AnalyticDB for PostgreSQL instance.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -3493,7 +4025,9 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeDBInstanceDataSkewRequest,
     ) -> gpdb_20160503_models.DescribeDBInstanceDataSkewResponse:
         """
-        To prevent data skew from affecting your database service, you can call this operation to query the details about data skew on an AnalyticDB for PostgreSQL instance.
+        @summary Queries the information about data skew for an AnalyticDB for PostgreSQL instance.
+        
+        @description To prevent data skew from affecting your database service, you can call this operation to query the details about data skew on an AnalyticDB for PostgreSQL instance.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -3508,7 +4042,9 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeDBInstanceDataSkewRequest,
     ) -> gpdb_20160503_models.DescribeDBInstanceDataSkewResponse:
         """
-        To prevent data skew from affecting your database service, you can call this operation to query the details about data skew on an AnalyticDB for PostgreSQL instance.
+        @summary Queries the information about data skew for an AnalyticDB for PostgreSQL instance.
+        
+        @description To prevent data skew from affecting your database service, you can call this operation to query the details about data skew on an AnalyticDB for PostgreSQL instance.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -3524,7 +4060,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeDBInstanceDiagnosisSummaryResponse:
         """
-        You can call this operation to query the distribution and states of coordinator and compute nodes in an AnalyticDB for PostgreSQL instance.
+        @summary Queries the information about nodes in an AnalyticDB for PostgreSQL instance.
+        
+        @description You can call this operation to query the distribution and states of coordinator and compute nodes in an AnalyticDB for PostgreSQL instance.
         
         @param request: DescribeDBInstanceDiagnosisSummaryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3569,7 +4107,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeDBInstanceDiagnosisSummaryResponse:
         """
-        You can call this operation to query the distribution and states of coordinator and compute nodes in an AnalyticDB for PostgreSQL instance.
+        @summary Queries the information about nodes in an AnalyticDB for PostgreSQL instance.
+        
+        @description You can call this operation to query the distribution and states of coordinator and compute nodes in an AnalyticDB for PostgreSQL instance.
         
         @param request: DescribeDBInstanceDiagnosisSummaryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3613,7 +4153,9 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeDBInstanceDiagnosisSummaryRequest,
     ) -> gpdb_20160503_models.DescribeDBInstanceDiagnosisSummaryResponse:
         """
-        You can call this operation to query the distribution and states of coordinator and compute nodes in an AnalyticDB for PostgreSQL instance.
+        @summary Queries the information about nodes in an AnalyticDB for PostgreSQL instance.
+        
+        @description You can call this operation to query the distribution and states of coordinator and compute nodes in an AnalyticDB for PostgreSQL instance.
         
         @param request: DescribeDBInstanceDiagnosisSummaryRequest
         @return: DescribeDBInstanceDiagnosisSummaryResponse
@@ -3626,7 +4168,9 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeDBInstanceDiagnosisSummaryRequest,
     ) -> gpdb_20160503_models.DescribeDBInstanceDiagnosisSummaryResponse:
         """
-        You can call this operation to query the distribution and states of coordinator and compute nodes in an AnalyticDB for PostgreSQL instance.
+        @summary Queries the information about nodes in an AnalyticDB for PostgreSQL instance.
+        
+        @description You can call this operation to query the distribution and states of coordinator and compute nodes in an AnalyticDB for PostgreSQL instance.
         
         @param request: DescribeDBInstanceDiagnosisSummaryRequest
         @return: DescribeDBInstanceDiagnosisSummaryResponse
@@ -3640,7 +4184,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeDBInstanceErrorLogResponse:
         """
-        You can call this operation to query the error logs of an AnalyticDB for PostgreSQL instance.
+        @summary Queries the error logs of an AnalyticDB for PostgreSQL instance.
+        
+        @description You can call this operation to query the error logs of an AnalyticDB for PostgreSQL instance.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -3695,7 +4241,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeDBInstanceErrorLogResponse:
         """
-        You can call this operation to query the error logs of an AnalyticDB for PostgreSQL instance.
+        @summary Queries the error logs of an AnalyticDB for PostgreSQL instance.
+        
+        @description You can call this operation to query the error logs of an AnalyticDB for PostgreSQL instance.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -3749,7 +4297,9 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeDBInstanceErrorLogRequest,
     ) -> gpdb_20160503_models.DescribeDBInstanceErrorLogResponse:
         """
-        You can call this operation to query the error logs of an AnalyticDB for PostgreSQL instance.
+        @summary Queries the error logs of an AnalyticDB for PostgreSQL instance.
+        
+        @description You can call this operation to query the error logs of an AnalyticDB for PostgreSQL instance.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -3764,7 +4314,9 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeDBInstanceErrorLogRequest,
     ) -> gpdb_20160503_models.DescribeDBInstanceErrorLogResponse:
         """
-        You can call this operation to query the error logs of an AnalyticDB for PostgreSQL instance.
+        @summary Queries the error logs of an AnalyticDB for PostgreSQL instance.
+        
+        @description You can call this operation to query the error logs of an AnalyticDB for PostgreSQL instance.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -3780,7 +4332,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeDBInstanceIPArrayListResponse:
         """
-        You can call this operation to query the whitelists of IP addresses that are allowed to access an AnalyticDB for PostgreSQL instance.
+        @summary Queries the whitelists of IP addresses that are allowed to access an AnalyticDB for PostgreSQL instance.
+        
+        @description You can call this operation to query the whitelists of IP addresses that are allowed to access an AnalyticDB for PostgreSQL instance.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -3821,7 +4375,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeDBInstanceIPArrayListResponse:
         """
-        You can call this operation to query the whitelists of IP addresses that are allowed to access an AnalyticDB for PostgreSQL instance.
+        @summary Queries the whitelists of IP addresses that are allowed to access an AnalyticDB for PostgreSQL instance.
+        
+        @description You can call this operation to query the whitelists of IP addresses that are allowed to access an AnalyticDB for PostgreSQL instance.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -3861,7 +4417,9 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeDBInstanceIPArrayListRequest,
     ) -> gpdb_20160503_models.DescribeDBInstanceIPArrayListResponse:
         """
-        You can call this operation to query the whitelists of IP addresses that are allowed to access an AnalyticDB for PostgreSQL instance.
+        @summary Queries the whitelists of IP addresses that are allowed to access an AnalyticDB for PostgreSQL instance.
+        
+        @description You can call this operation to query the whitelists of IP addresses that are allowed to access an AnalyticDB for PostgreSQL instance.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -3876,7 +4434,9 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeDBInstanceIPArrayListRequest,
     ) -> gpdb_20160503_models.DescribeDBInstanceIPArrayListResponse:
         """
-        You can call this operation to query the whitelists of IP addresses that are allowed to access an AnalyticDB for PostgreSQL instance.
+        @summary Queries the whitelists of IP addresses that are allowed to access an AnalyticDB for PostgreSQL instance.
+        
+        @description You can call this operation to query the whitelists of IP addresses that are allowed to access an AnalyticDB for PostgreSQL instance.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -3892,8 +4452,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeDBInstanceIndexUsageResponse:
         """
-        Appropriate indexes can accelerate database queries. You can call this operation to query the index usage of an AnalyticDB for PostgreSQL instance.
-        This operation is available only for instances of V6.3.10.1 or later in elastic storage mode. For information about how to view and update the minor version of an instance, see [View the minor engine version](~~277424~~) and [Update the minor engine version](~~139271~~).
+        @summary Queries the index usage of an AnalyticDB for PostgreSQL instance.
+        
+        @description Appropriate indexes can accelerate database queries. You can call this operation to query the index usage of an AnalyticDB for PostgreSQL instance.
+        This operation is available only for instances of V6.3.10.1 or later in elastic storage mode. For information about how to view and update the minor version of an instance, see [View the minor engine version](https://help.aliyun.com/document_detail/277424.html) and [Update the minor engine version](https://help.aliyun.com/document_detail/139271.html).
         
         @param request: DescribeDBInstanceIndexUsageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3932,8 +4494,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeDBInstanceIndexUsageResponse:
         """
-        Appropriate indexes can accelerate database queries. You can call this operation to query the index usage of an AnalyticDB for PostgreSQL instance.
-        This operation is available only for instances of V6.3.10.1 or later in elastic storage mode. For information about how to view and update the minor version of an instance, see [View the minor engine version](~~277424~~) and [Update the minor engine version](~~139271~~).
+        @summary Queries the index usage of an AnalyticDB for PostgreSQL instance.
+        
+        @description Appropriate indexes can accelerate database queries. You can call this operation to query the index usage of an AnalyticDB for PostgreSQL instance.
+        This operation is available only for instances of V6.3.10.1 or later in elastic storage mode. For information about how to view and update the minor version of an instance, see [View the minor engine version](https://help.aliyun.com/document_detail/277424.html) and [Update the minor engine version](https://help.aliyun.com/document_detail/139271.html).
         
         @param request: DescribeDBInstanceIndexUsageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3971,8 +4535,10 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeDBInstanceIndexUsageRequest,
     ) -> gpdb_20160503_models.DescribeDBInstanceIndexUsageResponse:
         """
-        Appropriate indexes can accelerate database queries. You can call this operation to query the index usage of an AnalyticDB for PostgreSQL instance.
-        This operation is available only for instances of V6.3.10.1 or later in elastic storage mode. For information about how to view and update the minor version of an instance, see [View the minor engine version](~~277424~~) and [Update the minor engine version](~~139271~~).
+        @summary Queries the index usage of an AnalyticDB for PostgreSQL instance.
+        
+        @description Appropriate indexes can accelerate database queries. You can call this operation to query the index usage of an AnalyticDB for PostgreSQL instance.
+        This operation is available only for instances of V6.3.10.1 or later in elastic storage mode. For information about how to view and update the minor version of an instance, see [View the minor engine version](https://help.aliyun.com/document_detail/277424.html) and [Update the minor engine version](https://help.aliyun.com/document_detail/139271.html).
         
         @param request: DescribeDBInstanceIndexUsageRequest
         @return: DescribeDBInstanceIndexUsageResponse
@@ -3985,8 +4551,10 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeDBInstanceIndexUsageRequest,
     ) -> gpdb_20160503_models.DescribeDBInstanceIndexUsageResponse:
         """
-        Appropriate indexes can accelerate database queries. You can call this operation to query the index usage of an AnalyticDB for PostgreSQL instance.
-        This operation is available only for instances of V6.3.10.1 or later in elastic storage mode. For information about how to view and update the minor version of an instance, see [View the minor engine version](~~277424~~) and [Update the minor engine version](~~139271~~).
+        @summary Queries the index usage of an AnalyticDB for PostgreSQL instance.
+        
+        @description Appropriate indexes can accelerate database queries. You can call this operation to query the index usage of an AnalyticDB for PostgreSQL instance.
+        This operation is available only for instances of V6.3.10.1 or later in elastic storage mode. For information about how to view and update the minor version of an instance, see [View the minor engine version](https://help.aliyun.com/document_detail/277424.html) and [Update the minor engine version](https://help.aliyun.com/document_detail/139271.html).
         
         @param request: DescribeDBInstanceIndexUsageRequest
         @return: DescribeDBInstanceIndexUsageResponse
@@ -3999,6 +4567,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeDBInstanceNetInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeDBInstanceNetInfoResponse:
+        """
+        @summary Queries the connection information of an instance.
+        
+        @param request: DescribeDBInstanceNetInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDBInstanceNetInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.connection_string):
@@ -4029,6 +4604,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeDBInstanceNetInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeDBInstanceNetInfoResponse:
+        """
+        @summary Queries the connection information of an instance.
+        
+        @param request: DescribeDBInstanceNetInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDBInstanceNetInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.connection_string):
@@ -4058,6 +4640,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.DescribeDBInstanceNetInfoRequest,
     ) -> gpdb_20160503_models.DescribeDBInstanceNetInfoResponse:
+        """
+        @summary Queries the connection information of an instance.
+        
+        @param request: DescribeDBInstanceNetInfoRequest
+        @return: DescribeDBInstanceNetInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_dbinstance_net_info_with_options(request, runtime)
 
@@ -4065,6 +4653,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.DescribeDBInstanceNetInfoRequest,
     ) -> gpdb_20160503_models.DescribeDBInstanceNetInfoResponse:
+        """
+        @summary Queries the connection information of an instance.
+        
+        @param request: DescribeDBInstanceNetInfoRequest
+        @return: DescribeDBInstanceNetInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_dbinstance_net_info_with_options_async(request, runtime)
 
@@ -4073,6 +4667,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeDBInstancePerformanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeDBInstancePerformanceResponse:
+        """
+        @summary Queries the information about performance metrics of an AnalyticDB for PostgreSQL instance within a time range.
+        
+        @param request: DescribeDBInstancePerformanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDBInstancePerformanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -4109,6 +4710,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeDBInstancePerformanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeDBInstancePerformanceResponse:
+        """
+        @summary Queries the information about performance metrics of an AnalyticDB for PostgreSQL instance within a time range.
+        
+        @param request: DescribeDBInstancePerformanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDBInstancePerformanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -4144,6 +4752,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.DescribeDBInstancePerformanceRequest,
     ) -> gpdb_20160503_models.DescribeDBInstancePerformanceResponse:
+        """
+        @summary Queries the information about performance metrics of an AnalyticDB for PostgreSQL instance within a time range.
+        
+        @param request: DescribeDBInstancePerformanceRequest
+        @return: DescribeDBInstancePerformanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_dbinstance_performance_with_options(request, runtime)
 
@@ -4151,6 +4765,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.DescribeDBInstancePerformanceRequest,
     ) -> gpdb_20160503_models.DescribeDBInstancePerformanceResponse:
+        """
+        @summary Queries the information about performance metrics of an AnalyticDB for PostgreSQL instance within a time range.
+        
+        @param request: DescribeDBInstancePerformanceRequest
+        @return: DescribeDBInstancePerformanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_dbinstance_performance_with_options_async(request, runtime)
 
@@ -4160,7 +4780,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeDBInstancePlansResponse:
         """
-        You can call this operation to query the details of plans for an AnalyticDB for PostgreSQL instance in Serverless mode.
+        @summary Queries the information about plans for an AnalyticDB for PostgreSQL instance.
+        
+        @description You can call this operation to query the details of plans for an AnalyticDB for PostgreSQL instance in Serverless mode.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -4209,7 +4831,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeDBInstancePlansResponse:
         """
-        You can call this operation to query the details of plans for an AnalyticDB for PostgreSQL instance in Serverless mode.
+        @summary Queries the information about plans for an AnalyticDB for PostgreSQL instance.
+        
+        @description You can call this operation to query the details of plans for an AnalyticDB for PostgreSQL instance in Serverless mode.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -4257,7 +4881,9 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeDBInstancePlansRequest,
     ) -> gpdb_20160503_models.DescribeDBInstancePlansResponse:
         """
-        You can call this operation to query the details of plans for an AnalyticDB for PostgreSQL instance in Serverless mode.
+        @summary Queries the information about plans for an AnalyticDB for PostgreSQL instance.
+        
+        @description You can call this operation to query the details of plans for an AnalyticDB for PostgreSQL instance in Serverless mode.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -4272,7 +4898,9 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeDBInstancePlansRequest,
     ) -> gpdb_20160503_models.DescribeDBInstancePlansResponse:
         """
-        You can call this operation to query the details of plans for an AnalyticDB for PostgreSQL instance in Serverless mode.
+        @summary Queries the information about plans for an AnalyticDB for PostgreSQL instance.
+        
+        @description You can call this operation to query the details of plans for an AnalyticDB for PostgreSQL instance in Serverless mode.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -4287,6 +4915,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeDBInstanceSSLRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeDBInstanceSSLResponse:
+        """
+        @summary Queries the SSL information about an AnalyticDB for PostgreSQL instance.
+        
+        @param request: DescribeDBInstanceSSLRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDBInstanceSSLResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -4315,6 +4950,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeDBInstanceSSLRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeDBInstanceSSLResponse:
+        """
+        @summary Queries the SSL information about an AnalyticDB for PostgreSQL instance.
+        
+        @param request: DescribeDBInstanceSSLRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDBInstanceSSLResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -4342,6 +4984,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.DescribeDBInstanceSSLRequest,
     ) -> gpdb_20160503_models.DescribeDBInstanceSSLResponse:
+        """
+        @summary Queries the SSL information about an AnalyticDB for PostgreSQL instance.
+        
+        @param request: DescribeDBInstanceSSLRequest
+        @return: DescribeDBInstanceSSLResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_dbinstance_sslwith_options(request, runtime)
 
@@ -4349,6 +4997,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.DescribeDBInstanceSSLRequest,
     ) -> gpdb_20160503_models.DescribeDBInstanceSSLResponse:
+        """
+        @summary Queries the SSL information about an AnalyticDB for PostgreSQL instance.
+        
+        @param request: DescribeDBInstanceSSLRequest
+        @return: DescribeDBInstanceSSLResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_dbinstance_sslwith_options_async(request, runtime)
 
@@ -4357,6 +5011,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeDBInstanceSupportMaxPerformanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeDBInstanceSupportMaxPerformanceResponse:
+        """
+        @summary 查询实例最大吞吐和IOPS
+        
+        @param request: DescribeDBInstanceSupportMaxPerformanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDBInstanceSupportMaxPerformanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -4387,6 +5048,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeDBInstanceSupportMaxPerformanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeDBInstanceSupportMaxPerformanceResponse:
+        """
+        @summary 查询实例最大吞吐和IOPS
+        
+        @param request: DescribeDBInstanceSupportMaxPerformanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDBInstanceSupportMaxPerformanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -4416,6 +5084,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.DescribeDBInstanceSupportMaxPerformanceRequest,
     ) -> gpdb_20160503_models.DescribeDBInstanceSupportMaxPerformanceResponse:
+        """
+        @summary 查询实例最大吞吐和IOPS
+        
+        @param request: DescribeDBInstanceSupportMaxPerformanceRequest
+        @return: DescribeDBInstanceSupportMaxPerformanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_dbinstance_support_max_performance_with_options(request, runtime)
 
@@ -4423,6 +5097,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.DescribeDBInstanceSupportMaxPerformanceRequest,
     ) -> gpdb_20160503_models.DescribeDBInstanceSupportMaxPerformanceResponse:
+        """
+        @summary 查询实例最大吞吐和IOPS
+        
+        @param request: DescribeDBInstanceSupportMaxPerformanceRequest
+        @return: DescribeDBInstanceSupportMaxPerformanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_dbinstance_support_max_performance_with_options_async(request, runtime)
 
@@ -4432,7 +5112,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeDBInstancesResponse:
         """
-        ##
+        @summary Queries a list of AnalyticDB for PostgreSQL instances.
+        
+        @description ##
         You can call this operation to query the instance types, network types, and states of AnalyticDB for PostgreSQL instances within a region.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
@@ -4506,7 +5188,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeDBInstancesResponse:
         """
-        ##
+        @summary Queries a list of AnalyticDB for PostgreSQL instances.
+        
+        @description ##
         You can call this operation to query the instance types, network types, and states of AnalyticDB for PostgreSQL instances within a region.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
@@ -4579,7 +5263,9 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeDBInstancesRequest,
     ) -> gpdb_20160503_models.DescribeDBInstancesResponse:
         """
-        ##
+        @summary Queries a list of AnalyticDB for PostgreSQL instances.
+        
+        @description ##
         You can call this operation to query the instance types, network types, and states of AnalyticDB for PostgreSQL instances within a region.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
@@ -4595,7 +5281,9 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeDBInstancesRequest,
     ) -> gpdb_20160503_models.DescribeDBInstancesResponse:
         """
-        ##
+        @summary Queries a list of AnalyticDB for PostgreSQL instances.
+        
+        @description ##
         You can call this operation to query the instance types, network types, and states of AnalyticDB for PostgreSQL instances within a region.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
@@ -4611,8 +5299,19 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeDBResourceManagementModeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeDBResourceManagementModeResponse:
+        """
+        @summary 获取资源管理模式
+        
+        @param request: DescribeDBResourceManagementModeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDBResourceManagementModeResponse
+        """
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4621,7 +5320,7 @@ class Client(OpenApiClient):
             version='2016-05-03',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -4637,8 +5336,19 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeDBResourceManagementModeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeDBResourceManagementModeResponse:
+        """
+        @summary 获取资源管理模式
+        
+        @param request: DescribeDBResourceManagementModeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDBResourceManagementModeResponse
+        """
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4647,7 +5357,7 @@ class Client(OpenApiClient):
             version='2016-05-03',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -4662,6 +5372,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.DescribeDBResourceManagementModeRequest,
     ) -> gpdb_20160503_models.DescribeDBResourceManagementModeResponse:
+        """
+        @summary 获取资源管理模式
+        
+        @param request: DescribeDBResourceManagementModeRequest
+        @return: DescribeDBResourceManagementModeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_dbresource_management_mode_with_options(request, runtime)
 
@@ -4669,6 +5385,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.DescribeDBResourceManagementModeRequest,
     ) -> gpdb_20160503_models.DescribeDBResourceManagementModeResponse:
+        """
+        @summary 获取资源管理模式
+        
+        @param request: DescribeDBResourceManagementModeRequest
+        @return: DescribeDBResourceManagementModeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_dbresource_management_mode_with_options_async(request, runtime)
 
@@ -4677,6 +5399,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeDBVersionInfosRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeDBVersionInfosResponse:
+        """
+        @summary Queries the information about minor versions of AnalyticDB for PostgreSQL instances.
+        
+        @param request: DescribeDBVersionInfosRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDBVersionInfosResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_mode):
@@ -4713,6 +5442,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeDBVersionInfosRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeDBVersionInfosResponse:
+        """
+        @summary Queries the information about minor versions of AnalyticDB for PostgreSQL instances.
+        
+        @param request: DescribeDBVersionInfosRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDBVersionInfosResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_mode):
@@ -4748,6 +5484,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.DescribeDBVersionInfosRequest,
     ) -> gpdb_20160503_models.DescribeDBVersionInfosResponse:
+        """
+        @summary Queries the information about minor versions of AnalyticDB for PostgreSQL instances.
+        
+        @param request: DescribeDBVersionInfosRequest
+        @return: DescribeDBVersionInfosResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_dbversion_infos_with_options(request, runtime)
 
@@ -4755,6 +5497,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.DescribeDBVersionInfosRequest,
     ) -> gpdb_20160503_models.DescribeDBVersionInfosResponse:
+        """
+        @summary Queries the information about minor versions of AnalyticDB for PostgreSQL instances.
+        
+        @param request: DescribeDBVersionInfosRequest
+        @return: DescribeDBVersionInfosResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_dbversion_infos_with_options_async(request, runtime)
 
@@ -4764,7 +5512,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeDataBackupsResponse:
         """
-        You can call this operation to query a list of backup sets and backup details only for instances in elastic storage mode.
+        @summary Queries a list of backup sets of full backup or point-in-time backup for an AnalyticDB for PostgreSQL instance.
+        
+        @description You can call this operation to query a list of backup sets and backup details only for instances in elastic storage mode.
         
         @param request: DescribeDataBackupsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4815,7 +5565,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeDataBackupsResponse:
         """
-        You can call this operation to query a list of backup sets and backup details only for instances in elastic storage mode.
+        @summary Queries a list of backup sets of full backup or point-in-time backup for an AnalyticDB for PostgreSQL instance.
+        
+        @description You can call this operation to query a list of backup sets and backup details only for instances in elastic storage mode.
         
         @param request: DescribeDataBackupsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4865,7 +5617,9 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeDataBackupsRequest,
     ) -> gpdb_20160503_models.DescribeDataBackupsResponse:
         """
-        You can call this operation to query a list of backup sets and backup details only for instances in elastic storage mode.
+        @summary Queries a list of backup sets of full backup or point-in-time backup for an AnalyticDB for PostgreSQL instance.
+        
+        @description You can call this operation to query a list of backup sets and backup details only for instances in elastic storage mode.
         
         @param request: DescribeDataBackupsRequest
         @return: DescribeDataBackupsResponse
@@ -4878,7 +5632,9 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeDataBackupsRequest,
     ) -> gpdb_20160503_models.DescribeDataBackupsResponse:
         """
-        You can call this operation to query a list of backup sets and backup details only for instances in elastic storage mode.
+        @summary Queries a list of backup sets of full backup or point-in-time backup for an AnalyticDB for PostgreSQL instance.
+        
+        @description You can call this operation to query a list of backup sets and backup details only for instances in elastic storage mode.
         
         @param request: DescribeDataBackupsRequest
         @return: DescribeDataBackupsResponse
@@ -4891,6 +5647,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeDataReDistributeInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeDataReDistributeInfoResponse:
+        """
+        @summary Queries the data redistribution information about an AnalyticDB for PostgreSQL V6.0 instance in elastic storage mode.
+        
+        @param request: DescribeDataReDistributeInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDataReDistributeInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -4921,6 +5684,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeDataReDistributeInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeDataReDistributeInfoResponse:
+        """
+        @summary Queries the data redistribution information about an AnalyticDB for PostgreSQL V6.0 instance in elastic storage mode.
+        
+        @param request: DescribeDataReDistributeInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDataReDistributeInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -4950,6 +5720,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.DescribeDataReDistributeInfoRequest,
     ) -> gpdb_20160503_models.DescribeDataReDistributeInfoResponse:
+        """
+        @summary Queries the data redistribution information about an AnalyticDB for PostgreSQL V6.0 instance in elastic storage mode.
+        
+        @param request: DescribeDataReDistributeInfoRequest
+        @return: DescribeDataReDistributeInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_data_re_distribute_info_with_options(request, runtime)
 
@@ -4957,6 +5733,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.DescribeDataReDistributeInfoRequest,
     ) -> gpdb_20160503_models.DescribeDataReDistributeInfoResponse:
+        """
+        @summary Queries the data redistribution information about an AnalyticDB for PostgreSQL V6.0 instance in elastic storage mode.
+        
+        @param request: DescribeDataReDistributeInfoRequest
+        @return: DescribeDataReDistributeInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_data_re_distribute_info_with_options_async(request, runtime)
 
@@ -4966,7 +5748,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeDataShareInstancesResponse:
         """
-        Data sharing is supported only for instances in Serverless mode.
+        @summary Queries the state of data sharing for AnalyticDB for PostgreSQL instances.
+        
+        @description Data sharing is supported only for instances in Serverless mode.
         
         @param request: DescribeDataShareInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5011,7 +5795,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeDataShareInstancesResponse:
         """
-        Data sharing is supported only for instances in Serverless mode.
+        @summary Queries the state of data sharing for AnalyticDB for PostgreSQL instances.
+        
+        @description Data sharing is supported only for instances in Serverless mode.
         
         @param request: DescribeDataShareInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5055,7 +5841,9 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeDataShareInstancesRequest,
     ) -> gpdb_20160503_models.DescribeDataShareInstancesResponse:
         """
-        Data sharing is supported only for instances in Serverless mode.
+        @summary Queries the state of data sharing for AnalyticDB for PostgreSQL instances.
+        
+        @description Data sharing is supported only for instances in Serverless mode.
         
         @param request: DescribeDataShareInstancesRequest
         @return: DescribeDataShareInstancesResponse
@@ -5068,7 +5856,9 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeDataShareInstancesRequest,
     ) -> gpdb_20160503_models.DescribeDataShareInstancesResponse:
         """
-        Data sharing is supported only for instances in Serverless mode.
+        @summary Queries the state of data sharing for AnalyticDB for PostgreSQL instances.
+        
+        @description Data sharing is supported only for instances in Serverless mode.
         
         @param request: DescribeDataShareInstancesRequest
         @return: DescribeDataShareInstancesResponse
@@ -5082,7 +5872,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeDataSharePerformanceResponse:
         """
-        You can call this operation to query the details of data sharing performance metrics for an AnalyticDB for PostgreSQL instance in Serverless mode, such as the number of shared topics and the amount of data shared.
+        @summary Queries the information about data sharing performance metrics.
+        
+        @description You can call this operation to query the details of data sharing performance metrics for an AnalyticDB for PostgreSQL instance in Serverless mode, such as the number of shared topics and the amount of data shared.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -5127,7 +5919,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeDataSharePerformanceResponse:
         """
-        You can call this operation to query the details of data sharing performance metrics for an AnalyticDB for PostgreSQL instance in Serverless mode, such as the number of shared topics and the amount of data shared.
+        @summary Queries the information about data sharing performance metrics.
+        
+        @description You can call this operation to query the details of data sharing performance metrics for an AnalyticDB for PostgreSQL instance in Serverless mode, such as the number of shared topics and the amount of data shared.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -5171,7 +5965,9 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeDataSharePerformanceRequest,
     ) -> gpdb_20160503_models.DescribeDataSharePerformanceResponse:
         """
-        You can call this operation to query the details of data sharing performance metrics for an AnalyticDB for PostgreSQL instance in Serverless mode, such as the number of shared topics and the amount of data shared.
+        @summary Queries the information about data sharing performance metrics.
+        
+        @description You can call this operation to query the details of data sharing performance metrics for an AnalyticDB for PostgreSQL instance in Serverless mode, such as the number of shared topics and the amount of data shared.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -5186,7 +5982,9 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeDataSharePerformanceRequest,
     ) -> gpdb_20160503_models.DescribeDataSharePerformanceResponse:
         """
-        You can call this operation to query the details of data sharing performance metrics for an AnalyticDB for PostgreSQL instance in Serverless mode, such as the number of shared topics and the amount of data shared.
+        @summary Queries the information about data sharing performance metrics.
+        
+        @description You can call this operation to query the details of data sharing performance metrics for an AnalyticDB for PostgreSQL instance in Serverless mode, such as the number of shared topics and the amount of data shared.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -5202,7 +6000,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeDiagnosisDimensionsResponse:
         """
-        To facilitate management, you can call this operation to query all databases and database accounts on an AnalyticDB for PostgreSQL instance.
+        @summary Queries all databases and database accounts for an AnalyticDB for PostgreSQL instance.
+        
+        @description To facilitate management, you can call this operation to query all databases and database accounts on an AnalyticDB for PostgreSQL instance.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -5239,7 +6039,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeDiagnosisDimensionsResponse:
         """
-        To facilitate management, you can call this operation to query all databases and database accounts on an AnalyticDB for PostgreSQL instance.
+        @summary Queries all databases and database accounts for an AnalyticDB for PostgreSQL instance.
+        
+        @description To facilitate management, you can call this operation to query all databases and database accounts on an AnalyticDB for PostgreSQL instance.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -5275,7 +6077,9 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeDiagnosisDimensionsRequest,
     ) -> gpdb_20160503_models.DescribeDiagnosisDimensionsResponse:
         """
-        To facilitate management, you can call this operation to query all databases and database accounts on an AnalyticDB for PostgreSQL instance.
+        @summary Queries all databases and database accounts for an AnalyticDB for PostgreSQL instance.
+        
+        @description To facilitate management, you can call this operation to query all databases and database accounts on an AnalyticDB for PostgreSQL instance.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -5290,7 +6094,9 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeDiagnosisDimensionsRequest,
     ) -> gpdb_20160503_models.DescribeDiagnosisDimensionsResponse:
         """
-        To facilitate management, you can call this operation to query all databases and database accounts on an AnalyticDB for PostgreSQL instance.
+        @summary Queries all databases and database accounts for an AnalyticDB for PostgreSQL instance.
+        
+        @description To facilitate management, you can call this operation to query all databases and database accounts on an AnalyticDB for PostgreSQL instance.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -5306,7 +6112,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeDiagnosisMonitorPerformanceResponse:
         """
-        You can call this operation to query the details of query execution on an AnalyticDB for PostgreSQL instance in elastic storage mode within a specified time range.
+        @summary Queries the details of query execution on an AnalyticDB for PostgreSQL instance.
+        
+        @description You can call this operation to query the details of query execution on an AnalyticDB for PostgreSQL instance in elastic storage mode within a specified time range.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -5353,7 +6161,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeDiagnosisMonitorPerformanceResponse:
         """
-        You can call this operation to query the details of query execution on an AnalyticDB for PostgreSQL instance in elastic storage mode within a specified time range.
+        @summary Queries the details of query execution on an AnalyticDB for PostgreSQL instance.
+        
+        @description You can call this operation to query the details of query execution on an AnalyticDB for PostgreSQL instance in elastic storage mode within a specified time range.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -5399,7 +6209,9 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeDiagnosisMonitorPerformanceRequest,
     ) -> gpdb_20160503_models.DescribeDiagnosisMonitorPerformanceResponse:
         """
-        You can call this operation to query the details of query execution on an AnalyticDB for PostgreSQL instance in elastic storage mode within a specified time range.
+        @summary Queries the details of query execution on an AnalyticDB for PostgreSQL instance.
+        
+        @description You can call this operation to query the details of query execution on an AnalyticDB for PostgreSQL instance in elastic storage mode within a specified time range.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -5414,7 +6226,9 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeDiagnosisMonitorPerformanceRequest,
     ) -> gpdb_20160503_models.DescribeDiagnosisMonitorPerformanceResponse:
         """
-        You can call this operation to query the details of query execution on an AnalyticDB for PostgreSQL instance in elastic storage mode within a specified time range.
+        @summary Queries the details of query execution on an AnalyticDB for PostgreSQL instance.
+        
+        @description You can call this operation to query the details of query execution on an AnalyticDB for PostgreSQL instance in elastic storage mode within a specified time range.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -5430,7 +6244,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeDiagnosisRecordsResponse:
         """
-        You can call this operation to query the details of SQL queries on an AnalyticDB for PostgreSQL instance within a specified time range.
+        @summary Queries the information about SQL queries for an AnalyticDB for PostgreSQL instance.
+        
+        @description You can call this operation to query the details of SQL queries on an AnalyticDB for PostgreSQL instance within a specified time range.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -5485,7 +6301,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeDiagnosisRecordsResponse:
         """
-        You can call this operation to query the details of SQL queries on an AnalyticDB for PostgreSQL instance within a specified time range.
+        @summary Queries the information about SQL queries for an AnalyticDB for PostgreSQL instance.
+        
+        @description You can call this operation to query the details of SQL queries on an AnalyticDB for PostgreSQL instance within a specified time range.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -5539,7 +6357,9 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeDiagnosisRecordsRequest,
     ) -> gpdb_20160503_models.DescribeDiagnosisRecordsResponse:
         """
-        You can call this operation to query the details of SQL queries on an AnalyticDB for PostgreSQL instance within a specified time range.
+        @summary Queries the information about SQL queries for an AnalyticDB for PostgreSQL instance.
+        
+        @description You can call this operation to query the details of SQL queries on an AnalyticDB for PostgreSQL instance within a specified time range.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -5554,7 +6374,9 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeDiagnosisRecordsRequest,
     ) -> gpdb_20160503_models.DescribeDiagnosisRecordsResponse:
         """
-        You can call this operation to query the details of SQL queries on an AnalyticDB for PostgreSQL instance within a specified time range.
+        @summary Queries the information about SQL queries for an AnalyticDB for PostgreSQL instance.
+        
+        @description You can call this operation to query the details of SQL queries on an AnalyticDB for PostgreSQL instance within a specified time range.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -5570,8 +6392,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeDiagnosisSQLInfoResponse:
         """
-        You can call this operation to query the information about a query for an AnalyticDB for PostgreSQL instance, including the SQL statement, execution plan text, and execution plan tree.
-        This operation is available only for instances of V6.3.10.1 or later in elastic storage mode. For information about how to view and update the minor version of an instance, see [View the minor engine version](~~277424~~) and [Update the minor engine version](~~139271~~).
+        @summary Queries the information about a query for an AnalyticDB for PostgreSQL instance.
+        
+        @description You can call this operation to query the information about a query for an AnalyticDB for PostgreSQL instance, including the SQL statement, execution plan text, and execution plan tree.
+        This operation is available only for instances of V6.3.10.1 or later in elastic storage mode. For information about how to view and update the minor version of an instance, see [View the minor engine version](https://help.aliyun.com/document_detail/277424.html) and [Update the minor engine version](https://help.aliyun.com/document_detail/139271.html).
         
         @param request: DescribeDiagnosisSQLInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5610,8 +6434,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeDiagnosisSQLInfoResponse:
         """
-        You can call this operation to query the information about a query for an AnalyticDB for PostgreSQL instance, including the SQL statement, execution plan text, and execution plan tree.
-        This operation is available only for instances of V6.3.10.1 or later in elastic storage mode. For information about how to view and update the minor version of an instance, see [View the minor engine version](~~277424~~) and [Update the minor engine version](~~139271~~).
+        @summary Queries the information about a query for an AnalyticDB for PostgreSQL instance.
+        
+        @description You can call this operation to query the information about a query for an AnalyticDB for PostgreSQL instance, including the SQL statement, execution plan text, and execution plan tree.
+        This operation is available only for instances of V6.3.10.1 or later in elastic storage mode. For information about how to view and update the minor version of an instance, see [View the minor engine version](https://help.aliyun.com/document_detail/277424.html) and [Update the minor engine version](https://help.aliyun.com/document_detail/139271.html).
         
         @param request: DescribeDiagnosisSQLInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5649,8 +6475,10 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeDiagnosisSQLInfoRequest,
     ) -> gpdb_20160503_models.DescribeDiagnosisSQLInfoResponse:
         """
-        You can call this operation to query the information about a query for an AnalyticDB for PostgreSQL instance, including the SQL statement, execution plan text, and execution plan tree.
-        This operation is available only for instances of V6.3.10.1 or later in elastic storage mode. For information about how to view and update the minor version of an instance, see [View the minor engine version](~~277424~~) and [Update the minor engine version](~~139271~~).
+        @summary Queries the information about a query for an AnalyticDB for PostgreSQL instance.
+        
+        @description You can call this operation to query the information about a query for an AnalyticDB for PostgreSQL instance, including the SQL statement, execution plan text, and execution plan tree.
+        This operation is available only for instances of V6.3.10.1 or later in elastic storage mode. For information about how to view and update the minor version of an instance, see [View the minor engine version](https://help.aliyun.com/document_detail/277424.html) and [Update the minor engine version](https://help.aliyun.com/document_detail/139271.html).
         
         @param request: DescribeDiagnosisSQLInfoRequest
         @return: DescribeDiagnosisSQLInfoResponse
@@ -5663,8 +6491,10 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeDiagnosisSQLInfoRequest,
     ) -> gpdb_20160503_models.DescribeDiagnosisSQLInfoResponse:
         """
-        You can call this operation to query the information about a query for an AnalyticDB for PostgreSQL instance, including the SQL statement, execution plan text, and execution plan tree.
-        This operation is available only for instances of V6.3.10.1 or later in elastic storage mode. For information about how to view and update the minor version of an instance, see [View the minor engine version](~~277424~~) and [Update the minor engine version](~~139271~~).
+        @summary Queries the information about a query for an AnalyticDB for PostgreSQL instance.
+        
+        @description You can call this operation to query the information about a query for an AnalyticDB for PostgreSQL instance, including the SQL statement, execution plan text, and execution plan tree.
+        This operation is available only for instances of V6.3.10.1 or later in elastic storage mode. For information about how to view and update the minor version of an instance, see [View the minor engine version](https://help.aliyun.com/document_detail/277424.html) and [Update the minor engine version](https://help.aliyun.com/document_detail/139271.html).
         
         @param request: DescribeDiagnosisSQLInfoRequest
         @return: DescribeDiagnosisSQLInfoResponse
@@ -5677,6 +6507,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeDocumentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeDocumentResponse:
+        """
+        @summary 获取文档详情
+        
+        @param request: DescribeDocumentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDocumentResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.collection):
@@ -5717,6 +6554,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeDocumentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeDocumentResponse:
+        """
+        @summary 获取文档详情
+        
+        @param request: DescribeDocumentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDocumentResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.collection):
@@ -5756,6 +6600,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.DescribeDocumentRequest,
     ) -> gpdb_20160503_models.DescribeDocumentResponse:
+        """
+        @summary 获取文档详情
+        
+        @param request: DescribeDocumentRequest
+        @return: DescribeDocumentResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_document_with_options(request, runtime)
 
@@ -5763,6 +6613,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.DescribeDocumentRequest,
     ) -> gpdb_20160503_models.DescribeDocumentResponse:
+        """
+        @summary 获取文档详情
+        
+        @param request: DescribeDocumentRequest
+        @return: DescribeDocumentResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_document_with_options_async(request, runtime)
 
@@ -5772,8 +6628,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeDownloadRecordsResponse:
         """
-        You must call the [DownloadDiagnosisRecords](~~447700~~) operation to download the query diagnostic information before you can call this operation to query the download records and download URLs.
-        This operation is available only for instances of V6.3.10.1 or later in elastic storage mode. For information about how to view and update the minor version of an instance, see [View the minor engine version](~~277424~~) and [Update the minor engine version](~~139271~~).
+        @summary Queries the download records of query diagnostic information for an AnalyticDB for PostgreSQL instance.
+        
+        @description You must call the [DownloadDiagnosisRecords](https://help.aliyun.com/document_detail/447700.html) operation to download the query diagnostic information before you can call this operation to query the download records and download URLs.
+        This operation is available only for instances of V6.3.10.1 or later in elastic storage mode. For information about how to view and update the minor version of an instance, see [View the minor engine version](https://help.aliyun.com/document_detail/277424.html) and [Update the minor engine version](https://help.aliyun.com/document_detail/139271.html).
         
         @param request: DescribeDownloadRecordsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5808,8 +6666,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeDownloadRecordsResponse:
         """
-        You must call the [DownloadDiagnosisRecords](~~447700~~) operation to download the query diagnostic information before you can call this operation to query the download records and download URLs.
-        This operation is available only for instances of V6.3.10.1 or later in elastic storage mode. For information about how to view and update the minor version of an instance, see [View the minor engine version](~~277424~~) and [Update the minor engine version](~~139271~~).
+        @summary Queries the download records of query diagnostic information for an AnalyticDB for PostgreSQL instance.
+        
+        @description You must call the [DownloadDiagnosisRecords](https://help.aliyun.com/document_detail/447700.html) operation to download the query diagnostic information before you can call this operation to query the download records and download URLs.
+        This operation is available only for instances of V6.3.10.1 or later in elastic storage mode. For information about how to view and update the minor version of an instance, see [View the minor engine version](https://help.aliyun.com/document_detail/277424.html) and [Update the minor engine version](https://help.aliyun.com/document_detail/139271.html).
         
         @param request: DescribeDownloadRecordsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5843,8 +6703,10 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeDownloadRecordsRequest,
     ) -> gpdb_20160503_models.DescribeDownloadRecordsResponse:
         """
-        You must call the [DownloadDiagnosisRecords](~~447700~~) operation to download the query diagnostic information before you can call this operation to query the download records and download URLs.
-        This operation is available only for instances of V6.3.10.1 or later in elastic storage mode. For information about how to view and update the minor version of an instance, see [View the minor engine version](~~277424~~) and [Update the minor engine version](~~139271~~).
+        @summary Queries the download records of query diagnostic information for an AnalyticDB for PostgreSQL instance.
+        
+        @description You must call the [DownloadDiagnosisRecords](https://help.aliyun.com/document_detail/447700.html) operation to download the query diagnostic information before you can call this operation to query the download records and download URLs.
+        This operation is available only for instances of V6.3.10.1 or later in elastic storage mode. For information about how to view and update the minor version of an instance, see [View the minor engine version](https://help.aliyun.com/document_detail/277424.html) and [Update the minor engine version](https://help.aliyun.com/document_detail/139271.html).
         
         @param request: DescribeDownloadRecordsRequest
         @return: DescribeDownloadRecordsResponse
@@ -5857,8 +6719,10 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeDownloadRecordsRequest,
     ) -> gpdb_20160503_models.DescribeDownloadRecordsResponse:
         """
-        You must call the [DownloadDiagnosisRecords](~~447700~~) operation to download the query diagnostic information before you can call this operation to query the download records and download URLs.
-        This operation is available only for instances of V6.3.10.1 or later in elastic storage mode. For information about how to view and update the minor version of an instance, see [View the minor engine version](~~277424~~) and [Update the minor engine version](~~139271~~).
+        @summary Queries the download records of query diagnostic information for an AnalyticDB for PostgreSQL instance.
+        
+        @description You must call the [DownloadDiagnosisRecords](https://help.aliyun.com/document_detail/447700.html) operation to download the query diagnostic information before you can call this operation to query the download records and download URLs.
+        This operation is available only for instances of V6.3.10.1 or later in elastic storage mode. For information about how to view and update the minor version of an instance, see [View the minor engine version](https://help.aliyun.com/document_detail/277424.html) and [Update the minor engine version](https://help.aliyun.com/document_detail/139271.html).
         
         @param request: DescribeDownloadRecordsRequest
         @return: DescribeDownloadRecordsResponse
@@ -5871,6 +6735,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeDownloadSQLLogsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeDownloadSQLLogsResponse:
+        """
+        @summary Queries the last five download records of slow query logs for an AnalyticDB for PostgreSQL instance.
+        
+        @param request: DescribeDownloadSQLLogsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDownloadSQLLogsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -5899,6 +6770,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeDownloadSQLLogsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeDownloadSQLLogsResponse:
+        """
+        @summary Queries the last five download records of slow query logs for an AnalyticDB for PostgreSQL instance.
+        
+        @param request: DescribeDownloadSQLLogsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDownloadSQLLogsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -5926,6 +6804,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.DescribeDownloadSQLLogsRequest,
     ) -> gpdb_20160503_models.DescribeDownloadSQLLogsResponse:
+        """
+        @summary Queries the last five download records of slow query logs for an AnalyticDB for PostgreSQL instance.
+        
+        @param request: DescribeDownloadSQLLogsRequest
+        @return: DescribeDownloadSQLLogsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_download_sqllogs_with_options(request, runtime)
 
@@ -5933,6 +6817,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.DescribeDownloadSQLLogsRequest,
     ) -> gpdb_20160503_models.DescribeDownloadSQLLogsResponse:
+        """
+        @summary Queries the last five download records of slow query logs for an AnalyticDB for PostgreSQL instance.
+        
+        @param request: DescribeDownloadSQLLogsRequest
+        @return: DescribeDownloadSQLLogsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_download_sqllogs_with_options_async(request, runtime)
 
@@ -5942,7 +6832,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeHealthStatusResponse:
         """
-        This operation is called to query the health status of an AnalyticDB for PostgreSQL instance in elastic storage mode or Serverless mode and its coordinator and compute nodes.
+        @summary Queries the health status of an AnalyticDB for PostgreSQL instance and its nodes.
+        
+        @description This operation is called to query the health status of an AnalyticDB for PostgreSQL instance in elastic storage mode or Serverless mode and its coordinator and compute nodes.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -5981,7 +6873,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeHealthStatusResponse:
         """
-        This operation is called to query the health status of an AnalyticDB for PostgreSQL instance in elastic storage mode or Serverless mode and its coordinator and compute nodes.
+        @summary Queries the health status of an AnalyticDB for PostgreSQL instance and its nodes.
+        
+        @description This operation is called to query the health status of an AnalyticDB for PostgreSQL instance in elastic storage mode or Serverless mode and its coordinator and compute nodes.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -6019,7 +6913,9 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeHealthStatusRequest,
     ) -> gpdb_20160503_models.DescribeHealthStatusResponse:
         """
-        This operation is called to query the health status of an AnalyticDB for PostgreSQL instance in elastic storage mode or Serverless mode and its coordinator and compute nodes.
+        @summary Queries the health status of an AnalyticDB for PostgreSQL instance and its nodes.
+        
+        @description This operation is called to query the health status of an AnalyticDB for PostgreSQL instance in elastic storage mode or Serverless mode and its coordinator and compute nodes.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -6034,7 +6930,9 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeHealthStatusRequest,
     ) -> gpdb_20160503_models.DescribeHealthStatusResponse:
         """
-        This operation is called to query the health status of an AnalyticDB for PostgreSQL instance in elastic storage mode or Serverless mode and its coordinator and compute nodes.
+        @summary Queries the health status of an AnalyticDB for PostgreSQL instance and its nodes.
+        
+        @description This operation is called to query the health status of an AnalyticDB for PostgreSQL instance in elastic storage mode or Serverless mode and its coordinator and compute nodes.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -6049,6 +6947,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeIMVInfosRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeIMVInfosResponse:
+        """
+        @summary 查询实时物化视图信息
+        
+        @param request: DescribeIMVInfosRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeIMVInfosResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -6081,6 +6986,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeIMVInfosRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeIMVInfosResponse:
+        """
+        @summary 查询实时物化视图信息
+        
+        @param request: DescribeIMVInfosRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeIMVInfosResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -6112,6 +7024,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.DescribeIMVInfosRequest,
     ) -> gpdb_20160503_models.DescribeIMVInfosResponse:
+        """
+        @summary 查询实时物化视图信息
+        
+        @param request: DescribeIMVInfosRequest
+        @return: DescribeIMVInfosResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_imvinfos_with_options(request, runtime)
 
@@ -6119,6 +7037,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.DescribeIMVInfosRequest,
     ) -> gpdb_20160503_models.DescribeIMVInfosResponse:
+        """
+        @summary 查询实时物化视图信息
+        
+        @param request: DescribeIMVInfosRequest
+        @return: DescribeIMVInfosResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_imvinfos_with_options_async(request, runtime)
 
@@ -6127,6 +7051,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeLogBackupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeLogBackupsResponse:
+        """
+        @summary Queries a list of log backups.
+        
+        @param request: DescribeLogBackupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeLogBackupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -6163,6 +7094,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeLogBackupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeLogBackupsResponse:
+        """
+        @summary Queries a list of log backups.
+        
+        @param request: DescribeLogBackupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeLogBackupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -6198,6 +7136,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.DescribeLogBackupsRequest,
     ) -> gpdb_20160503_models.DescribeLogBackupsResponse:
+        """
+        @summary Queries a list of log backups.
+        
+        @param request: DescribeLogBackupsRequest
+        @return: DescribeLogBackupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_log_backups_with_options(request, runtime)
 
@@ -6205,6 +7149,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.DescribeLogBackupsRequest,
     ) -> gpdb_20160503_models.DescribeLogBackupsResponse:
+        """
+        @summary Queries a list of log backups.
+        
+        @param request: DescribeLogBackupsRequest
+        @return: DescribeLogBackupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_log_backups_with_options_async(request, runtime)
 
@@ -6213,6 +7163,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeModifyParameterLogRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeModifyParameterLogResponse:
+        """
+        @summary Queries the parameter modification logs of an AnalyticDB for PostgreSQL instance.
+        
+        @param request: DescribeModifyParameterLogRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeModifyParameterLogResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -6245,6 +7202,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeModifyParameterLogRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeModifyParameterLogResponse:
+        """
+        @summary Queries the parameter modification logs of an AnalyticDB for PostgreSQL instance.
+        
+        @param request: DescribeModifyParameterLogRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeModifyParameterLogResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -6276,6 +7240,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.DescribeModifyParameterLogRequest,
     ) -> gpdb_20160503_models.DescribeModifyParameterLogResponse:
+        """
+        @summary Queries the parameter modification logs of an AnalyticDB for PostgreSQL instance.
+        
+        @param request: DescribeModifyParameterLogRequest
+        @return: DescribeModifyParameterLogResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_modify_parameter_log_with_options(request, runtime)
 
@@ -6283,6 +7253,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.DescribeModifyParameterLogRequest,
     ) -> gpdb_20160503_models.DescribeModifyParameterLogResponse:
+        """
+        @summary Queries the parameter modification logs of an AnalyticDB for PostgreSQL instance.
+        
+        @param request: DescribeModifyParameterLogRequest
+        @return: DescribeModifyParameterLogResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_modify_parameter_log_with_options_async(request, runtime)
 
@@ -6291,6 +7267,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeNamespaceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeNamespaceResponse:
+        """
+        @summary Queries the information about a namespace.
+        
+        @param request: DescribeNamespaceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNamespaceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -6329,6 +7312,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeNamespaceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeNamespaceResponse:
+        """
+        @summary Queries the information about a namespace.
+        
+        @param request: DescribeNamespaceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNamespaceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -6366,6 +7356,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.DescribeNamespaceRequest,
     ) -> gpdb_20160503_models.DescribeNamespaceResponse:
+        """
+        @summary Queries the information about a namespace.
+        
+        @param request: DescribeNamespaceRequest
+        @return: DescribeNamespaceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_namespace_with_options(request, runtime)
 
@@ -6373,6 +7369,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.DescribeNamespaceRequest,
     ) -> gpdb_20160503_models.DescribeNamespaceResponse:
+        """
+        @summary Queries the information about a namespace.
+        
+        @param request: DescribeNamespaceRequest
+        @return: DescribeNamespaceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_namespace_with_options_async(request, runtime)
 
@@ -6382,7 +7384,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeParametersResponse:
         """
-        This operation can be called to query the details of parameters in an AnalyticDB for PostgreSQL instance in elastic storage mode or Serverless mode.
+        @summary Queries the information about configuration parameters for an AnalyticDB for PostgreSQL instance.
+        
+        @description This operation can be called to query the details of parameters in an AnalyticDB for PostgreSQL instance in elastic storage mode or Serverless mode.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered and may affect your business. We recommend that you take note of the limit when you call this operation.
         
@@ -6419,7 +7423,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeParametersResponse:
         """
-        This operation can be called to query the details of parameters in an AnalyticDB for PostgreSQL instance in elastic storage mode or Serverless mode.
+        @summary Queries the information about configuration parameters for an AnalyticDB for PostgreSQL instance.
+        
+        @description This operation can be called to query the details of parameters in an AnalyticDB for PostgreSQL instance in elastic storage mode or Serverless mode.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered and may affect your business. We recommend that you take note of the limit when you call this operation.
         
@@ -6455,7 +7461,9 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeParametersRequest,
     ) -> gpdb_20160503_models.DescribeParametersResponse:
         """
-        This operation can be called to query the details of parameters in an AnalyticDB for PostgreSQL instance in elastic storage mode or Serverless mode.
+        @summary Queries the information about configuration parameters for an AnalyticDB for PostgreSQL instance.
+        
+        @description This operation can be called to query the details of parameters in an AnalyticDB for PostgreSQL instance in elastic storage mode or Serverless mode.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered and may affect your business. We recommend that you take note of the limit when you call this operation.
         
@@ -6470,7 +7478,9 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeParametersRequest,
     ) -> gpdb_20160503_models.DescribeParametersResponse:
         """
-        This operation can be called to query the details of parameters in an AnalyticDB for PostgreSQL instance in elastic storage mode or Serverless mode.
+        @summary Queries the information about configuration parameters for an AnalyticDB for PostgreSQL instance.
+        
+        @description This operation can be called to query the details of parameters in an AnalyticDB for PostgreSQL instance in elastic storage mode or Serverless mode.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered and may affect your business. We recommend that you take note of the limit when you call this operation.
         
@@ -6486,7 +7496,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeRdsVSwitchsResponse:
         """
-        When you create AnalyticDB for PostgreSQL instances, you can call this operation to query the details of vSwitches within a specified region or zone.
+        @summary Queries a list of vSwitches.
+        
+        @description When you create AnalyticDB for PostgreSQL instances, you can call this operation to query the details of vSwitches within a specified region or zone.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -6539,7 +7551,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeRdsVSwitchsResponse:
         """
-        When you create AnalyticDB for PostgreSQL instances, you can call this operation to query the details of vSwitches within a specified region or zone.
+        @summary Queries a list of vSwitches.
+        
+        @description When you create AnalyticDB for PostgreSQL instances, you can call this operation to query the details of vSwitches within a specified region or zone.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -6591,7 +7605,9 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeRdsVSwitchsRequest,
     ) -> gpdb_20160503_models.DescribeRdsVSwitchsResponse:
         """
-        When you create AnalyticDB for PostgreSQL instances, you can call this operation to query the details of vSwitches within a specified region or zone.
+        @summary Queries a list of vSwitches.
+        
+        @description When you create AnalyticDB for PostgreSQL instances, you can call this operation to query the details of vSwitches within a specified region or zone.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -6606,7 +7622,9 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeRdsVSwitchsRequest,
     ) -> gpdb_20160503_models.DescribeRdsVSwitchsResponse:
         """
-        When you create AnalyticDB for PostgreSQL instances, you can call this operation to query the details of vSwitches within a specified region or zone.
+        @summary Queries a list of vSwitches.
+        
+        @description When you create AnalyticDB for PostgreSQL instances, you can call this operation to query the details of vSwitches within a specified region or zone.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -6622,7 +7640,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeRdsVpcsResponse:
         """
-        When you create an AnalyticDB for PostgreSQL instance, you can call this operation to query the available VPCs within a specified region or zone.
+        @summary Queries a list of VPCs.
+        
+        @description When you create an AnalyticDB for PostgreSQL instance, you can call this operation to query the available VPCs within a specified region or zone.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -6673,7 +7693,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeRdsVpcsResponse:
         """
-        When you create an AnalyticDB for PostgreSQL instance, you can call this operation to query the available VPCs within a specified region or zone.
+        @summary Queries a list of VPCs.
+        
+        @description When you create an AnalyticDB for PostgreSQL instance, you can call this operation to query the available VPCs within a specified region or zone.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -6723,7 +7745,9 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeRdsVpcsRequest,
     ) -> gpdb_20160503_models.DescribeRdsVpcsResponse:
         """
-        When you create an AnalyticDB for PostgreSQL instance, you can call this operation to query the available VPCs within a specified region or zone.
+        @summary Queries a list of VPCs.
+        
+        @description When you create an AnalyticDB for PostgreSQL instance, you can call this operation to query the available VPCs within a specified region or zone.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -6738,7 +7762,9 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeRdsVpcsRequest,
     ) -> gpdb_20160503_models.DescribeRdsVpcsResponse:
         """
-        When you create an AnalyticDB for PostgreSQL instance, you can call this operation to query the available VPCs within a specified region or zone.
+        @summary Queries a list of VPCs.
+        
+        @description When you create an AnalyticDB for PostgreSQL instance, you can call this operation to query the available VPCs within a specified region or zone.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -6754,7 +7780,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeRegionsResponse:
         """
-        Before you create an AnalyticDB for PostgreSQL instance, you must call this operation to query available regions and zones.
+        @summary Queries a list of regions and zones where AnalyticDB for PostgreSQL is available.
+        
+        @description Before you create an AnalyticDB for PostgreSQL instance, you must call this operation to query available regions and zones.
         ## Limit
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered and may affect your business. We recommend that you take note of the limit when you call this operation.
         
@@ -6791,7 +7819,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeRegionsResponse:
         """
-        Before you create an AnalyticDB for PostgreSQL instance, you must call this operation to query available regions and zones.
+        @summary Queries a list of regions and zones where AnalyticDB for PostgreSQL is available.
+        
+        @description Before you create an AnalyticDB for PostgreSQL instance, you must call this operation to query available regions and zones.
         ## Limit
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered and may affect your business. We recommend that you take note of the limit when you call this operation.
         
@@ -6827,7 +7857,9 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeRegionsRequest,
     ) -> gpdb_20160503_models.DescribeRegionsResponse:
         """
-        Before you create an AnalyticDB for PostgreSQL instance, you must call this operation to query available regions and zones.
+        @summary Queries a list of regions and zones where AnalyticDB for PostgreSQL is available.
+        
+        @description Before you create an AnalyticDB for PostgreSQL instance, you must call this operation to query available regions and zones.
         ## Limit
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered and may affect your business. We recommend that you take note of the limit when you call this operation.
         
@@ -6842,7 +7874,9 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeRegionsRequest,
     ) -> gpdb_20160503_models.DescribeRegionsResponse:
         """
-        Before you create an AnalyticDB for PostgreSQL instance, you must call this operation to query available regions and zones.
+        @summary Queries a list of regions and zones where AnalyticDB for PostgreSQL is available.
+        
+        @description Before you create an AnalyticDB for PostgreSQL instance, you must call this operation to query available regions and zones.
         ## Limit
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered and may affect your business. We recommend that you take note of the limit when you call this operation.
         
@@ -6858,7 +7892,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeSQLLogCountResponse:
         """
-        This operation is not available for instances in reserved storage mode.
+        @summary Queries the number of audit logs for an AnalyticDB for PostgreSQL instance.
+        
+        @description This operation is not available for instances in reserved storage mode.
         
         @param request: DescribeSQLLogCountRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6917,7 +7953,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeSQLLogCountResponse:
         """
-        This operation is not available for instances in reserved storage mode.
+        @summary Queries the number of audit logs for an AnalyticDB for PostgreSQL instance.
+        
+        @description This operation is not available for instances in reserved storage mode.
         
         @param request: DescribeSQLLogCountRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6975,7 +8013,9 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeSQLLogCountRequest,
     ) -> gpdb_20160503_models.DescribeSQLLogCountResponse:
         """
-        This operation is not available for instances in reserved storage mode.
+        @summary Queries the number of audit logs for an AnalyticDB for PostgreSQL instance.
+        
+        @description This operation is not available for instances in reserved storage mode.
         
         @param request: DescribeSQLLogCountRequest
         @return: DescribeSQLLogCountResponse
@@ -6988,7 +8028,9 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeSQLLogCountRequest,
     ) -> gpdb_20160503_models.DescribeSQLLogCountResponse:
         """
-        This operation is not available for instances in reserved storage mode.
+        @summary Queries the number of audit logs for an AnalyticDB for PostgreSQL instance.
+        
+        @description This operation is not available for instances in reserved storage mode.
         
         @param request: DescribeSQLLogCountRequest
         @return: DescribeSQLLogCountResponse
@@ -7002,7 +8044,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeSQLLogsResponse:
         """
-        > This operation is no longer used. To query SQL execution logs, call the [DescribeSQLLogsV2](~~453722~~) operation.
+        @summary Queries the SQL execution logs of an AnalyticDB for PostgreSQL instance.
+        
+        @description > This operation is no longer used. To query SQL execution logs, call the [DescribeSQLLogsV2](https://help.aliyun.com/document_detail/453722.html) operation.
         
         @param request: DescribeSQLLogsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7065,7 +8109,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeSQLLogsResponse:
         """
-        > This operation is no longer used. To query SQL execution logs, call the [DescribeSQLLogsV2](~~453722~~) operation.
+        @summary Queries the SQL execution logs of an AnalyticDB for PostgreSQL instance.
+        
+        @description > This operation is no longer used. To query SQL execution logs, call the [DescribeSQLLogsV2](https://help.aliyun.com/document_detail/453722.html) operation.
         
         @param request: DescribeSQLLogsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7127,7 +8173,9 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeSQLLogsRequest,
     ) -> gpdb_20160503_models.DescribeSQLLogsResponse:
         """
-        > This operation is no longer used. To query SQL execution logs, call the [DescribeSQLLogsV2](~~453722~~) operation.
+        @summary Queries the SQL execution logs of an AnalyticDB for PostgreSQL instance.
+        
+        @description > This operation is no longer used. To query SQL execution logs, call the [DescribeSQLLogsV2](https://help.aliyun.com/document_detail/453722.html) operation.
         
         @param request: DescribeSQLLogsRequest
         @return: DescribeSQLLogsResponse
@@ -7140,7 +8188,9 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeSQLLogsRequest,
     ) -> gpdb_20160503_models.DescribeSQLLogsResponse:
         """
-        > This operation is no longer used. To query SQL execution logs, call the [DescribeSQLLogsV2](~~453722~~) operation.
+        @summary Queries the SQL execution logs of an AnalyticDB for PostgreSQL instance.
+        
+        @description > This operation is no longer used. To query SQL execution logs, call the [DescribeSQLLogsV2](https://help.aliyun.com/document_detail/453722.html) operation.
         
         @param request: DescribeSQLLogsRequest
         @return: DescribeSQLLogsResponse
@@ -7154,7 +8204,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeSQLLogsV2Response:
         """
-        You can call this operation to query SQL logs of an AnalyticDB for PostgreSQL instance within a specific time range.
+        @summary Queries SQL logs within a specific time range.
+        
+        @description You can call this operation to query SQL logs of an AnalyticDB for PostgreSQL instance within a specific time range.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -7223,7 +8275,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeSQLLogsV2Response:
         """
-        You can call this operation to query SQL logs of an AnalyticDB for PostgreSQL instance within a specific time range.
+        @summary Queries SQL logs within a specific time range.
+        
+        @description You can call this operation to query SQL logs of an AnalyticDB for PostgreSQL instance within a specific time range.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -7291,7 +8345,9 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeSQLLogsV2Request,
     ) -> gpdb_20160503_models.DescribeSQLLogsV2Response:
         """
-        You can call this operation to query SQL logs of an AnalyticDB for PostgreSQL instance within a specific time range.
+        @summary Queries SQL logs within a specific time range.
+        
+        @description You can call this operation to query SQL logs of an AnalyticDB for PostgreSQL instance within a specific time range.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -7306,7 +8362,9 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeSQLLogsV2Request,
     ) -> gpdb_20160503_models.DescribeSQLLogsV2Response:
         """
-        You can call this operation to query SQL logs of an AnalyticDB for PostgreSQL instance within a specific time range.
+        @summary Queries SQL logs within a specific time range.
+        
+        @description You can call this operation to query SQL logs of an AnalyticDB for PostgreSQL instance within a specific time range.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -7322,7 +8380,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeSampleDataResponse:
         """
-        You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        @summary Queries whether a sample dataset is loaded to an AnalyticDB for PostgreSQL instance.
+        
+        @description You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: DescribeSampleDataRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7359,7 +8419,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeSampleDataResponse:
         """
-        You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        @summary Queries whether a sample dataset is loaded to an AnalyticDB for PostgreSQL instance.
+        
+        @description You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: DescribeSampleDataRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7395,7 +8457,9 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeSampleDataRequest,
     ) -> gpdb_20160503_models.DescribeSampleDataResponse:
         """
-        You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        @summary Queries whether a sample dataset is loaded to an AnalyticDB for PostgreSQL instance.
+        
+        @description You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: DescribeSampleDataRequest
         @return: DescribeSampleDataResponse
@@ -7408,7 +8472,9 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeSampleDataRequest,
     ) -> gpdb_20160503_models.DescribeSampleDataResponse:
         """
-        You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        @summary Queries whether a sample dataset is loaded to an AnalyticDB for PostgreSQL instance.
+        
+        @description You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: DescribeSampleDataRequest
         @return: DescribeSampleDataResponse
@@ -7421,6 +8487,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeSupportFeaturesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeSupportFeaturesResponse:
+        """
+        @summary Queries the features that are supported by an AnalyticDB for PostgreSQL instance.
+        
+        @param request: DescribeSupportFeaturesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSupportFeaturesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -7451,6 +8524,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeSupportFeaturesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeSupportFeaturesResponse:
+        """
+        @summary Queries the features that are supported by an AnalyticDB for PostgreSQL instance.
+        
+        @param request: DescribeSupportFeaturesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSupportFeaturesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -7480,6 +8560,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.DescribeSupportFeaturesRequest,
     ) -> gpdb_20160503_models.DescribeSupportFeaturesResponse:
+        """
+        @summary Queries the features that are supported by an AnalyticDB for PostgreSQL instance.
+        
+        @param request: DescribeSupportFeaturesRequest
+        @return: DescribeSupportFeaturesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_support_features_with_options(request, runtime)
 
@@ -7487,6 +8573,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.DescribeSupportFeaturesRequest,
     ) -> gpdb_20160503_models.DescribeSupportFeaturesResponse:
+        """
+        @summary Queries the features that are supported by an AnalyticDB for PostgreSQL instance.
+        
+        @param request: DescribeSupportFeaturesRequest
+        @return: DescribeSupportFeaturesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_support_features_with_options_async(request, runtime)
 
@@ -7495,6 +8587,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeTagsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeTagsResponse:
+        """
+        @summary Queries a list of tags for AnalyticDB for PostgreSQL instances.
+        
+        @param request: DescribeTagsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTagsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_account):
@@ -7535,6 +8634,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeTagsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeTagsResponse:
+        """
+        @summary Queries a list of tags for AnalyticDB for PostgreSQL instances.
+        
+        @param request: DescribeTagsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTagsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_account):
@@ -7574,6 +8680,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.DescribeTagsRequest,
     ) -> gpdb_20160503_models.DescribeTagsResponse:
+        """
+        @summary Queries a list of tags for AnalyticDB for PostgreSQL instances.
+        
+        @param request: DescribeTagsRequest
+        @return: DescribeTagsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_tags_with_options(request, runtime)
 
@@ -7581,6 +8693,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.DescribeTagsRequest,
     ) -> gpdb_20160503_models.DescribeTagsResponse:
+        """
+        @summary Queries a list of tags for AnalyticDB for PostgreSQL instances.
+        
+        @param request: DescribeTagsRequest
+        @return: DescribeTagsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_tags_with_options_async(request, runtime)
 
@@ -7589,6 +8707,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeUserEncryptionKeyListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeUserEncryptionKeyListResponse:
+        """
+        @summary Queries a list of Key Management Service (KMS) keys.
+        
+        @param request: DescribeUserEncryptionKeyListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUserEncryptionKeyListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -7621,6 +8746,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeUserEncryptionKeyListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeUserEncryptionKeyListResponse:
+        """
+        @summary Queries a list of Key Management Service (KMS) keys.
+        
+        @param request: DescribeUserEncryptionKeyListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUserEncryptionKeyListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -7652,6 +8784,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.DescribeUserEncryptionKeyListRequest,
     ) -> gpdb_20160503_models.DescribeUserEncryptionKeyListResponse:
+        """
+        @summary Queries a list of Key Management Service (KMS) keys.
+        
+        @param request: DescribeUserEncryptionKeyListRequest
+        @return: DescribeUserEncryptionKeyListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_user_encryption_key_list_with_options(request, runtime)
 
@@ -7659,6 +8797,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.DescribeUserEncryptionKeyListRequest,
     ) -> gpdb_20160503_models.DescribeUserEncryptionKeyListResponse:
+        """
+        @summary Queries a list of Key Management Service (KMS) keys.
+        
+        @param request: DescribeUserEncryptionKeyListRequest
+        @return: DescribeUserEncryptionKeyListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_user_encryption_key_list_with_options_async(request, runtime)
 
@@ -7668,7 +8812,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeWaitingSQLInfoResponse:
         """
-        You can call this operation to query the details of a lock-waiting query only for an AnalyticDB for PostgreSQL V6.0 instance in elastic storage mode.
+        @summary Queries the information about a lock-waiting query for an AnalyticDB for PostgreSQL instance.
+        
+        @description You can call this operation to query the details of a lock-waiting query only for an AnalyticDB for PostgreSQL V6.0 instance in elastic storage mode.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -7709,7 +8855,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeWaitingSQLInfoResponse:
         """
-        You can call this operation to query the details of a lock-waiting query only for an AnalyticDB for PostgreSQL V6.0 instance in elastic storage mode.
+        @summary Queries the information about a lock-waiting query for an AnalyticDB for PostgreSQL instance.
+        
+        @description You can call this operation to query the details of a lock-waiting query only for an AnalyticDB for PostgreSQL V6.0 instance in elastic storage mode.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -7749,7 +8897,9 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeWaitingSQLInfoRequest,
     ) -> gpdb_20160503_models.DescribeWaitingSQLInfoResponse:
         """
-        You can call this operation to query the details of a lock-waiting query only for an AnalyticDB for PostgreSQL V6.0 instance in elastic storage mode.
+        @summary Queries the information about a lock-waiting query for an AnalyticDB for PostgreSQL instance.
+        
+        @description You can call this operation to query the details of a lock-waiting query only for an AnalyticDB for PostgreSQL V6.0 instance in elastic storage mode.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -7764,7 +8914,9 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeWaitingSQLInfoRequest,
     ) -> gpdb_20160503_models.DescribeWaitingSQLInfoResponse:
         """
-        You can call this operation to query the details of a lock-waiting query only for an AnalyticDB for PostgreSQL V6.0 instance in elastic storage mode.
+        @summary Queries the information about a lock-waiting query for an AnalyticDB for PostgreSQL instance.
+        
+        @description You can call this operation to query the details of a lock-waiting query only for an AnalyticDB for PostgreSQL V6.0 instance in elastic storage mode.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -7780,7 +8932,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeWaitingSQLRecordsResponse:
         """
-        You can call this operation to query the lock diagnostics records only for an AnalyticDB for PostgreSQL V6.0 instance in elastic storage mode.
+        @summary Queries the lock diagnostic records of an AnalyticDB for PostgreSQL instance.
+        
+        @description You can call this operation to query the lock diagnostics records only for an AnalyticDB for PostgreSQL V6.0 instance in elastic storage mode.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -7835,7 +8989,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeWaitingSQLRecordsResponse:
         """
-        You can call this operation to query the lock diagnostics records only for an AnalyticDB for PostgreSQL V6.0 instance in elastic storage mode.
+        @summary Queries the lock diagnostic records of an AnalyticDB for PostgreSQL instance.
+        
+        @description You can call this operation to query the lock diagnostics records only for an AnalyticDB for PostgreSQL V6.0 instance in elastic storage mode.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -7889,7 +9045,9 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeWaitingSQLRecordsRequest,
     ) -> gpdb_20160503_models.DescribeWaitingSQLRecordsResponse:
         """
-        You can call this operation to query the lock diagnostics records only for an AnalyticDB for PostgreSQL V6.0 instance in elastic storage mode.
+        @summary Queries the lock diagnostic records of an AnalyticDB for PostgreSQL instance.
+        
+        @description You can call this operation to query the lock diagnostics records only for an AnalyticDB for PostgreSQL V6.0 instance in elastic storage mode.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -7904,7 +9062,9 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeWaitingSQLRecordsRequest,
     ) -> gpdb_20160503_models.DescribeWaitingSQLRecordsResponse:
         """
-        You can call this operation to query the lock diagnostics records only for an AnalyticDB for PostgreSQL V6.0 instance in elastic storage mode.
+        @summary Queries the lock diagnostic records of an AnalyticDB for PostgreSQL instance.
+        
+        @description You can call this operation to query the lock diagnostics records only for an AnalyticDB for PostgreSQL V6.0 instance in elastic storage mode.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -7920,8 +9080,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DownloadDiagnosisRecordsResponse:
         """
-        You can call this operation to download the query diagnostic information of an AnalyticDB for PostgreSQL instance. After the download is complete, you can call the [DescribeDownloadRecords](~~447712~~) operation to query download records and download URLs.
-        This operation is available only for instances of V6.3.10.1 or later in elastic storage mode. For more information about how to view and update the minor engine version of an instance, see [View the minor engine version](~~277424~~) and [Update the minor engine version](~~139271~~).
+        @summary Downloads the query diagnostic information of an AnalyticDB for PostgreSQL instance.
+        
+        @description You can call this operation to download the query diagnostic information of an AnalyticDB for PostgreSQL instance. After the download is complete, you can call the [DescribeDownloadRecords](https://help.aliyun.com/document_detail/447712.html) operation to query download records and download URLs.
+        This operation is available only for instances of V6.3.10.1 or later in elastic storage mode. For more information about how to view and update the minor engine version of an instance, see [View the minor engine version](https://help.aliyun.com/document_detail/277424.html) and [Update the minor engine version](https://help.aliyun.com/document_detail/139271.html).
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -7972,8 +9134,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DownloadDiagnosisRecordsResponse:
         """
-        You can call this operation to download the query diagnostic information of an AnalyticDB for PostgreSQL instance. After the download is complete, you can call the [DescribeDownloadRecords](~~447712~~) operation to query download records and download URLs.
-        This operation is available only for instances of V6.3.10.1 or later in elastic storage mode. For more information about how to view and update the minor engine version of an instance, see [View the minor engine version](~~277424~~) and [Update the minor engine version](~~139271~~).
+        @summary Downloads the query diagnostic information of an AnalyticDB for PostgreSQL instance.
+        
+        @description You can call this operation to download the query diagnostic information of an AnalyticDB for PostgreSQL instance. After the download is complete, you can call the [DescribeDownloadRecords](https://help.aliyun.com/document_detail/447712.html) operation to query download records and download URLs.
+        This operation is available only for instances of V6.3.10.1 or later in elastic storage mode. For more information about how to view and update the minor engine version of an instance, see [View the minor engine version](https://help.aliyun.com/document_detail/277424.html) and [Update the minor engine version](https://help.aliyun.com/document_detail/139271.html).
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -8023,8 +9187,10 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DownloadDiagnosisRecordsRequest,
     ) -> gpdb_20160503_models.DownloadDiagnosisRecordsResponse:
         """
-        You can call this operation to download the query diagnostic information of an AnalyticDB for PostgreSQL instance. After the download is complete, you can call the [DescribeDownloadRecords](~~447712~~) operation to query download records and download URLs.
-        This operation is available only for instances of V6.3.10.1 or later in elastic storage mode. For more information about how to view and update the minor engine version of an instance, see [View the minor engine version](~~277424~~) and [Update the minor engine version](~~139271~~).
+        @summary Downloads the query diagnostic information of an AnalyticDB for PostgreSQL instance.
+        
+        @description You can call this operation to download the query diagnostic information of an AnalyticDB for PostgreSQL instance. After the download is complete, you can call the [DescribeDownloadRecords](https://help.aliyun.com/document_detail/447712.html) operation to query download records and download URLs.
+        This operation is available only for instances of V6.3.10.1 or later in elastic storage mode. For more information about how to view and update the minor engine version of an instance, see [View the minor engine version](https://help.aliyun.com/document_detail/277424.html) and [Update the minor engine version](https://help.aliyun.com/document_detail/139271.html).
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -8039,8 +9205,10 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DownloadDiagnosisRecordsRequest,
     ) -> gpdb_20160503_models.DownloadDiagnosisRecordsResponse:
         """
-        You can call this operation to download the query diagnostic information of an AnalyticDB for PostgreSQL instance. After the download is complete, you can call the [DescribeDownloadRecords](~~447712~~) operation to query download records and download URLs.
-        This operation is available only for instances of V6.3.10.1 or later in elastic storage mode. For more information about how to view and update the minor engine version of an instance, see [View the minor engine version](~~277424~~) and [Update the minor engine version](~~139271~~).
+        @summary Downloads the query diagnostic information of an AnalyticDB for PostgreSQL instance.
+        
+        @description You can call this operation to download the query diagnostic information of an AnalyticDB for PostgreSQL instance. After the download is complete, you can call the [DescribeDownloadRecords](https://help.aliyun.com/document_detail/447712.html) operation to query download records and download URLs.
+        This operation is available only for instances of V6.3.10.1 or later in elastic storage mode. For more information about how to view and update the minor engine version of an instance, see [View the minor engine version](https://help.aliyun.com/document_detail/277424.html) and [Update the minor engine version](https://help.aliyun.com/document_detail/139271.html).
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -8055,6 +9223,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DownloadSQLLogsRecordsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DownloadSQLLogsRecordsResponse:
+        """
+        @summary Download the slow query logs of an AnalyticDB for PostgreSQL instance.
+        
+        @param request: DownloadSQLLogsRecordsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DownloadSQLLogsRecordsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -8113,6 +9288,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DownloadSQLLogsRecordsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DownloadSQLLogsRecordsResponse:
+        """
+        @summary Download the slow query logs of an AnalyticDB for PostgreSQL instance.
+        
+        @param request: DownloadSQLLogsRecordsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DownloadSQLLogsRecordsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -8170,6 +9352,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.DownloadSQLLogsRecordsRequest,
     ) -> gpdb_20160503_models.DownloadSQLLogsRecordsResponse:
+        """
+        @summary Download the slow query logs of an AnalyticDB for PostgreSQL instance.
+        
+        @param request: DownloadSQLLogsRecordsRequest
+        @return: DownloadSQLLogsRecordsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.download_sqllogs_records_with_options(request, runtime)
 
@@ -8177,6 +9365,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.DownloadSQLLogsRecordsRequest,
     ) -> gpdb_20160503_models.DownloadSQLLogsRecordsResponse:
+        """
+        @summary Download the slow query logs of an AnalyticDB for PostgreSQL instance.
+        
+        @param request: DownloadSQLLogsRecordsRequest
+        @return: DownloadSQLLogsRecordsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.download_sqllogs_records_with_options_async(request, runtime)
 
@@ -8185,6 +9379,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.GetUploadDocumentJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.GetUploadDocumentJobResponse:
+        """
+        @summary 查询上传文档任务的状态
+        
+        @param request: GetUploadDocumentJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetUploadDocumentJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -8227,6 +9428,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.GetUploadDocumentJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.GetUploadDocumentJobResponse:
+        """
+        @summary 查询上传文档任务的状态
+        
+        @param request: GetUploadDocumentJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetUploadDocumentJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -8268,6 +9476,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.GetUploadDocumentJobRequest,
     ) -> gpdb_20160503_models.GetUploadDocumentJobResponse:
+        """
+        @summary 查询上传文档任务的状态
+        
+        @param request: GetUploadDocumentJobRequest
+        @return: GetUploadDocumentJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_upload_document_job_with_options(request, runtime)
 
@@ -8275,6 +9489,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.GetUploadDocumentJobRequest,
     ) -> gpdb_20160503_models.GetUploadDocumentJobResponse:
+        """
+        @summary 查询上传文档任务的状态
+        
+        @param request: GetUploadDocumentJobRequest
+        @return: GetUploadDocumentJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_upload_document_job_with_options_async(request, runtime)
 
@@ -8283,6 +9503,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.GetUpsertCollectionDataJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.GetUpsertCollectionDataJobResponse:
+        """
+        @summary 查询上传向量任务结果
+        
+        @param request: GetUpsertCollectionDataJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetUpsertCollectionDataJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -8325,6 +9552,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.GetUpsertCollectionDataJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.GetUpsertCollectionDataJobResponse:
+        """
+        @summary 查询上传向量任务结果
+        
+        @param request: GetUpsertCollectionDataJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetUpsertCollectionDataJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -8366,6 +9600,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.GetUpsertCollectionDataJobRequest,
     ) -> gpdb_20160503_models.GetUpsertCollectionDataJobResponse:
+        """
+        @summary 查询上传向量任务结果
+        
+        @param request: GetUpsertCollectionDataJobRequest
+        @return: GetUpsertCollectionDataJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_upsert_collection_data_job_with_options(request, runtime)
 
@@ -8373,6 +9613,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.GetUpsertCollectionDataJobRequest,
     ) -> gpdb_20160503_models.GetUpsertCollectionDataJobResponse:
+        """
+        @summary 查询上传向量任务结果
+        
+        @param request: GetUpsertCollectionDataJobRequest
+        @return: GetUpsertCollectionDataJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_upsert_collection_data_job_with_options_async(request, runtime)
 
@@ -8381,6 +9627,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.GrantCollectionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.GrantCollectionResponse:
+        """
+        @summary Grants vector collection permissions to a namespace.
+        
+        @param request: GrantCollectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GrantCollectionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.collection):
@@ -8425,6 +9678,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.GrantCollectionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.GrantCollectionResponse:
+        """
+        @summary Grants vector collection permissions to a namespace.
+        
+        @param request: GrantCollectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GrantCollectionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.collection):
@@ -8468,6 +9728,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.GrantCollectionRequest,
     ) -> gpdb_20160503_models.GrantCollectionResponse:
+        """
+        @summary Grants vector collection permissions to a namespace.
+        
+        @param request: GrantCollectionRequest
+        @return: GrantCollectionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.grant_collection_with_options(request, runtime)
 
@@ -8475,6 +9741,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.GrantCollectionRequest,
     ) -> gpdb_20160503_models.GrantCollectionResponse:
+        """
+        @summary Grants vector collection permissions to a namespace.
+        
+        @param request: GrantCollectionRequest
+        @return: GrantCollectionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.grant_collection_with_options_async(request, runtime)
 
@@ -8483,6 +9755,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.HandleActiveSQLRecordRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.HandleActiveSQLRecordResponse:
+        """
+        @summary 处理指定的查询SQL
+        
+        @param request: HandleActiveSQLRecordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: HandleActiveSQLRecordResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -8515,6 +9794,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.HandleActiveSQLRecordRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.HandleActiveSQLRecordResponse:
+        """
+        @summary 处理指定的查询SQL
+        
+        @param request: HandleActiveSQLRecordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: HandleActiveSQLRecordResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -8546,6 +9832,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.HandleActiveSQLRecordRequest,
     ) -> gpdb_20160503_models.HandleActiveSQLRecordResponse:
+        """
+        @summary 处理指定的查询SQL
+        
+        @param request: HandleActiveSQLRecordRequest
+        @return: HandleActiveSQLRecordResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.handle_active_sqlrecord_with_options(request, runtime)
 
@@ -8553,6 +9845,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.HandleActiveSQLRecordRequest,
     ) -> gpdb_20160503_models.HandleActiveSQLRecordResponse:
+        """
+        @summary 处理指定的查询SQL
+        
+        @param request: HandleActiveSQLRecordRequest
+        @return: HandleActiveSQLRecordResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.handle_active_sqlrecord_with_options_async(request, runtime)
 
@@ -8561,6 +9859,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.InitVectorDatabaseRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.InitVectorDatabaseResponse:
+        """
+        @summary Initializes vector databases.
+        
+        @param request: InitVectorDatabaseRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InitVectorDatabaseResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -8597,6 +9902,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.InitVectorDatabaseRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.InitVectorDatabaseResponse:
+        """
+        @summary Initializes vector databases.
+        
+        @param request: InitVectorDatabaseRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InitVectorDatabaseResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -8632,6 +9944,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.InitVectorDatabaseRequest,
     ) -> gpdb_20160503_models.InitVectorDatabaseResponse:
+        """
+        @summary Initializes vector databases.
+        
+        @param request: InitVectorDatabaseRequest
+        @return: InitVectorDatabaseResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.init_vector_database_with_options(request, runtime)
 
@@ -8639,6 +9957,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.InitVectorDatabaseRequest,
     ) -> gpdb_20160503_models.InitVectorDatabaseResponse:
+        """
+        @summary Initializes vector databases.
+        
+        @param request: InitVectorDatabaseRequest
+        @return: InitVectorDatabaseResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.init_vector_database_with_options_async(request, runtime)
 
@@ -8647,6 +9971,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.ListCollectionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.ListCollectionsResponse:
+        """
+        @summary Queries a list of vector collections.
+        
+        @param request: ListCollectionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCollectionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -8683,6 +10014,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.ListCollectionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.ListCollectionsResponse:
+        """
+        @summary Queries a list of vector collections.
+        
+        @param request: ListCollectionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCollectionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -8718,6 +10056,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.ListCollectionsRequest,
     ) -> gpdb_20160503_models.ListCollectionsResponse:
+        """
+        @summary Queries a list of vector collections.
+        
+        @param request: ListCollectionsRequest
+        @return: ListCollectionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_collections_with_options(request, runtime)
 
@@ -8725,6 +10069,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.ListCollectionsRequest,
     ) -> gpdb_20160503_models.ListCollectionsResponse:
+        """
+        @summary Queries a list of vector collections.
+        
+        @param request: ListCollectionsRequest
+        @return: ListCollectionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_collections_with_options_async(request, runtime)
 
@@ -8733,6 +10083,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.ListDocumentCollectionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.ListDocumentCollectionsResponse:
+        """
+        @summary 获取知识库列表
+        
+        @param request: ListDocumentCollectionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDocumentCollectionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -8769,6 +10126,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.ListDocumentCollectionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.ListDocumentCollectionsResponse:
+        """
+        @summary 获取知识库列表
+        
+        @param request: ListDocumentCollectionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDocumentCollectionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -8804,6 +10168,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.ListDocumentCollectionsRequest,
     ) -> gpdb_20160503_models.ListDocumentCollectionsResponse:
+        """
+        @summary 获取知识库列表
+        
+        @param request: ListDocumentCollectionsRequest
+        @return: ListDocumentCollectionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_document_collections_with_options(request, runtime)
 
@@ -8811,6 +10181,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.ListDocumentCollectionsRequest,
     ) -> gpdb_20160503_models.ListDocumentCollectionsResponse:
+        """
+        @summary 获取知识库列表
+        
+        @param request: ListDocumentCollectionsRequest
+        @return: ListDocumentCollectionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_document_collections_with_options_async(request, runtime)
 
@@ -8819,6 +10195,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.ListDocumentsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.ListDocumentsResponse:
+        """
+        @summary 查询文档列表
+        
+        @param request: ListDocumentsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDocumentsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.collection):
@@ -8857,6 +10240,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.ListDocumentsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.ListDocumentsResponse:
+        """
+        @summary 查询文档列表
+        
+        @param request: ListDocumentsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDocumentsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.collection):
@@ -8894,6 +10284,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.ListDocumentsRequest,
     ) -> gpdb_20160503_models.ListDocumentsResponse:
+        """
+        @summary 查询文档列表
+        
+        @param request: ListDocumentsRequest
+        @return: ListDocumentsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_documents_with_options(request, runtime)
 
@@ -8901,6 +10297,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.ListDocumentsRequest,
     ) -> gpdb_20160503_models.ListDocumentsResponse:
+        """
+        @summary 查询文档列表
+        
+        @param request: ListDocumentsRequest
+        @return: ListDocumentsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_documents_with_options_async(request, runtime)
 
@@ -8909,6 +10311,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.ListNamespacesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.ListNamespacesResponse:
+        """
+        @summary Queries a list of namespaces.
+        
+        @param request: ListNamespacesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListNamespacesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -8945,6 +10354,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.ListNamespacesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.ListNamespacesResponse:
+        """
+        @summary Queries a list of namespaces.
+        
+        @param request: ListNamespacesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListNamespacesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -8980,6 +10396,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.ListNamespacesRequest,
     ) -> gpdb_20160503_models.ListNamespacesResponse:
+        """
+        @summary Queries a list of namespaces.
+        
+        @param request: ListNamespacesRequest
+        @return: ListNamespacesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_namespaces_with_options(request, runtime)
 
@@ -8987,6 +10409,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.ListNamespacesRequest,
     ) -> gpdb_20160503_models.ListNamespacesResponse:
+        """
+        @summary Queries a list of namespaces.
+        
+        @param request: ListNamespacesRequest
+        @return: ListNamespacesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_namespaces_with_options_async(request, runtime)
 
@@ -8995,6 +10423,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.ListTagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.ListTagResourcesResponse:
+        """
+        @summary Queries a list of tags that are added to AnalyticDB for PostgreSQL instances.
+        
+        @param request: ListTagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.next_token):
@@ -9039,6 +10474,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.ListTagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.ListTagResourcesResponse:
+        """
+        @summary Queries a list of tags that are added to AnalyticDB for PostgreSQL instances.
+        
+        @param request: ListTagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.next_token):
@@ -9082,6 +10524,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.ListTagResourcesRequest,
     ) -> gpdb_20160503_models.ListTagResourcesResponse:
+        """
+        @summary Queries a list of tags that are added to AnalyticDB for PostgreSQL instances.
+        
+        @param request: ListTagResourcesRequest
+        @return: ListTagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_tag_resources_with_options(request, runtime)
 
@@ -9089,6 +10537,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.ListTagResourcesRequest,
     ) -> gpdb_20160503_models.ListTagResourcesResponse:
+        """
+        @summary Queries a list of tags that are added to AnalyticDB for PostgreSQL instances.
+        
+        @param request: ListTagResourcesRequest
+        @return: ListTagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_tag_resources_with_options_async(request, runtime)
 
@@ -9097,6 +10551,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.ModifyAccountDescriptionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.ModifyAccountDescriptionResponse:
+        """
+        @summary Modifies the description of a database account for an AnalyticDB for PostgreSQL instance.
+        
+        @param request: ModifyAccountDescriptionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyAccountDescriptionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_description):
@@ -9129,6 +10590,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.ModifyAccountDescriptionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.ModifyAccountDescriptionResponse:
+        """
+        @summary Modifies the description of a database account for an AnalyticDB for PostgreSQL instance.
+        
+        @param request: ModifyAccountDescriptionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyAccountDescriptionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_description):
@@ -9160,6 +10628,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.ModifyAccountDescriptionRequest,
     ) -> gpdb_20160503_models.ModifyAccountDescriptionResponse:
+        """
+        @summary Modifies the description of a database account for an AnalyticDB for PostgreSQL instance.
+        
+        @param request: ModifyAccountDescriptionRequest
+        @return: ModifyAccountDescriptionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_account_description_with_options(request, runtime)
 
@@ -9167,6 +10641,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.ModifyAccountDescriptionRequest,
     ) -> gpdb_20160503_models.ModifyAccountDescriptionResponse:
+        """
+        @summary Modifies the description of a database account for an AnalyticDB for PostgreSQL instance.
+        
+        @param request: ModifyAccountDescriptionRequest
+        @return: ModifyAccountDescriptionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_account_description_with_options_async(request, runtime)
 
@@ -9175,6 +10655,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.ModifyBackupPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.ModifyBackupPolicyResponse:
+        """
+        @summary Configures the backup policy of an AnalyticDB for PostgreSQL instance.
+        
+        @param request: ModifyBackupPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyBackupPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_retention_period):
@@ -9213,6 +10700,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.ModifyBackupPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.ModifyBackupPolicyResponse:
+        """
+        @summary Configures the backup policy of an AnalyticDB for PostgreSQL instance.
+        
+        @param request: ModifyBackupPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyBackupPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_retention_period):
@@ -9250,6 +10744,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.ModifyBackupPolicyRequest,
     ) -> gpdb_20160503_models.ModifyBackupPolicyResponse:
+        """
+        @summary Configures the backup policy of an AnalyticDB for PostgreSQL instance.
+        
+        @param request: ModifyBackupPolicyRequest
+        @return: ModifyBackupPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_backup_policy_with_options(request, runtime)
 
@@ -9257,6 +10757,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.ModifyBackupPolicyRequest,
     ) -> gpdb_20160503_models.ModifyBackupPolicyResponse:
+        """
+        @summary Configures the backup policy of an AnalyticDB for PostgreSQL instance.
+        
+        @param request: ModifyBackupPolicyRequest
+        @return: ModifyBackupPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_backup_policy_with_options_async(request, runtime)
 
@@ -9265,6 +10771,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.ModifyDBInstanceConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.ModifyDBInstanceConfigResponse:
+        """
+        @summary Changes the threshold of computing resources and the wait period of idle resources for an AnalyticDB for PostgreSQL instance in Serverless automatic scheduling mode.
+        
+        @param request: ModifyDBInstanceConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDBInstanceConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_description):
@@ -9301,6 +10814,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.ModifyDBInstanceConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.ModifyDBInstanceConfigResponse:
+        """
+        @summary Changes the threshold of computing resources and the wait period of idle resources for an AnalyticDB for PostgreSQL instance in Serverless automatic scheduling mode.
+        
+        @param request: ModifyDBInstanceConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDBInstanceConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_description):
@@ -9336,6 +10856,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.ModifyDBInstanceConfigRequest,
     ) -> gpdb_20160503_models.ModifyDBInstanceConfigResponse:
+        """
+        @summary Changes the threshold of computing resources and the wait period of idle resources for an AnalyticDB for PostgreSQL instance in Serverless automatic scheduling mode.
+        
+        @param request: ModifyDBInstanceConfigRequest
+        @return: ModifyDBInstanceConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_dbinstance_config_with_options(request, runtime)
 
@@ -9343,6 +10869,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.ModifyDBInstanceConfigRequest,
     ) -> gpdb_20160503_models.ModifyDBInstanceConfigResponse:
+        """
+        @summary Changes the threshold of computing resources and the wait period of idle resources for an AnalyticDB for PostgreSQL instance in Serverless automatic scheduling mode.
+        
+        @param request: ModifyDBInstanceConfigRequest
+        @return: ModifyDBInstanceConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_dbinstance_config_with_options_async(request, runtime)
 
@@ -9351,6 +10883,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.ModifyDBInstanceConnectionStringRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.ModifyDBInstanceConnectionStringResponse:
+        """
+        @summary Changes the endpoint of an AnalyticDB for PostgreSQL instance.
+        
+        @param request: ModifyDBInstanceConnectionStringRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDBInstanceConnectionStringResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.connection_string_prefix):
@@ -9385,6 +10924,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.ModifyDBInstanceConnectionStringRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.ModifyDBInstanceConnectionStringResponse:
+        """
+        @summary Changes the endpoint of an AnalyticDB for PostgreSQL instance.
+        
+        @param request: ModifyDBInstanceConnectionStringRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDBInstanceConnectionStringResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.connection_string_prefix):
@@ -9418,6 +10964,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.ModifyDBInstanceConnectionStringRequest,
     ) -> gpdb_20160503_models.ModifyDBInstanceConnectionStringResponse:
+        """
+        @summary Changes the endpoint of an AnalyticDB for PostgreSQL instance.
+        
+        @param request: ModifyDBInstanceConnectionStringRequest
+        @return: ModifyDBInstanceConnectionStringResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_dbinstance_connection_string_with_options(request, runtime)
 
@@ -9425,6 +10977,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.ModifyDBInstanceConnectionStringRequest,
     ) -> gpdb_20160503_models.ModifyDBInstanceConnectionStringResponse:
+        """
+        @summary Changes the endpoint of an AnalyticDB for PostgreSQL instance.
+        
+        @param request: ModifyDBInstanceConnectionStringRequest
+        @return: ModifyDBInstanceConnectionStringResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_dbinstance_connection_string_with_options_async(request, runtime)
 
@@ -9434,7 +10992,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.ModifyDBInstanceDescriptionResponse:
         """
-        To make it easy to identify AnalyticDB for PostgreSQL instances, you can call this operation to modify the description of instances.
+        @summary Changes the description of an AnalyticDB for PostgreSQL instance.
+        
+        @description To make it easy to identify AnalyticDB for PostgreSQL instances, you can call this operation to modify the description of instances.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -9475,7 +11035,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.ModifyDBInstanceDescriptionResponse:
         """
-        To make it easy to identify AnalyticDB for PostgreSQL instances, you can call this operation to modify the description of instances.
+        @summary Changes the description of an AnalyticDB for PostgreSQL instance.
+        
+        @description To make it easy to identify AnalyticDB for PostgreSQL instances, you can call this operation to modify the description of instances.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -9515,7 +11077,9 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.ModifyDBInstanceDescriptionRequest,
     ) -> gpdb_20160503_models.ModifyDBInstanceDescriptionResponse:
         """
-        To make it easy to identify AnalyticDB for PostgreSQL instances, you can call this operation to modify the description of instances.
+        @summary Changes the description of an AnalyticDB for PostgreSQL instance.
+        
+        @description To make it easy to identify AnalyticDB for PostgreSQL instances, you can call this operation to modify the description of instances.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -9530,7 +11094,9 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.ModifyDBInstanceDescriptionRequest,
     ) -> gpdb_20160503_models.ModifyDBInstanceDescriptionResponse:
         """
-        To make it easy to identify AnalyticDB for PostgreSQL instances, you can call this operation to modify the description of instances.
+        @summary Changes the description of an AnalyticDB for PostgreSQL instance.
+        
+        @description To make it easy to identify AnalyticDB for PostgreSQL instances, you can call this operation to modify the description of instances.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -9546,7 +11112,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.ModifyDBInstanceMaintainTimeResponse:
         """
-        The system maintains AnalyticDB for PostgreSQL instances during the maintenance window that you specify. We recommend that you set the maintenance window to off-peak hours to minimize the impact on your business.
+        @summary Modifies the maintenance window of an AnalyticDB for PostgreSQL instance.
+        
+        @description The system maintains AnalyticDB for PostgreSQL instances during the maintenance window that you specify. We recommend that you set the maintenance window to off-peak hours to minimize the impact on your business.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -9589,7 +11157,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.ModifyDBInstanceMaintainTimeResponse:
         """
-        The system maintains AnalyticDB for PostgreSQL instances during the maintenance window that you specify. We recommend that you set the maintenance window to off-peak hours to minimize the impact on your business.
+        @summary Modifies the maintenance window of an AnalyticDB for PostgreSQL instance.
+        
+        @description The system maintains AnalyticDB for PostgreSQL instances during the maintenance window that you specify. We recommend that you set the maintenance window to off-peak hours to minimize the impact on your business.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -9631,7 +11201,9 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.ModifyDBInstanceMaintainTimeRequest,
     ) -> gpdb_20160503_models.ModifyDBInstanceMaintainTimeResponse:
         """
-        The system maintains AnalyticDB for PostgreSQL instances during the maintenance window that you specify. We recommend that you set the maintenance window to off-peak hours to minimize the impact on your business.
+        @summary Modifies the maintenance window of an AnalyticDB for PostgreSQL instance.
+        
+        @description The system maintains AnalyticDB for PostgreSQL instances during the maintenance window that you specify. We recommend that you set the maintenance window to off-peak hours to minimize the impact on your business.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -9646,7 +11218,9 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.ModifyDBInstanceMaintainTimeRequest,
     ) -> gpdb_20160503_models.ModifyDBInstanceMaintainTimeResponse:
         """
-        The system maintains AnalyticDB for PostgreSQL instances during the maintenance window that you specify. We recommend that you set the maintenance window to off-peak hours to minimize the impact on your business.
+        @summary Modifies the maintenance window of an AnalyticDB for PostgreSQL instance.
+        
+        @description The system maintains AnalyticDB for PostgreSQL instances during the maintenance window that you specify. We recommend that you set the maintenance window to off-peak hours to minimize the impact on your business.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -9662,7 +11236,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.ModifyDBInstanceResourceGroupResponse:
         """
-        Resource Management allows you to build an organizational structure for resources based on your business requirements. You can use resource directories, folders, accounts, and resource groups to hierarchically organize and manage resources. For more information, see [What is Resource Management?](~~94475~~)
+        @summary Moves an AnalyticDB for PostgreSQL instance to a resource group.
+        
+        @description Resource Management allows you to build an organizational structure for resources based on your business requirements. You can use resource directories, folders, accounts, and resource groups to hierarchically organize and manage resources. For more information, see [What is Resource Management?](https://help.aliyun.com/document_detail/94475.html)
         
         @param request: ModifyDBInstanceResourceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9709,7 +11285,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.ModifyDBInstanceResourceGroupResponse:
         """
-        Resource Management allows you to build an organizational structure for resources based on your business requirements. You can use resource directories, folders, accounts, and resource groups to hierarchically organize and manage resources. For more information, see [What is Resource Management?](~~94475~~)
+        @summary Moves an AnalyticDB for PostgreSQL instance to a resource group.
+        
+        @description Resource Management allows you to build an organizational structure for resources based on your business requirements. You can use resource directories, folders, accounts, and resource groups to hierarchically organize and manage resources. For more information, see [What is Resource Management?](https://help.aliyun.com/document_detail/94475.html)
         
         @param request: ModifyDBInstanceResourceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9755,7 +11333,9 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.ModifyDBInstanceResourceGroupRequest,
     ) -> gpdb_20160503_models.ModifyDBInstanceResourceGroupResponse:
         """
-        Resource Management allows you to build an organizational structure for resources based on your business requirements. You can use resource directories, folders, accounts, and resource groups to hierarchically organize and manage resources. For more information, see [What is Resource Management?](~~94475~~)
+        @summary Moves an AnalyticDB for PostgreSQL instance to a resource group.
+        
+        @description Resource Management allows you to build an organizational structure for resources based on your business requirements. You can use resource directories, folders, accounts, and resource groups to hierarchically organize and manage resources. For more information, see [What is Resource Management?](https://help.aliyun.com/document_detail/94475.html)
         
         @param request: ModifyDBInstanceResourceGroupRequest
         @return: ModifyDBInstanceResourceGroupResponse
@@ -9768,7 +11348,9 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.ModifyDBInstanceResourceGroupRequest,
     ) -> gpdb_20160503_models.ModifyDBInstanceResourceGroupResponse:
         """
-        Resource Management allows you to build an organizational structure for resources based on your business requirements. You can use resource directories, folders, accounts, and resource groups to hierarchically organize and manage resources. For more information, see [What is Resource Management?](~~94475~~)
+        @summary Moves an AnalyticDB for PostgreSQL instance to a resource group.
+        
+        @description Resource Management allows you to build an organizational structure for resources based on your business requirements. You can use resource directories, folders, accounts, and resource groups to hierarchically organize and manage resources. For more information, see [What is Resource Management?](https://help.aliyun.com/document_detail/94475.html)
         
         @param request: ModifyDBInstanceResourceGroupRequest
         @return: ModifyDBInstanceResourceGroupResponse
@@ -9781,6 +11363,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.ModifyDBInstanceSSLRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.ModifyDBInstanceSSLResponse:
+        """
+        @summary Enables, disables, or updates SSL encryption for an AnalyticDB for PostgreSQL instance.
+        
+        @param request: ModifyDBInstanceSSLRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDBInstanceSSLResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.connection_string):
@@ -9813,6 +11402,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.ModifyDBInstanceSSLRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.ModifyDBInstanceSSLResponse:
+        """
+        @summary Enables, disables, or updates SSL encryption for an AnalyticDB for PostgreSQL instance.
+        
+        @param request: ModifyDBInstanceSSLRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDBInstanceSSLResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.connection_string):
@@ -9844,6 +11440,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.ModifyDBInstanceSSLRequest,
     ) -> gpdb_20160503_models.ModifyDBInstanceSSLResponse:
+        """
+        @summary Enables, disables, or updates SSL encryption for an AnalyticDB for PostgreSQL instance.
+        
+        @param request: ModifyDBInstanceSSLRequest
+        @return: ModifyDBInstanceSSLResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_dbinstance_sslwith_options(request, runtime)
 
@@ -9851,6 +11453,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.ModifyDBInstanceSSLRequest,
     ) -> gpdb_20160503_models.ModifyDBInstanceSSLResponse:
+        """
+        @summary Enables, disables, or updates SSL encryption for an AnalyticDB for PostgreSQL instance.
+        
+        @param request: ModifyDBInstanceSSLRequest
+        @return: ModifyDBInstanceSSLResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_dbinstance_sslwith_options_async(request, runtime)
 
@@ -9859,6 +11467,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.ModifyMasterSpecRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.ModifyMasterSpecResponse:
+        """
+        @summary 修改master规格
+        
+        @param request: ModifyMasterSpecRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyMasterSpecResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_description):
@@ -9893,6 +11508,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.ModifyMasterSpecRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.ModifyMasterSpecResponse:
+        """
+        @summary 修改master规格
+        
+        @param request: ModifyMasterSpecRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyMasterSpecResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_description):
@@ -9926,6 +11548,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.ModifyMasterSpecRequest,
     ) -> gpdb_20160503_models.ModifyMasterSpecResponse:
+        """
+        @summary 修改master规格
+        
+        @param request: ModifyMasterSpecRequest
+        @return: ModifyMasterSpecResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_master_spec_with_options(request, runtime)
 
@@ -9933,6 +11561,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.ModifyMasterSpecRequest,
     ) -> gpdb_20160503_models.ModifyMasterSpecResponse:
+        """
+        @summary 修改master规格
+        
+        @param request: ModifyMasterSpecRequest
+        @return: ModifyMasterSpecResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_master_spec_with_options_async(request, runtime)
 
@@ -9942,7 +11576,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.ModifyParametersResponse:
         """
-        This operation can be called to modify parameters of an AnalyticDB for PostgreSQL instance in elastic storage mode or Serverless mode.
+        @summary Modifies the configuration parameters of an AnalyticDB for PostgreSQL instance.
+        
+        @description This operation can be called to modify parameters of an AnalyticDB for PostgreSQL instance in elastic storage mode or Serverless mode.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered and may affect your business. We recommend that you take note of the limit when you call this operation.
         
@@ -9983,7 +11619,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.ModifyParametersResponse:
         """
-        This operation can be called to modify parameters of an AnalyticDB for PostgreSQL instance in elastic storage mode or Serverless mode.
+        @summary Modifies the configuration parameters of an AnalyticDB for PostgreSQL instance.
+        
+        @description This operation can be called to modify parameters of an AnalyticDB for PostgreSQL instance in elastic storage mode or Serverless mode.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered and may affect your business. We recommend that you take note of the limit when you call this operation.
         
@@ -10023,7 +11661,9 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.ModifyParametersRequest,
     ) -> gpdb_20160503_models.ModifyParametersResponse:
         """
-        This operation can be called to modify parameters of an AnalyticDB for PostgreSQL instance in elastic storage mode or Serverless mode.
+        @summary Modifies the configuration parameters of an AnalyticDB for PostgreSQL instance.
+        
+        @description This operation can be called to modify parameters of an AnalyticDB for PostgreSQL instance in elastic storage mode or Serverless mode.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered and may affect your business. We recommend that you take note of the limit when you call this operation.
         
@@ -10038,7 +11678,9 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.ModifyParametersRequest,
     ) -> gpdb_20160503_models.ModifyParametersResponse:
         """
-        This operation can be called to modify parameters of an AnalyticDB for PostgreSQL instance in elastic storage mode or Serverless mode.
+        @summary Modifies the configuration parameters of an AnalyticDB for PostgreSQL instance.
+        
+        @description This operation can be called to modify parameters of an AnalyticDB for PostgreSQL instance in elastic storage mode or Serverless mode.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered and may affect your business. We recommend that you take note of the limit when you call this operation.
         
@@ -10053,6 +11695,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.ModifySQLCollectorPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.ModifySQLCollectorPolicyResponse:
+        """
+        @summary Enables or disables the SQL Explorer feature for an AnalyticDB for PostgreSQL instance.
+        
+        @param request: ModifySQLCollectorPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifySQLCollectorPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -10083,6 +11732,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.ModifySQLCollectorPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.ModifySQLCollectorPolicyResponse:
+        """
+        @summary Enables or disables the SQL Explorer feature for an AnalyticDB for PostgreSQL instance.
+        
+        @param request: ModifySQLCollectorPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifySQLCollectorPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -10112,6 +11768,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.ModifySQLCollectorPolicyRequest,
     ) -> gpdb_20160503_models.ModifySQLCollectorPolicyResponse:
+        """
+        @summary Enables or disables the SQL Explorer feature for an AnalyticDB for PostgreSQL instance.
+        
+        @param request: ModifySQLCollectorPolicyRequest
+        @return: ModifySQLCollectorPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_sqlcollector_policy_with_options(request, runtime)
 
@@ -10119,6 +11781,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.ModifySQLCollectorPolicyRequest,
     ) -> gpdb_20160503_models.ModifySQLCollectorPolicyResponse:
+        """
+        @summary Enables or disables the SQL Explorer feature for an AnalyticDB for PostgreSQL instance.
+        
+        @param request: ModifySQLCollectorPolicyRequest
+        @return: ModifySQLCollectorPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_sqlcollector_policy_with_options_async(request, runtime)
 
@@ -10128,7 +11796,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.ModifySecurityIpsResponse:
         """
-        To ensure the security and stability of AnalyticDB for PostgreSQL instances, the system denies all external IP addresses to access AnalyticDB for PostgreSQL instances by default. Before you can use an AnalyticDB for PostgreSQL instance, you must add the IP address or CIDR block of your client to the IP address whitelist of the instance.
+        @summary Modifies the IP address whitelist of an AnalyticDB for PostgreSQL instance.
+        
+        @description To ensure the security and stability of AnalyticDB for PostgreSQL instances, the system denies all external IP addresses to access AnalyticDB for PostgreSQL instances by default. Before you can use an AnalyticDB for PostgreSQL instance, you must add the IP address or CIDR block of your client to the IP address whitelist of the instance.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -10175,7 +11845,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.ModifySecurityIpsResponse:
         """
-        To ensure the security and stability of AnalyticDB for PostgreSQL instances, the system denies all external IP addresses to access AnalyticDB for PostgreSQL instances by default. Before you can use an AnalyticDB for PostgreSQL instance, you must add the IP address or CIDR block of your client to the IP address whitelist of the instance.
+        @summary Modifies the IP address whitelist of an AnalyticDB for PostgreSQL instance.
+        
+        @description To ensure the security and stability of AnalyticDB for PostgreSQL instances, the system denies all external IP addresses to access AnalyticDB for PostgreSQL instances by default. Before you can use an AnalyticDB for PostgreSQL instance, you must add the IP address or CIDR block of your client to the IP address whitelist of the instance.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -10221,7 +11893,9 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.ModifySecurityIpsRequest,
     ) -> gpdb_20160503_models.ModifySecurityIpsResponse:
         """
-        To ensure the security and stability of AnalyticDB for PostgreSQL instances, the system denies all external IP addresses to access AnalyticDB for PostgreSQL instances by default. Before you can use an AnalyticDB for PostgreSQL instance, you must add the IP address or CIDR block of your client to the IP address whitelist of the instance.
+        @summary Modifies the IP address whitelist of an AnalyticDB for PostgreSQL instance.
+        
+        @description To ensure the security and stability of AnalyticDB for PostgreSQL instances, the system denies all external IP addresses to access AnalyticDB for PostgreSQL instances by default. Before you can use an AnalyticDB for PostgreSQL instance, you must add the IP address or CIDR block of your client to the IP address whitelist of the instance.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -10236,7 +11910,9 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.ModifySecurityIpsRequest,
     ) -> gpdb_20160503_models.ModifySecurityIpsResponse:
         """
-        To ensure the security and stability of AnalyticDB for PostgreSQL instances, the system denies all external IP addresses to access AnalyticDB for PostgreSQL instances by default. Before you can use an AnalyticDB for PostgreSQL instance, you must add the IP address or CIDR block of your client to the IP address whitelist of the instance.
+        @summary Modifies the IP address whitelist of an AnalyticDB for PostgreSQL instance.
+        
+        @description To ensure the security and stability of AnalyticDB for PostgreSQL instances, the system denies all external IP addresses to access AnalyticDB for PostgreSQL instances by default. Before you can use an AnalyticDB for PostgreSQL instance, you must add the IP address or CIDR block of your client to the IP address whitelist of the instance.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -10251,6 +11927,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.ModifyVectorConfigurationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.ModifyVectorConfigurationResponse:
+        """
+        @summary Modifies the vector engine optimization configuration of an AnalyticDB for PostgreSQL instance.
+        
+        @param request: ModifyVectorConfigurationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyVectorConfigurationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -10283,6 +11966,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.ModifyVectorConfigurationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.ModifyVectorConfigurationResponse:
+        """
+        @summary Modifies the vector engine optimization configuration of an AnalyticDB for PostgreSQL instance.
+        
+        @param request: ModifyVectorConfigurationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyVectorConfigurationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -10314,6 +12004,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.ModifyVectorConfigurationRequest,
     ) -> gpdb_20160503_models.ModifyVectorConfigurationResponse:
+        """
+        @summary Modifies the vector engine optimization configuration of an AnalyticDB for PostgreSQL instance.
+        
+        @param request: ModifyVectorConfigurationRequest
+        @return: ModifyVectorConfigurationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_vector_configuration_with_options(request, runtime)
 
@@ -10321,6 +12017,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.ModifyVectorConfigurationRequest,
     ) -> gpdb_20160503_models.ModifyVectorConfigurationResponse:
+        """
+        @summary Modifies the vector engine optimization configuration of an AnalyticDB for PostgreSQL instance.
+        
+        @param request: ModifyVectorConfigurationRequest
+        @return: ModifyVectorConfigurationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_vector_configuration_with_options_async(request, runtime)
 
@@ -10330,9 +12032,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.PauseInstanceResponse:
         """
-        You can call this operation to pause an AnalyticDB for PostgreSQL instance that is in the *Running** state.
-        This operation is available only for AnalyticDB for PostgreSQL instances in Serverless mode that run V1.0.2.1 or later. For more information about how to view and update the minor engine version of an instance, see [View the minor engine version](~~277424~~) and [Update the minor engine version](~~139271~~).
-        >  Before you call this operation, make sure that you are familiar with the billing methods and pricing of AnalyticDB for PostgreSQL instances. For more information, see [Billing methods](~~35406~~) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
+        @summary Pauses an AnalyticDB for PostgreSQL instance.
+        
+        @description You can call this operation to pause an AnalyticDB for PostgreSQL instance that is in the *Running** state.
+        This operation is available only for AnalyticDB for PostgreSQL instances in Serverless mode that run V1.0.2.1 or later. For more information about how to view and update the minor engine version of an instance, see [View the minor engine version](https://help.aliyun.com/document_detail/277424.html) and [Update the minor engine version](https://help.aliyun.com/document_detail/139271.html).
+        >  Before you call this operation, make sure that you are familiar with the billing methods and pricing of AnalyticDB for PostgreSQL instances. For more information, see [Billing methods](https://help.aliyun.com/document_detail/35406.html) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -10371,9 +12075,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.PauseInstanceResponse:
         """
-        You can call this operation to pause an AnalyticDB for PostgreSQL instance that is in the *Running** state.
-        This operation is available only for AnalyticDB for PostgreSQL instances in Serverless mode that run V1.0.2.1 or later. For more information about how to view and update the minor engine version of an instance, see [View the minor engine version](~~277424~~) and [Update the minor engine version](~~139271~~).
-        >  Before you call this operation, make sure that you are familiar with the billing methods and pricing of AnalyticDB for PostgreSQL instances. For more information, see [Billing methods](~~35406~~) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
+        @summary Pauses an AnalyticDB for PostgreSQL instance.
+        
+        @description You can call this operation to pause an AnalyticDB for PostgreSQL instance that is in the *Running** state.
+        This operation is available only for AnalyticDB for PostgreSQL instances in Serverless mode that run V1.0.2.1 or later. For more information about how to view and update the minor engine version of an instance, see [View the minor engine version](https://help.aliyun.com/document_detail/277424.html) and [Update the minor engine version](https://help.aliyun.com/document_detail/139271.html).
+        >  Before you call this operation, make sure that you are familiar with the billing methods and pricing of AnalyticDB for PostgreSQL instances. For more information, see [Billing methods](https://help.aliyun.com/document_detail/35406.html) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -10411,9 +12117,11 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.PauseInstanceRequest,
     ) -> gpdb_20160503_models.PauseInstanceResponse:
         """
-        You can call this operation to pause an AnalyticDB for PostgreSQL instance that is in the *Running** state.
-        This operation is available only for AnalyticDB for PostgreSQL instances in Serverless mode that run V1.0.2.1 or later. For more information about how to view and update the minor engine version of an instance, see [View the minor engine version](~~277424~~) and [Update the minor engine version](~~139271~~).
-        >  Before you call this operation, make sure that you are familiar with the billing methods and pricing of AnalyticDB for PostgreSQL instances. For more information, see [Billing methods](~~35406~~) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
+        @summary Pauses an AnalyticDB for PostgreSQL instance.
+        
+        @description You can call this operation to pause an AnalyticDB for PostgreSQL instance that is in the *Running** state.
+        This operation is available only for AnalyticDB for PostgreSQL instances in Serverless mode that run V1.0.2.1 or later. For more information about how to view and update the minor engine version of an instance, see [View the minor engine version](https://help.aliyun.com/document_detail/277424.html) and [Update the minor engine version](https://help.aliyun.com/document_detail/139271.html).
+        >  Before you call this operation, make sure that you are familiar with the billing methods and pricing of AnalyticDB for PostgreSQL instances. For more information, see [Billing methods](https://help.aliyun.com/document_detail/35406.html) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -10428,9 +12136,11 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.PauseInstanceRequest,
     ) -> gpdb_20160503_models.PauseInstanceResponse:
         """
-        You can call this operation to pause an AnalyticDB for PostgreSQL instance that is in the *Running** state.
-        This operation is available only for AnalyticDB for PostgreSQL instances in Serverless mode that run V1.0.2.1 or later. For more information about how to view and update the minor engine version of an instance, see [View the minor engine version](~~277424~~) and [Update the minor engine version](~~139271~~).
-        >  Before you call this operation, make sure that you are familiar with the billing methods and pricing of AnalyticDB for PostgreSQL instances. For more information, see [Billing methods](~~35406~~) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
+        @summary Pauses an AnalyticDB for PostgreSQL instance.
+        
+        @description You can call this operation to pause an AnalyticDB for PostgreSQL instance that is in the *Running** state.
+        This operation is available only for AnalyticDB for PostgreSQL instances in Serverless mode that run V1.0.2.1 or later. For more information about how to view and update the minor engine version of an instance, see [View the minor engine version](https://help.aliyun.com/document_detail/277424.html) and [Update the minor engine version](https://help.aliyun.com/document_detail/139271.html).
+        >  Before you call this operation, make sure that you are familiar with the billing methods and pricing of AnalyticDB for PostgreSQL instances. For more information, see [Billing methods](https://help.aliyun.com/document_detail/35406.html) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -10445,6 +12155,13 @@ class Client(OpenApiClient):
         tmp_req: gpdb_20160503_models.QueryCollectionDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.QueryCollectionDataResponse:
+        """
+        @summary 查询向量数据
+        
+        @param tmp_req: QueryCollectionDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryCollectionDataResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = gpdb_20160503_models.QueryCollectionDataShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -10511,6 +12228,13 @@ class Client(OpenApiClient):
         tmp_req: gpdb_20160503_models.QueryCollectionDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.QueryCollectionDataResponse:
+        """
+        @summary 查询向量数据
+        
+        @param tmp_req: QueryCollectionDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryCollectionDataResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = gpdb_20160503_models.QueryCollectionDataShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -10576,6 +12300,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.QueryCollectionDataRequest,
     ) -> gpdb_20160503_models.QueryCollectionDataResponse:
+        """
+        @summary 查询向量数据
+        
+        @param request: QueryCollectionDataRequest
+        @return: QueryCollectionDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_collection_data_with_options(request, runtime)
 
@@ -10583,6 +12313,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.QueryCollectionDataRequest,
     ) -> gpdb_20160503_models.QueryCollectionDataResponse:
+        """
+        @summary 查询向量数据
+        
+        @param request: QueryCollectionDataRequest
+        @return: QueryCollectionDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_collection_data_with_options_async(request, runtime)
 
@@ -10591,6 +12327,13 @@ class Client(OpenApiClient):
         tmp_req: gpdb_20160503_models.QueryContentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.QueryContentResponse:
+        """
+        @summary 查询
+        
+        @param tmp_req: QueryContentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryContentResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = gpdb_20160503_models.QueryContentShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -10661,6 +12404,13 @@ class Client(OpenApiClient):
         tmp_req: gpdb_20160503_models.QueryContentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.QueryContentResponse:
+        """
+        @summary 查询
+        
+        @param tmp_req: QueryContentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryContentResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = gpdb_20160503_models.QueryContentShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -10730,6 +12480,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.QueryContentRequest,
     ) -> gpdb_20160503_models.QueryContentResponse:
+        """
+        @summary 查询
+        
+        @param request: QueryContentRequest
+        @return: QueryContentResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_content_with_options(request, runtime)
 
@@ -10737,6 +12493,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.QueryContentRequest,
     ) -> gpdb_20160503_models.QueryContentResponse:
+        """
+        @summary 查询
+        
+        @param request: QueryContentRequest
+        @return: QueryContentResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_content_with_options_async(request, runtime)
 
@@ -10887,6 +12649,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.RebalanceDBInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.RebalanceDBInstanceResponse:
+        """
+        @summary Rebalances an AnalyticDB for PostgreSQL instance.
+        
+        @param request: RebalanceDBInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RebalanceDBInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -10917,6 +12686,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.RebalanceDBInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.RebalanceDBInstanceResponse:
+        """
+        @summary Rebalances an AnalyticDB for PostgreSQL instance.
+        
+        @param request: RebalanceDBInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RebalanceDBInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -10946,6 +12722,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.RebalanceDBInstanceRequest,
     ) -> gpdb_20160503_models.RebalanceDBInstanceResponse:
+        """
+        @summary Rebalances an AnalyticDB for PostgreSQL instance.
+        
+        @param request: RebalanceDBInstanceRequest
+        @return: RebalanceDBInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.rebalance_dbinstance_with_options(request, runtime)
 
@@ -10953,6 +12735,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.RebalanceDBInstanceRequest,
     ) -> gpdb_20160503_models.RebalanceDBInstanceResponse:
+        """
+        @summary Rebalances an AnalyticDB for PostgreSQL instance.
+        
+        @param request: RebalanceDBInstanceRequest
+        @return: RebalanceDBInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.rebalance_dbinstance_with_options_async(request, runtime)
 
@@ -10961,6 +12749,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.ReleaseInstancePublicConnectionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.ReleaseInstancePublicConnectionResponse:
+        """
+        @summary Releases the public endpoint of an AnalyticDB for PostgreSQL instance.
+        
+        @param request: ReleaseInstancePublicConnectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReleaseInstancePublicConnectionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.address_type):
@@ -10993,6 +12788,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.ReleaseInstancePublicConnectionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.ReleaseInstancePublicConnectionResponse:
+        """
+        @summary Releases the public endpoint of an AnalyticDB for PostgreSQL instance.
+        
+        @param request: ReleaseInstancePublicConnectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReleaseInstancePublicConnectionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.address_type):
@@ -11024,6 +12826,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.ReleaseInstancePublicConnectionRequest,
     ) -> gpdb_20160503_models.ReleaseInstancePublicConnectionResponse:
+        """
+        @summary Releases the public endpoint of an AnalyticDB for PostgreSQL instance.
+        
+        @param request: ReleaseInstancePublicConnectionRequest
+        @return: ReleaseInstancePublicConnectionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.release_instance_public_connection_with_options(request, runtime)
 
@@ -11031,6 +12839,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.ReleaseInstancePublicConnectionRequest,
     ) -> gpdb_20160503_models.ReleaseInstancePublicConnectionResponse:
+        """
+        @summary Releases the public endpoint of an AnalyticDB for PostgreSQL instance.
+        
+        @param request: ReleaseInstancePublicConnectionRequest
+        @return: ReleaseInstancePublicConnectionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.release_instance_public_connection_with_options_async(request, runtime)
 
@@ -11039,6 +12853,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.ResetAccountPasswordRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.ResetAccountPasswordResponse:
+        """
+        @summary Resets the password of a database account for an AnalyticDB for PostgreSQL instance.
+        
+        @param request: ResetAccountPasswordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResetAccountPasswordResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_name):
@@ -11071,6 +12892,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.ResetAccountPasswordRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.ResetAccountPasswordResponse:
+        """
+        @summary Resets the password of a database account for an AnalyticDB for PostgreSQL instance.
+        
+        @param request: ResetAccountPasswordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResetAccountPasswordResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_name):
@@ -11102,6 +12930,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.ResetAccountPasswordRequest,
     ) -> gpdb_20160503_models.ResetAccountPasswordResponse:
+        """
+        @summary Resets the password of a database account for an AnalyticDB for PostgreSQL instance.
+        
+        @param request: ResetAccountPasswordRequest
+        @return: ResetAccountPasswordResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.reset_account_password_with_options(request, runtime)
 
@@ -11109,6 +12943,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.ResetAccountPasswordRequest,
     ) -> gpdb_20160503_models.ResetAccountPasswordResponse:
+        """
+        @summary Resets the password of a database account for an AnalyticDB for PostgreSQL instance.
+        
+        @param request: ResetAccountPasswordRequest
+        @return: ResetAccountPasswordResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.reset_account_password_with_options_async(request, runtime)
 
@@ -11117,6 +12957,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.ResetIMVMonitorDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.ResetIMVMonitorDataResponse:
+        """
+        @summary 重置IMV统计信息
+        
+        @param request: ResetIMVMonitorDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResetIMVMonitorDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -11147,6 +12994,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.ResetIMVMonitorDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.ResetIMVMonitorDataResponse:
+        """
+        @summary 重置IMV统计信息
+        
+        @param request: ResetIMVMonitorDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResetIMVMonitorDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -11176,6 +13030,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.ResetIMVMonitorDataRequest,
     ) -> gpdb_20160503_models.ResetIMVMonitorDataResponse:
+        """
+        @summary 重置IMV统计信息
+        
+        @param request: ResetIMVMonitorDataRequest
+        @return: ResetIMVMonitorDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.reset_imvmonitor_data_with_options(request, runtime)
 
@@ -11183,6 +13043,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.ResetIMVMonitorDataRequest,
     ) -> gpdb_20160503_models.ResetIMVMonitorDataResponse:
+        """
+        @summary 重置IMV统计信息
+        
+        @param request: ResetIMVMonitorDataRequest
+        @return: ResetIMVMonitorDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.reset_imvmonitor_data_with_options_async(request, runtime)
 
@@ -11192,7 +13058,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.RestartDBInstanceResponse:
         """
-        A restart takes about 3 to 30 minutes. During the restart, services are unavailable. We recommend that you restart the instance during off-peak hours. After the instance is restarted and enters the running state, you can access the instance.
+        @summary Restarts an AnalyticDB for PostgreSQL instance.
+        
+        @description A restart takes about 3 to 30 minutes. During the restart, services are unavailable. We recommend that you restart the instance during off-peak hours. After the instance is restarted and enters the running state, you can access the instance.
         ## Limit
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered and may affect your business. We recommend that you take note of the limit when you call this operation.
         
@@ -11231,7 +13099,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.RestartDBInstanceResponse:
         """
-        A restart takes about 3 to 30 minutes. During the restart, services are unavailable. We recommend that you restart the instance during off-peak hours. After the instance is restarted and enters the running state, you can access the instance.
+        @summary Restarts an AnalyticDB for PostgreSQL instance.
+        
+        @description A restart takes about 3 to 30 minutes. During the restart, services are unavailable. We recommend that you restart the instance during off-peak hours. After the instance is restarted and enters the running state, you can access the instance.
         ## Limit
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered and may affect your business. We recommend that you take note of the limit when you call this operation.
         
@@ -11269,7 +13139,9 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.RestartDBInstanceRequest,
     ) -> gpdb_20160503_models.RestartDBInstanceResponse:
         """
-        A restart takes about 3 to 30 minutes. During the restart, services are unavailable. We recommend that you restart the instance during off-peak hours. After the instance is restarted and enters the running state, you can access the instance.
+        @summary Restarts an AnalyticDB for PostgreSQL instance.
+        
+        @description A restart takes about 3 to 30 minutes. During the restart, services are unavailable. We recommend that you restart the instance during off-peak hours. After the instance is restarted and enters the running state, you can access the instance.
         ## Limit
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered and may affect your business. We recommend that you take note of the limit when you call this operation.
         
@@ -11284,7 +13156,9 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.RestartDBInstanceRequest,
     ) -> gpdb_20160503_models.RestartDBInstanceResponse:
         """
-        A restart takes about 3 to 30 minutes. During the restart, services are unavailable. We recommend that you restart the instance during off-peak hours. After the instance is restarted and enters the running state, you can access the instance.
+        @summary Restarts an AnalyticDB for PostgreSQL instance.
+        
+        @description A restart takes about 3 to 30 minutes. During the restart, services are unavailable. We recommend that you restart the instance during off-peak hours. After the instance is restarted and enters the running state, you can access the instance.
         ## Limit
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered and may affect your business. We recommend that you take note of the limit when you call this operation.
         
@@ -11300,9 +13174,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.ResumeInstanceResponse:
         """
-        You can call this operation to resume an AnalyticDB for PostgreSQL instance that is in the *Paused** state.
-        This operation is available only for AnalyticDB for PostgreSQL instances in Serverless mode that run V1.0.2.1 or later. For more information about how to view and update the minor engine version of an instance, see [View the minor engine version](~~277424~~) and [Update the minor engine version](~~139271~~).
-        >  Before you call this operation, make sure that you are familiar with the billing methods and pricing of AnalyticDB for PostgreSQL instances. For more information, see [Billing methods](~~35406~~) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
+        @summary Resumes an AnalyticDB for PostgreSQL instance.
+        
+        @description You can call this operation to resume an AnalyticDB for PostgreSQL instance that is in the *Paused** state.
+        This operation is available only for AnalyticDB for PostgreSQL instances in Serverless mode that run V1.0.2.1 or later. For more information about how to view and update the minor engine version of an instance, see [View the minor engine version](https://help.aliyun.com/document_detail/277424.html) and [Update the minor engine version](https://help.aliyun.com/document_detail/139271.html).
+        >  Before you call this operation, make sure that you are familiar with the billing methods and pricing of AnalyticDB for PostgreSQL instances. For more information, see [Billing methods](https://help.aliyun.com/document_detail/35406.html) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -11341,9 +13217,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.ResumeInstanceResponse:
         """
-        You can call this operation to resume an AnalyticDB for PostgreSQL instance that is in the *Paused** state.
-        This operation is available only for AnalyticDB for PostgreSQL instances in Serverless mode that run V1.0.2.1 or later. For more information about how to view and update the minor engine version of an instance, see [View the minor engine version](~~277424~~) and [Update the minor engine version](~~139271~~).
-        >  Before you call this operation, make sure that you are familiar with the billing methods and pricing of AnalyticDB for PostgreSQL instances. For more information, see [Billing methods](~~35406~~) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
+        @summary Resumes an AnalyticDB for PostgreSQL instance.
+        
+        @description You can call this operation to resume an AnalyticDB for PostgreSQL instance that is in the *Paused** state.
+        This operation is available only for AnalyticDB for PostgreSQL instances in Serverless mode that run V1.0.2.1 or later. For more information about how to view and update the minor engine version of an instance, see [View the minor engine version](https://help.aliyun.com/document_detail/277424.html) and [Update the minor engine version](https://help.aliyun.com/document_detail/139271.html).
+        >  Before you call this operation, make sure that you are familiar with the billing methods and pricing of AnalyticDB for PostgreSQL instances. For more information, see [Billing methods](https://help.aliyun.com/document_detail/35406.html) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -11381,9 +13259,11 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.ResumeInstanceRequest,
     ) -> gpdb_20160503_models.ResumeInstanceResponse:
         """
-        You can call this operation to resume an AnalyticDB for PostgreSQL instance that is in the *Paused** state.
-        This operation is available only for AnalyticDB for PostgreSQL instances in Serverless mode that run V1.0.2.1 or later. For more information about how to view and update the minor engine version of an instance, see [View the minor engine version](~~277424~~) and [Update the minor engine version](~~139271~~).
-        >  Before you call this operation, make sure that you are familiar with the billing methods and pricing of AnalyticDB for PostgreSQL instances. For more information, see [Billing methods](~~35406~~) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
+        @summary Resumes an AnalyticDB for PostgreSQL instance.
+        
+        @description You can call this operation to resume an AnalyticDB for PostgreSQL instance that is in the *Paused** state.
+        This operation is available only for AnalyticDB for PostgreSQL instances in Serverless mode that run V1.0.2.1 or later. For more information about how to view and update the minor engine version of an instance, see [View the minor engine version](https://help.aliyun.com/document_detail/277424.html) and [Update the minor engine version](https://help.aliyun.com/document_detail/139271.html).
+        >  Before you call this operation, make sure that you are familiar with the billing methods and pricing of AnalyticDB for PostgreSQL instances. For more information, see [Billing methods](https://help.aliyun.com/document_detail/35406.html) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -11398,9 +13278,11 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.ResumeInstanceRequest,
     ) -> gpdb_20160503_models.ResumeInstanceResponse:
         """
-        You can call this operation to resume an AnalyticDB for PostgreSQL instance that is in the *Paused** state.
-        This operation is available only for AnalyticDB for PostgreSQL instances in Serverless mode that run V1.0.2.1 or later. For more information about how to view and update the minor engine version of an instance, see [View the minor engine version](~~277424~~) and [Update the minor engine version](~~139271~~).
-        >  Before you call this operation, make sure that you are familiar with the billing methods and pricing of AnalyticDB for PostgreSQL instances. For more information, see [Billing methods](~~35406~~) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
+        @summary Resumes an AnalyticDB for PostgreSQL instance.
+        
+        @description You can call this operation to resume an AnalyticDB for PostgreSQL instance that is in the *Paused** state.
+        This operation is available only for AnalyticDB for PostgreSQL instances in Serverless mode that run V1.0.2.1 or later. For more information about how to view and update the minor engine version of an instance, see [View the minor engine version](https://help.aliyun.com/document_detail/277424.html) and [Update the minor engine version](https://help.aliyun.com/document_detail/139271.html).
+        >  Before you call this operation, make sure that you are familiar with the billing methods and pricing of AnalyticDB for PostgreSQL instances. For more information, see [Billing methods](https://help.aliyun.com/document_detail/35406.html) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -11416,7 +13298,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.SetDBInstancePlanStatusResponse:
         """
-        You can call this operation to enable or disable a specified plan. The plan management feature is supported only for AnalyticDB for PostgreSQL instances in Serverless mode.
+        @summary Enables or disables a plan for an AnalyticDB for PostgreSQL instance.
+        
+        @description You can call this operation to enable or disable a specified plan. The plan management feature is supported only for AnalyticDB for PostgreSQL instances in Serverless mode.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -11459,7 +13343,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.SetDBInstancePlanStatusResponse:
         """
-        You can call this operation to enable or disable a specified plan. The plan management feature is supported only for AnalyticDB for PostgreSQL instances in Serverless mode.
+        @summary Enables or disables a plan for an AnalyticDB for PostgreSQL instance.
+        
+        @description You can call this operation to enable or disable a specified plan. The plan management feature is supported only for AnalyticDB for PostgreSQL instances in Serverless mode.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -11501,7 +13387,9 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.SetDBInstancePlanStatusRequest,
     ) -> gpdb_20160503_models.SetDBInstancePlanStatusResponse:
         """
-        You can call this operation to enable or disable a specified plan. The plan management feature is supported only for AnalyticDB for PostgreSQL instances in Serverless mode.
+        @summary Enables or disables a plan for an AnalyticDB for PostgreSQL instance.
+        
+        @description You can call this operation to enable or disable a specified plan. The plan management feature is supported only for AnalyticDB for PostgreSQL instances in Serverless mode.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -11516,7 +13404,9 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.SetDBInstancePlanStatusRequest,
     ) -> gpdb_20160503_models.SetDBInstancePlanStatusResponse:
         """
-        You can call this operation to enable or disable a specified plan. The plan management feature is supported only for AnalyticDB for PostgreSQL instances in Serverless mode.
+        @summary Enables or disables a plan for an AnalyticDB for PostgreSQL instance.
+        
+        @description You can call this operation to enable or disable a specified plan. The plan management feature is supported only for AnalyticDB for PostgreSQL instances in Serverless mode.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -11532,7 +13422,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.SetDataShareInstanceResponse:
         """
-        This operation is called to enable or disable data sharing for an AnalyticDB for PostgreSQL instance in Serverless mode.
+        @summary Enables or disables data sharing for an AnalyticDB for PostgreSQL instance.
+        
+        @description This operation is called to enable or disable data sharing for an AnalyticDB for PostgreSQL instance in Serverless mode.
         ## Limits
         You can call this operation up to 1,000 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
         
@@ -11579,7 +13471,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.SetDataShareInstanceResponse:
         """
-        This operation is called to enable or disable data sharing for an AnalyticDB for PostgreSQL instance in Serverless mode.
+        @summary Enables or disables data sharing for an AnalyticDB for PostgreSQL instance.
+        
+        @description This operation is called to enable or disable data sharing for an AnalyticDB for PostgreSQL instance in Serverless mode.
         ## Limits
         You can call this operation up to 1,000 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
         
@@ -11625,7 +13519,9 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.SetDataShareInstanceRequest,
     ) -> gpdb_20160503_models.SetDataShareInstanceResponse:
         """
-        This operation is called to enable or disable data sharing for an AnalyticDB for PostgreSQL instance in Serverless mode.
+        @summary Enables or disables data sharing for an AnalyticDB for PostgreSQL instance.
+        
+        @description This operation is called to enable or disable data sharing for an AnalyticDB for PostgreSQL instance in Serverless mode.
         ## Limits
         You can call this operation up to 1,000 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
         
@@ -11640,7 +13536,9 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.SetDataShareInstanceRequest,
     ) -> gpdb_20160503_models.SetDataShareInstanceResponse:
         """
-        This operation is called to enable or disable data sharing for an AnalyticDB for PostgreSQL instance in Serverless mode.
+        @summary Enables or disables data sharing for an AnalyticDB for PostgreSQL instance.
+        
+        @description This operation is called to enable or disable data sharing for an AnalyticDB for PostgreSQL instance in Serverless mode.
         ## Limits
         You can call this operation up to 1,000 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
         
@@ -11655,6 +13553,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.SwitchDBInstanceNetTypeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.SwitchDBInstanceNetTypeResponse:
+        """
+        @summary Switches the internal or public endpoint for an AnalyticDB for PostgreSQL instance.
+        
+        @param request: SwitchDBInstanceNetTypeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SwitchDBInstanceNetTypeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.connection_string_prefix):
@@ -11687,6 +13592,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.SwitchDBInstanceNetTypeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.SwitchDBInstanceNetTypeResponse:
+        """
+        @summary Switches the internal or public endpoint for an AnalyticDB for PostgreSQL instance.
+        
+        @param request: SwitchDBInstanceNetTypeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SwitchDBInstanceNetTypeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.connection_string_prefix):
@@ -11718,6 +13630,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.SwitchDBInstanceNetTypeRequest,
     ) -> gpdb_20160503_models.SwitchDBInstanceNetTypeResponse:
+        """
+        @summary Switches the internal or public endpoint for an AnalyticDB for PostgreSQL instance.
+        
+        @param request: SwitchDBInstanceNetTypeRequest
+        @return: SwitchDBInstanceNetTypeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.switch_dbinstance_net_type_with_options(request, runtime)
 
@@ -11725,6 +13643,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.SwitchDBInstanceNetTypeRequest,
     ) -> gpdb_20160503_models.SwitchDBInstanceNetTypeResponse:
+        """
+        @summary Switches the internal or public endpoint for an AnalyticDB for PostgreSQL instance.
+        
+        @param request: SwitchDBInstanceNetTypeRequest
+        @return: SwitchDBInstanceNetTypeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.switch_dbinstance_net_type_with_options_async(request, runtime)
 
@@ -11733,6 +13657,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.TagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.TagResourcesResponse:
+        """
+        @summary Creates and adds tags to AnalyticDB for PostgreSQL instances.
+        
+        @param request: TagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_account):
@@ -11775,6 +13706,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.TagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.TagResourcesResponse:
+        """
+        @summary Creates and adds tags to AnalyticDB for PostgreSQL instances.
+        
+        @param request: TagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_account):
@@ -11816,6 +13754,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.TagResourcesRequest,
     ) -> gpdb_20160503_models.TagResourcesResponse:
+        """
+        @summary Creates and adds tags to AnalyticDB for PostgreSQL instances.
+        
+        @param request: TagResourcesRequest
+        @return: TagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.tag_resources_with_options(request, runtime)
 
@@ -11823,6 +13767,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.TagResourcesRequest,
     ) -> gpdb_20160503_models.TagResourcesResponse:
+        """
+        @summary Creates and adds tags to AnalyticDB for PostgreSQL instances.
+        
+        @param request: TagResourcesRequest
+        @return: TagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.tag_resources_with_options_async(request, runtime)
 
@@ -11832,7 +13782,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.UnloadSampleDataResponse:
         """
-        You can call this operation to release a sample dataset from an AnalyticDB for PostgreSQL instance. You must have already loaded the sample dataset.
+        @summary Releases a sample dataset from an AnalyticDB for PostgreSQL instance.
+        
+        @description You can call this operation to release a sample dataset from an AnalyticDB for PostgreSQL instance. You must have already loaded the sample dataset.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -11871,7 +13823,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.UnloadSampleDataResponse:
         """
-        You can call this operation to release a sample dataset from an AnalyticDB for PostgreSQL instance. You must have already loaded the sample dataset.
+        @summary Releases a sample dataset from an AnalyticDB for PostgreSQL instance.
+        
+        @description You can call this operation to release a sample dataset from an AnalyticDB for PostgreSQL instance. You must have already loaded the sample dataset.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -11909,7 +13863,9 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.UnloadSampleDataRequest,
     ) -> gpdb_20160503_models.UnloadSampleDataResponse:
         """
-        You can call this operation to release a sample dataset from an AnalyticDB for PostgreSQL instance. You must have already loaded the sample dataset.
+        @summary Releases a sample dataset from an AnalyticDB for PostgreSQL instance.
+        
+        @description You can call this operation to release a sample dataset from an AnalyticDB for PostgreSQL instance. You must have already loaded the sample dataset.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -11924,7 +13880,9 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.UnloadSampleDataRequest,
     ) -> gpdb_20160503_models.UnloadSampleDataResponse:
         """
-        You can call this operation to release a sample dataset from an AnalyticDB for PostgreSQL instance. You must have already loaded the sample dataset.
+        @summary Releases a sample dataset from an AnalyticDB for PostgreSQL instance.
+        
+        @description You can call this operation to release a sample dataset from an AnalyticDB for PostgreSQL instance. You must have already loaded the sample dataset.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -11939,6 +13897,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.UntagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.UntagResourcesResponse:
+        """
+        @summary Removes tags from AnalyticDB for PostgreSQL instances. If the tags that you remove are not added to other instances, the tags are automatically deleted.
+        
+        @param request: UntagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UntagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.all):
@@ -11983,6 +13948,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.UntagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.UntagResourcesResponse:
+        """
+        @summary Removes tags from AnalyticDB for PostgreSQL instances. If the tags that you remove are not added to other instances, the tags are automatically deleted.
+        
+        @param request: UntagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UntagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.all):
@@ -12026,6 +13998,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.UntagResourcesRequest,
     ) -> gpdb_20160503_models.UntagResourcesResponse:
+        """
+        @summary Removes tags from AnalyticDB for PostgreSQL instances. If the tags that you remove are not added to other instances, the tags are automatically deleted.
+        
+        @param request: UntagResourcesRequest
+        @return: UntagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.untag_resources_with_options(request, runtime)
 
@@ -12033,6 +14011,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.UntagResourcesRequest,
     ) -> gpdb_20160503_models.UntagResourcesResponse:
+        """
+        @summary Removes tags from AnalyticDB for PostgreSQL instances. If the tags that you remove are not added to other instances, the tags are automatically deleted.
+        
+        @param request: UntagResourcesRequest
+        @return: UntagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.untag_resources_with_options_async(request, runtime)
 
@@ -12041,6 +14025,13 @@ class Client(OpenApiClient):
         tmp_req: gpdb_20160503_models.UpdateCollectionDataMetadataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.UpdateCollectionDataMetadataResponse:
+        """
+        @summary 更新Collection Data的Metadata数据
+        
+        @param tmp_req: UpdateCollectionDataMetadataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateCollectionDataMetadataResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = gpdb_20160503_models.UpdateCollectionDataMetadataShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -12091,6 +14082,13 @@ class Client(OpenApiClient):
         tmp_req: gpdb_20160503_models.UpdateCollectionDataMetadataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.UpdateCollectionDataMetadataResponse:
+        """
+        @summary 更新Collection Data的Metadata数据
+        
+        @param tmp_req: UpdateCollectionDataMetadataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateCollectionDataMetadataResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = gpdb_20160503_models.UpdateCollectionDataMetadataShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -12140,6 +14138,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.UpdateCollectionDataMetadataRequest,
     ) -> gpdb_20160503_models.UpdateCollectionDataMetadataResponse:
+        """
+        @summary 更新Collection Data的Metadata数据
+        
+        @param request: UpdateCollectionDataMetadataRequest
+        @return: UpdateCollectionDataMetadataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_collection_data_metadata_with_options(request, runtime)
 
@@ -12147,6 +14151,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.UpdateCollectionDataMetadataRequest,
     ) -> gpdb_20160503_models.UpdateCollectionDataMetadataResponse:
+        """
+        @summary 更新Collection Data的Metadata数据
+        
+        @param request: UpdateCollectionDataMetadataRequest
+        @return: UpdateCollectionDataMetadataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_collection_data_metadata_with_options_async(request, runtime)
 
@@ -12156,7 +14166,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.UpdateDBInstancePlanResponse:
         """
-        You can call this operation to modify a plan for an AnalyticDB for PostgreSQL instance in Serverless mode. For example, you can modify a plan for periodically pausing and resuming an instance or scaling an instance.
+        @summary Modifies a plan for an AnalyticDB for PostgreSQL instance.
+        
+        @description You can call this operation to modify a plan for an AnalyticDB for PostgreSQL instance in Serverless mode. For example, you can modify a plan for periodically pausing and resuming an instance or scaling an instance.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -12207,7 +14219,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.UpdateDBInstancePlanResponse:
         """
-        You can call this operation to modify a plan for an AnalyticDB for PostgreSQL instance in Serverless mode. For example, you can modify a plan for periodically pausing and resuming an instance or scaling an instance.
+        @summary Modifies a plan for an AnalyticDB for PostgreSQL instance.
+        
+        @description You can call this operation to modify a plan for an AnalyticDB for PostgreSQL instance in Serverless mode. For example, you can modify a plan for periodically pausing and resuming an instance or scaling an instance.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -12257,7 +14271,9 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.UpdateDBInstancePlanRequest,
     ) -> gpdb_20160503_models.UpdateDBInstancePlanResponse:
         """
-        You can call this operation to modify a plan for an AnalyticDB for PostgreSQL instance in Serverless mode. For example, you can modify a plan for periodically pausing and resuming an instance or scaling an instance.
+        @summary Modifies a plan for an AnalyticDB for PostgreSQL instance.
+        
+        @description You can call this operation to modify a plan for an AnalyticDB for PostgreSQL instance in Serverless mode. For example, you can modify a plan for periodically pausing and resuming an instance or scaling an instance.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -12272,7 +14288,9 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.UpdateDBInstancePlanRequest,
     ) -> gpdb_20160503_models.UpdateDBInstancePlanResponse:
         """
-        You can call this operation to modify a plan for an AnalyticDB for PostgreSQL instance in Serverless mode. For example, you can modify a plan for periodically pausing and resuming an instance or scaling an instance.
+        @summary Modifies a plan for an AnalyticDB for PostgreSQL instance.
+        
+        @description You can call this operation to modify a plan for an AnalyticDB for PostgreSQL instance in Serverless mode. For example, you can modify a plan for periodically pausing and resuming an instance or scaling an instance.
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -12288,8 +14306,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.UpgradeDBInstanceResponse:
         """
-        This operation is not available for instances in reserved storage mode.
-        Before you call this operation, make sure that you are familiar with the billing of AnalyticDB for PostgreSQL. For more information, see [Billing methods](~~35406~~) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
+        @summary Changes the configurations of an AnalyticDB for PostgreSQL instance.
+        
+        @description This operation is not available for instances in reserved storage mode.
+        Before you call this operation, make sure that you are familiar with the billing of AnalyticDB for PostgreSQL. For more information, see [Billing methods](https://help.aliyun.com/document_detail/35406.html) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
         
         @param request: UpgradeDBInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12350,8 +14370,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.UpgradeDBInstanceResponse:
         """
-        This operation is not available for instances in reserved storage mode.
-        Before you call this operation, make sure that you are familiar with the billing of AnalyticDB for PostgreSQL. For more information, see [Billing methods](~~35406~~) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
+        @summary Changes the configurations of an AnalyticDB for PostgreSQL instance.
+        
+        @description This operation is not available for instances in reserved storage mode.
+        Before you call this operation, make sure that you are familiar with the billing of AnalyticDB for PostgreSQL. For more information, see [Billing methods](https://help.aliyun.com/document_detail/35406.html) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
         
         @param request: UpgradeDBInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12411,8 +14433,10 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.UpgradeDBInstanceRequest,
     ) -> gpdb_20160503_models.UpgradeDBInstanceResponse:
         """
-        This operation is not available for instances in reserved storage mode.
-        Before you call this operation, make sure that you are familiar with the billing of AnalyticDB for PostgreSQL. For more information, see [Billing methods](~~35406~~) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
+        @summary Changes the configurations of an AnalyticDB for PostgreSQL instance.
+        
+        @description This operation is not available for instances in reserved storage mode.
+        Before you call this operation, make sure that you are familiar with the billing of AnalyticDB for PostgreSQL. For more information, see [Billing methods](https://help.aliyun.com/document_detail/35406.html) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
         
         @param request: UpgradeDBInstanceRequest
         @return: UpgradeDBInstanceResponse
@@ -12425,8 +14449,10 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.UpgradeDBInstanceRequest,
     ) -> gpdb_20160503_models.UpgradeDBInstanceResponse:
         """
-        This operation is not available for instances in reserved storage mode.
-        Before you call this operation, make sure that you are familiar with the billing of AnalyticDB for PostgreSQL. For more information, see [Billing methods](~~35406~~) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
+        @summary Changes the configurations of an AnalyticDB for PostgreSQL instance.
+        
+        @description This operation is not available for instances in reserved storage mode.
+        Before you call this operation, make sure that you are familiar with the billing of AnalyticDB for PostgreSQL. For more information, see [Billing methods](https://help.aliyun.com/document_detail/35406.html) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
         
         @param request: UpgradeDBInstanceRequest
         @return: UpgradeDBInstanceResponse
@@ -12439,6 +14465,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.UpgradeDBVersionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.UpgradeDBVersionResponse:
+        """
+        @summary Upgrades the minor version of an AnalyticDB for PostgreSQL instance.
+        
+        @param request: UpgradeDBVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpgradeDBVersionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -12479,6 +14512,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.UpgradeDBVersionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.UpgradeDBVersionResponse:
+        """
+        @summary Upgrades the minor version of an AnalyticDB for PostgreSQL instance.
+        
+        @param request: UpgradeDBVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpgradeDBVersionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -12518,6 +14558,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.UpgradeDBVersionRequest,
     ) -> gpdb_20160503_models.UpgradeDBVersionResponse:
+        """
+        @summary Upgrades the minor version of an AnalyticDB for PostgreSQL instance.
+        
+        @param request: UpgradeDBVersionRequest
+        @return: UpgradeDBVersionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.upgrade_dbversion_with_options(request, runtime)
 
@@ -12525,6 +14571,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.UpgradeDBVersionRequest,
     ) -> gpdb_20160503_models.UpgradeDBVersionResponse:
+        """
+        @summary Upgrades the minor version of an AnalyticDB for PostgreSQL instance.
+        
+        @param request: UpgradeDBVersionRequest
+        @return: UpgradeDBVersionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.upgrade_dbversion_with_options_async(request, runtime)
 
@@ -12533,6 +14585,13 @@ class Client(OpenApiClient):
         tmp_req: gpdb_20160503_models.UploadDocumentAsyncRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.UploadDocumentAsyncResponse:
+        """
+        @summary 异步上传文档
+        
+        @param tmp_req: UploadDocumentAsyncRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UploadDocumentAsyncResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = gpdb_20160503_models.UploadDocumentAsyncShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -12599,6 +14658,13 @@ class Client(OpenApiClient):
         tmp_req: gpdb_20160503_models.UploadDocumentAsyncRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.UploadDocumentAsyncResponse:
+        """
+        @summary 异步上传文档
+        
+        @param tmp_req: UploadDocumentAsyncRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UploadDocumentAsyncResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = gpdb_20160503_models.UploadDocumentAsyncShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -12664,6 +14730,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.UploadDocumentAsyncRequest,
     ) -> gpdb_20160503_models.UploadDocumentAsyncResponse:
+        """
+        @summary 异步上传文档
+        
+        @param request: UploadDocumentAsyncRequest
+        @return: UploadDocumentAsyncResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.upload_document_async_with_options(request, runtime)
 
@@ -12671,6 +14743,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.UploadDocumentAsyncRequest,
     ) -> gpdb_20160503_models.UploadDocumentAsyncResponse:
+        """
+        @summary 异步上传文档
+        
+        @param request: UploadDocumentAsyncRequest
+        @return: UploadDocumentAsyncResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.upload_document_async_with_options_async(request, runtime)
 
@@ -12821,6 +14899,13 @@ class Client(OpenApiClient):
         tmp_req: gpdb_20160503_models.UpsertChunksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.UpsertChunksResponse:
+        """
+        @summary 上传切分后的文本
+        
+        @param tmp_req: UpsertChunksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpsertChunksResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = gpdb_20160503_models.UpsertChunksShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -12869,6 +14954,13 @@ class Client(OpenApiClient):
         tmp_req: gpdb_20160503_models.UpsertChunksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.UpsertChunksResponse:
+        """
+        @summary 上传切分后的文本
+        
+        @param tmp_req: UpsertChunksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpsertChunksResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = gpdb_20160503_models.UpsertChunksShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -12916,6 +15008,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.UpsertChunksRequest,
     ) -> gpdb_20160503_models.UpsertChunksResponse:
+        """
+        @summary 上传切分后的文本
+        
+        @param request: UpsertChunksRequest
+        @return: UpsertChunksResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.upsert_chunks_with_options(request, runtime)
 
@@ -12923,6 +15021,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.UpsertChunksRequest,
     ) -> gpdb_20160503_models.UpsertChunksResponse:
+        """
+        @summary 上传切分后的文本
+        
+        @param request: UpsertChunksRequest
+        @return: UpsertChunksResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.upsert_chunks_with_options_async(request, runtime)
 
@@ -12931,6 +15035,13 @@ class Client(OpenApiClient):
         tmp_req: gpdb_20160503_models.UpsertCollectionDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.UpsertCollectionDataResponse:
+        """
+        @summary Uploads vector data to a vector collection.
+        
+        @param tmp_req: UpsertCollectionDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpsertCollectionDataResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = gpdb_20160503_models.UpsertCollectionDataShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -12977,6 +15088,13 @@ class Client(OpenApiClient):
         tmp_req: gpdb_20160503_models.UpsertCollectionDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.UpsertCollectionDataResponse:
+        """
+        @summary Uploads vector data to a vector collection.
+        
+        @param tmp_req: UpsertCollectionDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpsertCollectionDataResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = gpdb_20160503_models.UpsertCollectionDataShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -13022,6 +15140,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.UpsertCollectionDataRequest,
     ) -> gpdb_20160503_models.UpsertCollectionDataResponse:
+        """
+        @summary Uploads vector data to a vector collection.
+        
+        @param request: UpsertCollectionDataRequest
+        @return: UpsertCollectionDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.upsert_collection_data_with_options(request, runtime)
 
@@ -13029,6 +15153,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.UpsertCollectionDataRequest,
     ) -> gpdb_20160503_models.UpsertCollectionDataResponse:
+        """
+        @summary Uploads vector data to a vector collection.
+        
+        @param request: UpsertCollectionDataRequest
+        @return: UpsertCollectionDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.upsert_collection_data_with_options_async(request, runtime)
 
@@ -13037,6 +15167,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.UpsertCollectionDataAsyncRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.UpsertCollectionDataAsyncResponse:
+        """
+        @summary 上传向量数据异步接口
+        
+        @param request: UpsertCollectionDataAsyncRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpsertCollectionDataAsyncResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -13079,6 +15216,13 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.UpsertCollectionDataAsyncRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.UpsertCollectionDataAsyncResponse:
+        """
+        @summary 上传向量数据异步接口
+        
+        @param request: UpsertCollectionDataAsyncRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpsertCollectionDataAsyncResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -13120,6 +15264,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.UpsertCollectionDataAsyncRequest,
     ) -> gpdb_20160503_models.UpsertCollectionDataAsyncResponse:
+        """
+        @summary 上传向量数据异步接口
+        
+        @param request: UpsertCollectionDataAsyncRequest
+        @return: UpsertCollectionDataAsyncResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.upsert_collection_data_async_with_options(request, runtime)
 
@@ -13127,6 +15277,12 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.UpsertCollectionDataAsyncRequest,
     ) -> gpdb_20160503_models.UpsertCollectionDataAsyncResponse:
+        """
+        @summary 上传向量数据异步接口
+        
+        @param request: UpsertCollectionDataAsyncRequest
+        @return: UpsertCollectionDataAsyncResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.upsert_collection_data_async_with_options_async(request, runtime)
 

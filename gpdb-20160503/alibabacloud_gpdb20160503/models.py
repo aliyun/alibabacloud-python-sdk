@@ -25,13 +25,19 @@ class AllocateInstancePublicConnectionRequest(TeaModel):
         # The prefix of the endpoint.
         # 
         # Specify a prefix for the endpoint. Example: `gp-bp12ga6v69h86****`. In this example, the endpoint is `gp-bp12ga6v69h86****.gpdb.rds.aliyuncs.com`.
+        # 
+        # This parameter is required.
         self.connection_string_prefix = connection_string_prefix
         # The ID of the instance.
         # 
-        # >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
         # The port number. Example: 5432.
+        # 
+        # This parameter is required.
         self.port = port
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -160,12 +166,17 @@ class CancelUploadDocumentJobRequest(TeaModel):
         owner_id: int = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.collection = collection
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # This parameter is required.
         self.job_id = job_id
         self.namespace = namespace
+        # This parameter is required.
         self.namespace_password = namespace_password
         self.owner_id = owner_id
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -303,12 +314,17 @@ class CancelUpsertCollectionDataJobRequest(TeaModel):
         owner_id: int = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.collection = collection
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # This parameter is required.
         self.job_id = job_id
         self.namespace = namespace
+        # This parameter is required.
         self.namespace_password = namespace_password
         self.owner_id = owner_id
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -440,7 +456,7 @@ class CheckServiceLinkedRoleRequest(TeaModel):
         self,
         region_id: str = None,
     ):
-        # The ID of the region. You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+        # The ID of the region. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -561,20 +577,26 @@ class CreateAccountRequest(TeaModel):
         self.account_description = account_description
         # The name of the privileged account.
         # 
-        # *   The name can contain lowercase letters, digits, and underscores (\_).
+        # *   The name can contain lowercase letters, digits, and underscores (_).
         # *   The name must start with a lowercase letter and end with a lowercase letter or a digit.
         # *   The name cannot start with gp.
         # *   The name must be 2 to 16 characters in length.
+        # 
+        # This parameter is required.
         self.account_name = account_name
         # The password of the privileged account.
         # 
         # *   The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
         # *   Special characters include `! @ # $ % ^ & * ( ) _ + - =`
         # *   The password must be 8 to 32 characters in length.
+        # 
+        # This parameter is required.
         self.account_password = account_password
         # The ID of the instance.
         # 
-        # >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The name of the database.
         self.database_name = database_name
@@ -714,20 +736,26 @@ class CreateCollectionRequest(TeaModel):
         pq_enable: int = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.collection = collection
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.dimension = dimension
         self.external_storage = external_storage
         self.full_text_retrieval_fields = full_text_retrieval_fields
         self.hnsw_m = hnsw_m
+        # This parameter is required.
         self.manager_account = manager_account
+        # This parameter is required.
         self.manager_account_password = manager_account_password
+        # This parameter is required.
         self.metadata = metadata
         self.metrics = metrics
         self.namespace = namespace
         self.owner_id = owner_id
         self.parser = parser
         self.pq_enable = pq_enable
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -975,9 +1003,9 @@ class CreateDBInstanceRequest(TeaModel):
     ):
         # The ID of the backup set.
         # 
-        # >  You can call the [DescribeDataBackups](~~210093~~) operation to query the IDs of all backup sets in the instance.
+        # >  You can call the [DescribeDataBackups](https://help.aliyun.com/document_detail/210093.html) operation to query the IDs of all backup sets in the instance.
         self.backup_id = backup_id
-        # The client token that is used to ensure the idempotence of the request. For more information, see [Ensure idempotence](~~327176~~).
+        # The client token that is used to ensure the idempotence of the request. For more information, see [Ensure idempotence](https://help.aliyun.com/document_detail/327176.html).
         self.client_token = client_token
         # Specifies whether to load a sample dataset after the instance is created. Valid values:
         # 
@@ -993,7 +1021,7 @@ class CreateDBInstanceRequest(TeaModel):
         # 
         # > This parameter must be specified when you create an instance in elastic storage mode.
         self.dbinstance_category = dbinstance_category
-        # The instance type of the instance. For information, see [Instance types](~~86942~~).
+        # The instance type of the instance. For information, see [Instance types](https://help.aliyun.com/document_detail/86942.html).
         # 
         # > This parameter must be specified when you create an instance in reserved storage mode.
         self.dbinstance_class = dbinstance_class
@@ -1010,6 +1038,8 @@ class CreateDBInstanceRequest(TeaModel):
         # - **Classic**: reserved storage mode.
         # 
         # > This parameter must be specified.
+        # 
+        # This parameter is required.
         self.dbinstance_mode = dbinstance_mode
         self.enable_ssl = enable_ssl
         # The ID of the encryption key.
@@ -1024,11 +1054,15 @@ class CreateDBInstanceRequest(TeaModel):
         # > Disk encryption cannot be disabled after it is enabled.
         self.encryption_type = encryption_type
         # The database engine of the instance. Set the value to gpdb.
+        # 
+        # This parameter is required.
         self.engine = engine
         # The version of the database engine. Valid values:
         # 
         # - 6.0
         # - 7.0
+        # 
+        # This parameter is required.
         self.engine_version = engine_version
         # The wait time for the instance that has no traffic to become idle. Minimum value: 60. Default value: 600. Unit: seconds.
         # 
@@ -1097,13 +1131,17 @@ class CreateDBInstanceRequest(TeaModel):
         # This parameter is no longer used.
         self.private_ip_address = private_ip_address
         self.prod_type = prod_type
-        # The ID of the region. You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+        # The ID of the region. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group to which the instance belongs.
         self.resource_group_id = resource_group_id
         # The IP address whitelist of the instance.
         # 
-        # A value of 127.0.0.1 specifies that no IP address is allowed for external access. You can call the [ModifySecurityIps](~~86928~~) operation to modify the IP address whitelist after you create an instance.
+        # A value of 127.0.0.1 specifies that no IP address is allowed for external access. You can call the [ModifySecurityIps](https://help.aliyun.com/document_detail/86928.html) operation to modify the IP address whitelist after you create an instance.
+        # 
+        # This parameter is required.
         self.security_iplist = security_iplist
         # The performance level of ESSDs. Valid values:
         # 
@@ -1142,7 +1180,7 @@ class CreateDBInstanceRequest(TeaModel):
         self.serverless_resource = serverless_resource
         # The ID of the source instance.
         # 
-        # >  You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
         self.src_db_instance_name = src_db_instance_name
         # The storage capacity of the instance. Unit: GB. Valid values: 50 to 6000.
         # 
@@ -1185,7 +1223,9 @@ class CreateDBInstanceRequest(TeaModel):
         # 
         # *   We recommend that you **enable** vector search engine optimization in AI-generated content (AIGC) and vector retrieval scenarios that require the vector analysis engine.
         self.vector_configuration_status = vector_configuration_status
-        # The zone ID of the read-only instance. You can call the [DescribeRegions](~~86912~~) operation to query the most recent zone list.
+        # The zone ID of the read-only instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent zone list.
+        # 
+        # This parameter is required.
         self.zone_id = zone_id
 
     def validate(self):
@@ -1383,7 +1423,7 @@ class CreateDBInstanceResponseBody(TeaModel):
     ):
         # An invalid parameter. It is no longer returned when you call this operation.
         # 
-        # You can call the [DescribeDBInstanceAttribute](~~86910~~) operation to query the endpoint that is used to connect to the instance.
+        # You can call the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/86910.html) operation to query the endpoint that is used to connect to the instance.
         self.connection_string = connection_string
         # The instance ID.
         self.dbinstance_id = dbinstance_id
@@ -1391,7 +1431,7 @@ class CreateDBInstanceResponseBody(TeaModel):
         self.order_id = order_id
         # An invalid parameter. It is no longer returned when you call this operation.
         # 
-        # You can call the [DescribeDBInstanceAttribute](~~86910~~) operation to query the port number that is used to connect to the instance.
+        # You can call the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/86910.html) operation to query the port number that is used to connect to the instance.
         self.port = port
         # The request ID.
         self.request_id = request_id
@@ -1488,10 +1528,14 @@ class CreateDBInstancePlanRequest(TeaModel):
     ):
         # The instance ID.
         # 
-        # > You can call the [DescribeDBInstances](~~86911~~) operation to query the IDs of all AnalyticDB for PostgreSQL instances within a region.
+        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the IDs of all AnalyticDB for PostgreSQL instances within a region.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
         # The execution information of the plan. Specify the parameter in the JSON format. The parameter value varies based on the values of **PlanType** and **PlanScheduleType**. The following section describes the PlanConfig parameter.
+        # 
+        # This parameter is required.
         self.plan_config = plan_config
         # The description of the plan.
         self.plan_desc = plan_desc
@@ -1504,11 +1548,15 @@ class CreateDBInstancePlanRequest(TeaModel):
         # *   If you do not specify this parameter, the plan does not end.
         self.plan_end_date = plan_end_date
         # The name of the plan.
+        # 
+        # This parameter is required.
         self.plan_name = plan_name
         # The execution mode of the plan. Valid values:
         # 
         # *   **Postpone**: The plan is executed later.
         # *   **Regular**: The plan is executed periodically.
+        # 
+        # This parameter is required.
         self.plan_schedule_type = plan_schedule_type
         # The start time of the plan. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
         # 
@@ -1529,6 +1577,8 @@ class CreateDBInstancePlanRequest(TeaModel):
         # *   You can specify the value to Resize only for instances in Serverless mode.
         # 
         # *   You can specify the value to ModifySpec only for instances in elastic storage mode.
+        # 
+        # This parameter is required.
         self.plan_type = plan_type
 
     def validate(self):
@@ -1703,13 +1753,17 @@ class CreateDocumentCollectionRequest(TeaModel):
         pq_enable: int = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.collection = collection
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.embedding_model = embedding_model
         self.external_storage = external_storage
         self.full_text_retrieval_fields = full_text_retrieval_fields
         self.hnsw_m = hnsw_m
+        # This parameter is required.
         self.manager_account = manager_account
+        # This parameter is required.
         self.manager_account_password = manager_account_password
         self.metadata = metadata
         self.metrics = metrics
@@ -1717,6 +1771,7 @@ class CreateDocumentCollectionRequest(TeaModel):
         self.owner_id = owner_id
         self.parser = parser
         self.pq_enable = pq_enable
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -1888,20 +1943,30 @@ class CreateNamespaceRequest(TeaModel):
     ):
         # The instance ID.
         # 
-        # > You can call the [DescribeDBInstances](~~196830~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/196830.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The name of the manager account that has the rds_superuser permission.
+        # 
+        # This parameter is required.
         self.manager_account = manager_account
         # The password of the manager account.
+        # 
+        # This parameter is required.
         self.manager_account_password = manager_account_password
         # The name of the namespace.
         self.namespace = namespace
         # The password of the namespace.
+        # 
+        # This parameter is required.
         self.namespace_password = namespace_password
         self.owner_id = owner_id
         # The region ID of the instance.
         # 
-        # > You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -2042,7 +2107,9 @@ class CreateSampleDataRequest(TeaModel):
     ):
         # The ID of the instance.
         # 
-        # >  You can call the [DescribeDBInstances](~~86911~~) operation to query the IDs of all AnalyticDB for PostgreSQL instances in a specific region.
+        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the IDs of all AnalyticDB for PostgreSQL instances in a specific region.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
 
@@ -2171,6 +2238,8 @@ class CreateServiceLinkedRoleRequest(TeaModel):
     ):
         self.owner_id = owner_id
         # The ID of the region.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -2282,18 +2351,24 @@ class CreateVectorIndexRequest(TeaModel):
         pq_enable: int = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.collection = collection
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # This parameter is required.
         self.dimension = dimension
         self.external_storage = external_storage
         self.hnsw_m = hnsw_m
+        # This parameter is required.
         self.manager_account = manager_account
+        # This parameter is required.
         self.manager_account_password = manager_account_password
         # Distance Metrics。
         self.metrics = metrics
         self.namespace = namespace
         self.owner_id = owner_id
         self.pq_enable = pq_enable
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -2451,19 +2526,27 @@ class DeleteCollectionRequest(TeaModel):
         region_id: str = None,
     ):
         # The name of the collection.
+        # 
+        # This parameter is required.
         self.collection = collection
         # The instance ID.
         # 
-        # > You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The name of the namespace.
         self.namespace = namespace
         # The password of the namespace.
+        # 
+        # This parameter is required.
         self.namespace_password = namespace_password
         self.owner_id = owner_id
         # The region ID of the instance.
         # 
-        # > You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -2605,6 +2688,8 @@ class DeleteCollectionDataRequest(TeaModel):
         region_id: str = None,
     ):
         # The name of the collection.
+        # 
+        # This parameter is required.
         self.collection = collection
         # The data that you want to delete.
         self.collection_data = collection_data
@@ -2612,16 +2697,22 @@ class DeleteCollectionDataRequest(TeaModel):
         self.collection_data_filter = collection_data_filter
         # The instance ID.
         # 
-        # > You can call the [DescribeDBInstances](~~86911~~) operation to query the IDs of all AnalyticDB for PostgreSQL instances within a region.
+        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the IDs of all AnalyticDB for PostgreSQL instances within a region.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The name of the namespace.
         self.namespace = namespace
         # The password of the namespace.
+        # 
+        # This parameter is required.
         self.namespace_password = namespace_password
         self.owner_id = owner_id
         # The region ID of the instance.
         # 
-        # > You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -2773,11 +2864,13 @@ class DeleteDBInstanceRequest(TeaModel):
         owner_id: int = None,
         resource_group_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. For more information, see [How to ensure idempotence](~~327176~~).
+        # The client token that is used to ensure the idempotence of the request. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/327176.html).
         self.client_token = client_token
         # The ID of the instance.
         # 
-        # >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
         # This parameter is no longer used.
@@ -2893,12 +2986,16 @@ class DeleteDBInstancePlanRequest(TeaModel):
     ):
         # The ID of the instance.
         # 
-        # >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
         # The ID of the plan.
         # 
-        # >  You can call the [DescribeDBInstancePlans](~~449398~~) operation to query the details of plans, including plan IDs.
+        # >  You can call the [DescribeDBInstancePlans](https://help.aliyun.com/document_detail/449398.html) operation to query the details of plans, including plan IDs.
+        # 
+        # This parameter is required.
         self.plan_id = plan_id
 
     def validate(self):
@@ -3041,12 +3138,17 @@ class DeleteDocumentRequest(TeaModel):
         owner_id: int = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.collection = collection
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # This parameter is required.
         self.file_name = file_name
         self.namespace = namespace
+        # This parameter is required.
         self.namespace_password = namespace_password
         self.owner_id = owner_id
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -3183,11 +3285,15 @@ class DeleteDocumentCollectionRequest(TeaModel):
         owner_id: int = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.collection = collection
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.namespace = namespace
+        # This parameter is required.
         self.namespace_password = namespace_password
         self.owner_id = owner_id
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -3322,18 +3428,28 @@ class DeleteNamespaceRequest(TeaModel):
     ):
         # The instance ID.
         # 
-        # > You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The name of the manager account that has the rds_superuser permission.
+        # 
+        # This parameter is required.
         self.manager_account = manager_account
         # The password of the manager account.
+        # 
+        # This parameter is required.
         self.manager_account_password = manager_account_password
         # The name of the namespace.
+        # 
+        # This parameter is required.
         self.namespace = namespace
         self.owner_id = owner_id
         # The region ID of the instance.
         # 
-        # > You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -3474,21 +3590,31 @@ class DeleteVectorIndexRequest(TeaModel):
         region_id: str = None,
     ):
         # The name of the collection.
+        # 
+        # This parameter is required.
         self.collection = collection
         # The instance ID.
         # 
-        # > You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The name of the manager account that has the rds_superuser permission.
+        # 
+        # This parameter is required.
         self.manager_account = manager_account
         # The password of the manager account.
+        # 
+        # This parameter is required.
         self.manager_account_password = manager_account_password
         # The name of the namespace.
         self.namespace = namespace
         self.owner_id = owner_id
         # The region ID of the instance.
         # 
-        # > You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -3631,7 +3757,9 @@ class DescribeAccountsRequest(TeaModel):
         self.account_name = account_name
         # The instance ID.
         # 
-        # > You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
 
     def validate(self):
@@ -3837,6 +3965,7 @@ class DescribeActiveSQLRecordsRequest(TeaModel):
         start_time: str = None,
         user: str = None,
     ):
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.database = database
         self.end_time = end_time
@@ -4088,11 +4217,15 @@ class DescribeAvailableResourcesRequest(TeaModel):
         self.charge_type = charge_type
         # The region ID.
         # 
-        # > You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region = region
         # The zone ID.
         # 
-        # > You can call the [DescribeRegions](~~86912~~) operation to query the most recent zone list.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent zone list.
+        # 
+        # This parameter is required.
         self.zone_id = zone_id
 
     def validate(self):
@@ -4485,7 +4618,9 @@ class DescribeBackupPolicyRequest(TeaModel):
     ):
         # The ID of the instance.
         # 
-        # >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
 
     def validate(self):
@@ -4639,19 +4774,27 @@ class DescribeCollectionRequest(TeaModel):
         region_id: str = None,
     ):
         # The name of the collection.
+        # 
+        # This parameter is required.
         self.collection = collection
         # The instance ID.
         # 
-        # > You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The name of the namespace.
         self.namespace = namespace
         # The password of the namespace.
+        # 
+        # This parameter is required.
         self.namespace_password = namespace_password
         self.owner_id = owner_id
         # The region ID of the instance.
         # 
-        # > You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -4848,7 +4991,9 @@ class DescribeDBClusterNodeRequest(TeaModel):
     ):
         # The instance ID.
         # 
-        # > You can call the [DescribeDBInstances](~~86911~~) operation to query details about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query details about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The node type. Valid values:
         # 
@@ -5014,13 +5159,19 @@ class DescribeDBClusterPerformanceRequest(TeaModel):
     ):
         # The instance ID.
         # 
-        # > You can call the [DescribeDBInstances](~~86911~~) operation to query details about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query details about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The end of the time range to query. Specify the time in the ISO 8601 standard in the `YYYY-MM-DDTHH:mmZ` format.
         # 
         # > The end time must be later than the start time. The maximum time range that can be specified is seven days.
+        # 
+        # This parameter is required.
         self.end_time = end_time
-        # The performance metric that you want to query. Separate multiple values with commas (,). For more information, see [Performance parameters](~~86943~~).
+        # The performance metric that you want to query. Separate multiple values with commas (,). For more information, see [Performance parameters](https://help.aliyun.com/document_detail/86943.html).
+        # 
+        # This parameter is required.
         self.key = key
         # The node type. Valid values:
         # 
@@ -5029,7 +5180,7 @@ class DescribeDBClusterPerformanceRequest(TeaModel):
         # 
         # > If you do not specify this parameter, the performance metrics of all nodes are returned.
         self.node_type = node_type
-        # The nodes for which you want to query performance metrics. Separate multiple values with commas (,). Example: `master-10******1,master-10******2`. You can call the [DescribeDBClusterNode](~~390136~~) operation to query the names of nodes.
+        # The nodes for which you want to query performance metrics. Separate multiple values with commas (,). Example: `master-10******1,master-10******2`. You can call the [DescribeDBClusterNode](https://help.aliyun.com/document_detail/390136.html) operation to query the names of nodes.
         # 
         # You can also filter the nodes based on their metric values. Valid values:
         # 
@@ -5042,6 +5193,8 @@ class DescribeDBClusterPerformanceRequest(TeaModel):
         # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the `YYYY-MM-DDTHH:mmZ` format.
         # 
         # > You can query monitoring information only within the last 30 days.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -5177,7 +5330,7 @@ class DescribeDBClusterPerformanceResponseBodyPerformanceKeys(TeaModel):
         series: List[DescribeDBClusterPerformanceResponseBodyPerformanceKeysSeries] = None,
         unit: str = None,
     ):
-        # The name of the performance metric. For more information, see [Performance parameters](~~86943~~).
+        # The name of the performance metric. For more information, see [Performance parameters](https://help.aliyun.com/document_detail/86943.html).
         self.name = name
         # Details of the performance metric of a node.
         self.series = series
@@ -5233,7 +5386,7 @@ class DescribeDBClusterPerformanceResponseBody(TeaModel):
         self.dbcluster_id = dbcluster_id
         # The end time of the query. The time follows the ISO 8601 standard in the `YYYY-MM-DDTHH:mmZ` format. The time is displayed in UTC.
         self.end_time = end_time
-        # The name of the performance metric. For more information, see [Performance parameters](~~86943~~).
+        # The name of the performance metric. For more information, see [Performance parameters](https://help.aliyun.com/document_detail/86943.html).
         self.performance_keys = performance_keys
         # The request ID.
         self.request_id = request_id
@@ -5334,7 +5487,9 @@ class DescribeDBInstanceAttributeRequest(TeaModel):
     ):
         # The instance ID.
         # 
-        # > You can call the [DescribeDBInstances](~~86911~~) operation to query the IDs of all AnalyticDB for PostgreSQL instances within a region.
+        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the IDs of all AnalyticDB for PostgreSQL instances within a region.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
         # This parameter is no longer used.
@@ -6116,7 +6271,9 @@ class DescribeDBInstanceDataBloatRequest(TeaModel):
     ):
         # The ID of the instance.
         # 
-        # >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The number of the page to return. The value must be an integer that is greater than 0. Default value: **1**.
         self.page_number = page_number
@@ -6377,7 +6534,9 @@ class DescribeDBInstanceDataSkewRequest(TeaModel):
     ):
         # The ID of the instance.
         # 
-        # >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The number of the page to return. The value must be an integer that is greater than 0. Default value: **1**.
         self.page_number = page_number
@@ -6612,7 +6771,9 @@ class DescribeDBInstanceDiagnosisSummaryRequest(TeaModel):
     ):
         # The instance ID.
         # 
-        # > You can call the [DescribeDBInstances](~~86911~~) operation to query details about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query details about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The page number. Pages start from page 1. Default value: **1**.
         self.page_number = page_number
@@ -7061,7 +7222,9 @@ class DescribeDBInstanceErrorLogRequest(TeaModel):
     ):
         # The instance ID.
         # 
-        # > You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The name of the database.
         self.database = database
@@ -7323,9 +7486,11 @@ class DescribeDBInstanceIPArrayListRequest(TeaModel):
         self.dbinstance_iparray_name = dbinstance_iparray_name
         # The instance ID.
         # 
-        # > You can call the [DescribeDBInstances](~~86911~~) operation to query details about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query details about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The ID of the resource group to which the instance belongs. For information about how to obtain the ID of a resource group, see [View basic information of a resource group](~~151181~~).
+        # The ID of the resource group to which the instance belongs. For information about how to obtain the ID of a resource group, see [View basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -7524,7 +7689,9 @@ class DescribeDBInstanceIndexUsageRequest(TeaModel):
     ):
         # The instance ID.
         # 
-        # > You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The page number. Pages start from page 1. Default value: **1**.
         self.page_number = page_number
@@ -7769,7 +7936,9 @@ class DescribeDBInstanceNetInfoRequest(TeaModel):
         self.connection_string = connection_string
         # The instance ID.
         # 
-        # >  You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
 
     def validate(self):
@@ -8010,15 +8179,23 @@ class DescribeDBInstancePerformanceRequest(TeaModel):
     ):
         # The instance ID.
         # 
-        # > You can call the [DescribeDBInstances](~~86911~~) operation to query the IDs of all AnalyticDB for PostgreSQL instances within a region.
+        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the IDs of all AnalyticDB for PostgreSQL instances within a region.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The end of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC. The end time must be later than the start time.
+        # 
+        # This parameter is required.
         self.end_time = end_time
-        # The performance metric. Separate multiple values with commas (,). For more information, see [Performance parameters](~~86943~~).
+        # The performance metric. Separate multiple values with commas (,). For more information, see [Performance parameters](https://help.aliyun.com/document_detail/86943.html).
+        # 
+        # This parameter is required.
         self.key = key
         # This parameter is no longer used.
         self.resource_group_id = resource_group_id
         # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -8174,7 +8351,9 @@ class DescribeDBInstancePlansRequest(TeaModel):
     ):
         # The instance ID.
         # 
-        # > You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
         # The time used to filter plans. If you specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format, the plans created before this time are returned. The time must be in UTC. If you do not specify this parameter, all plans are returned.
@@ -8183,7 +8362,7 @@ class DescribeDBInstancePlansRequest(TeaModel):
         self.plan_desc = plan_desc
         # The plan ID.
         # 
-        # > You can call the [DescribeDBInstancePlans](~~449398~~) operation to query the information about plans, including plan IDs.
+        # > You can call the [DescribeDBInstancePlans](https://help.aliyun.com/document_detail/449398.html) operation to query the information about plans, including plan IDs.
         self.plan_id = plan_id
         # The execution mode of the plan. Valid values:
         # 
@@ -8504,6 +8683,8 @@ class DescribeDBInstanceSSLRequest(TeaModel):
         dbinstance_id: str = None,
     ):
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
 
     def validate(self):
@@ -8636,6 +8817,7 @@ class DescribeDBInstanceSupportMaxPerformanceRequest(TeaModel):
         dbinstance_id: str = None,
         owner_id: int = None,
     ):
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
 
@@ -8910,7 +9092,9 @@ class DescribeDBInstancesRequest(TeaModel):
         self.page_size = page_size
         # The region ID.
         # 
-        # > You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group to which the instance belongs.
         self.resource_group_id = resource_group_id
@@ -9083,7 +9267,9 @@ class DescribeDBInstancesShrinkRequest(TeaModel):
         self.page_size = page_size
         # The region ID.
         # 
-        # > You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group to which the instance belongs.
         self.resource_group_id = resource_group_id
@@ -9275,7 +9461,7 @@ class DescribeDBInstancesResponseBodyItemsDBInstance(TeaModel):
     ):
         # An invalid parameter. It is no longer returned when you call this operation.
         # 
-        # You can call the [DescribeDBInstanceAttribute](~~86910~~) operation to query the access mode of an instance.
+        # You can call the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/86910.html) operation to query the access mode of an instance.
         self.connection_mode = connection_mode
         # The time when the instance was created. The time is displayed in UTC.
         self.create_time = create_time
@@ -9301,7 +9487,7 @@ class DescribeDBInstancesResponseBodyItemsDBInstance(TeaModel):
         # *   **1**: internal network.
         # *   **2**: VPC.
         self.dbinstance_net_type = dbinstance_net_type
-        # The state of the instance. For more information, see [Instance statuses](~~86944~~).
+        # The state of the instance. For more information, see [Instance statuses](https://help.aliyun.com/document_detail/86944.html).
         self.dbinstance_status = dbinstance_status
         # The database engine of the instance.
         self.engine = engine
@@ -9647,6 +9833,7 @@ class DescribeDBResourceManagementModeRequest(TeaModel):
         dbinstance_id: str = None,
         owner_id: int = None,
     ):
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
 
@@ -9767,9 +9954,11 @@ class DescribeDBVersionInfosRequest(TeaModel):
         self.owner_id = owner_id
         # The region ID of the instance.
         # 
-        # >  You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource group to which the instance belongs. For information about how to obtain the ID of a resource group, see [View basic information of a resource group](~~151181~~).
+        # The ID of the resource group to which the instance belongs. For information about how to obtain the ID of a resource group, see [View basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -9936,7 +10125,7 @@ class DescribeDataBackupsRequest(TeaModel):
     ):
         # The ID of the backup set. If you specify BackupId, the details of the backup set are returned.
         # 
-        # > You can call the [DescribeDataBackups](~~210093~~) operation to query the information about all backup sets of an instance, including backup set IDs.
+        # > You can call the [DescribeDataBackups](https://help.aliyun.com/document_detail/210093.html) operation to query the information about all backup sets of an instance, including backup set IDs.
         self.backup_id = backup_id
         # The backup mode. Valid values:
         # 
@@ -9954,7 +10143,9 @@ class DescribeDataBackupsRequest(TeaModel):
         self.backup_status = backup_status
         # The instance ID.
         # 
-        # > You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The backup type. Valid values:
         # 
@@ -9964,6 +10155,8 @@ class DescribeDataBackupsRequest(TeaModel):
         # If you do not specify this parameter, the backup sets of full backup are returned.
         self.data_type = data_type
         # The end of the time range to query. The end time must be later than the start time. Specify the time in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The page number. Pages start from page 1. Default value: 1
         self.page_number = page_number
@@ -9976,6 +10169,8 @@ class DescribeDataBackupsRequest(TeaModel):
         # Default value: 30.
         self.page_size = page_size
         # The beginning of the time range to query. Specify the time in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -10284,7 +10479,9 @@ class DescribeDataReDistributeInfoRequest(TeaModel):
     ):
         # The instance ID.
         # 
-        # > You can call the [DescribeDBInstances](~~86911~~) operation to query the IDs of all AnalyticDB for PostgreSQL instances within a region.
+        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the IDs of all AnalyticDB for PostgreSQL instances within a region.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
 
@@ -10476,13 +10673,15 @@ class DescribeDataShareInstancesRequest(TeaModel):
         self.page_size = page_size
         # The region ID of the instance.
         # 
-        # > You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource group to which the instance belongs. For information about how to obtain the ID of a resource group, see [View basic information of a resource group](~~151181~~).
+        # The ID of the resource group to which the instance belongs. For information about how to obtain the ID of a resource group, see [View basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
         self.resource_group_id = resource_group_id
         # The keyword used to filter instances, which can be an instance ID or instance description.
         # 
-        # > You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs and instance descriptions.
+        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs and instance descriptions.
         self.search_value = search_value
 
     def validate(self):
@@ -10751,10 +10950,14 @@ class DescribeDataSharePerformanceRequest(TeaModel):
         # 
         # *   **adbpg_datashare_topic_count**: the number of shared topics.
         # *   **adbpg_datashare_data_size_mb**: the amount of data shared.
+        # 
+        # This parameter is required.
         self.key = key
         # The region ID of the instance.
         # 
-        # >  You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # This parameter is no longer used.
         self.resource_group_id = resource_group_id
@@ -11030,7 +11233,9 @@ class DescribeDiagnosisDimensionsRequest(TeaModel):
     ):
         # The instance ID.
         # 
-        # > You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
 
     def validate(self):
@@ -11148,9 +11353,13 @@ class DescribeDiagnosisMonitorPerformanceRequest(TeaModel):
     ):
         # The ID of the instance.
         # 
-        # >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The name of the database.
+        # 
+        # This parameter is required.
         self.database = database
         # The end of the time range to query. Specify the time in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC. The end time must be later than the start time.
         self.end_time = end_time
@@ -11396,9 +11605,13 @@ class DescribeDiagnosisRecordsRequest(TeaModel):
     ):
         # The instance ID.
         # 
-        # > You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The name of the database.
+        # 
+        # This parameter is required.
         self.database = database
         # The end of the time range to query. Specify the time in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC. The end time must be later than the start time.
         self.end_time = end_time
@@ -11695,13 +11908,19 @@ class DescribeDiagnosisSQLInfoRequest(TeaModel):
     ):
         # The instance ID.
         # 
-        # > You can call the [DescribeDBInstances](~~86911~~) operation to query details about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query details about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The name of the database.
+        # 
+        # This parameter is required.
         self.database = database
         # The query ID. It is a unique identifier of the query.
         # 
-        # > You can call the [DescribeDiagnosisRecords](~~450511~~) operation to obtain query IDs.
+        # > You can call the [DescribeDiagnosisRecords](https://help.aliyun.com/document_detail/450511.html) operation to obtain query IDs.
+        # 
+        # This parameter is required.
         self.query_id = query_id
 
     def validate(self):
@@ -11899,12 +12118,17 @@ class DescribeDocumentRequest(TeaModel):
         owner_id: int = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.collection = collection
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # This parameter is required.
         self.file_name = file_name
         self.namespace = namespace
+        # This parameter is required.
         self.namespace_password = namespace_password
         self.owner_id = owner_id
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -12098,7 +12322,9 @@ class DescribeDownloadRecordsRequest(TeaModel):
     ):
         # The instance ID.
         # 
-        # > You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
 
     def validate(self):
@@ -12272,7 +12498,9 @@ class DescribeDownloadSQLLogsRequest(TeaModel):
     ):
         # The instance ID.
         # 
-        # > You can call the [DescribeDBInstances](~~86911~~) operation to query details about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query details about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
 
     def validate(self):
@@ -12438,9 +12666,13 @@ class DescribeHealthStatusRequest(TeaModel):
     ):
         # The ID of the instance.
         # 
-        # >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The performance metric that you want to query. Separate multiple values with commas (,). For more information, see [Performance parameters](~~86943~~).
+        # The performance metric that you want to query. Separate multiple values with commas (,). For more information, see [Performance parameters](https://help.aliyun.com/document_detail/86943.html).
+        # 
+        # This parameter is required.
         self.key = key
 
     def validate(self):
@@ -13238,7 +13470,7 @@ class DescribeHealthStatusResponseBody(TeaModel):
         self.request_id = request_id
         # The queried performance metrics. Each performance metric consists of the parameter name, status, and metric value. The metric information is returned only for the performance parameters specified by **Key**. For example, if you set **Key** to **adbpg_status**, only the metric information of **adbpg_status** is returned.
         # 
-        # For more information about performance parameters, see [Performance parameters](~~86943~~).
+        # For more information about performance parameters, see [Performance parameters](https://help.aliyun.com/document_detail/86943.html).
         self.status = status
 
     def validate(self):
@@ -13319,7 +13551,9 @@ class DescribeIMVInfosRequest(TeaModel):
         database: str = None,
         mvname: str = None,
     ):
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # This parameter is required.
         self.database = database
         self.mvname = mvname
 
@@ -13489,9 +13723,13 @@ class DescribeLogBackupsRequest(TeaModel):
     ):
         # The ID of the instance.
         # 
-        # >  You can call the [DescribeDBInstances](~~86911~~) operation to query the IDs of all AnalyticDB for PostgreSQL instances in a specific region.
+        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the IDs of all AnalyticDB for PostgreSQL instances in a specific region.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The end of the time range to query. The end time must be later than the start time. Specify the time in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The number of the page to return. The value must be an integer that is greater than 0. Default value: **1**.
         self.page_number = page_number
@@ -13504,6 +13742,8 @@ class DescribeLogBackupsRequest(TeaModel):
         # Default value: **30**.
         self.page_size = page_size
         # The beginning of the time range to query. Specify the time in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -13726,7 +13966,9 @@ class DescribeModifyParameterLogRequest(TeaModel):
     ):
         # The instance ID.
         # 
-        # > You can call the [DescribeDBInstances](~~196830~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/196830.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The end of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mmZ* format. The time must be in UTC. The end time must be later than the start time.
         self.end_time = end_time
@@ -13913,18 +14155,28 @@ class DescribeNamespaceRequest(TeaModel):
     ):
         # The instance ID.
         # 
-        # > You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The name of the manager account that has the rds_superuser permission.
+        # 
+        # This parameter is required.
         self.manager_account = manager_account
         # The password of the manager account.
+        # 
+        # This parameter is required.
         self.manager_account_password = manager_account_password
         # The name of the namespace.
+        # 
+        # This parameter is required.
         self.namespace = namespace
         self.owner_id = owner_id
         # The region ID of the instance.
         # 
-        # > You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -14088,7 +14340,9 @@ class DescribeParametersRequest(TeaModel):
     ):
         # The ID of the instance.
         # 
-        # >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
 
     def validate(self):
@@ -14288,7 +14542,7 @@ class DescribeRdsVSwitchsRequest(TeaModel):
         self.owner_id = owner_id
         # The ID of the region.
         # 
-        # >  You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list and zone list.
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list and zone list.
         self.region_id = region_id
         # This parameter is no longer used.
         self.resource_group_id = resource_group_id
@@ -14299,13 +14553,13 @@ class DescribeRdsVSwitchsRequest(TeaModel):
         # 
         # > 
         # 
-        # *   You can call the [DescribeRdsVpcs](~~208327~~) operation to query the available VPC IDs.
+        # *   You can call the [DescribeRdsVpcs](https://help.aliyun.com/document_detail/208327.html) operation to query the available VPC IDs.
         # 
         # *   This parameter must be specified.
         self.vpc_id = vpc_id
         # The ID of the zone.
         # 
-        # >  You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list and zone list.
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list and zone list.
         self.zone_id = zone_id
 
     def validate(self):
@@ -14591,7 +14845,7 @@ class DescribeRdsVpcsRequest(TeaModel):
         self.owner_id = owner_id
         # The ID of the region.
         # 
-        # >  You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
         self.region_id = region_id
         # The ID of the resource group to which the instance belongs.
         self.resource_group_id = resource_group_id
@@ -14959,7 +15213,7 @@ class DescribeRegionsRequest(TeaModel):
     ):
         # The ID of the region.
         # 
-        # >  You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
         self.region = region
 
     def validate(self):
@@ -15224,13 +15478,17 @@ class DescribeSQLLogCountRequest(TeaModel):
     ):
         # The instance ID.
         # 
-        # > You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The name of the database.
         self.database = database
         # The end of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
         # 
         # > The end time must be later than the start time. The maximum time range that can be specified is seven days.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The execution duration of the SQL statement. Unit: seconds.
         self.execute_cost = execute_cost
@@ -15265,6 +15523,8 @@ class DescribeSQLLogCountRequest(TeaModel):
         # The source IP address.
         self.source_ip = source_ip
         # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+        # 
+        # This parameter is required.
         self.start_time = start_time
         # The name of the database account that is used to connect to the database.
         self.user = user
@@ -15570,13 +15830,17 @@ class DescribeSQLLogsRequest(TeaModel):
     ):
         # The instance ID.
         # 
-        # > You can call the [DescribeDBInstances](~~86911~~) operation to query the IDs of all AnalyticDB for PostgreSQL instances within a region.
+        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the IDs of all AnalyticDB for PostgreSQL instances within a region.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The name of the database.
         self.database = database
         # The end of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mmZ* format. The time must be in UTC.
         # 
         # > The end time must be later than the start time. The maximum time range that can be specified is seven days.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The execution duration of the SQL statement. Unit: seconds.
         self.execute_cost = execute_cost
@@ -15621,6 +15885,8 @@ class DescribeSQLLogsRequest(TeaModel):
         # The source IP address.
         self.source_ip = source_ip
         # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mmZ* format. The time must be in UTC.
+        # 
+        # This parameter is required.
         self.start_time = start_time
         # The name of the database account.
         self.user = user
@@ -15944,7 +16210,9 @@ class DescribeSQLLogsV2Request(TeaModel):
     ):
         # The ID of instance.
         # 
-        # >  You can call the [DescribeDBInstances](~~86911~~) operation to query details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The name of the database.
         self.database = database
@@ -15985,7 +16253,9 @@ class DescribeSQLLogsV2Request(TeaModel):
         self.query_keywords = query_keywords
         # The region ID of the instance.
         # 
-        # > You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group to which the instance belongs.
         self.resource_group_id = resource_group_id
@@ -16301,7 +16571,9 @@ class DescribeSampleDataRequest(TeaModel):
     ):
         # The ID of the instance.
         # 
-        # >  You can call the [DescribeDBInstances](~~86911~~) operation to query the IDs of all AnalyticDB for PostgreSQL instances in a specific region.
+        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the IDs of all AnalyticDB for PostgreSQL instances in a specific region.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
 
@@ -16436,7 +16708,9 @@ class DescribeSupportFeaturesRequest(TeaModel):
     ):
         # The ID of the instance.
         # 
-        # >  You can call the [DescribeDBInstances](~~86911~~) operation to query the instance IDs of all AnalyticDB for PostgreSQL instances in a specific region.
+        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the instance IDs of all AnalyticDB for PostgreSQL instances in a specific region.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
 
@@ -16477,8 +16751,8 @@ class DescribeSupportFeaturesResponseBody(TeaModel):
         self.request_id = request_id
         # The features supported by the instance. Valid values:
         # 
-        # *   sample_data: sample dataset. For more information, see [Sample dataset](~~452278~~).
-        # *   diagnose_and_optimize: diagnostics and optimization. For more information, see [Diagnostics and optimization](~~323453~~).
+        # *   sample_data: sample dataset. For more information, see [Sample dataset](https://help.aliyun.com/document_detail/452278.html).
+        # *   diagnose_and_optimize: diagnostics and optimization. For more information, see [Diagnostics and optimization](https://help.aliyun.com/document_detail/323453.html).
         self.support_feature_list = support_feature_list
 
     def validate(self):
@@ -16565,13 +16839,17 @@ class DescribeTagsRequest(TeaModel):
         self.owner_id = owner_id
         # The ID of the region.
         # 
-        # >  You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # This parameter is no longer used.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The type of the resource. Set the value to **instance**.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
 
     def validate(self):
@@ -16749,6 +17027,8 @@ class DescribeUserEncryptionKeyListRequest(TeaModel):
         # The number of KMS keys to return on each page. Default value: 10.
         self.page_size = page_size
         # The ID of the region.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -16900,13 +17180,19 @@ class DescribeWaitingSQLInfoRequest(TeaModel):
     ):
         # The ID of the instance.
         # 
-        # >  You can call the [DescribeDBInstances](~~86911~~) operation to query the instance IDs of all AnalyticDB for PostgreSQL instances in a specific region.
+        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the instance IDs of all AnalyticDB for PostgreSQL instances in a specific region.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The name of the database.
+        # 
+        # This parameter is required.
         self.database = database
         # The ID of the process that uniquely identifies the query.
         # 
-        # >  You can call the [DescribeWaitingSQLRecords](~~461735~~) operation to obtain the process IDs of lock-waiting queries.
+        # >  You can call the [DescribeWaitingSQLRecords](https://help.aliyun.com/document_detail/461735.html) operation to obtain the process IDs of lock-waiting queries.
+        # 
+        # This parameter is required.
         self.pid = pid
 
     def validate(self):
@@ -17135,9 +17421,13 @@ class DescribeWaitingSQLRecordsRequest(TeaModel):
     ):
         # The ID of the instance.
         # 
-        # >  You can call the [DescribeDBInstances](~~86911~~) operation to query the instance IDs of all AnalyticDB for PostgreSQL instances in a specific region.
+        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the instance IDs of all AnalyticDB for PostgreSQL instances in a specific region.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The name of the database.
+        # 
+        # This parameter is required.
         self.database = database
         # The end of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC. The end time must be later than the start time.
         # 
@@ -17164,6 +17454,8 @@ class DescribeWaitingSQLRecordsRequest(TeaModel):
         # *   `{"Type":"maxCost","Value":"10"}`: filters the top 10 longest-waiting queries.
         # *   `{"Type":"status","Value":"LockWaiting"}`: filters lock-waiting queries.
         # *   `{"Type":"status","Value":"ResourceWaiting"}`: filters resource-waiting queries.
+        # 
+        # This parameter is required.
         self.query_condition = query_condition
         # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
         # 
@@ -17420,9 +17712,13 @@ class DownloadDiagnosisRecordsRequest(TeaModel):
     ):
         # The ID of the instance.
         # 
-        # >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The name of the database.
+        # 
+        # This parameter is required.
         self.database = database
         # The end of the time range to query. Specify the time in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
         self.end_time = end_time
@@ -17443,7 +17739,7 @@ class DownloadDiagnosisRecordsRequest(TeaModel):
         # *   `{"Type":"cost","Min":"60000"}`: filters the queries that consume 1 minute or more.
         # *   `{"Type":"cost","Min":"30","Max":"50"}`: filters the queries that consume 30 milliseconds or more and less than 50 milliseconds. You can customize a filter condition by setting **Min** and **Max**.
         self.query_condition = query_condition
-        # The ID of the resource group to which the instance belongs. For more information about how to obtain the ID of a resource group, see [View basic information of a resource group](~~151181~~).
+        # The ID of the resource group to which the instance belongs. For more information about how to obtain the ID of a resource group, see [View basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
         self.resource_group_id = resource_group_id
         # The beginning of the time range to query. Specify the time in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
         self.start_time = start_time
@@ -17603,11 +17899,15 @@ class DownloadSQLLogsRecordsRequest(TeaModel):
     ):
         # The instance ID.
         # 
-        # > You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The name of the database.
         self.database = database
         # The end of the time range to query. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format. The end time must be later than the start time.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The execution duration of the SQL statement. Unit: seconds.
         self.execute_cost = execute_cost
@@ -17646,6 +17946,8 @@ class DownloadSQLLogsRecordsRequest(TeaModel):
         # The source IP address.
         self.source_ip = source_ip
         # The beginning of the time range to query. Specify the time in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC.
+        # 
+        # This parameter is required.
         self.start_time = start_time
         # The name of the database account.
         self.user = user
@@ -17817,12 +18119,17 @@ class GetUploadDocumentJobRequest(TeaModel):
         owner_id: int = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.collection = collection
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # This parameter is required.
         self.job_id = job_id
         self.namespace = namespace
+        # This parameter is required.
         self.namespace_password = namespace_password
         self.owner_id = owner_id
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -18116,12 +18423,17 @@ class GetUpsertCollectionDataJobRequest(TeaModel):
         owner_id: int = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.collection = collection
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # This parameter is required.
         self.job_id = job_id
         self.namespace = namespace
+        # This parameter is required.
         self.namespace_password = namespace_password
         self.owner_id = owner_id
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -18334,29 +18646,43 @@ class GrantCollectionRequest(TeaModel):
         region_id: str = None,
     ):
         # The name of the collection.
+        # 
+        # This parameter is required.
         self.collection = collection
         # The ID of the instance in reserved storage mode.
         # 
-        # > You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The name of the namespace to which you want to grant the vector collection permissions.
+        # 
+        # This parameter is required.
         self.grant_to_namespace = grant_to_namespace
         # The type of the permissions that you want to grant. Valid values:
         # 
         # *   rw: the read and write permissions.
         # *   ro: the read-only permission.
         # *   none: the delete permission.
+        # 
+        # This parameter is required.
         self.grant_type = grant_type
         # The name of the manager account that has the rds_superuser permission.
+        # 
+        # This parameter is required.
         self.manager_account = manager_account
         # The password of the manager account.
+        # 
+        # This parameter is required.
         self.manager_account_password = manager_account_password
         # The name of the namespace.
         self.namespace = namespace
         self.owner_id = owner_id
         # The region ID of the instance.
         # 
-        # > You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -18504,8 +18830,10 @@ class HandleActiveSQLRecordRequest(TeaModel):
         operate_type: int = None,
         pids: str = None,
     ):
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.operate_type = operate_type
+        # This parameter is required.
         self.pids = pids
 
     def validate(self):
@@ -18674,16 +19002,24 @@ class InitVectorDatabaseRequest(TeaModel):
     ):
         # The instance ID.
         # 
-        # > You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The name of the database account that has the rds_superuser permission.
+        # 
+        # This parameter is required.
         self.manager_account = manager_account
         # The password of the database account.
+        # 
+        # This parameter is required.
         self.manager_account_password = manager_account_password
         self.owner_id = owner_id
         # The region ID.
         # 
-        # > You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -18819,16 +19155,22 @@ class ListCollectionsRequest(TeaModel):
     ):
         # The instance ID.
         # 
-        # > You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The name of the namespace.
         self.namespace = namespace
         # The password of the namespace.
+        # 
+        # This parameter is required.
         self.namespace_password = namespace_password
         self.owner_id = owner_id
         # The region ID of the instance.
         # 
-        # > You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -19026,10 +19368,13 @@ class ListDocumentCollectionsRequest(TeaModel):
         owner_id: int = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.namespace = namespace
+        # This parameter is required.
         self.namespace_password = namespace_password
         self.owner_id = owner_id
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -19270,11 +19615,15 @@ class ListDocumentsRequest(TeaModel):
         owner_id: int = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.collection = collection
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.namespace = namespace
+        # This parameter is required.
         self.namespace_password = namespace_password
         self.owner_id = owner_id
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -19484,16 +19833,24 @@ class ListNamespacesRequest(TeaModel):
     ):
         # The instance ID.
         # 
-        # > You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The name of the manager account that has the rds_superuser permission.
+        # 
+        # This parameter is required.
         self.manager_account = manager_account
         # The password of the manager account.
+        # 
+        # This parameter is required.
         self.manager_account_password = manager_account_password
         self.owner_id = owner_id
         # The region ID of the instance.
         # 
-        # > You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -19737,7 +20094,9 @@ class ListTagResourcesRequest(TeaModel):
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the instance. You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+        # The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of instance N. Valid values of N: 1 to 50.
         self.resource_id = resource_id
@@ -19747,6 +20106,8 @@ class ListTagResourcesRequest(TeaModel):
         # 
         # *   `instance`: reserved storage mode
         # *   `ALIYUN::GPDB::INSTANCE`: elastic storage mode
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The queried tags.
         self.tag = tag
@@ -19991,14 +20352,20 @@ class ModifyAccountDescriptionRequest(TeaModel):
         # 
         # *   The description must start with a letter.
         # *   The description cannot start with `http://` or `https://`.
-        # *   The description can contain letters, underscores (\_), hyphens (-), and digits.
+        # *   The description can contain letters, underscores (_), hyphens (-), and digits.
         # *   The description must be 2 to 256 characters in length.
+        # 
+        # This parameter is required.
         self.account_description = account_description
         # The name of the database account.
+        # 
+        # This parameter is required.
         self.account_name = account_name
         # The instance ID.
         # 
-        # > You can call the [DescribeDBInstances](~~86911~~) operation to query the IDs of all AnalyticDB for PostgreSQL instances within a region.
+        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the IDs of all AnalyticDB for PostgreSQL instances within a region.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
 
     def validate(self):
@@ -20111,6 +20478,8 @@ class ModifyBackupPolicyRequest(TeaModel):
         # The number of days for which data backup files are retained. Default value: 7. Maximum value: 7. Valid values: 1 to 7.
         self.backup_retention_period = backup_retention_period
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # Specifies whether to enable automatic point-in-time backup.
         # 
@@ -20128,8 +20497,12 @@ class ModifyBackupPolicyRequest(TeaModel):
         # *   Friday
         # *   Saturday
         # *   Sunday
+        # 
+        # This parameter is required.
         self.preferred_backup_period = preferred_backup_period
         # The backup window. Specify the backup window in the HH:mmZ-HH:mmZ format. The backup window must be in UTC. Default value: 00:00-01:00.
+        # 
+        # This parameter is required.
         self.preferred_backup_time = preferred_backup_time
         # The frequency of point-in-time backup.
         # 
@@ -20263,11 +20636,13 @@ class ModifyDBInstanceConfigRequest(TeaModel):
         self.dbinstance_description = dbinstance_description
         # The ID of the instance.
         # 
-        # >  You can call the [DescribeDBInstances](~~86911~~) operation to query the instance IDs of all AnalyticDB for PostgreSQL instances in a specific region.
+        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the instance IDs of all AnalyticDB for PostgreSQL instances in a specific region.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The wait period for the instance that has no traffic to become idle. Minimum value: 60. Default value: 600. Unit: seconds.
         self.idle_time = idle_time
-        # The ID of the resource group to which the instance belongs. For more information about how to obtain the ID of a resource group, see [View basic information of a resource group](~~151181~~).
+        # The ID of the resource group to which the instance belongs. For more information about how to obtain the ID of a resource group, see [View basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
         self.resource_group_id = resource_group_id
         # The threshold of computing resources. Valid values: 8 to 32. Unit: AnalyticDB Compute Units (ACUs).
         self.serverless_resource = serverless_resource
@@ -20410,12 +20785,20 @@ class ModifyDBInstanceConnectionStringRequest(TeaModel):
         port: str = None,
     ):
         # The endpoint prefix of the instance.
+        # 
+        # This parameter is required.
         self.connection_string_prefix = connection_string_prefix
         # The current endpoint of the instance.
+        # 
+        # This parameter is required.
         self.current_connection_string = current_connection_string
         # The instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The port number. Example: 5432.
+        # 
+        # This parameter is required.
         self.port = port
 
     def validate(self):
@@ -20529,10 +20912,14 @@ class ModifyDBInstanceDescriptionRequest(TeaModel):
         # The description of the instance.
         # 
         # The description must be 2 to 256 characters in length. It cannot start with http:// or https://.
+        # 
+        # This parameter is required.
         self.dbinstance_description = dbinstance_description
         # The ID of the instance.
         # 
-        # >  You can call the [DescribeDBInstances](~~86911~~) operation to query the instance IDs of all AnalyticDB for PostgreSQL instances in a specific region.
+        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the instance IDs of all AnalyticDB for PostgreSQL instances in a specific region.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # This parameter is no longer used.
         self.resource_group_id = resource_group_id
@@ -20644,13 +21031,19 @@ class ModifyDBInstanceMaintainTimeRequest(TeaModel):
     ):
         # The ID of the instance.
         # 
-        # >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The end time of the maintenance window. The end time must be later than the start time. Specify the time in the HH:mmZ format. The time must be in UTC.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # This parameter is no longer used.
         self.resource_group_id = resource_group_id
         # The start time of the maintenance window. Specify the time in the HH:mmZ format. The time must be in UTC.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -20767,13 +21160,17 @@ class ModifyDBInstanceResourceGroupRequest(TeaModel):
     ):
         # The ID of the instance.
         # 
-        # >  You can call the [DescribeDBInstances](~~86911~~) operation to query the instance IDs of all AnalyticDB for PostgreSQL instances in a specific region.
+        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the instance IDs of all AnalyticDB for PostgreSQL instances in a specific region.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The ID of the resource group to which you want to move the instance. For more information about how to obtain the ID of a resource group, see [View basic information of a resource group](~~151181~~).
+        # The ID of the resource group to which you want to move the instance. For more information about how to obtain the ID of a resource group, see [View basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
+        # 
+        # This parameter is required.
         self.new_resource_group_id = new_resource_group_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the resource group to which the instance belongs. For more information about how to obtain the ID of a resource group, see [View basic information of a resource group](~~151181~~).
+        # The ID of the resource group to which the instance belongs. For more information about how to obtain the ID of a resource group, see [View basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -20901,12 +21298,16 @@ class ModifyDBInstanceSSLRequest(TeaModel):
         # The encrypted endpoint. By default, the wildcards are used for instances that are hosted on ECS instances. This way, the endpoints that can be resolved to the same IP address are encrypted.
         self.connection_string = connection_string
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The status of SSL encryption. Valid values:
         # 
         # *   0: disables SSL encryption.
         # *   1: enables SSL encryption.
         # *   2: updates SSL encryption.
+        # 
+        # This parameter is required.
         self.sslenabled = sslenabled
 
     def validate(self):
@@ -21015,6 +21416,7 @@ class ModifyMasterSpecRequest(TeaModel):
         resource_group_id: str = None,
     ):
         self.dbinstance_description = dbinstance_description
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.master_cu = master_cu
         self.resource_group_id = resource_group_id
@@ -21146,7 +21548,9 @@ class ModifyParametersRequest(TeaModel):
     ):
         # The ID of the instance.
         # 
-        # >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # Specifies whether to forcibly restart the instance. Valid values:
         # 
@@ -21155,7 +21559,9 @@ class ModifyParametersRequest(TeaModel):
         self.force_restart_instance = force_restart_instance
         # The name and value of the parameter to be modified. Specify the parameter in the `<Parameter name>:<Parameter value>` format.
         # 
-        # You can call the [DescribeParameters](~~208310~~) operation to query the parameters that can be modified.
+        # You can call the [DescribeParameters](https://help.aliyun.com/document_detail/208310.html) operation to query the parameters that can be modified.
+        # 
+        # This parameter is required.
         self.parameters = parameters
 
     def validate(self):
@@ -21262,11 +21668,15 @@ class ModifySQLCollectorPolicyRequest(TeaModel):
         sqlcollector_status: str = None,
     ):
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # Specifies whether to enable or disable SQL collection.
         # 
         # *   Enable: enables SQL collection.
         # *   Disabled: disables SQL collection.
+        # 
+        # This parameter is required.
         self.sqlcollector_status = sqlcollector_status
 
     def validate(self):
@@ -21380,7 +21790,9 @@ class ModifySecurityIpsRequest(TeaModel):
         self.dbinstance_iparray_name = dbinstance_iparray_name
         # The ID of the instance.
         # 
-        # >  You can call the [DescribeDBInstances](~~86911~~) operation to query the instance IDs of all AnalyticDB for PostgreSQL instances in a specific region.
+        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the instance IDs of all AnalyticDB for PostgreSQL instances in a specific region.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The method of modification. Valid values:
         # 
@@ -21388,13 +21800,15 @@ class ModifySecurityIpsRequest(TeaModel):
         # *   **Append**: appends data to the whitelist.
         # *   **Delete**: deletes the whitelist.
         self.modify_mode = modify_mode
-        # The ID of the resource group to which the instance belongs. For more information about how to obtain the ID of a resource group, see [View basic information of a resource group](~~151181~~).
+        # The ID of the resource group to which the instance belongs. For more information about how to obtain the ID of a resource group, see [View basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
         self.resource_group_id = resource_group_id
         # The IP addresses listed in the whitelist. You can add up to 1,000 IP addresses to the whitelist. Separate multiple IP addresses with commas (,). The IP addresses must use one of the following formats:
         # 
         # *   0.0.0.0/0
         # *   10.23.12.24. This is a standard IP address.
         # *   10.23.12.24/24. This is a CIDR block. The value `/24` indicates that the prefix of the CIDR block is 24-bit long. You can replace 24 with a value in the range of `1 to 32`.
+        # 
+        # This parameter is required.
         self.security_iplist = security_iplist
 
     def validate(self):
@@ -21515,7 +21929,7 @@ class ModifyVectorConfigurationRequest(TeaModel):
     ):
         # The instance ID.
         # 
-        # >  You can call the [DescribeDBInstances](~~86911~~) operation to query the IDs of all AnalyticDB for PostgreSQL instances in a region.
+        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the IDs of all AnalyticDB for PostgreSQL instances in a region.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
         # Specifies whether to enable vector engine optimization. Valid values:
@@ -21658,7 +22072,9 @@ class PauseInstanceRequest(TeaModel):
     ):
         # The ID of the instance.
         # 
-        # >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
 
@@ -21802,8 +22218,10 @@ class QueryCollectionDataRequest(TeaModel):
         top_k: int = None,
         vector: List[float] = None,
     ):
+        # This parameter is required.
         self.collection = collection
         self.content = content
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.filter = filter
         self.hybrid_search = hybrid_search
@@ -21812,11 +22230,14 @@ class QueryCollectionDataRequest(TeaModel):
         self.include_values = include_values
         self.metrics = metrics
         self.namespace = namespace
+        # This parameter is required.
         self.namespace_password = namespace_password
         self.offset = offset
         self.order_by = order_by
         self.owner_id = owner_id
+        # This parameter is required.
         self.region_id = region_id
+        # This parameter is required.
         self.top_k = top_k
         self.vector = vector
 
@@ -21925,8 +22346,10 @@ class QueryCollectionDataShrinkRequest(TeaModel):
         top_k: int = None,
         vector_shrink: str = None,
     ):
+        # This parameter is required.
         self.collection = collection
         self.content = content
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.filter = filter
         self.hybrid_search = hybrid_search
@@ -21935,11 +22358,14 @@ class QueryCollectionDataShrinkRequest(TeaModel):
         self.include_values = include_values
         self.metrics = metrics
         self.namespace = namespace
+        # This parameter is required.
         self.namespace_password = namespace_password
         self.offset = offset
         self.order_by = order_by
         self.owner_id = owner_id
+        # This parameter is required.
         self.region_id = region_id
+        # This parameter is required.
         self.top_k = top_k
         self.vector_shrink = vector_shrink
 
@@ -22253,8 +22679,10 @@ class QueryContentRequest(TeaModel):
         top_k: int = None,
         use_full_text_retrieval: bool = None,
     ):
+        # This parameter is required.
         self.collection = collection
         self.content = content
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.file_name = file_name
         self.file_url = file_url
@@ -22265,9 +22693,11 @@ class QueryContentRequest(TeaModel):
         self.include_vector = include_vector
         self.metrics = metrics
         self.namespace = namespace
+        # This parameter is required.
         self.namespace_password = namespace_password
         self.owner_id = owner_id
         self.recall_window = recall_window
+        # This parameter is required.
         self.region_id = region_id
         self.rerank_factor = rerank_factor
         self.top_k = top_k
@@ -22388,8 +22818,10 @@ class QueryContentAdvanceRequest(TeaModel):
         top_k: int = None,
         use_full_text_retrieval: bool = None,
     ):
+        # This parameter is required.
         self.collection = collection
         self.content = content
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.file_name = file_name
         self.file_url_object = file_url_object
@@ -22400,9 +22832,11 @@ class QueryContentAdvanceRequest(TeaModel):
         self.include_vector = include_vector
         self.metrics = metrics
         self.namespace = namespace
+        # This parameter is required.
         self.namespace_password = namespace_password
         self.owner_id = owner_id
         self.recall_window = recall_window
+        # This parameter is required.
         self.region_id = region_id
         self.rerank_factor = rerank_factor
         self.top_k = top_k
@@ -22523,8 +22957,10 @@ class QueryContentShrinkRequest(TeaModel):
         top_k: int = None,
         use_full_text_retrieval: bool = None,
     ):
+        # This parameter is required.
         self.collection = collection
         self.content = content
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.file_name = file_name
         self.file_url = file_url
@@ -22535,9 +22971,11 @@ class QueryContentShrinkRequest(TeaModel):
         self.include_vector = include_vector
         self.metrics = metrics
         self.namespace = namespace
+        # This parameter is required.
         self.namespace_password = namespace_password
         self.owner_id = owner_id
         self.recall_window_shrink = recall_window_shrink
+        # This parameter is required.
         self.region_id = region_id
         self.rerank_factor = rerank_factor
         self.top_k = top_k
@@ -23083,11 +23521,13 @@ class RebalanceDBInstanceRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests.
         # 
-        # The token can be up to 64 characters in length and can contain letters, digits, hyphens (-), and underscores (\_).
+        # The token can be up to 64 characters in length and can contain letters, digits, hyphens (-), and underscores (_).
         # 
-        # For more information, see [How to ensure idempotence](~~134212~~).
+        # For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/134212.html).
         self.client_token = client_token
         # The instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
 
     def validate(self):
@@ -23198,10 +23638,14 @@ class ReleaseInstancePublicConnectionRequest(TeaModel):
         # The public endpoint of the instance.
         # 
         # You can log on to the AnalyticDB for PostgreSQL console and go to the **Basic Information** page of the instance to view the **public endpoint** in the **Database Connection** section.
+        # 
+        # This parameter is required.
         self.current_connection_string = current_connection_string
         # The ID of the instance.
         # 
-        # >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
 
     def validate(self):
@@ -23309,13 +23753,19 @@ class ResetAccountPasswordRequest(TeaModel):
         dbinstance_id: str = None,
     ):
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.account_name = account_name
         # The name of the account.
+        # 
+        # This parameter is required.
         self.account_password = account_password
         # Before you call this operation, make sure that the following requirements are met:
         # 
         # *   The instance is in the running state.
         # *   The instance is not locked.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
 
     def validate(self):
@@ -23421,7 +23871,9 @@ class ResetIMVMonitorDataRequest(TeaModel):
         dbinstance_id: str = None,
         database: str = None,
     ):
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # This parameter is required.
         self.database = database
 
     def validate(self):
@@ -23528,11 +23980,13 @@ class RestartDBInstanceRequest(TeaModel):
         client_token: str = None,
         dbinstance_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. For more information, see [How to ensure idempotence](~~327176~~).
+        # The client token that is used to ensure the idempotence of the request. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/327176.html).
         self.client_token = client_token
         # The ID of the instance.
         # 
-        # >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
 
     def validate(self):
@@ -23636,7 +24090,9 @@ class ResumeInstanceRequest(TeaModel):
     ):
         # The ID of the instance.
         # 
-        # >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
 
@@ -23769,17 +24225,23 @@ class SetDBInstancePlanStatusRequest(TeaModel):
     ):
         # The ID of the instance.
         # 
-        # >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
         # The ID of the plan.
         # 
-        # >  You can call the [DescribeDBInstancePlans](~~449398~~) operation to query the details of plans, including plan IDs.
+        # >  You can call the [DescribeDBInstancePlans](https://help.aliyun.com/document_detail/449398.html) operation to query the details of plans, including plan IDs.
+        # 
+        # This parameter is required.
         self.plan_id = plan_id
         # Specifies whether to enable or disable the plan. Valid values:
         # 
         # *   **disable**: disables the plan.
         # *   **enable**: enables the plan.
+        # 
+        # This parameter is required.
         self.plan_status = plan_status
 
     def validate(self):
@@ -23918,17 +24380,23 @@ class SetDataShareInstanceRequest(TeaModel):
     ):
         # The ID of the AnalyticDB for PostgreSQL instance in Serverless mode.
         # 
-        # >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+        # 
+        # This parameter is required.
         self.instance_list = instance_list
         # Specifies whether to enable or disable data sharing. Valid values:
         # 
         # *   **add**: enables data sharing.
         # *   **remove**: disables data sharing.
+        # 
+        # This parameter is required.
         self.operation_type = operation_type
         self.owner_id = owner_id
         # The ID of the region.
         # 
-        # >  You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -23973,17 +24441,23 @@ class SetDataShareInstanceShrinkRequest(TeaModel):
     ):
         # The ID of the AnalyticDB for PostgreSQL instance in Serverless mode.
         # 
-        # >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+        # 
+        # This parameter is required.
         self.instance_list_shrink = instance_list_shrink
         # Specifies whether to enable or disable data sharing. Valid values:
         # 
         # *   **add**: enables data sharing.
         # *   **remove**: disables data sharing.
+        # 
+        # This parameter is required.
         self.operation_type = operation_type
         self.owner_id = owner_id
         # The ID of the region.
         # 
-        # >  You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -24115,12 +24589,18 @@ class SwitchDBInstanceNetTypeRequest(TeaModel):
         # 
         # *   The prefix can contain lowercase letters, digits, and hyphens (-) and must start with a lowercase letter.
         # *   The prefix can be up to 30 characters in length.
+        # 
+        # This parameter is required.
         self.connection_string_prefix = connection_string_prefix
         # The instance ID.
         # 
-        # > You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The port number.
+        # 
+        # This parameter is required.
         self.port = port
 
     def validate(self):
@@ -24227,8 +24707,12 @@ class TagResourcesRequestTag(TeaModel):
         value: str = None,
     ):
         # The key of a tag. Valid values of N: 1 to 20. This parameter value cannot be an empty string. A tag key can contain a maximum of 128 characters. It cannot start with `aliyun` or`  acs: ` and cannot contain `http://` or`  https:// `.
+        # 
+        # This parameter is required.
         self.key = key
         # The value of a tag. Valid values of N: 1 to 20. This parameter value can be an empty string. A tag value can contain a maximum of 128 characters. It cannot start with `acs:` and cannot contain `http://` or `https://`.
+        # 
+        # This parameter is required.
         self.value = value
 
     def validate(self):
@@ -24269,9 +24753,13 @@ class TagResourcesRequest(TeaModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region. You can call the [DescribeRegions](~~86912~~) operation to query region IDs.
+        # The ID of the region. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query region IDs.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of an instance. Valid values of N: 1 to 50.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -24279,8 +24767,12 @@ class TagResourcesRequest(TeaModel):
         # 
         # *   `instance`: reserved storage mode
         # *   `ALIYUN::GPDB::INSTANCE`: elastic storage mode
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The list of tags.
+        # 
+        # This parameter is required.
         self.tag = tag
 
     def validate(self):
@@ -24416,7 +24908,9 @@ class UnloadSampleDataRequest(TeaModel):
     ):
         # The ID of the instance.
         # 
-        # >  You can call the [DescribeDBInstances](~~86911~~) operation to query the IDs of all AnalyticDB for PostgreSQL instances in a specific region.
+        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the IDs of all AnalyticDB for PostgreSQL instances in a specific region.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
 
@@ -24559,8 +25053,11 @@ class UntagResourcesRequest(TeaModel):
         self.all = all
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the instance. You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+        # The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
+        # This parameter is required.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -24568,6 +25065,8 @@ class UntagResourcesRequest(TeaModel):
         # 
         # *   `instance`: reserved storage mode
         # *   `ALIYUN::GPDB::INSTANCE`: elastic storage mode
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         self.tag_key = tag_key
 
@@ -24705,17 +25204,24 @@ class UpdateCollectionDataMetadataRequest(TeaModel):
         owner_id: int = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.collection = collection
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.filter = filter
         # The row IDs of the data that you want to update. You must specify one of the Ids and Filter parameters.
         self.ids = ids
         # The data that you want to update, which is a JSON string in the MAP format. In the JSON string, key specifies the field name and value specifies the new data value.
+        # 
+        # This parameter is required.
         self.metadata = metadata
         self.namespace = namespace
+        # This parameter is required.
         self.namespace_password = namespace_password
         self.owner_id = owner_id
         # The region ID of the instance.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -24783,17 +25289,24 @@ class UpdateCollectionDataMetadataShrinkRequest(TeaModel):
         owner_id: int = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.collection = collection
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.filter = filter
         # The row IDs of the data that you want to update. You must specify one of the Ids and Filter parameters.
         self.ids_shrink = ids_shrink
         # The data that you want to update, which is a JSON string in the MAP format. In the JSON string, key specifies the field name and value specifies the new data value.
+        # 
+        # This parameter is required.
         self.metadata_shrink = metadata_shrink
         self.namespace = namespace
+        # This parameter is required.
         self.namespace_password = namespace_password
         self.owner_id = owner_id
         # The region ID of the instance.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -24948,7 +25461,9 @@ class UpdateDBInstancePlanRequest(TeaModel):
     ):
         # The ID of the instance.
         # 
-        # >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
         # The execution information of the plan. Specify the parameter in the JSON format. The parameter value varies based on the values of **PlanType** and **PlanScheduleType**. The following section describes the PlanConfig parameter.
@@ -24961,7 +25476,9 @@ class UpdateDBInstancePlanRequest(TeaModel):
         self.plan_end_date = plan_end_date
         # The ID of the plan.
         # 
-        # >  You can call the [DescribeDBInstancePlans](~~449398~~) operation to query the details of plans, including plan IDs.
+        # >  You can call the [DescribeDBInstancePlans](https://help.aliyun.com/document_detail/449398.html) operation to query the details of plans, including plan IDs.
+        # 
+        # This parameter is required.
         self.plan_id = plan_id
         # The name of the plan.
         self.plan_name = plan_name
@@ -25143,9 +25660,11 @@ class UpgradeDBInstanceRequest(TeaModel):
         self.dbinstance_group_count = dbinstance_group_count
         # The instance ID.
         # 
-        # > You can call the [DescribeDBInstances](~~86911~~) operation to query the IDs of all AnalyticDB for PostgreSQL instances within a region.
+        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the IDs of all AnalyticDB for PostgreSQL instances within a region.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The specifications of each compute node. For information about the supported specifications, see [Instance specifications](~~35406~~).
+        # The specifications of each compute node. For information about the supported specifications, see [Instance specifications](https://help.aliyun.com/document_detail/35406.html).
         # 
         # > This parameter is available only for instances in elastic storage mode.
         self.instance_spec = instance_spec
@@ -25156,9 +25675,9 @@ class UpgradeDBInstanceRequest(TeaModel):
         self.pay_type = pay_type
         # The region ID of the instance.
         # 
-        # > You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
         self.region_id = region_id
-        # The ID of the resource group to which the instance belongs. For information about how to obtain the ID of a resource group, see [View basic information of a resource group](~~151181~~).
+        # The ID of the resource group to which the instance belongs. For information about how to obtain the ID of a resource group, see [View basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
         self.resource_group_id = resource_group_id
         # The performance level of enhanced SSDs (ESSDs). Valid values:
         # 
@@ -25187,7 +25706,7 @@ class UpgradeDBInstanceRequest(TeaModel):
         # 
         # > 
         # 
-        # *   The supported changes to compute node configurations vary based on the instance resource type. For more information, see the "[Usage notes](~~50956~~)" section of the Change compute node configurations topic.
+        # *   The supported changes to compute node configurations vary based on the instance resource type. For more information, see the "[Usage notes](https://help.aliyun.com/document_detail/50956.html)" section of the Change compute node configurations topic.
         # 
         # *   After you specify a change type, only the corresponding parameters take effect. For example, if you set **UpgradeType** to 0, the parameter that is used to change the number of compute nodes takes effect, but the parameter that is used to change the number of coordinator nodes does not.
         # *   The number of coordinator nodes can be changed only on the China site (aliyun.com).
@@ -25361,6 +25880,8 @@ class UpgradeDBVersionRequest(TeaModel):
         switch_time_mode: str = None,
     ):
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # This parameter is no longer used and does not need to be specified.
         self.major_version = major_version
@@ -25530,16 +26051,22 @@ class UploadDocumentAsyncRequest(TeaModel):
     ):
         self.chunk_overlap = chunk_overlap
         self.chunk_size = chunk_size
+        # This parameter is required.
         self.collection = collection
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.document_loader_name = document_loader_name
         self.dry_run = dry_run
+        # This parameter is required.
         self.file_name = file_name
+        # This parameter is required.
         self.file_url = file_url
         self.metadata = metadata
         self.namespace = namespace
+        # This parameter is required.
         self.namespace_password = namespace_password
         self.owner_id = owner_id
+        # This parameter is required.
         self.region_id = region_id
         self.separators = separators
         self.text_splitter_name = text_splitter_name
@@ -25647,16 +26174,22 @@ class UploadDocumentAsyncAdvanceRequest(TeaModel):
     ):
         self.chunk_overlap = chunk_overlap
         self.chunk_size = chunk_size
+        # This parameter is required.
         self.collection = collection
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.document_loader_name = document_loader_name
         self.dry_run = dry_run
+        # This parameter is required.
         self.file_name = file_name
+        # This parameter is required.
         self.file_url_object = file_url_object
         self.metadata = metadata
         self.namespace = namespace
+        # This parameter is required.
         self.namespace_password = namespace_password
         self.owner_id = owner_id
+        # This parameter is required.
         self.region_id = region_id
         self.separators = separators
         self.text_splitter_name = text_splitter_name
@@ -25764,16 +26297,22 @@ class UploadDocumentAsyncShrinkRequest(TeaModel):
     ):
         self.chunk_overlap = chunk_overlap
         self.chunk_size = chunk_size
+        # This parameter is required.
         self.collection = collection
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.document_loader_name = document_loader_name
         self.dry_run = dry_run
+        # This parameter is required.
         self.file_name = file_name
+        # This parameter is required.
         self.file_url = file_url
         self.metadata_shrink = metadata_shrink
         self.namespace = namespace
+        # This parameter is required.
         self.namespace_password = namespace_password
         self.owner_id = owner_id
+        # This parameter is required.
         self.region_id = region_id
         self.separators_shrink = separators_shrink
         self.text_splitter_name = text_splitter_name
@@ -25951,6 +26490,7 @@ class UpsertChunksRequestTextChunks(TeaModel):
         content: str = None,
         metadata: Dict[str, Any] = None,
     ):
+        # This parameter is required.
         self.content = content
         self.metadata = metadata
 
@@ -25990,12 +26530,16 @@ class UpsertChunksRequest(TeaModel):
         region_id: str = None,
         text_chunks: List[UpsertChunksRequestTextChunks] = None,
     ):
+        # This parameter is required.
         self.collection = collection
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.file_name = file_name
         self.namespace = namespace
+        # This parameter is required.
         self.namespace_password = namespace_password
         self.owner_id = owner_id
+        # This parameter is required.
         self.region_id = region_id
         self.text_chunks = text_chunks
 
@@ -26067,12 +26611,16 @@ class UpsertChunksShrinkRequest(TeaModel):
         region_id: str = None,
         text_chunks_shrink: str = None,
     ):
+        # This parameter is required.
         self.collection = collection
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.file_name = file_name
         self.namespace = namespace
+        # This parameter is required.
         self.namespace_password = namespace_password
         self.owner_id = owner_id
+        # This parameter is required.
         self.region_id = region_id
         self.text_chunks_shrink = text_chunks_shrink
 
@@ -26219,6 +26767,7 @@ class UpsertCollectionDataRequestRows(TeaModel):
     ):
         self.id = id
         self.metadata = metadata
+        # This parameter is required.
         self.vector = vector
 
     def validate(self):
@@ -26261,19 +26810,27 @@ class UpsertCollectionDataRequest(TeaModel):
         rows: List[UpsertCollectionDataRequestRows] = None,
     ):
         # The name of the collection.
+        # 
+        # This parameter is required.
         self.collection = collection
         # The instance ID.
         # 
-        # > You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The name of the namespace.
         self.namespace = namespace
         # The password of the namespace.
+        # 
+        # This parameter is required.
         self.namespace_password = namespace_password
         self.owner_id = owner_id
         # The region ID of the instance.
         # 
-        # > You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.rows = rows
 
@@ -26341,19 +26898,27 @@ class UpsertCollectionDataShrinkRequest(TeaModel):
         rows_shrink: str = None,
     ):
         # The name of the collection.
+        # 
+        # This parameter is required.
         self.collection = collection
         # The instance ID.
         # 
-        # > You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The name of the namespace.
         self.namespace = namespace
         # The password of the namespace.
+        # 
+        # This parameter is required.
         self.namespace_password = namespace_password
         self.owner_id = owner_id
         # The region ID of the instance.
         # 
-        # > You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.rows_shrink = rows_shrink
 
@@ -26498,12 +27063,17 @@ class UpsertCollectionDataAsyncRequest(TeaModel):
         owner_id: int = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.collection = collection
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # This parameter is required.
         self.file_url = file_url
         self.namespace = namespace
+        # This parameter is required.
         self.namespace_password = namespace_password
         self.owner_id = owner_id
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -26561,12 +27131,17 @@ class UpsertCollectionDataAsyncAdvanceRequest(TeaModel):
         owner_id: int = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.collection = collection
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # This parameter is required.
         self.file_url_object = file_url_object
         self.namespace = namespace
+        # This parameter is required.
         self.namespace_password = namespace_password
         self.owner_id = owner_id
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
