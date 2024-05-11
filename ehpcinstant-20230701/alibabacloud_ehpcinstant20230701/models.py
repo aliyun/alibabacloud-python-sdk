@@ -135,6 +135,7 @@ class AddImageRequest(TeaModel):
         self.container_image_spec = container_image_spec
         self.description = description
         self.image_version = image_version
+        # This parameter is required.
         self.name = name
         self.vmimage_spec = vmimage_spec
 
@@ -191,6 +192,7 @@ class AddImageShrinkRequest(TeaModel):
         self.container_image_spec_shrink = container_image_spec_shrink
         self.description = description
         self.image_version = image_version
+        # This parameter is required.
         self.name = name
         self.vmimage_spec_shrink = vmimage_spec_shrink
 
@@ -569,6 +571,7 @@ class CreateJobRequestTasksTaskSpecTaskExecutorContainer(TeaModel):
     ):
         self.command = command
         self.environment_vars = environment_vars
+        # This parameter is required.
         self.image = image
         self.working_dir = working_dir
 
@@ -619,6 +622,7 @@ class CreateJobRequestTasksTaskSpecTaskExecutorVM(TeaModel):
         prolog_script: str = None,
         script: str = None,
     ):
+        # This parameter is required.
         self.image = image
         self.prolog_script = prolog_script
         self.script = script
@@ -736,6 +740,7 @@ class CreateJobRequestTasksTaskSpec(TeaModel):
         volume_mount: List[CreateJobRequestTasksTaskSpecVolumeMount] = None,
     ):
         self.resource = resource
+        # This parameter is required.
         self.task_executor = task_executor
         self.volume_mount = volume_mount
 
@@ -847,7 +852,9 @@ class CreateJobRequest(TeaModel):
     ):
         self.deployment_policy = deployment_policy
         self.job_description = job_description
+        # This parameter is required.
         self.job_name = job_name
+        # This parameter is required.
         self.tasks = tasks
 
     def validate(self):
@@ -903,7 +910,9 @@ class CreateJobShrinkRequest(TeaModel):
     ):
         self.deployment_policy_shrink = deployment_policy_shrink
         self.job_description = job_description
+        # This parameter is required.
         self.job_name = job_name
+        # This parameter is required.
         self.tasks_shrink = tasks_shrink
 
     def validate(self):
@@ -938,17 +947,55 @@ class CreateJobShrinkRequest(TeaModel):
         return self
 
 
+class CreateJobResponseBodyTasks(TeaModel):
+    def __init__(
+        self,
+        executor_ids: List[str] = None,
+        task_name: str = None,
+    ):
+        self.executor_ids = executor_ids
+        self.task_name = task_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.executor_ids is not None:
+            result['ExecutorIds'] = self.executor_ids
+        if self.task_name is not None:
+            result['TaskName'] = self.task_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExecutorIds') is not None:
+            self.executor_ids = m.get('ExecutorIds')
+        if m.get('TaskName') is not None:
+            self.task_name = m.get('TaskName')
+        return self
+
+
 class CreateJobResponseBody(TeaModel):
     def __init__(
         self,
         job_id: str = None,
         request_id: str = None,
+        tasks: List[CreateJobResponseBodyTasks] = None,
     ):
         self.job_id = job_id
         self.request_id = request_id
+        self.tasks = tasks
 
     def validate(self):
-        pass
+        if self.tasks:
+            for k in self.tasks:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -960,6 +1007,10 @@ class CreateJobResponseBody(TeaModel):
             result['JobId'] = self.job_id
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        result['Tasks'] = []
+        if self.tasks is not None:
+            for k in self.tasks:
+                result['Tasks'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -968,6 +1019,11 @@ class CreateJobResponseBody(TeaModel):
             self.job_id = m.get('JobId')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        self.tasks = []
+        if m.get('Tasks') is not None:
+            for k in m.get('Tasks'):
+                temp_model = CreateJobResponseBodyTasks()
+                self.tasks.append(temp_model.from_map(k))
         return self
 
 
@@ -1596,6 +1652,7 @@ class GetImageRequest(TeaModel):
         self,
         image_id: str = None,
     ):
+        # This parameter is required.
         self.image_id = image_id
 
     def validate(self):
@@ -1770,6 +1827,7 @@ class GetImageResponseBodyImage(TeaModel):
         self.container_image_spec = container_image_spec
         self.create_time = create_time
         self.description = description
+        # This parameter is required.
         self.image_type = image_type
         self.name = name
         self.size = size
@@ -2976,7 +3034,9 @@ class ListImagesResponseBodyImages(TeaModel):
     ):
         self.create_time = create_time
         self.description = description
+        # This parameter is required.
         self.image_id = image_id
+        # This parameter is required.
         self.image_type = image_type
         self.name = name
         self.version = version
@@ -3718,6 +3778,7 @@ class RemoveImageRequest(TeaModel):
         self,
         image_id: str = None,
     ):
+        # This parameter is required.
         self.image_id = image_id
 
     def validate(self):

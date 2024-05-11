@@ -46,6 +46,13 @@ class Client(OpenApiClient):
         tmp_req: ehpc_instant_20230701_models.AddImageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc_instant_20230701_models.AddImageResponse:
+        """
+        @summary 添加托管侧用户自定义镜像
+        
+        @param tmp_req: AddImageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddImageResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ehpc_instant_20230701_models.AddImageShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -88,6 +95,13 @@ class Client(OpenApiClient):
         tmp_req: ehpc_instant_20230701_models.AddImageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc_instant_20230701_models.AddImageResponse:
+        """
+        @summary 添加托管侧用户自定义镜像
+        
+        @param tmp_req: AddImageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddImageResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ehpc_instant_20230701_models.AddImageShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -129,6 +143,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc_instant_20230701_models.AddImageRequest,
     ) -> ehpc_instant_20230701_models.AddImageResponse:
+        """
+        @summary 添加托管侧用户自定义镜像
+        
+        @param request: AddImageRequest
+        @return: AddImageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_image_with_options(request, runtime)
 
@@ -136,6 +156,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc_instant_20230701_models.AddImageRequest,
     ) -> ehpc_instant_20230701_models.AddImageResponse:
+        """
+        @summary 添加托管侧用户自定义镜像
+        
+        @param request: AddImageRequest
+        @return: AddImageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_image_with_options_async(request, runtime)
 
@@ -144,6 +170,13 @@ class Client(OpenApiClient):
         tmp_req: ehpc_instant_20230701_models.CreateJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc_instant_20230701_models.CreateJobResponse:
+        """
+        @summary 提交任务
+        
+        @param tmp_req: CreateJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateJobResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ehpc_instant_20230701_models.CreateJobShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -184,6 +217,13 @@ class Client(OpenApiClient):
         tmp_req: ehpc_instant_20230701_models.CreateJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc_instant_20230701_models.CreateJobResponse:
+        """
+        @summary 提交任务
+        
+        @param tmp_req: CreateJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateJobResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ehpc_instant_20230701_models.CreateJobShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -223,6 +263,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc_instant_20230701_models.CreateJobRequest,
     ) -> ehpc_instant_20230701_models.CreateJobResponse:
+        """
+        @summary 提交任务
+        
+        @param request: CreateJobRequest
+        @return: CreateJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_job_with_options(request, runtime)
 
@@ -230,6 +276,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc_instant_20230701_models.CreateJobRequest,
     ) -> ehpc_instant_20230701_models.CreateJobResponse:
+        """
+        @summary 提交任务
+        
+        @param request: CreateJobRequest
+        @return: CreateJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_job_with_options_async(request, runtime)
 
@@ -238,6 +290,13 @@ class Client(OpenApiClient):
         tmp_req: ehpc_instant_20230701_models.DeleteJobsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc_instant_20230701_models.DeleteJobsResponse:
+        """
+        @summary 删除作业
+        
+        @param tmp_req: DeleteJobsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteJobsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ehpc_instant_20230701_models.DeleteJobsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -274,6 +333,13 @@ class Client(OpenApiClient):
         tmp_req: ehpc_instant_20230701_models.DeleteJobsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc_instant_20230701_models.DeleteJobsResponse:
+        """
+        @summary 删除作业
+        
+        @param tmp_req: DeleteJobsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteJobsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ehpc_instant_20230701_models.DeleteJobsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -309,6 +375,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc_instant_20230701_models.DeleteJobsRequest,
     ) -> ehpc_instant_20230701_models.DeleteJobsResponse:
+        """
+        @summary 删除作业
+        
+        @param request: DeleteJobsRequest
+        @return: DeleteJobsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_jobs_with_options(request, runtime)
 
@@ -316,6 +388,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc_instant_20230701_models.DeleteJobsRequest,
     ) -> ehpc_instant_20230701_models.DeleteJobsResponse:
+        """
+        @summary 删除作业
+        
+        @param request: DeleteJobsRequest
+        @return: DeleteJobsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_jobs_with_options_async(request, runtime)
 
@@ -324,6 +402,13 @@ class Client(OpenApiClient):
         tmp_req: ehpc_instant_20230701_models.DescribeJobMetricDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc_instant_20230701_models.DescribeJobMetricDataResponse:
+        """
+        @summary 查询作业性能数据
+        
+        @param tmp_req: DescribeJobMetricDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeJobMetricDataResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ehpc_instant_20230701_models.DescribeJobMetricDataShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -362,6 +447,13 @@ class Client(OpenApiClient):
         tmp_req: ehpc_instant_20230701_models.DescribeJobMetricDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc_instant_20230701_models.DescribeJobMetricDataResponse:
+        """
+        @summary 查询作业性能数据
+        
+        @param tmp_req: DescribeJobMetricDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeJobMetricDataResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ehpc_instant_20230701_models.DescribeJobMetricDataShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -399,6 +491,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc_instant_20230701_models.DescribeJobMetricDataRequest,
     ) -> ehpc_instant_20230701_models.DescribeJobMetricDataResponse:
+        """
+        @summary 查询作业性能数据
+        
+        @param request: DescribeJobMetricDataRequest
+        @return: DescribeJobMetricDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_job_metric_data_with_options(request, runtime)
 
@@ -406,6 +504,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc_instant_20230701_models.DescribeJobMetricDataRequest,
     ) -> ehpc_instant_20230701_models.DescribeJobMetricDataResponse:
+        """
+        @summary 查询作业性能数据
+        
+        @param request: DescribeJobMetricDataRequest
+        @return: DescribeJobMetricDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_job_metric_data_with_options_async(request, runtime)
 
@@ -414,6 +518,13 @@ class Client(OpenApiClient):
         tmp_req: ehpc_instant_20230701_models.DescribeJobMetricLastRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc_instant_20230701_models.DescribeJobMetricLastResponse:
+        """
+        @summary 查询作业即时监控项
+        
+        @param tmp_req: DescribeJobMetricLastRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeJobMetricLastResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ehpc_instant_20230701_models.DescribeJobMetricLastShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -450,6 +561,13 @@ class Client(OpenApiClient):
         tmp_req: ehpc_instant_20230701_models.DescribeJobMetricLastRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc_instant_20230701_models.DescribeJobMetricLastResponse:
+        """
+        @summary 查询作业即时监控项
+        
+        @param tmp_req: DescribeJobMetricLastRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeJobMetricLastResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ehpc_instant_20230701_models.DescribeJobMetricLastShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -485,6 +603,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc_instant_20230701_models.DescribeJobMetricLastRequest,
     ) -> ehpc_instant_20230701_models.DescribeJobMetricLastResponse:
+        """
+        @summary 查询作业即时监控项
+        
+        @param request: DescribeJobMetricLastRequest
+        @return: DescribeJobMetricLastResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_job_metric_last_with_options(request, runtime)
 
@@ -492,6 +616,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc_instant_20230701_models.DescribeJobMetricLastRequest,
     ) -> ehpc_instant_20230701_models.DescribeJobMetricLastResponse:
+        """
+        @summary 查询作业即时监控项
+        
+        @param request: DescribeJobMetricLastRequest
+        @return: DescribeJobMetricLastResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_job_metric_last_with_options_async(request, runtime)
 
@@ -500,6 +630,13 @@ class Client(OpenApiClient):
         request: ehpc_instant_20230701_models.GetImageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc_instant_20230701_models.GetImageResponse:
+        """
+        @summary 查询托管侧镜像详情。
+        
+        @param request: GetImageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetImageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.image_id):
@@ -528,6 +665,13 @@ class Client(OpenApiClient):
         request: ehpc_instant_20230701_models.GetImageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc_instant_20230701_models.GetImageResponse:
+        """
+        @summary 查询托管侧镜像详情。
+        
+        @param request: GetImageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetImageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.image_id):
@@ -555,6 +699,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc_instant_20230701_models.GetImageRequest,
     ) -> ehpc_instant_20230701_models.GetImageResponse:
+        """
+        @summary 查询托管侧镜像详情。
+        
+        @param request: GetImageRequest
+        @return: GetImageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_image_with_options(request, runtime)
 
@@ -562,6 +712,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc_instant_20230701_models.GetImageRequest,
     ) -> ehpc_instant_20230701_models.GetImageResponse:
+        """
+        @summary 查询托管侧镜像详情。
+        
+        @param request: GetImageRequest
+        @return: GetImageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_image_with_options_async(request, runtime)
 
@@ -570,6 +726,13 @@ class Client(OpenApiClient):
         request: ehpc_instant_20230701_models.GetJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc_instant_20230701_models.GetJobResponse:
+        """
+        @summary 查询作业详情
+        
+        @param request: GetJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.job_id):
@@ -598,6 +761,13 @@ class Client(OpenApiClient):
         request: ehpc_instant_20230701_models.GetJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc_instant_20230701_models.GetJobResponse:
+        """
+        @summary 查询作业详情
+        
+        @param request: GetJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.job_id):
@@ -625,6 +795,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc_instant_20230701_models.GetJobRequest,
     ) -> ehpc_instant_20230701_models.GetJobResponse:
+        """
+        @summary 查询作业详情
+        
+        @param request: GetJobRequest
+        @return: GetJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_job_with_options(request, runtime)
 
@@ -632,6 +808,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc_instant_20230701_models.GetJobRequest,
     ) -> ehpc_instant_20230701_models.GetJobResponse:
+        """
+        @summary 查询作业详情
+        
+        @param request: GetJobRequest
+        @return: GetJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_job_with_options_async(request, runtime)
 
@@ -640,6 +822,13 @@ class Client(OpenApiClient):
         tmp_req: ehpc_instant_20230701_models.ListExecutorsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc_instant_20230701_models.ListExecutorsResponse:
+        """
+        @summary 查询全局Executor信息
+        
+        @param tmp_req: ListExecutorsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListExecutorsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ehpc_instant_20230701_models.ListExecutorsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -676,6 +865,13 @@ class Client(OpenApiClient):
         tmp_req: ehpc_instant_20230701_models.ListExecutorsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc_instant_20230701_models.ListExecutorsResponse:
+        """
+        @summary 查询全局Executor信息
+        
+        @param tmp_req: ListExecutorsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListExecutorsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ehpc_instant_20230701_models.ListExecutorsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -711,6 +907,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc_instant_20230701_models.ListExecutorsRequest,
     ) -> ehpc_instant_20230701_models.ListExecutorsResponse:
+        """
+        @summary 查询全局Executor信息
+        
+        @param request: ListExecutorsRequest
+        @return: ListExecutorsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_executors_with_options(request, runtime)
 
@@ -718,6 +920,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc_instant_20230701_models.ListExecutorsRequest,
     ) -> ehpc_instant_20230701_models.ListExecutorsResponse:
+        """
+        @summary 查询全局Executor信息
+        
+        @param request: ListExecutorsRequest
+        @return: ListExecutorsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_executors_with_options_async(request, runtime)
 
@@ -726,6 +934,13 @@ class Client(OpenApiClient):
         tmp_req: ehpc_instant_20230701_models.ListImagesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc_instant_20230701_models.ListImagesResponse:
+        """
+        @summary 查看托管侧镜像列表
+        
+        @param tmp_req: ListImagesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListImagesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ehpc_instant_20230701_models.ListImagesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -766,6 +981,13 @@ class Client(OpenApiClient):
         tmp_req: ehpc_instant_20230701_models.ListImagesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc_instant_20230701_models.ListImagesResponse:
+        """
+        @summary 查看托管侧镜像列表
+        
+        @param tmp_req: ListImagesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListImagesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ehpc_instant_20230701_models.ListImagesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -805,6 +1027,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc_instant_20230701_models.ListImagesRequest,
     ) -> ehpc_instant_20230701_models.ListImagesResponse:
+        """
+        @summary 查看托管侧镜像列表
+        
+        @param request: ListImagesRequest
+        @return: ListImagesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_images_with_options(request, runtime)
 
@@ -812,6 +1040,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc_instant_20230701_models.ListImagesRequest,
     ) -> ehpc_instant_20230701_models.ListImagesResponse:
+        """
+        @summary 查看托管侧镜像列表
+        
+        @param request: ListImagesRequest
+        @return: ListImagesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_images_with_options_async(request, runtime)
 
@@ -820,6 +1054,13 @@ class Client(OpenApiClient):
         request: ehpc_instant_20230701_models.ListJobExecutorsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc_instant_20230701_models.ListJobExecutorsResponse:
+        """
+        @summary 查询作业Executor信息
+        
+        @param request: ListJobExecutorsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListJobExecutorsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.job_id):
@@ -854,6 +1095,13 @@ class Client(OpenApiClient):
         request: ehpc_instant_20230701_models.ListJobExecutorsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc_instant_20230701_models.ListJobExecutorsResponse:
+        """
+        @summary 查询作业Executor信息
+        
+        @param request: ListJobExecutorsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListJobExecutorsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.job_id):
@@ -887,6 +1135,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc_instant_20230701_models.ListJobExecutorsRequest,
     ) -> ehpc_instant_20230701_models.ListJobExecutorsResponse:
+        """
+        @summary 查询作业Executor信息
+        
+        @param request: ListJobExecutorsRequest
+        @return: ListJobExecutorsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_job_executors_with_options(request, runtime)
 
@@ -894,6 +1148,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc_instant_20230701_models.ListJobExecutorsRequest,
     ) -> ehpc_instant_20230701_models.ListJobExecutorsResponse:
+        """
+        @summary 查询作业Executor信息
+        
+        @param request: ListJobExecutorsRequest
+        @return: ListJobExecutorsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_job_executors_with_options_async(request, runtime)
 
@@ -902,6 +1162,13 @@ class Client(OpenApiClient):
         tmp_req: ehpc_instant_20230701_models.ListJobsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc_instant_20230701_models.ListJobsResponse:
+        """
+        @summary 查询作业列表
+        
+        @param tmp_req: ListJobsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListJobsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ehpc_instant_20230701_models.ListJobsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -942,6 +1209,13 @@ class Client(OpenApiClient):
         tmp_req: ehpc_instant_20230701_models.ListJobsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc_instant_20230701_models.ListJobsResponse:
+        """
+        @summary 查询作业列表
+        
+        @param tmp_req: ListJobsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListJobsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ehpc_instant_20230701_models.ListJobsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -981,6 +1255,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc_instant_20230701_models.ListJobsRequest,
     ) -> ehpc_instant_20230701_models.ListJobsResponse:
+        """
+        @summary 查询作业列表
+        
+        @param request: ListJobsRequest
+        @return: ListJobsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_jobs_with_options(request, runtime)
 
@@ -988,6 +1268,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc_instant_20230701_models.ListJobsRequest,
     ) -> ehpc_instant_20230701_models.ListJobsResponse:
+        """
+        @summary 查询作业列表
+        
+        @param request: ListJobsRequest
+        @return: ListJobsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_jobs_with_options_async(request, runtime)
 
@@ -996,6 +1282,13 @@ class Client(OpenApiClient):
         request: ehpc_instant_20230701_models.RemoveImageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc_instant_20230701_models.RemoveImageResponse:
+        """
+        @summary 移除托管侧镜像信息。
+        
+        @param request: RemoveImageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveImageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.image_id):
@@ -1024,6 +1317,13 @@ class Client(OpenApiClient):
         request: ehpc_instant_20230701_models.RemoveImageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ehpc_instant_20230701_models.RemoveImageResponse:
+        """
+        @summary 移除托管侧镜像信息。
+        
+        @param request: RemoveImageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveImageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.image_id):
@@ -1051,6 +1351,12 @@ class Client(OpenApiClient):
         self,
         request: ehpc_instant_20230701_models.RemoveImageRequest,
     ) -> ehpc_instant_20230701_models.RemoveImageResponse:
+        """
+        @summary 移除托管侧镜像信息。
+        
+        @param request: RemoveImageRequest
+        @return: RemoveImageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.remove_image_with_options(request, runtime)
 
@@ -1058,5 +1364,11 @@ class Client(OpenApiClient):
         self,
         request: ehpc_instant_20230701_models.RemoveImageRequest,
     ) -> ehpc_instant_20230701_models.RemoveImageResponse:
+        """
+        @summary 移除托管侧镜像信息。
+        
+        @param request: RemoveImageRequest
+        @return: RemoveImageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.remove_image_with_options_async(request, runtime)
