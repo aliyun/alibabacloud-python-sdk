@@ -32107,6 +32107,8 @@ class Client(OpenApiClient):
             query['SourceIp'] = request.source_ip
         if not UtilClient.is_unset(request.status):
             query['Status'] = request.status
+        if not UtilClient.is_unset(request.strict_mode):
+            query['StrictMode'] = request.strict_mode
         if not UtilClient.is_unset(request.target_type):
             query['TargetType'] = request.target_type
         if not UtilClient.is_unset(request.time_end):
@@ -32206,6 +32208,8 @@ class Client(OpenApiClient):
             query['SourceIp'] = request.source_ip
         if not UtilClient.is_unset(request.status):
             query['Status'] = request.status
+        if not UtilClient.is_unset(request.strict_mode):
+            query['StrictMode'] = request.strict_mode
         if not UtilClient.is_unset(request.target_type):
             query['TargetType'] = request.target_type
         if not UtilClient.is_unset(request.time_end):
