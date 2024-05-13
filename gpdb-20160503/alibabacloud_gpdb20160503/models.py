@@ -1140,8 +1140,6 @@ class CreateDBInstanceRequest(TeaModel):
         # The IP address whitelist of the instance.
         # 
         # A value of 127.0.0.1 specifies that no IP address is allowed for external access. You can call the [ModifySecurityIps](https://help.aliyun.com/document_detail/86928.html) operation to modify the IP address whitelist after you create an instance.
-        # 
-        # This parameter is required.
         self.security_iplist = security_iplist
         # The performance level of ESSDs. Valid values:
         # 

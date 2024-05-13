@@ -1,3 +1,7 @@
+2024-05-13 Version: 3.6.2
+- Update API CreateDBInstance: update param SecurityIPList.
+
+
 2024-05-11 Version: 3.6.1
 - Generated python 2016-05-03 for gpdb.
 
