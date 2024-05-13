@@ -1627,6 +1627,39 @@ class OrderRenderResult(TeaModel):
         return self
 
 
+class ProductExtendProperty(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['key'] = self.key
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('key') is not None:
+            self.key = m.get('key')
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
 class ProductSpecValue(TeaModel):
     def __init__(
         self,
@@ -1925,6 +1958,7 @@ class Product(TeaModel):
         category_leaf_id: int = None,
         desc_path: str = None,
         division_code: str = None,
+        extend_properties: List[ProductExtendProperty] = None,
         fuzzy_quantity: str = None,
         images: List[str] = None,
         pic_url: str = None,
@@ -1948,6 +1982,7 @@ class Product(TeaModel):
         self.category_leaf_id = category_leaf_id
         self.desc_path = desc_path
         self.division_code = division_code
+        self.extend_properties = extend_properties
         self.fuzzy_quantity = fuzzy_quantity
         self.images = images
         self.pic_url = pic_url
@@ -1968,6 +2003,10 @@ class Product(TeaModel):
     def validate(self):
         if self.category_chain:
             for k in self.category_chain:
+                if k:
+                    k.validate()
+        if self.extend_properties:
+            for k in self.extend_properties:
                 if k:
                     k.validate()
         if self.product_specs:
@@ -2003,6 +2042,10 @@ class Product(TeaModel):
             result['descPath'] = self.desc_path
         if self.division_code is not None:
             result['divisionCode'] = self.division_code
+        result['extendProperties'] = []
+        if self.extend_properties is not None:
+            for k in self.extend_properties:
+                result['extendProperties'].append(k.to_map() if k else None)
         if self.fuzzy_quantity is not None:
             result['fuzzyQuantity'] = self.fuzzy_quantity
         if self.images is not None:
@@ -2060,6 +2103,11 @@ class Product(TeaModel):
             self.desc_path = m.get('descPath')
         if m.get('divisionCode') is not None:
             self.division_code = m.get('divisionCode')
+        self.extend_properties = []
+        if m.get('extendProperties') is not None:
+            for k in m.get('extendProperties'):
+                temp_model = ProductExtendProperty()
+                self.extend_properties.append(temp_model.from_map(k))
         if m.get('fuzzyQuantity') is not None:
             self.fuzzy_quantity = m.get('fuzzyQuantity')
         if m.get('images') is not None:
