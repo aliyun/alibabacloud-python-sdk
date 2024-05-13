@@ -93475,7 +93475,7 @@ class TrainOrderCreateRequestPassengerOpenInfoSCostCenterInfo(TeaModel):
         invoice_id: str = None,
         invoice_title: str = None,
         project_code: str = None,
-        project_name: str = None,
+        project_title: str = None,
     ):
         self.cascade_dept_name = cascade_dept_name
         self.cost_center_id = cost_center_id
@@ -93486,7 +93486,7 @@ class TrainOrderCreateRequestPassengerOpenInfoSCostCenterInfo(TeaModel):
         self.invoice_id = invoice_id
         self.invoice_title = invoice_title
         self.project_code = project_code
-        self.project_name = project_name
+        self.project_title = project_title
 
     def validate(self):
         pass
@@ -93515,8 +93515,8 @@ class TrainOrderCreateRequestPassengerOpenInfoSCostCenterInfo(TeaModel):
             result['invoice_title'] = self.invoice_title
         if self.project_code is not None:
             result['project_code'] = self.project_code
-        if self.project_name is not None:
-            result['project_name'] = self.project_name
+        if self.project_title is not None:
+            result['project_title'] = self.project_title
         return result
 
     def from_map(self, m: dict = None):
@@ -93539,8 +93539,8 @@ class TrainOrderCreateRequestPassengerOpenInfoSCostCenterInfo(TeaModel):
             self.invoice_title = m.get('invoice_title')
         if m.get('project_code') is not None:
             self.project_code = m.get('project_code')
-        if m.get('project_name') is not None:
-            self.project_name = m.get('project_name')
+        if m.get('project_title') is not None:
+            self.project_title = m.get('project_title')
         return self
 
 

@@ -1,3 +1,7 @@
+2024-05-13 Version: 3.0.0
+- Update API TrainOrderCreate: update param passenger_open_info_s.
+
+
 2024-05-10 Version: 2.8.1
 - Update API VatInvoiceScanQuery: update response param.
 
