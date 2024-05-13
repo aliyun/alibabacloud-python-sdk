@@ -10,6 +10,7 @@ class CancelAsyncTaskRequest(TeaModel):
         agent_key: str = None,
         task_id: str = None,
     ):
+        # This parameter is required.
         self.agent_key = agent_key
         self.task_id = task_id
 
@@ -140,6 +141,7 @@ class ClearIntervenesRequest(TeaModel):
         self,
         agent_key: str = None,
     ):
+        # This parameter is required.
         self.agent_key = agent_key
 
     def validate(self):
@@ -308,13 +310,17 @@ class CreateGeneratedContentRequest(TeaModel):
         title: str = None,
         uuid: str = None,
     ):
+        # This parameter is required.
         self.agent_key = agent_key
+        # This parameter is required.
         self.content = content
         self.content_domain = content_domain
         self.content_text = content_text
         self.keywords = keywords
         self.prompt = prompt
+        # This parameter is required.
         self.task_id = task_id
+        # This parameter is required.
         self.title = title
         self.uuid = uuid
 
@@ -383,13 +389,17 @@ class CreateGeneratedContentShrinkRequest(TeaModel):
         title: str = None,
         uuid: str = None,
     ):
+        # This parameter is required.
         self.agent_key = agent_key
+        # This parameter is required.
         self.content = content
         self.content_domain = content_domain
         self.content_text = content_text
         self.keywords_shrink = keywords_shrink
         self.prompt = prompt
+        # This parameter is required.
         self.task_id = task_id
+        # This parameter is required.
         self.title = title
         self.uuid = uuid
 
@@ -548,6 +558,7 @@ class CreateTokenRequest(TeaModel):
         self,
         agent_key: str = None,
     ):
+        # This parameter is required.
         self.agent_key = agent_key
 
     def validate(self):
@@ -703,13 +714,154 @@ class CreateTokenResponse(TeaModel):
         return self
 
 
+class DeleteCustomTextRequest(TeaModel):
+    def __init__(
+        self,
+        agent_key: str = None,
+        commodity_code: str = None,
+        id: int = None,
+    ):
+        # This parameter is required.
+        self.agent_key = agent_key
+        self.commodity_code = commodity_code
+        # This parameter is required.
+        self.id = id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
+        if self.commodity_code is not None:
+            result['CommodityCode'] = self.commodity_code
+        if self.id is not None:
+            result['Id'] = self.id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
+        if m.get('CommodityCode') is not None:
+            self.commodity_code = m.get('CommodityCode')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        return self
+
+
+class DeleteCustomTextResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: bool = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteCustomTextResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteCustomTextResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteCustomTextResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteGeneratedContentRequest(TeaModel):
     def __init__(
         self,
         agent_key: str = None,
         id: int = None,
     ):
+        # This parameter is required.
         self.agent_key = agent_key
+        # This parameter is required.
         self.id = id
 
     def validate(self):
@@ -840,6 +992,7 @@ class DeleteInterveneRuleRequest(TeaModel):
         agent_key: str = None,
         rule_id: int = None,
     ):
+        # This parameter is required.
         self.agent_key = agent_key
         self.rule_id = rule_id
 
@@ -1006,7 +1159,9 @@ class DeleteMaterialByIdRequest(TeaModel):
         agent_key: str = None,
         id: int = None,
     ):
+        # This parameter is required.
         self.agent_key = agent_key
+        # This parameter is required.
         self.id = id
 
     def validate(self):
@@ -1137,7 +1292,9 @@ class ExportGeneratedContentRequest(TeaModel):
         agent_key: str = None,
         id: int = None,
     ):
+        # This parameter is required.
         self.agent_key = agent_key
+        # This parameter is required.
         self.id = id
 
     def validate(self):
@@ -1267,6 +1424,7 @@ class ExportIntervenesRequest(TeaModel):
         self,
         agent_key: str = None,
     ):
+        # This parameter is required.
         self.agent_key = agent_key
 
     def validate(self):
@@ -1428,12 +1586,14 @@ class FeedbackDialogueRequest(TeaModel):
         session_id: str = None,
         task_id: str = None,
     ):
+        # This parameter is required.
         self.agent_key = agent_key
         self.customer_response = customer_response
         self.good_text = good_text
         self.modified_response = modified_response
         self.rating = rating
         self.rating_tags = rating_tags
+        # This parameter is required.
         self.session_id = session_id
         self.task_id = task_id
 
@@ -1497,12 +1657,14 @@ class FeedbackDialogueShrinkRequest(TeaModel):
         session_id: str = None,
         task_id: str = None,
     ):
+        # This parameter is required.
         self.agent_key = agent_key
         self.customer_response = customer_response
         self.good_text = good_text
         self.modified_response = modified_response
         self.rating = rating
         self.rating_tags_shrink = rating_tags_shrink
+        # This parameter is required.
         self.session_id = session_id
         self.task_id = task_id
 
@@ -1653,8 +1815,11 @@ class FetchImageTaskRequest(TeaModel):
         article_task_id: str = None,
         task_id_list: List[str] = None,
     ):
+        # This parameter is required.
         self.agent_key = agent_key
+        # This parameter is required.
         self.article_task_id = article_task_id
+        # This parameter is required.
         self.task_id_list = task_id_list
 
     def validate(self):
@@ -1692,8 +1857,11 @@ class FetchImageTaskShrinkRequest(TeaModel):
         article_task_id: str = None,
         task_id_list_shrink: str = None,
     ):
+        # This parameter is required.
         self.agent_key = agent_key
+        # This parameter is required.
         self.article_task_id = article_task_id
+        # This parameter is required.
         self.task_id_list_shrink = task_id_list_shrink
 
     def validate(self):
@@ -1958,6 +2126,7 @@ class GenerateFileUrlByKeyRequest(TeaModel):
         file_key: str = None,
         file_name: str = None,
     ):
+        # This parameter is required.
         self.agent_key = agent_key
         self.file_key = file_key
         self.file_name = file_name
@@ -2096,7 +2265,9 @@ class GenerateImageTaskRequestParagraphList(TeaModel):
         task_id: str = None,
         task_status: str = None,
     ):
+        # This parameter is required.
         self.content = content
+        # This parameter is required.
         self.id = id
         self.task_id = task_id
         self.task_status = task_status
@@ -2142,10 +2313,15 @@ class GenerateImageTaskRequest(TeaModel):
         size: str = None,
         style: str = None,
     ):
+        # This parameter is required.
         self.agent_key = agent_key
+        # This parameter is required.
         self.article_task_id = article_task_id
+        # This parameter is required.
         self.paragraph_list = paragraph_list
+        # This parameter is required.
         self.size = size
+        # This parameter is required.
         self.style = style
 
     def validate(self):
@@ -2201,10 +2377,15 @@ class GenerateImageTaskShrinkRequest(TeaModel):
         size: str = None,
         style: str = None,
     ):
+        # This parameter is required.
         self.agent_key = agent_key
+        # This parameter is required.
         self.article_task_id = article_task_id
+        # This parameter is required.
         self.paragraph_list_shrink = paragraph_list_shrink
+        # This parameter is required.
         self.size = size
+        # This parameter is required.
         self.style = style
 
     def validate(self):
@@ -2430,8 +2611,10 @@ class GenerateUploadConfigRequest(TeaModel):
         file_name: str = None,
         parent_dir: str = None,
     ):
+        # This parameter is required.
         self.agent_key = agent_key
         self.file_name = file_name
+        # This parameter is required.
         self.parent_dir = parent_dir
 
     def validate(self):
@@ -2634,6 +2817,7 @@ class GenerateViewPointRequest(TeaModel):
         agent_key: str = None,
         reference_data: GenerateViewPointRequestReferenceData = None,
     ):
+        # This parameter is required.
         self.agent_key = agent_key
         self.reference_data = reference_data
 
@@ -2669,6 +2853,7 @@ class GenerateViewPointShrinkRequest(TeaModel):
         agent_key: str = None,
         reference_data_shrink: str = None,
     ):
+        # This parameter is required.
         self.agent_key = agent_key
         self.reference_data_shrink = reference_data_shrink
 
@@ -2829,13 +3014,219 @@ class GenerateViewPointResponse(TeaModel):
         return self
 
 
+class GetCustomTextRequest(TeaModel):
+    def __init__(
+        self,
+        agent_key: str = None,
+        commodity_code: str = None,
+        id: int = None,
+    ):
+        # This parameter is required.
+        self.agent_key = agent_key
+        self.commodity_code = commodity_code
+        # This parameter is required.
+        self.id = id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
+        if self.commodity_code is not None:
+            result['CommodityCode'] = self.commodity_code
+        if self.id is not None:
+            result['Id'] = self.id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
+        if m.get('CommodityCode') is not None:
+            self.commodity_code = m.get('CommodityCode')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        return self
+
+
+class GetCustomTextResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        create_time: str = None,
+        create_user: str = None,
+        id: int = None,
+        title: str = None,
+        update_time: str = None,
+        update_user: str = None,
+    ):
+        self.content = content
+        self.create_time = create_time
+        self.create_user = create_user
+        self.id = id
+        self.title = title
+        self.update_time = update_time
+        self.update_user = update_user
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.create_user is not None:
+            result['CreateUser'] = self.create_user
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.title is not None:
+            result['Title'] = self.title
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        if self.update_user is not None:
+            result['UpdateUser'] = self.update_user
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('CreateUser') is not None:
+            self.create_user = m.get('CreateUser')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        if m.get('UpdateUser') is not None:
+            self.update_user = m.get('UpdateUser')
+        return self
+
+
+class GetCustomTextResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: GetCustomTextResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetCustomTextResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetCustomTextResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetCustomTextResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetCustomTextResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetDataSourceOrderConfigRequest(TeaModel):
     def __init__(
         self,
         agent_key: str = None,
         product_code: str = None,
     ):
+        # This parameter is required.
         self.agent_key = agent_key
+        # This parameter is required.
         self.product_code = product_code
 
     def validate(self):
@@ -3048,7 +3439,9 @@ class GetGeneratedContentRequest(TeaModel):
         agent_key: str = None,
         id: int = None,
     ):
+        # This parameter is required.
         self.agent_key = agent_key
+        # This parameter is required.
         self.id = id
 
     def validate(self):
@@ -3291,6 +3684,7 @@ class GetInterveneGlobalReplyRequest(TeaModel):
         self,
         agent_key: str = None,
     ):
+        # This parameter is required.
         self.agent_key = agent_key
 
     def validate(self):
@@ -3487,6 +3881,7 @@ class GetInterveneImportTaskInfoRequest(TeaModel):
         agent_key: str = None,
         task_id: str = None,
     ):
+        # This parameter is required.
         self.agent_key = agent_key
         self.task_id = task_id
 
@@ -3700,6 +4095,7 @@ class GetInterveneRuleDetailRequest(TeaModel):
         agent_key: str = None,
         rule_id: int = None,
     ):
+        # This parameter is required.
         self.agent_key = agent_key
         self.rule_id = rule_id
 
@@ -4007,6 +4403,7 @@ class GetInterveneTemplateFileUrlRequest(TeaModel):
         self,
         agent_key: str = None,
     ):
+        # This parameter is required.
         self.agent_key = agent_key
 
     def validate(self):
@@ -4162,7 +4559,9 @@ class GetMaterialByIdRequest(TeaModel):
         agent_key: str = None,
         id: int = None,
     ):
+        # This parameter is required.
         self.agent_key = agent_key
+        # This parameter is required.
         self.id = id
 
     def validate(self):
@@ -4429,6 +4828,7 @@ class GetPropertiesRequest(TeaModel):
         self,
         agent_key: str = None,
     ):
+        # This parameter is required.
         self.agent_key = agent_key
 
     def validate(self):
@@ -5039,6 +5439,7 @@ class ImportInterveneFileRequest(TeaModel):
         file_key: str = None,
         file_url: str = None,
     ):
+        # This parameter is required.
         self.agent_key = agent_key
         self.doc_name = doc_name
         self.file_key = file_key
@@ -5217,6 +5618,7 @@ class ImportInterveneFileAsyncRequest(TeaModel):
         file_key: str = None,
         file_url: str = None,
     ):
+        # This parameter is required.
         self.agent_key = agent_key
         self.doc_name = doc_name
         self.file_key = file_key
@@ -5426,6 +5828,7 @@ class InsertInterveneGlobalReplyRequest(TeaModel):
         agent_key: str = None,
         reply_messag_list: List[InsertInterveneGlobalReplyRequestReplyMessagList] = None,
     ):
+        # This parameter is required.
         self.agent_key = agent_key
         self.reply_messag_list = reply_messag_list
 
@@ -5467,6 +5870,7 @@ class InsertInterveneGlobalReplyShrinkRequest(TeaModel):
         agent_key: str = None,
         reply_messag_list_shrink: str = None,
     ):
+        # This parameter is required.
         self.agent_key = agent_key
         self.reply_messag_list_shrink = reply_messag_list_shrink
 
@@ -5834,6 +6238,7 @@ class InsertInterveneRuleRequest(TeaModel):
         agent_key: str = None,
         intervene_rule_config: InsertInterveneRuleRequestInterveneRuleConfig = None,
     ):
+        # This parameter is required.
         self.agent_key = agent_key
         self.intervene_rule_config = intervene_rule_config
 
@@ -5869,6 +6274,7 @@ class InsertInterveneRuleShrinkRequest(TeaModel):
         agent_key: str = None,
         intervene_rule_config_shrink: str = None,
     ):
+        # This parameter is required.
         self.agent_key = agent_key
         self.intervene_rule_config_shrink = intervene_rule_config_shrink
 
@@ -6038,6 +6444,7 @@ class ListAsyncTasksRequest(TeaModel):
         task_type: str = None,
         task_type_list: List[str] = None,
     ):
+        # This parameter is required.
         self.agent_key = agent_key
         self.create_time_end = create_time_end
         self.create_time_start = create_time_start
@@ -6125,6 +6532,7 @@ class ListAsyncTasksShrinkRequest(TeaModel):
         task_type: str = None,
         task_type_list_shrink: str = None,
     ):
+        # This parameter is required.
         self.agent_key = agent_key
         self.create_time_end = create_time_end
         self.create_time_start = create_time_start
@@ -6474,6 +6882,7 @@ class ListBuildConfigsRequest(TeaModel):
         agent_key: str = None,
         type: str = None,
     ):
+        # This parameter is required.
         self.agent_key = agent_key
         self.type = type
 
@@ -6729,6 +7138,209 @@ class ListBuildConfigsResponse(TeaModel):
         return self
 
 
+class ListCustomTextRequest(TeaModel):
+    def __init__(
+        self,
+        agent_key: str = None,
+        commodity_code: str = None,
+    ):
+        # This parameter is required.
+        self.agent_key = agent_key
+        self.commodity_code = commodity_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
+        if self.commodity_code is not None:
+            result['CommodityCode'] = self.commodity_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
+        if m.get('CommodityCode') is not None:
+            self.commodity_code = m.get('CommodityCode')
+        return self
+
+
+class ListCustomTextResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        create_time: str = None,
+        create_user: str = None,
+        id: int = None,
+        title: str = None,
+        update_time: str = None,
+        update_user: str = None,
+    ):
+        self.content = content
+        self.create_time = create_time
+        self.create_user = create_user
+        self.id = id
+        self.title = title
+        self.update_time = update_time
+        self.update_user = update_user
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.create_user is not None:
+            result['CreateUser'] = self.create_user
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.title is not None:
+            result['Title'] = self.title
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        if self.update_user is not None:
+            result['UpdateUser'] = self.update_user
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('CreateUser') is not None:
+            self.create_user = m.get('CreateUser')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        if m.get('UpdateUser') is not None:
+            self.update_user = m.get('UpdateUser')
+        return self
+
+
+class ListCustomTextResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: List[ListCustomTextResponseBodyData] = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = ListCustomTextResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ListCustomTextResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListCustomTextResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListCustomTextResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListDialoguesRequest(TeaModel):
     def __init__(
         self,
@@ -6740,6 +7352,7 @@ class ListDialoguesRequest(TeaModel):
         start_time: str = None,
         task_id: str = None,
     ):
+        # This parameter is required.
         self.agent_key = agent_key
         self.current = current
         self.dialogue_type = dialogue_type
@@ -6984,6 +7597,7 @@ class ListGeneratedContentsRequest(TeaModel):
         start_time: str = None,
         title: str = None,
     ):
+        # This parameter is required.
         self.agent_key = agent_key
         self.content_domain = content_domain
         self.current = current
@@ -7280,6 +7894,7 @@ class ListHotNewsWithTypeRequest(TeaModel):
         news_types: List[str] = None,
         size: int = None,
     ):
+        # This parameter is required.
         self.agent_key = agent_key
         self.current = current
         self.news_type = news_type
@@ -7331,6 +7946,7 @@ class ListHotNewsWithTypeShrinkRequest(TeaModel):
         news_types_shrink: str = None,
         size: int = None,
     ):
+        # This parameter is required.
         self.agent_key = agent_key
         self.current = current
         self.news_type = news_type
@@ -7638,6 +8254,7 @@ class ListInterveneCntRequest(TeaModel):
         page_index: int = None,
         page_size: int = None,
     ):
+        # This parameter is required.
         self.agent_key = agent_key
         self.page_index = page_index
         self.page_size = page_size
@@ -7822,6 +8439,7 @@ class ListInterveneImportTasksRequest(TeaModel):
         page_index: int = None,
         page_size: int = None,
     ):
+        # This parameter is required.
         self.agent_key = agent_key
         self.page_index = page_index
         self.page_size = page_size
@@ -8065,6 +8683,7 @@ class ListInterveneRulesRequest(TeaModel):
         page_index: int = None,
         page_size: int = None,
     ):
+        # This parameter is required.
         self.agent_key = agent_key
         self.page_index = page_index
         self.page_size = page_size
@@ -8370,6 +8989,7 @@ class ListIntervenesRequest(TeaModel):
         query: str = None,
         rule_id: int = None,
     ):
+        # This parameter is required.
         self.agent_key = agent_key
         self.intervene_type = intervene_type
         self.page_index = page_index
@@ -8624,6 +9244,7 @@ class ListMaterialDocumentsRequest(TeaModel):
         update_time_end: str = None,
         update_time_start: str = None,
     ):
+        # This parameter is required.
         self.agent_key = agent_key
         self.content = content
         self.create_time_end = create_time_end
@@ -8741,6 +9362,7 @@ class ListMaterialDocumentsShrinkRequest(TeaModel):
         update_time_end: str = None,
         update_time_start: str = None,
     ):
+        # This parameter is required.
         self.agent_key = agent_key
         self.content = content
         self.create_time_end = create_time_end
@@ -9114,6 +9736,7 @@ class ListVersionsRequest(TeaModel):
         self,
         agent_key: str = None,
     ):
+        # This parameter is required.
         self.agent_key = agent_key
 
     def validate(self):
@@ -9341,6 +9964,7 @@ class QueryAsyncTaskRequest(TeaModel):
         agent_key: str = None,
         task_id: str = None,
     ):
+        # This parameter is required.
         self.agent_key = agent_key
         self.task_id = task_id
 
@@ -9573,6 +10197,150 @@ class QueryAsyncTaskResponse(TeaModel):
         return self
 
 
+class SaveCustomTextRequest(TeaModel):
+    def __init__(
+        self,
+        agent_key: str = None,
+        commodity_code: str = None,
+        content: str = None,
+        title: str = None,
+    ):
+        # This parameter is required.
+        self.agent_key = agent_key
+        self.commodity_code = commodity_code
+        self.content = content
+        self.title = title
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
+        if self.commodity_code is not None:
+            result['CommodityCode'] = self.commodity_code
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.title is not None:
+            result['Title'] = self.title
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
+        if m.get('CommodityCode') is not None:
+            self.commodity_code = m.get('CommodityCode')
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        return self
+
+
+class SaveCustomTextResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: int = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class SaveCustomTextResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SaveCustomTextResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SaveCustomTextResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class SaveDataSourceOrderConfigRequestUserConfigDataSourceList(TeaModel):
     def __init__(
         self,
@@ -9581,9 +10349,12 @@ class SaveDataSourceOrderConfigRequestUserConfigDataSourceList(TeaModel):
         number: int = None,
         type: str = None,
     ):
+        # This parameter is required.
         self.code = code
         self.name = name
+        # This parameter is required.
         self.number = number
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -9625,8 +10396,11 @@ class SaveDataSourceOrderConfigRequest(TeaModel):
         product_code: str = None,
         user_config_data_source_list: List[SaveDataSourceOrderConfigRequestUserConfigDataSourceList] = None,
     ):
+        # This parameter is required.
         self.agent_key = agent_key
+        # This parameter is required.
         self.product_code = product_code
+        # This parameter is required.
         self.user_config_data_source_list = user_config_data_source_list
 
     def validate(self):
@@ -9672,8 +10446,11 @@ class SaveDataSourceOrderConfigShrinkRequest(TeaModel):
         product_code: str = None,
         user_config_data_source_list_shrink: str = None,
     ):
+        # This parameter is required.
         self.agent_key = agent_key
+        # This parameter is required.
         self.product_code = product_code
+        # This parameter is required.
         self.user_config_data_source_list_shrink = user_config_data_source_list_shrink
 
     def validate(self):
@@ -9820,10 +10597,12 @@ class SaveMaterialDocumentRequest(TeaModel):
         title: str = None,
         url: str = None,
     ):
+        # This parameter is required.
         self.agent_key = agent_key
         self.author = author
         self.both_save_private_and_share = both_save_private_and_share
         self.doc_keywords = doc_keywords
+        # This parameter is required.
         self.doc_type = doc_type
         self.external_url = external_url
         self.html_content = html_content
@@ -9925,10 +10704,12 @@ class SaveMaterialDocumentShrinkRequest(TeaModel):
         title: str = None,
         url: str = None,
     ):
+        # This parameter is required.
         self.agent_key = agent_key
         self.author = author
         self.both_save_private_and_share = both_save_private_and_share
         self.doc_keywords_shrink = doc_keywords_shrink
+        # This parameter is required.
         self.doc_type = doc_type
         self.external_url = external_url
         self.html_content = html_content
@@ -10121,6 +10902,7 @@ class SearchNewsRequest(TeaModel):
         query: str = None,
         search_sources: List[str] = None,
     ):
+        # This parameter is required.
         self.agent_key = agent_key
         self.filter_not_null = filter_not_null
         self.include_content = include_content
@@ -10184,6 +10966,7 @@ class SearchNewsShrinkRequest(TeaModel):
         query: str = None,
         search_sources_shrink: str = None,
     ):
+        # This parameter is required.
         self.agent_key = agent_key
         self.filter_not_null = filter_not_null
         self.include_content = include_content
@@ -10468,7 +11251,9 @@ class SubmitAsyncTaskRequest(TeaModel):
         task_name: str = None,
         task_param: str = None,
     ):
+        # This parameter is required.
         self.agent_key = agent_key
+        # This parameter is required.
         self.task_code = task_code
         self.task_execute_time = task_execute_time
         self.task_name = task_name
@@ -10649,6 +11434,157 @@ class SubmitAsyncTaskResponse(TeaModel):
         return self
 
 
+class UpdateCustomTextRequest(TeaModel):
+    def __init__(
+        self,
+        agent_key: str = None,
+        commodity_code: str = None,
+        content: str = None,
+        id: int = None,
+        title: str = None,
+    ):
+        # This parameter is required.
+        self.agent_key = agent_key
+        self.commodity_code = commodity_code
+        self.content = content
+        # This parameter is required.
+        self.id = id
+        self.title = title
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
+        if self.commodity_code is not None:
+            result['CommodityCode'] = self.commodity_code
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.title is not None:
+            result['Title'] = self.title
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
+        if m.get('CommodityCode') is not None:
+            self.commodity_code = m.get('CommodityCode')
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        return self
+
+
+class UpdateCustomTextResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: int = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateCustomTextResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateCustomTextResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateCustomTextResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UpdateGeneratedContentRequest(TeaModel):
     def __init__(
         self,
@@ -10660,9 +11596,11 @@ class UpdateGeneratedContentRequest(TeaModel):
         prompt: str = None,
         title: str = None,
     ):
+        # This parameter is required.
         self.agent_key = agent_key
         self.content = content
         self.content_text = content_text
+        # This parameter is required.
         self.id = id
         self.keywords = keywords
         self.prompt = prompt
@@ -10723,9 +11661,11 @@ class UpdateGeneratedContentShrinkRequest(TeaModel):
         prompt: str = None,
         title: str = None,
     ):
+        # This parameter is required.
         self.agent_key = agent_key
         self.content = content
         self.content_text = content_text
+        # This parameter is required.
         self.id = id
         self.keywords_shrink = keywords_shrink
         self.prompt = prompt
@@ -10891,12 +11831,15 @@ class UpdateMaterialDocumentRequest(TeaModel):
         title: str = None,
         url: str = None,
     ):
+        # This parameter is required.
         self.agent_key = agent_key
         self.author = author
         self.doc_keywords = doc_keywords
+        # This parameter is required.
         self.doc_type = doc_type
         self.external_url = external_url
         self.html_content = html_content
+        # This parameter is required.
         self.id = id
         self.pub_time = pub_time
         self.share_attr = share_attr
@@ -10996,12 +11939,15 @@ class UpdateMaterialDocumentShrinkRequest(TeaModel):
         title: str = None,
         url: str = None,
     ):
+        # This parameter is required.
         self.agent_key = agent_key
         self.author = author
         self.doc_keywords_shrink = doc_keywords_shrink
+        # This parameter is required.
         self.doc_type = doc_type
         self.external_url = external_url
         self.html_content = html_content
+        # This parameter is required.
         self.id = id
         self.pub_time = pub_time
         self.share_attr = share_attr

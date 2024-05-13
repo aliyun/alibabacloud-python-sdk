@@ -46,6 +46,13 @@ class Client(OpenApiClient):
         request: ai_miao_bi_20230801_models.CancelAsyncTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.CancelAsyncTaskResponse:
+        """
+        @summary 取消异步任务
+        
+        @param request: CancelAsyncTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelAsyncTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -78,6 +85,13 @@ class Client(OpenApiClient):
         request: ai_miao_bi_20230801_models.CancelAsyncTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.CancelAsyncTaskResponse:
+        """
+        @summary 取消异步任务
+        
+        @param request: CancelAsyncTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelAsyncTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -109,6 +123,12 @@ class Client(OpenApiClient):
         self,
         request: ai_miao_bi_20230801_models.CancelAsyncTaskRequest,
     ) -> ai_miao_bi_20230801_models.CancelAsyncTaskResponse:
+        """
+        @summary 取消异步任务
+        
+        @param request: CancelAsyncTaskRequest
+        @return: CancelAsyncTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.cancel_async_task_with_options(request, runtime)
 
@@ -116,6 +136,12 @@ class Client(OpenApiClient):
         self,
         request: ai_miao_bi_20230801_models.CancelAsyncTaskRequest,
     ) -> ai_miao_bi_20230801_models.CancelAsyncTaskResponse:
+        """
+        @summary 取消异步任务
+        
+        @param request: CancelAsyncTaskRequest
+        @return: CancelAsyncTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.cancel_async_task_with_options_async(request, runtime)
 
@@ -124,6 +150,13 @@ class Client(OpenApiClient):
         request: ai_miao_bi_20230801_models.ClearIntervenesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.ClearIntervenesResponse:
+        """
+        @summary 清除所有干预内容
+        
+        @param request: ClearIntervenesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ClearIntervenesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -152,6 +185,13 @@ class Client(OpenApiClient):
         request: ai_miao_bi_20230801_models.ClearIntervenesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.ClearIntervenesResponse:
+        """
+        @summary 清除所有干预内容
+        
+        @param request: ClearIntervenesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ClearIntervenesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -179,6 +219,12 @@ class Client(OpenApiClient):
         self,
         request: ai_miao_bi_20230801_models.ClearIntervenesRequest,
     ) -> ai_miao_bi_20230801_models.ClearIntervenesResponse:
+        """
+        @summary 清除所有干预内容
+        
+        @param request: ClearIntervenesRequest
+        @return: ClearIntervenesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.clear_intervenes_with_options(request, runtime)
 
@@ -186,6 +232,12 @@ class Client(OpenApiClient):
         self,
         request: ai_miao_bi_20230801_models.ClearIntervenesRequest,
     ) -> ai_miao_bi_20230801_models.ClearIntervenesResponse:
+        """
+        @summary 清除所有干预内容
+        
+        @param request: ClearIntervenesRequest
+        @return: ClearIntervenesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.clear_intervenes_with_options_async(request, runtime)
 
@@ -194,6 +246,13 @@ class Client(OpenApiClient):
         tmp_req: ai_miao_bi_20230801_models.CreateGeneratedContentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.CreateGeneratedContentResponse:
+        """
+        @summary 文档管理-创建
+        
+        @param tmp_req: CreateGeneratedContentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateGeneratedContentResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ai_miao_bi_20230801_models.CreateGeneratedContentShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -244,6 +303,13 @@ class Client(OpenApiClient):
         tmp_req: ai_miao_bi_20230801_models.CreateGeneratedContentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.CreateGeneratedContentResponse:
+        """
+        @summary 文档管理-创建
+        
+        @param tmp_req: CreateGeneratedContentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateGeneratedContentResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ai_miao_bi_20230801_models.CreateGeneratedContentShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -293,6 +359,12 @@ class Client(OpenApiClient):
         self,
         request: ai_miao_bi_20230801_models.CreateGeneratedContentRequest,
     ) -> ai_miao_bi_20230801_models.CreateGeneratedContentResponse:
+        """
+        @summary 文档管理-创建
+        
+        @param request: CreateGeneratedContentRequest
+        @return: CreateGeneratedContentResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_generated_content_with_options(request, runtime)
 
@@ -300,6 +372,12 @@ class Client(OpenApiClient):
         self,
         request: ai_miao_bi_20230801_models.CreateGeneratedContentRequest,
     ) -> ai_miao_bi_20230801_models.CreateGeneratedContentResponse:
+        """
+        @summary 文档管理-创建
+        
+        @param request: CreateGeneratedContentRequest
+        @return: CreateGeneratedContentResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_generated_content_with_options_async(request, runtime)
 
@@ -308,6 +386,13 @@ class Client(OpenApiClient):
         request: ai_miao_bi_20230801_models.CreateTokenRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.CreateTokenResponse:
+        """
+        @summary 获取授权token
+        
+        @param request: CreateTokenRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTokenResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -336,6 +421,13 @@ class Client(OpenApiClient):
         request: ai_miao_bi_20230801_models.CreateTokenRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.CreateTokenResponse:
+        """
+        @summary 获取授权token
+        
+        @param request: CreateTokenRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTokenResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -363,6 +455,12 @@ class Client(OpenApiClient):
         self,
         request: ai_miao_bi_20230801_models.CreateTokenRequest,
     ) -> ai_miao_bi_20230801_models.CreateTokenResponse:
+        """
+        @summary 获取授权token
+        
+        @param request: CreateTokenRequest
+        @return: CreateTokenResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_token_with_options(request, runtime)
 
@@ -370,14 +468,135 @@ class Client(OpenApiClient):
         self,
         request: ai_miao_bi_20230801_models.CreateTokenRequest,
     ) -> ai_miao_bi_20230801_models.CreateTokenResponse:
+        """
+        @summary 获取授权token
+        
+        @param request: CreateTokenRequest
+        @return: CreateTokenResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_token_with_options_async(request, runtime)
+
+    def delete_custom_text_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.DeleteCustomTextRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.DeleteCustomTextResponse:
+        """
+        @summary 删除自定义文本
+        
+        @param request: DeleteCustomTextRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCustomTextResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        body = {}
+        if not UtilClient.is_unset(request.commodity_code):
+            body['CommodityCode'] = request.commodity_code
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteCustomText',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.DeleteCustomTextResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_custom_text_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.DeleteCustomTextRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.DeleteCustomTextResponse:
+        """
+        @summary 删除自定义文本
+        
+        @param request: DeleteCustomTextRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCustomTextResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        body = {}
+        if not UtilClient.is_unset(request.commodity_code):
+            body['CommodityCode'] = request.commodity_code
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteCustomText',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.DeleteCustomTextResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_custom_text(
+        self,
+        request: ai_miao_bi_20230801_models.DeleteCustomTextRequest,
+    ) -> ai_miao_bi_20230801_models.DeleteCustomTextResponse:
+        """
+        @summary 删除自定义文本
+        
+        @param request: DeleteCustomTextRequest
+        @return: DeleteCustomTextResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_custom_text_with_options(request, runtime)
+
+    async def delete_custom_text_async(
+        self,
+        request: ai_miao_bi_20230801_models.DeleteCustomTextRequest,
+    ) -> ai_miao_bi_20230801_models.DeleteCustomTextResponse:
+        """
+        @summary 删除自定义文本
+        
+        @param request: DeleteCustomTextRequest
+        @return: DeleteCustomTextResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_custom_text_with_options_async(request, runtime)
 
     def delete_generated_content_with_options(
         self,
         request: ai_miao_bi_20230801_models.DeleteGeneratedContentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.DeleteGeneratedContentResponse:
+        """
+        @summary 文档管理-删除。
+        
+        @param request: DeleteGeneratedContentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteGeneratedContentResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -410,6 +629,13 @@ class Client(OpenApiClient):
         request: ai_miao_bi_20230801_models.DeleteGeneratedContentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.DeleteGeneratedContentResponse:
+        """
+        @summary 文档管理-删除。
+        
+        @param request: DeleteGeneratedContentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteGeneratedContentResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -441,6 +667,12 @@ class Client(OpenApiClient):
         self,
         request: ai_miao_bi_20230801_models.DeleteGeneratedContentRequest,
     ) -> ai_miao_bi_20230801_models.DeleteGeneratedContentResponse:
+        """
+        @summary 文档管理-删除。
+        
+        @param request: DeleteGeneratedContentRequest
+        @return: DeleteGeneratedContentResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_generated_content_with_options(request, runtime)
 
@@ -448,6 +680,12 @@ class Client(OpenApiClient):
         self,
         request: ai_miao_bi_20230801_models.DeleteGeneratedContentRequest,
     ) -> ai_miao_bi_20230801_models.DeleteGeneratedContentResponse:
+        """
+        @summary 文档管理-删除。
+        
+        @param request: DeleteGeneratedContentRequest
+        @return: DeleteGeneratedContentResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_generated_content_with_options_async(request, runtime)
 
@@ -456,6 +694,13 @@ class Client(OpenApiClient):
         request: ai_miao_bi_20230801_models.DeleteInterveneRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.DeleteInterveneRuleResponse:
+        """
+        @summary 删除干预规则
+        
+        @param request: DeleteInterveneRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteInterveneRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -488,6 +733,13 @@ class Client(OpenApiClient):
         request: ai_miao_bi_20230801_models.DeleteInterveneRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.DeleteInterveneRuleResponse:
+        """
+        @summary 删除干预规则
+        
+        @param request: DeleteInterveneRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteInterveneRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -519,6 +771,12 @@ class Client(OpenApiClient):
         self,
         request: ai_miao_bi_20230801_models.DeleteInterveneRuleRequest,
     ) -> ai_miao_bi_20230801_models.DeleteInterveneRuleResponse:
+        """
+        @summary 删除干预规则
+        
+        @param request: DeleteInterveneRuleRequest
+        @return: DeleteInterveneRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_intervene_rule_with_options(request, runtime)
 
@@ -526,6 +784,12 @@ class Client(OpenApiClient):
         self,
         request: ai_miao_bi_20230801_models.DeleteInterveneRuleRequest,
     ) -> ai_miao_bi_20230801_models.DeleteInterveneRuleResponse:
+        """
+        @summary 删除干预规则
+        
+        @param request: DeleteInterveneRuleRequest
+        @return: DeleteInterveneRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_intervene_rule_with_options_async(request, runtime)
 
@@ -534,6 +798,13 @@ class Client(OpenApiClient):
         request: ai_miao_bi_20230801_models.DeleteMaterialByIdRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.DeleteMaterialByIdResponse:
+        """
+        @summary 根据ID删除素材
+        
+        @param request: DeleteMaterialByIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMaterialByIdResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -566,6 +837,13 @@ class Client(OpenApiClient):
         request: ai_miao_bi_20230801_models.DeleteMaterialByIdRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.DeleteMaterialByIdResponse:
+        """
+        @summary 根据ID删除素材
+        
+        @param request: DeleteMaterialByIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMaterialByIdResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -597,6 +875,12 @@ class Client(OpenApiClient):
         self,
         request: ai_miao_bi_20230801_models.DeleteMaterialByIdRequest,
     ) -> ai_miao_bi_20230801_models.DeleteMaterialByIdResponse:
+        """
+        @summary 根据ID删除素材
+        
+        @param request: DeleteMaterialByIdRequest
+        @return: DeleteMaterialByIdResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_material_by_id_with_options(request, runtime)
 
@@ -604,6 +888,12 @@ class Client(OpenApiClient):
         self,
         request: ai_miao_bi_20230801_models.DeleteMaterialByIdRequest,
     ) -> ai_miao_bi_20230801_models.DeleteMaterialByIdResponse:
+        """
+        @summary 根据ID删除素材
+        
+        @param request: DeleteMaterialByIdRequest
+        @return: DeleteMaterialByIdResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_material_by_id_with_options_async(request, runtime)
 
@@ -612,6 +902,13 @@ class Client(OpenApiClient):
         request: ai_miao_bi_20230801_models.ExportGeneratedContentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.ExportGeneratedContentResponse:
+        """
+        @summary 文档管理-导出。
+        
+        @param request: ExportGeneratedContentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExportGeneratedContentResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -644,6 +941,13 @@ class Client(OpenApiClient):
         request: ai_miao_bi_20230801_models.ExportGeneratedContentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.ExportGeneratedContentResponse:
+        """
+        @summary 文档管理-导出。
+        
+        @param request: ExportGeneratedContentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExportGeneratedContentResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -675,6 +979,12 @@ class Client(OpenApiClient):
         self,
         request: ai_miao_bi_20230801_models.ExportGeneratedContentRequest,
     ) -> ai_miao_bi_20230801_models.ExportGeneratedContentResponse:
+        """
+        @summary 文档管理-导出。
+        
+        @param request: ExportGeneratedContentRequest
+        @return: ExportGeneratedContentResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.export_generated_content_with_options(request, runtime)
 
@@ -682,6 +992,12 @@ class Client(OpenApiClient):
         self,
         request: ai_miao_bi_20230801_models.ExportGeneratedContentRequest,
     ) -> ai_miao_bi_20230801_models.ExportGeneratedContentResponse:
+        """
+        @summary 文档管理-导出。
+        
+        @param request: ExportGeneratedContentRequest
+        @return: ExportGeneratedContentResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.export_generated_content_with_options_async(request, runtime)
 
@@ -690,6 +1006,13 @@ class Client(OpenApiClient):
         request: ai_miao_bi_20230801_models.ExportIntervenesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.ExportIntervenesResponse:
+        """
+        @summary 导出所有干预内容
+        
+        @param request: ExportIntervenesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExportIntervenesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -718,6 +1041,13 @@ class Client(OpenApiClient):
         request: ai_miao_bi_20230801_models.ExportIntervenesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.ExportIntervenesResponse:
+        """
+        @summary 导出所有干预内容
+        
+        @param request: ExportIntervenesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExportIntervenesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -745,6 +1075,12 @@ class Client(OpenApiClient):
         self,
         request: ai_miao_bi_20230801_models.ExportIntervenesRequest,
     ) -> ai_miao_bi_20230801_models.ExportIntervenesResponse:
+        """
+        @summary 导出所有干预内容
+        
+        @param request: ExportIntervenesRequest
+        @return: ExportIntervenesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.export_intervenes_with_options(request, runtime)
 
@@ -752,6 +1088,12 @@ class Client(OpenApiClient):
         self,
         request: ai_miao_bi_20230801_models.ExportIntervenesRequest,
     ) -> ai_miao_bi_20230801_models.ExportIntervenesResponse:
+        """
+        @summary 导出所有干预内容
+        
+        @param request: ExportIntervenesRequest
+        @return: ExportIntervenesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.export_intervenes_with_options_async(request, runtime)
 
@@ -760,6 +1102,13 @@ class Client(OpenApiClient):
         tmp_req: ai_miao_bi_20230801_models.FeedbackDialogueRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.FeedbackDialogueResponse:
+        """
+        @summary 反馈某次生成的结果
+        
+        @param tmp_req: FeedbackDialogueRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FeedbackDialogueResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ai_miao_bi_20230801_models.FeedbackDialogueShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -808,6 +1157,13 @@ class Client(OpenApiClient):
         tmp_req: ai_miao_bi_20230801_models.FeedbackDialogueRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.FeedbackDialogueResponse:
+        """
+        @summary 反馈某次生成的结果
+        
+        @param tmp_req: FeedbackDialogueRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FeedbackDialogueResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ai_miao_bi_20230801_models.FeedbackDialogueShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -855,6 +1211,12 @@ class Client(OpenApiClient):
         self,
         request: ai_miao_bi_20230801_models.FeedbackDialogueRequest,
     ) -> ai_miao_bi_20230801_models.FeedbackDialogueResponse:
+        """
+        @summary 反馈某次生成的结果
+        
+        @param request: FeedbackDialogueRequest
+        @return: FeedbackDialogueResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.feedback_dialogue_with_options(request, runtime)
 
@@ -862,6 +1224,12 @@ class Client(OpenApiClient):
         self,
         request: ai_miao_bi_20230801_models.FeedbackDialogueRequest,
     ) -> ai_miao_bi_20230801_models.FeedbackDialogueResponse:
+        """
+        @summary 反馈某次生成的结果
+        
+        @param request: FeedbackDialogueRequest
+        @return: FeedbackDialogueResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.feedback_dialogue_with_options_async(request, runtime)
 
@@ -870,6 +1238,11 @@ class Client(OpenApiClient):
         tmp_req: ai_miao_bi_20230801_models.FetchImageTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.FetchImageTaskResponse:
+        """
+        @param tmp_req: FetchImageTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FetchImageTaskResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ai_miao_bi_20230801_models.FetchImageTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -908,6 +1281,11 @@ class Client(OpenApiClient):
         tmp_req: ai_miao_bi_20230801_models.FetchImageTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.FetchImageTaskResponse:
+        """
+        @param tmp_req: FetchImageTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FetchImageTaskResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ai_miao_bi_20230801_models.FetchImageTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -945,6 +1323,10 @@ class Client(OpenApiClient):
         self,
         request: ai_miao_bi_20230801_models.FetchImageTaskRequest,
     ) -> ai_miao_bi_20230801_models.FetchImageTaskResponse:
+        """
+        @param request: FetchImageTaskRequest
+        @return: FetchImageTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.fetch_image_task_with_options(request, runtime)
 
@@ -952,6 +1334,10 @@ class Client(OpenApiClient):
         self,
         request: ai_miao_bi_20230801_models.FetchImageTaskRequest,
     ) -> ai_miao_bi_20230801_models.FetchImageTaskResponse:
+        """
+        @param request: FetchImageTaskRequest
+        @return: FetchImageTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.fetch_image_task_with_options_async(request, runtime)
 
@@ -960,6 +1346,13 @@ class Client(OpenApiClient):
         request: ai_miao_bi_20230801_models.GenerateFileUrlByKeyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.GenerateFileUrlByKeyResponse:
+        """
+        @summary 生成临时可访问的公开url
+        
+        @param request: GenerateFileUrlByKeyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GenerateFileUrlByKeyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -994,6 +1387,13 @@ class Client(OpenApiClient):
         request: ai_miao_bi_20230801_models.GenerateFileUrlByKeyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.GenerateFileUrlByKeyResponse:
+        """
+        @summary 生成临时可访问的公开url
+        
+        @param request: GenerateFileUrlByKeyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GenerateFileUrlByKeyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -1027,6 +1427,12 @@ class Client(OpenApiClient):
         self,
         request: ai_miao_bi_20230801_models.GenerateFileUrlByKeyRequest,
     ) -> ai_miao_bi_20230801_models.GenerateFileUrlByKeyResponse:
+        """
+        @summary 生成临时可访问的公开url
+        
+        @param request: GenerateFileUrlByKeyRequest
+        @return: GenerateFileUrlByKeyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.generate_file_url_by_key_with_options(request, runtime)
 
@@ -1034,6 +1440,12 @@ class Client(OpenApiClient):
         self,
         request: ai_miao_bi_20230801_models.GenerateFileUrlByKeyRequest,
     ) -> ai_miao_bi_20230801_models.GenerateFileUrlByKeyResponse:
+        """
+        @summary 生成临时可访问的公开url
+        
+        @param request: GenerateFileUrlByKeyRequest
+        @return: GenerateFileUrlByKeyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.generate_file_url_by_key_with_options_async(request, runtime)
 
@@ -1042,6 +1454,13 @@ class Client(OpenApiClient):
         tmp_req: ai_miao_bi_20230801_models.GenerateImageTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.GenerateImageTaskResponse:
+        """
+        @summary 智能配图，图片生成任务
+        
+        @param tmp_req: GenerateImageTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GenerateImageTaskResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ai_miao_bi_20230801_models.GenerateImageTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1084,6 +1503,13 @@ class Client(OpenApiClient):
         tmp_req: ai_miao_bi_20230801_models.GenerateImageTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.GenerateImageTaskResponse:
+        """
+        @summary 智能配图，图片生成任务
+        
+        @param tmp_req: GenerateImageTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GenerateImageTaskResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ai_miao_bi_20230801_models.GenerateImageTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1125,6 +1551,12 @@ class Client(OpenApiClient):
         self,
         request: ai_miao_bi_20230801_models.GenerateImageTaskRequest,
     ) -> ai_miao_bi_20230801_models.GenerateImageTaskResponse:
+        """
+        @summary 智能配图，图片生成任务
+        
+        @param request: GenerateImageTaskRequest
+        @return: GenerateImageTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.generate_image_task_with_options(request, runtime)
 
@@ -1132,6 +1564,12 @@ class Client(OpenApiClient):
         self,
         request: ai_miao_bi_20230801_models.GenerateImageTaskRequest,
     ) -> ai_miao_bi_20230801_models.GenerateImageTaskResponse:
+        """
+        @summary 智能配图，图片生成任务
+        
+        @param request: GenerateImageTaskRequest
+        @return: GenerateImageTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.generate_image_task_with_options_async(request, runtime)
 
@@ -1140,6 +1578,13 @@ class Client(OpenApiClient):
         request: ai_miao_bi_20230801_models.GenerateUploadConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.GenerateUploadConfigResponse:
+        """
+        @summary 生成上传配置
+        
+        @param request: GenerateUploadConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GenerateUploadConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -1174,6 +1619,13 @@ class Client(OpenApiClient):
         request: ai_miao_bi_20230801_models.GenerateUploadConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.GenerateUploadConfigResponse:
+        """
+        @summary 生成上传配置
+        
+        @param request: GenerateUploadConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GenerateUploadConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -1207,6 +1659,12 @@ class Client(OpenApiClient):
         self,
         request: ai_miao_bi_20230801_models.GenerateUploadConfigRequest,
     ) -> ai_miao_bi_20230801_models.GenerateUploadConfigResponse:
+        """
+        @summary 生成上传配置
+        
+        @param request: GenerateUploadConfigRequest
+        @return: GenerateUploadConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.generate_upload_config_with_options(request, runtime)
 
@@ -1214,6 +1672,12 @@ class Client(OpenApiClient):
         self,
         request: ai_miao_bi_20230801_models.GenerateUploadConfigRequest,
     ) -> ai_miao_bi_20230801_models.GenerateUploadConfigResponse:
+        """
+        @summary 生成上传配置
+        
+        @param request: GenerateUploadConfigRequest
+        @return: GenerateUploadConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.generate_upload_config_with_options_async(request, runtime)
 
@@ -1222,6 +1686,13 @@ class Client(OpenApiClient):
         tmp_req: ai_miao_bi_20230801_models.GenerateViewPointRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.GenerateViewPointResponse:
+        """
+        @summary 视角生成
+        
+        @param tmp_req: GenerateViewPointRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GenerateViewPointResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ai_miao_bi_20230801_models.GenerateViewPointShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1258,6 +1729,13 @@ class Client(OpenApiClient):
         tmp_req: ai_miao_bi_20230801_models.GenerateViewPointRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.GenerateViewPointResponse:
+        """
+        @summary 视角生成
+        
+        @param tmp_req: GenerateViewPointRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GenerateViewPointResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ai_miao_bi_20230801_models.GenerateViewPointShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1293,6 +1771,12 @@ class Client(OpenApiClient):
         self,
         request: ai_miao_bi_20230801_models.GenerateViewPointRequest,
     ) -> ai_miao_bi_20230801_models.GenerateViewPointResponse:
+        """
+        @summary 视角生成
+        
+        @param request: GenerateViewPointRequest
+        @return: GenerateViewPointResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.generate_view_point_with_options(request, runtime)
 
@@ -1300,14 +1784,135 @@ class Client(OpenApiClient):
         self,
         request: ai_miao_bi_20230801_models.GenerateViewPointRequest,
     ) -> ai_miao_bi_20230801_models.GenerateViewPointResponse:
+        """
+        @summary 视角生成
+        
+        @param request: GenerateViewPointRequest
+        @return: GenerateViewPointResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.generate_view_point_with_options_async(request, runtime)
+
+    def get_custom_text_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.GetCustomTextRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.GetCustomTextResponse:
+        """
+        @summary 获取自定义文本
+        
+        @param request: GetCustomTextRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCustomTextResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        body = {}
+        if not UtilClient.is_unset(request.commodity_code):
+            body['CommodityCode'] = request.commodity_code
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetCustomText',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.GetCustomTextResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_custom_text_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.GetCustomTextRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.GetCustomTextResponse:
+        """
+        @summary 获取自定义文本
+        
+        @param request: GetCustomTextRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCustomTextResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        body = {}
+        if not UtilClient.is_unset(request.commodity_code):
+            body['CommodityCode'] = request.commodity_code
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetCustomText',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.GetCustomTextResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_custom_text(
+        self,
+        request: ai_miao_bi_20230801_models.GetCustomTextRequest,
+    ) -> ai_miao_bi_20230801_models.GetCustomTextResponse:
+        """
+        @summary 获取自定义文本
+        
+        @param request: GetCustomTextRequest
+        @return: GetCustomTextResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_custom_text_with_options(request, runtime)
+
+    async def get_custom_text_async(
+        self,
+        request: ai_miao_bi_20230801_models.GetCustomTextRequest,
+    ) -> ai_miao_bi_20230801_models.GetCustomTextResponse:
+        """
+        @summary 获取自定义文本
+        
+        @param request: GetCustomTextRequest
+        @return: GetCustomTextResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_custom_text_with_options_async(request, runtime)
 
     def get_data_source_order_config_with_options(
         self,
         request: ai_miao_bi_20230801_models.GetDataSourceOrderConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.GetDataSourceOrderConfigResponse:
+        """
+        @summary 获取系统数据源配置和个人配置
+        
+        @param request: GetDataSourceOrderConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataSourceOrderConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -1340,6 +1945,13 @@ class Client(OpenApiClient):
         request: ai_miao_bi_20230801_models.GetDataSourceOrderConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.GetDataSourceOrderConfigResponse:
+        """
+        @summary 获取系统数据源配置和个人配置
+        
+        @param request: GetDataSourceOrderConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataSourceOrderConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -1371,6 +1983,12 @@ class Client(OpenApiClient):
         self,
         request: ai_miao_bi_20230801_models.GetDataSourceOrderConfigRequest,
     ) -> ai_miao_bi_20230801_models.GetDataSourceOrderConfigResponse:
+        """
+        @summary 获取系统数据源配置和个人配置
+        
+        @param request: GetDataSourceOrderConfigRequest
+        @return: GetDataSourceOrderConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_data_source_order_config_with_options(request, runtime)
 
@@ -1378,6 +1996,12 @@ class Client(OpenApiClient):
         self,
         request: ai_miao_bi_20230801_models.GetDataSourceOrderConfigRequest,
     ) -> ai_miao_bi_20230801_models.GetDataSourceOrderConfigResponse:
+        """
+        @summary 获取系统数据源配置和个人配置
+        
+        @param request: GetDataSourceOrderConfigRequest
+        @return: GetDataSourceOrderConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_data_source_order_config_with_options_async(request, runtime)
 
@@ -1386,6 +2010,13 @@ class Client(OpenApiClient):
         request: ai_miao_bi_20230801_models.GetGeneratedContentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.GetGeneratedContentResponse:
+        """
+        @summary 文档管理-查询详情。
+        
+        @param request: GetGeneratedContentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetGeneratedContentResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -1418,6 +2049,13 @@ class Client(OpenApiClient):
         request: ai_miao_bi_20230801_models.GetGeneratedContentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.GetGeneratedContentResponse:
+        """
+        @summary 文档管理-查询详情。
+        
+        @param request: GetGeneratedContentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetGeneratedContentResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -1449,6 +2087,12 @@ class Client(OpenApiClient):
         self,
         request: ai_miao_bi_20230801_models.GetGeneratedContentRequest,
     ) -> ai_miao_bi_20230801_models.GetGeneratedContentResponse:
+        """
+        @summary 文档管理-查询详情。
+        
+        @param request: GetGeneratedContentRequest
+        @return: GetGeneratedContentResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_generated_content_with_options(request, runtime)
 
@@ -1456,6 +2100,12 @@ class Client(OpenApiClient):
         self,
         request: ai_miao_bi_20230801_models.GetGeneratedContentRequest,
     ) -> ai_miao_bi_20230801_models.GetGeneratedContentResponse:
+        """
+        @summary 文档管理-查询详情。
+        
+        @param request: GetGeneratedContentRequest
+        @return: GetGeneratedContentResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_generated_content_with_options_async(request, runtime)
 
@@ -1464,6 +2114,13 @@ class Client(OpenApiClient):
         request: ai_miao_bi_20230801_models.GetInterveneGlobalReplyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.GetInterveneGlobalReplyResponse:
+        """
+        @summary 获得干预全局回复
+        
+        @param request: GetInterveneGlobalReplyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetInterveneGlobalReplyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -1492,6 +2149,13 @@ class Client(OpenApiClient):
         request: ai_miao_bi_20230801_models.GetInterveneGlobalReplyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.GetInterveneGlobalReplyResponse:
+        """
+        @summary 获得干预全局回复
+        
+        @param request: GetInterveneGlobalReplyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetInterveneGlobalReplyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -1519,6 +2183,12 @@ class Client(OpenApiClient):
         self,
         request: ai_miao_bi_20230801_models.GetInterveneGlobalReplyRequest,
     ) -> ai_miao_bi_20230801_models.GetInterveneGlobalReplyResponse:
+        """
+        @summary 获得干预全局回复
+        
+        @param request: GetInterveneGlobalReplyRequest
+        @return: GetInterveneGlobalReplyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_intervene_global_reply_with_options(request, runtime)
 
@@ -1526,6 +2196,12 @@ class Client(OpenApiClient):
         self,
         request: ai_miao_bi_20230801_models.GetInterveneGlobalReplyRequest,
     ) -> ai_miao_bi_20230801_models.GetInterveneGlobalReplyResponse:
+        """
+        @summary 获得干预全局回复
+        
+        @param request: GetInterveneGlobalReplyRequest
+        @return: GetInterveneGlobalReplyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_intervene_global_reply_with_options_async(request, runtime)
 
@@ -1534,6 +2210,13 @@ class Client(OpenApiClient):
         request: ai_miao_bi_20230801_models.GetInterveneImportTaskInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.GetInterveneImportTaskInfoResponse:
+        """
+        @summary 获得导入任务信息
+        
+        @param request: GetInterveneImportTaskInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetInterveneImportTaskInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -1566,6 +2249,13 @@ class Client(OpenApiClient):
         request: ai_miao_bi_20230801_models.GetInterveneImportTaskInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.GetInterveneImportTaskInfoResponse:
+        """
+        @summary 获得导入任务信息
+        
+        @param request: GetInterveneImportTaskInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetInterveneImportTaskInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -1597,6 +2287,12 @@ class Client(OpenApiClient):
         self,
         request: ai_miao_bi_20230801_models.GetInterveneImportTaskInfoRequest,
     ) -> ai_miao_bi_20230801_models.GetInterveneImportTaskInfoResponse:
+        """
+        @summary 获得导入任务信息
+        
+        @param request: GetInterveneImportTaskInfoRequest
+        @return: GetInterveneImportTaskInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_intervene_import_task_info_with_options(request, runtime)
 
@@ -1604,6 +2300,12 @@ class Client(OpenApiClient):
         self,
         request: ai_miao_bi_20230801_models.GetInterveneImportTaskInfoRequest,
     ) -> ai_miao_bi_20230801_models.GetInterveneImportTaskInfoResponse:
+        """
+        @summary 获得导入任务信息
+        
+        @param request: GetInterveneImportTaskInfoRequest
+        @return: GetInterveneImportTaskInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_intervene_import_task_info_with_options_async(request, runtime)
 
@@ -1612,6 +2314,13 @@ class Client(OpenApiClient):
         request: ai_miao_bi_20230801_models.GetInterveneRuleDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.GetInterveneRuleDetailResponse:
+        """
+        @summary 获得干预项规则详情
+        
+        @param request: GetInterveneRuleDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetInterveneRuleDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -1644,6 +2353,13 @@ class Client(OpenApiClient):
         request: ai_miao_bi_20230801_models.GetInterveneRuleDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.GetInterveneRuleDetailResponse:
+        """
+        @summary 获得干预项规则详情
+        
+        @param request: GetInterveneRuleDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetInterveneRuleDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -1675,6 +2391,12 @@ class Client(OpenApiClient):
         self,
         request: ai_miao_bi_20230801_models.GetInterveneRuleDetailRequest,
     ) -> ai_miao_bi_20230801_models.GetInterveneRuleDetailResponse:
+        """
+        @summary 获得干预项规则详情
+        
+        @param request: GetInterveneRuleDetailRequest
+        @return: GetInterveneRuleDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_intervene_rule_detail_with_options(request, runtime)
 
@@ -1682,6 +2404,12 @@ class Client(OpenApiClient):
         self,
         request: ai_miao_bi_20230801_models.GetInterveneRuleDetailRequest,
     ) -> ai_miao_bi_20230801_models.GetInterveneRuleDetailResponse:
+        """
+        @summary 获得干预项规则详情
+        
+        @param request: GetInterveneRuleDetailRequest
+        @return: GetInterveneRuleDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_intervene_rule_detail_with_options_async(request, runtime)
 
@@ -1690,6 +2418,13 @@ class Client(OpenApiClient):
         request: ai_miao_bi_20230801_models.GetInterveneTemplateFileUrlRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.GetInterveneTemplateFileUrlResponse:
+        """
+        @summary 获得干预导入模版文件下载地址
+        
+        @param request: GetInterveneTemplateFileUrlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetInterveneTemplateFileUrlResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -1718,6 +2453,13 @@ class Client(OpenApiClient):
         request: ai_miao_bi_20230801_models.GetInterveneTemplateFileUrlRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.GetInterveneTemplateFileUrlResponse:
+        """
+        @summary 获得干预导入模版文件下载地址
+        
+        @param request: GetInterveneTemplateFileUrlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetInterveneTemplateFileUrlResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -1745,6 +2487,12 @@ class Client(OpenApiClient):
         self,
         request: ai_miao_bi_20230801_models.GetInterveneTemplateFileUrlRequest,
     ) -> ai_miao_bi_20230801_models.GetInterveneTemplateFileUrlResponse:
+        """
+        @summary 获得干预导入模版文件下载地址
+        
+        @param request: GetInterveneTemplateFileUrlRequest
+        @return: GetInterveneTemplateFileUrlResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_intervene_template_file_url_with_options(request, runtime)
 
@@ -1752,6 +2500,12 @@ class Client(OpenApiClient):
         self,
         request: ai_miao_bi_20230801_models.GetInterveneTemplateFileUrlRequest,
     ) -> ai_miao_bi_20230801_models.GetInterveneTemplateFileUrlResponse:
+        """
+        @summary 获得干预导入模版文件下载地址
+        
+        @param request: GetInterveneTemplateFileUrlRequest
+        @return: GetInterveneTemplateFileUrlResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_intervene_template_file_url_with_options_async(request, runtime)
 
@@ -1760,6 +2514,13 @@ class Client(OpenApiClient):
         request: ai_miao_bi_20230801_models.GetMaterialByIdRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.GetMaterialByIdResponse:
+        """
+        @summary 根据ID获取素材内容
+        
+        @param request: GetMaterialByIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMaterialByIdResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -1792,6 +2553,13 @@ class Client(OpenApiClient):
         request: ai_miao_bi_20230801_models.GetMaterialByIdRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.GetMaterialByIdResponse:
+        """
+        @summary 根据ID获取素材内容
+        
+        @param request: GetMaterialByIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMaterialByIdResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -1823,6 +2591,12 @@ class Client(OpenApiClient):
         self,
         request: ai_miao_bi_20230801_models.GetMaterialByIdRequest,
     ) -> ai_miao_bi_20230801_models.GetMaterialByIdResponse:
+        """
+        @summary 根据ID获取素材内容
+        
+        @param request: GetMaterialByIdRequest
+        @return: GetMaterialByIdResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_material_by_id_with_options(request, runtime)
 
@@ -1830,6 +2604,12 @@ class Client(OpenApiClient):
         self,
         request: ai_miao_bi_20230801_models.GetMaterialByIdRequest,
     ) -> ai_miao_bi_20230801_models.GetMaterialByIdResponse:
+        """
+        @summary 根据ID获取素材内容
+        
+        @param request: GetMaterialByIdRequest
+        @return: GetMaterialByIdResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_material_by_id_with_options_async(request, runtime)
 
@@ -1838,6 +2618,13 @@ class Client(OpenApiClient):
         request: ai_miao_bi_20230801_models.GetPropertiesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.GetPropertiesResponse:
+        """
+        @summary 获取当前用户的配置
+        
+        @param request: GetPropertiesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPropertiesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -1866,6 +2653,13 @@ class Client(OpenApiClient):
         request: ai_miao_bi_20230801_models.GetPropertiesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.GetPropertiesResponse:
+        """
+        @summary 获取当前用户的配置
+        
+        @param request: GetPropertiesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPropertiesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -1893,6 +2687,12 @@ class Client(OpenApiClient):
         self,
         request: ai_miao_bi_20230801_models.GetPropertiesRequest,
     ) -> ai_miao_bi_20230801_models.GetPropertiesResponse:
+        """
+        @summary 获取当前用户的配置
+        
+        @param request: GetPropertiesRequest
+        @return: GetPropertiesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_properties_with_options(request, runtime)
 
@@ -1900,6 +2700,12 @@ class Client(OpenApiClient):
         self,
         request: ai_miao_bi_20230801_models.GetPropertiesRequest,
     ) -> ai_miao_bi_20230801_models.GetPropertiesResponse:
+        """
+        @summary 获取当前用户的配置
+        
+        @param request: GetPropertiesRequest
+        @return: GetPropertiesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_properties_with_options_async(request, runtime)
 
@@ -1908,6 +2714,13 @@ class Client(OpenApiClient):
         request: ai_miao_bi_20230801_models.ImportInterveneFileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.ImportInterveneFileResponse:
+        """
+        @summary 导入干预文件
+        
+        @param request: ImportInterveneFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ImportInterveneFileResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -1944,6 +2757,13 @@ class Client(OpenApiClient):
         request: ai_miao_bi_20230801_models.ImportInterveneFileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.ImportInterveneFileResponse:
+        """
+        @summary 导入干预文件
+        
+        @param request: ImportInterveneFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ImportInterveneFileResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -1979,6 +2799,12 @@ class Client(OpenApiClient):
         self,
         request: ai_miao_bi_20230801_models.ImportInterveneFileRequest,
     ) -> ai_miao_bi_20230801_models.ImportInterveneFileResponse:
+        """
+        @summary 导入干预文件
+        
+        @param request: ImportInterveneFileRequest
+        @return: ImportInterveneFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.import_intervene_file_with_options(request, runtime)
 
@@ -1986,6 +2812,12 @@ class Client(OpenApiClient):
         self,
         request: ai_miao_bi_20230801_models.ImportInterveneFileRequest,
     ) -> ai_miao_bi_20230801_models.ImportInterveneFileResponse:
+        """
+        @summary 导入干预文件
+        
+        @param request: ImportInterveneFileRequest
+        @return: ImportInterveneFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.import_intervene_file_with_options_async(request, runtime)
 
@@ -1994,6 +2826,13 @@ class Client(OpenApiClient):
         request: ai_miao_bi_20230801_models.ImportInterveneFileAsyncRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.ImportInterveneFileAsyncResponse:
+        """
+        @summary 异步导入干预文件
+        
+        @param request: ImportInterveneFileAsyncRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ImportInterveneFileAsyncResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -2030,6 +2869,13 @@ class Client(OpenApiClient):
         request: ai_miao_bi_20230801_models.ImportInterveneFileAsyncRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.ImportInterveneFileAsyncResponse:
+        """
+        @summary 异步导入干预文件
+        
+        @param request: ImportInterveneFileAsyncRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ImportInterveneFileAsyncResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -2065,6 +2911,12 @@ class Client(OpenApiClient):
         self,
         request: ai_miao_bi_20230801_models.ImportInterveneFileAsyncRequest,
     ) -> ai_miao_bi_20230801_models.ImportInterveneFileAsyncResponse:
+        """
+        @summary 异步导入干预文件
+        
+        @param request: ImportInterveneFileAsyncRequest
+        @return: ImportInterveneFileAsyncResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.import_intervene_file_async_with_options(request, runtime)
 
@@ -2072,6 +2924,12 @@ class Client(OpenApiClient):
         self,
         request: ai_miao_bi_20230801_models.ImportInterveneFileAsyncRequest,
     ) -> ai_miao_bi_20230801_models.ImportInterveneFileAsyncResponse:
+        """
+        @summary 异步导入干预文件
+        
+        @param request: ImportInterveneFileAsyncRequest
+        @return: ImportInterveneFileAsyncResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.import_intervene_file_async_with_options_async(request, runtime)
 
@@ -2080,6 +2938,13 @@ class Client(OpenApiClient):
         tmp_req: ai_miao_bi_20230801_models.InsertInterveneGlobalReplyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.InsertInterveneGlobalReplyResponse:
+        """
+        @summary 设置干预全局回复
+        
+        @param tmp_req: InsertInterveneGlobalReplyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InsertInterveneGlobalReplyResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ai_miao_bi_20230801_models.InsertInterveneGlobalReplyShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -2116,6 +2981,13 @@ class Client(OpenApiClient):
         tmp_req: ai_miao_bi_20230801_models.InsertInterveneGlobalReplyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.InsertInterveneGlobalReplyResponse:
+        """
+        @summary 设置干预全局回复
+        
+        @param tmp_req: InsertInterveneGlobalReplyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InsertInterveneGlobalReplyResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ai_miao_bi_20230801_models.InsertInterveneGlobalReplyShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -2151,6 +3023,12 @@ class Client(OpenApiClient):
         self,
         request: ai_miao_bi_20230801_models.InsertInterveneGlobalReplyRequest,
     ) -> ai_miao_bi_20230801_models.InsertInterveneGlobalReplyResponse:
+        """
+        @summary 设置干预全局回复
+        
+        @param request: InsertInterveneGlobalReplyRequest
+        @return: InsertInterveneGlobalReplyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.insert_intervene_global_reply_with_options(request, runtime)
 
@@ -2158,6 +3036,12 @@ class Client(OpenApiClient):
         self,
         request: ai_miao_bi_20230801_models.InsertInterveneGlobalReplyRequest,
     ) -> ai_miao_bi_20230801_models.InsertInterveneGlobalReplyResponse:
+        """
+        @summary 设置干预全局回复
+        
+        @param request: InsertInterveneGlobalReplyRequest
+        @return: InsertInterveneGlobalReplyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.insert_intervene_global_reply_with_options_async(request, runtime)
 
@@ -2166,6 +3050,13 @@ class Client(OpenApiClient):
         tmp_req: ai_miao_bi_20230801_models.InsertInterveneRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.InsertInterveneRuleResponse:
+        """
+        @summary 插入干预规则
+        
+        @param tmp_req: InsertInterveneRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InsertInterveneRuleResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ai_miao_bi_20230801_models.InsertInterveneRuleShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -2202,6 +3093,13 @@ class Client(OpenApiClient):
         tmp_req: ai_miao_bi_20230801_models.InsertInterveneRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.InsertInterveneRuleResponse:
+        """
+        @summary 插入干预规则
+        
+        @param tmp_req: InsertInterveneRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InsertInterveneRuleResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ai_miao_bi_20230801_models.InsertInterveneRuleShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -2237,6 +3135,12 @@ class Client(OpenApiClient):
         self,
         request: ai_miao_bi_20230801_models.InsertInterveneRuleRequest,
     ) -> ai_miao_bi_20230801_models.InsertInterveneRuleResponse:
+        """
+        @summary 插入干预规则
+        
+        @param request: InsertInterveneRuleRequest
+        @return: InsertInterveneRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.insert_intervene_rule_with_options(request, runtime)
 
@@ -2244,6 +3148,12 @@ class Client(OpenApiClient):
         self,
         request: ai_miao_bi_20230801_models.InsertInterveneRuleRequest,
     ) -> ai_miao_bi_20230801_models.InsertInterveneRuleResponse:
+        """
+        @summary 插入干预规则
+        
+        @param request: InsertInterveneRuleRequest
+        @return: InsertInterveneRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.insert_intervene_rule_with_options_async(request, runtime)
 
@@ -2252,6 +3162,13 @@ class Client(OpenApiClient):
         tmp_req: ai_miao_bi_20230801_models.ListAsyncTasksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.ListAsyncTasksResponse:
+        """
+        @summary 查询任务列表
+        
+        @param tmp_req: ListAsyncTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAsyncTasksResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ai_miao_bi_20230801_models.ListAsyncTasksShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -2308,6 +3225,13 @@ class Client(OpenApiClient):
         tmp_req: ai_miao_bi_20230801_models.ListAsyncTasksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.ListAsyncTasksResponse:
+        """
+        @summary 查询任务列表
+        
+        @param tmp_req: ListAsyncTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAsyncTasksResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ai_miao_bi_20230801_models.ListAsyncTasksShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -2363,6 +3287,12 @@ class Client(OpenApiClient):
         self,
         request: ai_miao_bi_20230801_models.ListAsyncTasksRequest,
     ) -> ai_miao_bi_20230801_models.ListAsyncTasksResponse:
+        """
+        @summary 查询任务列表
+        
+        @param request: ListAsyncTasksRequest
+        @return: ListAsyncTasksResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_async_tasks_with_options(request, runtime)
 
@@ -2370,6 +3300,12 @@ class Client(OpenApiClient):
         self,
         request: ai_miao_bi_20230801_models.ListAsyncTasksRequest,
     ) -> ai_miao_bi_20230801_models.ListAsyncTasksResponse:
+        """
+        @summary 查询任务列表
+        
+        @param request: ListAsyncTasksRequest
+        @return: ListAsyncTasksResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_async_tasks_with_options_async(request, runtime)
 
@@ -2378,6 +3314,13 @@ class Client(OpenApiClient):
         request: ai_miao_bi_20230801_models.ListBuildConfigsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.ListBuildConfigsResponse:
+        """
+        @summary 获取系统自定义预设
+        
+        @param request: ListBuildConfigsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListBuildConfigsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -2410,6 +3353,13 @@ class Client(OpenApiClient):
         request: ai_miao_bi_20230801_models.ListBuildConfigsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.ListBuildConfigsResponse:
+        """
+        @summary 获取系统自定义预设
+        
+        @param request: ListBuildConfigsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListBuildConfigsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -2441,6 +3391,12 @@ class Client(OpenApiClient):
         self,
         request: ai_miao_bi_20230801_models.ListBuildConfigsRequest,
     ) -> ai_miao_bi_20230801_models.ListBuildConfigsResponse:
+        """
+        @summary 获取系统自定义预设
+        
+        @param request: ListBuildConfigsRequest
+        @return: ListBuildConfigsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_build_configs_with_options(request, runtime)
 
@@ -2448,14 +3404,131 @@ class Client(OpenApiClient):
         self,
         request: ai_miao_bi_20230801_models.ListBuildConfigsRequest,
     ) -> ai_miao_bi_20230801_models.ListBuildConfigsResponse:
+        """
+        @summary 获取系统自定义预设
+        
+        @param request: ListBuildConfigsRequest
+        @return: ListBuildConfigsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_build_configs_with_options_async(request, runtime)
+
+    def list_custom_text_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.ListCustomTextRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.ListCustomTextResponse:
+        """
+        @summary 自定义文本列表
+        
+        @param request: ListCustomTextRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCustomTextResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        body = {}
+        if not UtilClient.is_unset(request.commodity_code):
+            body['CommodityCode'] = request.commodity_code
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListCustomText',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.ListCustomTextResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_custom_text_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.ListCustomTextRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.ListCustomTextResponse:
+        """
+        @summary 自定义文本列表
+        
+        @param request: ListCustomTextRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCustomTextResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        body = {}
+        if not UtilClient.is_unset(request.commodity_code):
+            body['CommodityCode'] = request.commodity_code
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListCustomText',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.ListCustomTextResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_custom_text(
+        self,
+        request: ai_miao_bi_20230801_models.ListCustomTextRequest,
+    ) -> ai_miao_bi_20230801_models.ListCustomTextResponse:
+        """
+        @summary 自定义文本列表
+        
+        @param request: ListCustomTextRequest
+        @return: ListCustomTextResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_custom_text_with_options(request, runtime)
+
+    async def list_custom_text_async(
+        self,
+        request: ai_miao_bi_20230801_models.ListCustomTextRequest,
+    ) -> ai_miao_bi_20230801_models.ListCustomTextResponse:
+        """
+        @summary 自定义文本列表
+        
+        @param request: ListCustomTextRequest
+        @return: ListCustomTextResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_custom_text_with_options_async(request, runtime)
 
     def list_dialogues_with_options(
         self,
         request: ai_miao_bi_20230801_models.ListDialoguesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.ListDialoguesResponse:
+        """
+        @summary 生成历史列表
+        
+        @param request: ListDialoguesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDialoguesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -2498,6 +3571,13 @@ class Client(OpenApiClient):
         request: ai_miao_bi_20230801_models.ListDialoguesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.ListDialoguesResponse:
+        """
+        @summary 生成历史列表
+        
+        @param request: ListDialoguesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDialoguesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -2539,6 +3619,12 @@ class Client(OpenApiClient):
         self,
         request: ai_miao_bi_20230801_models.ListDialoguesRequest,
     ) -> ai_miao_bi_20230801_models.ListDialoguesResponse:
+        """
+        @summary 生成历史列表
+        
+        @param request: ListDialoguesRequest
+        @return: ListDialoguesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_dialogues_with_options(request, runtime)
 
@@ -2546,6 +3632,12 @@ class Client(OpenApiClient):
         self,
         request: ai_miao_bi_20230801_models.ListDialoguesRequest,
     ) -> ai_miao_bi_20230801_models.ListDialoguesResponse:
+        """
+        @summary 生成历史列表
+        
+        @param request: ListDialoguesRequest
+        @return: ListDialoguesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_dialogues_with_options_async(request, runtime)
 
@@ -2554,6 +3646,13 @@ class Client(OpenApiClient):
         request: ai_miao_bi_20230801_models.ListGeneratedContentsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.ListGeneratedContentsResponse:
+        """
+        @summary 文档管理-列表。
+        
+        @param request: ListGeneratedContentsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListGeneratedContentsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -2596,6 +3695,13 @@ class Client(OpenApiClient):
         request: ai_miao_bi_20230801_models.ListGeneratedContentsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.ListGeneratedContentsResponse:
+        """
+        @summary 文档管理-列表。
+        
+        @param request: ListGeneratedContentsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListGeneratedContentsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -2637,6 +3743,12 @@ class Client(OpenApiClient):
         self,
         request: ai_miao_bi_20230801_models.ListGeneratedContentsRequest,
     ) -> ai_miao_bi_20230801_models.ListGeneratedContentsResponse:
+        """
+        @summary 文档管理-列表。
+        
+        @param request: ListGeneratedContentsRequest
+        @return: ListGeneratedContentsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_generated_contents_with_options(request, runtime)
 
@@ -2644,6 +3756,12 @@ class Client(OpenApiClient):
         self,
         request: ai_miao_bi_20230801_models.ListGeneratedContentsRequest,
     ) -> ai_miao_bi_20230801_models.ListGeneratedContentsResponse:
+        """
+        @summary 文档管理-列表。
+        
+        @param request: ListGeneratedContentsRequest
+        @return: ListGeneratedContentsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_generated_contents_with_options_async(request, runtime)
 
@@ -2652,6 +3770,13 @@ class Client(OpenApiClient):
         tmp_req: ai_miao_bi_20230801_models.ListHotNewsWithTypeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.ListHotNewsWithTypeResponse:
+        """
+        @summary 获取分类的热点新闻
+        
+        @param tmp_req: ListHotNewsWithTypeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListHotNewsWithTypeResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ai_miao_bi_20230801_models.ListHotNewsWithTypeShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -2694,6 +3819,13 @@ class Client(OpenApiClient):
         tmp_req: ai_miao_bi_20230801_models.ListHotNewsWithTypeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.ListHotNewsWithTypeResponse:
+        """
+        @summary 获取分类的热点新闻
+        
+        @param tmp_req: ListHotNewsWithTypeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListHotNewsWithTypeResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ai_miao_bi_20230801_models.ListHotNewsWithTypeShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -2735,6 +3867,12 @@ class Client(OpenApiClient):
         self,
         request: ai_miao_bi_20230801_models.ListHotNewsWithTypeRequest,
     ) -> ai_miao_bi_20230801_models.ListHotNewsWithTypeResponse:
+        """
+        @summary 获取分类的热点新闻
+        
+        @param request: ListHotNewsWithTypeRequest
+        @return: ListHotNewsWithTypeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_hot_news_with_type_with_options(request, runtime)
 
@@ -2742,6 +3880,12 @@ class Client(OpenApiClient):
         self,
         request: ai_miao_bi_20230801_models.ListHotNewsWithTypeRequest,
     ) -> ai_miao_bi_20230801_models.ListHotNewsWithTypeResponse:
+        """
+        @summary 获取分类的热点新闻
+        
+        @param request: ListHotNewsWithTypeRequest
+        @return: ListHotNewsWithTypeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_hot_news_with_type_with_options_async(request, runtime)
 
@@ -2750,6 +3894,13 @@ class Client(OpenApiClient):
         request: ai_miao_bi_20230801_models.ListInterveneCntRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.ListInterveneCntResponse:
+        """
+        @summary 获得干预项目数量列表
+        
+        @param request: ListInterveneCntRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInterveneCntResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -2784,6 +3935,13 @@ class Client(OpenApiClient):
         request: ai_miao_bi_20230801_models.ListInterveneCntRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.ListInterveneCntResponse:
+        """
+        @summary 获得干预项目数量列表
+        
+        @param request: ListInterveneCntRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInterveneCntResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -2817,6 +3975,12 @@ class Client(OpenApiClient):
         self,
         request: ai_miao_bi_20230801_models.ListInterveneCntRequest,
     ) -> ai_miao_bi_20230801_models.ListInterveneCntResponse:
+        """
+        @summary 获得干预项目数量列表
+        
+        @param request: ListInterveneCntRequest
+        @return: ListInterveneCntResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_intervene_cnt_with_options(request, runtime)
 
@@ -2824,6 +3988,12 @@ class Client(OpenApiClient):
         self,
         request: ai_miao_bi_20230801_models.ListInterveneCntRequest,
     ) -> ai_miao_bi_20230801_models.ListInterveneCntResponse:
+        """
+        @summary 获得干预项目数量列表
+        
+        @param request: ListInterveneCntRequest
+        @return: ListInterveneCntResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_intervene_cnt_with_options_async(request, runtime)
 
@@ -2832,6 +4002,13 @@ class Client(OpenApiClient):
         request: ai_miao_bi_20230801_models.ListInterveneImportTasksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.ListInterveneImportTasksResponse:
+        """
+        @summary 获得导入任务列表
+        
+        @param request: ListInterveneImportTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInterveneImportTasksResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -2866,6 +4043,13 @@ class Client(OpenApiClient):
         request: ai_miao_bi_20230801_models.ListInterveneImportTasksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.ListInterveneImportTasksResponse:
+        """
+        @summary 获得导入任务列表
+        
+        @param request: ListInterveneImportTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInterveneImportTasksResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -2899,6 +4083,12 @@ class Client(OpenApiClient):
         self,
         request: ai_miao_bi_20230801_models.ListInterveneImportTasksRequest,
     ) -> ai_miao_bi_20230801_models.ListInterveneImportTasksResponse:
+        """
+        @summary 获得导入任务列表
+        
+        @param request: ListInterveneImportTasksRequest
+        @return: ListInterveneImportTasksResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_intervene_import_tasks_with_options(request, runtime)
 
@@ -2906,6 +4096,12 @@ class Client(OpenApiClient):
         self,
         request: ai_miao_bi_20230801_models.ListInterveneImportTasksRequest,
     ) -> ai_miao_bi_20230801_models.ListInterveneImportTasksResponse:
+        """
+        @summary 获得导入任务列表
+        
+        @param request: ListInterveneImportTasksRequest
+        @return: ListInterveneImportTasksResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_intervene_import_tasks_with_options_async(request, runtime)
 
@@ -2914,6 +4110,13 @@ class Client(OpenApiClient):
         request: ai_miao_bi_20230801_models.ListInterveneRulesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.ListInterveneRulesResponse:
+        """
+        @summary 获得干预规则列表
+        
+        @param request: ListInterveneRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInterveneRulesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -2948,6 +4151,13 @@ class Client(OpenApiClient):
         request: ai_miao_bi_20230801_models.ListInterveneRulesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.ListInterveneRulesResponse:
+        """
+        @summary 获得干预规则列表
+        
+        @param request: ListInterveneRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInterveneRulesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -2981,6 +4191,12 @@ class Client(OpenApiClient):
         self,
         request: ai_miao_bi_20230801_models.ListInterveneRulesRequest,
     ) -> ai_miao_bi_20230801_models.ListInterveneRulesResponse:
+        """
+        @summary 获得干预规则列表
+        
+        @param request: ListInterveneRulesRequest
+        @return: ListInterveneRulesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_intervene_rules_with_options(request, runtime)
 
@@ -2988,6 +4204,12 @@ class Client(OpenApiClient):
         self,
         request: ai_miao_bi_20230801_models.ListInterveneRulesRequest,
     ) -> ai_miao_bi_20230801_models.ListInterveneRulesResponse:
+        """
+        @summary 获得干预规则列表
+        
+        @param request: ListInterveneRulesRequest
+        @return: ListInterveneRulesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_intervene_rules_with_options_async(request, runtime)
 
@@ -2996,6 +4218,13 @@ class Client(OpenApiClient):
         request: ai_miao_bi_20230801_models.ListIntervenesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.ListIntervenesResponse:
+        """
+        @summary 获得干预项列表
+        
+        @param request: ListIntervenesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListIntervenesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -3036,6 +4265,13 @@ class Client(OpenApiClient):
         request: ai_miao_bi_20230801_models.ListIntervenesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.ListIntervenesResponse:
+        """
+        @summary 获得干预项列表
+        
+        @param request: ListIntervenesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListIntervenesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -3075,6 +4311,12 @@ class Client(OpenApiClient):
         self,
         request: ai_miao_bi_20230801_models.ListIntervenesRequest,
     ) -> ai_miao_bi_20230801_models.ListIntervenesResponse:
+        """
+        @summary 获得干预项列表
+        
+        @param request: ListIntervenesRequest
+        @return: ListIntervenesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_intervenes_with_options(request, runtime)
 
@@ -3082,6 +4324,12 @@ class Client(OpenApiClient):
         self,
         request: ai_miao_bi_20230801_models.ListIntervenesRequest,
     ) -> ai_miao_bi_20230801_models.ListIntervenesResponse:
+        """
+        @summary 获得干预项列表
+        
+        @param request: ListIntervenesRequest
+        @return: ListIntervenesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_intervenes_with_options_async(request, runtime)
 
@@ -3090,6 +4338,13 @@ class Client(OpenApiClient):
         tmp_req: ai_miao_bi_20230801_models.ListMaterialDocumentsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.ListMaterialDocumentsResponse:
+        """
+        @summary 查询素材列表
+        
+        @param tmp_req: ListMaterialDocumentsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMaterialDocumentsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ai_miao_bi_20230801_models.ListMaterialDocumentsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3156,6 +4411,13 @@ class Client(OpenApiClient):
         tmp_req: ai_miao_bi_20230801_models.ListMaterialDocumentsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.ListMaterialDocumentsResponse:
+        """
+        @summary 查询素材列表
+        
+        @param tmp_req: ListMaterialDocumentsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMaterialDocumentsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ai_miao_bi_20230801_models.ListMaterialDocumentsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3221,6 +4483,12 @@ class Client(OpenApiClient):
         self,
         request: ai_miao_bi_20230801_models.ListMaterialDocumentsRequest,
     ) -> ai_miao_bi_20230801_models.ListMaterialDocumentsResponse:
+        """
+        @summary 查询素材列表
+        
+        @param request: ListMaterialDocumentsRequest
+        @return: ListMaterialDocumentsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_material_documents_with_options(request, runtime)
 
@@ -3228,6 +4496,12 @@ class Client(OpenApiClient):
         self,
         request: ai_miao_bi_20230801_models.ListMaterialDocumentsRequest,
     ) -> ai_miao_bi_20230801_models.ListMaterialDocumentsResponse:
+        """
+        @summary 查询素材列表
+        
+        @param request: ListMaterialDocumentsRequest
+        @return: ListMaterialDocumentsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_material_documents_with_options_async(request, runtime)
 
@@ -3236,6 +4510,13 @@ class Client(OpenApiClient):
         request: ai_miao_bi_20230801_models.ListVersionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.ListVersionsResponse:
+        """
+        @summary 获取系统所有实例信息
+        
+        @param request: ListVersionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListVersionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -3264,6 +4545,13 @@ class Client(OpenApiClient):
         request: ai_miao_bi_20230801_models.ListVersionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.ListVersionsResponse:
+        """
+        @summary 获取系统所有实例信息
+        
+        @param request: ListVersionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListVersionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -3291,6 +4579,12 @@ class Client(OpenApiClient):
         self,
         request: ai_miao_bi_20230801_models.ListVersionsRequest,
     ) -> ai_miao_bi_20230801_models.ListVersionsResponse:
+        """
+        @summary 获取系统所有实例信息
+        
+        @param request: ListVersionsRequest
+        @return: ListVersionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_versions_with_options(request, runtime)
 
@@ -3298,6 +4592,12 @@ class Client(OpenApiClient):
         self,
         request: ai_miao_bi_20230801_models.ListVersionsRequest,
     ) -> ai_miao_bi_20230801_models.ListVersionsResponse:
+        """
+        @summary 获取系统所有实例信息
+        
+        @param request: ListVersionsRequest
+        @return: ListVersionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_versions_with_options_async(request, runtime)
 
@@ -3306,6 +4606,13 @@ class Client(OpenApiClient):
         request: ai_miao_bi_20230801_models.QueryAsyncTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.QueryAsyncTaskResponse:
+        """
+        @summary 根据taskId查询异步任务状态
+        
+        @param request: QueryAsyncTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryAsyncTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -3338,6 +4645,13 @@ class Client(OpenApiClient):
         request: ai_miao_bi_20230801_models.QueryAsyncTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.QueryAsyncTaskResponse:
+        """
+        @summary 根据taskId查询异步任务状态
+        
+        @param request: QueryAsyncTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryAsyncTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -3369,6 +4683,12 @@ class Client(OpenApiClient):
         self,
         request: ai_miao_bi_20230801_models.QueryAsyncTaskRequest,
     ) -> ai_miao_bi_20230801_models.QueryAsyncTaskResponse:
+        """
+        @summary 根据taskId查询异步任务状态
+        
+        @param request: QueryAsyncTaskRequest
+        @return: QueryAsyncTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_async_task_with_options(request, runtime)
 
@@ -3376,14 +4696,139 @@ class Client(OpenApiClient):
         self,
         request: ai_miao_bi_20230801_models.QueryAsyncTaskRequest,
     ) -> ai_miao_bi_20230801_models.QueryAsyncTaskResponse:
+        """
+        @summary 根据taskId查询异步任务状态
+        
+        @param request: QueryAsyncTaskRequest
+        @return: QueryAsyncTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_async_task_with_options_async(request, runtime)
+
+    def save_custom_text_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.SaveCustomTextRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.SaveCustomTextResponse:
+        """
+        @summary 保存自定义文本
+        
+        @param request: SaveCustomTextRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SaveCustomTextResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        body = {}
+        if not UtilClient.is_unset(request.commodity_code):
+            body['CommodityCode'] = request.commodity_code
+        if not UtilClient.is_unset(request.content):
+            body['Content'] = request.content
+        if not UtilClient.is_unset(request.title):
+            body['Title'] = request.title
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SaveCustomText',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.SaveCustomTextResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def save_custom_text_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.SaveCustomTextRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.SaveCustomTextResponse:
+        """
+        @summary 保存自定义文本
+        
+        @param request: SaveCustomTextRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SaveCustomTextResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        body = {}
+        if not UtilClient.is_unset(request.commodity_code):
+            body['CommodityCode'] = request.commodity_code
+        if not UtilClient.is_unset(request.content):
+            body['Content'] = request.content
+        if not UtilClient.is_unset(request.title):
+            body['Title'] = request.title
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SaveCustomText',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.SaveCustomTextResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def save_custom_text(
+        self,
+        request: ai_miao_bi_20230801_models.SaveCustomTextRequest,
+    ) -> ai_miao_bi_20230801_models.SaveCustomTextResponse:
+        """
+        @summary 保存自定义文本
+        
+        @param request: SaveCustomTextRequest
+        @return: SaveCustomTextResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.save_custom_text_with_options(request, runtime)
+
+    async def save_custom_text_async(
+        self,
+        request: ai_miao_bi_20230801_models.SaveCustomTextRequest,
+    ) -> ai_miao_bi_20230801_models.SaveCustomTextResponse:
+        """
+        @summary 保存自定义文本
+        
+        @param request: SaveCustomTextRequest
+        @return: SaveCustomTextResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.save_custom_text_with_options_async(request, runtime)
 
     def save_data_source_order_config_with_options(
         self,
         tmp_req: ai_miao_bi_20230801_models.SaveDataSourceOrderConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.SaveDataSourceOrderConfigResponse:
+        """
+        @summary 保存用户的信源配置
+        
+        @param tmp_req: SaveDataSourceOrderConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SaveDataSourceOrderConfigResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ai_miao_bi_20230801_models.SaveDataSourceOrderConfigShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3422,6 +4867,13 @@ class Client(OpenApiClient):
         tmp_req: ai_miao_bi_20230801_models.SaveDataSourceOrderConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.SaveDataSourceOrderConfigResponse:
+        """
+        @summary 保存用户的信源配置
+        
+        @param tmp_req: SaveDataSourceOrderConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SaveDataSourceOrderConfigResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ai_miao_bi_20230801_models.SaveDataSourceOrderConfigShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3459,6 +4911,12 @@ class Client(OpenApiClient):
         self,
         request: ai_miao_bi_20230801_models.SaveDataSourceOrderConfigRequest,
     ) -> ai_miao_bi_20230801_models.SaveDataSourceOrderConfigResponse:
+        """
+        @summary 保存用户的信源配置
+        
+        @param request: SaveDataSourceOrderConfigRequest
+        @return: SaveDataSourceOrderConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.save_data_source_order_config_with_options(request, runtime)
 
@@ -3466,6 +4924,12 @@ class Client(OpenApiClient):
         self,
         request: ai_miao_bi_20230801_models.SaveDataSourceOrderConfigRequest,
     ) -> ai_miao_bi_20230801_models.SaveDataSourceOrderConfigResponse:
+        """
+        @summary 保存用户的信源配置
+        
+        @param request: SaveDataSourceOrderConfigRequest
+        @return: SaveDataSourceOrderConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.save_data_source_order_config_with_options_async(request, runtime)
 
@@ -3474,6 +4938,13 @@ class Client(OpenApiClient):
         tmp_req: ai_miao_bi_20230801_models.SaveMaterialDocumentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.SaveMaterialDocumentResponse:
+        """
+        @summary 保存素材
+        
+        @param tmp_req: SaveMaterialDocumentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SaveMaterialDocumentResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ai_miao_bi_20230801_models.SaveMaterialDocumentShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3534,6 +5005,13 @@ class Client(OpenApiClient):
         tmp_req: ai_miao_bi_20230801_models.SaveMaterialDocumentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.SaveMaterialDocumentResponse:
+        """
+        @summary 保存素材
+        
+        @param tmp_req: SaveMaterialDocumentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SaveMaterialDocumentResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ai_miao_bi_20230801_models.SaveMaterialDocumentShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3593,6 +5071,12 @@ class Client(OpenApiClient):
         self,
         request: ai_miao_bi_20230801_models.SaveMaterialDocumentRequest,
     ) -> ai_miao_bi_20230801_models.SaveMaterialDocumentResponse:
+        """
+        @summary 保存素材
+        
+        @param request: SaveMaterialDocumentRequest
+        @return: SaveMaterialDocumentResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.save_material_document_with_options(request, runtime)
 
@@ -3600,6 +5084,12 @@ class Client(OpenApiClient):
         self,
         request: ai_miao_bi_20230801_models.SaveMaterialDocumentRequest,
     ) -> ai_miao_bi_20230801_models.SaveMaterialDocumentResponse:
+        """
+        @summary 保存素材
+        
+        @param request: SaveMaterialDocumentRequest
+        @return: SaveMaterialDocumentResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.save_material_document_with_options_async(request, runtime)
 
@@ -3608,6 +5098,13 @@ class Client(OpenApiClient):
         tmp_req: ai_miao_bi_20230801_models.SearchNewsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.SearchNewsResponse:
+        """
+        @summary 新闻检索
+        
+        @param tmp_req: SearchNewsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchNewsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ai_miao_bi_20230801_models.SearchNewsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3654,6 +5151,13 @@ class Client(OpenApiClient):
         tmp_req: ai_miao_bi_20230801_models.SearchNewsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.SearchNewsResponse:
+        """
+        @summary 新闻检索
+        
+        @param tmp_req: SearchNewsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchNewsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ai_miao_bi_20230801_models.SearchNewsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3699,6 +5203,12 @@ class Client(OpenApiClient):
         self,
         request: ai_miao_bi_20230801_models.SearchNewsRequest,
     ) -> ai_miao_bi_20230801_models.SearchNewsResponse:
+        """
+        @summary 新闻检索
+        
+        @param request: SearchNewsRequest
+        @return: SearchNewsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.search_news_with_options(request, runtime)
 
@@ -3706,6 +5216,12 @@ class Client(OpenApiClient):
         self,
         request: ai_miao_bi_20230801_models.SearchNewsRequest,
     ) -> ai_miao_bi_20230801_models.SearchNewsResponse:
+        """
+        @summary 新闻检索
+        
+        @param request: SearchNewsRequest
+        @return: SearchNewsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.search_news_with_options_async(request, runtime)
 
@@ -3714,6 +5230,13 @@ class Client(OpenApiClient):
         request: ai_miao_bi_20230801_models.SubmitAsyncTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.SubmitAsyncTaskResponse:
+        """
+        @summary 提交异步任务
+        
+        @param request: SubmitAsyncTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitAsyncTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -3752,6 +5275,13 @@ class Client(OpenApiClient):
         request: ai_miao_bi_20230801_models.SubmitAsyncTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.SubmitAsyncTaskResponse:
+        """
+        @summary 提交异步任务
+        
+        @param request: SubmitAsyncTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitAsyncTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -3789,6 +5319,12 @@ class Client(OpenApiClient):
         self,
         request: ai_miao_bi_20230801_models.SubmitAsyncTaskRequest,
     ) -> ai_miao_bi_20230801_models.SubmitAsyncTaskResponse:
+        """
+        @summary 提交异步任务
+        
+        @param request: SubmitAsyncTaskRequest
+        @return: SubmitAsyncTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.submit_async_task_with_options(request, runtime)
 
@@ -3796,14 +5332,143 @@ class Client(OpenApiClient):
         self,
         request: ai_miao_bi_20230801_models.SubmitAsyncTaskRequest,
     ) -> ai_miao_bi_20230801_models.SubmitAsyncTaskResponse:
+        """
+        @summary 提交异步任务
+        
+        @param request: SubmitAsyncTaskRequest
+        @return: SubmitAsyncTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.submit_async_task_with_options_async(request, runtime)
+
+    def update_custom_text_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.UpdateCustomTextRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.UpdateCustomTextResponse:
+        """
+        @summary 更新自定义文本
+        
+        @param request: UpdateCustomTextRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateCustomTextResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        body = {}
+        if not UtilClient.is_unset(request.commodity_code):
+            body['CommodityCode'] = request.commodity_code
+        if not UtilClient.is_unset(request.content):
+            body['Content'] = request.content
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        if not UtilClient.is_unset(request.title):
+            body['Title'] = request.title
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateCustomText',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.UpdateCustomTextResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_custom_text_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.UpdateCustomTextRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.UpdateCustomTextResponse:
+        """
+        @summary 更新自定义文本
+        
+        @param request: UpdateCustomTextRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateCustomTextResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        body = {}
+        if not UtilClient.is_unset(request.commodity_code):
+            body['CommodityCode'] = request.commodity_code
+        if not UtilClient.is_unset(request.content):
+            body['Content'] = request.content
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        if not UtilClient.is_unset(request.title):
+            body['Title'] = request.title
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateCustomText',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.UpdateCustomTextResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_custom_text(
+        self,
+        request: ai_miao_bi_20230801_models.UpdateCustomTextRequest,
+    ) -> ai_miao_bi_20230801_models.UpdateCustomTextResponse:
+        """
+        @summary 更新自定义文本
+        
+        @param request: UpdateCustomTextRequest
+        @return: UpdateCustomTextResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_custom_text_with_options(request, runtime)
+
+    async def update_custom_text_async(
+        self,
+        request: ai_miao_bi_20230801_models.UpdateCustomTextRequest,
+    ) -> ai_miao_bi_20230801_models.UpdateCustomTextResponse:
+        """
+        @summary 更新自定义文本
+        
+        @param request: UpdateCustomTextRequest
+        @return: UpdateCustomTextResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_custom_text_with_options_async(request, runtime)
 
     def update_generated_content_with_options(
         self,
         tmp_req: ai_miao_bi_20230801_models.UpdateGeneratedContentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.UpdateGeneratedContentResponse:
+        """
+        @summary 文档管理-更新。
+        
+        @param tmp_req: UpdateGeneratedContentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateGeneratedContentResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ai_miao_bi_20230801_models.UpdateGeneratedContentShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3850,6 +5515,13 @@ class Client(OpenApiClient):
         tmp_req: ai_miao_bi_20230801_models.UpdateGeneratedContentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.UpdateGeneratedContentResponse:
+        """
+        @summary 文档管理-更新。
+        
+        @param tmp_req: UpdateGeneratedContentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateGeneratedContentResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ai_miao_bi_20230801_models.UpdateGeneratedContentShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3895,6 +5567,12 @@ class Client(OpenApiClient):
         self,
         request: ai_miao_bi_20230801_models.UpdateGeneratedContentRequest,
     ) -> ai_miao_bi_20230801_models.UpdateGeneratedContentResponse:
+        """
+        @summary 文档管理-更新。
+        
+        @param request: UpdateGeneratedContentRequest
+        @return: UpdateGeneratedContentResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_generated_content_with_options(request, runtime)
 
@@ -3902,6 +5580,12 @@ class Client(OpenApiClient):
         self,
         request: ai_miao_bi_20230801_models.UpdateGeneratedContentRequest,
     ) -> ai_miao_bi_20230801_models.UpdateGeneratedContentResponse:
+        """
+        @summary 文档管理-更新。
+        
+        @param request: UpdateGeneratedContentRequest
+        @return: UpdateGeneratedContentResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_generated_content_with_options_async(request, runtime)
 
@@ -3910,6 +5594,13 @@ class Client(OpenApiClient):
         tmp_req: ai_miao_bi_20230801_models.UpdateMaterialDocumentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.UpdateMaterialDocumentResponse:
+        """
+        @summary 根据ID更新素材
+        
+        @param tmp_req: UpdateMaterialDocumentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateMaterialDocumentResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ai_miao_bi_20230801_models.UpdateMaterialDocumentShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3970,6 +5661,13 @@ class Client(OpenApiClient):
         tmp_req: ai_miao_bi_20230801_models.UpdateMaterialDocumentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.UpdateMaterialDocumentResponse:
+        """
+        @summary 根据ID更新素材
+        
+        @param tmp_req: UpdateMaterialDocumentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateMaterialDocumentResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ai_miao_bi_20230801_models.UpdateMaterialDocumentShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -4029,6 +5727,12 @@ class Client(OpenApiClient):
         self,
         request: ai_miao_bi_20230801_models.UpdateMaterialDocumentRequest,
     ) -> ai_miao_bi_20230801_models.UpdateMaterialDocumentResponse:
+        """
+        @summary 根据ID更新素材
+        
+        @param request: UpdateMaterialDocumentRequest
+        @return: UpdateMaterialDocumentResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_material_document_with_options(request, runtime)
 
@@ -4036,5 +5740,11 @@ class Client(OpenApiClient):
         self,
         request: ai_miao_bi_20230801_models.UpdateMaterialDocumentRequest,
     ) -> ai_miao_bi_20230801_models.UpdateMaterialDocumentResponse:
+        """
+        @summary 根据ID更新素材
+        
+        @param request: UpdateMaterialDocumentRequest
+        @return: UpdateMaterialDocumentResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_material_document_with_options_async(request, runtime)

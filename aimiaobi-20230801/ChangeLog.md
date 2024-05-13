@@ -1,3 +1,11 @@
+2024-05-13 Version: 1.5.0
+- Support API DeleteCustomText.
+- Support API GetCustomText.
+- Support API ListCustomText.
+- Support API SaveCustomText.
+- Support API UpdateCustomText.
+
+
 2024-03-12 Version: 1.4.0
 - Support API ClearIntervenes.
 - Support API DeleteInterveneRule.
