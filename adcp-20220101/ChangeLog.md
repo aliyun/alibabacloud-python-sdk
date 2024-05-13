@@ -1,3 +1,11 @@
+2024-05-13 Version: 3.1.0
+- Support API ChangeResourceGroup.
+- Update API CreateHubCluster: add param Tag.
+- Update API DescribeHubClusterDetails: update response param.
+- Update API DescribeHubClusters: add param Tag.
+- Update API DescribeHubClusters: update response param.
+
+
 2024-04-22 Version: 3.0.0
 - Update API CreateHubCluster: add param ResourceGroupID.
 - Update API CreateHubCluster: update response param.
