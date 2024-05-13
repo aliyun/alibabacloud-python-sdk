@@ -46,6 +46,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.AddDesensitizationRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.AddDesensitizationRuleResponse:
+        """
+        @summary Adds a masking rule.
+        
+        @param request: AddDesensitizationRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddDesensitizationRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.function_type):
@@ -89,6 +96,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.AddDesensitizationRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.AddDesensitizationRuleResponse:
+        """
+        @summary Adds a masking rule.
+        
+        @param request: AddDesensitizationRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddDesensitizationRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.function_type):
@@ -131,6 +145,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.AddDesensitizationRuleRequest,
     ) -> dms_enterprise_20181101_models.AddDesensitizationRuleResponse:
+        """
+        @summary Adds a masking rule.
+        
+        @param request: AddDesensitizationRuleRequest
+        @return: AddDesensitizationRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_desensitization_rule_with_options(request, runtime)
 
@@ -138,6 +158,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.AddDesensitizationRuleRequest,
     ) -> dms_enterprise_20181101_models.AddDesensitizationRuleResponse:
+        """
+        @summary Adds a masking rule.
+        
+        @param request: AddDesensitizationRuleRequest
+        @return: AddDesensitizationRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_desensitization_rule_with_options_async(request, runtime)
 
@@ -146,6 +172,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.AddInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.AddInstanceResponse:
+        """
+        @summary 添加实例
+        
+        @param request: AddInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.data_link_name):
@@ -230,6 +263,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.AddInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.AddInstanceResponse:
+        """
+        @summary 添加实例
+        
+        @param request: AddInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.data_link_name):
@@ -313,6 +353,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.AddInstanceRequest,
     ) -> dms_enterprise_20181101_models.AddInstanceResponse:
+        """
+        @summary 添加实例
+        
+        @param request: AddInstanceRequest
+        @return: AddInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_instance_with_options(request, runtime)
 
@@ -320,6 +366,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.AddInstanceRequest,
     ) -> dms_enterprise_20181101_models.AddInstanceResponse:
+        """
+        @summary 添加实例
+        
+        @param request: AddInstanceRequest
+        @return: AddInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_instance_with_options_async(request, runtime)
 
@@ -329,11 +381,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.AddLhMembersResponse:
         """
-        You must call this operation as a DMS administrator, a database administrator (DBA), or a workspace administrator.
+        @summary Adds a workspace administrator, a workspace member, or a task flow developer in Data Management (DMS).
+        
+        @description You must call this operation as a DMS administrator, a database administrator (DBA), or a workspace administrator.
         Usage notes:
-        *   Before you call this operation to add a user as a task flow developer, make sure that you have added the user as a workspace member.
-        *   You cannot call this operation to transfer the ownership of a task flow. To transfer the ownership of a task flow, call the [ChangLhDagOwner](~~424761~~) operation.
-        *   For more information about workspace roles and permissions, see [Manage permissions on a workspace](~~410893~~).
+        Before you call this operation to add a user as a task flow developer, make sure that you have added the user as a workspace member.
+        You cannot call this operation to transfer the ownership of a task flow. To transfer the ownership of a task flow, call the [ChangLhDagOwner](https://help.aliyun.com/document_detail/424761.html) operation.
+        For more information about workspace roles and permissions, see [Manage permissions on a workspace](https://help.aliyun.com/document_detail/410893.html).
         
         @param tmp_req: AddLhMembersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -378,11 +432,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.AddLhMembersResponse:
         """
-        You must call this operation as a DMS administrator, a database administrator (DBA), or a workspace administrator.
+        @summary Adds a workspace administrator, a workspace member, or a task flow developer in Data Management (DMS).
+        
+        @description You must call this operation as a DMS administrator, a database administrator (DBA), or a workspace administrator.
         Usage notes:
-        *   Before you call this operation to add a user as a task flow developer, make sure that you have added the user as a workspace member.
-        *   You cannot call this operation to transfer the ownership of a task flow. To transfer the ownership of a task flow, call the [ChangLhDagOwner](~~424761~~) operation.
-        *   For more information about workspace roles and permissions, see [Manage permissions on a workspace](~~410893~~).
+        Before you call this operation to add a user as a task flow developer, make sure that you have added the user as a workspace member.
+        You cannot call this operation to transfer the ownership of a task flow. To transfer the ownership of a task flow, call the [ChangLhDagOwner](https://help.aliyun.com/document_detail/424761.html) operation.
+        For more information about workspace roles and permissions, see [Manage permissions on a workspace](https://help.aliyun.com/document_detail/410893.html).
         
         @param tmp_req: AddLhMembersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -426,11 +482,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.AddLhMembersRequest,
     ) -> dms_enterprise_20181101_models.AddLhMembersResponse:
         """
-        You must call this operation as a DMS administrator, a database administrator (DBA), or a workspace administrator.
+        @summary Adds a workspace administrator, a workspace member, or a task flow developer in Data Management (DMS).
+        
+        @description You must call this operation as a DMS administrator, a database administrator (DBA), or a workspace administrator.
         Usage notes:
-        *   Before you call this operation to add a user as a task flow developer, make sure that you have added the user as a workspace member.
-        *   You cannot call this operation to transfer the ownership of a task flow. To transfer the ownership of a task flow, call the [ChangLhDagOwner](~~424761~~) operation.
-        *   For more information about workspace roles and permissions, see [Manage permissions on a workspace](~~410893~~).
+        Before you call this operation to add a user as a task flow developer, make sure that you have added the user as a workspace member.
+        You cannot call this operation to transfer the ownership of a task flow. To transfer the ownership of a task flow, call the [ChangLhDagOwner](https://help.aliyun.com/document_detail/424761.html) operation.
+        For more information about workspace roles and permissions, see [Manage permissions on a workspace](https://help.aliyun.com/document_detail/410893.html).
         
         @param request: AddLhMembersRequest
         @return: AddLhMembersResponse
@@ -443,11 +501,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.AddLhMembersRequest,
     ) -> dms_enterprise_20181101_models.AddLhMembersResponse:
         """
-        You must call this operation as a DMS administrator, a database administrator (DBA), or a workspace administrator.
+        @summary Adds a workspace administrator, a workspace member, or a task flow developer in Data Management (DMS).
+        
+        @description You must call this operation as a DMS administrator, a database administrator (DBA), or a workspace administrator.
         Usage notes:
-        *   Before you call this operation to add a user as a task flow developer, make sure that you have added the user as a workspace member.
-        *   You cannot call this operation to transfer the ownership of a task flow. To transfer the ownership of a task flow, call the [ChangLhDagOwner](~~424761~~) operation.
-        *   For more information about workspace roles and permissions, see [Manage permissions on a workspace](~~410893~~).
+        Before you call this operation to add a user as a task flow developer, make sure that you have added the user as a workspace member.
+        You cannot call this operation to transfer the ownership of a task flow. To transfer the ownership of a task flow, call the [ChangLhDagOwner](https://help.aliyun.com/document_detail/424761.html) operation.
+        For more information about workspace roles and permissions, see [Manage permissions on a workspace](https://help.aliyun.com/document_detail/410893.html).
         
         @param request: AddLhMembersRequest
         @return: AddLhMembersResponse
@@ -460,6 +520,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.AddLogicTableRouteConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.AddLogicTableRouteConfigResponse:
+        """
+        @summary Adds a routing algorithm to a logical table.
+        
+        @param request: AddLogicTableRouteConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddLogicTableRouteConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.route_expr):
@@ -494,6 +561,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.AddLogicTableRouteConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.AddLogicTableRouteConfigResponse:
+        """
+        @summary Adds a routing algorithm to a logical table.
+        
+        @param request: AddLogicTableRouteConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddLogicTableRouteConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.route_expr):
@@ -527,6 +601,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.AddLogicTableRouteConfigRequest,
     ) -> dms_enterprise_20181101_models.AddLogicTableRouteConfigResponse:
+        """
+        @summary Adds a routing algorithm to a logical table.
+        
+        @param request: AddLogicTableRouteConfigRequest
+        @return: AddLogicTableRouteConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_logic_table_route_config_with_options(request, runtime)
 
@@ -534,6 +614,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.AddLogicTableRouteConfigRequest,
     ) -> dms_enterprise_20181101_models.AddLogicTableRouteConfigResponse:
+        """
+        @summary Adds a routing algorithm to a logical table.
+        
+        @param request: AddLogicTableRouteConfigRequest
+        @return: AddLogicTableRouteConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_logic_table_route_config_with_options_async(request, runtime)
 
@@ -543,7 +629,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.AddTaskFlowEdgesResponse:
         """
-        When you add directed edges for a task node, take note of the following limits:
+        @summary Adds directed edges for an existing task node.
+        
+        @description When you add directed edges for a task node, take note of the following limits:
         1. The endpoints of the specified edge exist in the Directed Acyclic Graph (DAG) of the task flow specified by DagId.
         2. After a backward edge is added, the DAG does not contain loops.
         
@@ -588,7 +676,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.AddTaskFlowEdgesResponse:
         """
-        When you add directed edges for a task node, take note of the following limits:
+        @summary Adds directed edges for an existing task node.
+        
+        @description When you add directed edges for a task node, take note of the following limits:
         1. The endpoints of the specified edge exist in the Directed Acyclic Graph (DAG) of the task flow specified by DagId.
         2. After a backward edge is added, the DAG does not contain loops.
         
@@ -632,7 +722,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.AddTaskFlowEdgesRequest,
     ) -> dms_enterprise_20181101_models.AddTaskFlowEdgesResponse:
         """
-        When you add directed edges for a task node, take note of the following limits:
+        @summary Adds directed edges for an existing task node.
+        
+        @description When you add directed edges for a task node, take note of the following limits:
         1. The endpoints of the specified edge exist in the Directed Acyclic Graph (DAG) of the task flow specified by DagId.
         2. After a backward edge is added, the DAG does not contain loops.
         
@@ -647,7 +739,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.AddTaskFlowEdgesRequest,
     ) -> dms_enterprise_20181101_models.AddTaskFlowEdgesResponse:
         """
-        When you add directed edges for a task node, take note of the following limits:
+        @summary Adds directed edges for an existing task node.
+        
+        @description When you add directed edges for a task node, take note of the following limits:
         1. The endpoints of the specified edge exist in the Directed Acyclic Graph (DAG) of the task flow specified by DagId.
         2. After a backward edge is added, the DAG does not contain loops.
         
@@ -663,9 +757,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.AnalyzeSQLLineageResponse:
         """
-        The following conditions must be met before you call this API operation.
-        *   The database instance is of one of the following types: ApsaraDB RDS for MySQL, PolarDB for MySQL, AnalyticDB for MySQL, ApsaraDB RDS for PostgreSQL, PolarDB for PostgreSQL, AnalyticDB for PostgreSQL, Oracle, and openGauss.
-        *   A database instance is managed in Security Collaboration mode. For more information about control modes, see [Control modes](~~151629~~).
+        @summary Analyzes the lineage (dependencies and influence) between tables and between fields in SQL statements.
+        
+        @description The following conditions must be met before you call this API operation.
+        The database instance is of one of the following types: ApsaraDB RDS for MySQL, PolarDB for MySQL, AnalyticDB for MySQL, ApsaraDB RDS for PostgreSQL, PolarDB for PostgreSQL, AnalyticDB for PostgreSQL, Oracle, and openGauss.
+        A database instance is managed in Security Collaboration mode. For more information about control modes, see [Control modes](https://help.aliyun.com/document_detail/151629.html).
         
         @param request: AnalyzeSQLLineageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -704,9 +800,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.AnalyzeSQLLineageResponse:
         """
-        The following conditions must be met before you call this API operation.
-        *   The database instance is of one of the following types: ApsaraDB RDS for MySQL, PolarDB for MySQL, AnalyticDB for MySQL, ApsaraDB RDS for PostgreSQL, PolarDB for PostgreSQL, AnalyticDB for PostgreSQL, Oracle, and openGauss.
-        *   A database instance is managed in Security Collaboration mode. For more information about control modes, see [Control modes](~~151629~~).
+        @summary Analyzes the lineage (dependencies and influence) between tables and between fields in SQL statements.
+        
+        @description The following conditions must be met before you call this API operation.
+        The database instance is of one of the following types: ApsaraDB RDS for MySQL, PolarDB for MySQL, AnalyticDB for MySQL, ApsaraDB RDS for PostgreSQL, PolarDB for PostgreSQL, AnalyticDB for PostgreSQL, Oracle, and openGauss.
+        A database instance is managed in Security Collaboration mode. For more information about control modes, see [Control modes](https://help.aliyun.com/document_detail/151629.html).
         
         @param request: AnalyzeSQLLineageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -744,9 +842,11 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.AnalyzeSQLLineageRequest,
     ) -> dms_enterprise_20181101_models.AnalyzeSQLLineageResponse:
         """
-        The following conditions must be met before you call this API operation.
-        *   The database instance is of one of the following types: ApsaraDB RDS for MySQL, PolarDB for MySQL, AnalyticDB for MySQL, ApsaraDB RDS for PostgreSQL, PolarDB for PostgreSQL, AnalyticDB for PostgreSQL, Oracle, and openGauss.
-        *   A database instance is managed in Security Collaboration mode. For more information about control modes, see [Control modes](~~151629~~).
+        @summary Analyzes the lineage (dependencies and influence) between tables and between fields in SQL statements.
+        
+        @description The following conditions must be met before you call this API operation.
+        The database instance is of one of the following types: ApsaraDB RDS for MySQL, PolarDB for MySQL, AnalyticDB for MySQL, ApsaraDB RDS for PostgreSQL, PolarDB for PostgreSQL, AnalyticDB for PostgreSQL, Oracle, and openGauss.
+        A database instance is managed in Security Collaboration mode. For more information about control modes, see [Control modes](https://help.aliyun.com/document_detail/151629.html).
         
         @param request: AnalyzeSQLLineageRequest
         @return: AnalyzeSQLLineageResponse
@@ -759,9 +859,11 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.AnalyzeSQLLineageRequest,
     ) -> dms_enterprise_20181101_models.AnalyzeSQLLineageResponse:
         """
-        The following conditions must be met before you call this API operation.
-        *   The database instance is of one of the following types: ApsaraDB RDS for MySQL, PolarDB for MySQL, AnalyticDB for MySQL, ApsaraDB RDS for PostgreSQL, PolarDB for PostgreSQL, AnalyticDB for PostgreSQL, Oracle, and openGauss.
-        *   A database instance is managed in Security Collaboration mode. For more information about control modes, see [Control modes](~~151629~~).
+        @summary Analyzes the lineage (dependencies and influence) between tables and between fields in SQL statements.
+        
+        @description The following conditions must be met before you call this API operation.
+        The database instance is of one of the following types: ApsaraDB RDS for MySQL, PolarDB for MySQL, AnalyticDB for MySQL, ApsaraDB RDS for PostgreSQL, PolarDB for PostgreSQL, AnalyticDB for PostgreSQL, Oracle, and openGauss.
+        A database instance is managed in Security Collaboration mode. For more information about control modes, see [Control modes](https://help.aliyun.com/document_detail/151629.html).
         
         @param request: AnalyzeSQLLineageRequest
         @return: AnalyzeSQLLineageResponse
@@ -774,6 +876,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ApproveOrderRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ApproveOrderResponse:
+        """
+        @summary Reviews a ticket.
+        
+        @param request: ApproveOrderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ApproveOrderResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.approval_node_id):
@@ -818,6 +927,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ApproveOrderRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ApproveOrderResponse:
+        """
+        @summary Reviews a ticket.
+        
+        @param request: ApproveOrderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ApproveOrderResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.approval_node_id):
@@ -861,6 +977,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ApproveOrderRequest,
     ) -> dms_enterprise_20181101_models.ApproveOrderResponse:
+        """
+        @summary Reviews a ticket.
+        
+        @param request: ApproveOrderRequest
+        @return: ApproveOrderResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.approve_order_with_options(request, runtime)
 
@@ -868,6 +990,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ApproveOrderRequest,
     ) -> dms_enterprise_20181101_models.ApproveOrderResponse:
+        """
+        @summary Reviews a ticket.
+        
+        @param request: ApproveOrderRequest
+        @return: ApproveOrderResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.approve_order_with_options_async(request, runtime)
 
@@ -877,7 +1005,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.BackFillResponse:
         """
-        During a data backfill, task flows are run in sequence based on their dates. You can specify whether task flows are run in chronological or reverse chronological order. After the data backfill is complete, you can specify a date or date range, and a node range to run task flows.
+        @summary Backfills data for task orchestration.
+        
+        @description During a data backfill, task flows are run in sequence based on their dates. You can specify whether task flows are run in chronological or reverse chronological order. After the data backfill is complete, you can specify a date or date range, and a node range to run task flows.
         
         @param tmp_req: BackFillRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -938,7 +1068,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.BackFillResponse:
         """
-        During a data backfill, task flows are run in sequence based on their dates. You can specify whether task flows are run in chronological or reverse chronological order. After the data backfill is complete, you can specify a date or date range, and a node range to run task flows.
+        @summary Backfills data for task orchestration.
+        
+        @description During a data backfill, task flows are run in sequence based on their dates. You can specify whether task flows are run in chronological or reverse chronological order. After the data backfill is complete, you can specify a date or date range, and a node range to run task flows.
         
         @param tmp_req: BackFillRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -998,7 +1130,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.BackFillRequest,
     ) -> dms_enterprise_20181101_models.BackFillResponse:
         """
-        During a data backfill, task flows are run in sequence based on their dates. You can specify whether task flows are run in chronological or reverse chronological order. After the data backfill is complete, you can specify a date or date range, and a node range to run task flows.
+        @summary Backfills data for task orchestration.
+        
+        @description During a data backfill, task flows are run in sequence based on their dates. You can specify whether task flows are run in chronological or reverse chronological order. After the data backfill is complete, you can specify a date or date range, and a node range to run task flows.
         
         @param request: BackFillRequest
         @return: BackFillResponse
@@ -1011,7 +1145,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.BackFillRequest,
     ) -> dms_enterprise_20181101_models.BackFillResponse:
         """
-        During a data backfill, task flows are run in sequence based on their dates. You can specify whether task flows are run in chronological or reverse chronological order. After the data backfill is complete, you can specify a date or date range, and a node range to run task flows.
+        @summary Backfills data for task orchestration.
+        
+        @description During a data backfill, task flows are run in sequence based on their dates. You can specify whether task flows are run in chronological or reverse chronological order. After the data backfill is complete, you can specify a date or date range, and a node range to run task flows.
         
         @param request: BackFillRequest
         @return: BackFillResponse
@@ -1024,6 +1160,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.BuyPayAsYouGoOrderRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.BuyPayAsYouGoOrderResponse:
+        """
+        @summary Purchases a pay-as-you-go Data Management (DMS) resource.
+        
+        @param request: BuyPayAsYouGoOrderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BuyPayAsYouGoOrderResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.commodity_type):
@@ -1058,6 +1201,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.BuyPayAsYouGoOrderRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.BuyPayAsYouGoOrderResponse:
+        """
+        @summary Purchases a pay-as-you-go Data Management (DMS) resource.
+        
+        @param request: BuyPayAsYouGoOrderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BuyPayAsYouGoOrderResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.commodity_type):
@@ -1091,6 +1241,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.BuyPayAsYouGoOrderRequest,
     ) -> dms_enterprise_20181101_models.BuyPayAsYouGoOrderResponse:
+        """
+        @summary Purchases a pay-as-you-go Data Management (DMS) resource.
+        
+        @param request: BuyPayAsYouGoOrderRequest
+        @return: BuyPayAsYouGoOrderResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.buy_pay_as_you_go_order_with_options(request, runtime)
 
@@ -1098,6 +1254,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.BuyPayAsYouGoOrderRequest,
     ) -> dms_enterprise_20181101_models.BuyPayAsYouGoOrderResponse:
+        """
+        @summary Purchases a pay-as-you-go Data Management (DMS) resource.
+        
+        @param request: BuyPayAsYouGoOrderRequest
+        @return: BuyPayAsYouGoOrderResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.buy_pay_as_you_go_order_with_options_async(request, runtime)
 
@@ -1106,6 +1268,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ChangeColumnSecLevelRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ChangeColumnSecLevelResponse:
+        """
+        @summary Adjusts the sensitivity level of one or more fields.
+        
+        @param request: ChangeColumnSecLevelRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeColumnSecLevelResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.column_name):
@@ -1146,6 +1315,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ChangeColumnSecLevelRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ChangeColumnSecLevelResponse:
+        """
+        @summary Adjusts the sensitivity level of one or more fields.
+        
+        @param request: ChangeColumnSecLevelRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeColumnSecLevelResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.column_name):
@@ -1185,6 +1361,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ChangeColumnSecLevelRequest,
     ) -> dms_enterprise_20181101_models.ChangeColumnSecLevelResponse:
+        """
+        @summary Adjusts the sensitivity level of one or more fields.
+        
+        @param request: ChangeColumnSecLevelRequest
+        @return: ChangeColumnSecLevelResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.change_column_sec_level_with_options(request, runtime)
 
@@ -1192,6 +1374,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ChangeColumnSecLevelRequest,
     ) -> dms_enterprise_20181101_models.ChangeColumnSecLevelResponse:
+        """
+        @summary Adjusts the sensitivity level of one or more fields.
+        
+        @param request: ChangeColumnSecLevelRequest
+        @return: ChangeColumnSecLevelResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.change_column_sec_level_with_options_async(request, runtime)
 
@@ -1200,6 +1388,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ChangeColumnSecurityLevelRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ChangeColumnSecurityLevelResponse:
+        """
+        @summary 修改字段敏感序列
+        
+        @param request: ChangeColumnSecurityLevelRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeColumnSecurityLevelResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.column_name):
@@ -1240,6 +1435,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ChangeColumnSecurityLevelRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ChangeColumnSecurityLevelResponse:
+        """
+        @summary 修改字段敏感序列
+        
+        @param request: ChangeColumnSecurityLevelRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeColumnSecurityLevelResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.column_name):
@@ -1279,6 +1481,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ChangeColumnSecurityLevelRequest,
     ) -> dms_enterprise_20181101_models.ChangeColumnSecurityLevelResponse:
+        """
+        @summary 修改字段敏感序列
+        
+        @param request: ChangeColumnSecurityLevelRequest
+        @return: ChangeColumnSecurityLevelResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.change_column_security_level_with_options(request, runtime)
 
@@ -1286,6 +1494,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ChangeColumnSecurityLevelRequest,
     ) -> dms_enterprise_20181101_models.ChangeColumnSecurityLevelResponse:
+        """
+        @summary 修改字段敏感序列
+        
+        @param request: ChangeColumnSecurityLevelRequest
+        @return: ChangeColumnSecurityLevelResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.change_column_security_level_with_options_async(request, runtime)
 
@@ -1295,9 +1509,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ChangeLhDagOwnerResponse:
         """
-        Usage notes:
-        *   If you call this operation to transfer the ownership of a published task flow, the ownership transfer does not take effect.
-        *   You can call the [ReDeployLhDagVersion](~~424712~~) operation to redeploy a published version of a task flow.
+        @summary 移交数仓开发任务流
+        
+        @description Usage notes:
+        If you call this operation to transfer the ownership of a published task flow, the ownership transfer does not take effect.
+        You can call the [ReDeployLhDagVersion](https://help.aliyun.com/document_detail/424712.html) operation to redeploy a published version of a task flow.
         
         @param request: ChangeLhDagOwnerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1336,9 +1552,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ChangeLhDagOwnerResponse:
         """
-        Usage notes:
-        *   If you call this operation to transfer the ownership of a published task flow, the ownership transfer does not take effect.
-        *   You can call the [ReDeployLhDagVersion](~~424712~~) operation to redeploy a published version of a task flow.
+        @summary 移交数仓开发任务流
+        
+        @description Usage notes:
+        If you call this operation to transfer the ownership of a published task flow, the ownership transfer does not take effect.
+        You can call the [ReDeployLhDagVersion](https://help.aliyun.com/document_detail/424712.html) operation to redeploy a published version of a task flow.
         
         @param request: ChangeLhDagOwnerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1376,9 +1594,11 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ChangeLhDagOwnerRequest,
     ) -> dms_enterprise_20181101_models.ChangeLhDagOwnerResponse:
         """
-        Usage notes:
-        *   If you call this operation to transfer the ownership of a published task flow, the ownership transfer does not take effect.
-        *   You can call the [ReDeployLhDagVersion](~~424712~~) operation to redeploy a published version of a task flow.
+        @summary 移交数仓开发任务流
+        
+        @description Usage notes:
+        If you call this operation to transfer the ownership of a published task flow, the ownership transfer does not take effect.
+        You can call the [ReDeployLhDagVersion](https://help.aliyun.com/document_detail/424712.html) operation to redeploy a published version of a task flow.
         
         @param request: ChangeLhDagOwnerRequest
         @return: ChangeLhDagOwnerResponse
@@ -1391,9 +1611,11 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ChangeLhDagOwnerRequest,
     ) -> dms_enterprise_20181101_models.ChangeLhDagOwnerResponse:
         """
-        Usage notes:
-        *   If you call this operation to transfer the ownership of a published task flow, the ownership transfer does not take effect.
-        *   You can call the [ReDeployLhDagVersion](~~424712~~) operation to redeploy a published version of a task flow.
+        @summary 移交数仓开发任务流
+        
+        @description Usage notes:
+        If you call this operation to transfer the ownership of a published task flow, the ownership transfer does not take effect.
+        You can call the [ReDeployLhDagVersion](https://help.aliyun.com/document_detail/424712.html) operation to redeploy a published version of a task flow.
         
         @param request: ChangeLhDagOwnerRequest
         @return: ChangeLhDagOwnerResponse
@@ -1406,6 +1628,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.CloseOrderRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.CloseOrderResponse:
+        """
+        @summary Closes a ticket.
+        
+        @param request: CloseOrderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CloseOrderResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.close_reason):
@@ -1438,6 +1667,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.CloseOrderRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.CloseOrderResponse:
+        """
+        @summary Closes a ticket.
+        
+        @param request: CloseOrderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CloseOrderResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.close_reason):
@@ -1469,6 +1705,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.CloseOrderRequest,
     ) -> dms_enterprise_20181101_models.CloseOrderResponse:
+        """
+        @summary Closes a ticket.
+        
+        @param request: CloseOrderRequest
+        @return: CloseOrderResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.close_order_with_options(request, runtime)
 
@@ -1476,6 +1718,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.CloseOrderRequest,
     ) -> dms_enterprise_20181101_models.CloseOrderResponse:
+        """
+        @summary Closes a ticket.
+        
+        @param request: CloseOrderRequest
+        @return: CloseOrderResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.close_order_with_options_async(request, runtime)
 
@@ -1485,7 +1733,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.CreateAuthorityTemplateResponse:
         """
-        You are a database administrator (DBA) or a Data Management (DMS) administrator. For more information about how to view system roles, see [View system roles](~~324212~~).
+        @summary Creates a permission template
+        
+        @description You are a database administrator (DBA) or a Data Management (DMS) administrator. For more information about how to view system roles, see [View system roles](https://help.aliyun.com/document_detail/324212.html).
         
         @param request: CreateAuthorityTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1524,7 +1774,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.CreateAuthorityTemplateResponse:
         """
-        You are a database administrator (DBA) or a Data Management (DMS) administrator. For more information about how to view system roles, see [View system roles](~~324212~~).
+        @summary Creates a permission template
+        
+        @description You are a database administrator (DBA) or a Data Management (DMS) administrator. For more information about how to view system roles, see [View system roles](https://help.aliyun.com/document_detail/324212.html).
         
         @param request: CreateAuthorityTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1562,7 +1814,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.CreateAuthorityTemplateRequest,
     ) -> dms_enterprise_20181101_models.CreateAuthorityTemplateResponse:
         """
-        You are a database administrator (DBA) or a Data Management (DMS) administrator. For more information about how to view system roles, see [View system roles](~~324212~~).
+        @summary Creates a permission template
+        
+        @description You are a database administrator (DBA) or a Data Management (DMS) administrator. For more information about how to view system roles, see [View system roles](https://help.aliyun.com/document_detail/324212.html).
         
         @param request: CreateAuthorityTemplateRequest
         @return: CreateAuthorityTemplateResponse
@@ -1575,7 +1829,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.CreateAuthorityTemplateRequest,
     ) -> dms_enterprise_20181101_models.CreateAuthorityTemplateResponse:
         """
-        You are a database administrator (DBA) or a Data Management (DMS) administrator. For more information about how to view system roles, see [View system roles](~~324212~~).
+        @summary Creates a permission template
+        
+        @description You are a database administrator (DBA) or a Data Management (DMS) administrator. For more information about how to view system roles, see [View system roles](https://help.aliyun.com/document_detail/324212.html).
         
         @param request: CreateAuthorityTemplateRequest
         @return: CreateAuthorityTemplateResponse
@@ -1588,6 +1844,13 @@ class Client(OpenApiClient):
         tmp_req: dms_enterprise_20181101_models.CreateDataArchiveOrderRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.CreateDataArchiveOrderResponse:
+        """
+        @summary Creates data archiving tickets.
+        
+        @param tmp_req: CreateDataArchiveOrderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDataArchiveOrderResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dms_enterprise_20181101_models.CreateDataArchiveOrderShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1632,6 +1895,13 @@ class Client(OpenApiClient):
         tmp_req: dms_enterprise_20181101_models.CreateDataArchiveOrderRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.CreateDataArchiveOrderResponse:
+        """
+        @summary Creates data archiving tickets.
+        
+        @param tmp_req: CreateDataArchiveOrderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDataArchiveOrderResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dms_enterprise_20181101_models.CreateDataArchiveOrderShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1675,6 +1945,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.CreateDataArchiveOrderRequest,
     ) -> dms_enterprise_20181101_models.CreateDataArchiveOrderResponse:
+        """
+        @summary Creates data archiving tickets.
+        
+        @param request: CreateDataArchiveOrderRequest
+        @return: CreateDataArchiveOrderResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_data_archive_order_with_options(request, runtime)
 
@@ -1682,6 +1958,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.CreateDataArchiveOrderRequest,
     ) -> dms_enterprise_20181101_models.CreateDataArchiveOrderResponse:
+        """
+        @summary Creates data archiving tickets.
+        
+        @param request: CreateDataArchiveOrderRequest
+        @return: CreateDataArchiveOrderResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_data_archive_order_with_options_async(request, runtime)
 
@@ -1691,7 +1973,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.CreateDataCorrectOrderResponse:
         """
-        For more information about the Normal Data Modify feature, see [Change regular data](~~58419~~).
+        @summary Creates a ticket for changing data in Data Management (DMS).
+        
+        @description For more information about the Normal Data Modify feature, see [Change regular data](https://help.aliyun.com/document_detail/58419.html).
         
         @param tmp_req: CreateDataCorrectOrderRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1740,7 +2024,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.CreateDataCorrectOrderResponse:
         """
-        For more information about the Normal Data Modify feature, see [Change regular data](~~58419~~).
+        @summary Creates a ticket for changing data in Data Management (DMS).
+        
+        @description For more information about the Normal Data Modify feature, see [Change regular data](https://help.aliyun.com/document_detail/58419.html).
         
         @param tmp_req: CreateDataCorrectOrderRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1788,7 +2074,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.CreateDataCorrectOrderRequest,
     ) -> dms_enterprise_20181101_models.CreateDataCorrectOrderResponse:
         """
-        For more information about the Normal Data Modify feature, see [Change regular data](~~58419~~).
+        @summary Creates a ticket for changing data in Data Management (DMS).
+        
+        @description For more information about the Normal Data Modify feature, see [Change regular data](https://help.aliyun.com/document_detail/58419.html).
         
         @param request: CreateDataCorrectOrderRequest
         @return: CreateDataCorrectOrderResponse
@@ -1801,7 +2089,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.CreateDataCorrectOrderRequest,
     ) -> dms_enterprise_20181101_models.CreateDataCorrectOrderResponse:
         """
-        For more information about the Normal Data Modify feature, see [Change regular data](~~58419~~).
+        @summary Creates a ticket for changing data in Data Management (DMS).
+        
+        @description For more information about the Normal Data Modify feature, see [Change regular data](https://help.aliyun.com/document_detail/58419.html).
         
         @param request: CreateDataCorrectOrderRequest
         @return: CreateDataCorrectOrderResponse
@@ -1815,7 +2105,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.CreateDataCronClearOrderResponse:
         """
-        For more information about the historical data cleaning, see [Clear historical data](~~162507~~).
+        @summary Creates a ticket for clearing historical data.
+        
+        @description For more information about the historical data cleaning, see [Clear historical data](https://help.aliyun.com/document_detail/162507.html).
         This operation can be used only for MySQL databases.
         
         @param tmp_req: CreateDataCronClearOrderRequest
@@ -1865,7 +2157,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.CreateDataCronClearOrderResponse:
         """
-        For more information about the historical data cleaning, see [Clear historical data](~~162507~~).
+        @summary Creates a ticket for clearing historical data.
+        
+        @description For more information about the historical data cleaning, see [Clear historical data](https://help.aliyun.com/document_detail/162507.html).
         This operation can be used only for MySQL databases.
         
         @param tmp_req: CreateDataCronClearOrderRequest
@@ -1914,7 +2208,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.CreateDataCronClearOrderRequest,
     ) -> dms_enterprise_20181101_models.CreateDataCronClearOrderResponse:
         """
-        For more information about the historical data cleaning, see [Clear historical data](~~162507~~).
+        @summary Creates a ticket for clearing historical data.
+        
+        @description For more information about the historical data cleaning, see [Clear historical data](https://help.aliyun.com/document_detail/162507.html).
         This operation can be used only for MySQL databases.
         
         @param request: CreateDataCronClearOrderRequest
@@ -1928,7 +2224,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.CreateDataCronClearOrderRequest,
     ) -> dms_enterprise_20181101_models.CreateDataCronClearOrderResponse:
         """
-        For more information about the historical data cleaning, see [Clear historical data](~~162507~~).
+        @summary Creates a ticket for clearing historical data.
+        
+        @description For more information about the historical data cleaning, see [Clear historical data](https://help.aliyun.com/document_detail/162507.html).
         This operation can be used only for MySQL databases.
         
         @param request: CreateDataCronClearOrderRequest
@@ -1942,6 +2240,13 @@ class Client(OpenApiClient):
         tmp_req: dms_enterprise_20181101_models.CreateDataExportOrderRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.CreateDataExportOrderResponse:
+        """
+        @summary Creates a ticket to export an SQL result set.
+        
+        @param tmp_req: CreateDataExportOrderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDataExportOrderResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dms_enterprise_20181101_models.CreateDataExportOrderShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1986,6 +2291,13 @@ class Client(OpenApiClient):
         tmp_req: dms_enterprise_20181101_models.CreateDataExportOrderRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.CreateDataExportOrderResponse:
+        """
+        @summary Creates a ticket to export an SQL result set.
+        
+        @param tmp_req: CreateDataExportOrderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDataExportOrderResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dms_enterprise_20181101_models.CreateDataExportOrderShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -2029,6 +2341,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.CreateDataExportOrderRequest,
     ) -> dms_enterprise_20181101_models.CreateDataExportOrderResponse:
+        """
+        @summary Creates a ticket to export an SQL result set.
+        
+        @param request: CreateDataExportOrderRequest
+        @return: CreateDataExportOrderResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_data_export_order_with_options(request, runtime)
 
@@ -2036,6 +2354,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.CreateDataExportOrderRequest,
     ) -> dms_enterprise_20181101_models.CreateDataExportOrderResponse:
+        """
+        @summary Creates a ticket to export an SQL result set.
+        
+        @param request: CreateDataExportOrderRequest
+        @return: CreateDataExportOrderResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_data_export_order_with_options_async(request, runtime)
 
@@ -2045,7 +2369,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.CreateDataImportOrderResponse:
         """
-        For more information about the Large Data Import feature, see [Import data](~~161439~~).
+        @summary Creates a ticket for importing data to Data Management (DMS).
+        
+        @description For more information about the Large Data Import feature, see [Import data](https://help.aliyun.com/document_detail/161439.html).
         
         @param tmp_req: CreateDataImportOrderRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2094,7 +2420,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.CreateDataImportOrderResponse:
         """
-        For more information about the Large Data Import feature, see [Import data](~~161439~~).
+        @summary Creates a ticket for importing data to Data Management (DMS).
+        
+        @description For more information about the Large Data Import feature, see [Import data](https://help.aliyun.com/document_detail/161439.html).
         
         @param tmp_req: CreateDataImportOrderRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2142,7 +2470,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.CreateDataImportOrderRequest,
     ) -> dms_enterprise_20181101_models.CreateDataImportOrderResponse:
         """
-        For more information about the Large Data Import feature, see [Import data](~~161439~~).
+        @summary Creates a ticket for importing data to Data Management (DMS).
+        
+        @description For more information about the Large Data Import feature, see [Import data](https://help.aliyun.com/document_detail/161439.html).
         
         @param request: CreateDataImportOrderRequest
         @return: CreateDataImportOrderResponse
@@ -2155,7 +2485,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.CreateDataImportOrderRequest,
     ) -> dms_enterprise_20181101_models.CreateDataImportOrderResponse:
         """
-        For more information about the Large Data Import feature, see [Import data](~~161439~~).
+        @summary Creates a ticket for importing data to Data Management (DMS).
+        
+        @description For more information about the Large Data Import feature, see [Import data](https://help.aliyun.com/document_detail/161439.html).
         
         @param request: CreateDataImportOrderRequest
         @return: CreateDataImportOrderResponse
@@ -2169,7 +2501,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.CreateDataTrackOrderResponse:
         """
-        This operation is available only for instances that are managed in Security Collaboration mode.
+        @summary Creates a data tracking ticket.
+        
+        @description This operation is available only for instances that are managed in Security Collaboration mode.
         
         @param tmp_req: CreateDataTrackOrderRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2216,7 +2550,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.CreateDataTrackOrderResponse:
         """
-        This operation is available only for instances that are managed in Security Collaboration mode.
+        @summary Creates a data tracking ticket.
+        
+        @description This operation is available only for instances that are managed in Security Collaboration mode.
         
         @param tmp_req: CreateDataTrackOrderRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2262,7 +2598,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.CreateDataTrackOrderRequest,
     ) -> dms_enterprise_20181101_models.CreateDataTrackOrderResponse:
         """
-        This operation is available only for instances that are managed in Security Collaboration mode.
+        @summary Creates a data tracking ticket.
+        
+        @description This operation is available only for instances that are managed in Security Collaboration mode.
         
         @param request: CreateDataTrackOrderRequest
         @return: CreateDataTrackOrderResponse
@@ -2275,7 +2613,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.CreateDataTrackOrderRequest,
     ) -> dms_enterprise_20181101_models.CreateDataTrackOrderResponse:
         """
-        This operation is available only for instances that are managed in Security Collaboration mode.
+        @summary Creates a data tracking ticket.
+        
+        @description This operation is available only for instances that are managed in Security Collaboration mode.
         
         @param request: CreateDataTrackOrderRequest
         @return: CreateDataTrackOrderResponse
@@ -2288,6 +2628,13 @@ class Client(OpenApiClient):
         tmp_req: dms_enterprise_20181101_models.CreateDatabaseExportOrderRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.CreateDatabaseExportOrderResponse:
+        """
+        @summary Creates a database export ticket.
+        
+        @param tmp_req: CreateDatabaseExportOrderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDatabaseExportOrderResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dms_enterprise_20181101_models.CreateDatabaseExportOrderShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -2332,6 +2679,13 @@ class Client(OpenApiClient):
         tmp_req: dms_enterprise_20181101_models.CreateDatabaseExportOrderRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.CreateDatabaseExportOrderResponse:
+        """
+        @summary Creates a database export ticket.
+        
+        @param tmp_req: CreateDatabaseExportOrderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDatabaseExportOrderResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dms_enterprise_20181101_models.CreateDatabaseExportOrderShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -2375,6 +2729,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.CreateDatabaseExportOrderRequest,
     ) -> dms_enterprise_20181101_models.CreateDatabaseExportOrderResponse:
+        """
+        @summary Creates a database export ticket.
+        
+        @param request: CreateDatabaseExportOrderRequest
+        @return: CreateDatabaseExportOrderResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_database_export_order_with_options(request, runtime)
 
@@ -2382,6 +2742,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.CreateDatabaseExportOrderRequest,
     ) -> dms_enterprise_20181101_models.CreateDatabaseExportOrderResponse:
+        """
+        @summary Creates a database export ticket.
+        
+        @param request: CreateDatabaseExportOrderRequest
+        @return: CreateDatabaseExportOrderResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_database_export_order_with_options_async(request, runtime)
 
@@ -2391,8 +2757,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.CreateFreeLockCorrectOrderResponse:
         """
-        For more information about the lock-free change feature, see [Overview](~~207847~~).
-        This operation can be used only for instances that are managed in Stable Change or Security Collaboration mode. For more information, see [Change data without the need to lock tables](~~96145~~) and [Change schemas without locking tables](~~98373~~).
+        @summary 创建无锁变更工单
+        
+        @description For more information about the lock-free change feature, see [Overview](https://help.aliyun.com/document_detail/207847.html).
+        This operation can be used only for instances that are managed in Stable Change or Security Collaboration mode. For more information, see [Change data without the need to lock tables](https://help.aliyun.com/document_detail/96145.html) and [Change schemas without locking tables](https://help.aliyun.com/document_detail/98373.html).
         
         @param tmp_req: CreateFreeLockCorrectOrderRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2441,8 +2809,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.CreateFreeLockCorrectOrderResponse:
         """
-        For more information about the lock-free change feature, see [Overview](~~207847~~).
-        This operation can be used only for instances that are managed in Stable Change or Security Collaboration mode. For more information, see [Change data without the need to lock tables](~~96145~~) and [Change schemas without locking tables](~~98373~~).
+        @summary 创建无锁变更工单
+        
+        @description For more information about the lock-free change feature, see [Overview](https://help.aliyun.com/document_detail/207847.html).
+        This operation can be used only for instances that are managed in Stable Change or Security Collaboration mode. For more information, see [Change data without the need to lock tables](https://help.aliyun.com/document_detail/96145.html) and [Change schemas without locking tables](https://help.aliyun.com/document_detail/98373.html).
         
         @param tmp_req: CreateFreeLockCorrectOrderRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2490,8 +2860,10 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.CreateFreeLockCorrectOrderRequest,
     ) -> dms_enterprise_20181101_models.CreateFreeLockCorrectOrderResponse:
         """
-        For more information about the lock-free change feature, see [Overview](~~207847~~).
-        This operation can be used only for instances that are managed in Stable Change or Security Collaboration mode. For more information, see [Change data without the need to lock tables](~~96145~~) and [Change schemas without locking tables](~~98373~~).
+        @summary 创建无锁变更工单
+        
+        @description For more information about the lock-free change feature, see [Overview](https://help.aliyun.com/document_detail/207847.html).
+        This operation can be used only for instances that are managed in Stable Change or Security Collaboration mode. For more information, see [Change data without the need to lock tables](https://help.aliyun.com/document_detail/96145.html) and [Change schemas without locking tables](https://help.aliyun.com/document_detail/98373.html).
         
         @param request: CreateFreeLockCorrectOrderRequest
         @return: CreateFreeLockCorrectOrderResponse
@@ -2504,8 +2876,10 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.CreateFreeLockCorrectOrderRequest,
     ) -> dms_enterprise_20181101_models.CreateFreeLockCorrectOrderResponse:
         """
-        For more information about the lock-free change feature, see [Overview](~~207847~~).
-        This operation can be used only for instances that are managed in Stable Change or Security Collaboration mode. For more information, see [Change data without the need to lock tables](~~96145~~) and [Change schemas without locking tables](~~98373~~).
+        @summary 创建无锁变更工单
+        
+        @description For more information about the lock-free change feature, see [Overview](https://help.aliyun.com/document_detail/207847.html).
+        This operation can be used only for instances that are managed in Stable Change or Security Collaboration mode. For more information, see [Change data without the need to lock tables](https://help.aliyun.com/document_detail/96145.html) and [Change schemas without locking tables](https://help.aliyun.com/document_detail/98373.html).
         
         @param request: CreateFreeLockCorrectOrderRequest
         @return: CreateFreeLockCorrectOrderResponse
@@ -2519,8 +2893,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.CreateLakeHouseSpaceResponse:
         """
-        The workspace name must be unique within a tenant. If a workspace with the same name already exists within the tenant, the call may fail.
-        *   You can call the [GetLhSpaceByName](~~424379~~) operation to query whether a workspace with a specific name already exists as a DMS administrator or database administrator (DBA).
+        @summary Creates a workspace for data warehouse development in Data Management (DMS).
+        
+        @description    The workspace name must be unique within a tenant. If a workspace with the same name already exists within the tenant, the call may fail.
+        You can call the [GetLhSpaceByName](https://help.aliyun.com/document_detail/424379.html) operation to query whether a workspace with a specific name already exists as a DMS administrator or database administrator (DBA).
         
         @param request: CreateLakeHouseSpaceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2569,8 +2945,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.CreateLakeHouseSpaceResponse:
         """
-        The workspace name must be unique within a tenant. If a workspace with the same name already exists within the tenant, the call may fail.
-        *   You can call the [GetLhSpaceByName](~~424379~~) operation to query whether a workspace with a specific name already exists as a DMS administrator or database administrator (DBA).
+        @summary Creates a workspace for data warehouse development in Data Management (DMS).
+        
+        @description    The workspace name must be unique within a tenant. If a workspace with the same name already exists within the tenant, the call may fail.
+        You can call the [GetLhSpaceByName](https://help.aliyun.com/document_detail/424379.html) operation to query whether a workspace with a specific name already exists as a DMS administrator or database administrator (DBA).
         
         @param request: CreateLakeHouseSpaceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2618,8 +2996,10 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.CreateLakeHouseSpaceRequest,
     ) -> dms_enterprise_20181101_models.CreateLakeHouseSpaceResponse:
         """
-        The workspace name must be unique within a tenant. If a workspace with the same name already exists within the tenant, the call may fail.
-        *   You can call the [GetLhSpaceByName](~~424379~~) operation to query whether a workspace with a specific name already exists as a DMS administrator or database administrator (DBA).
+        @summary Creates a workspace for data warehouse development in Data Management (DMS).
+        
+        @description    The workspace name must be unique within a tenant. If a workspace with the same name already exists within the tenant, the call may fail.
+        You can call the [GetLhSpaceByName](https://help.aliyun.com/document_detail/424379.html) operation to query whether a workspace with a specific name already exists as a DMS administrator or database administrator (DBA).
         
         @param request: CreateLakeHouseSpaceRequest
         @return: CreateLakeHouseSpaceResponse
@@ -2632,8 +3012,10 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.CreateLakeHouseSpaceRequest,
     ) -> dms_enterprise_20181101_models.CreateLakeHouseSpaceResponse:
         """
-        The workspace name must be unique within a tenant. If a workspace with the same name already exists within the tenant, the call may fail.
-        *   You can call the [GetLhSpaceByName](~~424379~~) operation to query whether a workspace with a specific name already exists as a DMS administrator or database administrator (DBA).
+        @summary Creates a workspace for data warehouse development in Data Management (DMS).
+        
+        @description    The workspace name must be unique within a tenant. If a workspace with the same name already exists within the tenant, the call may fail.
+        You can call the [GetLhSpaceByName](https://help.aliyun.com/document_detail/424379.html) operation to query whether a workspace with a specific name already exists as a DMS administrator or database administrator (DBA).
         
         @param request: CreateLakeHouseSpaceRequest
         @return: CreateLakeHouseSpaceResponse
@@ -2646,6 +3028,13 @@ class Client(OpenApiClient):
         tmp_req: dms_enterprise_20181101_models.CreateLogicDatabaseRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.CreateLogicDatabaseResponse:
+        """
+        @summary Creates a logical database in Database Management (DMS).
+        
+        @param tmp_req: CreateLogicDatabaseRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateLogicDatabaseResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dms_enterprise_20181101_models.CreateLogicDatabaseShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -2682,6 +3071,13 @@ class Client(OpenApiClient):
         tmp_req: dms_enterprise_20181101_models.CreateLogicDatabaseRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.CreateLogicDatabaseResponse:
+        """
+        @summary Creates a logical database in Database Management (DMS).
+        
+        @param tmp_req: CreateLogicDatabaseRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateLogicDatabaseResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dms_enterprise_20181101_models.CreateLogicDatabaseShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -2717,6 +3113,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.CreateLogicDatabaseRequest,
     ) -> dms_enterprise_20181101_models.CreateLogicDatabaseResponse:
+        """
+        @summary Creates a logical database in Database Management (DMS).
+        
+        @param request: CreateLogicDatabaseRequest
+        @return: CreateLogicDatabaseResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_logic_database_with_options(request, runtime)
 
@@ -2724,6 +3126,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.CreateLogicDatabaseRequest,
     ) -> dms_enterprise_20181101_models.CreateLogicDatabaseResponse:
+        """
+        @summary Creates a logical database in Database Management (DMS).
+        
+        @param request: CreateLogicDatabaseRequest
+        @return: CreateLogicDatabaseResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_logic_database_with_options_async(request, runtime)
 
@@ -2733,11 +3141,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.CreateOrderResponse:
         """
-        To facilitate ticket creation, you can call the following dedicated operations to create some types of tickets:
-        *   [CreateDataCorrectOrder](~~208388~~): creates a regular data change ticket.
-        *   [CreateDataCronClearOrder](~~208385~~): creates a ticket to clear historical data.
-        *   [CreateDataImportOrder](~~208387~~): creates a data import ticket.
-        *   [CreateFreeLockCorrectOrder](~~208386~~): creates a lock-free change ticket.
+        @summary Creates a ticket in Data Management (DMS).
+        
+        @description To facilitate ticket creation, you can call the following dedicated operations to create some types of tickets:
+        [CreateDataCorrectOrder](https://help.aliyun.com/document_detail/208388.html): creates a regular data change ticket.
+        [CreateDataCronClearOrder](https://help.aliyun.com/document_detail/208385.html): creates a ticket to clear historical data.
+        [CreateDataImportOrder](https://help.aliyun.com/document_detail/208387.html): creates a data import ticket.
+        [CreateFreeLockCorrectOrder](https://help.aliyun.com/document_detail/208386.html): creates a lock-free change ticket.
         
         @param tmp_req: CreateOrderRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2788,11 +3198,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.CreateOrderResponse:
         """
-        To facilitate ticket creation, you can call the following dedicated operations to create some types of tickets:
-        *   [CreateDataCorrectOrder](~~208388~~): creates a regular data change ticket.
-        *   [CreateDataCronClearOrder](~~208385~~): creates a ticket to clear historical data.
-        *   [CreateDataImportOrder](~~208387~~): creates a data import ticket.
-        *   [CreateFreeLockCorrectOrder](~~208386~~): creates a lock-free change ticket.
+        @summary Creates a ticket in Data Management (DMS).
+        
+        @description To facilitate ticket creation, you can call the following dedicated operations to create some types of tickets:
+        [CreateDataCorrectOrder](https://help.aliyun.com/document_detail/208388.html): creates a regular data change ticket.
+        [CreateDataCronClearOrder](https://help.aliyun.com/document_detail/208385.html): creates a ticket to clear historical data.
+        [CreateDataImportOrder](https://help.aliyun.com/document_detail/208387.html): creates a data import ticket.
+        [CreateFreeLockCorrectOrder](https://help.aliyun.com/document_detail/208386.html): creates a lock-free change ticket.
         
         @param tmp_req: CreateOrderRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2842,11 +3254,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.CreateOrderRequest,
     ) -> dms_enterprise_20181101_models.CreateOrderResponse:
         """
-        To facilitate ticket creation, you can call the following dedicated operations to create some types of tickets:
-        *   [CreateDataCorrectOrder](~~208388~~): creates a regular data change ticket.
-        *   [CreateDataCronClearOrder](~~208385~~): creates a ticket to clear historical data.
-        *   [CreateDataImportOrder](~~208387~~): creates a data import ticket.
-        *   [CreateFreeLockCorrectOrder](~~208386~~): creates a lock-free change ticket.
+        @summary Creates a ticket in Data Management (DMS).
+        
+        @description To facilitate ticket creation, you can call the following dedicated operations to create some types of tickets:
+        [CreateDataCorrectOrder](https://help.aliyun.com/document_detail/208388.html): creates a regular data change ticket.
+        [CreateDataCronClearOrder](https://help.aliyun.com/document_detail/208385.html): creates a ticket to clear historical data.
+        [CreateDataImportOrder](https://help.aliyun.com/document_detail/208387.html): creates a data import ticket.
+        [CreateFreeLockCorrectOrder](https://help.aliyun.com/document_detail/208386.html): creates a lock-free change ticket.
         
         @param request: CreateOrderRequest
         @return: CreateOrderResponse
@@ -2859,11 +3273,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.CreateOrderRequest,
     ) -> dms_enterprise_20181101_models.CreateOrderResponse:
         """
-        To facilitate ticket creation, you can call the following dedicated operations to create some types of tickets:
-        *   [CreateDataCorrectOrder](~~208388~~): creates a regular data change ticket.
-        *   [CreateDataCronClearOrder](~~208385~~): creates a ticket to clear historical data.
-        *   [CreateDataImportOrder](~~208387~~): creates a data import ticket.
-        *   [CreateFreeLockCorrectOrder](~~208386~~): creates a lock-free change ticket.
+        @summary Creates a ticket in Data Management (DMS).
+        
+        @description To facilitate ticket creation, you can call the following dedicated operations to create some types of tickets:
+        [CreateDataCorrectOrder](https://help.aliyun.com/document_detail/208388.html): creates a regular data change ticket.
+        [CreateDataCronClearOrder](https://help.aliyun.com/document_detail/208385.html): creates a ticket to clear historical data.
+        [CreateDataImportOrder](https://help.aliyun.com/document_detail/208387.html): creates a data import ticket.
+        [CreateFreeLockCorrectOrder](https://help.aliyun.com/document_detail/208386.html): creates a lock-free change ticket.
         
         @param request: CreateOrderRequest
         @return: CreateOrderResponse
@@ -2876,6 +3292,13 @@ class Client(OpenApiClient):
         tmp_req: dms_enterprise_20181101_models.CreateProcCorrectOrderRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.CreateProcCorrectOrderResponse:
+        """
+        @summary 创建可编程对象变更工单
+        
+        @param tmp_req: CreateProcCorrectOrderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateProcCorrectOrderResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dms_enterprise_20181101_models.CreateProcCorrectOrderShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -2918,6 +3341,13 @@ class Client(OpenApiClient):
         tmp_req: dms_enterprise_20181101_models.CreateProcCorrectOrderRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.CreateProcCorrectOrderResponse:
+        """
+        @summary 创建可编程对象变更工单
+        
+        @param tmp_req: CreateProcCorrectOrderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateProcCorrectOrderResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dms_enterprise_20181101_models.CreateProcCorrectOrderShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -2959,6 +3389,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.CreateProcCorrectOrderRequest,
     ) -> dms_enterprise_20181101_models.CreateProcCorrectOrderResponse:
+        """
+        @summary 创建可编程对象变更工单
+        
+        @param request: CreateProcCorrectOrderRequest
+        @return: CreateProcCorrectOrderResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_proc_correct_order_with_options(request, runtime)
 
@@ -2966,6 +3402,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.CreateProcCorrectOrderRequest,
     ) -> dms_enterprise_20181101_models.CreateProcCorrectOrderResponse:
+        """
+        @summary 创建可编程对象变更工单
+        
+        @param request: CreateProcCorrectOrderRequest
+        @return: CreateProcCorrectOrderResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_proc_correct_order_with_options_async(request, runtime)
 
@@ -2975,7 +3417,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.CreateProxyResponse:
         """
-        - The database instance runs the MySQL or MariaDB database engine. For example, the database instance can be an ApsaraDB RDS for MySQL instance, a PolarDB for MySQL cluster, a Distributed Relational Database Service (DRDS) cluster, or an AnalyticDB for MySQL cluster. The database instance can also be a self-managed MySQL or MariaDB database, or a MySQL or MariaDB database in a third-party cloud.
+        @summary Enables the secure access proxy feature for a database instance.
+        
+        @description - The database instance runs the MySQL or MariaDB database engine. For example, the database instance can be an ApsaraDB RDS for MySQL instance, a PolarDB for MySQL cluster, a Distributed Relational Database Service (DRDS) cluster, or an AnalyticDB for MySQL cluster. The database instance can also be a self-managed MySQL or MariaDB database, or a MySQL or MariaDB database in a third-party cloud.
         - The database instance resides in the China (Hangzhou) or China (Beijing) region.
         - You are a Data Management (DMS) administrator, a database administrator (DBA), or the owner of the database instance.
         
@@ -3018,7 +3462,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.CreateProxyResponse:
         """
-        - The database instance runs the MySQL or MariaDB database engine. For example, the database instance can be an ApsaraDB RDS for MySQL instance, a PolarDB for MySQL cluster, a Distributed Relational Database Service (DRDS) cluster, or an AnalyticDB for MySQL cluster. The database instance can also be a self-managed MySQL or MariaDB database, or a MySQL or MariaDB database in a third-party cloud.
+        @summary Enables the secure access proxy feature for a database instance.
+        
+        @description - The database instance runs the MySQL or MariaDB database engine. For example, the database instance can be an ApsaraDB RDS for MySQL instance, a PolarDB for MySQL cluster, a Distributed Relational Database Service (DRDS) cluster, or an AnalyticDB for MySQL cluster. The database instance can also be a self-managed MySQL or MariaDB database, or a MySQL or MariaDB database in a third-party cloud.
         - The database instance resides in the China (Hangzhou) or China (Beijing) region.
         - You are a Data Management (DMS) administrator, a database administrator (DBA), or the owner of the database instance.
         
@@ -3060,7 +3506,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.CreateProxyRequest,
     ) -> dms_enterprise_20181101_models.CreateProxyResponse:
         """
-        - The database instance runs the MySQL or MariaDB database engine. For example, the database instance can be an ApsaraDB RDS for MySQL instance, a PolarDB for MySQL cluster, a Distributed Relational Database Service (DRDS) cluster, or an AnalyticDB for MySQL cluster. The database instance can also be a self-managed MySQL or MariaDB database, or a MySQL or MariaDB database in a third-party cloud.
+        @summary Enables the secure access proxy feature for a database instance.
+        
+        @description - The database instance runs the MySQL or MariaDB database engine. For example, the database instance can be an ApsaraDB RDS for MySQL instance, a PolarDB for MySQL cluster, a Distributed Relational Database Service (DRDS) cluster, or an AnalyticDB for MySQL cluster. The database instance can also be a self-managed MySQL or MariaDB database, or a MySQL or MariaDB database in a third-party cloud.
         - The database instance resides in the China (Hangzhou) or China (Beijing) region.
         - You are a Data Management (DMS) administrator, a database administrator (DBA), or the owner of the database instance.
         
@@ -3075,7 +3523,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.CreateProxyRequest,
     ) -> dms_enterprise_20181101_models.CreateProxyResponse:
         """
-        - The database instance runs the MySQL or MariaDB database engine. For example, the database instance can be an ApsaraDB RDS for MySQL instance, a PolarDB for MySQL cluster, a Distributed Relational Database Service (DRDS) cluster, or an AnalyticDB for MySQL cluster. The database instance can also be a self-managed MySQL or MariaDB database, or a MySQL or MariaDB database in a third-party cloud.
+        @summary Enables the secure access proxy feature for a database instance.
+        
+        @description - The database instance runs the MySQL or MariaDB database engine. For example, the database instance can be an ApsaraDB RDS for MySQL instance, a PolarDB for MySQL cluster, a Distributed Relational Database Service (DRDS) cluster, or an AnalyticDB for MySQL cluster. The database instance can also be a self-managed MySQL or MariaDB database, or a MySQL or MariaDB database in a third-party cloud.
         - The database instance resides in the China (Hangzhou) or China (Beijing) region.
         - You are a Data Management (DMS) administrator, a database administrator (DBA), or the owner of the database instance.
         
@@ -3091,7 +3541,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.CreateProxyAccessResponse:
         """
-        - The data security protection feature is enabled for the instance.
+        @summary You can call the CreateProxyAccess to authorize users to access the DB instance through the Data Security Protection agent.
+        
+        @description - The data security protection feature is enabled for the instance.
         - Your user role is the administrator role, DBA role, or the owner of data security protection for the current instance.
         
         @param request: CreateProxyAccessRequest
@@ -3135,7 +3587,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.CreateProxyAccessResponse:
         """
-        - The data security protection feature is enabled for the instance.
+        @summary You can call the CreateProxyAccess to authorize users to access the DB instance through the Data Security Protection agent.
+        
+        @description - The data security protection feature is enabled for the instance.
         - Your user role is the administrator role, DBA role, or the owner of data security protection for the current instance.
         
         @param request: CreateProxyAccessRequest
@@ -3178,7 +3632,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.CreateProxyAccessRequest,
     ) -> dms_enterprise_20181101_models.CreateProxyAccessResponse:
         """
-        - The data security protection feature is enabled for the instance.
+        @summary You can call the CreateProxyAccess to authorize users to access the DB instance through the Data Security Protection agent.
+        
+        @description - The data security protection feature is enabled for the instance.
         - Your user role is the administrator role, DBA role, or the owner of data security protection for the current instance.
         
         @param request: CreateProxyAccessRequest
@@ -3192,7 +3648,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.CreateProxyAccessRequest,
     ) -> dms_enterprise_20181101_models.CreateProxyAccessResponse:
         """
-        - The data security protection feature is enabled for the instance.
+        @summary You can call the CreateProxyAccess to authorize users to access the DB instance through the Data Security Protection agent.
+        
+        @description - The data security protection feature is enabled for the instance.
         - Your user role is the administrator role, DBA role, or the owner of data security protection for the current instance.
         
         @param request: CreateProxyAccessRequest
@@ -3206,6 +3664,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.CreatePublishGroupTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.CreatePublishGroupTaskResponse:
+        """
+        @summary Executes a schema design ticket.
+        
+        @param request: CreatePublishGroupTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreatePublishGroupTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.db_id):
@@ -3244,6 +3709,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.CreatePublishGroupTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.CreatePublishGroupTaskResponse:
+        """
+        @summary Executes a schema design ticket.
+        
+        @param request: CreatePublishGroupTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreatePublishGroupTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.db_id):
@@ -3281,6 +3753,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.CreatePublishGroupTaskRequest,
     ) -> dms_enterprise_20181101_models.CreatePublishGroupTaskResponse:
+        """
+        @summary Executes a schema design ticket.
+        
+        @param request: CreatePublishGroupTaskRequest
+        @return: CreatePublishGroupTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_publish_group_task_with_options(request, runtime)
 
@@ -3288,6 +3766,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.CreatePublishGroupTaskRequest,
     ) -> dms_enterprise_20181101_models.CreatePublishGroupTaskResponse:
+        """
+        @summary Executes a schema design ticket.
+        
+        @param request: CreatePublishGroupTaskRequest
+        @return: CreatePublishGroupTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_publish_group_task_with_options_async(request, runtime)
 
@@ -3297,8 +3781,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.CreateSQLReviewOrderResponse:
         """
-        You can call this operation only for database instances that are managed in Security Collaboration mode.
-        For more information about the SQL review feature, see [SQL review](~~60374~~).
+        @summary Creates a SQL review ticket.
+        
+        @description You can call this operation only for database instances that are managed in Security Collaboration mode.
+        For more information about the SQL review feature, see [SQL review](https://help.aliyun.com/document_detail/60374.html).
         
         @param tmp_req: CreateSQLReviewOrderRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3345,8 +3831,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.CreateSQLReviewOrderResponse:
         """
-        You can call this operation only for database instances that are managed in Security Collaboration mode.
-        For more information about the SQL review feature, see [SQL review](~~60374~~).
+        @summary Creates a SQL review ticket.
+        
+        @description You can call this operation only for database instances that are managed in Security Collaboration mode.
+        For more information about the SQL review feature, see [SQL review](https://help.aliyun.com/document_detail/60374.html).
         
         @param tmp_req: CreateSQLReviewOrderRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3392,8 +3880,10 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.CreateSQLReviewOrderRequest,
     ) -> dms_enterprise_20181101_models.CreateSQLReviewOrderResponse:
         """
-        You can call this operation only for database instances that are managed in Security Collaboration mode.
-        For more information about the SQL review feature, see [SQL review](~~60374~~).
+        @summary Creates a SQL review ticket.
+        
+        @description You can call this operation only for database instances that are managed in Security Collaboration mode.
+        For more information about the SQL review feature, see [SQL review](https://help.aliyun.com/document_detail/60374.html).
         
         @param request: CreateSQLReviewOrderRequest
         @return: CreateSQLReviewOrderResponse
@@ -3406,8 +3896,10 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.CreateSQLReviewOrderRequest,
     ) -> dms_enterprise_20181101_models.CreateSQLReviewOrderResponse:
         """
-        You can call this operation only for database instances that are managed in Security Collaboration mode.
-        For more information about the SQL review feature, see [SQL review](~~60374~~).
+        @summary Creates a SQL review ticket.
+        
+        @description You can call this operation only for database instances that are managed in Security Collaboration mode.
+        For more information about the SQL review feature, see [SQL review](https://help.aliyun.com/document_detail/60374.html).
         
         @param request: CreateSQLReviewOrderRequest
         @return: CreateSQLReviewOrderResponse
@@ -3420,6 +3912,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.CreateScenarioRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.CreateScenarioResponse:
+        """
+        @summary Creates a business scenario to group task flows by business scenario.
+        
+        @param request: CreateScenarioRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateScenarioResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -3452,6 +3951,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.CreateScenarioRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.CreateScenarioResponse:
+        """
+        @summary Creates a business scenario to group task flows by business scenario.
+        
+        @param request: CreateScenarioRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateScenarioResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -3483,6 +3989,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.CreateScenarioRequest,
     ) -> dms_enterprise_20181101_models.CreateScenarioResponse:
+        """
+        @summary Creates a business scenario to group task flows by business scenario.
+        
+        @param request: CreateScenarioRequest
+        @return: CreateScenarioResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_scenario_with_options(request, runtime)
 
@@ -3490,6 +4002,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.CreateScenarioRequest,
     ) -> dms_enterprise_20181101_models.CreateScenarioResponse:
+        """
+        @summary Creates a business scenario to group task flows by business scenario.
+        
+        @param request: CreateScenarioRequest
+        @return: CreateScenarioResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_scenario_with_options_async(request, runtime)
 
@@ -3498,6 +4016,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.CreateStandardGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.CreateStandardGroupResponse:
+        """
+        @summary Creates a security rule set.
+        
+        @param request: CreateStandardGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateStandardGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.db_type):
@@ -3532,6 +4057,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.CreateStandardGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.CreateStandardGroupResponse:
+        """
+        @summary Creates a security rule set.
+        
+        @param request: CreateStandardGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateStandardGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.db_type):
@@ -3565,6 +4097,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.CreateStandardGroupRequest,
     ) -> dms_enterprise_20181101_models.CreateStandardGroupResponse:
+        """
+        @summary Creates a security rule set.
+        
+        @param request: CreateStandardGroupRequest
+        @return: CreateStandardGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_standard_group_with_options(request, runtime)
 
@@ -3572,6 +4110,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.CreateStandardGroupRequest,
     ) -> dms_enterprise_20181101_models.CreateStandardGroupResponse:
+        """
+        @summary Creates a security rule set.
+        
+        @param request: CreateStandardGroupRequest
+        @return: CreateStandardGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_standard_group_with_options_async(request, runtime)
 
@@ -3580,6 +4124,13 @@ class Client(OpenApiClient):
         tmp_req: dms_enterprise_20181101_models.CreateStructSyncOrderRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.CreateStructSyncOrderResponse:
+        """
+        @summary Creates a schema synchronization ticket.
+        
+        @param tmp_req: CreateStructSyncOrderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateStructSyncOrderResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dms_enterprise_20181101_models.CreateStructSyncOrderShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3622,6 +4173,13 @@ class Client(OpenApiClient):
         tmp_req: dms_enterprise_20181101_models.CreateStructSyncOrderRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.CreateStructSyncOrderResponse:
+        """
+        @summary Creates a schema synchronization ticket.
+        
+        @param tmp_req: CreateStructSyncOrderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateStructSyncOrderResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dms_enterprise_20181101_models.CreateStructSyncOrderShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3663,6 +4221,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.CreateStructSyncOrderRequest,
     ) -> dms_enterprise_20181101_models.CreateStructSyncOrderResponse:
+        """
+        @summary Creates a schema synchronization ticket.
+        
+        @param request: CreateStructSyncOrderRequest
+        @return: CreateStructSyncOrderResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_struct_sync_order_with_options(request, runtime)
 
@@ -3670,6 +4234,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.CreateStructSyncOrderRequest,
     ) -> dms_enterprise_20181101_models.CreateStructSyncOrderResponse:
+        """
+        @summary Creates a schema synchronization ticket.
+        
+        @param request: CreateStructSyncOrderRequest
+        @return: CreateStructSyncOrderResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_struct_sync_order_with_options_async(request, runtime)
 
@@ -3678,6 +4248,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.CreateTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.CreateTaskResponse:
+        """
+        @summary Creates a task node for a task flow.
+        
+        @param request: CreateTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dag_id):
@@ -3720,6 +4297,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.CreateTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.CreateTaskResponse:
+        """
+        @summary Creates a task node for a task flow.
+        
+        @param request: CreateTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dag_id):
@@ -3761,6 +4345,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.CreateTaskRequest,
     ) -> dms_enterprise_20181101_models.CreateTaskResponse:
+        """
+        @summary Creates a task node for a task flow.
+        
+        @param request: CreateTaskRequest
+        @return: CreateTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_task_with_options(request, runtime)
 
@@ -3768,6 +4358,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.CreateTaskRequest,
     ) -> dms_enterprise_20181101_models.CreateTaskResponse:
+        """
+        @summary Creates a task node for a task flow.
+        
+        @param request: CreateTaskRequest
+        @return: CreateTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_task_with_options_async(request, runtime)
 
@@ -3776,6 +4372,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.CreateTaskFlowRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.CreateTaskFlowResponse:
+        """
+        @summary Creates a task flow.
+        
+        @param request: CreateTaskFlowRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTaskFlowResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dag_name):
@@ -3810,6 +4413,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.CreateTaskFlowRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.CreateTaskFlowResponse:
+        """
+        @summary Creates a task flow.
+        
+        @param request: CreateTaskFlowRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTaskFlowResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dag_name):
@@ -3843,6 +4453,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.CreateTaskFlowRequest,
     ) -> dms_enterprise_20181101_models.CreateTaskFlowResponse:
+        """
+        @summary Creates a task flow.
+        
+        @param request: CreateTaskFlowRequest
+        @return: CreateTaskFlowResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_task_flow_with_options(request, runtime)
 
@@ -3850,6 +4466,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.CreateTaskFlowRequest,
     ) -> dms_enterprise_20181101_models.CreateTaskFlowResponse:
+        """
+        @summary Creates a task flow.
+        
+        @param request: CreateTaskFlowRequest
+        @return: CreateTaskFlowResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_task_flow_with_options_async(request, runtime)
 
@@ -3858,6 +4480,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.CreateUploadFileJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.CreateUploadFileJobResponse:
+        """
+        @summary 创建上传附件任务
+        
+        @param request: CreateUploadFileJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateUploadFileJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.file_name):
@@ -3892,6 +4521,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.CreateUploadFileJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.CreateUploadFileJobResponse:
+        """
+        @summary 创建上传附件任务
+        
+        @param request: CreateUploadFileJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateUploadFileJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.file_name):
@@ -3925,6 +4561,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.CreateUploadFileJobRequest,
     ) -> dms_enterprise_20181101_models.CreateUploadFileJobResponse:
+        """
+        @summary 创建上传附件任务
+        
+        @param request: CreateUploadFileJobRequest
+        @return: CreateUploadFileJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_upload_file_job_with_options(request, runtime)
 
@@ -3932,6 +4574,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.CreateUploadFileJobRequest,
     ) -> dms_enterprise_20181101_models.CreateUploadFileJobResponse:
+        """
+        @summary 创建上传附件任务
+        
+        @param request: CreateUploadFileJobRequest
+        @return: CreateUploadFileJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_upload_file_job_with_options_async(request, runtime)
 
@@ -3940,6 +4588,13 @@ class Client(OpenApiClient):
         tmp_req: dms_enterprise_20181101_models.CreateUploadOSSFileJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.CreateUploadOSSFileJobResponse:
+        """
+        @summary Creates a task to upload an Object Storage Service (OSS) file and obtain the key of the task.
+        
+        @param tmp_req: CreateUploadOSSFileJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateUploadOSSFileJobResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dms_enterprise_20181101_models.CreateUploadOSSFileJobShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3978,6 +4633,13 @@ class Client(OpenApiClient):
         tmp_req: dms_enterprise_20181101_models.CreateUploadOSSFileJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.CreateUploadOSSFileJobResponse:
+        """
+        @summary Creates a task to upload an Object Storage Service (OSS) file and obtain the key of the task.
+        
+        @param tmp_req: CreateUploadOSSFileJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateUploadOSSFileJobResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dms_enterprise_20181101_models.CreateUploadOSSFileJobShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -4015,6 +4677,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.CreateUploadOSSFileJobRequest,
     ) -> dms_enterprise_20181101_models.CreateUploadOSSFileJobResponse:
+        """
+        @summary Creates a task to upload an Object Storage Service (OSS) file and obtain the key of the task.
+        
+        @param request: CreateUploadOSSFileJobRequest
+        @return: CreateUploadOSSFileJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_upload_ossfile_job_with_options(request, runtime)
 
@@ -4022,6 +4690,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.CreateUploadOSSFileJobRequest,
     ) -> dms_enterprise_20181101_models.CreateUploadOSSFileJobResponse:
+        """
+        @summary Creates a task to upload an Object Storage Service (OSS) file and obtain the key of the task.
+        
+        @param request: CreateUploadOSSFileJobRequest
+        @return: CreateUploadOSSFileJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_upload_ossfile_job_with_options_async(request, runtime)
 
@@ -4030,6 +4704,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.DeleteAuthorityTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.DeleteAuthorityTemplateResponse:
+        """
+        @summary 删除权限模版
+        
+        @param request: DeleteAuthorityTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAuthorityTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.template_id):
@@ -4060,6 +4741,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.DeleteAuthorityTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.DeleteAuthorityTemplateResponse:
+        """
+        @summary 删除权限模版
+        
+        @param request: DeleteAuthorityTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAuthorityTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.template_id):
@@ -4089,6 +4777,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.DeleteAuthorityTemplateRequest,
     ) -> dms_enterprise_20181101_models.DeleteAuthorityTemplateResponse:
+        """
+        @summary 删除权限模版
+        
+        @param request: DeleteAuthorityTemplateRequest
+        @return: DeleteAuthorityTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_authority_template_with_options(request, runtime)
 
@@ -4096,6 +4790,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.DeleteAuthorityTemplateRequest,
     ) -> dms_enterprise_20181101_models.DeleteAuthorityTemplateResponse:
+        """
+        @summary 删除权限模版
+        
+        @param request: DeleteAuthorityTemplateRequest
+        @return: DeleteAuthorityTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_authority_template_with_options_async(request, runtime)
 
@@ -4105,7 +4805,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.DeleteInstanceResponse:
         """
-        Note: You can call this operation only to remove a database instance from the instance list of DMS. The instance is not deleted or shut down.
+        @summary Removes a database instance from Data Management (DMS).
+        
+        @description Note: You can call this operation only to remove a database instance from the instance list of DMS. The instance is not deleted or shut down.
         
         @param request: DeleteInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4146,7 +4848,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.DeleteInstanceResponse:
         """
-        Note: You can call this operation only to remove a database instance from the instance list of DMS. The instance is not deleted or shut down.
+        @summary Removes a database instance from Data Management (DMS).
+        
+        @description Note: You can call this operation only to remove a database instance from the instance list of DMS. The instance is not deleted or shut down.
         
         @param request: DeleteInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4186,7 +4890,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.DeleteInstanceRequest,
     ) -> dms_enterprise_20181101_models.DeleteInstanceResponse:
         """
-        Note: You can call this operation only to remove a database instance from the instance list of DMS. The instance is not deleted or shut down.
+        @summary Removes a database instance from Data Management (DMS).
+        
+        @description Note: You can call this operation only to remove a database instance from the instance list of DMS. The instance is not deleted or shut down.
         
         @param request: DeleteInstanceRequest
         @return: DeleteInstanceResponse
@@ -4199,7 +4905,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.DeleteInstanceRequest,
     ) -> dms_enterprise_20181101_models.DeleteInstanceResponse:
         """
-        Note: You can call this operation only to remove a database instance from the instance list of DMS. The instance is not deleted or shut down.
+        @summary Removes a database instance from Data Management (DMS).
+        
+        @description Note: You can call this operation only to remove a database instance from the instance list of DMS. The instance is not deleted or shut down.
         
         @param request: DeleteInstanceRequest
         @return: DeleteInstanceResponse
@@ -4212,6 +4920,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.DeleteLakeHouseSpaceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.DeleteLakeHouseSpaceResponse:
+        """
+        @summary Deletes a workspace.
+        
+        @param request: DeleteLakeHouseSpaceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteLakeHouseSpaceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.space_id):
@@ -4242,6 +4957,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.DeleteLakeHouseSpaceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.DeleteLakeHouseSpaceResponse:
+        """
+        @summary Deletes a workspace.
+        
+        @param request: DeleteLakeHouseSpaceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteLakeHouseSpaceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.space_id):
@@ -4271,6 +4993,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.DeleteLakeHouseSpaceRequest,
     ) -> dms_enterprise_20181101_models.DeleteLakeHouseSpaceResponse:
+        """
+        @summary Deletes a workspace.
+        
+        @param request: DeleteLakeHouseSpaceRequest
+        @return: DeleteLakeHouseSpaceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_lake_house_space_with_options(request, runtime)
 
@@ -4278,6 +5006,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.DeleteLakeHouseSpaceRequest,
     ) -> dms_enterprise_20181101_models.DeleteLakeHouseSpaceResponse:
+        """
+        @summary Deletes a workspace.
+        
+        @param request: DeleteLakeHouseSpaceRequest
+        @return: DeleteLakeHouseSpaceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_lake_house_space_with_options_async(request, runtime)
 
@@ -4287,8 +5021,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.DeleteLhMembersResponse:
         """
-        You must call this operation as a DMS administrator, a database administrator (DBA), or a workspace administrator.
-        You cannot call this operation to transfer the ownership of a task flow. To transfer the ownership of a task flow, call the [ChangLhDagOwner](~~424761~~) operation.
+        @summary 删除数仓空间成员
+        
+        @description You must call this operation as a DMS administrator, a database administrator (DBA), or a workspace administrator.
+        You cannot call this operation to transfer the ownership of a task flow. To transfer the ownership of a task flow, call the [ChangLhDagOwner](https://help.aliyun.com/document_detail/424761.html) operation.
         
         @param tmp_req: DeleteLhMembersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4333,8 +5069,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.DeleteLhMembersResponse:
         """
-        You must call this operation as a DMS administrator, a database administrator (DBA), or a workspace administrator.
-        You cannot call this operation to transfer the ownership of a task flow. To transfer the ownership of a task flow, call the [ChangLhDagOwner](~~424761~~) operation.
+        @summary 删除数仓空间成员
+        
+        @description You must call this operation as a DMS administrator, a database administrator (DBA), or a workspace administrator.
+        You cannot call this operation to transfer the ownership of a task flow. To transfer the ownership of a task flow, call the [ChangLhDagOwner](https://help.aliyun.com/document_detail/424761.html) operation.
         
         @param tmp_req: DeleteLhMembersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4378,8 +5116,10 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.DeleteLhMembersRequest,
     ) -> dms_enterprise_20181101_models.DeleteLhMembersResponse:
         """
-        You must call this operation as a DMS administrator, a database administrator (DBA), or a workspace administrator.
-        You cannot call this operation to transfer the ownership of a task flow. To transfer the ownership of a task flow, call the [ChangLhDagOwner](~~424761~~) operation.
+        @summary 删除数仓空间成员
+        
+        @description You must call this operation as a DMS administrator, a database administrator (DBA), or a workspace administrator.
+        You cannot call this operation to transfer the ownership of a task flow. To transfer the ownership of a task flow, call the [ChangLhDagOwner](https://help.aliyun.com/document_detail/424761.html) operation.
         
         @param request: DeleteLhMembersRequest
         @return: DeleteLhMembersResponse
@@ -4392,8 +5132,10 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.DeleteLhMembersRequest,
     ) -> dms_enterprise_20181101_models.DeleteLhMembersResponse:
         """
-        You must call this operation as a DMS administrator, a database administrator (DBA), or a workspace administrator.
-        You cannot call this operation to transfer the ownership of a task flow. To transfer the ownership of a task flow, call the [ChangLhDagOwner](~~424761~~) operation.
+        @summary 删除数仓空间成员
+        
+        @description You must call this operation as a DMS administrator, a database administrator (DBA), or a workspace administrator.
+        You cannot call this operation to transfer the ownership of a task flow. To transfer the ownership of a task flow, call the [ChangLhDagOwner](https://help.aliyun.com/document_detail/424761.html) operation.
         
         @param request: DeleteLhMembersRequest
         @return: DeleteLhMembersResponse
@@ -4406,6 +5148,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.DeleteLogicDatabaseRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.DeleteLogicDatabaseResponse:
+        """
+        @summary Deletes a logical database in Database Management (DMS). This operation only deletes the specified logical database but does not delete physical databases.
+        
+        @param request: DeleteLogicDatabaseRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteLogicDatabaseResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.logic_db_id):
@@ -4436,6 +5185,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.DeleteLogicDatabaseRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.DeleteLogicDatabaseResponse:
+        """
+        @summary Deletes a logical database in Database Management (DMS). This operation only deletes the specified logical database but does not delete physical databases.
+        
+        @param request: DeleteLogicDatabaseRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteLogicDatabaseResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.logic_db_id):
@@ -4465,6 +5221,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.DeleteLogicDatabaseRequest,
     ) -> dms_enterprise_20181101_models.DeleteLogicDatabaseResponse:
+        """
+        @summary Deletes a logical database in Database Management (DMS). This operation only deletes the specified logical database but does not delete physical databases.
+        
+        @param request: DeleteLogicDatabaseRequest
+        @return: DeleteLogicDatabaseResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_logic_database_with_options(request, runtime)
 
@@ -4472,6 +5234,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.DeleteLogicDatabaseRequest,
     ) -> dms_enterprise_20181101_models.DeleteLogicDatabaseResponse:
+        """
+        @summary Deletes a logical database in Database Management (DMS). This operation only deletes the specified logical database but does not delete physical databases.
+        
+        @param request: DeleteLogicDatabaseRequest
+        @return: DeleteLogicDatabaseResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_logic_database_with_options_async(request, runtime)
 
@@ -4480,6 +5248,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.DeleteLogicTableRouteConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.DeleteLogicTableRouteConfigResponse:
+        """
+        @summary Deletes the routing algorithm of a logical table.
+        
+        @param request: DeleteLogicTableRouteConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteLogicTableRouteConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.route_key):
@@ -4512,6 +5287,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.DeleteLogicTableRouteConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.DeleteLogicTableRouteConfigResponse:
+        """
+        @summary Deletes the routing algorithm of a logical table.
+        
+        @param request: DeleteLogicTableRouteConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteLogicTableRouteConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.route_key):
@@ -4543,6 +5325,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.DeleteLogicTableRouteConfigRequest,
     ) -> dms_enterprise_20181101_models.DeleteLogicTableRouteConfigResponse:
+        """
+        @summary Deletes the routing algorithm of a logical table.
+        
+        @param request: DeleteLogicTableRouteConfigRequest
+        @return: DeleteLogicTableRouteConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_logic_table_route_config_with_options(request, runtime)
 
@@ -4550,6 +5338,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.DeleteLogicTableRouteConfigRequest,
     ) -> dms_enterprise_20181101_models.DeleteLogicTableRouteConfigResponse:
+        """
+        @summary Deletes the routing algorithm of a logical table.
+        
+        @param request: DeleteLogicTableRouteConfigRequest
+        @return: DeleteLogicTableRouteConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_logic_table_route_config_with_options_async(request, runtime)
 
@@ -4559,7 +5353,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.DeleteProxyResponse:
         """
-        After you disable this feature, your DB instance loses the JDBC protocol. All authorization information is recycled.
+        @summary You can call this operation to disable the data security protection proxy of a DB instance.
+        
+        @description After you disable this feature, your DB instance loses the JDBC protocol. All authorization information is recycled.
         
         @param request: DeleteProxyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4596,7 +5392,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.DeleteProxyResponse:
         """
-        After you disable this feature, your DB instance loses the JDBC protocol. All authorization information is recycled.
+        @summary You can call this operation to disable the data security protection proxy of a DB instance.
+        
+        @description After you disable this feature, your DB instance loses the JDBC protocol. All authorization information is recycled.
         
         @param request: DeleteProxyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4632,7 +5430,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.DeleteProxyRequest,
     ) -> dms_enterprise_20181101_models.DeleteProxyResponse:
         """
-        After you disable this feature, your DB instance loses the JDBC protocol. All authorization information is recycled.
+        @summary You can call this operation to disable the data security protection proxy of a DB instance.
+        
+        @description After you disable this feature, your DB instance loses the JDBC protocol. All authorization information is recycled.
         
         @param request: DeleteProxyRequest
         @return: DeleteProxyResponse
@@ -4645,7 +5445,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.DeleteProxyRequest,
     ) -> dms_enterprise_20181101_models.DeleteProxyResponse:
         """
-        After you disable this feature, your DB instance loses the JDBC protocol. All authorization information is recycled.
+        @summary You can call this operation to disable the data security protection proxy of a DB instance.
+        
+        @description After you disable this feature, your DB instance loses the JDBC protocol. All authorization information is recycled.
         
         @param request: DeleteProxyRequest
         @return: DeleteProxyResponse
@@ -4658,6 +5460,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.DeleteProxyAccessRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.DeleteProxyAccessResponse:
+        """
+        @summary You can call this operation to DeleteProxyAccess reclaim the data security protection authorization of the target user.
+        
+        @param request: DeleteProxyAccessRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteProxyAccessResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.proxy_access_id):
@@ -4688,6 +5497,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.DeleteProxyAccessRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.DeleteProxyAccessResponse:
+        """
+        @summary You can call this operation to DeleteProxyAccess reclaim the data security protection authorization of the target user.
+        
+        @param request: DeleteProxyAccessRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteProxyAccessResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.proxy_access_id):
@@ -4717,6 +5533,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.DeleteProxyAccessRequest,
     ) -> dms_enterprise_20181101_models.DeleteProxyAccessResponse:
+        """
+        @summary You can call this operation to DeleteProxyAccess reclaim the data security protection authorization of the target user.
+        
+        @param request: DeleteProxyAccessRequest
+        @return: DeleteProxyAccessResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_proxy_access_with_options(request, runtime)
 
@@ -4724,6 +5546,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.DeleteProxyAccessRequest,
     ) -> dms_enterprise_20181101_models.DeleteProxyAccessResponse:
+        """
+        @summary You can call this operation to DeleteProxyAccess reclaim the data security protection authorization of the target user.
+        
+        @param request: DeleteProxyAccessRequest
+        @return: DeleteProxyAccessResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_proxy_access_with_options_async(request, runtime)
 
@@ -4733,7 +5561,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.DeleteScenarioResponse:
         """
-        When you call this operation, make sure that no task flow is specified in the business scenario.
+        @summary Deletes a business scenario.
+        
+        @description When you call this operation, make sure that no task flow is specified in the business scenario.
         
         @param request: DeleteScenarioRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4770,7 +5600,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.DeleteScenarioResponse:
         """
-        When you call this operation, make sure that no task flow is specified in the business scenario.
+        @summary Deletes a business scenario.
+        
+        @description When you call this operation, make sure that no task flow is specified in the business scenario.
         
         @param request: DeleteScenarioRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4806,7 +5638,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.DeleteScenarioRequest,
     ) -> dms_enterprise_20181101_models.DeleteScenarioResponse:
         """
-        When you call this operation, make sure that no task flow is specified in the business scenario.
+        @summary Deletes a business scenario.
+        
+        @description When you call this operation, make sure that no task flow is specified in the business scenario.
         
         @param request: DeleteScenarioRequest
         @return: DeleteScenarioResponse
@@ -4819,7 +5653,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.DeleteScenarioRequest,
     ) -> dms_enterprise_20181101_models.DeleteScenarioResponse:
         """
-        When you call this operation, make sure that no task flow is specified in the business scenario.
+        @summary Deletes a business scenario.
+        
+        @description When you call this operation, make sure that no task flow is specified in the business scenario.
         
         @param request: DeleteScenarioRequest
         @return: DeleteScenarioResponse
@@ -4832,6 +5668,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.DeleteStandardGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.DeleteStandardGroupResponse:
+        """
+        @summary 删除安全规则
+        
+        @param request: DeleteStandardGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteStandardGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_id):
@@ -4862,6 +5705,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.DeleteStandardGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.DeleteStandardGroupResponse:
+        """
+        @summary 删除安全规则
+        
+        @param request: DeleteStandardGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteStandardGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_id):
@@ -4891,6 +5741,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.DeleteStandardGroupRequest,
     ) -> dms_enterprise_20181101_models.DeleteStandardGroupResponse:
+        """
+        @summary 删除安全规则
+        
+        @param request: DeleteStandardGroupRequest
+        @return: DeleteStandardGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_standard_group_with_options(request, runtime)
 
@@ -4898,6 +5754,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.DeleteStandardGroupRequest,
     ) -> dms_enterprise_20181101_models.DeleteStandardGroupResponse:
+        """
+        @summary 删除安全规则
+        
+        @param request: DeleteStandardGroupRequest
+        @return: DeleteStandardGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_standard_group_with_options_async(request, runtime)
 
@@ -4906,6 +5768,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.DeleteTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.DeleteTaskResponse:
+        """
+        @summary Deletes a task in a specified task flow.
+        
+        @param request: DeleteTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.node_id):
@@ -4936,6 +5805,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.DeleteTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.DeleteTaskResponse:
+        """
+        @summary Deletes a task in a specified task flow.
+        
+        @param request: DeleteTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.node_id):
@@ -4965,6 +5841,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.DeleteTaskRequest,
     ) -> dms_enterprise_20181101_models.DeleteTaskResponse:
+        """
+        @summary Deletes a task in a specified task flow.
+        
+        @param request: DeleteTaskRequest
+        @return: DeleteTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_task_with_options(request, runtime)
 
@@ -4972,6 +5854,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.DeleteTaskRequest,
     ) -> dms_enterprise_20181101_models.DeleteTaskResponse:
+        """
+        @summary Deletes a task in a specified task flow.
+        
+        @param request: DeleteTaskRequest
+        @return: DeleteTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_task_with_options_async(request, runtime)
 
@@ -4980,6 +5868,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.DeleteTaskFlowRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.DeleteTaskFlowResponse:
+        """
+        @summary Deletes a task flow.
+        
+        @param request: DeleteTaskFlowRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteTaskFlowResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dag_id):
@@ -5010,6 +5905,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.DeleteTaskFlowRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.DeleteTaskFlowResponse:
+        """
+        @summary Deletes a task flow.
+        
+        @param request: DeleteTaskFlowRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteTaskFlowResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dag_id):
@@ -5039,6 +5941,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.DeleteTaskFlowRequest,
     ) -> dms_enterprise_20181101_models.DeleteTaskFlowResponse:
+        """
+        @summary Deletes a task flow.
+        
+        @param request: DeleteTaskFlowRequest
+        @return: DeleteTaskFlowResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_task_flow_with_options(request, runtime)
 
@@ -5046,6 +5954,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.DeleteTaskFlowRequest,
     ) -> dms_enterprise_20181101_models.DeleteTaskFlowResponse:
+        """
+        @summary Deletes a task flow.
+        
+        @param request: DeleteTaskFlowRequest
+        @return: DeleteTaskFlowResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_task_flow_with_options_async(request, runtime)
 
@@ -5055,7 +5969,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.DeleteTaskFlowEdgesByConditionResponse:
         """
-        This operation is used for multi-condition query. You can call it to delete the edges of a specified task flow that meet all specified conditions.
+        @summary Deletes task flow edges based on multiple conditions.
+        
+        @description This operation is used for multi-condition query. You can call it to delete the edges of a specified task flow that meet all specified conditions.
         
         @param request: DeleteTaskFlowEdgesByConditionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5098,7 +6014,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.DeleteTaskFlowEdgesByConditionResponse:
         """
-        This operation is used for multi-condition query. You can call it to delete the edges of a specified task flow that meet all specified conditions.
+        @summary Deletes task flow edges based on multiple conditions.
+        
+        @description This operation is used for multi-condition query. You can call it to delete the edges of a specified task flow that meet all specified conditions.
         
         @param request: DeleteTaskFlowEdgesByConditionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5140,7 +6058,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.DeleteTaskFlowEdgesByConditionRequest,
     ) -> dms_enterprise_20181101_models.DeleteTaskFlowEdgesByConditionResponse:
         """
-        This operation is used for multi-condition query. You can call it to delete the edges of a specified task flow that meet all specified conditions.
+        @summary Deletes task flow edges based on multiple conditions.
+        
+        @description This operation is used for multi-condition query. You can call it to delete the edges of a specified task flow that meet all specified conditions.
         
         @param request: DeleteTaskFlowEdgesByConditionRequest
         @return: DeleteTaskFlowEdgesByConditionResponse
@@ -5153,7 +6073,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.DeleteTaskFlowEdgesByConditionRequest,
     ) -> dms_enterprise_20181101_models.DeleteTaskFlowEdgesByConditionResponse:
         """
-        This operation is used for multi-condition query. You can call it to delete the edges of a specified task flow that meet all specified conditions.
+        @summary Deletes task flow edges based on multiple conditions.
+        
+        @description This operation is used for multi-condition query. You can call it to delete the edges of a specified task flow that meet all specified conditions.
         
         @param request: DeleteTaskFlowEdgesByConditionRequest
         @return: DeleteTaskFlowEdgesByConditionResponse
@@ -5167,7 +6089,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.DeleteUserResponse:
         """
-        The effect of deleting a user by calling this operation is the same as that of deleting a user by choosing System Management > User Management in the DMS Enterprise console. The administrator of DMS Enterprise can call this operation to delete a user that is no longer used from DMS Enterprise. After the user is deleted, the data source permission, data owner configuration, and database administrator (DBA) configuration of the corresponding Alibaba Cloud account or Resource Access Management (RAM) user are revoked and become invalid.
+        @summary Deletes an Alibaba Cloud account that is no longer used.
+        
+        @description The effect of deleting a user by calling this operation is the same as that of deleting a user by choosing System Management > User Management in the DMS Enterprise console. The administrator of DMS Enterprise can call this operation to delete a user that is no longer used from DMS Enterprise. After the user is deleted, the data source permission, data owner configuration, and database administrator (DBA) configuration of the corresponding Alibaba Cloud account or Resource Access Management (RAM) user are revoked and become invalid.
         >  This operation only removes the association of the Alibaba Cloud account or RAM user with DMS Enterprise of the enterprise, rather than actually deleting the Alibaba Cloud account or RAM user. After the user is deleted, the Alibaba Cloud account or RAM user cannot log on to DMS Enterprise, unless the user is added to DMS Enterprise again.
         
         @param request: DeleteUserRequest
@@ -5205,7 +6129,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.DeleteUserResponse:
         """
-        The effect of deleting a user by calling this operation is the same as that of deleting a user by choosing System Management > User Management in the DMS Enterprise console. The administrator of DMS Enterprise can call this operation to delete a user that is no longer used from DMS Enterprise. After the user is deleted, the data source permission, data owner configuration, and database administrator (DBA) configuration of the corresponding Alibaba Cloud account or Resource Access Management (RAM) user are revoked and become invalid.
+        @summary Deletes an Alibaba Cloud account that is no longer used.
+        
+        @description The effect of deleting a user by calling this operation is the same as that of deleting a user by choosing System Management > User Management in the DMS Enterprise console. The administrator of DMS Enterprise can call this operation to delete a user that is no longer used from DMS Enterprise. After the user is deleted, the data source permission, data owner configuration, and database administrator (DBA) configuration of the corresponding Alibaba Cloud account or Resource Access Management (RAM) user are revoked and become invalid.
         >  This operation only removes the association of the Alibaba Cloud account or RAM user with DMS Enterprise of the enterprise, rather than actually deleting the Alibaba Cloud account or RAM user. After the user is deleted, the Alibaba Cloud account or RAM user cannot log on to DMS Enterprise, unless the user is added to DMS Enterprise again.
         
         @param request: DeleteUserRequest
@@ -5242,7 +6168,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.DeleteUserRequest,
     ) -> dms_enterprise_20181101_models.DeleteUserResponse:
         """
-        The effect of deleting a user by calling this operation is the same as that of deleting a user by choosing System Management > User Management in the DMS Enterprise console. The administrator of DMS Enterprise can call this operation to delete a user that is no longer used from DMS Enterprise. After the user is deleted, the data source permission, data owner configuration, and database administrator (DBA) configuration of the corresponding Alibaba Cloud account or Resource Access Management (RAM) user are revoked and become invalid.
+        @summary Deletes an Alibaba Cloud account that is no longer used.
+        
+        @description The effect of deleting a user by calling this operation is the same as that of deleting a user by choosing System Management > User Management in the DMS Enterprise console. The administrator of DMS Enterprise can call this operation to delete a user that is no longer used from DMS Enterprise. After the user is deleted, the data source permission, data owner configuration, and database administrator (DBA) configuration of the corresponding Alibaba Cloud account or Resource Access Management (RAM) user are revoked and become invalid.
         >  This operation only removes the association of the Alibaba Cloud account or RAM user with DMS Enterprise of the enterprise, rather than actually deleting the Alibaba Cloud account or RAM user. After the user is deleted, the Alibaba Cloud account or RAM user cannot log on to DMS Enterprise, unless the user is added to DMS Enterprise again.
         
         @param request: DeleteUserRequest
@@ -5256,7 +6184,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.DeleteUserRequest,
     ) -> dms_enterprise_20181101_models.DeleteUserResponse:
         """
-        The effect of deleting a user by calling this operation is the same as that of deleting a user by choosing System Management > User Management in the DMS Enterprise console. The administrator of DMS Enterprise can call this operation to delete a user that is no longer used from DMS Enterprise. After the user is deleted, the data source permission, data owner configuration, and database administrator (DBA) configuration of the corresponding Alibaba Cloud account or Resource Access Management (RAM) user are revoked and become invalid.
+        @summary Deletes an Alibaba Cloud account that is no longer used.
+        
+        @description The effect of deleting a user by calling this operation is the same as that of deleting a user by choosing System Management > User Management in the DMS Enterprise console. The administrator of DMS Enterprise can call this operation to delete a user that is no longer used from DMS Enterprise. After the user is deleted, the data source permission, data owner configuration, and database administrator (DBA) configuration of the corresponding Alibaba Cloud account or Resource Access Management (RAM) user are revoked and become invalid.
         >  This operation only removes the association of the Alibaba Cloud account or RAM user with DMS Enterprise of the enterprise, rather than actually deleting the Alibaba Cloud account or RAM user. After the user is deleted, the Alibaba Cloud account or RAM user cannot log on to DMS Enterprise, unless the user is added to DMS Enterprise again.
         
         @param request: DeleteUserRequest
@@ -5271,7 +6201,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.DisableUserResponse:
         """
-        The effect of disabling a user by calling this operation is the same as that of disabling a user by choosing System Management > User Management in the DMS Enterprise console. The administrator of DMS Enterprise can call this operation to disable a user that is temporarily not used in DMS Enterprise. After the user is disabled, the data source permission, data owner configuration, and database administrator (DBA) configuration of the corresponding Alibaba Cloud account or Resource Access Management (RAM) user are revoked and become invalid.
+        @summary You can call this operation to disable a user that is temporarily not used in Data Management (DMS) Enterprise.
+        
+        @description The effect of disabling a user by calling this operation is the same as that of disabling a user by choosing System Management > User Management in the DMS Enterprise console. The administrator of DMS Enterprise can call this operation to disable a user that is temporarily not used in DMS Enterprise. After the user is disabled, the data source permission, data owner configuration, and database administrator (DBA) configuration of the corresponding Alibaba Cloud account or Resource Access Management (RAM) user are revoked and become invalid.
         >  This operation only stops the Alibaba Cloud account or RAM user from logging on to DMS Enterprise of the enterprise, rather than actually disabling the Alibaba Cloud account or RAM user. After the user is disabled, the Alibaba Cloud account or RAM user cannot log on to DMS Enterprise, unless the user is enabled again. The disabled user, however, still exists in DMS Enterprise.
         
         @param request: DisableUserRequest
@@ -5309,7 +6241,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.DisableUserResponse:
         """
-        The effect of disabling a user by calling this operation is the same as that of disabling a user by choosing System Management > User Management in the DMS Enterprise console. The administrator of DMS Enterprise can call this operation to disable a user that is temporarily not used in DMS Enterprise. After the user is disabled, the data source permission, data owner configuration, and database administrator (DBA) configuration of the corresponding Alibaba Cloud account or Resource Access Management (RAM) user are revoked and become invalid.
+        @summary You can call this operation to disable a user that is temporarily not used in Data Management (DMS) Enterprise.
+        
+        @description The effect of disabling a user by calling this operation is the same as that of disabling a user by choosing System Management > User Management in the DMS Enterprise console. The administrator of DMS Enterprise can call this operation to disable a user that is temporarily not used in DMS Enterprise. After the user is disabled, the data source permission, data owner configuration, and database administrator (DBA) configuration of the corresponding Alibaba Cloud account or Resource Access Management (RAM) user are revoked and become invalid.
         >  This operation only stops the Alibaba Cloud account or RAM user from logging on to DMS Enterprise of the enterprise, rather than actually disabling the Alibaba Cloud account or RAM user. After the user is disabled, the Alibaba Cloud account or RAM user cannot log on to DMS Enterprise, unless the user is enabled again. The disabled user, however, still exists in DMS Enterprise.
         
         @param request: DisableUserRequest
@@ -5346,7 +6280,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.DisableUserRequest,
     ) -> dms_enterprise_20181101_models.DisableUserResponse:
         """
-        The effect of disabling a user by calling this operation is the same as that of disabling a user by choosing System Management > User Management in the DMS Enterprise console. The administrator of DMS Enterprise can call this operation to disable a user that is temporarily not used in DMS Enterprise. After the user is disabled, the data source permission, data owner configuration, and database administrator (DBA) configuration of the corresponding Alibaba Cloud account or Resource Access Management (RAM) user are revoked and become invalid.
+        @summary You can call this operation to disable a user that is temporarily not used in Data Management (DMS) Enterprise.
+        
+        @description The effect of disabling a user by calling this operation is the same as that of disabling a user by choosing System Management > User Management in the DMS Enterprise console. The administrator of DMS Enterprise can call this operation to disable a user that is temporarily not used in DMS Enterprise. After the user is disabled, the data source permission, data owner configuration, and database administrator (DBA) configuration of the corresponding Alibaba Cloud account or Resource Access Management (RAM) user are revoked and become invalid.
         >  This operation only stops the Alibaba Cloud account or RAM user from logging on to DMS Enterprise of the enterprise, rather than actually disabling the Alibaba Cloud account or RAM user. After the user is disabled, the Alibaba Cloud account or RAM user cannot log on to DMS Enterprise, unless the user is enabled again. The disabled user, however, still exists in DMS Enterprise.
         
         @param request: DisableUserRequest
@@ -5360,7 +6296,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.DisableUserRequest,
     ) -> dms_enterprise_20181101_models.DisableUserResponse:
         """
-        The effect of disabling a user by calling this operation is the same as that of disabling a user by choosing System Management > User Management in the DMS Enterprise console. The administrator of DMS Enterprise can call this operation to disable a user that is temporarily not used in DMS Enterprise. After the user is disabled, the data source permission, data owner configuration, and database administrator (DBA) configuration of the corresponding Alibaba Cloud account or Resource Access Management (RAM) user are revoked and become invalid.
+        @summary You can call this operation to disable a user that is temporarily not used in Data Management (DMS) Enterprise.
+        
+        @description The effect of disabling a user by calling this operation is the same as that of disabling a user by choosing System Management > User Management in the DMS Enterprise console. The administrator of DMS Enterprise can call this operation to disable a user that is temporarily not used in DMS Enterprise. After the user is disabled, the data source permission, data owner configuration, and database administrator (DBA) configuration of the corresponding Alibaba Cloud account or Resource Access Management (RAM) user are revoked and become invalid.
         >  This operation only stops the Alibaba Cloud account or RAM user from logging on to DMS Enterprise of the enterprise, rather than actually disabling the Alibaba Cloud account or RAM user. After the user is disabled, the Alibaba Cloud account or RAM user cannot log on to DMS Enterprise, unless the user is enabled again. The disabled user, however, still exists in DMS Enterprise.
         
         @param request: DisableUserRequest
@@ -5374,6 +6312,13 @@ class Client(OpenApiClient):
         tmp_req: dms_enterprise_20181101_models.DownloadDataTrackResultRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.DownloadDataTrackResultResponse:
+        """
+        @summary Downloads the parsing result of a data tracking task.
+        
+        @param tmp_req: DownloadDataTrackResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DownloadDataTrackResultResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dms_enterprise_20181101_models.DownloadDataTrackResultShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -5428,6 +6373,13 @@ class Client(OpenApiClient):
         tmp_req: dms_enterprise_20181101_models.DownloadDataTrackResultRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.DownloadDataTrackResultResponse:
+        """
+        @summary Downloads the parsing result of a data tracking task.
+        
+        @param tmp_req: DownloadDataTrackResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DownloadDataTrackResultResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dms_enterprise_20181101_models.DownloadDataTrackResultShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -5481,6 +6433,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.DownloadDataTrackResultRequest,
     ) -> dms_enterprise_20181101_models.DownloadDataTrackResultResponse:
+        """
+        @summary Downloads the parsing result of a data tracking task.
+        
+        @param request: DownloadDataTrackResultRequest
+        @return: DownloadDataTrackResultResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.download_data_track_result_with_options(request, runtime)
 
@@ -5488,6 +6446,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.DownloadDataTrackResultRequest,
     ) -> dms_enterprise_20181101_models.DownloadDataTrackResultResponse:
+        """
+        @summary Downloads the parsing result of a data tracking task.
+        
+        @param request: DownloadDataTrackResultRequest
+        @return: DownloadDataTrackResultResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.download_data_track_result_with_options_async(request, runtime)
 
@@ -5496,6 +6460,13 @@ class Client(OpenApiClient):
         tmp_req: dms_enterprise_20181101_models.EditLogicDatabaseRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.EditLogicDatabaseResponse:
+        """
+        @summary Modifies the information about a logical database.
+        
+        @param tmp_req: EditLogicDatabaseRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EditLogicDatabaseResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dms_enterprise_20181101_models.EditLogicDatabaseShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -5534,6 +6505,13 @@ class Client(OpenApiClient):
         tmp_req: dms_enterprise_20181101_models.EditLogicDatabaseRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.EditLogicDatabaseResponse:
+        """
+        @summary Modifies the information about a logical database.
+        
+        @param tmp_req: EditLogicDatabaseRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EditLogicDatabaseResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dms_enterprise_20181101_models.EditLogicDatabaseShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -5571,6 +6549,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.EditLogicDatabaseRequest,
     ) -> dms_enterprise_20181101_models.EditLogicDatabaseResponse:
+        """
+        @summary Modifies the information about a logical database.
+        
+        @param request: EditLogicDatabaseRequest
+        @return: EditLogicDatabaseResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.edit_logic_database_with_options(request, runtime)
 
@@ -5578,6 +6562,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.EditLogicDatabaseRequest,
     ) -> dms_enterprise_20181101_models.EditLogicDatabaseResponse:
+        """
+        @summary Modifies the information about a logical database.
+        
+        @param request: EditLogicDatabaseRequest
+        @return: EditLogicDatabaseResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.edit_logic_database_with_options_async(request, runtime)
 
@@ -5587,7 +6577,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.EnableUserResponse:
         """
-        The effect of enabling a user by calling this operation is the same as that of enabling a user by choosing System Management > User Management in the DMS Enterprise console. The administrator of DMS Enterprise can call this operation to enable a user that has been disabled in DMS Enterprise. After the user is enabled, the corresponding Alibaba Cloud account or Resource Access Management (RAM) user can continue to log on to DMS Enterprise and perform relevant operations.
+        @summary You can call this operation to enable a user that has been disabled in Data Management (DMS) Enterprise.
+        
+        @description The effect of enabling a user by calling this operation is the same as that of enabling a user by choosing System Management > User Management in the DMS Enterprise console. The administrator of DMS Enterprise can call this operation to enable a user that has been disabled in DMS Enterprise. After the user is enabled, the corresponding Alibaba Cloud account or Resource Access Management (RAM) user can continue to log on to DMS Enterprise and perform relevant operations.
         >  This operation only enables the Alibaba Cloud account or RAM user to log on to DMS Enterprise of the enterprise and perform relevant operations, rather than granting other permissions to the Alibaba Cloud account or RAM user.
         
         @param request: EnableUserRequest
@@ -5625,7 +6617,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.EnableUserResponse:
         """
-        The effect of enabling a user by calling this operation is the same as that of enabling a user by choosing System Management > User Management in the DMS Enterprise console. The administrator of DMS Enterprise can call this operation to enable a user that has been disabled in DMS Enterprise. After the user is enabled, the corresponding Alibaba Cloud account or Resource Access Management (RAM) user can continue to log on to DMS Enterprise and perform relevant operations.
+        @summary You can call this operation to enable a user that has been disabled in Data Management (DMS) Enterprise.
+        
+        @description The effect of enabling a user by calling this operation is the same as that of enabling a user by choosing System Management > User Management in the DMS Enterprise console. The administrator of DMS Enterprise can call this operation to enable a user that has been disabled in DMS Enterprise. After the user is enabled, the corresponding Alibaba Cloud account or Resource Access Management (RAM) user can continue to log on to DMS Enterprise and perform relevant operations.
         >  This operation only enables the Alibaba Cloud account or RAM user to log on to DMS Enterprise of the enterprise and perform relevant operations, rather than granting other permissions to the Alibaba Cloud account or RAM user.
         
         @param request: EnableUserRequest
@@ -5662,7 +6656,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.EnableUserRequest,
     ) -> dms_enterprise_20181101_models.EnableUserResponse:
         """
-        The effect of enabling a user by calling this operation is the same as that of enabling a user by choosing System Management > User Management in the DMS Enterprise console. The administrator of DMS Enterprise can call this operation to enable a user that has been disabled in DMS Enterprise. After the user is enabled, the corresponding Alibaba Cloud account or Resource Access Management (RAM) user can continue to log on to DMS Enterprise and perform relevant operations.
+        @summary You can call this operation to enable a user that has been disabled in Data Management (DMS) Enterprise.
+        
+        @description The effect of enabling a user by calling this operation is the same as that of enabling a user by choosing System Management > User Management in the DMS Enterprise console. The administrator of DMS Enterprise can call this operation to enable a user that has been disabled in DMS Enterprise. After the user is enabled, the corresponding Alibaba Cloud account or Resource Access Management (RAM) user can continue to log on to DMS Enterprise and perform relevant operations.
         >  This operation only enables the Alibaba Cloud account or RAM user to log on to DMS Enterprise of the enterprise and perform relevant operations, rather than granting other permissions to the Alibaba Cloud account or RAM user.
         
         @param request: EnableUserRequest
@@ -5676,7 +6672,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.EnableUserRequest,
     ) -> dms_enterprise_20181101_models.EnableUserResponse:
         """
-        The effect of enabling a user by calling this operation is the same as that of enabling a user by choosing System Management > User Management in the DMS Enterprise console. The administrator of DMS Enterprise can call this operation to enable a user that has been disabled in DMS Enterprise. After the user is enabled, the corresponding Alibaba Cloud account or Resource Access Management (RAM) user can continue to log on to DMS Enterprise and perform relevant operations.
+        @summary You can call this operation to enable a user that has been disabled in Data Management (DMS) Enterprise.
+        
+        @description The effect of enabling a user by calling this operation is the same as that of enabling a user by choosing System Management > User Management in the DMS Enterprise console. The administrator of DMS Enterprise can call this operation to enable a user that has been disabled in DMS Enterprise. After the user is enabled, the corresponding Alibaba Cloud account or Resource Access Management (RAM) user can continue to log on to DMS Enterprise and perform relevant operations.
         >  This operation only enables the Alibaba Cloud account or RAM user to log on to DMS Enterprise of the enterprise and perform relevant operations, rather than granting other permissions to the Alibaba Cloud account or RAM user.
         
         @param request: EnableUserRequest
@@ -5690,6 +6688,13 @@ class Client(OpenApiClient):
         tmp_req: dms_enterprise_20181101_models.ExecuteDataCorrectRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ExecuteDataCorrectResponse:
+        """
+        @summary Submits a ticket for data change.
+        
+        @param tmp_req: ExecuteDataCorrectRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExecuteDataCorrectResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dms_enterprise_20181101_models.ExecuteDataCorrectShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -5726,6 +6731,13 @@ class Client(OpenApiClient):
         tmp_req: dms_enterprise_20181101_models.ExecuteDataCorrectRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ExecuteDataCorrectResponse:
+        """
+        @summary Submits a ticket for data change.
+        
+        @param tmp_req: ExecuteDataCorrectRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExecuteDataCorrectResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dms_enterprise_20181101_models.ExecuteDataCorrectShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -5761,6 +6773,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ExecuteDataCorrectRequest,
     ) -> dms_enterprise_20181101_models.ExecuteDataCorrectResponse:
+        """
+        @summary Submits a ticket for data change.
+        
+        @param request: ExecuteDataCorrectRequest
+        @return: ExecuteDataCorrectResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.execute_data_correct_with_options(request, runtime)
 
@@ -5768,6 +6786,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ExecuteDataCorrectRequest,
     ) -> dms_enterprise_20181101_models.ExecuteDataCorrectResponse:
+        """
+        @summary Submits a ticket for data change.
+        
+        @param request: ExecuteDataCorrectRequest
+        @return: ExecuteDataCorrectResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.execute_data_correct_with_options_async(request, runtime)
 
@@ -5776,6 +6800,13 @@ class Client(OpenApiClient):
         tmp_req: dms_enterprise_20181101_models.ExecuteDataExportRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ExecuteDataExportResponse:
+        """
+        @summary Executes a data export ticket.
+        
+        @param tmp_req: ExecuteDataExportRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExecuteDataExportResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dms_enterprise_20181101_models.ExecuteDataExportShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -5812,6 +6843,13 @@ class Client(OpenApiClient):
         tmp_req: dms_enterprise_20181101_models.ExecuteDataExportRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ExecuteDataExportResponse:
+        """
+        @summary Executes a data export ticket.
+        
+        @param tmp_req: ExecuteDataExportRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExecuteDataExportResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dms_enterprise_20181101_models.ExecuteDataExportShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -5847,6 +6885,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ExecuteDataExportRequest,
     ) -> dms_enterprise_20181101_models.ExecuteDataExportResponse:
+        """
+        @summary Executes a data export ticket.
+        
+        @param request: ExecuteDataExportRequest
+        @return: ExecuteDataExportResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.execute_data_export_with_options(request, runtime)
 
@@ -5854,6 +6898,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ExecuteDataExportRequest,
     ) -> dms_enterprise_20181101_models.ExecuteDataExportResponse:
+        """
+        @summary Executes a data export ticket.
+        
+        @param request: ExecuteDataExportRequest
+        @return: ExecuteDataExportResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.execute_data_export_with_options_async(request, runtime)
 
@@ -5863,7 +6913,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ExecuteScriptResponse:
         """
-        You can call this operation only for instances that are managed in Security Collaboration mode.
+        @summary Executes SQL statements.
+        
+        @description You can call this operation only for instances that are managed in Security Collaboration mode.
         
         @param request: ExecuteScriptRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5904,7 +6956,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ExecuteScriptResponse:
         """
-        You can call this operation only for instances that are managed in Security Collaboration mode.
+        @summary Executes SQL statements.
+        
+        @description You can call this operation only for instances that are managed in Security Collaboration mode.
         
         @param request: ExecuteScriptRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5944,7 +6998,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ExecuteScriptRequest,
     ) -> dms_enterprise_20181101_models.ExecuteScriptResponse:
         """
-        You can call this operation only for instances that are managed in Security Collaboration mode.
+        @summary Executes SQL statements.
+        
+        @description You can call this operation only for instances that are managed in Security Collaboration mode.
         
         @param request: ExecuteScriptRequest
         @return: ExecuteScriptResponse
@@ -5957,7 +7013,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ExecuteScriptRequest,
     ) -> dms_enterprise_20181101_models.ExecuteScriptResponse:
         """
-        You can call this operation only for instances that are managed in Security Collaboration mode.
+        @summary Executes SQL statements.
+        
+        @description You can call this operation only for instances that are managed in Security Collaboration mode.
         
         @param request: ExecuteScriptRequest
         @return: ExecuteScriptResponse
@@ -5971,8 +7029,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ExecuteStructSyncResponse:
         """
-        If the security rules of an instance indicate that a ticket must be approved before you perform schema synchronization, you can call the [SubmitStructSyncOrderApproval](~~206166~~) operation to submit the ticket for approval.
-        >  You can call the [GetStructSyncJobDetail](~~206160~~) operation to query whether you need to submit a ticket for approval.
+        @summary Executes a schema synchronization task.
+        
+        @description If the security rules of an instance indicate that a ticket must be approved before you perform schema synchronization, you can call the [SubmitStructSyncOrderApproval](https://help.aliyun.com/document_detail/206166.html) operation to submit the ticket for approval.
+        >  You can call the [GetStructSyncJobDetail](https://help.aliyun.com/document_detail/206160.html) operation to query whether you need to submit a ticket for approval.
         
         @param request: ExecuteStructSyncRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6009,8 +7069,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ExecuteStructSyncResponse:
         """
-        If the security rules of an instance indicate that a ticket must be approved before you perform schema synchronization, you can call the [SubmitStructSyncOrderApproval](~~206166~~) operation to submit the ticket for approval.
-        >  You can call the [GetStructSyncJobDetail](~~206160~~) operation to query whether you need to submit a ticket for approval.
+        @summary Executes a schema synchronization task.
+        
+        @description If the security rules of an instance indicate that a ticket must be approved before you perform schema synchronization, you can call the [SubmitStructSyncOrderApproval](https://help.aliyun.com/document_detail/206166.html) operation to submit the ticket for approval.
+        >  You can call the [GetStructSyncJobDetail](https://help.aliyun.com/document_detail/206160.html) operation to query whether you need to submit a ticket for approval.
         
         @param request: ExecuteStructSyncRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6046,8 +7108,10 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ExecuteStructSyncRequest,
     ) -> dms_enterprise_20181101_models.ExecuteStructSyncResponse:
         """
-        If the security rules of an instance indicate that a ticket must be approved before you perform schema synchronization, you can call the [SubmitStructSyncOrderApproval](~~206166~~) operation to submit the ticket for approval.
-        >  You can call the [GetStructSyncJobDetail](~~206160~~) operation to query whether you need to submit a ticket for approval.
+        @summary Executes a schema synchronization task.
+        
+        @description If the security rules of an instance indicate that a ticket must be approved before you perform schema synchronization, you can call the [SubmitStructSyncOrderApproval](https://help.aliyun.com/document_detail/206166.html) operation to submit the ticket for approval.
+        >  You can call the [GetStructSyncJobDetail](https://help.aliyun.com/document_detail/206160.html) operation to query whether you need to submit a ticket for approval.
         
         @param request: ExecuteStructSyncRequest
         @return: ExecuteStructSyncResponse
@@ -6060,8 +7124,10 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ExecuteStructSyncRequest,
     ) -> dms_enterprise_20181101_models.ExecuteStructSyncResponse:
         """
-        If the security rules of an instance indicate that a ticket must be approved before you perform schema synchronization, you can call the [SubmitStructSyncOrderApproval](~~206166~~) operation to submit the ticket for approval.
-        >  You can call the [GetStructSyncJobDetail](~~206160~~) operation to query whether you need to submit a ticket for approval.
+        @summary Executes a schema synchronization task.
+        
+        @description If the security rules of an instance indicate that a ticket must be approved before you perform schema synchronization, you can call the [SubmitStructSyncOrderApproval](https://help.aliyun.com/document_detail/206166.html) operation to submit the ticket for approval.
+        >  You can call the [GetStructSyncJobDetail](https://help.aliyun.com/document_detail/206160.html) operation to query whether you need to submit a ticket for approval.
         
         @param request: ExecuteStructSyncRequest
         @return: ExecuteStructSyncResponse
@@ -6074,6 +7140,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetApprovalDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetApprovalDetailResponse:
+        """
+        @summary Queries the approval details of a ticket.
+        
+        @param request: GetApprovalDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetApprovalDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.tid):
@@ -6104,6 +7177,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetApprovalDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetApprovalDetailResponse:
+        """
+        @summary Queries the approval details of a ticket.
+        
+        @param request: GetApprovalDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetApprovalDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.tid):
@@ -6133,6 +7213,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetApprovalDetailRequest,
     ) -> dms_enterprise_20181101_models.GetApprovalDetailResponse:
+        """
+        @summary Queries the approval details of a ticket.
+        
+        @param request: GetApprovalDetailRequest
+        @return: GetApprovalDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_approval_detail_with_options(request, runtime)
 
@@ -6140,6 +7226,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetApprovalDetailRequest,
     ) -> dms_enterprise_20181101_models.GetApprovalDetailResponse:
+        """
+        @summary Queries the approval details of a ticket.
+        
+        @param request: GetApprovalDetailRequest
+        @return: GetApprovalDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_approval_detail_with_options_async(request, runtime)
 
@@ -6149,7 +7241,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetAuthorityTemplateResponse:
         """
-        You must be a Data Management (DMS) administrator or a database administrator (DBA). For more information about how to view system roles, see [View system roles](~~324212~~).
+        @summary Queries the information about a permission template.
+        
+        @description You must be a Data Management (DMS) administrator or a database administrator (DBA). For more information about how to view system roles, see [View system roles](https://help.aliyun.com/document_detail/324212.html).
         
         @param request: GetAuthorityTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6186,7 +7280,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetAuthorityTemplateResponse:
         """
-        You must be a Data Management (DMS) administrator or a database administrator (DBA). For more information about how to view system roles, see [View system roles](~~324212~~).
+        @summary Queries the information about a permission template.
+        
+        @description You must be a Data Management (DMS) administrator or a database administrator (DBA). For more information about how to view system roles, see [View system roles](https://help.aliyun.com/document_detail/324212.html).
         
         @param request: GetAuthorityTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6222,7 +7318,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetAuthorityTemplateRequest,
     ) -> dms_enterprise_20181101_models.GetAuthorityTemplateResponse:
         """
-        You must be a Data Management (DMS) administrator or a database administrator (DBA). For more information about how to view system roles, see [View system roles](~~324212~~).
+        @summary Queries the information about a permission template.
+        
+        @description You must be a Data Management (DMS) administrator or a database administrator (DBA). For more information about how to view system roles, see [View system roles](https://help.aliyun.com/document_detail/324212.html).
         
         @param request: GetAuthorityTemplateRequest
         @return: GetAuthorityTemplateResponse
@@ -6235,7 +7333,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetAuthorityTemplateRequest,
     ) -> dms_enterprise_20181101_models.GetAuthorityTemplateResponse:
         """
-        You must be a Data Management (DMS) administrator or a database administrator (DBA). For more information about how to view system roles, see [View system roles](~~324212~~).
+        @summary Queries the information about a permission template.
+        
+        @description You must be a Data Management (DMS) administrator or a database administrator (DBA). For more information about how to view system roles, see [View system roles](https://help.aliyun.com/document_detail/324212.html).
         
         @param request: GetAuthorityTemplateRequest
         @return: GetAuthorityTemplateResponse
@@ -6249,7 +7349,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetAuthorityTemplateItemResponse:
         """
-        You are a database administrator (DBA) or a Data Management (DMS) administrator. For more information about how to view system roles, see [View system roles](~~324212~~).
+        @summary Queries the resources in a permission template.
+        
+        @description You are a database administrator (DBA) or a Data Management (DMS) administrator. For more information about how to view system roles, see [View system roles](https://help.aliyun.com/document_detail/324212.html).
         
         @param request: GetAuthorityTemplateItemRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6286,7 +7388,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetAuthorityTemplateItemResponse:
         """
-        You are a database administrator (DBA) or a Data Management (DMS) administrator. For more information about how to view system roles, see [View system roles](~~324212~~).
+        @summary Queries the resources in a permission template.
+        
+        @description You are a database administrator (DBA) or a Data Management (DMS) administrator. For more information about how to view system roles, see [View system roles](https://help.aliyun.com/document_detail/324212.html).
         
         @param request: GetAuthorityTemplateItemRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6322,7 +7426,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetAuthorityTemplateItemRequest,
     ) -> dms_enterprise_20181101_models.GetAuthorityTemplateItemResponse:
         """
-        You are a database administrator (DBA) or a Data Management (DMS) administrator. For more information about how to view system roles, see [View system roles](~~324212~~).
+        @summary Queries the resources in a permission template.
+        
+        @description You are a database administrator (DBA) or a Data Management (DMS) administrator. For more information about how to view system roles, see [View system roles](https://help.aliyun.com/document_detail/324212.html).
         
         @param request: GetAuthorityTemplateItemRequest
         @return: GetAuthorityTemplateItemResponse
@@ -6335,7 +7441,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetAuthorityTemplateItemRequest,
     ) -> dms_enterprise_20181101_models.GetAuthorityTemplateItemResponse:
         """
-        You are a database administrator (DBA) or a Data Management (DMS) administrator. For more information about how to view system roles, see [View system roles](~~324212~~).
+        @summary Queries the resources in a permission template.
+        
+        @description You are a database administrator (DBA) or a Data Management (DMS) administrator. For more information about how to view system roles, see [View system roles](https://help.aliyun.com/document_detail/324212.html).
         
         @param request: GetAuthorityTemplateItemRequest
         @return: GetAuthorityTemplateItemResponse
@@ -6348,6 +7456,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetClassificationTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetClassificationTemplateResponse:
+        """
+        @summary 获取实例绑定的分类分级模板
+        
+        @param request: GetClassificationTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetClassificationTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -6378,6 +7493,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetClassificationTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetClassificationTemplateResponse:
+        """
+        @summary 获取实例绑定的分类分级模板
+        
+        @param request: GetClassificationTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetClassificationTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -6407,6 +7529,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetClassificationTemplateRequest,
     ) -> dms_enterprise_20181101_models.GetClassificationTemplateResponse:
+        """
+        @summary 获取实例绑定的分类分级模板
+        
+        @param request: GetClassificationTemplateRequest
+        @return: GetClassificationTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_classification_template_with_options(request, runtime)
 
@@ -6414,6 +7542,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetClassificationTemplateRequest,
     ) -> dms_enterprise_20181101_models.GetClassificationTemplateResponse:
+        """
+        @summary 获取实例绑定的分类分级模板
+        
+        @param request: GetClassificationTemplateRequest
+        @return: GetClassificationTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_classification_template_with_options_async(request, runtime)
 
@@ -6422,6 +7556,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetDBTaskSQLJobLogRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetDBTaskSQLJobLogResponse:
+        """
+        @summary Queries the log that records the scheduling details of an SQL task.
+        
+        @param request: GetDBTaskSQLJobLogRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDBTaskSQLJobLogResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.job_id):
@@ -6452,6 +7593,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetDBTaskSQLJobLogRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetDBTaskSQLJobLogResponse:
+        """
+        @summary Queries the log that records the scheduling details of an SQL task.
+        
+        @param request: GetDBTaskSQLJobLogRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDBTaskSQLJobLogResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.job_id):
@@ -6481,6 +7629,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetDBTaskSQLJobLogRequest,
     ) -> dms_enterprise_20181101_models.GetDBTaskSQLJobLogResponse:
+        """
+        @summary Queries the log that records the scheduling details of an SQL task.
+        
+        @param request: GetDBTaskSQLJobLogRequest
+        @return: GetDBTaskSQLJobLogResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_dbtask_sqljob_log_with_options(request, runtime)
 
@@ -6488,6 +7642,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetDBTaskSQLJobLogRequest,
     ) -> dms_enterprise_20181101_models.GetDBTaskSQLJobLogResponse:
+        """
+        @summary Queries the log that records the scheduling details of an SQL task.
+        
+        @param request: GetDBTaskSQLJobLogRequest
+        @return: GetDBTaskSQLJobLogResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_dbtask_sqljob_log_with_options_async(request, runtime)
 
@@ -6496,6 +7656,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetDBTopologyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetDBTopologyResponse:
+        """
+        @summary Queries the topologies of a logical database and its physical database shards.
+        
+        @param request: GetDBTopologyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDBTopologyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.logic_db_id):
@@ -6526,6 +7693,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetDBTopologyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetDBTopologyResponse:
+        """
+        @summary Queries the topologies of a logical database and its physical database shards.
+        
+        @param request: GetDBTopologyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDBTopologyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.logic_db_id):
@@ -6555,6 +7729,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetDBTopologyRequest,
     ) -> dms_enterprise_20181101_models.GetDBTopologyResponse:
+        """
+        @summary Queries the topologies of a logical database and its physical database shards.
+        
+        @param request: GetDBTopologyRequest
+        @return: GetDBTopologyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_dbtopology_with_options(request, runtime)
 
@@ -6562,6 +7742,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetDBTopologyRequest,
     ) -> dms_enterprise_20181101_models.GetDBTopologyResponse:
+        """
+        @summary Queries the topologies of a logical database and its physical database shards.
+        
+        @param request: GetDBTopologyRequest
+        @return: GetDBTopologyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_dbtopology_with_options_async(request, runtime)
 
@@ -6570,6 +7756,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetDataArchiveCountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetDataArchiveCountResponse:
+        """
+        @summary Queries the statistics of data archiving orders, including the number of successful archiving tickets, the number of failed archiving tickets, the number of in-progress archiving tickets, and the total number of archiving tickets.
+        
+        @param request: GetDataArchiveCountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataArchiveCountResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.order_result_type):
@@ -6604,6 +7797,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetDataArchiveCountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetDataArchiveCountResponse:
+        """
+        @summary Queries the statistics of data archiving orders, including the number of successful archiving tickets, the number of failed archiving tickets, the number of in-progress archiving tickets, and the total number of archiving tickets.
+        
+        @param request: GetDataArchiveCountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataArchiveCountResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.order_result_type):
@@ -6637,6 +7837,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetDataArchiveCountRequest,
     ) -> dms_enterprise_20181101_models.GetDataArchiveCountResponse:
+        """
+        @summary Queries the statistics of data archiving orders, including the number of successful archiving tickets, the number of failed archiving tickets, the number of in-progress archiving tickets, and the total number of archiving tickets.
+        
+        @param request: GetDataArchiveCountRequest
+        @return: GetDataArchiveCountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_data_archive_count_with_options(request, runtime)
 
@@ -6644,6 +7850,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetDataArchiveCountRequest,
     ) -> dms_enterprise_20181101_models.GetDataArchiveCountResponse:
+        """
+        @summary Queries the statistics of data archiving orders, including the number of successful archiving tickets, the number of failed archiving tickets, the number of in-progress archiving tickets, and the total number of archiving tickets.
+        
+        @param request: GetDataArchiveCountRequest
+        @return: GetDataArchiveCountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_data_archive_count_with_options_async(request, runtime)
 
@@ -6652,6 +7864,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetDataArchiveOrderDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetDataArchiveOrderDetailResponse:
+        """
+        @summary Queries the details of a data archiving ticket.
+        
+        @param request: GetDataArchiveOrderDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataArchiveOrderDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.order_id):
@@ -6682,6 +7901,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetDataArchiveOrderDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetDataArchiveOrderDetailResponse:
+        """
+        @summary Queries the details of a data archiving ticket.
+        
+        @param request: GetDataArchiveOrderDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataArchiveOrderDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.order_id):
@@ -6711,6 +7937,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetDataArchiveOrderDetailRequest,
     ) -> dms_enterprise_20181101_models.GetDataArchiveOrderDetailResponse:
+        """
+        @summary Queries the details of a data archiving ticket.
+        
+        @param request: GetDataArchiveOrderDetailRequest
+        @return: GetDataArchiveOrderDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_data_archive_order_detail_with_options(request, runtime)
 
@@ -6718,6 +7950,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetDataArchiveOrderDetailRequest,
     ) -> dms_enterprise_20181101_models.GetDataArchiveOrderDetailResponse:
+        """
+        @summary Queries the details of a data archiving ticket.
+        
+        @param request: GetDataArchiveOrderDetailRequest
+        @return: GetDataArchiveOrderDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_data_archive_order_detail_with_options_async(request, runtime)
 
@@ -6726,6 +7964,13 @@ class Client(OpenApiClient):
         tmp_req: dms_enterprise_20181101_models.GetDataCorrectBackupFilesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetDataCorrectBackupFilesResponse:
+        """
+        @summary Queries the download URL of the backup file for a data change ticket in Data Management (DMS).
+        
+        @param tmp_req: GetDataCorrectBackupFilesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataCorrectBackupFilesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dms_enterprise_20181101_models.GetDataCorrectBackupFilesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -6762,6 +8007,13 @@ class Client(OpenApiClient):
         tmp_req: dms_enterprise_20181101_models.GetDataCorrectBackupFilesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetDataCorrectBackupFilesResponse:
+        """
+        @summary Queries the download URL of the backup file for a data change ticket in Data Management (DMS).
+        
+        @param tmp_req: GetDataCorrectBackupFilesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataCorrectBackupFilesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dms_enterprise_20181101_models.GetDataCorrectBackupFilesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -6797,6 +8049,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetDataCorrectBackupFilesRequest,
     ) -> dms_enterprise_20181101_models.GetDataCorrectBackupFilesResponse:
+        """
+        @summary Queries the download URL of the backup file for a data change ticket in Data Management (DMS).
+        
+        @param request: GetDataCorrectBackupFilesRequest
+        @return: GetDataCorrectBackupFilesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_data_correct_backup_files_with_options(request, runtime)
 
@@ -6804,6 +8062,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetDataCorrectBackupFilesRequest,
     ) -> dms_enterprise_20181101_models.GetDataCorrectBackupFilesResponse:
+        """
+        @summary Queries the download URL of the backup file for a data change ticket in Data Management (DMS).
+        
+        @param request: GetDataCorrectBackupFilesRequest
+        @return: GetDataCorrectBackupFilesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_data_correct_backup_files_with_options_async(request, runtime)
 
@@ -6812,6 +8076,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetDataCorrectOrderDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetDataCorrectOrderDetailResponse:
+        """
+        @summary Queries the information about a data change ticket in Data Management (DMS).
+        
+        @param request: GetDataCorrectOrderDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataCorrectOrderDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.order_id):
@@ -6842,6 +8113,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetDataCorrectOrderDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetDataCorrectOrderDetailResponse:
+        """
+        @summary Queries the information about a data change ticket in Data Management (DMS).
+        
+        @param request: GetDataCorrectOrderDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataCorrectOrderDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.order_id):
@@ -6871,6 +8149,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetDataCorrectOrderDetailRequest,
     ) -> dms_enterprise_20181101_models.GetDataCorrectOrderDetailResponse:
+        """
+        @summary Queries the information about a data change ticket in Data Management (DMS).
+        
+        @param request: GetDataCorrectOrderDetailRequest
+        @return: GetDataCorrectOrderDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_data_correct_order_detail_with_options(request, runtime)
 
@@ -6878,6 +8162,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetDataCorrectOrderDetailRequest,
     ) -> dms_enterprise_20181101_models.GetDataCorrectOrderDetailResponse:
+        """
+        @summary Queries the information about a data change ticket in Data Management (DMS).
+        
+        @param request: GetDataCorrectOrderDetailRequest
+        @return: GetDataCorrectOrderDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_data_correct_order_detail_with_options_async(request, runtime)
 
@@ -6886,6 +8176,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetDataCorrectRollbackFileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetDataCorrectRollbackFileResponse:
+        """
+        @summary Queries the download URL of the rollback attachment submitted along with a data change ticket.
+        
+        @param request: GetDataCorrectRollbackFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataCorrectRollbackFileResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.order_id):
@@ -6916,6 +8213,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetDataCorrectRollbackFileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetDataCorrectRollbackFileResponse:
+        """
+        @summary Queries the download URL of the rollback attachment submitted along with a data change ticket.
+        
+        @param request: GetDataCorrectRollbackFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataCorrectRollbackFileResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.order_id):
@@ -6945,6 +8249,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetDataCorrectRollbackFileRequest,
     ) -> dms_enterprise_20181101_models.GetDataCorrectRollbackFileResponse:
+        """
+        @summary Queries the download URL of the rollback attachment submitted along with a data change ticket.
+        
+        @param request: GetDataCorrectRollbackFileRequest
+        @return: GetDataCorrectRollbackFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_data_correct_rollback_file_with_options(request, runtime)
 
@@ -6952,6 +8262,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetDataCorrectRollbackFileRequest,
     ) -> dms_enterprise_20181101_models.GetDataCorrectRollbackFileResponse:
+        """
+        @summary Queries the download URL of the rollback attachment submitted along with a data change ticket.
+        
+        @param request: GetDataCorrectRollbackFileRequest
+        @return: GetDataCorrectRollbackFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_data_correct_rollback_file_with_options_async(request, runtime)
 
@@ -6961,7 +8277,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetDataCorrectSQLFileResponse:
         """
-        This operation applies to [regular data change](~~58419~~) and [batch data import](~~144643~~).
+        @summary Queries the download URL of the SQL script for a data change task.
+        
+        @description This operation applies to [regular data change](https://help.aliyun.com/document_detail/58419.html) and [batch data import](https://help.aliyun.com/document_detail/144643.html).
         
         @param request: GetDataCorrectSQLFileRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6998,7 +8316,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetDataCorrectSQLFileResponse:
         """
-        This operation applies to [regular data change](~~58419~~) and [batch data import](~~144643~~).
+        @summary Queries the download URL of the SQL script for a data change task.
+        
+        @description This operation applies to [regular data change](https://help.aliyun.com/document_detail/58419.html) and [batch data import](https://help.aliyun.com/document_detail/144643.html).
         
         @param request: GetDataCorrectSQLFileRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7034,7 +8354,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetDataCorrectSQLFileRequest,
     ) -> dms_enterprise_20181101_models.GetDataCorrectSQLFileResponse:
         """
-        This operation applies to [regular data change](~~58419~~) and [batch data import](~~144643~~).
+        @summary Queries the download URL of the SQL script for a data change task.
+        
+        @description This operation applies to [regular data change](https://help.aliyun.com/document_detail/58419.html) and [batch data import](https://help.aliyun.com/document_detail/144643.html).
         
         @param request: GetDataCorrectSQLFileRequest
         @return: GetDataCorrectSQLFileResponse
@@ -7047,7 +8369,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetDataCorrectSQLFileRequest,
     ) -> dms_enterprise_20181101_models.GetDataCorrectSQLFileResponse:
         """
-        This operation applies to [regular data change](~~58419~~) and [batch data import](~~144643~~).
+        @summary Queries the download URL of the SQL script for a data change task.
+        
+        @description This operation applies to [regular data change](https://help.aliyun.com/document_detail/58419.html) and [batch data import](https://help.aliyun.com/document_detail/144643.html).
         
         @param request: GetDataCorrectSQLFileRequest
         @return: GetDataCorrectSQLFileResponse
@@ -7060,6 +8384,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetDataCorrectTaskDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetDataCorrectTaskDetailResponse:
+        """
+        @summary Queries the information about a data change, lock-free data change, or data import task.
+        
+        @param request: GetDataCorrectTaskDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataCorrectTaskDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.order_id):
@@ -7090,6 +8421,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetDataCorrectTaskDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetDataCorrectTaskDetailResponse:
+        """
+        @summary Queries the information about a data change, lock-free data change, or data import task.
+        
+        @param request: GetDataCorrectTaskDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataCorrectTaskDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.order_id):
@@ -7119,6 +8457,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetDataCorrectTaskDetailRequest,
     ) -> dms_enterprise_20181101_models.GetDataCorrectTaskDetailResponse:
+        """
+        @summary Queries the information about a data change, lock-free data change, or data import task.
+        
+        @param request: GetDataCorrectTaskDetailRequest
+        @return: GetDataCorrectTaskDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_data_correct_task_detail_with_options(request, runtime)
 
@@ -7126,6 +8470,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetDataCorrectTaskDetailRequest,
     ) -> dms_enterprise_20181101_models.GetDataCorrectTaskDetailResponse:
+        """
+        @summary Queries the information about a data change, lock-free data change, or data import task.
+        
+        @param request: GetDataCorrectTaskDetailRequest
+        @return: GetDataCorrectTaskDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_data_correct_task_detail_with_options_async(request, runtime)
 
@@ -7134,6 +8484,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetDataCronClearConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetDataCronClearConfigResponse:
+        """
+        @summary Queries the scheduling configuration of a ticket for cleaning up historical data.
+        
+        @param request: GetDataCronClearConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataCronClearConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.order_id):
@@ -7164,6 +8521,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetDataCronClearConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetDataCronClearConfigResponse:
+        """
+        @summary Queries the scheduling configuration of a ticket for cleaning up historical data.
+        
+        @param request: GetDataCronClearConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataCronClearConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.order_id):
@@ -7193,6 +8557,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetDataCronClearConfigRequest,
     ) -> dms_enterprise_20181101_models.GetDataCronClearConfigResponse:
+        """
+        @summary Queries the scheduling configuration of a ticket for cleaning up historical data.
+        
+        @param request: GetDataCronClearConfigRequest
+        @return: GetDataCronClearConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_data_cron_clear_config_with_options(request, runtime)
 
@@ -7200,6 +8570,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetDataCronClearConfigRequest,
     ) -> dms_enterprise_20181101_models.GetDataCronClearConfigResponse:
+        """
+        @summary Queries the scheduling configuration of a ticket for cleaning up historical data.
+        
+        @param request: GetDataCronClearConfigRequest
+        @return: GetDataCronClearConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_data_cron_clear_config_with_options_async(request, runtime)
 
@@ -7208,6 +8584,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetDataCronClearTaskDetailListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetDataCronClearTaskDetailListResponse:
+        """
+        @summary Queries the details of a historical data cleansing ticket.
+        
+        @param request: GetDataCronClearTaskDetailListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataCronClearTaskDetailListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.order_id):
@@ -7242,6 +8625,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetDataCronClearTaskDetailListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetDataCronClearTaskDetailListResponse:
+        """
+        @summary Queries the details of a historical data cleansing ticket.
+        
+        @param request: GetDataCronClearTaskDetailListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataCronClearTaskDetailListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.order_id):
@@ -7275,6 +8665,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetDataCronClearTaskDetailListRequest,
     ) -> dms_enterprise_20181101_models.GetDataCronClearTaskDetailListResponse:
+        """
+        @summary Queries the details of a historical data cleansing ticket.
+        
+        @param request: GetDataCronClearTaskDetailListRequest
+        @return: GetDataCronClearTaskDetailListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_data_cron_clear_task_detail_list_with_options(request, runtime)
 
@@ -7282,6 +8678,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetDataCronClearTaskDetailListRequest,
     ) -> dms_enterprise_20181101_models.GetDataCronClearTaskDetailListResponse:
+        """
+        @summary Queries the details of a historical data cleansing ticket.
+        
+        @param request: GetDataCronClearTaskDetailListRequest
+        @return: GetDataCronClearTaskDetailListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_data_cron_clear_task_detail_list_with_options_async(request, runtime)
 
@@ -7290,6 +8692,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetDataExportDownloadURLRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetDataExportDownloadURLResponse:
+        """
+        @summary Queries the download URL of the file that records the export results for a data export ticket in Data Management (DMS).
+        
+        @param request: GetDataExportDownloadURLRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataExportDownloadURLResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.order_id):
@@ -7320,6 +8729,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetDataExportDownloadURLRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetDataExportDownloadURLResponse:
+        """
+        @summary Queries the download URL of the file that records the export results for a data export ticket in Data Management (DMS).
+        
+        @param request: GetDataExportDownloadURLRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataExportDownloadURLResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.order_id):
@@ -7349,6 +8765,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetDataExportDownloadURLRequest,
     ) -> dms_enterprise_20181101_models.GetDataExportDownloadURLResponse:
+        """
+        @summary Queries the download URL of the file that records the export results for a data export ticket in Data Management (DMS).
+        
+        @param request: GetDataExportDownloadURLRequest
+        @return: GetDataExportDownloadURLResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_data_export_download_urlwith_options(request, runtime)
 
@@ -7356,6 +8778,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetDataExportDownloadURLRequest,
     ) -> dms_enterprise_20181101_models.GetDataExportDownloadURLResponse:
+        """
+        @summary Queries the download URL of the file that records the export results for a data export ticket in Data Management (DMS).
+        
+        @param request: GetDataExportDownloadURLRequest
+        @return: GetDataExportDownloadURLResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_data_export_download_urlwith_options_async(request, runtime)
 
@@ -7364,6 +8792,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetDataExportOrderDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetDataExportOrderDetailResponse:
+        """
+        @summary Queries the information about a data export ticket.
+        
+        @param request: GetDataExportOrderDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataExportOrderDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.tid):
@@ -7396,6 +8831,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetDataExportOrderDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetDataExportOrderDetailResponse:
+        """
+        @summary Queries the information about a data export ticket.
+        
+        @param request: GetDataExportOrderDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataExportOrderDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.tid):
@@ -7427,6 +8869,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetDataExportOrderDetailRequest,
     ) -> dms_enterprise_20181101_models.GetDataExportOrderDetailResponse:
+        """
+        @summary Queries the information about a data export ticket.
+        
+        @param request: GetDataExportOrderDetailRequest
+        @return: GetDataExportOrderDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_data_export_order_detail_with_options(request, runtime)
 
@@ -7434,6 +8882,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetDataExportOrderDetailRequest,
     ) -> dms_enterprise_20181101_models.GetDataExportOrderDetailResponse:
+        """
+        @summary Queries the information about a data export ticket.
+        
+        @param request: GetDataExportOrderDetailRequest
+        @return: GetDataExportOrderDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_data_export_order_detail_with_options_async(request, runtime)
 
@@ -7442,6 +8896,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetDataExportPreCheckDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetDataExportPreCheckDetailResponse:
+        """
+        @summary Queries the precheck details of an SQL result set export ticket.
+        
+        @param request: GetDataExportPreCheckDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataExportPreCheckDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.order_id):
@@ -7472,6 +8933,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetDataExportPreCheckDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetDataExportPreCheckDetailResponse:
+        """
+        @summary Queries the precheck details of an SQL result set export ticket.
+        
+        @param request: GetDataExportPreCheckDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataExportPreCheckDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.order_id):
@@ -7501,6 +8969,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetDataExportPreCheckDetailRequest,
     ) -> dms_enterprise_20181101_models.GetDataExportPreCheckDetailResponse:
+        """
+        @summary Queries the precheck details of an SQL result set export ticket.
+        
+        @param request: GetDataExportPreCheckDetailRequest
+        @return: GetDataExportPreCheckDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_data_export_pre_check_detail_with_options(request, runtime)
 
@@ -7508,6 +8982,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetDataExportPreCheckDetailRequest,
     ) -> dms_enterprise_20181101_models.GetDataExportPreCheckDetailResponse:
+        """
+        @summary Queries the precheck details of an SQL result set export ticket.
+        
+        @param request: GetDataExportPreCheckDetailRequest
+        @return: GetDataExportPreCheckDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_data_export_pre_check_detail_with_options_async(request, runtime)
 
@@ -7517,7 +8997,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetDataImportSQLResponse:
         """
-        You can call this operation only if the data is imported in security mode in your data import ticket.
+        @summary Queries the SQL statements used for data import in a ticket.
+        
+        @description You can call this operation only if the data is imported in security mode in your data import ticket.
         
         @param request: GetDataImportSQLRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7556,7 +9038,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetDataImportSQLResponse:
         """
-        You can call this operation only if the data is imported in security mode in your data import ticket.
+        @summary Queries the SQL statements used for data import in a ticket.
+        
+        @description You can call this operation only if the data is imported in security mode in your data import ticket.
         
         @param request: GetDataImportSQLRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7594,7 +9078,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetDataImportSQLRequest,
     ) -> dms_enterprise_20181101_models.GetDataImportSQLResponse:
         """
-        You can call this operation only if the data is imported in security mode in your data import ticket.
+        @summary Queries the SQL statements used for data import in a ticket.
+        
+        @description You can call this operation only if the data is imported in security mode in your data import ticket.
         
         @param request: GetDataImportSQLRequest
         @return: GetDataImportSQLResponse
@@ -7607,7 +9093,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetDataImportSQLRequest,
     ) -> dms_enterprise_20181101_models.GetDataImportSQLResponse:
         """
-        You can call this operation only if the data is imported in security mode in your data import ticket.
+        @summary Queries the SQL statements used for data import in a ticket.
+        
+        @description You can call this operation only if the data is imported in security mode in your data import ticket.
         
         @param request: GetDataImportSQLRequest
         @return: GetDataImportSQLResponse
@@ -7620,6 +9108,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetDataTrackJobDegreeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetDataTrackJobDegreeResponse:
+        """
+        @summary Queries the progress of a data tracking task.
+        
+        @param request: GetDataTrackJobDegreeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataTrackJobDegreeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.order_id):
@@ -7650,6 +9145,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetDataTrackJobDegreeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetDataTrackJobDegreeResponse:
+        """
+        @summary Queries the progress of a data tracking task.
+        
+        @param request: GetDataTrackJobDegreeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataTrackJobDegreeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.order_id):
@@ -7679,6 +9181,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetDataTrackJobDegreeRequest,
     ) -> dms_enterprise_20181101_models.GetDataTrackJobDegreeResponse:
+        """
+        @summary Queries the progress of a data tracking task.
+        
+        @param request: GetDataTrackJobDegreeRequest
+        @return: GetDataTrackJobDegreeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_data_track_job_degree_with_options(request, runtime)
 
@@ -7686,6 +9194,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetDataTrackJobDegreeRequest,
     ) -> dms_enterprise_20181101_models.GetDataTrackJobDegreeResponse:
+        """
+        @summary Queries the progress of a data tracking task.
+        
+        @param request: GetDataTrackJobDegreeRequest
+        @return: GetDataTrackJobDegreeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_data_track_job_degree_with_options_async(request, runtime)
 
@@ -7694,6 +9208,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetDataTrackJobTableMetaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetDataTrackJobTableMetaResponse:
+        """
+        @summary Queries the metadata of tables involved in a data tracking task.
+        
+        @param request: GetDataTrackJobTableMetaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataTrackJobTableMetaResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.order_id):
@@ -7724,6 +9245,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetDataTrackJobTableMetaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetDataTrackJobTableMetaResponse:
+        """
+        @summary Queries the metadata of tables involved in a data tracking task.
+        
+        @param request: GetDataTrackJobTableMetaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataTrackJobTableMetaResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.order_id):
@@ -7753,6 +9281,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetDataTrackJobTableMetaRequest,
     ) -> dms_enterprise_20181101_models.GetDataTrackJobTableMetaResponse:
+        """
+        @summary Queries the metadata of tables involved in a data tracking task.
+        
+        @param request: GetDataTrackJobTableMetaRequest
+        @return: GetDataTrackJobTableMetaResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_data_track_job_table_meta_with_options(request, runtime)
 
@@ -7760,6 +9294,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetDataTrackJobTableMetaRequest,
     ) -> dms_enterprise_20181101_models.GetDataTrackJobTableMetaResponse:
+        """
+        @summary Queries the metadata of tables involved in a data tracking task.
+        
+        @param request: GetDataTrackJobTableMetaRequest
+        @return: GetDataTrackJobTableMetaResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_data_track_job_table_meta_with_options_async(request, runtime)
 
@@ -7768,6 +9308,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetDataTrackOrderDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetDataTrackOrderDetailResponse:
+        """
+        @summary Queries the details of a data tracking ticket.
+        
+        @param request: GetDataTrackOrderDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataTrackOrderDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.order_id):
@@ -7798,6 +9345,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetDataTrackOrderDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetDataTrackOrderDetailResponse:
+        """
+        @summary Queries the details of a data tracking ticket.
+        
+        @param request: GetDataTrackOrderDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataTrackOrderDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.order_id):
@@ -7827,6 +9381,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetDataTrackOrderDetailRequest,
     ) -> dms_enterprise_20181101_models.GetDataTrackOrderDetailResponse:
+        """
+        @summary Queries the details of a data tracking ticket.
+        
+        @param request: GetDataTrackOrderDetailRequest
+        @return: GetDataTrackOrderDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_data_track_order_detail_with_options(request, runtime)
 
@@ -7834,6 +9394,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetDataTrackOrderDetailRequest,
     ) -> dms_enterprise_20181101_models.GetDataTrackOrderDetailResponse:
+        """
+        @summary Queries the details of a data tracking ticket.
+        
+        @param request: GetDataTrackOrderDetailRequest
+        @return: GetDataTrackOrderDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_data_track_order_detail_with_options_async(request, runtime)
 
@@ -7842,6 +9408,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetDatabaseRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetDatabaseResponse:
+        """
+        @summary Queries details of a specific database.
+        
+        @param request: GetDatabaseRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDatabaseResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.host):
@@ -7878,6 +9451,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetDatabaseRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetDatabaseResponse:
+        """
+        @summary Queries details of a specific database.
+        
+        @param request: GetDatabaseRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDatabaseResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.host):
@@ -7913,6 +9493,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetDatabaseRequest,
     ) -> dms_enterprise_20181101_models.GetDatabaseResponse:
+        """
+        @summary Queries details of a specific database.
+        
+        @param request: GetDatabaseRequest
+        @return: GetDatabaseResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_database_with_options(request, runtime)
 
@@ -7920,6 +9506,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetDatabaseRequest,
     ) -> dms_enterprise_20181101_models.GetDatabaseResponse:
+        """
+        @summary Queries details of a specific database.
+        
+        @param request: GetDatabaseRequest
+        @return: GetDatabaseResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_database_with_options_async(request, runtime)
 
@@ -7928,6 +9520,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetDatabaseExportOrderDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetDatabaseExportOrderDetailResponse:
+        """
+        @summary Queries the details of a database export ticket.
+        
+        @param request: GetDatabaseExportOrderDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDatabaseExportOrderDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.tid):
@@ -7960,6 +9559,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetDatabaseExportOrderDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetDatabaseExportOrderDetailResponse:
+        """
+        @summary Queries the details of a database export ticket.
+        
+        @param request: GetDatabaseExportOrderDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDatabaseExportOrderDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.tid):
@@ -7991,6 +9597,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetDatabaseExportOrderDetailRequest,
     ) -> dms_enterprise_20181101_models.GetDatabaseExportOrderDetailResponse:
+        """
+        @summary Queries the details of a database export ticket.
+        
+        @param request: GetDatabaseExportOrderDetailRequest
+        @return: GetDatabaseExportOrderDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_database_export_order_detail_with_options(request, runtime)
 
@@ -7998,6 +9610,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetDatabaseExportOrderDetailRequest,
     ) -> dms_enterprise_20181101_models.GetDatabaseExportOrderDetailResponse:
+        """
+        @summary Queries the details of a database export ticket.
+        
+        @param request: GetDatabaseExportOrderDetailRequest
+        @return: GetDatabaseExportOrderDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_database_export_order_detail_with_options_async(request, runtime)
 
@@ -8006,6 +9624,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetDbExportDownloadURLRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetDbExportDownloadURLResponse:
+        """
+        @summary 获取数据库导出下载地址
+        
+        @param request: GetDbExportDownloadURLRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDbExportDownloadURLResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.order_id):
@@ -8036,6 +9661,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetDbExportDownloadURLRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetDbExportDownloadURLResponse:
+        """
+        @summary 获取数据库导出下载地址
+        
+        @param request: GetDbExportDownloadURLRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDbExportDownloadURLResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.order_id):
@@ -8065,6 +9697,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetDbExportDownloadURLRequest,
     ) -> dms_enterprise_20181101_models.GetDbExportDownloadURLResponse:
+        """
+        @summary 获取数据库导出下载地址
+        
+        @param request: GetDbExportDownloadURLRequest
+        @return: GetDbExportDownloadURLResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_db_export_download_urlwith_options(request, runtime)
 
@@ -8072,6 +9710,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetDbExportDownloadURLRequest,
     ) -> dms_enterprise_20181101_models.GetDbExportDownloadURLResponse:
+        """
+        @summary 获取数据库导出下载地址
+        
+        @param request: GetDbExportDownloadURLRequest
+        @return: GetDbExportDownloadURLResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_db_export_download_urlwith_options_async(request, runtime)
 
@@ -8080,6 +9724,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetInstanceResponse:
+        """
+        @summary Queries the details of a database instance.
+        
+        @param request: GetInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.host):
@@ -8114,6 +9765,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetInstanceResponse:
+        """
+        @summary Queries the details of a database instance.
+        
+        @param request: GetInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.host):
@@ -8147,6 +9805,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetInstanceRequest,
     ) -> dms_enterprise_20181101_models.GetInstanceResponse:
+        """
+        @summary Queries the details of a database instance.
+        
+        @param request: GetInstanceRequest
+        @return: GetInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_instance_with_options(request, runtime)
 
@@ -8154,6 +9818,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetInstanceRequest,
     ) -> dms_enterprise_20181101_models.GetInstanceResponse:
+        """
+        @summary Queries the details of a database instance.
+        
+        @param request: GetInstanceRequest
+        @return: GetInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_instance_with_options_async(request, runtime)
 
@@ -8163,7 +9833,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetIntervalLimitOfSLAResponse:
         """
-        The scheduling cycle of a task flow must be greater than the minimum scheduling cycle configured in the SLA rule for the task flow.
+        @summary Queries the minimum scheduling cycle of a task flow when a service level agreement (SLA) timeout rule is configured for the task flow.
+        
+        @description The scheduling cycle of a task flow must be greater than the minimum scheduling cycle configured in the SLA rule for the task flow.
         
         @param request: GetIntervalLimitOfSLARequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8200,7 +9872,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetIntervalLimitOfSLAResponse:
         """
-        The scheduling cycle of a task flow must be greater than the minimum scheduling cycle configured in the SLA rule for the task flow.
+        @summary Queries the minimum scheduling cycle of a task flow when a service level agreement (SLA) timeout rule is configured for the task flow.
+        
+        @description The scheduling cycle of a task flow must be greater than the minimum scheduling cycle configured in the SLA rule for the task flow.
         
         @param request: GetIntervalLimitOfSLARequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8236,7 +9910,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetIntervalLimitOfSLARequest,
     ) -> dms_enterprise_20181101_models.GetIntervalLimitOfSLAResponse:
         """
-        The scheduling cycle of a task flow must be greater than the minimum scheduling cycle configured in the SLA rule for the task flow.
+        @summary Queries the minimum scheduling cycle of a task flow when a service level agreement (SLA) timeout rule is configured for the task flow.
+        
+        @description The scheduling cycle of a task flow must be greater than the minimum scheduling cycle configured in the SLA rule for the task flow.
         
         @param request: GetIntervalLimitOfSLARequest
         @return: GetIntervalLimitOfSLAResponse
@@ -8249,7 +9925,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetIntervalLimitOfSLARequest,
     ) -> dms_enterprise_20181101_models.GetIntervalLimitOfSLAResponse:
         """
-        The scheduling cycle of a task flow must be greater than the minimum scheduling cycle configured in the SLA rule for the task flow.
+        @summary Queries the minimum scheduling cycle of a task flow when a service level agreement (SLA) timeout rule is configured for the task flow.
+        
+        @description The scheduling cycle of a task flow must be greater than the minimum scheduling cycle configured in the SLA rule for the task flow.
         
         @param request: GetIntervalLimitOfSLARequest
         @return: GetIntervalLimitOfSLAResponse
@@ -8263,7 +9941,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetLhSpaceByNameResponse:
         """
-        You are a DMS administrator or a database administrator (DBA).
+        @summary Queries the information about a workspace based on the workspace name in Data Management (DMS).
+        
+        @description You are a DMS administrator or a database administrator (DBA).
         
         @param request: GetLhSpaceByNameRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8300,7 +9980,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetLhSpaceByNameResponse:
         """
-        You are a DMS administrator or a database administrator (DBA).
+        @summary Queries the information about a workspace based on the workspace name in Data Management (DMS).
+        
+        @description You are a DMS administrator or a database administrator (DBA).
         
         @param request: GetLhSpaceByNameRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8336,7 +10018,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetLhSpaceByNameRequest,
     ) -> dms_enterprise_20181101_models.GetLhSpaceByNameResponse:
         """
-        You are a DMS administrator or a database administrator (DBA).
+        @summary Queries the information about a workspace based on the workspace name in Data Management (DMS).
+        
+        @description You are a DMS administrator or a database administrator (DBA).
         
         @param request: GetLhSpaceByNameRequest
         @return: GetLhSpaceByNameResponse
@@ -8349,7 +10033,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetLhSpaceByNameRequest,
     ) -> dms_enterprise_20181101_models.GetLhSpaceByNameResponse:
         """
-        You are a DMS administrator or a database administrator (DBA).
+        @summary Queries the information about a workspace based on the workspace name in Data Management (DMS).
+        
+        @description You are a DMS administrator or a database administrator (DBA).
         
         @param request: GetLhSpaceByNameRequest
         @return: GetLhSpaceByNameResponse
@@ -8362,6 +10048,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetLogicDatabaseRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetLogicDatabaseResponse:
+        """
+        @summary Queries the details of a logical database.
+        
+        @param request: GetLogicDatabaseRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLogicDatabaseResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.db_id):
@@ -8392,6 +10085,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetLogicDatabaseRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetLogicDatabaseResponse:
+        """
+        @summary Queries the details of a logical database.
+        
+        @param request: GetLogicDatabaseRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLogicDatabaseResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.db_id):
@@ -8421,6 +10121,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetLogicDatabaseRequest,
     ) -> dms_enterprise_20181101_models.GetLogicDatabaseResponse:
+        """
+        @summary Queries the details of a logical database.
+        
+        @param request: GetLogicDatabaseRequest
+        @return: GetLogicDatabaseResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_logic_database_with_options(request, runtime)
 
@@ -8428,6 +10134,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetLogicDatabaseRequest,
     ) -> dms_enterprise_20181101_models.GetLogicDatabaseResponse:
+        """
+        @summary Queries the details of a logical database.
+        
+        @param request: GetLogicDatabaseRequest
+        @return: GetLogicDatabaseResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_logic_database_with_options_async(request, runtime)
 
@@ -8437,7 +10149,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetMetaTableColumnResponse:
         """
-        You can call this operation only for database instances whose control mode is Security Collaboration.
+        @summary Queries the details of columns in a table.
+        
+        @description You can call this operation only for database instances whose control mode is Security Collaboration.
         
         @param request: GetMetaTableColumnRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8474,7 +10188,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetMetaTableColumnResponse:
         """
-        You can call this operation only for database instances whose control mode is Security Collaboration.
+        @summary Queries the details of columns in a table.
+        
+        @description You can call this operation only for database instances whose control mode is Security Collaboration.
         
         @param request: GetMetaTableColumnRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8510,7 +10226,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetMetaTableColumnRequest,
     ) -> dms_enterprise_20181101_models.GetMetaTableColumnResponse:
         """
-        You can call this operation only for database instances whose control mode is Security Collaboration.
+        @summary Queries the details of columns in a table.
+        
+        @description You can call this operation only for database instances whose control mode is Security Collaboration.
         
         @param request: GetMetaTableColumnRequest
         @return: GetMetaTableColumnResponse
@@ -8523,7 +10241,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetMetaTableColumnRequest,
     ) -> dms_enterprise_20181101_models.GetMetaTableColumnResponse:
         """
-        You can call this operation only for database instances whose control mode is Security Collaboration.
+        @summary Queries the details of columns in a table.
+        
+        @description You can call this operation only for database instances whose control mode is Security Collaboration.
         
         @param request: GetMetaTableColumnRequest
         @return: GetMetaTableColumnResponse
@@ -8537,7 +10257,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetMetaTableDetailInfoResponse:
         """
-        You can call this operation only for database instances whose control mode is Security Collaboration.
+        @summary Queries the details of columns and indexes in a table.
+        
+        @description You can call this operation only for database instances whose control mode is Security Collaboration.
         
         @param request: GetMetaTableDetailInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8574,7 +10296,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetMetaTableDetailInfoResponse:
         """
-        You can call this operation only for database instances whose control mode is Security Collaboration.
+        @summary Queries the details of columns and indexes in a table.
+        
+        @description You can call this operation only for database instances whose control mode is Security Collaboration.
         
         @param request: GetMetaTableDetailInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8610,7 +10334,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetMetaTableDetailInfoRequest,
     ) -> dms_enterprise_20181101_models.GetMetaTableDetailInfoResponse:
         """
-        You can call this operation only for database instances whose control mode is Security Collaboration.
+        @summary Queries the details of columns and indexes in a table.
+        
+        @description You can call this operation only for database instances whose control mode is Security Collaboration.
         
         @param request: GetMetaTableDetailInfoRequest
         @return: GetMetaTableDetailInfoResponse
@@ -8623,7 +10349,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetMetaTableDetailInfoRequest,
     ) -> dms_enterprise_20181101_models.GetMetaTableDetailInfoResponse:
         """
-        You can call this operation only for database instances whose control mode is Security Collaboration.
+        @summary Queries the details of columns and indexes in a table.
+        
+        @description You can call this operation only for database instances whose control mode is Security Collaboration.
         
         @param request: GetMetaTableDetailInfoRequest
         @return: GetMetaTableDetailInfoResponse
@@ -8636,6 +10364,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetOnlineDDLProgressRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetOnlineDDLProgressResponse:
+        """
+        @summary Queries the details and progress of an OnlineDDL task.
+        
+        @param request: GetOnlineDDLProgressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetOnlineDDLProgressResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.job_detail_id):
@@ -8666,6 +10401,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetOnlineDDLProgressRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetOnlineDDLProgressResponse:
+        """
+        @summary Queries the details and progress of an OnlineDDL task.
+        
+        @param request: GetOnlineDDLProgressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetOnlineDDLProgressResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.job_detail_id):
@@ -8695,6 +10437,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetOnlineDDLProgressRequest,
     ) -> dms_enterprise_20181101_models.GetOnlineDDLProgressResponse:
+        """
+        @summary Queries the details and progress of an OnlineDDL task.
+        
+        @param request: GetOnlineDDLProgressRequest
+        @return: GetOnlineDDLProgressResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_online_ddlprogress_with_options(request, runtime)
 
@@ -8702,6 +10450,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetOnlineDDLProgressRequest,
     ) -> dms_enterprise_20181101_models.GetOnlineDDLProgressResponse:
+        """
+        @summary Queries the details and progress of an OnlineDDL task.
+        
+        @param request: GetOnlineDDLProgressRequest
+        @return: GetOnlineDDLProgressResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_online_ddlprogress_with_options_async(request, runtime)
 
@@ -8711,7 +10465,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetOpLogResponse:
         """
-        Prerequisites: You are an administrator of Data Management (DMS) or a security administrator. You can call the [ListUsers](~~141938~~) or [GetUser](~~147098~~) operation to obtain your user role from the RoleIdList parameter that is returned.
+        @summary Queries the details of operation logs that are generated in a specified period of time.
+        
+        @description Prerequisites: You are an administrator of Data Management (DMS) or a security administrator. You can call the [ListUsers](https://help.aliyun.com/document_detail/141938.html) or [GetUser](https://help.aliyun.com/document_detail/147098.html) operation to obtain your user role from the RoleIdList parameter that is returned.
         
         @param request: GetOpLogRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8760,7 +10516,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetOpLogResponse:
         """
-        Prerequisites: You are an administrator of Data Management (DMS) or a security administrator. You can call the [ListUsers](~~141938~~) or [GetUser](~~147098~~) operation to obtain your user role from the RoleIdList parameter that is returned.
+        @summary Queries the details of operation logs that are generated in a specified period of time.
+        
+        @description Prerequisites: You are an administrator of Data Management (DMS) or a security administrator. You can call the [ListUsers](https://help.aliyun.com/document_detail/141938.html) or [GetUser](https://help.aliyun.com/document_detail/147098.html) operation to obtain your user role from the RoleIdList parameter that is returned.
         
         @param request: GetOpLogRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8808,7 +10566,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetOpLogRequest,
     ) -> dms_enterprise_20181101_models.GetOpLogResponse:
         """
-        Prerequisites: You are an administrator of Data Management (DMS) or a security administrator. You can call the [ListUsers](~~141938~~) or [GetUser](~~147098~~) operation to obtain your user role from the RoleIdList parameter that is returned.
+        @summary Queries the details of operation logs that are generated in a specified period of time.
+        
+        @description Prerequisites: You are an administrator of Data Management (DMS) or a security administrator. You can call the [ListUsers](https://help.aliyun.com/document_detail/141938.html) or [GetUser](https://help.aliyun.com/document_detail/147098.html) operation to obtain your user role from the RoleIdList parameter that is returned.
         
         @param request: GetOpLogRequest
         @return: GetOpLogResponse
@@ -8821,7 +10581,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetOpLogRequest,
     ) -> dms_enterprise_20181101_models.GetOpLogResponse:
         """
-        Prerequisites: You are an administrator of Data Management (DMS) or a security administrator. You can call the [ListUsers](~~141938~~) or [GetUser](~~147098~~) operation to obtain your user role from the RoleIdList parameter that is returned.
+        @summary Queries the details of operation logs that are generated in a specified period of time.
+        
+        @description Prerequisites: You are an administrator of Data Management (DMS) or a security administrator. You can call the [ListUsers](https://help.aliyun.com/document_detail/141938.html) or [GetUser](https://help.aliyun.com/document_detail/147098.html) operation to obtain your user role from the RoleIdList parameter that is returned.
         
         @param request: GetOpLogRequest
         @return: GetOpLogResponse
@@ -8834,6 +10596,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetOrderAttachmentFileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetOrderAttachmentFileResponse:
+        """
+        @summary Queries the download URL of the attachment of a ticket.
+        
+        @param request: GetOrderAttachmentFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetOrderAttachmentFileResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.order_id):
@@ -8864,6 +10633,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetOrderAttachmentFileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetOrderAttachmentFileResponse:
+        """
+        @summary Queries the download URL of the attachment of a ticket.
+        
+        @param request: GetOrderAttachmentFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetOrderAttachmentFileResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.order_id):
@@ -8893,6 +10669,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetOrderAttachmentFileRequest,
     ) -> dms_enterprise_20181101_models.GetOrderAttachmentFileResponse:
+        """
+        @summary Queries the download URL of the attachment of a ticket.
+        
+        @param request: GetOrderAttachmentFileRequest
+        @return: GetOrderAttachmentFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_order_attachment_file_with_options(request, runtime)
 
@@ -8900,6 +10682,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetOrderAttachmentFileRequest,
     ) -> dms_enterprise_20181101_models.GetOrderAttachmentFileResponse:
+        """
+        @summary Queries the download URL of the attachment of a ticket.
+        
+        @param request: GetOrderAttachmentFileRequest
+        @return: GetOrderAttachmentFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_order_attachment_file_with_options_async(request, runtime)
 
@@ -8908,6 +10696,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetOrderBaseInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetOrderBaseInfoResponse:
+        """
+        @summary Queries the basic information about a ticket.
+        
+        @param request: GetOrderBaseInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetOrderBaseInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.order_id):
@@ -8938,6 +10733,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetOrderBaseInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetOrderBaseInfoResponse:
+        """
+        @summary Queries the basic information about a ticket.
+        
+        @param request: GetOrderBaseInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetOrderBaseInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.order_id):
@@ -8967,6 +10769,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetOrderBaseInfoRequest,
     ) -> dms_enterprise_20181101_models.GetOrderBaseInfoResponse:
+        """
+        @summary Queries the basic information about a ticket.
+        
+        @param request: GetOrderBaseInfoRequest
+        @return: GetOrderBaseInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_order_base_info_with_options(request, runtime)
 
@@ -8974,6 +10782,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetOrderBaseInfoRequest,
     ) -> dms_enterprise_20181101_models.GetOrderBaseInfoResponse:
+        """
+        @summary Queries the basic information about a ticket.
+        
+        @param request: GetOrderBaseInfoRequest
+        @return: GetOrderBaseInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_order_base_info_with_options_async(request, runtime)
 
@@ -8982,6 +10796,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetOwnerApplyOrderDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetOwnerApplyOrderDetailResponse:
+        """
+        @summary Queries the details of the Database-OWNER, Table-OWNER, and Instance-OWNER tickets.
+        
+        @param request: GetOwnerApplyOrderDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetOwnerApplyOrderDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.order_id):
@@ -9012,6 +10833,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetOwnerApplyOrderDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetOwnerApplyOrderDetailResponse:
+        """
+        @summary Queries the details of the Database-OWNER, Table-OWNER, and Instance-OWNER tickets.
+        
+        @param request: GetOwnerApplyOrderDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetOwnerApplyOrderDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.order_id):
@@ -9041,6 +10869,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetOwnerApplyOrderDetailRequest,
     ) -> dms_enterprise_20181101_models.GetOwnerApplyOrderDetailResponse:
+        """
+        @summary Queries the details of the Database-OWNER, Table-OWNER, and Instance-OWNER tickets.
+        
+        @param request: GetOwnerApplyOrderDetailRequest
+        @return: GetOwnerApplyOrderDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_owner_apply_order_detail_with_options(request, runtime)
 
@@ -9048,6 +10882,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetOwnerApplyOrderDetailRequest,
     ) -> dms_enterprise_20181101_models.GetOwnerApplyOrderDetailResponse:
+        """
+        @summary Queries the details of the Database-OWNER, Table-OWNER, and Instance-OWNER tickets.
+        
+        @param request: GetOwnerApplyOrderDetailRequest
+        @return: GetOwnerApplyOrderDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_owner_apply_order_detail_with_options_async(request, runtime)
 
@@ -9056,6 +10896,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetPagedInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetPagedInstanceResponse:
+        """
+        @summary 获取数据归档工单任务实例
+        
+        @param request: GetPagedInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPagedInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -9082,6 +10929,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetPagedInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetPagedInstanceResponse:
+        """
+        @summary 获取数据归档工单任务实例
+        
+        @param request: GetPagedInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPagedInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -9107,6 +10961,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetPagedInstanceRequest,
     ) -> dms_enterprise_20181101_models.GetPagedInstanceResponse:
+        """
+        @summary 获取数据归档工单任务实例
+        
+        @param request: GetPagedInstanceRequest
+        @return: GetPagedInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_paged_instance_with_options(request, runtime)
 
@@ -9114,6 +10974,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetPagedInstanceRequest,
     ) -> dms_enterprise_20181101_models.GetPagedInstanceResponse:
+        """
+        @summary 获取数据归档工单任务实例
+        
+        @param request: GetPagedInstanceRequest
+        @return: GetPagedInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_paged_instance_with_options_async(request, runtime)
 
@@ -9123,7 +10989,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetPermApplyOrderDetailResponse:
         """
-        You can call this operation to query the information about tickets that apply for permissions on databases, tables, and sensitive columns.
+        @summary Queries the details of a ticket that applies for permissions.
+        
+        @description You can call this operation to query the information about tickets that apply for permissions on databases, tables, and sensitive columns.
         
         @param request: GetPermApplyOrderDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9160,7 +11028,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetPermApplyOrderDetailResponse:
         """
-        You can call this operation to query the information about tickets that apply for permissions on databases, tables, and sensitive columns.
+        @summary Queries the details of a ticket that applies for permissions.
+        
+        @description You can call this operation to query the information about tickets that apply for permissions on databases, tables, and sensitive columns.
         
         @param request: GetPermApplyOrderDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9196,7 +11066,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetPermApplyOrderDetailRequest,
     ) -> dms_enterprise_20181101_models.GetPermApplyOrderDetailResponse:
         """
-        You can call this operation to query the information about tickets that apply for permissions on databases, tables, and sensitive columns.
+        @summary Queries the details of a ticket that applies for permissions.
+        
+        @description You can call this operation to query the information about tickets that apply for permissions on databases, tables, and sensitive columns.
         
         @param request: GetPermApplyOrderDetailRequest
         @return: GetPermApplyOrderDetailResponse
@@ -9209,7 +11081,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetPermApplyOrderDetailRequest,
     ) -> dms_enterprise_20181101_models.GetPermApplyOrderDetailResponse:
         """
-        You can call this operation to query the information about tickets that apply for permissions on databases, tables, and sensitive columns.
+        @summary Queries the details of a ticket that applies for permissions.
+        
+        @description You can call this operation to query the information about tickets that apply for permissions on databases, tables, and sensitive columns.
         
         @param request: GetPermApplyOrderDetailRequest
         @return: GetPermApplyOrderDetailResponse
@@ -9222,6 +11096,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetPhysicalDatabaseRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetPhysicalDatabaseResponse:
+        """
+        @summary Queries the details of a physical database.
+        
+        @param request: GetPhysicalDatabaseRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPhysicalDatabaseResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.db_id):
@@ -9252,6 +11133,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetPhysicalDatabaseRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetPhysicalDatabaseResponse:
+        """
+        @summary Queries the details of a physical database.
+        
+        @param request: GetPhysicalDatabaseRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPhysicalDatabaseResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.db_id):
@@ -9281,6 +11169,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetPhysicalDatabaseRequest,
     ) -> dms_enterprise_20181101_models.GetPhysicalDatabaseResponse:
+        """
+        @summary Queries the details of a physical database.
+        
+        @param request: GetPhysicalDatabaseRequest
+        @return: GetPhysicalDatabaseResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_physical_database_with_options(request, runtime)
 
@@ -9288,6 +11182,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetPhysicalDatabaseRequest,
     ) -> dms_enterprise_20181101_models.GetPhysicalDatabaseResponse:
+        """
+        @summary Queries the details of a physical database.
+        
+        @param request: GetPhysicalDatabaseRequest
+        @return: GetPhysicalDatabaseResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_physical_database_with_options_async(request, runtime)
 
@@ -9296,6 +11196,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetProxyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetProxyResponse:
+        """
+        @summary Queries the details of a secure access proxy.
+        
+        @param request: GetProxyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetProxyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.proxy_id):
@@ -9326,6 +11233,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetProxyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetProxyResponse:
+        """
+        @summary Queries the details of a secure access proxy.
+        
+        @param request: GetProxyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetProxyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.proxy_id):
@@ -9355,6 +11269,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetProxyRequest,
     ) -> dms_enterprise_20181101_models.GetProxyResponse:
+        """
+        @summary Queries the details of a secure access proxy.
+        
+        @param request: GetProxyRequest
+        @return: GetProxyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_proxy_with_options(request, runtime)
 
@@ -9362,6 +11282,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetProxyRequest,
     ) -> dms_enterprise_20181101_models.GetProxyResponse:
+        """
+        @summary Queries the details of a secure access proxy.
+        
+        @param request: GetProxyRequest
+        @return: GetProxyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_proxy_with_options_async(request, runtime)
 
@@ -9370,6 +11296,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetProxyAccessRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetProxyAccessResponse:
+        """
+        @summary Queries the authorization information about the secure access proxy feature.
+        
+        @param request: GetProxyAccessRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetProxyAccessResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.proxy_access_id):
@@ -9400,6 +11333,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetProxyAccessRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetProxyAccessResponse:
+        """
+        @summary Queries the authorization information about the secure access proxy feature.
+        
+        @param request: GetProxyAccessRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetProxyAccessResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.proxy_access_id):
@@ -9429,6 +11369,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetProxyAccessRequest,
     ) -> dms_enterprise_20181101_models.GetProxyAccessResponse:
+        """
+        @summary Queries the authorization information about the secure access proxy feature.
+        
+        @param request: GetProxyAccessRequest
+        @return: GetProxyAccessResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_proxy_access_with_options(request, runtime)
 
@@ -9436,6 +11382,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetProxyAccessRequest,
     ) -> dms_enterprise_20181101_models.GetProxyAccessResponse:
+        """
+        @summary Queries the authorization information about the secure access proxy feature.
+        
+        @param request: GetProxyAccessRequest
+        @return: GetProxyAccessResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_proxy_access_with_options_async(request, runtime)
 
@@ -9444,6 +11396,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetRuleNumLimitOfSLARequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetRuleNumLimitOfSLAResponse:
+        """
+        @summary Queries the maximum number of custom service-level agreement (SLA) rules for task orchestration.
+        
+        @param request: GetRuleNumLimitOfSLARequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetRuleNumLimitOfSLAResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dag_id):
@@ -9474,6 +11433,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetRuleNumLimitOfSLARequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetRuleNumLimitOfSLAResponse:
+        """
+        @summary Queries the maximum number of custom service-level agreement (SLA) rules for task orchestration.
+        
+        @param request: GetRuleNumLimitOfSLARequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetRuleNumLimitOfSLAResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dag_id):
@@ -9503,6 +11469,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetRuleNumLimitOfSLARequest,
     ) -> dms_enterprise_20181101_models.GetRuleNumLimitOfSLAResponse:
+        """
+        @summary Queries the maximum number of custom service-level agreement (SLA) rules for task orchestration.
+        
+        @param request: GetRuleNumLimitOfSLARequest
+        @return: GetRuleNumLimitOfSLAResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_rule_num_limit_of_slawith_options(request, runtime)
 
@@ -9510,6 +11482,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetRuleNumLimitOfSLARequest,
     ) -> dms_enterprise_20181101_models.GetRuleNumLimitOfSLAResponse:
+        """
+        @summary Queries the maximum number of custom service-level agreement (SLA) rules for task orchestration.
+        
+        @param request: GetRuleNumLimitOfSLARequest
+        @return: GetRuleNumLimitOfSLAResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_rule_num_limit_of_slawith_options_async(request, runtime)
 
@@ -9519,7 +11497,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetSQLReviewCheckResultStatusResponse:
         """
-        For more information about the SQL review feature, see [SQL review](~~60374~~).
+        @summary Queries the result of an SQL review.
+        
+        @description For more information about the SQL review feature, see [SQL review](https://help.aliyun.com/document_detail/60374.html).
         
         @param request: GetSQLReviewCheckResultStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9556,7 +11536,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetSQLReviewCheckResultStatusResponse:
         """
-        For more information about the SQL review feature, see [SQL review](~~60374~~).
+        @summary Queries the result of an SQL review.
+        
+        @description For more information about the SQL review feature, see [SQL review](https://help.aliyun.com/document_detail/60374.html).
         
         @param request: GetSQLReviewCheckResultStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9592,7 +11574,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetSQLReviewCheckResultStatusRequest,
     ) -> dms_enterprise_20181101_models.GetSQLReviewCheckResultStatusResponse:
         """
-        For more information about the SQL review feature, see [SQL review](~~60374~~).
+        @summary Queries the result of an SQL review.
+        
+        @description For more information about the SQL review feature, see [SQL review](https://help.aliyun.com/document_detail/60374.html).
         
         @param request: GetSQLReviewCheckResultStatusRequest
         @return: GetSQLReviewCheckResultStatusResponse
@@ -9605,7 +11589,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetSQLReviewCheckResultStatusRequest,
     ) -> dms_enterprise_20181101_models.GetSQLReviewCheckResultStatusResponse:
         """
-        For more information about the SQL review feature, see [SQL review](~~60374~~).
+        @summary Queries the result of an SQL review.
+        
+        @description For more information about the SQL review feature, see [SQL review](https://help.aliyun.com/document_detail/60374.html).
         
         @param request: GetSQLReviewCheckResultStatusRequest
         @return: GetSQLReviewCheckResultStatusResponse
@@ -9619,7 +11605,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetSQLReviewOptimizeDetailResponse:
         """
-        For more information about the SQL review feature, see [SQL review](~~60374~~).
+        @summary Queries the details of optimization suggestions. The operation applies only to the tickets for the data changes and SQL review.
+        
+        @description For more information about the SQL review feature, see [SQL review](https://help.aliyun.com/document_detail/60374.html).
         
         @param request: GetSQLReviewOptimizeDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9656,7 +11644,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetSQLReviewOptimizeDetailResponse:
         """
-        For more information about the SQL review feature, see [SQL review](~~60374~~).
+        @summary Queries the details of optimization suggestions. The operation applies only to the tickets for the data changes and SQL review.
+        
+        @description For more information about the SQL review feature, see [SQL review](https://help.aliyun.com/document_detail/60374.html).
         
         @param request: GetSQLReviewOptimizeDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9692,7 +11682,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetSQLReviewOptimizeDetailRequest,
     ) -> dms_enterprise_20181101_models.GetSQLReviewOptimizeDetailResponse:
         """
-        For more information about the SQL review feature, see [SQL review](~~60374~~).
+        @summary Queries the details of optimization suggestions. The operation applies only to the tickets for the data changes and SQL review.
+        
+        @description For more information about the SQL review feature, see [SQL review](https://help.aliyun.com/document_detail/60374.html).
         
         @param request: GetSQLReviewOptimizeDetailRequest
         @return: GetSQLReviewOptimizeDetailResponse
@@ -9705,7 +11697,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetSQLReviewOptimizeDetailRequest,
     ) -> dms_enterprise_20181101_models.GetSQLReviewOptimizeDetailResponse:
         """
-        For more information about the SQL review feature, see [SQL review](~~60374~~).
+        @summary Queries the details of optimization suggestions. The operation applies only to the tickets for the data changes and SQL review.
+        
+        @description For more information about the SQL review feature, see [SQL review](https://help.aliyun.com/document_detail/60374.html).
         
         @param request: GetSQLReviewOptimizeDetailRequest
         @return: GetSQLReviewOptimizeDetailResponse
@@ -9718,6 +11712,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetStandardGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetStandardGroupResponse:
+        """
+        @summary 获取安全规则
+        
+        @param request: GetStandardGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetStandardGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_id):
@@ -9748,6 +11749,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetStandardGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetStandardGroupResponse:
+        """
+        @summary 获取安全规则
+        
+        @param request: GetStandardGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetStandardGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_id):
@@ -9777,6 +11785,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetStandardGroupRequest,
     ) -> dms_enterprise_20181101_models.GetStandardGroupResponse:
+        """
+        @summary 获取安全规则
+        
+        @param request: GetStandardGroupRequest
+        @return: GetStandardGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_standard_group_with_options(request, runtime)
 
@@ -9784,6 +11798,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetStandardGroupRequest,
     ) -> dms_enterprise_20181101_models.GetStandardGroupResponse:
+        """
+        @summary 获取安全规则
+        
+        @param request: GetStandardGroupRequest
+        @return: GetStandardGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_standard_group_with_options_async(request, runtime)
 
@@ -9792,6 +11812,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetStructSyncExecSqlDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetStructSyncExecSqlDetailResponse:
+        """
+        @summary Queries the SQL statements that are involved in a schema synchronization ticket.
+        
+        @param request: GetStructSyncExecSqlDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetStructSyncExecSqlDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.order_id):
@@ -9826,6 +11853,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetStructSyncExecSqlDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetStructSyncExecSqlDetailResponse:
+        """
+        @summary Queries the SQL statements that are involved in a schema synchronization ticket.
+        
+        @param request: GetStructSyncExecSqlDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetStructSyncExecSqlDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.order_id):
@@ -9859,6 +11893,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetStructSyncExecSqlDetailRequest,
     ) -> dms_enterprise_20181101_models.GetStructSyncExecSqlDetailResponse:
+        """
+        @summary Queries the SQL statements that are involved in a schema synchronization ticket.
+        
+        @param request: GetStructSyncExecSqlDetailRequest
+        @return: GetStructSyncExecSqlDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_struct_sync_exec_sql_detail_with_options(request, runtime)
 
@@ -9866,6 +11906,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetStructSyncExecSqlDetailRequest,
     ) -> dms_enterprise_20181101_models.GetStructSyncExecSqlDetailResponse:
+        """
+        @summary Queries the SQL statements that are involved in a schema synchronization ticket.
+        
+        @param request: GetStructSyncExecSqlDetailRequest
+        @return: GetStructSyncExecSqlDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_struct_sync_exec_sql_detail_with_options_async(request, runtime)
 
@@ -9874,6 +11920,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetStructSyncJobAnalyzeResultRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetStructSyncJobAnalyzeResultResponse:
+        """
+        @summary Queries the analysis result of a schema synchronization task.
+        
+        @param request: GetStructSyncJobAnalyzeResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetStructSyncJobAnalyzeResultResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.compare_type):
@@ -9910,6 +11963,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetStructSyncJobAnalyzeResultRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetStructSyncJobAnalyzeResultResponse:
+        """
+        @summary Queries the analysis result of a schema synchronization task.
+        
+        @param request: GetStructSyncJobAnalyzeResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetStructSyncJobAnalyzeResultResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.compare_type):
@@ -9945,6 +12005,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetStructSyncJobAnalyzeResultRequest,
     ) -> dms_enterprise_20181101_models.GetStructSyncJobAnalyzeResultResponse:
+        """
+        @summary Queries the analysis result of a schema synchronization task.
+        
+        @param request: GetStructSyncJobAnalyzeResultRequest
+        @return: GetStructSyncJobAnalyzeResultResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_struct_sync_job_analyze_result_with_options(request, runtime)
 
@@ -9952,6 +12018,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetStructSyncJobAnalyzeResultRequest,
     ) -> dms_enterprise_20181101_models.GetStructSyncJobAnalyzeResultResponse:
+        """
+        @summary Queries the analysis result of a schema synchronization task.
+        
+        @param request: GetStructSyncJobAnalyzeResultRequest
+        @return: GetStructSyncJobAnalyzeResultResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_struct_sync_job_analyze_result_with_options_async(request, runtime)
 
@@ -9960,6 +12032,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetStructSyncJobDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetStructSyncJobDetailResponse:
+        """
+        @summary Queries the information of a schema synchronization task.
+        
+        @param request: GetStructSyncJobDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetStructSyncJobDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.order_id):
@@ -9990,6 +12069,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetStructSyncJobDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetStructSyncJobDetailResponse:
+        """
+        @summary Queries the information of a schema synchronization task.
+        
+        @param request: GetStructSyncJobDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetStructSyncJobDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.order_id):
@@ -10019,6 +12105,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetStructSyncJobDetailRequest,
     ) -> dms_enterprise_20181101_models.GetStructSyncJobDetailResponse:
+        """
+        @summary Queries the information of a schema synchronization task.
+        
+        @param request: GetStructSyncJobDetailRequest
+        @return: GetStructSyncJobDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_struct_sync_job_detail_with_options(request, runtime)
 
@@ -10026,6 +12118,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetStructSyncJobDetailRequest,
     ) -> dms_enterprise_20181101_models.GetStructSyncJobDetailResponse:
+        """
+        @summary Queries the information of a schema synchronization task.
+        
+        @param request: GetStructSyncJobDetailRequest
+        @return: GetStructSyncJobDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_struct_sync_job_detail_with_options_async(request, runtime)
 
@@ -10034,6 +12132,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetStructSyncOrderDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetStructSyncOrderDetailResponse:
+        """
+        @summary Queries the details of a schema synchronization ticket.
+        
+        @param request: GetStructSyncOrderDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetStructSyncOrderDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.order_id):
@@ -10064,6 +12169,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetStructSyncOrderDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetStructSyncOrderDetailResponse:
+        """
+        @summary Queries the details of a schema synchronization ticket.
+        
+        @param request: GetStructSyncOrderDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetStructSyncOrderDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.order_id):
@@ -10093,6 +12205,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetStructSyncOrderDetailRequest,
     ) -> dms_enterprise_20181101_models.GetStructSyncOrderDetailResponse:
+        """
+        @summary Queries the details of a schema synchronization ticket.
+        
+        @param request: GetStructSyncOrderDetailRequest
+        @return: GetStructSyncOrderDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_struct_sync_order_detail_with_options(request, runtime)
 
@@ -10100,6 +12218,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetStructSyncOrderDetailRequest,
     ) -> dms_enterprise_20181101_models.GetStructSyncOrderDetailResponse:
+        """
+        @summary Queries the details of a schema synchronization ticket.
+        
+        @param request: GetStructSyncOrderDetailRequest
+        @return: GetStructSyncOrderDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_struct_sync_order_detail_with_options_async(request, runtime)
 
@@ -10108,6 +12232,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetTableDBTopologyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetTableDBTopologyResponse:
+        """
+        @summary Queries the topology of a data table.
+        
+        @param request: GetTableDBTopologyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTableDBTopologyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.table_guid):
@@ -10138,6 +12269,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetTableDBTopologyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetTableDBTopologyResponse:
+        """
+        @summary Queries the topology of a data table.
+        
+        @param request: GetTableDBTopologyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTableDBTopologyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.table_guid):
@@ -10167,6 +12305,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetTableDBTopologyRequest,
     ) -> dms_enterprise_20181101_models.GetTableDBTopologyResponse:
+        """
+        @summary Queries the topology of a data table.
+        
+        @param request: GetTableDBTopologyRequest
+        @return: GetTableDBTopologyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_table_dbtopology_with_options(request, runtime)
 
@@ -10174,6 +12318,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetTableDBTopologyRequest,
     ) -> dms_enterprise_20181101_models.GetTableDBTopologyResponse:
+        """
+        @summary Queries the topology of a data table.
+        
+        @param request: GetTableDBTopologyRequest
+        @return: GetTableDBTopologyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_table_dbtopology_with_options_async(request, runtime)
 
@@ -10182,6 +12332,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetTableDesignProjectFlowRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetTableDesignProjectFlowResponse:
+        """
+        @summary 获取结构设计项目的流程信息
+        
+        @param request: GetTableDesignProjectFlowRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTableDesignProjectFlowResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.order_id):
@@ -10212,6 +12369,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetTableDesignProjectFlowRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetTableDesignProjectFlowResponse:
+        """
+        @summary 获取结构设计项目的流程信息
+        
+        @param request: GetTableDesignProjectFlowRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTableDesignProjectFlowResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.order_id):
@@ -10241,6 +12405,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetTableDesignProjectFlowRequest,
     ) -> dms_enterprise_20181101_models.GetTableDesignProjectFlowResponse:
+        """
+        @summary 获取结构设计项目的流程信息
+        
+        @param request: GetTableDesignProjectFlowRequest
+        @return: GetTableDesignProjectFlowResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_table_design_project_flow_with_options(request, runtime)
 
@@ -10248,6 +12418,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetTableDesignProjectFlowRequest,
     ) -> dms_enterprise_20181101_models.GetTableDesignProjectFlowResponse:
+        """
+        @summary 获取结构设计项目的流程信息
+        
+        @param request: GetTableDesignProjectFlowRequest
+        @return: GetTableDesignProjectFlowResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_table_design_project_flow_with_options_async(request, runtime)
 
@@ -10256,6 +12432,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetTableDesignProjectInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetTableDesignProjectInfoResponse:
+        """
+        @summary 获取结构设计项目的详细信息
+        
+        @param request: GetTableDesignProjectInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTableDesignProjectInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.order_id):
@@ -10286,6 +12469,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetTableDesignProjectInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetTableDesignProjectInfoResponse:
+        """
+        @summary 获取结构设计项目的详细信息
+        
+        @param request: GetTableDesignProjectInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTableDesignProjectInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.order_id):
@@ -10315,6 +12505,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetTableDesignProjectInfoRequest,
     ) -> dms_enterprise_20181101_models.GetTableDesignProjectInfoResponse:
+        """
+        @summary 获取结构设计项目的详细信息
+        
+        @param request: GetTableDesignProjectInfoRequest
+        @return: GetTableDesignProjectInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_table_design_project_info_with_options(request, runtime)
 
@@ -10322,6 +12518,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetTableDesignProjectInfoRequest,
     ) -> dms_enterprise_20181101_models.GetTableDesignProjectInfoResponse:
+        """
+        @summary 获取结构设计项目的详细信息
+        
+        @param request: GetTableDesignProjectInfoRequest
+        @return: GetTableDesignProjectInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_table_design_project_info_with_options_async(request, runtime)
 
@@ -10330,6 +12532,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetTableTopologyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetTableTopologyResponse:
+        """
+        @summary Queries the topology of a table.
+        
+        @param request: GetTableTopologyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTableTopologyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.table_guid):
@@ -10360,6 +12569,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetTableTopologyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetTableTopologyResponse:
+        """
+        @summary Queries the topology of a table.
+        
+        @param request: GetTableTopologyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTableTopologyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.table_guid):
@@ -10389,6 +12605,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetTableTopologyRequest,
     ) -> dms_enterprise_20181101_models.GetTableTopologyResponse:
+        """
+        @summary Queries the topology of a table.
+        
+        @param request: GetTableTopologyRequest
+        @return: GetTableTopologyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_table_topology_with_options(request, runtime)
 
@@ -10396,6 +12618,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetTableTopologyRequest,
     ) -> dms_enterprise_20181101_models.GetTableTopologyResponse:
+        """
+        @summary Queries the topology of a table.
+        
+        @param request: GetTableTopologyRequest
+        @return: GetTableTopologyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_table_topology_with_options_async(request, runtime)
 
@@ -10404,6 +12632,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetTaskResponse:
+        """
+        @summary Queries the configurations, including time variables, of a specified task node based on the task node ID.
+        
+        @param request: GetTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.node_id):
@@ -10434,6 +12669,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetTaskResponse:
+        """
+        @summary Queries the configurations, including time variables, of a specified task node based on the task node ID.
+        
+        @param request: GetTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.node_id):
@@ -10463,6 +12705,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetTaskRequest,
     ) -> dms_enterprise_20181101_models.GetTaskResponse:
+        """
+        @summary Queries the configurations, including time variables, of a specified task node based on the task node ID.
+        
+        @param request: GetTaskRequest
+        @return: GetTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_task_with_options(request, runtime)
 
@@ -10470,6 +12718,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetTaskRequest,
     ) -> dms_enterprise_20181101_models.GetTaskResponse:
+        """
+        @summary Queries the configurations, including time variables, of a specified task node based on the task node ID.
+        
+        @param request: GetTaskRequest
+        @return: GetTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_task_with_options_async(request, runtime)
 
@@ -10478,6 +12732,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetTaskFlowGraphRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetTaskFlowGraphResponse:
+        """
+        @summary Queries the Directed Acyclic Graph (DAG) of a task flow.
+        
+        @param request: GetTaskFlowGraphRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTaskFlowGraphResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dag_id):
@@ -10508,6 +12769,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetTaskFlowGraphRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetTaskFlowGraphResponse:
+        """
+        @summary Queries the Directed Acyclic Graph (DAG) of a task flow.
+        
+        @param request: GetTaskFlowGraphRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTaskFlowGraphResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dag_id):
@@ -10537,6 +12805,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetTaskFlowGraphRequest,
     ) -> dms_enterprise_20181101_models.GetTaskFlowGraphResponse:
+        """
+        @summary Queries the Directed Acyclic Graph (DAG) of a task flow.
+        
+        @param request: GetTaskFlowGraphRequest
+        @return: GetTaskFlowGraphResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_task_flow_graph_with_options(request, runtime)
 
@@ -10544,6 +12818,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetTaskFlowGraphRequest,
     ) -> dms_enterprise_20181101_models.GetTaskFlowGraphResponse:
+        """
+        @summary Queries the Directed Acyclic Graph (DAG) of a task flow.
+        
+        @param request: GetTaskFlowGraphRequest
+        @return: GetTaskFlowGraphResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_task_flow_graph_with_options_async(request, runtime)
 
@@ -10552,6 +12832,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetTaskFlowNotificationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetTaskFlowNotificationResponse:
+        """
+        @summary Queries the notification settings for task flows.
+        
+        @param request: GetTaskFlowNotificationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTaskFlowNotificationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dag_id):
@@ -10582,6 +12869,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetTaskFlowNotificationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetTaskFlowNotificationResponse:
+        """
+        @summary Queries the notification settings for task flows.
+        
+        @param request: GetTaskFlowNotificationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTaskFlowNotificationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dag_id):
@@ -10611,6 +12905,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetTaskFlowNotificationRequest,
     ) -> dms_enterprise_20181101_models.GetTaskFlowNotificationResponse:
+        """
+        @summary Queries the notification settings for task flows.
+        
+        @param request: GetTaskFlowNotificationRequest
+        @return: GetTaskFlowNotificationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_task_flow_notification_with_options(request, runtime)
 
@@ -10618,6 +12918,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetTaskFlowNotificationRequest,
     ) -> dms_enterprise_20181101_models.GetTaskFlowNotificationResponse:
+        """
+        @summary Queries the notification settings for task flows.
+        
+        @param request: GetTaskFlowNotificationRequest
+        @return: GetTaskFlowNotificationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_task_flow_notification_with_options_async(request, runtime)
 
@@ -10626,6 +12932,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetTaskInstanceRelationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetTaskInstanceRelationResponse:
+        """
+        @summary Queries the information about the nodes in an execution record of a task flow.
+        
+        @param request: GetTaskInstanceRelationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTaskInstanceRelationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dag_id):
@@ -10658,6 +12971,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetTaskInstanceRelationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetTaskInstanceRelationResponse:
+        """
+        @summary Queries the information about the nodes in an execution record of a task flow.
+        
+        @param request: GetTaskInstanceRelationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTaskInstanceRelationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dag_id):
@@ -10689,6 +13009,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetTaskInstanceRelationRequest,
     ) -> dms_enterprise_20181101_models.GetTaskInstanceRelationResponse:
+        """
+        @summary Queries the information about the nodes in an execution record of a task flow.
+        
+        @param request: GetTaskInstanceRelationRequest
+        @return: GetTaskInstanceRelationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_task_instance_relation_with_options(request, runtime)
 
@@ -10696,6 +13022,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetTaskInstanceRelationRequest,
     ) -> dms_enterprise_20181101_models.GetTaskInstanceRelationResponse:
+        """
+        @summary Queries the information about the nodes in an execution record of a task flow.
+        
+        @param request: GetTaskInstanceRelationRequest
+        @return: GetTaskInstanceRelationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_task_instance_relation_with_options_async(request, runtime)
 
@@ -10704,6 +13036,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetUserResponse:
+        """
+        @summary Queries the information about a user.
+        
+        @param request: GetUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetUserResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.tid):
@@ -10736,6 +13075,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetUserResponse:
+        """
+        @summary Queries the information about a user.
+        
+        @param request: GetUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetUserResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.tid):
@@ -10767,6 +13113,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetUserRequest,
     ) -> dms_enterprise_20181101_models.GetUserResponse:
+        """
+        @summary Queries the information about a user.
+        
+        @param request: GetUserRequest
+        @return: GetUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_user_with_options(request, runtime)
 
@@ -10774,6 +13126,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetUserRequest,
     ) -> dms_enterprise_20181101_models.GetUserResponse:
+        """
+        @summary Queries the information about a user.
+        
+        @param request: GetUserRequest
+        @return: GetUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_user_with_options_async(request, runtime)
 
@@ -10782,6 +13140,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetUserActiveTenantRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetUserActiveTenantResponse:
+        """
+        @summary Queries details of the active tenant.
+        
+        @param request: GetUserActiveTenantRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetUserActiveTenantResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.tid):
@@ -10810,6 +13175,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetUserActiveTenantRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetUserActiveTenantResponse:
+        """
+        @summary Queries details of the active tenant.
+        
+        @param request: GetUserActiveTenantRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetUserActiveTenantResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.tid):
@@ -10837,6 +13209,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetUserActiveTenantRequest,
     ) -> dms_enterprise_20181101_models.GetUserActiveTenantResponse:
+        """
+        @summary Queries details of the active tenant.
+        
+        @param request: GetUserActiveTenantRequest
+        @return: GetUserActiveTenantResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_user_active_tenant_with_options(request, runtime)
 
@@ -10844,6 +13222,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetUserActiveTenantRequest,
     ) -> dms_enterprise_20181101_models.GetUserActiveTenantResponse:
+        """
+        @summary Queries details of the active tenant.
+        
+        @param request: GetUserActiveTenantRequest
+        @return: GetUserActiveTenantResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_user_active_tenant_with_options_async(request, runtime)
 
@@ -10852,6 +13236,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetUserUploadFileJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetUserUploadFileJobResponse:
+        """
+        @summary Obtains the information of a file upload task.
+        
+        @param request: GetUserUploadFileJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetUserUploadFileJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.job_key):
@@ -10882,6 +13273,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetUserUploadFileJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetUserUploadFileJobResponse:
+        """
+        @summary Obtains the information of a file upload task.
+        
+        @param request: GetUserUploadFileJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetUserUploadFileJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.job_key):
@@ -10911,6 +13309,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetUserUploadFileJobRequest,
     ) -> dms_enterprise_20181101_models.GetUserUploadFileJobResponse:
+        """
+        @summary Obtains the information of a file upload task.
+        
+        @param request: GetUserUploadFileJobRequest
+        @return: GetUserUploadFileJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_user_upload_file_job_with_options(request, runtime)
 
@@ -10918,6 +13322,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GetUserUploadFileJobRequest,
     ) -> dms_enterprise_20181101_models.GetUserUploadFileJobResponse:
+        """
+        @summary Obtains the information of a file upload task.
+        
+        @param request: GetUserUploadFileJobRequest
+        @return: GetUserUploadFileJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_user_upload_file_job_with_options_async(request, runtime)
 
@@ -10927,7 +13337,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GrantTemplateAuthorityResponse:
         """
-        You must be a database administrator (DBA) or a Data Management (DMS) administrator. For more information about how to view system roles, see [View system roles](~~324212~~).
+        @summary Grants permissions on resources to users by using a permission template.
+        
+        @description You must be a database administrator (DBA) or a Data Management (DMS) administrator. For more information about how to view system roles, see [View system roles](https://help.aliyun.com/document_detail/324212.html).
         
         @param request: GrantTemplateAuthorityRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10970,7 +13382,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GrantTemplateAuthorityResponse:
         """
-        You must be a database administrator (DBA) or a Data Management (DMS) administrator. For more information about how to view system roles, see [View system roles](~~324212~~).
+        @summary Grants permissions on resources to users by using a permission template.
+        
+        @description You must be a database administrator (DBA) or a Data Management (DMS) administrator. For more information about how to view system roles, see [View system roles](https://help.aliyun.com/document_detail/324212.html).
         
         @param request: GrantTemplateAuthorityRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11012,7 +13426,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GrantTemplateAuthorityRequest,
     ) -> dms_enterprise_20181101_models.GrantTemplateAuthorityResponse:
         """
-        You must be a database administrator (DBA) or a Data Management (DMS) administrator. For more information about how to view system roles, see [View system roles](~~324212~~).
+        @summary Grants permissions on resources to users by using a permission template.
+        
+        @description You must be a database administrator (DBA) or a Data Management (DMS) administrator. For more information about how to view system roles, see [View system roles](https://help.aliyun.com/document_detail/324212.html).
         
         @param request: GrantTemplateAuthorityRequest
         @return: GrantTemplateAuthorityResponse
@@ -11025,7 +13441,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GrantTemplateAuthorityRequest,
     ) -> dms_enterprise_20181101_models.GrantTemplateAuthorityResponse:
         """
-        You must be a database administrator (DBA) or a Data Management (DMS) administrator. For more information about how to view system roles, see [View system roles](~~324212~~).
+        @summary Grants permissions on resources to users by using a permission template.
+        
+        @description You must be a database administrator (DBA) or a Data Management (DMS) administrator. For more information about how to view system roles, see [View system roles](https://help.aliyun.com/document_detail/324212.html).
         
         @param request: GrantTemplateAuthorityRequest
         @return: GrantTemplateAuthorityResponse
@@ -11038,6 +13456,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GrantUserPermissionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GrantUserPermissionResponse:
+        """
+        @summary Grants permissions on an instance, a database, or a table to a user.
+        
+        @param request: GrantUserPermissionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GrantUserPermissionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.db_id):
@@ -11084,6 +13509,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GrantUserPermissionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GrantUserPermissionResponse:
+        """
+        @summary Grants permissions on an instance, a database, or a table to a user.
+        
+        @param request: GrantUserPermissionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GrantUserPermissionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.db_id):
@@ -11129,6 +13561,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GrantUserPermissionRequest,
     ) -> dms_enterprise_20181101_models.GrantUserPermissionResponse:
+        """
+        @summary Grants permissions on an instance, a database, or a table to a user.
+        
+        @param request: GrantUserPermissionRequest
+        @return: GrantUserPermissionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.grant_user_permission_with_options(request, runtime)
 
@@ -11136,6 +13574,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.GrantUserPermissionRequest,
     ) -> dms_enterprise_20181101_models.GrantUserPermissionResponse:
+        """
+        @summary Grants permissions on an instance, a database, or a table to a user.
+        
+        @param request: GrantUserPermissionRequest
+        @return: GrantUserPermissionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.grant_user_permission_with_options_async(request, runtime)
 
@@ -11144,6 +13588,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.InspectProxyAccessSecretRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.InspectProxyAccessSecretResponse:
+        """
+        @summary You can call this operation to obtain the authorization password of the security protection agent InspectProxyAccessSecret.
+        
+        @param request: InspectProxyAccessSecretRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InspectProxyAccessSecretResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.proxy_access_id):
@@ -11174,6 +13625,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.InspectProxyAccessSecretRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.InspectProxyAccessSecretResponse:
+        """
+        @summary You can call this operation to obtain the authorization password of the security protection agent InspectProxyAccessSecret.
+        
+        @param request: InspectProxyAccessSecretRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InspectProxyAccessSecretResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.proxy_access_id):
@@ -11203,6 +13661,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.InspectProxyAccessSecretRequest,
     ) -> dms_enterprise_20181101_models.InspectProxyAccessSecretResponse:
+        """
+        @summary You can call this operation to obtain the authorization password of the security protection agent InspectProxyAccessSecret.
+        
+        @param request: InspectProxyAccessSecretRequest
+        @return: InspectProxyAccessSecretResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.inspect_proxy_access_secret_with_options(request, runtime)
 
@@ -11210,6 +13674,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.InspectProxyAccessSecretRequest,
     ) -> dms_enterprise_20181101_models.InspectProxyAccessSecretResponse:
+        """
+        @summary You can call this operation to obtain the authorization password of the security protection agent InspectProxyAccessSecret.
+        
+        @param request: InspectProxyAccessSecretRequest
+        @return: InspectProxyAccessSecretResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.inspect_proxy_access_secret_with_options_async(request, runtime)
 
@@ -11218,6 +13688,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListAuthorityTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListAuthorityTemplateResponse:
+        """
+        @summary 获取权限模版列表
+        
+        @param request: ListAuthorityTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAuthorityTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -11252,6 +13729,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListAuthorityTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListAuthorityTemplateResponse:
+        """
+        @summary 获取权限模版列表
+        
+        @param request: ListAuthorityTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAuthorityTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -11285,6 +13769,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ListAuthorityTemplateRequest,
     ) -> dms_enterprise_20181101_models.ListAuthorityTemplateResponse:
+        """
+        @summary 获取权限模版列表
+        
+        @param request: ListAuthorityTemplateRequest
+        @return: ListAuthorityTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_authority_template_with_options(request, runtime)
 
@@ -11292,6 +13782,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ListAuthorityTemplateRequest,
     ) -> dms_enterprise_20181101_models.ListAuthorityTemplateResponse:
+        """
+        @summary 获取权限模版列表
+        
+        @param request: ListAuthorityTemplateRequest
+        @return: ListAuthorityTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_authority_template_with_options_async(request, runtime)
 
@@ -11300,6 +13796,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListClassificationTemplatesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListClassificationTemplatesResponse:
+        """
+        @summary Queries the classification templates.
+        
+        @param request: ListClassificationTemplatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListClassificationTemplatesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.tid):
@@ -11328,6 +13831,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListClassificationTemplatesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListClassificationTemplatesResponse:
+        """
+        @summary Queries the classification templates.
+        
+        @param request: ListClassificationTemplatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListClassificationTemplatesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.tid):
@@ -11355,6 +13865,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ListClassificationTemplatesRequest,
     ) -> dms_enterprise_20181101_models.ListClassificationTemplatesResponse:
+        """
+        @summary Queries the classification templates.
+        
+        @param request: ListClassificationTemplatesRequest
+        @return: ListClassificationTemplatesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_classification_templates_with_options(request, runtime)
 
@@ -11362,6 +13878,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ListClassificationTemplatesRequest,
     ) -> dms_enterprise_20181101_models.ListClassificationTemplatesResponse:
+        """
+        @summary Queries the classification templates.
+        
+        @param request: ListClassificationTemplatesRequest
+        @return: ListClassificationTemplatesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_classification_templates_with_options_async(request, runtime)
 
@@ -11371,7 +13893,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListColumnsResponse:
         """
-        You can call this operation only for database instances whose control mode is Security Collaboration.
+        @summary Returns the column information of a table.
+        
+        @description You can call this operation only for database instances whose control mode is Security Collaboration.
         
         @param request: ListColumnsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11410,7 +13934,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListColumnsResponse:
         """
-        You can call this operation only for database instances whose control mode is Security Collaboration.
+        @summary Returns the column information of a table.
+        
+        @description You can call this operation only for database instances whose control mode is Security Collaboration.
         
         @param request: ListColumnsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11448,7 +13974,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListColumnsRequest,
     ) -> dms_enterprise_20181101_models.ListColumnsResponse:
         """
-        You can call this operation only for database instances whose control mode is Security Collaboration.
+        @summary Returns the column information of a table.
+        
+        @description You can call this operation only for database instances whose control mode is Security Collaboration.
         
         @param request: ListColumnsRequest
         @return: ListColumnsResponse
@@ -11461,7 +13989,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListColumnsRequest,
     ) -> dms_enterprise_20181101_models.ListColumnsResponse:
         """
-        You can call this operation only for database instances whose control mode is Security Collaboration.
+        @summary Returns the column information of a table.
+        
+        @description You can call this operation only for database instances whose control mode is Security Collaboration.
         
         @param request: ListColumnsRequest
         @return: ListColumnsResponse
@@ -11474,6 +14004,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListDAGVersionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListDAGVersionsResponse:
+        """
+        @summary Queries the published versions of a task flow.
+        
+        @param request: ListDAGVersionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDAGVersionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dag_id):
@@ -11508,6 +14045,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListDAGVersionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListDAGVersionsResponse:
+        """
+        @summary Queries the published versions of a task flow.
+        
+        @param request: ListDAGVersionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDAGVersionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dag_id):
@@ -11541,6 +14085,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ListDAGVersionsRequest,
     ) -> dms_enterprise_20181101_models.ListDAGVersionsResponse:
+        """
+        @summary Queries the published versions of a task flow.
+        
+        @param request: ListDAGVersionsRequest
+        @return: ListDAGVersionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_dagversions_with_options(request, runtime)
 
@@ -11548,6 +14098,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ListDAGVersionsRequest,
     ) -> dms_enterprise_20181101_models.ListDAGVersionsResponse:
+        """
+        @summary Queries the published versions of a task flow.
+        
+        @param request: ListDAGVersionsRequest
+        @return: ListDAGVersionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_dagversions_with_options_async(request, runtime)
 
@@ -11556,6 +14112,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListDBTaskSQLJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListDBTaskSQLJobResponse:
+        """
+        @summary Queries a list of SQL tasks.
+        
+        @param request: ListDBTaskSQLJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDBTaskSQLJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbtask_group_id):
@@ -11590,6 +14153,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListDBTaskSQLJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListDBTaskSQLJobResponse:
+        """
+        @summary Queries a list of SQL tasks.
+        
+        @param request: ListDBTaskSQLJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDBTaskSQLJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbtask_group_id):
@@ -11623,6 +14193,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ListDBTaskSQLJobRequest,
     ) -> dms_enterprise_20181101_models.ListDBTaskSQLJobResponse:
+        """
+        @summary Queries a list of SQL tasks.
+        
+        @param request: ListDBTaskSQLJobRequest
+        @return: ListDBTaskSQLJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_dbtask_sqljob_with_options(request, runtime)
 
@@ -11630,6 +14206,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ListDBTaskSQLJobRequest,
     ) -> dms_enterprise_20181101_models.ListDBTaskSQLJobResponse:
+        """
+        @summary Queries a list of SQL tasks.
+        
+        @param request: ListDBTaskSQLJobRequest
+        @return: ListDBTaskSQLJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_dbtask_sqljob_with_options_async(request, runtime)
 
@@ -11638,6 +14220,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListDBTaskSQLJobDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListDBTaskSQLJobDetailResponse:
+        """
+        @summary Queries the details of an SQL task.
+        
+        @param request: ListDBTaskSQLJobDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDBTaskSQLJobDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.job_id):
@@ -11672,6 +14261,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListDBTaskSQLJobDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListDBTaskSQLJobDetailResponse:
+        """
+        @summary Queries the details of an SQL task.
+        
+        @param request: ListDBTaskSQLJobDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDBTaskSQLJobDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.job_id):
@@ -11705,6 +14301,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ListDBTaskSQLJobDetailRequest,
     ) -> dms_enterprise_20181101_models.ListDBTaskSQLJobDetailResponse:
+        """
+        @summary Queries the details of an SQL task.
+        
+        @param request: ListDBTaskSQLJobDetailRequest
+        @return: ListDBTaskSQLJobDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_dbtask_sqljob_detail_with_options(request, runtime)
 
@@ -11712,6 +14314,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ListDBTaskSQLJobDetailRequest,
     ) -> dms_enterprise_20181101_models.ListDBTaskSQLJobDetailResponse:
+        """
+        @summary Queries the details of an SQL task.
+        
+        @param request: ListDBTaskSQLJobDetailRequest
+        @return: ListDBTaskSQLJobDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_dbtask_sqljob_detail_with_options_async(request, runtime)
 
@@ -11720,6 +14328,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListDDLPublishRecordsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListDDLPublishRecordsResponse:
+        """
+        @summary Queries the publishing details of a schema design ticket.
+        
+        @param request: ListDDLPublishRecordsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDDLPublishRecordsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.order_id):
@@ -11750,6 +14365,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListDDLPublishRecordsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListDDLPublishRecordsResponse:
+        """
+        @summary Queries the publishing details of a schema design ticket.
+        
+        @param request: ListDDLPublishRecordsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDDLPublishRecordsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.order_id):
@@ -11779,6 +14401,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ListDDLPublishRecordsRequest,
     ) -> dms_enterprise_20181101_models.ListDDLPublishRecordsResponse:
+        """
+        @summary Queries the publishing details of a schema design ticket.
+        
+        @param request: ListDDLPublishRecordsRequest
+        @return: ListDDLPublishRecordsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_ddlpublish_records_with_options(request, runtime)
 
@@ -11786,6 +14414,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ListDDLPublishRecordsRequest,
     ) -> dms_enterprise_20181101_models.ListDDLPublishRecordsResponse:
+        """
+        @summary Queries the publishing details of a schema design ticket.
+        
+        @param request: ListDDLPublishRecordsRequest
+        @return: ListDDLPublishRecordsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_ddlpublish_records_with_options_async(request, runtime)
 
@@ -11795,7 +14429,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListDataCorrectPreCheckDBResponse:
         """
-        For more information about the Normal Data Modify feature, see [Change regular data](~~58419~~).
+        @summary Queries the databases that are involved in the precheck of a data change ticket.
+        
+        @description For more information about the Normal Data Modify feature, see [Change regular data](https://help.aliyun.com/document_detail/58419.html).
         
         @param request: ListDataCorrectPreCheckDBRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11836,7 +14472,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListDataCorrectPreCheckDBResponse:
         """
-        For more information about the Normal Data Modify feature, see [Change regular data](~~58419~~).
+        @summary Queries the databases that are involved in the precheck of a data change ticket.
+        
+        @description For more information about the Normal Data Modify feature, see [Change regular data](https://help.aliyun.com/document_detail/58419.html).
         
         @param request: ListDataCorrectPreCheckDBRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11876,7 +14514,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListDataCorrectPreCheckDBRequest,
     ) -> dms_enterprise_20181101_models.ListDataCorrectPreCheckDBResponse:
         """
-        For more information about the Normal Data Modify feature, see [Change regular data](~~58419~~).
+        @summary Queries the databases that are involved in the precheck of a data change ticket.
+        
+        @description For more information about the Normal Data Modify feature, see [Change regular data](https://help.aliyun.com/document_detail/58419.html).
         
         @param request: ListDataCorrectPreCheckDBRequest
         @return: ListDataCorrectPreCheckDBResponse
@@ -11889,7 +14529,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListDataCorrectPreCheckDBRequest,
     ) -> dms_enterprise_20181101_models.ListDataCorrectPreCheckDBResponse:
         """
-        For more information about the Normal Data Modify feature, see [Change regular data](~~58419~~).
+        @summary Queries the databases that are involved in the precheck of a data change ticket.
+        
+        @description For more information about the Normal Data Modify feature, see [Change regular data](https://help.aliyun.com/document_detail/58419.html).
         
         @param request: ListDataCorrectPreCheckDBRequest
         @return: ListDataCorrectPreCheckDBResponse
@@ -11903,7 +14545,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListDataCorrectPreCheckSQLResponse:
         """
-        For more information about the Normal Data Modify feature, see [Change regular data](~~58419~~).
+        @summary Queries the precheck information about an SQL statement that is specified in a data change ticket.
+        
+        @description For more information about the Normal Data Modify feature, see [Change regular data](https://help.aliyun.com/document_detail/58419.html).
         
         @param request: ListDataCorrectPreCheckSQLRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11946,7 +14590,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListDataCorrectPreCheckSQLResponse:
         """
-        For more information about the Normal Data Modify feature, see [Change regular data](~~58419~~).
+        @summary Queries the precheck information about an SQL statement that is specified in a data change ticket.
+        
+        @description For more information about the Normal Data Modify feature, see [Change regular data](https://help.aliyun.com/document_detail/58419.html).
         
         @param request: ListDataCorrectPreCheckSQLRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11988,7 +14634,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListDataCorrectPreCheckSQLRequest,
     ) -> dms_enterprise_20181101_models.ListDataCorrectPreCheckSQLResponse:
         """
-        For more information about the Normal Data Modify feature, see [Change regular data](~~58419~~).
+        @summary Queries the precheck information about an SQL statement that is specified in a data change ticket.
+        
+        @description For more information about the Normal Data Modify feature, see [Change regular data](https://help.aliyun.com/document_detail/58419.html).
         
         @param request: ListDataCorrectPreCheckSQLRequest
         @return: ListDataCorrectPreCheckSQLResponse
@@ -12001,7 +14649,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListDataCorrectPreCheckSQLRequest,
     ) -> dms_enterprise_20181101_models.ListDataCorrectPreCheckSQLResponse:
         """
-        For more information about the Normal Data Modify feature, see [Change regular data](~~58419~~).
+        @summary Queries the precheck information about an SQL statement that is specified in a data change ticket.
+        
+        @description For more information about the Normal Data Modify feature, see [Change regular data](https://help.aliyun.com/document_detail/58419.html).
         
         @param request: ListDataCorrectPreCheckSQLRequest
         @return: ListDataCorrectPreCheckSQLResponse
@@ -12015,7 +14665,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListDataImportSQLPreCheckDetailResponse:
         """
-        You can call this operation only if the data is imported in security mode in your data import ticket.
+        @summary Queries the precheck information of SQL statements used for data import in a ticket.
+        
+        @description You can call this operation only if the data is imported in security mode in your data import ticket.
         
         @param request: ListDataImportSQLPreCheckDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12060,7 +14712,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListDataImportSQLPreCheckDetailResponse:
         """
-        You can call this operation only if the data is imported in security mode in your data import ticket.
+        @summary Queries the precheck information of SQL statements used for data import in a ticket.
+        
+        @description You can call this operation only if the data is imported in security mode in your data import ticket.
         
         @param request: ListDataImportSQLPreCheckDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12104,7 +14758,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListDataImportSQLPreCheckDetailRequest,
     ) -> dms_enterprise_20181101_models.ListDataImportSQLPreCheckDetailResponse:
         """
-        You can call this operation only if the data is imported in security mode in your data import ticket.
+        @summary Queries the precheck information of SQL statements used for data import in a ticket.
+        
+        @description You can call this operation only if the data is imported in security mode in your data import ticket.
         
         @param request: ListDataImportSQLPreCheckDetailRequest
         @return: ListDataImportSQLPreCheckDetailResponse
@@ -12117,7 +14773,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListDataImportSQLPreCheckDetailRequest,
     ) -> dms_enterprise_20181101_models.ListDataImportSQLPreCheckDetailResponse:
         """
-        You can call this operation only if the data is imported in security mode in your data import ticket.
+        @summary Queries the precheck information of SQL statements used for data import in a ticket.
+        
+        @description You can call this operation only if the data is imported in security mode in your data import ticket.
         
         @param request: ListDataImportSQLPreCheckDetailRequest
         @return: ListDataImportSQLPreCheckDetailResponse
@@ -12131,7 +14789,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListDataImportSQLTypeResponse:
         """
-        You can call this operation only if the data is imported in security mode in your data import ticket.
+        @summary Queries the types of SQL statements used for data import in a ticket.
+        
+        @description You can call this operation only if the data is imported in security mode in your data import ticket.
         
         @param request: ListDataImportSQLTypeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12168,7 +14828,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListDataImportSQLTypeResponse:
         """
-        You can call this operation only if the data is imported in security mode in your data import ticket.
+        @summary Queries the types of SQL statements used for data import in a ticket.
+        
+        @description You can call this operation only if the data is imported in security mode in your data import ticket.
         
         @param request: ListDataImportSQLTypeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12204,7 +14866,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListDataImportSQLTypeRequest,
     ) -> dms_enterprise_20181101_models.ListDataImportSQLTypeResponse:
         """
-        You can call this operation only if the data is imported in security mode in your data import ticket.
+        @summary Queries the types of SQL statements used for data import in a ticket.
+        
+        @description You can call this operation only if the data is imported in security mode in your data import ticket.
         
         @param request: ListDataImportSQLTypeRequest
         @return: ListDataImportSQLTypeResponse
@@ -12217,7 +14881,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListDataImportSQLTypeRequest,
     ) -> dms_enterprise_20181101_models.ListDataImportSQLTypeResponse:
         """
-        You can call this operation only if the data is imported in security mode in your data import ticket.
+        @summary Queries the types of SQL statements used for data import in a ticket.
+        
+        @description You can call this operation only if the data is imported in security mode in your data import ticket.
         
         @param request: ListDataImportSQLTypeRequest
         @return: ListDataImportSQLTypeResponse
@@ -12230,6 +14896,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListDatabaseUserPermssionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListDatabaseUserPermssionsResponse:
+        """
+        @summary Queries the permissions of users on a database.
+        
+        @param request: ListDatabaseUserPermssionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDatabaseUserPermssionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.db_id):
@@ -12270,6 +14943,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListDatabaseUserPermssionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListDatabaseUserPermssionsResponse:
+        """
+        @summary Queries the permissions of users on a database.
+        
+        @param request: ListDatabaseUserPermssionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDatabaseUserPermssionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.db_id):
@@ -12309,6 +14989,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ListDatabaseUserPermssionsRequest,
     ) -> dms_enterprise_20181101_models.ListDatabaseUserPermssionsResponse:
+        """
+        @summary Queries the permissions of users on a database.
+        
+        @param request: ListDatabaseUserPermssionsRequest
+        @return: ListDatabaseUserPermssionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_database_user_permssions_with_options(request, runtime)
 
@@ -12316,6 +15002,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ListDatabaseUserPermssionsRequest,
     ) -> dms_enterprise_20181101_models.ListDatabaseUserPermssionsResponse:
+        """
+        @summary Queries the permissions of users on a database.
+        
+        @param request: ListDatabaseUserPermssionsRequest
+        @return: ListDatabaseUserPermssionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_database_user_permssions_with_options_async(request, runtime)
 
@@ -12324,6 +15016,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListDatabasesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListDatabasesResponse:
+        """
+        @summary Queries the databases in a database instance.
+        
+        @param request: ListDatabasesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDatabasesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -12358,6 +15057,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListDatabasesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListDatabasesResponse:
+        """
+        @summary Queries the databases in a database instance.
+        
+        @param request: ListDatabasesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDatabasesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -12391,6 +15097,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ListDatabasesRequest,
     ) -> dms_enterprise_20181101_models.ListDatabasesResponse:
+        """
+        @summary Queries the databases in a database instance.
+        
+        @param request: ListDatabasesRequest
+        @return: ListDatabasesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_databases_with_options(request, runtime)
 
@@ -12398,6 +15110,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ListDatabasesRequest,
     ) -> dms_enterprise_20181101_models.ListDatabasesResponse:
+        """
+        @summary Queries the databases in a database instance.
+        
+        @param request: ListDatabasesRequest
+        @return: ListDatabasesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_databases_with_options_async(request, runtime)
 
@@ -12406,6 +15124,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListDefaultSLARulesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListDefaultSLARulesResponse:
+        """
+        @summary Queries the default service level agreement (SLA) timeout rules.
+        
+        @param request: ListDefaultSLARulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDefaultSLARulesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dag_id):
@@ -12436,6 +15161,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListDefaultSLARulesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListDefaultSLARulesResponse:
+        """
+        @summary Queries the default service level agreement (SLA) timeout rules.
+        
+        @param request: ListDefaultSLARulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDefaultSLARulesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dag_id):
@@ -12465,6 +15197,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ListDefaultSLARulesRequest,
     ) -> dms_enterprise_20181101_models.ListDefaultSLARulesResponse:
+        """
+        @summary Queries the default service level agreement (SLA) timeout rules.
+        
+        @param request: ListDefaultSLARulesRequest
+        @return: ListDefaultSLARulesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_default_slarules_with_options(request, runtime)
 
@@ -12472,6 +15210,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ListDefaultSLARulesRequest,
     ) -> dms_enterprise_20181101_models.ListDefaultSLARulesResponse:
+        """
+        @summary Queries the default service level agreement (SLA) timeout rules.
+        
+        @param request: ListDefaultSLARulesRequest
+        @return: ListDefaultSLARulesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_default_slarules_with_options_async(request, runtime)
 
@@ -12480,6 +15224,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListDesensitizationRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListDesensitizationRuleResponse:
+        """
+        @summary Queries masking rules.
+        
+        @param request: ListDesensitizationRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDesensitizationRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.func_type):
@@ -12520,6 +15271,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListDesensitizationRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListDesensitizationRuleResponse:
+        """
+        @summary Queries masking rules.
+        
+        @param request: ListDesensitizationRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDesensitizationRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.func_type):
@@ -12559,6 +15317,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ListDesensitizationRuleRequest,
     ) -> dms_enterprise_20181101_models.ListDesensitizationRuleResponse:
+        """
+        @summary Queries masking rules.
+        
+        @param request: ListDesensitizationRuleRequest
+        @return: ListDesensitizationRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_desensitization_rule_with_options(request, runtime)
 
@@ -12566,6 +15330,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ListDesensitizationRuleRequest,
     ) -> dms_enterprise_20181101_models.ListDesensitizationRuleResponse:
+        """
+        @summary Queries masking rules.
+        
+        @param request: ListDesensitizationRuleRequest
+        @return: ListDesensitizationRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_desensitization_rule_with_options_async(request, runtime)
 
@@ -12574,6 +15344,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListEffectiveOrdersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListEffectiveOrdersResponse:
+        """
+        @summary Queries valid orders.
+        
+        @param request: ListEffectiveOrdersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListEffectiveOrdersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.tid):
@@ -12602,6 +15379,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListEffectiveOrdersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListEffectiveOrdersResponse:
+        """
+        @summary Queries valid orders.
+        
+        @param request: ListEffectiveOrdersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListEffectiveOrdersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.tid):
@@ -12629,6 +15413,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ListEffectiveOrdersRequest,
     ) -> dms_enterprise_20181101_models.ListEffectiveOrdersResponse:
+        """
+        @summary Queries valid orders.
+        
+        @param request: ListEffectiveOrdersRequest
+        @return: ListEffectiveOrdersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_effective_orders_with_options(request, runtime)
 
@@ -12636,6 +15426,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ListEffectiveOrdersRequest,
     ) -> dms_enterprise_20181101_models.ListEffectiveOrdersResponse:
+        """
+        @summary Queries valid orders.
+        
+        @param request: ListEffectiveOrdersRequest
+        @return: ListEffectiveOrdersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_effective_orders_with_options_async(request, runtime)
 
@@ -12644,6 +15440,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListIndexesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListIndexesResponse:
+        """
+        @summary Queries the indexes of a table.
+        
+        @param request: ListIndexesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListIndexesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.logic):
@@ -12676,6 +15479,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListIndexesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListIndexesResponse:
+        """
+        @summary Queries the indexes of a table.
+        
+        @param request: ListIndexesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListIndexesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.logic):
@@ -12707,6 +15517,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ListIndexesRequest,
     ) -> dms_enterprise_20181101_models.ListIndexesResponse:
+        """
+        @summary Queries the indexes of a table.
+        
+        @param request: ListIndexesRequest
+        @return: ListIndexesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_indexes_with_options(request, runtime)
 
@@ -12714,6 +15530,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ListIndexesRequest,
     ) -> dms_enterprise_20181101_models.ListIndexesResponse:
+        """
+        @summary Queries the indexes of a table.
+        
+        @param request: ListIndexesRequest
+        @return: ListIndexesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_indexes_with_options_async(request, runtime)
 
@@ -12722,6 +15544,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListInstanceLoginAuditLogRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListInstanceLoginAuditLogResponse:
+        """
+        @summary Queries the logon records of an instance.
+        
+        @param request: ListInstanceLoginAuditLogRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInstanceLoginAuditLogResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -12762,6 +15591,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListInstanceLoginAuditLogRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListInstanceLoginAuditLogResponse:
+        """
+        @summary Queries the logon records of an instance.
+        
+        @param request: ListInstanceLoginAuditLogRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInstanceLoginAuditLogResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -12801,6 +15637,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ListInstanceLoginAuditLogRequest,
     ) -> dms_enterprise_20181101_models.ListInstanceLoginAuditLogResponse:
+        """
+        @summary Queries the logon records of an instance.
+        
+        @param request: ListInstanceLoginAuditLogRequest
+        @return: ListInstanceLoginAuditLogResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_instance_login_audit_log_with_options(request, runtime)
 
@@ -12808,6 +15650,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ListInstanceLoginAuditLogRequest,
     ) -> dms_enterprise_20181101_models.ListInstanceLoginAuditLogResponse:
+        """
+        @summary Queries the logon records of an instance.
+        
+        @param request: ListInstanceLoginAuditLogRequest
+        @return: ListInstanceLoginAuditLogResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_instance_login_audit_log_with_options_async(request, runtime)
 
@@ -12816,6 +15664,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListInstanceUserPermissionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListInstanceUserPermissionsResponse:
+        """
+        @summary Queries the permissions of a user on a specific instance.
+        
+        @param request: ListInstanceUserPermissionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInstanceUserPermissionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -12852,6 +15707,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListInstanceUserPermissionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListInstanceUserPermissionsResponse:
+        """
+        @summary Queries the permissions of a user on a specific instance.
+        
+        @param request: ListInstanceUserPermissionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInstanceUserPermissionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -12887,6 +15749,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ListInstanceUserPermissionsRequest,
     ) -> dms_enterprise_20181101_models.ListInstanceUserPermissionsResponse:
+        """
+        @summary Queries the permissions of a user on a specific instance.
+        
+        @param request: ListInstanceUserPermissionsRequest
+        @return: ListInstanceUserPermissionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_instance_user_permissions_with_options(request, runtime)
 
@@ -12894,6 +15762,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ListInstanceUserPermissionsRequest,
     ) -> dms_enterprise_20181101_models.ListInstanceUserPermissionsResponse:
+        """
+        @summary Queries the permissions of a user on a specific instance.
+        
+        @param request: ListInstanceUserPermissionsRequest
+        @return: ListInstanceUserPermissionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_instance_user_permissions_with_options_async(request, runtime)
 
@@ -12902,6 +15776,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListInstancesResponse:
+        """
+        @summary Queries the information about database instances.
+        
+        @param request: ListInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.db_type):
@@ -12946,6 +15827,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListInstancesResponse:
+        """
+        @summary Queries the information about database instances.
+        
+        @param request: ListInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.db_type):
@@ -12989,6 +15877,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ListInstancesRequest,
     ) -> dms_enterprise_20181101_models.ListInstancesResponse:
+        """
+        @summary Queries the information about database instances.
+        
+        @param request: ListInstancesRequest
+        @return: ListInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_instances_with_options(request, runtime)
 
@@ -12996,6 +15890,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ListInstancesRequest,
     ) -> dms_enterprise_20181101_models.ListInstancesResponse:
+        """
+        @summary Queries the information about database instances.
+        
+        @param request: ListInstancesRequest
+        @return: ListInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_instances_with_options_async(request, runtime)
 
@@ -13005,8 +15905,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListLhTaskFlowAndScenarioResponse:
         """
-        Before you call this operation, make sure that you have the access permissions on the workspace. If you do not have the access permissions on the workspace, you can contact a DMS administrator, database administrator (DBA), or workspace administrator to add you as a member of the workspace. The [AddLhMembers](~~424759~~) operation can be called to add a workspace member.
-        *   If you are a DMS administrator or a workspace administrator, you can query the business scenarios and task flows related to a user in a workspace based on the user ID.
+        @summary Queries the task flows corresponding to a specific business scenario in a workspace in Data Management (DMS).
+        
+        @description    Before you call this operation, make sure that you have the access permissions on the workspace. If you do not have the access permissions on the workspace, you can contact a DMS administrator, database administrator (DBA), or workspace administrator to add you as a member of the workspace. The [AddLhMembers](https://help.aliyun.com/document_detail/424759.html) operation can be called to add a workspace member.
+        If you are a DMS administrator or a workspace administrator, you can query the business scenarios and task flows related to a user in a workspace based on the user ID.
         
         @param request: ListLhTaskFlowAndScenarioRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13045,8 +15947,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListLhTaskFlowAndScenarioResponse:
         """
-        Before you call this operation, make sure that you have the access permissions on the workspace. If you do not have the access permissions on the workspace, you can contact a DMS administrator, database administrator (DBA), or workspace administrator to add you as a member of the workspace. The [AddLhMembers](~~424759~~) operation can be called to add a workspace member.
-        *   If you are a DMS administrator or a workspace administrator, you can query the business scenarios and task flows related to a user in a workspace based on the user ID.
+        @summary Queries the task flows corresponding to a specific business scenario in a workspace in Data Management (DMS).
+        
+        @description    Before you call this operation, make sure that you have the access permissions on the workspace. If you do not have the access permissions on the workspace, you can contact a DMS administrator, database administrator (DBA), or workspace administrator to add you as a member of the workspace. The [AddLhMembers](https://help.aliyun.com/document_detail/424759.html) operation can be called to add a workspace member.
+        If you are a DMS administrator or a workspace administrator, you can query the business scenarios and task flows related to a user in a workspace based on the user ID.
         
         @param request: ListLhTaskFlowAndScenarioRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13084,8 +15988,10 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListLhTaskFlowAndScenarioRequest,
     ) -> dms_enterprise_20181101_models.ListLhTaskFlowAndScenarioResponse:
         """
-        Before you call this operation, make sure that you have the access permissions on the workspace. If you do not have the access permissions on the workspace, you can contact a DMS administrator, database administrator (DBA), or workspace administrator to add you as a member of the workspace. The [AddLhMembers](~~424759~~) operation can be called to add a workspace member.
-        *   If you are a DMS administrator or a workspace administrator, you can query the business scenarios and task flows related to a user in a workspace based on the user ID.
+        @summary Queries the task flows corresponding to a specific business scenario in a workspace in Data Management (DMS).
+        
+        @description    Before you call this operation, make sure that you have the access permissions on the workspace. If you do not have the access permissions on the workspace, you can contact a DMS administrator, database administrator (DBA), or workspace administrator to add you as a member of the workspace. The [AddLhMembers](https://help.aliyun.com/document_detail/424759.html) operation can be called to add a workspace member.
+        If you are a DMS administrator or a workspace administrator, you can query the business scenarios and task flows related to a user in a workspace based on the user ID.
         
         @param request: ListLhTaskFlowAndScenarioRequest
         @return: ListLhTaskFlowAndScenarioResponse
@@ -13098,8 +16004,10 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListLhTaskFlowAndScenarioRequest,
     ) -> dms_enterprise_20181101_models.ListLhTaskFlowAndScenarioResponse:
         """
-        Before you call this operation, make sure that you have the access permissions on the workspace. If you do not have the access permissions on the workspace, you can contact a DMS administrator, database administrator (DBA), or workspace administrator to add you as a member of the workspace. The [AddLhMembers](~~424759~~) operation can be called to add a workspace member.
-        *   If you are a DMS administrator or a workspace administrator, you can query the business scenarios and task flows related to a user in a workspace based on the user ID.
+        @summary Queries the task flows corresponding to a specific business scenario in a workspace in Data Management (DMS).
+        
+        @description    Before you call this operation, make sure that you have the access permissions on the workspace. If you do not have the access permissions on the workspace, you can contact a DMS administrator, database administrator (DBA), or workspace administrator to add you as a member of the workspace. The [AddLhMembers](https://help.aliyun.com/document_detail/424759.html) operation can be called to add a workspace member.
+        If you are a DMS administrator or a workspace administrator, you can query the business scenarios and task flows related to a user in a workspace based on the user ID.
         
         @param request: ListLhTaskFlowAndScenarioRequest
         @return: ListLhTaskFlowAndScenarioResponse
@@ -13112,6 +16020,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListLogicDatabasesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListLogicDatabasesResponse:
+        """
+        @summary Queries the details of logical databases.
+        
+        @param request: ListLogicDatabasesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListLogicDatabasesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -13144,6 +16059,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListLogicDatabasesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListLogicDatabasesResponse:
+        """
+        @summary Queries the details of logical databases.
+        
+        @param request: ListLogicDatabasesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListLogicDatabasesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -13175,6 +16097,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ListLogicDatabasesRequest,
     ) -> dms_enterprise_20181101_models.ListLogicDatabasesResponse:
+        """
+        @summary Queries the details of logical databases.
+        
+        @param request: ListLogicDatabasesRequest
+        @return: ListLogicDatabasesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_logic_databases_with_options(request, runtime)
 
@@ -13182,6 +16110,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ListLogicDatabasesRequest,
     ) -> dms_enterprise_20181101_models.ListLogicDatabasesResponse:
+        """
+        @summary Queries the details of logical databases.
+        
+        @param request: ListLogicDatabasesRequest
+        @return: ListLogicDatabasesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_logic_databases_with_options_async(request, runtime)
 
@@ -13190,6 +16124,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListLogicTableRouteConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListLogicTableRouteConfigResponse:
+        """
+        @summary Queries the routing algorithms of a logical table.
+        
+        @param request: ListLogicTableRouteConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListLogicTableRouteConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.table_id):
@@ -13220,6 +16161,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListLogicTableRouteConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListLogicTableRouteConfigResponse:
+        """
+        @summary Queries the routing algorithms of a logical table.
+        
+        @param request: ListLogicTableRouteConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListLogicTableRouteConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.table_id):
@@ -13249,6 +16197,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ListLogicTableRouteConfigRequest,
     ) -> dms_enterprise_20181101_models.ListLogicTableRouteConfigResponse:
+        """
+        @summary Queries the routing algorithms of a logical table.
+        
+        @param request: ListLogicTableRouteConfigRequest
+        @return: ListLogicTableRouteConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_logic_table_route_config_with_options(request, runtime)
 
@@ -13256,6 +16210,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ListLogicTableRouteConfigRequest,
     ) -> dms_enterprise_20181101_models.ListLogicTableRouteConfigResponse:
+        """
+        @summary Queries the routing algorithms of a logical table.
+        
+        @param request: ListLogicTableRouteConfigRequest
+        @return: ListLogicTableRouteConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_logic_table_route_config_with_options_async(request, runtime)
 
@@ -13264,6 +16224,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListLogicTablesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListLogicTablesResponse:
+        """
+        @summary Queries the details of the logical tables in a logical database.
+        
+        @param request: ListLogicTablesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListLogicTablesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.database_id):
@@ -13302,6 +16269,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListLogicTablesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListLogicTablesResponse:
+        """
+        @summary Queries the details of the logical tables in a logical database.
+        
+        @param request: ListLogicTablesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListLogicTablesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.database_id):
@@ -13339,6 +16313,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ListLogicTablesRequest,
     ) -> dms_enterprise_20181101_models.ListLogicTablesResponse:
+        """
+        @summary Queries the details of the logical tables in a logical database.
+        
+        @param request: ListLogicTablesRequest
+        @return: ListLogicTablesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_logic_tables_with_options(request, runtime)
 
@@ -13346,6 +16326,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ListLogicTablesRequest,
     ) -> dms_enterprise_20181101_models.ListLogicTablesResponse:
+        """
+        @summary Queries the details of the logical tables in a logical database.
+        
+        @param request: ListLogicTablesRequest
+        @return: ListLogicTablesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_logic_tables_with_options_async(request, runtime)
 
@@ -13354,6 +16340,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListOrdersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListOrdersResponse:
+        """
+        @summary Queries tickets in Data Management (DMS).
+        
+        @param request: ListOrdersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListOrdersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -13400,6 +16393,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListOrdersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListOrdersResponse:
+        """
+        @summary Queries tickets in Data Management (DMS).
+        
+        @param request: ListOrdersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListOrdersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -13445,6 +16445,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ListOrdersRequest,
     ) -> dms_enterprise_20181101_models.ListOrdersResponse:
+        """
+        @summary Queries tickets in Data Management (DMS).
+        
+        @param request: ListOrdersRequest
+        @return: ListOrdersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_orders_with_options(request, runtime)
 
@@ -13452,6 +16458,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ListOrdersRequest,
     ) -> dms_enterprise_20181101_models.ListOrdersResponse:
+        """
+        @summary Queries tickets in Data Management (DMS).
+        
+        @param request: ListOrdersRequest
+        @return: ListOrdersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_orders_with_options_async(request, runtime)
 
@@ -13460,6 +16472,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListProxiesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListProxiesResponse:
+        """
+        @summary Queries the proxies that are generated by the secure access proxy feature.
+        
+        @param request: ListProxiesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListProxiesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.tid):
@@ -13488,6 +16507,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListProxiesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListProxiesResponse:
+        """
+        @summary Queries the proxies that are generated by the secure access proxy feature.
+        
+        @param request: ListProxiesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListProxiesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.tid):
@@ -13515,6 +16541,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ListProxiesRequest,
     ) -> dms_enterprise_20181101_models.ListProxiesResponse:
+        """
+        @summary Queries the proxies that are generated by the secure access proxy feature.
+        
+        @param request: ListProxiesRequest
+        @return: ListProxiesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_proxies_with_options(request, runtime)
 
@@ -13522,6 +16554,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ListProxiesRequest,
     ) -> dms_enterprise_20181101_models.ListProxiesResponse:
+        """
+        @summary Queries the proxies that are generated by the secure access proxy feature.
+        
+        @param request: ListProxiesRequest
+        @return: ListProxiesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_proxies_with_options_async(request, runtime)
 
@@ -13530,6 +16568,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListProxyAccessesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListProxyAccessesResponse:
+        """
+        @summary Queries information about users that are authorized to access a database instance by using the secure access proxy feature.
+        
+        @param request: ListProxyAccessesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListProxyAccessesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.proxy_id):
@@ -13560,6 +16605,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListProxyAccessesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListProxyAccessesResponse:
+        """
+        @summary Queries information about users that are authorized to access a database instance by using the secure access proxy feature.
+        
+        @param request: ListProxyAccessesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListProxyAccessesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.proxy_id):
@@ -13589,6 +16641,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ListProxyAccessesRequest,
     ) -> dms_enterprise_20181101_models.ListProxyAccessesResponse:
+        """
+        @summary Queries information about users that are authorized to access a database instance by using the secure access proxy feature.
+        
+        @param request: ListProxyAccessesRequest
+        @return: ListProxyAccessesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_proxy_accesses_with_options(request, runtime)
 
@@ -13596,6 +16654,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ListProxyAccessesRequest,
     ) -> dms_enterprise_20181101_models.ListProxyAccessesResponse:
+        """
+        @summary Queries information about users that are authorized to access a database instance by using the secure access proxy feature.
+        
+        @param request: ListProxyAccessesRequest
+        @return: ListProxyAccessesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_proxy_accesses_with_options_async(request, runtime)
 
@@ -13604,6 +16668,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListProxySQLExecAuditLogRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListProxySQLExecAuditLogResponse:
+        """
+        @summary 操作审计-数据安全代理SQL执行列表
+        
+        @param request: ListProxySQLExecAuditLogRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListProxySQLExecAuditLogResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -13648,6 +16719,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListProxySQLExecAuditLogRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListProxySQLExecAuditLogResponse:
+        """
+        @summary 操作审计-数据安全代理SQL执行列表
+        
+        @param request: ListProxySQLExecAuditLogRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListProxySQLExecAuditLogResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -13691,6 +16769,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ListProxySQLExecAuditLogRequest,
     ) -> dms_enterprise_20181101_models.ListProxySQLExecAuditLogResponse:
+        """
+        @summary 操作审计-数据安全代理SQL执行列表
+        
+        @param request: ListProxySQLExecAuditLogRequest
+        @return: ListProxySQLExecAuditLogResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_proxy_sqlexec_audit_log_with_options(request, runtime)
 
@@ -13698,6 +16782,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ListProxySQLExecAuditLogRequest,
     ) -> dms_enterprise_20181101_models.ListProxySQLExecAuditLogResponse:
+        """
+        @summary 操作审计-数据安全代理SQL执行列表
+        
+        @param request: ListProxySQLExecAuditLogRequest
+        @return: ListProxySQLExecAuditLogResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_proxy_sqlexec_audit_log_with_options_async(request, runtime)
 
@@ -13706,6 +16796,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListSLARulesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListSLARulesResponse:
+        """
+        @summary Queries the custom service level agreement (SLA) rules.
+        
+        @param request: ListSLARulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSLARulesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dag_id):
@@ -13736,6 +16833,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListSLARulesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListSLARulesResponse:
+        """
+        @summary Queries the custom service level agreement (SLA) rules.
+        
+        @param request: ListSLARulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSLARulesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dag_id):
@@ -13765,6 +16869,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ListSLARulesRequest,
     ) -> dms_enterprise_20181101_models.ListSLARulesResponse:
+        """
+        @summary Queries the custom service level agreement (SLA) rules.
+        
+        @param request: ListSLARulesRequest
+        @return: ListSLARulesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_slarules_with_options(request, runtime)
 
@@ -13772,6 +16882,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ListSLARulesRequest,
     ) -> dms_enterprise_20181101_models.ListSLARulesResponse:
+        """
+        @summary Queries the custom service level agreement (SLA) rules.
+        
+        @param request: ListSLARulesRequest
+        @return: ListSLARulesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_slarules_with_options_async(request, runtime)
 
@@ -13780,6 +16896,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListSQLExecAuditLogRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListSQLExecAuditLogResponse:
+        """
+        @summary Queries SQL statements that were written on the SQLConsole tab.
+        
+        @param request: ListSQLExecAuditLogRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSQLExecAuditLogResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -13824,6 +16947,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListSQLExecAuditLogRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListSQLExecAuditLogResponse:
+        """
+        @summary Queries SQL statements that were written on the SQLConsole tab.
+        
+        @param request: ListSQLExecAuditLogRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSQLExecAuditLogResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -13867,6 +16997,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ListSQLExecAuditLogRequest,
     ) -> dms_enterprise_20181101_models.ListSQLExecAuditLogResponse:
+        """
+        @summary Queries SQL statements that were written on the SQLConsole tab.
+        
+        @param request: ListSQLExecAuditLogRequest
+        @return: ListSQLExecAuditLogResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_sqlexec_audit_log_with_options(request, runtime)
 
@@ -13874,6 +17010,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ListSQLExecAuditLogRequest,
     ) -> dms_enterprise_20181101_models.ListSQLExecAuditLogResponse:
+        """
+        @summary Queries SQL statements that were written on the SQLConsole tab.
+        
+        @param request: ListSQLExecAuditLogRequest
+        @return: ListSQLExecAuditLogResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_sqlexec_audit_log_with_options_async(request, runtime)
 
@@ -13883,7 +17025,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListSQLReviewOriginSQLResponse:
         """
-        For more information about the SQL review feature, see [SQL review](~~60374~~).
+        @summary Queries the details of the SQL statements that are involved in an SQL review ticket.
+        
+        @description For more information about the SQL review feature, see [SQL review](https://help.aliyun.com/document_detail/60374.html).
         
         @param tmp_req: ListSQLReviewOriginSQLRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13926,7 +17070,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListSQLReviewOriginSQLResponse:
         """
-        For more information about the SQL review feature, see [SQL review](~~60374~~).
+        @summary Queries the details of the SQL statements that are involved in an SQL review ticket.
+        
+        @description For more information about the SQL review feature, see [SQL review](https://help.aliyun.com/document_detail/60374.html).
         
         @param tmp_req: ListSQLReviewOriginSQLRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13968,7 +17114,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListSQLReviewOriginSQLRequest,
     ) -> dms_enterprise_20181101_models.ListSQLReviewOriginSQLResponse:
         """
-        For more information about the SQL review feature, see [SQL review](~~60374~~).
+        @summary Queries the details of the SQL statements that are involved in an SQL review ticket.
+        
+        @description For more information about the SQL review feature, see [SQL review](https://help.aliyun.com/document_detail/60374.html).
         
         @param request: ListSQLReviewOriginSQLRequest
         @return: ListSQLReviewOriginSQLResponse
@@ -13981,7 +17129,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListSQLReviewOriginSQLRequest,
     ) -> dms_enterprise_20181101_models.ListSQLReviewOriginSQLResponse:
         """
-        For more information about the SQL review feature, see [SQL review](~~60374~~).
+        @summary Queries the details of the SQL statements that are involved in an SQL review ticket.
+        
+        @description For more information about the SQL review feature, see [SQL review](https://help.aliyun.com/document_detail/60374.html).
         
         @param request: ListSQLReviewOriginSQLRequest
         @return: ListSQLReviewOriginSQLResponse
@@ -13994,6 +17144,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListScenariosRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListScenariosResponse:
+        """
+        @summary Queries business scenarios.
+        
+        @param request: ListScenariosRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListScenariosResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.tid):
@@ -14022,6 +17179,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListScenariosRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListScenariosResponse:
+        """
+        @summary Queries business scenarios.
+        
+        @param request: ListScenariosRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListScenariosResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.tid):
@@ -14049,6 +17213,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ListScenariosRequest,
     ) -> dms_enterprise_20181101_models.ListScenariosResponse:
+        """
+        @summary Queries business scenarios.
+        
+        @param request: ListScenariosRequest
+        @return: ListScenariosResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_scenarios_with_options(request, runtime)
 
@@ -14056,6 +17226,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ListScenariosRequest,
     ) -> dms_enterprise_20181101_models.ListScenariosResponse:
+        """
+        @summary Queries business scenarios.
+        
+        @param request: ListScenariosRequest
+        @return: ListScenariosResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_scenarios_with_options_async(request, runtime)
 
@@ -14064,6 +17240,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListSensitiveColumnInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListSensitiveColumnInfoResponse:
+        """
+        @summary 获取敏感字段信息
+        
+        @param request: ListSensitiveColumnInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSensitiveColumnInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.column_name):
@@ -14104,6 +17287,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListSensitiveColumnInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListSensitiveColumnInfoResponse:
+        """
+        @summary 获取敏感字段信息
+        
+        @param request: ListSensitiveColumnInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSensitiveColumnInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.column_name):
@@ -14143,6 +17333,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ListSensitiveColumnInfoRequest,
     ) -> dms_enterprise_20181101_models.ListSensitiveColumnInfoResponse:
+        """
+        @summary 获取敏感字段信息
+        
+        @param request: ListSensitiveColumnInfoRequest
+        @return: ListSensitiveColumnInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_sensitive_column_info_with_options(request, runtime)
 
@@ -14150,6 +17346,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ListSensitiveColumnInfoRequest,
     ) -> dms_enterprise_20181101_models.ListSensitiveColumnInfoResponse:
+        """
+        @summary 获取敏感字段信息
+        
+        @param request: ListSensitiveColumnInfoRequest
+        @return: ListSensitiveColumnInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_sensitive_column_info_with_options_async(request, runtime)
 
@@ -14158,6 +17360,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListSensitiveColumnsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListSensitiveColumnsResponse:
+        """
+        @summary Queries sensitive fields in a table of a database.
+        
+        @param request: ListSensitiveColumnsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSensitiveColumnsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.column_name):
@@ -14202,6 +17411,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListSensitiveColumnsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListSensitiveColumnsResponse:
+        """
+        @summary Queries sensitive fields in a table of a database.
+        
+        @param request: ListSensitiveColumnsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSensitiveColumnsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.column_name):
@@ -14245,6 +17461,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ListSensitiveColumnsRequest,
     ) -> dms_enterprise_20181101_models.ListSensitiveColumnsResponse:
+        """
+        @summary Queries sensitive fields in a table of a database.
+        
+        @param request: ListSensitiveColumnsRequest
+        @return: ListSensitiveColumnsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_sensitive_columns_with_options(request, runtime)
 
@@ -14252,6 +17474,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ListSensitiveColumnsRequest,
     ) -> dms_enterprise_20181101_models.ListSensitiveColumnsResponse:
+        """
+        @summary Queries sensitive fields in a table of a database.
+        
+        @param request: ListSensitiveColumnsRequest
+        @return: ListSensitiveColumnsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_sensitive_columns_with_options_async(request, runtime)
 
@@ -14260,6 +17488,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListSensitiveColumnsDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListSensitiveColumnsDetailResponse:
+        """
+        @summary Queries the details of a sensitive field.
+        
+        @param request: ListSensitiveColumnsDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSensitiveColumnsDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.column_name):
@@ -14298,6 +17533,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListSensitiveColumnsDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListSensitiveColumnsDetailResponse:
+        """
+        @summary Queries the details of a sensitive field.
+        
+        @param request: ListSensitiveColumnsDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSensitiveColumnsDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.column_name):
@@ -14335,6 +17577,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ListSensitiveColumnsDetailRequest,
     ) -> dms_enterprise_20181101_models.ListSensitiveColumnsDetailResponse:
+        """
+        @summary Queries the details of a sensitive field.
+        
+        @param request: ListSensitiveColumnsDetailRequest
+        @return: ListSensitiveColumnsDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_sensitive_columns_detail_with_options(request, runtime)
 
@@ -14342,6 +17590,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ListSensitiveColumnsDetailRequest,
     ) -> dms_enterprise_20181101_models.ListSensitiveColumnsDetailResponse:
+        """
+        @summary Queries the details of a sensitive field.
+        
+        @param request: ListSensitiveColumnsDetailRequest
+        @return: ListSensitiveColumnsDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_sensitive_columns_detail_with_options_async(request, runtime)
 
@@ -14350,6 +17604,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListSensitiveDataAuditLogRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListSensitiveDataAuditLogResponse:
+        """
+        @summary Queries the audit logs for sensitive information.
+        
+        @param request: ListSensitiveDataAuditLogRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSensitiveDataAuditLogResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.column_name):
@@ -14396,6 +17657,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListSensitiveDataAuditLogRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListSensitiveDataAuditLogResponse:
+        """
+        @summary Queries the audit logs for sensitive information.
+        
+        @param request: ListSensitiveDataAuditLogRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSensitiveDataAuditLogResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.column_name):
@@ -14441,6 +17709,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ListSensitiveDataAuditLogRequest,
     ) -> dms_enterprise_20181101_models.ListSensitiveDataAuditLogResponse:
+        """
+        @summary Queries the audit logs for sensitive information.
+        
+        @param request: ListSensitiveDataAuditLogRequest
+        @return: ListSensitiveDataAuditLogResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_sensitive_data_audit_log_with_options(request, runtime)
 
@@ -14448,6 +17722,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ListSensitiveDataAuditLogRequest,
     ) -> dms_enterprise_20181101_models.ListSensitiveDataAuditLogResponse:
+        """
+        @summary Queries the audit logs for sensitive information.
+        
+        @param request: ListSensitiveDataAuditLogRequest
+        @return: ListSensitiveDataAuditLogResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_sensitive_data_audit_log_with_options_async(request, runtime)
 
@@ -14456,6 +17736,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListSensitivityLevelRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListSensitivityLevelResponse:
+        """
+        @summary Queries the sensitivity levels of a classification template.
+        
+        @param request: ListSensitivityLevelRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSensitivityLevelResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -14482,6 +17769,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListSensitivityLevelRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListSensitivityLevelResponse:
+        """
+        @summary Queries the sensitivity levels of a classification template.
+        
+        @param request: ListSensitivityLevelRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSensitivityLevelResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -14507,6 +17801,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ListSensitivityLevelRequest,
     ) -> dms_enterprise_20181101_models.ListSensitivityLevelResponse:
+        """
+        @summary Queries the sensitivity levels of a classification template.
+        
+        @param request: ListSensitivityLevelRequest
+        @return: ListSensitivityLevelResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_sensitivity_level_with_options(request, runtime)
 
@@ -14514,6 +17814,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ListSensitivityLevelRequest,
     ) -> dms_enterprise_20181101_models.ListSensitivityLevelResponse:
+        """
+        @summary Queries the sensitivity levels of a classification template.
+        
+        @param request: ListSensitivityLevelRequest
+        @return: ListSensitivityLevelResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_sensitivity_level_with_options_async(request, runtime)
 
@@ -14522,6 +17828,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListStandardGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListStandardGroupsResponse:
+        """
+        @summary Queries security rule sets.
+        
+        @param request: ListStandardGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListStandardGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.tid):
@@ -14550,6 +17863,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListStandardGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListStandardGroupsResponse:
+        """
+        @summary Queries security rule sets.
+        
+        @param request: ListStandardGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListStandardGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.tid):
@@ -14577,6 +17897,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ListStandardGroupsRequest,
     ) -> dms_enterprise_20181101_models.ListStandardGroupsResponse:
+        """
+        @summary Queries security rule sets.
+        
+        @param request: ListStandardGroupsRequest
+        @return: ListStandardGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_standard_groups_with_options(request, runtime)
 
@@ -14584,6 +17910,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ListStandardGroupsRequest,
     ) -> dms_enterprise_20181101_models.ListStandardGroupsResponse:
+        """
+        @summary Queries security rule sets.
+        
+        @param request: ListStandardGroupsRequest
+        @return: ListStandardGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_standard_groups_with_options_async(request, runtime)
 
@@ -14593,7 +17925,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListTablesResponse:
         """
-        You can call this operation only for database instances whose control mode is Security Collaboration.
+        @summary Queries the tables in a database.
+        
+        @description You can call this operation only for database instances whose control mode is Security Collaboration.
         
         @param request: ListTablesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14638,7 +17972,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListTablesResponse:
         """
-        You can call this operation only for database instances whose control mode is Security Collaboration.
+        @summary Queries the tables in a database.
+        
+        @description You can call this operation only for database instances whose control mode is Security Collaboration.
         
         @param request: ListTablesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14682,7 +18018,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListTablesRequest,
     ) -> dms_enterprise_20181101_models.ListTablesResponse:
         """
-        You can call this operation only for database instances whose control mode is Security Collaboration.
+        @summary Queries the tables in a database.
+        
+        @description You can call this operation only for database instances whose control mode is Security Collaboration.
         
         @param request: ListTablesRequest
         @return: ListTablesResponse
@@ -14695,7 +18033,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListTablesRequest,
     ) -> dms_enterprise_20181101_models.ListTablesResponse:
         """
-        You can call this operation only for database instances whose control mode is Security Collaboration.
+        @summary Queries the tables in a database.
+        
+        @description You can call this operation only for database instances whose control mode is Security Collaboration.
         
         @param request: ListTablesRequest
         @return: ListTablesResponse
@@ -14708,6 +18048,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListTaskFlowRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListTaskFlowResponse:
+        """
+        @summary 任务编排获取任务流列表
+        
+        @param request: ListTaskFlowRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTaskFlowResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.tid):
@@ -14736,6 +18083,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListTaskFlowRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListTaskFlowResponse:
+        """
+        @summary 任务编排获取任务流列表
+        
+        @param request: ListTaskFlowRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTaskFlowResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.tid):
@@ -14763,6 +18117,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ListTaskFlowRequest,
     ) -> dms_enterprise_20181101_models.ListTaskFlowResponse:
+        """
+        @summary 任务编排获取任务流列表
+        
+        @param request: ListTaskFlowRequest
+        @return: ListTaskFlowResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_task_flow_with_options(request, runtime)
 
@@ -14770,6 +18130,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ListTaskFlowRequest,
     ) -> dms_enterprise_20181101_models.ListTaskFlowResponse:
+        """
+        @summary 任务编排获取任务流列表
+        
+        @param request: ListTaskFlowRequest
+        @return: ListTaskFlowResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_task_flow_with_options_async(request, runtime)
 
@@ -14778,6 +18144,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListTaskFlowConstantsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListTaskFlowConstantsResponse:
+        """
+        @summary Queries the constants for a task flow.
+        
+        @param request: ListTaskFlowConstantsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTaskFlowConstantsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dag_id):
@@ -14808,6 +18181,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListTaskFlowConstantsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListTaskFlowConstantsResponse:
+        """
+        @summary Queries the constants for a task flow.
+        
+        @param request: ListTaskFlowConstantsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTaskFlowConstantsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dag_id):
@@ -14837,6 +18217,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ListTaskFlowConstantsRequest,
     ) -> dms_enterprise_20181101_models.ListTaskFlowConstantsResponse:
+        """
+        @summary Queries the constants for a task flow.
+        
+        @param request: ListTaskFlowConstantsRequest
+        @return: ListTaskFlowConstantsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_task_flow_constants_with_options(request, runtime)
 
@@ -14844,6 +18230,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ListTaskFlowConstantsRequest,
     ) -> dms_enterprise_20181101_models.ListTaskFlowConstantsResponse:
+        """
+        @summary Queries the constants for a task flow.
+        
+        @param request: ListTaskFlowConstantsRequest
+        @return: ListTaskFlowConstantsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_task_flow_constants_with_options_async(request, runtime)
 
@@ -14852,6 +18244,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListTaskFlowCooperatorsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListTaskFlowCooperatorsResponse:
+        """
+        @summary Queries the users that are involved in a specified task flow.
+        
+        @param request: ListTaskFlowCooperatorsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTaskFlowCooperatorsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dag_id):
@@ -14882,6 +18281,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListTaskFlowCooperatorsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListTaskFlowCooperatorsResponse:
+        """
+        @summary Queries the users that are involved in a specified task flow.
+        
+        @param request: ListTaskFlowCooperatorsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTaskFlowCooperatorsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dag_id):
@@ -14911,6 +18317,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ListTaskFlowCooperatorsRequest,
     ) -> dms_enterprise_20181101_models.ListTaskFlowCooperatorsResponse:
+        """
+        @summary Queries the users that are involved in a specified task flow.
+        
+        @param request: ListTaskFlowCooperatorsRequest
+        @return: ListTaskFlowCooperatorsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_task_flow_cooperators_with_options(request, runtime)
 
@@ -14918,6 +18330,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ListTaskFlowCooperatorsRequest,
     ) -> dms_enterprise_20181101_models.ListTaskFlowCooperatorsResponse:
+        """
+        @summary Queries the users that are involved in a specified task flow.
+        
+        @param request: ListTaskFlowCooperatorsRequest
+        @return: ListTaskFlowCooperatorsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_task_flow_cooperators_with_options_async(request, runtime)
 
@@ -14927,7 +18345,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListTaskFlowEdgesByConditionResponse:
         """
-        This operation is used for multi-condition query. You can call this operation to query the edges of a specified task flow that meet all specified conditions.
+        @summary Queries the edges of the directed acyclic graph (DAG) for a specified task flow based on multiple conditions.
+        
+        @description This operation is used for multi-condition query. You can call this operation to query the edges of a specified task flow that meet all specified conditions.
         
         @param request: ListTaskFlowEdgesByConditionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14970,7 +18390,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListTaskFlowEdgesByConditionResponse:
         """
-        This operation is used for multi-condition query. You can call this operation to query the edges of a specified task flow that meet all specified conditions.
+        @summary Queries the edges of the directed acyclic graph (DAG) for a specified task flow based on multiple conditions.
+        
+        @description This operation is used for multi-condition query. You can call this operation to query the edges of a specified task flow that meet all specified conditions.
         
         @param request: ListTaskFlowEdgesByConditionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15012,7 +18434,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListTaskFlowEdgesByConditionRequest,
     ) -> dms_enterprise_20181101_models.ListTaskFlowEdgesByConditionResponse:
         """
-        This operation is used for multi-condition query. You can call this operation to query the edges of a specified task flow that meet all specified conditions.
+        @summary Queries the edges of the directed acyclic graph (DAG) for a specified task flow based on multiple conditions.
+        
+        @description This operation is used for multi-condition query. You can call this operation to query the edges of a specified task flow that meet all specified conditions.
         
         @param request: ListTaskFlowEdgesByConditionRequest
         @return: ListTaskFlowEdgesByConditionResponse
@@ -15025,7 +18449,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListTaskFlowEdgesByConditionRequest,
     ) -> dms_enterprise_20181101_models.ListTaskFlowEdgesByConditionResponse:
         """
-        This operation is used for multi-condition query. You can call this operation to query the edges of a specified task flow that meet all specified conditions.
+        @summary Queries the edges of the directed acyclic graph (DAG) for a specified task flow based on multiple conditions.
+        
+        @description This operation is used for multi-condition query. You can call this operation to query the edges of a specified task flow that meet all specified conditions.
         
         @param request: ListTaskFlowEdgesByConditionRequest
         @return: ListTaskFlowEdgesByConditionResponse
@@ -15038,6 +18464,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListTaskFlowInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListTaskFlowInstanceResponse:
+        """
+        @summary Queries the execution records of a task flow.
+        
+        @param request: ListTaskFlowInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTaskFlowInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dag_id):
@@ -15082,6 +18515,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListTaskFlowInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListTaskFlowInstanceResponse:
+        """
+        @summary Queries the execution records of a task flow.
+        
+        @param request: ListTaskFlowInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTaskFlowInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dag_id):
@@ -15125,6 +18565,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ListTaskFlowInstanceRequest,
     ) -> dms_enterprise_20181101_models.ListTaskFlowInstanceResponse:
+        """
+        @summary Queries the execution records of a task flow.
+        
+        @param request: ListTaskFlowInstanceRequest
+        @return: ListTaskFlowInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_task_flow_instance_with_options(request, runtime)
 
@@ -15132,6 +18578,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ListTaskFlowInstanceRequest,
     ) -> dms_enterprise_20181101_models.ListTaskFlowInstanceResponse:
+        """
+        @summary Queries the execution records of a task flow.
+        
+        @param request: ListTaskFlowInstanceRequest
+        @return: ListTaskFlowInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_task_flow_instance_with_options_async(request, runtime)
 
@@ -15140,6 +18592,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListTaskFlowTimeVariablesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListTaskFlowTimeVariablesResponse:
+        """
+        @summary Queries the time variables for a task flow.
+        
+        @param request: ListTaskFlowTimeVariablesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTaskFlowTimeVariablesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dag_id):
@@ -15170,6 +18629,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListTaskFlowTimeVariablesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListTaskFlowTimeVariablesResponse:
+        """
+        @summary Queries the time variables for a task flow.
+        
+        @param request: ListTaskFlowTimeVariablesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTaskFlowTimeVariablesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dag_id):
@@ -15199,6 +18665,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ListTaskFlowTimeVariablesRequest,
     ) -> dms_enterprise_20181101_models.ListTaskFlowTimeVariablesResponse:
+        """
+        @summary Queries the time variables for a task flow.
+        
+        @param request: ListTaskFlowTimeVariablesRequest
+        @return: ListTaskFlowTimeVariablesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_task_flow_time_variables_with_options(request, runtime)
 
@@ -15206,6 +18678,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ListTaskFlowTimeVariablesRequest,
     ) -> dms_enterprise_20181101_models.ListTaskFlowTimeVariablesResponse:
+        """
+        @summary Queries the time variables for a task flow.
+        
+        @param request: ListTaskFlowTimeVariablesRequest
+        @return: ListTaskFlowTimeVariablesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_task_flow_time_variables_with_options_async(request, runtime)
 
@@ -15214,6 +18692,13 @@ class Client(OpenApiClient):
         tmp_req: dms_enterprise_20181101_models.ListTaskFlowsByPageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListTaskFlowsByPageResponse:
+        """
+        @summary Queries task flows by page.
+        
+        @param tmp_req: ListTaskFlowsByPageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTaskFlowsByPageResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dms_enterprise_20181101_models.ListTaskFlowsByPageShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -15256,6 +18741,13 @@ class Client(OpenApiClient):
         tmp_req: dms_enterprise_20181101_models.ListTaskFlowsByPageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListTaskFlowsByPageResponse:
+        """
+        @summary Queries task flows by page.
+        
+        @param tmp_req: ListTaskFlowsByPageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTaskFlowsByPageResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dms_enterprise_20181101_models.ListTaskFlowsByPageShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -15297,6 +18789,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ListTaskFlowsByPageRequest,
     ) -> dms_enterprise_20181101_models.ListTaskFlowsByPageResponse:
+        """
+        @summary Queries task flows by page.
+        
+        @param request: ListTaskFlowsByPageRequest
+        @return: ListTaskFlowsByPageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_task_flows_by_page_with_options(request, runtime)
 
@@ -15304,6 +18802,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ListTaskFlowsByPageRequest,
     ) -> dms_enterprise_20181101_models.ListTaskFlowsByPageResponse:
+        """
+        @summary Queries task flows by page.
+        
+        @param request: ListTaskFlowsByPageRequest
+        @return: ListTaskFlowsByPageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_task_flows_by_page_with_options_async(request, runtime)
 
@@ -15312,6 +18816,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListTasksInTaskFlowRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListTasksInTaskFlowResponse:
+        """
+        @summary Queries the tasks in a specified task flow.
+        
+        @param request: ListTasksInTaskFlowRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTasksInTaskFlowResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dag_id):
@@ -15342,6 +18853,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListTasksInTaskFlowRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListTasksInTaskFlowResponse:
+        """
+        @summary Queries the tasks in a specified task flow.
+        
+        @param request: ListTasksInTaskFlowRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTasksInTaskFlowResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dag_id):
@@ -15371,6 +18889,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ListTasksInTaskFlowRequest,
     ) -> dms_enterprise_20181101_models.ListTasksInTaskFlowResponse:
+        """
+        @summary Queries the tasks in a specified task flow.
+        
+        @param request: ListTasksInTaskFlowRequest
+        @return: ListTasksInTaskFlowResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_tasks_in_task_flow_with_options(request, runtime)
 
@@ -15378,6 +18902,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ListTasksInTaskFlowRequest,
     ) -> dms_enterprise_20181101_models.ListTasksInTaskFlowResponse:
+        """
+        @summary Queries the tasks in a specified task flow.
+        
+        @param request: ListTasksInTaskFlowRequest
+        @return: ListTasksInTaskFlowResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_tasks_in_task_flow_with_options_async(request, runtime)
 
@@ -15386,6 +18916,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListUserPermissionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListUserPermissionsResponse:
+        """
+        @summary Queries the permissions of a specific user on a database or a table.
+        
+        @param request: ListUserPermissionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUserPermissionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.database_name):
@@ -15432,6 +18969,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListUserPermissionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListUserPermissionsResponse:
+        """
+        @summary Queries the permissions of a specific user on a database or a table.
+        
+        @param request: ListUserPermissionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUserPermissionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.database_name):
@@ -15477,6 +19021,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ListUserPermissionsRequest,
     ) -> dms_enterprise_20181101_models.ListUserPermissionsResponse:
+        """
+        @summary Queries the permissions of a specific user on a database or a table.
+        
+        @param request: ListUserPermissionsRequest
+        @return: ListUserPermissionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_user_permissions_with_options(request, runtime)
 
@@ -15484,6 +19034,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ListUserPermissionsRequest,
     ) -> dms_enterprise_20181101_models.ListUserPermissionsResponse:
+        """
+        @summary Queries the permissions of a specific user on a database or a table.
+        
+        @param request: ListUserPermissionsRequest
+        @return: ListUserPermissionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_user_permissions_with_options_async(request, runtime)
 
@@ -15492,6 +19048,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListUserTenantsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListUserTenantsResponse:
+        """
+        @summary 获取用户租户列表
+        
+        @param request: ListUserTenantsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUserTenantsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.tid):
@@ -15520,6 +19083,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListUserTenantsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListUserTenantsResponse:
+        """
+        @summary 获取用户租户列表
+        
+        @param request: ListUserTenantsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUserTenantsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.tid):
@@ -15547,6 +19117,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ListUserTenantsRequest,
     ) -> dms_enterprise_20181101_models.ListUserTenantsResponse:
+        """
+        @summary 获取用户租户列表
+        
+        @param request: ListUserTenantsRequest
+        @return: ListUserTenantsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_user_tenants_with_options(request, runtime)
 
@@ -15554,6 +19130,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ListUserTenantsRequest,
     ) -> dms_enterprise_20181101_models.ListUserTenantsResponse:
+        """
+        @summary 获取用户租户列表
+        
+        @param request: ListUserTenantsRequest
+        @return: ListUserTenantsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_user_tenants_with_options_async(request, runtime)
 
@@ -15562,6 +19144,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListUsersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListUsersResponse:
+        """
+        @summary Queries the details of users.
+        
+        @param request: ListUsersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUsersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -15600,6 +19189,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListUsersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListUsersResponse:
+        """
+        @summary Queries the details of users.
+        
+        @param request: ListUsersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUsersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -15637,6 +19233,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ListUsersRequest,
     ) -> dms_enterprise_20181101_models.ListUsersResponse:
+        """
+        @summary Queries the details of users.
+        
+        @param request: ListUsersRequest
+        @return: ListUsersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_users_with_options(request, runtime)
 
@@ -15644,6 +19246,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ListUsersRequest,
     ) -> dms_enterprise_20181101_models.ListUsersResponse:
+        """
+        @summary Queries the details of users.
+        
+        @param request: ListUsersRequest
+        @return: ListUsersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_users_with_options_async(request, runtime)
 
@@ -15652,6 +19260,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListWorkFlowNodesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListWorkFlowNodesResponse:
+        """
+        @summary Queries approval nodes.
+        
+        @param request: ListWorkFlowNodesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListWorkFlowNodesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.search_name):
@@ -15682,6 +19297,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListWorkFlowNodesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListWorkFlowNodesResponse:
+        """
+        @summary Queries approval nodes.
+        
+        @param request: ListWorkFlowNodesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListWorkFlowNodesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.search_name):
@@ -15711,6 +19333,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ListWorkFlowNodesRequest,
     ) -> dms_enterprise_20181101_models.ListWorkFlowNodesResponse:
+        """
+        @summary Queries approval nodes.
+        
+        @param request: ListWorkFlowNodesRequest
+        @return: ListWorkFlowNodesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_work_flow_nodes_with_options(request, runtime)
 
@@ -15718,6 +19346,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ListWorkFlowNodesRequest,
     ) -> dms_enterprise_20181101_models.ListWorkFlowNodesResponse:
+        """
+        @summary Queries approval nodes.
+        
+        @param request: ListWorkFlowNodesRequest
+        @return: ListWorkFlowNodesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_work_flow_nodes_with_options_async(request, runtime)
 
@@ -15726,6 +19360,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListWorkFlowTemplatesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListWorkFlowTemplatesResponse:
+        """
+        @summary Queries approval templates.
+        
+        @param request: ListWorkFlowTemplatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListWorkFlowTemplatesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.search_name):
@@ -15756,6 +19397,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ListWorkFlowTemplatesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ListWorkFlowTemplatesResponse:
+        """
+        @summary Queries approval templates.
+        
+        @param request: ListWorkFlowTemplatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListWorkFlowTemplatesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.search_name):
@@ -15785,6 +19433,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ListWorkFlowTemplatesRequest,
     ) -> dms_enterprise_20181101_models.ListWorkFlowTemplatesResponse:
+        """
+        @summary Queries approval templates.
+        
+        @param request: ListWorkFlowTemplatesRequest
+        @return: ListWorkFlowTemplatesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_work_flow_templates_with_options(request, runtime)
 
@@ -15792,6 +19446,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ListWorkFlowTemplatesRequest,
     ) -> dms_enterprise_20181101_models.ListWorkFlowTemplatesResponse:
+        """
+        @summary Queries approval templates.
+        
+        @param request: ListWorkFlowTemplatesRequest
+        @return: ListWorkFlowTemplatesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_work_flow_templates_with_options_async(request, runtime)
 
@@ -15800,6 +19460,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.MakeTaskFlowInstanceSuccessRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.MakeTaskFlowInstanceSuccessResponse:
+        """
+        @summary Sets the status of a task flow to "Successful".
+        
+        @param request: MakeTaskFlowInstanceSuccessRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MakeTaskFlowInstanceSuccessResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dag_id):
@@ -15832,6 +19499,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.MakeTaskFlowInstanceSuccessRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.MakeTaskFlowInstanceSuccessResponse:
+        """
+        @summary Sets the status of a task flow to "Successful".
+        
+        @param request: MakeTaskFlowInstanceSuccessRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MakeTaskFlowInstanceSuccessResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dag_id):
@@ -15863,6 +19537,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.MakeTaskFlowInstanceSuccessRequest,
     ) -> dms_enterprise_20181101_models.MakeTaskFlowInstanceSuccessResponse:
+        """
+        @summary Sets the status of a task flow to "Successful".
+        
+        @param request: MakeTaskFlowInstanceSuccessRequest
+        @return: MakeTaskFlowInstanceSuccessResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.make_task_flow_instance_success_with_options(request, runtime)
 
@@ -15870,6 +19550,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.MakeTaskFlowInstanceSuccessRequest,
     ) -> dms_enterprise_20181101_models.MakeTaskFlowInstanceSuccessResponse:
+        """
+        @summary Sets the status of a task flow to "Successful".
+        
+        @param request: MakeTaskFlowInstanceSuccessRequest
+        @return: MakeTaskFlowInstanceSuccessResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.make_task_flow_instance_success_with_options_async(request, runtime)
 
@@ -15878,6 +19564,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ModifyDataCorrectExecSQLRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ModifyDataCorrectExecSQLResponse:
+        """
+        @summary Modifies the SQL script that is submitted by using a data change ticket.
+        
+        @param request: ModifyDataCorrectExecSQLRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDataCorrectExecSQLResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.exec_sql):
@@ -15910,6 +19603,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ModifyDataCorrectExecSQLRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ModifyDataCorrectExecSQLResponse:
+        """
+        @summary Modifies the SQL script that is submitted by using a data change ticket.
+        
+        @param request: ModifyDataCorrectExecSQLRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDataCorrectExecSQLResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.exec_sql):
@@ -15941,6 +19641,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ModifyDataCorrectExecSQLRequest,
     ) -> dms_enterprise_20181101_models.ModifyDataCorrectExecSQLResponse:
+        """
+        @summary Modifies the SQL script that is submitted by using a data change ticket.
+        
+        @param request: ModifyDataCorrectExecSQLRequest
+        @return: ModifyDataCorrectExecSQLResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_data_correct_exec_sqlwith_options(request, runtime)
 
@@ -15948,6 +19654,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ModifyDataCorrectExecSQLRequest,
     ) -> dms_enterprise_20181101_models.ModifyDataCorrectExecSQLResponse:
+        """
+        @summary Modifies the SQL script that is submitted by using a data change ticket.
+        
+        @param request: ModifyDataCorrectExecSQLRequest
+        @return: ModifyDataCorrectExecSQLResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_data_correct_exec_sqlwith_options_async(request, runtime)
 
@@ -15956,6 +19668,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ModifyDesensitizationStrategyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ModifyDesensitizationStrategyResponse:
+        """
+        @summary Modifies the masking rule bound to a specified field.
+        
+        @param request: ModifyDesensitizationStrategyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDesensitizationStrategyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.column_name):
@@ -16000,6 +19719,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ModifyDesensitizationStrategyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ModifyDesensitizationStrategyResponse:
+        """
+        @summary Modifies the masking rule bound to a specified field.
+        
+        @param request: ModifyDesensitizationStrategyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDesensitizationStrategyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.column_name):
@@ -16043,6 +19769,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ModifyDesensitizationStrategyRequest,
     ) -> dms_enterprise_20181101_models.ModifyDesensitizationStrategyResponse:
+        """
+        @summary Modifies the masking rule bound to a specified field.
+        
+        @param request: ModifyDesensitizationStrategyRequest
+        @return: ModifyDesensitizationStrategyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_desensitization_strategy_with_options(request, runtime)
 
@@ -16050,6 +19782,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ModifyDesensitizationStrategyRequest,
     ) -> dms_enterprise_20181101_models.ModifyDesensitizationStrategyResponse:
+        """
+        @summary Modifies the masking rule bound to a specified field.
+        
+        @param request: ModifyDesensitizationStrategyRequest
+        @return: ModifyDesensitizationStrategyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_desensitization_strategy_with_options_async(request, runtime)
 
@@ -16058,6 +19796,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ModifyInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ModifyInstanceResponse:
+        """
+        @summary 修改实例信息，同时检查该实例连通性
+        
+        @param request: ModifyInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.data_link_name):
@@ -16144,6 +19889,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ModifyInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ModifyInstanceResponse:
+        """
+        @summary 修改实例信息，同时检查该实例连通性
+        
+        @param request: ModifyInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.data_link_name):
@@ -16229,6 +19981,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ModifyInstanceRequest,
     ) -> dms_enterprise_20181101_models.ModifyInstanceResponse:
+        """
+        @summary 修改实例信息，同时检查该实例连通性
+        
+        @param request: ModifyInstanceRequest
+        @return: ModifyInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_instance_with_options(request, runtime)
 
@@ -16236,6 +19994,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ModifyInstanceRequest,
     ) -> dms_enterprise_20181101_models.ModifyInstanceResponse:
+        """
+        @summary 修改实例信息，同时检查该实例连通性
+        
+        @param request: ModifyInstanceRequest
+        @return: ModifyInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_instance_with_options_async(request, runtime)
 
@@ -16244,6 +20008,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.MoveTaskFlowToScenarioRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.MoveTaskFlowToScenarioResponse:
+        """
+        @summary Migrates a task flow to a specified business scenario.
+        
+        @param request: MoveTaskFlowToScenarioRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MoveTaskFlowToScenarioResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dag_id):
@@ -16276,6 +20047,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.MoveTaskFlowToScenarioRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.MoveTaskFlowToScenarioResponse:
+        """
+        @summary Migrates a task flow to a specified business scenario.
+        
+        @param request: MoveTaskFlowToScenarioRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MoveTaskFlowToScenarioResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dag_id):
@@ -16307,6 +20085,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.MoveTaskFlowToScenarioRequest,
     ) -> dms_enterprise_20181101_models.MoveTaskFlowToScenarioResponse:
+        """
+        @summary Migrates a task flow to a specified business scenario.
+        
+        @param request: MoveTaskFlowToScenarioRequest
+        @return: MoveTaskFlowToScenarioResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.move_task_flow_to_scenario_with_options(request, runtime)
 
@@ -16314,6 +20098,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.MoveTaskFlowToScenarioRequest,
     ) -> dms_enterprise_20181101_models.MoveTaskFlowToScenarioResponse:
+        """
+        @summary Migrates a task flow to a specified business scenario.
+        
+        @param request: MoveTaskFlowToScenarioRequest
+        @return: MoveTaskFlowToScenarioResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.move_task_flow_to_scenario_with_options_async(request, runtime)
 
@@ -16322,6 +20112,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.OfflineTaskFlowRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.OfflineTaskFlowResponse:
+        """
+        @summary Unpublishes a published task flow.
+        
+        @param request: OfflineTaskFlowRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OfflineTaskFlowResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dag_id):
@@ -16352,6 +20149,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.OfflineTaskFlowRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.OfflineTaskFlowResponse:
+        """
+        @summary Unpublishes a published task flow.
+        
+        @param request: OfflineTaskFlowRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OfflineTaskFlowResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dag_id):
@@ -16381,6 +20185,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.OfflineTaskFlowRequest,
     ) -> dms_enterprise_20181101_models.OfflineTaskFlowResponse:
+        """
+        @summary Unpublishes a published task flow.
+        
+        @param request: OfflineTaskFlowRequest
+        @return: OfflineTaskFlowResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.offline_task_flow_with_options(request, runtime)
 
@@ -16388,6 +20198,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.OfflineTaskFlowRequest,
     ) -> dms_enterprise_20181101_models.OfflineTaskFlowResponse:
+        """
+        @summary Unpublishes a published task flow.
+        
+        @param request: OfflineTaskFlowRequest
+        @return: OfflineTaskFlowResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.offline_task_flow_with_options_async(request, runtime)
 
@@ -16397,7 +20213,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.PauseDataCorrectSQLJobResponse:
         """
-        You can call this operation only for database instances that are managed in Security Collaboration mode.
+        @summary Pauses a SQL task for data change.
+        
+        @description You can call this operation only for database instances that are managed in Security Collaboration mode.
         
         @param request: PauseDataCorrectSQLJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16438,7 +20256,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.PauseDataCorrectSQLJobResponse:
         """
-        You can call this operation only for database instances that are managed in Security Collaboration mode.
+        @summary Pauses a SQL task for data change.
+        
+        @description You can call this operation only for database instances that are managed in Security Collaboration mode.
         
         @param request: PauseDataCorrectSQLJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16478,7 +20298,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.PauseDataCorrectSQLJobRequest,
     ) -> dms_enterprise_20181101_models.PauseDataCorrectSQLJobResponse:
         """
-        You can call this operation only for database instances that are managed in Security Collaboration mode.
+        @summary Pauses a SQL task for data change.
+        
+        @description You can call this operation only for database instances that are managed in Security Collaboration mode.
         
         @param request: PauseDataCorrectSQLJobRequest
         @return: PauseDataCorrectSQLJobResponse
@@ -16491,7 +20313,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.PauseDataCorrectSQLJobRequest,
     ) -> dms_enterprise_20181101_models.PauseDataCorrectSQLJobResponse:
         """
-        You can call this operation only for database instances that are managed in Security Collaboration mode.
+        @summary Pauses a SQL task for data change.
+        
+        @description You can call this operation only for database instances that are managed in Security Collaboration mode.
         
         @param request: PauseDataCorrectSQLJobRequest
         @return: PauseDataCorrectSQLJobResponse
@@ -16504,6 +20328,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.PreviewWorkflowRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.PreviewWorkflowResponse:
+        """
+        @summary 创建工单审批流
+        
+        @param request: PreviewWorkflowRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PreviewWorkflowResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.order_id):
@@ -16534,6 +20365,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.PreviewWorkflowRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.PreviewWorkflowResponse:
+        """
+        @summary 创建工单审批流
+        
+        @param request: PreviewWorkflowRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PreviewWorkflowResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.order_id):
@@ -16563,6 +20401,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.PreviewWorkflowRequest,
     ) -> dms_enterprise_20181101_models.PreviewWorkflowResponse:
+        """
+        @summary 创建工单审批流
+        
+        @param request: PreviewWorkflowRequest
+        @return: PreviewWorkflowResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.preview_workflow_with_options(request, runtime)
 
@@ -16570,6 +20414,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.PreviewWorkflowRequest,
     ) -> dms_enterprise_20181101_models.PreviewWorkflowResponse:
+        """
+        @summary 创建工单审批流
+        
+        @param request: PreviewWorkflowRequest
+        @return: PreviewWorkflowResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.preview_workflow_with_options_async(request, runtime)
 
@@ -16578,6 +20428,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.PublishAndDeployTaskFlowRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.PublishAndDeployTaskFlowResponse:
+        """
+        @summary Publishes and deploys a task flow.
+        
+        @param request: PublishAndDeployTaskFlowRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PublishAndDeployTaskFlowResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dag_id):
@@ -16610,6 +20467,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.PublishAndDeployTaskFlowRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.PublishAndDeployTaskFlowResponse:
+        """
+        @summary Publishes and deploys a task flow.
+        
+        @param request: PublishAndDeployTaskFlowRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PublishAndDeployTaskFlowResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dag_id):
@@ -16641,6 +20505,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.PublishAndDeployTaskFlowRequest,
     ) -> dms_enterprise_20181101_models.PublishAndDeployTaskFlowResponse:
+        """
+        @summary Publishes and deploys a task flow.
+        
+        @param request: PublishAndDeployTaskFlowRequest
+        @return: PublishAndDeployTaskFlowResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.publish_and_deploy_task_flow_with_options(request, runtime)
 
@@ -16648,6 +20518,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.PublishAndDeployTaskFlowRequest,
     ) -> dms_enterprise_20181101_models.PublishAndDeployTaskFlowResponse:
+        """
+        @summary Publishes and deploys a task flow.
+        
+        @param request: PublishAndDeployTaskFlowRequest
+        @return: PublishAndDeployTaskFlowResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.publish_and_deploy_task_flow_with_options_async(request, runtime)
 
@@ -16656,6 +20532,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.QueryDataTrackResultDownloadStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.QueryDataTrackResultDownloadStatusResponse:
+        """
+        @summary Queries the download and parsing progress of data tracking logs.
+        
+        @param request: QueryDataTrackResultDownloadStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDataTrackResultDownloadStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.download_key_id):
@@ -16688,6 +20571,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.QueryDataTrackResultDownloadStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.QueryDataTrackResultDownloadStatusResponse:
+        """
+        @summary Queries the download and parsing progress of data tracking logs.
+        
+        @param request: QueryDataTrackResultDownloadStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDataTrackResultDownloadStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.download_key_id):
@@ -16719,6 +20609,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.QueryDataTrackResultDownloadStatusRequest,
     ) -> dms_enterprise_20181101_models.QueryDataTrackResultDownloadStatusResponse:
+        """
+        @summary Queries the download and parsing progress of data tracking logs.
+        
+        @param request: QueryDataTrackResultDownloadStatusRequest
+        @return: QueryDataTrackResultDownloadStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_data_track_result_download_status_with_options(request, runtime)
 
@@ -16726,6 +20622,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.QueryDataTrackResultDownloadStatusRequest,
     ) -> dms_enterprise_20181101_models.QueryDataTrackResultDownloadStatusResponse:
+        """
+        @summary Queries the download and parsing progress of data tracking logs.
+        
+        @param request: QueryDataTrackResultDownloadStatusRequest
+        @return: QueryDataTrackResultDownloadStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_data_track_result_download_status_with_options_async(request, runtime)
 
@@ -16734,6 +20636,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ReDeployLhDagVersionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ReDeployLhDagVersionResponse:
+        """
+        @summary 部署任务流的历史版本
+        
+        @param request: ReDeployLhDagVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReDeployLhDagVersionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dag_id):
@@ -16766,6 +20675,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ReDeployLhDagVersionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ReDeployLhDagVersionResponse:
+        """
+        @summary 部署任务流的历史版本
+        
+        @param request: ReDeployLhDagVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReDeployLhDagVersionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dag_id):
@@ -16797,6 +20713,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ReDeployLhDagVersionRequest,
     ) -> dms_enterprise_20181101_models.ReDeployLhDagVersionResponse:
+        """
+        @summary 部署任务流的历史版本
+        
+        @param request: ReDeployLhDagVersionRequest
+        @return: ReDeployLhDagVersionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.re_deploy_lh_dag_version_with_options(request, runtime)
 
@@ -16804,6 +20726,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ReDeployLhDagVersionRequest,
     ) -> dms_enterprise_20181101_models.ReDeployLhDagVersionResponse:
+        """
+        @summary 部署任务流的历史版本
+        
+        @param request: ReDeployLhDagVersionRequest
+        @return: ReDeployLhDagVersionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.re_deploy_lh_dag_version_with_options_async(request, runtime)
 
@@ -16812,6 +20740,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ReRunTaskFlowInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ReRunTaskFlowInstanceResponse:
+        """
+        @summary Reruns a task flow instance.
+        
+        @param request: ReRunTaskFlowInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReRunTaskFlowInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dag_id):
@@ -16846,6 +20781,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ReRunTaskFlowInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ReRunTaskFlowInstanceResponse:
+        """
+        @summary Reruns a task flow instance.
+        
+        @param request: ReRunTaskFlowInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReRunTaskFlowInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dag_id):
@@ -16879,6 +20821,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ReRunTaskFlowInstanceRequest,
     ) -> dms_enterprise_20181101_models.ReRunTaskFlowInstanceResponse:
+        """
+        @summary Reruns a task flow instance.
+        
+        @param request: ReRunTaskFlowInstanceRequest
+        @return: ReRunTaskFlowInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.re_run_task_flow_instance_with_options(request, runtime)
 
@@ -16886,6 +20834,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.ReRunTaskFlowInstanceRequest,
     ) -> dms_enterprise_20181101_models.ReRunTaskFlowInstanceResponse:
+        """
+        @summary Reruns a task flow instance.
+        
+        @param request: ReRunTaskFlowInstanceRequest
+        @return: ReRunTaskFlowInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.re_run_task_flow_instance_with_options_async(request, runtime)
 
@@ -16894,6 +20848,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.RefundPayAsYouGoOrderRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.RefundPayAsYouGoOrderResponse:
+        """
+        @summary Unsubscribes from a pay-as-you-go Data Management (DMS) resource.
+        
+        @param request: RefundPayAsYouGoOrderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RefundPayAsYouGoOrderResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -16926,6 +20887,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.RefundPayAsYouGoOrderRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.RefundPayAsYouGoOrderResponse:
+        """
+        @summary Unsubscribes from a pay-as-you-go Data Management (DMS) resource.
+        
+        @param request: RefundPayAsYouGoOrderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RefundPayAsYouGoOrderResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -16957,6 +20925,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.RefundPayAsYouGoOrderRequest,
     ) -> dms_enterprise_20181101_models.RefundPayAsYouGoOrderResponse:
+        """
+        @summary Unsubscribes from a pay-as-you-go Data Management (DMS) resource.
+        
+        @param request: RefundPayAsYouGoOrderRequest
+        @return: RefundPayAsYouGoOrderResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.refund_pay_as_you_go_order_with_options(request, runtime)
 
@@ -16964,6 +20938,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.RefundPayAsYouGoOrderRequest,
     ) -> dms_enterprise_20181101_models.RefundPayAsYouGoOrderResponse:
+        """
+        @summary Unsubscribes from a pay-as-you-go Data Management (DMS) resource.
+        
+        @param request: RefundPayAsYouGoOrderRequest
+        @return: RefundPayAsYouGoOrderResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.refund_pay_as_you_go_order_with_options_async(request, runtime)
 
@@ -16973,7 +20953,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.RegisterInstanceResponse:
         """
-        Prerequisites: You are a DMS administrator or a database administrator (DBA). You can call the [ListUsers](~~141938~~) or [GetUser](~~147098~~) operation to query your user role from the RoleIdList parameter that is returned.
+        @summary Registers a database instance in Data Management (DMS).
+        
+        @description Prerequisites: You are a DMS administrator or a database administrator (DBA). You can call the [ListUsers](https://help.aliyun.com/document_detail/141938.html) or [GetUser](https://help.aliyun.com/document_detail/147098.html) operation to query your user role from the RoleIdList parameter that is returned.
         
         @param request: RegisterInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17058,7 +21040,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.RegisterInstanceResponse:
         """
-        Prerequisites: You are a DMS administrator or a database administrator (DBA). You can call the [ListUsers](~~141938~~) or [GetUser](~~147098~~) operation to query your user role from the RoleIdList parameter that is returned.
+        @summary Registers a database instance in Data Management (DMS).
+        
+        @description Prerequisites: You are a DMS administrator or a database administrator (DBA). You can call the [ListUsers](https://help.aliyun.com/document_detail/141938.html) or [GetUser](https://help.aliyun.com/document_detail/147098.html) operation to query your user role from the RoleIdList parameter that is returned.
         
         @param request: RegisterInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17142,7 +21126,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.RegisterInstanceRequest,
     ) -> dms_enterprise_20181101_models.RegisterInstanceResponse:
         """
-        Prerequisites: You are a DMS administrator or a database administrator (DBA). You can call the [ListUsers](~~141938~~) or [GetUser](~~147098~~) operation to query your user role from the RoleIdList parameter that is returned.
+        @summary Registers a database instance in Data Management (DMS).
+        
+        @description Prerequisites: You are a DMS administrator or a database administrator (DBA). You can call the [ListUsers](https://help.aliyun.com/document_detail/141938.html) or [GetUser](https://help.aliyun.com/document_detail/147098.html) operation to query your user role from the RoleIdList parameter that is returned.
         
         @param request: RegisterInstanceRequest
         @return: RegisterInstanceResponse
@@ -17155,7 +21141,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.RegisterInstanceRequest,
     ) -> dms_enterprise_20181101_models.RegisterInstanceResponse:
         """
-        Prerequisites: You are a DMS administrator or a database administrator (DBA). You can call the [ListUsers](~~141938~~) or [GetUser](~~147098~~) operation to query your user role from the RoleIdList parameter that is returned.
+        @summary Registers a database instance in Data Management (DMS).
+        
+        @description Prerequisites: You are a DMS administrator or a database administrator (DBA). You can call the [ListUsers](https://help.aliyun.com/document_detail/141938.html) or [GetUser](https://help.aliyun.com/document_detail/147098.html) operation to query your user role from the RoleIdList parameter that is returned.
         
         @param request: RegisterInstanceRequest
         @return: RegisterInstanceResponse
@@ -17169,7 +21157,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.RegisterUserResponse:
         """
-        If you are an *administrator** in Data Management (DMS), you can call this operation to register a user for your enterprise. To view users that are assigned the administrator role, perform the following steps: Log on to the DMS console. In the top navigation bar, click O&M. In the left-side navigation pane, click User.
+        @summary Registers a user for your enterprise.
+        
+        @description If you are an *administrator** in Data Management (DMS), you can call this operation to register a user for your enterprise. To view users that are assigned the administrator role, perform the following steps: Log on to the DMS console. In the top navigation bar, click O&M. In the left-side navigation pane, click User.
         
         @param request: RegisterUserRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17212,7 +21202,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.RegisterUserResponse:
         """
-        If you are an *administrator** in Data Management (DMS), you can call this operation to register a user for your enterprise. To view users that are assigned the administrator role, perform the following steps: Log on to the DMS console. In the top navigation bar, click O&M. In the left-side navigation pane, click User.
+        @summary Registers a user for your enterprise.
+        
+        @description If you are an *administrator** in Data Management (DMS), you can call this operation to register a user for your enterprise. To view users that are assigned the administrator role, perform the following steps: Log on to the DMS console. In the top navigation bar, click O&M. In the left-side navigation pane, click User.
         
         @param request: RegisterUserRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17254,7 +21246,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.RegisterUserRequest,
     ) -> dms_enterprise_20181101_models.RegisterUserResponse:
         """
-        If you are an *administrator** in Data Management (DMS), you can call this operation to register a user for your enterprise. To view users that are assigned the administrator role, perform the following steps: Log on to the DMS console. In the top navigation bar, click O&M. In the left-side navigation pane, click User.
+        @summary Registers a user for your enterprise.
+        
+        @description If you are an *administrator** in Data Management (DMS), you can call this operation to register a user for your enterprise. To view users that are assigned the administrator role, perform the following steps: Log on to the DMS console. In the top navigation bar, click O&M. In the left-side navigation pane, click User.
         
         @param request: RegisterUserRequest
         @return: RegisterUserResponse
@@ -17267,7 +21261,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.RegisterUserRequest,
     ) -> dms_enterprise_20181101_models.RegisterUserResponse:
         """
-        If you are an *administrator** in Data Management (DMS), you can call this operation to register a user for your enterprise. To view users that are assigned the administrator role, perform the following steps: Log on to the DMS console. In the top navigation bar, click O&M. In the left-side navigation pane, click User.
+        @summary Registers a user for your enterprise.
+        
+        @description If you are an *administrator** in Data Management (DMS), you can call this operation to register a user for your enterprise. To view users that are assigned the administrator role, perform the following steps: Log on to the DMS console. In the top navigation bar, click O&M. In the left-side navigation pane, click User.
         
         @param request: RegisterUserRequest
         @return: RegisterUserResponse
@@ -17280,6 +21276,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.RestartDataCorrectSQLJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.RestartDataCorrectSQLJobResponse:
+        """
+        @summary Reruns a failed SQL task for data change.
+        
+        @param request: RestartDataCorrectSQLJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RestartDataCorrectSQLJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.job_id):
@@ -17314,6 +21317,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.RestartDataCorrectSQLJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.RestartDataCorrectSQLJobResponse:
+        """
+        @summary Reruns a failed SQL task for data change.
+        
+        @param request: RestartDataCorrectSQLJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RestartDataCorrectSQLJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.job_id):
@@ -17347,6 +21357,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.RestartDataCorrectSQLJobRequest,
     ) -> dms_enterprise_20181101_models.RestartDataCorrectSQLJobResponse:
+        """
+        @summary Reruns a failed SQL task for data change.
+        
+        @param request: RestartDataCorrectSQLJobRequest
+        @return: RestartDataCorrectSQLJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.restart_data_correct_sqljob_with_options(request, runtime)
 
@@ -17354,6 +21370,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.RestartDataCorrectSQLJobRequest,
     ) -> dms_enterprise_20181101_models.RestartDataCorrectSQLJobResponse:
+        """
+        @summary Reruns a failed SQL task for data change.
+        
+        @param request: RestartDataCorrectSQLJobRequest
+        @return: RestartDataCorrectSQLJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.restart_data_correct_sqljob_with_options_async(request, runtime)
 
@@ -17363,7 +21385,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ResumeTaskFlowInstanceResponse:
         """
-        You can call this operation only for task flows that are suspended.
+        @summary Resumes a suspended task flow.
+        
+        @description You can call this operation only for task flows that are suspended.
         
         @param request: ResumeTaskFlowInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17404,7 +21428,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.ResumeTaskFlowInstanceResponse:
         """
-        You can call this operation only for task flows that are suspended.
+        @summary Resumes a suspended task flow.
+        
+        @description You can call this operation only for task flows that are suspended.
         
         @param request: ResumeTaskFlowInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17444,7 +21470,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ResumeTaskFlowInstanceRequest,
     ) -> dms_enterprise_20181101_models.ResumeTaskFlowInstanceResponse:
         """
-        You can call this operation only for task flows that are suspended.
+        @summary Resumes a suspended task flow.
+        
+        @description You can call this operation only for task flows that are suspended.
         
         @param request: ResumeTaskFlowInstanceRequest
         @return: ResumeTaskFlowInstanceResponse
@@ -17457,7 +21485,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.ResumeTaskFlowInstanceRequest,
     ) -> dms_enterprise_20181101_models.ResumeTaskFlowInstanceResponse:
         """
-        You can call this operation only for task flows that are suspended.
+        @summary Resumes a suspended task flow.
+        
+        @description You can call this operation only for task flows that are suspended.
         
         @param request: ResumeTaskFlowInstanceRequest
         @return: ResumeTaskFlowInstanceResponse
@@ -17470,6 +21500,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.RetryDataCorrectPreCheckRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.RetryDataCorrectPreCheckResponse:
+        """
+        @summary Reruns the precheck for a data change ticket.
+        
+        @param request: RetryDataCorrectPreCheckRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RetryDataCorrectPreCheckResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.order_id):
@@ -17500,6 +21537,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.RetryDataCorrectPreCheckRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.RetryDataCorrectPreCheckResponse:
+        """
+        @summary Reruns the precheck for a data change ticket.
+        
+        @param request: RetryDataCorrectPreCheckRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RetryDataCorrectPreCheckResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.order_id):
@@ -17529,6 +21573,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.RetryDataCorrectPreCheckRequest,
     ) -> dms_enterprise_20181101_models.RetryDataCorrectPreCheckResponse:
+        """
+        @summary Reruns the precheck for a data change ticket.
+        
+        @param request: RetryDataCorrectPreCheckRequest
+        @return: RetryDataCorrectPreCheckResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.retry_data_correct_pre_check_with_options(request, runtime)
 
@@ -17536,6 +21586,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.RetryDataCorrectPreCheckRequest,
     ) -> dms_enterprise_20181101_models.RetryDataCorrectPreCheckResponse:
+        """
+        @summary Reruns the precheck for a data change ticket.
+        
+        @param request: RetryDataCorrectPreCheckRequest
+        @return: RetryDataCorrectPreCheckResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.retry_data_correct_pre_check_with_options_async(request, runtime)
 
@@ -17545,7 +21601,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.RevokeTemplateAuthorityResponse:
         """
-        You must be a database administrator (DBA) or a DMS administrator. For more information about how to view system roles, see [View system roles](~~324212~~).
+        @summary Revokes permissions on resources from Data Management (DMS) users by using a permission template.
+        
+        @description You must be a database administrator (DBA) or a DMS administrator. For more information about how to view system roles, see [View system roles](https://help.aliyun.com/document_detail/324212.html).
         
         @param request: RevokeTemplateAuthorityRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17584,7 +21642,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.RevokeTemplateAuthorityResponse:
         """
-        You must be a database administrator (DBA) or a DMS administrator. For more information about how to view system roles, see [View system roles](~~324212~~).
+        @summary Revokes permissions on resources from Data Management (DMS) users by using a permission template.
+        
+        @description You must be a database administrator (DBA) or a DMS administrator. For more information about how to view system roles, see [View system roles](https://help.aliyun.com/document_detail/324212.html).
         
         @param request: RevokeTemplateAuthorityRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17622,7 +21682,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.RevokeTemplateAuthorityRequest,
     ) -> dms_enterprise_20181101_models.RevokeTemplateAuthorityResponse:
         """
-        You must be a database administrator (DBA) or a DMS administrator. For more information about how to view system roles, see [View system roles](~~324212~~).
+        @summary Revokes permissions on resources from Data Management (DMS) users by using a permission template.
+        
+        @description You must be a database administrator (DBA) or a DMS administrator. For more information about how to view system roles, see [View system roles](https://help.aliyun.com/document_detail/324212.html).
         
         @param request: RevokeTemplateAuthorityRequest
         @return: RevokeTemplateAuthorityResponse
@@ -17635,7 +21697,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.RevokeTemplateAuthorityRequest,
     ) -> dms_enterprise_20181101_models.RevokeTemplateAuthorityResponse:
         """
-        You must be a database administrator (DBA) or a DMS administrator. For more information about how to view system roles, see [View system roles](~~324212~~).
+        @summary Revokes permissions on resources from Data Management (DMS) users by using a permission template.
+        
+        @description You must be a database administrator (DBA) or a DMS administrator. For more information about how to view system roles, see [View system roles](https://help.aliyun.com/document_detail/324212.html).
         
         @param request: RevokeTemplateAuthorityRequest
         @return: RevokeTemplateAuthorityResponse
@@ -17648,6 +21712,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.RevokeUserPermissionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.RevokeUserPermissionResponse:
+        """
+        @summary Revokes a permission on a resource from a user.
+        
+        @param request: RevokeUserPermissionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RevokeUserPermissionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.db_id):
@@ -17694,6 +21765,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.RevokeUserPermissionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.RevokeUserPermissionResponse:
+        """
+        @summary Revokes a permission on a resource from a user.
+        
+        @param request: RevokeUserPermissionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RevokeUserPermissionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.db_id):
@@ -17739,6 +21817,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.RevokeUserPermissionRequest,
     ) -> dms_enterprise_20181101_models.RevokeUserPermissionResponse:
+        """
+        @summary Revokes a permission on a resource from a user.
+        
+        @param request: RevokeUserPermissionRequest
+        @return: RevokeUserPermissionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.revoke_user_permission_with_options(request, runtime)
 
@@ -17746,6 +21830,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.RevokeUserPermissionRequest,
     ) -> dms_enterprise_20181101_models.RevokeUserPermissionResponse:
+        """
+        @summary Revokes a permission on a resource from a user.
+        
+        @param request: RevokeUserPermissionRequest
+        @return: RevokeUserPermissionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.revoke_user_permission_with_options_async(request, runtime)
 
@@ -17754,6 +21844,13 @@ class Client(OpenApiClient):
         tmp_req: dms_enterprise_20181101_models.SearchDataTrackResultRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.SearchDataTrackResultResponse:
+        """
+        @summary Searches for the parsing result of a data tracking task.
+        
+        @param tmp_req: SearchDataTrackResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchDataTrackResultResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dms_enterprise_20181101_models.SearchDataTrackResultShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -17802,6 +21899,13 @@ class Client(OpenApiClient):
         tmp_req: dms_enterprise_20181101_models.SearchDataTrackResultRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.SearchDataTrackResultResponse:
+        """
+        @summary Searches for the parsing result of a data tracking task.
+        
+        @param tmp_req: SearchDataTrackResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchDataTrackResultResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dms_enterprise_20181101_models.SearchDataTrackResultShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -17849,6 +21953,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.SearchDataTrackResultRequest,
     ) -> dms_enterprise_20181101_models.SearchDataTrackResultResponse:
+        """
+        @summary Searches for the parsing result of a data tracking task.
+        
+        @param request: SearchDataTrackResultRequest
+        @return: SearchDataTrackResultResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.search_data_track_result_with_options(request, runtime)
 
@@ -17856,6 +21966,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.SearchDataTrackResultRequest,
     ) -> dms_enterprise_20181101_models.SearchDataTrackResultResponse:
+        """
+        @summary Searches for the parsing result of a data tracking task.
+        
+        @param request: SearchDataTrackResultRequest
+        @return: SearchDataTrackResultResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.search_data_track_result_with_options_async(request, runtime)
 
@@ -17864,6 +21980,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.SearchDatabaseRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.SearchDatabaseResponse:
+        """
+        @summary Queries the details of the databases.
+        
+        @param request: SearchDatabaseRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchDatabaseResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.db_type):
@@ -17906,6 +22029,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.SearchDatabaseRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.SearchDatabaseResponse:
+        """
+        @summary Queries the details of the databases.
+        
+        @param request: SearchDatabaseRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchDatabaseResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.db_type):
@@ -17947,6 +22077,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.SearchDatabaseRequest,
     ) -> dms_enterprise_20181101_models.SearchDatabaseResponse:
+        """
+        @summary Queries the details of the databases.
+        
+        @param request: SearchDatabaseRequest
+        @return: SearchDatabaseResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.search_database_with_options(request, runtime)
 
@@ -17954,6 +22090,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.SearchDatabaseRequest,
     ) -> dms_enterprise_20181101_models.SearchDatabaseResponse:
+        """
+        @summary Queries the details of the databases.
+        
+        @param request: SearchDatabaseRequest
+        @return: SearchDatabaseResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.search_database_with_options_async(request, runtime)
 
@@ -17963,7 +22105,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.SearchTableResponse:
         """
-        You can call this operation only for database instances that are managed in Security Collaboration mode.
+        @summary Queries detailed information about tables.
+        
+        @description You can call this operation only for database instances that are managed in Security Collaboration mode.
         
         @param request: SearchTableRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18014,7 +22158,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.SearchTableResponse:
         """
-        You can call this operation only for database instances that are managed in Security Collaboration mode.
+        @summary Queries detailed information about tables.
+        
+        @description You can call this operation only for database instances that are managed in Security Collaboration mode.
         
         @param request: SearchTableRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18064,7 +22210,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.SearchTableRequest,
     ) -> dms_enterprise_20181101_models.SearchTableResponse:
         """
-        You can call this operation only for database instances that are managed in Security Collaboration mode.
+        @summary Queries detailed information about tables.
+        
+        @description You can call this operation only for database instances that are managed in Security Collaboration mode.
         
         @param request: SearchTableRequest
         @return: SearchTableResponse
@@ -18077,7 +22225,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.SearchTableRequest,
     ) -> dms_enterprise_20181101_models.SearchTableResponse:
         """
-        You can call this operation only for database instances that are managed in Security Collaboration mode.
+        @summary Queries detailed information about tables.
+        
+        @description You can call this operation only for database instances that are managed in Security Collaboration mode.
         
         @param request: SearchTableRequest
         @return: SearchTableResponse
@@ -18090,6 +22240,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.SetOwnersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.SetOwnersResponse:
+        """
+        @summary Configures the owner of an instance, a database, or a table.
+        
+        @param request: SetOwnersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetOwnersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_ids):
@@ -18124,6 +22281,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.SetOwnersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.SetOwnersResponse:
+        """
+        @summary Configures the owner of an instance, a database, or a table.
+        
+        @param request: SetOwnersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetOwnersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_ids):
@@ -18157,6 +22321,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.SetOwnersRequest,
     ) -> dms_enterprise_20181101_models.SetOwnersResponse:
+        """
+        @summary Configures the owner of an instance, a database, or a table.
+        
+        @param request: SetOwnersRequest
+        @return: SetOwnersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.set_owners_with_options(request, runtime)
 
@@ -18164,6 +22334,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.SetOwnersRequest,
     ) -> dms_enterprise_20181101_models.SetOwnersResponse:
+        """
+        @summary Configures the owner of an instance, a database, or a table.
+        
+        @param request: SetOwnersRequest
+        @return: SetOwnersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.set_owners_with_options_async(request, runtime)
 
@@ -18172,6 +22348,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.SkipDataCorrectRowCheckRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.SkipDataCorrectRowCheckResponse:
+        """
+        @summary Skips the verification on the number of rows in the precheck for data change.
+        
+        @param request: SkipDataCorrectRowCheckRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SkipDataCorrectRowCheckResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.order_id):
@@ -18204,6 +22387,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.SkipDataCorrectRowCheckRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.SkipDataCorrectRowCheckResponse:
+        """
+        @summary Skips the verification on the number of rows in the precheck for data change.
+        
+        @param request: SkipDataCorrectRowCheckRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SkipDataCorrectRowCheckResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.order_id):
@@ -18235,6 +22425,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.SkipDataCorrectRowCheckRequest,
     ) -> dms_enterprise_20181101_models.SkipDataCorrectRowCheckResponse:
+        """
+        @summary Skips the verification on the number of rows in the precheck for data change.
+        
+        @param request: SkipDataCorrectRowCheckRequest
+        @return: SkipDataCorrectRowCheckResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.skip_data_correct_row_check_with_options(request, runtime)
 
@@ -18242,6 +22438,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.SkipDataCorrectRowCheckRequest,
     ) -> dms_enterprise_20181101_models.SkipDataCorrectRowCheckResponse:
+        """
+        @summary Skips the verification on the number of rows in the precheck for data change.
+        
+        @param request: SkipDataCorrectRowCheckRequest
+        @return: SkipDataCorrectRowCheckResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.skip_data_correct_row_check_with_options_async(request, runtime)
 
@@ -18250,6 +22452,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.StopTaskFlowInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.StopTaskFlowInstanceResponse:
+        """
+        @summary Stops a task flow instance.
+        
+        @param request: StopTaskFlowInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopTaskFlowInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dag_id):
@@ -18282,6 +22491,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.StopTaskFlowInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.StopTaskFlowInstanceResponse:
+        """
+        @summary Stops a task flow instance.
+        
+        @param request: StopTaskFlowInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopTaskFlowInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dag_id):
@@ -18313,6 +22529,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.StopTaskFlowInstanceRequest,
     ) -> dms_enterprise_20181101_models.StopTaskFlowInstanceResponse:
+        """
+        @summary Stops a task flow instance.
+        
+        @param request: StopTaskFlowInstanceRequest
+        @return: StopTaskFlowInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.stop_task_flow_instance_with_options(request, runtime)
 
@@ -18320,6 +22542,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.StopTaskFlowInstanceRequest,
     ) -> dms_enterprise_20181101_models.StopTaskFlowInstanceResponse:
+        """
+        @summary Stops a task flow instance.
+        
+        @param request: StopTaskFlowInstanceRequest
+        @return: StopTaskFlowInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.stop_task_flow_instance_with_options_async(request, runtime)
 
@@ -18328,6 +22556,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.SubmitOrderApprovalRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.SubmitOrderApprovalResponse:
+        """
+        @summary Submits a ticket for approval.
+        
+        @param request: SubmitOrderApprovalRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitOrderApprovalResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.order_id):
@@ -18358,6 +22593,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.SubmitOrderApprovalRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.SubmitOrderApprovalResponse:
+        """
+        @summary Submits a ticket for approval.
+        
+        @param request: SubmitOrderApprovalRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitOrderApprovalResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.order_id):
@@ -18387,6 +22629,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.SubmitOrderApprovalRequest,
     ) -> dms_enterprise_20181101_models.SubmitOrderApprovalResponse:
+        """
+        @summary Submits a ticket for approval.
+        
+        @param request: SubmitOrderApprovalRequest
+        @return: SubmitOrderApprovalResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.submit_order_approval_with_options(request, runtime)
 
@@ -18394,6 +22642,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.SubmitOrderApprovalRequest,
     ) -> dms_enterprise_20181101_models.SubmitOrderApprovalResponse:
+        """
+        @summary Submits a ticket for approval.
+        
+        @param request: SubmitOrderApprovalRequest
+        @return: SubmitOrderApprovalResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.submit_order_approval_with_options_async(request, runtime)
 
@@ -18402,6 +22656,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.SubmitStructSyncOrderApprovalRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.SubmitStructSyncOrderApprovalResponse:
+        """
+        @summary Submits a schema synchronization ticket for approval.
+        
+        @param request: SubmitStructSyncOrderApprovalRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitStructSyncOrderApprovalResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.order_id):
@@ -18432,6 +22693,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.SubmitStructSyncOrderApprovalRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.SubmitStructSyncOrderApprovalResponse:
+        """
+        @summary Submits a schema synchronization ticket for approval.
+        
+        @param request: SubmitStructSyncOrderApprovalRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitStructSyncOrderApprovalResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.order_id):
@@ -18461,6 +22729,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.SubmitStructSyncOrderApprovalRequest,
     ) -> dms_enterprise_20181101_models.SubmitStructSyncOrderApprovalResponse:
+        """
+        @summary Submits a schema synchronization ticket for approval.
+        
+        @param request: SubmitStructSyncOrderApprovalRequest
+        @return: SubmitStructSyncOrderApprovalResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.submit_struct_sync_order_approval_with_options(request, runtime)
 
@@ -18468,6 +22742,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.SubmitStructSyncOrderApprovalRequest,
     ) -> dms_enterprise_20181101_models.SubmitStructSyncOrderApprovalResponse:
+        """
+        @summary Submits a schema synchronization ticket for approval.
+        
+        @param request: SubmitStructSyncOrderApprovalRequest
+        @return: SubmitStructSyncOrderApprovalResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.submit_struct_sync_order_approval_with_options_async(request, runtime)
 
@@ -18476,6 +22756,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.SuspendTaskFlowInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.SuspendTaskFlowInstanceResponse:
+        """
+        @summary Suspends a task flow instance.
+        
+        @param request: SuspendTaskFlowInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SuspendTaskFlowInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dag_id):
@@ -18508,6 +22795,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.SuspendTaskFlowInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.SuspendTaskFlowInstanceResponse:
+        """
+        @summary Suspends a task flow instance.
+        
+        @param request: SuspendTaskFlowInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SuspendTaskFlowInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dag_id):
@@ -18539,6 +22833,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.SuspendTaskFlowInstanceRequest,
     ) -> dms_enterprise_20181101_models.SuspendTaskFlowInstanceResponse:
+        """
+        @summary Suspends a task flow instance.
+        
+        @param request: SuspendTaskFlowInstanceRequest
+        @return: SuspendTaskFlowInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.suspend_task_flow_instance_with_options(request, runtime)
 
@@ -18546,6 +22846,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.SuspendTaskFlowInstanceRequest,
     ) -> dms_enterprise_20181101_models.SuspendTaskFlowInstanceResponse:
+        """
+        @summary Suspends a task flow instance.
+        
+        @param request: SuspendTaskFlowInstanceRequest
+        @return: SuspendTaskFlowInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.suspend_task_flow_instance_with_options_async(request, runtime)
 
@@ -18554,6 +22860,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.SyncDatabaseMetaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.SyncDatabaseMetaResponse:
+        """
+        @summary Synchronizes the metadata of a database.
+        
+        @param request: SyncDatabaseMetaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SyncDatabaseMetaResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.db_id):
@@ -18586,6 +22899,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.SyncDatabaseMetaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.SyncDatabaseMetaResponse:
+        """
+        @summary Synchronizes the metadata of a database.
+        
+        @param request: SyncDatabaseMetaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SyncDatabaseMetaResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.db_id):
@@ -18617,6 +22937,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.SyncDatabaseMetaRequest,
     ) -> dms_enterprise_20181101_models.SyncDatabaseMetaResponse:
+        """
+        @summary Synchronizes the metadata of a database.
+        
+        @param request: SyncDatabaseMetaRequest
+        @return: SyncDatabaseMetaResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.sync_database_meta_with_options(request, runtime)
 
@@ -18624,6 +22950,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.SyncDatabaseMetaRequest,
     ) -> dms_enterprise_20181101_models.SyncDatabaseMetaResponse:
+        """
+        @summary Synchronizes the metadata of a database.
+        
+        @param request: SyncDatabaseMetaRequest
+        @return: SyncDatabaseMetaResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.sync_database_meta_with_options_async(request, runtime)
 
@@ -18633,7 +22965,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.SyncInstanceMetaResponse:
         """
-        You can call this operation only for database instances whose control mode is Security Collaboration.
+        @summary Synchronizes the metadata of all databases in a database instance.
+        
+        @description You can call this operation only for database instances whose control mode is Security Collaboration.
         
         @param request: SyncInstanceMetaRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18672,7 +23006,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.SyncInstanceMetaResponse:
         """
-        You can call this operation only for database instances whose control mode is Security Collaboration.
+        @summary Synchronizes the metadata of all databases in a database instance.
+        
+        @description You can call this operation only for database instances whose control mode is Security Collaboration.
         
         @param request: SyncInstanceMetaRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18710,7 +23046,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.SyncInstanceMetaRequest,
     ) -> dms_enterprise_20181101_models.SyncInstanceMetaResponse:
         """
-        You can call this operation only for database instances whose control mode is Security Collaboration.
+        @summary Synchronizes the metadata of all databases in a database instance.
+        
+        @description You can call this operation only for database instances whose control mode is Security Collaboration.
         
         @param request: SyncInstanceMetaRequest
         @return: SyncInstanceMetaResponse
@@ -18723,7 +23061,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.SyncInstanceMetaRequest,
     ) -> dms_enterprise_20181101_models.SyncInstanceMetaResponse:
         """
-        You can call this operation only for database instances whose control mode is Security Collaboration.
+        @summary Synchronizes the metadata of all databases in a database instance.
+        
+        @description You can call this operation only for database instances whose control mode is Security Collaboration.
         
         @param request: SyncInstanceMetaRequest
         @return: SyncInstanceMetaResponse
@@ -18737,7 +23077,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.UpdateAuthorityTemplateResponse:
         """
-        You are a database administrator (DBA) or a Data Management (DMS) administrator. For more information about how to view system roles, see [View system roles](~~324212~~).
+        @summary Modifies a permission template.
+        
+        @description You are a database administrator (DBA) or a Data Management (DMS) administrator. For more information about how to view system roles, see [View system roles](https://help.aliyun.com/document_detail/324212.html).
         
         @param request: UpdateAuthorityTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18778,7 +23120,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.UpdateAuthorityTemplateResponse:
         """
-        You are a database administrator (DBA) or a Data Management (DMS) administrator. For more information about how to view system roles, see [View system roles](~~324212~~).
+        @summary Modifies a permission template.
+        
+        @description You are a database administrator (DBA) or a Data Management (DMS) administrator. For more information about how to view system roles, see [View system roles](https://help.aliyun.com/document_detail/324212.html).
         
         @param request: UpdateAuthorityTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18818,7 +23162,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.UpdateAuthorityTemplateRequest,
     ) -> dms_enterprise_20181101_models.UpdateAuthorityTemplateResponse:
         """
-        You are a database administrator (DBA) or a Data Management (DMS) administrator. For more information about how to view system roles, see [View system roles](~~324212~~).
+        @summary Modifies a permission template.
+        
+        @description You are a database administrator (DBA) or a Data Management (DMS) administrator. For more information about how to view system roles, see [View system roles](https://help.aliyun.com/document_detail/324212.html).
         
         @param request: UpdateAuthorityTemplateRequest
         @return: UpdateAuthorityTemplateResponse
@@ -18831,7 +23177,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.UpdateAuthorityTemplateRequest,
     ) -> dms_enterprise_20181101_models.UpdateAuthorityTemplateResponse:
         """
-        You are a database administrator (DBA) or a Data Management (DMS) administrator. For more information about how to view system roles, see [View system roles](~~324212~~).
+        @summary Modifies a permission template.
+        
+        @description You are a database administrator (DBA) or a Data Management (DMS) administrator. For more information about how to view system roles, see [View system roles](https://help.aliyun.com/document_detail/324212.html).
         
         @param request: UpdateAuthorityTemplateRequest
         @return: UpdateAuthorityTemplateResponse
@@ -18845,7 +23193,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.UpdateInstanceResponse:
         """
-        Before you call the UpdateInstance operation, call the [GetInstance](~~141567~~) or [ListInstances](~~141936~~) operation to obtain the complete information about the instance.
+        @summary Updates the information about a database instance and checks the connectivity of the database instance.
+        
+        @description Before you call the UpdateInstance operation, call the [GetInstance](https://help.aliyun.com/document_detail/141567.html) or [ListInstances](https://help.aliyun.com/document_detail/141936.html) operation to obtain the complete information about the instance.
         
         @param request: UpdateInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18928,7 +23278,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.UpdateInstanceResponse:
         """
-        Before you call the UpdateInstance operation, call the [GetInstance](~~141567~~) or [ListInstances](~~141936~~) operation to obtain the complete information about the instance.
+        @summary Updates the information about a database instance and checks the connectivity of the database instance.
+        
+        @description Before you call the UpdateInstance operation, call the [GetInstance](https://help.aliyun.com/document_detail/141567.html) or [ListInstances](https://help.aliyun.com/document_detail/141936.html) operation to obtain the complete information about the instance.
         
         @param request: UpdateInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19010,7 +23362,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.UpdateInstanceRequest,
     ) -> dms_enterprise_20181101_models.UpdateInstanceResponse:
         """
-        Before you call the UpdateInstance operation, call the [GetInstance](~~141567~~) or [ListInstances](~~141936~~) operation to obtain the complete information about the instance.
+        @summary Updates the information about a database instance and checks the connectivity of the database instance.
+        
+        @description Before you call the UpdateInstance operation, call the [GetInstance](https://help.aliyun.com/document_detail/141567.html) or [ListInstances](https://help.aliyun.com/document_detail/141936.html) operation to obtain the complete information about the instance.
         
         @param request: UpdateInstanceRequest
         @return: UpdateInstanceResponse
@@ -19023,7 +23377,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.UpdateInstanceRequest,
     ) -> dms_enterprise_20181101_models.UpdateInstanceResponse:
         """
-        Before you call the UpdateInstance operation, call the [GetInstance](~~141567~~) or [ListInstances](~~141936~~) operation to obtain the complete information about the instance.
+        @summary Updates the information about a database instance and checks the connectivity of the database instance.
+        
+        @description Before you call the UpdateInstance operation, call the [GetInstance](https://help.aliyun.com/document_detail/141567.html) or [ListInstances](https://help.aliyun.com/document_detail/141936.html) operation to obtain the complete information about the instance.
         
         @param request: UpdateInstanceRequest
         @return: UpdateInstanceResponse
@@ -19037,7 +23393,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.UpdateSLARulesResponse:
         """
-        SLA rules take effect after task flows are deployed and published.
+        @summary Updates the service level agreement (SLA) timeout reminder for a task flow.
+        
+        @description SLA rules take effect after task flows are deployed and published.
         
         @param tmp_req: UpdateSLARulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19080,7 +23438,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.UpdateSLARulesResponse:
         """
-        SLA rules take effect after task flows are deployed and published.
+        @summary Updates the service level agreement (SLA) timeout reminder for a task flow.
+        
+        @description SLA rules take effect after task flows are deployed and published.
         
         @param tmp_req: UpdateSLARulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19122,7 +23482,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.UpdateSLARulesRequest,
     ) -> dms_enterprise_20181101_models.UpdateSLARulesResponse:
         """
-        SLA rules take effect after task flows are deployed and published.
+        @summary Updates the service level agreement (SLA) timeout reminder for a task flow.
+        
+        @description SLA rules take effect after task flows are deployed and published.
         
         @param request: UpdateSLARulesRequest
         @return: UpdateSLARulesResponse
@@ -19135,7 +23497,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.UpdateSLARulesRequest,
     ) -> dms_enterprise_20181101_models.UpdateSLARulesResponse:
         """
-        SLA rules take effect after task flows are deployed and published.
+        @summary Updates the service level agreement (SLA) timeout reminder for a task flow.
+        
+        @description SLA rules take effect after task flows are deployed and published.
         
         @param request: UpdateSLARulesRequest
         @return: UpdateSLARulesResponse
@@ -19148,6 +23512,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.UpdateScenarioRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.UpdateScenarioResponse:
+        """
+        @summary Updates the name and description of the business scenario for a specified task flow.
+        
+        @param request: UpdateScenarioRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateScenarioResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -19182,6 +23553,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.UpdateScenarioRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.UpdateScenarioResponse:
+        """
+        @summary Updates the name and description of the business scenario for a specified task flow.
+        
+        @param request: UpdateScenarioRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateScenarioResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -19215,6 +23593,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.UpdateScenarioRequest,
     ) -> dms_enterprise_20181101_models.UpdateScenarioResponse:
+        """
+        @summary Updates the name and description of the business scenario for a specified task flow.
+        
+        @param request: UpdateScenarioRequest
+        @return: UpdateScenarioResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_scenario_with_options(request, runtime)
 
@@ -19222,6 +23606,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.UpdateScenarioRequest,
     ) -> dms_enterprise_20181101_models.UpdateScenarioResponse:
+        """
+        @summary Updates the name and description of the business scenario for a specified task flow.
+        
+        @param request: UpdateScenarioRequest
+        @return: UpdateScenarioResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_scenario_with_options_async(request, runtime)
 
@@ -19230,6 +23620,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.UpdateStandardGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.UpdateStandardGroupResponse:
+        """
+        @summary Modifies the name and description of a specific security rule set.
+        
+        @param request: UpdateStandardGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateStandardGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -19264,6 +23661,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.UpdateStandardGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.UpdateStandardGroupResponse:
+        """
+        @summary Modifies the name and description of a specific security rule set.
+        
+        @param request: UpdateStandardGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateStandardGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -19297,6 +23701,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.UpdateStandardGroupRequest,
     ) -> dms_enterprise_20181101_models.UpdateStandardGroupResponse:
+        """
+        @summary Modifies the name and description of a specific security rule set.
+        
+        @param request: UpdateStandardGroupRequest
+        @return: UpdateStandardGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_standard_group_with_options(request, runtime)
 
@@ -19304,6 +23714,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.UpdateStandardGroupRequest,
     ) -> dms_enterprise_20181101_models.UpdateStandardGroupResponse:
+        """
+        @summary Modifies the name and description of a specific security rule set.
+        
+        @param request: UpdateStandardGroupRequest
+        @return: UpdateStandardGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_standard_group_with_options_async(request, runtime)
 
@@ -19313,7 +23729,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.UpdateTaskConfigResponse:
         """
-        You can call this operation to configure a failed task or rerun a task.
+        @summary Updates the advanced configuration of a task node.
+        
+        @description You can call this operation to configure a failed task or rerun a task.
         
         @param request: UpdateTaskConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19352,7 +23770,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.UpdateTaskConfigResponse:
         """
-        You can call this operation to configure a failed task or rerun a task.
+        @summary Updates the advanced configuration of a task node.
+        
+        @description You can call this operation to configure a failed task or rerun a task.
         
         @param request: UpdateTaskConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19390,7 +23810,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.UpdateTaskConfigRequest,
     ) -> dms_enterprise_20181101_models.UpdateTaskConfigResponse:
         """
-        You can call this operation to configure a failed task or rerun a task.
+        @summary Updates the advanced configuration of a task node.
+        
+        @description You can call this operation to configure a failed task or rerun a task.
         
         @param request: UpdateTaskConfigRequest
         @return: UpdateTaskConfigResponse
@@ -19403,7 +23825,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.UpdateTaskConfigRequest,
     ) -> dms_enterprise_20181101_models.UpdateTaskConfigResponse:
         """
-        You can call this operation to configure a failed task or rerun a task.
+        @summary Updates the advanced configuration of a task node.
+        
+        @description You can call this operation to configure a failed task or rerun a task.
         
         @param request: UpdateTaskConfigRequest
         @return: UpdateTaskConfigResponse
@@ -19417,7 +23841,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.UpdateTaskContentResponse:
         """
-        You can call this operation to modify node configurations.
+        @summary Updates tasks in a task flow.
+        
+        @description You can call this operation to modify node configurations.
         
         @param request: UpdateTaskContentRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19456,7 +23882,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.UpdateTaskContentResponse:
         """
-        You can call this operation to modify node configurations.
+        @summary Updates tasks in a task flow.
+        
+        @description You can call this operation to modify node configurations.
         
         @param request: UpdateTaskContentRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19494,7 +23922,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.UpdateTaskContentRequest,
     ) -> dms_enterprise_20181101_models.UpdateTaskContentResponse:
         """
-        You can call this operation to modify node configurations.
+        @summary Updates tasks in a task flow.
+        
+        @description You can call this operation to modify node configurations.
         
         @param request: UpdateTaskContentRequest
         @return: UpdateTaskContentResponse
@@ -19507,7 +23937,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.UpdateTaskContentRequest,
     ) -> dms_enterprise_20181101_models.UpdateTaskContentResponse:
         """
-        You can call this operation to modify node configurations.
+        @summary Updates tasks in a task flow.
+        
+        @description You can call this operation to modify node configurations.
         
         @param request: UpdateTaskContentRequest
         @return: UpdateTaskContentResponse
@@ -19520,6 +23952,13 @@ class Client(OpenApiClient):
         tmp_req: dms_enterprise_20181101_models.UpdateTaskFlowConstantsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.UpdateTaskFlowConstantsResponse:
+        """
+        @summary Updates the constants for a specified task flow.
+        
+        @param tmp_req: UpdateTaskFlowConstantsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTaskFlowConstantsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dms_enterprise_20181101_models.UpdateTaskFlowConstantsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -19556,6 +23995,13 @@ class Client(OpenApiClient):
         tmp_req: dms_enterprise_20181101_models.UpdateTaskFlowConstantsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.UpdateTaskFlowConstantsResponse:
+        """
+        @summary Updates the constants for a specified task flow.
+        
+        @param tmp_req: UpdateTaskFlowConstantsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTaskFlowConstantsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dms_enterprise_20181101_models.UpdateTaskFlowConstantsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -19591,6 +24037,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.UpdateTaskFlowConstantsRequest,
     ) -> dms_enterprise_20181101_models.UpdateTaskFlowConstantsResponse:
+        """
+        @summary Updates the constants for a specified task flow.
+        
+        @param request: UpdateTaskFlowConstantsRequest
+        @return: UpdateTaskFlowConstantsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_task_flow_constants_with_options(request, runtime)
 
@@ -19598,6 +24050,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.UpdateTaskFlowConstantsRequest,
     ) -> dms_enterprise_20181101_models.UpdateTaskFlowConstantsResponse:
+        """
+        @summary Updates the constants for a specified task flow.
+        
+        @param request: UpdateTaskFlowConstantsRequest
+        @return: UpdateTaskFlowConstantsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_task_flow_constants_with_options_async(request, runtime)
 
@@ -19606,6 +24064,13 @@ class Client(OpenApiClient):
         tmp_req: dms_enterprise_20181101_models.UpdateTaskFlowCooperatorsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.UpdateTaskFlowCooperatorsResponse:
+        """
+        @summary Updates the IDs of the users who are involved in the task flow.
+        
+        @param tmp_req: UpdateTaskFlowCooperatorsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTaskFlowCooperatorsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dms_enterprise_20181101_models.UpdateTaskFlowCooperatorsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -19642,6 +24107,13 @@ class Client(OpenApiClient):
         tmp_req: dms_enterprise_20181101_models.UpdateTaskFlowCooperatorsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.UpdateTaskFlowCooperatorsResponse:
+        """
+        @summary Updates the IDs of the users who are involved in the task flow.
+        
+        @param tmp_req: UpdateTaskFlowCooperatorsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTaskFlowCooperatorsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dms_enterprise_20181101_models.UpdateTaskFlowCooperatorsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -19677,6 +24149,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.UpdateTaskFlowCooperatorsRequest,
     ) -> dms_enterprise_20181101_models.UpdateTaskFlowCooperatorsResponse:
+        """
+        @summary Updates the IDs of the users who are involved in the task flow.
+        
+        @param request: UpdateTaskFlowCooperatorsRequest
+        @return: UpdateTaskFlowCooperatorsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_task_flow_cooperators_with_options(request, runtime)
 
@@ -19684,6 +24162,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.UpdateTaskFlowCooperatorsRequest,
     ) -> dms_enterprise_20181101_models.UpdateTaskFlowCooperatorsResponse:
+        """
+        @summary Updates the IDs of the users who are involved in the task flow.
+        
+        @param request: UpdateTaskFlowCooperatorsRequest
+        @return: UpdateTaskFlowCooperatorsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_task_flow_cooperators_with_options_async(request, runtime)
 
@@ -19693,7 +24177,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.UpdateTaskFlowEdgesResponse:
         """
-        ###
+        @summary Updates the start node and end node of multiple edges at a time for a task flow.
+        
+        @description ###
         The edges can be updated only when the following conditions are met:
         1.  The specified edge exists in the directed acyclic graph (DAG) of the task flow specified by DagId.
         2.  The specified edge nodes exist in the DAG of the task flow specified by DagId.
@@ -19740,7 +24226,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.UpdateTaskFlowEdgesResponse:
         """
-        ###
+        @summary Updates the start node and end node of multiple edges at a time for a task flow.
+        
+        @description ###
         The edges can be updated only when the following conditions are met:
         1.  The specified edge exists in the directed acyclic graph (DAG) of the task flow specified by DagId.
         2.  The specified edge nodes exist in the DAG of the task flow specified by DagId.
@@ -19786,7 +24274,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.UpdateTaskFlowEdgesRequest,
     ) -> dms_enterprise_20181101_models.UpdateTaskFlowEdgesResponse:
         """
-        ###
+        @summary Updates the start node and end node of multiple edges at a time for a task flow.
+        
+        @description ###
         The edges can be updated only when the following conditions are met:
         1.  The specified edge exists in the directed acyclic graph (DAG) of the task flow specified by DagId.
         2.  The specified edge nodes exist in the DAG of the task flow specified by DagId.
@@ -19803,7 +24293,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.UpdateTaskFlowEdgesRequest,
     ) -> dms_enterprise_20181101_models.UpdateTaskFlowEdgesResponse:
         """
-        ###
+        @summary Updates the start node and end node of multiple edges at a time for a task flow.
+        
+        @description ###
         The edges can be updated only when the following conditions are met:
         1.  The specified edge exists in the directed acyclic graph (DAG) of the task flow specified by DagId.
         2.  The specified edge nodes exist in the DAG of the task flow specified by DagId.
@@ -19820,6 +24312,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.UpdateTaskFlowNameAndDescRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.UpdateTaskFlowNameAndDescResponse:
+        """
+        @summary Updates the name and description of a task flow.
+        
+        @param request: UpdateTaskFlowNameAndDescRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTaskFlowNameAndDescResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dag_id):
@@ -19854,6 +24353,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.UpdateTaskFlowNameAndDescRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.UpdateTaskFlowNameAndDescResponse:
+        """
+        @summary Updates the name and description of a task flow.
+        
+        @param request: UpdateTaskFlowNameAndDescRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTaskFlowNameAndDescResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dag_id):
@@ -19887,6 +24393,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.UpdateTaskFlowNameAndDescRequest,
     ) -> dms_enterprise_20181101_models.UpdateTaskFlowNameAndDescResponse:
+        """
+        @summary Updates the name and description of a task flow.
+        
+        @param request: UpdateTaskFlowNameAndDescRequest
+        @return: UpdateTaskFlowNameAndDescResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_task_flow_name_and_desc_with_options(request, runtime)
 
@@ -19894,6 +24406,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.UpdateTaskFlowNameAndDescRequest,
     ) -> dms_enterprise_20181101_models.UpdateTaskFlowNameAndDescResponse:
+        """
+        @summary Updates the name and description of a task flow.
+        
+        @param request: UpdateTaskFlowNameAndDescRequest
+        @return: UpdateTaskFlowNameAndDescResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_task_flow_name_and_desc_with_options_async(request, runtime)
 
@@ -19902,6 +24420,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.UpdateTaskFlowNotificationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.UpdateTaskFlowNotificationResponse:
+        """
+        @summary Updates the notification settings for task flows.
+        
+        @param request: UpdateTaskFlowNotificationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTaskFlowNotificationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dag_id):
@@ -19938,6 +24463,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.UpdateTaskFlowNotificationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.UpdateTaskFlowNotificationResponse:
+        """
+        @summary Updates the notification settings for task flows.
+        
+        @param request: UpdateTaskFlowNotificationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTaskFlowNotificationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dag_id):
@@ -19973,6 +24505,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.UpdateTaskFlowNotificationRequest,
     ) -> dms_enterprise_20181101_models.UpdateTaskFlowNotificationResponse:
+        """
+        @summary Updates the notification settings for task flows.
+        
+        @param request: UpdateTaskFlowNotificationRequest
+        @return: UpdateTaskFlowNotificationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_task_flow_notification_with_options(request, runtime)
 
@@ -19980,6 +24518,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.UpdateTaskFlowNotificationRequest,
     ) -> dms_enterprise_20181101_models.UpdateTaskFlowNotificationResponse:
+        """
+        @summary Updates the notification settings for task flows.
+        
+        @param request: UpdateTaskFlowNotificationRequest
+        @return: UpdateTaskFlowNotificationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_task_flow_notification_with_options_async(request, runtime)
 
@@ -19989,7 +24533,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.UpdateTaskFlowOwnerResponse:
         """
-        Note: The new owner of the task flow must belong to the same tenant as the previous owner.
+        @summary Changes the owner of a task flow.
+        
+        @description Note: The new owner of the task flow must belong to the same tenant as the previous owner.
         
         @param request: UpdateTaskFlowOwnerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20028,7 +24574,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.UpdateTaskFlowOwnerResponse:
         """
-        Note: The new owner of the task flow must belong to the same tenant as the previous owner.
+        @summary Changes the owner of a task flow.
+        
+        @description Note: The new owner of the task flow must belong to the same tenant as the previous owner.
         
         @param request: UpdateTaskFlowOwnerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20066,7 +24614,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.UpdateTaskFlowOwnerRequest,
     ) -> dms_enterprise_20181101_models.UpdateTaskFlowOwnerResponse:
         """
-        Note: The new owner of the task flow must belong to the same tenant as the previous owner.
+        @summary Changes the owner of a task flow.
+        
+        @description Note: The new owner of the task flow must belong to the same tenant as the previous owner.
         
         @param request: UpdateTaskFlowOwnerRequest
         @return: UpdateTaskFlowOwnerResponse
@@ -20079,7 +24629,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.UpdateTaskFlowOwnerRequest,
     ) -> dms_enterprise_20181101_models.UpdateTaskFlowOwnerResponse:
         """
-        Note: The new owner of the task flow must belong to the same tenant as the previous owner.
+        @summary Changes the owner of a task flow.
+        
+        @description Note: The new owner of the task flow must belong to the same tenant as the previous owner.
         
         @param request: UpdateTaskFlowOwnerRequest
         @return: UpdateTaskFlowOwnerResponse
@@ -20093,7 +24645,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.UpdateTaskFlowRelationsResponse:
         """
-        You can call this operation to perform a full update. For incremental updates, see AddTaskFlowEdges, UpdateTaskFlowEdges, and DeleteTaskFlowEdgesByMultiCondition.
+        @summary Fully updates the edges of a task flow.
+        
+        @description You can call this operation to perform a full update. For incremental updates, see AddTaskFlowEdges, UpdateTaskFlowEdges, and DeleteTaskFlowEdgesByMultiCondition.
         
         @param tmp_req: UpdateTaskFlowRelationsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20136,7 +24690,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.UpdateTaskFlowRelationsResponse:
         """
-        You can call this operation to perform a full update. For incremental updates, see AddTaskFlowEdges, UpdateTaskFlowEdges, and DeleteTaskFlowEdgesByMultiCondition.
+        @summary Fully updates the edges of a task flow.
+        
+        @description You can call this operation to perform a full update. For incremental updates, see AddTaskFlowEdges, UpdateTaskFlowEdges, and DeleteTaskFlowEdgesByMultiCondition.
         
         @param tmp_req: UpdateTaskFlowRelationsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20178,7 +24734,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.UpdateTaskFlowRelationsRequest,
     ) -> dms_enterprise_20181101_models.UpdateTaskFlowRelationsResponse:
         """
-        You can call this operation to perform a full update. For incremental updates, see AddTaskFlowEdges, UpdateTaskFlowEdges, and DeleteTaskFlowEdgesByMultiCondition.
+        @summary Fully updates the edges of a task flow.
+        
+        @description You can call this operation to perform a full update. For incremental updates, see AddTaskFlowEdges, UpdateTaskFlowEdges, and DeleteTaskFlowEdgesByMultiCondition.
         
         @param request: UpdateTaskFlowRelationsRequest
         @return: UpdateTaskFlowRelationsResponse
@@ -20191,7 +24749,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.UpdateTaskFlowRelationsRequest,
     ) -> dms_enterprise_20181101_models.UpdateTaskFlowRelationsResponse:
         """
-        You can call this operation to perform a full update. For incremental updates, see AddTaskFlowEdges, UpdateTaskFlowEdges, and DeleteTaskFlowEdgesByMultiCondition.
+        @summary Fully updates the edges of a task flow.
+        
+        @description You can call this operation to perform a full update. For incremental updates, see AddTaskFlowEdges, UpdateTaskFlowEdges, and DeleteTaskFlowEdgesByMultiCondition.
         
         @param request: UpdateTaskFlowRelationsRequest
         @return: UpdateTaskFlowRelationsResponse
@@ -20205,7 +24765,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.UpdateTaskFlowScheduleResponse:
         """
-        You can call this operation to update the scheduling properties for a task flow in the editing state. You can configure a *timed scheduling** task flow or an **event scheduling** task flow. When you configure a **timed scheduling** task flow, you can choose from one-time scheduling or periodic scheduling. When you configure an **event scheduling** task flow, you can subscribe to task flows or task flow nodes.****\\
+        @summary Updates the scheduling properties for a task flow.
+        
+        @description You can call this operation to update the scheduling properties for a task flow in the editing state. You can configure a *timed scheduling** task flow or an **event scheduling** task flow. When you configure a **timed scheduling** task flow, you can choose from one-time scheduling or periodic scheduling. When you configure an **event scheduling** task flow, you can subscribe to task flows or task flow nodes.****\\
         After you update the scheduling properties, you need to publish and deploy the task flow again. The new task flow instance will run based on the updated scheduling properties.
         
         @param request: UpdateTaskFlowScheduleRequest
@@ -20259,7 +24821,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.UpdateTaskFlowScheduleResponse:
         """
-        You can call this operation to update the scheduling properties for a task flow in the editing state. You can configure a *timed scheduling** task flow or an **event scheduling** task flow. When you configure a **timed scheduling** task flow, you can choose from one-time scheduling or periodic scheduling. When you configure an **event scheduling** task flow, you can subscribe to task flows or task flow nodes.****\\
+        @summary Updates the scheduling properties for a task flow.
+        
+        @description You can call this operation to update the scheduling properties for a task flow in the editing state. You can configure a *timed scheduling** task flow or an **event scheduling** task flow. When you configure a **timed scheduling** task flow, you can choose from one-time scheduling or periodic scheduling. When you configure an **event scheduling** task flow, you can subscribe to task flows or task flow nodes.****\\
         After you update the scheduling properties, you need to publish and deploy the task flow again. The new task flow instance will run based on the updated scheduling properties.
         
         @param request: UpdateTaskFlowScheduleRequest
@@ -20312,7 +24876,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.UpdateTaskFlowScheduleRequest,
     ) -> dms_enterprise_20181101_models.UpdateTaskFlowScheduleResponse:
         """
-        You can call this operation to update the scheduling properties for a task flow in the editing state. You can configure a *timed scheduling** task flow or an **event scheduling** task flow. When you configure a **timed scheduling** task flow, you can choose from one-time scheduling or periodic scheduling. When you configure an **event scheduling** task flow, you can subscribe to task flows or task flow nodes.****\\
+        @summary Updates the scheduling properties for a task flow.
+        
+        @description You can call this operation to update the scheduling properties for a task flow in the editing state. You can configure a *timed scheduling** task flow or an **event scheduling** task flow. When you configure a **timed scheduling** task flow, you can choose from one-time scheduling or periodic scheduling. When you configure an **event scheduling** task flow, you can subscribe to task flows or task flow nodes.****\\
         After you update the scheduling properties, you need to publish and deploy the task flow again. The new task flow instance will run based on the updated scheduling properties.
         
         @param request: UpdateTaskFlowScheduleRequest
@@ -20326,7 +24892,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.UpdateTaskFlowScheduleRequest,
     ) -> dms_enterprise_20181101_models.UpdateTaskFlowScheduleResponse:
         """
-        You can call this operation to update the scheduling properties for a task flow in the editing state. You can configure a *timed scheduling** task flow or an **event scheduling** task flow. When you configure a **timed scheduling** task flow, you can choose from one-time scheduling or periodic scheduling. When you configure an **event scheduling** task flow, you can subscribe to task flows or task flow nodes.****\\
+        @summary Updates the scheduling properties for a task flow.
+        
+        @description You can call this operation to update the scheduling properties for a task flow in the editing state. You can configure a *timed scheduling** task flow or an **event scheduling** task flow. When you configure a **timed scheduling** task flow, you can choose from one-time scheduling or periodic scheduling. When you configure an **event scheduling** task flow, you can subscribe to task flows or task flow nodes.****\\
         After you update the scheduling properties, you need to publish and deploy the task flow again. The new task flow instance will run based on the updated scheduling properties.
         
         @param request: UpdateTaskFlowScheduleRequest
@@ -20340,6 +24908,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.UpdateTaskFlowTimeVariablesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.UpdateTaskFlowTimeVariablesResponse:
+        """
+        @summary Updates the time variables for a task flow.
+        
+        @param request: UpdateTaskFlowTimeVariablesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTaskFlowTimeVariablesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dag_id):
@@ -20372,6 +24947,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.UpdateTaskFlowTimeVariablesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.UpdateTaskFlowTimeVariablesResponse:
+        """
+        @summary Updates the time variables for a task flow.
+        
+        @param request: UpdateTaskFlowTimeVariablesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTaskFlowTimeVariablesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dag_id):
@@ -20403,6 +24985,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.UpdateTaskFlowTimeVariablesRequest,
     ) -> dms_enterprise_20181101_models.UpdateTaskFlowTimeVariablesResponse:
+        """
+        @summary Updates the time variables for a task flow.
+        
+        @param request: UpdateTaskFlowTimeVariablesRequest
+        @return: UpdateTaskFlowTimeVariablesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_task_flow_time_variables_with_options(request, runtime)
 
@@ -20410,6 +24998,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.UpdateTaskFlowTimeVariablesRequest,
     ) -> dms_enterprise_20181101_models.UpdateTaskFlowTimeVariablesResponse:
+        """
+        @summary Updates the time variables for a task flow.
+        
+        @param request: UpdateTaskFlowTimeVariablesRequest
+        @return: UpdateTaskFlowTimeVariablesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_task_flow_time_variables_with_options_async(request, runtime)
 
@@ -20418,6 +25012,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.UpdateTaskNameRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.UpdateTaskNameResponse:
+        """
+        @summary Updates the name of a specified task.
+        
+        @param request: UpdateTaskNameRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTaskNameResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.node_id):
@@ -20450,6 +25051,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.UpdateTaskNameRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.UpdateTaskNameResponse:
+        """
+        @summary Updates the name of a specified task.
+        
+        @param request: UpdateTaskNameRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTaskNameResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.node_id):
@@ -20481,6 +25089,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.UpdateTaskNameRequest,
     ) -> dms_enterprise_20181101_models.UpdateTaskNameResponse:
+        """
+        @summary Updates the name of a specified task.
+        
+        @param request: UpdateTaskNameRequest
+        @return: UpdateTaskNameResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_task_name_with_options(request, runtime)
 
@@ -20488,6 +25102,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.UpdateTaskNameRequest,
     ) -> dms_enterprise_20181101_models.UpdateTaskNameResponse:
+        """
+        @summary Updates the name of a specified task.
+        
+        @param request: UpdateTaskNameRequest
+        @return: UpdateTaskNameResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_task_name_with_options_async(request, runtime)
 
@@ -20497,7 +25117,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.UpdateTaskOutputResponse:
         """
-        Only nodes of single-instance SQL assignment, script code, and ECS remote command have output variables.
+        @summary Updates the output variables for a specified task node.
+        
+        @description Only nodes of single-instance SQL assignment, script code, and ECS remote command have output variables.
         
         @param request: UpdateTaskOutputRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20536,7 +25158,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.UpdateTaskOutputResponse:
         """
-        Only nodes of single-instance SQL assignment, script code, and ECS remote command have output variables.
+        @summary Updates the output variables for a specified task node.
+        
+        @description Only nodes of single-instance SQL assignment, script code, and ECS remote command have output variables.
         
         @param request: UpdateTaskOutputRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20574,7 +25198,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.UpdateTaskOutputRequest,
     ) -> dms_enterprise_20181101_models.UpdateTaskOutputResponse:
         """
-        Only nodes of single-instance SQL assignment, script code, and ECS remote command have output variables.
+        @summary Updates the output variables for a specified task node.
+        
+        @description Only nodes of single-instance SQL assignment, script code, and ECS remote command have output variables.
         
         @param request: UpdateTaskOutputRequest
         @return: UpdateTaskOutputResponse
@@ -20587,7 +25213,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.UpdateTaskOutputRequest,
     ) -> dms_enterprise_20181101_models.UpdateTaskOutputResponse:
         """
-        Only nodes of single-instance SQL assignment, script code, and ECS remote command have output variables.
+        @summary Updates the output variables for a specified task node.
+        
+        @description Only nodes of single-instance SQL assignment, script code, and ECS remote command have output variables.
         
         @param request: UpdateTaskOutputRequest
         @return: UpdateTaskOutputResponse
@@ -20600,6 +25228,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.UpdateTaskTimeVariablesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.UpdateTaskTimeVariablesResponse:
+        """
+        @summary Updates time variables for a task.
+        
+        @param request: UpdateTaskTimeVariablesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTaskTimeVariablesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.node_id):
@@ -20632,6 +25267,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.UpdateTaskTimeVariablesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.UpdateTaskTimeVariablesResponse:
+        """
+        @summary Updates time variables for a task.
+        
+        @param request: UpdateTaskTimeVariablesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTaskTimeVariablesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.node_id):
@@ -20663,6 +25305,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.UpdateTaskTimeVariablesRequest,
     ) -> dms_enterprise_20181101_models.UpdateTaskTimeVariablesResponse:
+        """
+        @summary Updates time variables for a task.
+        
+        @param request: UpdateTaskTimeVariablesRequest
+        @return: UpdateTaskTimeVariablesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_task_time_variables_with_options(request, runtime)
 
@@ -20670,6 +25318,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.UpdateTaskTimeVariablesRequest,
     ) -> dms_enterprise_20181101_models.UpdateTaskTimeVariablesResponse:
+        """
+        @summary Updates time variables for a task.
+        
+        @param request: UpdateTaskTimeVariablesRequest
+        @return: UpdateTaskTimeVariablesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_task_time_variables_with_options_async(request, runtime)
 
@@ -20678,6 +25332,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.UpdateUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.UpdateUserResponse:
+        """
+        @summary Updates user information.
+        
+        @param request: UpdateUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateUserResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.max_execute_count):
@@ -20718,6 +25379,13 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.UpdateUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.UpdateUserResponse:
+        """
+        @summary Updates user information.
+        
+        @param request: UpdateUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateUserResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.max_execute_count):
@@ -20757,6 +25425,12 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.UpdateUserRequest,
     ) -> dms_enterprise_20181101_models.UpdateUserResponse:
+        """
+        @summary Updates user information.
+        
+        @param request: UpdateUserRequest
+        @return: UpdateUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_user_with_options(request, runtime)
 
@@ -20764,5 +25438,11 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.UpdateUserRequest,
     ) -> dms_enterprise_20181101_models.UpdateUserResponse:
+        """
+        @summary Updates user information.
+        
+        @param request: UpdateUserRequest
+        @return: UpdateUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_user_with_options_async(request, runtime)

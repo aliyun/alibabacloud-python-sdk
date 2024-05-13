@@ -625,10 +625,14 @@ class AddDesensitizationRuleRequest(TeaModel):
         # *   DEFAULT: masks all characters.
         # *   RANDOM_REPLACE: randomly replaces characters.
         # *   MD5: masks characters by using the MD5 algorithm.
+        # 
+        # This parameter is required.
         self.function_type = function_type
         # The description of the rule.
         self.rule_description = rule_description
         # The name of the rule.
+        # 
+        # This parameter is required.
         self.rule_name = rule_name
         # The masking algorithm.
         # 
@@ -681,10 +685,12 @@ class AddDesensitizationRuleRequest(TeaModel):
         #     <!-- -->
         # 
         #     <!-- -->
+        # 
+        # This parameter is required.
         self.rule_type = rule_type
         # The tenant ID.
         # 
-        # >  To view the ID of the tenant, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see the [View information about the current tenant](~~181330~~) section of the "Manage DMS tenants" topic.
+        # >  To view the ID of the tenant, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see the [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the "Manage DMS tenants" topic.
         self.tid = tid
 
     def validate(self):
@@ -861,7 +867,9 @@ class AddInstanceRequest(TeaModel):
         vpc_id: str = None,
     ):
         self.data_link_name = data_link_name
+        # This parameter is required.
         self.database_password = database_password
+        # This parameter is required.
         self.database_user = database_user
         self.dba_id = dba_id
         self.ddl_online = ddl_online
@@ -870,15 +878,25 @@ class AddInstanceRequest(TeaModel):
         self.enable_sell_common = enable_sell_common
         self.enable_sell_sitd = enable_sell_sitd
         self.enable_sell_stable = enable_sell_stable
+        # This parameter is required.
         self.enable_sell_trust = enable_sell_trust
+        # This parameter is required.
         self.env_type = env_type
+        # This parameter is required.
         self.export_timeout = export_timeout
+        # This parameter is required.
         self.host = host
+        # This parameter is required.
         self.instance_alias = instance_alias
+        # This parameter is required.
         self.instance_source = instance_source
+        # This parameter is required.
         self.instance_type = instance_type
+        # This parameter is required.
         self.network_type = network_type
+        # This parameter is required.
         self.port = port
+        # This parameter is required.
         self.query_timeout = query_timeout
         self.safe_rule = safe_rule
         self.sid = sid
@@ -1119,8 +1137,12 @@ class AddLhMembersRequestMembers(TeaModel):
         # *   **ADMIN**: workspace administrator. You can add a workspace administrator only as a DMS administrator or a DBA.
         # *   **MEMBER**: workspace member.
         # *   **DEVELOPER**: task flow developer. Only a workspace member can be added as a task flow developer.
+        # 
+        # This parameter is required.
         self.roles = roles
-        # The ID of the user to be added. You can call the [ListUsers](~~141938~~) or [GetUser](~~147098~~) operation to obtain the user ID.
+        # The ID of the user to be added. You can call the [ListUsers](https://help.aliyun.com/document_detail/141938.html) or [GetUser](https://help.aliyun.com/document_detail/147098.html) operation to obtain the user ID.
+        # 
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -1156,18 +1178,24 @@ class AddLhMembersRequest(TeaModel):
         tid: int = None,
     ):
         # The information about the users to be added.
+        # 
+        # This parameter is required.
         self.members = members
         # The ID of the object.
         # 
-        # *   If the object is a workspace, you can call the [GetLhSpaceByName](~~424379~~) operation to obtain the workspace ID.
-        # *   If the object is a task flow, you can call the [ListLhTaskFlowAndScenario](~~426672~~) operation to obtain the task flow ID.
+        # *   If the object is a workspace, you can call the [GetLhSpaceByName](https://help.aliyun.com/document_detail/424379.html) operation to obtain the workspace ID.
+        # *   If the object is a task flow, you can call the [ListLhTaskFlowAndScenario](https://help.aliyun.com/document_detail/426672.html) operation to obtain the task flow ID.
+        # 
+        # This parameter is required.
         self.object_id = object_id
         # The type of the object. Valid values:
         # 
         # *   **0**: workspace
         # *   **1**: task flow
+        # 
+        # This parameter is required.
         self.object_type = object_type
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to obtain the tenant ID.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to obtain the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -1219,18 +1247,24 @@ class AddLhMembersShrinkRequest(TeaModel):
         tid: int = None,
     ):
         # The information about the users to be added.
+        # 
+        # This parameter is required.
         self.members_shrink = members_shrink
         # The ID of the object.
         # 
-        # *   If the object is a workspace, you can call the [GetLhSpaceByName](~~424379~~) operation to obtain the workspace ID.
-        # *   If the object is a task flow, you can call the [ListLhTaskFlowAndScenario](~~426672~~) operation to obtain the task flow ID.
+        # *   If the object is a workspace, you can call the [GetLhSpaceByName](https://help.aliyun.com/document_detail/424379.html) operation to obtain the workspace ID.
+        # *   If the object is a task flow, you can call the [ListLhTaskFlowAndScenario](https://help.aliyun.com/document_detail/426672.html) operation to obtain the task flow ID.
+        # 
+        # This parameter is required.
         self.object_id = object_id
         # The type of the object. Valid values:
         # 
         # *   **0**: workspace
         # *   **1**: task flow
+        # 
+        # This parameter is required.
         self.object_type = object_type
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to obtain the tenant ID.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to obtain the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -1367,13 +1401,19 @@ class AddLogicTableRouteConfigRequest(TeaModel):
         tid: int = None,
     ):
         # The routing algorithm expression. For more information about how to configure a routing algorithm expression, see [Configure a routing algorithm](https://www.alibabacloud.com/help/en/data-management-service/latest/configure-a-routing-algorithm).
+        # 
+        # This parameter is required.
         self.route_expr = route_expr
         # The unique key of the routing algorithm. 
         # 
         # > - You can create a custom unique key for the routing algorithm. No requirements are imposed on custom unique keys.
         # > - The unique key of the routing algorithm in the same logical table must be unique.
+        # 
+        # This parameter is required.
         self.route_key = route_key
         # The ID of the logical table. You can call the [ListLogicTables](https://www.alibabacloud.com/help/en/data-management-service/latest/listlogictables) operation to query the ID of the logical table.
+        # 
+        # This parameter is required.
         self.table_id = table_id
         # The ID of the tenant. You can call the [GetUserActiveTenant](https://www.alibabacloud.com/help/en/data-management-service/latest/getuseractivetenant) operation to query the tenant ID.
         self.tid = tid
@@ -1510,8 +1550,12 @@ class AddTaskFlowEdgesRequestEdges(TeaModel):
         node_from: int = None,
     ):
         # The ID of the node where the end node of the edge is located.
+        # 
+        # This parameter is required.
         self.node_end = node_end
         # The ID of the node where the start node of the edge is located.
+        # 
+        # This parameter is required.
         self.node_from = node_from
 
     def validate(self):
@@ -1545,13 +1589,17 @@ class AddTaskFlowEdgesRequest(TeaModel):
         edges: List[AddTaskFlowEdgesRequestEdges] = None,
         tid: int = None,
     ):
-        # The ID of the task flow. You can call the [ListTaskFlow](~~424565~~) or [ListLhTaskFlowAndScenario](~~426672~~) operation to query the task flow ID.
+        # The ID of the task flow. You can call the [ListTaskFlow](https://help.aliyun.com/document_detail/424565.html) or [ListLhTaskFlowAndScenario](https://help.aliyun.com/document_detail/426672.html) operation to query the task flow ID.
+        # 
+        # This parameter is required.
         self.dag_id = dag_id
         # The list of edges of the task flow.
+        # 
+        # This parameter is required.
         self.edges = edges
         # The ID of the tenant.
         # 
-        # > : To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](~~181330~~).
+        # > : To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
 
     def validate(self):
@@ -1597,13 +1645,17 @@ class AddTaskFlowEdgesShrinkRequest(TeaModel):
         edges_shrink: str = None,
         tid: int = None,
     ):
-        # The ID of the task flow. You can call the [ListTaskFlow](~~424565~~) or [ListLhTaskFlowAndScenario](~~426672~~) operation to query the task flow ID.
+        # The ID of the task flow. You can call the [ListTaskFlow](https://help.aliyun.com/document_detail/424565.html) or [ListLhTaskFlowAndScenario](https://help.aliyun.com/document_detail/426672.html) operation to query the task flow ID.
+        # 
+        # This parameter is required.
         self.dag_id = dag_id
         # The list of edges of the task flow.
+        # 
+        # This parameter is required.
         self.edges_shrink = edges_shrink
         # The ID of the tenant.
         # 
-        # > : To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](~~181330~~).
+        # > : To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
 
     def validate(self):
@@ -1772,13 +1824,17 @@ class AnalyzeSQLLineageRequest(TeaModel):
     ):
         # The database ID.
         # 
-        # >  You can call one of the [SearchDatabase](~~141876~~), [ListDatabases](~~141873~~), and [GetDatabase](~~141869~~) operations to obtain the database ID provided in the DatabaseId response parameter.
+        # >  You can call one of the [SearchDatabase](https://help.aliyun.com/document_detail/141876.html), [ListDatabases](https://help.aliyun.com/document_detail/141873.html), and [GetDatabase](https://help.aliyun.com/document_detail/141869.html) operations to obtain the database ID provided in the DatabaseId response parameter.
+        # 
+        # This parameter is required.
         self.db_id = db_id
         # The SQL statement.
+        # 
+        # This parameter is required.
         self.sql_content = sql_content
         # The tenant ID.
         # 
-        # >  To view the tenant ID, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see [Manage DMS tenants](~~181330~~).
+        # >  To view the tenant ID, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see [Manage DMS tenants](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
 
     def validate(self):
@@ -2187,6 +2243,8 @@ class ApproveOrderRequest(TeaModel):
         # *   **REJECT**\
         # *   **TRANSFER**\
         # *   **ADD_APPROVAL_NODE**\
+        # 
+        # This parameter is required.
         self.approval_type = approval_type
         # The description of the ticket.
         self.comment = comment
@@ -2195,9 +2253,11 @@ class ApproveOrderRequest(TeaModel):
         self.new_approver_list = new_approver_list
         # The ID of the user that transfers the ticket to another user. The default value is the ID of the current user. If the current user is an administrator or a database administrator (DBA), the user can change the value of this parameter to the ID of another user.
         self.old_approver = old_approver
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) operation to obtain the tenant ID.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) operation to obtain the tenant ID.
         self.tid = tid
-        # The ID of the approval process. You can call the [GetOrderBaseInfo](~~144642~~) operation to obtain the ID of the approval process.
+        # The ID of the approval process. You can call the [GetOrderBaseInfo](https://help.aliyun.com/document_detail/144642.html) operation to obtain the ID of the approval process.
+        # 
+        # This parameter is required.
         self.workflow_instance_id = workflow_instance_id
 
     def validate(self):
@@ -2371,7 +2431,9 @@ class BackFillRequest(TeaModel):
         self.back_fill_date_begin = back_fill_date_begin
         # The end date of the date range for the data to be backfilled. This parameter is required if you specify a date range for data backfill.
         self.back_fill_date_end = back_fill_date_end
-        # The ID of the task flow. You can call the [ListTaskFlow](~~424565~~) or [ListLhTaskFlowAndScenario](~~426672~~) operation to query the task flow ID.
+        # The ID of the task flow. You can call the [ListTaskFlow](https://help.aliyun.com/document_detail/424565.html) or [ListLhTaskFlowAndScenario](https://help.aliyun.com/document_detail/426672.html) operation to query the task flow ID.
+        # 
+        # This parameter is required.
         self.dag_id = dag_id
         # Filter condition, which specifies the list of node IDs in the task flow that do not need to supplement data.
         self.filter_node_ids = filter_node_ids
@@ -2385,7 +2447,7 @@ class BackFillRequest(TeaModel):
         self.start_node_ids = start_node_ids
         # The ID of the tenant.
         # 
-        # >  To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](~~181330~~).
+        # >  To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
 
     def validate(self):
@@ -2474,7 +2536,9 @@ class BackFillShrinkRequest(TeaModel):
         self.back_fill_date_begin = back_fill_date_begin
         # The end date of the date range for the data to be backfilled. This parameter is required if you specify a date range for data backfill.
         self.back_fill_date_end = back_fill_date_end
-        # The ID of the task flow. You can call the [ListTaskFlow](~~424565~~) or [ListLhTaskFlowAndScenario](~~426672~~) operation to query the task flow ID.
+        # The ID of the task flow. You can call the [ListTaskFlow](https://help.aliyun.com/document_detail/424565.html) or [ListLhTaskFlowAndScenario](https://help.aliyun.com/document_detail/426672.html) operation to query the task flow ID.
+        # 
+        # This parameter is required.
         self.dag_id = dag_id
         # Filter condition, which specifies the list of node IDs in the task flow that do not need to supplement data.
         self.filter_node_ids_shrink = filter_node_ids_shrink
@@ -2488,7 +2552,7 @@ class BackFillShrinkRequest(TeaModel):
         self.start_node_ids_shrink = start_node_ids_shrink
         # The ID of the tenant.
         # 
-        # >  To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](~~181330~~).
+        # >  To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
 
     def validate(self):
@@ -2670,14 +2734,18 @@ class BuyPayAsYouGoOrderRequest(TeaModel):
         # 
         # *   **VersionType**: DMS that supports control modes
         # *   **SensitiveDataProtection**: DMS that supports sensitive data protection
+        # 
+        # This parameter is required.
         self.commodity_type = commodity_type
         # The number of database instances that you want to use DMS to manage.
         # 
         # > A quota can be used for only one database instance.
+        # 
+        # This parameter is required.
         self.ins_num = ins_num
         # The ID of the tenant.
         # 
-        # > To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](~~181330~~).
+        # > To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
         # The control mode of DMS. Valid values:
         # 
@@ -2828,37 +2896,49 @@ class ChangeColumnSecLevelRequest(TeaModel):
         table_name: str = None,
         tid: int = None,
     ):
-        # The name of the field. You can call the [ListSensitiveColumns](~~188103~~) operation to obtain the name of the field.
+        # The name of the field. You can call the [ListSensitiveColumns](https://help.aliyun.com/document_detail/188103.html) operation to obtain the name of the field.
         # 
-        # > You can also call the [ListColumns](~~141870~~) operation to obtain the name of the field.
+        # > You can also call the [ListColumns](https://help.aliyun.com/document_detail/141870.html) operation to obtain the name of the field.
+        # 
+        # This parameter is required.
         self.column_name = column_name
-        # The ID of the database. You can call the [SearchDatabase](~~141876~~) operation to obtain the ID of the database.
+        # The ID of the database. You can call the [SearchDatabase](https://help.aliyun.com/document_detail/141876.html) operation to obtain the ID of the database.
         # 
-        # > You can also call the [ListDatabases](~~141873~~) operation to obtain the ID of a physical database and the [ListLogicDatabases](~~141874~~) operation to obtain the ID of a logical database.
+        # > You can also call the [ListDatabases](https://help.aliyun.com/document_detail/141873.html) operation to obtain the ID of a physical database and the [ListLogicDatabases](https://help.aliyun.com/document_detail/141874.html) operation to obtain the ID of a logical database.
+        # 
+        # This parameter is required.
         self.db_id = db_id
         # Specifies whether the database is a logical database. Valid values:
         # 
         # *   true: The database is a physical database.
         # *   false: The database is a logical database.
+        # 
+        # This parameter is required.
         self.is_logic = is_logic
         # The new sensitivity level of the field that you want to specify. Valid values:
         # 
         # *   INNER: low sensitivity level
         # *   SENSITIVE: medium sensitivity level
         # *   CONFIDENTIAL: high sensitivity level
+        # 
+        # This parameter is required.
         self.new_level = new_level
-        # The name of the database. You can call the [ListSensitiveColumns](~~188103~~) operation to obtain the name of the database.
+        # The name of the database. You can call the [ListSensitiveColumns](https://help.aliyun.com/document_detail/188103.html) operation to obtain the name of the database.
         # 
-        # *   You can also call the [SearchDatabase](~~141876~~) operation to obtain the name of the database.
-        # *   You can also call the [ListDatabases](~~141873~~) operation to obtain the name of a physical database and the [ListLogicDatabases](~~141874~~) operation to obtain the name of a logical database.
+        # *   You can also call the [SearchDatabase](https://help.aliyun.com/document_detail/141876.html) operation to obtain the name of the database.
+        # *   You can also call the [ListDatabases](https://help.aliyun.com/document_detail/141873.html) operation to obtain the name of a physical database and the [ListLogicDatabases](https://help.aliyun.com/document_detail/141874.html) operation to obtain the name of a logical database.
+        # 
+        # This parameter is required.
         self.schema_name = schema_name
-        # The name of the table. You can call the [ListSensitiveColumns](~~188103~~) operation to obtain the name of the table.
+        # The name of the table. You can call the [ListSensitiveColumns](https://help.aliyun.com/document_detail/188103.html) operation to obtain the name of the table.
         # 
-        # > You can also call the [ListTables](~~141878~~) operation to obtain the name of the table.
+        # > You can also call the [ListTables](https://help.aliyun.com/document_detail/141878.html) operation to obtain the name of the table.
+        # 
+        # This parameter is required.
         self.table_name = table_name
         # The ID of the tenant.
         # 
-        # > To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](~~181330~~).
+        # > To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
 
     def validate(self):
@@ -3009,11 +3089,17 @@ class ChangeColumnSecurityLevelRequest(TeaModel):
         table_name: str = None,
         tid: int = None,
     ):
+        # This parameter is required.
         self.column_name = column_name
+        # This parameter is required.
         self.db_id = db_id
+        # This parameter is required.
         self.is_logic = is_logic
+        # This parameter is required.
         self.new_sensitivity_level = new_sensitivity_level
+        # This parameter is required.
         self.schema_name = schema_name
+        # This parameter is required.
         self.table_name = table_name
         self.tid = tid
 
@@ -3154,11 +3240,15 @@ class ChangeLhDagOwnerRequest(TeaModel):
         owner_user_id: int = None,
         tid: int = None,
     ):
-        # The ID of the task flow. You can call the [ListLhTaskFlowAndScenario](~~426672~~) operation to obtain the task flow ID.
+        # The ID of the task flow. You can call the [ListLhTaskFlowAndScenario](https://help.aliyun.com/document_detail/426672.html) operation to obtain the task flow ID.
+        # 
+        # This parameter is required.
         self.dag_id = dag_id
-        # The ID of the user to be specified as the new owner of the task flow. You can call the [ListUsers](~~141938~~) or [GetUser](~~147098~~) operation to obtain the user ID.
+        # The ID of the user to be specified as the new owner of the task flow. You can call the [ListUsers](https://help.aliyun.com/document_detail/141938.html) or [GetUser](https://help.aliyun.com/document_detail/147098.html) operation to obtain the user ID.
+        # 
+        # This parameter is required.
         self.owner_user_id = owner_user_id
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to obtain the tenant ID.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to obtain the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -3290,12 +3380,16 @@ class CloseOrderRequest(TeaModel):
         tid: int = None,
     ):
         # The reason why the ticket is closed.
+        # 
+        # This parameter is required.
         self.close_reason = close_reason
         # The ID of the ticket.
+        # 
+        # This parameter is required.
         self.order_id = order_id
         # The ID of the tenant.
         # 
-        # > To view the tenant ID, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see [Manage DMS tenants](~~181330~~).
+        # > To view the tenant ID, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see [Manage DMS tenants](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
 
     def validate(self):
@@ -3426,8 +3520,10 @@ class CreateAuthorityTemplateRequest(TeaModel):
         # The description of the permission template.
         self.description = description
         # The name of the permission template.
+        # 
+        # This parameter is required.
         self.name = name
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to query the tenant ID.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to query the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -3537,7 +3633,7 @@ class CreateAuthorityTemplateResponseBody(TeaModel):
         # *   **true**: The request was successful.
         # *   **false**: The request failed.
         self.success = success
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to query the tenant ID.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to query the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -3630,8 +3726,10 @@ class CreateDataArchiveOrderRequestParamTableIncludes(TeaModel):
         table_where: str = None,
     ):
         # The name of the table.
+        # 
+        # This parameter is required.
         self.table_name = table_name
-        # The filter condition specified by the WHERE clause of the archiving configuration. If a time variable is used in the filter condition, the filter condition is specified in the following format: field name <=\"${variable name}\". The variable name in the filter condition must be the same as the Name value of Variables.
+        # The filter condition specified by the WHERE clause of the archiving configuration. If a time variable is used in the filter condition, the filter condition is specified in the following format: field name <=\\"${variable name}\\". The variable name in the filter condition must be the same as the Name value of Variables.
         self.table_where = table_where
 
     def validate(self):
@@ -3696,6 +3794,7 @@ class CreateDataArchiveOrderRequestParam(TeaModel):
         self,
         archive_method: str = None,
         cron_str: str = None,
+        database_id: str = None,
         logic: bool = None,
         order_after: List[str] = None,
         run_method: str = None,
@@ -3717,9 +3816,12 @@ class CreateDataArchiveOrderRequestParam(TeaModel):
         # *   **polardb**: PolarDB for MySQL cluster.
         # *   **adb_mysql**: AnalyticDB for MySQL V3.0 cluster.
         # *   **lindorm**: ApsaraDB for Lindorm instance.
+        # 
+        # This parameter is required.
         self.archive_method = archive_method
-        # A crontab expression that specifies the scheduling cycle to run the task. For more information, see the [Crontab expressions](~~206581~~) section of the "Create shadow tables for synchronization" topic. This parameter is required if RunMethod is set to schedule.
+        # A crontab expression that specifies the scheduling cycle to run the task. For more information, see the [Crontab expressions](https://help.aliyun.com/document_detail/206581.html) section of the "Create shadow tables for synchronization" topic. This parameter is required if RunMethod is set to schedule.
         self.cron_str = cron_str
+        self.database_id = database_id
         # Specifies whether the database is a logical database.
         self.logic = logic
         # The post behaviors.
@@ -3728,18 +3830,28 @@ class CreateDataArchiveOrderRequestParam(TeaModel):
         # 
         # *   **schedule**: The data archiving task is periodically scheduled.
         # *   **now**: The data archiving task is immediately run.
+        # 
+        # This parameter is required.
         self.run_method = run_method
         # The catalog of the source database. Valid values:
         # 
         # *   **def**: Set this parameter to def if the source database is of the two-layer logical schema, such as a MySQL database, a PolarDB for MySQL cluster, or an AnalyticDB for MySQL instance.
         # *   **An empty string**: Set this parameter to an empty string if the source database is an ApsaraDB for Lindorm or ApsaraDB for MongoDB instance.
         # *   **Catalog name**: Set this parameter to the catalog name of the source database if the source database is of the three-layer logical schema, such as a PostgreSQL database.
+        # 
+        # This parameter is required.
         self.source_catalog_name = source_catalog_name
         # The name of the source instance.
+        # 
+        # This parameter is required.
         self.source_instance_name = source_instance_name
         # The schema name of the source database. The schema name of the source database is the same as that of the destination database. If the source database is a MySQL database, this parameter specifies the name of the source database. If the source database is a PostgreSQL database, this parameter specifies the schema name of the source database.
+        # 
+        # This parameter is required.
         self.source_schema_name = source_schema_name
         # The collection of tables to be archived.
+        # 
+        # This parameter is required.
         self.table_includes = table_includes
         # The table names mapped to the destination database. If you call an API operation to create the data archiving ticket, you do not need to specify this parameter. The default value is used.
         self.table_mapping = table_mapping
@@ -3747,6 +3859,8 @@ class CreateDataArchiveOrderRequestParam(TeaModel):
         # 
         # *   If the data is archived in an OSS bucket, set the value to the name of the bucket.
         # *   If the data is archived in the dedicated storage space, set the value to inner_oss.
+        # 
+        # This parameter is required.
         self.target_instance_host = target_instance_host
         # The configuration of archiving variables. You can use a time variable as a filter condition for archiving data. Each variable has two attributes: name and pattern.
         self.variables = variables
@@ -3771,6 +3885,8 @@ class CreateDataArchiveOrderRequestParam(TeaModel):
             result['ArchiveMethod'] = self.archive_method
         if self.cron_str is not None:
             result['CronStr'] = self.cron_str
+        if self.database_id is not None:
+            result['DatabaseId'] = self.database_id
         if self.logic is not None:
             result['Logic'] = self.logic
         if self.order_after is not None:
@@ -3803,6 +3919,8 @@ class CreateDataArchiveOrderRequestParam(TeaModel):
             self.archive_method = m.get('ArchiveMethod')
         if m.get('CronStr') is not None:
             self.cron_str = m.get('CronStr')
+        if m.get('DatabaseId') is not None:
+            self.database_id = m.get('DatabaseId')
         if m.get('Logic') is not None:
             self.logic = m.get('Logic')
         if m.get('OrderAfter') is not None:
@@ -3843,8 +3961,12 @@ class CreateDataArchiveOrderRequest(TeaModel):
         tid: int = None,
     ):
         # The description of the task.
+        # 
+        # This parameter is required.
         self.comment = comment
         # The parameters for archiving data.
+        # 
+        # This parameter is required.
         self.param = param
         # The ID of the parent ticket. A parent ticket is generated only when a child ticket is created.
         self.parent_id = parent_id
@@ -3852,7 +3974,7 @@ class CreateDataArchiveOrderRequest(TeaModel):
         self.plugin_type = plugin_type
         # The list of the related users.
         self.related_user_list = related_user_list
-        # The tenant ID. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to obtain the tenant ID.
+        # The tenant ID. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to obtain the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -3908,8 +4030,12 @@ class CreateDataArchiveOrderShrinkRequest(TeaModel):
         tid: int = None,
     ):
         # The description of the task.
+        # 
+        # This parameter is required.
         self.comment = comment
         # The parameters for archiving data.
+        # 
+        # This parameter is required.
         self.param_shrink = param_shrink
         # The ID of the parent ticket. A parent ticket is generated only when a child ticket is created.
         self.parent_id = parent_id
@@ -3917,7 +4043,7 @@ class CreateDataArchiveOrderShrinkRequest(TeaModel):
         self.plugin_type = plugin_type
         # The list of the related users.
         self.related_user_list_shrink = related_user_list_shrink
-        # The tenant ID. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to obtain the tenant ID.
+        # The tenant ID. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to obtain the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -4068,13 +4194,17 @@ class CreateDataCorrectOrderRequestParamDbItemList(TeaModel):
     ):
         # The ID of the database. The database can be a physical database or a logical database.
         # 
-        # *   To obtain the ID of a physical database, call the [ListDatabases](~~141873~~) or [SearchDatabase](~~141876~~) operation.
-        # *   To obtain the ID of a logical database, call the [ListLogicDatabases](~~141874~~) or [SearchDatabase](~~141876~~) operation.
+        # *   To obtain the ID of a physical database, call the [ListDatabases](https://help.aliyun.com/document_detail/141873.html) or [SearchDatabase](https://help.aliyun.com/document_detail/141876.html) operation.
+        # *   To obtain the ID of a logical database, call the [ListLogicDatabases](https://help.aliyun.com/document_detail/141874.html) or [SearchDatabase](https://help.aliyun.com/document_detail/141876.html) operation.
+        # 
+        # This parameter is required.
         self.db_id = db_id
         # Specifies whether the database is a logical database. Valid values:
         # 
         # *   **true**: The database is a logical database.
         # *   **false**: The database is a physical database.
+        # 
+        # This parameter is required.
         self.logic = logic
 
     def validate(self):
@@ -4115,15 +4245,19 @@ class CreateDataCorrectOrderRequestParam(TeaModel):
         rollback_sql_type: str = None,
         sql_type: str = None,
     ):
-        # The key of the attachment that contains the SQL statements used to change data. You can call the [GetUserUploadFileJob](~~206069~~) operation to obtain the attachment key from the value of the AttachmentKey parameter.
+        # The key of the attachment that contains the SQL statements used to change data. You can call the [GetUserUploadFileJob](https://help.aliyun.com/document_detail/206069.html) operation to obtain the attachment key from the value of the AttachmentKey parameter.
         # 
         # >  This parameter is required if you set the **SqlType** parameter to **ATTACHMENT**.
         self.attachment_name = attachment_name
         # The reason for the data change.
         self.classify = classify
         # The databases in which you want to change data.
+        # 
+        # This parameter is required.
         self.db_item_list = db_item_list
         # The estimated number of data rows to be affected by the data change.
+        # 
+        # This parameter is required.
         self.estimate_affect_rows = estimate_affect_rows
         # The execution mode of the ticket after the ticket is approved. Valid values:
         # 
@@ -4135,7 +4269,7 @@ class CreateDataCorrectOrderRequestParam(TeaModel):
         # 
         # >  This parameter is required if you set the **SqlType** parameter to **TEXT**.
         self.exec_sql = exec_sql
-        # The key of the attachment that contains the SQL statements used to roll back the data change. You can call the [GetUserUploadFileJob](~~206069~~) operation to the attachment key from the value of the AttachmentKey parameter.
+        # The key of the attachment that contains the SQL statements used to roll back the data change. You can call the [GetUserUploadFileJob](https://help.aliyun.com/document_detail/206069.html) operation to the attachment key from the value of the AttachmentKey parameter.
         # 
         # >  This parameter is required if you set the **RollbackSqlType** parameter to **ATTACHMENT**.
         self.rollback_attachment_name = rollback_attachment_name
@@ -4152,6 +4286,8 @@ class CreateDataCorrectOrderRequestParam(TeaModel):
         # 
         # *   **TEXT**: text
         # *   **ATTACHMENT**: attachment
+        # 
+        # This parameter is required.
         self.sql_type = sql_type
 
     def validate(self):
@@ -4227,15 +4363,19 @@ class CreateDataCorrectOrderRequest(TeaModel):
         related_user_list: List[int] = None,
         tid: int = None,
     ):
-        # The key of the attachment that provides more instructions for the ticket. You can call the [GetUserUploadFileJob](~~206069~~) operation to obtain the attachment key from the value of the AttachmentKey parameter.
+        # The key of the attachment that provides more instructions for the ticket. You can call the [GetUserUploadFileJob](https://help.aliyun.com/document_detail/206069.html) operation to obtain the attachment key from the value of the AttachmentKey parameter.
         self.attachment_key = attachment_key
         # The purpose or objective of the data change. This parameter is used to help reduce unnecessary communication.
+        # 
+        # This parameter is required.
         self.comment = comment
         # The parameters of the ticket.
+        # 
+        # This parameter is required.
         self.param = param
         # The stakeholders of the data change. All stakeholders can view the ticket details and assist in the approval process. Irrelevant users other than DMS administrators and database administrators (DBAs) are not allowed to view the ticket details.
         self.related_user_list = related_user_list
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to obtain the tenant ID.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to obtain the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -4285,15 +4425,19 @@ class CreateDataCorrectOrderShrinkRequest(TeaModel):
         related_user_list_shrink: str = None,
         tid: int = None,
     ):
-        # The key of the attachment that provides more instructions for the ticket. You can call the [GetUserUploadFileJob](~~206069~~) operation to obtain the attachment key from the value of the AttachmentKey parameter.
+        # The key of the attachment that provides more instructions for the ticket. You can call the [GetUserUploadFileJob](https://help.aliyun.com/document_detail/206069.html) operation to obtain the attachment key from the value of the AttachmentKey parameter.
         self.attachment_key = attachment_key
         # The purpose or objective of the data change. This parameter is used to help reduce unnecessary communication.
+        # 
+        # This parameter is required.
         self.comment = comment
         # The parameters of the ticket.
+        # 
+        # This parameter is required.
         self.param_shrink = param_shrink
         # The stakeholders of the data change. All stakeholders can view the ticket details and assist in the approval process. Irrelevant users other than DMS administrators and database administrators (DBAs) are not allowed to view the ticket details.
         self.related_user_list_shrink = related_user_list_shrink
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to obtain the tenant ID.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to obtain the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -4442,12 +4586,18 @@ class CreateDataCronClearOrderRequestParamCronClearItemList(TeaModel):
         time_unit: str = None,
     ):
         # The name of the field.
+        # 
+        # This parameter is required.
         self.column_name = column_name
         # The filter conditions.
         self.filter_sql = filter_sql
         # The retention period of the historical data. Unit: days. For example, if you set the parameter to 7, DMS deletes the data that is retained for more than seven days.
+        # 
+        # This parameter is required.
         self.remain_days = remain_days
-        # The name of the table. You can call the [ListTables](~~141878~~) operation to query the name of the table.
+        # The name of the table. You can call the [ListTables](https://help.aliyun.com/document_detail/141878.html) operation to query the name of the table.
+        # 
+        # This parameter is required.
         self.table_name = table_name
         # The type of time granularity. If the ColumnName parameter specifies a field of a time type, this parameter is required. Valid values:
         # 
@@ -4497,12 +4647,16 @@ class CreateDataCronClearOrderRequestParamDbItemList(TeaModel):
         db_id: int = None,
         logic: bool = None,
     ):
-        # The ID of the database. You can call the [SearchDatabases](~~141876~~) operation to query the ID of the database.
+        # The ID of the database. You can call the [SearchDatabases](https://help.aliyun.com/document_detail/141876.html) operation to query the ID of the database.
+        # 
+        # This parameter is required.
         self.db_id = db_id
         # Indicates whether the database is a logical database. Valid values:
         # 
         # *   **true**: The database is a logical database.
         # *   **false**: The database is not a logical database.
+        # 
+        # This parameter is required.
         self.logic = logic
 
     def validate(self):
@@ -4542,10 +4696,16 @@ class CreateDataCronClearOrderRequestParam(TeaModel):
         # The reason for the data change.
         self.classify = classify
         # The tables for which you want to clear historical data.
+        # 
+        # This parameter is required.
         self.cron_clear_item_list = cron_clear_item_list
-        # The crontab expression that you can use to run the task at a specified time. For more information, see [Crontab expression](~~206581~~).
+        # The crontab expression that you can use to run the task at a specified time. For more information, see [Crontab expression](https://help.aliyun.com/document_detail/206581.html).
+        # 
+        # This parameter is required.
         self.cron_format = cron_format
         # The databases for which you want to clear historical data.
+        # 
+        # This parameter is required.
         self.db_item_list = db_item_list
         # The amount of time taken to run the task. Unit: hours.
         # 
@@ -4555,6 +4715,8 @@ class CreateDataCronClearOrderRequestParam(TeaModel):
         # 
         # *   **true**: specifies an end time for the task. The task is automatically suspended after this end time.
         # *   **false**: does not specify an end time for the task. The task is stopped after the historical data is cleared.
+        # 
+        # This parameter is required.
         self.specify_duration = specify_duration
 
     def validate(self):
@@ -4625,17 +4787,21 @@ class CreateDataCronClearOrderRequest(TeaModel):
     ):
         # The key of the attachment for the ticket. The attachment provides more instructions for this operation.
         # 
-        # You can call the [GetUserUploadFileJob](~~206069~~) operation to query the key of the attachment.
+        # You can call the [GetUserUploadFileJob](https://help.aliyun.com/document_detail/206069.html) operation to query the key of the attachment.
         self.attachment_key = attachment_key
         # The purpose or objective of the data change. This reduces unnecessary communication.
+        # 
+        # This parameter is required.
         self.comment = comment
         # The parameters of the ticket.
+        # 
+        # This parameter is required.
         self.param = param
         # The stakeholders of this operation. All stakeholders can view the ticket details and assist in the approval process. Irrelevant users other than Data Management (DMS) administrators and database administrators (DBAs) are not allowed to view the ticket details.
         self.related_user_list = related_user_list
         # The ID of the tenant.
         # 
-        # >  The ID of the tenant is displayed when you move the pointer over the profile picture in the upper-right corner of the DMS console. For more information, see the [View information about the current tenant](~~181330~~) section of the Manage DMS tenants topic.
+        # >  The ID of the tenant is displayed when you move the pointer over the profile picture in the upper-right corner of the DMS console. For more information, see the [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the Manage DMS tenants topic.
         self.tid = tid
 
     def validate(self):
@@ -4687,17 +4853,21 @@ class CreateDataCronClearOrderShrinkRequest(TeaModel):
     ):
         # The key of the attachment for the ticket. The attachment provides more instructions for this operation.
         # 
-        # You can call the [GetUserUploadFileJob](~~206069~~) operation to query the key of the attachment.
+        # You can call the [GetUserUploadFileJob](https://help.aliyun.com/document_detail/206069.html) operation to query the key of the attachment.
         self.attachment_key = attachment_key
         # The purpose or objective of the data change. This reduces unnecessary communication.
+        # 
+        # This parameter is required.
         self.comment = comment
         # The parameters of the ticket.
+        # 
+        # This parameter is required.
         self.param_shrink = param_shrink
         # The stakeholders of this operation. All stakeholders can view the ticket details and assist in the approval process. Irrelevant users other than Data Management (DMS) administrators and database administrators (DBAs) are not allowed to view the ticket details.
         self.related_user_list_shrink = related_user_list_shrink
         # The ID of the tenant.
         # 
-        # >  The ID of the tenant is displayed when you move the pointer over the profile picture in the upper-right corner of the DMS console. For more information, see the [View information about the current tenant](~~181330~~) section of the Manage DMS tenants topic.
+        # >  The ID of the tenant is displayed when you move the pointer over the profile picture in the upper-right corner of the DMS console. For more information, see the [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the Manage DMS tenants topic.
         self.tid = tid
 
     def validate(self):
@@ -4903,21 +5073,33 @@ class CreateDataExportOrderRequestPluginParam(TeaModel):
         watermark: CreateDataExportOrderRequestPluginParamWatermark = None,
     ):
         # The estimated number of data rows to be affected.
+        # 
+        # This parameter is required.
         self.affect_rows = affect_rows
         # The reason for the export ticket.
+        # 
+        # This parameter is required.
         self.classify = classify
         # The database ID.
+        # 
+        # This parameter is required.
         self.db_id = db_id
         # The SQL statements that can be executed.
+        # 
+        # This parameter is required.
         self.exe_sql = exe_sql
         # Specifies whether to skip verification. Valid values:
         # 
         # *   **true**\
         # *   **false**\
+        # 
+        # This parameter is required.
         self.ignore_affect_rows = ignore_affect_rows
         # The reason for skipping verification. This parameter is required if you set IgnoreAffectRows to true.
         self.ignore_affect_rows_reason = ignore_affect_rows_reason
         # The instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # Specifies whether the database is a logical database. Valid values:
         # 
@@ -4925,6 +5107,8 @@ class CreateDataExportOrderRequestPluginParam(TeaModel):
         # *   **false**\
         # 
         # > If you set this parameter to **true**, the database that you specify must be a logical database.
+        # 
+        # This parameter is required.
         self.logic = logic
         # The information about the watermarks.
         self.watermark = watermark
@@ -4993,19 +5177,23 @@ class CreateDataExportOrderRequest(TeaModel):
         related_user_list: List[int] = None,
         tid: int = None,
     ):
-        # The key of the attachment that provides more instructions for the ticket. You can call the [GetUserUploadFileJob](~~206069~~) operation to obtain the attachment key.
+        # The key of the attachment that provides more instructions for the ticket. You can call the [GetUserUploadFileJob](https://help.aliyun.com/document_detail/206069.html) operation to obtain the attachment key.
         self.attachment_key = attachment_key
         # The purpose or objective of the ticket. This parameter helps reduce unnecessary communication.
+        # 
+        # This parameter is required.
         self.comment = comment
         # The ID of the parent ticket.
         self.parent_id = parent_id
         # The parameters of the ticket.
+        # 
+        # This parameter is required.
         self.plugin_param = plugin_param
         # The stakeholders involved in this operation.
         self.related_user_list = related_user_list
         # The tenant ID.
         # 
-        # > To view the ID of the tenant, move the pointer over the profile picture in the upper-right corner of the DMS console. For more information, see the [View information about the current tenant](~~181330~~) section of the "Manage DMS tenants" topic.
+        # > To view the ID of the tenant, move the pointer over the profile picture in the upper-right corner of the DMS console. For more information, see the [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the "Manage DMS tenants" topic.
         self.tid = tid
 
     def validate(self):
@@ -5060,19 +5248,23 @@ class CreateDataExportOrderShrinkRequest(TeaModel):
         related_user_list_shrink: str = None,
         tid: int = None,
     ):
-        # The key of the attachment that provides more instructions for the ticket. You can call the [GetUserUploadFileJob](~~206069~~) operation to obtain the attachment key.
+        # The key of the attachment that provides more instructions for the ticket. You can call the [GetUserUploadFileJob](https://help.aliyun.com/document_detail/206069.html) operation to obtain the attachment key.
         self.attachment_key = attachment_key
         # The purpose or objective of the ticket. This parameter helps reduce unnecessary communication.
+        # 
+        # This parameter is required.
         self.comment = comment
         # The ID of the parent ticket.
         self.parent_id = parent_id
         # The parameters of the ticket.
+        # 
+        # This parameter is required.
         self.plugin_param_shrink = plugin_param_shrink
         # The stakeholders involved in this operation.
         self.related_user_list_shrink = related_user_list_shrink
         # The tenant ID.
         # 
-        # > To view the ID of the tenant, move the pointer over the profile picture in the upper-right corner of the DMS console. For more information, see the [View information about the current tenant](~~181330~~) section of the "Manage DMS tenants" topic.
+        # > To view the ID of the tenant, move the pointer over the profile picture in the upper-right corner of the DMS console. For more information, see the [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the "Manage DMS tenants" topic.
         self.tid = tid
 
     def validate(self):
@@ -5252,8 +5444,10 @@ class CreateDataImportOrderRequestParamDbItemList(TeaModel):
     ):
         # The ID of the database. The database can be a physical database or a logical database.
         # 
-        # *   To obtain the ID of a physical database, call the [ListDatabases](~~141873~~) or [SearchDatabase](~~141876~~) operation.
-        # *   To obtain the ID of a logical database, call the [ListLogicDatabases](~~141874~~) or [SearchDatabase](~~141876~~) operation.
+        # *   To obtain the ID of a physical database, call the [ListDatabases](https://help.aliyun.com/document_detail/141873.html) or [SearchDatabase](https://help.aliyun.com/document_detail/141876.html) operation.
+        # *   To obtain the ID of a logical database, call the [ListLogicDatabases](https://help.aliyun.com/document_detail/141874.html) or [SearchDatabase](https://help.aliyun.com/document_detail/141876.html) operation.
+        # 
+        # This parameter is required.
         self.db_id = db_id
         # Specifies whether the database is a logical database. Valid values:
         # 
@@ -5261,6 +5455,8 @@ class CreateDataImportOrderRequestParamDbItemList(TeaModel):
         # *   **false**: The database is a physical database.
         # 
         # >  If you set this parameter to **true**, the database that you specify must be a logical database.
+        # 
+        # This parameter is required.
         self.logic = logic
 
     def validate(self):
@@ -5304,7 +5500,9 @@ class CreateDataImportOrderRequestParam(TeaModel):
         rollback_sql_type: str = None,
         table_name: str = None,
     ):
-        # The key of the attachment that contains the SQL statements used to import data. You can call the [GetUserUploadFileJob](~~206069~~) operation to the attachment key from the value of the AttachmentKey parameter.
+        # The key of the attachment that contains the SQL statements used to import data. You can call the [GetUserUploadFileJob](https://help.aliyun.com/document_detail/206069.html) operation to the attachment key from the value of the AttachmentKey parameter.
+        # 
+        # This parameter is required.
         self.attachment_name = attachment_name
         # The reason for the data import.
         self.classify = classify
@@ -5316,6 +5514,8 @@ class CreateDataImportOrderRequestParam(TeaModel):
         # >  This parameter is required if you set the **FileType** parameter to **CSV**.
         self.csv_first_row_is_column_def = csv_first_row_is_column_def
         # The database to which you want to import data. You can specify only one database.
+        # 
+        # This parameter is required.
         self.db_item_list = db_item_list
         # The encoding algorithm to be used by the destination database. Valid values:
         # 
@@ -5328,6 +5528,8 @@ class CreateDataImportOrderRequestParam(TeaModel):
         # 
         # *   **SQL**: an SQL file
         # *   **CSV**: a CSV file
+        # 
+        # This parameter is required.
         self.file_type = file_type
         # Specifies whether to skip an error that occurs. Valid values:
         # 
@@ -5347,7 +5549,7 @@ class CreateDataImportOrderRequestParam(TeaModel):
         # 
         # >  This parameter is required if you set the **FileType** parameter to **CSV**.
         self.insert_type = insert_type
-        # The key of the attachment that contains the SQL statements used to roll back the data import. You can call the [GetUserUploadFileJob](~~206069~~) operation to obtain the attachment key from the value of the AttachmentKey parameter.
+        # The key of the attachment that contains the SQL statements used to roll back the data import. You can call the [GetUserUploadFileJob](https://help.aliyun.com/document_detail/206069.html) operation to obtain the attachment key from the value of the AttachmentKey parameter.
         # 
         # >  This parameter is required if you set the **RollbackSqlType** parameter to **ATTACHMENT**.
         self.rollback_attachment_name = rollback_attachment_name
@@ -5450,15 +5652,19 @@ class CreateDataImportOrderRequest(TeaModel):
         related_user_list: List[int] = None,
         tid: int = None,
     ):
-        # The key of the attachment that provides more instructions for the ticket. You can call the [GetUserUploadFileJob](~~206069~~) operation to obtain the attachment key from the value of the AttachmentKey parameter.
+        # The key of the attachment that provides more instructions for the ticket. You can call the [GetUserUploadFileJob](https://help.aliyun.com/document_detail/206069.html) operation to obtain the attachment key from the value of the AttachmentKey parameter.
         self.attachment_key = attachment_key
         # The purpose or objective of the data import. This parameter is used to help reduce unnecessary communication.
+        # 
+        # This parameter is required.
         self.comment = comment
         # The parameters of the ticket.
+        # 
+        # This parameter is required.
         self.param = param
         # The stakeholders of the data import. All stakeholders can view the ticket details and assist in the approval process. Irrelevant users other than DMS administrators and database administrators (DBAs) are not allowed to view the ticket details.
         self.related_user_list = related_user_list
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to obtain the tenant ID.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to obtain the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -5508,15 +5714,19 @@ class CreateDataImportOrderShrinkRequest(TeaModel):
         related_user_list_shrink: str = None,
         tid: int = None,
     ):
-        # The key of the attachment that provides more instructions for the ticket. You can call the [GetUserUploadFileJob](~~206069~~) operation to obtain the attachment key from the value of the AttachmentKey parameter.
+        # The key of the attachment that provides more instructions for the ticket. You can call the [GetUserUploadFileJob](https://help.aliyun.com/document_detail/206069.html) operation to obtain the attachment key from the value of the AttachmentKey parameter.
         self.attachment_key = attachment_key
         # The purpose or objective of the data import. This parameter is used to help reduce unnecessary communication.
+        # 
+        # This parameter is required.
         self.comment = comment
         # The parameters of the ticket.
+        # 
+        # This parameter is required.
         self.param_shrink = param_shrink
         # The stakeholders of the data import. All stakeholders can view the ticket details and assist in the approval process. Irrelevant users other than DMS administrators and database administrators (DBAs) are not allowed to view the ticket details.
         self.related_user_list_shrink = related_user_list_shrink
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to obtain the tenant ID.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to obtain the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -5664,17 +5874,27 @@ class CreateDataTrackOrderRequestParam(TeaModel):
         table_names: List[str] = None,
         track_types: List[str] = None,
     ):
-        # The ID of the database. You can call the [SearchDatabases](~~141876~~) operation to query the ID of the database.
+        # The ID of the database. You can call the [SearchDatabases](https://help.aliyun.com/document_detail/141876.html) operation to query the ID of the database.
         # 
         # > You can call this operation to create a data tracking ticket for only physical databases. This operation is not applicable to logical databases.
+        # 
+        # This parameter is required.
         self.db_id = db_id
         # The end time of the time range in which you want to track data operations. The time must be in the yyyy-MM-dd HH:mm:ss format.
+        # 
+        # This parameter is required.
         self.job_end_time = job_end_time
         # The start time of the time range in which you want to track data operations. The time must be in the yyyy-MM-dd HH:mm:ss format.
+        # 
+        # This parameter is required.
         self.job_start_time = job_start_time
         # The names of the tables for which you want to track data operations.
+        # 
+        # This parameter is required.
         self.table_names = table_names
         # The types of data operations that you want to track.
+        # 
+        # This parameter is required.
         self.track_types = track_types
 
     def validate(self):
@@ -5722,12 +5942,16 @@ class CreateDataTrackOrderRequest(TeaModel):
         tid: int = None,
     ):
         # The purpose or objective of the data tracking ticket. This parameter is used to help reduce unnecessary communication.
+        # 
+        # This parameter is required.
         self.comment = comment
         # The parameters of the ticket.
+        # 
+        # This parameter is required.
         self.param = param
         # The IDs of the operators that are related to the ticket.
         self.related_user_list = related_user_list
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) operation to query the tenant ID.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) operation to query the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -5773,12 +5997,16 @@ class CreateDataTrackOrderShrinkRequest(TeaModel):
         tid: int = None,
     ):
         # The purpose or objective of the data tracking ticket. This parameter is used to help reduce unnecessary communication.
+        # 
+        # This parameter is required.
         self.comment = comment
         # The parameters of the ticket.
+        # 
+        # This parameter is required.
         self.param_shrink = param_shrink
         # The IDs of the operators that are related to the ticket.
         self.related_user_list_shrink = related_user_list_shrink
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) operation to query the tenant ID.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) operation to query the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -5925,16 +6153,22 @@ class CreateDatabaseExportOrderRequestPluginParamConfig(TeaModel):
         target_option: str = None,
     ):
         # The export options for big data. The options are used to filter the big data to be exported. You can leave this parameter empty.
+        # 
+        # This parameter is required.
         self.data_option = data_option
         # The type of data that you want to export. Valid values:
         # 
         # *   **DATA**: The data of the database is exported.
         # *   **STRUCT**: The schema of the database is exported.
         # *   **DATA_STRUCT**: The data and schema of the database are exported.
+        # 
+        # This parameter is required.
         self.export_content = export_content
         # The types of schemas that you want to export.
         self.export_types = export_types
         # The extension options of the SQL script. You can leave this parameter empty.
+        # 
+        # This parameter is required.
         self.sqlext_option = sqlext_option
         # The tables that you want to export.
         self.selected_tables = selected_tables
@@ -5945,6 +6179,8 @@ class CreateDatabaseExportOrderRequestPluginParamConfig(TeaModel):
         # *   **SQL**\
         # *   **CSV**\
         # *   **XLSX**\
+        # 
+        # This parameter is required.
         self.target_option = target_option
 
     def validate(self):
@@ -6002,19 +6238,31 @@ class CreateDatabaseExportOrderRequestPluginParam(TeaModel):
         search_name: str = None,
     ):
         # The reason for the database export.
+        # 
+        # This parameter is required.
         self.classify = classify
         # The configurations for database export.
+        # 
+        # This parameter is required.
         self.config = config
         # The database ID.
+        # 
+        # This parameter is required.
         self.db_id = db_id
         # The instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # Specifies whether the database is a logical database. Valid values:
         # 
         # *   **true**\
         # *   **false**\
+        # 
+        # This parameter is required.
         self.logic = logic
         # The name that is used to search for the database.
+        # 
+        # This parameter is required.
         self.search_name = search_name
 
     def validate(self):
@@ -6069,19 +6317,23 @@ class CreateDatabaseExportOrderRequest(TeaModel):
         related_user_list: List[int] = None,
         tid: int = None,
     ):
-        # The key of the attachment that provides more instructions for the ticket. You can call the [GetUserUploadFileJob](~~206069~~) operation to obtain the attachment key.
+        # The key of the attachment that provides more instructions for the ticket. You can call the [GetUserUploadFileJob](https://help.aliyun.com/document_detail/206069.html) operation to obtain the attachment key.
         self.attachment_key = attachment_key
         # The purpose or objective of the ticket. This parameter helps reduce unnecessary communication.
+        # 
+        # This parameter is required.
         self.comment = comment
         # The ID of the parent ticket.
         self.parent_id = parent_id
         # The parameters of the ticket.
+        # 
+        # This parameter is required.
         self.plugin_param = plugin_param
         # The stakeholders involved in this operation.
         self.related_user_list = related_user_list
         # The tenant ID.
         # 
-        # > To view the ID of the tenant, move the pointer over the profile picture in the upper-right corner of the DMS console. For more information, see the [View information about the current tenant](~~181330~~) section of the "Manage DMS tenants" topic.
+        # > To view the ID of the tenant, move the pointer over the profile picture in the upper-right corner of the DMS console. For more information, see the [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the "Manage DMS tenants" topic.
         self.tid = tid
 
     def validate(self):
@@ -6136,19 +6388,23 @@ class CreateDatabaseExportOrderShrinkRequest(TeaModel):
         related_user_list_shrink: str = None,
         tid: int = None,
     ):
-        # The key of the attachment that provides more instructions for the ticket. You can call the [GetUserUploadFileJob](~~206069~~) operation to obtain the attachment key.
+        # The key of the attachment that provides more instructions for the ticket. You can call the [GetUserUploadFileJob](https://help.aliyun.com/document_detail/206069.html) operation to obtain the attachment key.
         self.attachment_key = attachment_key
         # The purpose or objective of the ticket. This parameter helps reduce unnecessary communication.
+        # 
+        # This parameter is required.
         self.comment = comment
         # The ID of the parent ticket.
         self.parent_id = parent_id
         # The parameters of the ticket.
+        # 
+        # This parameter is required.
         self.plugin_param_shrink = plugin_param_shrink
         # The stakeholders involved in this operation.
         self.related_user_list_shrink = related_user_list_shrink
         # The tenant ID.
         # 
-        # > To view the ID of the tenant, move the pointer over the profile picture in the upper-right corner of the DMS console. For more information, see the [View information about the current tenant](~~181330~~) section of the "Manage DMS tenants" topic.
+        # > To view the ID of the tenant, move the pointer over the profile picture in the upper-right corner of the DMS console. For more information, see the [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the "Manage DMS tenants" topic.
         self.tid = tid
 
     def validate(self):
@@ -6328,13 +6584,17 @@ class CreateFreeLockCorrectOrderRequestParamDbItemList(TeaModel):
     ):
         # The ID of the database. The database can be a physical database or a logical database.
         # 
-        # *   To obtain the ID of a physical database, call the [ListDatabases](~~141873~~) or [SearchDatabase](~~141876~~) operation.
-        # *   To obtain the ID of a logical database, call the [ListLogicDatabases](~~141874~~) or [SearchDatabase](~~141876~~) operation.
+        # *   To obtain the ID of a physical database, call the [ListDatabases](https://help.aliyun.com/document_detail/141873.html) or [SearchDatabase](https://help.aliyun.com/document_detail/141876.html) operation.
+        # *   To obtain the ID of a logical database, call the [ListLogicDatabases](https://help.aliyun.com/document_detail/141874.html) or [SearchDatabase](https://help.aliyun.com/document_detail/141876.html) operation.
+        # 
+        # This parameter is required.
         self.db_id = db_id
         # Specifies whether the database is a logical database. Valid values:
         # 
         # *   **true**: The database is a logical database.
         # *   **false**: The database is a physical database.
+        # 
+        # This parameter is required.
         self.logic = logic
 
     def validate(self):
@@ -6379,6 +6639,8 @@ class CreateFreeLockCorrectOrderRequestParam(TeaModel):
         # The reason for the data change.
         self.classify = classify
         # The databases in which you want to change data.
+        # 
+        # This parameter is required.
         self.db_item_list = db_item_list
         # The execution mode of the ticket after the ticket is approved. Valid values:
         # 
@@ -6387,6 +6649,8 @@ class CreateFreeLockCorrectOrderRequestParam(TeaModel):
         # *   **LAST_AUDITOR**: The data change is performed by the last approver of the ticket.
         self.exec_mode = exec_mode
         # The SQL statements that you want to execute to change data.
+        # 
+        # This parameter is required.
         self.exec_sql = exec_sql
         # The key of the attachment that contains the SQL statements used to roll back the data change.
         self.rollback_attachment_name = rollback_attachment_name
@@ -6401,6 +6665,8 @@ class CreateFreeLockCorrectOrderRequestParam(TeaModel):
         # 
         # *   **TEXT**: text
         # *   **ATTACHMENT**: attachment. This value is not supported.
+        # 
+        # This parameter is required.
         self.sql_type = sql_type
 
     def validate(self):
@@ -6472,15 +6738,19 @@ class CreateFreeLockCorrectOrderRequest(TeaModel):
         related_user_list: List[int] = None,
         tid: int = None,
     ):
-        # The key of the attachment that provides more instructions for the ticket. You can call the [GetUserUploadFileJob](~~206069~~) operation to obtain the attachment key from the value of the AttachmentKey parameter.
+        # The key of the attachment that provides more instructions for the ticket. You can call the [GetUserUploadFileJob](https://help.aliyun.com/document_detail/206069.html) operation to obtain the attachment key from the value of the AttachmentKey parameter.
         self.attachment_key = attachment_key
         # The purpose or objective of the data change. This parameter is used to help reduce unnecessary communication.
+        # 
+        # This parameter is required.
         self.comment = comment
         # The parameters of the ticket.
+        # 
+        # This parameter is required.
         self.param = param
         # The stakeholders of the data change. All stakeholders can view the ticket details and assist in the approval process. Irrelevant users other than DMS administrators and database administrators (DBAs) are not allowed to view the ticket details.
         self.related_user_list = related_user_list
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to obtain the tenant ID.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to obtain the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -6530,15 +6800,19 @@ class CreateFreeLockCorrectOrderShrinkRequest(TeaModel):
         related_user_list_shrink: str = None,
         tid: int = None,
     ):
-        # The key of the attachment that provides more instructions for the ticket. You can call the [GetUserUploadFileJob](~~206069~~) operation to obtain the attachment key from the value of the AttachmentKey parameter.
+        # The key of the attachment that provides more instructions for the ticket. You can call the [GetUserUploadFileJob](https://help.aliyun.com/document_detail/206069.html) operation to obtain the attachment key from the value of the AttachmentKey parameter.
         self.attachment_key = attachment_key
         # The purpose or objective of the data change. This parameter is used to help reduce unnecessary communication.
+        # 
+        # This parameter is required.
         self.comment = comment
         # The parameters of the ticket.
+        # 
+        # This parameter is required.
         self.param_shrink = param_shrink
         # The stakeholders of the data change. All stakeholders can view the ticket details and assist in the approval process. Irrelevant users other than DMS administrators and database administrators (DBAs) are not allowed to view the ticket details.
         self.related_user_list_shrink = related_user_list_shrink
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to obtain the tenant ID.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to obtain the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -6691,28 +6965,38 @@ class CreateLakeHouseSpaceRequest(TeaModel):
     ):
         # The description of the workspace.
         self.description = description
-        # The ID of the development database. You can call the [ListDatabases](~~141873~~) or [SearchDatabase](~~141876~~) operation to obtain the ID.
+        # The ID of the development database. You can call the [ListDatabases](https://help.aliyun.com/document_detail/141873.html) or [SearchDatabase](https://help.aliyun.com/document_detail/141876.html) operation to obtain the ID.
+        # 
+        # This parameter is required.
         self.dev_db_id = dev_db_id
         # The type of the database. Valid values:
         # 
         # *   **14**: AnalyticDB for MySQL
         # *   **18**: AnalyticDB for PostgreSQL
+        # 
+        # This parameter is required.
         self.dw_db_type = dw_db_type
         # The mode in which the workspace runs. Valid values:
         # 
         # *   **0**: basic mode. This mode is unavailable.
         # *   **1**: standard mode.
+        # 
+        # This parameter is required.
         self.mode = mode
-        # The ID of the production database. You can call the [ListDatabases](~~141873~~) or [SearchDatabase](~~141876~~) operation to obtain the ID.
+        # The ID of the production database. You can call the [ListDatabases](https://help.aliyun.com/document_detail/141873.html) or [SearchDatabase](https://help.aliyun.com/document_detail/141876.html) operation to obtain the ID.
         self.prod_db_id = prod_db_id
         # The configuration of the workspace. Valid values:
         # 
         # *   **skipManualRunCheck**: No security rule check is required in the trial run phase.
-        # *   **skipPublishApprove**: No approval is required for publishing and O\&M.
+        # *   **skipPublishApprove**: No approval is required for publishing and O\\&M.
+        # 
+        # This parameter is required.
         self.space_config = space_config
         # The name of the workspace.
+        # 
+        # This parameter is required.
         self.space_name = space_name
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to obtain the tenant ID.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to obtain the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -6871,8 +7155,12 @@ class CreateLogicDatabaseRequest(TeaModel):
         tid: int = None,
     ):
         # The alias of the logical database.
+        # 
+        # This parameter is required.
         self.alias = alias
         # The IDs of the physical databases that compose the logical database. You can specify one or more database IDs. You can call the [ListDatabases](https://www.alibabacloud.com/help/en/data-management-service/latest/listdatabases) or [SearchDatabase](https://www.alibabacloud.com/help/en/data-management-service/latest/searchdatabase) operation to query the IDs of the physical databases.
+        # 
+        # This parameter is required.
         self.database_ids = database_ids
         # The ID of the tenant. 
         # 
@@ -6915,8 +7203,12 @@ class CreateLogicDatabaseShrinkRequest(TeaModel):
         tid: int = None,
     ):
         # The alias of the logical database.
+        # 
+        # This parameter is required.
         self.alias = alias
         # The IDs of the physical databases that compose the logical database. You can specify one or more database IDs. You can call the [ListDatabases](https://www.alibabacloud.com/help/en/data-management-service/latest/listdatabases) or [SearchDatabase](https://www.alibabacloud.com/help/en/data-management-service/latest/searchdatabase) operation to query the IDs of the physical databases.
+        # 
+        # This parameter is required.
         self.database_ids_shrink = database_ids_shrink
         # The ID of the tenant. 
         # 
@@ -7061,17 +7353,23 @@ class CreateOrderRequest(TeaModel):
         related_user_list: str = None,
         tid: int = None,
     ):
-        # The key of an attachment that is returned after the attachment is uploaded. You can call the [GetUserUploadFileJob](~~206069~~) operation to query the key of the attachment.
+        # The key of an attachment that is returned after the attachment is uploaded. You can call the [GetUserUploadFileJob](https://help.aliyun.com/document_detail/206069.html) operation to query the key of the attachment.
         self.attachment_key = attachment_key
         # The description of the ticket to be created.
+        # 
+        # This parameter is required.
         self.comment = comment
         # The ticket creation parameter. The value is a JSON string. The value of this parameter differs based on the type of the ticket. For more information, see the **PluginParam parameter** section in this topic.
+        # 
+        # This parameter is required.
         self.plugin_param = plugin_param
-        # The type of the ticket. For more information, see [PluginType parameter](~~429109~~).
+        # The type of the ticket. For more information, see [PluginType parameter](https://help.aliyun.com/document_detail/429109.html).
+        # 
+        # This parameter is required.
         self.plugin_type = plugin_type
         # The IDs of the stakeholders that are involved in the ticket. Separate multiple IDs with commas (,).
         self.related_user_list = related_user_list
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to obtain the tenant ID.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to obtain the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -7124,17 +7422,23 @@ class CreateOrderShrinkRequest(TeaModel):
         related_user_list: str = None,
         tid: int = None,
     ):
-        # The key of an attachment that is returned after the attachment is uploaded. You can call the [GetUserUploadFileJob](~~206069~~) operation to query the key of the attachment.
+        # The key of an attachment that is returned after the attachment is uploaded. You can call the [GetUserUploadFileJob](https://help.aliyun.com/document_detail/206069.html) operation to query the key of the attachment.
         self.attachment_key = attachment_key
         # The description of the ticket to be created.
+        # 
+        # This parameter is required.
         self.comment = comment
         # The ticket creation parameter. The value is a JSON string. The value of this parameter differs based on the type of the ticket. For more information, see the **PluginParam parameter** section in this topic.
+        # 
+        # This parameter is required.
         self.plugin_param_shrink = plugin_param_shrink
-        # The type of the ticket. For more information, see [PluginType parameter](~~429109~~).
+        # The type of the ticket. For more information, see [PluginType parameter](https://help.aliyun.com/document_detail/429109.html).
+        # 
+        # This parameter is required.
         self.plugin_type = plugin_type
         # The IDs of the stakeholders that are involved in the ticket. Separate multiple IDs with commas (,).
         self.related_user_list = related_user_list
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to obtain the tenant ID.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to obtain the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -7312,7 +7616,9 @@ class CreateProcCorrectOrderRequestParamDbItemList(TeaModel):
         db_id: int = None,
         logic: bool = None,
     ):
+        # This parameter is required.
         self.db_id = db_id
+        # This parameter is required.
         self.logic = logic
 
     def validate(self):
@@ -7351,8 +7657,10 @@ class CreateProcCorrectOrderRequestParam(TeaModel):
         rollback_sql_type: str = None,
     ):
         self.classify = classify
+        # This parameter is required.
         self.db_item_list = db_item_list
         self.exec_mode = exec_mode
+        # This parameter is required.
         self.exec_sql = exec_sql
         self.rollback_attachment_name = rollback_attachment_name
         self.rollback_sql = rollback_sql
@@ -7420,7 +7728,9 @@ class CreateProcCorrectOrderRequest(TeaModel):
         tid: int = None,
     ):
         self.attachment_key = attachment_key
+        # This parameter is required.
         self.comment = comment
+        # This parameter is required.
         self.param = param
         self.related_user_list = related_user_list
         self.tid = tid
@@ -7473,7 +7783,9 @@ class CreateProcCorrectOrderShrinkRequest(TeaModel):
         tid: int = None,
     ):
         self.attachment_key = attachment_key
+        # This parameter is required.
         self.comment = comment
+        # This parameter is required.
         self.param_shrink = param_shrink
         self.related_user_list_shrink = related_user_list_shrink
         self.tid = tid
@@ -7615,12 +7927,18 @@ class CreateProxyRequest(TeaModel):
         username: str = None,
     ):
         # The ID of the database instance. You can call the [ListInstances](https://www.alibabacloud.com/help/en/data-management-service/latest/listinstances) or [GetInstance](https://www.alibabacloud.com/help/en/data-management-service/latest/getinstance) operation to query the database instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The password of the database account.
+        # 
+        # This parameter is required.
         self.password = password
         # The ID of the tenant. You can call the [GetUserActiveTenant](https://www.alibabacloud.com/help/en/data-management-service/latest/getuseractivetenant) operation to query the tenant ID.
         self.tid = tid
         # The username of the database account.
+        # 
+        # This parameter is required.
         self.username = username
 
     def validate(self):
@@ -7769,10 +8087,14 @@ class CreateProxyAccessRequest(TeaModel):
         # The password that is used to log on to the database.
         self.indep_password = indep_password
         # The ID of the security protection agent. You can call the [ListProxies](https://www.alibabacloud.com/help/en/data-management-service/latest/listproxies) or [GetProxy](https://www.alibabacloud.com/help/en/data-management-service/latest/getproxy) operation to obtain this parameter.
+        # 
+        # This parameter is required.
         self.proxy_id = proxy_id
         # The ID of the tenant. You can call the [GetUserActiveTenant](https://www.alibabacloud.com/help/en/data-management-service/latest/getuseractivetenant) or [ListUserTenants](https://www.alibabacloud.com/help/en/data-management-service/latest/listusertenants) operation to obtain this parameter.
         self.tid = tid
         # The ID of the user. You can call the [ListUsers](https://www.alibabacloud.com/help/en/data-management-service/latest/listusers) or [GetUser](https://www.alibabacloud.com/help/en/data-management-service/latest/getuser) operation to obtain this parameter.
+        # 
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -7919,12 +8241,18 @@ class CreatePublishGroupTaskRequest(TeaModel):
         tid: int = None,
     ):
         # The ID of the database for which the schema design is executed.
+        # 
+        # This parameter is required.
         self.db_id = db_id
         # Indicates whether the database is a logical database.
+        # 
+        # This parameter is required.
         self.logic = logic
         # The ID of the ticket.
         # 
-        # > : You can create a schema design ticket in the DMS console. For more information, see [Design schemas](~~69711~~). You can also create a schema design ticket by calling the [CreateOrder](~~144649~~) operation and obtain the ticket ID.
+        # > : You can create a schema design ticket in the DMS console. For more information, see [Design schemas](https://help.aliyun.com/document_detail/69711.html). You can also create a schema design ticket by calling the [CreateOrder](https://help.aliyun.com/document_detail/144649.html) operation and obtain the ticket ID.
+        # 
+        # This parameter is required.
         self.order_id = order_id
         # The time to execute the schema design ticket.
         self.plan_time = plan_time
@@ -7932,10 +8260,12 @@ class CreatePublishGroupTaskRequest(TeaModel):
         # 
         # *   IMMEDIATELY: immediately executes the schema design ticket.
         # *   REGULARLY: executes the schema design ticket at a scheduled time.
+        # 
+        # This parameter is required.
         self.publish_strategy = publish_strategy
         # The ID of the tenant.
         # 
-        # > : To view the ID of the tenant, log on to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [Manage DMS tenants](~~181330~~).
+        # > : To view the ID of the tenant, log on to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [Manage DMS tenants](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
 
     def validate(self):
@@ -8083,12 +8413,18 @@ class CreateSQLReviewOrderRequestParam(TeaModel):
         project_name: str = None,
     ):
         # The files to be reviewed. Multiple files can be reviewed at a time.
+        # 
+        # This parameter is required.
         self.attachment_key_list = attachment_key_list
-        # The ID of the database. You can call the [SearchDatabases](~~141876~~) operation to query the ID of the database.
+        # The ID of the database. You can call the [SearchDatabases](https://help.aliyun.com/document_detail/141876.html) operation to query the ID of the database.
         # 
         # >  You can call this operation to query only physical databases. This operation is unavailable to query logical databases.
+        # 
+        # This parameter is required.
         self.db_id = db_id
         # The name of the project.
+        # 
+        # This parameter is required.
         self.project_name = project_name
 
     def validate(self):
@@ -8128,12 +8464,16 @@ class CreateSQLReviewOrderRequest(TeaModel):
         tid: int = None,
     ):
         # The purpose or objective of the SQL review. This reduces unnecessary communication.
+        # 
+        # This parameter is required.
         self.comment = comment
         # The parameters of the ticket.
+        # 
+        # This parameter is required.
         self.param = param
         # The stakeholders involved in this operation. All the specified stakeholders can view the ticket details and take part in the approval process. Irrelevant users other than DMS administrators and database administrators (DBAs) are not allowed to view the ticket details.
         self.related_user_list = related_user_list
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to obtain the tenant ID.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to obtain the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -8179,12 +8519,16 @@ class CreateSQLReviewOrderShrinkRequest(TeaModel):
         tid: int = None,
     ):
         # The purpose or objective of the SQL review. This reduces unnecessary communication.
+        # 
+        # This parameter is required.
         self.comment = comment
         # The parameters of the ticket.
+        # 
+        # This parameter is required.
         self.param_shrink = param_shrink
         # The stakeholders involved in this operation. All the specified stakeholders can view the ticket details and take part in the approval process. Irrelevant users other than DMS administrators and database administrators (DBAs) are not allowed to view the ticket details.
         self.related_user_list_shrink = related_user_list_shrink
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to obtain the tenant ID.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to obtain the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -8326,10 +8670,12 @@ class CreateScenarioRequest(TeaModel):
         # The description of the business scenario.
         self.description = description
         # The name of the business scenario.
+        # 
+        # This parameter is required.
         self.scenario_name = scenario_name
         # The ID of the tenant.
         # 
-        # > To view the ID of the tenant, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see the "View information about the current tenant" section of the [Manage DMS tenants](~~181330~~) topic.
+        # > To view the ID of the tenant, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see the "View information about the current tenant" section of the [Manage DMS tenants](https://help.aliyun.com/document_detail/181330.html) topic.
         self.tid = tid
 
     def validate(self):
@@ -8468,11 +8814,17 @@ class CreateStandardGroupRequest(TeaModel):
         group_name: str = None,
         tid: int = None,
     ):
-        # The type of the database engine. For more information about the valid values of this parameter, see [DbType parameter](~~198106~~).
+        # The type of the database engine. For more information about the valid values of this parameter, see [DbType parameter](https://help.aliyun.com/document_detail/198106.html).
+        # 
+        # This parameter is required.
         self.db_type = db_type
         # The description of the security rule set.
+        # 
+        # This parameter is required.
         self.description = description
         # The name of the security rule set.
+        # 
+        # This parameter is required.
         self.group_name = group_name
         # The ID of the tenant.
         self.tid = tid
@@ -8519,7 +8871,7 @@ class CreateStandardGroupResponseBodyStandardGroup(TeaModel):
         group_name: str = None,
         last_mender_id: int = None,
     ):
-        # The type of the database engine. For more information about the valid values of this parameter, see [DbType parameter](~~198106~~).
+        # The type of the database engine. For more information about the valid values of this parameter, see [DbType parameter](https://help.aliyun.com/document_detail/198106.html).
         self.db_type = db_type
         # The description of the security rule set.
         self.description = description
@@ -8686,16 +9038,20 @@ class CreateStructSyncOrderRequestParamSource(TeaModel):
         logic: bool = None,
         version_id: str = None,
     ):
-        # The ID of the database. You can call the [SearchDatabases](~~141876~~) operation to query the ID of the database.
+        # The ID of the database. You can call the [SearchDatabases](https://help.aliyun.com/document_detail/141876.html) operation to query the ID of the database.
+        # 
+        # This parameter is required.
         self.db_id = db_id
-        # The name that is used to search for the database. You can call the [SearchDatabases](~~141876~~) operation to query the name of the database.
+        # The name that is used to search for the database. You can call the [SearchDatabases](https://help.aliyun.com/document_detail/141876.html) operation to query the name of the database.
+        # 
+        # This parameter is required.
         self.db_search_name = db_search_name
         # Specifies whether the database is a logical database. Valid values:
         # 
         # *   **true**: The database is a logical database.
         # *   **false**: The database is not a logical database.
         self.logic = logic
-        # The version number of the schema. The default value is the latest schema version number. For more information, see [Manage schema versions](~~202275~~).
+        # The version number of the schema. The default value is the latest schema version number. For more information, see [Manage schema versions](https://help.aliyun.com/document_detail/202275.html).
         self.version_id = version_id
 
     def validate(self):
@@ -8773,9 +9129,13 @@ class CreateStructSyncOrderRequestParamTarget(TeaModel):
         logic: bool = None,
         version_id: str = None,
     ):
-        # The ID of the database. You can call the [SearchDatabases](~~141876~~) operation to query the ID of the database.
+        # The ID of the database. You can call the [SearchDatabases](https://help.aliyun.com/document_detail/141876.html) operation to query the ID of the database.
+        # 
+        # This parameter is required.
         self.db_id = db_id
-        # The name that is used to search for the database. You can call the [SearchDatabases](~~141876~~) operation to query the name of the database.
+        # The name that is used to search for the database. You can call the [SearchDatabases](https://help.aliyun.com/document_detail/141876.html) operation to query the name of the database.
+        # 
+        # This parameter is required.
         self.db_search_name = db_search_name
         # Specifies whether the database is a logical database. Valid values:
         # 
@@ -8833,10 +9193,14 @@ class CreateStructSyncOrderRequestParam(TeaModel):
         # *   **false**: stops executing subsequent SQL statements if an error occurs in executing an SQL statement.
         self.ignore_error = ignore_error
         # The information about the base database.
+        # 
+        # This parameter is required.
         self.source = source
         # The information about the table of which you want to synchronize the schema.
         self.table_info_list = table_info_list
         # The information about the database to which you want to synchronize the schema of a table.
+        # 
+        # This parameter is required.
         self.target = target
 
     def validate(self):
@@ -8894,17 +9258,21 @@ class CreateStructSyncOrderRequest(TeaModel):
         related_user_list: List[int] = None,
         tid: int = None,
     ):
-        # The key of an attachment that is returned after the attachment is uploaded. You can call the [GetUserUploadFileJob](~~206069~~) operation to query the key of the attachment.
+        # The key of an attachment that is returned after the attachment is uploaded. You can call the [GetUserUploadFileJob](https://help.aliyun.com/document_detail/206069.html) operation to query the key of the attachment.
         self.attachment_key = attachment_key
         # The remarks of the ticket.
+        # 
+        # This parameter is required.
         self.comment = comment
         # The parameters of the ticket.
+        # 
+        # This parameter is required.
         self.param = param
         # The IDs of the stakeholders.
         self.related_user_list = related_user_list
         # The ID of the tenant.
         # 
-        # >  To view the tenant ID, move the pointer over the profile picture in the upper-right corner of the DMS console. For more information, see [Manage DMS tenants](~~181330~~).
+        # >  To view the tenant ID, move the pointer over the profile picture in the upper-right corner of the DMS console. For more information, see [Manage DMS tenants](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
 
     def validate(self):
@@ -8954,17 +9322,21 @@ class CreateStructSyncOrderShrinkRequest(TeaModel):
         related_user_list_shrink: str = None,
         tid: int = None,
     ):
-        # The key of an attachment that is returned after the attachment is uploaded. You can call the [GetUserUploadFileJob](~~206069~~) operation to query the key of the attachment.
+        # The key of an attachment that is returned after the attachment is uploaded. You can call the [GetUserUploadFileJob](https://help.aliyun.com/document_detail/206069.html) operation to query the key of the attachment.
         self.attachment_key = attachment_key
         # The remarks of the ticket.
+        # 
+        # This parameter is required.
         self.comment = comment
         # The parameters of the ticket.
+        # 
+        # This parameter is required.
         self.param_shrink = param_shrink
         # The IDs of the stakeholders.
         self.related_user_list_shrink = related_user_list_shrink
         # The ID of the tenant.
         # 
-        # >  To view the tenant ID, move the pointer over the profile picture in the upper-right corner of the DMS console. For more information, see [Manage DMS tenants](~~181330~~).
+        # >  To view the tenant ID, move the pointer over the profile picture in the upper-right corner of the DMS console. For more information, see [Manage DMS tenants](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
 
     def validate(self):
@@ -9112,21 +9484,27 @@ class CreateTaskRequest(TeaModel):
         tid: int = None,
         time_variables: str = None,
     ):
-        # The ID of the task flow. You can call the [ListTaskFlow](~~424565~~) or [ListLhTaskFlowAndScenario](~~426672~~) operation to query the task flow ID.
+        # The ID of the task flow. You can call the [ListTaskFlow](https://help.aliyun.com/document_detail/424565.html) or [ListLhTaskFlowAndScenario](https://help.aliyun.com/document_detail/426672.html) operation to query the task flow ID.
+        # 
+        # This parameter is required.
         self.dag_id = dag_id
         # The position of the node on the Directed Acyclic Graph (DAG).
         self.graph_param = graph_param
         # The configuration of the node.
         self.node_content = node_content
         # The name of the node that you want to create.
+        # 
+        # This parameter is required.
         self.node_name = node_name
         # The output variables configured for the task.
         self.node_output = node_output
-        # The type of the node that you want to create. For more information about the valid values for this parameter, see [NodeType parameter](~~424705~~).
+        # The type of the node that you want to create. For more information about the valid values for this parameter, see [NodeType parameter](https://help.aliyun.com/document_detail/424705.html).
+        # 
+        # This parameter is required.
         self.node_type = node_type
         # The tenant ID.
         # 
-        # >  To view the tenant ID, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see the "View information about the current tenant" section of the [Manage DMS tenants](~~181330~~) topic.
+        # >  To view the tenant ID, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see the "View information about the current tenant" section of the [Manage DMS tenants](https://help.aliyun.com/document_detail/181330.html) topic.
         self.tid = tid
         # The time variables configured for the node.
         self.time_variables = time_variables
@@ -9288,12 +9666,14 @@ class CreateTaskFlowRequest(TeaModel):
         tid: int = None,
     ):
         # The name of the task flow.
+        # 
+        # This parameter is required.
         self.dag_name = dag_name
         # The description of the task flow.
         self.description = description
         # The ID of the scenario.
         self.scenario_id = scenario_id
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to query the tenant ID.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to query the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -9439,6 +9819,8 @@ class CreateUploadFileJobRequest(TeaModel):
         # The name of the attachment file.
         # 
         # >  The file name must end with .txt or .sql. For example, the file name can be test.txt or test.sql.
+        # 
+        # This parameter is required.
         self.file_name = file_name
         # The purpose of the attachment file. Valid values:
         # 
@@ -9446,14 +9828,18 @@ class CreateUploadFileJobRequest(TeaModel):
         # *   **order_info_attachment**: The file is uploaded as an attachment in a ticket.
         # *   **big-file**: The file is uploaded to import multiple data records at a time.
         # *   **sqlreview**: The file is uploaded for SQL review.
+        # 
+        # This parameter is required.
         self.file_source = file_source
         # The ID of the tenant.
         # 
-        # >  You can call the [GetUserActiveTenant](~~198073~~) operation to query the tenant ID.
+        # >  You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) operation to query the tenant ID.
         self.tid = tid
         # The URL of the attachment file. The URL must be an HTTP URL or an HTTPS URL.
         # 
-        # >  You can upload the attachment file to an Object Storage Service (OSS) bucket and obtain the URL of the file in the OSS console. For more information, see [Share objects](~~195674~~).
+        # >  You can upload the attachment file to an Object Storage Service (OSS) bucket and obtain the URL of the file in the OSS console. For more information, see [Share objects](https://help.aliyun.com/document_detail/195674.html).
+        # 
+        # This parameter is required.
         self.upload_url = upload_url
 
     def validate(self):
@@ -9503,7 +9889,7 @@ class CreateUploadFileJobResponseBody(TeaModel):
         self.error_message = error_message
         # The key of the task.
         # 
-        # >  You can call the [GetUserUploadFileJob](~~206069~~) operation to query the progress and details of the task.
+        # >  You can call the [GetUserUploadFileJob](https://help.aliyun.com/document_detail/206069.html) operation to query the progress and details of the task.
         self.job_key = job_key
         # The ID of the request.
         self.request_id = request_id
@@ -9598,10 +9984,16 @@ class CreateUploadOSSFileJobRequestUploadTarget(TeaModel):
         object_name: str = None,
     ):
         # The name of the OSS bucket.
+        # 
+        # This parameter is required.
         self.bucket_name = bucket_name
         # The endpoint of the OSS bucket.
+        # 
+        # This parameter is required.
         self.endpoint = endpoint
         # The name of the OSS object.
+        # 
+        # This parameter is required.
         self.object_name = object_name
 
     def validate(self):
@@ -9643,6 +10035,8 @@ class CreateUploadOSSFileJobRequest(TeaModel):
         # The name of the file.
         # 
         # > The file name must end with .txt or .sql. For example, the file name can be text.txt.
+        # 
+        # This parameter is required.
         self.file_name = file_name
         # The purpose of the file upload task. Valid values:
         # 
@@ -9650,12 +10044,16 @@ class CreateUploadOSSFileJobRequest(TeaModel):
         # *   **order_info_attachment**: The file is uploaded as an attachment in a ticket.
         # *   **big-file**: The file is uploaded to import multiple data records at a time.
         # *   **sqlreview**: The file is uploaded for SQL review.
+        # 
+        # This parameter is required.
         self.file_source = file_source
         # The ID of the tenant.
         # 
-        # > To view the ID of the tenant, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see the "View information about the current tenant" section of the [Manage DMS tenants](~~181330~~) topic.
+        # > To view the ID of the tenant, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see the "View information about the current tenant" section of the [Manage DMS tenants](https://help.aliyun.com/document_detail/181330.html) topic.
         self.tid = tid
         # The information about the OSS file to be uploaded.
+        # 
+        # This parameter is required.
         self.upload_target = upload_target
 
     def validate(self):
@@ -9703,6 +10101,8 @@ class CreateUploadOSSFileJobShrinkRequest(TeaModel):
         # The name of the file.
         # 
         # > The file name must end with .txt or .sql. For example, the file name can be text.txt.
+        # 
+        # This parameter is required.
         self.file_name = file_name
         # The purpose of the file upload task. Valid values:
         # 
@@ -9710,12 +10110,16 @@ class CreateUploadOSSFileJobShrinkRequest(TeaModel):
         # *   **order_info_attachment**: The file is uploaded as an attachment in a ticket.
         # *   **big-file**: The file is uploaded to import multiple data records at a time.
         # *   **sqlreview**: The file is uploaded for SQL review.
+        # 
+        # This parameter is required.
         self.file_source = file_source
         # The ID of the tenant.
         # 
-        # > To view the ID of the tenant, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see the "View information about the current tenant" section of the [Manage DMS tenants](~~181330~~) topic.
+        # > To view the ID of the tenant, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see the "View information about the current tenant" section of the [Manage DMS tenants](https://help.aliyun.com/document_detail/181330.html) topic.
         self.tid = tid
         # The information about the OSS file to be uploaded.
+        # 
+        # This parameter is required.
         self.upload_target_shrink = upload_target_shrink
 
     def validate(self):
@@ -9763,7 +10167,7 @@ class CreateUploadOSSFileJobResponseBody(TeaModel):
         self.error_code = error_code
         # The error message returned if the request failed.
         self.error_message = error_message
-        # The key of the file upload task. You can query the upload progress and task details. For more information, see [GetUserUploadFileJob](~~206069~~).
+        # The key of the file upload task. You can query the upload progress and task details. For more information, see [GetUserUploadFileJob](https://help.aliyun.com/document_detail/206069.html).
         self.job_key = job_key
         # The ID of the request.
         self.request_id = request_id
@@ -9853,6 +10257,7 @@ class DeleteAuthorityTemplateRequest(TeaModel):
         template_id: int = None,
         tid: int = None,
     ):
+        # This parameter is required.
         self.template_id = template_id
         self.tid = tid
 
@@ -9980,13 +10385,17 @@ class DeleteInstanceRequest(TeaModel):
         sid: str = None,
         tid: int = None,
     ):
-        # The endpoint of the database instance. You can call the [ListInstances](~~141936~~) or [GetInstance](~~141567~~) operation to obtain the endpoint.
+        # The endpoint of the database instance. You can call the [ListInstances](https://help.aliyun.com/document_detail/141936.html) or [GetInstance](https://help.aliyun.com/document_detail/141567.html) operation to obtain the endpoint.
+        # 
+        # This parameter is required.
         self.host = host
-        # The port number that is used to connect to the database instance. You can call the [ListInstances](~~141936~~) or [GetInstance](~~141567~~) operation to obtain the port number.
+        # The port number that is used to connect to the database instance. You can call the [ListInstances](https://help.aliyun.com/document_detail/141936.html) or [GetInstance](https://help.aliyun.com/document_detail/141567.html) operation to obtain the port number.
+        # 
+        # This parameter is required.
         self.port = port
-        # The system ID (SID) of the database instance. You can call the [ListInstances](~~141936~~) or [GetInstance](~~141567~~) operation to obtain the SID.
+        # The system ID (SID) of the database instance. You can call the [ListInstances](https://help.aliyun.com/document_detail/141936.html) or [GetInstance](https://help.aliyun.com/document_detail/141567.html) operation to obtain the SID.
         self.sid = sid
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) operation to obtain the tenant ID.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) operation to obtain the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -10120,9 +10529,11 @@ class DeleteLakeHouseSpaceRequest(TeaModel):
         space_id: int = None,
         tid: int = None,
     ):
-        # The ID of the workspace. You can call the [GetLhSpaceByName](~~424379~~) operation to obtain the workspace ID.
+        # The ID of the workspace. You can call the [GetLhSpaceByName](https://help.aliyun.com/document_detail/424379.html) operation to obtain the workspace ID.
+        # 
+        # This parameter is required.
         self.space_id = space_id
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to obtain the tenant ID.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to obtain the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -10250,19 +10661,25 @@ class DeleteLhMembersRequest(TeaModel):
         object_type: int = None,
         tid: int = None,
     ):
-        # The ID of the user to be removed. You can call the [ListUsers](~~141938~~) or [GetUser](~~147098~~) operation to obtain the user ID.
+        # The ID of the user to be removed. You can call the [ListUsers](https://help.aliyun.com/document_detail/141938.html) or [GetUser](https://help.aliyun.com/document_detail/147098.html) operation to obtain the user ID.
+        # 
+        # This parameter is required.
         self.member_ids = member_ids
         # The ID of the object.
         # 
-        # *   If the object is a workspace, you can call the [GetLhSpaceByName](~~424379~~) operation to obtain the workspace ID.
-        # *   If the object is a task flow, you can call the [ListLhTaskFlowAndScenario](~~426672~~) operation to obtain the task flow ID.
+        # *   If the object is a workspace, you can call the [GetLhSpaceByName](https://help.aliyun.com/document_detail/424379.html) operation to obtain the workspace ID.
+        # *   If the object is a task flow, you can call the [ListLhTaskFlowAndScenario](https://help.aliyun.com/document_detail/426672.html) operation to obtain the task flow ID.
+        # 
+        # This parameter is required.
         self.object_id = object_id
         # The type of the object. Valid values:
         # 
         # *   **0**: workspace
         # *   **1**: task flow
+        # 
+        # This parameter is required.
         self.object_type = object_type
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to obtain the tenant ID.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to obtain the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -10305,19 +10722,25 @@ class DeleteLhMembersShrinkRequest(TeaModel):
         object_type: int = None,
         tid: int = None,
     ):
-        # The ID of the user to be removed. You can call the [ListUsers](~~141938~~) or [GetUser](~~147098~~) operation to obtain the user ID.
+        # The ID of the user to be removed. You can call the [ListUsers](https://help.aliyun.com/document_detail/141938.html) or [GetUser](https://help.aliyun.com/document_detail/147098.html) operation to obtain the user ID.
+        # 
+        # This parameter is required.
         self.member_ids_shrink = member_ids_shrink
         # The ID of the object.
         # 
-        # *   If the object is a workspace, you can call the [GetLhSpaceByName](~~424379~~) operation to obtain the workspace ID.
-        # *   If the object is a task flow, you can call the [ListLhTaskFlowAndScenario](~~426672~~) operation to obtain the task flow ID.
+        # *   If the object is a workspace, you can call the [GetLhSpaceByName](https://help.aliyun.com/document_detail/424379.html) operation to obtain the workspace ID.
+        # *   If the object is a task flow, you can call the [ListLhTaskFlowAndScenario](https://help.aliyun.com/document_detail/426672.html) operation to obtain the task flow ID.
+        # 
+        # This parameter is required.
         self.object_id = object_id
         # The type of the object. Valid values:
         # 
         # *   **0**: workspace
         # *   **1**: task flow
+        # 
+        # This parameter is required.
         self.object_type = object_type
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to obtain the tenant ID.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to obtain the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -10452,6 +10875,8 @@ class DeleteLogicDatabaseRequest(TeaModel):
         tid: int = None,
     ):
         # The ID of the logical database. You can call the [ListLogicDatabases](https://www.alibabacloud.com/help/en/data-management-service/latest/listlogicdatabases) or [SearchDatabase](https://www.alibabacloud.com/help/en/data-management-service/latest/searchdatabase) operation to query the ID of the logical database.
+        # 
+        # This parameter is required.
         self.logic_db_id = logic_db_id
         # The ID of the tenant. 
         # 
@@ -10583,8 +11008,12 @@ class DeleteLogicTableRouteConfigRequest(TeaModel):
         tid: int = None,
     ):
         # The unique key of the routing algorithm. You can call the [ListLogicTableRouteConfig](https://www.alibabacloud.com/help/en/data-management-service/latest/listlogictablerouteconfig) operation to query the unique key.
+        # 
+        # This parameter is required.
         self.route_key = route_key
         # The ID of the logical table. You can call the [ListLogicTables](https://www.alibabacloud.com/help/en/data-management-service/latest/listlogictables) operation to query the ID of the logical table.
+        # 
+        # This parameter is required.
         self.table_id = table_id
         # The ID of the tenant. You can call the [GetUserActiveTenant](https://www.alibabacloud.com/help/en/data-management-service/latest/getuseractivetenant) operation to query the tenant ID.
         self.tid = tid
@@ -10717,6 +11146,8 @@ class DeleteProxyRequest(TeaModel):
         tid: int = None,
     ):
         # The ID of the security protection agent. You can call the [ListProxies](https://www.alibabacloud.com/help/en/data-management-service/latest/listproxies) or [GetProxy](https://www.alibabacloud.com/help/en/data-management-service/latest/getproxy) operation to obtain this parameter.
+        # 
+        # This parameter is required.
         self.proxy_id = proxy_id
         # The ID of the tenant. You can call the [GetUserActiveTenant](https://www.alibabacloud.com/help/en/data-management-service/latest/getuseractivetenant) or [ListUserTenants](https://www.alibabacloud.com/help/en/data-management-service/latest/listusertenants) operation to obtain this parameter.
         self.tid = tid
@@ -10842,6 +11273,8 @@ class DeleteProxyAccessRequest(TeaModel):
         tid: int = None,
     ):
         # The ID of the security protection authorization. After the security protection agent authorizes the target user, the system automatically generates a security protection authorization ID. The ID is globally unique. You can call the [ListProxyAccesses](https://www.alibabacloud.com/help/en/data-management-service/latest/listproxyaccesses) operation to obtain this parameter.
+        # 
+        # This parameter is required.
         self.proxy_access_id = proxy_access_id
         # The ID of the tenant. You can call the [GetUserActiveTenant](https://www.alibabacloud.com/help/en/data-management-service/latest/getuseractivetenant) or [ListUserTenants](https://www.alibabacloud.com/help/en/data-management-service/latest/listusertenants) operation to obtain this parameter.
         self.tid = tid
@@ -10967,10 +11400,12 @@ class DeleteScenarioRequest(TeaModel):
         tid: int = None,
     ):
         # The ID of the business scenario.
+        # 
+        # This parameter is required.
         self.scenario_id = scenario_id
         # The ID of the tenant.
         # 
-        # >  To view the ID of the tenant, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see the "View information about the current tenant" section of the [Manage DMS tenants](~~181330~~) topic.
+        # >  To view the ID of the tenant, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see the "View information about the current tenant" section of the [Manage DMS tenants](https://help.aliyun.com/document_detail/181330.html) topic.
         self.tid = tid
 
     def validate(self):
@@ -11096,6 +11531,7 @@ class DeleteStandardGroupRequest(TeaModel):
         group_id: int = None,
         tid: int = None,
     ):
+        # This parameter is required.
         self.group_id = group_id
         self.tid = tid
 
@@ -11216,10 +11652,12 @@ class DeleteTaskRequest(TeaModel):
         tid: int = None,
     ):
         # The ID of the node you want to delete.
+        # 
+        # This parameter is required.
         self.node_id = node_id
         # The ID of the tenant.
         # 
-        # >  To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](~~181330~~).
+        # >  To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
 
     def validate(self):
@@ -11345,9 +11783,11 @@ class DeleteTaskFlowRequest(TeaModel):
         dag_id: int = None,
         tid: int = None,
     ):
-        # The ID of the task flow. You can call the [ListTaskFlow](~~424565~~) or [ListLhTaskFlowAndScenario](~~426672~~) operation to obtain the ID of the task flow.
+        # The ID of the task flow. You can call the [ListTaskFlow](https://help.aliyun.com/document_detail/424565.html) or [ListLhTaskFlowAndScenario](https://help.aliyun.com/document_detail/426672.html) operation to obtain the ID of the task flow.
+        # 
+        # This parameter is required.
         self.dag_id = dag_id
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to obtain the tenant ID.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to obtain the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -11476,7 +11916,9 @@ class DeleteTaskFlowEdgesByConditionRequest(TeaModel):
         node_from: int = None,
         tid: int = None,
     ):
-        # The ID of the task flow. You can call the [ListTaskFlow](~~424565~~) or [ListLhTaskFlowAndScenario](~~426672~~) operation to query the task flow ID.
+        # The ID of the task flow. You can call the [ListTaskFlow](https://help.aliyun.com/document_detail/424565.html) or [ListLhTaskFlowAndScenario](https://help.aliyun.com/document_detail/426672.html) operation to query the task flow ID.
+        # 
+        # This parameter is required.
         self.dag_id = dag_id
         # The ID of the task flow edge to delete.
         self.id = id
@@ -11486,7 +11928,7 @@ class DeleteTaskFlowEdgesByConditionRequest(TeaModel):
         self.node_from = node_from
         # The ID of the tenant.
         # 
-        # >  To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](~~181330~~).
+        # >  To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
 
     def validate(self):
@@ -11629,6 +12071,8 @@ class DeleteUserRequest(TeaModel):
         # >  To view the ID of the tenant, move the pointer over the profile picture in the upper-right corner of the DMS console. For more information, see the "View information about the current tenant" section of the [Manage DMS tenants](https://www.alibabacloud.com/help/en/data-management-service/latest/manage-dms-tenants) topic.
         self.tid = tid
         # The unique ID (UID) of Alibaba Cloud account to delete.
+        # 
+        # This parameter is required.
         self.uid = uid
 
     def validate(self):
@@ -11754,9 +12198,11 @@ class DisableUserRequest(TeaModel):
         tid: int = None,
         uid: str = None,
     ):
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to obtain the tenant ID.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to obtain the tenant ID.
         self.tid = tid
         # The UID of the Alibaba Cloud account.
+        # 
+        # This parameter is required.
         self.uid = uid
 
     def validate(self):
@@ -11972,14 +12418,18 @@ class DownloadDataTrackResultRequest(TeaModel):
         self.filter_table_list = filter_table_list
         # The types of data operations that you want to track.
         self.filter_type_list = filter_type_list
-        # The ID of the ticket. You can call the [ListOrders](~~144643~~) operation to obtain the ticket ID.
+        # The ID of the ticket. You can call the [ListOrders](https://help.aliyun.com/document_detail/144643.html) operation to obtain the ticket ID.
+        # 
+        # This parameter is required.
         self.order_id = order_id
         # The type of the SQL statement.
         # 
         # *   **REVERSE**: undoes or rolls back an executed SQL statement, which is equivalent to the UNDO SQL statement.
         # *   **FORWARD**: redoes or re-executes an SQL statement that failed to be executed, which is equivalent to the REDO SQL statement.
+        # 
+        # This parameter is required.
         self.rollback_sqltype = rollback_sqltype
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to query the tenant ID.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to query the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -12061,14 +12511,18 @@ class DownloadDataTrackResultShrinkRequest(TeaModel):
         self.filter_table_list_shrink = filter_table_list_shrink
         # The types of data operations that you want to track.
         self.filter_type_list_shrink = filter_type_list_shrink
-        # The ID of the ticket. You can call the [ListOrders](~~144643~~) operation to obtain the ticket ID.
+        # The ID of the ticket. You can call the [ListOrders](https://help.aliyun.com/document_detail/144643.html) operation to obtain the ticket ID.
+        # 
+        # This parameter is required.
         self.order_id = order_id
         # The type of the SQL statement.
         # 
         # *   **REVERSE**: undoes or rolls back an executed SQL statement, which is equivalent to the UNDO SQL statement.
         # *   **FORWARD**: redoes or re-executes an SQL statement that failed to be executed, which is equivalent to the REDO SQL statement.
+        # 
+        # This parameter is required.
         self.rollback_sqltype = rollback_sqltype
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to query the tenant ID.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to query the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -12233,11 +12687,17 @@ class EditLogicDatabaseRequest(TeaModel):
     ):
         # - The alias of the logical database. If you want to change the alias, specify a new alias.
         # - If you do not need to change the alias of the logical database, call the [GetLogicDatabase](https://www.alibabacloud.com/help/en/data-management-service/latest/getlogicdatabase) or [GetDBTopology](https://www.alibabacloud.com/help/en/data-management-service/latest/getdbtopology) operation to query the alias of the logical database.
+        # 
+        # This parameter is required.
         self.alias = alias
         # - The IDs of the physical databases that compose the logical database. If you want to change the physical databases, you can call the [ListDatabases](https://www.alibabacloud.com/help/en/data-management-service/latest/listdatabases) or [SearchDatabase](https://www.alibabacloud.com/help/en/data-management-service/latest/searchdatabase) operation to query the IDs of the new physical databases that you want to specify.
         # - If you do not want to change the physical databases, you can call the [GetDBTopology](https://www.alibabacloud.com/help/en/data-management-service/latest/getdbtopology) operation to query the IDs of the physical databases that compose the logical database.
+        # 
+        # This parameter is required.
         self.database_ids = database_ids
         # The ID of the logical database. You can call the [ListLogicDatabases](https://www.alibabacloud.com/help/en/data-management-service/latest/listlogicdatabases) operation to query the ID of the logical database.
+        # 
+        # This parameter is required.
         self.logic_db_id = logic_db_id
         # The ID of the tenant. 
         # 
@@ -12286,11 +12746,17 @@ class EditLogicDatabaseShrinkRequest(TeaModel):
     ):
         # - The alias of the logical database. If you want to change the alias, specify a new alias.
         # - If you do not need to change the alias of the logical database, call the [GetLogicDatabase](https://www.alibabacloud.com/help/en/data-management-service/latest/getlogicdatabase) or [GetDBTopology](https://www.alibabacloud.com/help/en/data-management-service/latest/getdbtopology) operation to query the alias of the logical database.
+        # 
+        # This parameter is required.
         self.alias = alias
         # - The IDs of the physical databases that compose the logical database. If you want to change the physical databases, you can call the [ListDatabases](https://www.alibabacloud.com/help/en/data-management-service/latest/listdatabases) or [SearchDatabase](https://www.alibabacloud.com/help/en/data-management-service/latest/searchdatabase) operation to query the IDs of the new physical databases that you want to specify.
         # - If you do not want to change the physical databases, you can call the [GetDBTopology](https://www.alibabacloud.com/help/en/data-management-service/latest/getdbtopology) operation to query the IDs of the physical databases that compose the logical database.
+        # 
+        # This parameter is required.
         self.database_ids_shrink = database_ids_shrink
         # The ID of the logical database. You can call the [ListLogicDatabases](https://www.alibabacloud.com/help/en/data-management-service/latest/listlogicdatabases) operation to query the ID of the logical database.
+        # 
+        # This parameter is required.
         self.logic_db_id = logic_db_id
         # The ID of the tenant. 
         # 
@@ -12430,9 +12896,11 @@ class EnableUserRequest(TeaModel):
     ):
         # The ID of the tenant.
         # 
-        # >  To obtain the tenant ID, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see [Tenant information](~~181330~~).
+        # >  To obtain the tenant ID, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see [Tenant information](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
         # The UID of the Alibaba Cloud account.
+        # 
+        # This parameter is required.
         self.uid = uid
 
     def validate(self):
@@ -12572,9 +13040,11 @@ class ExecuteDataCorrectRequest(TeaModel):
         #   }
         # ```
         self.action_detail = action_detail
-        # The ID of the ticket. You can call the [ListOrders](~~144643~~) operation to query the ID of the ticket.
+        # The ID of the ticket. You can call the [ListOrders](https://help.aliyun.com/document_detail/144643.html) operation to query the ID of the ticket.
+        # 
+        # This parameter is required.
         self.order_id = order_id
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) operation to query the tenant ID.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) operation to query the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -12625,9 +13095,11 @@ class ExecuteDataCorrectShrinkRequest(TeaModel):
         #   }
         # ```
         self.action_detail_shrink = action_detail_shrink
-        # The ID of the ticket. You can call the [ListOrders](~~144643~~) operation to query the ID of the ticket.
+        # The ID of the ticket. You can call the [ListOrders](https://help.aliyun.com/document_detail/144643.html) operation to query the ID of the ticket.
+        # 
+        # This parameter is required.
         self.order_id = order_id
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) operation to query the tenant ID.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) operation to query the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -12768,10 +13240,12 @@ class ExecuteDataExportRequest(TeaModel):
         # ```
         self.action_detail = action_detail
         # The ID of the ticket.
+        # 
+        # This parameter is required.
         self.order_id = order_id
         # The ID of the tenant.
         # 
-        # > : To view the ID of the tenant, log on to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [Manage DMS tenants](~~181330~~).
+        # > : To view the ID of the tenant, log on to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [Manage DMS tenants](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
 
     def validate(self):
@@ -12819,10 +13293,12 @@ class ExecuteDataExportShrinkRequest(TeaModel):
         # ```
         self.action_detail_shrink = action_detail_shrink
         # The ID of the ticket.
+        # 
+        # This parameter is required.
         self.order_id = order_id
         # The ID of the tenant.
         # 
-        # > : To view the ID of the tenant, log on to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [Manage DMS tenants](~~181330~~).
+        # > : To view the ID of the tenant, log on to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [Manage DMS tenants](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
 
     def validate(self):
@@ -12953,15 +13429,21 @@ class ExecuteScriptRequest(TeaModel):
     ):
         # The ID of the database.
         # 
-        # >  This parameter is equivalent to the DatabaseId parameter in the SearchDatabase, ListDatabases, and GetDatabase operations. You can call one of these operations to obtain the required database ID. For more information, see [SearchDatabase](~~141876~~), [ListDatabases](~~141873~~), and [GetDatabase](~~141869~~).
+        # >  This parameter is equivalent to the DatabaseId parameter in the SearchDatabase, ListDatabases, and GetDatabase operations. You can call one of these operations to obtain the required database ID. For more information, see [SearchDatabase](https://help.aliyun.com/document_detail/141876.html), [ListDatabases](https://help.aliyun.com/document_detail/141873.html), and [GetDatabase](https://help.aliyun.com/document_detail/141869.html).
+        # 
+        # This parameter is required.
         self.db_id = db_id
         # Specifies whether the database is a logical database.
+        # 
+        # This parameter is required.
         self.logic = logic
         # The SQL statements to be executed. Data query language (DQL) statements, data definition language (DDL) statements, and data manipulation language (DML) statements are supported. The control mode of the instance that you want to query determines whether you can execute DDL and DML statements.
+        # 
+        # This parameter is required.
         self.script = script
         # The ID of the tenant.
         # 
-        # >  To obtain the tenant ID, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see [Tenant information](~~181330~~).
+        # >  To obtain the tenant ID, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see [Tenant information](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
 
     def validate(self):
@@ -13164,10 +13646,12 @@ class ExecuteStructSyncRequest(TeaModel):
         tid: int = None,
     ):
         # The ID of the ticket.
+        # 
+        # This parameter is required.
         self.order_id = order_id
         # The ID of the tenant.
         # 
-        # > To view the tenant ID, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see [Manage DMS tenants](~~181330~~).
+        # > To view the tenant ID, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see [Manage DMS tenants](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
 
     def validate(self):
@@ -13290,9 +13774,11 @@ class GetApprovalDetailRequest(TeaModel):
         tid: int = None,
         workflow_instance_id: int = None,
     ):
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) operation to obtain the tenant ID.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) operation to obtain the tenant ID.
         self.tid = tid
-        # The ID of the approval process. You can call the [GetOrderBaseInfo](~~144642~~) operation to obtain the ID of the approval process.
+        # The ID of the approval process. You can call the [GetOrderBaseInfo](https://help.aliyun.com/document_detail/144642.html) operation to obtain the ID of the approval process.
+        # 
+        # This parameter is required.
         self.workflow_instance_id = workflow_instance_id
 
     def validate(self):
@@ -13781,8 +14267,10 @@ class GetAuthorityTemplateRequest(TeaModel):
         tid: int = None,
     ):
         # The ID of the permission template.
+        # 
+        # This parameter is required.
         self.template_id = template_id
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to query the tenant ID.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to query the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -14108,8 +14596,10 @@ class GetAuthorityTemplateItemRequest(TeaModel):
         tid: int = None,
     ):
         # The ID of the permission template.
+        # 
+        # This parameter is required.
         self.template_id = template_id
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to query the tenant ID.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to query the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -14369,6 +14859,7 @@ class GetClassificationTemplateRequest(TeaModel):
         instance_id: int = None,
         tid: int = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
         self.tid = tid
 
@@ -14541,9 +15032,11 @@ class GetDBTaskSQLJobLogRequest(TeaModel):
         job_id: int = None,
         tid: int = None,
     ):
-        # The ID of the SQL task. You can call the [ListDBTaskSQLJob](~~207049~~) operation to query the ID of the SQL task.
+        # The ID of the SQL task. You can call the [ListDBTaskSQLJob](https://help.aliyun.com/document_detail/207049.html) operation to query the ID of the SQL task.
+        # 
+        # This parameter is required.
         self.job_id = job_id
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) operation to query the tenant ID.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) operation to query the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -14677,10 +15170,12 @@ class GetDBTopologyRequest(TeaModel):
         tid: int = None,
     ):
         # The ID of the logical database. You can call the [ListLogicDatabases](https://www.alibabacloud.com/help/en/data-management-service/latest/listlogicdatabases) or [SearchDatabase](https://www.alibabacloud.com/help/en/data-management-service/latest/searchdatabase) operation to query the ID of the logical database.
+        # 
+        # This parameter is required.
         self.logic_db_id = logic_db_id
         # The ID of the tenant.
         # 
-        # > To view the tenant ID, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see [Manage DMS tenants](~~181330~~).
+        # > To view the tenant ID, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see [Manage DMS tenants](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
 
     def validate(self):
@@ -15021,7 +15516,7 @@ class GetDataArchiveCountRequest(TeaModel):
         self.search_date_type = search_date_type
         # The tenant ID.
         # 
-        # >  To view the tenant ID, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see [Manage DMS tenants](~~181330~~).
+        # >  To view the tenant ID, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see [Manage DMS tenants](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
 
     def validate(self):
@@ -15200,10 +15695,12 @@ class GetDataArchiveOrderDetailRequest(TeaModel):
         tid: int = None,
     ):
         # The IDs of data archiving tickets.
+        # 
+        # This parameter is required.
         self.order_id = order_id
         # The tenant ID.
         # 
-        # >  To view the tenant ID, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see [Manage DMS tenants](~~181330~~).
+        # >  To view the tenant ID, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see [Manage DMS tenants](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
 
     def validate(self):
@@ -15407,7 +15904,7 @@ class GetDataArchiveOrderDetailResponseBodyDataArchiveOrderDetailPluginExtraData
         id: int = None,
         last_mender_id: int = None,
     ):
-        # The type of the instance engine. For information about the valid values of this parameter, see [DbType parameter](~~198106~~).
+        # The type of the instance engine. For information about the valid values of this parameter, see [DbType parameter](https://help.aliyun.com/document_detail/198106.html).
         self.db_type = db_type
         # The description of the security rule set.
         self.description = description
@@ -15533,11 +16030,11 @@ class GetDataArchiveOrderDetailResponseBodyDataArchiveOrderDetailPluginExtraData
         self.catalog_name = catalog_name
         # Indicates whether the instance is added to the DMS whitelist.
         self.cluster_node = cluster_node
-        # The ID of the database. You can call the [SearchDatabase](~~141876~~) operation to query the ID of the database.
+        # The ID of the database. You can call the [SearchDatabase](https://help.aliyun.com/document_detail/141876.html) operation to query the ID of the database.
         # 
-        # >  You can call the [ListDatabases](~~141873~~) operation to query the ID of a physical database or the [ListLogicDatabases](~~141874~~) operation to query the ID of a logical database.
+        # >  You can call the [ListDatabases](https://help.aliyun.com/document_detail/141873.html) operation to query the ID of a physical database or the [ListLogicDatabases](https://help.aliyun.com/document_detail/141874.html) operation to query the ID of a logical database.
         self.db_id = db_id
-        # The type of the database. For information about the valid values of this parameter, see [DbType parameter](~~198106~~).
+        # The type of the database. For information about the valid values of this parameter, see [DbType parameter](https://help.aliyun.com/document_detail/198106.html).
         self.db_type = db_type
         # The ID of the database administrator (DBA) of the instance.
         self.dba_id = dba_id
@@ -15588,7 +16085,7 @@ class GetDataArchiveOrderDetailResponseBodyDataArchiveOrderDetailPluginExtraData
         # *   **true**\
         # *   **false**\
         self.logic = logic
-        # The IDs of the owners of the databases, which are stored as an array. You can call the [GetUser](~~147098~~) or [ListUsers](~~141938~~) operation to query the IDs of the owners.
+        # The IDs of the owners of the databases, which are stored as an array. You can call the [GetUser](https://help.aliyun.com/document_detail/147098.html) or [ListUsers](https://help.aliyun.com/document_detail/141938.html) operation to query the IDs of the owners.
         # 
         # >  The value of OwnerIds is the same as the value of UserId
         self.owner_ids = owner_ids
@@ -15777,7 +16274,7 @@ class GetDataArchiveOrderDetailResponseBodyDataArchiveOrderDetailPluginExtraData
     ):
         # The business time of the task flow. The time is in the yyyy-MM-DD HH:mm:ss format.
         self.business_time = business_time
-        # The ID of the task. You can call the [ListTaskFlow](~~424565~~) or [ListLhTaskFlowAndScenario](~~426672~~) operation to query the task flow ID.
+        # The ID of the task. You can call the [ListTaskFlow](https://help.aliyun.com/document_detail/424565.html) or [ListLhTaskFlowAndScenario](https://help.aliyun.com/document_detail/426672.html) operation to query the task flow ID.
         self.dag_id = dag_id
         # The end time of the task flow. The time is in the yyyy-MM-DD HH:mm:ss format.
         self.end_time = end_time
@@ -16172,9 +16669,9 @@ class GetDataArchiveOrderDetailResponseBodyDataArchiveOrderDetail(TeaModel):
         self.id = id
         # The additional information about the ticket.
         self.plugin_extra_data = plugin_extra_data
-        # The ticket creation parameter. The value is a JSON string. For more information, see [PluginType parameter](~~429109~~).
+        # The ticket creation parameter. The value is a JSON string. For more information, see [PluginType parameter](https://help.aliyun.com/document_detail/429109.html).
         self.plugin_param = plugin_param
-        # The plug-in type that corresponds to the type of the ticket. The plug-in type for data archiving is DATA_ARCHIVE. For more information, see [PluginType parameter](~~429109~~).
+        # The plug-in type that corresponds to the type of the ticket. The plug-in type for data archiving is DATA_ARCHIVE. For more information, see [PluginType parameter](https://help.aliyun.com/document_detail/429109.html).
         self.plugin_type = plugin_type
         # The user IDs related to the ticket.
         self.related_user_list = related_user_list
@@ -16192,7 +16689,7 @@ class GetDataArchiveOrderDetailResponseBodyDataArchiveOrderDetail(TeaModel):
         self.status_code = status_code
         # The status description of the ticket.
         self.status_desc = status_desc
-        # The ID of the approval process. You can call the [GetOrderBaseInfo](~~144642~~) operation to obtain the ID of the approval process.
+        # The ID of the approval process. You can call the [GetOrderBaseInfo](https://help.aliyun.com/document_detail/144642.html) operation to obtain the ID of the approval process.
         self.workflow_instance_id = workflow_instance_id
         # The description of the approval process.
         self.workflow_status_desc = workflow_status_desc
@@ -16396,9 +16893,11 @@ class GetDataCorrectBackupFilesRequest(TeaModel):
     ):
         # The parameters that are required to perform the operation. You do not need to specify this parameter.
         self.action_detail = action_detail
-        # The ID of the ticket. You can call the [ListOrders](~~144643~~) operation to obtain the ticket ID.
+        # The ID of the ticket. You can call the [ListOrders](https://help.aliyun.com/document_detail/144643.html) operation to obtain the ticket ID.
+        # 
+        # This parameter is required.
         self.order_id = order_id
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to obtain the tenant ID.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to obtain the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -16438,9 +16937,11 @@ class GetDataCorrectBackupFilesShrinkRequest(TeaModel):
     ):
         # The parameters that are required to perform the operation. You do not need to specify this parameter.
         self.action_detail_shrink = action_detail_shrink
-        # The ID of the ticket. You can call the [ListOrders](~~144643~~) operation to obtain the ticket ID.
+        # The ID of the ticket. You can call the [ListOrders](https://help.aliyun.com/document_detail/144643.html) operation to obtain the ticket ID.
+        # 
+        # This parameter is required.
         self.order_id = order_id
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to obtain the tenant ID.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to obtain the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -16603,9 +17104,11 @@ class GetDataCorrectOrderDetailRequest(TeaModel):
         order_id: int = None,
         tid: int = None,
     ):
-        # The ID of the ticket. You can call the [ListOrders](~~144643~~) operation to obtain the ticket ID.
+        # The ID of the ticket. You can call the [ListOrders](https://help.aliyun.com/document_detail/144643.html) operation to obtain the ticket ID.
+        # 
+        # This parameter is required.
         self.order_id = order_id
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to obtain the tenant ID.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to obtain the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -17314,11 +17817,13 @@ class GetDataCorrectRollbackFileRequest(TeaModel):
         order_id: int = None,
         tid: int = None,
     ):
-        # The ID of the ticket. You can call the [ListOrders](~~144643~~) operation to query the ticket ID.
+        # The ID of the ticket. You can call the [ListOrders](https://help.aliyun.com/document_detail/144643.html) operation to query the ticket ID.
+        # 
+        # This parameter is required.
         self.order_id = order_id
         # The ID of the tenant.
         # 
-        # > : To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](~~181330~~).
+        # > : To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
 
     def validate(self):
@@ -17452,10 +17957,12 @@ class GetDataCorrectSQLFileRequest(TeaModel):
         tid: int = None,
     ):
         # The ID of the ticket.
+        # 
+        # This parameter is required.
         self.order_id = order_id
         # The ID of the tenant.
         # 
-        # > : To view the ID of the tenant, log on to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see the "View information about the current tenant" section of the [Manage DMS tenants](~~181330~~).
+        # > : To view the ID of the tenant, log on to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see the "View information about the current tenant" section of the [Manage DMS tenants](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
 
     def validate(self):
@@ -17585,11 +18092,13 @@ class GetDataCorrectTaskDetailRequest(TeaModel):
         order_id: int = None,
         tid: int = None,
     ):
-        # The ID of the ticket. You can call the [CreateDataCorrectOrder](~~208388~~), [CreateDataImportOrder](~~208387~~), or [CreateFreeLockCorrectOrder](~~208386~~) operation to obtain the ticket ID.
+        # The ID of the ticket. You can call the [CreateDataCorrectOrder](https://help.aliyun.com/document_detail/208388.html), [CreateDataImportOrder](https://help.aliyun.com/document_detail/208387.html), or [CreateFreeLockCorrectOrder](https://help.aliyun.com/document_detail/208386.html) operation to obtain the ticket ID.
+        # 
+        # This parameter is required.
         self.order_id = order_id
         # The ID of the tenant.
         # 
-        # > : To view the ID of the tenant, log on to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see the "View information about the current tenant" section of the [Manage DMS tenants](~~181330~~) topic.
+        # > : To view the ID of the tenant, log on to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see the "View information about the current tenant" section of the [Manage DMS tenants](https://help.aliyun.com/document_detail/181330.html) topic.
         self.tid = tid
 
     def validate(self):
@@ -17779,11 +18288,13 @@ class GetDataCronClearConfigRequest(TeaModel):
         order_id: int = None,
         tid: int = None,
     ):
-        # The ID of the ticket. You can call the [ListOrders](~~144643~~) operation to query the ticket ID.
+        # The ID of the ticket. You can call the [ListOrders](https://help.aliyun.com/document_detail/144643.html) operation to query the ticket ID.
+        # 
+        # This parameter is required.
         self.order_id = order_id
         # The ID of the tenant.
         # 
-        # > : To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](~~181330~~).
+        # > : To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
 
     def validate(self):
@@ -17824,7 +18335,7 @@ class GetDataCronClearConfigResponseBodyDataCronClearConfig(TeaModel):
     ):
         # The number of times that the task is run.
         self.cron_call_times = cron_call_times
-        # The crontab expression that you can use to run the task at a specified time. For more information, see [Crontab expression](~~206581~~).
+        # The crontab expression that you can use to run the task at a specified time. For more information, see [Crontab expression](https://help.aliyun.com/document_detail/206581.html).
         self.cron_format = cron_format
         # The time when the task was last run.
         self.cron_last_call_start_time = cron_last_call_start_time
@@ -18004,7 +18515,9 @@ class GetDataCronClearTaskDetailListRequest(TeaModel):
         page_size: int = None,
         tid: int = None,
     ):
-        # The ID of the ticket. You can query the ticket ID from the response parameters of the [CreateDataCronClearOrder](~~208385~~) operation.
+        # The ID of the ticket. You can query the ticket ID from the response parameters of the [CreateDataCronClearOrder](https://help.aliyun.com/document_detail/208385.html) operation.
+        # 
+        # This parameter is required.
         self.order_id = order_id
         # The number of the page to return.
         self.page_number = page_number
@@ -18012,7 +18525,7 @@ class GetDataCronClearTaskDetailListRequest(TeaModel):
         self.page_size = page_size
         # The ID of the tenant.
         # 
-        # > To view the ID of the tenant, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see the "View information about the current tenant" section of the [Manage DMS tenants](~~181330~~) topic.
+        # > To view the ID of the tenant, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see the "View information about the current tenant" section of the [Manage DMS tenants](https://help.aliyun.com/document_detail/181330.html) topic.
         self.tid = tid
 
     def validate(self):
@@ -18223,9 +18736,11 @@ class GetDataExportDownloadURLRequest(TeaModel):
         order_id: int = None,
         tid: int = None,
     ):
-        # The ID of the ticket. You can call the [ListOrders](~~144643~~) operation to obtain the ticket ID.
+        # The ID of the ticket. You can call the [ListOrders](https://help.aliyun.com/document_detail/144643.html) operation to obtain the ticket ID.
+        # 
+        # This parameter is required.
         self.order_id = order_id
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to obtain the tenant ID.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to obtain the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -18405,11 +18920,13 @@ class GetDataExportOrderDetailRequest(TeaModel):
         order_id: int = None,
         tid: int = None,
     ):
-        # The ticket ID. You can call the [ListOrders](~~465867~~) operation to query the ticket ID.
+        # The ticket ID. You can call the [ListOrders](https://help.aliyun.com/document_detail/465867.html) operation to query the ticket ID.
+        # 
+        # This parameter is required.
         self.order_id = order_id
         # The ID of the tenant.
         # 
-        # > To view the tenant ID, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see [Manage DMS tenants](~~181330~~).
+        # > To view the tenant ID, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see [Manage DMS tenants](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
 
     def validate(self):
@@ -18714,9 +19231,11 @@ class GetDataExportPreCheckDetailRequest(TeaModel):
         order_id: int = None,
         tid: int = None,
     ):
-        # The ID of the ticket. You can call the [ListOrders](~~144643~~) operation to obtain the ticket ID.
+        # The ID of the ticket. You can call the [ListOrders](https://help.aliyun.com/document_detail/144643.html) operation to obtain the ticket ID.
+        # 
+        # This parameter is required.
         self.order_id = order_id
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to obtain the tenant ID.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to obtain the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -18962,11 +19481,15 @@ class GetDataImportSQLRequest(TeaModel):
         sql_id: int = None,
         tid: int = None,
     ):
-        # The ticket ID. You can call the [ListOrders](~~144643~~) operation to query the ticket ID.
+        # The ticket ID. You can call the [ListOrders](https://help.aliyun.com/document_detail/144643.html) operation to query the ticket ID.
+        # 
+        # This parameter is required.
         self.order_id = order_id
         # The SQL ID. You can call the ListDataImportSQLPreCheckDetail operation to query the SQL ID.
+        # 
+        # This parameter is required.
         self.sql_id = sql_id
-        # The tenant ID. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to query the tenant ID.
+        # The tenant ID. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to query the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -19133,9 +19656,11 @@ class GetDataTrackJobDegreeRequest(TeaModel):
         order_id: int = None,
         tid: int = None,
     ):
-        # The ID of the ticket. You can call the [ListOrders](~~144643~~) operation to query the ticket ID.
+        # The ID of the ticket. You can call the [ListOrders](https://help.aliyun.com/document_detail/144643.html) operation to query the ticket ID.
+        # 
+        # This parameter is required.
         self.order_id = order_id
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to query the tenant ID.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to query the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -19336,9 +19861,11 @@ class GetDataTrackJobTableMetaRequest(TeaModel):
         order_id: int = None,
         tid: int = None,
     ):
-        # The ID of the ticket. You can call the [ListOrders](~~144643~~) operation to query the ID of the ticket.
+        # The ID of the ticket. You can call the [ListOrders](https://help.aliyun.com/document_detail/144643.html) operation to query the ID of the ticket.
+        # 
+        # This parameter is required.
         self.order_id = order_id
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) operation to query the ID of the tenant.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) operation to query the ID of the tenant.
         self.tid = tid
 
     def validate(self):
@@ -19588,9 +20115,11 @@ class GetDataTrackOrderDetailRequest(TeaModel):
         order_id: int = None,
         tid: int = None,
     ):
-        # The ID of the ticket. You can call the [ListOrders](~~144643~~) operation to query the ticket ID.
+        # The ID of the ticket. You can call the [ListOrders](https://help.aliyun.com/document_detail/144643.html) operation to query the ticket ID.
+        # 
+        # This parameter is required.
         self.order_id = order_id
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) operation to query the tenant ID.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) operation to query the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -19833,16 +20362,22 @@ class GetDatabaseRequest(TeaModel):
         tid: int = None,
     ):
         # The endpoint that is used to connect to the database.
+        # 
+        # This parameter is required.
         self.host = host
         # The port that is used to connect to the database.
+        # 
+        # This parameter is required.
         self.port = port
         # The name of the database.
+        # 
+        # This parameter is required.
         self.schema_name = schema_name
         # The system identifier (SID) of the database.
         # 
         # >  The SID uniquely identifies an Oracle database. After a database is created, a SID is generated for the database.
         self.sid = sid
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) operation to query the ID of the tenant.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) operation to query the ID of the tenant.
         self.tid = tid
 
     def validate(self):
@@ -19960,7 +20495,7 @@ class GetDatabaseResponseBodyDatabase(TeaModel):
         self.catalog_name = catalog_name
         # The ID of the database.
         self.database_id = database_id
-        # The type of the database. For more information about the valid values of this parameter, see [DbType parameter](~~198106~~).
+        # The type of the database. For more information about the valid values of this parameter, see [DbType parameter](https://help.aliyun.com/document_detail/198106.html).
         self.db_type = db_type
         # The ID of the database administrator (DBA).
         self.dba_id = dba_id
@@ -20204,11 +20739,13 @@ class GetDatabaseExportOrderDetailRequest(TeaModel):
         order_id: int = None,
         tid: int = None,
     ):
-        # The ticket ID. You can call the [ListOrders](~~144643~~) operation to obtain the ticket ID.
+        # The ticket ID. You can call the [ListOrders](https://help.aliyun.com/document_detail/144643.html) operation to obtain the ticket ID.
+        # 
+        # This parameter is required.
         self.order_id = order_id
         # The ID of the tenant.
         # 
-        # > To view the ID of the tenant, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see the [View information about the current tenant](~~181330~~) section of the "Manage DMS tenants" topic.
+        # > To view the ID of the tenant, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see the [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the "Manage DMS tenants" topic.
         self.tid = tid
 
     def validate(self):
@@ -20640,6 +21177,7 @@ class GetDbExportDownloadURLRequest(TeaModel):
         order_id: int = None,
         tid: int = None,
     ):
+        # This parameter is required.
         self.order_id = order_id
         self.tid = tid
 
@@ -20808,13 +21346,17 @@ class GetInstanceRequest(TeaModel):
         sid: str = None,
         tid: int = None,
     ):
-        # The endpoint of the database instance. You can call the [ListInstances](~~141936~~) operation to obtain the endpoint.
+        # The endpoint of the database instance. You can call the [ListInstances](https://help.aliyun.com/document_detail/141936.html) operation to obtain the endpoint.
+        # 
+        # This parameter is required.
         self.host = host
-        # The port number that is used to connect to the database instance. You can call the [ListInstances](~~141936~~) operation to obtain the port number.
+        # The port number that is used to connect to the database instance. You can call the [ListInstances](https://help.aliyun.com/document_detail/141936.html) operation to obtain the port number.
+        # 
+        # This parameter is required.
         self.port = port
-        # The system ID (SID) of the database instance. You can call the [ListInstances](~~141936~~) operation to obtain the SID.
+        # The system ID (SID) of the database instance. You can call the [ListInstances](https://help.aliyun.com/document_detail/141936.html) operation to obtain the SID.
         self.sid = sid
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) operation to obtain the tenant ID.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) operation to obtain the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -21280,11 +21822,13 @@ class GetIntervalLimitOfSLARequest(TeaModel):
         dag_id: int = None,
         tid: int = None,
     ):
-        # The ID of the task flow. You can call the [ListTaskFlow](~~424565~~) or [ListLhTaskFlowAndScenario](~~426672~~) operation to query the task flow ID.
+        # The ID of the task flow. You can call the [ListTaskFlow](https://help.aliyun.com/document_detail/424565.html) or [ListLhTaskFlowAndScenario](https://help.aliyun.com/document_detail/426672.html) operation to query the task flow ID.
+        # 
+        # This parameter is required.
         self.dag_id = dag_id
         # The ID of the tenant.
         # 
-        # > : To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](~~181330~~).
+        # > : To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
 
     def validate(self):
@@ -21418,8 +21962,10 @@ class GetLhSpaceByNameRequest(TeaModel):
         tid: int = None,
     ):
         # The name of the workspace.
+        # 
+        # This parameter is required.
         self.space_name = space_name
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to obtain the tenant ID.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to obtain the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -21489,7 +22035,7 @@ class GetLhSpaceByNameResponseBodyLakehouseSpace(TeaModel):
         # The configuration of the workspace. Valid values:
         # 
         # *   **skipManualRunCheck**: No security rule check is required in the trial run phase.
-        # *   **skipPublishApprove**: No approval is required for publishing and O\&M.
+        # *   **skipPublishApprove**: No approval is required for publishing and O\\&M.
         self.space_config = space_config
         # The name of the workspace.
         self.space_name = space_name
@@ -21664,11 +22210,13 @@ class GetLogicDatabaseRequest(TeaModel):
         db_id: str = None,
         tid: int = None,
     ):
-        # The ID of the logical database. You can call the [ListLogicDatabases](~~141874~~) or [SearchDatabase](~~141876~~) operation to obtain the ID of the logical database.
+        # The ID of the logical database. You can call the [ListLogicDatabases](https://help.aliyun.com/document_detail/141874.html) or [SearchDatabase](https://help.aliyun.com/document_detail/141876.html) operation to obtain the ID of the logical database.
+        # 
+        # This parameter is required.
         self.db_id = db_id
         # The ID of the tenant.
         # 
-        # > To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](~~181330~~).
+        # > To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
 
     def validate(self):
@@ -21796,7 +22344,7 @@ class GetLogicDatabaseResponseBodyLogicDatabase(TeaModel):
         self.database_id = database_id
         # The IDs of database shards of the logical database.
         self.database_ids = database_ids
-        # The database engine. For more information about the valid values of the DbType parameter, see [DbType parameter](~~198106~~).
+        # The database engine. For more information about the valid values of the DbType parameter, see [DbType parameter](https://help.aliyun.com/document_detail/198106.html).
         self.db_type = db_type
         # The type of the environment to which the database belongs. Valid values:
         # 
@@ -21994,10 +22542,12 @@ class GetMetaTableColumnRequest(TeaModel):
     ):
         # The globally unique identifier (GUID) of the table in Data Management (DMS).
         # 
-        # *   If the database to which the table belongs is a logical database, you can call the [ListLogicTables](~~141875~~) operation to obtain the value of this parameter.
-        # *   If the database to which the table belongs is a physical database, you can call the [ListTables](~~141878~~) operation to obtain the value of this parameter.
+        # *   If the database to which the table belongs is a logical database, you can call the [ListLogicTables](https://help.aliyun.com/document_detail/141875.html) operation to obtain the value of this parameter.
+        # *   If the database to which the table belongs is a physical database, you can call the [ListTables](https://help.aliyun.com/document_detail/141878.html) operation to obtain the value of this parameter.
+        # 
+        # This parameter is required.
         self.table_guid = table_guid
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) operation to obtain the tenant ID.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) operation to obtain the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -22079,7 +22629,7 @@ class GetMetaTableColumnResponseBodyColumnList(TeaModel):
         # *   **SENSITIVE**: The column is sensitive.
         # *   **CONFIDENTIAL**: The column is confidential.
         # 
-        # > For more information, see [Sensitivity levels of columns](~~66091~~).
+        # > For more information, see [Sensitivity levels of columns](https://help.aliyun.com/document_detail/66091.html).
         self.security_level = security_level
 
     def validate(self):
@@ -22264,13 +22814,15 @@ class GetMetaTableDetailInfoRequest(TeaModel):
         # 
         # > 
         # 
-        # *   You can call the [ListLogicTables](~~141875~~) operation with ReturnGuid set to true to query the GUIDs of logical tables in a specific logical database.
+        # *   You can call the [ListLogicTables](https://help.aliyun.com/document_detail/141875.html) operation with ReturnGuid set to true to query the GUIDs of logical tables in a specific logical database.
         # 
-        # *   You can call the [ListTables](~~141878~~) operation with ReturnGuid set to true to query the GUIDs of tables in a specific physical database.
+        # *   You can call the [ListTables](https://help.aliyun.com/document_detail/141878.html) operation with ReturnGuid set to true to query the GUIDs of tables in a specific physical database.
+        # 
+        # This parameter is required.
         self.table_guid = table_guid
         # The ID of the tenant.
         # 
-        # > To view the ID of the tenant, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see the [View information about the current tenant](~~181330~~) section of the Manage DMS tenants topic.
+        # > To view the ID of the tenant, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see the [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the Manage DMS tenants topic.
         self.tid = tid
 
     def validate(self):
@@ -22610,11 +23162,13 @@ class GetOnlineDDLProgressRequest(TeaModel):
         job_detail_id: int = None,
         tid: int = None,
     ):
-        # The ID of the OnlineDDL SQL task details. You can call the [ListDBTaskSQLJobDetail](~~207073~~) operation to obtain the task detail ID.
+        # The ID of the OnlineDDL SQL task details. You can call the [ListDBTaskSQLJobDetail](https://help.aliyun.com/document_detail/207073.html) operation to obtain the task detail ID.
+        # 
+        # This parameter is required.
         self.job_detail_id = job_detail_id
         # The ID of the tenant.
         # 
-        # > To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see the "View information about the current tenant" section of the [Manage DMS tenants](~~181330~~) topic.
+        # > To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see the "View information about the current tenant" section of the [Manage DMS tenants](https://help.aliyun.com/document_detail/181330.html) topic.
         self.tid = tid
 
     def validate(self):
@@ -22890,6 +23444,8 @@ class GetOpLogRequest(TeaModel):
         # DatabaseName.
         self.database_name = database_name
         # The end of the time range to query. Specify the time in the yyyy-MM-DD HH:mm:ss format.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The functional module for which you want to query operation logs. If you do not specify this parameter, operation logs for all functional modules are returned. Valid values:
         # 
@@ -22919,16 +23475,22 @@ class GetOpLogRequest(TeaModel):
         # *   **SELL**: sales
         self.module = module
         # The number of the page to return. Pages start from page 1.
+        # 
+        # This parameter is required.
         self.page_number = page_number
         # The number of entries to return on each page. Valid values:
         # 
         # *   30
         # *   50
         # *   100
+        # 
+        # This parameter is required.
         self.page_size = page_size
         # The beginning of the time range to query. Specify the time in the yyyy-MM-DD HH:mm:ss format.
+        # 
+        # This parameter is required.
         self.start_time = start_time
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to query the tenant ID.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to query the tenant ID.
         self.tid = tid
         # UserNick.
         self.user_nick = user_nick
@@ -23216,11 +23778,13 @@ class GetOrderAttachmentFileRequest(TeaModel):
         order_id: int = None,
         tid: int = None,
     ):
-        # The ID of the ticket. You can call the [ListOrders](~~144643~~) operation to query the ticket ID.
+        # The ID of the ticket. You can call the [ListOrders](https://help.aliyun.com/document_detail/144643.html) operation to query the ticket ID.
+        # 
+        # This parameter is required.
         self.order_id = order_id
         # The ID of the tenant.
         # 
-        # > : To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](~~181330~~).
+        # > : To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
 
     def validate(self):
@@ -23357,10 +23921,12 @@ class GetOrderBaseInfoRequest(TeaModel):
         tid: int = None,
     ):
         # The ID of the ticket.
+        # 
+        # This parameter is required.
         self.order_id = order_id
         # The ID of the tenant.
         # 
-        # > To view the tenant ID, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see [Manage DMS tenants](~~181330~~).
+        # > To view the tenant ID, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see [Manage DMS tenants](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
 
     def validate(self):
@@ -23476,7 +24042,7 @@ class GetOrderBaseInfoResponseBodyOrderBaseInfo(TeaModel):
         self.order_id = order_id
         # The original file name of the ticket attachment. This information is returned only when an attachment is uploaded when a ticket is created.
         self.origin_attachment_name = origin_attachment_name
-        # The type of the ticket. For more information about the value of this parameter, see the request parameters of the [CreateOrder](~~465865~~) operation.
+        # The type of the ticket. For more information about the value of this parameter, see the request parameters of the [CreateOrder](https://help.aliyun.com/document_detail/465865.html) operation.
         self.plugin_type = plugin_type
         # The IDs of the operators that are related to the ticket.
         self.related_user_list = related_user_list
@@ -23686,10 +24252,12 @@ class GetOwnerApplyOrderDetailRequest(TeaModel):
         tid: int = None,
     ):
         # The ID of the ticket.
+        # 
+        # This parameter is required.
         self.order_id = order_id
         # The ID of the tenant.
         # 
-        # > : To view the ID of the tenant, log on to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [Manage DMS tenants](~~181330~~).
+        # > : To view the ID of the tenant, log on to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [Manage DMS tenants](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
 
     def validate(self):
@@ -23728,7 +24296,7 @@ class GetOwnerApplyOrderDetailResponseBodyOwnerApplyOrderDetailResourcesResource
     ):
         # The type of the database engine.
         self.db_type = db_type
-        # The type of the environment to which the instance belongs. For more information, see [Change the environment type of an instance](~~163309~~).
+        # The type of the environment to which the instance belongs. For more information, see [Change the environment type of an instance](https://help.aliyun.com/document_detail/163309.html).
         self.env_type = env_type
         # The IDs of the original owners.
         self.owner_ids = owner_ids
@@ -23980,6 +24548,7 @@ class GetPagedInstanceRequest(TeaModel):
         order_id: int = None,
         tid: int = None,
     ):
+        # This parameter is required.
         self.order_id = order_id
         self.tid = tid
 
@@ -24284,11 +24853,13 @@ class GetPermApplyOrderDetailRequest(TeaModel):
         order_id: int = None,
         tid: int = None,
     ):
-        # The ticket ID. You can call the [ListOrders](~~465867~~) operation to query the ticket ID.
+        # The ticket ID. You can call the [ListOrders](https://help.aliyun.com/document_detail/465867.html) operation to query the ticket ID.
+        # 
+        # This parameter is required.
         self.order_id = order_id
         # The tenant ID.
         # 
-        # > To view the tenant ID, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see the [View information about the current tenant](~~181330~~) section of the "Manage DMS tenants" topic.
+        # > To view the tenant ID, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see the [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the "Manage DMS tenants" topic.
         self.tid = tid
 
     def validate(self):
@@ -24365,7 +24936,7 @@ class GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesDatabaseIn
         self.db_id = db_id
         # The type of the database engine.
         self.db_type = db_type
-        # The type of the environment to which the instance belongs. For more information, see [Change the environment type of an instance](~~163309~~).
+        # The type of the environment to which the instance belongs. For more information, see [Change the environment type of an instance](https://help.aliyun.com/document_detail/163309.html).
         self.env_type = env_type
         # Indicates whether the database is a logical database. Valid values:
         # 
@@ -24443,7 +25014,7 @@ class GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesInstanceIn
         self.dba_id = dba_id
         # The nickname of the DBA of the instance.
         self.dba_nick_name = dba_nick_name
-        # The type of the environment to which the instance belongs. For more information, see [Change the environment type of an instance](~~163309~~).
+        # The type of the environment to which the instance belongs. For more information, see [Change the environment type of an instance](https://help.aliyun.com/document_detail/163309.html).
         self.env_type = env_type
         # The endpoint of the instance.
         self.host = host
@@ -24781,9 +25352,11 @@ class GetPhysicalDatabaseRequest(TeaModel):
         db_id: int = None,
         tid: int = None,
     ):
-        # The ID of the physical database. You can call the [SearchDatabase](~~141876~~) operation to obtain the ID.
+        # The ID of the physical database. You can call the [SearchDatabase](https://help.aliyun.com/document_detail/141876.html) operation to obtain the ID.
+        # 
+        # This parameter is required.
         self.db_id = db_id
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) operation to query the ID of the tenant.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) operation to query the ID of the tenant.
         self.tid = tid
 
     def validate(self):
@@ -24899,7 +25472,7 @@ class GetPhysicalDatabaseResponseBodyDatabase(TeaModel):
         self.dba_name = dba_name
         # The encoding format of the database.
         self.encoding = encoding
-        # The type of the environment to which the database belongs. For more information, see [Change the environment type of an instance](~~163309~~).
+        # The type of the environment to which the database belongs. For more information, see [Change the environment type of an instance](https://help.aliyun.com/document_detail/163309.html).
         self.env_type = env_type
         # The endpoint that is used to connect to the database.
         self.host = host
@@ -25125,9 +25698,11 @@ class GetProxyRequest(TeaModel):
         proxy_id: int = None,
         tid: int = None,
     ):
-        # The ID of the secure access proxy. You can call the [ListProxies](~~295371~~) operation to query the ID of the secure access proxy.
+        # The ID of the secure access proxy. You can call the [ListProxies](https://help.aliyun.com/document_detail/295371.html) operation to query the ID of the secure access proxy.
+        # 
+        # This parameter is required.
         self.proxy_id = proxy_id
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) operation to obtain the tenant ID.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) operation to obtain the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -25346,9 +25921,11 @@ class GetProxyAccessRequest(TeaModel):
         proxy_access_id: int = None,
         tid: int = None,
     ):
-        # The ID that Data Management (DMS) generates after the user is authorized to enable the secure access proxy feature for an instance. The ID is unique in DMS. You can call the [ListProxyAccesses](~~295386~~) operation to query the ID.
+        # The ID that Data Management (DMS) generates after the user is authorized to enable the secure access proxy feature for an instance. The ID is unique in DMS. You can call the [ListProxyAccesses](https://help.aliyun.com/document_detail/295386.html) operation to query the ID.
+        # 
+        # This parameter is required.
         self.proxy_access_id = proxy_access_id
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to query the tenant ID.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to query the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -25402,11 +25979,11 @@ class GetProxyAccessResponseBodyProxyAccess(TeaModel):
         # *   **Authorization by the Alibaba Cloud Account ()**: The information in the parentheses () indicates the ID of the Alibaba Cloud account.
         # *   **Authorization by submitting the ticket ()**:The information in the parentheses () indicates the number of the ticket that the user submits to apply for permissions.
         self.origin_info = origin_info
-        # The ID that DMS generates after the user is authorized to enable the secure access proxy feature for an instance. The ID is unique in DMS. You can call the [ListProxyAccesses](~~295386~~) operation to query the ID.
+        # The ID that DMS generates after the user is authorized to enable the secure access proxy feature for an instance. The ID is unique in DMS. You can call the [ListProxyAccesses](https://help.aliyun.com/document_detail/295386.html) operation to query the ID.
         self.proxy_access_id = proxy_access_id
         # The ID of the secure access proxy.
         # 
-        # >  You can call the [ListProxies](~~295371~~) operation to query the ID of the secure access proxy.
+        # >  You can call the [ListProxies](https://help.aliyun.com/document_detail/295371.html) operation to query the ID of the secure access proxy.
         self.proxy_id = proxy_id
         # The ID of the user.
         self.user_id = user_id
@@ -25579,11 +26156,13 @@ class GetRuleNumLimitOfSLARequest(TeaModel):
         dag_id: int = None,
         tid: int = None,
     ):
-        # The ID of the task flow. You can call the [ListTaskFlow](~~424565~~) or [ListLhTaskFlowAndScenario](~~426672~~) operation to query the task flow ID.
+        # The ID of the task flow. You can call the [ListTaskFlow](https://help.aliyun.com/document_detail/424565.html) or [ListLhTaskFlowAndScenario](https://help.aliyun.com/document_detail/426672.html) operation to query the task flow ID.
+        # 
+        # This parameter is required.
         self.dag_id = dag_id
         # The ID of the tenant.
         # 
-        # >  To view the ID of the tenant, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see the "View information about the current tenant" section of the [Manage DMS tenants](~~181330~~) topic.
+        # >  To view the ID of the tenant, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see the "View information about the current tenant" section of the [Manage DMS tenants](https://help.aliyun.com/document_detail/181330.html) topic.
         self.tid = tid
 
     def validate(self):
@@ -25716,9 +26295,11 @@ class GetSQLReviewCheckResultStatusRequest(TeaModel):
         order_id: int = None,
         tid: int = None,
     ):
-        # The ID of the ticket. You can obtain the ticket ID from the response parameters of the [CreateSQLReviewOrder](~~257777~~) operation.
+        # The ID of the ticket. You can obtain the ticket ID from the response parameters of the [CreateSQLReviewOrder](https://help.aliyun.com/document_detail/257777.html) operation.
+        # 
+        # This parameter is required.
         self.order_id = order_id
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to obtain the ID of the tenant.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to obtain the ID of the tenant.
         self.tid = tid
 
     def validate(self):
@@ -26030,9 +26611,11 @@ class GetSQLReviewOptimizeDetailRequest(TeaModel):
         sqlreview_query_key: str = None,
         tid: int = None,
     ):
-        # The key that is used to query the details of optimization suggestions. You can call the [ListSQLReviewOriginSQL](~~257870~~) operation to query the key.
+        # The key that is used to query the details of optimization suggestions. You can call the [ListSQLReviewOriginSQL](https://help.aliyun.com/document_detail/257870.html) operation to query the key.
+        # 
+        # This parameter is required.
         self.sqlreview_query_key = sqlreview_query_key
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to query the ID of the tenant.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to query the ID of the tenant.
         self.tid = tid
 
     def validate(self):
@@ -26111,7 +26694,7 @@ class GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResults(T
         rule_type: str = None,
         scripts: List[GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResultsScripts] = None,
     ):
-        # The comment that is specified when you create the SQL review rule. For more information, see [SQL review optimization](~~194114~~).
+        # The comment that is specified when you create the SQL review rule. For more information, see [SQL review optimization](https://help.aliyun.com/document_detail/194114.html).
         self.comments = comments
         # The optimization suggestion for the SQL statement. Valid values:
         # 
@@ -26124,7 +26707,7 @@ class GetSQLReviewOptimizeDetailResponseBodyOptimizeDetailQualityResultResults(T
         self.feedback = feedback
         # The review results.
         self.messages = messages
-        # The name of the rule. For more information, see [SQL review optimization](~~194114~~).
+        # The name of the rule. For more information, see [SQL review optimization](https://help.aliyun.com/document_detail/194114.html).
         self.rule_name = rule_name
         # The type of the SQL review rule. Valid values:
         # 
@@ -26398,6 +26981,7 @@ class GetStandardGroupRequest(TeaModel):
         group_id: int = None,
         tid: int = None,
     ):
+        # This parameter is required.
         self.group_id = group_id
         self.tid = tid
 
@@ -26585,6 +27169,8 @@ class GetStructSyncExecSqlDetailRequest(TeaModel):
         tid: int = None,
     ):
         # The ID of the ticket.
+        # 
+        # This parameter is required.
         self.order_id = order_id
         # The number of the page to return.
         self.page_number = page_number
@@ -26592,7 +27178,7 @@ class GetStructSyncExecSqlDetailRequest(TeaModel):
         self.page_size = page_size
         # The ID of the tenant.
         # 
-        # > To view the tenant ID, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see [Manage DMS tenants](~~181330~~).
+        # > To view the tenant ID, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see [Manage DMS tenants](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
 
     def validate(self):
@@ -26779,6 +27365,8 @@ class GetStructSyncJobAnalyzeResultRequest(TeaModel):
         # *   **NOT_COMPARE**: does not compare tables.
         self.compare_type = compare_type
         # The ID of the ticket.
+        # 
+        # This parameter is required.
         self.order_id = order_id
         # The number of the page to return.
         self.page_number = page_number
@@ -26786,7 +27374,7 @@ class GetStructSyncJobAnalyzeResultRequest(TeaModel):
         self.page_size = page_size
         # The ID of the tenant.
         # 
-        # > To view the tenant ID, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see [Manage DMS tenants](~~181330~~).
+        # > To view the tenant ID, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see [Manage DMS tenants](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
 
     def validate(self):
@@ -27066,10 +27654,12 @@ class GetStructSyncJobDetailRequest(TeaModel):
         tid: int = None,
     ):
         # The ticket ID.
+        # 
+        # This parameter is required.
         self.order_id = order_id
         # The tenant ID.
         # 
-        # > To view the tenant ID, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see [Manage DMS tenants](~~181330~~).
+        # > To view the tenant ID, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see [Manage DMS tenants](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
 
     def validate(self):
@@ -27129,7 +27719,7 @@ class GetStructSyncJobDetailResponseBodyStructSyncJobDetail(TeaModel):
         # The type of security rule. Valid values:
         # 
         # *   **CANNOT_SYNC**: Synchronization cannot be performed.
-        # *   **WITH_APPROVE**: The schema synchronization can be performed after the ticket is approved. You can call the [SubmitStructSyncOrderApproval](~~206166~~) operation to submit the ticket for approval.
+        # *   **WITH_APPROVE**: The schema synchronization can be performed after the ticket is approved. You can call the [SubmitStructSyncOrderApproval](https://help.aliyun.com/document_detail/206166.html) operation to submit the ticket for approval.
         # *   **WITHOUT_APPROVE**: The schema synchronization can be performed without approval.
         self.security_rule = security_rule
         # The total number of SQL statements.
@@ -27293,10 +27883,12 @@ class GetStructSyncOrderDetailRequest(TeaModel):
         tid: int = None,
     ):
         # The ID of the ticket.
+        # 
+        # This parameter is required.
         self.order_id = order_id
         # The ID of the tenant.
         # 
-        # > To view the tenant ID, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see [Manage DMS tenants](~~181330~~).
+        # > To view the tenant ID, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see [Manage DMS tenants](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
 
     def validate(self):
@@ -27336,7 +27928,7 @@ class GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailSourceDatabaseInf
         self.db_id = db_id
         # The type of the database engine.
         self.db_type = db_type
-        # The type of the environment to which the database instance belongs. For more information, see [Change the environment type of an instance](~~163309~~).
+        # The type of the environment to which the database instance belongs. For more information, see [Change the environment type of an instance](https://help.aliyun.com/document_detail/163309.html).
         self.env_type = env_type
         # Indicates whether the database is a logical database. Valid values:
         # 
@@ -27458,7 +28050,7 @@ class GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailTargetDatabaseInf
         self.db_id = db_id
         # The type of the database engine.
         self.db_type = db_type
-        # The type of the environment to which the database instance belongs. For more information, see [Change the environment type of an instance](~~163309~~).
+        # The type of the environment to which the database instance belongs. For more information, see [Change the environment type of an instance](https://help.aliyun.com/document_detail/163309.html).
         self.env_type = env_type
         # Indicates whether the database is a logical database. Valid values:
         # 
@@ -27751,13 +28343,15 @@ class GetTableDBTopologyRequest(TeaModel):
         # 
         # > 
         # 
-        # *   If the database to which the table belongs is a logical database, you can call the [ListLogicTables](~~141875~~) operation to obtain the GUID. The value of the ReturnGuid parameter must be set to true.
+        # *   If the database to which the table belongs is a logical database, you can call the [ListLogicTables](https://help.aliyun.com/document_detail/141875.html) operation to obtain the GUID. The value of the ReturnGuid parameter must be set to true.
         # 
-        # *   If the database to which the table belongs is a physical database, you can call the [ListTables](~~141878~~) operation to obtain the GUID. The value of the ReturnGuid parameter must be set to true.
+        # *   If the database to which the table belongs is a physical database, you can call the [ListTables](https://help.aliyun.com/document_detail/141878.html) operation to obtain the GUID. The value of the ReturnGuid parameter must be set to true.
+        # 
+        # This parameter is required.
         self.table_guid = table_guid
         # The ID of the tenant.
         # 
-        # > To view the tenant ID, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see [Manage DMS tenants](~~181330~~).
+        # > To view the tenant ID, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see [Manage DMS tenants](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
 
     def validate(self):
@@ -27839,7 +28433,7 @@ class GetTableDBTopologyResponseBodyDBTopologyDataSourceListDatabaseList(TeaMode
         self.db_id = db_id
         # The name of the database.
         self.db_name = db_name
-        # The type of the database. For more information about the valid values of this parameter, see [DbType parameter](~~198106~~).
+        # The type of the database. For more information about the valid values of this parameter, see [DbType parameter](https://help.aliyun.com/document_detail/198106.html).
         self.db_type = db_type
         # The type of the environment to which the database belongs. Valid values:
         # 
@@ -27852,7 +28446,7 @@ class GetTableDBTopologyResponseBodyDBTopologyDataSourceListDatabaseList(TeaMode
         # *   **pet**: stress testing environment
         # *   **stag**: staging environment
         # 
-        # > For more information, see [Change the environment type of an instance](~~163309~~).
+        # > For more information, see [Change the environment type of an instance](https://help.aliyun.com/document_detail/163309.html).
         self.env_type = env_type
         # The physical tables.
         self.table_list = table_list
@@ -27912,7 +28506,7 @@ class GetTableDBTopologyResponseBodyDBTopologyDataSourceList(TeaModel):
     ):
         # The physical databases.
         self.database_list = database_list
-        # The type of the database. For more information about the valid values of this parameter, see [DbType parameter](~~198106~~).
+        # The type of the database. For more information about the valid values of this parameter, see [DbType parameter](https://help.aliyun.com/document_detail/198106.html).
         self.db_type = db_type
         # The endpoint of the data source.
         self.host = host
@@ -28126,6 +28720,7 @@ class GetTableDesignProjectFlowRequest(TeaModel):
         order_id: int = None,
         tid: int = None,
     ):
+        # This parameter is required.
         self.order_id = order_id
         self.tid = tid
 
@@ -28369,6 +28964,7 @@ class GetTableDesignProjectInfoRequest(TeaModel):
         order_id: int = None,
         tid: int = None,
     ):
+        # This parameter is required.
         self.order_id = order_id
         self.tid = tid
 
@@ -28639,12 +29235,14 @@ class GetTableTopologyRequest(TeaModel):
         # The GUID of the table in Data Management (DMS).
         # 
         # > 
-        # > - You can call the [ListLogicTables](~~141875~~) operation with ReturnGuid set to true to query the GUIDs of logical tables in a specific logical database.
-        # > - You can call the [ListTables](~~141878~~) operation with ReturnGuid set to true to query the GUIDs of tables in a specific physical database.
+        # > - You can call the [ListLogicTables](https://help.aliyun.com/document_detail/141875.html) operation with ReturnGuid set to true to query the GUIDs of logical tables in a specific logical database.
+        # > - You can call the [ListTables](https://help.aliyun.com/document_detail/141878.html) operation with ReturnGuid set to true to query the GUIDs of tables in a specific physical database.
+        # 
+        # This parameter is required.
         self.table_guid = table_guid
         # The ID of the tenant.
         # 
-        # > To view the ID of the tenant, move the pointer over the profile picture in the upper-right corner of the DMS console. For more information, see the "View information about the current tenant" section of the [Tenant information](~~181330~~) topic.
+        # > To view the ID of the tenant, move the pointer over the profile picture in the upper-right corner of the DMS console. For more information, see the "View information about the current tenant" section of the [Tenant information](https://help.aliyun.com/document_detail/181330.html) topic.
         self.tid = tid
 
     def validate(self):
@@ -28953,11 +29551,13 @@ class GetTaskRequest(TeaModel):
         node_id: int = None,
         tid: int = None,
     ):
-        # The ID of the task node. You can call the [GetTaskInstanceRelation](~~424711~~) operation to query the node ID.
+        # The ID of the task node. You can call the [GetTaskInstanceRelation](https://help.aliyun.com/document_detail/424711.html) operation to query the node ID.
+        # 
+        # This parameter is required.
         self.node_id = node_id
         # The ID of the tenant.
         # 
-        # > : To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](~~181330~~).
+        # > : To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
 
     def validate(self):
@@ -29008,7 +29608,7 @@ class GetTaskResponseBodyTask(TeaModel):
         self.node_name = node_name
         # The output variables for the node. This parameter is available only for some types of nodes.
         self.node_output = node_output
-        # The type of the node. For more information about the valid values for this parameter, see [NodeType parameter](~~424705~~).
+        # The type of the node. For more information about the valid values for this parameter, see [NodeType parameter](https://help.aliyun.com/document_detail/424705.html).
         self.node_type = node_type
         # The time variables configured for the node.
         self.time_variables = time_variables
@@ -29169,11 +29769,13 @@ class GetTaskFlowGraphRequest(TeaModel):
         dag_id: int = None,
         tid: int = None,
     ):
-        # The ID of the task flow. You can call the [ListTaskFlow](~~424565~~) or [ListLhTaskFlowAndScenario](~~426672~~) operation to query the task flow ID.
+        # The ID of the task flow. You can call the [ListTaskFlow](https://help.aliyun.com/document_detail/424565.html) or [ListLhTaskFlowAndScenario](https://help.aliyun.com/document_detail/426672.html) operation to query the task flow ID.
+        # 
+        # This parameter is required.
         self.dag_id = dag_id
         # The ID of the tenant.
         # 
-        # >  To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](~~181330~~).
+        # >  To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
 
     def validate(self):
@@ -29308,7 +29910,7 @@ class GetTaskFlowGraphResponseBodyTaskFlowGraphNodesNode(TeaModel):
         self.node_id = node_id
         # The name of the node.
         self.node_name = node_name
-        # The type of the node. For more information about the valid values for this parameter, see [NodeType parameter](~~424705~~).
+        # The type of the node. For more information about the valid values for this parameter, see [NodeType parameter](https://help.aliyun.com/document_detail/424705.html).
         self.node_type = node_type
         # The time variables for the node.
         self.time_variables = time_variables
@@ -29572,11 +30174,13 @@ class GetTaskFlowNotificationRequest(TeaModel):
         dag_id: int = None,
         tid: int = None,
     ):
-        # The ID of the task flow. You can call the [ListTaskFlow](~~424565~~) or [ListLhTaskFlowAndScenario](~~426672~~) operation to query the task flow ID.
+        # The ID of the task flow. You can call the [ListTaskFlow](https://help.aliyun.com/document_detail/424565.html) or [ListLhTaskFlowAndScenario](https://help.aliyun.com/document_detail/426672.html) operation to query the task flow ID.
+        # 
+        # This parameter is required.
         self.dag_id = dag_id
         # The ID of the tenant.
         # 
-        # > : To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](~~181330~~).
+        # > : To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
 
     def validate(self):
@@ -29763,11 +30367,15 @@ class GetTaskInstanceRelationRequest(TeaModel):
         dag_instance_id: int = None,
         tid: int = None,
     ):
-        # The ID of the task flow. You can call the [ListTaskFlow](~~424565~~) or [ListLhTaskFlowAndScenario](~~426672~~) operation to obtain the ID of the task flow.
+        # The ID of the task flow. You can call the [ListTaskFlow](https://help.aliyun.com/document_detail/424565.html) or [ListLhTaskFlowAndScenario](https://help.aliyun.com/document_detail/426672.html) operation to obtain the ID of the task flow.
+        # 
+        # This parameter is required.
         self.dag_id = dag_id
-        # The ID of the execution record of the task flow. You can call the [ListTaskFlowInstance](~~424689~~) operation to obtain the execution record ID.
+        # The ID of the execution record of the task flow. You can call the [ListTaskFlowInstance](https://help.aliyun.com/document_detail/424689.html) operation to obtain the execution record ID.
+        # 
+        # This parameter is required.
         self.dag_instance_id = dag_instance_id
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to obtain the tenant ID.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to obtain the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -29825,7 +30433,7 @@ class GetTaskInstanceRelationResponseBodyNodeListNode(TeaModel):
         self.node_id = node_id
         # The name of the node.
         self.node_name = node_name
-        # The type of the node. For more information about the valid values for this parameter, see [NodeType parameter](~~424705~~).
+        # The type of the node. For more information about the valid values for this parameter, see [NodeType parameter](https://help.aliyun.com/document_detail/424705.html).
         self.node_type = node_type
         # The status of the node. Valid values:
         # 
@@ -30033,11 +30641,11 @@ class GetUserRequest(TeaModel):
         uid: str = None,
         user_id: str = None,
     ):
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) operation to obtain the tenant ID.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) operation to obtain the tenant ID.
         self.tid = tid
         # The UID of the Alibaba Cloud account. You can view your UID by moving the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console.
         self.uid = uid
-        # The ID of the user. You can call the [ListUsers](~~141938~~) operation to query the ID of the user.
+        # The ID of the user. You can call the [ListUsers](https://help.aliyun.com/document_detail/141938.html) operation to query the ID of the user.
         self.user_id = user_id
 
     def validate(self):
@@ -30420,7 +31028,7 @@ class GetUserActiveTenantRequest(TeaModel):
         self,
         tid: int = None,
     ):
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) operation to query the tenant ID.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) operation to query the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -30596,11 +31204,13 @@ class GetUserUploadFileJobRequest(TeaModel):
         job_key: str = None,
         tid: int = None,
     ):
-        # The key of the file upload task. The key is returned when you call the [CreateUploadFileJob](~~206059~~) or [CreateUploadOSSFileJob](~~206060~~) operation.
+        # The key of the file upload task. The key is returned when you call the [CreateUploadFileJob](https://help.aliyun.com/document_detail/206059.html) or [CreateUploadOSSFileJob](https://help.aliyun.com/document_detail/206060.html) operation.
+        # 
+        # This parameter is required.
         self.job_key = job_key
         # The tenant ID.
         # 
-        # > To view the tenant ID, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see [Manage DMS tenants](~~181330~~).
+        # > To view the tenant ID, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see [Manage DMS tenants](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
 
     def validate(self):
@@ -30899,12 +31509,18 @@ class GrantTemplateAuthorityRequest(TeaModel):
         # The reason why you want to grant permissions on resources to the users by using the permission template.
         self.comment = comment
         # The time when the permission expires. Specify the time in the yyyy-MM-DD HH:mm:ss format.
+        # 
+        # This parameter is required.
         self.expire_date = expire_date
         # The ID of the permission template.
+        # 
+        # This parameter is required.
         self.template_id = template_id
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to query the tenant ID.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to query the tenant ID.
         self.tid = tid
         # The IDs of users to which you want to grant permissions on resources by using the permission template.
+        # 
+        # This parameter is required.
         self.user_ids = user_ids
 
     def validate(self):
@@ -31057,7 +31673,7 @@ class GrantUserPermissionRequest(TeaModel):
         tid: int = None,
         user_id: str = None,
     ):
-        # The ID of the database. You can call the [ListDatabases](~~141873~~) operation to query the ID of a physical database and the [ListLogicDatabases](~~141874~~) operation to query the ID of a logical database.
+        # The ID of the database. You can call the [ListDatabases](https://help.aliyun.com/document_detail/141873.html) operation to query the ID of a physical database and the [ListLogicDatabases](https://help.aliyun.com/document_detail/141874.html) operation to query the ID of a logical database.
         # 
         # >  The value of the DatabaseId parameter is that of the DbId parameter.
         self.db_id = db_id
@@ -31068,10 +31684,14 @@ class GrantUserPermissionRequest(TeaModel):
         # *   LOGIC_DATABASE: permissions on logical databases
         # *   TABLE: permissions on physical tables
         # *   LOGIC_TABLE: permissions on logical tables
+        # 
+        # This parameter is required.
         self.ds_type = ds_type
         # The time when the permissions expire.
+        # 
+        # This parameter is required.
         self.expire_date = expire_date
-        # The ID of the instance. You must specify this parameter if you grant permissions on an instance to the user. You can call the [ListInstances](~~141936~~) or [GetInstance](~~141567~~) operation to query the ID of the instance.
+        # The ID of the instance. You must specify this parameter if you grant permissions on an instance to the user. You can call the [ListInstances](https://help.aliyun.com/document_detail/141936.html) or [GetInstance](https://help.aliyun.com/document_detail/141567.html) operation to query the ID of the instance.
         self.instance_id = instance_id
         # Specifies whether the database is a logical database. You must specify this parameter if you grant permissions on a database to the user. Valid values:
         # 
@@ -31085,18 +31705,22 @@ class GrantUserPermissionRequest(TeaModel):
         # *   **CORRECT**: the change permissions
         # *   **LOGIN**: the logon permissions
         # *   **PERF**: the query permissions on the performance details of the instance
+        # 
+        # This parameter is required.
         self.perm_types = perm_types
-        # The ID of the table. You must specify this parameter if you grant permissions on a table to the user. You can call the [ListTables](~~141878~~) operation to query the table ID.
+        # The ID of the table. You must specify this parameter if you grant permissions on a table to the user. You can call the [ListTables](https://help.aliyun.com/document_detail/141878.html) operation to query the table ID.
         self.table_id = table_id
         # The name of the table. You must specify this parameter if you grant permissions on a table to the user.
         self.table_name = table_name
         # The ID of the tenant.
         # 
-        # >  To view the ID of the tenant, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see the "View information about the current tenant" section of the [Manage DMS tenants](~~181330~~) topic.
+        # >  To view the ID of the tenant, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see the "View information about the current tenant" section of the [Manage DMS tenants](https://help.aliyun.com/document_detail/181330.html) topic.
         self.tid = tid
-        # The ID of the user. You can call the [GetUser](~~147098~~) or [ListUsers](~~141938~~) operation to query the ID of the user.
+        # The ID of the user. You can call the [GetUser](https://help.aliyun.com/document_detail/147098.html) or [ListUsers](https://help.aliyun.com/document_detail/141938.html) operation to query the ID of the user.
         # 
         # >  The user ID is different from the ID of your Alibaba Cloud account.
+        # 
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -31255,6 +31879,8 @@ class InspectProxyAccessSecretRequest(TeaModel):
         tid: int = None,
     ):
         # The ID of the security protection authorization. After the security protection agent authorizes the target user, the system automatically generates a security protection authorization ID. The ID is globally unique. You can call the [ListProxyAccesses](https://www.alibabacloud.com/help/en/data-management-service/latest/listproxyaccesses) operation to obtain this parameter.
+        # 
+        # This parameter is required.
         self.proxy_access_id = proxy_access_id
         # The ID of the tenant. You can call the [GetUserActiveTenant](https://www.alibabacloud.com/help/en/data-management-service/latest/getuseractivetenant) or [ListUserTenants](https://www.alibabacloud.com/help/en/data-management-service/latest/listusertenants) operation to obtain this parameter.
         self.tid = tid
@@ -31624,7 +32250,7 @@ class ListClassificationTemplatesRequest(TeaModel):
     ):
         # The ID of the tenant.
         # 
-        # > To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](~~181330~~).
+        # > To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
 
     def validate(self):
@@ -31819,9 +32445,11 @@ class ListColumnsRequest(TeaModel):
         # *   **true**: The database is a logical database.
         # *   **false**: The database is a physical database.
         self.logic = logic
-        # The ID of the table. You can call the [ListTables](~~141878~~) operation to obtain the table ID.
+        # The ID of the table. You can call the [ListTables](https://help.aliyun.com/document_detail/141878.html) operation to obtain the table ID.
+        # 
+        # This parameter is required.
         self.table_id = table_id
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) operation to obtain the tenant ID.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) operation to obtain the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -31908,7 +32536,7 @@ class ListColumnsResponseBodyColumnListColumn(TeaModel):
         # *   SENSITIVE: The column is a sensitive column.
         # *   CONFIDENTIAL: The column is a confidential column.
         # 
-        # > For more information, see [Sensitivity levels of fields](~~66091~~).
+        # > For more information, see [Sensitivity levels of fields](https://help.aliyun.com/document_detail/66091.html).
         self.security_level = security_level
         # Indicates whether the column is a sensitive column. Valid values:
         # 
@@ -32129,13 +32757,19 @@ class ListDAGVersionsRequest(TeaModel):
         page_size: int = None,
         tid: int = None,
     ):
-        # The ID of the task flow. You can call the [ListTaskFlow](~~424565~~) or [ListLhTaskFlowAndScenario](~~426672~~) operation to obtain the ID of the task flow.
+        # The ID of the task flow. You can call the [ListTaskFlow](https://help.aliyun.com/document_detail/424565.html) or [ListLhTaskFlowAndScenario](https://help.aliyun.com/document_detail/426672.html) operation to obtain the ID of the task flow.
+        # 
+        # This parameter is required.
         self.dag_id = dag_id
         # The number of the page to return.
+        # 
+        # This parameter is required.
         self.page_index = page_index
         # The number of entries to return on each page.
+        # 
+        # This parameter is required.
         self.page_size = page_size
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to obtain the tenant ID.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to obtain the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -32385,7 +33019,9 @@ class ListDBTaskSQLJobRequest(TeaModel):
         page_size: int = None,
         tid: int = None,
     ):
-        # The ID of the SQL task group. You can call the [GetStructSyncJobDetail](~~206160~~) operation to obtain this parameter.
+        # The ID of the SQL task group. You can call the [GetStructSyncJobDetail](https://help.aliyun.com/document_detail/206160.html) operation to obtain this parameter.
+        # 
+        # This parameter is required.
         self.dbtask_group_id = dbtask_group_id
         # The number of the page to return.
         self.page_number = page_number
@@ -32393,7 +33029,7 @@ class ListDBTaskSQLJobRequest(TeaModel):
         self.page_size = page_size
         # The ID of the tenant.
         # 
-        # > : To view the ID of the tenant, log on to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [Manage DMS tenants](~~181330~~).
+        # > : To view the ID of the tenant, log on to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [Manage DMS tenants](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
 
     def validate(self):
@@ -32661,13 +33297,15 @@ class ListDBTaskSQLJobDetailRequest(TeaModel):
         page_size: int = None,
         tid: int = None,
     ):
-        # The ID of the SQL task. You can call the [ListDBTaskSQLJob](~~207049~~) operation to query the SQL task ID.
+        # The ID of the SQL task. You can call the [ListDBTaskSQLJob](https://help.aliyun.com/document_detail/207049.html) operation to query the SQL task ID.
+        # 
+        # This parameter is required.
         self.job_id = job_id
         # The number of the page to return.
         self.page_number = page_number
         # The number of entries to return on each page.
         self.page_size = page_size
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) operation to query the tenant ID.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) operation to query the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -32959,11 +33597,13 @@ class ListDDLPublishRecordsRequest(TeaModel):
     ):
         # The ID of the ticket.
         # 
-        # > You can create a schema design ticket in the Data Management (DMS) console. For more information, see [Design schemas](~~69711~~). You can also call the [CreateOrder](~~144649~~) operation to create a schema design ticket and obtain the ID of the ticket.
+        # > You can create a schema design ticket in the Data Management (DMS) console. For more information, see [Design schemas](https://help.aliyun.com/document_detail/69711.html). You can also call the [CreateOrder](https://help.aliyun.com/document_detail/144649.html) operation to create a schema design ticket and obtain the ID of the ticket.
+        # 
+        # This parameter is required.
         self.order_id = order_id
         # The ID of the tenant.
         # 
-        # > To view the ID of the tenant, log on to the DMS console and move the pointer over the profile picture in the upper-right corner. For more information, see [Manage DMS tenants](~~181330~~).
+        # > To view the ID of the tenant, log on to the DMS console and move the pointer over the profile picture in the upper-right corner. For more information, see [Manage DMS tenants](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
 
     def validate(self):
@@ -33168,7 +33808,7 @@ class ListDDLPublishRecordsResponseBodyDDLPublishRecordList(TeaModel):
         self.audit_status = audit_status
         # Release remarks.
         self.comment = comment
-        # The ID of the user who creates the ticket. You can obtain the user ID by calling the [GetUser](~~147098~~) operation and querying the value of the UserId parameter. The value is not the unique ID (UID) of the Alibaba Cloud account.
+        # The ID of the user who creates the ticket. You can obtain the user ID by calling the [GetUser](https://help.aliyun.com/document_detail/147098.html) operation and querying the value of the UserId parameter. The value is not the unique ID (UID) of the Alibaba Cloud account.
         self.creator_id = creator_id
         # Indicates whether the approval is terminated. Valid values:
         # 
@@ -33383,6 +34023,8 @@ class ListDataCorrectPreCheckDBRequest(TeaModel):
         tid: int = None,
     ):
         # The ID of the ticket for the data change.
+        # 
+        # This parameter is required.
         self.order_id = order_id
         # The number of the page to return.
         # 
@@ -33392,7 +34034,7 @@ class ListDataCorrectPreCheckDBRequest(TeaModel):
         self.page_number = page_number
         # The number of entries to return on each page.
         self.page_size = page_size
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to query the ID of the tenant.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to query the ID of the tenant.
         self.tid = tid
 
     def validate(self):
@@ -33585,16 +34227,18 @@ class ListDataCorrectPreCheckSQLRequest(TeaModel):
     ):
         # The ID of the database. The database can be a physical database or a logical database.
         # 
-        # *   To query the ID of a physical database, call the [ListDatabases](~~141873~~) or [SearchDatabase](~~141876~~) operation.
-        # *   To query the ID of a logical database, call the [ListLogicDatabases](~~141874~~) or [SearchDatabase](~~141876~~) operation.
+        # *   To query the ID of a physical database, call the [ListDatabases](https://help.aliyun.com/document_detail/141873.html) or [SearchDatabase](https://help.aliyun.com/document_detail/141876.html) operation.
+        # *   To query the ID of a logical database, call the [ListLogicDatabases](https://help.aliyun.com/document_detail/141874.html) or [SearchDatabase](https://help.aliyun.com/document_detail/141876.html) operation.
         self.db_id = db_id
-        # The ID of the data change ticket. You can call the [ListOrders](~~144643~~) operation to query the ID of the data change ticket.
+        # The ID of the data change ticket. You can call the [ListOrders](https://help.aliyun.com/document_detail/144643.html) operation to query the ID of the data change ticket.
+        # 
+        # This parameter is required.
         self.order_id = order_id
         # The number of the page to return.
         self.page_number = page_number
         # The number of entries to return on each page.
         self.page_size = page_size
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) operation to query the tenant ID.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) operation to query the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -33650,7 +34294,7 @@ class ListDataCorrectPreCheckSQLResponseBodyPreCheckSQLList(TeaModel):
         self.check_sql = check_sql
         # The ID of the database.
         self.db_id = db_id
-        # The key that is used to query the details of optimization suggestions. You can call the [GetSQLReviewOptimizeDetail](~~265977~~) operation to query the details of optimization suggestions based on the key.
+        # The key that is used to query the details of optimization suggestions. You can call the [GetSQLReviewOptimizeDetail](https://help.aliyun.com/document_detail/265977.html) operation to query the details of optimization suggestions based on the key.
         self.sqlreview_query_key = sqlreview_query_key
         # The review status of the SQL statement. Valid values:
         # 
@@ -33827,7 +34471,9 @@ class ListDataImportSQLPreCheckDetailRequest(TeaModel):
         status_code: str = None,
         tid: int = None,
     ):
-        # The ticket ID. You can call the [ListOrders](~~144643~~) operation to query the ticket ID.
+        # The ticket ID. You can call the [ListOrders](https://help.aliyun.com/document_detail/144643.html) operation to query the ticket ID.
+        # 
+        # This parameter is required.
         self.order_id = order_id
         # The page number. Pages start from page 1.
         self.page_numer = page_numer
@@ -33850,7 +34496,7 @@ class ListDataImportSQLPreCheckDetailRequest(TeaModel):
         # *   **TIMEOUT**: The ticket is skipped due to timeout.
         # *   **FAIL**: The ticket fails.
         self.status_code = status_code
-        # The tenant ID. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to query the tenant ID.
+        # The tenant ID. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to query the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -34072,9 +34718,11 @@ class ListDataImportSQLTypeRequest(TeaModel):
         order_id: int = None,
         tid: int = None,
     ):
-        # The ticket ID. You can call the [ListOrders](~~144643~~) operation to query the ticket ID.
+        # The ticket ID. You can call the [ListOrders](https://help.aliyun.com/document_detail/144643.html) operation to query the ticket ID.
+        # 
+        # This parameter is required.
         self.order_id = order_id
-        # The tenant ID. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to query the tenant ID.
+        # The tenant ID. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to query the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -34213,6 +34861,8 @@ class ListDatabaseUserPermssionsRequest(TeaModel):
         user_name: str = None,
     ):
         # The ID of the database.
+        # 
+        # This parameter is required.
         self.db_id = db_id
         # Specifies whether the database is a logical database.
         self.logic = logic
@@ -34225,10 +34875,12 @@ class ListDatabaseUserPermssionsRequest(TeaModel):
         # *   DATABASE: permissions on databases
         # *   TABLE: permissions on tables
         # *   COLUMN: permissions on fields
+        # 
+        # This parameter is required.
         self.perm_type = perm_type
         # The ID of the tenant.
         # 
-        # > : To view the ID of the tenant, log on to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [Manage DMS tenants](~~181330~~).
+        # > : To view the ID of the tenant, log on to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [Manage DMS tenants](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
         # The nickname of the user.
         self.user_name = user_name
@@ -34657,6 +35309,8 @@ class ListDatabasesRequest(TeaModel):
         tid: int = None,
     ):
         # The ID of the instance. The valid value is returned if you call the ListInstances operation. The instance ID is not the ID of the RDS instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The number of the page to return.
         self.page_number = page_number
@@ -34664,7 +35318,7 @@ class ListDatabasesRequest(TeaModel):
         self.page_size = page_size
         # The ID of the tenant.
         # 
-        # > : To view the ID of the tenant, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see [Manage DMS tenants](~~181330~~).
+        # > : To view the ID of the tenant, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see [Manage DMS tenants](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
 
     def validate(self):
@@ -35043,11 +35697,13 @@ class ListDefaultSLARulesRequest(TeaModel):
         dag_id: int = None,
         tid: int = None,
     ):
-        # The ID of the task flow. You can call the [ListTaskFlow](~~424565~~) or [ListLhTaskFlowAndScenario](~~426672~~) operation to query the task flow ID.
+        # The ID of the task flow. You can call the [ListTaskFlow](https://help.aliyun.com/document_detail/424565.html) or [ListLhTaskFlowAndScenario](https://help.aliyun.com/document_detail/426672.html) operation to query the task flow ID.
+        # 
+        # This parameter is required.
         self.dag_id = dag_id
         # The ID of the tenant.
         # 
-        # > To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](~~181330~~).
+        # > To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
 
     def validate(self):
@@ -35295,7 +35951,7 @@ class ListDesensitizationRuleRequest(TeaModel):
         self.rule_type = rule_type
         # The ID of the tenant.
         # 
-        # >  To view the ID of the tenant, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see [View information about the current tenant](~~181330~~).
+        # >  To view the ID of the tenant, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
 
     def validate(self):
@@ -35446,6 +36102,8 @@ class ListDesensitizationRuleResponseBody(TeaModel):
         # The list of masking rules.
         self.desensitization_rule_list = desensitization_rule_list
         # The error code returned if the request failed.
+        # 
+        # This parameter is required.
         self.error_code = error_code
         # The error message returned if the request failed.
         self.error_message = error_message
@@ -35555,7 +36213,7 @@ class ListEffectiveOrdersRequest(TeaModel):
     ):
         # The ID of the tenant.
         # 
-        # > : To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](~~181330~~).
+        # > : To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
 
     def validate(self):
@@ -35832,10 +36490,12 @@ class ListIndexesRequest(TeaModel):
         # Specifies whether the table is a logical table.
         self.logic = logic
         # The ID of the table.
+        # 
+        # This parameter is required.
         self.table_id = table_id
         # The ID of the tenant.
         # 
-        # > To view the tenant ID, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see [Manage DMS tenants](~~181330~~).
+        # > To view the tenant ID, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see [Manage DMS tenants](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
 
     def validate(self):
@@ -36076,6 +36736,8 @@ class ListInstanceLoginAuditLogRequest(TeaModel):
         # The end of the time range to query.
         # 
         # >  The end time supports fuzzy match. Specify the time in the YYYY-MM-DD hh:mm:ss format. We recommend that you use the StartTime and EndTime parameters to specify a time range that does not exceed one day. This way, the returned entries can be displayed by page to increase query efficiency.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The alias of the user.
         self.op_user_name = op_user_name
@@ -36090,8 +36752,10 @@ class ListInstanceLoginAuditLogRequest(TeaModel):
         # The beginning of the time range to query.
         # 
         # >  The start time supports fuzzy match. Specify the time in the YYYY-MM-DD hh:mm:ss format.
+        # 
+        # This parameter is required.
         self.start_time = start_time
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) operation to query the tenant ID.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) operation to query the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -36361,7 +37025,9 @@ class ListInstanceUserPermissionsRequest(TeaModel):
         tid: int = None,
         user_name: str = None,
     ):
-        # The ID of the instance. You can call the [ListInstances](~~141936~~) or [GetInstance](~~141567~~) operation to query the ID of the instance.
+        # The ID of the instance. You can call the [ListInstances](https://help.aliyun.com/document_detail/141936.html) or [GetInstance](https://help.aliyun.com/document_detail/141567.html) operation to query the ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The number of the page to return.
         self.page_number = page_number
@@ -36369,9 +37035,9 @@ class ListInstanceUserPermissionsRequest(TeaModel):
         self.page_size = page_size
         # The ID of the tenant.
         # 
-        # >  To view the ID of the tenant, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see the "View information about the current tenant" section of the [Manage DMS tenants](~~181330~~) topic.
+        # >  To view the ID of the tenant, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see the "View information about the current tenant" section of the [Manage DMS tenants](https://help.aliyun.com/document_detail/181330.html) topic.
         self.tid = tid
-        # The nickname of the user. You can call the [ListUsers](~~141938~~) or [GetUser](~~147098~~) operation to query the nickname of the user.
+        # The nickname of the user. You can call the [ListUsers](https://help.aliyun.com/document_detail/141938.html) or [GetUser](https://help.aliyun.com/document_detail/147098.html) operation to query the nickname of the user.
         # 
         # >  The value of the NickName parameter is that of the UserName parameter.
         self.user_name = user_name
@@ -36721,7 +37387,7 @@ class ListInstancesRequest(TeaModel):
         search_key: str = None,
         tid: int = None,
     ):
-        # The type of the database. For more information about the valid values of this parameter, see [DbType parameter](~~198106~~).
+        # The type of the database. For more information about the valid values of this parameter, see [DbType parameter](https://help.aliyun.com/document_detail/198106.html).
         self.db_type = db_type
         # The type of the environment to which the database instance belongs. Valid values:
         # 
@@ -36757,7 +37423,7 @@ class ListInstancesRequest(TeaModel):
         self.page_size = page_size
         # The keyword that is used to search for database instances.
         self.search_key = search_key
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) operation to obtain the tenant ID.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) operation to obtain the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -37282,11 +37948,13 @@ class ListLhTaskFlowAndScenarioRequest(TeaModel):
         tid: int = None,
         user_id: int = None,
     ):
-        # The ID of the workspace. You can call the [GetLhSpaceByName](~~424379~~) operation to obtain the workspace ID.
+        # The ID of the workspace. You can call the [GetLhSpaceByName](https://help.aliyun.com/document_detail/424379.html) operation to obtain the workspace ID.
+        # 
+        # This parameter is required.
         self.space_id = space_id
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to obtain the tenant ID.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to obtain the tenant ID.
         self.tid = tid
-        # The ID of the user. You can call the [ListUsers](~~141938~~) or [GetUser](~~147098~~) operation to obtain the user ID.
+        # The ID of the user. You can call the [ListUsers](https://help.aliyun.com/document_detail/141938.html) or [GetUser](https://help.aliyun.com/document_detail/147098.html) operation to obtain the user ID.
         self.user_id = user_id
 
     def validate(self):
@@ -38294,6 +38962,8 @@ class ListLogicTableRouteConfigRequest(TeaModel):
         tid: int = None,
     ):
         # The ID of the logical table. You can call the [ListLogicTables](https://www.alibabacloud.com/help/en/data-management-service/latest/listlogictables) operation to query the ID of the logical table.
+        # 
+        # This parameter is required.
         self.table_id = table_id
         # The ID of the tenant. You can call the [GetUserActiveTenant](https://www.alibabacloud.com/help/en/data-management-service/latest/getuseractivetenant) operation to query the tenant ID.
         self.tid = tid
@@ -38512,6 +39182,8 @@ class ListLogicTablesRequest(TeaModel):
         tid: int = None,
     ):
         # The ID of the logical database.
+        # 
+        # This parameter is required.
         self.database_id = database_id
         # The number of the page to return.
         self.page_number = page_number
@@ -38523,7 +39195,7 @@ class ListLogicTablesRequest(TeaModel):
         self.search_name = search_name
         # The ID of the tenant.
         # 
-        # > To view the tenant ID, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see [Manage DMS tenants](~~181330~~).
+        # > To view the tenant ID, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see [Manage DMS tenants](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
 
     def validate(self):
@@ -38891,7 +39563,7 @@ class ListOrdersRequest(TeaModel):
         self.page_number = page_number
         # The number of entries to return on each page.
         self.page_size = page_size
-        # The type of the tickets that you want to query. For more information, see [PluginType parameter](~~429109~~).
+        # The type of the tickets that you want to query. For more information, see [PluginType parameter](https://help.aliyun.com/document_detail/429109.html).
         self.plugin_type = plugin_type
         # The keyword that is used to query tickets.
         self.search_content = search_content
@@ -38902,7 +39574,7 @@ class ListOrdersRequest(TeaModel):
         self.search_date_type = search_date_type
         # The beginning of the time range to query.
         self.start_time = start_time
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to obtain the tenant ID.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to obtain the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -39203,7 +39875,7 @@ class ListProxiesRequest(TeaModel):
         self,
         tid: int = None,
     ):
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) operation to query the tenant ID.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) operation to query the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -39457,6 +40129,8 @@ class ListProxyAccessesRequest(TeaModel):
         # The ID of the secure access proxy. 
         # 
         # >  You can call the [ListProxies](https://www.alibabacloud.com/help/en/data-management-service/latest/listproxies) operation to query the ID of the secure access proxy.
+        # 
+        # This parameter is required.
         self.proxy_id = proxy_id
         # The ID of the tenant. 
         # 
@@ -39703,6 +40377,8 @@ class ListProxySQLExecAuditLogRequest(TeaModel):
         tid: int = None,
     ):
         # The end of the time range to query. The value of this parameter must be a timestamp that follows the UNIX time format.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The execution status of the SQL statement. Valid values:
         # 
@@ -39728,8 +40404,10 @@ class ListProxySQLExecAuditLogRequest(TeaModel):
         # The name of the database instance.
         self.search_name = search_name
         # The beginning of the time range to query. The value of this parameter must be a timestamp that follows the UNIX time format.
+        # 
+        # This parameter is required.
         self.start_time = start_time
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) operation to query the tenant ID.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) operation to query the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -40050,11 +40728,13 @@ class ListSLARulesRequest(TeaModel):
         dag_id: int = None,
         tid: int = None,
     ):
-        # The ID of the task flow. You can call the [ListTaskFlow](~~424565~~) or [ListLhTaskFlowAndScenario](~~426672~~) operation to query the task flow ID.
+        # The ID of the task flow. You can call the [ListTaskFlow](https://help.aliyun.com/document_detail/424565.html) or [ListLhTaskFlowAndScenario](https://help.aliyun.com/document_detail/426672.html) operation to query the task flow ID.
+        # 
+        # This parameter is required.
         self.dag_id = dag_id
         # The ID of the tenant.
         # 
-        # > : To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](~~181330~~).
+        # > : To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
 
     def validate(self):
@@ -40293,6 +40973,8 @@ class ListSQLExecAuditLogRequest(TeaModel):
         # The end of the time range to query.
         # 
         # >  The end time supports fuzzy match. Specify the time in the YYYY-MM-DD hh:mm:ss format. We recommend that you use the StartTime and EndTime parameters to specify a time range that does not exceed one day. The returned entries can be displayed by page to improve query efficiency.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The execution status of the SQL statement. Valid values:
         # 
@@ -40324,8 +41006,10 @@ class ListSQLExecAuditLogRequest(TeaModel):
         # The beginning of the time range to query.
         # 
         # >  The start time supports fuzzy match. Specify the time in the YYYY-MM-DD hh:mm:ss format.
+        # 
+        # This parameter is required.
         self.start_time = start_time
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) operation to obtain the tenant ID.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) operation to obtain the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -40770,9 +41454,11 @@ class ListSQLReviewOriginSQLRequest(TeaModel):
     ):
         # The parameters that are used to filter SQL statements involved in the ticket.
         self.order_action_detail = order_action_detail
-        # The ID of the ticket for the SQL review. You can call the [CreateSQLReviewOrder](~~257777~~) operation to query the ID of the ticket.
+        # The ID of the ticket for the SQL review. You can call the [CreateSQLReviewOrder](https://help.aliyun.com/document_detail/257777.html) operation to query the ID of the ticket.
+        # 
+        # This parameter is required.
         self.order_id = order_id
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~465818~~) operation to query the ID of the tenant.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/465818.html) operation to query the ID of the tenant.
         self.tid = tid
 
     def validate(self):
@@ -40814,9 +41500,11 @@ class ListSQLReviewOriginSQLShrinkRequest(TeaModel):
     ):
         # The parameters that are used to filter SQL statements involved in the ticket.
         self.order_action_detail_shrink = order_action_detail_shrink
-        # The ID of the ticket for the SQL review. You can call the [CreateSQLReviewOrder](~~257777~~) operation to query the ID of the ticket.
+        # The ID of the ticket for the SQL review. You can call the [CreateSQLReviewOrder](https://help.aliyun.com/document_detail/257777.html) operation to query the ID of the ticket.
+        # 
+        # This parameter is required.
         self.order_id = order_id
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~465818~~) operation to query the ID of the tenant.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/465818.html) operation to query the ID of the tenant.
         self.tid = tid
 
     def validate(self):
@@ -40892,7 +41580,7 @@ class ListSQLReviewOriginSQLResponseBodyOriginSQLList(TeaModel):
         self.sqlid = sqlid
         # SQLName.
         self.sqlname = sqlname
-        # The key that is used to query the details of optimization suggestions. You can call the [GetSQLReviewOptimizeDetail](https://icms.alibaba-inc.com/content/dms/doc?l=1\&m=61777\&n=2712723\&spm) operation to query the details of optimization suggestions based on the key.
+        # The key that is used to query the details of optimization suggestions. You can call the [GetSQLReviewOptimizeDetail](https://icms.alibaba-inc.com/content/dms/doc?l=1\\&m=61777\\&n=2712723\\&spm) operation to query the details of optimization suggestions based on the key.
         self.sqlreview_query_key = sqlreview_query_key
         # The MD5 hash value of the SQL statement.
         self.sql_hash = sql_hash
@@ -41078,7 +41766,7 @@ class ListScenariosRequest(TeaModel):
     ):
         # The ID of the tenant.
         # 
-        # > : To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](~~181330~~).
+        # > : To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
 
     def validate(self):
@@ -41270,6 +41958,7 @@ class ListSensitiveColumnInfoRequest(TeaModel):
         tid: int = None,
     ):
         self.column_name = column_name
+        # This parameter is required.
         self.instance_id = instance_id
         self.page_number = page_number
         self.page_size = page_size
@@ -41662,11 +42351,11 @@ class ListSensitiveColumnsRequest(TeaModel):
         table_name: str = None,
         tid: int = None,
     ):
-        # The name of the field. You can call the [ListColumns](~~141870~~) operation to query the name of the field.
+        # The name of the field. You can call the [ListColumns](https://help.aliyun.com/document_detail/141870.html) operation to query the name of the field.
         self.column_name = column_name
-        # The ID of the database. You can call the [SearchDatabase](~~141876~~) operation to query the ID of the database.
+        # The ID of the database. You can call the [SearchDatabase](https://help.aliyun.com/document_detail/141876.html) operation to query the ID of the database.
         # 
-        # >  You can also call the [ListDatabases](~~141873~~) operation to query the ID of the physical database and the [ListLogicDatabases](~~141874~~) operation to query the ID of a logical database.
+        # >  You can also call the [ListDatabases](https://help.aliyun.com/document_detail/141873.html) operation to query the ID of the physical database and the [ListLogicDatabases](https://help.aliyun.com/document_detail/141874.html) operation to query the ID of a logical database.
         self.db_id = db_id
         # Specifies whether the database is a logical database. Valid values:
         # 
@@ -41677,20 +42366,20 @@ class ListSensitiveColumnsRequest(TeaModel):
         self.page_number = page_number
         # The number of entries to return on each page.
         self.page_size = page_size
-        # The name of the database. You can call the [SearchDatabase](~~141876~~) operation to query the name of the database.
+        # The name of the database. You can call the [SearchDatabase](https://help.aliyun.com/document_detail/141876.html) operation to query the name of the database.
         # 
-        # >  You can also call the [ListDatabases](~~141873~~) operation to query the name of a physical database and the [ListLogicDatabases](~~141874~~) operation to query the name of a logical database.
+        # >  You can also call the [ListDatabases](https://help.aliyun.com/document_detail/141873.html) operation to query the name of a physical database and the [ListLogicDatabases](https://help.aliyun.com/document_detail/141874.html) operation to query the name of a logical database.
         self.schema_name = schema_name
         # The sensitivity level of the field. Valid values:
         # 
         # *   SENSITIVE: medium sensitivity level
         # *   CONFIDENTIAL: high sensitivity level
         self.security_level = security_level
-        # The name of the table. You can call the [ListTables](~~141878~~) operation to query the ID of the table.
+        # The name of the table. You can call the [ListTables](https://help.aliyun.com/document_detail/141878.html) operation to query the ID of the table.
         self.table_name = table_name
         # The ID of the tenant.
         # 
-        # >  To view the ID of the tenant, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see the "View information about the current tenant" section of the [Manage DMS tenants](~~181330~~) topic.
+        # >  To view the ID of the tenant, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see the "View information about the current tenant" section of the [Manage DMS tenants](https://help.aliyun.com/document_detail/181330.html) topic.
         self.tid = tid
 
     def validate(self):
@@ -41969,30 +42658,36 @@ class ListSensitiveColumnsDetailRequest(TeaModel):
         table_name: str = None,
         tid: int = None,
     ):
-        # The name of the field. You can call the [ListSensitiveColumns](~~188103~~) operation to obtain the name of the field.
+        # The name of the field. You can call the [ListSensitiveColumns](https://help.aliyun.com/document_detail/188103.html) operation to obtain the name of the field.
         # 
-        # >  You can also call the [ListColumns](~~141870~~) operation to obtain the name of the field.
+        # >  You can also call the [ListColumns](https://help.aliyun.com/document_detail/141870.html) operation to obtain the name of the field.
+        # 
+        # This parameter is required.
         self.column_name = column_name
         # The ID of the database. The database can be a physical database or a logical database.
         # 
-        # *   To obtain the ID of a physical database, call the [ListDatabases](~~141873~~) or [SearchDatabase](~~141876~~) operation.
-        # *   To obtain the ID of a logical database, call the [ListLogicDatabases](~~141874~~) or [SearchDatabase](~~141876~~) operation.
+        # *   To obtain the ID of a physical database, call the [ListDatabases](https://help.aliyun.com/document_detail/141873.html) or [SearchDatabase](https://help.aliyun.com/document_detail/141876.html) operation.
+        # *   To obtain the ID of a logical database, call the [ListLogicDatabases](https://help.aliyun.com/document_detail/141874.html) or [SearchDatabase](https://help.aliyun.com/document_detail/141876.html) operation.
         self.db_id = db_id
         # Specifies whether the database is a logical database. Valid values:
         # 
         # *   **true**: The database is a logical database.
         # *   **false**: The database is a physical database.
         self.logic = logic
-        # The name of the database. You can call the [ListSensitiveColumns](~~188103~~) operation to obtain the name of the database.
+        # The name of the database. You can call the [ListSensitiveColumns](https://help.aliyun.com/document_detail/188103.html) operation to obtain the name of the database.
         # 
-        # > * You can also call the [ListDatabases](~~141873~~) or [SearchDatabase](~~141876~~) operation to obtain the name of a physical database.
-        # > * You can also call the [ListLogicDatabases](~~141874~~) or [SearchDatabase](~~141876~~) operation to obtain the name of a logical database.
+        # > * You can also call the [ListDatabases](https://help.aliyun.com/document_detail/141873.html) or [SearchDatabase](https://help.aliyun.com/document_detail/141876.html) operation to obtain the name of a physical database.
+        # > * You can also call the [ListLogicDatabases](https://help.aliyun.com/document_detail/141874.html) or [SearchDatabase](https://help.aliyun.com/document_detail/141876.html) operation to obtain the name of a logical database.
+        # 
+        # This parameter is required.
         self.schema_name = schema_name
-        # The name of the table. You can call the [ListSensitiveColumns](~~188103~~) operation to obtain the name of the table.
+        # The name of the table. You can call the [ListSensitiveColumns](https://help.aliyun.com/document_detail/188103.html) operation to obtain the name of the table.
         # 
-        # >  You can also call the [ListTables](~~141878~~) operation to obtain the name of the table.
+        # >  You can also call the [ListTables](https://help.aliyun.com/document_detail/141878.html) operation to obtain the name of the table.
+        # 
+        # This parameter is required.
         self.table_name = table_name
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to obtain the tenant ID.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to obtain the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -42639,9 +43334,9 @@ class ListSensitivityLevelRequest(TeaModel):
         template_type: str = None,
         tid: int = None,
     ):
-        # The ID of the classification template. You can call the [ListClassificationTemplates](~~460613~~) operation to query the ID of the classification template.
+        # The ID of the classification template. You can call the [ListClassificationTemplates](https://help.aliyun.com/document_detail/460613.html) operation to query the ID of the classification template.
         self.template_id = template_id
-        # The type of the classification template. You can call the [ListClassificationTemplates](~~460613~~) operation to query the type of the classification template.
+        # The type of the classification template. You can call the [ListClassificationTemplates](https://help.aliyun.com/document_detail/460613.html) operation to query the type of the classification template.
         # 
         # Valid values:
         # 
@@ -42650,7 +43345,7 @@ class ListSensitivityLevelRequest(TeaModel):
         self.template_type = template_type
         # The ID of the tenant.
         # 
-        # >  To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](~~181330~~) in the topic "Manage DMS tenants."
+        # >  To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) in the topic "Manage DMS tenants."
         self.tid = tid
 
     def validate(self):
@@ -42879,7 +43574,7 @@ class ListStandardGroupsResponseBodyStandardGroupList(TeaModel):
         group_name: str = None,
         last_mender_id: int = None,
     ):
-        # The type of the database engine. For more information about the valid values of this parameter, see [DbType parameter](~~198106~~).
+        # The type of the database engine. For more information about the valid values of this parameter, see [DbType parameter](https://help.aliyun.com/document_detail/198106.html).
         self.db_type = db_type
         # The description of the security rule set.
         self.description = description
@@ -43054,7 +43749,9 @@ class ListTablesRequest(TeaModel):
         search_name: str = None,
         tid: int = None,
     ):
-        # The ID of the physical database. You can call the [ListDatabases](~~141873~~) or [SearchDatabase](~~141876~~) operation to obtain the ID of the physical database.
+        # The ID of the physical database. You can call the [ListDatabases](https://help.aliyun.com/document_detail/141873.html) or [SearchDatabase](https://help.aliyun.com/document_detail/141876.html) operation to obtain the ID of the physical database.
+        # 
+        # This parameter is required.
         self.database_id = database_id
         # The number of the page to return.
         self.page_number = page_number
@@ -43067,7 +43764,7 @@ class ListTablesRequest(TeaModel):
         self.return_guid = return_guid
         # The name used to search for tables. Fuzzy search is supported.
         self.search_name = search_name
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to query the tenant ID.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to query the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -43430,7 +44127,7 @@ class ListTaskFlowRequest(TeaModel):
         self,
         tid: int = None,
     ):
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to obtain the tenant ID.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to obtain the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -43681,11 +44378,13 @@ class ListTaskFlowConstantsRequest(TeaModel):
         dag_id: int = None,
         tid: int = None,
     ):
-        # The ID of the task flow. You can call the [ListTaskFlow](~~424565~~) or [ListLhTaskFlowAndScenario](~~426672~~) operation to query the task flow ID.
+        # The ID of the task flow. You can call the [ListTaskFlow](https://help.aliyun.com/document_detail/424565.html) or [ListLhTaskFlowAndScenario](https://help.aliyun.com/document_detail/426672.html) operation to query the task flow ID.
+        # 
+        # This parameter is required.
         self.dag_id = dag_id
         # The ID of the tenant.
         # 
-        # > :To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](~~181330~~).
+        # > :To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
 
     def validate(self):
@@ -43890,11 +44589,13 @@ class ListTaskFlowCooperatorsRequest(TeaModel):
         dag_id: int = None,
         tid: int = None,
     ):
-        # The ID of the task flow. You can call the [ListTaskFlow](~~424565~~) or [ListLhTaskFlowAndScenario](~~426672~~) operation to query the task flow ID.
+        # The ID of the task flow. You can call the [ListTaskFlow](https://help.aliyun.com/document_detail/424565.html) or [ListLhTaskFlowAndScenario](https://help.aliyun.com/document_detail/426672.html) operation to query the task flow ID.
+        # 
+        # This parameter is required.
         self.dag_id = dag_id
         # The ID of the tenant.
         # 
-        # >  To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](~~181330~~).
+        # >  To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
 
     def validate(self):
@@ -44116,7 +44817,9 @@ class ListTaskFlowEdgesByConditionRequest(TeaModel):
         node_from: int = None,
         tid: int = None,
     ):
-        # The ID of the task flow. You can call the [ListTaskFlow](~~424565~~) or [ListLhTaskFlowAndScenario](~~426672~~) operation to query the task flow ID.
+        # The ID of the task flow. You can call the [ListTaskFlow](https://help.aliyun.com/document_detail/424565.html) or [ListLhTaskFlowAndScenario](https://help.aliyun.com/document_detail/426672.html) operation to query the task flow ID.
+        # 
+        # This parameter is required.
         self.dag_id = dag_id
         # The ID of the task flow edge.
         self.id = id
@@ -44126,7 +44829,7 @@ class ListTaskFlowEdgesByConditionRequest(TeaModel):
         self.node_from = node_from
         # The ID of the tenant.
         # 
-        # >  To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](~~181330~~).
+        # >  To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
 
     def validate(self):
@@ -44357,11 +45060,17 @@ class ListTaskFlowInstanceRequest(TeaModel):
         trigger_type: int = None,
         use_biz_date: bool = None,
     ):
-        # The ID of the task flow. You can call the [ListTaskFlow](~~424565~~) or [ListLhTaskFlowAndScenario](~~426672~~) operation to obtain the ID of the task flow.
+        # The ID of the task flow. You can call the [ListTaskFlow](https://help.aliyun.com/document_detail/424565.html) or [ListLhTaskFlowAndScenario](https://help.aliyun.com/document_detail/426672.html) operation to obtain the ID of the task flow.
+        # 
+        # This parameter is required.
         self.dag_id = dag_id
         # The number of the page to return.
+        # 
+        # This parameter is required.
         self.page_index = page_index
         # The number of entries to return on each page.
+        # 
+        # This parameter is required.
         self.page_size = page_size
         # The beginning of the time range to query the execution records of the task flow. Specify the time in the yyyy-MM-DD format.
         self.start_time_begin = start_time_begin
@@ -44381,7 +45090,7 @@ class ListTaskFlowInstanceRequest(TeaModel):
         # 
         # - **5**: Completed
         self.status = status
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to obtain the tenant ID.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to obtain the tenant ID.
         self.tid = tid
         # The mode in which the task flow is triggered. Valid values:
         # 
@@ -44712,11 +45421,13 @@ class ListTaskFlowTimeVariablesRequest(TeaModel):
         dag_id: int = None,
         tid: int = None,
     ):
-        # The ID of the task flow. You can call the [ListTaskFlow](~~424565~~) or [ListLhTaskFlowAndScenario](~~426672~~) operation to query the task flow ID.
+        # The ID of the task flow. You can call the [ListTaskFlow](https://help.aliyun.com/document_detail/424565.html) or [ListLhTaskFlowAndScenario](https://help.aliyun.com/document_detail/426672.html) operation to query the task flow ID.
+        # 
+        # This parameter is required.
         self.dag_id = dag_id
         # The ID of the tenant.
         # 
-        # > :To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](~~181330~~).
+        # > :To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
 
     def validate(self):
@@ -44937,7 +45648,7 @@ class ListTaskFlowsByPageRequest(TeaModel):
         self.search_key = search_key
         # The ID of the tenant.
         # 
-        # > : To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](~~181330~~).
+        # > : To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
 
     def validate(self):
@@ -45002,7 +45713,7 @@ class ListTaskFlowsByPageShrinkRequest(TeaModel):
         self.search_key = search_key
         # The ID of the tenant.
         # 
-        # > : To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](~~181330~~).
+        # > : To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
 
     def validate(self):
@@ -45370,11 +46081,13 @@ class ListTasksInTaskFlowRequest(TeaModel):
         dag_id: int = None,
         tid: int = None,
     ):
-        # The ID of the task flow. You can call the [ListTaskFlow](~~424565~~) or [ListLhTaskFlowAndScenario](~~426672~~) operation to query the task flow ID.
+        # The ID of the task flow. You can call the [ListTaskFlow](https://help.aliyun.com/document_detail/424565.html) or [ListLhTaskFlowAndScenario](https://help.aliyun.com/document_detail/426672.html) operation to query the task flow ID.
+        # 
+        # This parameter is required.
         self.dag_id = dag_id
         # The ID of the tenant.
         # 
-        # >  To view the ID of the tenant, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see [View information about the current tenant](~~181330~~).
+        # >  To view the ID of the tenant, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
 
     def validate(self):
@@ -45425,7 +46138,7 @@ class ListTasksInTaskFlowResponseBodyTasksTask(TeaModel):
         self.node_name = node_name
         # The output variables for the task.
         self.node_output = node_output
-        # The type of the node. For more information about the valid values for this parameter, see [NodeType parameter](~~424705~~).
+        # The type of the node. For more information about the valid values for this parameter, see [NodeType parameter](https://help.aliyun.com/document_detail/424705.html).
         self.node_type = node_type
         # The time variables configured for the node.
         self.time_variables = time_variables
@@ -45631,7 +46344,7 @@ class ListUserPermissionsRequest(TeaModel):
     ):
         # The name of the database.
         self.database_name = database_name
-        # The type of the database. For more information about the valid values of this parameter, see [DbType parameter](~~198106~~).
+        # The type of the database. For more information about the valid values of this parameter, see [DbType parameter](https://help.aliyun.com/document_detail/198106.html).
         self.db_type = db_type
         # The type of the environment to which the database belongs. Valid values:
         # 
@@ -45659,16 +46372,20 @@ class ListUserPermissionsRequest(TeaModel):
         # *   TABLE: permissions on tables
         # *   COLUMN: permissions on fields
         # *   INSTANCE: permissions on instances
+        # 
+        # This parameter is required.
         self.perm_type = perm_type
         # The keyword used in the query. For example, if you want to query permissions on an instance, you can specify the endpoint of the instance, such as rm-bp144d5ky4l4r****.
         self.search_key = search_key
         # The ID of the tenant.
         # 
-        # >  To view the ID of the tenant, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see the "View information about the current tenant" section of the [Manage DMS tenants](~~181330~~) topic.
+        # >  To view the ID of the tenant, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see the "View information about the current tenant" section of the [Manage DMS tenants](https://help.aliyun.com/document_detail/181330.html) topic.
         self.tid = tid
-        # The ID of the user. You can call the [GetUser](~~147098~~) or [ListUsers](~~141938~~) operation to query the ID of the user.
+        # The ID of the user. You can call the [GetUser](https://help.aliyun.com/document_detail/147098.html) or [ListUsers](https://help.aliyun.com/document_detail/141938.html) operation to query the ID of the user.
         # 
         # >  The user ID is different from the ID of your Alibaba Cloud account.
+        # 
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -46137,7 +46854,7 @@ class ListUserTenantsRequest(TeaModel):
         self,
         tid: int = None,
     ):
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) operation to query the tenant ID.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) operation to query the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -46343,7 +47060,7 @@ class ListUsersRequest(TeaModel):
         self.role = role
         # The search keyword. Fuzzy match is supported.
         self.search_key = search_key
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) operation to obtain the tenant ID.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) operation to obtain the tenant ID.
         self.tid = tid
         # The status of the user. Valid values:
         # 
@@ -46789,7 +47506,7 @@ class ListWorkFlowNodesRequest(TeaModel):
         self.search_name = search_name
         # The ID of the tenant.
         # 
-        # > : To view the ID of the tenant, log on to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [Manage DMS tenants](~~181330~~).
+        # > : To view the ID of the tenant, log on to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [Manage DMS tenants](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
 
     def validate(self):
@@ -47112,7 +47829,7 @@ class ListWorkFlowTemplatesRequest(TeaModel):
         self.search_name = search_name
         # The ID of the tenant.
         # 
-        # > : To view the ID of the tenant, log on to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](~~181330~~).
+        # > : To view the ID of the tenant, log on to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
 
     def validate(self):
@@ -47466,13 +48183,17 @@ class MakeTaskFlowInstanceSuccessRequest(TeaModel):
         dag_instance_id: int = None,
         tid: int = None,
     ):
-        # The ID of the task flow. You can call the [ListTaskFlow](~~424565~~) or [ListLhTaskFlowAndScenario](~~426672~~) operation to query the task flow ID.
+        # The ID of the task flow. You can call the [ListTaskFlow](https://help.aliyun.com/document_detail/424565.html) or [ListLhTaskFlowAndScenario](https://help.aliyun.com/document_detail/426672.html) operation to query the task flow ID.
+        # 
+        # This parameter is required.
         self.dag_id = dag_id
-        # The ID of the execution record of the task flow. You can call the [ListTaskFlowInstance](~~424689~~) operation to query the execution record ID.
+        # The ID of the execution record of the task flow. You can call the [ListTaskFlowInstance](https://help.aliyun.com/document_detail/424689.html) operation to query the execution record ID.
+        # 
+        # This parameter is required.
         self.dag_instance_id = dag_instance_id
         # The ID of the tenant.
         # 
-        # > To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](~~181330~~).
+        # > To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
 
     def validate(self):
@@ -47604,10 +48325,14 @@ class ModifyDataCorrectExecSQLRequest(TeaModel):
         tid: int = None,
     ):
         # The new SQL script.
+        # 
+        # This parameter is required.
         self.exec_sql = exec_sql
         # The ID of the data change ticket.
+        # 
+        # This parameter is required.
         self.order_id = order_id
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) operation to query the tenant ID.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) operation to query the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -47744,11 +48469,15 @@ class ModifyDesensitizationStrategyRequest(TeaModel):
         table_name: str = None,
         tid: int = None,
     ):
-        # The name of the field. You can call the [ListSensitiveColumns](~~188103~~) operation to obtain the field name.
+        # The name of the field. You can call the [ListSensitiveColumns](https://help.aliyun.com/document_detail/188103.html) operation to obtain the field name.
         # 
-        # >  You can also call the [ListColumns](~~141870~~) operation to obtain the field name.
+        # >  You can also call the [ListColumns](https://help.aliyun.com/document_detail/141870.html) operation to obtain the field name.
+        # 
+        # This parameter is required.
         self.column_name = column_name
-        # The ID of the database. You can call the [ListDatabases](~~141873~~) operation to obtain the ID.
+        # The ID of the database. You can call the [ListDatabases](https://help.aliyun.com/document_detail/141873.html) operation to obtain the ID.
+        # 
+        # This parameter is required.
         self.db_id = db_id
         # The desensitization algorithm of the field setting. The default value is false. The values are as follows:
         # 
@@ -47760,6 +48489,8 @@ class ModifyDesensitizationStrategyRequest(TeaModel):
         # 
         # *   **true**: The database is a physical database.
         # *   **false**: The database is a logical database.
+        # 
+        # This parameter is required.
         self.is_logic = is_logic
         # Specifies whether to reset the masking rule. Valid value:
         # 
@@ -47768,21 +48499,25 @@ class ModifyDesensitizationStrategyRequest(TeaModel):
         self.is_reset = is_reset
         # The ID of the masking rule.
         self.rule_id = rule_id
-        # The name of the database. You can call the [ListSensitiveColumns](~~188103~~) operation to obtain the database name.
+        # The name of the database. You can call the [ListSensitiveColumns](https://help.aliyun.com/document_detail/188103.html) operation to obtain the database name.
         # 
         # > 
         # 
-        # *   If the database is a physical database, you can call the [ListDatabases](~~141873~~) or [SearchDatabase](~~141876~~) operation to obtain the database name.
+        # *   If the database is a physical database, you can call the [ListDatabases](https://help.aliyun.com/document_detail/141873.html) or [SearchDatabase](https://help.aliyun.com/document_detail/141876.html) operation to obtain the database name.
         # 
-        # *   If the database is a logical database, you can call the [ListLogicDatabases](~~141874~~) or [SearchDatabase](~~141876~~) operation to obtain the name of the database.
+        # *   If the database is a logical database, you can call the [ListLogicDatabases](https://help.aliyun.com/document_detail/141874.html) or [SearchDatabase](https://help.aliyun.com/document_detail/141876.html) operation to obtain the name of the database.
+        # 
+        # This parameter is required.
         self.schema_name = schema_name
-        # The name of the table. You can call the [ListSensitiveColumns](~~188103~~) operation to obtain the table name.
+        # The name of the table. You can call the [ListSensitiveColumns](https://help.aliyun.com/document_detail/188103.html) operation to obtain the table name.
         # 
-        # >  You can also call the [ListTables](~~141878~~) operation to obtain the table name.
+        # >  You can also call the [ListTables](https://help.aliyun.com/document_detail/141878.html) operation to obtain the table name.
+        # 
+        # This parameter is required.
         self.table_name = table_name
         # The ID of the tenant.
         # 
-        # >  To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](~~181330~~) in the topic "Manage DMS tenants."
+        # >  To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) in the topic "Manage DMS tenants."
         self.tid = tid
 
     def validate(self):
@@ -47986,6 +48721,7 @@ class ModifyInstanceRequest(TeaModel):
         self.export_timeout = export_timeout
         self.host = host
         self.instance_alias = instance_alias
+        # This parameter is required.
         self.instance_id = instance_id
         self.instance_source = instance_source
         self.instance_type = instance_type
@@ -48231,13 +48967,15 @@ class MoveTaskFlowToScenarioRequest(TeaModel):
         scenario_id: int = None,
         tid: int = None,
     ):
-        # The ID of the task flow. You can call the [ListTaskFlow](~~424565~~) or [ListLhTaskFlowAndScenario](~~426672~~) operation to query the task flow ID.
+        # The ID of the task flow. You can call the [ListTaskFlow](https://help.aliyun.com/document_detail/424565.html) or [ListLhTaskFlowAndScenario](https://help.aliyun.com/document_detail/426672.html) operation to query the task flow ID.
+        # 
+        # This parameter is required.
         self.dag_id = dag_id
         # The ID of the business scenario to which you want to migrate your task flow. If this parameter is set to the default value or a value that is less than or equal to 0, the task flow is migrated to the default business scenario.
         self.scenario_id = scenario_id
         # The ID of the tenant.
         # 
-        # > : To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](~~181330~~).
+        # > : To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
 
     def validate(self):
@@ -48367,9 +49105,11 @@ class OfflineTaskFlowRequest(TeaModel):
         dag_id: int = None,
         tid: int = None,
     ):
-        # The ID of the task flow. You can call the [ListTaskFlow](~~424565~~) or [ListLhTaskFlowAndScenario](~~426672~~) operation to obtain the task flow ID.
+        # The ID of the task flow. You can call the [ListTaskFlow](https://help.aliyun.com/document_detail/424565.html) or [ListLhTaskFlowAndScenario](https://help.aliyun.com/document_detail/426672.html) operation to obtain the task flow ID.
+        # 
+        # This parameter is required.
         self.dag_id = dag_id
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to obtain the tenant ID.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to obtain the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -48497,18 +49237,22 @@ class PauseDataCorrectSQLJobRequest(TeaModel):
         tid: int = None,
         type: str = None,
     ):
-        # The ID of the SQL task. You can call the [GetDataCorrectTaskDetail](~~208481~~) or [ListDBTaskSQLJob](~~207049~~) operation to obtain the value of this parameter.
+        # The ID of the SQL task. You can call the [GetDataCorrectTaskDetail](https://help.aliyun.com/document_detail/208481.html) or [ListDBTaskSQLJob](https://help.aliyun.com/document_detail/207049.html) operation to obtain the value of this parameter.
         # 
         # >  If Type is set to SINGLE, you must pass in the value of JobId to confirm the ID of the SQL task that you want to pause.
         self.job_id = job_id
-        # The ID of the data change ticket. You can call the [ListOrders](~~144643~~) operation to query the ID of the data change ticket.
+        # The ID of the data change ticket. You can call the [ListOrders](https://help.aliyun.com/document_detail/144643.html) operation to query the ID of the data change ticket.
+        # 
+        # This parameter is required.
         self.order_id = order_id
-        # The tenant ID. You can call the [GetUserActiveTenant](~~198073~~) operation to query the tenant ID.
+        # The tenant ID. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) operation to query the tenant ID.
         self.tid = tid
         # The type of the pause operation. Valid values:
         # 
         # *   ALL: pauses all SQL tasks.
         # *   SINGLE: pauses a single SQL task.
+        # 
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -48642,6 +49386,7 @@ class PreviewWorkflowRequest(TeaModel):
         order_id: int = None,
         tid: int = None,
     ):
+        # This parameter is required.
         self.order_id = order_id
         self.tid = tid
 
@@ -48967,11 +49712,13 @@ class PublishAndDeployTaskFlowRequest(TeaModel):
         tid: int = None,
         version_comments: str = None,
     ):
-        # The ID of the task flow. You can call the [ListTaskFlow](~~424565~~) or [ListLhTaskFlowAndScenario](~~426672~~) operation to query the task flow ID.
+        # The ID of the task flow. You can call the [ListTaskFlow](https://help.aliyun.com/document_detail/424565.html) or [ListLhTaskFlowAndScenario](https://help.aliyun.com/document_detail/426672.html) operation to query the task flow ID.
+        # 
+        # This parameter is required.
         self.dag_id = dag_id
         # The ID of the tenant.
         # 
-        # > To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](~~181330~~).
+        # > To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
         # The description of the version.
         self.version_comments = version_comments
@@ -49112,10 +49859,14 @@ class QueryDataTrackResultDownloadStatusRequest(TeaModel):
         tid: int = None,
     ):
         # The ID of the download key, which is used to identify the parsing progress of data tracking logs. You can call the DownloadDataTrackResult operation to query the ID of the key.
+        # 
+        # This parameter is required.
         self.download_key_id = download_key_id
-        # The ID of the ticket. You can call the [ListOrders](~~144643~~) operation to query the ID of the ticket.
+        # The ID of the ticket. You can call the [ListOrders](https://help.aliyun.com/document_detail/144643.html) operation to query the ID of the ticket.
+        # 
+        # This parameter is required.
         self.order_id = order_id
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to query the ID of the tenant.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to query the ID of the tenant.
         self.tid = tid
 
     def validate(self):
@@ -49310,11 +50061,13 @@ class ReDeployLhDagVersionRequest(TeaModel):
         dag_version: int = None,
         tid: int = None,
     ):
-        # The ID of the task flow. You can call the [ListTaskFlow](~~424565~~) or [ListLhTaskFlowAndScenario](~~426672~~) operation to obtain the ID of the task flow.
+        # The ID of the task flow. You can call the [ListTaskFlow](https://help.aliyun.com/document_detail/424565.html) or [ListLhTaskFlowAndScenario](https://help.aliyun.com/document_detail/426672.html) operation to obtain the ID of the task flow.
+        # 
+        # This parameter is required.
         self.dag_id = dag_id
-        # The ID of the task flow version. You can call the [ListDAGVersions](~~424682~~) operation to obtain the ID of the task flow version.
+        # The ID of the task flow version. You can call the [ListDAGVersions](https://help.aliyun.com/document_detail/424682.html) operation to obtain the ID of the task flow version.
         self.dag_version = dag_version
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to obtain the ID of the tenant.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to obtain the ID of the tenant.
         self.tid = tid
 
     def validate(self):
@@ -49453,15 +50206,19 @@ class ReRunTaskFlowInstanceRequest(TeaModel):
         dag_version: str = None,
         tid: int = None,
     ):
-        # The ID of the task flow. You can call the [ListTaskFlow](~~424565~~) or [ListLhTaskFlowAndScenario](~~426672~~) operation to query the task flow ID.
+        # The ID of the task flow. You can call the [ListTaskFlow](https://help.aliyun.com/document_detail/424565.html) or [ListLhTaskFlowAndScenario](https://help.aliyun.com/document_detail/426672.html) operation to query the task flow ID.
+        # 
+        # This parameter is required.
         self.dag_id = dag_id
-        # The ID of the execution record of the task flow. You can call the [ListTaskFlowInstance](~~424689~~) operation to query the execution record ID.
+        # The ID of the execution record of the task flow. You can call the [ListTaskFlowInstance](https://help.aliyun.com/document_detail/424689.html) operation to query the execution record ID.
+        # 
+        # This parameter is required.
         self.dag_instance_id = dag_instance_id
         # The version number of the task flow. You can call the ListTaskFlowVersions operation to query the version number of the task flow.
         self.dag_version = dag_version
         # The ID of the tenant.
         # 
-        # > To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](~~181330~~).
+        # > To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
 
     def validate(self):
@@ -49597,12 +50354,16 @@ class RefundPayAsYouGoOrderRequest(TeaModel):
         tid: int = None,
     ):
         # The instance ID in the sales order.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The order ID of the order for the pay-as-you-go resource. You can call the ListEffectiveOrders operation to query the order ID.
+        # 
+        # This parameter is required.
         self.order_id = order_id
         # The ID of the tenant.
         # 
-        # > To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](~~181330~~).
+        # > To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
 
     def validate(self):
@@ -49762,15 +50523,21 @@ class RegisterInstanceRequest(TeaModel):
         # 
         # *   This parameter is required if UseDsql is set to 1.
         # 
-        # *   The name can contain only lowercase letters and underscores (\_).
+        # *   The name can contain only lowercase letters and underscores (_).
         # 
         # *   The name must be unique within a tenant.
         self.data_link_name = data_link_name
         # The password that is used to log on to the database.
+        # 
+        # This parameter is required.
         self.database_password = database_password
         # The account that is used to log on to the database.
+        # 
+        # This parameter is required.
         self.database_user = database_user
-        # The ID of the user who assumes the DBA role of the database instance. You can call the [ListUsers](~~141938~~) or [GetInstance](~~141567~~) operation to query the user ID.
+        # The ID of the user who assumes the DBA role of the database instance. You can call the [ListUsers](https://help.aliyun.com/document_detail/141938.html) or [GetInstance](https://help.aliyun.com/document_detail/141567.html) operation to query the user ID.
+        # 
+        # This parameter is required.
         self.dba_uid = dba_uid
         # The ID of the user who assumes the DBA role of the database instance. If the user ID is a non-numeric value such as a role or an account, you can use this parameter to replace DbaUid.
         self.dba_uid_by_string = dba_uid_by_string
@@ -49803,12 +50570,20 @@ class RegisterInstanceRequest(TeaModel):
         # *   uat: user acceptance testing (UAT) environment
         # *   pet: stress testing environment
         # *   stag: staging environment
+        # 
+        # This parameter is required.
         self.env_type = env_type
         # The timeout period for exporting data from the database instance. Unit: seconds.
+        # 
+        # This parameter is required.
         self.export_timeout = export_timeout
         # The host address that is used to connect to the database instance.
+        # 
+        # This parameter is required.
         self.host = host
         # The alias of the database instance. Specify an alias that can help you identify the database instance in DMS.
+        # 
+        # This parameter is required.
         self.instance_alias = instance_alias
         # The source of the database instance. Valid values:
         # 
@@ -49816,19 +50591,31 @@ class RegisterInstanceRequest(TeaModel):
         # *   **RDS:** an ApsaraDB RDS instance
         # *   **ECS_OWN:** a self-managed database that is deployed on an Elastic Compute Service (ECS) instance
         # *   **VPC_IDC:** a self-managed database instance that is deployed in a data center connected over a virtual private cloud (VPC)
+        # 
+        # This parameter is required.
         self.instance_source = instance_source
-        # The type of the database. For more information about the valid values of this parameter, see [DbType parameter](~~198106~~).
+        # The type of the database. For more information about the valid values of this parameter, see [DbType parameter](https://help.aliyun.com/document_detail/198106.html).
+        # 
+        # This parameter is required.
         self.instance_type = instance_type
         # The network type of the database instance. Valid values:
         # 
         # *   **CLASSIC:** classic network
         # *   **VPC:** VPC
+        # 
+        # This parameter is required.
         self.network_type = network_type
         # The port that is used to connect to the database instance.
+        # 
+        # This parameter is required.
         self.port = port
         # The timeout period for querying data in the database instance. Unit: seconds.
+        # 
+        # This parameter is required.
         self.query_timeout = query_timeout
-        # The name of the security rule set (GroupName) for the database instance. You can call the [ListStandardGroups](~~417891~~) or [GetInstance](~~141567~~) operation to query the name of the security rule set.
+        # The name of the security rule set (GroupName) for the database instance. You can call the [ListStandardGroups](https://help.aliyun.com/document_detail/417891.html) or [GetInstance](https://help.aliyun.com/document_detail/141567.html) operation to query the name of the security rule set.
+        # 
+        # This parameter is required.
         self.safe_rule = safe_rule
         # The system ID (SID) of the database.
         # 
@@ -49839,11 +50626,11 @@ class RegisterInstanceRequest(TeaModel):
         # *   **true:** skips the connectivity test
         # *   **false:** does not skip the connectivity test
         self.skip_test = skip_test
-        # The ID of the classification template. You can call the [ListClassificationTemplates](~~460613~~) operation to query the template ID.
+        # The ID of the classification template. You can call the [ListClassificationTemplates](https://help.aliyun.com/document_detail/460613.html) operation to query the template ID.
         self.template_id = template_id
-        # The type of the classification template. You can call the [ListClassificationTemplates](~~460613~~) operation to query the template type.
+        # The type of the classification template. You can call the [ListClassificationTemplates](https://help.aliyun.com/document_detail/460613.html) operation to query the template type.
         self.template_type = template_type
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) operation to query the tenant ID.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) operation to query the tenant ID.
         self.tid = tid
         # Specifies whether to enable the cross-database query feature for the database instance. Valid values:
         # 
@@ -50092,9 +50879,11 @@ class RegisterUserRequest(TeaModel):
         self.role_names = role_names
         # The ID of the tenant.
         # 
-        # >  To query ID of the tenant, move the pointer over the profile picture in the upper-right corner of the DMS console. For more information, see the "View information about the current tenant" section of the [Manage DMS tenants](~~181330~~) topic.
+        # >  To query ID of the tenant, move the pointer over the profile picture in the upper-right corner of the DMS console. For more information, see the "View information about the current tenant" section of the [Manage DMS tenants](https://help.aliyun.com/document_detail/181330.html) topic.
         self.tid = tid
         # The UID of the Alibaba Cloud account of the user that you want to register.
+        # 
+        # This parameter is required.
         self.uid = uid
         # The nickname of the user.
         self.user_nick = user_nick
@@ -50234,18 +51023,22 @@ class RestartDataCorrectSQLJobRequest(TeaModel):
         tid: int = None,
         type: str = None,
     ):
-        # The ID of the SQL task. You can call the [GetDataCorrectTaskDetail](~~208481~~) and [ListDBTaskSQLJob](~~207049~~) operations to obtain the value of this parameter.
+        # The ID of the SQL task. You can call the [GetDataCorrectTaskDetail](https://help.aliyun.com/document_detail/208481.html) and [ListDBTaskSQLJob](https://help.aliyun.com/document_detail/207049.html) operations to obtain the value of this parameter.
         # 
         # If the Type parameter is set to SINGLE, you must pass the value of the JobId parameter to confirm the ID of the SQL task that you want to rerun.
         self.job_id = job_id
-        # The ID of the data change ticket. You can call the [ListOrders](~~144643~~) operation to query the ID of the data change ticket.
+        # The ID of the data change ticket. You can call the [ListOrders](https://help.aliyun.com/document_detail/144643.html) operation to query the ID of the data change ticket.
+        # 
+        # This parameter is required.
         self.order_id = order_id
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) operation to query the tenant ID.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) operation to query the tenant ID.
         self.tid = tid
         # The type of the rerun operation. Valid values:
         # 
         # *   **ALL**: reruns all SQL tasks.
         # *   **SINGLE**: reruns a single SQL task.
+        # 
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -50381,13 +51174,17 @@ class ResumeTaskFlowInstanceRequest(TeaModel):
         dag_version: str = None,
         tid: int = None,
     ):
-        # The ID of the task flow. You can call the [ListTaskFlow](~~424565~~) or [ListLhTaskFlowAndScenario](~~426672~~) operation to query the task flow ID.
+        # The ID of the task flow. You can call the [ListTaskFlow](https://help.aliyun.com/document_detail/424565.html) or [ListLhTaskFlowAndScenario](https://help.aliyun.com/document_detail/426672.html) operation to query the task flow ID.
+        # 
+        # This parameter is required.
         self.dag_id = dag_id
-        # The ID of the execution record of the task flow. You can call the [ListTaskFlowInstance](~~424689~~) operation to query the execution record ID.
+        # The ID of the execution record of the task flow. You can call the [ListTaskFlowInstance](https://help.aliyun.com/document_detail/424689.html) operation to query the execution record ID.
+        # 
+        # This parameter is required.
         self.dag_instance_id = dag_instance_id
-        # The version number of the task flow. You can call the [ListDAGVersions](~~424682~~) operation to query the version number.
+        # The version number of the task flow. You can call the [ListDAGVersions](https://help.aliyun.com/document_detail/424682.html) operation to query the version number.
         self.dag_version = dag_version
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to query the tenant ID.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to query the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -50521,9 +51318,11 @@ class RetryDataCorrectPreCheckRequest(TeaModel):
         order_id: int = None,
         tid: int = None,
     ):
-        # The ID of the data change ticket. You can call the [ListOrders](~~144643~~) operation to query the ID of the data change ticket.
+        # The ID of the data change ticket. You can call the [ListOrders](https://help.aliyun.com/document_detail/144643.html) operation to query the ID of the data change ticket.
+        # 
+        # This parameter is required.
         self.order_id = order_id
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) operation to query the tenant ID.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) operation to query the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -50651,10 +51450,14 @@ class RevokeTemplateAuthorityRequest(TeaModel):
         user_ids: str = None,
     ):
         # The ID of the permission template.
+        # 
+        # This parameter is required.
         self.template_id = template_id
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to query the tenant ID.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to query the tenant ID.
         self.tid = tid
         # The IDs of users from whom you want to revoke permissions by using a permission template.
+        # 
+        # This parameter is required.
         self.user_ids = user_ids
 
     def validate(self):
@@ -50801,8 +51604,8 @@ class RevokeUserPermissionRequest(TeaModel):
     ):
         # The ID of the database. The database can be a physical database or a logical database.
         # 
-        # *   To query the ID of a physical database, call the [ListDatabases](~~141873~~) or [SearchDatabase](~~141876~~) operation.
-        # *   To query the ID of a logical database, call the [ListLogicDatabases](~~141874~~) or [SearchDatabase](~~141876~~) operation.
+        # *   To query the ID of a physical database, call the [ListDatabases](https://help.aliyun.com/document_detail/141873.html) or [SearchDatabase](https://help.aliyun.com/document_detail/141876.html) operation.
+        # *   To query the ID of a logical database, call the [ListLogicDatabases](https://help.aliyun.com/document_detail/141874.html) or [SearchDatabase](https://help.aliyun.com/document_detail/141876.html) operation.
         self.db_id = db_id
         # The object type on which the permission you want to revoke from the user. Valid values:
         # 
@@ -50811,8 +51614,10 @@ class RevokeUserPermissionRequest(TeaModel):
         # *   **LOGIC_DATABASE**: logical databases
         # *   **TABLE**: physical tables
         # *   **LOGIC_TABLE**: logical tables
+        # 
+        # This parameter is required.
         self.ds_type = ds_type
-        # The ID of the database instance. You must specify this parameter when you revoke a permission from the database instance. You can call the [ListInstances](~~141936~~) or [GetInstance](~~141567~~) operation to query the database instance ID.
+        # The ID of the database instance. You must specify this parameter when you revoke a permission from the database instance. You can call the [ListInstances](https://help.aliyun.com/document_detail/141936.html) or [GetInstance](https://help.aliyun.com/document_detail/141567.html) operation to query the database instance ID.
         self.instance_id = instance_id
         # Specifies whether the database is a logical database. Valid values:
         # 
@@ -50827,16 +51632,22 @@ class RevokeUserPermissionRequest(TeaModel):
         # *   **QUERY**: the data query permission
         # *   **EXPORT**: the data export permission
         # *   **CORRECT**: the data change permission
+        # 
+        # This parameter is required.
         self.perm_types = perm_types
-        # The ID of the table. You must specify this parameter when you revoke a permission from the table. You can call the [ListTables](~~141878~~) operation to query the table ID.
+        # The ID of the table. You must specify this parameter when you revoke a permission from the table. You can call the [ListTables](https://help.aliyun.com/document_detail/141878.html) operation to query the table ID.
         self.table_id = table_id
-        # The name of the table. You can call the [ListTables](~~141878~~) operation to query the table name.
+        # The name of the table. You can call the [ListTables](https://help.aliyun.com/document_detail/141878.html) operation to query the table name.
         self.table_name = table_name
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) operation to query the tenant ID.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) operation to query the tenant ID.
         self.tid = tid
-        # The ID of the permission. You can call the [ListUserPermission](~~146957~~) operation to query the permission ID.
+        # The ID of the permission. You can call the [ListUserPermission](https://help.aliyun.com/document_detail/146957.html) operation to query the permission ID.
+        # 
+        # This parameter is required.
         self.user_access_id = user_access_id
-        # The ID of the user. You can call the [ListUsers](~~141938~~) or [GetUser](~~147098~~) operation to query the user ID.
+        # The ID of the user. You can call the [ListUsers](https://help.aliyun.com/document_detail/141938.html) or [GetUser](https://help.aliyun.com/document_detail/147098.html) operation to query the user ID.
+        # 
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -51080,9 +51891,11 @@ class SearchDataTrackResultRequest(TeaModel):
         self.filter_table_list = filter_table_list
         # The types of data operations that you want to track.
         self.filter_type_list = filter_type_list
-        # The ID of the ticket. You can call the [ListOrders](~~144643~~) operation to query the ticket ID.
+        # The ID of the ticket. You can call the [ListOrders](https://help.aliyun.com/document_detail/144643.html) operation to query the ticket ID.
+        # 
+        # This parameter is required.
         self.order_id = order_id
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to query the tenant ID.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to query the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -51152,9 +51965,11 @@ class SearchDataTrackResultShrinkRequest(TeaModel):
         self.filter_table_list_shrink = filter_table_list_shrink
         # The types of data operations that you want to track.
         self.filter_type_list_shrink = filter_type_list_shrink
-        # The ID of the ticket. You can call the [ListOrders](~~144643~~) operation to query the ticket ID.
+        # The ID of the ticket. You can call the [ListOrders](https://help.aliyun.com/document_detail/144643.html) operation to query the ticket ID.
+        # 
+        # This parameter is required.
         self.order_id = order_id
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to query the tenant ID.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to query the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -51560,9 +52375,9 @@ class SearchDatabaseRequest(TeaModel):
         search_target: str = None,
         tid: int = None,
     ):
-        # The type of the database. For more information about the valid values of this parameter, see [DbType parameter](~~198106~~).
+        # The type of the database. For more information about the valid values of this parameter, see [DbType parameter](https://help.aliyun.com/document_detail/198106.html).
         self.db_type = db_type
-        # The environment type of the database. For more information, see [Change the environment type of an instance](~~163309~~).
+        # The environment type of the database. For more information, see [Change the environment type of an instance](https://help.aliyun.com/document_detail/163309.html).
         self.env_type = env_type
         # The number of the page to return.
         self.page_number = page_number
@@ -51583,7 +52398,7 @@ class SearchDatabaseRequest(TeaModel):
         # *   **SINGLE_DB**: single database.
         # *   **LOGIC_DB**: logical database.
         self.search_target = search_target
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) operation to query the tenant ID.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) operation to query the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -51724,7 +52539,7 @@ class SearchDatabaseResponseBodySearchDatabaseListSearchDatabase(TeaModel):
         self.dba_id = dba_id
         # The encoding method of the database.
         self.encoding = encoding
-        # The environment type of the database. For more information, see [Change the environment type of an instance](~~163309~~).
+        # The environment type of the database. For more information, see [Change the environment type of an instance](https://help.aliyun.com/document_detail/163309.html).
         self.env_type = env_type
         # The endpoint of the instance in which the database resides.
         self.host = host
@@ -51999,7 +52814,7 @@ class SearchTableRequest(TeaModel):
         # *   **Mongo**\
         # *   **Redis**\
         self.db_type = db_type
-        # The type of the environment to which databases belong. For more information, see [Change the environment type of an instance](~~163309~~).
+        # The type of the environment to which databases belong. For more information, see [Change the environment type of an instance](https://help.aliyun.com/document_detail/163309.html).
         self.env_type = env_type
         # The number of the page to return.
         self.page_number = page_number
@@ -52024,7 +52839,7 @@ class SearchTableRequest(TeaModel):
         self.search_target = search_target
         # The ID of the tenant.
         # 
-        # > To view the tenant ID, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see the [View information about the current tenant](~~181330~~) section of the "Manage DMS tenants" topic.
+        # > To view the tenant ID, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see the [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the "Manage DMS tenants" topic.
         self.tid = tid
 
     def validate(self):
@@ -52425,9 +53240,11 @@ class SetOwnersRequest(TeaModel):
         resource_id: str = None,
         tid: int = None,
     ):
-        # The ID of the user whom you want to specify as an owner. Separate multiple IDs with commas (,). You can call the [GetUser](~~147098~~) or [ListUsers](~~141938~~) operation to query the ID of the user.
+        # The ID of the user whom you want to specify as an owner. Separate multiple IDs with commas (,). You can call the [GetUser](https://help.aliyun.com/document_detail/147098.html) or [ListUsers](https://help.aliyun.com/document_detail/141938.html) operation to query the ID of the user.
         # 
         # >  The value of the OwnerIds parameter is that of the UserId parameter.
+        # 
+        # This parameter is required.
         self.owner_ids = owner_ids
         # The type of the owner. Valid values:
         # 
@@ -52436,18 +53253,22 @@ class SetOwnersRequest(TeaModel):
         # *   LOGIC_DATABASE: an owner of a logical database.
         # *   TABLE: an owner of a physical table.
         # *   LOGIC_TABLE: an owner of a logical table.
+        # 
+        # This parameter is required.
         self.owner_type = owner_type
         # The ID of the resource. The ID of the resource varies with the owner type. The owner types and resource IDs have the following mappings:
         # 
-        # *   INSTANCE: the ID of an instance. You can call the [ListInstances](~~141936~~) operation to query the ID of the instance.
-        # *   DATABASE: the ID of a physical database. You can call the [ListDatabases](~~141873~~) operation to query the ID of the physical database.
-        # *   LOGIC_DATABASE: the ID of a logical database. You can call the [ListLogicDatabases](~~141874~~) operation to query the ID of the logical database.
-        # *   TABLE: the ID of a physical table. You can call the [ListTables](~~141878~~) operation to query the ID of the physical table.
-        # *   LOGIC_DATABASE: the ID of a logical table. You can call the [ListLogicTables](~~141875~~) operation to query the ID of the logical table.
+        # *   INSTANCE: the ID of an instance. You can call the [ListInstances](https://help.aliyun.com/document_detail/141936.html) operation to query the ID of the instance.
+        # *   DATABASE: the ID of a physical database. You can call the [ListDatabases](https://help.aliyun.com/document_detail/141873.html) operation to query the ID of the physical database.
+        # *   LOGIC_DATABASE: the ID of a logical database. You can call the [ListLogicDatabases](https://help.aliyun.com/document_detail/141874.html) operation to query the ID of the logical database.
+        # *   TABLE: the ID of a physical table. You can call the [ListTables](https://help.aliyun.com/document_detail/141878.html) operation to query the ID of the physical table.
+        # *   LOGIC_DATABASE: the ID of a logical table. You can call the [ListLogicTables](https://help.aliyun.com/document_detail/141875.html) operation to query the ID of the logical table.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
         # The ID of the tenant.
         # 
-        # >  To view the ID of the tenant, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see the "View information about the current tenant" section of the [Manage DMS tenants](~~181330~~) topic.
+        # >  To view the ID of the tenant, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see the "View information about the current tenant" section of the [Manage DMS tenants](https://help.aliyun.com/document_detail/181330.html) topic.
         self.tid = tid
 
     def validate(self):
@@ -52582,11 +53403,15 @@ class SkipDataCorrectRowCheckRequest(TeaModel):
         reason: str = None,
         tid: int = None,
     ):
-        # The ticket ID. You can call the [ListOrders](~~144643~~) operation to obtain the ticket ID.
+        # The ticket ID. You can call the [ListOrders](https://help.aliyun.com/document_detail/144643.html) operation to obtain the ticket ID.
+        # 
+        # This parameter is required.
         self.order_id = order_id
         # The reason for skipping the verification on the number of rows in the precheck for data change.
+        # 
+        # This parameter is required.
         self.reason = reason
-        # The tenant ID. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to obtain the tenant ID.
+        # The tenant ID. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to obtain the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -52717,13 +53542,17 @@ class StopTaskFlowInstanceRequest(TeaModel):
         dag_instance_id: int = None,
         tid: int = None,
     ):
-        # The ID of the task flow. You can call the [ListTaskFlow](~~424565~~) or [ListLhTaskFlowAndScenario](~~426672~~) operation to query the task flow ID.
+        # The ID of the task flow. You can call the [ListTaskFlow](https://help.aliyun.com/document_detail/424565.html) or [ListLhTaskFlowAndScenario](https://help.aliyun.com/document_detail/426672.html) operation to query the task flow ID.
+        # 
+        # This parameter is required.
         self.dag_id = dag_id
-        # The ID of the execution record of the task flow. You can call the [ListTaskFlowInstance](~~424689~~) operation to query the execution record ID.
+        # The ID of the execution record of the task flow. You can call the [ListTaskFlowInstance](https://help.aliyun.com/document_detail/424689.html) operation to query the execution record ID.
+        # 
+        # This parameter is required.
         self.dag_instance_id = dag_instance_id
         # The ID of the tenant.
         # 
-        # > To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](~~181330~~).
+        # > To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
 
     def validate(self):
@@ -52854,10 +53683,12 @@ class SubmitOrderApprovalRequest(TeaModel):
         tid: int = None,
     ):
         # The ID of the ticket.
+        # 
+        # This parameter is required.
         self.order_id = order_id
         # The ID of the tenant.
         # 
-        # > To view the tenant ID, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see [Manage DMS tenants](~~181330~~).
+        # > To view the tenant ID, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see [Manage DMS tenants](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
 
     def validate(self):
@@ -52981,10 +53812,12 @@ class SubmitStructSyncOrderApprovalRequest(TeaModel):
         tid: int = None,
     ):
         # The ID of the ticket.
+        # 
+        # This parameter is required.
         self.order_id = order_id
         # The ID of the tenant.
         # 
-        # > To view the tenant ID, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see [Manage DMS tenants](~~181330~~).
+        # > To view the tenant ID, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see [Manage DMS tenants](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
 
     def validate(self):
@@ -53115,13 +53948,17 @@ class SuspendTaskFlowInstanceRequest(TeaModel):
         dag_instance_id: int = None,
         tid: int = None,
     ):
-        # The ID of the task flow. You can call the [ListTaskFlow](~~424565~~) or [ListLhTaskFlowAndScenario](~~426672~~) operation to query the task flow ID.
+        # The ID of the task flow. You can call the [ListTaskFlow](https://help.aliyun.com/document_detail/424565.html) or [ListLhTaskFlowAndScenario](https://help.aliyun.com/document_detail/426672.html) operation to query the task flow ID.
+        # 
+        # This parameter is required.
         self.dag_id = dag_id
-        # The ID of the execution record of the task flow. You can call the [ListTaskFlowInstance](~~424689~~) operation to query the execution record ID.
+        # The ID of the execution record of the task flow. You can call the [ListTaskFlowInstance](https://help.aliyun.com/document_detail/424689.html) operation to query the execution record ID.
+        # 
+        # This parameter is required.
         self.dag_instance_id = dag_instance_id
         # The ID of the tenant.
         # 
-        # > To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](~~181330~~).
+        # > To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
 
     def validate(self):
@@ -53253,12 +54090,14 @@ class SyncDatabaseMetaRequest(TeaModel):
         tid: int = None,
     ):
         # The ID of the database.
+        # 
+        # This parameter is required.
         self.db_id = db_id
         # Specifies whether the database is a logical database.
         self.logic = logic
         # The ID of the tenant.
         # 
-        # > To view the tenant ID, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see [Manage DMS tenants](~~181330~~).
+        # > To view the tenant ID, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see [Manage DMS tenants](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
 
     def validate(self):
@@ -53392,10 +54231,12 @@ class SyncInstanceMetaRequest(TeaModel):
         # *   **false**\
         self.ignore_table = ignore_table
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The ID of the tenant.
         # 
-        # > To view the ID of the tenant, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see the [View information about the current tenant](~~181330~~) section of the Manage DMS tenants topic.
+        # > To view the ID of the tenant, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see the [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the Manage DMS tenants topic.
         self.tid = tid
 
     def validate(self):
@@ -53530,14 +54371,20 @@ class UpdateAuthorityTemplateRequest(TeaModel):
         # The description of the permission template.
         # 
         # >  You must specify the Name or Description parameter. Otherwise, the API call fails.
+        # 
+        # This parameter is required.
         self.description = description
         # The name of the permission template.
         # 
         # >  You must specify the Name or Description parameter. Otherwise, the API call fails.
+        # 
+        # This parameter is required.
         self.name = name
         # The ID of the permission template.
+        # 
+        # This parameter is required.
         self.template_id = template_id
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to query the tenant ID.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to query the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -53765,15 +54612,21 @@ class UpdateInstanceRequest(TeaModel):
         # 
         # *   This parameter is required if UseDsql is set to 1.
         # 
-        # *   The name can contain only lowercase letters and underscores (\_).
+        # *   The name can contain only lowercase letters and underscores (_).
         # 
         # *   The name must be unique within a tenant.
         self.data_link_name = data_link_name
         # The password that is used to log on to the database.
+        # 
+        # This parameter is required.
         self.database_password = database_password
         # The account that is used to log on to the database.
+        # 
+        # This parameter is required.
         self.database_user = database_user
-        # The ID of the user who assumes the database administrator (DBA) role of the database instance. You can call the [ListUsers](~~141938~~) or [GetInstance](~~141567~~) operation to query the user ID.
+        # The ID of the user who assumes the database administrator (DBA) role of the database instance. You can call the [ListUsers](https://help.aliyun.com/document_detail/141938.html) or [GetInstance](https://help.aliyun.com/document_detail/141567.html) operation to query the user ID.
+        # 
+        # This parameter is required.
         self.dba_id = dba_id
         # Specifies whether to enable the lock-free schema change feature for the database instance. Valid values:
         # 
@@ -53803,14 +54656,24 @@ class UpdateInstanceRequest(TeaModel):
         # *   **uat:** user acceptance testing (UAT) environment
         # *   **pet:** stress testing environment
         # *   **stag:** staging environment
+        # 
+        # This parameter is required.
         self.env_type = env_type
         # The timeout period for exporting data from the database instance.
+        # 
+        # This parameter is required.
         self.export_timeout = export_timeout
         # The host address that is used to connect to the database instance.
+        # 
+        # This parameter is required.
         self.host = host
         # The alias of the database instance. Specify an alias that can help you identify the database instance in DMS.
+        # 
+        # This parameter is required.
         self.instance_alias = instance_alias
-        # The ID of the database instance. You can call the [GetInstance](~~141567~~) operation to query the instance ID.
+        # The ID of the database instance. You can call the [GetInstance](https://help.aliyun.com/document_detail/141567.html) operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The source of the database instance. Valid values:
         # 
@@ -53818,14 +54681,24 @@ class UpdateInstanceRequest(TeaModel):
         # *   **RDS:** an ApsaraDB RDS instance
         # *   **ECS_OWN:** a self-managed database that is deployed on an Elastic Compute Service (ECS) instance
         # *   **VPC_IDC:** a self-managed database instance that is deployed in a data center connected over a virtual private cloud (VPC)
+        # 
+        # This parameter is required.
         self.instance_source = instance_source
-        # The type of the database. For more information about the valid values of this parameter, see [DbType parameter](~~198106~~).
+        # The type of the database. For more information about the valid values of this parameter, see [DbType parameter](https://help.aliyun.com/document_detail/198106.html).
+        # 
+        # This parameter is required.
         self.instance_type = instance_type
         # The port that is used to connect to the database instance.
+        # 
+        # This parameter is required.
         self.port = port
         # The timeout period for querying data in the database instance.
+        # 
+        # This parameter is required.
         self.query_timeout = query_timeout
-        # The name of the security rule set (GroupName) for the instance. You can call the [ListStandardGroups](~~417891~~) or [GetInstance](~~141567~~) operation to query the name of the security rule set.
+        # The name of the security rule set (GroupName) for the instance. You can call the [ListStandardGroups](https://help.aliyun.com/document_detail/417891.html) or [GetInstance](https://help.aliyun.com/document_detail/141567.html) operation to query the name of the security rule set.
+        # 
+        # This parameter is required.
         self.safe_rule_id = safe_rule_id
         # The system ID (SID) of the database instance.
         # 
@@ -53836,11 +54709,11 @@ class UpdateInstanceRequest(TeaModel):
         # *   **true:** skips the connectivity test
         # *   **false:** does not skip the connectivity test
         self.skip_test = skip_test
-        # The ID of the classification template. You can call the [ListClassificationTemplates](~~460613~~) operation to query the template ID.
+        # The ID of the classification template. You can call the [ListClassificationTemplates](https://help.aliyun.com/document_detail/460613.html) operation to query the template ID.
         self.template_id = template_id
-        # The type of the classification template. You can call the [ListClassificationTemplates](~~460613~~) operation to query the template type.
+        # The type of the classification template. You can call the [ListClassificationTemplates](https://help.aliyun.com/document_detail/460613.html) operation to query the template type.
         self.template_type = template_type
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) operation to query the tenant ID.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) operation to query the tenant ID.
         self.tid = tid
         # Specifies whether to enable the cross-database query feature for the database instance. Valid values:
         # 
@@ -54072,8 +54945,12 @@ class UpdateSLARulesRequestSlaRuleList(TeaModel):
         type: int = None,
     ):
         # The ID of the task flow.
+        # 
+        # This parameter is required.
         self.dag_id = dag_id
         # The timeout period. Unit: minutes.
+        # 
+        # This parameter is required.
         self.interval_minutes = interval_minutes
         # The ID of the task node.
         self.node_id = node_id
@@ -54081,6 +54958,8 @@ class UpdateSLARulesRequestSlaRuleList(TeaModel):
         # 
         # *   **0**: SLA rules for task flows
         # *   **1**: SLA rules for nodes
+        # 
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -54122,13 +55001,15 @@ class UpdateSLARulesRequest(TeaModel):
         sla_rule_list: List[UpdateSLARulesRequestSlaRuleList] = None,
         tid: int = None,
     ):
-        # The ID of the task flow. You can call the [ListTaskFlow](~~424565~~) or [ListLhTaskFlowAndScenario](~~426672~~) operation to query the task flow ID.
+        # The ID of the task flow. You can call the [ListTaskFlow](https://help.aliyun.com/document_detail/424565.html) or [ListLhTaskFlowAndScenario](https://help.aliyun.com/document_detail/426672.html) operation to query the task flow ID.
+        # 
+        # This parameter is required.
         self.dag_id = dag_id
         # The list of SLA rules.
         self.sla_rule_list = sla_rule_list
         # The ID of the tenant.
         # 
-        # > :To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](~~181330~~).
+        # > :To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
 
     def validate(self):
@@ -54174,13 +55055,15 @@ class UpdateSLARulesShrinkRequest(TeaModel):
         sla_rule_list_shrink: str = None,
         tid: int = None,
     ):
-        # The ID of the task flow. You can call the [ListTaskFlow](~~424565~~) or [ListLhTaskFlowAndScenario](~~426672~~) operation to query the task flow ID.
+        # The ID of the task flow. You can call the [ListTaskFlow](https://help.aliyun.com/document_detail/424565.html) or [ListLhTaskFlowAndScenario](https://help.aliyun.com/document_detail/426672.html) operation to query the task flow ID.
+        # 
+        # This parameter is required.
         self.dag_id = dag_id
         # The list of SLA rules.
         self.sla_rule_list_shrink = sla_rule_list_shrink
         # The ID of the tenant.
         # 
-        # > :To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](~~181330~~).
+        # > :To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
 
     def validate(self):
@@ -54315,12 +55198,16 @@ class UpdateScenarioRequest(TeaModel):
         # The description of the business scenario.
         self.description = description
         # The ID of the business scenario.
+        # 
+        # This parameter is required.
         self.scenario_id = scenario_id
         # The name of the business scenario.
+        # 
+        # This parameter is required.
         self.scenario_name = scenario_name
         # The ID of the tenant.
         # 
-        # > : To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](~~181330~~).
+        # > : To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
 
     def validate(self):
@@ -54457,14 +55344,20 @@ class UpdateStandardGroupRequest(TeaModel):
         tid: int = None,
     ):
         # The description of the security rule set.
+        # 
+        # This parameter is required.
         self.description = description
-        # The security rule set ID. You can call the [ListStandardGroups](~~465940~~) operation to obtain the ID of the security rule set.
+        # The security rule set ID. You can call the [ListStandardGroups](https://help.aliyun.com/document_detail/465940.html) operation to obtain the ID of the security rule set.
+        # 
+        # This parameter is required.
         self.group_id = group_id
         # The name of the security rule set.
+        # 
+        # This parameter is required.
         self.group_name = group_name
         # The tenant ID.
         # 
-        # >  To view the tenant ID, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see the [View information about the current tenant](~~181330~~) section of the "Manage DMS tenants" topic.
+        # >  To view the tenant ID, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see the [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the "Manage DMS tenants" topic.
         self.tid = tid
 
     def validate(self):
@@ -54676,10 +55569,14 @@ class UpdateTaskConfigRequest(TeaModel):
         tid: int = None,
     ):
         # The advanced configuration for the node. The value of this parameter must be a JSON string.
+        # 
+        # This parameter is required.
         self.node_config = node_config
-        # The ID of the task node. You can call the [GetTaskInstanceRelation](~~424711~~) operation to query the node ID.
+        # The ID of the task node. You can call the [GetTaskInstanceRelation](https://help.aliyun.com/document_detail/424711.html) operation to query the node ID.
+        # 
+        # This parameter is required.
         self.node_id = node_id
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to query the tenant ID.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to query the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -54812,11 +55709,13 @@ class UpdateTaskContentRequest(TeaModel):
     ):
         # The node configurations after modification.
         self.node_content = node_content
-        # The ID of the task node. You can call the [GetTaskInstanceRelation](~~424711~~) operation to query the node ID.
+        # The ID of the task node. You can call the [GetTaskInstanceRelation](https://help.aliyun.com/document_detail/424711.html) operation to query the node ID.
+        # 
+        # This parameter is required.
         self.node_id = node_id
         # The ID of the tenant.
         # 
-        # > To view the ID of the tenant, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see the ["View information about the current tenant"](~~181330~~) section of the Manage DMS tenants topic.
+        # > To view the ID of the tenant, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see the ["View information about the current tenant"](https://help.aliyun.com/document_detail/181330.html) section of the Manage DMS tenants topic.
         self.tid = tid
 
     def validate(self):
@@ -54984,9 +55883,11 @@ class UpdateTaskFlowConstantsRequest(TeaModel):
     ):
         # The constants for the task flow.
         self.dag_constants = dag_constants
-        # The ID of the task flow. You can call the [ListTaskFlow](~~424565~~) or [ListLhTaskFlowAndScenario](~~426672~~) operation to query the task flow ID.
+        # The ID of the task flow. You can call the [ListTaskFlow](https://help.aliyun.com/document_detail/424565.html) or [ListLhTaskFlowAndScenario](https://help.aliyun.com/document_detail/426672.html) operation to query the task flow ID.
+        # 
+        # This parameter is required.
         self.dag_id = dag_id
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to query the tenant ID.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to query the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -55034,9 +55935,11 @@ class UpdateTaskFlowConstantsShrinkRequest(TeaModel):
     ):
         # The constants for the task flow.
         self.dag_constants_shrink = dag_constants_shrink
-        # The ID of the task flow. You can call the [ListTaskFlow](~~424565~~) or [ListLhTaskFlowAndScenario](~~426672~~) operation to query the task flow ID.
+        # The ID of the task flow. You can call the [ListTaskFlow](https://help.aliyun.com/document_detail/424565.html) or [ListLhTaskFlowAndScenario](https://help.aliyun.com/document_detail/426672.html) operation to query the task flow ID.
+        # 
+        # This parameter is required.
         self.dag_id = dag_id
-        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to query the tenant ID.
+        # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to query the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -55169,11 +56072,13 @@ class UpdateTaskFlowCooperatorsRequest(TeaModel):
     ):
         # The IDs of the users who are involved in the task flow to be updated.
         self.cooperator_ids = cooperator_ids
-        # The ID of the task flow. You can call the [ListTaskFlow](~~424565~~) or [ListLhTaskFlowAndScenario](~~426672~~) operation to query the task flow ID.
+        # The ID of the task flow. You can call the [ListTaskFlow](https://help.aliyun.com/document_detail/424565.html) or [ListLhTaskFlowAndScenario](https://help.aliyun.com/document_detail/426672.html) operation to query the task flow ID.
+        # 
+        # This parameter is required.
         self.dag_id = dag_id
         # The ID of the tenant.
         # 
-        # > :To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](~~181330~~).
+        # > :To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
 
     def validate(self):
@@ -55213,11 +56118,13 @@ class UpdateTaskFlowCooperatorsShrinkRequest(TeaModel):
     ):
         # The IDs of the users who are involved in the task flow to be updated.
         self.cooperator_ids_shrink = cooperator_ids_shrink
-        # The ID of the task flow. You can call the [ListTaskFlow](~~424565~~) or [ListLhTaskFlowAndScenario](~~426672~~) operation to query the task flow ID.
+        # The ID of the task flow. You can call the [ListTaskFlow](https://help.aliyun.com/document_detail/424565.html) or [ListLhTaskFlowAndScenario](https://help.aliyun.com/document_detail/426672.html) operation to query the task flow ID.
+        # 
+        # This parameter is required.
         self.dag_id = dag_id
         # The ID of the tenant.
         # 
-        # > :To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](~~181330~~).
+        # > :To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
 
     def validate(self):
@@ -55349,10 +56256,16 @@ class UpdateTaskFlowEdgesRequestEdges(TeaModel):
         node_from: int = None,
     ):
         # The ID of the task flow edge.
+        # 
+        # This parameter is required.
         self.id = id
         # The ID of the end node of the edge.
+        # 
+        # This parameter is required.
         self.node_end = node_end
         # The ID of the start node of the edge.
+        # 
+        # This parameter is required.
         self.node_from = node_from
 
     def validate(self):
@@ -55390,13 +56303,17 @@ class UpdateTaskFlowEdgesRequest(TeaModel):
         edges: List[UpdateTaskFlowEdgesRequestEdges] = None,
         tid: int = None,
     ):
-        # The task flow ID. You can call the [ListTaskFlow](~~424565~~) or [ListLhTaskFlowAndScenario](~~426672~~) operation to query the task flow ID.
+        # The task flow ID. You can call the [ListTaskFlow](https://help.aliyun.com/document_detail/424565.html) or [ListLhTaskFlowAndScenario](https://help.aliyun.com/document_detail/426672.html) operation to query the task flow ID.
+        # 
+        # This parameter is required.
         self.dag_id = dag_id
         # The list of updated task flow edges.
+        # 
+        # This parameter is required.
         self.edges = edges
         # The tenant ID.
         # 
-        # > To view the tenant ID, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see [Manage DMS tenants](~~181330~~).
+        # > To view the tenant ID, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see [Manage DMS tenants](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
 
     def validate(self):
@@ -55442,13 +56359,17 @@ class UpdateTaskFlowEdgesShrinkRequest(TeaModel):
         edges_shrink: str = None,
         tid: int = None,
     ):
-        # The task flow ID. You can call the [ListTaskFlow](~~424565~~) or [ListLhTaskFlowAndScenario](~~426672~~) operation to query the task flow ID.
+        # The task flow ID. You can call the [ListTaskFlow](https://help.aliyun.com/document_detail/424565.html) or [ListLhTaskFlowAndScenario](https://help.aliyun.com/document_detail/426672.html) operation to query the task flow ID.
+        # 
+        # This parameter is required.
         self.dag_id = dag_id
         # The list of updated task flow edges.
+        # 
+        # This parameter is required.
         self.edges_shrink = edges_shrink
         # The tenant ID.
         # 
-        # > To view the tenant ID, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see [Manage DMS tenants](~~181330~~).
+        # > To view the tenant ID, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see [Manage DMS tenants](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
 
     def validate(self):
@@ -55580,15 +56501,19 @@ class UpdateTaskFlowNameAndDescRequest(TeaModel):
         description: str = None,
         tid: int = None,
     ):
-        # The ID of the task flow. You can call the [ListTaskFlow](~~424565~~) or [ListLhTaskFlowAndScenario](~~426672~~) operation to query the task flow ID.
+        # The ID of the task flow. You can call the [ListTaskFlow](https://help.aliyun.com/document_detail/424565.html) or [ListLhTaskFlowAndScenario](https://help.aliyun.com/document_detail/426672.html) operation to query the task flow ID.
+        # 
+        # This parameter is required.
         self.dag_id = dag_id
         # The new name that you want to specify for the task flow.
+        # 
+        # This parameter is required.
         self.dag_name = dag_name
         # The description that you want to specify for the task flow.
         self.description = description
         # The ID of the tenant.
         # 
-        # >  To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](~~181330~~).
+        # >  To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
 
     def validate(self):
@@ -55725,17 +56650,25 @@ class UpdateTaskFlowNotificationRequest(TeaModel):
         dag_notification_success: bool = None,
         tid: int = None,
     ):
-        # The unique ID of the task flow. You can call the [ListTaskFlow](~~424565~~) or [ListLhTaskFlowAndScenario](~~426672~~) operation to query the task flow ID.
+        # The unique ID of the task flow. You can call the [ListTaskFlow](https://help.aliyun.com/document_detail/424565.html) or [ListLhTaskFlowAndScenario](https://help.aliyun.com/document_detail/426672.html) operation to query the task flow ID.
+        # 
+        # This parameter is required.
         self.dag_id = dag_id
         # Specifies whether to enable notifications for failed task flows. Notifications are disabled by default. You can enable notifications based on your business requirements.
+        # 
+        # This parameter is required.
         self.dag_notification_fail = dag_notification_fail
         # Specifies whether to enable SLA global notifications for task flows. Notifications are disabled by default. You can enable notifications based on your business requirements.
+        # 
+        # This parameter is required.
         self.dag_notification_sla = dag_notification_sla
         # Specifies whether to enable notifications for successful task flows. Notifications are disabled by default. You can enable notifications based on your business requirements.
+        # 
+        # This parameter is required.
         self.dag_notification_success = dag_notification_success
         # The ID of the tenant.
         # 
-        # >  To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](~~181330~~).
+        # >  To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
 
     def validate(self):
@@ -55874,13 +56807,17 @@ class UpdateTaskFlowOwnerRequest(TeaModel):
         new_owner_id: str = None,
         tid: int = None,
     ):
-        # The ID of the task flow. You can call the [ListTaskFlowInstance](~~424689~~) operation to query the task flow ID.
+        # The ID of the task flow. You can call the [ListTaskFlowInstance](https://help.aliyun.com/document_detail/424689.html) operation to query the task flow ID.
+        # 
+        # This parameter is required.
         self.dag_id = dag_id
-        # The user ID of the new owner. You can call the [GetUser](~~147098~~) or [ListUsers](~~141938~~) operation to query the user ID.
+        # The user ID of the new owner. You can call the [GetUser](https://help.aliyun.com/document_detail/147098.html) or [ListUsers](https://help.aliyun.com/document_detail/141938.html) operation to query the user ID.
+        # 
+        # This parameter is required.
         self.new_owner_id = new_owner_id
         # The ID of the tenant.
         # 
-        # >  To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](~~181330~~).
+        # >  To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
 
     def validate(self):
@@ -56053,13 +56990,15 @@ class UpdateTaskFlowRelationsRequest(TeaModel):
         edges: List[UpdateTaskFlowRelationsRequestEdges] = None,
         tid: int = None,
     ):
-        # The ID of the task flow. You can call the [ListTaskFlow](~~424565~~) or [ListLhTaskFlowAndScenario](~~426672~~) operation to query the task flow ID.
+        # The ID of the task flow. You can call the [ListTaskFlow](https://help.aliyun.com/document_detail/424565.html) or [ListLhTaskFlowAndScenario](https://help.aliyun.com/document_detail/426672.html) operation to query the task flow ID.
+        # 
+        # This parameter is required.
         self.dag_id = dag_id
         # The list of task flow edges to be updated.
         self.edges = edges
         # The ID of the tenant.
         # 
-        # >  To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](~~181330~~).
+        # >  To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
 
     def validate(self):
@@ -56105,13 +57044,15 @@ class UpdateTaskFlowRelationsShrinkRequest(TeaModel):
         edges_shrink: str = None,
         tid: int = None,
     ):
-        # The ID of the task flow. You can call the [ListTaskFlow](~~424565~~) or [ListLhTaskFlowAndScenario](~~426672~~) operation to query the task flow ID.
+        # The ID of the task flow. You can call the [ListTaskFlow](https://help.aliyun.com/document_detail/424565.html) or [ListLhTaskFlowAndScenario](https://help.aliyun.com/document_detail/426672.html) operation to query the task flow ID.
+        # 
+        # This parameter is required.
         self.dag_id = dag_id
         # The list of task flow edges to be updated.
         self.edges_shrink = edges_shrink
         # The ID of the tenant.
         # 
-        # >  To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](~~181330~~).
+        # >  To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
 
     def validate(self):
@@ -56264,17 +57205,23 @@ class UpdateTaskFlowScheduleRequest(TeaModel):
         # *   **MONTH**: scheduling by month
         self.cron_type = cron_type
         # The ID of the task flow.
+        # 
+        # This parameter is required.
         self.dag_id = dag_id
         # The event scheduling configuration. The value of this parameter is a JSON string.
+        # 
+        # This parameter is required.
         self.schedule_param = schedule_param
         # Specifies whether to enable scheduling. Valid values:
         # 
         # *   **Enable**\
         # *   **Disable**\
+        # 
+        # This parameter is required.
         self.schedule_switch = schedule_switch
         # The ID of the tenant.
         # 
-        # > : To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](~~181330~~).
+        # > : To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
         # The time zone. The default time zone is UTC+8 (Asia/Shanghai).
         self.time_zone_id = time_zone_id
@@ -56282,6 +57229,8 @@ class UpdateTaskFlowScheduleRequest(TeaModel):
         # 
         # *   **Cron**: The task flow is triggered based on timed scheduling.
         # *   **Event**: The task flow is triggered by events.
+        # 
+        # This parameter is required.
         self.trigger_type = trigger_type
 
     def validate(self):
@@ -56440,13 +57389,17 @@ class UpdateTaskFlowTimeVariablesRequest(TeaModel):
         tid: int = None,
         time_variables: str = None,
     ):
-        # The ID of the task node. You can call the [GetTaskInstanceRelation](~~424711~~) operation to query the node ID.
+        # The ID of the task node. You can call the [GetTaskInstanceRelation](https://help.aliyun.com/document_detail/424711.html) operation to query the node ID.
+        # 
+        # This parameter is required.
         self.dag_id = dag_id
         # The ID of the tenant.
         # 
-        # > :To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](~~181330~~).
+        # > :To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
         # The time variables for the task flow.
+        # 
+        # This parameter is required.
         self.time_variables = time_variables
 
     def validate(self):
@@ -56577,13 +57530,17 @@ class UpdateTaskNameRequest(TeaModel):
         node_name: str = None,
         tid: int = None,
     ):
-        # The ID of the node. You can call the [GetTaskInstanceRelation](~~424711~~) operation to query the node ID.
+        # The ID of the node. You can call the [GetTaskInstanceRelation](https://help.aliyun.com/document_detail/424711.html) operation to query the node ID.
+        # 
+        # This parameter is required.
         self.node_id = node_id
-        # The name of the node. You can call the [GetTaskInstanceRelation](~~424711~~) operation to query the node name.
+        # The name of the node. You can call the [GetTaskInstanceRelation](https://help.aliyun.com/document_detail/424711.html) operation to query the node name.
+        # 
+        # This parameter is required.
         self.node_name = node_name
         # The ID of the tenant.
         # 
-        # >  To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](~~181330~~).
+        # >  To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
 
     def validate(self):
@@ -56714,13 +57671,15 @@ class UpdateTaskOutputRequest(TeaModel):
         node_output: str = None,
         tid: int = None,
     ):
-        # The ID of the node. You can call the [GetTaskInstanceRelation](~~424711~~) operation to query the node ID.
+        # The ID of the node. You can call the [GetTaskInstanceRelation](https://help.aliyun.com/document_detail/424711.html) operation to query the node ID.
+        # 
+        # This parameter is required.
         self.node_id = node_id
         # The output variables for the task.
         self.node_output = node_output
         # The ID of the tenant.
         # 
-        # >  To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](~~181330~~).
+        # >  To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
 
     def validate(self):
@@ -56851,13 +57810,17 @@ class UpdateTaskTimeVariablesRequest(TeaModel):
         tid: int = None,
         time_variables: str = None,
     ):
-        # The ID of the task node. You can call the [GetTaskInstanceRelation](~~424711~~) operation to query the node ID.
+        # The ID of the task node. You can call the [GetTaskInstanceRelation](https://help.aliyun.com/document_detail/424711.html) operation to query the node ID.
+        # 
+        # This parameter is required.
         self.node_id = node_id
         # The ID of the tenant.
         # 
-        # > :To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](~~181330~~).
+        # > :To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
         # The time variables configured for the node. The value of this parameter must be a JSON string.
+        # 
+        # This parameter is required.
         self.time_variables = time_variables
 
     def validate(self):
@@ -56998,13 +57961,15 @@ class UpdateUserRequest(TeaModel):
         self.max_result_count = max_result_count
         # The DingTalk ID or mobile number of the user.
         self.mobile = mobile
-        # The roles that the user assumes. For more information about the valid values, see the Request parameters section in the [UpdateUser](~~465812~~) topic.
+        # The roles that the user assumes. For more information about the valid values, see the Request parameters section in the [UpdateUser](https://help.aliyun.com/document_detail/465812.html) topic.
         self.role_names = role_names
         # The ID of the tenant.
         # 
-        # > : To view the ID of the tenant, log on to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [Manage DMS tenants](~~181330~~).
+        # > : To view the ID of the tenant, log on to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [Manage DMS tenants](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
         # The Alibaba Cloud unique ID (UID) of the user to update.
+        # 
+        # This parameter is required.
         self.uid = uid
         # The nickname of the user.
         self.user_nick = user_nick
