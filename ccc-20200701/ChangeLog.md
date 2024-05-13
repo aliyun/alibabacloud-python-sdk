@@ -1,3 +1,10 @@
+2024-05-13 Version: 2.16.0
+- Support API DeleteSchemaProperty.
+- Support API DisableSchemaProperty.
+- Support API EnableSchemaProperty.
+- Support API GetSchema.
+
+
 2024-05-07 Version: 2.15.0
 - Support API AnalyzeConversation.
 

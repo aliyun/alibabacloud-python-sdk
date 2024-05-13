@@ -70,6 +70,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.AbortCampaignRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.AbortCampaignResponse:
+        """
+        @summary 废弃预测式外呼活动
+        
+        @param request: AbortCampaignRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AbortCampaignResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.campaign_id):
@@ -100,6 +107,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.AbortCampaignRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.AbortCampaignResponse:
+        """
+        @summary 废弃预测式外呼活动
+        
+        @param request: AbortCampaignRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AbortCampaignResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.campaign_id):
@@ -129,6 +143,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.AbortCampaignRequest,
     ) -> ccc20200701_models.AbortCampaignResponse:
+        """
+        @summary 废弃预测式外呼活动
+        
+        @param request: AbortCampaignRequest
+        @return: AbortCampaignResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.abort_campaign_with_options(request, runtime)
 
@@ -136,6 +156,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.AbortCampaignRequest,
     ) -> ccc20200701_models.AbortCampaignResponse:
+        """
+        @summary 废弃预测式外呼活动
+        
+        @param request: AbortCampaignRequest
+        @return: AbortCampaignResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.abort_campaign_with_options_async(request, runtime)
 
@@ -144,6 +170,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.AddBlacklistCallTaggingRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.AddBlacklistCallTaggingResponse:
+        """
+        @summary 编辑呼入控制号码
+        
+        @param request: AddBlacklistCallTaggingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddBlacklistCallTaggingResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -176,6 +209,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.AddBlacklistCallTaggingRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.AddBlacklistCallTaggingResponse:
+        """
+        @summary 编辑呼入控制号码
+        
+        @param request: AddBlacklistCallTaggingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddBlacklistCallTaggingResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -207,6 +247,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.AddBlacklistCallTaggingRequest,
     ) -> ccc20200701_models.AddBlacklistCallTaggingResponse:
+        """
+        @summary 编辑呼入控制号码
+        
+        @param request: AddBlacklistCallTaggingRequest
+        @return: AddBlacklistCallTaggingResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_blacklist_call_tagging_with_options(request, runtime)
 
@@ -214,6 +260,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.AddBlacklistCallTaggingRequest,
     ) -> ccc20200701_models.AddBlacklistCallTaggingResponse:
+        """
+        @summary 编辑呼入控制号码
+        
+        @param request: AddBlacklistCallTaggingRequest
+        @return: AddBlacklistCallTaggingResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_blacklist_call_tagging_with_options_async(request, runtime)
 
@@ -222,6 +274,13 @@ class Client(OpenApiClient):
         tmp_req: ccc20200701_models.AddCasesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.AddCasesResponse:
+        """
+        @summary 追加联系人
+        
+        @param tmp_req: AddCasesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddCasesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ccc20200701_models.AddCasesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -258,6 +317,13 @@ class Client(OpenApiClient):
         tmp_req: ccc20200701_models.AddCasesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.AddCasesResponse:
+        """
+        @summary 追加联系人
+        
+        @param tmp_req: AddCasesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddCasesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ccc20200701_models.AddCasesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -293,6 +359,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.AddCasesRequest,
     ) -> ccc20200701_models.AddCasesResponse:
+        """
+        @summary 追加联系人
+        
+        @param request: AddCasesRequest
+        @return: AddCasesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_cases_with_options(request, runtime)
 
@@ -300,6 +372,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.AddCasesRequest,
     ) -> ccc20200701_models.AddCasesResponse:
+        """
+        @summary 追加联系人
+        
+        @param request: AddCasesRequest
+        @return: AddCasesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_cases_with_options_async(request, runtime)
 
@@ -308,6 +386,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.AddNumbersToSkillGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.AddNumbersToSkillGroupResponse:
+        """
+        @param request: AddNumbersToSkillGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddNumbersToSkillGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.inst_number_group_id_list):
@@ -342,6 +425,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.AddNumbersToSkillGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.AddNumbersToSkillGroupResponse:
+        """
+        @param request: AddNumbersToSkillGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddNumbersToSkillGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.inst_number_group_id_list):
@@ -375,6 +463,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.AddNumbersToSkillGroupRequest,
     ) -> ccc20200701_models.AddNumbersToSkillGroupResponse:
+        """
+        @param request: AddNumbersToSkillGroupRequest
+        @return: AddNumbersToSkillGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_numbers_to_skill_group_with_options(request, runtime)
 
@@ -382,6 +474,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.AddNumbersToSkillGroupRequest,
     ) -> ccc20200701_models.AddNumbersToSkillGroupResponse:
+        """
+        @param request: AddNumbersToSkillGroupRequest
+        @return: AddNumbersToSkillGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_numbers_to_skill_group_with_options_async(request, runtime)
 
@@ -390,6 +486,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.AddPersonalNumbersToUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.AddPersonalNumbersToUserResponse:
+        """
+        @param request: AddPersonalNumbersToUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddPersonalNumbersToUserResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -422,6 +523,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.AddPersonalNumbersToUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.AddPersonalNumbersToUserResponse:
+        """
+        @param request: AddPersonalNumbersToUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddPersonalNumbersToUserResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -453,6 +559,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.AddPersonalNumbersToUserRequest,
     ) -> ccc20200701_models.AddPersonalNumbersToUserResponse:
+        """
+        @param request: AddPersonalNumbersToUserRequest
+        @return: AddPersonalNumbersToUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_personal_numbers_to_user_with_options(request, runtime)
 
@@ -460,6 +570,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.AddPersonalNumbersToUserRequest,
     ) -> ccc20200701_models.AddPersonalNumbersToUserResponse:
+        """
+        @param request: AddPersonalNumbersToUserRequest
+        @return: AddPersonalNumbersToUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_personal_numbers_to_user_with_options_async(request, runtime)
 
@@ -468,6 +582,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.AddPhoneNumberToSkillGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.AddPhoneNumberToSkillGroupsResponse:
+        """
+        @param request: AddPhoneNumberToSkillGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddPhoneNumberToSkillGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -500,6 +619,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.AddPhoneNumberToSkillGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.AddPhoneNumberToSkillGroupsResponse:
+        """
+        @param request: AddPhoneNumberToSkillGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddPhoneNumberToSkillGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -531,6 +655,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.AddPhoneNumberToSkillGroupsRequest,
     ) -> ccc20200701_models.AddPhoneNumberToSkillGroupsResponse:
+        """
+        @param request: AddPhoneNumberToSkillGroupsRequest
+        @return: AddPhoneNumberToSkillGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_phone_number_to_skill_groups_with_options(request, runtime)
 
@@ -538,6 +666,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.AddPhoneNumberToSkillGroupsRequest,
     ) -> ccc20200701_models.AddPhoneNumberToSkillGroupsResponse:
+        """
+        @param request: AddPhoneNumberToSkillGroupsRequest
+        @return: AddPhoneNumberToSkillGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_phone_number_to_skill_groups_with_options_async(request, runtime)
 
@@ -546,6 +678,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.AddPhoneNumbersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.AddPhoneNumbersResponse:
+        """
+        @param request: AddPhoneNumbersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddPhoneNumbersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.contact_flow_id):
@@ -582,6 +719,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.AddPhoneNumbersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.AddPhoneNumbersResponse:
+        """
+        @param request: AddPhoneNumbersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddPhoneNumbersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.contact_flow_id):
@@ -617,6 +759,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.AddPhoneNumbersRequest,
     ) -> ccc20200701_models.AddPhoneNumbersResponse:
+        """
+        @param request: AddPhoneNumbersRequest
+        @return: AddPhoneNumbersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_phone_numbers_with_options(request, runtime)
 
@@ -624,6 +770,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.AddPhoneNumbersRequest,
     ) -> ccc20200701_models.AddPhoneNumbersResponse:
+        """
+        @param request: AddPhoneNumbersRequest
+        @return: AddPhoneNumbersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_phone_numbers_with_options_async(request, runtime)
 
@@ -632,6 +782,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.AddSkillGroupsToUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.AddSkillGroupsToUserResponse:
+        """
+        @param request: AddSkillGroupsToUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddSkillGroupsToUserResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -664,6 +819,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.AddSkillGroupsToUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.AddSkillGroupsToUserResponse:
+        """
+        @param request: AddSkillGroupsToUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddSkillGroupsToUserResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -695,6 +855,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.AddSkillGroupsToUserRequest,
     ) -> ccc20200701_models.AddSkillGroupsToUserResponse:
+        """
+        @param request: AddSkillGroupsToUserRequest
+        @return: AddSkillGroupsToUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_skill_groups_to_user_with_options(request, runtime)
 
@@ -702,6 +866,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.AddSkillGroupsToUserRequest,
     ) -> ccc20200701_models.AddSkillGroupsToUserResponse:
+        """
+        @param request: AddSkillGroupsToUserRequest
+        @return: AddSkillGroupsToUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_skill_groups_to_user_with_options_async(request, runtime)
 
@@ -710,6 +878,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.AddUsersToSkillGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.AddUsersToSkillGroupResponse:
+        """
+        @param request: AddUsersToSkillGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddUsersToSkillGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -742,6 +915,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.AddUsersToSkillGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.AddUsersToSkillGroupResponse:
+        """
+        @param request: AddUsersToSkillGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddUsersToSkillGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -773,6 +951,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.AddUsersToSkillGroupRequest,
     ) -> ccc20200701_models.AddUsersToSkillGroupResponse:
+        """
+        @param request: AddUsersToSkillGroupRequest
+        @return: AddUsersToSkillGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_users_to_skill_group_with_options(request, runtime)
 
@@ -780,6 +962,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.AddUsersToSkillGroupRequest,
     ) -> ccc20200701_models.AddUsersToSkillGroupResponse:
+        """
+        @param request: AddUsersToSkillGroupRequest
+        @return: AddUsersToSkillGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_users_to_skill_group_with_options_async(request, runtime)
 
@@ -788,6 +974,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.AnalyzeConversationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.AnalyzeConversationResponse:
+        """
+        @param request: AnalyzeConversationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AnalyzeConversationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.contact_id):
@@ -822,6 +1013,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.AnalyzeConversationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.AnalyzeConversationResponse:
+        """
+        @param request: AnalyzeConversationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AnalyzeConversationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.contact_id):
@@ -855,6 +1051,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.AnalyzeConversationRequest,
     ) -> ccc20200701_models.AnalyzeConversationResponse:
+        """
+        @param request: AnalyzeConversationRequest
+        @return: AnalyzeConversationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.analyze_conversation_with_options(request, runtime)
 
@@ -862,6 +1062,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.AnalyzeConversationRequest,
     ) -> ccc20200701_models.AnalyzeConversationResponse:
+        """
+        @param request: AnalyzeConversationRequest
+        @return: AnalyzeConversationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.analyze_conversation_with_options_async(request, runtime)
 
@@ -870,6 +1074,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.AnswerCallRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.AnswerCallResponse:
+        """
+        @param request: AnswerCallRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AnswerCallResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_id):
@@ -904,6 +1113,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.AnswerCallRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.AnswerCallResponse:
+        """
+        @param request: AnswerCallRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AnswerCallResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_id):
@@ -937,6 +1151,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.AnswerCallRequest,
     ) -> ccc20200701_models.AnswerCallResponse:
+        """
+        @param request: AnswerCallRequest
+        @return: AnswerCallResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.answer_call_with_options(request, runtime)
 
@@ -944,6 +1162,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.AnswerCallRequest,
     ) -> ccc20200701_models.AnswerCallResponse:
+        """
+        @param request: AnswerCallRequest
+        @return: AnswerCallResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.answer_call_with_options_async(request, runtime)
 
@@ -952,6 +1174,13 @@ class Client(OpenApiClient):
         tmp_req: ccc20200701_models.AppendCasesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.AppendCasesResponse:
+        """
+        @summary 追加联系人
+        
+        @param tmp_req: AppendCasesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AppendCasesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ccc20200701_models.AppendCasesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -990,6 +1219,13 @@ class Client(OpenApiClient):
         tmp_req: ccc20200701_models.AppendCasesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.AppendCasesResponse:
+        """
+        @summary 追加联系人
+        
+        @param tmp_req: AppendCasesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AppendCasesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ccc20200701_models.AppendCasesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1027,6 +1263,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.AppendCasesRequest,
     ) -> ccc20200701_models.AppendCasesResponse:
+        """
+        @summary 追加联系人
+        
+        @param request: AppendCasesRequest
+        @return: AppendCasesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.append_cases_with_options(request, runtime)
 
@@ -1034,6 +1276,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.AppendCasesRequest,
     ) -> ccc20200701_models.AppendCasesResponse:
+        """
+        @summary 追加联系人
+        
+        @param request: AppendCasesRequest
+        @return: AppendCasesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.append_cases_with_options_async(request, runtime)
 
@@ -1043,7 +1291,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.AssignUsersResponse:
         """
-        @deprecated : AssignUsers is deprecated, please use CCC::2020-07-01::ImportRamUsers instead.
+        @deprecated OpenAPI AssignUsers is deprecated, please use CCC::2020-07-01::ImportRamUsers instead.
         
         @param request: AssignUsersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1087,7 +1335,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.AssignUsersResponse:
         """
-        @deprecated : AssignUsers is deprecated, please use CCC::2020-07-01::ImportRamUsers instead.
+        @deprecated OpenAPI AssignUsers is deprecated, please use CCC::2020-07-01::ImportRamUsers instead.
         
         @param request: AssignUsersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1130,7 +1378,7 @@ class Client(OpenApiClient):
         request: ccc20200701_models.AssignUsersRequest,
     ) -> ccc20200701_models.AssignUsersResponse:
         """
-        @deprecated : AssignUsers is deprecated, please use CCC::2020-07-01::ImportRamUsers instead.
+        @deprecated OpenAPI AssignUsers is deprecated, please use CCC::2020-07-01::ImportRamUsers instead.
         
         @param request: AssignUsersRequest
         @return: AssignUsersResponse
@@ -1144,7 +1392,7 @@ class Client(OpenApiClient):
         request: ccc20200701_models.AssignUsersRequest,
     ) -> ccc20200701_models.AssignUsersResponse:
         """
-        @deprecated : AssignUsers is deprecated, please use CCC::2020-07-01::ImportRamUsers instead.
+        @deprecated OpenAPI AssignUsers is deprecated, please use CCC::2020-07-01::ImportRamUsers instead.
         
         @param request: AssignUsersRequest
         @return: AssignUsersResponse
@@ -1158,6 +1406,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.BargeInCallRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.BargeInCallResponse:
+        """
+        @param request: BargeInCallRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BargeInCallResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.barged_user_id):
@@ -1196,6 +1449,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.BargeInCallRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.BargeInCallResponse:
+        """
+        @param request: BargeInCallRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BargeInCallResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.barged_user_id):
@@ -1233,6 +1491,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.BargeInCallRequest,
     ) -> ccc20200701_models.BargeInCallResponse:
+        """
+        @param request: BargeInCallRequest
+        @return: BargeInCallResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.barge_in_call_with_options(request, runtime)
 
@@ -1240,6 +1502,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.BargeInCallRequest,
     ) -> ccc20200701_models.BargeInCallResponse:
+        """
+        @param request: BargeInCallRequest
+        @return: BargeInCallResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.barge_in_call_with_options_async(request, runtime)
 
@@ -1248,6 +1514,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.BlindTransferRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.BlindTransferResponse:
+        """
+        @param request: BlindTransferRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BlindTransferResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.call_priority):
@@ -1306,6 +1577,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.BlindTransferRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.BlindTransferResponse:
+        """
+        @param request: BlindTransferRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BlindTransferResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.call_priority):
@@ -1363,6 +1639,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.BlindTransferRequest,
     ) -> ccc20200701_models.BlindTransferResponse:
+        """
+        @param request: BlindTransferRequest
+        @return: BlindTransferResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.blind_transfer_with_options(request, runtime)
 
@@ -1370,6 +1650,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.BlindTransferRequest,
     ) -> ccc20200701_models.BlindTransferResponse:
+        """
+        @param request: BlindTransferRequest
+        @return: BlindTransferResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.blind_transfer_with_options_async(request, runtime)
 
@@ -1378,6 +1662,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.BridgeRtcCallRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.BridgeRtcCallResponse:
+        """
+        @param request: BridgeRtcCallRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BridgeRtcCallResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.callee):
@@ -1422,6 +1711,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.BridgeRtcCallRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.BridgeRtcCallResponse:
+        """
+        @param request: BridgeRtcCallRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BridgeRtcCallResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.callee):
@@ -1465,6 +1759,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.BridgeRtcCallRequest,
     ) -> ccc20200701_models.BridgeRtcCallResponse:
+        """
+        @param request: BridgeRtcCallRequest
+        @return: BridgeRtcCallResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.bridge_rtc_call_with_options(request, runtime)
 
@@ -1472,6 +1770,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.BridgeRtcCallRequest,
     ) -> ccc20200701_models.BridgeRtcCallResponse:
+        """
+        @param request: BridgeRtcCallRequest
+        @return: BridgeRtcCallResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.bridge_rtc_call_with_options_async(request, runtime)
 
@@ -1480,6 +1782,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.CancelAttendedTransferRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.CancelAttendedTransferResponse:
+        """
+        @param request: CancelAttendedTransferRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelAttendedTransferResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_id):
@@ -1514,6 +1821,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.CancelAttendedTransferRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.CancelAttendedTransferResponse:
+        """
+        @param request: CancelAttendedTransferRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelAttendedTransferResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_id):
@@ -1547,6 +1859,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.CancelAttendedTransferRequest,
     ) -> ccc20200701_models.CancelAttendedTransferResponse:
+        """
+        @param request: CancelAttendedTransferRequest
+        @return: CancelAttendedTransferResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.cancel_attended_transfer_with_options(request, runtime)
 
@@ -1554,6 +1870,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.CancelAttendedTransferRequest,
     ) -> ccc20200701_models.CancelAttendedTransferResponse:
+        """
+        @param request: CancelAttendedTransferRequest
+        @return: CancelAttendedTransferResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.cancel_attended_transfer_with_options_async(request, runtime)
 
@@ -1562,6 +1882,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ChangeVisibilityRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ChangeVisibilityResponse:
+        """
+        @param request: ChangeVisibilityRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeVisibilityResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -1594,6 +1919,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ChangeVisibilityRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ChangeVisibilityResponse:
+        """
+        @param request: ChangeVisibilityRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeVisibilityResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -1625,6 +1955,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ChangeVisibilityRequest,
     ) -> ccc20200701_models.ChangeVisibilityResponse:
+        """
+        @param request: ChangeVisibilityRequest
+        @return: ChangeVisibilityResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.change_visibility_with_options(request, runtime)
 
@@ -1632,6 +1966,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ChangeVisibilityRequest,
     ) -> ccc20200701_models.ChangeVisibilityResponse:
+        """
+        @param request: ChangeVisibilityRequest
+        @return: ChangeVisibilityResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.change_visibility_with_options_async(request, runtime)
 
@@ -1640,6 +1978,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ChangeWorkModeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ChangeWorkModeResponse:
+        """
+        @param request: ChangeWorkModeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeWorkModeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_id):
@@ -1678,6 +2021,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ChangeWorkModeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ChangeWorkModeResponse:
+        """
+        @param request: ChangeWorkModeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeWorkModeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_id):
@@ -1715,6 +2063,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ChangeWorkModeRequest,
     ) -> ccc20200701_models.ChangeWorkModeResponse:
+        """
+        @param request: ChangeWorkModeRequest
+        @return: ChangeWorkModeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.change_work_mode_with_options(request, runtime)
 
@@ -1722,6 +2074,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ChangeWorkModeRequest,
     ) -> ccc20200701_models.ChangeWorkModeResponse:
+        """
+        @param request: ChangeWorkModeRequest
+        @return: ChangeWorkModeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.change_work_mode_with_options_async(request, runtime)
 
@@ -1730,6 +2086,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.CoachCallRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.CoachCallResponse:
+        """
+        @param request: CoachCallRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CoachCallResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.coached_user_id):
@@ -1768,6 +2129,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.CoachCallRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.CoachCallResponse:
+        """
+        @param request: CoachCallRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CoachCallResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.coached_user_id):
@@ -1805,6 +2171,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.CoachCallRequest,
     ) -> ccc20200701_models.CoachCallResponse:
+        """
+        @param request: CoachCallRequest
+        @return: CoachCallResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.coach_call_with_options(request, runtime)
 
@@ -1812,6 +2182,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.CoachCallRequest,
     ) -> ccc20200701_models.CoachCallResponse:
+        """
+        @param request: CoachCallRequest
+        @return: CoachCallResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.coach_call_with_options_async(request, runtime)
 
@@ -1820,6 +2194,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.CommitContactFlowRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.CommitContactFlowResponse:
+        """
+        @param request: CommitContactFlowRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CommitContactFlowResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.contact_flow_id):
@@ -1856,6 +2235,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.CommitContactFlowRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.CommitContactFlowResponse:
+        """
+        @param request: CommitContactFlowRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CommitContactFlowResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.contact_flow_id):
@@ -1891,6 +2275,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.CommitContactFlowRequest,
     ) -> ccc20200701_models.CommitContactFlowResponse:
+        """
+        @param request: CommitContactFlowRequest
+        @return: CommitContactFlowResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.commit_contact_flow_with_options(request, runtime)
 
@@ -1898,6 +2286,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.CommitContactFlowRequest,
     ) -> ccc20200701_models.CommitContactFlowResponse:
+        """
+        @param request: CommitContactFlowRequest
+        @return: CommitContactFlowResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.commit_contact_flow_with_options_async(request, runtime)
 
@@ -1906,6 +2298,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.CompleteAttendedTransferRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.CompleteAttendedTransferResponse:
+        """
+        @param request: CompleteAttendedTransferRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CompleteAttendedTransferResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_id):
@@ -1940,6 +2337,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.CompleteAttendedTransferRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.CompleteAttendedTransferResponse:
+        """
+        @param request: CompleteAttendedTransferRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CompleteAttendedTransferResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_id):
@@ -1973,6 +2375,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.CompleteAttendedTransferRequest,
     ) -> ccc20200701_models.CompleteAttendedTransferResponse:
+        """
+        @param request: CompleteAttendedTransferRequest
+        @return: CompleteAttendedTransferResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.complete_attended_transfer_with_options(request, runtime)
 
@@ -1980,6 +2386,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.CompleteAttendedTransferRequest,
     ) -> ccc20200701_models.CompleteAttendedTransferResponse:
+        """
+        @param request: CompleteAttendedTransferRequest
+        @return: CompleteAttendedTransferResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.complete_attended_transfer_with_options_async(request, runtime)
 
@@ -1988,6 +2398,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.CreateAudioFileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.CreateAudioFileResponse:
+        """
+        @param request: CreateAudioFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAudioFileResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.audio_file_name):
@@ -2024,6 +2439,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.CreateAudioFileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.CreateAudioFileResponse:
+        """
+        @param request: CreateAudioFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAudioFileResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.audio_file_name):
@@ -2059,6 +2479,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.CreateAudioFileRequest,
     ) -> ccc20200701_models.CreateAudioFileResponse:
+        """
+        @param request: CreateAudioFileRequest
+        @return: CreateAudioFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_audio_file_with_options(request, runtime)
 
@@ -2066,6 +2490,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.CreateAudioFileRequest,
     ) -> ccc20200701_models.CreateAudioFileResponse:
+        """
+        @param request: CreateAudioFileRequest
+        @return: CreateAudioFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_audio_file_with_options_async(request, runtime)
 
@@ -2074,6 +2502,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.CreateCallTagsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.CreateCallTagsResponse:
+        """
+        @summary 批量创建号码标签
+        
+        @param request: CreateCallTagsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateCallTagsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.call_tag_name_list):
@@ -2104,6 +2539,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.CreateCallTagsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.CreateCallTagsResponse:
+        """
+        @summary 批量创建号码标签
+        
+        @param request: CreateCallTagsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateCallTagsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.call_tag_name_list):
@@ -2133,6 +2575,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.CreateCallTagsRequest,
     ) -> ccc20200701_models.CreateCallTagsResponse:
+        """
+        @summary 批量创建号码标签
+        
+        @param request: CreateCallTagsRequest
+        @return: CreateCallTagsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_call_tags_with_options(request, runtime)
 
@@ -2140,6 +2588,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.CreateCallTagsRequest,
     ) -> ccc20200701_models.CreateCallTagsResponse:
+        """
+        @summary 批量创建号码标签
+        
+        @param request: CreateCallTagsRequest
+        @return: CreateCallTagsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_call_tags_with_options_async(request, runtime)
 
@@ -2148,6 +2602,13 @@ class Client(OpenApiClient):
         tmp_req: ccc20200701_models.CreateCampaignRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.CreateCampaignResponse:
+        """
+        @summary 创建预测式外呼活动
+        
+        @param tmp_req: CreateCampaignRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateCampaignResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ccc20200701_models.CreateCampaignShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -2210,6 +2671,13 @@ class Client(OpenApiClient):
         tmp_req: ccc20200701_models.CreateCampaignRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.CreateCampaignResponse:
+        """
+        @summary 创建预测式外呼活动
+        
+        @param tmp_req: CreateCampaignRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateCampaignResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ccc20200701_models.CreateCampaignShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -2271,6 +2739,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.CreateCampaignRequest,
     ) -> ccc20200701_models.CreateCampaignResponse:
+        """
+        @summary 创建预测式外呼活动
+        
+        @param request: CreateCampaignRequest
+        @return: CreateCampaignResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_campaign_with_options(request, runtime)
 
@@ -2278,6 +2752,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.CreateCampaignRequest,
     ) -> ccc20200701_models.CreateCampaignResponse:
+        """
+        @summary 创建预测式外呼活动
+        
+        @param request: CreateCampaignRequest
+        @return: CreateCampaignResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_campaign_with_options_async(request, runtime)
 
@@ -2286,6 +2766,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.CreateContactFlowRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.CreateContactFlowResponse:
+        """
+        @param request: CreateContactFlowRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateContactFlowResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.definition):
@@ -2322,6 +2807,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.CreateContactFlowRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.CreateContactFlowResponse:
+        """
+        @param request: CreateContactFlowRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateContactFlowResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.definition):
@@ -2357,6 +2847,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.CreateContactFlowRequest,
     ) -> ccc20200701_models.CreateContactFlowResponse:
+        """
+        @param request: CreateContactFlowRequest
+        @return: CreateContactFlowResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_contact_flow_with_options(request, runtime)
 
@@ -2364,6 +2858,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.CreateContactFlowRequest,
     ) -> ccc20200701_models.CreateContactFlowResponse:
+        """
+        @param request: CreateContactFlowRequest
+        @return: CreateContactFlowResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_contact_flow_with_options_async(request, runtime)
 
@@ -2372,6 +2870,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.CreateCustomCallTaggingRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.CreateCustomCallTaggingResponse:
+        """
+        @summary 创建呼入控制号码
+        
+        @param request: CreateCustomCallTaggingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateCustomCallTaggingResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.custom_number_list):
@@ -2402,6 +2907,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.CreateCustomCallTaggingRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.CreateCustomCallTaggingResponse:
+        """
+        @summary 创建呼入控制号码
+        
+        @param request: CreateCustomCallTaggingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateCustomCallTaggingResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.custom_number_list):
@@ -2431,6 +2943,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.CreateCustomCallTaggingRequest,
     ) -> ccc20200701_models.CreateCustomCallTaggingResponse:
+        """
+        @summary 创建呼入控制号码
+        
+        @param request: CreateCustomCallTaggingRequest
+        @return: CreateCustomCallTaggingResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_custom_call_tagging_with_options(request, runtime)
 
@@ -2438,6 +2956,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.CreateCustomCallTaggingRequest,
     ) -> ccc20200701_models.CreateCustomCallTaggingResponse:
+        """
+        @summary 创建呼入控制号码
+        
+        @param request: CreateCustomCallTaggingRequest
+        @return: CreateCustomCallTaggingResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_custom_call_tagging_with_options_async(request, runtime)
 
@@ -2446,6 +2970,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.CreateInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.CreateInstanceResponse:
+        """
+        @param request: CreateInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.admin_ram_id_list):
@@ -2482,6 +3011,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.CreateInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.CreateInstanceResponse:
+        """
+        @param request: CreateInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.admin_ram_id_list):
@@ -2517,6 +3051,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.CreateInstanceRequest,
     ) -> ccc20200701_models.CreateInstanceResponse:
+        """
+        @param request: CreateInstanceRequest
+        @return: CreateInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_instance_with_options(request, runtime)
 
@@ -2524,6 +3062,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.CreateInstanceRequest,
     ) -> ccc20200701_models.CreateInstanceResponse:
+        """
+        @param request: CreateInstanceRequest
+        @return: CreateInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_instance_with_options_async(request, runtime)
 
@@ -2532,6 +3074,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.CreateSkillGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.CreateSkillGroupResponse:
+        """
+        @param request: CreateSkillGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSkillGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -2568,6 +3115,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.CreateSkillGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.CreateSkillGroupResponse:
+        """
+        @param request: CreateSkillGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSkillGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -2603,6 +3155,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.CreateSkillGroupRequest,
     ) -> ccc20200701_models.CreateSkillGroupResponse:
+        """
+        @param request: CreateSkillGroupRequest
+        @return: CreateSkillGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_skill_group_with_options(request, runtime)
 
@@ -2610,6 +3166,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.CreateSkillGroupRequest,
     ) -> ccc20200701_models.CreateSkillGroupResponse:
+        """
+        @param request: CreateSkillGroupRequest
+        @return: CreateSkillGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_skill_group_with_options_async(request, runtime)
 
@@ -2618,6 +3178,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.CreateUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.CreateUserResponse:
+        """
+        @param request: CreateUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateUserResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.avatar_url):
@@ -2668,6 +3233,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.CreateUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.CreateUserResponse:
+        """
+        @param request: CreateUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateUserResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.avatar_url):
@@ -2717,6 +3287,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.CreateUserRequest,
     ) -> ccc20200701_models.CreateUserResponse:
+        """
+        @param request: CreateUserRequest
+        @return: CreateUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_user_with_options(request, runtime)
 
@@ -2724,6 +3298,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.CreateUserRequest,
     ) -> ccc20200701_models.CreateUserResponse:
+        """
+        @param request: CreateUserRequest
+        @return: CreateUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_user_with_options_async(request, runtime)
 
@@ -2732,6 +3310,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.DeleteAudioFileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.DeleteAudioFileResponse:
+        """
+        @param request: DeleteAudioFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAudioFileResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.audio_resource_id):
@@ -2762,6 +3345,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.DeleteAudioFileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.DeleteAudioFileResponse:
+        """
+        @param request: DeleteAudioFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAudioFileResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.audio_resource_id):
@@ -2791,6 +3379,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.DeleteAudioFileRequest,
     ) -> ccc20200701_models.DeleteAudioFileResponse:
+        """
+        @param request: DeleteAudioFileRequest
+        @return: DeleteAudioFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_audio_file_with_options(request, runtime)
 
@@ -2798,6 +3390,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.DeleteAudioFileRequest,
     ) -> ccc20200701_models.DeleteAudioFileResponse:
+        """
+        @param request: DeleteAudioFileRequest
+        @return: DeleteAudioFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_audio_file_with_options_async(request, runtime)
 
@@ -2806,6 +3402,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.DeleteCallTagRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.DeleteCallTagResponse:
+        """
+        @summary 删除号码标签
+        
+        @param request: DeleteCallTagRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCallTagResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -2836,6 +3439,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.DeleteCallTagRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.DeleteCallTagResponse:
+        """
+        @summary 删除号码标签
+        
+        @param request: DeleteCallTagRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCallTagResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -2865,6 +3475,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.DeleteCallTagRequest,
     ) -> ccc20200701_models.DeleteCallTagResponse:
+        """
+        @summary 删除号码标签
+        
+        @param request: DeleteCallTagRequest
+        @return: DeleteCallTagResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_call_tag_with_options(request, runtime)
 
@@ -2872,6 +3488,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.DeleteCallTagRequest,
     ) -> ccc20200701_models.DeleteCallTagResponse:
+        """
+        @summary 删除号码标签
+        
+        @param request: DeleteCallTagRequest
+        @return: DeleteCallTagResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_call_tag_with_options_async(request, runtime)
 
@@ -2880,6 +3502,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.DeleteContactFlowRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.DeleteContactFlowResponse:
+        """
+        @param request: DeleteContactFlowRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteContactFlowResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.contact_flow_id):
@@ -2910,6 +3537,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.DeleteContactFlowRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.DeleteContactFlowResponse:
+        """
+        @param request: DeleteContactFlowRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteContactFlowResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.contact_flow_id):
@@ -2939,6 +3571,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.DeleteContactFlowRequest,
     ) -> ccc20200701_models.DeleteContactFlowResponse:
+        """
+        @param request: DeleteContactFlowRequest
+        @return: DeleteContactFlowResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_contact_flow_with_options(request, runtime)
 
@@ -2946,6 +3582,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.DeleteContactFlowRequest,
     ) -> ccc20200701_models.DeleteContactFlowResponse:
+        """
+        @param request: DeleteContactFlowRequest
+        @return: DeleteContactFlowResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_contact_flow_with_options_async(request, runtime)
 
@@ -2954,6 +3594,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.DeleteCustomCallTaggingRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.DeleteCustomCallTaggingResponse:
+        """
+        @summary 删除呼入控制号码
+        
+        @param request: DeleteCustomCallTaggingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCustomCallTaggingResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -2984,6 +3631,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.DeleteCustomCallTaggingRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.DeleteCustomCallTaggingResponse:
+        """
+        @summary 删除呼入控制号码
+        
+        @param request: DeleteCustomCallTaggingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCustomCallTaggingResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -3013,6 +3667,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.DeleteCustomCallTaggingRequest,
     ) -> ccc20200701_models.DeleteCustomCallTaggingResponse:
+        """
+        @summary 删除呼入控制号码
+        
+        @param request: DeleteCustomCallTaggingRequest
+        @return: DeleteCustomCallTaggingResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_custom_call_tagging_with_options(request, runtime)
 
@@ -3020,14 +3680,125 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.DeleteCustomCallTaggingRequest,
     ) -> ccc20200701_models.DeleteCustomCallTaggingResponse:
+        """
+        @summary 删除呼入控制号码
+        
+        @param request: DeleteCustomCallTaggingRequest
+        @return: DeleteCustomCallTaggingResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_custom_call_tagging_with_options_async(request, runtime)
+
+    def delete_schema_property_with_options(
+        self,
+        request: ccc20200701_models.DeleteSchemaPropertyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.DeleteSchemaPropertyResponse:
+        """
+        @param request: DeleteSchemaPropertyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSchemaPropertyResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.property_name):
+            body['PropertyName'] = request.property_name
+        if not UtilClient.is_unset(request.request_id):
+            body['RequestId'] = request.request_id
+        if not UtilClient.is_unset(request.schema_id):
+            body['SchemaId'] = request.schema_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteSchemaProperty',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.DeleteSchemaPropertyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_schema_property_with_options_async(
+        self,
+        request: ccc20200701_models.DeleteSchemaPropertyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.DeleteSchemaPropertyResponse:
+        """
+        @param request: DeleteSchemaPropertyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSchemaPropertyResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.property_name):
+            body['PropertyName'] = request.property_name
+        if not UtilClient.is_unset(request.request_id):
+            body['RequestId'] = request.request_id
+        if not UtilClient.is_unset(request.schema_id):
+            body['SchemaId'] = request.schema_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteSchemaProperty',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.DeleteSchemaPropertyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_schema_property(
+        self,
+        request: ccc20200701_models.DeleteSchemaPropertyRequest,
+    ) -> ccc20200701_models.DeleteSchemaPropertyResponse:
+        """
+        @param request: DeleteSchemaPropertyRequest
+        @return: DeleteSchemaPropertyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_schema_property_with_options(request, runtime)
+
+    async def delete_schema_property_async(
+        self,
+        request: ccc20200701_models.DeleteSchemaPropertyRequest,
+    ) -> ccc20200701_models.DeleteSchemaPropertyResponse:
+        """
+        @param request: DeleteSchemaPropertyRequest
+        @return: DeleteSchemaPropertyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_schema_property_with_options_async(request, runtime)
 
     def delete_skill_group_with_options(
         self,
         request: ccc20200701_models.DeleteSkillGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.DeleteSkillGroupResponse:
+        """
+        @param request: DeleteSkillGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSkillGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.force):
@@ -3060,6 +3831,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.DeleteSkillGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.DeleteSkillGroupResponse:
+        """
+        @param request: DeleteSkillGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSkillGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.force):
@@ -3091,6 +3867,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.DeleteSkillGroupRequest,
     ) -> ccc20200701_models.DeleteSkillGroupResponse:
+        """
+        @param request: DeleteSkillGroupRequest
+        @return: DeleteSkillGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_skill_group_with_options(request, runtime)
 
@@ -3098,14 +3878,123 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.DeleteSkillGroupRequest,
     ) -> ccc20200701_models.DeleteSkillGroupResponse:
+        """
+        @param request: DeleteSkillGroupRequest
+        @return: DeleteSkillGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_skill_group_with_options_async(request, runtime)
+
+    def disable_schema_property_with_options(
+        self,
+        request: ccc20200701_models.DisableSchemaPropertyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.DisableSchemaPropertyResponse:
+        """
+        @param request: DisableSchemaPropertyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisableSchemaPropertyResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.property_name):
+            body['PropertyName'] = request.property_name
+        if not UtilClient.is_unset(request.request_id):
+            body['RequestId'] = request.request_id
+        if not UtilClient.is_unset(request.schema_id):
+            body['SchemaId'] = request.schema_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DisableSchemaProperty',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.DisableSchemaPropertyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def disable_schema_property_with_options_async(
+        self,
+        request: ccc20200701_models.DisableSchemaPropertyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.DisableSchemaPropertyResponse:
+        """
+        @param request: DisableSchemaPropertyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisableSchemaPropertyResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.property_name):
+            body['PropertyName'] = request.property_name
+        if not UtilClient.is_unset(request.request_id):
+            body['RequestId'] = request.request_id
+        if not UtilClient.is_unset(request.schema_id):
+            body['SchemaId'] = request.schema_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DisableSchemaProperty',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.DisableSchemaPropertyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def disable_schema_property(
+        self,
+        request: ccc20200701_models.DisableSchemaPropertyRequest,
+    ) -> ccc20200701_models.DisableSchemaPropertyResponse:
+        """
+        @param request: DisableSchemaPropertyRequest
+        @return: DisableSchemaPropertyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.disable_schema_property_with_options(request, runtime)
+
+    async def disable_schema_property_async(
+        self,
+        request: ccc20200701_models.DisableSchemaPropertyRequest,
+    ) -> ccc20200701_models.DisableSchemaPropertyResponse:
+        """
+        @param request: DisableSchemaPropertyRequest
+        @return: DisableSchemaPropertyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.disable_schema_property_with_options_async(request, runtime)
 
     def discard_editing_contact_flow_with_options(
         self,
         request: ccc20200701_models.DiscardEditingContactFlowRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.DiscardEditingContactFlowResponse:
+        """
+        @param request: DiscardEditingContactFlowRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DiscardEditingContactFlowResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.contact_flow_id):
@@ -3138,6 +4027,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.DiscardEditingContactFlowRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.DiscardEditingContactFlowResponse:
+        """
+        @param request: DiscardEditingContactFlowRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DiscardEditingContactFlowResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.contact_flow_id):
@@ -3169,6 +4063,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.DiscardEditingContactFlowRequest,
     ) -> ccc20200701_models.DiscardEditingContactFlowResponse:
+        """
+        @param request: DiscardEditingContactFlowRequest
+        @return: DiscardEditingContactFlowResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.discard_editing_contact_flow_with_options(request, runtime)
 
@@ -3176,14 +4074,123 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.DiscardEditingContactFlowRequest,
     ) -> ccc20200701_models.DiscardEditingContactFlowResponse:
+        """
+        @param request: DiscardEditingContactFlowRequest
+        @return: DiscardEditingContactFlowResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.discard_editing_contact_flow_with_options_async(request, runtime)
+
+    def enable_schema_property_with_options(
+        self,
+        request: ccc20200701_models.EnableSchemaPropertyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.EnableSchemaPropertyResponse:
+        """
+        @param request: EnableSchemaPropertyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableSchemaPropertyResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.property_name):
+            body['PropertyName'] = request.property_name
+        if not UtilClient.is_unset(request.request_id):
+            body['RequestId'] = request.request_id
+        if not UtilClient.is_unset(request.schema_id):
+            body['SchemaId'] = request.schema_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='EnableSchemaProperty',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.EnableSchemaPropertyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def enable_schema_property_with_options_async(
+        self,
+        request: ccc20200701_models.EnableSchemaPropertyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.EnableSchemaPropertyResponse:
+        """
+        @param request: EnableSchemaPropertyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableSchemaPropertyResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.property_name):
+            body['PropertyName'] = request.property_name
+        if not UtilClient.is_unset(request.request_id):
+            body['RequestId'] = request.request_id
+        if not UtilClient.is_unset(request.schema_id):
+            body['SchemaId'] = request.schema_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='EnableSchemaProperty',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.EnableSchemaPropertyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def enable_schema_property(
+        self,
+        request: ccc20200701_models.EnableSchemaPropertyRequest,
+    ) -> ccc20200701_models.EnableSchemaPropertyResponse:
+        """
+        @param request: EnableSchemaPropertyRequest
+        @return: EnableSchemaPropertyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.enable_schema_property_with_options(request, runtime)
+
+    async def enable_schema_property_async(
+        self,
+        request: ccc20200701_models.EnableSchemaPropertyRequest,
+    ) -> ccc20200701_models.EnableSchemaPropertyResponse:
+        """
+        @param request: EnableSchemaPropertyRequest
+        @return: EnableSchemaPropertyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.enable_schema_property_with_options_async(request, runtime)
 
     def end_conference_with_options(
         self,
         request: ccc20200701_models.EndConferenceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.EndConferenceResponse:
+        """
+        @param request: EndConferenceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EndConferenceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -3216,6 +4223,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.EndConferenceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.EndConferenceResponse:
+        """
+        @param request: EndConferenceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EndConferenceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -3247,6 +4259,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.EndConferenceRequest,
     ) -> ccc20200701_models.EndConferenceResponse:
+        """
+        @param request: EndConferenceRequest
+        @return: EndConferenceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.end_conference_with_options(request, runtime)
 
@@ -3254,6 +4270,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.EndConferenceRequest,
     ) -> ccc20200701_models.EndConferenceResponse:
+        """
+        @param request: EndConferenceRequest
+        @return: EndConferenceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.end_conference_with_options_async(request, runtime)
 
@@ -3263,7 +4283,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ExportCustomCallTaggingResponse:
         """
-        @deprecated : ExportCustomCallTagging is deprecated, please use CCC::2020-07-01::ExportCustomCallTaggings instead.
+        @deprecated OpenAPI ExportCustomCallTagging is deprecated, please use CCC::2020-07-01::ExportCustomCallTaggings instead.
+        
+        @summary 导出全部呼入号码标签
         
         @param request: ExportCustomCallTaggingRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3299,7 +4321,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ExportCustomCallTaggingResponse:
         """
-        @deprecated : ExportCustomCallTagging is deprecated, please use CCC::2020-07-01::ExportCustomCallTaggings instead.
+        @deprecated OpenAPI ExportCustomCallTagging is deprecated, please use CCC::2020-07-01::ExportCustomCallTaggings instead.
+        
+        @summary 导出全部呼入号码标签
         
         @param request: ExportCustomCallTaggingRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3334,7 +4358,9 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ExportCustomCallTaggingRequest,
     ) -> ccc20200701_models.ExportCustomCallTaggingResponse:
         """
-        @deprecated : ExportCustomCallTagging is deprecated, please use CCC::2020-07-01::ExportCustomCallTaggings instead.
+        @deprecated OpenAPI ExportCustomCallTagging is deprecated, please use CCC::2020-07-01::ExportCustomCallTaggings instead.
+        
+        @summary 导出全部呼入号码标签
         
         @param request: ExportCustomCallTaggingRequest
         @return: ExportCustomCallTaggingResponse
@@ -3348,7 +4374,9 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ExportCustomCallTaggingRequest,
     ) -> ccc20200701_models.ExportCustomCallTaggingResponse:
         """
-        @deprecated : ExportCustomCallTagging is deprecated, please use CCC::2020-07-01::ExportCustomCallTaggings instead.
+        @deprecated OpenAPI ExportCustomCallTagging is deprecated, please use CCC::2020-07-01::ExportCustomCallTaggings instead.
+        
+        @summary 导出全部呼入号码标签
         
         @param request: ExportCustomCallTaggingRequest
         @return: ExportCustomCallTaggingResponse
@@ -3362,6 +4390,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ExportDoNotCallNumbersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ExportDoNotCallNumbersResponse:
+        """
+        @summary 导出黑名单号码
+        
+        @param request: ExportDoNotCallNumbersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExportDoNotCallNumbersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -3394,6 +4429,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ExportDoNotCallNumbersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ExportDoNotCallNumbersResponse:
+        """
+        @summary 导出黑名单号码
+        
+        @param request: ExportDoNotCallNumbersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExportDoNotCallNumbersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -3425,6 +4467,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ExportDoNotCallNumbersRequest,
     ) -> ccc20200701_models.ExportDoNotCallNumbersResponse:
+        """
+        @summary 导出黑名单号码
+        
+        @param request: ExportDoNotCallNumbersRequest
+        @return: ExportDoNotCallNumbersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.export_do_not_call_numbers_with_options(request, runtime)
 
@@ -3432,6 +4480,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ExportDoNotCallNumbersRequest,
     ) -> ccc20200701_models.ExportDoNotCallNumbersResponse:
+        """
+        @summary 导出黑名单号码
+        
+        @param request: ExportDoNotCallNumbersRequest
+        @return: ExportDoNotCallNumbersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.export_do_not_call_numbers_with_options_async(request, runtime)
 
@@ -3440,6 +4494,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.GetAccessChannelOfStagingRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.GetAccessChannelOfStagingResponse:
+        """
+        @summary GetAccessChannelOfStaging
+        
+        @param request: GetAccessChannelOfStagingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAccessChannelOfStagingResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -3466,6 +4527,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.GetAccessChannelOfStagingRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.GetAccessChannelOfStagingResponse:
+        """
+        @summary GetAccessChannelOfStaging
+        
+        @param request: GetAccessChannelOfStagingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAccessChannelOfStagingResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -3491,6 +4559,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.GetAccessChannelOfStagingRequest,
     ) -> ccc20200701_models.GetAccessChannelOfStagingResponse:
+        """
+        @summary GetAccessChannelOfStaging
+        
+        @param request: GetAccessChannelOfStagingRequest
+        @return: GetAccessChannelOfStagingResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_access_channel_of_staging_with_options(request, runtime)
 
@@ -3498,6 +4572,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.GetAccessChannelOfStagingRequest,
     ) -> ccc20200701_models.GetAccessChannelOfStagingResponse:
+        """
+        @summary GetAccessChannelOfStaging
+        
+        @param request: GetAccessChannelOfStagingRequest
+        @return: GetAccessChannelOfStagingResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_access_channel_of_staging_with_options_async(request, runtime)
 
@@ -3506,6 +4586,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.GetAudioFileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.GetAudioFileResponse:
+        """
+        @summary 获取音频文件
+        
+        @param request: GetAudioFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAudioFileResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.audio_resource_id):
@@ -3536,6 +4623,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.GetAudioFileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.GetAudioFileResponse:
+        """
+        @summary 获取音频文件
+        
+        @param request: GetAudioFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAudioFileResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.audio_resource_id):
@@ -3565,6 +4659,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.GetAudioFileRequest,
     ) -> ccc20200701_models.GetAudioFileResponse:
+        """
+        @summary 获取音频文件
+        
+        @param request: GetAudioFileRequest
+        @return: GetAudioFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_audio_file_with_options(request, runtime)
 
@@ -3572,6 +4672,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.GetAudioFileRequest,
     ) -> ccc20200701_models.GetAudioFileResponse:
+        """
+        @summary 获取音频文件
+        
+        @param request: GetAudioFileRequest
+        @return: GetAudioFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_audio_file_with_options_async(request, runtime)
 
@@ -3580,6 +4686,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.GetAudioFileDownloadUrlRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.GetAudioFileDownloadUrlResponse:
+        """
+        @param request: GetAudioFileDownloadUrlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAudioFileDownloadUrlResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.audio_resource_id):
@@ -3610,6 +4721,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.GetAudioFileDownloadUrlRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.GetAudioFileDownloadUrlResponse:
+        """
+        @param request: GetAudioFileDownloadUrlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAudioFileDownloadUrlResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.audio_resource_id):
@@ -3639,6 +4755,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.GetAudioFileDownloadUrlRequest,
     ) -> ccc20200701_models.GetAudioFileDownloadUrlResponse:
+        """
+        @param request: GetAudioFileDownloadUrlRequest
+        @return: GetAudioFileDownloadUrlResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_audio_file_download_url_with_options(request, runtime)
 
@@ -3646,6 +4766,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.GetAudioFileDownloadUrlRequest,
     ) -> ccc20200701_models.GetAudioFileDownloadUrlResponse:
+        """
+        @param request: GetAudioFileDownloadUrlRequest
+        @return: GetAudioFileDownloadUrlResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_audio_file_download_url_with_options_async(request, runtime)
 
@@ -3654,6 +4778,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.GetAudioFileUploadParametersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.GetAudioFileUploadParametersResponse:
+        """
+        @param request: GetAudioFileUploadParametersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAudioFileUploadParametersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.audio_file_name):
@@ -3684,6 +4813,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.GetAudioFileUploadParametersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.GetAudioFileUploadParametersResponse:
+        """
+        @param request: GetAudioFileUploadParametersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAudioFileUploadParametersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.audio_file_name):
@@ -3713,6 +4847,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.GetAudioFileUploadParametersRequest,
     ) -> ccc20200701_models.GetAudioFileUploadParametersResponse:
+        """
+        @param request: GetAudioFileUploadParametersRequest
+        @return: GetAudioFileUploadParametersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_audio_file_upload_parameters_with_options(request, runtime)
 
@@ -3720,6 +4858,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.GetAudioFileUploadParametersRequest,
     ) -> ccc20200701_models.GetAudioFileUploadParametersResponse:
+        """
+        @param request: GetAudioFileUploadParametersRequest
+        @return: GetAudioFileUploadParametersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_audio_file_upload_parameters_with_options_async(request, runtime)
 
@@ -3728,6 +4870,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.GetCallDetailRecordRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.GetCallDetailRecordResponse:
+        """
+        @param request: GetCallDetailRecordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCallDetailRecordResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.contact_id):
@@ -3758,6 +4905,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.GetCallDetailRecordRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.GetCallDetailRecordResponse:
+        """
+        @param request: GetCallDetailRecordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCallDetailRecordResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.contact_id):
@@ -3787,6 +4939,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.GetCallDetailRecordRequest,
     ) -> ccc20200701_models.GetCallDetailRecordResponse:
+        """
+        @param request: GetCallDetailRecordRequest
+        @return: GetCallDetailRecordResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_call_detail_record_with_options(request, runtime)
 
@@ -3794,6 +4950,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.GetCallDetailRecordRequest,
     ) -> ccc20200701_models.GetCallDetailRecordResponse:
+        """
+        @param request: GetCallDetailRecordRequest
+        @return: GetCallDetailRecordResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_call_detail_record_with_options_async(request, runtime)
 
@@ -3802,6 +4962,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.GetCampaignRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.GetCampaignResponse:
+        """
+        @summary 获取预测式外呼活动信息
+        
+        @param request: GetCampaignRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCampaignResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.campaign_id):
@@ -3832,6 +4999,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.GetCampaignRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.GetCampaignResponse:
+        """
+        @summary 获取预测式外呼活动信息
+        
+        @param request: GetCampaignRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCampaignResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.campaign_id):
@@ -3861,6 +5035,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.GetCampaignRequest,
     ) -> ccc20200701_models.GetCampaignResponse:
+        """
+        @summary 获取预测式外呼活动信息
+        
+        @param request: GetCampaignRequest
+        @return: GetCampaignResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_campaign_with_options(request, runtime)
 
@@ -3868,6 +5048,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.GetCampaignRequest,
     ) -> ccc20200701_models.GetCampaignResponse:
+        """
+        @summary 获取预测式外呼活动信息
+        
+        @param request: GetCampaignRequest
+        @return: GetCampaignResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_campaign_with_options_async(request, runtime)
 
@@ -3876,6 +5062,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.GetCaseFileUploadUrlRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.GetCaseFileUploadUrlResponse:
+        """
+        @param request: GetCaseFileUploadUrlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCaseFileUploadUrlResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.file_name):
@@ -3906,6 +5097,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.GetCaseFileUploadUrlRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.GetCaseFileUploadUrlResponse:
+        """
+        @param request: GetCaseFileUploadUrlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCaseFileUploadUrlResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.file_name):
@@ -3935,6 +5131,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.GetCaseFileUploadUrlRequest,
     ) -> ccc20200701_models.GetCaseFileUploadUrlResponse:
+        """
+        @param request: GetCaseFileUploadUrlRequest
+        @return: GetCaseFileUploadUrlResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_case_file_upload_url_with_options(request, runtime)
 
@@ -3942,6 +5142,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.GetCaseFileUploadUrlRequest,
     ) -> ccc20200701_models.GetCaseFileUploadUrlResponse:
+        """
+        @param request: GetCaseFileUploadUrlRequest
+        @return: GetCaseFileUploadUrlResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_case_file_upload_url_with_options_async(request, runtime)
 
@@ -3950,6 +5154,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.GetContactFlowRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.GetContactFlowResponse:
+        """
+        @param request: GetContactFlowRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetContactFlowResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.contact_flow_id):
@@ -3982,6 +5191,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.GetContactFlowRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.GetContactFlowResponse:
+        """
+        @param request: GetContactFlowRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetContactFlowResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.contact_flow_id):
@@ -4013,6 +5227,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.GetContactFlowRequest,
     ) -> ccc20200701_models.GetContactFlowResponse:
+        """
+        @param request: GetContactFlowRequest
+        @return: GetContactFlowResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_contact_flow_with_options(request, runtime)
 
@@ -4020,6 +5238,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.GetContactFlowRequest,
     ) -> ccc20200701_models.GetContactFlowResponse:
+        """
+        @param request: GetContactFlowRequest
+        @return: GetContactFlowResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_contact_flow_with_options_async(request, runtime)
 
@@ -4028,6 +5250,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.GetConversationDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.GetConversationDetailResponse:
+        """
+        @summary 获取通话文本信息
+        
+        @param request: GetConversationDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetConversationDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.contact_id):
@@ -4058,6 +5287,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.GetConversationDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.GetConversationDetailResponse:
+        """
+        @summary 获取通话文本信息
+        
+        @param request: GetConversationDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetConversationDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.contact_id):
@@ -4087,6 +5323,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.GetConversationDetailRequest,
     ) -> ccc20200701_models.GetConversationDetailResponse:
+        """
+        @summary 获取通话文本信息
+        
+        @param request: GetConversationDetailRequest
+        @return: GetConversationDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_conversation_detail_with_options(request, runtime)
 
@@ -4094,6 +5336,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.GetConversationDetailRequest,
     ) -> ccc20200701_models.GetConversationDetailResponse:
+        """
+        @summary 获取通话文本信息
+        
+        @param request: GetConversationDetailRequest
+        @return: GetConversationDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_conversation_detail_with_options_async(request, runtime)
 
@@ -4102,6 +5350,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.GetDataChannelCredentialsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.GetDataChannelCredentialsResponse:
+        """
+        @param request: GetDataChannelCredentialsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataChannelCredentialsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_id):
@@ -4132,6 +5385,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.GetDataChannelCredentialsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.GetDataChannelCredentialsResponse:
+        """
+        @param request: GetDataChannelCredentialsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataChannelCredentialsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_id):
@@ -4161,6 +5419,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.GetDataChannelCredentialsRequest,
     ) -> ccc20200701_models.GetDataChannelCredentialsResponse:
+        """
+        @param request: GetDataChannelCredentialsRequest
+        @return: GetDataChannelCredentialsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_data_channel_credentials_with_options(request, runtime)
 
@@ -4168,6 +5430,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.GetDataChannelCredentialsRequest,
     ) -> ccc20200701_models.GetDataChannelCredentialsResponse:
+        """
+        @param request: GetDataChannelCredentialsRequest
+        @return: GetDataChannelCredentialsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_data_channel_credentials_with_options_async(request, runtime)
 
@@ -4176,6 +5442,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.GetDoNotCallFileUploadParametersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.GetDoNotCallFileUploadParametersResponse:
+        """
+        @summary 获取黑名单文件上传地址
+        
+        @param request: GetDoNotCallFileUploadParametersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDoNotCallFileUploadParametersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.file_name):
@@ -4206,6 +5479,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.GetDoNotCallFileUploadParametersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.GetDoNotCallFileUploadParametersResponse:
+        """
+        @summary 获取黑名单文件上传地址
+        
+        @param request: GetDoNotCallFileUploadParametersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDoNotCallFileUploadParametersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.file_name):
@@ -4235,6 +5515,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.GetDoNotCallFileUploadParametersRequest,
     ) -> ccc20200701_models.GetDoNotCallFileUploadParametersResponse:
+        """
+        @summary 获取黑名单文件上传地址
+        
+        @param request: GetDoNotCallFileUploadParametersRequest
+        @return: GetDoNotCallFileUploadParametersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_do_not_call_file_upload_parameters_with_options(request, runtime)
 
@@ -4242,6 +5528,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.GetDoNotCallFileUploadParametersRequest,
     ) -> ccc20200701_models.GetDoNotCallFileUploadParametersResponse:
+        """
+        @summary 获取黑名单文件上传地址
+        
+        @param request: GetDoNotCallFileUploadParametersRequest
+        @return: GetDoNotCallFileUploadParametersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_do_not_call_file_upload_parameters_with_options_async(request, runtime)
 
@@ -4250,6 +5542,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.GetEarlyMediaRecordingRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.GetEarlyMediaRecordingResponse:
+        """
+        @summary 获取早媒体音频
+        
+        @param request: GetEarlyMediaRecordingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetEarlyMediaRecordingResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.contact_id):
@@ -4280,6 +5579,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.GetEarlyMediaRecordingRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.GetEarlyMediaRecordingResponse:
+        """
+        @summary 获取早媒体音频
+        
+        @param request: GetEarlyMediaRecordingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetEarlyMediaRecordingResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.contact_id):
@@ -4309,6 +5615,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.GetEarlyMediaRecordingRequest,
     ) -> ccc20200701_models.GetEarlyMediaRecordingResponse:
+        """
+        @summary 获取早媒体音频
+        
+        @param request: GetEarlyMediaRecordingRequest
+        @return: GetEarlyMediaRecordingResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_early_media_recording_with_options(request, runtime)
 
@@ -4316,6 +5628,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.GetEarlyMediaRecordingRequest,
     ) -> ccc20200701_models.GetEarlyMediaRecordingResponse:
+        """
+        @summary 获取早媒体音频
+        
+        @param request: GetEarlyMediaRecordingRequest
+        @return: GetEarlyMediaRecordingResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_early_media_recording_with_options_async(request, runtime)
 
@@ -4324,6 +5642,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.GetHistoricalCallerReportRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.GetHistoricalCallerReportResponse:
+        """
+        @param request: GetHistoricalCallerReportRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetHistoricalCallerReportResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.calling_number):
@@ -4358,6 +5681,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.GetHistoricalCallerReportRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.GetHistoricalCallerReportResponse:
+        """
+        @param request: GetHistoricalCallerReportRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetHistoricalCallerReportResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.calling_number):
@@ -4391,6 +5719,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.GetHistoricalCallerReportRequest,
     ) -> ccc20200701_models.GetHistoricalCallerReportResponse:
+        """
+        @param request: GetHistoricalCallerReportRequest
+        @return: GetHistoricalCallerReportResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_historical_caller_report_with_options(request, runtime)
 
@@ -4398,6 +5730,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.GetHistoricalCallerReportRequest,
     ) -> ccc20200701_models.GetHistoricalCallerReportResponse:
+        """
+        @param request: GetHistoricalCallerReportRequest
+        @return: GetHistoricalCallerReportResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_historical_caller_report_with_options_async(request, runtime)
 
@@ -4406,6 +5742,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.GetHistoricalCampaignReportRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.GetHistoricalCampaignReportResponse:
+        """
+        @summary 获取预测式外呼活动历史报表
+        
+        @param request: GetHistoricalCampaignReportRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetHistoricalCampaignReportResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -4432,6 +5775,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.GetHistoricalCampaignReportRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.GetHistoricalCampaignReportResponse:
+        """
+        @summary 获取预测式外呼活动历史报表
+        
+        @param request: GetHistoricalCampaignReportRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetHistoricalCampaignReportResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -4457,6 +5807,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.GetHistoricalCampaignReportRequest,
     ) -> ccc20200701_models.GetHistoricalCampaignReportResponse:
+        """
+        @summary 获取预测式外呼活动历史报表
+        
+        @param request: GetHistoricalCampaignReportRequest
+        @return: GetHistoricalCampaignReportResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_historical_campaign_report_with_options(request, runtime)
 
@@ -4464,6 +5820,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.GetHistoricalCampaignReportRequest,
     ) -> ccc20200701_models.GetHistoricalCampaignReportResponse:
+        """
+        @summary 获取预测式外呼活动历史报表
+        
+        @param request: GetHistoricalCampaignReportRequest
+        @return: GetHistoricalCampaignReportResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_historical_campaign_report_with_options_async(request, runtime)
 
@@ -4472,6 +5834,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.GetHistoricalInstanceReportRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.GetHistoricalInstanceReportResponse:
+        """
+        @param request: GetHistoricalInstanceReportRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetHistoricalInstanceReportResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -4506,6 +5873,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.GetHistoricalInstanceReportRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.GetHistoricalInstanceReportResponse:
+        """
+        @param request: GetHistoricalInstanceReportRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetHistoricalInstanceReportResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -4539,6 +5911,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.GetHistoricalInstanceReportRequest,
     ) -> ccc20200701_models.GetHistoricalInstanceReportResponse:
+        """
+        @param request: GetHistoricalInstanceReportRequest
+        @return: GetHistoricalInstanceReportResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_historical_instance_report_with_options(request, runtime)
 
@@ -4546,6 +5922,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.GetHistoricalInstanceReportRequest,
     ) -> ccc20200701_models.GetHistoricalInstanceReportResponse:
+        """
+        @param request: GetHistoricalInstanceReportRequest
+        @return: GetHistoricalInstanceReportResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_historical_instance_report_with_options_async(request, runtime)
 
@@ -4554,6 +5934,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.GetInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.GetInstanceResponse:
+        """
+        @param request: GetInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -4582,6 +5967,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.GetInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.GetInstanceResponse:
+        """
+        @param request: GetInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -4609,6 +5999,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.GetInstanceRequest,
     ) -> ccc20200701_models.GetInstanceResponse:
+        """
+        @param request: GetInstanceRequest
+        @return: GetInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_instance_with_options(request, runtime)
 
@@ -4616,6 +6010,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.GetInstanceRequest,
     ) -> ccc20200701_models.GetInstanceResponse:
+        """
+        @param request: GetInstanceRequest
+        @return: GetInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_instance_with_options_async(request, runtime)
 
@@ -4624,6 +6022,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.GetInstanceTrendingReportRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.GetInstanceTrendingReportResponse:
+        """
+        @param request: GetInstanceTrendingReportRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetInstanceTrendingReportResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -4658,6 +6061,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.GetInstanceTrendingReportRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.GetInstanceTrendingReportResponse:
+        """
+        @param request: GetInstanceTrendingReportRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetInstanceTrendingReportResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -4691,6 +6099,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.GetInstanceTrendingReportRequest,
     ) -> ccc20200701_models.GetInstanceTrendingReportResponse:
+        """
+        @param request: GetInstanceTrendingReportRequest
+        @return: GetInstanceTrendingReportResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_instance_trending_report_with_options(request, runtime)
 
@@ -4698,6 +6110,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.GetInstanceTrendingReportRequest,
     ) -> ccc20200701_models.GetInstanceTrendingReportResponse:
+        """
+        @param request: GetInstanceTrendingReportRequest
+        @return: GetInstanceTrendingReportResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_instance_trending_report_with_options_async(request, runtime)
 
@@ -4706,6 +6122,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.GetLoginDetailsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.GetLoginDetailsResponse:
+        """
+        @param request: GetLoginDetailsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLoginDetailsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.chat_device_id):
@@ -4738,6 +6159,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.GetLoginDetailsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.GetLoginDetailsResponse:
+        """
+        @param request: GetLoginDetailsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLoginDetailsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.chat_device_id):
@@ -4769,6 +6195,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.GetLoginDetailsRequest,
     ) -> ccc20200701_models.GetLoginDetailsResponse:
+        """
+        @param request: GetLoginDetailsRequest
+        @return: GetLoginDetailsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_login_details_with_options(request, runtime)
 
@@ -4776,6 +6206,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.GetLoginDetailsRequest,
     ) -> ccc20200701_models.GetLoginDetailsResponse:
+        """
+        @param request: GetLoginDetailsRequest
+        @return: GetLoginDetailsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_login_details_with_options_async(request, runtime)
 
@@ -4784,6 +6218,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.GetMonoRecordingRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.GetMonoRecordingResponse:
+        """
+        @param request: GetMonoRecordingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMonoRecordingResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.contact_id):
@@ -4816,6 +6255,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.GetMonoRecordingRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.GetMonoRecordingResponse:
+        """
+        @param request: GetMonoRecordingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMonoRecordingResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.contact_id):
@@ -4847,6 +6291,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.GetMonoRecordingRequest,
     ) -> ccc20200701_models.GetMonoRecordingResponse:
+        """
+        @param request: GetMonoRecordingRequest
+        @return: GetMonoRecordingResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_mono_recording_with_options(request, runtime)
 
@@ -4854,6 +6302,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.GetMonoRecordingRequest,
     ) -> ccc20200701_models.GetMonoRecordingResponse:
+        """
+        @param request: GetMonoRecordingRequest
+        @return: GetMonoRecordingResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_mono_recording_with_options_async(request, runtime)
 
@@ -4862,6 +6314,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.GetMultiChannelRecordingRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.GetMultiChannelRecordingResponse:
+        """
+        @param request: GetMultiChannelRecordingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMultiChannelRecordingResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.contact_id):
@@ -4892,6 +6349,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.GetMultiChannelRecordingRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.GetMultiChannelRecordingResponse:
+        """
+        @param request: GetMultiChannelRecordingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMultiChannelRecordingResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.contact_id):
@@ -4921,6 +6383,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.GetMultiChannelRecordingRequest,
     ) -> ccc20200701_models.GetMultiChannelRecordingResponse:
+        """
+        @param request: GetMultiChannelRecordingRequest
+        @return: GetMultiChannelRecordingResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_multi_channel_recording_with_options(request, runtime)
 
@@ -4928,6 +6394,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.GetMultiChannelRecordingRequest,
     ) -> ccc20200701_models.GetMultiChannelRecordingResponse:
+        """
+        @param request: GetMultiChannelRecordingRequest
+        @return: GetMultiChannelRecordingResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_multi_channel_recording_with_options_async(request, runtime)
 
@@ -4936,6 +6406,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.GetNumberLocationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.GetNumberLocationResponse:
+        """
+        @param request: GetNumberLocationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetNumberLocationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -4966,6 +6441,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.GetNumberLocationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.GetNumberLocationResponse:
+        """
+        @param request: GetNumberLocationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetNumberLocationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -4995,6 +6475,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.GetNumberLocationRequest,
     ) -> ccc20200701_models.GetNumberLocationResponse:
+        """
+        @param request: GetNumberLocationRequest
+        @return: GetNumberLocationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_number_location_with_options(request, runtime)
 
@@ -5002,6 +6486,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.GetNumberLocationRequest,
     ) -> ccc20200701_models.GetNumberLocationResponse:
+        """
+        @param request: GetNumberLocationRequest
+        @return: GetNumberLocationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_number_location_with_options_async(request, runtime)
 
@@ -5010,6 +6498,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.GetRealtimeCampaignStatsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.GetRealtimeCampaignStatsResponse:
+        """
+        @summary 获取预测式外呼实时状态
+        
+        @param request: GetRealtimeCampaignStatsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetRealtimeCampaignStatsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -5036,6 +6531,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.GetRealtimeCampaignStatsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.GetRealtimeCampaignStatsResponse:
+        """
+        @summary 获取预测式外呼实时状态
+        
+        @param request: GetRealtimeCampaignStatsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetRealtimeCampaignStatsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -5061,6 +6563,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.GetRealtimeCampaignStatsRequest,
     ) -> ccc20200701_models.GetRealtimeCampaignStatsResponse:
+        """
+        @summary 获取预测式外呼实时状态
+        
+        @param request: GetRealtimeCampaignStatsRequest
+        @return: GetRealtimeCampaignStatsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_realtime_campaign_stats_with_options(request, runtime)
 
@@ -5068,6 +6576,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.GetRealtimeCampaignStatsRequest,
     ) -> ccc20200701_models.GetRealtimeCampaignStatsResponse:
+        """
+        @summary 获取预测式外呼实时状态
+        
+        @param request: GetRealtimeCampaignStatsRequest
+        @return: GetRealtimeCampaignStatsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_realtime_campaign_stats_with_options_async(request, runtime)
 
@@ -5076,6 +6590,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.GetRealtimeInstanceStatesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.GetRealtimeInstanceStatesResponse:
+        """
+        @param request: GetRealtimeInstanceStatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetRealtimeInstanceStatesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -5106,6 +6625,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.GetRealtimeInstanceStatesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.GetRealtimeInstanceStatesResponse:
+        """
+        @param request: GetRealtimeInstanceStatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetRealtimeInstanceStatesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -5135,6 +6659,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.GetRealtimeInstanceStatesRequest,
     ) -> ccc20200701_models.GetRealtimeInstanceStatesResponse:
+        """
+        @param request: GetRealtimeInstanceStatesRequest
+        @return: GetRealtimeInstanceStatesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_realtime_instance_states_with_options(request, runtime)
 
@@ -5142,14 +6670,121 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.GetRealtimeInstanceStatesRequest,
     ) -> ccc20200701_models.GetRealtimeInstanceStatesResponse:
+        """
+        @param request: GetRealtimeInstanceStatesRequest
+        @return: GetRealtimeInstanceStatesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_realtime_instance_states_with_options_async(request, runtime)
+
+    def get_schema_with_options(
+        self,
+        request: ccc20200701_models.GetSchemaRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.GetSchemaResponse:
+        """
+        @param request: GetSchemaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSchemaResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.request_id):
+            body['RequestId'] = request.request_id
+        if not UtilClient.is_unset(request.schema_id):
+            body['SchemaId'] = request.schema_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetSchema',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.GetSchemaResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_schema_with_options_async(
+        self,
+        request: ccc20200701_models.GetSchemaRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.GetSchemaResponse:
+        """
+        @param request: GetSchemaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSchemaResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.request_id):
+            body['RequestId'] = request.request_id
+        if not UtilClient.is_unset(request.schema_id):
+            body['SchemaId'] = request.schema_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetSchema',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.GetSchemaResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_schema(
+        self,
+        request: ccc20200701_models.GetSchemaRequest,
+    ) -> ccc20200701_models.GetSchemaResponse:
+        """
+        @param request: GetSchemaRequest
+        @return: GetSchemaResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_schema_with_options(request, runtime)
+
+    async def get_schema_async(
+        self,
+        request: ccc20200701_models.GetSchemaRequest,
+    ) -> ccc20200701_models.GetSchemaResponse:
+        """
+        @param request: GetSchemaRequest
+        @return: GetSchemaResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_schema_with_options_async(request, runtime)
 
     def get_skill_group_with_options(
         self,
         request: ccc20200701_models.GetSkillGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.GetSkillGroupResponse:
+        """
+        @summary 查询技能组
+        
+        @param request: GetSkillGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSkillGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -5180,6 +6815,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.GetSkillGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.GetSkillGroupResponse:
+        """
+        @summary 查询技能组
+        
+        @param request: GetSkillGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSkillGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -5209,6 +6851,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.GetSkillGroupRequest,
     ) -> ccc20200701_models.GetSkillGroupResponse:
+        """
+        @summary 查询技能组
+        
+        @param request: GetSkillGroupRequest
+        @return: GetSkillGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_skill_group_with_options(request, runtime)
 
@@ -5216,6 +6864,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.GetSkillGroupRequest,
     ) -> ccc20200701_models.GetSkillGroupResponse:
+        """
+        @summary 查询技能组
+        
+        @param request: GetSkillGroupRequest
+        @return: GetSkillGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_skill_group_with_options_async(request, runtime)
 
@@ -5224,6 +6878,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.GetTurnCredentialsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.GetTurnCredentialsResponse:
+        """
+        @param request: GetTurnCredentialsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTurnCredentialsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -5254,6 +6913,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.GetTurnCredentialsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.GetTurnCredentialsResponse:
+        """
+        @param request: GetTurnCredentialsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTurnCredentialsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -5283,6 +6947,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.GetTurnCredentialsRequest,
     ) -> ccc20200701_models.GetTurnCredentialsResponse:
+        """
+        @param request: GetTurnCredentialsRequest
+        @return: GetTurnCredentialsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_turn_credentials_with_options(request, runtime)
 
@@ -5290,6 +6958,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.GetTurnCredentialsRequest,
     ) -> ccc20200701_models.GetTurnCredentialsResponse:
+        """
+        @param request: GetTurnCredentialsRequest
+        @return: GetTurnCredentialsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_turn_credentials_with_options_async(request, runtime)
 
@@ -5298,6 +6970,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.GetTurnServerListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.GetTurnServerListResponse:
+        """
+        @param request: GetTurnServerListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTurnServerListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -5326,6 +7003,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.GetTurnServerListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.GetTurnServerListResponse:
+        """
+        @param request: GetTurnServerListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTurnServerListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -5353,6 +7035,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.GetTurnServerListRequest,
     ) -> ccc20200701_models.GetTurnServerListResponse:
+        """
+        @param request: GetTurnServerListRequest
+        @return: GetTurnServerListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_turn_server_list_with_options(request, runtime)
 
@@ -5360,6 +7046,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.GetTurnServerListRequest,
     ) -> ccc20200701_models.GetTurnServerListResponse:
+        """
+        @param request: GetTurnServerListRequest
+        @return: GetTurnServerListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_turn_server_list_with_options_async(request, runtime)
 
@@ -5368,6 +7058,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.GetUploadAudioDataParamsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.GetUploadAudioDataParamsResponse:
+        """
+        @summary 获取质检参数
+        
+        @param request: GetUploadAudioDataParamsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetUploadAudioDataParamsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -5394,6 +7091,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.GetUploadAudioDataParamsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.GetUploadAudioDataParamsResponse:
+        """
+        @summary 获取质检参数
+        
+        @param request: GetUploadAudioDataParamsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetUploadAudioDataParamsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -5419,6 +7123,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.GetUploadAudioDataParamsRequest,
     ) -> ccc20200701_models.GetUploadAudioDataParamsResponse:
+        """
+        @summary 获取质检参数
+        
+        @param request: GetUploadAudioDataParamsRequest
+        @return: GetUploadAudioDataParamsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_upload_audio_data_params_with_options(request, runtime)
 
@@ -5426,6 +7136,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.GetUploadAudioDataParamsRequest,
     ) -> ccc20200701_models.GetUploadAudioDataParamsResponse:
+        """
+        @summary 获取质检参数
+        
+        @param request: GetUploadAudioDataParamsRequest
+        @return: GetUploadAudioDataParamsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_upload_audio_data_params_with_options_async(request, runtime)
 
@@ -5434,6 +7150,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.GetUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.GetUserResponse:
+        """
+        @param request: GetUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetUserResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.extension):
@@ -5466,6 +7187,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.GetUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.GetUserResponse:
+        """
+        @param request: GetUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetUserResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.extension):
@@ -5497,6 +7223,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.GetUserRequest,
     ) -> ccc20200701_models.GetUserResponse:
+        """
+        @param request: GetUserRequest
+        @return: GetUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_user_with_options(request, runtime)
 
@@ -5504,6 +7234,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.GetUserRequest,
     ) -> ccc20200701_models.GetUserResponse:
+        """
+        @param request: GetUserRequest
+        @return: GetUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_user_with_options_async(request, runtime)
 
@@ -5512,6 +7246,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.GetVideoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.GetVideoResponse:
+        """
+        @summary 获取视频
+        
+        @param request: GetVideoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetVideoResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -5538,6 +7279,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.GetVideoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.GetVideoResponse:
+        """
+        @summary 获取视频
+        
+        @param request: GetVideoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetVideoResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -5563,6 +7311,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.GetVideoRequest,
     ) -> ccc20200701_models.GetVideoResponse:
+        """
+        @summary 获取视频
+        
+        @param request: GetVideoRequest
+        @return: GetVideoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_video_with_options(request, runtime)
 
@@ -5570,6 +7324,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.GetVideoRequest,
     ) -> ccc20200701_models.GetVideoResponse:
+        """
+        @summary 获取视频
+        
+        @param request: GetVideoRequest
+        @return: GetVideoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_video_with_options_async(request, runtime)
 
@@ -5578,6 +7338,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.GetVoicemailRecordingRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.GetVoicemailRecordingResponse:
+        """
+        @param request: GetVoicemailRecordingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetVoicemailRecordingResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.contact_id):
@@ -5608,6 +7373,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.GetVoicemailRecordingRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.GetVoicemailRecordingResponse:
+        """
+        @param request: GetVoicemailRecordingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetVoicemailRecordingResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.contact_id):
@@ -5637,6 +7407,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.GetVoicemailRecordingRequest,
     ) -> ccc20200701_models.GetVoicemailRecordingResponse:
+        """
+        @param request: GetVoicemailRecordingRequest
+        @return: GetVoicemailRecordingResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_voicemail_recording_with_options(request, runtime)
 
@@ -5644,6 +7418,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.GetVoicemailRecordingRequest,
     ) -> ccc20200701_models.GetVoicemailRecordingResponse:
+        """
+        @param request: GetVoicemailRecordingRequest
+        @return: GetVoicemailRecordingResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_voicemail_recording_with_options_async(request, runtime)
 
@@ -5652,6 +7430,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.HoldCallRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.HoldCallResponse:
+        """
+        @param request: HoldCallRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: HoldCallResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.channel_id):
@@ -5690,6 +7473,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.HoldCallRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.HoldCallResponse:
+        """
+        @param request: HoldCallRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: HoldCallResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.channel_id):
@@ -5727,6 +7515,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.HoldCallRequest,
     ) -> ccc20200701_models.HoldCallResponse:
+        """
+        @param request: HoldCallRequest
+        @return: HoldCallResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.hold_call_with_options(request, runtime)
 
@@ -5734,6 +7526,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.HoldCallRequest,
     ) -> ccc20200701_models.HoldCallResponse:
+        """
+        @param request: HoldCallRequest
+        @return: HoldCallResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.hold_call_with_options_async(request, runtime)
 
@@ -5742,6 +7538,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ImportAdminsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ImportAdminsResponse:
+        """
+        @param request: ImportAdminsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ImportAdminsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -5772,6 +7573,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ImportAdminsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ImportAdminsResponse:
+        """
+        @param request: ImportAdminsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ImportAdminsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -5801,6 +7607,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ImportAdminsRequest,
     ) -> ccc20200701_models.ImportAdminsResponse:
+        """
+        @param request: ImportAdminsRequest
+        @return: ImportAdminsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.import_admins_with_options(request, runtime)
 
@@ -5808,6 +7618,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ImportAdminsRequest,
     ) -> ccc20200701_models.ImportAdminsResponse:
+        """
+        @param request: ImportAdminsRequest
+        @return: ImportAdminsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.import_admins_with_options_async(request, runtime)
 
@@ -5817,7 +7631,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ImportCustomCallTaggingResponse:
         """
-        @deprecated : ImportCustomCallTagging is deprecated, please use CCC::2020-07-01::ImportCustomCallTaggings instead.
+        @deprecated OpenAPI ImportCustomCallTagging is deprecated, please use CCC::2020-07-01::ImportCustomCallTaggings instead.
+        
+        @summary 文件导入呼入控制号码
         
         @param request: ImportCustomCallTaggingRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5855,7 +7671,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ImportCustomCallTaggingResponse:
         """
-        @deprecated : ImportCustomCallTagging is deprecated, please use CCC::2020-07-01::ImportCustomCallTaggings instead.
+        @deprecated OpenAPI ImportCustomCallTagging is deprecated, please use CCC::2020-07-01::ImportCustomCallTaggings instead.
+        
+        @summary 文件导入呼入控制号码
         
         @param request: ImportCustomCallTaggingRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5892,7 +7710,9 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ImportCustomCallTaggingRequest,
     ) -> ccc20200701_models.ImportCustomCallTaggingResponse:
         """
-        @deprecated : ImportCustomCallTagging is deprecated, please use CCC::2020-07-01::ImportCustomCallTaggings instead.
+        @deprecated OpenAPI ImportCustomCallTagging is deprecated, please use CCC::2020-07-01::ImportCustomCallTaggings instead.
+        
+        @summary 文件导入呼入控制号码
         
         @param request: ImportCustomCallTaggingRequest
         @return: ImportCustomCallTaggingResponse
@@ -5906,7 +7726,9 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ImportCustomCallTaggingRequest,
     ) -> ccc20200701_models.ImportCustomCallTaggingResponse:
         """
-        @deprecated : ImportCustomCallTagging is deprecated, please use CCC::2020-07-01::ImportCustomCallTaggings instead.
+        @deprecated OpenAPI ImportCustomCallTagging is deprecated, please use CCC::2020-07-01::ImportCustomCallTaggings instead.
+        
+        @summary 文件导入呼入控制号码
         
         @param request: ImportCustomCallTaggingRequest
         @return: ImportCustomCallTaggingResponse
@@ -5920,6 +7742,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ImportDoNotCallNumbersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ImportDoNotCallNumbersResponse:
+        """
+        @summary 添加黑名单号码
+        
+        @param request: ImportDoNotCallNumbersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ImportDoNotCallNumbersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.file_path):
@@ -5954,6 +7783,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ImportDoNotCallNumbersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ImportDoNotCallNumbersResponse:
+        """
+        @summary 添加黑名单号码
+        
+        @param request: ImportDoNotCallNumbersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ImportDoNotCallNumbersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.file_path):
@@ -5987,6 +7823,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ImportDoNotCallNumbersRequest,
     ) -> ccc20200701_models.ImportDoNotCallNumbersResponse:
+        """
+        @summary 添加黑名单号码
+        
+        @param request: ImportDoNotCallNumbersRequest
+        @return: ImportDoNotCallNumbersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.import_do_not_call_numbers_with_options(request, runtime)
 
@@ -5994,6 +7836,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ImportDoNotCallNumbersRequest,
     ) -> ccc20200701_models.ImportDoNotCallNumbersResponse:
+        """
+        @summary 添加黑名单号码
+        
+        @param request: ImportDoNotCallNumbersRequest
+        @return: ImportDoNotCallNumbersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.import_do_not_call_numbers_with_options_async(request, runtime)
 
@@ -6002,6 +7850,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.InitiateAttendedTransferRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.InitiateAttendedTransferResponse:
+        """
+        @param request: InitiateAttendedTransferRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InitiateAttendedTransferResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.call_priority):
@@ -6058,6 +7911,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.InitiateAttendedTransferRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.InitiateAttendedTransferResponse:
+        """
+        @param request: InitiateAttendedTransferRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InitiateAttendedTransferResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.call_priority):
@@ -6113,6 +7971,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.InitiateAttendedTransferRequest,
     ) -> ccc20200701_models.InitiateAttendedTransferResponse:
+        """
+        @param request: InitiateAttendedTransferRequest
+        @return: InitiateAttendedTransferResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.initiate_attended_transfer_with_options(request, runtime)
 
@@ -6120,6 +7982,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.InitiateAttendedTransferRequest,
     ) -> ccc20200701_models.InitiateAttendedTransferResponse:
+        """
+        @param request: InitiateAttendedTransferRequest
+        @return: InitiateAttendedTransferResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.initiate_attended_transfer_with_options_async(request, runtime)
 
@@ -6128,6 +7994,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.InterceptCallRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.InterceptCallResponse:
+        """
+        @param request: InterceptCallRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InterceptCallResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_id):
@@ -6166,6 +8037,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.InterceptCallRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.InterceptCallResponse:
+        """
+        @param request: InterceptCallRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InterceptCallResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_id):
@@ -6203,6 +8079,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.InterceptCallRequest,
     ) -> ccc20200701_models.InterceptCallResponse:
+        """
+        @param request: InterceptCallRequest
+        @return: InterceptCallResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.intercept_call_with_options(request, runtime)
 
@@ -6210,6 +8090,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.InterceptCallRequest,
     ) -> ccc20200701_models.InterceptCallResponse:
+        """
+        @param request: InterceptCallRequest
+        @return: InterceptCallResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.intercept_call_with_options_async(request, runtime)
 
@@ -6218,6 +8102,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.LaunchAuthenticationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.LaunchAuthenticationResponse:
+        """
+        @param request: LaunchAuthenticationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: LaunchAuthenticationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.contact_flow_id):
@@ -6256,6 +8145,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.LaunchAuthenticationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.LaunchAuthenticationResponse:
+        """
+        @param request: LaunchAuthenticationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: LaunchAuthenticationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.contact_flow_id):
@@ -6293,6 +8187,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.LaunchAuthenticationRequest,
     ) -> ccc20200701_models.LaunchAuthenticationResponse:
+        """
+        @param request: LaunchAuthenticationRequest
+        @return: LaunchAuthenticationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.launch_authentication_with_options(request, runtime)
 
@@ -6300,6 +8198,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.LaunchAuthenticationRequest,
     ) -> ccc20200701_models.LaunchAuthenticationResponse:
+        """
+        @param request: LaunchAuthenticationRequest
+        @return: LaunchAuthenticationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.launch_authentication_with_options_async(request, runtime)
 
@@ -6308,6 +8210,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.LaunchSurveyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.LaunchSurveyResponse:
+        """
+        @param request: LaunchSurveyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: LaunchSurveyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.contact_flow_id):
@@ -6350,6 +8257,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.LaunchSurveyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.LaunchSurveyResponse:
+        """
+        @param request: LaunchSurveyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: LaunchSurveyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.contact_flow_id):
@@ -6391,6 +8303,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.LaunchSurveyRequest,
     ) -> ccc20200701_models.LaunchSurveyResponse:
+        """
+        @param request: LaunchSurveyRequest
+        @return: LaunchSurveyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.launch_survey_with_options(request, runtime)
 
@@ -6398,6 +8314,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.LaunchSurveyRequest,
     ) -> ccc20200701_models.LaunchSurveyResponse:
+        """
+        @param request: LaunchSurveyRequest
+        @return: LaunchSurveyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.launch_survey_with_options_async(request, runtime)
 
@@ -6406,6 +8326,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListAgentStateLogsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListAgentStateLogsResponse:
+        """
+        @param request: ListAgentStateLogsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAgentStateLogsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_id):
@@ -6440,6 +8365,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListAgentStateLogsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListAgentStateLogsResponse:
+        """
+        @param request: ListAgentStateLogsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAgentStateLogsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_id):
@@ -6473,6 +8403,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListAgentStateLogsRequest,
     ) -> ccc20200701_models.ListAgentStateLogsResponse:
+        """
+        @param request: ListAgentStateLogsRequest
+        @return: ListAgentStateLogsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_agent_state_logs_with_options(request, runtime)
 
@@ -6480,6 +8414,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListAgentStateLogsRequest,
     ) -> ccc20200701_models.ListAgentStateLogsResponse:
+        """
+        @param request: ListAgentStateLogsRequest
+        @return: ListAgentStateLogsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_agent_state_logs_with_options_async(request, runtime)
 
@@ -6489,7 +8427,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListAgentStatesResponse:
         """
-        @deprecated : ListAgentStates is deprecated, please use CCC::2020-07-01::ListRealtimeAgentStates instead.
+        @deprecated OpenAPI ListAgentStates is deprecated, please use CCC::2020-07-01::ListRealtimeAgentStates instead.
+        
+        @summary ListAgentStates for ACC
         
         @param request: ListAgentStatesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6537,7 +8477,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListAgentStatesResponse:
         """
-        @deprecated : ListAgentStates is deprecated, please use CCC::2020-07-01::ListRealtimeAgentStates instead.
+        @deprecated OpenAPI ListAgentStates is deprecated, please use CCC::2020-07-01::ListRealtimeAgentStates instead.
+        
+        @summary ListAgentStates for ACC
         
         @param request: ListAgentStatesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6584,7 +8526,9 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListAgentStatesRequest,
     ) -> ccc20200701_models.ListAgentStatesResponse:
         """
-        @deprecated : ListAgentStates is deprecated, please use CCC::2020-07-01::ListRealtimeAgentStates instead.
+        @deprecated OpenAPI ListAgentStates is deprecated, please use CCC::2020-07-01::ListRealtimeAgentStates instead.
+        
+        @summary ListAgentStates for ACC
         
         @param request: ListAgentStatesRequest
         @return: ListAgentStatesResponse
@@ -6598,7 +8542,9 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListAgentStatesRequest,
     ) -> ccc20200701_models.ListAgentStatesResponse:
         """
-        @deprecated : ListAgentStates is deprecated, please use CCC::2020-07-01::ListRealtimeAgentStates instead.
+        @deprecated OpenAPI ListAgentStates is deprecated, please use CCC::2020-07-01::ListRealtimeAgentStates instead.
+        
+        @summary ListAgentStates for ACC
         
         @param request: ListAgentStatesRequest
         @return: ListAgentStatesResponse
@@ -6613,7 +8559,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListAgentSummaryReportsSinceMidnightResponse:
         """
-        @deprecated : ListAgentSummaryReportsSinceMidnight is deprecated, please use CCC::2020-07-01::ListHistoricalAgentReport instead.
+        @deprecated OpenAPI ListAgentSummaryReportsSinceMidnight is deprecated, please use CCC::2020-07-01::ListHistoricalAgentReport instead.
+        
+        @summary ListAgentSummaryReportsSinceMidnight for acc
         
         @param request: ListAgentSummaryReportsSinceMidnightRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6647,7 +8595,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListAgentSummaryReportsSinceMidnightResponse:
         """
-        @deprecated : ListAgentSummaryReportsSinceMidnight is deprecated, please use CCC::2020-07-01::ListHistoricalAgentReport instead.
+        @deprecated OpenAPI ListAgentSummaryReportsSinceMidnight is deprecated, please use CCC::2020-07-01::ListHistoricalAgentReport instead.
+        
+        @summary ListAgentSummaryReportsSinceMidnight for acc
         
         @param request: ListAgentSummaryReportsSinceMidnightRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6680,7 +8630,9 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListAgentSummaryReportsSinceMidnightRequest,
     ) -> ccc20200701_models.ListAgentSummaryReportsSinceMidnightResponse:
         """
-        @deprecated : ListAgentSummaryReportsSinceMidnight is deprecated, please use CCC::2020-07-01::ListHistoricalAgentReport instead.
+        @deprecated OpenAPI ListAgentSummaryReportsSinceMidnight is deprecated, please use CCC::2020-07-01::ListHistoricalAgentReport instead.
+        
+        @summary ListAgentSummaryReportsSinceMidnight for acc
         
         @param request: ListAgentSummaryReportsSinceMidnightRequest
         @return: ListAgentSummaryReportsSinceMidnightResponse
@@ -6694,7 +8646,9 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListAgentSummaryReportsSinceMidnightRequest,
     ) -> ccc20200701_models.ListAgentSummaryReportsSinceMidnightResponse:
         """
-        @deprecated : ListAgentSummaryReportsSinceMidnight is deprecated, please use CCC::2020-07-01::ListHistoricalAgentReport instead.
+        @deprecated OpenAPI ListAgentSummaryReportsSinceMidnight is deprecated, please use CCC::2020-07-01::ListHistoricalAgentReport instead.
+        
+        @summary ListAgentSummaryReportsSinceMidnight for acc
         
         @param request: ListAgentSummaryReportsSinceMidnightRequest
         @return: ListAgentSummaryReportsSinceMidnightResponse
@@ -6708,6 +8662,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListAttemptsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListAttemptsResponse:
+        """
+        @summary 获取预测式外呼呼叫记录
+        
+        @param request: ListAttemptsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAttemptsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -6734,6 +8695,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListAttemptsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListAttemptsResponse:
+        """
+        @summary 获取预测式外呼呼叫记录
+        
+        @param request: ListAttemptsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAttemptsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -6759,6 +8727,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListAttemptsRequest,
     ) -> ccc20200701_models.ListAttemptsResponse:
+        """
+        @summary 获取预测式外呼呼叫记录
+        
+        @param request: ListAttemptsRequest
+        @return: ListAttemptsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_attempts_with_options(request, runtime)
 
@@ -6766,6 +8740,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListAttemptsRequest,
     ) -> ccc20200701_models.ListAttemptsResponse:
+        """
+        @summary 获取预测式外呼呼叫记录
+        
+        @param request: ListAttemptsRequest
+        @return: ListAttemptsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_attempts_with_options_async(request, runtime)
 
@@ -6774,6 +8754,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListAudioFilesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListAudioFilesResponse:
+        """
+        @summary 获取音频文件列表
+        
+        @param request: ListAudioFilesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAudioFilesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -6810,6 +8797,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListAudioFilesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListAudioFilesResponse:
+        """
+        @summary 获取音频文件列表
+        
+        @param request: ListAudioFilesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAudioFilesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -6845,6 +8839,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListAudioFilesRequest,
     ) -> ccc20200701_models.ListAudioFilesResponse:
+        """
+        @summary 获取音频文件列表
+        
+        @param request: ListAudioFilesRequest
+        @return: ListAudioFilesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_audio_files_with_options(request, runtime)
 
@@ -6852,6 +8852,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListAudioFilesRequest,
     ) -> ccc20200701_models.ListAudioFilesResponse:
+        """
+        @summary 获取音频文件列表
+        
+        @param request: ListAudioFilesRequest
+        @return: ListAudioFilesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_audio_files_with_options_async(request, runtime)
 
@@ -6860,6 +8866,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListBlacklistCallTaggingsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListBlacklistCallTaggingsResponse:
+        """
+        @summary 编辑呼入控制号码
+        
+        @param request: ListBlacklistCallTaggingsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListBlacklistCallTaggingsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -6890,6 +8903,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListBlacklistCallTaggingsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListBlacklistCallTaggingsResponse:
+        """
+        @summary 编辑呼入控制号码
+        
+        @param request: ListBlacklistCallTaggingsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListBlacklistCallTaggingsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -6919,6 +8939,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListBlacklistCallTaggingsRequest,
     ) -> ccc20200701_models.ListBlacklistCallTaggingsResponse:
+        """
+        @summary 编辑呼入控制号码
+        
+        @param request: ListBlacklistCallTaggingsRequest
+        @return: ListBlacklistCallTaggingsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_blacklist_call_taggings_with_options(request, runtime)
 
@@ -6926,6 +8952,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListBlacklistCallTaggingsRequest,
     ) -> ccc20200701_models.ListBlacklistCallTaggingsResponse:
+        """
+        @summary 编辑呼入控制号码
+        
+        @param request: ListBlacklistCallTaggingsRequest
+        @return: ListBlacklistCallTaggingsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_blacklist_call_taggings_with_options_async(request, runtime)
 
@@ -6934,6 +8966,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListBriefSkillGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListBriefSkillGroupsResponse:
+        """
+        @param request: ListBriefSkillGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListBriefSkillGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -6970,6 +9007,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListBriefSkillGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListBriefSkillGroupsResponse:
+        """
+        @param request: ListBriefSkillGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListBriefSkillGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -7005,6 +9047,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListBriefSkillGroupsRequest,
     ) -> ccc20200701_models.ListBriefSkillGroupsResponse:
+        """
+        @param request: ListBriefSkillGroupsRequest
+        @return: ListBriefSkillGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_brief_skill_groups_with_options(request, runtime)
 
@@ -7012,6 +9058,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListBriefSkillGroupsRequest,
     ) -> ccc20200701_models.ListBriefSkillGroupsResponse:
+        """
+        @param request: ListBriefSkillGroupsRequest
+        @return: ListBriefSkillGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_brief_skill_groups_with_options_async(request, runtime)
 
@@ -7020,6 +9070,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListCallDetailRecordsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListCallDetailRecordsResponse:
+        """
+        @param request: ListCallDetailRecordsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCallDetailRecordsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_id):
@@ -7088,6 +9143,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListCallDetailRecordsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListCallDetailRecordsResponse:
+        """
+        @param request: ListCallDetailRecordsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCallDetailRecordsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_id):
@@ -7155,6 +9215,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListCallDetailRecordsRequest,
     ) -> ccc20200701_models.ListCallDetailRecordsResponse:
+        """
+        @param request: ListCallDetailRecordsRequest
+        @return: ListCallDetailRecordsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_call_detail_records_with_options(request, runtime)
 
@@ -7162,6 +9226,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListCallDetailRecordsRequest,
     ) -> ccc20200701_models.ListCallDetailRecordsResponse:
+        """
+        @param request: ListCallDetailRecordsRequest
+        @return: ListCallDetailRecordsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_call_detail_records_with_options_async(request, runtime)
 
@@ -7170,6 +9238,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListCallTagsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListCallTagsResponse:
+        """
+        @summary 列出号码标签
+        
+        @param request: ListCallTagsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCallTagsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -7202,6 +9277,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListCallTagsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListCallTagsResponse:
+        """
+        @summary 列出号码标签
+        
+        @param request: ListCallTagsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCallTagsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -7233,6 +9315,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListCallTagsRequest,
     ) -> ccc20200701_models.ListCallTagsResponse:
+        """
+        @summary 列出号码标签
+        
+        @param request: ListCallTagsRequest
+        @return: ListCallTagsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_call_tags_with_options(request, runtime)
 
@@ -7240,6 +9328,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListCallTagsRequest,
     ) -> ccc20200701_models.ListCallTagsResponse:
+        """
+        @summary 列出号码标签
+        
+        @param request: ListCallTagsRequest
+        @return: ListCallTagsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_call_tags_with_options_async(request, runtime)
 
@@ -7248,6 +9342,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListCampaignTrendingReportRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListCampaignTrendingReportResponse:
+        """
+        @summary 获取预测式外呼活动趋势报表
+        
+        @param request: ListCampaignTrendingReportRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCampaignTrendingReportResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -7274,6 +9375,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListCampaignTrendingReportRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListCampaignTrendingReportResponse:
+        """
+        @summary 获取预测式外呼活动趋势报表
+        
+        @param request: ListCampaignTrendingReportRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCampaignTrendingReportResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -7299,6 +9407,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListCampaignTrendingReportRequest,
     ) -> ccc20200701_models.ListCampaignTrendingReportResponse:
+        """
+        @summary 获取预测式外呼活动趋势报表
+        
+        @param request: ListCampaignTrendingReportRequest
+        @return: ListCampaignTrendingReportResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_campaign_trending_report_with_options(request, runtime)
 
@@ -7306,6 +9420,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListCampaignTrendingReportRequest,
     ) -> ccc20200701_models.ListCampaignTrendingReportResponse:
+        """
+        @summary 获取预测式外呼活动趋势报表
+        
+        @param request: ListCampaignTrendingReportRequest
+        @return: ListCampaignTrendingReportResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_campaign_trending_report_with_options_async(request, runtime)
 
@@ -7314,6 +9434,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListCampaignsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListCampaignsResponse:
+        """
+        @summary 获取预测式外呼活动列表
+        
+        @param request: ListCampaignsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCampaignsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.actual_start_time_from):
@@ -7360,6 +9487,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListCampaignsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListCampaignsResponse:
+        """
+        @summary 获取预测式外呼活动列表
+        
+        @param request: ListCampaignsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCampaignsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.actual_start_time_from):
@@ -7405,6 +9539,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListCampaignsRequest,
     ) -> ccc20200701_models.ListCampaignsResponse:
+        """
+        @summary 获取预测式外呼活动列表
+        
+        @param request: ListCampaignsRequest
+        @return: ListCampaignsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_campaigns_with_options(request, runtime)
 
@@ -7412,6 +9552,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListCampaignsRequest,
     ) -> ccc20200701_models.ListCampaignsResponse:
+        """
+        @summary 获取预测式外呼活动列表
+        
+        @param request: ListCampaignsRequest
+        @return: ListCampaignsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_campaigns_with_options_async(request, runtime)
 
@@ -7420,6 +9566,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListCasesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListCasesResponse:
+        """
+        @summary 获取预测式外呼活动的联系人呼叫详情
+        
+        @param request: ListCasesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCasesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.campaign_id):
@@ -7458,6 +9611,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListCasesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListCasesResponse:
+        """
+        @summary 获取预测式外呼活动的联系人呼叫详情
+        
+        @param request: ListCasesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCasesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.campaign_id):
@@ -7495,6 +9655,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListCasesRequest,
     ) -> ccc20200701_models.ListCasesResponse:
+        """
+        @summary 获取预测式外呼活动的联系人呼叫详情
+        
+        @param request: ListCasesRequest
+        @return: ListCasesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_cases_with_options(request, runtime)
 
@@ -7502,6 +9668,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListCasesRequest,
     ) -> ccc20200701_models.ListCasesResponse:
+        """
+        @summary 获取预测式外呼活动的联系人呼叫详情
+        
+        @param request: ListCasesRequest
+        @return: ListCasesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_cases_with_options_async(request, runtime)
 
@@ -7510,6 +9682,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListConfigItemsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListConfigItemsResponse:
+        """
+        @param request: ListConfigItemsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListConfigItemsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -7542,6 +9719,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListConfigItemsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListConfigItemsResponse:
+        """
+        @param request: ListConfigItemsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListConfigItemsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -7573,6 +9755,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListConfigItemsRequest,
     ) -> ccc20200701_models.ListConfigItemsResponse:
+        """
+        @param request: ListConfigItemsRequest
+        @return: ListConfigItemsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_config_items_with_options(request, runtime)
 
@@ -7580,6 +9766,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListConfigItemsRequest,
     ) -> ccc20200701_models.ListConfigItemsResponse:
+        """
+        @param request: ListConfigItemsRequest
+        @return: ListConfigItemsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_config_items_with_options_async(request, runtime)
 
@@ -7588,6 +9778,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListContactFlowsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListContactFlowsResponse:
+        """
+        @param request: ListContactFlowsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListContactFlowsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -7626,6 +9821,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListContactFlowsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListContactFlowsResponse:
+        """
+        @param request: ListContactFlowsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListContactFlowsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -7663,6 +9863,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListContactFlowsRequest,
     ) -> ccc20200701_models.ListContactFlowsResponse:
+        """
+        @param request: ListContactFlowsRequest
+        @return: ListContactFlowsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_contact_flows_with_options(request, runtime)
 
@@ -7670,6 +9874,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListContactFlowsRequest,
     ) -> ccc20200701_models.ListContactFlowsResponse:
+        """
+        @param request: ListContactFlowsRequest
+        @return: ListContactFlowsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_contact_flows_with_options_async(request, runtime)
 
@@ -7679,7 +9887,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListCustomCallTaggingResponse:
         """
-        @deprecated : ListCustomCallTagging is deprecated, please use CCC::2020-07-01::ListCustomCallTaggings instead.
+        @deprecated OpenAPI ListCustomCallTagging is deprecated, please use CCC::2020-07-01::ListCustomCallTaggings instead.
+        
+        @summary 列出呼入控制号码
         
         @param request: ListCustomCallTaggingRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7723,7 +9933,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListCustomCallTaggingResponse:
         """
-        @deprecated : ListCustomCallTagging is deprecated, please use CCC::2020-07-01::ListCustomCallTaggings instead.
+        @deprecated OpenAPI ListCustomCallTagging is deprecated, please use CCC::2020-07-01::ListCustomCallTaggings instead.
+        
+        @summary 列出呼入控制号码
         
         @param request: ListCustomCallTaggingRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7766,7 +9978,9 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListCustomCallTaggingRequest,
     ) -> ccc20200701_models.ListCustomCallTaggingResponse:
         """
-        @deprecated : ListCustomCallTagging is deprecated, please use CCC::2020-07-01::ListCustomCallTaggings instead.
+        @deprecated OpenAPI ListCustomCallTagging is deprecated, please use CCC::2020-07-01::ListCustomCallTaggings instead.
+        
+        @summary 列出呼入控制号码
         
         @param request: ListCustomCallTaggingRequest
         @return: ListCustomCallTaggingResponse
@@ -7780,7 +9994,9 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListCustomCallTaggingRequest,
     ) -> ccc20200701_models.ListCustomCallTaggingResponse:
         """
-        @deprecated : ListCustomCallTagging is deprecated, please use CCC::2020-07-01::ListCustomCallTaggings instead.
+        @deprecated OpenAPI ListCustomCallTagging is deprecated, please use CCC::2020-07-01::ListCustomCallTaggings instead.
+        
+        @summary 列出呼入控制号码
         
         @param request: ListCustomCallTaggingRequest
         @return: ListCustomCallTaggingResponse
@@ -7794,6 +10010,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListDevicesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListDevicesResponse:
+        """
+        @param request: ListDevicesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDevicesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -7824,6 +10045,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListDevicesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListDevicesResponse:
+        """
+        @param request: ListDevicesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDevicesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -7853,6 +10079,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListDevicesRequest,
     ) -> ccc20200701_models.ListDevicesResponse:
+        """
+        @param request: ListDevicesRequest
+        @return: ListDevicesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_devices_with_options(request, runtime)
 
@@ -7860,6 +10090,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListDevicesRequest,
     ) -> ccc20200701_models.ListDevicesResponse:
+        """
+        @param request: ListDevicesRequest
+        @return: ListDevicesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_devices_with_options_async(request, runtime)
 
@@ -7868,6 +10102,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListDoNotCallNumbersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListDoNotCallNumbersResponse:
+        """
+        @summary 查询黑名单号码
+        
+        @param request: ListDoNotCallNumbersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDoNotCallNumbersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -7904,6 +10145,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListDoNotCallNumbersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListDoNotCallNumbersResponse:
+        """
+        @summary 查询黑名单号码
+        
+        @param request: ListDoNotCallNumbersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDoNotCallNumbersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -7939,6 +10187,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListDoNotCallNumbersRequest,
     ) -> ccc20200701_models.ListDoNotCallNumbersResponse:
+        """
+        @summary 查询黑名单号码
+        
+        @param request: ListDoNotCallNumbersRequest
+        @return: ListDoNotCallNumbersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_do_not_call_numbers_with_options(request, runtime)
 
@@ -7946,6 +10200,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListDoNotCallNumbersRequest,
     ) -> ccc20200701_models.ListDoNotCallNumbersResponse:
+        """
+        @summary 查询黑名单号码
+        
+        @param request: ListDoNotCallNumbersRequest
+        @return: ListDoNotCallNumbersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_do_not_call_numbers_with_options_async(request, runtime)
 
@@ -7954,6 +10214,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListHistoricalAgentReportRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListHistoricalAgentReportResponse:
+        """
+        @param request: ListHistoricalAgentReportRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListHistoricalAgentReportResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -7998,6 +10263,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListHistoricalAgentReportRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListHistoricalAgentReportResponse:
+        """
+        @param request: ListHistoricalAgentReportRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListHistoricalAgentReportResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -8041,6 +10311,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListHistoricalAgentReportRequest,
     ) -> ccc20200701_models.ListHistoricalAgentReportResponse:
+        """
+        @param request: ListHistoricalAgentReportRequest
+        @return: ListHistoricalAgentReportResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_historical_agent_report_with_options(request, runtime)
 
@@ -8048,6 +10322,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListHistoricalAgentReportRequest,
     ) -> ccc20200701_models.ListHistoricalAgentReportResponse:
+        """
+        @param request: ListHistoricalAgentReportRequest
+        @return: ListHistoricalAgentReportResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_historical_agent_report_with_options_async(request, runtime)
 
@@ -8056,6 +10334,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListHistoricalAgentSkillGroupReportRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListHistoricalAgentSkillGroupReportResponse:
+        """
+        @summary ListHistoricalAgentSkillGroupReport
+        
+        @param request: ListHistoricalAgentSkillGroupReportRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListHistoricalAgentSkillGroupReportResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -8100,6 +10385,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListHistoricalAgentSkillGroupReportRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListHistoricalAgentSkillGroupReportResponse:
+        """
+        @summary ListHistoricalAgentSkillGroupReport
+        
+        @param request: ListHistoricalAgentSkillGroupReportRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListHistoricalAgentSkillGroupReportResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -8143,6 +10435,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListHistoricalAgentSkillGroupReportRequest,
     ) -> ccc20200701_models.ListHistoricalAgentSkillGroupReportResponse:
+        """
+        @summary ListHistoricalAgentSkillGroupReport
+        
+        @param request: ListHistoricalAgentSkillGroupReportRequest
+        @return: ListHistoricalAgentSkillGroupReportResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_historical_agent_skill_group_report_with_options(request, runtime)
 
@@ -8150,6 +10448,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListHistoricalAgentSkillGroupReportRequest,
     ) -> ccc20200701_models.ListHistoricalAgentSkillGroupReportResponse:
+        """
+        @summary ListHistoricalAgentSkillGroupReport
+        
+        @param request: ListHistoricalAgentSkillGroupReportRequest
+        @return: ListHistoricalAgentSkillGroupReportResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_historical_agent_skill_group_report_with_options_async(request, runtime)
 
@@ -8158,6 +10462,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListHistoricalSkillGroupReportRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListHistoricalSkillGroupReportResponse:
+        """
+        @param request: ListHistoricalSkillGroupReportRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListHistoricalSkillGroupReportResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -8200,6 +10509,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListHistoricalSkillGroupReportRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListHistoricalSkillGroupReportResponse:
+        """
+        @param request: ListHistoricalSkillGroupReportRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListHistoricalSkillGroupReportResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -8241,6 +10555,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListHistoricalSkillGroupReportRequest,
     ) -> ccc20200701_models.ListHistoricalSkillGroupReportResponse:
+        """
+        @param request: ListHistoricalSkillGroupReportRequest
+        @return: ListHistoricalSkillGroupReportResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_historical_skill_group_report_with_options(request, runtime)
 
@@ -8248,6 +10566,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListHistoricalSkillGroupReportRequest,
     ) -> ccc20200701_models.ListHistoricalSkillGroupReportResponse:
+        """
+        @param request: ListHistoricalSkillGroupReportRequest
+        @return: ListHistoricalSkillGroupReportResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_historical_skill_group_report_with_options_async(request, runtime)
 
@@ -8256,6 +10578,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListInstancesResponse:
+        """
+        @param request: ListInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -8286,6 +10613,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListInstancesResponse:
+        """
+        @param request: ListInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -8315,6 +10647,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListInstancesRequest,
     ) -> ccc20200701_models.ListInstancesResponse:
+        """
+        @param request: ListInstancesRequest
+        @return: ListInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_instances_with_options(request, runtime)
 
@@ -8322,6 +10658,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListInstancesRequest,
     ) -> ccc20200701_models.ListInstancesResponse:
+        """
+        @param request: ListInstancesRequest
+        @return: ListInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_instances_with_options_async(request, runtime)
 
@@ -8330,6 +10670,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListInstancesOfUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListInstancesOfUserResponse:
+        """
+        @param request: ListInstancesOfUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInstancesOfUserResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -8360,6 +10705,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListInstancesOfUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListInstancesOfUserResponse:
+        """
+        @param request: ListInstancesOfUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInstancesOfUserResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -8389,6 +10739,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListInstancesOfUserRequest,
     ) -> ccc20200701_models.ListInstancesOfUserResponse:
+        """
+        @param request: ListInstancesOfUserRequest
+        @return: ListInstancesOfUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_instances_of_user_with_options(request, runtime)
 
@@ -8396,6 +10750,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListInstancesOfUserRequest,
     ) -> ccc20200701_models.ListInstancesOfUserResponse:
+        """
+        @param request: ListInstancesOfUserRequest
+        @return: ListInstancesOfUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_instances_of_user_with_options_async(request, runtime)
 
@@ -8404,6 +10762,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListIntervalAgentReportRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListIntervalAgentReportResponse:
+        """
+        @param request: ListIntervalAgentReportRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListIntervalAgentReportResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_id):
@@ -8442,6 +10805,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListIntervalAgentReportRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListIntervalAgentReportResponse:
+        """
+        @param request: ListIntervalAgentReportRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListIntervalAgentReportResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_id):
@@ -8479,6 +10847,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListIntervalAgentReportRequest,
     ) -> ccc20200701_models.ListIntervalAgentReportResponse:
+        """
+        @param request: ListIntervalAgentReportRequest
+        @return: ListIntervalAgentReportResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_interval_agent_report_with_options(request, runtime)
 
@@ -8486,6 +10858,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListIntervalAgentReportRequest,
     ) -> ccc20200701_models.ListIntervalAgentReportResponse:
+        """
+        @param request: ListIntervalAgentReportRequest
+        @return: ListIntervalAgentReportResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_interval_agent_report_with_options_async(request, runtime)
 
@@ -8494,6 +10870,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListIntervalAgentSkillGroupReportRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListIntervalAgentSkillGroupReportResponse:
+        """
+        @summary ListIntervalAgentSkillGroupReport
+        
+        @param request: ListIntervalAgentSkillGroupReportRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListIntervalAgentSkillGroupReportResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -8520,6 +10903,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListIntervalAgentSkillGroupReportRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListIntervalAgentSkillGroupReportResponse:
+        """
+        @summary ListIntervalAgentSkillGroupReport
+        
+        @param request: ListIntervalAgentSkillGroupReportRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListIntervalAgentSkillGroupReportResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -8545,6 +10935,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListIntervalAgentSkillGroupReportRequest,
     ) -> ccc20200701_models.ListIntervalAgentSkillGroupReportResponse:
+        """
+        @summary ListIntervalAgentSkillGroupReport
+        
+        @param request: ListIntervalAgentSkillGroupReportRequest
+        @return: ListIntervalAgentSkillGroupReportResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_interval_agent_skill_group_report_with_options(request, runtime)
 
@@ -8552,6 +10948,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListIntervalAgentSkillGroupReportRequest,
     ) -> ccc20200701_models.ListIntervalAgentSkillGroupReportResponse:
+        """
+        @summary ListIntervalAgentSkillGroupReport
+        
+        @param request: ListIntervalAgentSkillGroupReportRequest
+        @return: ListIntervalAgentSkillGroupReportResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_interval_agent_skill_group_report_with_options_async(request, runtime)
 
@@ -8560,6 +10962,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListIntervalInstanceReportRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListIntervalInstanceReportResponse:
+        """
+        @param request: ListIntervalInstanceReportRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListIntervalInstanceReportResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -8594,6 +11001,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListIntervalInstanceReportRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListIntervalInstanceReportResponse:
+        """
+        @param request: ListIntervalInstanceReportRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListIntervalInstanceReportResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -8627,6 +11039,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListIntervalInstanceReportRequest,
     ) -> ccc20200701_models.ListIntervalInstanceReportResponse:
+        """
+        @param request: ListIntervalInstanceReportRequest
+        @return: ListIntervalInstanceReportResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_interval_instance_report_with_options(request, runtime)
 
@@ -8634,6 +11050,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListIntervalInstanceReportRequest,
     ) -> ccc20200701_models.ListIntervalInstanceReportResponse:
+        """
+        @param request: ListIntervalInstanceReportRequest
+        @return: ListIntervalInstanceReportResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_interval_instance_report_with_options_async(request, runtime)
 
@@ -8642,6 +11062,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListIntervalSkillGroupReportRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListIntervalSkillGroupReportResponse:
+        """
+        @param request: ListIntervalSkillGroupReportRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListIntervalSkillGroupReportResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -8680,6 +11105,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListIntervalSkillGroupReportRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListIntervalSkillGroupReportResponse:
+        """
+        @param request: ListIntervalSkillGroupReportRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListIntervalSkillGroupReportResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -8717,6 +11147,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListIntervalSkillGroupReportRequest,
     ) -> ccc20200701_models.ListIntervalSkillGroupReportResponse:
+        """
+        @param request: ListIntervalSkillGroupReportRequest
+        @return: ListIntervalSkillGroupReportResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_interval_skill_group_report_with_options(request, runtime)
 
@@ -8724,6 +11158,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListIntervalSkillGroupReportRequest,
     ) -> ccc20200701_models.ListIntervalSkillGroupReportResponse:
+        """
+        @param request: ListIntervalSkillGroupReportRequest
+        @return: ListIntervalSkillGroupReportResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_interval_skill_group_report_with_options_async(request, runtime)
 
@@ -8732,6 +11170,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListIvrTrackingDetailsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListIvrTrackingDetailsResponse:
+        """
+        @param request: ListIvrTrackingDetailsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListIvrTrackingDetailsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.contact_id):
@@ -8766,6 +11209,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListIvrTrackingDetailsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListIvrTrackingDetailsResponse:
+        """
+        @param request: ListIvrTrackingDetailsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListIvrTrackingDetailsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.contact_id):
@@ -8799,6 +11247,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListIvrTrackingDetailsRequest,
     ) -> ccc20200701_models.ListIvrTrackingDetailsResponse:
+        """
+        @param request: ListIvrTrackingDetailsRequest
+        @return: ListIvrTrackingDetailsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_ivr_tracking_details_with_options(request, runtime)
 
@@ -8806,6 +11258,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListIvrTrackingDetailsRequest,
     ) -> ccc20200701_models.ListIvrTrackingDetailsResponse:
+        """
+        @param request: ListIvrTrackingDetailsRequest
+        @return: ListIvrTrackingDetailsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_ivr_tracking_details_with_options_async(request, runtime)
 
@@ -8814,6 +11270,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListLegacyAgentEventLogsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListLegacyAgentEventLogsResponse:
+        """
+        @summary ListLegacyAgentEventLogs
+        
+        @param request: ListLegacyAgentEventLogsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListLegacyAgentEventLogsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_id):
@@ -8852,6 +11315,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListLegacyAgentEventLogsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListLegacyAgentEventLogsResponse:
+        """
+        @summary ListLegacyAgentEventLogs
+        
+        @param request: ListLegacyAgentEventLogsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListLegacyAgentEventLogsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_id):
@@ -8889,6 +11359,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListLegacyAgentEventLogsRequest,
     ) -> ccc20200701_models.ListLegacyAgentEventLogsResponse:
+        """
+        @summary ListLegacyAgentEventLogs
+        
+        @param request: ListLegacyAgentEventLogsRequest
+        @return: ListLegacyAgentEventLogsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_legacy_agent_event_logs_with_options(request, runtime)
 
@@ -8896,6 +11372,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListLegacyAgentEventLogsRequest,
     ) -> ccc20200701_models.ListLegacyAgentEventLogsResponse:
+        """
+        @summary ListLegacyAgentEventLogs
+        
+        @param request: ListLegacyAgentEventLogsRequest
+        @return: ListLegacyAgentEventLogsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_legacy_agent_event_logs_with_options_async(request, runtime)
 
@@ -8904,6 +11386,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListLegacyAgentStatusLogsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListLegacyAgentStatusLogsResponse:
+        """
+        @summary ListLegacyAgentStatusLogs
+        
+        @param request: ListLegacyAgentStatusLogsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListLegacyAgentStatusLogsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_id):
@@ -8942,6 +11431,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListLegacyAgentStatusLogsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListLegacyAgentStatusLogsResponse:
+        """
+        @summary ListLegacyAgentStatusLogs
+        
+        @param request: ListLegacyAgentStatusLogsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListLegacyAgentStatusLogsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_id):
@@ -8979,6 +11475,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListLegacyAgentStatusLogsRequest,
     ) -> ccc20200701_models.ListLegacyAgentStatusLogsResponse:
+        """
+        @summary ListLegacyAgentStatusLogs
+        
+        @param request: ListLegacyAgentStatusLogsRequest
+        @return: ListLegacyAgentStatusLogsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_legacy_agent_status_logs_with_options(request, runtime)
 
@@ -8986,6 +11488,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListLegacyAgentStatusLogsRequest,
     ) -> ccc20200701_models.ListLegacyAgentStatusLogsResponse:
+        """
+        @summary ListLegacyAgentStatusLogs
+        
+        @param request: ListLegacyAgentStatusLogsRequest
+        @return: ListLegacyAgentStatusLogsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_legacy_agent_status_logs_with_options_async(request, runtime)
 
@@ -8994,6 +11502,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListLegacyAppraiseLogsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListLegacyAppraiseLogsResponse:
+        """
+        @summary ListLegacyAppraiseLogs
+        
+        @param request: ListLegacyAppraiseLogsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListLegacyAppraiseLogsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -9030,6 +11545,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListLegacyAppraiseLogsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListLegacyAppraiseLogsResponse:
+        """
+        @summary ListLegacyAppraiseLogs
+        
+        @param request: ListLegacyAppraiseLogsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListLegacyAppraiseLogsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -9065,6 +11587,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListLegacyAppraiseLogsRequest,
     ) -> ccc20200701_models.ListLegacyAppraiseLogsResponse:
+        """
+        @summary ListLegacyAppraiseLogs
+        
+        @param request: ListLegacyAppraiseLogsRequest
+        @return: ListLegacyAppraiseLogsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_legacy_appraise_logs_with_options(request, runtime)
 
@@ -9072,6 +11600,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListLegacyAppraiseLogsRequest,
     ) -> ccc20200701_models.ListLegacyAppraiseLogsResponse:
+        """
+        @summary ListLegacyAppraiseLogs
+        
+        @param request: ListLegacyAppraiseLogsRequest
+        @return: ListLegacyAppraiseLogsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_legacy_appraise_logs_with_options_async(request, runtime)
 
@@ -9080,6 +11614,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListLegacyQueueEventLogsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListLegacyQueueEventLogsResponse:
+        """
+        @summary ListLegacyQueueEventLogs
+        
+        @param request: ListLegacyQueueEventLogsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListLegacyQueueEventLogsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -9118,6 +11659,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListLegacyQueueEventLogsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListLegacyQueueEventLogsResponse:
+        """
+        @summary ListLegacyQueueEventLogs
+        
+        @param request: ListLegacyQueueEventLogsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListLegacyQueueEventLogsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -9155,6 +11703,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListLegacyQueueEventLogsRequest,
     ) -> ccc20200701_models.ListLegacyQueueEventLogsResponse:
+        """
+        @summary ListLegacyQueueEventLogs
+        
+        @param request: ListLegacyQueueEventLogsRequest
+        @return: ListLegacyQueueEventLogsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_legacy_queue_event_logs_with_options(request, runtime)
 
@@ -9162,6 +11716,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListLegacyQueueEventLogsRequest,
     ) -> ccc20200701_models.ListLegacyQueueEventLogsResponse:
+        """
+        @summary ListLegacyQueueEventLogs
+        
+        @param request: ListLegacyQueueEventLogsRequest
+        @return: ListLegacyQueueEventLogsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_legacy_queue_event_logs_with_options_async(request, runtime)
 
@@ -9170,6 +11730,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListMonoRecordingsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListMonoRecordingsResponse:
+        """
+        @param request: ListMonoRecordingsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMonoRecordingsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.contact_id):
@@ -9200,6 +11765,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListMonoRecordingsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListMonoRecordingsResponse:
+        """
+        @param request: ListMonoRecordingsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMonoRecordingsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.contact_id):
@@ -9229,6 +11799,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListMonoRecordingsRequest,
     ) -> ccc20200701_models.ListMonoRecordingsResponse:
+        """
+        @param request: ListMonoRecordingsRequest
+        @return: ListMonoRecordingsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_mono_recordings_with_options(request, runtime)
 
@@ -9236,6 +11810,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListMonoRecordingsRequest,
     ) -> ccc20200701_models.ListMonoRecordingsResponse:
+        """
+        @param request: ListMonoRecordingsRequest
+        @return: ListMonoRecordingsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_mono_recordings_with_options_async(request, runtime)
 
@@ -9244,6 +11822,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListMultiChannelRecordingsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListMultiChannelRecordingsResponse:
+        """
+        @param request: ListMultiChannelRecordingsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMultiChannelRecordingsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.contact_id):
@@ -9274,6 +11857,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListMultiChannelRecordingsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListMultiChannelRecordingsResponse:
+        """
+        @param request: ListMultiChannelRecordingsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMultiChannelRecordingsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.contact_id):
@@ -9303,6 +11891,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListMultiChannelRecordingsRequest,
     ) -> ccc20200701_models.ListMultiChannelRecordingsResponse:
+        """
+        @param request: ListMultiChannelRecordingsRequest
+        @return: ListMultiChannelRecordingsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_multi_channel_recordings_with_options(request, runtime)
 
@@ -9310,6 +11902,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListMultiChannelRecordingsRequest,
     ) -> ccc20200701_models.ListMultiChannelRecordingsResponse:
+        """
+        @param request: ListMultiChannelRecordingsRequest
+        @return: ListMultiChannelRecordingsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_multi_channel_recordings_with_options_async(request, runtime)
 
@@ -9318,6 +11914,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListOutboundNumbersOfUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListOutboundNumbersOfUserResponse:
+        """
+        @param request: ListOutboundNumbersOfUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListOutboundNumbersOfUserResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -9354,6 +11955,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListOutboundNumbersOfUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListOutboundNumbersOfUserResponse:
+        """
+        @param request: ListOutboundNumbersOfUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListOutboundNumbersOfUserResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -9389,6 +11995,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListOutboundNumbersOfUserRequest,
     ) -> ccc20200701_models.ListOutboundNumbersOfUserResponse:
+        """
+        @param request: ListOutboundNumbersOfUserRequest
+        @return: ListOutboundNumbersOfUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_outbound_numbers_of_user_with_options(request, runtime)
 
@@ -9396,6 +12006,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListOutboundNumbersOfUserRequest,
     ) -> ccc20200701_models.ListOutboundNumbersOfUserResponse:
+        """
+        @param request: ListOutboundNumbersOfUserRequest
+        @return: ListOutboundNumbersOfUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_outbound_numbers_of_user_with_options_async(request, runtime)
 
@@ -9404,6 +12018,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListPersonalNumbersOfUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListPersonalNumbersOfUserResponse:
+        """
+        @param request: ListPersonalNumbersOfUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPersonalNumbersOfUserResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -9442,6 +12061,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListPersonalNumbersOfUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListPersonalNumbersOfUserResponse:
+        """
+        @param request: ListPersonalNumbersOfUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPersonalNumbersOfUserResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -9479,6 +12103,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListPersonalNumbersOfUserRequest,
     ) -> ccc20200701_models.ListPersonalNumbersOfUserResponse:
+        """
+        @param request: ListPersonalNumbersOfUserRequest
+        @return: ListPersonalNumbersOfUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_personal_numbers_of_user_with_options(request, runtime)
 
@@ -9486,6 +12114,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListPersonalNumbersOfUserRequest,
     ) -> ccc20200701_models.ListPersonalNumbersOfUserResponse:
+        """
+        @param request: ListPersonalNumbersOfUserRequest
+        @return: ListPersonalNumbersOfUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_personal_numbers_of_user_with_options_async(request, runtime)
 
@@ -9494,6 +12126,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListPhoneNumbersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListPhoneNumbersResponse:
+        """
+        @summary 获取号码列表
+        
+        @param request: ListPhoneNumbersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPhoneNumbersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.active):
@@ -9532,6 +12171,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListPhoneNumbersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListPhoneNumbersResponse:
+        """
+        @summary 获取号码列表
+        
+        @param request: ListPhoneNumbersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPhoneNumbersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.active):
@@ -9569,6 +12215,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListPhoneNumbersRequest,
     ) -> ccc20200701_models.ListPhoneNumbersResponse:
+        """
+        @summary 获取号码列表
+        
+        @param request: ListPhoneNumbersRequest
+        @return: ListPhoneNumbersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_phone_numbers_with_options(request, runtime)
 
@@ -9576,6 +12228,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListPhoneNumbersRequest,
     ) -> ccc20200701_models.ListPhoneNumbersResponse:
+        """
+        @summary 获取号码列表
+        
+        @param request: ListPhoneNumbersRequest
+        @return: ListPhoneNumbersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_phone_numbers_with_options_async(request, runtime)
 
@@ -9584,6 +12242,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListPhoneNumbersOfSkillGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListPhoneNumbersOfSkillGroupResponse:
+        """
+        @param request: ListPhoneNumbersOfSkillGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPhoneNumbersOfSkillGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.active):
@@ -9624,6 +12287,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListPhoneNumbersOfSkillGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListPhoneNumbersOfSkillGroupResponse:
+        """
+        @param request: ListPhoneNumbersOfSkillGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPhoneNumbersOfSkillGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.active):
@@ -9663,6 +12331,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListPhoneNumbersOfSkillGroupRequest,
     ) -> ccc20200701_models.ListPhoneNumbersOfSkillGroupResponse:
+        """
+        @param request: ListPhoneNumbersOfSkillGroupRequest
+        @return: ListPhoneNumbersOfSkillGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_phone_numbers_of_skill_group_with_options(request, runtime)
 
@@ -9670,6 +12342,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListPhoneNumbersOfSkillGroupRequest,
     ) -> ccc20200701_models.ListPhoneNumbersOfSkillGroupResponse:
+        """
+        @param request: ListPhoneNumbersOfSkillGroupRequest
+        @return: ListPhoneNumbersOfSkillGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_phone_numbers_of_skill_group_with_options_async(request, runtime)
 
@@ -9678,6 +12354,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListPrivilegesOfUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListPrivilegesOfUserResponse:
+        """
+        @param request: ListPrivilegesOfUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPrivilegesOfUserResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -9706,6 +12387,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListPrivilegesOfUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListPrivilegesOfUserResponse:
+        """
+        @param request: ListPrivilegesOfUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPrivilegesOfUserResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -9733,6 +12419,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListPrivilegesOfUserRequest,
     ) -> ccc20200701_models.ListPrivilegesOfUserResponse:
+        """
+        @param request: ListPrivilegesOfUserRequest
+        @return: ListPrivilegesOfUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_privileges_of_user_with_options(request, runtime)
 
@@ -9740,6 +12430,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListPrivilegesOfUserRequest,
     ) -> ccc20200701_models.ListPrivilegesOfUserResponse:
+        """
+        @param request: ListPrivilegesOfUserRequest
+        @return: ListPrivilegesOfUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_privileges_of_user_with_options_async(request, runtime)
 
@@ -9748,6 +12442,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListRamUsersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListRamUsersResponse:
+        """
+        @param request: ListRamUsersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRamUsersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -9782,6 +12481,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListRamUsersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListRamUsersResponse:
+        """
+        @param request: ListRamUsersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRamUsersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -9815,6 +12519,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListRamUsersRequest,
     ) -> ccc20200701_models.ListRamUsersResponse:
+        """
+        @param request: ListRamUsersRequest
+        @return: ListRamUsersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_ram_users_with_options(request, runtime)
 
@@ -9822,6 +12530,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListRamUsersRequest,
     ) -> ccc20200701_models.ListRamUsersResponse:
+        """
+        @param request: ListRamUsersRequest
+        @return: ListRamUsersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_ram_users_with_options_async(request, runtime)
 
@@ -9830,6 +12542,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListRealtimeAgentStatesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListRealtimeAgentStatesResponse:
+        """
+        @param request: ListRealtimeAgentStatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRealtimeAgentStatesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_name):
@@ -9880,6 +12597,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListRealtimeAgentStatesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListRealtimeAgentStatesResponse:
+        """
+        @param request: ListRealtimeAgentStatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRealtimeAgentStatesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_name):
@@ -9929,6 +12651,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListRealtimeAgentStatesRequest,
     ) -> ccc20200701_models.ListRealtimeAgentStatesResponse:
+        """
+        @param request: ListRealtimeAgentStatesRequest
+        @return: ListRealtimeAgentStatesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_realtime_agent_states_with_options(request, runtime)
 
@@ -9936,6 +12662,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListRealtimeAgentStatesRequest,
     ) -> ccc20200701_models.ListRealtimeAgentStatesResponse:
+        """
+        @param request: ListRealtimeAgentStatesRequest
+        @return: ListRealtimeAgentStatesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_realtime_agent_states_with_options_async(request, runtime)
 
@@ -9944,6 +12674,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListRealtimeSkillGroupStatesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListRealtimeSkillGroupStatesResponse:
+        """
+        @param request: ListRealtimeSkillGroupStatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRealtimeSkillGroupStatesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -9980,6 +12715,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListRealtimeSkillGroupStatesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListRealtimeSkillGroupStatesResponse:
+        """
+        @param request: ListRealtimeSkillGroupStatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRealtimeSkillGroupStatesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -10015,6 +12755,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListRealtimeSkillGroupStatesRequest,
     ) -> ccc20200701_models.ListRealtimeSkillGroupStatesResponse:
+        """
+        @param request: ListRealtimeSkillGroupStatesRequest
+        @return: ListRealtimeSkillGroupStatesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_realtime_skill_group_states_with_options(request, runtime)
 
@@ -10022,6 +12766,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListRealtimeSkillGroupStatesRequest,
     ) -> ccc20200701_models.ListRealtimeSkillGroupStatesResponse:
+        """
+        @param request: ListRealtimeSkillGroupStatesRequest
+        @return: ListRealtimeSkillGroupStatesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_realtime_skill_group_states_with_options_async(request, runtime)
 
@@ -10030,6 +12778,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListRecentCallDetailRecordsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListRecentCallDetailRecordsResponse:
+        """
+        @param request: ListRecentCallDetailRecordsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRecentCallDetailRecordsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.criteria):
@@ -10070,6 +12823,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListRecentCallDetailRecordsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListRecentCallDetailRecordsResponse:
+        """
+        @param request: ListRecentCallDetailRecordsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRecentCallDetailRecordsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.criteria):
@@ -10109,6 +12867,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListRecentCallDetailRecordsRequest,
     ) -> ccc20200701_models.ListRecentCallDetailRecordsResponse:
+        """
+        @param request: ListRecentCallDetailRecordsRequest
+        @return: ListRecentCallDetailRecordsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_recent_call_detail_records_with_options(request, runtime)
 
@@ -10116,6 +12878,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListRecentCallDetailRecordsRequest,
     ) -> ccc20200701_models.ListRecentCallDetailRecordsResponse:
+        """
+        @param request: ListRecentCallDetailRecordsRequest
+        @return: ListRecentCallDetailRecordsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_recent_call_detail_records_with_options_async(request, runtime)
 
@@ -10124,6 +12890,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListRolesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListRolesResponse:
+        """
+        @param request: ListRolesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRolesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -10152,6 +12923,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListRolesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListRolesResponse:
+        """
+        @param request: ListRolesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRolesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -10179,6 +12955,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListRolesRequest,
     ) -> ccc20200701_models.ListRolesResponse:
+        """
+        @param request: ListRolesRequest
+        @return: ListRolesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_roles_with_options(request, runtime)
 
@@ -10186,6 +12966,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListRolesRequest,
     ) -> ccc20200701_models.ListRolesResponse:
+        """
+        @param request: ListRolesRequest
+        @return: ListRolesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_roles_with_options_async(request, runtime)
 
@@ -10195,7 +12979,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListSkillGroupStatesResponse:
         """
-        @deprecated : ListSkillGroupStates is deprecated, please use CCC::2020-07-01::ListRealtimeSkillGroupStates instead.
+        @deprecated OpenAPI ListSkillGroupStates is deprecated, please use CCC::2020-07-01::ListRealtimeSkillGroupStates instead.
+        
+        @summary ListSkillGroupStates for acc
         
         @param request: ListSkillGroupStatesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10229,7 +13015,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListSkillGroupStatesResponse:
         """
-        @deprecated : ListSkillGroupStates is deprecated, please use CCC::2020-07-01::ListRealtimeSkillGroupStates instead.
+        @deprecated OpenAPI ListSkillGroupStates is deprecated, please use CCC::2020-07-01::ListRealtimeSkillGroupStates instead.
+        
+        @summary ListSkillGroupStates for acc
         
         @param request: ListSkillGroupStatesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10262,7 +13050,9 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListSkillGroupStatesRequest,
     ) -> ccc20200701_models.ListSkillGroupStatesResponse:
         """
-        @deprecated : ListSkillGroupStates is deprecated, please use CCC::2020-07-01::ListRealtimeSkillGroupStates instead.
+        @deprecated OpenAPI ListSkillGroupStates is deprecated, please use CCC::2020-07-01::ListRealtimeSkillGroupStates instead.
+        
+        @summary ListSkillGroupStates for acc
         
         @param request: ListSkillGroupStatesRequest
         @return: ListSkillGroupStatesResponse
@@ -10276,7 +13066,9 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListSkillGroupStatesRequest,
     ) -> ccc20200701_models.ListSkillGroupStatesResponse:
         """
-        @deprecated : ListSkillGroupStates is deprecated, please use CCC::2020-07-01::ListRealtimeSkillGroupStates instead.
+        @deprecated OpenAPI ListSkillGroupStates is deprecated, please use CCC::2020-07-01::ListRealtimeSkillGroupStates instead.
+        
+        @summary ListSkillGroupStates for acc
         
         @param request: ListSkillGroupStatesRequest
         @return: ListSkillGroupStatesResponse
@@ -10291,7 +13083,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListSkillGroupSummaryReportsSinceMidnightResponse:
         """
-        @deprecated : ListSkillGroupSummaryReportsSinceMidnight is deprecated, please use CCC::2020-07-01::ListHistoricalSkillGroupReport instead.
+        @deprecated OpenAPI ListSkillGroupSummaryReportsSinceMidnight is deprecated, please use CCC::2020-07-01::ListHistoricalSkillGroupReport instead.
+        
+        @summary ListSkillGroupSummaryReportsSinceMidnight for acc
         
         @param request: ListSkillGroupSummaryReportsSinceMidnightRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10325,7 +13119,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListSkillGroupSummaryReportsSinceMidnightResponse:
         """
-        @deprecated : ListSkillGroupSummaryReportsSinceMidnight is deprecated, please use CCC::2020-07-01::ListHistoricalSkillGroupReport instead.
+        @deprecated OpenAPI ListSkillGroupSummaryReportsSinceMidnight is deprecated, please use CCC::2020-07-01::ListHistoricalSkillGroupReport instead.
+        
+        @summary ListSkillGroupSummaryReportsSinceMidnight for acc
         
         @param request: ListSkillGroupSummaryReportsSinceMidnightRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10358,7 +13154,9 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListSkillGroupSummaryReportsSinceMidnightRequest,
     ) -> ccc20200701_models.ListSkillGroupSummaryReportsSinceMidnightResponse:
         """
-        @deprecated : ListSkillGroupSummaryReportsSinceMidnight is deprecated, please use CCC::2020-07-01::ListHistoricalSkillGroupReport instead.
+        @deprecated OpenAPI ListSkillGroupSummaryReportsSinceMidnight is deprecated, please use CCC::2020-07-01::ListHistoricalSkillGroupReport instead.
+        
+        @summary ListSkillGroupSummaryReportsSinceMidnight for acc
         
         @param request: ListSkillGroupSummaryReportsSinceMidnightRequest
         @return: ListSkillGroupSummaryReportsSinceMidnightResponse
@@ -10372,7 +13170,9 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListSkillGroupSummaryReportsSinceMidnightRequest,
     ) -> ccc20200701_models.ListSkillGroupSummaryReportsSinceMidnightResponse:
         """
-        @deprecated : ListSkillGroupSummaryReportsSinceMidnight is deprecated, please use CCC::2020-07-01::ListHistoricalSkillGroupReport instead.
+        @deprecated OpenAPI ListSkillGroupSummaryReportsSinceMidnight is deprecated, please use CCC::2020-07-01::ListHistoricalSkillGroupReport instead.
+        
+        @summary ListSkillGroupSummaryReportsSinceMidnight for acc
         
         @param request: ListSkillGroupSummaryReportsSinceMidnightRequest
         @return: ListSkillGroupSummaryReportsSinceMidnightResponse
@@ -10386,6 +13186,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListSkillGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListSkillGroupsResponse:
+        """
+        @param request: ListSkillGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSkillGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -10422,6 +13227,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListSkillGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListSkillGroupsResponse:
+        """
+        @param request: ListSkillGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSkillGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -10457,6 +13267,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListSkillGroupsRequest,
     ) -> ccc20200701_models.ListSkillGroupsResponse:
+        """
+        @param request: ListSkillGroupsRequest
+        @return: ListSkillGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_skill_groups_with_options(request, runtime)
 
@@ -10464,6 +13278,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListSkillGroupsRequest,
     ) -> ccc20200701_models.ListSkillGroupsResponse:
+        """
+        @param request: ListSkillGroupsRequest
+        @return: ListSkillGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_skill_groups_with_options_async(request, runtime)
 
@@ -10472,6 +13290,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListSkillLevelsOfUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListSkillLevelsOfUserResponse:
+        """
+        @param request: ListSkillLevelsOfUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSkillLevelsOfUserResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -10510,6 +13333,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListSkillLevelsOfUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListSkillLevelsOfUserResponse:
+        """
+        @param request: ListSkillLevelsOfUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSkillLevelsOfUserResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -10547,6 +13375,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListSkillLevelsOfUserRequest,
     ) -> ccc20200701_models.ListSkillLevelsOfUserResponse:
+        """
+        @param request: ListSkillLevelsOfUserRequest
+        @return: ListSkillLevelsOfUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_skill_levels_of_user_with_options(request, runtime)
 
@@ -10554,6 +13386,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListSkillLevelsOfUserRequest,
     ) -> ccc20200701_models.ListSkillLevelsOfUserResponse:
+        """
+        @param request: ListSkillLevelsOfUserRequest
+        @return: ListSkillLevelsOfUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_skill_levels_of_user_with_options_async(request, runtime)
 
@@ -10562,6 +13398,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListUnassignedNumbersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListUnassignedNumbersResponse:
+        """
+        @summary 获取未分配号码列表
+        
+        @param request: ListUnassignedNumbersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUnassignedNumbersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -10594,6 +13437,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListUnassignedNumbersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListUnassignedNumbersResponse:
+        """
+        @summary 获取未分配号码列表
+        
+        @param request: ListUnassignedNumbersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUnassignedNumbersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -10625,6 +13475,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListUnassignedNumbersRequest,
     ) -> ccc20200701_models.ListUnassignedNumbersResponse:
+        """
+        @summary 获取未分配号码列表
+        
+        @param request: ListUnassignedNumbersRequest
+        @return: ListUnassignedNumbersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_unassigned_numbers_with_options(request, runtime)
 
@@ -10632,6 +13488,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListUnassignedNumbersRequest,
     ) -> ccc20200701_models.ListUnassignedNumbersResponse:
+        """
+        @summary 获取未分配号码列表
+        
+        @param request: ListUnassignedNumbersRequest
+        @return: ListUnassignedNumbersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_unassigned_numbers_with_options_async(request, runtime)
 
@@ -10640,6 +13502,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListUserLevelsOfSkillGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListUserLevelsOfSkillGroupResponse:
+        """
+        @param request: ListUserLevelsOfSkillGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUserLevelsOfSkillGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -10678,6 +13545,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListUserLevelsOfSkillGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListUserLevelsOfSkillGroupResponse:
+        """
+        @param request: ListUserLevelsOfSkillGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUserLevelsOfSkillGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -10715,6 +13587,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListUserLevelsOfSkillGroupRequest,
     ) -> ccc20200701_models.ListUserLevelsOfSkillGroupResponse:
+        """
+        @param request: ListUserLevelsOfSkillGroupRequest
+        @return: ListUserLevelsOfSkillGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_user_levels_of_skill_group_with_options(request, runtime)
 
@@ -10722,6 +13598,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListUserLevelsOfSkillGroupRequest,
     ) -> ccc20200701_models.ListUserLevelsOfSkillGroupResponse:
+        """
+        @param request: ListUserLevelsOfSkillGroupRequest
+        @return: ListUserLevelsOfSkillGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_user_levels_of_skill_group_with_options_async(request, runtime)
 
@@ -10730,6 +13610,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListUsersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListUsersResponse:
+        """
+        @param request: ListUsersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUsersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -10766,6 +13651,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListUsersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListUsersResponse:
+        """
+        @param request: ListUsersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUsersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -10801,6 +13691,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListUsersRequest,
     ) -> ccc20200701_models.ListUsersResponse:
+        """
+        @param request: ListUsersRequest
+        @return: ListUsersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_users_with_options(request, runtime)
 
@@ -10808,6 +13702,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListUsersRequest,
     ) -> ccc20200701_models.ListUsersResponse:
+        """
+        @param request: ListUsersRequest
+        @return: ListUsersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_users_with_options_async(request, runtime)
 
@@ -10816,6 +13714,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListVoicemailsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListVoicemailsResponse:
+        """
+        @param request: ListVoicemailsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListVoicemailsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.caller):
@@ -10858,6 +13761,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ListVoicemailsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ListVoicemailsResponse:
+        """
+        @param request: ListVoicemailsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListVoicemailsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.caller):
@@ -10899,6 +13807,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListVoicemailsRequest,
     ) -> ccc20200701_models.ListVoicemailsResponse:
+        """
+        @param request: ListVoicemailsRequest
+        @return: ListVoicemailsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_voicemails_with_options(request, runtime)
 
@@ -10906,6 +13818,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ListVoicemailsRequest,
     ) -> ccc20200701_models.ListVoicemailsResponse:
+        """
+        @param request: ListVoicemailsRequest
+        @return: ListVoicemailsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_voicemails_with_options_async(request, runtime)
 
@@ -10914,6 +13830,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.MakeCallRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.MakeCallResponse:
+        """
+        @param request: MakeCallRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MakeCallResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.callee):
@@ -10958,6 +13879,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.MakeCallRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.MakeCallResponse:
+        """
+        @param request: MakeCallRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MakeCallResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.callee):
@@ -11001,6 +13927,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.MakeCallRequest,
     ) -> ccc20200701_models.MakeCallResponse:
+        """
+        @param request: MakeCallRequest
+        @return: MakeCallResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.make_call_with_options(request, runtime)
 
@@ -11008,6 +13938,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.MakeCallRequest,
     ) -> ccc20200701_models.MakeCallResponse:
+        """
+        @param request: MakeCallRequest
+        @return: MakeCallResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.make_call_with_options_async(request, runtime)
 
@@ -11016,6 +13950,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ModifyAudioFileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ModifyAudioFileResponse:
+        """
+        @param request: ModifyAudioFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyAudioFileResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.audio_file_name):
@@ -11054,6 +13993,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ModifyAudioFileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ModifyAudioFileResponse:
+        """
+        @param request: ModifyAudioFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyAudioFileResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.audio_file_name):
@@ -11091,6 +14035,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ModifyAudioFileRequest,
     ) -> ccc20200701_models.ModifyAudioFileResponse:
+        """
+        @param request: ModifyAudioFileRequest
+        @return: ModifyAudioFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_audio_file_with_options(request, runtime)
 
@@ -11098,6 +14046,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ModifyAudioFileRequest,
     ) -> ccc20200701_models.ModifyAudioFileResponse:
+        """
+        @param request: ModifyAudioFileRequest
+        @return: ModifyAudioFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_audio_file_with_options_async(request, runtime)
 
@@ -11106,6 +14058,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ModifyCustomCallTaggingRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ModifyCustomCallTaggingResponse:
+        """
+        @summary 编辑呼入控制号码
+        
+        @param request: ModifyCustomCallTaggingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyCustomCallTaggingResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.call_tag_name_list):
@@ -11140,6 +14099,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ModifyCustomCallTaggingRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ModifyCustomCallTaggingResponse:
+        """
+        @summary 编辑呼入控制号码
+        
+        @param request: ModifyCustomCallTaggingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyCustomCallTaggingResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.call_tag_name_list):
@@ -11173,6 +14139,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ModifyCustomCallTaggingRequest,
     ) -> ccc20200701_models.ModifyCustomCallTaggingResponse:
+        """
+        @summary 编辑呼入控制号码
+        
+        @param request: ModifyCustomCallTaggingRequest
+        @return: ModifyCustomCallTaggingResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_custom_call_tagging_with_options(request, runtime)
 
@@ -11180,6 +14152,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ModifyCustomCallTaggingRequest,
     ) -> ccc20200701_models.ModifyCustomCallTaggingResponse:
+        """
+        @summary 编辑呼入控制号码
+        
+        @param request: ModifyCustomCallTaggingRequest
+        @return: ModifyCustomCallTaggingResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_custom_call_tagging_with_options_async(request, runtime)
 
@@ -11188,6 +14166,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ModifyInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ModifyInstanceResponse:
+        """
+        @param request: ModifyInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -11218,6 +14201,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ModifyInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ModifyInstanceResponse:
+        """
+        @param request: ModifyInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -11247,6 +14235,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ModifyInstanceRequest,
     ) -> ccc20200701_models.ModifyInstanceResponse:
+        """
+        @param request: ModifyInstanceRequest
+        @return: ModifyInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_instance_with_options(request, runtime)
 
@@ -11254,6 +14246,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ModifyInstanceRequest,
     ) -> ccc20200701_models.ModifyInstanceResponse:
+        """
+        @param request: ModifyInstanceRequest
+        @return: ModifyInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_instance_with_options_async(request, runtime)
 
@@ -11262,6 +14258,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ModifyPhoneNumberRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ModifyPhoneNumberResponse:
+        """
+        @param request: ModifyPhoneNumberRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyPhoneNumberResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.contact_flow_id):
@@ -11296,6 +14297,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ModifyPhoneNumberRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ModifyPhoneNumberResponse:
+        """
+        @param request: ModifyPhoneNumberRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyPhoneNumberResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.contact_flow_id):
@@ -11329,6 +14335,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ModifyPhoneNumberRequest,
     ) -> ccc20200701_models.ModifyPhoneNumberResponse:
+        """
+        @param request: ModifyPhoneNumberRequest
+        @return: ModifyPhoneNumberResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_phone_number_with_options(request, runtime)
 
@@ -11336,6 +14346,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ModifyPhoneNumberRequest,
     ) -> ccc20200701_models.ModifyPhoneNumberResponse:
+        """
+        @param request: ModifyPhoneNumberRequest
+        @return: ModifyPhoneNumberResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_phone_number_with_options_async(request, runtime)
 
@@ -11344,6 +14358,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ModifySkillGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ModifySkillGroupResponse:
+        """
+        @param request: ModifySkillGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifySkillGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -11378,6 +14397,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ModifySkillGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ModifySkillGroupResponse:
+        """
+        @param request: ModifySkillGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifySkillGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -11411,6 +14435,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ModifySkillGroupRequest,
     ) -> ccc20200701_models.ModifySkillGroupResponse:
+        """
+        @param request: ModifySkillGroupRequest
+        @return: ModifySkillGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_skill_group_with_options(request, runtime)
 
@@ -11418,6 +14446,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ModifySkillGroupRequest,
     ) -> ccc20200701_models.ModifySkillGroupResponse:
+        """
+        @param request: ModifySkillGroupRequest
+        @return: ModifySkillGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_skill_group_with_options_async(request, runtime)
 
@@ -11426,6 +14458,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ModifySkillLevelsOfUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ModifySkillLevelsOfUserResponse:
+        """
+        @param request: ModifySkillLevelsOfUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifySkillLevelsOfUserResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -11458,6 +14495,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ModifySkillLevelsOfUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ModifySkillLevelsOfUserResponse:
+        """
+        @param request: ModifySkillLevelsOfUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifySkillLevelsOfUserResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -11489,6 +14531,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ModifySkillLevelsOfUserRequest,
     ) -> ccc20200701_models.ModifySkillLevelsOfUserResponse:
+        """
+        @param request: ModifySkillLevelsOfUserRequest
+        @return: ModifySkillLevelsOfUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_skill_levels_of_user_with_options(request, runtime)
 
@@ -11496,6 +14542,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ModifySkillLevelsOfUserRequest,
     ) -> ccc20200701_models.ModifySkillLevelsOfUserResponse:
+        """
+        @param request: ModifySkillLevelsOfUserRequest
+        @return: ModifySkillLevelsOfUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_skill_levels_of_user_with_options_async(request, runtime)
 
@@ -11504,6 +14554,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ModifyUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ModifyUserResponse:
+        """
+        @param request: ModifyUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyUserResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.avatar_url):
@@ -11550,6 +14605,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ModifyUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ModifyUserResponse:
+        """
+        @param request: ModifyUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyUserResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.avatar_url):
@@ -11595,6 +14655,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ModifyUserRequest,
     ) -> ccc20200701_models.ModifyUserResponse:
+        """
+        @param request: ModifyUserRequest
+        @return: ModifyUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_user_with_options(request, runtime)
 
@@ -11602,6 +14666,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ModifyUserRequest,
     ) -> ccc20200701_models.ModifyUserResponse:
+        """
+        @param request: ModifyUserRequest
+        @return: ModifyUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_user_with_options_async(request, runtime)
 
@@ -11610,6 +14678,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ModifyUserLevelsOfSkillGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ModifyUserLevelsOfSkillGroupResponse:
+        """
+        @param request: ModifyUserLevelsOfSkillGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyUserLevelsOfSkillGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -11642,6 +14715,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ModifyUserLevelsOfSkillGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ModifyUserLevelsOfSkillGroupResponse:
+        """
+        @param request: ModifyUserLevelsOfSkillGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyUserLevelsOfSkillGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -11673,6 +14751,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ModifyUserLevelsOfSkillGroupRequest,
     ) -> ccc20200701_models.ModifyUserLevelsOfSkillGroupResponse:
+        """
+        @param request: ModifyUserLevelsOfSkillGroupRequest
+        @return: ModifyUserLevelsOfSkillGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_user_levels_of_skill_group_with_options(request, runtime)
 
@@ -11680,6 +14762,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ModifyUserLevelsOfSkillGroupRequest,
     ) -> ccc20200701_models.ModifyUserLevelsOfSkillGroupResponse:
+        """
+        @param request: ModifyUserLevelsOfSkillGroupRequest
+        @return: ModifyUserLevelsOfSkillGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_user_levels_of_skill_group_with_options_async(request, runtime)
 
@@ -11688,6 +14774,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.MonitorCallRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.MonitorCallResponse:
+        """
+        @param request: MonitorCallRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MonitorCallResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_id):
@@ -11724,6 +14815,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.MonitorCallRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.MonitorCallResponse:
+        """
+        @param request: MonitorCallRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MonitorCallResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_id):
@@ -11759,6 +14855,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.MonitorCallRequest,
     ) -> ccc20200701_models.MonitorCallResponse:
+        """
+        @param request: MonitorCallRequest
+        @return: MonitorCallResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.monitor_call_with_options(request, runtime)
 
@@ -11766,6 +14866,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.MonitorCallRequest,
     ) -> ccc20200701_models.MonitorCallResponse:
+        """
+        @param request: MonitorCallRequest
+        @return: MonitorCallResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.monitor_call_with_options_async(request, runtime)
 
@@ -11774,6 +14878,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.MuteCallRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.MuteCallResponse:
+        """
+        @param request: MuteCallRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MuteCallResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.channel_id):
@@ -11810,6 +14919,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.MuteCallRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.MuteCallResponse:
+        """
+        @param request: MuteCallRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MuteCallResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.channel_id):
@@ -11845,6 +14959,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.MuteCallRequest,
     ) -> ccc20200701_models.MuteCallResponse:
+        """
+        @param request: MuteCallRequest
+        @return: MuteCallResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.mute_call_with_options(request, runtime)
 
@@ -11852,6 +14970,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.MuteCallRequest,
     ) -> ccc20200701_models.MuteCallResponse:
+        """
+        @param request: MuteCallRequest
+        @return: MuteCallResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.mute_call_with_options_async(request, runtime)
 
@@ -11860,6 +14982,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.PauseCampaignRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.PauseCampaignResponse:
+        """
+        @summary 暂停预测式外呼活动
+        
+        @param request: PauseCampaignRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PauseCampaignResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.campaign_id):
@@ -11890,6 +15019,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.PauseCampaignRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.PauseCampaignResponse:
+        """
+        @summary 暂停预测式外呼活动
+        
+        @param request: PauseCampaignRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PauseCampaignResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.campaign_id):
@@ -11919,6 +15055,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.PauseCampaignRequest,
     ) -> ccc20200701_models.PauseCampaignResponse:
+        """
+        @summary 暂停预测式外呼活动
+        
+        @param request: PauseCampaignRequest
+        @return: PauseCampaignResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.pause_campaign_with_options(request, runtime)
 
@@ -11926,6 +15068,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.PauseCampaignRequest,
     ) -> ccc20200701_models.PauseCampaignResponse:
+        """
+        @summary 暂停预测式外呼活动
+        
+        @param request: PauseCampaignRequest
+        @return: PauseCampaignResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.pause_campaign_with_options_async(request, runtime)
 
@@ -11934,6 +15082,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.PickOutboundNumbersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.PickOutboundNumbersResponse:
+        """
+        @param request: PickOutboundNumbersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PickOutboundNumbersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.called_number):
@@ -11968,6 +15121,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.PickOutboundNumbersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.PickOutboundNumbersResponse:
+        """
+        @param request: PickOutboundNumbersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PickOutboundNumbersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.called_number):
@@ -12001,6 +15159,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.PickOutboundNumbersRequest,
     ) -> ccc20200701_models.PickOutboundNumbersResponse:
+        """
+        @param request: PickOutboundNumbersRequest
+        @return: PickOutboundNumbersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.pick_outbound_numbers_with_options(request, runtime)
 
@@ -12008,6 +15170,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.PickOutboundNumbersRequest,
     ) -> ccc20200701_models.PickOutboundNumbersResponse:
+        """
+        @param request: PickOutboundNumbersRequest
+        @return: PickOutboundNumbersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.pick_outbound_numbers_with_options_async(request, runtime)
 
@@ -12016,6 +15182,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.PollUserStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.PollUserStatusResponse:
+        """
+        @param request: PollUserStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PollUserStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_id):
@@ -12048,6 +15219,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.PollUserStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.PollUserStatusResponse:
+        """
+        @param request: PollUserStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PollUserStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_id):
@@ -12079,6 +15255,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.PollUserStatusRequest,
     ) -> ccc20200701_models.PollUserStatusResponse:
+        """
+        @param request: PollUserStatusRequest
+        @return: PollUserStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.poll_user_status_with_options(request, runtime)
 
@@ -12086,6 +15266,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.PollUserStatusRequest,
     ) -> ccc20200701_models.PollUserStatusResponse:
+        """
+        @param request: PollUserStatusRequest
+        @return: PollUserStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.poll_user_status_with_options_async(request, runtime)
 
@@ -12094,6 +15278,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ProcessAliMeCallbackOfStagingRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ProcessAliMeCallbackOfStagingResponse:
+        """
+        @summary ProcessAliMeCallbackOfStaging
+        
+        @param request: ProcessAliMeCallbackOfStagingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ProcessAliMeCallbackOfStagingResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.data):
@@ -12124,6 +15315,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ProcessAliMeCallbackOfStagingRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ProcessAliMeCallbackOfStagingResponse:
+        """
+        @summary ProcessAliMeCallbackOfStaging
+        
+        @param request: ProcessAliMeCallbackOfStagingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ProcessAliMeCallbackOfStagingResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.data):
@@ -12153,6 +15351,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ProcessAliMeCallbackOfStagingRequest,
     ) -> ccc20200701_models.ProcessAliMeCallbackOfStagingResponse:
+        """
+        @summary ProcessAliMeCallbackOfStaging
+        
+        @param request: ProcessAliMeCallbackOfStagingRequest
+        @return: ProcessAliMeCallbackOfStagingResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.process_ali_me_callback_of_staging_with_options(request, runtime)
 
@@ -12160,6 +15364,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ProcessAliMeCallbackOfStagingRequest,
     ) -> ccc20200701_models.ProcessAliMeCallbackOfStagingResponse:
+        """
+        @summary ProcessAliMeCallbackOfStaging
+        
+        @param request: ProcessAliMeCallbackOfStagingRequest
+        @return: ProcessAliMeCallbackOfStagingResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.process_ali_me_callback_of_staging_with_options_async(request, runtime)
 
@@ -12168,6 +15378,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.PublishContactFlowRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.PublishContactFlowResponse:
+        """
+        @param request: PublishContactFlowRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PublishContactFlowResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.contact_flow_id):
@@ -12200,6 +15415,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.PublishContactFlowRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.PublishContactFlowResponse:
+        """
+        @param request: PublishContactFlowRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PublishContactFlowResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.contact_flow_id):
@@ -12231,6 +15451,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.PublishContactFlowRequest,
     ) -> ccc20200701_models.PublishContactFlowResponse:
+        """
+        @param request: PublishContactFlowRequest
+        @return: PublishContactFlowResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.publish_contact_flow_with_options(request, runtime)
 
@@ -12238,6 +15462,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.PublishContactFlowRequest,
     ) -> ccc20200701_models.PublishContactFlowResponse:
+        """
+        @param request: PublishContactFlowRequest
+        @return: PublishContactFlowResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.publish_contact_flow_with_options_async(request, runtime)
 
@@ -12246,6 +15474,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ReadyForServiceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ReadyForServiceResponse:
+        """
+        @param request: ReadyForServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReadyForServiceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_id):
@@ -12280,6 +15513,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ReadyForServiceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ReadyForServiceResponse:
+        """
+        @param request: ReadyForServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReadyForServiceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_id):
@@ -12313,6 +15551,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ReadyForServiceRequest,
     ) -> ccc20200701_models.ReadyForServiceResponse:
+        """
+        @param request: ReadyForServiceRequest
+        @return: ReadyForServiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.ready_for_service_with_options(request, runtime)
 
@@ -12320,6 +15562,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ReadyForServiceRequest,
     ) -> ccc20200701_models.ReadyForServiceResponse:
+        """
+        @param request: ReadyForServiceRequest
+        @return: ReadyForServiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.ready_for_service_with_options_async(request, runtime)
 
@@ -12328,6 +15574,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.RedialCallRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.RedialCallResponse:
+        """
+        @param request: RedialCallRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RedialCallResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.callee):
@@ -12370,6 +15621,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.RedialCallRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.RedialCallResponse:
+        """
+        @param request: RedialCallRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RedialCallResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.callee):
@@ -12411,6 +15667,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.RedialCallRequest,
     ) -> ccc20200701_models.RedialCallResponse:
+        """
+        @param request: RedialCallRequest
+        @return: RedialCallResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.redial_call_with_options(request, runtime)
 
@@ -12418,6 +15678,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.RedialCallRequest,
     ) -> ccc20200701_models.RedialCallResponse:
+        """
+        @param request: RedialCallRequest
+        @return: RedialCallResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.redial_call_with_options_async(request, runtime)
 
@@ -12426,6 +15690,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.RegisterDeviceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.RegisterDeviceResponse:
+        """
+        @param request: RegisterDeviceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RegisterDeviceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_id):
@@ -12460,6 +15729,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.RegisterDeviceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.RegisterDeviceResponse:
+        """
+        @param request: RegisterDeviceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RegisterDeviceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_id):
@@ -12493,6 +15767,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.RegisterDeviceRequest,
     ) -> ccc20200701_models.RegisterDeviceResponse:
+        """
+        @param request: RegisterDeviceRequest
+        @return: RegisterDeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.register_device_with_options(request, runtime)
 
@@ -12500,6 +15778,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.RegisterDeviceRequest,
     ) -> ccc20200701_models.RegisterDeviceResponse:
+        """
+        @param request: RegisterDeviceRequest
+        @return: RegisterDeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.register_device_with_options_async(request, runtime)
 
@@ -12508,6 +15790,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.RegisterDevicesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.RegisterDevicesResponse:
+        """
+        @param request: RegisterDevicesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RegisterDevicesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_id):
@@ -12542,6 +15829,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.RegisterDevicesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.RegisterDevicesResponse:
+        """
+        @param request: RegisterDevicesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RegisterDevicesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_id):
@@ -12575,6 +15867,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.RegisterDevicesRequest,
     ) -> ccc20200701_models.RegisterDevicesResponse:
+        """
+        @param request: RegisterDevicesRequest
+        @return: RegisterDevicesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.register_devices_with_options(request, runtime)
 
@@ -12582,6 +15878,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.RegisterDevicesRequest,
     ) -> ccc20200701_models.RegisterDevicesResponse:
+        """
+        @param request: RegisterDevicesRequest
+        @return: RegisterDevicesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.register_devices_with_options_async(request, runtime)
 
@@ -12590,6 +15890,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ReleaseCallRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ReleaseCallResponse:
+        """
+        @param request: ReleaseCallRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReleaseCallResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.channel_id):
@@ -12626,6 +15931,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ReleaseCallRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ReleaseCallResponse:
+        """
+        @param request: ReleaseCallRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReleaseCallResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.channel_id):
@@ -12661,6 +15971,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ReleaseCallRequest,
     ) -> ccc20200701_models.ReleaseCallResponse:
+        """
+        @param request: ReleaseCallRequest
+        @return: ReleaseCallResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.release_call_with_options(request, runtime)
 
@@ -12668,6 +15982,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ReleaseCallRequest,
     ) -> ccc20200701_models.ReleaseCallResponse:
+        """
+        @param request: ReleaseCallRequest
+        @return: ReleaseCallResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.release_call_with_options_async(request, runtime)
 
@@ -12676,6 +15994,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.RemoveBlacklistCallTaggingRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.RemoveBlacklistCallTaggingResponse:
+        """
+        @summary 编辑呼入控制号码
+        
+        @param request: RemoveBlacklistCallTaggingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveBlacklistCallTaggingResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -12708,6 +16033,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.RemoveBlacklistCallTaggingRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.RemoveBlacklistCallTaggingResponse:
+        """
+        @summary 编辑呼入控制号码
+        
+        @param request: RemoveBlacklistCallTaggingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveBlacklistCallTaggingResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -12739,6 +16071,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.RemoveBlacklistCallTaggingRequest,
     ) -> ccc20200701_models.RemoveBlacklistCallTaggingResponse:
+        """
+        @summary 编辑呼入控制号码
+        
+        @param request: RemoveBlacklistCallTaggingRequest
+        @return: RemoveBlacklistCallTaggingResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.remove_blacklist_call_tagging_with_options(request, runtime)
 
@@ -12746,6 +16084,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.RemoveBlacklistCallTaggingRequest,
     ) -> ccc20200701_models.RemoveBlacklistCallTaggingResponse:
+        """
+        @summary 编辑呼入控制号码
+        
+        @param request: RemoveBlacklistCallTaggingRequest
+        @return: RemoveBlacklistCallTaggingResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.remove_blacklist_call_tagging_with_options_async(request, runtime)
 
@@ -12754,6 +16098,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.RemoveDoNotCallNumbersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.RemoveDoNotCallNumbersResponse:
+        """
+        @summary 删除黑名单号码
+        
+        @param request: RemoveDoNotCallNumbersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveDoNotCallNumbersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -12784,6 +16135,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.RemoveDoNotCallNumbersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.RemoveDoNotCallNumbersResponse:
+        """
+        @summary 删除黑名单号码
+        
+        @param request: RemoveDoNotCallNumbersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveDoNotCallNumbersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -12813,6 +16171,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.RemoveDoNotCallNumbersRequest,
     ) -> ccc20200701_models.RemoveDoNotCallNumbersResponse:
+        """
+        @summary 删除黑名单号码
+        
+        @param request: RemoveDoNotCallNumbersRequest
+        @return: RemoveDoNotCallNumbersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.remove_do_not_call_numbers_with_options(request, runtime)
 
@@ -12820,6 +16184,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.RemoveDoNotCallNumbersRequest,
     ) -> ccc20200701_models.RemoveDoNotCallNumbersResponse:
+        """
+        @summary 删除黑名单号码
+        
+        @param request: RemoveDoNotCallNumbersRequest
+        @return: RemoveDoNotCallNumbersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.remove_do_not_call_numbers_with_options_async(request, runtime)
 
@@ -12828,6 +16198,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.RemovePersonalNumbersFromUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.RemovePersonalNumbersFromUserResponse:
+        """
+        @param request: RemovePersonalNumbersFromUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemovePersonalNumbersFromUserResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -12860,6 +16235,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.RemovePersonalNumbersFromUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.RemovePersonalNumbersFromUserResponse:
+        """
+        @param request: RemovePersonalNumbersFromUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemovePersonalNumbersFromUserResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -12891,6 +16271,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.RemovePersonalNumbersFromUserRequest,
     ) -> ccc20200701_models.RemovePersonalNumbersFromUserResponse:
+        """
+        @param request: RemovePersonalNumbersFromUserRequest
+        @return: RemovePersonalNumbersFromUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.remove_personal_numbers_from_user_with_options(request, runtime)
 
@@ -12898,6 +16282,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.RemovePersonalNumbersFromUserRequest,
     ) -> ccc20200701_models.RemovePersonalNumbersFromUserResponse:
+        """
+        @param request: RemovePersonalNumbersFromUserRequest
+        @return: RemovePersonalNumbersFromUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.remove_personal_numbers_from_user_with_options_async(request, runtime)
 
@@ -12906,6 +16294,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.RemovePhoneNumberFromSkillGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.RemovePhoneNumberFromSkillGroupsResponse:
+        """
+        @param request: RemovePhoneNumberFromSkillGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemovePhoneNumberFromSkillGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -12938,6 +16331,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.RemovePhoneNumberFromSkillGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.RemovePhoneNumberFromSkillGroupsResponse:
+        """
+        @param request: RemovePhoneNumberFromSkillGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemovePhoneNumberFromSkillGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -12969,6 +16367,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.RemovePhoneNumberFromSkillGroupsRequest,
     ) -> ccc20200701_models.RemovePhoneNumberFromSkillGroupsResponse:
+        """
+        @param request: RemovePhoneNumberFromSkillGroupsRequest
+        @return: RemovePhoneNumberFromSkillGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.remove_phone_number_from_skill_groups_with_options(request, runtime)
 
@@ -12976,6 +16378,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.RemovePhoneNumberFromSkillGroupsRequest,
     ) -> ccc20200701_models.RemovePhoneNumberFromSkillGroupsResponse:
+        """
+        @param request: RemovePhoneNumberFromSkillGroupsRequest
+        @return: RemovePhoneNumberFromSkillGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.remove_phone_number_from_skill_groups_with_options_async(request, runtime)
 
@@ -12984,6 +16390,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.RemovePhoneNumbersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.RemovePhoneNumbersResponse:
+        """
+        @param request: RemovePhoneNumbersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemovePhoneNumbersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.force):
@@ -13016,6 +16427,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.RemovePhoneNumbersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.RemovePhoneNumbersResponse:
+        """
+        @param request: RemovePhoneNumbersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemovePhoneNumbersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.force):
@@ -13047,6 +16463,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.RemovePhoneNumbersRequest,
     ) -> ccc20200701_models.RemovePhoneNumbersResponse:
+        """
+        @param request: RemovePhoneNumbersRequest
+        @return: RemovePhoneNumbersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.remove_phone_numbers_with_options(request, runtime)
 
@@ -13054,6 +16474,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.RemovePhoneNumbersRequest,
     ) -> ccc20200701_models.RemovePhoneNumbersResponse:
+        """
+        @param request: RemovePhoneNumbersRequest
+        @return: RemovePhoneNumbersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.remove_phone_numbers_with_options_async(request, runtime)
 
@@ -13062,6 +16486,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.RemovePhoneNumbersFromSkillGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.RemovePhoneNumbersFromSkillGroupResponse:
+        """
+        @param request: RemovePhoneNumbersFromSkillGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemovePhoneNumbersFromSkillGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -13094,6 +16523,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.RemovePhoneNumbersFromSkillGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.RemovePhoneNumbersFromSkillGroupResponse:
+        """
+        @param request: RemovePhoneNumbersFromSkillGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemovePhoneNumbersFromSkillGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -13125,6 +16559,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.RemovePhoneNumbersFromSkillGroupRequest,
     ) -> ccc20200701_models.RemovePhoneNumbersFromSkillGroupResponse:
+        """
+        @param request: RemovePhoneNumbersFromSkillGroupRequest
+        @return: RemovePhoneNumbersFromSkillGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.remove_phone_numbers_from_skill_group_with_options(request, runtime)
 
@@ -13132,6 +16570,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.RemovePhoneNumbersFromSkillGroupRequest,
     ) -> ccc20200701_models.RemovePhoneNumbersFromSkillGroupResponse:
+        """
+        @param request: RemovePhoneNumbersFromSkillGroupRequest
+        @return: RemovePhoneNumbersFromSkillGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.remove_phone_numbers_from_skill_group_with_options_async(request, runtime)
 
@@ -13140,6 +16582,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.RemoveSkillGroupsFromUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.RemoveSkillGroupsFromUserResponse:
+        """
+        @param request: RemoveSkillGroupsFromUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveSkillGroupsFromUserResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -13172,6 +16619,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.RemoveSkillGroupsFromUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.RemoveSkillGroupsFromUserResponse:
+        """
+        @param request: RemoveSkillGroupsFromUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveSkillGroupsFromUserResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -13203,6 +16655,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.RemoveSkillGroupsFromUserRequest,
     ) -> ccc20200701_models.RemoveSkillGroupsFromUserResponse:
+        """
+        @param request: RemoveSkillGroupsFromUserRequest
+        @return: RemoveSkillGroupsFromUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.remove_skill_groups_from_user_with_options(request, runtime)
 
@@ -13210,6 +16666,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.RemoveSkillGroupsFromUserRequest,
     ) -> ccc20200701_models.RemoveSkillGroupsFromUserResponse:
+        """
+        @param request: RemoveSkillGroupsFromUserRequest
+        @return: RemoveSkillGroupsFromUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.remove_skill_groups_from_user_with_options_async(request, runtime)
 
@@ -13218,6 +16678,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.RemoveUsersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.RemoveUsersResponse:
+        """
+        @param request: RemoveUsersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveUsersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.file_path):
@@ -13254,6 +16719,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.RemoveUsersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.RemoveUsersResponse:
+        """
+        @param request: RemoveUsersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveUsersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.file_path):
@@ -13289,6 +16759,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.RemoveUsersRequest,
     ) -> ccc20200701_models.RemoveUsersResponse:
+        """
+        @param request: RemoveUsersRequest
+        @return: RemoveUsersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.remove_users_with_options(request, runtime)
 
@@ -13296,6 +16770,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.RemoveUsersRequest,
     ) -> ccc20200701_models.RemoveUsersResponse:
+        """
+        @param request: RemoveUsersRequest
+        @return: RemoveUsersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.remove_users_with_options_async(request, runtime)
 
@@ -13304,6 +16782,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.RemoveUsersFromSkillGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.RemoveUsersFromSkillGroupResponse:
+        """
+        @param request: RemoveUsersFromSkillGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveUsersFromSkillGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -13336,6 +16819,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.RemoveUsersFromSkillGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.RemoveUsersFromSkillGroupResponse:
+        """
+        @param request: RemoveUsersFromSkillGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveUsersFromSkillGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -13367,6 +16855,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.RemoveUsersFromSkillGroupRequest,
     ) -> ccc20200701_models.RemoveUsersFromSkillGroupResponse:
+        """
+        @param request: RemoveUsersFromSkillGroupRequest
+        @return: RemoveUsersFromSkillGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.remove_users_from_skill_group_with_options(request, runtime)
 
@@ -13374,6 +16866,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.RemoveUsersFromSkillGroupRequest,
     ) -> ccc20200701_models.RemoveUsersFromSkillGroupResponse:
+        """
+        @param request: RemoveUsersFromSkillGroupRequest
+        @return: RemoveUsersFromSkillGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.remove_users_from_skill_group_with_options_async(request, runtime)
 
@@ -13382,6 +16878,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ResetAgentStateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ResetAgentStateResponse:
+        """
+        @param request: ResetAgentStateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResetAgentStateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_id):
@@ -13414,6 +16915,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ResetAgentStateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ResetAgentStateResponse:
+        """
+        @param request: ResetAgentStateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResetAgentStateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_id):
@@ -13445,6 +16951,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ResetAgentStateRequest,
     ) -> ccc20200701_models.ResetAgentStateResponse:
+        """
+        @param request: ResetAgentStateRequest
+        @return: ResetAgentStateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.reset_agent_state_with_options(request, runtime)
 
@@ -13452,6 +16962,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ResetAgentStateRequest,
     ) -> ccc20200701_models.ResetAgentStateResponse:
+        """
+        @param request: ResetAgentStateRequest
+        @return: ResetAgentStateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.reset_agent_state_with_options_async(request, runtime)
 
@@ -13460,6 +16974,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ResetUserPasswordRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ResetUserPasswordResponse:
+        """
+        @param request: ResetUserPasswordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResetUserPasswordResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -13492,6 +17011,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ResetUserPasswordRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ResetUserPasswordResponse:
+        """
+        @param request: ResetUserPasswordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResetUserPasswordResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -13523,6 +17047,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ResetUserPasswordRequest,
     ) -> ccc20200701_models.ResetUserPasswordResponse:
+        """
+        @param request: ResetUserPasswordRequest
+        @return: ResetUserPasswordResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.reset_user_password_with_options(request, runtime)
 
@@ -13530,6 +17058,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ResetUserPasswordRequest,
     ) -> ccc20200701_models.ResetUserPasswordResponse:
+        """
+        @param request: ResetUserPasswordRequest
+        @return: ResetUserPasswordResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.reset_user_password_with_options_async(request, runtime)
 
@@ -13538,6 +17070,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.RestoreArchivedRecordingsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.RestoreArchivedRecordingsResponse:
+        """
+        @summary 录音解冻
+        
+        @param request: RestoreArchivedRecordingsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RestoreArchivedRecordingsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.contact_ids):
@@ -13568,6 +17107,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.RestoreArchivedRecordingsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.RestoreArchivedRecordingsResponse:
+        """
+        @summary 录音解冻
+        
+        @param request: RestoreArchivedRecordingsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RestoreArchivedRecordingsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.contact_ids):
@@ -13597,6 +17143,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.RestoreArchivedRecordingsRequest,
     ) -> ccc20200701_models.RestoreArchivedRecordingsResponse:
+        """
+        @summary 录音解冻
+        
+        @param request: RestoreArchivedRecordingsRequest
+        @return: RestoreArchivedRecordingsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.restore_archived_recordings_with_options(request, runtime)
 
@@ -13604,6 +17156,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.RestoreArchivedRecordingsRequest,
     ) -> ccc20200701_models.RestoreArchivedRecordingsResponse:
+        """
+        @summary 录音解冻
+        
+        @param request: RestoreArchivedRecordingsRequest
+        @return: RestoreArchivedRecordingsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.restore_archived_recordings_with_options_async(request, runtime)
 
@@ -13612,6 +17170,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ResumeCampaignRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ResumeCampaignResponse:
+        """
+        @summary 恢复预测式外呼活动
+        
+        @param request: ResumeCampaignRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResumeCampaignResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.campaign_id):
@@ -13642,6 +17207,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.ResumeCampaignRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.ResumeCampaignResponse:
+        """
+        @summary 恢复预测式外呼活动
+        
+        @param request: ResumeCampaignRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResumeCampaignResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.campaign_id):
@@ -13671,6 +17243,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ResumeCampaignRequest,
     ) -> ccc20200701_models.ResumeCampaignResponse:
+        """
+        @summary 恢复预测式外呼活动
+        
+        @param request: ResumeCampaignRequest
+        @return: ResumeCampaignResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.resume_campaign_with_options(request, runtime)
 
@@ -13678,6 +17256,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.ResumeCampaignRequest,
     ) -> ccc20200701_models.ResumeCampaignResponse:
+        """
+        @summary 恢复预测式外呼活动
+        
+        @param request: ResumeCampaignRequest
+        @return: ResumeCampaignResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.resume_campaign_with_options_async(request, runtime)
 
@@ -13686,6 +17270,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.RetrieveCallRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.RetrieveCallResponse:
+        """
+        @param request: RetrieveCallRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RetrieveCallResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.channel_id):
@@ -13722,6 +17311,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.RetrieveCallRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.RetrieveCallResponse:
+        """
+        @param request: RetrieveCallRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RetrieveCallResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.channel_id):
@@ -13757,6 +17351,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.RetrieveCallRequest,
     ) -> ccc20200701_models.RetrieveCallResponse:
+        """
+        @param request: RetrieveCallRequest
+        @return: RetrieveCallResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.retrieve_call_with_options(request, runtime)
 
@@ -13764,6 +17362,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.RetrieveCallRequest,
     ) -> ccc20200701_models.RetrieveCallResponse:
+        """
+        @param request: RetrieveCallRequest
+        @return: RetrieveCallResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.retrieve_call_with_options_async(request, runtime)
 
@@ -13772,6 +17374,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.SaveRTCStatsV2Request,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.SaveRTCStatsV2Response:
+        """
+        @param request: SaveRTCStatsV2Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SaveRTCStatsV2Response
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.call_id):
@@ -13810,6 +17417,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.SaveRTCStatsV2Request,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.SaveRTCStatsV2Response:
+        """
+        @param request: SaveRTCStatsV2Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SaveRTCStatsV2Response
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.call_id):
@@ -13847,6 +17459,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.SaveRTCStatsV2Request,
     ) -> ccc20200701_models.SaveRTCStatsV2Response:
+        """
+        @param request: SaveRTCStatsV2Request
+        @return: SaveRTCStatsV2Response
+        """
         runtime = util_models.RuntimeOptions()
         return self.save_rtcstats_v2with_options(request, runtime)
 
@@ -13854,6 +17470,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.SaveRTCStatsV2Request,
     ) -> ccc20200701_models.SaveRTCStatsV2Response:
+        """
+        @param request: SaveRTCStatsV2Request
+        @return: SaveRTCStatsV2Response
+        """
         runtime = util_models.RuntimeOptions()
         return await self.save_rtcstats_v2with_options_async(request, runtime)
 
@@ -13862,6 +17482,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.SaveTerminalLogRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.SaveTerminalLogResponse:
+        """
+        @param request: SaveTerminalLogRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SaveTerminalLogResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_name):
@@ -13906,6 +17531,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.SaveTerminalLogRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.SaveTerminalLogResponse:
+        """
+        @param request: SaveTerminalLogRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SaveTerminalLogResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_name):
@@ -13949,6 +17579,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.SaveTerminalLogRequest,
     ) -> ccc20200701_models.SaveTerminalLogResponse:
+        """
+        @param request: SaveTerminalLogRequest
+        @return: SaveTerminalLogResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.save_terminal_log_with_options(request, runtime)
 
@@ -13956,6 +17590,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.SaveTerminalLogRequest,
     ) -> ccc20200701_models.SaveTerminalLogResponse:
+        """
+        @param request: SaveTerminalLogRequest
+        @return: SaveTerminalLogResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.save_terminal_log_with_options_async(request, runtime)
 
@@ -13964,6 +17602,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.SaveWebRTCStatsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.SaveWebRTCStatsResponse:
+        """
+        @param request: SaveWebRTCStatsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SaveWebRTCStatsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.call_id):
@@ -14002,6 +17645,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.SaveWebRTCStatsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.SaveWebRTCStatsResponse:
+        """
+        @param request: SaveWebRTCStatsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SaveWebRTCStatsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.call_id):
@@ -14039,6 +17687,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.SaveWebRTCStatsRequest,
     ) -> ccc20200701_models.SaveWebRTCStatsResponse:
+        """
+        @param request: SaveWebRTCStatsRequest
+        @return: SaveWebRTCStatsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.save_web_rtcstats_with_options(request, runtime)
 
@@ -14046,6 +17698,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.SaveWebRTCStatsRequest,
     ) -> ccc20200701_models.SaveWebRTCStatsResponse:
+        """
+        @param request: SaveWebRTCStatsRequest
+        @return: SaveWebRTCStatsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.save_web_rtcstats_with_options_async(request, runtime)
 
@@ -14054,6 +17710,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.SaveWebRtcInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.SaveWebRtcInfoResponse:
+        """
+        @param request: SaveWebRtcInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SaveWebRtcInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.call_id):
@@ -14090,6 +17751,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.SaveWebRtcInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.SaveWebRtcInfoResponse:
+        """
+        @param request: SaveWebRtcInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SaveWebRtcInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.call_id):
@@ -14125,6 +17791,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.SaveWebRtcInfoRequest,
     ) -> ccc20200701_models.SaveWebRtcInfoResponse:
+        """
+        @param request: SaveWebRtcInfoRequest
+        @return: SaveWebRtcInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.save_web_rtc_info_with_options(request, runtime)
 
@@ -14132,6 +17802,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.SaveWebRtcInfoRequest,
     ) -> ccc20200701_models.SaveWebRtcInfoResponse:
+        """
+        @param request: SaveWebRtcInfoRequest
+        @return: SaveWebRtcInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.save_web_rtc_info_with_options_async(request, runtime)
 
@@ -14140,6 +17814,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.SendDtmfSignalingRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.SendDtmfSignalingResponse:
+        """
+        @param request: SendDtmfSignalingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SendDtmfSignalingResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.channel_id):
@@ -14178,6 +17857,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.SendDtmfSignalingRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.SendDtmfSignalingResponse:
+        """
+        @param request: SendDtmfSignalingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SendDtmfSignalingResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.channel_id):
@@ -14215,6 +17899,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.SendDtmfSignalingRequest,
     ) -> ccc20200701_models.SendDtmfSignalingResponse:
+        """
+        @param request: SendDtmfSignalingRequest
+        @return: SendDtmfSignalingResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.send_dtmf_signaling_with_options(request, runtime)
 
@@ -14222,6 +17910,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.SendDtmfSignalingRequest,
     ) -> ccc20200701_models.SendDtmfSignalingResponse:
+        """
+        @param request: SendDtmfSignalingRequest
+        @return: SendDtmfSignalingResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.send_dtmf_signaling_with_options_async(request, runtime)
 
@@ -14230,6 +17922,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.SignInGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.SignInGroupResponse:
+        """
+        @param request: SignInGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SignInGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.additivity):
@@ -14268,6 +17965,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.SignInGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.SignInGroupResponse:
+        """
+        @param request: SignInGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SignInGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.additivity):
@@ -14305,6 +18007,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.SignInGroupRequest,
     ) -> ccc20200701_models.SignInGroupResponse:
+        """
+        @param request: SignInGroupRequest
+        @return: SignInGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.sign_in_group_with_options(request, runtime)
 
@@ -14312,6 +18018,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.SignInGroupRequest,
     ) -> ccc20200701_models.SignInGroupResponse:
+        """
+        @param request: SignInGroupRequest
+        @return: SignInGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.sign_in_group_with_options_async(request, runtime)
 
@@ -14320,6 +18030,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.SignOutGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.SignOutGroupResponse:
+        """
+        @param request: SignOutGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SignOutGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_id):
@@ -14352,6 +18067,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.SignOutGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.SignOutGroupResponse:
+        """
+        @param request: SignOutGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SignOutGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_id):
@@ -14383,6 +18103,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.SignOutGroupRequest,
     ) -> ccc20200701_models.SignOutGroupResponse:
+        """
+        @param request: SignOutGroupRequest
+        @return: SignOutGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.sign_out_group_with_options(request, runtime)
 
@@ -14390,6 +18114,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.SignOutGroupRequest,
     ) -> ccc20200701_models.SignOutGroupResponse:
+        """
+        @param request: SignOutGroupRequest
+        @return: SignOutGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.sign_out_group_with_options_async(request, runtime)
 
@@ -14398,6 +18126,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.StartBack2BackCallRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.StartBack2BackCallResponse:
+        """
+        @param request: StartBack2BackCallRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartBack2BackCallResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.additional_broker):
@@ -14438,6 +18171,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.StartBack2BackCallRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.StartBack2BackCallResponse:
+        """
+        @param request: StartBack2BackCallRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartBack2BackCallResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.additional_broker):
@@ -14477,6 +18215,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.StartBack2BackCallRequest,
     ) -> ccc20200701_models.StartBack2BackCallResponse:
+        """
+        @param request: StartBack2BackCallRequest
+        @return: StartBack2BackCallResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.start_back_2back_call_with_options(request, runtime)
 
@@ -14484,6 +18226,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.StartBack2BackCallRequest,
     ) -> ccc20200701_models.StartBack2BackCallResponse:
+        """
+        @param request: StartBack2BackCallRequest
+        @return: StartBack2BackCallResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.start_back_2back_call_with_options_async(request, runtime)
 
@@ -14492,6 +18238,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.StartConferenceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.StartConferenceResponse:
+        """
+        @param request: StartConferenceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartConferenceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -14528,6 +18279,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.StartConferenceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.StartConferenceResponse:
+        """
+        @param request: StartConferenceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartConferenceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -14563,6 +18319,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.StartConferenceRequest,
     ) -> ccc20200701_models.StartConferenceResponse:
+        """
+        @param request: StartConferenceRequest
+        @return: StartConferenceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.start_conference_with_options(request, runtime)
 
@@ -14570,6 +18330,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.StartConferenceRequest,
     ) -> ccc20200701_models.StartConferenceResponse:
+        """
+        @param request: StartConferenceRequest
+        @return: StartConferenceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.start_conference_with_options_async(request, runtime)
 
@@ -14578,6 +18342,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.StartEditContactFlowRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.StartEditContactFlowResponse:
+        """
+        @param request: StartEditContactFlowRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartEditContactFlowResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.contact_flow_id):
@@ -14608,6 +18377,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.StartEditContactFlowRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.StartEditContactFlowResponse:
+        """
+        @param request: StartEditContactFlowRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartEditContactFlowResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.contact_flow_id):
@@ -14637,6 +18411,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.StartEditContactFlowRequest,
     ) -> ccc20200701_models.StartEditContactFlowResponse:
+        """
+        @param request: StartEditContactFlowRequest
+        @return: StartEditContactFlowResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.start_edit_contact_flow_with_options(request, runtime)
 
@@ -14644,6 +18422,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.StartEditContactFlowRequest,
     ) -> ccc20200701_models.StartEditContactFlowResponse:
+        """
+        @param request: StartEditContactFlowRequest
+        @return: StartEditContactFlowResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.start_edit_contact_flow_with_options_async(request, runtime)
 
@@ -14652,6 +18434,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.StartPredictiveCallRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.StartPredictiveCallResponse:
+        """
+        @param request: StartPredictiveCallRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartPredictiveCallResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.callee):
@@ -14696,6 +18483,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.StartPredictiveCallRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.StartPredictiveCallResponse:
+        """
+        @param request: StartPredictiveCallRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartPredictiveCallResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.callee):
@@ -14739,6 +18531,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.StartPredictiveCallRequest,
     ) -> ccc20200701_models.StartPredictiveCallResponse:
+        """
+        @param request: StartPredictiveCallRequest
+        @return: StartPredictiveCallResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.start_predictive_call_with_options(request, runtime)
 
@@ -14746,6 +18542,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.StartPredictiveCallRequest,
     ) -> ccc20200701_models.StartPredictiveCallResponse:
+        """
+        @param request: StartPredictiveCallRequest
+        @return: StartPredictiveCallResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.start_predictive_call_with_options_async(request, runtime)
 
@@ -14754,6 +18554,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.StartPrivacyCallRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.StartPrivacyCallResponse:
+        """
+        @summary 发起隐私呼叫
+        
+        @param request: StartPrivacyCallRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartPrivacyCallResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -14788,6 +18595,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.StartPrivacyCallRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.StartPrivacyCallResponse:
+        """
+        @summary 发起隐私呼叫
+        
+        @param request: StartPrivacyCallRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartPrivacyCallResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -14821,6 +18635,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.StartPrivacyCallRequest,
     ) -> ccc20200701_models.StartPrivacyCallResponse:
+        """
+        @summary 发起隐私呼叫
+        
+        @param request: StartPrivacyCallRequest
+        @return: StartPrivacyCallResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.start_privacy_call_with_options(request, runtime)
 
@@ -14828,6 +18648,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.StartPrivacyCallRequest,
     ) -> ccc20200701_models.StartPrivacyCallResponse:
+        """
+        @summary 发起隐私呼叫
+        
+        @param request: StartPrivacyCallRequest
+        @return: StartPrivacyCallResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.start_privacy_call_with_options_async(request, runtime)
 
@@ -14836,6 +18662,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.SubmitCampaignRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.SubmitCampaignResponse:
+        """
+        @summary 提交预测式外呼活动
+        
+        @param request: SubmitCampaignRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitCampaignResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.campaign_id):
@@ -14866,6 +18699,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.SubmitCampaignRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.SubmitCampaignResponse:
+        """
+        @summary 提交预测式外呼活动
+        
+        @param request: SubmitCampaignRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitCampaignResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.campaign_id):
@@ -14895,6 +18735,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.SubmitCampaignRequest,
     ) -> ccc20200701_models.SubmitCampaignResponse:
+        """
+        @summary 提交预测式外呼活动
+        
+        @param request: SubmitCampaignRequest
+        @return: SubmitCampaignResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.submit_campaign_with_options(request, runtime)
 
@@ -14902,6 +18748,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.SubmitCampaignRequest,
     ) -> ccc20200701_models.SubmitCampaignResponse:
+        """
+        @summary 提交预测式外呼活动
+        
+        @param request: SubmitCampaignRequest
+        @return: SubmitCampaignResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.submit_campaign_with_options_async(request, runtime)
 
@@ -14910,6 +18762,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.SwitchToConferenceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.SwitchToConferenceResponse:
+        """
+        @param request: SwitchToConferenceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SwitchToConferenceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_id):
@@ -14944,6 +18801,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.SwitchToConferenceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.SwitchToConferenceResponse:
+        """
+        @param request: SwitchToConferenceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SwitchToConferenceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_id):
@@ -14977,6 +18839,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.SwitchToConferenceRequest,
     ) -> ccc20200701_models.SwitchToConferenceResponse:
+        """
+        @param request: SwitchToConferenceRequest
+        @return: SwitchToConferenceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.switch_to_conference_with_options(request, runtime)
 
@@ -14984,6 +18850,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.SwitchToConferenceRequest,
     ) -> ccc20200701_models.SwitchToConferenceResponse:
+        """
+        @param request: SwitchToConferenceRequest
+        @return: SwitchToConferenceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.switch_to_conference_with_options_async(request, runtime)
 
@@ -14992,6 +18862,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.TakeBreakRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.TakeBreakResponse:
+        """
+        @param request: TakeBreakRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TakeBreakResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.code):
@@ -15026,6 +18901,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.TakeBreakRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.TakeBreakResponse:
+        """
+        @param request: TakeBreakRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TakeBreakResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.code):
@@ -15059,6 +18939,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.TakeBreakRequest,
     ) -> ccc20200701_models.TakeBreakResponse:
+        """
+        @param request: TakeBreakRequest
+        @return: TakeBreakResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.take_break_with_options(request, runtime)
 
@@ -15066,6 +18950,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.TakeBreakRequest,
     ) -> ccc20200701_models.TakeBreakResponse:
+        """
+        @param request: TakeBreakRequest
+        @return: TakeBreakResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.take_break_with_options_async(request, runtime)
 
@@ -15074,6 +18962,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.UnmuteCallRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.UnmuteCallResponse:
+        """
+        @param request: UnmuteCallRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnmuteCallResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.channel_id):
@@ -15110,6 +19003,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.UnmuteCallRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.UnmuteCallResponse:
+        """
+        @param request: UnmuteCallRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnmuteCallResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.channel_id):
@@ -15145,6 +19043,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.UnmuteCallRequest,
     ) -> ccc20200701_models.UnmuteCallResponse:
+        """
+        @param request: UnmuteCallRequest
+        @return: UnmuteCallResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.unmute_call_with_options(request, runtime)
 
@@ -15152,6 +19054,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.UnmuteCallRequest,
     ) -> ccc20200701_models.UnmuteCallResponse:
+        """
+        @param request: UnmuteCallRequest
+        @return: UnmuteCallResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.unmute_call_with_options_async(request, runtime)
 
@@ -15160,6 +19066,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.UnregisterDeviceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.UnregisterDeviceResponse:
+        """
+        @summary 删除注册设备
+        
+        @param request: UnregisterDeviceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnregisterDeviceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -15190,6 +19103,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.UnregisterDeviceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.UnregisterDeviceResponse:
+        """
+        @summary 删除注册设备
+        
+        @param request: UnregisterDeviceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnregisterDeviceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -15219,6 +19139,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.UnregisterDeviceRequest,
     ) -> ccc20200701_models.UnregisterDeviceResponse:
+        """
+        @summary 删除注册设备
+        
+        @param request: UnregisterDeviceRequest
+        @return: UnregisterDeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.unregister_device_with_options(request, runtime)
 
@@ -15226,6 +19152,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.UnregisterDeviceRequest,
     ) -> ccc20200701_models.UnregisterDeviceResponse:
+        """
+        @summary 删除注册设备
+        
+        @param request: UnregisterDeviceRequest
+        @return: UnregisterDeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.unregister_device_with_options_async(request, runtime)
 
@@ -15234,6 +19166,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.UpdateCampaignRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.UpdateCampaignResponse:
+        """
+        @summary Update campaign
+        
+        @param request: UpdateCampaignRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateCampaignResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.callable_time):
@@ -15276,6 +19215,13 @@ class Client(OpenApiClient):
         request: ccc20200701_models.UpdateCampaignRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.UpdateCampaignResponse:
+        """
+        @summary Update campaign
+        
+        @param request: UpdateCampaignRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateCampaignResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.callable_time):
@@ -15317,6 +19263,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.UpdateCampaignRequest,
     ) -> ccc20200701_models.UpdateCampaignResponse:
+        """
+        @summary Update campaign
+        
+        @param request: UpdateCampaignRequest
+        @return: UpdateCampaignResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_campaign_with_options(request, runtime)
 
@@ -15324,6 +19276,12 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.UpdateCampaignRequest,
     ) -> ccc20200701_models.UpdateCampaignResponse:
+        """
+        @summary Update campaign
+        
+        @param request: UpdateCampaignRequest
+        @return: UpdateCampaignResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_campaign_with_options_async(request, runtime)
 
@@ -15332,6 +19290,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.UpdateConfigItemsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.UpdateConfigItemsResponse:
+        """
+        @param request: UpdateConfigItemsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateConfigItemsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.config_items):
@@ -15366,6 +19329,11 @@ class Client(OpenApiClient):
         request: ccc20200701_models.UpdateConfigItemsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ccc20200701_models.UpdateConfigItemsResponse:
+        """
+        @param request: UpdateConfigItemsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateConfigItemsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.config_items):
@@ -15399,6 +19367,10 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.UpdateConfigItemsRequest,
     ) -> ccc20200701_models.UpdateConfigItemsResponse:
+        """
+        @param request: UpdateConfigItemsRequest
+        @return: UpdateConfigItemsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_config_items_with_options(request, runtime)
 
@@ -15406,5 +19378,9 @@ class Client(OpenApiClient):
         self,
         request: ccc20200701_models.UpdateConfigItemsRequest,
     ) -> ccc20200701_models.UpdateConfigItemsResponse:
+        """
+        @param request: UpdateConfigItemsRequest
+        @return: UpdateConfigItemsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_config_items_with_options_async(request, runtime)

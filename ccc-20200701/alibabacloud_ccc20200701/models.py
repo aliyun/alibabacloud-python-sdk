@@ -4,13 +4,162 @@ from Tea.model import TeaModel
 from typing import Dict, List, Any
 
 
+class DataPropertiesValue(TeaModel):
+    def __init__(
+        self,
+        display_name: str = None,
+        description: str = None,
+        name: str = None,
+        data_type: str = None,
+        pattern: str = None,
+        pattern_error_message: str = None,
+        min_length: int = None,
+        max_length: int = None,
+        minimum: float = None,
+        maximum: float = None,
+        required: bool = None,
+        system: bool = None,
+        disabled: bool = None,
+        array: bool = None,
+        read_only: bool = None,
+        editor_type: str = None,
+        attributes: str = None,
+        display_order: int = None,
+        created_time: int = None,
+        updated_time: int = None,
+        creator: str = None,
+    ):
+        self.display_name = display_name
+        self.description = description
+        self.name = name
+        self.data_type = data_type
+        self.pattern = pattern
+        self.pattern_error_message = pattern_error_message
+        self.min_length = min_length
+        self.max_length = max_length
+        self.minimum = minimum
+        self.maximum = maximum
+        self.required = required
+        self.system = system
+        self.disabled = disabled
+        self.array = array
+        self.read_only = read_only
+        self.editor_type = editor_type
+        self.attributes = attributes
+        self.display_order = display_order
+        self.created_time = created_time
+        self.updated_time = updated_time
+        self.creator = creator
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.display_name is not None:
+            result['DisplayName'] = self.display_name
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.data_type is not None:
+            result['DataType'] = self.data_type
+        if self.pattern is not None:
+            result['Pattern'] = self.pattern
+        if self.pattern_error_message is not None:
+            result['PatternErrorMessage'] = self.pattern_error_message
+        if self.min_length is not None:
+            result['MinLength'] = self.min_length
+        if self.max_length is not None:
+            result['MaxLength'] = self.max_length
+        if self.minimum is not None:
+            result['Minimum'] = self.minimum
+        if self.maximum is not None:
+            result['Maximum'] = self.maximum
+        if self.required is not None:
+            result['Required'] = self.required
+        if self.system is not None:
+            result['System'] = self.system
+        if self.disabled is not None:
+            result['Disabled'] = self.disabled
+        if self.array is not None:
+            result['Array'] = self.array
+        if self.read_only is not None:
+            result['ReadOnly'] = self.read_only
+        if self.editor_type is not None:
+            result['EditorType'] = self.editor_type
+        if self.attributes is not None:
+            result['Attributes'] = self.attributes
+        if self.display_order is not None:
+            result['DisplayOrder'] = self.display_order
+        if self.created_time is not None:
+            result['CreatedTime'] = self.created_time
+        if self.updated_time is not None:
+            result['UpdatedTime'] = self.updated_time
+        if self.creator is not None:
+            result['Creator'] = self.creator
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DisplayName') is not None:
+            self.display_name = m.get('DisplayName')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('DataType') is not None:
+            self.data_type = m.get('DataType')
+        if m.get('Pattern') is not None:
+            self.pattern = m.get('Pattern')
+        if m.get('PatternErrorMessage') is not None:
+            self.pattern_error_message = m.get('PatternErrorMessage')
+        if m.get('MinLength') is not None:
+            self.min_length = m.get('MinLength')
+        if m.get('MaxLength') is not None:
+            self.max_length = m.get('MaxLength')
+        if m.get('Minimum') is not None:
+            self.minimum = m.get('Minimum')
+        if m.get('Maximum') is not None:
+            self.maximum = m.get('Maximum')
+        if m.get('Required') is not None:
+            self.required = m.get('Required')
+        if m.get('System') is not None:
+            self.system = m.get('System')
+        if m.get('Disabled') is not None:
+            self.disabled = m.get('Disabled')
+        if m.get('Array') is not None:
+            self.array = m.get('Array')
+        if m.get('ReadOnly') is not None:
+            self.read_only = m.get('ReadOnly')
+        if m.get('EditorType') is not None:
+            self.editor_type = m.get('EditorType')
+        if m.get('Attributes') is not None:
+            self.attributes = m.get('Attributes')
+        if m.get('DisplayOrder') is not None:
+            self.display_order = m.get('DisplayOrder')
+        if m.get('CreatedTime') is not None:
+            self.created_time = m.get('CreatedTime')
+        if m.get('UpdatedTime') is not None:
+            self.updated_time = m.get('UpdatedTime')
+        if m.get('Creator') is not None:
+            self.creator = m.get('Creator')
+        return self
+
+
 class AbortCampaignRequest(TeaModel):
     def __init__(
         self,
         campaign_id: str = None,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.campaign_id = campaign_id
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -130,8 +279,10 @@ class AddBlacklistCallTaggingRequest(TeaModel):
         job_id: str = None,
         number: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
         self.job_id = job_id
+        # This parameter is required.
         self.number = number
 
     def validate(self):
@@ -307,8 +458,10 @@ class AddCasesRequest(TeaModel):
         case_list: List[AddCasesRequestCaseList] = None,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.campaign_id = campaign_id
         self.case_list = case_list
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -354,8 +507,10 @@ class AddCasesShrinkRequest(TeaModel):
         case_list_shrink: str = None,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.campaign_id = campaign_id
         self.case_list_shrink = case_list_shrink
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -481,8 +636,10 @@ class AddNumbersToSkillGroupRequest(TeaModel):
         skill_group_id: str = None,
     ):
         self.inst_number_group_id_list = inst_number_group_id_list
+        # This parameter is required.
         self.instance_id = instance_id
         self.number_list = number_list
+        # This parameter is required.
         self.skill_group_id = skill_group_id
 
     def validate(self):
@@ -610,8 +767,11 @@ class AddPersonalNumbersToUserRequest(TeaModel):
         number_list: str = None,
         user_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.number_list = number_list
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -741,8 +901,11 @@ class AddPhoneNumberToSkillGroupsRequest(TeaModel):
         number: str = None,
         skill_group_id_list: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.number = number
+        # This parameter is required.
         self.skill_group_id_list = skill_group_id_list
 
     def validate(self):
@@ -869,9 +1032,11 @@ class AddPhoneNumbersRequest(TeaModel):
         usage: str = None,
     ):
         self.contact_flow_id = contact_flow_id
+        # This parameter is required.
         self.instance_id = instance_id
         self.number_group_id = number_group_id
         self.number_list = number_list
+        # This parameter is required.
         self.usage = usage
 
     def validate(self):
@@ -1009,8 +1174,11 @@ class AddSkillGroupsToUserRequest(TeaModel):
         skill_level_list: str = None,
         user_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.skill_level_list = skill_level_list
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -1134,8 +1302,11 @@ class AddUsersToSkillGroupRequest(TeaModel):
         skill_group_id: str = None,
         user_skill_level_list: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.skill_group_id = skill_group_id
+        # This parameter is required.
         self.user_skill_level_list = user_skill_level_list
 
     def validate(self):
@@ -1262,6 +1433,7 @@ class AnalyzeConversationRequest(TeaModel):
     ):
         self.contact_id = contact_id
         self.field_list_json = field_list_json
+        # This parameter is required.
         self.instance_id = instance_id
         self.task_list_json = task_list_json
 
@@ -1398,7 +1570,9 @@ class AnswerCallRequest(TeaModel):
         user_id: str = None,
     ):
         self.device_id = device_id
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.job_id = job_id
         self.user_id = user_id
 
@@ -1899,7 +2073,9 @@ class AppendCasesRequest(TeaModel):
         instance_id: str = None,
         body: List[AppendCasesRequestBody] = None,
     ):
+        # This parameter is required.
         self.campaign_id = campaign_id
+        # This parameter is required.
         self.instance_id = instance_id
         self.body = body
 
@@ -1946,7 +2122,9 @@ class AppendCasesShrinkRequest(TeaModel):
         instance_id: str = None,
         body_shrink: str = None,
     ):
+        # This parameter is required.
         self.campaign_id = campaign_id
+        # This parameter is required.
         self.instance_id = instance_id
         self.body_shrink = body_shrink
 
@@ -2073,10 +2251,14 @@ class AssignUsersRequest(TeaModel):
         skill_level_list: str = None,
         work_mode: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.ram_id_list = ram_id_list
+        # This parameter is required.
         self.role_id = role_id
         self.skill_level_list = skill_level_list
+        # This parameter is required.
         self.work_mode = work_mode
 
     def validate(self):
@@ -2223,9 +2405,12 @@ class BargeInCallRequest(TeaModel):
         timeout_seconds: int = None,
         user_id: str = None,
     ):
+        # This parameter is required.
         self.barged_user_id = barged_user_id
         self.device_id = device_id
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.job_id = job_id
         self.timeout_seconds = timeout_seconds
         self.user_id = user_id
@@ -2688,7 +2873,9 @@ class BlindTransferRequest(TeaModel):
         self.call_priority = call_priority
         self.contact_flow_variables = contact_flow_variables
         self.device_id = device_id
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.job_id = job_id
         self.queuing_overflow_threshold = queuing_overflow_threshold
         self.queuing_timeout_seconds = queuing_timeout_seconds
@@ -2697,6 +2884,7 @@ class BlindTransferRequest(TeaModel):
         self.strategy_params = strategy_params
         self.tags = tags
         self.timeout_seconds = timeout_seconds
+        # This parameter is required.
         self.transferee = transferee
         self.transferee_type = transferee_type
         self.transferor = transferor
@@ -3184,9 +3372,12 @@ class BridgeRtcCallRequest(TeaModel):
         user_id: str = None,
         video_enabled: bool = None,
     ):
+        # This parameter is required.
         self.callee = callee
         self.caller = caller
+        # This parameter is required.
         self.device_id = device_id
+        # This parameter is required.
         self.instance_id = instance_id
         self.service_provider = service_provider
         self.tags = tags
@@ -3394,7 +3585,9 @@ class CancelAttendedTransferRequest(TeaModel):
         user_id: str = None,
     ):
         self.device_id = device_id
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.job_id = job_id
         self.user_id = user_id
 
@@ -3832,6 +4025,7 @@ class ChangeVisibilityRequest(TeaModel):
         invisible: bool = None,
         user_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
         self.invisible = invisible
         self.user_id = user_id
@@ -4056,10 +4250,12 @@ class ChangeWorkModeRequest(TeaModel):
         work_mode: str = None,
     ):
         self.device_id = device_id
+        # This parameter is required.
         self.instance_id = instance_id
         self.mobile = mobile
         self.signed_skill_group_id_list = signed_skill_group_id_list
         self.user_id = user_id
+        # This parameter is required.
         self.work_mode = work_mode
 
     def validate(self):
@@ -4293,9 +4489,12 @@ class CoachCallRequest(TeaModel):
         timeout_seconds: int = None,
         user_id: str = None,
     ):
+        # This parameter is required.
         self.coached_user_id = coached_user_id
         self.device_id = device_id
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.job_id = job_id
         self.timeout_seconds = timeout_seconds
         self.user_id = user_id
@@ -4750,10 +4949,15 @@ class CommitContactFlowRequest(TeaModel):
         draft_id: str = None,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.contact_flow_id = contact_flow_id
+        # This parameter is required.
         self.definition = definition
+        # This parameter is required.
         self.description = description
+        # This parameter is required.
         self.draft_id = draft_id
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -4887,7 +5091,9 @@ class CompleteAttendedTransferRequest(TeaModel):
         user_id: str = None,
     ):
         self.device_id = device_id
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.job_id = job_id
         self.user_id = user_id
 
@@ -5333,9 +5539,13 @@ class CreateAudioFileRequest(TeaModel):
         oss_file_key: str = None,
         usage: str = None,
     ):
+        # This parameter is required.
         self.audio_file_name = audio_file_name
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.name = name
+        # This parameter is required.
         self.oss_file_key = oss_file_key
         self.usage = usage
 
@@ -5473,7 +5683,9 @@ class CreateCallTagsRequest(TeaModel):
         call_tag_name_list: str = None,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.call_tag_name_list = call_tag_name_list
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -5692,21 +5904,32 @@ class CreateCampaignRequest(TeaModel):
         strategy_parameters: str = None,
         strategy_type: str = None,
     ):
+        # This parameter is required.
         self.callable_time = callable_time
         self.case_file_key = case_file_key
         self.case_list = case_list
+        # This parameter is required.
         self.contact_flow_id = contact_flow_id
+        # This parameter is required.
         self.end_time = end_time
         self.executing_until_timeout = executing_until_timeout
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.max_attempt_count = max_attempt_count
+        # This parameter is required.
         self.min_attempt_interval = min_attempt_interval
+        # This parameter is required.
         self.name = name
+        # This parameter is required.
         self.queue_id = queue_id
         self.simulation = simulation
         self.simulation_parameters = simulation_parameters
+        # This parameter is required.
         self.start_time = start_time
+        # This parameter is required.
         self.strategy_parameters = strategy_parameters
+        # This parameter is required.
         self.strategy_type = strategy_type
 
     def validate(self):
@@ -5817,21 +6040,32 @@ class CreateCampaignShrinkRequest(TeaModel):
         strategy_parameters: str = None,
         strategy_type: str = None,
     ):
+        # This parameter is required.
         self.callable_time = callable_time
         self.case_file_key = case_file_key
         self.case_list_shrink = case_list_shrink
+        # This parameter is required.
         self.contact_flow_id = contact_flow_id
+        # This parameter is required.
         self.end_time = end_time
         self.executing_until_timeout = executing_until_timeout
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.max_attempt_count = max_attempt_count
+        # This parameter is required.
         self.min_attempt_interval = min_attempt_interval
+        # This parameter is required.
         self.name = name
+        # This parameter is required.
         self.queue_id = queue_id
         self.simulation = simulation
         self.simulation_parameters = simulation_parameters
+        # This parameter is required.
         self.start_time = start_time
+        # This parameter is required.
         self.strategy_parameters = strategy_parameters
+        # This parameter is required.
         self.strategy_type = strategy_type
 
     def validate(self):
@@ -6015,10 +6249,15 @@ class CreateContactFlowRequest(TeaModel):
         name: str = None,
         type: str = None,
     ):
+        # This parameter is required.
         self.definition = definition
+        # This parameter is required.
         self.description = description
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.name = name
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -6155,7 +6394,9 @@ class CreateCustomCallTaggingRequest(TeaModel):
         custom_number_list: str = None,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.custom_number_list = custom_number_list
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -6324,10 +6565,14 @@ class CreateInstanceRequest(TeaModel):
         name: str = None,
         number_list: str = None,
     ):
+        # This parameter is required.
         self.admin_ram_id_list = admin_ram_id_list
         self.description = description
+        # This parameter is required.
         self.domain_name = domain_name
+        # This parameter is required.
         self.name = name
+        # This parameter is required.
         self.number_list = number_list
 
     def validate(self):
@@ -6468,9 +6713,12 @@ class CreateSkillGroupRequest(TeaModel):
         name: str = None,
     ):
         self.description = description
+        # This parameter is required.
         self.display_name = display_name
+        # This parameter is required.
         self.instance_id = instance_id
         self.media_type = media_type
+        # This parameter is required.
         self.name = name
 
     def validate(self):
@@ -6672,13 +6920,18 @@ class CreateUserRequest(TeaModel):
     ):
         self.avatar_url = avatar_url
         self.display_id = display_id
+        # This parameter is required.
         self.display_name = display_name
+        # This parameter is required.
         self.email = email
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.login_name = login_name
         self.mobile = mobile
         self.nickname = nickname
         self.reset_password = reset_password
+        # This parameter is required.
         self.role_id = role_id
         self.skill_level_list = skill_level_list
         self.work_mode = work_mode
@@ -6928,7 +7181,9 @@ class DeleteAudioFileRequest(TeaModel):
         audio_resource_id: str = None,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.audio_resource_id = audio_resource_id
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -7053,7 +7308,9 @@ class DeleteCallTagRequest(TeaModel):
         instance_id: str = None,
         tag_name: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.tag_name = tag_name
 
     def validate(self):
@@ -7172,7 +7429,9 @@ class DeleteContactFlowRequest(TeaModel):
         contact_flow_id: str = None,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.contact_flow_id = contact_flow_id
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -7291,7 +7550,9 @@ class DeleteCustomCallTaggingRequest(TeaModel):
         instance_id: str = None,
         number: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.number = number
 
     def validate(self):
@@ -7404,6 +7665,148 @@ class DeleteCustomCallTaggingResponse(TeaModel):
         return self
 
 
+class DeleteSchemaPropertyRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        property_name: str = None,
+        request_id: str = None,
+        schema_id: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        # This parameter is required.
+        self.property_name = property_name
+        self.request_id = request_id
+        # schema id
+        # 
+        # This parameter is required.
+        self.schema_id = schema_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.property_name is not None:
+            result['PropertyName'] = self.property_name
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.schema_id is not None:
+            result['SchemaId'] = self.schema_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('PropertyName') is not None:
+            self.property_name = m.get('PropertyName')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SchemaId') is not None:
+            self.schema_id = m.get('SchemaId')
+        return self
+
+
+class DeleteSchemaPropertyResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        params: List[str] = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.http_status_code = http_status_code
+        self.message = message
+        self.params = params
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.params is not None:
+            result['Params'] = self.params
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Params') is not None:
+            self.params = m.get('Params')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteSchemaPropertyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteSchemaPropertyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteSchemaPropertyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteSkillGroupRequest(TeaModel):
     def __init__(
         self,
@@ -7412,7 +7815,9 @@ class DeleteSkillGroupRequest(TeaModel):
         skill_group_id: str = None,
     ):
         self.force = force
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.skill_group_id = skill_group_id
 
     def validate(self):
@@ -7529,6 +7934,148 @@ class DeleteSkillGroupResponse(TeaModel):
         return self
 
 
+class DisableSchemaPropertyRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        property_name: str = None,
+        request_id: str = None,
+        schema_id: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        # This parameter is required.
+        self.property_name = property_name
+        self.request_id = request_id
+        # schema id
+        # 
+        # This parameter is required.
+        self.schema_id = schema_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.property_name is not None:
+            result['PropertyName'] = self.property_name
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.schema_id is not None:
+            result['SchemaId'] = self.schema_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('PropertyName') is not None:
+            self.property_name = m.get('PropertyName')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SchemaId') is not None:
+            self.schema_id = m.get('SchemaId')
+        return self
+
+
+class DisableSchemaPropertyResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        params: List[str] = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.http_status_code = http_status_code
+        self.message = message
+        self.params = params
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.params is not None:
+            result['Params'] = self.params
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Params') is not None:
+            self.params = m.get('Params')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DisableSchemaPropertyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DisableSchemaPropertyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DisableSchemaPropertyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DiscardEditingContactFlowRequest(TeaModel):
     def __init__(
         self,
@@ -7536,8 +8083,11 @@ class DiscardEditingContactFlowRequest(TeaModel):
         draft_id: str = None,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.contact_flow_id = contact_flow_id
+        # This parameter is required.
         self.draft_id = draft_id
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -7654,6 +8204,148 @@ class DiscardEditingContactFlowResponse(TeaModel):
         return self
 
 
+class EnableSchemaPropertyRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        property_name: str = None,
+        request_id: str = None,
+        schema_id: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        # This parameter is required.
+        self.property_name = property_name
+        self.request_id = request_id
+        # schema id
+        # 
+        # This parameter is required.
+        self.schema_id = schema_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.property_name is not None:
+            result['PropertyName'] = self.property_name
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.schema_id is not None:
+            result['SchemaId'] = self.schema_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('PropertyName') is not None:
+            self.property_name = m.get('PropertyName')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SchemaId') is not None:
+            self.schema_id = m.get('SchemaId')
+        return self
+
+
+class EnableSchemaPropertyResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        params: List[str] = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.http_status_code = http_status_code
+        self.message = message
+        self.params = params
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.params is not None:
+            result['Params'] = self.params
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Params') is not None:
+            self.params = m.get('Params')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class EnableSchemaPropertyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: EnableSchemaPropertyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = EnableSchemaPropertyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class EndConferenceRequest(TeaModel):
     def __init__(
         self,
@@ -7661,7 +8353,9 @@ class EndConferenceRequest(TeaModel):
         job_id: str = None,
         user_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.job_id = job_id
         self.user_id = user_id
 
@@ -8063,6 +8757,7 @@ class ExportCustomCallTaggingRequest(TeaModel):
         self,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -8184,6 +8879,7 @@ class ExportDoNotCallNumbersRequest(TeaModel):
         scope: str = None,
         search_pattern: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
         self.scope = scope
         self.search_pattern = search_pattern
@@ -8468,7 +9164,9 @@ class GetAudioFileRequest(TeaModel):
         audio_resource_id: str = None,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.audio_resource_id = audio_resource_id
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -8658,7 +9356,9 @@ class GetAudioFileDownloadUrlRequest(TeaModel):
         audio_resource_id: str = None,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.audio_resource_id = audio_resource_id
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -8783,7 +9483,9 @@ class GetAudioFileUploadParametersRequest(TeaModel):
         audio_file_name: str = None,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.audio_file_name = audio_file_name
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -8967,7 +9669,9 @@ class GetCallDetailRecordRequest(TeaModel):
         contact_id: str = None,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.contact_id = contact_id
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -9650,7 +10354,9 @@ class GetCampaignRequest(TeaModel):
         campaign_id: str = None,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.campaign_id = campaign_id
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -9924,7 +10630,9 @@ class GetCaseFileUploadUrlRequest(TeaModel):
         file_name: str = None,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.file_name = file_name
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -10085,8 +10793,11 @@ class GetContactFlowRequest(TeaModel):
         draft_id: str = None,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.contact_flow_id = contact_flow_id
+        # This parameter is required.
         self.draft_id = draft_id
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -10304,7 +11015,9 @@ class GetConversationDetailRequest(TeaModel):
         contact_id: str = None,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.contact_id = contact_id
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -10488,7 +11201,9 @@ class GetDataChannelCredentialsRequest(TeaModel):
         device_id: str = None,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.device_id = device_id
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -10684,7 +11399,9 @@ class GetDoNotCallFileUploadParametersRequest(TeaModel):
         file_name: str = None,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.file_name = file_name
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -10874,7 +11591,9 @@ class GetEarlyMediaRecordingRequest(TeaModel):
         contact_id: str = None,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.contact_id = contact_id
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -11036,9 +11755,13 @@ class GetHistoricalCallerReportRequest(TeaModel):
         start_time: int = None,
         stop_time: int = None,
     ):
+        # This parameter is required.
         self.calling_number = calling_number
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.start_time = start_time
+        # This parameter is required.
         self.stop_time = stop_time
 
     def validate(self):
@@ -11206,7 +11929,9 @@ class GetHistoricalCampaignReportRequest(TeaModel):
         campaign_id: str = None,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.campaign_id = campaign_id
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -11405,6 +12130,7 @@ class GetHistoricalInstanceReportRequest(TeaModel):
         start_time: int = None,
     ):
         self.end_time = end_time
+        # This parameter is required.
         self.instance_id = instance_id
         self.media_type = media_type
         self.start_time = start_time
@@ -12399,6 +13125,7 @@ class GetInstanceRequest(TeaModel):
         self,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -12843,6 +13570,7 @@ class GetInstanceTrendingReportRequest(TeaModel):
         start_time: int = None,
     ):
         self.end_time = end_time
+        # This parameter is required.
         self.instance_id = instance_id
         self.media_type = media_type
         self.start_time = start_time
@@ -13181,6 +13909,7 @@ class GetLoginDetailsRequest(TeaModel):
         user_id: str = None,
     ):
         self.chat_device_id = chat_device_id
+        # This parameter is required.
         self.instance_id = instance_id
         self.user_id = user_id
 
@@ -13466,8 +14195,10 @@ class GetMonoRecordingRequest(TeaModel):
         expire_seconds: int = None,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.contact_id = contact_id
         self.expire_seconds = expire_seconds
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -13637,7 +14368,9 @@ class GetMultiChannelRecordingRequest(TeaModel):
         contact_id: str = None,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.contact_id = contact_id
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -13797,7 +14530,9 @@ class GetNumberLocationRequest(TeaModel):
         instance_id: str = None,
         number: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.number = number
 
     def validate(self):
@@ -13963,7 +14698,9 @@ class GetRealtimeCampaignStatsRequest(TeaModel):
         instance_id: str = None,
         queue_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.queue_id = queue_id
 
     def validate(self):
@@ -14177,6 +14914,7 @@ class GetRealtimeInstanceStatesRequest(TeaModel):
         instance_id: str = None,
         media_type: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
         self.media_type = media_type
 
@@ -14426,13 +15164,230 @@ class GetRealtimeInstanceStatesResponse(TeaModel):
         return self
 
 
+class GetSchemaRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        request_id: str = None,
+        schema_id: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.request_id = request_id
+        # schema id
+        # 
+        # This parameter is required.
+        self.schema_id = schema_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.schema_id is not None:
+            result['SchemaId'] = self.schema_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SchemaId') is not None:
+            self.schema_id = m.get('SchemaId')
+        return self
+
+
+class GetSchemaResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        created_time: str = None,
+        deleted: bool = None,
+        description: str = None,
+        id: str = None,
+        instance_id: str = None,
+        properties: Dict[str, DataPropertiesValue] = None,
+        updated_time: str = None,
+    ):
+        self.created_time = created_time
+        self.deleted = deleted
+        self.description = description
+        # schema id
+        self.id = id
+        self.instance_id = instance_id
+        self.properties = properties
+        self.updated_time = updated_time
+
+    def validate(self):
+        if self.properties:
+            for v in self.properties.values():
+                if v:
+                    v.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.created_time is not None:
+            result['CreatedTime'] = self.created_time
+        if self.deleted is not None:
+            result['Deleted'] = self.deleted
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        result['Properties'] = {}
+        if self.properties is not None:
+            for k, v in self.properties.items():
+                result['Properties'][k] = v.to_map()
+        if self.updated_time is not None:
+            result['UpdatedTime'] = self.updated_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreatedTime') is not None:
+            self.created_time = m.get('CreatedTime')
+        if m.get('Deleted') is not None:
+            self.deleted = m.get('Deleted')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        self.properties = {}
+        if m.get('Properties') is not None:
+            for k, v in m.get('Properties').items():
+                temp_model = DataPropertiesValue()
+                self.properties[k] = temp_model.from_map(v)
+        if m.get('UpdatedTime') is not None:
+            self.updated_time = m.get('UpdatedTime')
+        return self
+
+
+class GetSchemaResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: GetSchemaResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        params: List[str] = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.params = params
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.params is not None:
+            result['Params'] = self.params
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetSchemaResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Params') is not None:
+            self.params = m.get('Params')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetSchemaResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetSchemaResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetSchemaResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetSkillGroupRequest(TeaModel):
     def __init__(
         self,
         instance_id: str = None,
         skill_group_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.skill_group_id = skill_group_id
 
     def validate(self):
@@ -14616,6 +15571,7 @@ class GetTurnCredentialsRequest(TeaModel):
         instance_id: str = None,
         user_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
         self.user_id = user_id
 
@@ -14781,6 +15737,7 @@ class GetTurnServerListRequest(TeaModel):
         self,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -14907,6 +15864,7 @@ class GetUploadAudioDataParamsRequest(TeaModel):
         contact_id: str = None,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.contact_id = contact_id
         self.instance_id = instance_id
 
@@ -15063,6 +16021,7 @@ class GetUserRequest(TeaModel):
         user_id: str = None,
     ):
         self.extension = extension
+        # This parameter is required.
         self.instance_id = instance_id
         self.user_id = user_id
 
@@ -15317,7 +16276,9 @@ class GetVideoRequest(TeaModel):
         contact_id: str = None,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.contact_id = contact_id
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -15477,7 +16438,9 @@ class GetVoicemailRecordingRequest(TeaModel):
         contact_id: str = None,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.contact_id = contact_id
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -15641,9 +16604,12 @@ class HoldCallRequest(TeaModel):
         music: str = None,
         user_id: str = None,
     ):
+        # This parameter is required.
         self.channel_id = channel_id
         self.device_id = device_id
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.job_id = job_id
         self.music = music
         self.user_id = user_id
@@ -16077,7 +17043,9 @@ class ImportAdminsRequest(TeaModel):
         instance_id: str = None,
         ram_id_list: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.ram_id_list = ram_id_list
 
     def validate(self):
@@ -16261,7 +17229,9 @@ class ImportCustomCallTaggingRequest(TeaModel):
         file_path: str = None,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.file_path = file_path
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -16430,6 +17400,7 @@ class ImportDoNotCallNumbersRequest(TeaModel):
         remark: str = None,
     ):
         self.file_path = file_path
+        # This parameter is required.
         self.instance_id = instance_id
         self.number_list = number_list
         self.remark = remark
@@ -16579,7 +17550,9 @@ class InitiateAttendedTransferRequest(TeaModel):
     ):
         self.call_priority = call_priority
         self.device_id = device_id
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.job_id = job_id
         self.queuing_overflow_threshold = queuing_overflow_threshold
         self.queuing_timeout_seconds = queuing_timeout_seconds
@@ -16588,6 +17561,7 @@ class InitiateAttendedTransferRequest(TeaModel):
         self.strategy_params = strategy_params
         self.tags = tags
         self.timeout_seconds = timeout_seconds
+        # This parameter is required.
         self.transferee = transferee
         self.transferee_type = transferee_type
         self.transferor = transferor
@@ -17081,8 +18055,11 @@ class InterceptCallRequest(TeaModel):
         user_id: str = None,
     ):
         self.device_id = device_id
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.intercepted_user_id = intercepted_user_id
+        # This parameter is required.
         self.job_id = job_id
         self.timeout_seconds = timeout_seconds
         self.user_id = user_id
@@ -17532,10 +18509,13 @@ class LaunchAuthenticationRequest(TeaModel):
         job_id: str = None,
         user_id: str = None,
     ):
+        # This parameter is required.
         self.contact_flow_id = contact_flow_id
         self.contact_flow_variables = contact_flow_variables
         self.device_id = device_id
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.job_id = job_id
         self.user_id = user_id
 
@@ -17986,10 +18966,13 @@ class LaunchSurveyRequest(TeaModel):
         survey_channel: str = None,
         user_id: str = None,
     ):
+        # This parameter is required.
         self.contact_flow_id = contact_flow_id
         self.contact_flow_variables = contact_flow_variables
         self.device_id = device_id
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.job_id = job_id
         self.sms_metadata_id = sms_metadata_id
         self.survey_channel = survey_channel
@@ -18452,8 +19435,10 @@ class ListAgentStateLogsRequest(TeaModel):
         instance_id: str = None,
         start_time: int = None,
     ):
+        # This parameter is required.
         self.agent_id = agent_id
         self.end_time = end_time
+        # This parameter is required.
         self.instance_id = instance_id
         self.start_time = start_time
 
@@ -18665,6 +19650,7 @@ class ListAgentStatesRequest(TeaModel):
     ):
         self.agent_ids = agent_ids
         self.exclude_offline_users = exclude_offline_users
+        # This parameter is required.
         self.instance_id = instance_id
         self.page_number = page_number
         self.page_size = page_size
@@ -18953,6 +19939,7 @@ class ListAgentSummaryReportsSinceMidnightRequest(TeaModel):
         skill_group_id: str = None,
     ):
         self.agent_ids = agent_ids
+        # This parameter is required.
         self.instance_id = instance_id
         self.page_number = page_number
         self.page_size = page_size
@@ -19609,13 +20596,18 @@ class ListAttemptsRequest(TeaModel):
         self.attempt_id = attempt_id
         self.callee = callee
         self.caller = caller
+        # This parameter is required.
         self.campaign_id = campaign_id
+        # This parameter is required.
         self.case_id = case_id
         self.contact_id = contact_id
         self.criteria = criteria
         self.end_time = end_time
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.page_number = page_number
+        # This parameter is required.
         self.page_size = page_size
         self.queue_id = queue_id
         self.start_time = start_time
@@ -19989,8 +20981,11 @@ class ListAudioFilesRequest(TeaModel):
         status: str = None,
         usage: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.page_number = page_number
+        # This parameter is required.
         self.page_size = page_size
         self.status = status
         self.usage = usage
@@ -20265,7 +21260,9 @@ class ListBlacklistCallTaggingsRequest(TeaModel):
         instance_id: str = None,
         number_list: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.number_list = number_list
 
     def validate(self):
@@ -20441,9 +21438,12 @@ class ListBriefSkillGroupsRequest(TeaModel):
         page_size: int = None,
         search_pattern: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
         self.media_type = media_type
+        # This parameter is required.
         self.page_number = page_number
+        # This parameter is required.
         self.page_size = page_size
         self.search_pattern = search_pattern
 
@@ -20735,9 +21735,12 @@ class ListCallDetailRecordsRequest(TeaModel):
         self.criteria = criteria
         self.early_media_state_list = early_media_state_list
         self.end_time = end_time
+        # This parameter is required.
         self.instance_id = instance_id
         self.order_by_field = order_by_field
+        # This parameter is required.
         self.page_number = page_number
+        # This parameter is required.
         self.page_size = page_size
         self.satisfaction_description_list = satisfaction_description_list
         self.satisfaction_list = satisfaction_list
@@ -21225,8 +22228,11 @@ class ListCallTagsRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.page_number = page_number
+        # This parameter is required.
         self.page_size = page_size
 
     def validate(self):
@@ -21445,8 +22451,10 @@ class ListCampaignTrendingReportRequest(TeaModel):
         instance_id: str = None,
         start_time: int = None,
     ):
+        # This parameter is required.
         self.campaign_id = campaign_id
         self.end_time = end_time
+        # This parameter is required.
         self.instance_id = instance_id
         self.start_time = start_time
 
@@ -21709,9 +22717,12 @@ class ListCampaignsRequest(TeaModel):
     ):
         self.actual_start_time_from = actual_start_time_from
         self.actual_start_time_to = actual_start_time_to
+        # This parameter is required.
         self.instance_id = instance_id
         self.name = name
+        # This parameter is required.
         self.page_number = page_number
+        # This parameter is required.
         self.page_size = page_size
         self.planed_start_time_from = planed_start_time_from
         self.planed_start_time_to = planed_start_time_to
@@ -22072,9 +23083,13 @@ class ListCasesRequest(TeaModel):
         phone_number: str = None,
         state: str = None,
     ):
+        # This parameter is required.
         self.campaign_id = campaign_id
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.page_number = page_number
+        # This parameter is required.
         self.page_size = page_size
         self.phone_number = phone_number
         self.state = state
@@ -22342,8 +23357,11 @@ class ListConfigItemsRequest(TeaModel):
         object_id: str = None,
         object_type: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.object_id = object_id
+        # This parameter is required.
         self.object_type = object_type
 
     def validate(self):
@@ -22541,9 +23559,12 @@ class ListContactFlowsRequest(TeaModel):
         sort_order: str = None,
         type: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
         self.order_by_field = order_by_field
+        # This parameter is required.
         self.page_number = page_number
+        # This parameter is required.
         self.page_size = page_size
         self.sort_order = sort_order
         self.type = type
@@ -22838,8 +23859,11 @@ class ListCustomCallTaggingRequest(TeaModel):
         search_pattern: str = None,
     ):
         self.call_tag_name_list = call_tag_name_list
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.page_number = page_number
+        # This parameter is required.
         self.page_size = page_size
         self.search_pattern = search_pattern
 
@@ -23130,6 +24154,7 @@ class ListDevicesRequest(TeaModel):
         instance_id: str = None,
         user_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
         self.user_id = user_id
 
@@ -23341,8 +24366,11 @@ class ListDoNotCallNumbersRequest(TeaModel):
         scope: str = None,
         search_pattern: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.page_number = page_number
+        # This parameter is required.
         self.page_size = page_size
         self.scope = scope
         self.search_pattern = search_pattern
@@ -23606,9 +24634,12 @@ class ListHistoricalAgentReportRequest(TeaModel):
         stop_time: int = None,
     ):
         self.agent_id_list = agent_id_list
+        # This parameter is required.
         self.instance_id = instance_id
         self.media_type = media_type
+        # This parameter is required.
         self.page_number = page_number
+        # This parameter is required.
         self.page_size = page_size
         self.skill_group_id = skill_group_id
         self.start_time = start_time
@@ -24819,9 +25850,12 @@ class ListHistoricalAgentSkillGroupReportRequest(TeaModel):
     ):
         self.agent_id_list = agent_id_list
         self.end_time = end_time
+        # This parameter is required.
         self.instance_id = instance_id
         self.media_type = media_type
+        # This parameter is required.
         self.page_number = page_number
+        # This parameter is required.
         self.page_size = page_size
         self.skill_group_id_list = skill_group_id_list
         self.start_time = start_time
@@ -25982,9 +27016,12 @@ class ListHistoricalSkillGroupReportRequest(TeaModel):
         start_time: int = None,
     ):
         self.end_time = end_time
+        # This parameter is required.
         self.instance_id = instance_id
         self.media_type = media_type
+        # This parameter is required.
         self.page_number = page_number
+        # This parameter is required.
         self.page_size = page_size
         self.skill_group_id_list = skill_group_id_list
         self.start_time = start_time
@@ -27158,7 +28195,9 @@ class ListInstancesRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # This parameter is required.
         self.page_number = page_number
+        # This parameter is required.
         self.page_size = page_size
 
     def validate(self):
@@ -27544,7 +28583,9 @@ class ListInstancesOfUserRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # This parameter is required.
         self.page_number = page_number
+        # This parameter is required.
         self.page_size = page_size
 
     def validate(self):
@@ -28047,8 +29088,10 @@ class ListIntervalAgentReportRequest(TeaModel):
         media_type: str = None,
         start_time: int = None,
     ):
+        # This parameter is required.
         self.agent_id = agent_id
         self.end_time = end_time
+        # This parameter is required.
         self.instance_id = instance_id
         self.interval = interval
         self.media_type = media_type
@@ -29170,10 +30213,13 @@ class ListIntervalAgentSkillGroupReportRequest(TeaModel):
         skill_group_id: str = None,
         start_time: int = None,
     ):
+        # This parameter is required.
         self.agent_id = agent_id
         self.end_time = end_time
+        # This parameter is required.
         self.instance_id = instance_id
         self.interval = interval
+        # This parameter is required.
         self.skill_group_id = skill_group_id
         self.start_time = start_time
 
@@ -30257,6 +31303,7 @@ class ListIntervalInstanceReportRequest(TeaModel):
         start_time: int = None,
     ):
         self.end_time = end_time
+        # This parameter is required.
         self.instance_id = instance_id
         self.interval = interval
         self.start_time = start_time
@@ -31168,9 +32215,11 @@ class ListIntervalSkillGroupReportRequest(TeaModel):
         start_time: int = None,
     ):
         self.end_time = end_time
+        # This parameter is required.
         self.instance_id = instance_id
         self.interval = interval
         self.media_type = media_type
+        # This parameter is required.
         self.skill_group_id = skill_group_id
         self.start_time = start_time
 
@@ -32229,9 +33278,13 @@ class ListIvrTrackingDetailsRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # This parameter is required.
         self.contact_id = contact_id
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.page_number = page_number
+        # This parameter is required.
         self.page_size = page_size
 
     def validate(self):
@@ -32541,10 +33594,15 @@ class ListLegacyAgentEventLogsRequest(TeaModel):
         start_time: int = None,
     ):
         self.agent_id = agent_id
+        # This parameter is required.
         self.end_time = end_time
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.page_number = page_number
+        # This parameter is required.
         self.page_size = page_size
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -32880,10 +33938,15 @@ class ListLegacyAgentStatusLogsRequest(TeaModel):
         start_time: int = None,
     ):
         self.agent_id = agent_id
+        # This parameter is required.
         self.end_time = end_time
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.page_number = page_number
+        # This parameter is required.
         self.page_size = page_size
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -33265,10 +34328,15 @@ class ListLegacyAppraiseLogsRequest(TeaModel):
         page_size: int = None,
         start_time: int = None,
     ):
+        # This parameter is required.
         self.end_time = end_time
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.page_number = page_number
+        # This parameter is required.
         self.page_size = page_size
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -33563,11 +34631,16 @@ class ListLegacyQueueEventLogsRequest(TeaModel):
         skill_group_id: str = None,
         start_time: int = None,
     ):
+        # This parameter is required.
         self.end_time = end_time
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.page_number = page_number
+        # This parameter is required.
         self.page_size = page_size
         self.skill_group_id = skill_group_id
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -33856,7 +34929,9 @@ class ListMonoRecordingsRequest(TeaModel):
         contact_id: str = None,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.contact_id = contact_id
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -34064,7 +35139,9 @@ class ListMultiChannelRecordingsRequest(TeaModel):
         contact_id: str = None,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.contact_id = contact_id
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -34328,8 +35405,11 @@ class ListOutboundNumbersOfUserRequest(TeaModel):
         skill_group_id_list: str = None,
         user_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.page_number = page_number
+        # This parameter is required.
         self.page_size = page_size
         self.skill_group_id_list = skill_group_id_list
         self.user_id = user_id
@@ -34566,11 +35646,16 @@ class ListPersonalNumbersOfUserRequest(TeaModel):
         search_pattern: str = None,
         user_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.is_member = is_member
+        # This parameter is required.
         self.page_number = page_number
+        # This parameter is required.
         self.page_size = page_size
         self.search_pattern = search_pattern
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -34828,8 +35913,11 @@ class ListPhoneNumbersRequest(TeaModel):
         usage: str = None,
     ):
         self.active = active
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.page_number = page_number
+        # This parameter is required.
         self.page_size = page_size
         self.search_pattern = search_pattern
         self.usage = usage
@@ -35185,11 +36273,16 @@ class ListPhoneNumbersOfSkillGroupRequest(TeaModel):
         skill_group_id: str = None,
     ):
         self.active = active
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.is_member = is_member
+        # This parameter is required.
         self.page_number = page_number
+        # This parameter is required.
         self.page_size = page_size
         self.search_pattern = search_pattern
+        # This parameter is required.
         self.skill_group_id = skill_group_id
 
     def validate(self):
@@ -35451,6 +36544,7 @@ class ListPrivilegesOfUserRequest(TeaModel):
         self,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -35620,8 +36714,11 @@ class ListRamUsersRequest(TeaModel):
         page_size: int = None,
         search_pattern: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.page_number = page_number
+        # This parameter is required.
         self.page_size = page_size
         self.search_pattern = search_pattern
 
@@ -35891,9 +36988,12 @@ class ListRealtimeAgentStatesRequest(TeaModel):
         self.agent_id_list = agent_id_list
         self.agent_name = agent_name
         self.call_type_list = call_type_list
+        # This parameter is required.
         self.instance_id = instance_id
         self.outbound_scenario = outbound_scenario
+        # This parameter is required.
         self.page_number = page_number
+        # This parameter is required.
         self.page_size = page_size
         self.query = query
         self.skill_group_id = skill_group_id
@@ -36226,8 +37326,11 @@ class ListRealtimeSkillGroupStatesRequest(TeaModel):
         page_size: int = None,
         skill_group_id_list: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.page_number = page_number
+        # This parameter is required.
         self.page_size = page_size
         self.skill_group_id_list = skill_group_id_list
 
@@ -36562,8 +37665,11 @@ class ListRecentCallDetailRecordsRequest(TeaModel):
     ):
         self.criteria = criteria
         self.end_time = end_time
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.page_number = page_number
+        # This parameter is required.
         self.page_size = page_size
         self.start_time = start_time
 
@@ -36846,6 +37952,7 @@ class ListRolesRequest(TeaModel):
         self,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -37009,6 +38116,7 @@ class ListSkillGroupStatesRequest(TeaModel):
         page_size: int = None,
         skill_group_ids: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
         self.page_number = page_number
         self.page_size = page_size
@@ -37330,6 +38438,7 @@ class ListSkillGroupSummaryReportsSinceMidnightRequest(TeaModel):
         page_size: int = None,
         skill_groups: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
         self.page_number = page_number
         self.page_size = page_size
@@ -38101,9 +39210,12 @@ class ListSkillGroupsRequest(TeaModel):
         page_size: int = None,
         search_pattern: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
         self.media_type = media_type
+        # This parameter is required.
         self.page_number = page_number
+        # This parameter is required.
         self.page_size = page_size
         self.search_pattern = search_pattern
 
@@ -38369,9 +39481,12 @@ class ListSkillLevelsOfUserRequest(TeaModel):
         search_pattern: str = None,
         user_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
         self.is_member = is_member
+        # This parameter is required.
         self.page_number = page_number
+        # This parameter is required.
         self.page_size = page_size
         self.search_pattern = search_pattern
         self.user_id = user_id
@@ -38615,7 +39730,9 @@ class ListUnassignedNumbersRequest(TeaModel):
         page_size: int = None,
         search_pattern: str = None,
     ):
+        # This parameter is required.
         self.page_number = page_number
+        # This parameter is required.
         self.page_size = page_size
         self.search_pattern = search_pattern
 
@@ -38843,11 +39960,16 @@ class ListUserLevelsOfSkillGroupRequest(TeaModel):
         search_pattern: str = None,
         skill_group_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.is_member = is_member
+        # This parameter is required.
         self.page_number = page_number
+        # This parameter is required.
         self.page_size = page_size
         self.search_pattern = search_pattern
+        # This parameter is required.
         self.skill_group_id = skill_group_id
 
     def validate(self):
@@ -39121,8 +40243,11 @@ class ListUsersRequest(TeaModel):
         search_pattern: str = None,
         skill_group_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.page_number = page_number
+        # This parameter is required.
         self.page_size = page_size
         self.search_pattern = search_pattern
         self.skill_group_id = skill_group_id
@@ -39567,9 +40692,12 @@ class ListVoicemailsRequest(TeaModel):
         self.caller = caller
         self.contact_id = contact_id
         self.end_time = end_time
+        # This parameter is required.
         self.instance_id = instance_id
         self.name = name
+        # This parameter is required.
         self.page_number = page_number
+        # This parameter is required.
         self.page_size = page_size
         self.start_time = start_time
 
@@ -39856,9 +40984,11 @@ class MakeCallRequest(TeaModel):
         timeout_seconds: int = None,
         user_id: str = None,
     ):
+        # This parameter is required.
         self.callee = callee
         self.caller = caller
         self.device_id = device_id
+        # This parameter is required.
         self.instance_id = instance_id
         self.masked_callee = masked_callee
         self.media_type = media_type
@@ -40305,10 +41435,15 @@ class ModifyAudioFileRequest(TeaModel):
         oss_file_key: str = None,
         usage: str = None,
     ):
+        # This parameter is required.
         self.audio_file_name = audio_file_name
+        # This parameter is required.
         self.audio_resource_id = audio_resource_id
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.name = name
+        # This parameter is required.
         self.oss_file_key = oss_file_key
         self.usage = usage
 
@@ -40454,7 +41589,9 @@ class ModifyCustomCallTaggingRequest(TeaModel):
     ):
         self.call_tag_name_list = call_tag_name_list
         self.description = description
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.number = number
 
     def validate(self):
@@ -40582,6 +41719,7 @@ class ModifyInstanceRequest(TeaModel):
         instance_id: str = None,
     ):
         self.description = description
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -40709,8 +41847,11 @@ class ModifyPhoneNumberRequest(TeaModel):
         usage: str = None,
     ):
         self.contact_flow_id = contact_flow_id
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.number = number
+        # This parameter is required.
         self.usage = usage
 
     def validate(self):
@@ -40841,7 +41982,9 @@ class ModifySkillGroupRequest(TeaModel):
     ):
         self.description = description
         self.display_name = display_name
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.skill_group_id = skill_group_id
 
     def validate(self):
@@ -40969,8 +42112,11 @@ class ModifySkillLevelsOfUserRequest(TeaModel):
         skill_level_list: str = None,
         user_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.skill_level_list = skill_level_list
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -41111,11 +42257,14 @@ class ModifyUserRequest(TeaModel):
         self.display_id = display_id
         self.display_name = display_name
         self.force = force
+        # This parameter is required.
         self.instance_id = instance_id
         self.mobile = mobile
         self.nickname = nickname
         self.role_id = role_id
+        # This parameter is required.
         self.user_id = user_id
+        # This parameter is required.
         self.work_mode = work_mode
 
     def validate(self):
@@ -41279,8 +42428,11 @@ class ModifyUserLevelsOfSkillGroupRequest(TeaModel):
         skill_group_id: str = None,
         user_level_list: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.skill_group_id = skill_group_id
+        # This parameter is required.
         self.user_level_list = user_level_list
 
     def validate(self):
@@ -41413,7 +42565,9 @@ class MonitorCallRequest(TeaModel):
         user_id: str = None,
     ):
         self.device_id = device_id
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.monitored_user_id = monitored_user_id
         self.timeout_seconds = timeout_seconds
         self.user_id = user_id
@@ -41860,7 +43014,9 @@ class MuteCallRequest(TeaModel):
     ):
         self.channel_id = channel_id
         self.device_id = device_id
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.job_id = job_id
         self.user_id = user_id
 
@@ -42301,7 +43457,9 @@ class PauseCampaignRequest(TeaModel):
         campaign_id: str = None,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.campaign_id = campaign_id
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -42422,9 +43580,12 @@ class PickOutboundNumbersRequest(TeaModel):
         instance_id: str = None,
         skill_group_id_list: str = None,
     ):
+        # This parameter is required.
         self.called_number = called_number
         self.count = count
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.skill_group_id_list = skill_group_id_list
 
     def validate(self):
@@ -42683,6 +43844,7 @@ class PollUserStatusRequest(TeaModel):
         user_id: str = None,
     ):
         self.device_id = device_id
+        # This parameter is required.
         self.instance_id = instance_id
         self.user_id = user_id
 
@@ -43478,8 +44640,11 @@ class PublishContactFlowRequest(TeaModel):
         draft_id: str = None,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.contact_flow_id = contact_flow_id
+        # This parameter is required.
         self.draft_id = draft_id
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -43605,6 +44770,7 @@ class ReadyForServiceRequest(TeaModel):
         user_id: str = None,
     ):
         self.device_id = device_id
+        # This parameter is required.
         self.instance_id = instance_id
         self.outbound_scenario = outbound_scenario
         self.user_id = user_id
@@ -43837,6 +45003,7 @@ class RedialCallRequest(TeaModel):
         self.callee = callee
         self.caller = caller
         self.device_id = device_id
+        # This parameter is required.
         self.instance_id = instance_id
         self.job_id = job_id
         self.tags = tags
@@ -44270,8 +45437,11 @@ class RegisterDeviceRequest(TeaModel):
         password: str = None,
         user_id: str = None,
     ):
+        # This parameter is required.
         self.device_id = device_id
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.password = password
         self.user_id = user_id
 
@@ -44407,8 +45577,11 @@ class RegisterDevicesRequest(TeaModel):
         password: str = None,
         user_id_list_json: str = None,
     ):
+        # This parameter is required.
         self.device_id = device_id
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.password = password
         self.user_id_list_json = user_id_list_json
 
@@ -44547,7 +45720,9 @@ class ReleaseCallRequest(TeaModel):
     ):
         self.channel_id = channel_id
         self.device_id = device_id
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.job_id = job_id
         self.user_id = user_id
 
@@ -44959,8 +46134,10 @@ class RemoveBlacklistCallTaggingRequest(TeaModel):
         job_id: str = None,
         number: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
         self.job_id = job_id
+        # This parameter is required.
         self.number = number
 
     def validate(self):
@@ -45084,6 +46261,7 @@ class RemoveDoNotCallNumbersRequest(TeaModel):
         instance_id: str = None,
         number_list: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
         self.number_list = number_list
 
@@ -45216,8 +46394,11 @@ class RemovePersonalNumbersFromUserRequest(TeaModel):
         number_list: str = None,
         user_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.number_list = number_list
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -45341,8 +46522,11 @@ class RemovePhoneNumberFromSkillGroupsRequest(TeaModel):
         number: str = None,
         skill_group_id_list: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.number = number
+        # This parameter is required.
         self.skill_group_id_list = skill_group_id_list
 
     def validate(self):
@@ -45467,7 +46651,9 @@ class RemovePhoneNumbersRequest(TeaModel):
         number_list: str = None,
     ):
         self.force = force
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.number_list = number_list
 
     def validate(self):
@@ -45603,8 +46789,11 @@ class RemovePhoneNumbersFromSkillGroupRequest(TeaModel):
         number_list: str = None,
         skill_group_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.number_list = number_list
+        # This parameter is required.
         self.skill_group_id = skill_group_id
 
     def validate(self):
@@ -45728,8 +46917,11 @@ class RemoveSkillGroupsFromUserRequest(TeaModel):
         skill_group_id_list: str = None,
         user_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.skill_group_id_list = skill_group_id_list
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -45863,6 +47055,7 @@ class RemoveUsersRequest(TeaModel):
     ):
         self.file_path = file_path
         self.force = force
+        # This parameter is required.
         self.instance_id = instance_id
         self.notification_email = notification_email
         self.user_id_list = user_id_list
@@ -46002,8 +47195,11 @@ class RemoveUsersFromSkillGroupRequest(TeaModel):
         skill_group_id: str = None,
         user_id_list: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.skill_group_id = skill_group_id
+        # This parameter is required.
         self.user_id_list = user_id_list
 
     def validate(self):
@@ -46128,6 +47324,7 @@ class ResetAgentStateRequest(TeaModel):
         user_id: str = None,
     ):
         self.device_id = device_id
+        # This parameter is required.
         self.instance_id = instance_id
         self.user_id = user_id
 
@@ -46347,8 +47544,11 @@ class ResetUserPasswordRequest(TeaModel):
         password: str = None,
         user_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.password = password
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -46472,6 +47672,7 @@ class RestoreArchivedRecordingsRequest(TeaModel):
         instance_id: str = None,
     ):
         self.contact_ids = contact_ids
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -46649,7 +47850,9 @@ class ResumeCampaignRequest(TeaModel):
         campaign_id: str = None,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.campaign_id = campaign_id
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -46771,9 +47974,12 @@ class RetrieveCallRequest(TeaModel):
         job_id: str = None,
         user_id: str = None,
     ):
+        # This parameter is required.
         self.channel_id = channel_id
         self.device_id = device_id
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.job_id = job_id
         self.user_id = user_id
 
@@ -47206,11 +48412,17 @@ class SaveRTCStatsV2Request(TeaModel):
         receiver_report: str = None,
         sender_report: str = None,
     ):
+        # This parameter is required.
         self.call_id = call_id
+        # This parameter is required.
         self.general_info = general_info
+        # This parameter is required.
         self.goog_address = goog_address
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.receiver_report = receiver_report
+        # This parameter is required.
         self.sender_report = sender_report
 
     def validate(self):
@@ -47370,14 +48582,22 @@ class SaveTerminalLogRequest(TeaModel):
         status: str = None,
         unique_request_id: str = None,
     ):
+        # This parameter is required.
         self.app_name = app_name
+        # This parameter is required.
         self.call_id = call_id
+        # This parameter is required.
         self.content = content
+        # This parameter is required.
         self.data_type = data_type
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.job_id = job_id
         self.method_name = method_name
+        # This parameter is required.
         self.status = status
+        # This parameter is required.
         self.unique_request_id = unique_request_id
 
     def validate(self):
@@ -47540,11 +48760,17 @@ class SaveWebRTCStatsRequest(TeaModel):
         receiver_report: str = None,
         sender_report: str = None,
     ):
+        # This parameter is required.
         self.call_id = call_id
+        # This parameter is required.
         self.general_info = general_info
+        # This parameter is required.
         self.goog_address = goog_address
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.receiver_report = receiver_report
+        # This parameter is required.
         self.sender_report = sender_report
 
     def validate(self):
@@ -47700,10 +48926,15 @@ class SaveWebRtcInfoRequest(TeaModel):
         instance_id: str = None,
         job_id: str = None,
     ):
+        # This parameter is required.
         self.call_id = call_id
+        # This parameter is required.
         self.content = content
+        # This parameter is required.
         self.content_type = content_type
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.job_id = job_id
 
     def validate(self):
@@ -47856,10 +49087,14 @@ class SendDtmfSignalingRequest(TeaModel):
         job_id: str = None,
         user_id: str = None,
     ):
+        # This parameter is required.
         self.channel_id = channel_id
         self.device_id = device_id
+        # This parameter is required.
         self.dtmf = dtmf
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.job_id = job_id
         self.user_id = user_id
 
@@ -48310,8 +49545,11 @@ class SignInGroupRequest(TeaModel):
     ):
         self.additivity = additivity
         self.chat_device_id = chat_device_id
+        # This parameter is required.
         self.device_id = device_id
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.signed_skill_group_id_list = signed_skill_group_id_list
         self.user_id = user_id
 
@@ -48550,6 +49788,7 @@ class SignOutGroupRequest(TeaModel):
         user_id: str = None,
     ):
         self.device_id = device_id
+        # This parameter is required.
         self.instance_id = instance_id
         self.user_id = user_id
 
@@ -48792,9 +50031,13 @@ class StartBack2BackCallRequest(TeaModel):
         timeout_seconds: int = None,
     ):
         self.additional_broker = additional_broker
+        # This parameter is required.
         self.broker = broker
+        # This parameter is required.
         self.callee = callee
+        # This parameter is required.
         self.caller = caller
+        # This parameter is required.
         self.instance_id = instance_id
         self.tags = tags
         self.timeout_seconds = timeout_seconds
@@ -49241,7 +50484,9 @@ class StartConferenceRequest(TeaModel):
         timeout_seconds: int = None,
         user_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.participant_list_json = participant_list_json
         self.tags = tags
         self.timeout_seconds = timeout_seconds
@@ -49678,7 +50923,9 @@ class StartEditContactFlowRequest(TeaModel):
         contact_flow_id: str = None,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.contact_flow_id = contact_flow_id
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -49810,10 +51057,14 @@ class StartPredictiveCallRequest(TeaModel):
         tags: str = None,
         timeout_seconds: int = None,
     ):
+        # This parameter is required.
         self.callee = callee
+        # This parameter is required.
         self.caller = caller
+        # This parameter is required.
         self.contact_flow_id = contact_flow_id
         self.contact_flow_variables = contact_flow_variables
+        # This parameter is required.
         self.instance_id = instance_id
         self.masked_callee = masked_callee
         self.skill_group_id = skill_group_id
@@ -50269,9 +51520,13 @@ class StartPrivacyCallRequest(TeaModel):
         caller: str = None,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
+        # This parameter is required.
         self.callee = callee
+        # This parameter is required.
         self.caller = caller
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -50410,7 +51665,9 @@ class SubmitCampaignRequest(TeaModel):
         campaign_id: str = None,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.campaign_id = campaign_id
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -50532,7 +51789,9 @@ class SwitchToConferenceRequest(TeaModel):
         user_id: str = None,
     ):
         self.device_id = device_id
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.job_id = job_id
         self.user_id = user_id
 
@@ -50971,8 +52230,10 @@ class TakeBreakRequest(TeaModel):
         instance_id: str = None,
         user_id: str = None,
     ):
+        # This parameter is required.
         self.code = code
         self.device_id = device_id
+        # This parameter is required.
         self.instance_id = instance_id
         self.user_id = user_id
 
@@ -51218,6 +52479,7 @@ class UnmuteCallRequest(TeaModel):
     ):
         self.channel_id = channel_id
         self.device_id = device_id
+        # This parameter is required.
         self.instance_id = instance_id
         self.job_id = job_id
         self.user_id = user_id
@@ -51653,6 +52915,7 @@ class UnregisterDeviceRequest(TeaModel):
         instance_id: str = None,
         user_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
         self.user_id = user_id
 
@@ -51779,9 +53042,11 @@ class UpdateCampaignRequest(TeaModel):
         strategy_parameters: str = None,
     ):
         self.callable_time = callable_time
+        # This parameter is required.
         self.campaign_id = campaign_id
         self.contact_flow_id = contact_flow_id
         self.end_time = end_time
+        # This parameter is required.
         self.instance_id = instance_id
         self.name = name
         self.start_time = start_time
@@ -51929,9 +53194,13 @@ class UpdateConfigItemsRequest(TeaModel):
         object_id: str = None,
         object_type: str = None,
     ):
+        # This parameter is required.
         self.config_items = config_items
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.object_id = object_id
+        # This parameter is required.
         self.object_type = object_type
 
     def validate(self):
