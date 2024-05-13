@@ -81,6 +81,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.AttachInstancesResponse:
+        """
+        @summary You can call the AttachInstances operation to add existing Elastic Compute Service (ECS) instances to a cluster.
+        
+        @param request: AttachInstancesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AttachInstancesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.cpu_policy):
@@ -136,6 +144,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.AttachInstancesResponse:
+        """
+        @summary You can call the AttachInstances operation to add existing Elastic Compute Service (ECS) instances to a cluster.
+        
+        @param request: AttachInstancesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AttachInstancesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.cpu_policy):
@@ -189,6 +205,12 @@ class Client(OpenApiClient):
         cluster_id: str,
         request: cs20151215_models.AttachInstancesRequest,
     ) -> cs20151215_models.AttachInstancesResponse:
+        """
+        @summary You can call the AttachInstances operation to add existing Elastic Compute Service (ECS) instances to a cluster.
+        
+        @param request: AttachInstancesRequest
+        @return: AttachInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.attach_instances_with_options(cluster_id, request, headers, runtime)
@@ -198,6 +220,12 @@ class Client(OpenApiClient):
         cluster_id: str,
         request: cs20151215_models.AttachInstancesRequest,
     ) -> cs20151215_models.AttachInstancesResponse:
+        """
+        @summary You can call the AttachInstances operation to add existing Elastic Compute Service (ECS) instances to a cluster.
+        
+        @param request: AttachInstancesRequest
+        @return: AttachInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.attach_instances_with_options_async(cluster_id, request, headers, runtime)
@@ -210,6 +238,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.AttachInstancesToNodePoolResponse:
+        """
+        @summary You can call the AttachInstancesToNodePool operation to add existing nodes to a node pool.
+        
+        @param request: AttachInstancesToNodePoolRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AttachInstancesToNodePoolResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.format_disk):
@@ -248,6 +284,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.AttachInstancesToNodePoolResponse:
+        """
+        @summary You can call the AttachInstancesToNodePool operation to add existing nodes to a node pool.
+        
+        @param request: AttachInstancesToNodePoolRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AttachInstancesToNodePoolResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.format_disk):
@@ -284,6 +328,12 @@ class Client(OpenApiClient):
         nodepool_id: str,
         request: cs20151215_models.AttachInstancesToNodePoolRequest,
     ) -> cs20151215_models.AttachInstancesToNodePoolResponse:
+        """
+        @summary You can call the AttachInstancesToNodePool operation to add existing nodes to a node pool.
+        
+        @param request: AttachInstancesToNodePoolRequest
+        @return: AttachInstancesToNodePoolResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.attach_instances_to_node_pool_with_options(cluster_id, nodepool_id, request, headers, runtime)
@@ -294,6 +344,12 @@ class Client(OpenApiClient):
         nodepool_id: str,
         request: cs20151215_models.AttachInstancesToNodePoolRequest,
     ) -> cs20151215_models.AttachInstancesToNodePoolResponse:
+        """
+        @summary You can call the AttachInstancesToNodePool operation to add existing nodes to a node pool.
+        
+        @param request: AttachInstancesToNodePoolRequest
+        @return: AttachInstancesToNodePoolResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.attach_instances_to_node_pool_with_options_async(cluster_id, nodepool_id, request, headers, runtime)
@@ -305,7 +361,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.CancelClusterUpgradeResponse:
         """
-        @deprecated
+        @deprecated OpenAPI CancelClusterUpgrade is deprecated
+        
+        @summary You can call the CancelClusterUpgrade operation to cancel the update of a cluster.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -338,7 +396,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.CancelClusterUpgradeResponse:
         """
-        @deprecated
+        @deprecated OpenAPI CancelClusterUpgrade is deprecated
+        
+        @summary You can call the CancelClusterUpgrade operation to cancel the update of a cluster.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -369,7 +429,9 @@ class Client(OpenApiClient):
         cluster_id: str,
     ) -> cs20151215_models.CancelClusterUpgradeResponse:
         """
-        @deprecated
+        @deprecated OpenAPI CancelClusterUpgrade is deprecated
+        
+        @summary You can call the CancelClusterUpgrade operation to cancel the update of a cluster.
         
         @return: CancelClusterUpgradeResponse
         Deprecated
@@ -383,7 +445,9 @@ class Client(OpenApiClient):
         cluster_id: str,
     ) -> cs20151215_models.CancelClusterUpgradeResponse:
         """
-        @deprecated
+        @deprecated OpenAPI CancelClusterUpgrade is deprecated
+        
+        @summary You can call the CancelClusterUpgrade operation to cancel the update of a cluster.
         
         @return: CancelClusterUpgradeResponse
         Deprecated
@@ -399,6 +463,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.CancelComponentUpgradeResponse:
+        """
+        @summary You can call the CancelComponentUpgrade operation to cancel the update of a component.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelComponentUpgradeResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -425,6 +496,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.CancelComponentUpgradeResponse:
+        """
+        @summary You can call the CancelComponentUpgrade operation to cancel the update of a component.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelComponentUpgradeResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -449,6 +527,11 @@ class Client(OpenApiClient):
         cluster_id: str,
         component_id: str,
     ) -> cs20151215_models.CancelComponentUpgradeResponse:
+        """
+        @summary You can call the CancelComponentUpgrade operation to cancel the update of a component.
+        
+        @return: CancelComponentUpgradeResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.cancel_component_upgrade_with_options(cluster_id, component_id, headers, runtime)
@@ -458,6 +541,11 @@ class Client(OpenApiClient):
         cluster_id: str,
         component_id: str,
     ) -> cs20151215_models.CancelComponentUpgradeResponse:
+        """
+        @summary You can call the CancelComponentUpgrade operation to cancel the update of a component.
+        
+        @return: CancelComponentUpgradeResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.cancel_component_upgrade_with_options_async(cluster_id, component_id, headers, runtime)
@@ -468,6 +556,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.CancelOperationPlanResponse:
+        """
+        @summary 取消自动运维执行计划
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelOperationPlanResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -493,6 +588,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.CancelOperationPlanResponse:
+        """
+        @summary 取消自动运维执行计划
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelOperationPlanResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -516,6 +618,11 @@ class Client(OpenApiClient):
         self,
         plan_id: str,
     ) -> cs20151215_models.CancelOperationPlanResponse:
+        """
+        @summary 取消自动运维执行计划
+        
+        @return: CancelOperationPlanResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.cancel_operation_plan_with_options(plan_id, headers, runtime)
@@ -524,6 +631,11 @@ class Client(OpenApiClient):
         self,
         plan_id: str,
     ) -> cs20151215_models.CancelOperationPlanResponse:
+        """
+        @summary 取消自动运维执行计划
+        
+        @return: CancelOperationPlanResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.cancel_operation_plan_with_options_async(plan_id, headers, runtime)
@@ -534,6 +646,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.CancelTaskResponse:
+        """
+        @summary You can call the CancelTask operation to cancel a task.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelTaskResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -559,6 +678,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.CancelTaskResponse:
+        """
+        @summary You can call the CancelTask operation to cancel a task.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelTaskResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -582,6 +708,11 @@ class Client(OpenApiClient):
         self,
         task_id: str,
     ) -> cs20151215_models.CancelTaskResponse:
+        """
+        @summary You can call the CancelTask operation to cancel a task.
+        
+        @return: CancelTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.cancel_task_with_options(task_id, headers, runtime)
@@ -590,6 +721,11 @@ class Client(OpenApiClient):
         self,
         task_id: str,
     ) -> cs20151215_models.CancelTaskResponse:
+        """
+        @summary You can call the CancelTask operation to cancel a task.
+        
+        @return: CancelTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.cancel_task_with_options_async(task_id, headers, runtime)
@@ -601,6 +737,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.CancelWorkflowResponse:
+        """
+        @summary You can call the CancelWorkflow operation to cancel an ongoing workflow.
+        
+        @param request: CancelWorkflowRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelWorkflowResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.action):
@@ -632,6 +776,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.CancelWorkflowResponse:
+        """
+        @summary You can call the CancelWorkflow operation to cancel an ongoing workflow.
+        
+        @param request: CancelWorkflowRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelWorkflowResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.action):
@@ -661,6 +813,12 @@ class Client(OpenApiClient):
         workflow_name: str,
         request: cs20151215_models.CancelWorkflowRequest,
     ) -> cs20151215_models.CancelWorkflowResponse:
+        """
+        @summary You can call the CancelWorkflow operation to cancel an ongoing workflow.
+        
+        @param request: CancelWorkflowRequest
+        @return: CancelWorkflowResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.cancel_workflow_with_options(workflow_name, request, headers, runtime)
@@ -670,6 +828,12 @@ class Client(OpenApiClient):
         workflow_name: str,
         request: cs20151215_models.CancelWorkflowRequest,
     ) -> cs20151215_models.CancelWorkflowResponse:
+        """
+        @summary You can call the CancelWorkflow operation to cancel an ongoing workflow.
+        
+        @param request: CancelWorkflowRequest
+        @return: CancelWorkflowResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.cancel_workflow_with_options_async(workflow_name, request, headers, runtime)
@@ -680,6 +844,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.CheckControlPlaneLogEnableResponse:
+        """
+        @summary Queries the current log configuration of control plane components, including the log retention period and the log collection component. Container Service for Kubernetes (ACK) managed clusters can collect the logs of control plane components and deliver the logs to projects in Simple Log Service. These control plane components include Kube API Server, Kube Scheduler, Kube Controller Manager, and Cloud Controller Manager.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckControlPlaneLogEnableResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -705,6 +876,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.CheckControlPlaneLogEnableResponse:
+        """
+        @summary Queries the current log configuration of control plane components, including the log retention period and the log collection component. Container Service for Kubernetes (ACK) managed clusters can collect the logs of control plane components and deliver the logs to projects in Simple Log Service. These control plane components include Kube API Server, Kube Scheduler, Kube Controller Manager, and Cloud Controller Manager.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckControlPlaneLogEnableResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -728,6 +906,11 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
     ) -> cs20151215_models.CheckControlPlaneLogEnableResponse:
+        """
+        @summary Queries the current log configuration of control plane components, including the log retention period and the log collection component. Container Service for Kubernetes (ACK) managed clusters can collect the logs of control plane components and deliver the logs to projects in Simple Log Service. These control plane components include Kube API Server, Kube Scheduler, Kube Controller Manager, and Cloud Controller Manager.
+        
+        @return: CheckControlPlaneLogEnableResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.check_control_plane_log_enable_with_options(cluster_id, headers, runtime)
@@ -736,6 +919,11 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
     ) -> cs20151215_models.CheckControlPlaneLogEnableResponse:
+        """
+        @summary Queries the current log configuration of control plane components, including the log retention period and the log collection component. Container Service for Kubernetes (ACK) managed clusters can collect the logs of control plane components and deliver the logs to projects in Simple Log Service. These control plane components include Kube API Server, Kube Scheduler, Kube Controller Manager, and Cloud Controller Manager.
+        
+        @return: CheckControlPlaneLogEnableResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.check_control_plane_log_enable_with_options_async(cluster_id, headers, runtime)
@@ -747,6 +935,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.CreateAutoscalingConfigResponse:
+        """
+        @summary Creates a scaling configuration to allow the system to scale resources based on the given scaling rules. When you create a scaling configuration, you can specify the scaling metrics, thresholds, scaling order, and scaling interval.
+        
+        @param request: CreateAutoscalingConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAutoscalingConfigResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.cool_down_duration):
@@ -804,6 +1000,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.CreateAutoscalingConfigResponse:
+        """
+        @summary Creates a scaling configuration to allow the system to scale resources based on the given scaling rules. When you create a scaling configuration, you can specify the scaling metrics, thresholds, scaling order, and scaling interval.
+        
+        @param request: CreateAutoscalingConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAutoscalingConfigResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.cool_down_duration):
@@ -859,6 +1063,12 @@ class Client(OpenApiClient):
         cluster_id: str,
         request: cs20151215_models.CreateAutoscalingConfigRequest,
     ) -> cs20151215_models.CreateAutoscalingConfigResponse:
+        """
+        @summary Creates a scaling configuration to allow the system to scale resources based on the given scaling rules. When you create a scaling configuration, you can specify the scaling metrics, thresholds, scaling order, and scaling interval.
+        
+        @param request: CreateAutoscalingConfigRequest
+        @return: CreateAutoscalingConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_autoscaling_config_with_options(cluster_id, request, headers, runtime)
@@ -868,6 +1078,12 @@ class Client(OpenApiClient):
         cluster_id: str,
         request: cs20151215_models.CreateAutoscalingConfigRequest,
     ) -> cs20151215_models.CreateAutoscalingConfigResponse:
+        """
+        @summary Creates a scaling configuration to allow the system to scale resources based on the given scaling rules. When you create a scaling configuration, you can specify the scaling metrics, thresholds, scaling order, and scaling interval.
+        
+        @param request: CreateAutoscalingConfigRequest
+        @return: CreateAutoscalingConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_autoscaling_config_with_options_async(cluster_id, request, headers, runtime)
@@ -879,13 +1095,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.CreateClusterResponse:
         """
-        This topic describes all parameters for creating an ACK cluster. You can create the following types of ACK clusters.
-        *   [Create an ACK managed cluster](~~90776~~)
-        *   [Create an ACK dedicated cluster](~~197620~~)
-        *   [Create an ACK Serverless cluster](~~144246~~)
-        *   [Create an ACK Edge cluster](~~128204~~)
-        *   [Create an ACK Basic cluster that supports sandboxed containers](~~196321~~)
-        *   [Create an ACK Pro cluster that supports sandboxed containers](~~140623~~)
+        @summary You can call the CreateCluster operation to create a Container Service for Kubernetes (ACK) cluster. ACK clusters include ACK managed clusters, ACK dedicated clusters, ACK Serverless clusters, ACK Edge clusters, ACK clusters that support sandboxed containers, and registered clusters. For more information about how to create different types of ACK clusters, see the following usage notes.
+        
+        @description This topic describes all parameters for creating an ACK cluster. You can create the following types of ACK clusters.
+        [Create an ACK managed cluster](https://help.aliyun.com/document_detail/90776.html)
+        [Create an ACK dedicated cluster](https://help.aliyun.com/document_detail/197620.html)
+        [Create an ACK Serverless cluster](https://help.aliyun.com/document_detail/144246.html)
+        [Create an ACK Edge cluster](https://help.aliyun.com/document_detail/128204.html)
+        [Create an ACK Basic cluster that supports sandboxed containers](https://help.aliyun.com/document_detail/196321.html)
+        [Create an ACK Pro cluster that supports sandboxed containers](https://help.aliyun.com/document_detail/140623.html)
         
         @param request: CreateClusterRequest
         @param headers: map
@@ -1103,13 +1321,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.CreateClusterResponse:
         """
-        This topic describes all parameters for creating an ACK cluster. You can create the following types of ACK clusters.
-        *   [Create an ACK managed cluster](~~90776~~)
-        *   [Create an ACK dedicated cluster](~~197620~~)
-        *   [Create an ACK Serverless cluster](~~144246~~)
-        *   [Create an ACK Edge cluster](~~128204~~)
-        *   [Create an ACK Basic cluster that supports sandboxed containers](~~196321~~)
-        *   [Create an ACK Pro cluster that supports sandboxed containers](~~140623~~)
+        @summary You can call the CreateCluster operation to create a Container Service for Kubernetes (ACK) cluster. ACK clusters include ACK managed clusters, ACK dedicated clusters, ACK Serverless clusters, ACK Edge clusters, ACK clusters that support sandboxed containers, and registered clusters. For more information about how to create different types of ACK clusters, see the following usage notes.
+        
+        @description This topic describes all parameters for creating an ACK cluster. You can create the following types of ACK clusters.
+        [Create an ACK managed cluster](https://help.aliyun.com/document_detail/90776.html)
+        [Create an ACK dedicated cluster](https://help.aliyun.com/document_detail/197620.html)
+        [Create an ACK Serverless cluster](https://help.aliyun.com/document_detail/144246.html)
+        [Create an ACK Edge cluster](https://help.aliyun.com/document_detail/128204.html)
+        [Create an ACK Basic cluster that supports sandboxed containers](https://help.aliyun.com/document_detail/196321.html)
+        [Create an ACK Pro cluster that supports sandboxed containers](https://help.aliyun.com/document_detail/140623.html)
         
         @param request: CreateClusterRequest
         @param headers: map
@@ -1325,13 +1545,15 @@ class Client(OpenApiClient):
         request: cs20151215_models.CreateClusterRequest,
     ) -> cs20151215_models.CreateClusterResponse:
         """
-        This topic describes all parameters for creating an ACK cluster. You can create the following types of ACK clusters.
-        *   [Create an ACK managed cluster](~~90776~~)
-        *   [Create an ACK dedicated cluster](~~197620~~)
-        *   [Create an ACK Serverless cluster](~~144246~~)
-        *   [Create an ACK Edge cluster](~~128204~~)
-        *   [Create an ACK Basic cluster that supports sandboxed containers](~~196321~~)
-        *   [Create an ACK Pro cluster that supports sandboxed containers](~~140623~~)
+        @summary You can call the CreateCluster operation to create a Container Service for Kubernetes (ACK) cluster. ACK clusters include ACK managed clusters, ACK dedicated clusters, ACK Serverless clusters, ACK Edge clusters, ACK clusters that support sandboxed containers, and registered clusters. For more information about how to create different types of ACK clusters, see the following usage notes.
+        
+        @description This topic describes all parameters for creating an ACK cluster. You can create the following types of ACK clusters.
+        [Create an ACK managed cluster](https://help.aliyun.com/document_detail/90776.html)
+        [Create an ACK dedicated cluster](https://help.aliyun.com/document_detail/197620.html)
+        [Create an ACK Serverless cluster](https://help.aliyun.com/document_detail/144246.html)
+        [Create an ACK Edge cluster](https://help.aliyun.com/document_detail/128204.html)
+        [Create an ACK Basic cluster that supports sandboxed containers](https://help.aliyun.com/document_detail/196321.html)
+        [Create an ACK Pro cluster that supports sandboxed containers](https://help.aliyun.com/document_detail/140623.html)
         
         @param request: CreateClusterRequest
         @return: CreateClusterResponse
@@ -1345,13 +1567,15 @@ class Client(OpenApiClient):
         request: cs20151215_models.CreateClusterRequest,
     ) -> cs20151215_models.CreateClusterResponse:
         """
-        This topic describes all parameters for creating an ACK cluster. You can create the following types of ACK clusters.
-        *   [Create an ACK managed cluster](~~90776~~)
-        *   [Create an ACK dedicated cluster](~~197620~~)
-        *   [Create an ACK Serverless cluster](~~144246~~)
-        *   [Create an ACK Edge cluster](~~128204~~)
-        *   [Create an ACK Basic cluster that supports sandboxed containers](~~196321~~)
-        *   [Create an ACK Pro cluster that supports sandboxed containers](~~140623~~)
+        @summary You can call the CreateCluster operation to create a Container Service for Kubernetes (ACK) cluster. ACK clusters include ACK managed clusters, ACK dedicated clusters, ACK Serverless clusters, ACK Edge clusters, ACK clusters that support sandboxed containers, and registered clusters. For more information about how to create different types of ACK clusters, see the following usage notes.
+        
+        @description This topic describes all parameters for creating an ACK cluster. You can create the following types of ACK clusters.
+        [Create an ACK managed cluster](https://help.aliyun.com/document_detail/90776.html)
+        [Create an ACK dedicated cluster](https://help.aliyun.com/document_detail/197620.html)
+        [Create an ACK Serverless cluster](https://help.aliyun.com/document_detail/144246.html)
+        [Create an ACK Edge cluster](https://help.aliyun.com/document_detail/128204.html)
+        [Create an ACK Basic cluster that supports sandboxed containers](https://help.aliyun.com/document_detail/196321.html)
+        [Create an ACK Pro cluster that supports sandboxed containers](https://help.aliyun.com/document_detail/140623.html)
         
         @param request: CreateClusterRequest
         @return: CreateClusterResponse
@@ -1367,6 +1591,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.CreateClusterNodePoolResponse:
+        """
+        @summary You can call the CreateClusterNodePool operation to create a node pool for a Container Service for Kubernetes (ACK) cluster.
+        
+        @param request: CreateClusterNodePoolRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateClusterNodePoolResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.auto_scaling):
@@ -1418,6 +1650,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.CreateClusterNodePoolResponse:
+        """
+        @summary You can call the CreateClusterNodePool operation to create a node pool for a Container Service for Kubernetes (ACK) cluster.
+        
+        @param request: CreateClusterNodePoolRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateClusterNodePoolResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.auto_scaling):
@@ -1467,6 +1707,12 @@ class Client(OpenApiClient):
         cluster_id: str,
         request: cs20151215_models.CreateClusterNodePoolRequest,
     ) -> cs20151215_models.CreateClusterNodePoolResponse:
+        """
+        @summary You can call the CreateClusterNodePool operation to create a node pool for a Container Service for Kubernetes (ACK) cluster.
+        
+        @param request: CreateClusterNodePoolRequest
+        @return: CreateClusterNodePoolResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_cluster_node_pool_with_options(cluster_id, request, headers, runtime)
@@ -1476,6 +1722,12 @@ class Client(OpenApiClient):
         cluster_id: str,
         request: cs20151215_models.CreateClusterNodePoolRequest,
     ) -> cs20151215_models.CreateClusterNodePoolResponse:
+        """
+        @summary You can call the CreateClusterNodePool operation to create a node pool for a Container Service for Kubernetes (ACK) cluster.
+        
+        @param request: CreateClusterNodePoolRequest
+        @return: CreateClusterNodePoolResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_cluster_node_pool_with_options_async(cluster_id, request, headers, runtime)
@@ -1486,6 +1738,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.CreateEdgeMachineResponse:
+        """
+        @summary You can call the CreateEdgeMachine operation to activate a cloud-native box.
+        
+        @param request: CreateEdgeMachineRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateEdgeMachineResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.hostname):
@@ -1520,6 +1780,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.CreateEdgeMachineResponse:
+        """
+        @summary You can call the CreateEdgeMachine operation to activate a cloud-native box.
+        
+        @param request: CreateEdgeMachineRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateEdgeMachineResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.hostname):
@@ -1552,6 +1820,12 @@ class Client(OpenApiClient):
         self,
         request: cs20151215_models.CreateEdgeMachineRequest,
     ) -> cs20151215_models.CreateEdgeMachineResponse:
+        """
+        @summary You can call the CreateEdgeMachine operation to activate a cloud-native box.
+        
+        @param request: CreateEdgeMachineRequest
+        @return: CreateEdgeMachineResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_edge_machine_with_options(request, headers, runtime)
@@ -1560,6 +1834,12 @@ class Client(OpenApiClient):
         self,
         request: cs20151215_models.CreateEdgeMachineRequest,
     ) -> cs20151215_models.CreateEdgeMachineResponse:
+        """
+        @summary You can call the CreateEdgeMachine operation to activate a cloud-native box.
+        
+        @param request: CreateEdgeMachineRequest
+        @return: CreateEdgeMachineResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_edge_machine_with_options_async(request, headers, runtime)
@@ -1570,6 +1850,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.CreateKubernetesTriggerResponse:
+        """
+        @summary You can call the CreateKubernetesTrigger operation to create a trigger for an application.
+        
+        @param request: CreateKubernetesTriggerRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateKubernetesTriggerResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.action):
@@ -1606,6 +1894,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.CreateKubernetesTriggerResponse:
+        """
+        @summary You can call the CreateKubernetesTrigger operation to create a trigger for an application.
+        
+        @param request: CreateKubernetesTriggerRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateKubernetesTriggerResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.action):
@@ -1640,6 +1936,12 @@ class Client(OpenApiClient):
         self,
         request: cs20151215_models.CreateKubernetesTriggerRequest,
     ) -> cs20151215_models.CreateKubernetesTriggerResponse:
+        """
+        @summary You can call the CreateKubernetesTrigger operation to create a trigger for an application.
+        
+        @param request: CreateKubernetesTriggerRequest
+        @return: CreateKubernetesTriggerResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_kubernetes_trigger_with_options(request, headers, runtime)
@@ -1648,6 +1950,12 @@ class Client(OpenApiClient):
         self,
         request: cs20151215_models.CreateKubernetesTriggerRequest,
     ) -> cs20151215_models.CreateKubernetesTriggerResponse:
+        """
+        @summary You can call the CreateKubernetesTrigger operation to create a trigger for an application.
+        
+        @param request: CreateKubernetesTriggerRequest
+        @return: CreateKubernetesTriggerResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_kubernetes_trigger_with_options_async(request, headers, runtime)
@@ -1658,6 +1966,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.CreateTemplateResponse:
+        """
+        @summary Creates an orchestration template. An orchestration template defines and describes a group of Kubernetes resources. It declaratively describes the configuration of an application or how an application runs. You can use orchestration templates to manage resources in Kubernetes clusters and automate resource deployment, such as pods, Services, Deployments, ConfigMaps, and persistent volumes (PVs).
+        
+        @param request: CreateTemplateRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTemplateResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.description):
@@ -1696,6 +2012,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.CreateTemplateResponse:
+        """
+        @summary Creates an orchestration template. An orchestration template defines and describes a group of Kubernetes resources. It declaratively describes the configuration of an application or how an application runs. You can use orchestration templates to manage resources in Kubernetes clusters and automate resource deployment, such as pods, Services, Deployments, ConfigMaps, and persistent volumes (PVs).
+        
+        @param request: CreateTemplateRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTemplateResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.description):
@@ -1732,6 +2056,12 @@ class Client(OpenApiClient):
         self,
         request: cs20151215_models.CreateTemplateRequest,
     ) -> cs20151215_models.CreateTemplateResponse:
+        """
+        @summary Creates an orchestration template. An orchestration template defines and describes a group of Kubernetes resources. It declaratively describes the configuration of an application or how an application runs. You can use orchestration templates to manage resources in Kubernetes clusters and automate resource deployment, such as pods, Services, Deployments, ConfigMaps, and persistent volumes (PVs).
+        
+        @param request: CreateTemplateRequest
+        @return: CreateTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_template_with_options(request, headers, runtime)
@@ -1740,6 +2070,12 @@ class Client(OpenApiClient):
         self,
         request: cs20151215_models.CreateTemplateRequest,
     ) -> cs20151215_models.CreateTemplateResponse:
+        """
+        @summary Creates an orchestration template. An orchestration template defines and describes a group of Kubernetes resources. It declaratively describes the configuration of an application or how an application runs. You can use orchestration templates to manage resources in Kubernetes clusters and automate resource deployment, such as pods, Services, Deployments, ConfigMaps, and persistent volumes (PVs).
+        
+        @param request: CreateTemplateRequest
+        @return: CreateTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_template_with_options_async(request, headers, runtime)
@@ -1751,6 +2087,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.CreateTriggerResponse:
+        """
+        @summary You can call the CreateTrigger operation to create a trigger for an application.
+        
+        @param request: CreateTriggerRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTriggerResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.action):
@@ -1788,6 +2132,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.CreateTriggerResponse:
+        """
+        @summary You can call the CreateTrigger operation to create a trigger for an application.
+        
+        @param request: CreateTriggerRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTriggerResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.action):
@@ -1823,6 +2175,12 @@ class Client(OpenApiClient):
         cluster_id: str,
         request: cs20151215_models.CreateTriggerRequest,
     ) -> cs20151215_models.CreateTriggerResponse:
+        """
+        @summary You can call the CreateTrigger operation to create a trigger for an application.
+        
+        @param request: CreateTriggerRequest
+        @return: CreateTriggerResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_trigger_with_options(cluster_id, request, headers, runtime)
@@ -1832,6 +2190,12 @@ class Client(OpenApiClient):
         cluster_id: str,
         request: cs20151215_models.CreateTriggerRequest,
     ) -> cs20151215_models.CreateTriggerResponse:
+        """
+        @summary You can call the CreateTrigger operation to create a trigger for an application.
+        
+        @param request: CreateTriggerRequest
+        @return: CreateTriggerResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_trigger_with_options_async(cluster_id, request, headers, runtime)
@@ -1842,6 +2206,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DeleteAlertContactResponse:
+        """
+        @param tmp_req: DeleteAlertContactRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAlertContactResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = cs20151215_models.DeleteAlertContactShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1876,6 +2246,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DeleteAlertContactResponse:
+        """
+        @param tmp_req: DeleteAlertContactRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAlertContactResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = cs20151215_models.DeleteAlertContactShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1908,6 +2284,10 @@ class Client(OpenApiClient):
         self,
         request: cs20151215_models.DeleteAlertContactRequest,
     ) -> cs20151215_models.DeleteAlertContactResponse:
+        """
+        @param request: DeleteAlertContactRequest
+        @return: DeleteAlertContactResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_alert_contact_with_options(request, headers, runtime)
@@ -1916,6 +2296,10 @@ class Client(OpenApiClient):
         self,
         request: cs20151215_models.DeleteAlertContactRequest,
     ) -> cs20151215_models.DeleteAlertContactResponse:
+        """
+        @param request: DeleteAlertContactRequest
+        @return: DeleteAlertContactResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_alert_contact_with_options_async(request, headers, runtime)
@@ -1926,6 +2310,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DeleteAlertContactGroupResponse:
+        """
+        @param tmp_req: DeleteAlertContactGroupRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAlertContactGroupResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = cs20151215_models.DeleteAlertContactGroupShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1960,6 +2350,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DeleteAlertContactGroupResponse:
+        """
+        @param tmp_req: DeleteAlertContactGroupRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAlertContactGroupResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = cs20151215_models.DeleteAlertContactGroupShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1992,6 +2388,10 @@ class Client(OpenApiClient):
         self,
         request: cs20151215_models.DeleteAlertContactGroupRequest,
     ) -> cs20151215_models.DeleteAlertContactGroupResponse:
+        """
+        @param request: DeleteAlertContactGroupRequest
+        @return: DeleteAlertContactGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_alert_contact_group_with_options(request, headers, runtime)
@@ -2000,6 +2400,10 @@ class Client(OpenApiClient):
         self,
         request: cs20151215_models.DeleteAlertContactGroupRequest,
     ) -> cs20151215_models.DeleteAlertContactGroupResponse:
+        """
+        @param request: DeleteAlertContactGroupRequest
+        @return: DeleteAlertContactGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_alert_contact_group_with_options_async(request, headers, runtime)
@@ -2011,6 +2415,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DeleteClusterResponse:
+        """
+        @summary You can call the DeleteCluster operation to delete a cluster by cluster ID and release all nodes in the cluster.
+        
+        @param tmp_req: DeleteClusterRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteClusterResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = cs20151215_models.DeleteClusterShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -2054,6 +2466,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DeleteClusterResponse:
+        """
+        @summary You can call the DeleteCluster operation to delete a cluster by cluster ID and release all nodes in the cluster.
+        
+        @param tmp_req: DeleteClusterRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteClusterResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = cs20151215_models.DeleteClusterShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -2095,6 +2515,12 @@ class Client(OpenApiClient):
         cluster_id: str,
         request: cs20151215_models.DeleteClusterRequest,
     ) -> cs20151215_models.DeleteClusterResponse:
+        """
+        @summary You can call the DeleteCluster operation to delete a cluster by cluster ID and release all nodes in the cluster.
+        
+        @param request: DeleteClusterRequest
+        @return: DeleteClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_cluster_with_options(cluster_id, request, headers, runtime)
@@ -2104,6 +2530,12 @@ class Client(OpenApiClient):
         cluster_id: str,
         request: cs20151215_models.DeleteClusterRequest,
     ) -> cs20151215_models.DeleteClusterResponse:
+        """
+        @summary You can call the DeleteCluster operation to delete a cluster by cluster ID and release all nodes in the cluster.
+        
+        @param request: DeleteClusterRequest
+        @return: DeleteClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_cluster_with_options_async(cluster_id, request, headers, runtime)
@@ -2116,6 +2548,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DeleteClusterNodepoolResponse:
+        """
+        @summary You can call the DeleteClusterNodepool operation to delete a node pool by node pool ID.
+        
+        @param request: DeleteClusterNodepoolRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteClusterNodepoolResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.force):
@@ -2148,6 +2588,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DeleteClusterNodepoolResponse:
+        """
+        @summary You can call the DeleteClusterNodepool operation to delete a node pool by node pool ID.
+        
+        @param request: DeleteClusterNodepoolRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteClusterNodepoolResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.force):
@@ -2178,6 +2626,12 @@ class Client(OpenApiClient):
         nodepool_id: str,
         request: cs20151215_models.DeleteClusterNodepoolRequest,
     ) -> cs20151215_models.DeleteClusterNodepoolResponse:
+        """
+        @summary You can call the DeleteClusterNodepool operation to delete a node pool by node pool ID.
+        
+        @param request: DeleteClusterNodepoolRequest
+        @return: DeleteClusterNodepoolResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_cluster_nodepool_with_options(cluster_id, nodepool_id, request, headers, runtime)
@@ -2188,6 +2642,12 @@ class Client(OpenApiClient):
         nodepool_id: str,
         request: cs20151215_models.DeleteClusterNodepoolRequest,
     ) -> cs20151215_models.DeleteClusterNodepoolResponse:
+        """
+        @summary You can call the DeleteClusterNodepool operation to delete a node pool by node pool ID.
+        
+        @param request: DeleteClusterNodepoolRequest
+        @return: DeleteClusterNodepoolResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_cluster_nodepool_with_options_async(cluster_id, nodepool_id, request, headers, runtime)
@@ -2200,8 +2660,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DeleteClusterNodesResponse:
         """
-        >
-        *   When you remove a node, the pods that run on the node are migrated to other nodes. This may cause service interruptions. We recommend that you remove nodes during off-peak hours. - The operation may have unexpected risks. Back up the data before you perform this operation. - When the system removes a node, it sets the status of the node to Unschedulable. - The system removes only worker nodes. It does not remove master nodes.
+        @summary Removes nodes from a Container Service for Kubernetes (ACK) cluster. When you remove nodes, you can specify whether to release the Elastic Compute Service (ECS) instances and drain the nodes. When you remove nodes, pods on the nodes are migrated. This may adversely affect your businesses. We recommend that you back up data and perform this operation during off-peak hours.
+        
+        @description >
+        When you remove a node, the pods that run on the node are migrated to other nodes. This may cause service interruptions. We recommend that you remove nodes during off-peak hours. - The operation may have unexpected risks. Back up the data before you perform this operation. - When the system removes a node, it sets the status of the node to Unschedulable. - The system removes only worker nodes. It does not remove master nodes.
         
         @param request: DeleteClusterNodesRequest
         @param headers: map
@@ -2244,8 +2706,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DeleteClusterNodesResponse:
         """
-        >
-        *   When you remove a node, the pods that run on the node are migrated to other nodes. This may cause service interruptions. We recommend that you remove nodes during off-peak hours. - The operation may have unexpected risks. Back up the data before you perform this operation. - When the system removes a node, it sets the status of the node to Unschedulable. - The system removes only worker nodes. It does not remove master nodes.
+        @summary Removes nodes from a Container Service for Kubernetes (ACK) cluster. When you remove nodes, you can specify whether to release the Elastic Compute Service (ECS) instances and drain the nodes. When you remove nodes, pods on the nodes are migrated. This may adversely affect your businesses. We recommend that you back up data and perform this operation during off-peak hours.
+        
+        @description >
+        When you remove a node, the pods that run on the node are migrated to other nodes. This may cause service interruptions. We recommend that you remove nodes during off-peak hours. - The operation may have unexpected risks. Back up the data before you perform this operation. - When the system removes a node, it sets the status of the node to Unschedulable. - The system removes only worker nodes. It does not remove master nodes.
         
         @param request: DeleteClusterNodesRequest
         @param headers: map
@@ -2286,8 +2750,10 @@ class Client(OpenApiClient):
         request: cs20151215_models.DeleteClusterNodesRequest,
     ) -> cs20151215_models.DeleteClusterNodesResponse:
         """
-        >
-        *   When you remove a node, the pods that run on the node are migrated to other nodes. This may cause service interruptions. We recommend that you remove nodes during off-peak hours. - The operation may have unexpected risks. Back up the data before you perform this operation. - When the system removes a node, it sets the status of the node to Unschedulable. - The system removes only worker nodes. It does not remove master nodes.
+        @summary Removes nodes from a Container Service for Kubernetes (ACK) cluster. When you remove nodes, you can specify whether to release the Elastic Compute Service (ECS) instances and drain the nodes. When you remove nodes, pods on the nodes are migrated. This may adversely affect your businesses. We recommend that you back up data and perform this operation during off-peak hours.
+        
+        @description >
+        When you remove a node, the pods that run on the node are migrated to other nodes. This may cause service interruptions. We recommend that you remove nodes during off-peak hours. - The operation may have unexpected risks. Back up the data before you perform this operation. - When the system removes a node, it sets the status of the node to Unschedulable. - The system removes only worker nodes. It does not remove master nodes.
         
         @param request: DeleteClusterNodesRequest
         @return: DeleteClusterNodesResponse
@@ -2302,8 +2768,10 @@ class Client(OpenApiClient):
         request: cs20151215_models.DeleteClusterNodesRequest,
     ) -> cs20151215_models.DeleteClusterNodesResponse:
         """
-        >
-        *   When you remove a node, the pods that run on the node are migrated to other nodes. This may cause service interruptions. We recommend that you remove nodes during off-peak hours. - The operation may have unexpected risks. Back up the data before you perform this operation. - When the system removes a node, it sets the status of the node to Unschedulable. - The system removes only worker nodes. It does not remove master nodes.
+        @summary Removes nodes from a Container Service for Kubernetes (ACK) cluster. When you remove nodes, you can specify whether to release the Elastic Compute Service (ECS) instances and drain the nodes. When you remove nodes, pods on the nodes are migrated. This may adversely affect your businesses. We recommend that you back up data and perform this operation during off-peak hours.
+        
+        @description >
+        When you remove a node, the pods that run on the node are migrated to other nodes. This may cause service interruptions. We recommend that you remove nodes during off-peak hours. - The operation may have unexpected risks. Back up the data before you perform this operation. - When the system removes a node, it sets the status of the node to Unschedulable. - The system removes only worker nodes. It does not remove master nodes.
         
         @param request: DeleteClusterNodesRequest
         @return: DeleteClusterNodesResponse
@@ -2319,6 +2787,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DeleteEdgeMachineResponse:
+        """
+        @summary You can call the DeleteEdgeMachine operation to delete a cloud-native box.
+        
+        @param request: DeleteEdgeMachineRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteEdgeMachineResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.force):
@@ -2350,6 +2826,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DeleteEdgeMachineResponse:
+        """
+        @summary You can call the DeleteEdgeMachine operation to delete a cloud-native box.
+        
+        @param request: DeleteEdgeMachineRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteEdgeMachineResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.force):
@@ -2379,6 +2863,12 @@ class Client(OpenApiClient):
         edge_machineid: str,
         request: cs20151215_models.DeleteEdgeMachineRequest,
     ) -> cs20151215_models.DeleteEdgeMachineResponse:
+        """
+        @summary You can call the DeleteEdgeMachine operation to delete a cloud-native box.
+        
+        @param request: DeleteEdgeMachineRequest
+        @return: DeleteEdgeMachineResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_edge_machine_with_options(edge_machineid, request, headers, runtime)
@@ -2388,6 +2878,12 @@ class Client(OpenApiClient):
         edge_machineid: str,
         request: cs20151215_models.DeleteEdgeMachineRequest,
     ) -> cs20151215_models.DeleteEdgeMachineResponse:
+        """
+        @summary You can call the DeleteEdgeMachine operation to delete a cloud-native box.
+        
+        @param request: DeleteEdgeMachineRequest
+        @return: DeleteEdgeMachineResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_edge_machine_with_options_async(edge_machineid, request, headers, runtime)
@@ -2398,6 +2894,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DeleteKubernetesTriggerResponse:
+        """
+        @summary You can call the DeleteKubernetesTrigger operation to delete an application trigger by trigger ID
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteKubernetesTriggerResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2423,6 +2926,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DeleteKubernetesTriggerResponse:
+        """
+        @summary You can call the DeleteKubernetesTrigger operation to delete an application trigger by trigger ID
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteKubernetesTriggerResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2446,6 +2956,11 @@ class Client(OpenApiClient):
         self,
         id: str,
     ) -> cs20151215_models.DeleteKubernetesTriggerResponse:
+        """
+        @summary You can call the DeleteKubernetesTrigger operation to delete an application trigger by trigger ID
+        
+        @return: DeleteKubernetesTriggerResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_kubernetes_trigger_with_options(id, headers, runtime)
@@ -2454,6 +2969,11 @@ class Client(OpenApiClient):
         self,
         id: str,
     ) -> cs20151215_models.DeleteKubernetesTriggerResponse:
+        """
+        @summary You can call the DeleteKubernetesTrigger operation to delete an application trigger by trigger ID
+        
+        @return: DeleteKubernetesTriggerResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_kubernetes_trigger_with_options_async(id, headers, runtime)
@@ -2466,6 +2986,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DeletePolicyInstanceResponse:
+        """
+        @summary Deletes policy instances in a Container Service for Kubernetes (ACK) cluster.
+        
+        @param request: DeletePolicyInstanceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeletePolicyInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_name):
@@ -2498,6 +3026,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DeletePolicyInstanceResponse:
+        """
+        @summary Deletes policy instances in a Container Service for Kubernetes (ACK) cluster.
+        
+        @param request: DeletePolicyInstanceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeletePolicyInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_name):
@@ -2528,6 +3064,12 @@ class Client(OpenApiClient):
         policy_name: str,
         request: cs20151215_models.DeletePolicyInstanceRequest,
     ) -> cs20151215_models.DeletePolicyInstanceResponse:
+        """
+        @summary Deletes policy instances in a Container Service for Kubernetes (ACK) cluster.
+        
+        @param request: DeletePolicyInstanceRequest
+        @return: DeletePolicyInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_policy_instance_with_options(cluster_id, policy_name, request, headers, runtime)
@@ -2538,6 +3080,12 @@ class Client(OpenApiClient):
         policy_name: str,
         request: cs20151215_models.DeletePolicyInstanceRequest,
     ) -> cs20151215_models.DeletePolicyInstanceResponse:
+        """
+        @summary Deletes policy instances in a Container Service for Kubernetes (ACK) cluster.
+        
+        @param request: DeletePolicyInstanceRequest
+        @return: DeletePolicyInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_policy_instance_with_options_async(cluster_id, policy_name, request, headers, runtime)
@@ -2548,6 +3096,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DeleteTemplateResponse:
+        """
+        @summary You can call the DeleteTemplate operation to delete an orchestration template by template ID.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteTemplateResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2573,6 +3128,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DeleteTemplateResponse:
+        """
+        @summary You can call the DeleteTemplate operation to delete an orchestration template by template ID.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteTemplateResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2596,6 +3158,11 @@ class Client(OpenApiClient):
         self,
         template_id: str,
     ) -> cs20151215_models.DeleteTemplateResponse:
+        """
+        @summary You can call the DeleteTemplate operation to delete an orchestration template by template ID.
+        
+        @return: DeleteTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_template_with_options(template_id, headers, runtime)
@@ -2604,6 +3171,11 @@ class Client(OpenApiClient):
         self,
         template_id: str,
     ) -> cs20151215_models.DeleteTemplateResponse:
+        """
+        @summary You can call the DeleteTemplate operation to delete an orchestration template by template ID.
+        
+        @return: DeleteTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_template_with_options_async(template_id, headers, runtime)
@@ -2615,6 +3187,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DeleteTriggerResponse:
+        """
+        @summary You can call the DeleteTrigger operation to delete an application trigger.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteTriggerResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2641,6 +3220,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DeleteTriggerResponse:
+        """
+        @summary You can call the DeleteTrigger operation to delete an application trigger.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteTriggerResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2665,6 +3251,11 @@ class Client(OpenApiClient):
         cluster_id: str,
         id: str,
     ) -> cs20151215_models.DeleteTriggerResponse:
+        """
+        @summary You can call the DeleteTrigger operation to delete an application trigger.
+        
+        @return: DeleteTriggerResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_trigger_with_options(cluster_id, id, headers, runtime)
@@ -2674,6 +3265,11 @@ class Client(OpenApiClient):
         cluster_id: str,
         id: str,
     ) -> cs20151215_models.DeleteTriggerResponse:
+        """
+        @summary You can call the DeleteTrigger operation to delete an application trigger.
+        
+        @return: DeleteTriggerResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_trigger_with_options_async(cluster_id, id, headers, runtime)
@@ -2686,6 +3282,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DeployPolicyInstanceResponse:
+        """
+        @summary You can call the DeployPolicyInstance operation to deploy a policy instance in a cluster.
+        
+        @param request: DeployPolicyInstanceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeployPolicyInstanceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.action):
@@ -2722,6 +3326,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DeployPolicyInstanceResponse:
+        """
+        @summary You can call the DeployPolicyInstance operation to deploy a policy instance in a cluster.
+        
+        @param request: DeployPolicyInstanceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeployPolicyInstanceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.action):
@@ -2756,6 +3368,12 @@ class Client(OpenApiClient):
         policy_name: str,
         request: cs20151215_models.DeployPolicyInstanceRequest,
     ) -> cs20151215_models.DeployPolicyInstanceResponse:
+        """
+        @summary You can call the DeployPolicyInstance operation to deploy a policy instance in a cluster.
+        
+        @param request: DeployPolicyInstanceRequest
+        @return: DeployPolicyInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.deploy_policy_instance_with_options(cluster_id, policy_name, request, headers, runtime)
@@ -2766,6 +3384,12 @@ class Client(OpenApiClient):
         policy_name: str,
         request: cs20151215_models.DeployPolicyInstanceRequest,
     ) -> cs20151215_models.DeployPolicyInstanceResponse:
+        """
+        @summary You can call the DeployPolicyInstance operation to deploy a policy instance in a cluster.
+        
+        @param request: DeployPolicyInstanceRequest
+        @return: DeployPolicyInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.deploy_policy_instance_with_options_async(cluster_id, policy_name, request, headers, runtime)
@@ -2776,6 +3400,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescirbeWorkflowResponse:
+        """
+        @summary You can call the DescirbeWorkflow operation to query detailed information about a workflow.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescirbeWorkflowResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2801,6 +3432,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescirbeWorkflowResponse:
+        """
+        @summary You can call the DescirbeWorkflow operation to query detailed information about a workflow.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescirbeWorkflowResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2824,6 +3462,11 @@ class Client(OpenApiClient):
         self,
         workflow_name: str,
     ) -> cs20151215_models.DescirbeWorkflowResponse:
+        """
+        @summary You can call the DescirbeWorkflow operation to query detailed information about a workflow.
+        
+        @return: DescirbeWorkflowResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.descirbe_workflow_with_options(workflow_name, headers, runtime)
@@ -2832,6 +3475,11 @@ class Client(OpenApiClient):
         self,
         workflow_name: str,
     ) -> cs20151215_models.DescirbeWorkflowResponse:
+        """
+        @summary You can call the DescirbeWorkflow operation to query detailed information about a workflow.
+        
+        @return: DescirbeWorkflowResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.descirbe_workflow_with_options_async(workflow_name, headers, runtime)
@@ -2843,6 +3491,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeAddonResponse:
+        """
+        @summary 查询指定集群组件
+        
+        @param request: DescribeAddonRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAddonResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -2886,6 +3542,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeAddonResponse:
+        """
+        @summary 查询指定集群组件
+        
+        @param request: DescribeAddonRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAddonResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -2927,6 +3591,12 @@ class Client(OpenApiClient):
         addon_name: str,
         request: cs20151215_models.DescribeAddonRequest,
     ) -> cs20151215_models.DescribeAddonResponse:
+        """
+        @summary 查询指定集群组件
+        
+        @param request: DescribeAddonRequest
+        @return: DescribeAddonResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_addon_with_options(addon_name, request, headers, runtime)
@@ -2936,6 +3606,12 @@ class Client(OpenApiClient):
         addon_name: str,
         request: cs20151215_models.DescribeAddonRequest,
     ) -> cs20151215_models.DescribeAddonResponse:
+        """
+        @summary 查询指定集群组件
+        
+        @param request: DescribeAddonRequest
+        @return: DescribeAddonResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_addon_with_options_async(addon_name, request, headers, runtime)
@@ -2947,7 +3623,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeAddonsResponse:
         """
-        @deprecated
+        @deprecated OpenAPI DescribeAddons is deprecated
+        
+        @summary You can call the DescribeAddons operation to query the details about all components that are supported by Container Service for Kubernetes (ACK).
         
         @param request: DescribeAddonsRequest
         @param headers: map
@@ -2994,7 +3672,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeAddonsResponse:
         """
-        @deprecated
+        @deprecated OpenAPI DescribeAddons is deprecated
+        
+        @summary You can call the DescribeAddons operation to query the details about all components that are supported by Container Service for Kubernetes (ACK).
         
         @param request: DescribeAddonsRequest
         @param headers: map
@@ -3039,7 +3719,9 @@ class Client(OpenApiClient):
         request: cs20151215_models.DescribeAddonsRequest,
     ) -> cs20151215_models.DescribeAddonsResponse:
         """
-        @deprecated
+        @deprecated OpenAPI DescribeAddons is deprecated
+        
+        @summary You can call the DescribeAddons operation to query the details about all components that are supported by Container Service for Kubernetes (ACK).
         
         @param request: DescribeAddonsRequest
         @return: DescribeAddonsResponse
@@ -3054,7 +3736,9 @@ class Client(OpenApiClient):
         request: cs20151215_models.DescribeAddonsRequest,
     ) -> cs20151215_models.DescribeAddonsResponse:
         """
-        @deprecated
+        @deprecated OpenAPI DescribeAddons is deprecated
+        
+        @summary You can call the DescribeAddons operation to query the details about all components that are supported by Container Service for Kubernetes (ACK).
         
         @param request: DescribeAddonsRequest
         @return: DescribeAddonsResponse
@@ -3072,7 +3756,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterAddonInstanceResponse:
         """
-        @deprecated
+        @deprecated OpenAPI DescribeClusterAddonInstance is deprecated
+        
+        @summary You can call the DescribeClusterAddonInstance operation to query the information about a cluster component, including the version, status, and configuration of the component.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -3106,7 +3792,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterAddonInstanceResponse:
         """
-        @deprecated
+        @deprecated OpenAPI DescribeClusterAddonInstance is deprecated
+        
+        @summary You can call the DescribeClusterAddonInstance operation to query the information about a cluster component, including the version, status, and configuration of the component.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -3138,7 +3826,9 @@ class Client(OpenApiClient):
         addon_name: str,
     ) -> cs20151215_models.DescribeClusterAddonInstanceResponse:
         """
-        @deprecated
+        @deprecated OpenAPI DescribeClusterAddonInstance is deprecated
+        
+        @summary You can call the DescribeClusterAddonInstance operation to query the information about a cluster component, including the version, status, and configuration of the component.
         
         @return: DescribeClusterAddonInstanceResponse
         Deprecated
@@ -3153,7 +3843,9 @@ class Client(OpenApiClient):
         addon_name: str,
     ) -> cs20151215_models.DescribeClusterAddonInstanceResponse:
         """
-        @deprecated
+        @deprecated OpenAPI DescribeClusterAddonInstance is deprecated
+        
+        @summary You can call the DescribeClusterAddonInstance operation to query the information about a cluster component, including the version, status, and configuration of the component.
         
         @return: DescribeClusterAddonInstanceResponse
         Deprecated
@@ -3171,7 +3863,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterAddonMetadataResponse:
         """
-        @deprecated
+        @deprecated OpenAPI DescribeClusterAddonMetadata is deprecated
+        
+        @summary You can call the DescribeClusterAddonMetadata operation to query the metadata of a component version. The metadata includes the component version and available parameters.
         
         @param request: DescribeClusterAddonMetadataRequest
         @param headers: map
@@ -3212,7 +3906,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterAddonMetadataResponse:
         """
-        @deprecated
+        @deprecated OpenAPI DescribeClusterAddonMetadata is deprecated
+        
+        @summary You can call the DescribeClusterAddonMetadata operation to query the metadata of a component version. The metadata includes the component version and available parameters.
         
         @param request: DescribeClusterAddonMetadataRequest
         @param headers: map
@@ -3251,7 +3947,9 @@ class Client(OpenApiClient):
         request: cs20151215_models.DescribeClusterAddonMetadataRequest,
     ) -> cs20151215_models.DescribeClusterAddonMetadataResponse:
         """
-        @deprecated
+        @deprecated OpenAPI DescribeClusterAddonMetadata is deprecated
+        
+        @summary You can call the DescribeClusterAddonMetadata operation to query the metadata of a component version. The metadata includes the component version and available parameters.
         
         @param request: DescribeClusterAddonMetadataRequest
         @return: DescribeClusterAddonMetadataResponse
@@ -3268,7 +3966,9 @@ class Client(OpenApiClient):
         request: cs20151215_models.DescribeClusterAddonMetadataRequest,
     ) -> cs20151215_models.DescribeClusterAddonMetadataResponse:
         """
-        @deprecated
+        @deprecated OpenAPI DescribeClusterAddonMetadata is deprecated
+        
+        @summary You can call the DescribeClusterAddonMetadata operation to query the metadata of a component version. The metadata includes the component version and available parameters.
         
         @param request: DescribeClusterAddonMetadataRequest
         @return: DescribeClusterAddonMetadataResponse
@@ -3286,7 +3986,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterAddonUpgradeStatusResponse:
         """
-        @deprecated
+        @deprecated OpenAPI DescribeClusterAddonUpgradeStatus is deprecated
+        
+        @summary You can call the DescribeClusterAddonUpgradeStatus operation to query the update progress of a cluster component.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -3320,7 +4022,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterAddonUpgradeStatusResponse:
         """
-        @deprecated
+        @deprecated OpenAPI DescribeClusterAddonUpgradeStatus is deprecated
+        
+        @summary You can call the DescribeClusterAddonUpgradeStatus operation to query the update progress of a cluster component.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -3352,7 +4056,9 @@ class Client(OpenApiClient):
         component_id: str,
     ) -> cs20151215_models.DescribeClusterAddonUpgradeStatusResponse:
         """
-        @deprecated
+        @deprecated OpenAPI DescribeClusterAddonUpgradeStatus is deprecated
+        
+        @summary You can call the DescribeClusterAddonUpgradeStatus operation to query the update progress of a cluster component.
         
         @return: DescribeClusterAddonUpgradeStatusResponse
         Deprecated
@@ -3367,7 +4073,9 @@ class Client(OpenApiClient):
         component_id: str,
     ) -> cs20151215_models.DescribeClusterAddonUpgradeStatusResponse:
         """
-        @deprecated
+        @deprecated OpenAPI DescribeClusterAddonUpgradeStatus is deprecated
+        
+        @summary You can call the DescribeClusterAddonUpgradeStatus operation to query the update progress of a cluster component.
         
         @return: DescribeClusterAddonUpgradeStatusResponse
         Deprecated
@@ -3384,7 +4092,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterAddonsUpgradeStatusResponse:
         """
-        @deprecated
+        @deprecated OpenAPI DescribeClusterAddonsUpgradeStatus is deprecated
+        
+        @summary You can call the DescribeClusterAddonsUpgradeStatus operation to query the update progress of a component by component name.
         
         @param tmp_req: DescribeClusterAddonsUpgradeStatusRequest
         @param headers: map
@@ -3428,7 +4138,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterAddonsUpgradeStatusResponse:
         """
-        @deprecated
+        @deprecated OpenAPI DescribeClusterAddonsUpgradeStatus is deprecated
+        
+        @summary You can call the DescribeClusterAddonsUpgradeStatus operation to query the update progress of a component by component name.
         
         @param tmp_req: DescribeClusterAddonsUpgradeStatusRequest
         @param headers: map
@@ -3470,7 +4182,9 @@ class Client(OpenApiClient):
         request: cs20151215_models.DescribeClusterAddonsUpgradeStatusRequest,
     ) -> cs20151215_models.DescribeClusterAddonsUpgradeStatusResponse:
         """
-        @deprecated
+        @deprecated OpenAPI DescribeClusterAddonsUpgradeStatus is deprecated
+        
+        @summary You can call the DescribeClusterAddonsUpgradeStatus operation to query the update progress of a component by component name.
         
         @param request: DescribeClusterAddonsUpgradeStatusRequest
         @return: DescribeClusterAddonsUpgradeStatusResponse
@@ -3486,7 +4200,9 @@ class Client(OpenApiClient):
         request: cs20151215_models.DescribeClusterAddonsUpgradeStatusRequest,
     ) -> cs20151215_models.DescribeClusterAddonsUpgradeStatusResponse:
         """
-        @deprecated
+        @deprecated OpenAPI DescribeClusterAddonsUpgradeStatus is deprecated
+        
+        @summary You can call the DescribeClusterAddonsUpgradeStatus operation to query the update progress of a component by component name.
         
         @param request: DescribeClusterAddonsUpgradeStatusRequest
         @return: DescribeClusterAddonsUpgradeStatusResponse
@@ -3503,7 +4219,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterAddonsVersionResponse:
         """
-        @deprecated
+        @deprecated OpenAPI DescribeClusterAddonsVersion is deprecated
+        
+        @summary You can call the DescribeClusterAddonsVersion operation to query the details about all components in a cluster by cluster ID.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -3536,7 +4254,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterAddonsVersionResponse:
         """
-        @deprecated
+        @deprecated OpenAPI DescribeClusterAddonsVersion is deprecated
+        
+        @summary You can call the DescribeClusterAddonsVersion operation to query the details about all components in a cluster by cluster ID.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -3567,7 +4287,9 @@ class Client(OpenApiClient):
         cluster_id: str,
     ) -> cs20151215_models.DescribeClusterAddonsVersionResponse:
         """
-        @deprecated
+        @deprecated OpenAPI DescribeClusterAddonsVersion is deprecated
+        
+        @summary You can call the DescribeClusterAddonsVersion operation to query the details about all components in a cluster by cluster ID.
         
         @return: DescribeClusterAddonsVersionResponse
         Deprecated
@@ -3581,7 +4303,9 @@ class Client(OpenApiClient):
         cluster_id: str,
     ) -> cs20151215_models.DescribeClusterAddonsVersionResponse:
         """
-        @deprecated
+        @deprecated OpenAPI DescribeClusterAddonsVersion is deprecated
+        
+        @summary You can call the DescribeClusterAddonsVersion operation to query the details about all components in a cluster by cluster ID.
         
         @return: DescribeClusterAddonsVersionResponse
         Deprecated
@@ -3597,6 +4321,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterAttachScriptsResponse:
+        """
+        @summary Queries the script that is used to add existing nodes to a Container Service for Kubernetes (ACK) cluster. You can manually add existing Elastic Compute Service (ECS) instances to an ACK cluster as worker nodes or re-add the worker nodes that you have removed to a node pool.
+        
+        @param request: DescribeClusterAttachScriptsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeClusterAttachScriptsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.arch):
@@ -3638,6 +4370,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterAttachScriptsResponse:
+        """
+        @summary Queries the script that is used to add existing nodes to a Container Service for Kubernetes (ACK) cluster. You can manually add existing Elastic Compute Service (ECS) instances to an ACK cluster as worker nodes or re-add the worker nodes that you have removed to a node pool.
+        
+        @param request: DescribeClusterAttachScriptsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeClusterAttachScriptsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.arch):
@@ -3677,6 +4417,12 @@ class Client(OpenApiClient):
         cluster_id: str,
         request: cs20151215_models.DescribeClusterAttachScriptsRequest,
     ) -> cs20151215_models.DescribeClusterAttachScriptsResponse:
+        """
+        @summary Queries the script that is used to add existing nodes to a Container Service for Kubernetes (ACK) cluster. You can manually add existing Elastic Compute Service (ECS) instances to an ACK cluster as worker nodes or re-add the worker nodes that you have removed to a node pool.
+        
+        @param request: DescribeClusterAttachScriptsRequest
+        @return: DescribeClusterAttachScriptsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_cluster_attach_scripts_with_options(cluster_id, request, headers, runtime)
@@ -3686,6 +4432,12 @@ class Client(OpenApiClient):
         cluster_id: str,
         request: cs20151215_models.DescribeClusterAttachScriptsRequest,
     ) -> cs20151215_models.DescribeClusterAttachScriptsResponse:
+        """
+        @summary Queries the script that is used to add existing nodes to a Container Service for Kubernetes (ACK) cluster. You can manually add existing Elastic Compute Service (ECS) instances to an ACK cluster as worker nodes or re-add the worker nodes that you have removed to a node pool.
+        
+        @param request: DescribeClusterAttachScriptsRequest
+        @return: DescribeClusterAttachScriptsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_cluster_attach_scripts_with_options_async(cluster_id, request, headers, runtime)
@@ -3696,6 +4448,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterDetailResponse:
+        """
+        @summary You can call the DescribeClusterDetail operation to query the details of a Container Service for Kubernetes (ACK) cluster by cluster ID.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeClusterDetailResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3721,6 +4480,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterDetailResponse:
+        """
+        @summary You can call the DescribeClusterDetail operation to query the details of a Container Service for Kubernetes (ACK) cluster by cluster ID.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeClusterDetailResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3744,6 +4510,11 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
     ) -> cs20151215_models.DescribeClusterDetailResponse:
+        """
+        @summary You can call the DescribeClusterDetail operation to query the details of a Container Service for Kubernetes (ACK) cluster by cluster ID.
+        
+        @return: DescribeClusterDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_cluster_detail_with_options(cluster_id, headers, runtime)
@@ -3752,6 +4523,11 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
     ) -> cs20151215_models.DescribeClusterDetailResponse:
+        """
+        @summary You can call the DescribeClusterDetail operation to query the details of a Container Service for Kubernetes (ACK) cluster by cluster ID.
+        
+        @return: DescribeClusterDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_cluster_detail_with_options_async(cluster_id, headers, runtime)
@@ -3763,6 +4539,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterEventsResponse:
+        """
+        @summary Queries events and event details in a Container Service for Kubernetes (ACK) cluster, including the severity level, status, and start time of each event. Events are generated when clusters created, modified, and updated, node pools are created and scaled out, and components are installed.
+        
+        @param request: DescribeClusterEventsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeClusterEventsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -3798,6 +4582,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterEventsResponse:
+        """
+        @summary Queries events and event details in a Container Service for Kubernetes (ACK) cluster, including the severity level, status, and start time of each event. Events are generated when clusters created, modified, and updated, node pools are created and scaled out, and components are installed.
+        
+        @param request: DescribeClusterEventsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeClusterEventsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -3831,6 +4623,12 @@ class Client(OpenApiClient):
         cluster_id: str,
         request: cs20151215_models.DescribeClusterEventsRequest,
     ) -> cs20151215_models.DescribeClusterEventsResponse:
+        """
+        @summary Queries events and event details in a Container Service for Kubernetes (ACK) cluster, including the severity level, status, and start time of each event. Events are generated when clusters created, modified, and updated, node pools are created and scaled out, and components are installed.
+        
+        @param request: DescribeClusterEventsRequest
+        @return: DescribeClusterEventsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_cluster_events_with_options(cluster_id, request, headers, runtime)
@@ -3840,6 +4638,12 @@ class Client(OpenApiClient):
         cluster_id: str,
         request: cs20151215_models.DescribeClusterEventsRequest,
     ) -> cs20151215_models.DescribeClusterEventsResponse:
+        """
+        @summary Queries events and event details in a Container Service for Kubernetes (ACK) cluster, including the severity level, status, and start time of each event. Events are generated when clusters created, modified, and updated, node pools are created and scaled out, and components are installed.
+        
+        @param request: DescribeClusterEventsRequest
+        @return: DescribeClusterEventsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_cluster_events_with_options_async(cluster_id, request, headers, runtime)
@@ -3850,6 +4654,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterLogsResponse:
+        """
+        @summary Queries the cluster log to help analyze cluster issues and locate the cause.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeClusterLogsResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3875,6 +4686,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterLogsResponse:
+        """
+        @summary Queries the cluster log to help analyze cluster issues and locate the cause.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeClusterLogsResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3898,6 +4716,11 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
     ) -> cs20151215_models.DescribeClusterLogsResponse:
+        """
+        @summary Queries the cluster log to help analyze cluster issues and locate the cause.
+        
+        @return: DescribeClusterLogsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_cluster_logs_with_options(cluster_id, headers, runtime)
@@ -3906,6 +4729,11 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
     ) -> cs20151215_models.DescribeClusterLogsResponse:
+        """
+        @summary Queries the cluster log to help analyze cluster issues and locate the cause.
+        
+        @return: DescribeClusterLogsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_cluster_logs_with_options_async(cluster_id, headers, runtime)
@@ -3917,6 +4745,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterNodePoolDetailResponse:
+        """
+        @summary You can call the DescribeClusterNodePoolDetail.html operation to query the details about a node pool in a cluster by node pool ID.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeClusterNodePoolDetailResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3943,6 +4778,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterNodePoolDetailResponse:
+        """
+        @summary You can call the DescribeClusterNodePoolDetail.html operation to query the details about a node pool in a cluster by node pool ID.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeClusterNodePoolDetailResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3967,6 +4809,11 @@ class Client(OpenApiClient):
         cluster_id: str,
         nodepool_id: str,
     ) -> cs20151215_models.DescribeClusterNodePoolDetailResponse:
+        """
+        @summary You can call the DescribeClusterNodePoolDetail.html operation to query the details about a node pool in a cluster by node pool ID.
+        
+        @return: DescribeClusterNodePoolDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_cluster_node_pool_detail_with_options(cluster_id, nodepool_id, headers, runtime)
@@ -3976,6 +4823,11 @@ class Client(OpenApiClient):
         cluster_id: str,
         nodepool_id: str,
     ) -> cs20151215_models.DescribeClusterNodePoolDetailResponse:
+        """
+        @summary You can call the DescribeClusterNodePoolDetail.html operation to query the details about a node pool in a cluster by node pool ID.
+        
+        @return: DescribeClusterNodePoolDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_cluster_node_pool_detail_with_options_async(cluster_id, nodepool_id, headers, runtime)
@@ -3987,6 +4839,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterNodePoolsResponse:
+        """
+        @summary You can call the DescribeClusterNodePools operation to query node pools in a Container Service for Kubernetes (ACK) cluster.
+        
+        @param request: DescribeClusterNodePoolsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeClusterNodePoolsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.nodepool_name):
@@ -4018,6 +4878,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterNodePoolsResponse:
+        """
+        @summary You can call the DescribeClusterNodePools operation to query node pools in a Container Service for Kubernetes (ACK) cluster.
+        
+        @param request: DescribeClusterNodePoolsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeClusterNodePoolsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.nodepool_name):
@@ -4047,6 +4915,12 @@ class Client(OpenApiClient):
         cluster_id: str,
         request: cs20151215_models.DescribeClusterNodePoolsRequest,
     ) -> cs20151215_models.DescribeClusterNodePoolsResponse:
+        """
+        @summary You can call the DescribeClusterNodePools operation to query node pools in a Container Service for Kubernetes (ACK) cluster.
+        
+        @param request: DescribeClusterNodePoolsRequest
+        @return: DescribeClusterNodePoolsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_cluster_node_pools_with_options(cluster_id, request, headers, runtime)
@@ -4056,6 +4930,12 @@ class Client(OpenApiClient):
         cluster_id: str,
         request: cs20151215_models.DescribeClusterNodePoolsRequest,
     ) -> cs20151215_models.DescribeClusterNodePoolsResponse:
+        """
+        @summary You can call the DescribeClusterNodePools operation to query node pools in a Container Service for Kubernetes (ACK) cluster.
+        
+        @param request: DescribeClusterNodePoolsRequest
+        @return: DescribeClusterNodePoolsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_cluster_node_pools_with_options_async(cluster_id, request, headers, runtime)
@@ -4067,6 +4947,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterNodesResponse:
+        """
+        @summary You can call the DescribeClusterNodes operation to query the details about all nodes in a cluster by cluster ID.
+        
+        @param request: DescribeClusterNodesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeClusterNodesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_ids):
@@ -4106,6 +4994,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterNodesResponse:
+        """
+        @summary You can call the DescribeClusterNodes operation to query the details about all nodes in a cluster by cluster ID.
+        
+        @param request: DescribeClusterNodesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeClusterNodesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_ids):
@@ -4143,6 +5039,12 @@ class Client(OpenApiClient):
         cluster_id: str,
         request: cs20151215_models.DescribeClusterNodesRequest,
     ) -> cs20151215_models.DescribeClusterNodesResponse:
+        """
+        @summary You can call the DescribeClusterNodes operation to query the details about all nodes in a cluster by cluster ID.
+        
+        @param request: DescribeClusterNodesRequest
+        @return: DescribeClusterNodesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_cluster_nodes_with_options(cluster_id, request, headers, runtime)
@@ -4152,6 +5054,12 @@ class Client(OpenApiClient):
         cluster_id: str,
         request: cs20151215_models.DescribeClusterNodesRequest,
     ) -> cs20151215_models.DescribeClusterNodesResponse:
+        """
+        @summary You can call the DescribeClusterNodes operation to query the details about all nodes in a cluster by cluster ID.
+        
+        @param request: DescribeClusterNodesRequest
+        @return: DescribeClusterNodesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_cluster_nodes_with_options_async(cluster_id, request, headers, runtime)
@@ -4163,6 +5071,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterResourcesResponse:
+        """
+        @summary You can call the DescribeClusterResources operation to query all resources in a cluster by cluster ID.
+        
+        @param request: DescribeClusterResourcesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeClusterResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.with_addon_resources):
@@ -4194,6 +5110,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterResourcesResponse:
+        """
+        @summary You can call the DescribeClusterResources operation to query all resources in a cluster by cluster ID.
+        
+        @param request: DescribeClusterResourcesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeClusterResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.with_addon_resources):
@@ -4223,6 +5147,12 @@ class Client(OpenApiClient):
         cluster_id: str,
         request: cs20151215_models.DescribeClusterResourcesRequest,
     ) -> cs20151215_models.DescribeClusterResourcesResponse:
+        """
+        @summary You can call the DescribeClusterResources operation to query all resources in a cluster by cluster ID.
+        
+        @param request: DescribeClusterResourcesRequest
+        @return: DescribeClusterResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_cluster_resources_with_options(cluster_id, request, headers, runtime)
@@ -4232,6 +5162,12 @@ class Client(OpenApiClient):
         cluster_id: str,
         request: cs20151215_models.DescribeClusterResourcesRequest,
     ) -> cs20151215_models.DescribeClusterResourcesResponse:
+        """
+        @summary You can call the DescribeClusterResources operation to query all resources in a cluster by cluster ID.
+        
+        @param request: DescribeClusterResourcesRequest
+        @return: DescribeClusterResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_cluster_resources_with_options_async(cluster_id, request, headers, runtime)
@@ -4243,6 +5179,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterTasksResponse:
+        """
+        @summary Queries tasks in a Container Service for Kubernetes (ACK) cluster.
+        
+        @param request: DescribeClusterTasksRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeClusterTasksResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -4276,6 +5220,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterTasksResponse:
+        """
+        @summary Queries tasks in a Container Service for Kubernetes (ACK) cluster.
+        
+        @param request: DescribeClusterTasksRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeClusterTasksResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -4307,6 +5259,12 @@ class Client(OpenApiClient):
         cluster_id: str,
         request: cs20151215_models.DescribeClusterTasksRequest,
     ) -> cs20151215_models.DescribeClusterTasksResponse:
+        """
+        @summary Queries tasks in a Container Service for Kubernetes (ACK) cluster.
+        
+        @param request: DescribeClusterTasksRequest
+        @return: DescribeClusterTasksResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_cluster_tasks_with_options(cluster_id, request, headers, runtime)
@@ -4316,6 +5274,12 @@ class Client(OpenApiClient):
         cluster_id: str,
         request: cs20151215_models.DescribeClusterTasksRequest,
     ) -> cs20151215_models.DescribeClusterTasksResponse:
+        """
+        @summary Queries tasks in a Container Service for Kubernetes (ACK) cluster.
+        
+        @param request: DescribeClusterTasksRequest
+        @return: DescribeClusterTasksResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_cluster_tasks_with_options_async(cluster_id, request, headers, runtime)
@@ -4328,8 +5292,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterUserKubeconfigResponse:
         """
-        *\
-        ****The default validity period of a kubeconfig file is 3 years. Two months before a kubeconfig file expires, you can renew it in the Container Service for Kubernetes (ACK) console or by calling API operations. After a kubeconfig file is renewed, the secret is valid for 3 years. The previous kubeconfig secret remains valid until expiration. We recommend that you renew your kubeconfig file at the earliest opportunity.
+        @summary Kubeconfig files store identity and authentication information that is used by clients to access Container Service for Kubernetes (ACK) clusters. To use a kubectl client to manage an ACK cluster, you need to use the corresponding kubeconfig file to connect to the ACK cluster. We recommend that you keep kubeconfig files confidential and revoke kubeconfig files that are not in use. This helps prevent data leaks caused by the disclosure of kubeconfig files.
+        
+        @description *\
+        ***The default validity period of a kubeconfig file is 3 years. Two months before a kubeconfig file expires, you can renew it in the Container Service for Kubernetes (ACK) console or by calling API operations. After a kubeconfig file is renewed, the secret is valid for 3 years. The previous kubeconfig secret remains valid until expiration. We recommend that you renew your kubeconfig file at the earliest opportunity.
         
         @param request: DescribeClusterUserKubeconfigRequest
         @param headers: map
@@ -4370,8 +5336,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterUserKubeconfigResponse:
         """
-        *\
-        ****The default validity period of a kubeconfig file is 3 years. Two months before a kubeconfig file expires, you can renew it in the Container Service for Kubernetes (ACK) console or by calling API operations. After a kubeconfig file is renewed, the secret is valid for 3 years. The previous kubeconfig secret remains valid until expiration. We recommend that you renew your kubeconfig file at the earliest opportunity.
+        @summary Kubeconfig files store identity and authentication information that is used by clients to access Container Service for Kubernetes (ACK) clusters. To use a kubectl client to manage an ACK cluster, you need to use the corresponding kubeconfig file to connect to the ACK cluster. We recommend that you keep kubeconfig files confidential and revoke kubeconfig files that are not in use. This helps prevent data leaks caused by the disclosure of kubeconfig files.
+        
+        @description *\
+        ***The default validity period of a kubeconfig file is 3 years. Two months before a kubeconfig file expires, you can renew it in the Container Service for Kubernetes (ACK) console or by calling API operations. After a kubeconfig file is renewed, the secret is valid for 3 years. The previous kubeconfig secret remains valid until expiration. We recommend that you renew your kubeconfig file at the earliest opportunity.
         
         @param request: DescribeClusterUserKubeconfigRequest
         @param headers: map
@@ -4410,8 +5378,10 @@ class Client(OpenApiClient):
         request: cs20151215_models.DescribeClusterUserKubeconfigRequest,
     ) -> cs20151215_models.DescribeClusterUserKubeconfigResponse:
         """
-        *\
-        ****The default validity period of a kubeconfig file is 3 years. Two months before a kubeconfig file expires, you can renew it in the Container Service for Kubernetes (ACK) console or by calling API operations. After a kubeconfig file is renewed, the secret is valid for 3 years. The previous kubeconfig secret remains valid until expiration. We recommend that you renew your kubeconfig file at the earliest opportunity.
+        @summary Kubeconfig files store identity and authentication information that is used by clients to access Container Service for Kubernetes (ACK) clusters. To use a kubectl client to manage an ACK cluster, you need to use the corresponding kubeconfig file to connect to the ACK cluster. We recommend that you keep kubeconfig files confidential and revoke kubeconfig files that are not in use. This helps prevent data leaks caused by the disclosure of kubeconfig files.
+        
+        @description *\
+        ***The default validity period of a kubeconfig file is 3 years. Two months before a kubeconfig file expires, you can renew it in the Container Service for Kubernetes (ACK) console or by calling API operations. After a kubeconfig file is renewed, the secret is valid for 3 years. The previous kubeconfig secret remains valid until expiration. We recommend that you renew your kubeconfig file at the earliest opportunity.
         
         @param request: DescribeClusterUserKubeconfigRequest
         @return: DescribeClusterUserKubeconfigResponse
@@ -4426,8 +5396,10 @@ class Client(OpenApiClient):
         request: cs20151215_models.DescribeClusterUserKubeconfigRequest,
     ) -> cs20151215_models.DescribeClusterUserKubeconfigResponse:
         """
-        *\
-        ****The default validity period of a kubeconfig file is 3 years. Two months before a kubeconfig file expires, you can renew it in the Container Service for Kubernetes (ACK) console or by calling API operations. After a kubeconfig file is renewed, the secret is valid for 3 years. The previous kubeconfig secret remains valid until expiration. We recommend that you renew your kubeconfig file at the earliest opportunity.
+        @summary Kubeconfig files store identity and authentication information that is used by clients to access Container Service for Kubernetes (ACK) clusters. To use a kubectl client to manage an ACK cluster, you need to use the corresponding kubeconfig file to connect to the ACK cluster. We recommend that you keep kubeconfig files confidential and revoke kubeconfig files that are not in use. This helps prevent data leaks caused by the disclosure of kubeconfig files.
+        
+        @description *\
+        ***The default validity period of a kubeconfig file is 3 years. Two months before a kubeconfig file expires, you can renew it in the Container Service for Kubernetes (ACK) console or by calling API operations. After a kubeconfig file is renewed, the secret is valid for 3 years. The previous kubeconfig secret remains valid until expiration. We recommend that you renew your kubeconfig file at the earliest opportunity.
         
         @param request: DescribeClusterUserKubeconfigRequest
         @return: DescribeClusterUserKubeconfigResponse
@@ -4444,7 +5416,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterV2UserKubeconfigResponse:
         """
-        @deprecated
+        @deprecated OpenAPI DescribeClusterV2UserKubeconfig is deprecated
+        
+        @summary 获取集群kubeconfig接口
         
         @param request: DescribeClusterV2UserKubeconfigRequest
         @param headers: map
@@ -4484,7 +5458,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterV2UserKubeconfigResponse:
         """
-        @deprecated
+        @deprecated OpenAPI DescribeClusterV2UserKubeconfig is deprecated
+        
+        @summary 获取集群kubeconfig接口
         
         @param request: DescribeClusterV2UserKubeconfigRequest
         @param headers: map
@@ -4522,7 +5498,9 @@ class Client(OpenApiClient):
         request: cs20151215_models.DescribeClusterV2UserKubeconfigRequest,
     ) -> cs20151215_models.DescribeClusterV2UserKubeconfigResponse:
         """
-        @deprecated
+        @deprecated OpenAPI DescribeClusterV2UserKubeconfig is deprecated
+        
+        @summary 获取集群kubeconfig接口
         
         @param request: DescribeClusterV2UserKubeconfigRequest
         @return: DescribeClusterV2UserKubeconfigResponse
@@ -4538,7 +5516,9 @@ class Client(OpenApiClient):
         request: cs20151215_models.DescribeClusterV2UserKubeconfigRequest,
     ) -> cs20151215_models.DescribeClusterV2UserKubeconfigResponse:
         """
-        @deprecated
+        @deprecated OpenAPI DescribeClusterV2UserKubeconfig is deprecated
+        
+        @summary 获取集群kubeconfig接口
         
         @param request: DescribeClusterV2UserKubeconfigRequest
         @return: DescribeClusterV2UserKubeconfigResponse
@@ -4554,6 +5534,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterVulsResponse:
+        """
+        @summary You can call the DescribeClusterVuls operation to query the vulnerability information of a cluster.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeClusterVulsResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4579,6 +5566,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterVulsResponse:
+        """
+        @summary You can call the DescribeClusterVuls operation to query the vulnerability information of a cluster.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeClusterVulsResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4602,6 +5596,11 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
     ) -> cs20151215_models.DescribeClusterVulsResponse:
+        """
+        @summary You can call the DescribeClusterVuls operation to query the vulnerability information of a cluster.
+        
+        @return: DescribeClusterVulsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_cluster_vuls_with_options(cluster_id, headers, runtime)
@@ -4610,6 +5609,11 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
     ) -> cs20151215_models.DescribeClusterVulsResponse:
+        """
+        @summary You can call the DescribeClusterVuls operation to query the vulnerability information of a cluster.
+        
+        @return: DescribeClusterVulsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_cluster_vuls_with_options_async(cluster_id, headers, runtime)
@@ -4621,7 +5625,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClustersResponse:
         """
-        @deprecated
+        @deprecated OpenAPI DescribeClusters is deprecated
+        
+        @summary You can call the DescribeClusters operation to query all the clusters that belong to the current Alibaba Cloud account, including Kubernetes clusters and Swarm clusters.
         
         @param request: DescribeClustersRequest
         @param headers: map
@@ -4662,7 +5668,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClustersResponse:
         """
-        @deprecated
+        @deprecated OpenAPI DescribeClusters is deprecated
+        
+        @summary You can call the DescribeClusters operation to query all the clusters that belong to the current Alibaba Cloud account, including Kubernetes clusters and Swarm clusters.
         
         @param request: DescribeClustersRequest
         @param headers: map
@@ -4701,7 +5709,9 @@ class Client(OpenApiClient):
         request: cs20151215_models.DescribeClustersRequest,
     ) -> cs20151215_models.DescribeClustersResponse:
         """
-        @deprecated
+        @deprecated OpenAPI DescribeClusters is deprecated
+        
+        @summary You can call the DescribeClusters operation to query all the clusters that belong to the current Alibaba Cloud account, including Kubernetes clusters and Swarm clusters.
         
         @param request: DescribeClustersRequest
         @return: DescribeClustersResponse
@@ -4716,7 +5726,9 @@ class Client(OpenApiClient):
         request: cs20151215_models.DescribeClustersRequest,
     ) -> cs20151215_models.DescribeClustersResponse:
         """
-        @deprecated
+        @deprecated OpenAPI DescribeClusters is deprecated
+        
+        @summary You can call the DescribeClusters operation to query all the clusters that belong to the current Alibaba Cloud account, including Kubernetes clusters and Swarm clusters.
         
         @param request: DescribeClustersRequest
         @return: DescribeClustersResponse
@@ -4732,6 +5744,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClustersV1Response:
+        """
+        @summary You can call the DescribeClustersV1 operation to query the details about all Container Service for Kubernetes (ACK) clusters.
+        
+        @param request: DescribeClustersV1Request
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeClustersV1Response
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -4776,6 +5796,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClustersV1Response:
+        """
+        @summary You can call the DescribeClustersV1 operation to query the details about all Container Service for Kubernetes (ACK) clusters.
+        
+        @param request: DescribeClustersV1Request
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeClustersV1Response
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -4818,6 +5846,12 @@ class Client(OpenApiClient):
         self,
         request: cs20151215_models.DescribeClustersV1Request,
     ) -> cs20151215_models.DescribeClustersV1Response:
+        """
+        @summary You can call the DescribeClustersV1 operation to query the details about all Container Service for Kubernetes (ACK) clusters.
+        
+        @param request: DescribeClustersV1Request
+        @return: DescribeClustersV1Response
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_clusters_v1with_options(request, headers, runtime)
@@ -4826,6 +5860,12 @@ class Client(OpenApiClient):
         self,
         request: cs20151215_models.DescribeClustersV1Request,
     ) -> cs20151215_models.DescribeClustersV1Response:
+        """
+        @summary You can call the DescribeClustersV1 operation to query the details about all Container Service for Kubernetes (ACK) clusters.
+        
+        @param request: DescribeClustersV1Request
+        @return: DescribeClustersV1Response
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_clusters_v1with_options_async(request, headers, runtime)
@@ -4836,6 +5876,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeEdgeMachineActiveProcessResponse:
+        """
+        @summary You can call the DescribeEdgeMachineActiveProcess operation to query the activation progress of a cloud-native box.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEdgeMachineActiveProcessResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4861,6 +5908,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeEdgeMachineActiveProcessResponse:
+        """
+        @summary You can call the DescribeEdgeMachineActiveProcess operation to query the activation progress of a cloud-native box.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEdgeMachineActiveProcessResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4884,6 +5938,11 @@ class Client(OpenApiClient):
         self,
         edge_machineid: str,
     ) -> cs20151215_models.DescribeEdgeMachineActiveProcessResponse:
+        """
+        @summary You can call the DescribeEdgeMachineActiveProcess operation to query the activation progress of a cloud-native box.
+        
+        @return: DescribeEdgeMachineActiveProcessResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_edge_machine_active_process_with_options(edge_machineid, headers, runtime)
@@ -4892,6 +5951,11 @@ class Client(OpenApiClient):
         self,
         edge_machineid: str,
     ) -> cs20151215_models.DescribeEdgeMachineActiveProcessResponse:
+        """
+        @summary You can call the DescribeEdgeMachineActiveProcess operation to query the activation progress of a cloud-native box.
+        
+        @return: DescribeEdgeMachineActiveProcessResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_edge_machine_active_process_with_options_async(edge_machineid, headers, runtime)
@@ -4901,6 +5965,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeEdgeMachineModelsResponse:
+        """
+        @summary You can call the DescribeEdgeMachineModels operation to query the cloud-native box models.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEdgeMachineModelsResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4925,6 +5996,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeEdgeMachineModelsResponse:
+        """
+        @summary You can call the DescribeEdgeMachineModels operation to query the cloud-native box models.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEdgeMachineModelsResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4945,11 +6023,21 @@ class Client(OpenApiClient):
         )
 
     def describe_edge_machine_models(self) -> cs20151215_models.DescribeEdgeMachineModelsResponse:
+        """
+        @summary You can call the DescribeEdgeMachineModels operation to query the cloud-native box models.
+        
+        @return: DescribeEdgeMachineModelsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_edge_machine_models_with_options(headers, runtime)
 
     async def describe_edge_machine_models_async(self) -> cs20151215_models.DescribeEdgeMachineModelsResponse:
+        """
+        @summary You can call the DescribeEdgeMachineModels operation to query the cloud-native box models.
+        
+        @return: DescribeEdgeMachineModelsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_edge_machine_models_with_options_async(headers, runtime)
@@ -4960,6 +6048,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeEdgeMachineTunnelConfigDetailResponse:
+        """
+        @summary You can call the DescribeEdgeMachineTunnelConfigDetail operation to obtain the SSH token of a cloud-native box.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEdgeMachineTunnelConfigDetailResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4985,6 +6080,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeEdgeMachineTunnelConfigDetailResponse:
+        """
+        @summary You can call the DescribeEdgeMachineTunnelConfigDetail operation to obtain the SSH token of a cloud-native box.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEdgeMachineTunnelConfigDetailResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -5008,6 +6110,11 @@ class Client(OpenApiClient):
         self,
         edge_machineid: str,
     ) -> cs20151215_models.DescribeEdgeMachineTunnelConfigDetailResponse:
+        """
+        @summary You can call the DescribeEdgeMachineTunnelConfigDetail operation to obtain the SSH token of a cloud-native box.
+        
+        @return: DescribeEdgeMachineTunnelConfigDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_edge_machine_tunnel_config_detail_with_options(edge_machineid, headers, runtime)
@@ -5016,6 +6123,11 @@ class Client(OpenApiClient):
         self,
         edge_machineid: str,
     ) -> cs20151215_models.DescribeEdgeMachineTunnelConfigDetailResponse:
+        """
+        @summary You can call the DescribeEdgeMachineTunnelConfigDetail operation to obtain the SSH token of a cloud-native box.
+        
+        @return: DescribeEdgeMachineTunnelConfigDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_edge_machine_tunnel_config_detail_with_options_async(edge_machineid, headers, runtime)
@@ -5026,6 +6138,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeEdgeMachinesResponse:
+        """
+        @summary You can call the DescribeEdgeMachines operation to query a list of cloud-native boxes.
+        
+        @param request: DescribeEdgeMachinesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEdgeMachinesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.hostname):
@@ -5066,6 +6186,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeEdgeMachinesResponse:
+        """
+        @summary You can call the DescribeEdgeMachines operation to query a list of cloud-native boxes.
+        
+        @param request: DescribeEdgeMachinesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEdgeMachinesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.hostname):
@@ -5104,6 +6232,12 @@ class Client(OpenApiClient):
         self,
         request: cs20151215_models.DescribeEdgeMachinesRequest,
     ) -> cs20151215_models.DescribeEdgeMachinesResponse:
+        """
+        @summary You can call the DescribeEdgeMachines operation to query a list of cloud-native boxes.
+        
+        @param request: DescribeEdgeMachinesRequest
+        @return: DescribeEdgeMachinesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_edge_machines_with_options(request, headers, runtime)
@@ -5112,6 +6246,12 @@ class Client(OpenApiClient):
         self,
         request: cs20151215_models.DescribeEdgeMachinesRequest,
     ) -> cs20151215_models.DescribeEdgeMachinesResponse:
+        """
+        @summary You can call the DescribeEdgeMachines operation to query a list of cloud-native boxes.
+        
+        @param request: DescribeEdgeMachinesRequest
+        @return: DescribeEdgeMachinesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_edge_machines_with_options_async(request, headers, runtime)
@@ -5122,6 +6262,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeEventsResponse:
+        """
+        @summary Queries detailed information about a type of events, including the severity level, status, and start time of each event. Events are generated when clusters are created, modified, and updated, node pools are created and scaled out, and components are installed.
+        
+        @param request: DescribeEventsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEventsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -5158,6 +6306,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeEventsResponse:
+        """
+        @summary Queries detailed information about a type of events, including the severity level, status, and start time of each event. Events are generated when clusters are created, modified, and updated, node pools are created and scaled out, and components are installed.
+        
+        @param request: DescribeEventsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEventsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -5192,6 +6348,12 @@ class Client(OpenApiClient):
         self,
         request: cs20151215_models.DescribeEventsRequest,
     ) -> cs20151215_models.DescribeEventsResponse:
+        """
+        @summary Queries detailed information about a type of events, including the severity level, status, and start time of each event. Events are generated when clusters are created, modified, and updated, node pools are created and scaled out, and components are installed.
+        
+        @param request: DescribeEventsRequest
+        @return: DescribeEventsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_events_with_options(request, headers, runtime)
@@ -5200,6 +6362,12 @@ class Client(OpenApiClient):
         self,
         request: cs20151215_models.DescribeEventsRequest,
     ) -> cs20151215_models.DescribeEventsResponse:
+        """
+        @summary Queries detailed information about a type of events, including the severity level, status, and start time of each event. Events are generated when clusters are created, modified, and updated, node pools are created and scaled out, and components are installed.
+        
+        @param request: DescribeEventsRequest
+        @return: DescribeEventsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_events_with_options_async(request, headers, runtime)
@@ -5212,7 +6380,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeExternalAgentResponse:
         """
-        For more information, see [Register an external Kubernetes cluster](~~121053~~).
+        @summary You can call the DescribeExternalAgent operation to query the agent configurations of a registered cluster by cluster ID.
+        
+        @description For more information, see [Register an external Kubernetes cluster](https://help.aliyun.com/document_detail/121053.html).
         
         @param request: DescribeExternalAgentRequest
         @param headers: map
@@ -5253,7 +6423,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeExternalAgentResponse:
         """
-        For more information, see [Register an external Kubernetes cluster](~~121053~~).
+        @summary You can call the DescribeExternalAgent operation to query the agent configurations of a registered cluster by cluster ID.
+        
+        @description For more information, see [Register an external Kubernetes cluster](https://help.aliyun.com/document_detail/121053.html).
         
         @param request: DescribeExternalAgentRequest
         @param headers: map
@@ -5292,7 +6464,9 @@ class Client(OpenApiClient):
         request: cs20151215_models.DescribeExternalAgentRequest,
     ) -> cs20151215_models.DescribeExternalAgentResponse:
         """
-        For more information, see [Register an external Kubernetes cluster](~~121053~~).
+        @summary You can call the DescribeExternalAgent operation to query the agent configurations of a registered cluster by cluster ID.
+        
+        @description For more information, see [Register an external Kubernetes cluster](https://help.aliyun.com/document_detail/121053.html).
         
         @param request: DescribeExternalAgentRequest
         @return: DescribeExternalAgentResponse
@@ -5307,7 +6481,9 @@ class Client(OpenApiClient):
         request: cs20151215_models.DescribeExternalAgentRequest,
     ) -> cs20151215_models.DescribeExternalAgentResponse:
         """
-        For more information, see [Register an external Kubernetes cluster](~~121053~~).
+        @summary You can call the DescribeExternalAgent operation to query the agent configurations of a registered cluster by cluster ID.
+        
+        @description For more information, see [Register an external Kubernetes cluster](https://help.aliyun.com/document_detail/121053.html).
         
         @param request: DescribeExternalAgentRequest
         @return: DescribeExternalAgentResponse
@@ -5322,6 +6498,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeKubernetesVersionMetadataResponse:
+        """
+        @summary Queries the detailed information about Kubernetes versions, including the version number, release date, expiration date, compatible OSs, and runtime.
+        
+        @param request: DescribeKubernetesVersionMetadataRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeKubernetesVersionMetadataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_type):
@@ -5362,6 +6546,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeKubernetesVersionMetadataResponse:
+        """
+        @summary Queries the detailed information about Kubernetes versions, including the version number, release date, expiration date, compatible OSs, and runtime.
+        
+        @param request: DescribeKubernetesVersionMetadataRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeKubernetesVersionMetadataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_type):
@@ -5400,6 +6592,12 @@ class Client(OpenApiClient):
         self,
         request: cs20151215_models.DescribeKubernetesVersionMetadataRequest,
     ) -> cs20151215_models.DescribeKubernetesVersionMetadataResponse:
+        """
+        @summary Queries the detailed information about Kubernetes versions, including the version number, release date, expiration date, compatible OSs, and runtime.
+        
+        @param request: DescribeKubernetesVersionMetadataRequest
+        @return: DescribeKubernetesVersionMetadataResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_kubernetes_version_metadata_with_options(request, headers, runtime)
@@ -5408,6 +6606,12 @@ class Client(OpenApiClient):
         self,
         request: cs20151215_models.DescribeKubernetesVersionMetadataRequest,
     ) -> cs20151215_models.DescribeKubernetesVersionMetadataResponse:
+        """
+        @summary Queries the detailed information about Kubernetes versions, including the version number, release date, expiration date, compatible OSs, and runtime.
+        
+        @param request: DescribeKubernetesVersionMetadataRequest
+        @return: DescribeKubernetesVersionMetadataResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_kubernetes_version_metadata_with_options_async(request, headers, runtime)
@@ -5420,6 +6624,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeNodePoolVulsResponse:
+        """
+        @summary Queries the vulnerability information of a node pool, such as vulnerability names and severity levels, by specifying the ID of the node pool. We recommend that you periodically scan node pools for vulnerabilities to enhance cluster security.
+        
+        @param request: DescribeNodePoolVulsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNodePoolVulsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.necessity):
@@ -5452,6 +6664,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeNodePoolVulsResponse:
+        """
+        @summary Queries the vulnerability information of a node pool, such as vulnerability names and severity levels, by specifying the ID of the node pool. We recommend that you periodically scan node pools for vulnerabilities to enhance cluster security.
+        
+        @param request: DescribeNodePoolVulsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNodePoolVulsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.necessity):
@@ -5482,6 +6702,12 @@ class Client(OpenApiClient):
         nodepool_id: str,
         request: cs20151215_models.DescribeNodePoolVulsRequest,
     ) -> cs20151215_models.DescribeNodePoolVulsResponse:
+        """
+        @summary Queries the vulnerability information of a node pool, such as vulnerability names and severity levels, by specifying the ID of the node pool. We recommend that you periodically scan node pools for vulnerabilities to enhance cluster security.
+        
+        @param request: DescribeNodePoolVulsRequest
+        @return: DescribeNodePoolVulsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_node_pool_vuls_with_options(cluster_id, nodepool_id, request, headers, runtime)
@@ -5492,6 +6718,12 @@ class Client(OpenApiClient):
         nodepool_id: str,
         request: cs20151215_models.DescribeNodePoolVulsRequest,
     ) -> cs20151215_models.DescribeNodePoolVulsResponse:
+        """
+        @summary Queries the vulnerability information of a node pool, such as vulnerability names and severity levels, by specifying the ID of the node pool. We recommend that you periodically scan node pools for vulnerabilities to enhance cluster security.
+        
+        @param request: DescribeNodePoolVulsRequest
+        @return: DescribeNodePoolVulsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_node_pool_vuls_with_options_async(cluster_id, nodepool_id, request, headers, runtime)
@@ -5501,6 +6733,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribePoliciesResponse:
+        """
+        @summary You can call the DescribePolicies operation to query a list of policies.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePoliciesResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -5525,6 +6764,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribePoliciesResponse:
+        """
+        @summary You can call the DescribePolicies operation to query a list of policies.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePoliciesResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -5545,11 +6791,21 @@ class Client(OpenApiClient):
         )
 
     def describe_policies(self) -> cs20151215_models.DescribePoliciesResponse:
+        """
+        @summary You can call the DescribePolicies operation to query a list of policies.
+        
+        @return: DescribePoliciesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_policies_with_options(headers, runtime)
 
     async def describe_policies_async(self) -> cs20151215_models.DescribePoliciesResponse:
+        """
+        @summary You can call the DescribePolicies operation to query a list of policies.
+        
+        @return: DescribePoliciesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_policies_with_options_async(headers, runtime)
@@ -5560,6 +6816,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribePolicyDetailsResponse:
+        """
+        @summary Container security policies for Container Service for Kubernetes (ACK) clusters offer a variety of built-in policies, including cis-k8s, infra, k8s-general, and PodSecurityPolicy. You can use these policies to ensure the security of containers running in a production environment. You can call the DescribePolicyDetails operation to query information about a policy, such as the content, action, and severity level of the policy.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePolicyDetailsResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -5585,6 +6848,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribePolicyDetailsResponse:
+        """
+        @summary Container security policies for Container Service for Kubernetes (ACK) clusters offer a variety of built-in policies, including cis-k8s, infra, k8s-general, and PodSecurityPolicy. You can use these policies to ensure the security of containers running in a production environment. You can call the DescribePolicyDetails operation to query information about a policy, such as the content, action, and severity level of the policy.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePolicyDetailsResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -5608,6 +6878,11 @@ class Client(OpenApiClient):
         self,
         policy_name: str,
     ) -> cs20151215_models.DescribePolicyDetailsResponse:
+        """
+        @summary Container security policies for Container Service for Kubernetes (ACK) clusters offer a variety of built-in policies, including cis-k8s, infra, k8s-general, and PodSecurityPolicy. You can use these policies to ensure the security of containers running in a production environment. You can call the DescribePolicyDetails operation to query information about a policy, such as the content, action, and severity level of the policy.
+        
+        @return: DescribePolicyDetailsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_policy_details_with_options(policy_name, headers, runtime)
@@ -5616,6 +6891,11 @@ class Client(OpenApiClient):
         self,
         policy_name: str,
     ) -> cs20151215_models.DescribePolicyDetailsResponse:
+        """
+        @summary Container security policies for Container Service for Kubernetes (ACK) clusters offer a variety of built-in policies, including cis-k8s, infra, k8s-general, and PodSecurityPolicy. You can use these policies to ensure the security of containers running in a production environment. You can call the DescribePolicyDetails operation to query information about a policy, such as the content, action, and severity level of the policy.
+        
+        @return: DescribePolicyDetailsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_policy_details_with_options_async(policy_name, headers, runtime)
@@ -5626,6 +6906,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribePolicyGovernanceInClusterResponse:
+        """
+        @summary You can call the DescribePolicyGovernanceInCluster operation to query information about policies in a Container Service for Kubernetes (ACK) cluster.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePolicyGovernanceInClusterResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -5651,6 +6938,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribePolicyGovernanceInClusterResponse:
+        """
+        @summary You can call the DescribePolicyGovernanceInCluster operation to query information about policies in a Container Service for Kubernetes (ACK) cluster.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePolicyGovernanceInClusterResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -5674,6 +6968,11 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
     ) -> cs20151215_models.DescribePolicyGovernanceInClusterResponse:
+        """
+        @summary You can call the DescribePolicyGovernanceInCluster operation to query information about policies in a Container Service for Kubernetes (ACK) cluster.
+        
+        @return: DescribePolicyGovernanceInClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_policy_governance_in_cluster_with_options(cluster_id, headers, runtime)
@@ -5682,6 +6981,11 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
     ) -> cs20151215_models.DescribePolicyGovernanceInClusterResponse:
+        """
+        @summary You can call the DescribePolicyGovernanceInCluster operation to query information about policies in a Container Service for Kubernetes (ACK) cluster.
+        
+        @return: DescribePolicyGovernanceInClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_policy_governance_in_cluster_with_options_async(cluster_id, headers, runtime)
@@ -5693,6 +6997,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribePolicyInstancesResponse:
+        """
+        @summary Queries the detailed information about policy instances of the specified type in a Container Service for Kubernetes (ACK) cluster, such as the policy description and severity level. You can choose a type of security policy for an ACK cluster, specify the action and applicable scope of the policy, and then create and deploy a policy instance.
+        
+        @param request: DescribePolicyInstancesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePolicyInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_name):
@@ -5726,6 +7038,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribePolicyInstancesResponse:
+        """
+        @summary Queries the detailed information about policy instances of the specified type in a Container Service for Kubernetes (ACK) cluster, such as the policy description and severity level. You can choose a type of security policy for an ACK cluster, specify the action and applicable scope of the policy, and then create and deploy a policy instance.
+        
+        @param request: DescribePolicyInstancesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePolicyInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_name):
@@ -5757,6 +7077,12 @@ class Client(OpenApiClient):
         cluster_id: str,
         request: cs20151215_models.DescribePolicyInstancesRequest,
     ) -> cs20151215_models.DescribePolicyInstancesResponse:
+        """
+        @summary Queries the detailed information about policy instances of the specified type in a Container Service for Kubernetes (ACK) cluster, such as the policy description and severity level. You can choose a type of security policy for an ACK cluster, specify the action and applicable scope of the policy, and then create and deploy a policy instance.
+        
+        @param request: DescribePolicyInstancesRequest
+        @return: DescribePolicyInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_policy_instances_with_options(cluster_id, request, headers, runtime)
@@ -5766,6 +7092,12 @@ class Client(OpenApiClient):
         cluster_id: str,
         request: cs20151215_models.DescribePolicyInstancesRequest,
     ) -> cs20151215_models.DescribePolicyInstancesResponse:
+        """
+        @summary Queries the detailed information about policy instances of the specified type in a Container Service for Kubernetes (ACK) cluster, such as the policy description and severity level. You can choose a type of security policy for an ACK cluster, specify the action and applicable scope of the policy, and then create and deploy a policy instance.
+        
+        @param request: DescribePolicyInstancesRequest
+        @return: DescribePolicyInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_policy_instances_with_options_async(cluster_id, request, headers, runtime)
@@ -5776,6 +7108,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribePolicyInstancesStatusResponse:
+        """
+        @summary Queries the deployment of policy instances in the current Container Service for Kubernetes (ACK) cluster, including the number of policy instances of each type and the number of policy types of each severity level.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePolicyInstancesStatusResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -5801,6 +7140,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribePolicyInstancesStatusResponse:
+        """
+        @summary Queries the deployment of policy instances in the current Container Service for Kubernetes (ACK) cluster, including the number of policy instances of each type and the number of policy types of each severity level.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePolicyInstancesStatusResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -5824,6 +7170,11 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
     ) -> cs20151215_models.DescribePolicyInstancesStatusResponse:
+        """
+        @summary Queries the deployment of policy instances in the current Container Service for Kubernetes (ACK) cluster, including the number of policy instances of each type and the number of policy types of each severity level.
+        
+        @return: DescribePolicyInstancesStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_policy_instances_status_with_options(cluster_id, headers, runtime)
@@ -5832,6 +7183,11 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
     ) -> cs20151215_models.DescribePolicyInstancesStatusResponse:
+        """
+        @summary Queries the deployment of policy instances in the current Container Service for Kubernetes (ACK) cluster, including the number of policy instances of each type and the number of policy types of each severity level.
+        
+        @return: DescribePolicyInstancesStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_policy_instances_status_with_options_async(cluster_id, headers, runtime)
@@ -5845,8 +7201,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeSubaccountK8sClusterUserConfigResponse:
         """
-        *\
-        ****Only Alibaba Cloud accounts can call this API operation.
+        @summary You can use an Alibaba Cloud account to call the DescribeSubaccountK8sClusterUserConfig operation to obtain the cluster kubeconfig file of a RAM user or RAM role.
+        
+        @description *\
+        ***Only Alibaba Cloud accounts can call this API operation.
         
         @param request: DescribeSubaccountK8sClusterUserConfigRequest
         @param headers: map
@@ -5888,8 +7246,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeSubaccountK8sClusterUserConfigResponse:
         """
-        *\
-        ****Only Alibaba Cloud accounts can call this API operation.
+        @summary You can use an Alibaba Cloud account to call the DescribeSubaccountK8sClusterUserConfig operation to obtain the cluster kubeconfig file of a RAM user or RAM role.
+        
+        @description *\
+        ***Only Alibaba Cloud accounts can call this API operation.
         
         @param request: DescribeSubaccountK8sClusterUserConfigRequest
         @param headers: map
@@ -5929,8 +7289,10 @@ class Client(OpenApiClient):
         request: cs20151215_models.DescribeSubaccountK8sClusterUserConfigRequest,
     ) -> cs20151215_models.DescribeSubaccountK8sClusterUserConfigResponse:
         """
-        *\
-        ****Only Alibaba Cloud accounts can call this API operation.
+        @summary You can use an Alibaba Cloud account to call the DescribeSubaccountK8sClusterUserConfig operation to obtain the cluster kubeconfig file of a RAM user or RAM role.
+        
+        @description *\
+        ***Only Alibaba Cloud accounts can call this API operation.
         
         @param request: DescribeSubaccountK8sClusterUserConfigRequest
         @return: DescribeSubaccountK8sClusterUserConfigResponse
@@ -5946,8 +7308,10 @@ class Client(OpenApiClient):
         request: cs20151215_models.DescribeSubaccountK8sClusterUserConfigRequest,
     ) -> cs20151215_models.DescribeSubaccountK8sClusterUserConfigResponse:
         """
-        *\
-        ****Only Alibaba Cloud accounts can call this API operation.
+        @summary You can use an Alibaba Cloud account to call the DescribeSubaccountK8sClusterUserConfig operation to obtain the cluster kubeconfig file of a RAM user or RAM role.
+        
+        @description *\
+        ***Only Alibaba Cloud accounts can call this API operation.
         
         @param request: DescribeSubaccountK8sClusterUserConfigRequest
         @return: DescribeSubaccountK8sClusterUserConfigResponse
@@ -5962,6 +7326,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeTaskInfoResponse:
+        """
+        @summary Queries detailed information about a task, such as the task type, status, and progress.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTaskInfoResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -5987,6 +7358,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeTaskInfoResponse:
+        """
+        @summary Queries detailed information about a task, such as the task type, status, and progress.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTaskInfoResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -6010,6 +7388,11 @@ class Client(OpenApiClient):
         self,
         task_id: str,
     ) -> cs20151215_models.DescribeTaskInfoResponse:
+        """
+        @summary Queries detailed information about a task, such as the task type, status, and progress.
+        
+        @return: DescribeTaskInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_task_info_with_options(task_id, headers, runtime)
@@ -6018,6 +7401,11 @@ class Client(OpenApiClient):
         self,
         task_id: str,
     ) -> cs20151215_models.DescribeTaskInfoResponse:
+        """
+        @summary Queries detailed information about a task, such as the task type, status, and progress.
+        
+        @return: DescribeTaskInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_task_info_with_options_async(task_id, headers, runtime)
@@ -6029,6 +7417,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeTemplateAttributeResponse:
+        """
+        @summary An orchestration template defines and describes a group of Kubernetes resources. It declaratively describes the configuration of an application or how an application runs. You can call the DescribeTemplates API operation to query orchestration templates and their detailed information, including access permissions, YAML content, and labels.
+        
+        @param request: DescribeTemplateAttributeRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTemplateAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.template_type):
@@ -6060,6 +7456,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeTemplateAttributeResponse:
+        """
+        @summary An orchestration template defines and describes a group of Kubernetes resources. It declaratively describes the configuration of an application or how an application runs. You can call the DescribeTemplates API operation to query orchestration templates and their detailed information, including access permissions, YAML content, and labels.
+        
+        @param request: DescribeTemplateAttributeRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTemplateAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.template_type):
@@ -6089,6 +7493,12 @@ class Client(OpenApiClient):
         template_id: str,
         request: cs20151215_models.DescribeTemplateAttributeRequest,
     ) -> cs20151215_models.DescribeTemplateAttributeResponse:
+        """
+        @summary An orchestration template defines and describes a group of Kubernetes resources. It declaratively describes the configuration of an application or how an application runs. You can call the DescribeTemplates API operation to query orchestration templates and their detailed information, including access permissions, YAML content, and labels.
+        
+        @param request: DescribeTemplateAttributeRequest
+        @return: DescribeTemplateAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_template_attribute_with_options(template_id, request, headers, runtime)
@@ -6098,6 +7508,12 @@ class Client(OpenApiClient):
         template_id: str,
         request: cs20151215_models.DescribeTemplateAttributeRequest,
     ) -> cs20151215_models.DescribeTemplateAttributeResponse:
+        """
+        @summary An orchestration template defines and describes a group of Kubernetes resources. It declaratively describes the configuration of an application or how an application runs. You can call the DescribeTemplates API operation to query orchestration templates and their detailed information, including access permissions, YAML content, and labels.
+        
+        @param request: DescribeTemplateAttributeRequest
+        @return: DescribeTemplateAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_template_attribute_with_options_async(template_id, request, headers, runtime)
@@ -6108,6 +7524,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeTemplatesResponse:
+        """
+        @summary An orchestration template defines and describes a group of Kubernetes resources. It declaratively describes the configuration of an application or how an application runs. You can call the DescribeTemplates API operation to query orchestration templates and their detailed information, including access permissions, YAML content, and labels.
+        
+        @param request: DescribeTemplatesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTemplatesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_num):
@@ -6142,6 +7566,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeTemplatesResponse:
+        """
+        @summary An orchestration template defines and describes a group of Kubernetes resources. It declaratively describes the configuration of an application or how an application runs. You can call the DescribeTemplates API operation to query orchestration templates and their detailed information, including access permissions, YAML content, and labels.
+        
+        @param request: DescribeTemplatesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTemplatesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_num):
@@ -6174,6 +7606,12 @@ class Client(OpenApiClient):
         self,
         request: cs20151215_models.DescribeTemplatesRequest,
     ) -> cs20151215_models.DescribeTemplatesResponse:
+        """
+        @summary An orchestration template defines and describes a group of Kubernetes resources. It declaratively describes the configuration of an application or how an application runs. You can call the DescribeTemplates API operation to query orchestration templates and their detailed information, including access permissions, YAML content, and labels.
+        
+        @param request: DescribeTemplatesRequest
+        @return: DescribeTemplatesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_templates_with_options(request, headers, runtime)
@@ -6182,6 +7620,12 @@ class Client(OpenApiClient):
         self,
         request: cs20151215_models.DescribeTemplatesRequest,
     ) -> cs20151215_models.DescribeTemplatesResponse:
+        """
+        @summary An orchestration template defines and describes a group of Kubernetes resources. It declaratively describes the configuration of an application or how an application runs. You can call the DescribeTemplates API operation to query orchestration templates and their detailed information, including access permissions, YAML content, and labels.
+        
+        @param request: DescribeTemplatesRequest
+        @return: DescribeTemplatesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_templates_with_options_async(request, headers, runtime)
@@ -6193,6 +7637,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeTriggerResponse:
+        """
+        @summary You can call the DescribeTrigger operation to query triggers.
+        
+        @param request: DescribeTriggerRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTriggerResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.name):
@@ -6230,6 +7682,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeTriggerResponse:
+        """
+        @summary You can call the DescribeTrigger operation to query triggers.
+        
+        @param request: DescribeTriggerRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTriggerResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.name):
@@ -6265,6 +7725,12 @@ class Client(OpenApiClient):
         cluster_id: str,
         request: cs20151215_models.DescribeTriggerRequest,
     ) -> cs20151215_models.DescribeTriggerResponse:
+        """
+        @summary You can call the DescribeTrigger operation to query triggers.
+        
+        @param request: DescribeTriggerRequest
+        @return: DescribeTriggerResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_trigger_with_options(cluster_id, request, headers, runtime)
@@ -6274,6 +7740,12 @@ class Client(OpenApiClient):
         cluster_id: str,
         request: cs20151215_models.DescribeTriggerRequest,
     ) -> cs20151215_models.DescribeTriggerResponse:
+        """
+        @summary You can call the DescribeTrigger operation to query triggers.
+        
+        @param request: DescribeTriggerRequest
+        @return: DescribeTriggerResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_trigger_with_options_async(cluster_id, request, headers, runtime)
@@ -6284,6 +7756,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeUserClusterNamespacesResponse:
+        """
+        @summary Queries the Role-Based Access Control (RBAC) permissions that are granted to the current Resource Access Management (RAM) user or RAM role on a Container Service for Kubernetes (ACK) cluster. You can use Kubernetes namespaces to limit users from accessing resources in an ACK cluster. Users that are granted RBAC permissions only on one namespace cannot access resources in other namespaces.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUserClusterNamespacesResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -6309,6 +7788,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeUserClusterNamespacesResponse:
+        """
+        @summary Queries the Role-Based Access Control (RBAC) permissions that are granted to the current Resource Access Management (RAM) user or RAM role on a Container Service for Kubernetes (ACK) cluster. You can use Kubernetes namespaces to limit users from accessing resources in an ACK cluster. Users that are granted RBAC permissions only on one namespace cannot access resources in other namespaces.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUserClusterNamespacesResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -6332,6 +7818,11 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
     ) -> cs20151215_models.DescribeUserClusterNamespacesResponse:
+        """
+        @summary Queries the Role-Based Access Control (RBAC) permissions that are granted to the current Resource Access Management (RAM) user or RAM role on a Container Service for Kubernetes (ACK) cluster. You can use Kubernetes namespaces to limit users from accessing resources in an ACK cluster. Users that are granted RBAC permissions only on one namespace cannot access resources in other namespaces.
+        
+        @return: DescribeUserClusterNamespacesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_user_cluster_namespaces_with_options(cluster_id, headers, runtime)
@@ -6340,6 +7831,11 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
     ) -> cs20151215_models.DescribeUserClusterNamespacesResponse:
+        """
+        @summary Queries the Role-Based Access Control (RBAC) permissions that are granted to the current Resource Access Management (RAM) user or RAM role on a Container Service for Kubernetes (ACK) cluster. You can use Kubernetes namespaces to limit users from accessing resources in an ACK cluster. Users that are granted RBAC permissions only on one namespace cannot access resources in other namespaces.
+        
+        @return: DescribeUserClusterNamespacesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_user_cluster_namespaces_with_options_async(cluster_id, headers, runtime)
@@ -6350,6 +7846,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeUserPermissionResponse:
+        """
+        @summary In an Container Service for Kubernetes (ACK) cluster, you can create and specify different Resource Access Management (RAM) users or roles to have different access permissions. This ensures access control and resource isolation. You can call the DescribeUserPermission operation to query the permissions that are granted to a RAM user or RAM role on ACK clusters, including the resources that are allowed to access, the scope of the permissions, the predefined role, and the permission source.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUserPermissionResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -6375,6 +7878,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeUserPermissionResponse:
+        """
+        @summary In an Container Service for Kubernetes (ACK) cluster, you can create and specify different Resource Access Management (RAM) users or roles to have different access permissions. This ensures access control and resource isolation. You can call the DescribeUserPermission operation to query the permissions that are granted to a RAM user or RAM role on ACK clusters, including the resources that are allowed to access, the scope of the permissions, the predefined role, and the permission source.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUserPermissionResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -6398,6 +7908,11 @@ class Client(OpenApiClient):
         self,
         uid: str,
     ) -> cs20151215_models.DescribeUserPermissionResponse:
+        """
+        @summary In an Container Service for Kubernetes (ACK) cluster, you can create and specify different Resource Access Management (RAM) users or roles to have different access permissions. This ensures access control and resource isolation. You can call the DescribeUserPermission operation to query the permissions that are granted to a RAM user or RAM role on ACK clusters, including the resources that are allowed to access, the scope of the permissions, the predefined role, and the permission source.
+        
+        @return: DescribeUserPermissionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_user_permission_with_options(uid, headers, runtime)
@@ -6406,6 +7921,11 @@ class Client(OpenApiClient):
         self,
         uid: str,
     ) -> cs20151215_models.DescribeUserPermissionResponse:
+        """
+        @summary In an Container Service for Kubernetes (ACK) cluster, you can create and specify different Resource Access Management (RAM) users or roles to have different access permissions. This ensures access control and resource isolation. You can call the DescribeUserPermission operation to query the permissions that are granted to a RAM user or RAM role on ACK clusters, including the resources that are allowed to access, the scope of the permissions, the predefined role, and the permission source.
+        
+        @return: DescribeUserPermissionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_user_permission_with_options_async(uid, headers, runtime)
@@ -6415,6 +7935,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeUserQuotaResponse:
+        """
+        @summary Queries quotas related to Container Service for Kubernetes (ACK) clusters, node pools, and nodes. To increase a quota, submit an application in the Quota Center console.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUserQuotaResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -6439,6 +7966,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeUserQuotaResponse:
+        """
+        @summary Queries quotas related to Container Service for Kubernetes (ACK) clusters, node pools, and nodes. To increase a quota, submit an application in the Quota Center console.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUserQuotaResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -6459,11 +7993,21 @@ class Client(OpenApiClient):
         )
 
     def describe_user_quota(self) -> cs20151215_models.DescribeUserQuotaResponse:
+        """
+        @summary Queries quotas related to Container Service for Kubernetes (ACK) clusters, node pools, and nodes. To increase a quota, submit an application in the Quota Center console.
+        
+        @return: DescribeUserQuotaResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_user_quota_with_options(headers, runtime)
 
     async def describe_user_quota_async(self) -> cs20151215_models.DescribeUserQuotaResponse:
+        """
+        @summary Queries quotas related to Container Service for Kubernetes (ACK) clusters, node pools, and nodes. To increase a quota, submit an application in the Quota Center console.
+        
+        @return: DescribeUserQuotaResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_user_quota_with_options_async(headers, runtime)
@@ -6473,6 +8017,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeWorkflowsResponse:
+        """
+        @summary You can call the DescribeWorkflows operation to query all workflows.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeWorkflowsResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -6497,6 +8048,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeWorkflowsResponse:
+        """
+        @summary You can call the DescribeWorkflows operation to query all workflows.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeWorkflowsResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -6517,11 +8075,21 @@ class Client(OpenApiClient):
         )
 
     def describe_workflows(self) -> cs20151215_models.DescribeWorkflowsResponse:
+        """
+        @summary You can call the DescribeWorkflows operation to query all workflows.
+        
+        @return: DescribeWorkflowsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_workflows_with_options(headers, runtime)
 
     async def describe_workflows_async(self) -> cs20151215_models.DescribeWorkflowsResponse:
+        """
+        @summary You can call the DescribeWorkflows operation to query all workflows.
+        
+        @return: DescribeWorkflowsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_workflows_with_options_async(headers, runtime)
@@ -6534,6 +8102,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.EdgeClusterAddEdgeMachineResponse:
+        """
+        @summary You can call the EdgeClusterAddEdgeMachine operation to add a cloud-native box to a Container Service for Kubernetes (ACK) Edge cluster.
+        
+        @param request: EdgeClusterAddEdgeMachineRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EdgeClusterAddEdgeMachineResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.expired):
@@ -6570,6 +8146,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.EdgeClusterAddEdgeMachineResponse:
+        """
+        @summary You can call the EdgeClusterAddEdgeMachine operation to add a cloud-native box to a Container Service for Kubernetes (ACK) Edge cluster.
+        
+        @param request: EdgeClusterAddEdgeMachineRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EdgeClusterAddEdgeMachineResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.expired):
@@ -6604,6 +8188,12 @@ class Client(OpenApiClient):
         edge_machineid: str,
         request: cs20151215_models.EdgeClusterAddEdgeMachineRequest,
     ) -> cs20151215_models.EdgeClusterAddEdgeMachineResponse:
+        """
+        @summary You can call the EdgeClusterAddEdgeMachine operation to add a cloud-native box to a Container Service for Kubernetes (ACK) Edge cluster.
+        
+        @param request: EdgeClusterAddEdgeMachineRequest
+        @return: EdgeClusterAddEdgeMachineResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.edge_cluster_add_edge_machine_with_options(clusterid, edge_machineid, request, headers, runtime)
@@ -6614,6 +8204,12 @@ class Client(OpenApiClient):
         edge_machineid: str,
         request: cs20151215_models.EdgeClusterAddEdgeMachineRequest,
     ) -> cs20151215_models.EdgeClusterAddEdgeMachineResponse:
+        """
+        @summary You can call the EdgeClusterAddEdgeMachine operation to add a cloud-native box to a Container Service for Kubernetes (ACK) Edge cluster.
+        
+        @param request: EdgeClusterAddEdgeMachineRequest
+        @return: EdgeClusterAddEdgeMachineResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.edge_cluster_add_edge_machine_with_options_async(clusterid, edge_machineid, request, headers, runtime)
@@ -6627,7 +8223,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.FixNodePoolVulsResponse:
         """
-        1.  The Common Vulnerabilities and Exposures (CVE) patching feature is developed based on Security Center. To use this feature, you must purchase the Security Center Ultimate Edition that supports Container Service for Kubernetes (ACK).
+        @summary Patches node vulnerabilities in a node pool to enhance node security. Cloud Security provided by Alibaba Cloud periodically scans Elastic Compute Service (ECS) instances for vulnerabilities and provides suggestions on how to patch the detected vulnerabilities. Vulnerability patching may require node restarts. Make sure that your cluster has sufficient idle nodes for node draining.
+        
+        @description 1.  The Common Vulnerabilities and Exposures (CVE) patching feature is developed based on Security Center. To use this feature, you must purchase the Security Center Ultimate Edition that supports Container Service for Kubernetes (ACK).
         2.  ACK may need to restart nodes to patch certain vulnerabilities. ACK drains a node before the node restarts. Make sure that the ACK cluster has sufficient idle nodes to host the pods evicted from the trained nodes. For example, you can scale out a node pool before you patch vulnerabilities for the nodes in the node pool.
         3.  Security Center ensures the compatibility of CVE patches. We recommend that you check the compatibility of a CVE patch with your application before you install the patch. You can pause or cancel a CVE patching task anytime.
         4.  CVE patching is a progressive task that consists of multiple batches. After you pause or cancel a CVE patching task, ACK continues to process the dispatched batches. Only the batches that have not been dispatched are paused or canceled.
@@ -6676,7 +8274,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.FixNodePoolVulsResponse:
         """
-        1.  The Common Vulnerabilities and Exposures (CVE) patching feature is developed based on Security Center. To use this feature, you must purchase the Security Center Ultimate Edition that supports Container Service for Kubernetes (ACK).
+        @summary Patches node vulnerabilities in a node pool to enhance node security. Cloud Security provided by Alibaba Cloud periodically scans Elastic Compute Service (ECS) instances for vulnerabilities and provides suggestions on how to patch the detected vulnerabilities. Vulnerability patching may require node restarts. Make sure that your cluster has sufficient idle nodes for node draining.
+        
+        @description 1.  The Common Vulnerabilities and Exposures (CVE) patching feature is developed based on Security Center. To use this feature, you must purchase the Security Center Ultimate Edition that supports Container Service for Kubernetes (ACK).
         2.  ACK may need to restart nodes to patch certain vulnerabilities. ACK drains a node before the node restarts. Make sure that the ACK cluster has sufficient idle nodes to host the pods evicted from the trained nodes. For example, you can scale out a node pool before you patch vulnerabilities for the nodes in the node pool.
         3.  Security Center ensures the compatibility of CVE patches. We recommend that you check the compatibility of a CVE patch with your application before you install the patch. You can pause or cancel a CVE patching task anytime.
         4.  CVE patching is a progressive task that consists of multiple batches. After you pause or cancel a CVE patching task, ACK continues to process the dispatched batches. Only the batches that have not been dispatched are paused or canceled.
@@ -6723,7 +8323,9 @@ class Client(OpenApiClient):
         request: cs20151215_models.FixNodePoolVulsRequest,
     ) -> cs20151215_models.FixNodePoolVulsResponse:
         """
-        1.  The Common Vulnerabilities and Exposures (CVE) patching feature is developed based on Security Center. To use this feature, you must purchase the Security Center Ultimate Edition that supports Container Service for Kubernetes (ACK).
+        @summary Patches node vulnerabilities in a node pool to enhance node security. Cloud Security provided by Alibaba Cloud periodically scans Elastic Compute Service (ECS) instances for vulnerabilities and provides suggestions on how to patch the detected vulnerabilities. Vulnerability patching may require node restarts. Make sure that your cluster has sufficient idle nodes for node draining.
+        
+        @description 1.  The Common Vulnerabilities and Exposures (CVE) patching feature is developed based on Security Center. To use this feature, you must purchase the Security Center Ultimate Edition that supports Container Service for Kubernetes (ACK).
         2.  ACK may need to restart nodes to patch certain vulnerabilities. ACK drains a node before the node restarts. Make sure that the ACK cluster has sufficient idle nodes to host the pods evicted from the trained nodes. For example, you can scale out a node pool before you patch vulnerabilities for the nodes in the node pool.
         3.  Security Center ensures the compatibility of CVE patches. We recommend that you check the compatibility of a CVE patch with your application before you install the patch. You can pause or cancel a CVE patching task anytime.
         4.  CVE patching is a progressive task that consists of multiple batches. After you pause or cancel a CVE patching task, ACK continues to process the dispatched batches. Only the batches that have not been dispatched are paused or canceled.
@@ -6742,7 +8344,9 @@ class Client(OpenApiClient):
         request: cs20151215_models.FixNodePoolVulsRequest,
     ) -> cs20151215_models.FixNodePoolVulsResponse:
         """
-        1.  The Common Vulnerabilities and Exposures (CVE) patching feature is developed based on Security Center. To use this feature, you must purchase the Security Center Ultimate Edition that supports Container Service for Kubernetes (ACK).
+        @summary Patches node vulnerabilities in a node pool to enhance node security. Cloud Security provided by Alibaba Cloud periodically scans Elastic Compute Service (ECS) instances for vulnerabilities and provides suggestions on how to patch the detected vulnerabilities. Vulnerability patching may require node restarts. Make sure that your cluster has sufficient idle nodes for node draining.
+        
+        @description 1.  The Common Vulnerabilities and Exposures (CVE) patching feature is developed based on Security Center. To use this feature, you must purchase the Security Center Ultimate Edition that supports Container Service for Kubernetes (ACK).
         2.  ACK may need to restart nodes to patch certain vulnerabilities. ACK drains a node before the node restarts. Make sure that the ACK cluster has sufficient idle nodes to host the pods evicted from the trained nodes. For example, you can scale out a node pool before you patch vulnerabilities for the nodes in the node pool.
         3.  Security Center ensures the compatibility of CVE patches. We recommend that you check the compatibility of a CVE patch with your application before you install the patch. You can pause or cancel a CVE patching task anytime.
         4.  CVE patching is a progressive task that consists of multiple batches. After you pause or cancel a CVE patching task, ACK continues to process the dispatched batches. Only the batches that have not been dispatched are paused or canceled.
@@ -6761,6 +8365,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.GetClusterAddonInstanceResponse:
+        """
+        @summary You can call the GetClusterAddonInstance operation to query the information of a component instance in a cluster, including the version, configurations, and log status of the component instance.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetClusterAddonInstanceResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -6787,6 +8398,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.GetClusterAddonInstanceResponse:
+        """
+        @summary You can call the GetClusterAddonInstance operation to query the information of a component instance in a cluster, including the version, configurations, and log status of the component instance.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetClusterAddonInstanceResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -6811,6 +8429,11 @@ class Client(OpenApiClient):
         cluster_id: str,
         instance_name: str,
     ) -> cs20151215_models.GetClusterAddonInstanceResponse:
+        """
+        @summary You can call the GetClusterAddonInstance operation to query the information of a component instance in a cluster, including the version, configurations, and log status of the component instance.
+        
+        @return: GetClusterAddonInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_cluster_addon_instance_with_options(cluster_id, instance_name, headers, runtime)
@@ -6820,6 +8443,11 @@ class Client(OpenApiClient):
         cluster_id: str,
         instance_name: str,
     ) -> cs20151215_models.GetClusterAddonInstanceResponse:
+        """
+        @summary You can call the GetClusterAddonInstance operation to query the information of a component instance in a cluster, including the version, configurations, and log status of the component instance.
+        
+        @return: GetClusterAddonInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_cluster_addon_instance_with_options_async(cluster_id, instance_name, headers, runtime)
@@ -6831,6 +8459,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.GetClusterCheckResponse:
+        """
+        @summary Queries a cluster check task by cluster ID and task ID. You can view the status, check items, creation time, and end time of the task. Container Intelligence Service (CIS) provides a variety of Kubernetes cluster check features, including cluster update check, cluster migration check, component installation check, component update check, and node pool check.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetClusterCheckResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -6857,6 +8492,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.GetClusterCheckResponse:
+        """
+        @summary Queries a cluster check task by cluster ID and task ID. You can view the status, check items, creation time, and end time of the task. Container Intelligence Service (CIS) provides a variety of Kubernetes cluster check features, including cluster update check, cluster migration check, component installation check, component update check, and node pool check.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetClusterCheckResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -6881,6 +8523,11 @@ class Client(OpenApiClient):
         cluster_id: str,
         check_id: str,
     ) -> cs20151215_models.GetClusterCheckResponse:
+        """
+        @summary Queries a cluster check task by cluster ID and task ID. You can view the status, check items, creation time, and end time of the task. Container Intelligence Service (CIS) provides a variety of Kubernetes cluster check features, including cluster update check, cluster migration check, component installation check, component update check, and node pool check.
+        
+        @return: GetClusterCheckResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_cluster_check_with_options(cluster_id, check_id, headers, runtime)
@@ -6890,6 +8537,11 @@ class Client(OpenApiClient):
         cluster_id: str,
         check_id: str,
     ) -> cs20151215_models.GetClusterCheckResponse:
+        """
+        @summary Queries a cluster check task by cluster ID and task ID. You can view the status, check items, creation time, and end time of the task. Container Intelligence Service (CIS) provides a variety of Kubernetes cluster check features, including cluster update check, cluster migration check, component installation check, component update check, and node pool check.
+        
+        @return: GetClusterCheckResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_cluster_check_with_options_async(cluster_id, check_id, headers, runtime)
@@ -6901,6 +8553,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.GetKubernetesTriggerResponse:
+        """
+        @summary You can call the GetKubernetesTrigger operationto query the triggers of an application by application name.
+        
+        @param request: GetKubernetesTriggerRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetKubernetesTriggerResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.name):
@@ -6938,6 +8598,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.GetKubernetesTriggerResponse:
+        """
+        @summary You can call the GetKubernetesTrigger operationto query the triggers of an application by application name.
+        
+        @param request: GetKubernetesTriggerRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetKubernetesTriggerResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.name):
@@ -6973,6 +8641,12 @@ class Client(OpenApiClient):
         cluster_id: str,
         request: cs20151215_models.GetKubernetesTriggerRequest,
     ) -> cs20151215_models.GetKubernetesTriggerResponse:
+        """
+        @summary You can call the GetKubernetesTrigger operationto query the triggers of an application by application name.
+        
+        @param request: GetKubernetesTriggerRequest
+        @return: GetKubernetesTriggerResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_kubernetes_trigger_with_options(cluster_id, request, headers, runtime)
@@ -6982,6 +8656,12 @@ class Client(OpenApiClient):
         cluster_id: str,
         request: cs20151215_models.GetKubernetesTriggerRequest,
     ) -> cs20151215_models.GetKubernetesTriggerResponse:
+        """
+        @summary You can call the GetKubernetesTrigger operationto query the triggers of an application by application name.
+        
+        @param request: GetKubernetesTriggerRequest
+        @return: GetKubernetesTriggerResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_kubernetes_trigger_with_options_async(cluster_id, request, headers, runtime)
@@ -6992,6 +8672,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.GetUpgradeStatusResponse:
+        """
+        @summary You can call the GetUpgradeStatus operation to query the update progress of a cluster by cluster ID.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetUpgradeStatusResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -7017,6 +8704,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.GetUpgradeStatusResponse:
+        """
+        @summary You can call the GetUpgradeStatus operation to query the update progress of a cluster by cluster ID.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetUpgradeStatusResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -7040,6 +8734,11 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
     ) -> cs20151215_models.GetUpgradeStatusResponse:
+        """
+        @summary You can call the GetUpgradeStatus operation to query the update progress of a cluster by cluster ID.
+        
+        @return: GetUpgradeStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_upgrade_status_with_options(cluster_id, headers, runtime)
@@ -7048,6 +8747,11 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
     ) -> cs20151215_models.GetUpgradeStatusResponse:
+        """
+        @summary You can call the GetUpgradeStatus operation to query the update progress of a cluster by cluster ID.
+        
+        @return: GetUpgradeStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_upgrade_status_with_options_async(cluster_id, headers, runtime)
@@ -7060,10 +8764,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.GrantPermissionsResponse:
         """
-        ***\
-        *   Make sure that you have granted the RAM user at least read-only permissions on the desired ACK clusters in the RAM console. Otherwise, the `ErrorRamPolicyConfig` error code is returned. For more information about how to authorize a RAM user by attaching RAM policies, see [Create a custom RAM policy](~~86485~~).
-        *   If you use a RAM user to call this API operation, make sure that the RAM user is authorized to modify the permissions of other RAM users on the desired ACK clusters. Otherwise, the `StatusForbidden` or `ForbiddenGrantPermissions` error code is returned. For more information, see [Use a RAM user to grant RBAC permissions to other RAM users](~~119035~~).
-        *   This operation overwrites the permissions that have been granted to the specified RAM user. When you call this operation, make sure that the required permissions are included.
+        @summary You can call the GrantPermissions operation to grant a Resource Access Management (RAM) user the permissions to manage Container Service for Kubernetes (ACK) clusters.
+        
+        @description ***\
+        Make sure that you have granted the RAM user at least read-only permissions on the desired ACK clusters in the RAM console. Otherwise, the `ErrorRamPolicyConfig` error code is returned. For more information about how to authorize a RAM user by attaching RAM policies, see [Create a custom RAM policy](https://help.aliyun.com/document_detail/86485.html).
+        If you use a RAM user to call this API operation, make sure that the RAM user is authorized to modify the permissions of other RAM users on the desired ACK clusters. Otherwise, the `StatusForbidden` or `ForbiddenGrantPermissions` error code is returned. For more information, see [Use a RAM user to grant RBAC permissions to other RAM users](https://help.aliyun.com/document_detail/119035.html).
+        This operation overwrites the permissions that have been granted to the specified RAM user. When you call this operation, make sure that the required permissions are included.
         
         @param request: GrantPermissionsRequest
         @param headers: map
@@ -7099,10 +8805,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.GrantPermissionsResponse:
         """
-        ***\
-        *   Make sure that you have granted the RAM user at least read-only permissions on the desired ACK clusters in the RAM console. Otherwise, the `ErrorRamPolicyConfig` error code is returned. For more information about how to authorize a RAM user by attaching RAM policies, see [Create a custom RAM policy](~~86485~~).
-        *   If you use a RAM user to call this API operation, make sure that the RAM user is authorized to modify the permissions of other RAM users on the desired ACK clusters. Otherwise, the `StatusForbidden` or `ForbiddenGrantPermissions` error code is returned. For more information, see [Use a RAM user to grant RBAC permissions to other RAM users](~~119035~~).
-        *   This operation overwrites the permissions that have been granted to the specified RAM user. When you call this operation, make sure that the required permissions are included.
+        @summary You can call the GrantPermissions operation to grant a Resource Access Management (RAM) user the permissions to manage Container Service for Kubernetes (ACK) clusters.
+        
+        @description ***\
+        Make sure that you have granted the RAM user at least read-only permissions on the desired ACK clusters in the RAM console. Otherwise, the `ErrorRamPolicyConfig` error code is returned. For more information about how to authorize a RAM user by attaching RAM policies, see [Create a custom RAM policy](https://help.aliyun.com/document_detail/86485.html).
+        If you use a RAM user to call this API operation, make sure that the RAM user is authorized to modify the permissions of other RAM users on the desired ACK clusters. Otherwise, the `StatusForbidden` or `ForbiddenGrantPermissions` error code is returned. For more information, see [Use a RAM user to grant RBAC permissions to other RAM users](https://help.aliyun.com/document_detail/119035.html).
+        This operation overwrites the permissions that have been granted to the specified RAM user. When you call this operation, make sure that the required permissions are included.
         
         @param request: GrantPermissionsRequest
         @param headers: map
@@ -7136,10 +8844,12 @@ class Client(OpenApiClient):
         request: cs20151215_models.GrantPermissionsRequest,
     ) -> cs20151215_models.GrantPermissionsResponse:
         """
-        ***\
-        *   Make sure that you have granted the RAM user at least read-only permissions on the desired ACK clusters in the RAM console. Otherwise, the `ErrorRamPolicyConfig` error code is returned. For more information about how to authorize a RAM user by attaching RAM policies, see [Create a custom RAM policy](~~86485~~).
-        *   If you use a RAM user to call this API operation, make sure that the RAM user is authorized to modify the permissions of other RAM users on the desired ACK clusters. Otherwise, the `StatusForbidden` or `ForbiddenGrantPermissions` error code is returned. For more information, see [Use a RAM user to grant RBAC permissions to other RAM users](~~119035~~).
-        *   This operation overwrites the permissions that have been granted to the specified RAM user. When you call this operation, make sure that the required permissions are included.
+        @summary You can call the GrantPermissions operation to grant a Resource Access Management (RAM) user the permissions to manage Container Service for Kubernetes (ACK) clusters.
+        
+        @description ***\
+        Make sure that you have granted the RAM user at least read-only permissions on the desired ACK clusters in the RAM console. Otherwise, the `ErrorRamPolicyConfig` error code is returned. For more information about how to authorize a RAM user by attaching RAM policies, see [Create a custom RAM policy](https://help.aliyun.com/document_detail/86485.html).
+        If you use a RAM user to call this API operation, make sure that the RAM user is authorized to modify the permissions of other RAM users on the desired ACK clusters. Otherwise, the `StatusForbidden` or `ForbiddenGrantPermissions` error code is returned. For more information, see [Use a RAM user to grant RBAC permissions to other RAM users](https://help.aliyun.com/document_detail/119035.html).
+        This operation overwrites the permissions that have been granted to the specified RAM user. When you call this operation, make sure that the required permissions are included.
         
         @param request: GrantPermissionsRequest
         @return: GrantPermissionsResponse
@@ -7154,10 +8864,12 @@ class Client(OpenApiClient):
         request: cs20151215_models.GrantPermissionsRequest,
     ) -> cs20151215_models.GrantPermissionsResponse:
         """
-        ***\
-        *   Make sure that you have granted the RAM user at least read-only permissions on the desired ACK clusters in the RAM console. Otherwise, the `ErrorRamPolicyConfig` error code is returned. For more information about how to authorize a RAM user by attaching RAM policies, see [Create a custom RAM policy](~~86485~~).
-        *   If you use a RAM user to call this API operation, make sure that the RAM user is authorized to modify the permissions of other RAM users on the desired ACK clusters. Otherwise, the `StatusForbidden` or `ForbiddenGrantPermissions` error code is returned. For more information, see [Use a RAM user to grant RBAC permissions to other RAM users](~~119035~~).
-        *   This operation overwrites the permissions that have been granted to the specified RAM user. When you call this operation, make sure that the required permissions are included.
+        @summary You can call the GrantPermissions operation to grant a Resource Access Management (RAM) user the permissions to manage Container Service for Kubernetes (ACK) clusters.
+        
+        @description ***\
+        Make sure that you have granted the RAM user at least read-only permissions on the desired ACK clusters in the RAM console. Otherwise, the `ErrorRamPolicyConfig` error code is returned. For more information about how to authorize a RAM user by attaching RAM policies, see [Create a custom RAM policy](https://help.aliyun.com/document_detail/86485.html).
+        If you use a RAM user to call this API operation, make sure that the RAM user is authorized to modify the permissions of other RAM users on the desired ACK clusters. Otherwise, the `StatusForbidden` or `ForbiddenGrantPermissions` error code is returned. For more information, see [Use a RAM user to grant RBAC permissions to other RAM users](https://help.aliyun.com/document_detail/119035.html).
+        This operation overwrites the permissions that have been granted to the specified RAM user. When you call this operation, make sure that the required permissions are included.
         
         @param request: GrantPermissionsRequest
         @return: GrantPermissionsResponse
@@ -7173,6 +8885,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.InstallClusterAddonsResponse:
+        """
+        @summary Installs a component by specifying the name and version of the component. To enhance Kubernetes capabilities, you can install a variety of components in Container Service for Kubernetes (ACK) clusters, such as fully-managed core components and application, logging and monitoring, network, storage, and security group components.
+        
+        @param request: InstallClusterAddonsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InstallClusterAddonsResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -7201,6 +8921,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.InstallClusterAddonsResponse:
+        """
+        @summary Installs a component by specifying the name and version of the component. To enhance Kubernetes capabilities, you can install a variety of components in Container Service for Kubernetes (ACK) clusters, such as fully-managed core components and application, logging and monitoring, network, storage, and security group components.
+        
+        @param request: InstallClusterAddonsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InstallClusterAddonsResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -7227,6 +8955,12 @@ class Client(OpenApiClient):
         cluster_id: str,
         request: cs20151215_models.InstallClusterAddonsRequest,
     ) -> cs20151215_models.InstallClusterAddonsResponse:
+        """
+        @summary Installs a component by specifying the name and version of the component. To enhance Kubernetes capabilities, you can install a variety of components in Container Service for Kubernetes (ACK) clusters, such as fully-managed core components and application, logging and monitoring, network, storage, and security group components.
+        
+        @param request: InstallClusterAddonsRequest
+        @return: InstallClusterAddonsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.install_cluster_addons_with_options(cluster_id, request, headers, runtime)
@@ -7236,6 +8970,12 @@ class Client(OpenApiClient):
         cluster_id: str,
         request: cs20151215_models.InstallClusterAddonsRequest,
     ) -> cs20151215_models.InstallClusterAddonsResponse:
+        """
+        @summary Installs a component by specifying the name and version of the component. To enhance Kubernetes capabilities, you can install a variety of components in Container Service for Kubernetes (ACK) clusters, such as fully-managed core components and application, logging and monitoring, network, storage, and security group components.
+        
+        @param request: InstallClusterAddonsRequest
+        @return: InstallClusterAddonsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.install_cluster_addons_with_options_async(cluster_id, request, headers, runtime)
@@ -7246,6 +8986,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ListAddonsResponse:
+        """
+        @summary You can call the ListAddons operation to query all available components in a cluster. You can query all available components in a cluster by specifying the ID of the cluster. You can also specify parameters such as the region, cluster type, cluster subtype (profile), cluster specification, and cluster version to get a list of available components in clusters that meet the conditions.
+        
+        @param request: ListAddonsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAddonsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -7286,6 +9034,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ListAddonsResponse:
+        """
+        @summary You can call the ListAddons operation to query all available components in a cluster. You can query all available components in a cluster by specifying the ID of the cluster. You can also specify parameters such as the region, cluster type, cluster subtype (profile), cluster specification, and cluster version to get a list of available components in clusters that meet the conditions.
+        
+        @param request: ListAddonsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAddonsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -7324,6 +9080,12 @@ class Client(OpenApiClient):
         self,
         request: cs20151215_models.ListAddonsRequest,
     ) -> cs20151215_models.ListAddonsResponse:
+        """
+        @summary You can call the ListAddons operation to query all available components in a cluster. You can query all available components in a cluster by specifying the ID of the cluster. You can also specify parameters such as the region, cluster type, cluster subtype (profile), cluster specification, and cluster version to get a list of available components in clusters that meet the conditions.
+        
+        @param request: ListAddonsRequest
+        @return: ListAddonsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_addons_with_options(request, headers, runtime)
@@ -7332,6 +9094,12 @@ class Client(OpenApiClient):
         self,
         request: cs20151215_models.ListAddonsRequest,
     ) -> cs20151215_models.ListAddonsResponse:
+        """
+        @summary You can call the ListAddons operation to query all available components in a cluster. You can query all available components in a cluster by specifying the ID of the cluster. You can also specify parameters such as the region, cluster type, cluster subtype (profile), cluster specification, and cluster version to get a list of available components in clusters that meet the conditions.
+        
+        @param request: ListAddonsRequest
+        @return: ListAddonsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_addons_with_options_async(request, headers, runtime)
@@ -7342,6 +9110,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ListClusterAddonInstancesResponse:
+        """
+        @summary You can call the ListClusterAddonInstances operation to query information about the components that are installed in a cluster.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListClusterAddonInstancesResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -7367,6 +9142,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ListClusterAddonInstancesResponse:
+        """
+        @summary You can call the ListClusterAddonInstances operation to query information about the components that are installed in a cluster.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListClusterAddonInstancesResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -7390,6 +9172,11 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
     ) -> cs20151215_models.ListClusterAddonInstancesResponse:
+        """
+        @summary You can call the ListClusterAddonInstances operation to query information about the components that are installed in a cluster.
+        
+        @return: ListClusterAddonInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_cluster_addon_instances_with_options(cluster_id, headers, runtime)
@@ -7398,6 +9185,11 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
     ) -> cs20151215_models.ListClusterAddonInstancesResponse:
+        """
+        @summary You can call the ListClusterAddonInstances operation to query information about the components that are installed in a cluster.
+        
+        @return: ListClusterAddonInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_cluster_addon_instances_with_options_async(cluster_id, headers, runtime)
@@ -7409,6 +9201,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ListClusterChecksResponse:
+        """
+        @summary You can call the ListClusterChecks operation to query all the cluster check results of a cluster.
+        
+        @param request: ListClusterChecksRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListClusterChecksResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.target):
@@ -7442,6 +9242,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ListClusterChecksResponse:
+        """
+        @summary You can call the ListClusterChecks operation to query all the cluster check results of a cluster.
+        
+        @param request: ListClusterChecksRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListClusterChecksResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.target):
@@ -7473,6 +9281,12 @@ class Client(OpenApiClient):
         cluster_id: str,
         request: cs20151215_models.ListClusterChecksRequest,
     ) -> cs20151215_models.ListClusterChecksResponse:
+        """
+        @summary You can call the ListClusterChecks operation to query all the cluster check results of a cluster.
+        
+        @param request: ListClusterChecksRequest
+        @return: ListClusterChecksResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_cluster_checks_with_options(cluster_id, request, headers, runtime)
@@ -7482,6 +9296,12 @@ class Client(OpenApiClient):
         cluster_id: str,
         request: cs20151215_models.ListClusterChecksRequest,
     ) -> cs20151215_models.ListClusterChecksResponse:
+        """
+        @summary You can call the ListClusterChecks operation to query all the cluster check results of a cluster.
+        
+        @param request: ListClusterChecksRequest
+        @return: ListClusterChecksResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_cluster_checks_with_options_async(cluster_id, request, headers, runtime)
@@ -7492,6 +9312,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ListOperationPlansResponse:
+        """
+        @summary 获取自动运维执行计划列表
+        
+        @param request: ListOperationPlansRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListOperationPlansResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -7524,6 +9352,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ListOperationPlansResponse:
+        """
+        @summary 获取自动运维执行计划列表
+        
+        @param request: ListOperationPlansRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListOperationPlansResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -7554,6 +9390,12 @@ class Client(OpenApiClient):
         self,
         request: cs20151215_models.ListOperationPlansRequest,
     ) -> cs20151215_models.ListOperationPlansResponse:
+        """
+        @summary 获取自动运维执行计划列表
+        
+        @param request: ListOperationPlansRequest
+        @return: ListOperationPlansResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_operation_plans_with_options(request, headers, runtime)
@@ -7562,6 +9404,12 @@ class Client(OpenApiClient):
         self,
         request: cs20151215_models.ListOperationPlansRequest,
     ) -> cs20151215_models.ListOperationPlansResponse:
+        """
+        @summary 获取自动运维执行计划列表
+        
+        @param request: ListOperationPlansRequest
+        @return: ListOperationPlansResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_operation_plans_with_options_async(request, headers, runtime)
@@ -7572,6 +9420,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ListTagResourcesResponse:
+        """
+        @summary Queries resource labels and the detailed information, such as the key-value pairs of the labels and the clusters to which the labels are added. You can use labels to classify and manage Container Service for Kubernetes (ACK) clusters in order to meet monitoring, cost analysis, and tenant isolation requirements.
+        
+        @param tmp_req: ListTagResourcesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagResourcesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = cs20151215_models.ListTagResourcesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -7616,6 +9472,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ListTagResourcesResponse:
+        """
+        @summary Queries resource labels and the detailed information, such as the key-value pairs of the labels and the clusters to which the labels are added. You can use labels to classify and manage Container Service for Kubernetes (ACK) clusters in order to meet monitoring, cost analysis, and tenant isolation requirements.
+        
+        @param tmp_req: ListTagResourcesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagResourcesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = cs20151215_models.ListTagResourcesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -7658,6 +9522,12 @@ class Client(OpenApiClient):
         self,
         request: cs20151215_models.ListTagResourcesRequest,
     ) -> cs20151215_models.ListTagResourcesResponse:
+        """
+        @summary Queries resource labels and the detailed information, such as the key-value pairs of the labels and the clusters to which the labels are added. You can use labels to classify and manage Container Service for Kubernetes (ACK) clusters in order to meet monitoring, cost analysis, and tenant isolation requirements.
+        
+        @param request: ListTagResourcesRequest
+        @return: ListTagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_tag_resources_with_options(request, headers, runtime)
@@ -7666,6 +9536,12 @@ class Client(OpenApiClient):
         self,
         request: cs20151215_models.ListTagResourcesRequest,
     ) -> cs20151215_models.ListTagResourcesResponse:
+        """
+        @summary Queries resource labels and the detailed information, such as the key-value pairs of the labels and the clusters to which the labels are added. You can use labels to classify and manage Container Service for Kubernetes (ACK) clusters in order to meet monitoring, cost analysis, and tenant isolation requirements.
+        
+        @param request: ListTagResourcesRequest
+        @return: ListTagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_tag_resources_with_options_async(request, headers, runtime)
@@ -7677,6 +9553,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.MigrateClusterResponse:
+        """
+        @summary Container Service for Kubernetes (ACK) Pro clusters are developed based on ACK Basic clusters. ACK Pro clusters provide all benefits of ACK managed clusters, such as fully-managed control planes and control plane high availability. In addition, ACK Pro clusters provide you with enhanced reliability, security, and schedulability. ACK Pro clusters are covered by the SLA that supports compensation clauses. ACK Pro clusters are suitable for large-scale businesses that require high stability and security in production environments. We recommend that you migrate from ACK Basic clusters to ACK Pro clusters.
+        
+        @param request: MigrateClusterRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MigrateClusterResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.oss_bucket_endpoint):
@@ -7710,6 +9594,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.MigrateClusterResponse:
+        """
+        @summary Container Service for Kubernetes (ACK) Pro clusters are developed based on ACK Basic clusters. ACK Pro clusters provide all benefits of ACK managed clusters, such as fully-managed control planes and control plane high availability. In addition, ACK Pro clusters provide you with enhanced reliability, security, and schedulability. ACK Pro clusters are covered by the SLA that supports compensation clauses. ACK Pro clusters are suitable for large-scale businesses that require high stability and security in production environments. We recommend that you migrate from ACK Basic clusters to ACK Pro clusters.
+        
+        @param request: MigrateClusterRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MigrateClusterResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.oss_bucket_endpoint):
@@ -7741,6 +9633,12 @@ class Client(OpenApiClient):
         cluster_id: str,
         request: cs20151215_models.MigrateClusterRequest,
     ) -> cs20151215_models.MigrateClusterResponse:
+        """
+        @summary Container Service for Kubernetes (ACK) Pro clusters are developed based on ACK Basic clusters. ACK Pro clusters provide all benefits of ACK managed clusters, such as fully-managed control planes and control plane high availability. In addition, ACK Pro clusters provide you with enhanced reliability, security, and schedulability. ACK Pro clusters are covered by the SLA that supports compensation clauses. ACK Pro clusters are suitable for large-scale businesses that require high stability and security in production environments. We recommend that you migrate from ACK Basic clusters to ACK Pro clusters.
+        
+        @param request: MigrateClusterRequest
+        @return: MigrateClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.migrate_cluster_with_options(cluster_id, request, headers, runtime)
@@ -7750,6 +9648,12 @@ class Client(OpenApiClient):
         cluster_id: str,
         request: cs20151215_models.MigrateClusterRequest,
     ) -> cs20151215_models.MigrateClusterResponse:
+        """
+        @summary Container Service for Kubernetes (ACK) Pro clusters are developed based on ACK Basic clusters. ACK Pro clusters provide all benefits of ACK managed clusters, such as fully-managed control planes and control plane high availability. In addition, ACK Pro clusters provide you with enhanced reliability, security, and schedulability. ACK Pro clusters are covered by the SLA that supports compensation clauses. ACK Pro clusters are suitable for large-scale businesses that require high stability and security in production environments. We recommend that you migrate from ACK Basic clusters to ACK Pro clusters.
+        
+        @param request: MigrateClusterRequest
+        @return: MigrateClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.migrate_cluster_with_options_async(cluster_id, request, headers, runtime)
@@ -7761,6 +9665,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ModifyClusterResponse:
+        """
+        @summary You can call the ModifyCluster operation to modify the cluster configurations by cluster ID.
+        
+        @param request: ModifyClusterRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyClusterResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.access_control_list):
@@ -7818,6 +9730,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ModifyClusterResponse:
+        """
+        @summary You can call the ModifyCluster operation to modify the cluster configurations by cluster ID.
+        
+        @param request: ModifyClusterRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyClusterResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.access_control_list):
@@ -7873,6 +9793,12 @@ class Client(OpenApiClient):
         cluster_id: str,
         request: cs20151215_models.ModifyClusterRequest,
     ) -> cs20151215_models.ModifyClusterResponse:
+        """
+        @summary You can call the ModifyCluster operation to modify the cluster configurations by cluster ID.
+        
+        @param request: ModifyClusterRequest
+        @return: ModifyClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.modify_cluster_with_options(cluster_id, request, headers, runtime)
@@ -7882,6 +9808,12 @@ class Client(OpenApiClient):
         cluster_id: str,
         request: cs20151215_models.ModifyClusterRequest,
     ) -> cs20151215_models.ModifyClusterResponse:
+        """
+        @summary You can call the ModifyCluster operation to modify the cluster configurations by cluster ID.
+        
+        @param request: ModifyClusterRequest
+        @return: ModifyClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.modify_cluster_with_options_async(cluster_id, request, headers, runtime)
@@ -7895,9 +9827,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ModifyClusterAddonResponse:
         """
-        You can use this API operation to modify the components in a Container Service for Kubernetes (ACK) cluster or the control plane components in an ACK Pro cluster.
-        *   To query the customizable parameters of a component, call the `DescribeClusterAddonMetadata` API operation. For more information, see [Query the metadata of a specified component version](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/query).
-        *   For more information about the customizable parameters of control plane components in ACK Pro clusters, see [Customize the parameters of control plane components in ACK Pro clusters](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/customize-control-plane-parameters-for-a-professional-kubernetes-cluster).
+        @summary Modifies the configuration of a cluster component. This operation may affect your businesses. We recommend that you assess the impact, back up data, and perform the operation during off-peak hours.
+        
+        @description You can use this API operation to modify the components in a Container Service for Kubernetes (ACK) cluster or the control plane components in an ACK Pro cluster.
+        To query the customizable parameters of a component, call the `DescribeClusterAddonMetadata` API operation. For more information, see [Query the metadata of a specified component version](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/query).
+        For more information about the customizable parameters of control plane components in ACK Pro clusters, see [Customize the parameters of control plane components in ACK Pro clusters](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/customize-control-plane-parameters-for-a-professional-kubernetes-cluster).
         After you call this operation, the component may be redeployed and restarted. We recommend that you assess the impact before you call this operation.
         
         @param request: ModifyClusterAddonRequest
@@ -7938,9 +9872,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ModifyClusterAddonResponse:
         """
-        You can use this API operation to modify the components in a Container Service for Kubernetes (ACK) cluster or the control plane components in an ACK Pro cluster.
-        *   To query the customizable parameters of a component, call the `DescribeClusterAddonMetadata` API operation. For more information, see [Query the metadata of a specified component version](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/query).
-        *   For more information about the customizable parameters of control plane components in ACK Pro clusters, see [Customize the parameters of control plane components in ACK Pro clusters](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/customize-control-plane-parameters-for-a-professional-kubernetes-cluster).
+        @summary Modifies the configuration of a cluster component. This operation may affect your businesses. We recommend that you assess the impact, back up data, and perform the operation during off-peak hours.
+        
+        @description You can use this API operation to modify the components in a Container Service for Kubernetes (ACK) cluster or the control plane components in an ACK Pro cluster.
+        To query the customizable parameters of a component, call the `DescribeClusterAddonMetadata` API operation. For more information, see [Query the metadata of a specified component version](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/query).
+        For more information about the customizable parameters of control plane components in ACK Pro clusters, see [Customize the parameters of control plane components in ACK Pro clusters](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/customize-control-plane-parameters-for-a-professional-kubernetes-cluster).
         After you call this operation, the component may be redeployed and restarted. We recommend that you assess the impact before you call this operation.
         
         @param request: ModifyClusterAddonRequest
@@ -7979,9 +9915,11 @@ class Client(OpenApiClient):
         request: cs20151215_models.ModifyClusterAddonRequest,
     ) -> cs20151215_models.ModifyClusterAddonResponse:
         """
-        You can use this API operation to modify the components in a Container Service for Kubernetes (ACK) cluster or the control plane components in an ACK Pro cluster.
-        *   To query the customizable parameters of a component, call the `DescribeClusterAddonMetadata` API operation. For more information, see [Query the metadata of a specified component version](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/query).
-        *   For more information about the customizable parameters of control plane components in ACK Pro clusters, see [Customize the parameters of control plane components in ACK Pro clusters](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/customize-control-plane-parameters-for-a-professional-kubernetes-cluster).
+        @summary Modifies the configuration of a cluster component. This operation may affect your businesses. We recommend that you assess the impact, back up data, and perform the operation during off-peak hours.
+        
+        @description You can use this API operation to modify the components in a Container Service for Kubernetes (ACK) cluster or the control plane components in an ACK Pro cluster.
+        To query the customizable parameters of a component, call the `DescribeClusterAddonMetadata` API operation. For more information, see [Query the metadata of a specified component version](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/query).
+        For more information about the customizable parameters of control plane components in ACK Pro clusters, see [Customize the parameters of control plane components in ACK Pro clusters](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/customize-control-plane-parameters-for-a-professional-kubernetes-cluster).
         After you call this operation, the component may be redeployed and restarted. We recommend that you assess the impact before you call this operation.
         
         @param request: ModifyClusterAddonRequest
@@ -7998,9 +9936,11 @@ class Client(OpenApiClient):
         request: cs20151215_models.ModifyClusterAddonRequest,
     ) -> cs20151215_models.ModifyClusterAddonResponse:
         """
-        You can use this API operation to modify the components in a Container Service for Kubernetes (ACK) cluster or the control plane components in an ACK Pro cluster.
-        *   To query the customizable parameters of a component, call the `DescribeClusterAddonMetadata` API operation. For more information, see [Query the metadata of a specified component version](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/query).
-        *   For more information about the customizable parameters of control plane components in ACK Pro clusters, see [Customize the parameters of control plane components in ACK Pro clusters](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/customize-control-plane-parameters-for-a-professional-kubernetes-cluster).
+        @summary Modifies the configuration of a cluster component. This operation may affect your businesses. We recommend that you assess the impact, back up data, and perform the operation during off-peak hours.
+        
+        @description You can use this API operation to modify the components in a Container Service for Kubernetes (ACK) cluster or the control plane components in an ACK Pro cluster.
+        To query the customizable parameters of a component, call the `DescribeClusterAddonMetadata` API operation. For more information, see [Query the metadata of a specified component version](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/query).
+        For more information about the customizable parameters of control plane components in ACK Pro clusters, see [Customize the parameters of control plane components in ACK Pro clusters](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/customize-control-plane-parameters-for-a-professional-kubernetes-cluster).
         After you call this operation, the component may be redeployed and restarted. We recommend that you assess the impact before you call this operation.
         
         @param request: ModifyClusterAddonRequest
@@ -8017,6 +9957,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ModifyClusterConfigurationResponse:
+        """
+        @summary This API operation applies only to Container Service for Kubernetes (ACK) managed clusters.
+        
+        @param request: ModifyClusterConfigurationRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyClusterConfigurationResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.customize_config):
@@ -8048,6 +9996,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ModifyClusterConfigurationResponse:
+        """
+        @summary This API operation applies only to Container Service for Kubernetes (ACK) managed clusters.
+        
+        @param request: ModifyClusterConfigurationRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyClusterConfigurationResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.customize_config):
@@ -8077,6 +10033,12 @@ class Client(OpenApiClient):
         cluster_id: str,
         request: cs20151215_models.ModifyClusterConfigurationRequest,
     ) -> cs20151215_models.ModifyClusterConfigurationResponse:
+        """
+        @summary This API operation applies only to Container Service for Kubernetes (ACK) managed clusters.
+        
+        @param request: ModifyClusterConfigurationRequest
+        @return: ModifyClusterConfigurationResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.modify_cluster_configuration_with_options(cluster_id, request, headers, runtime)
@@ -8086,6 +10048,12 @@ class Client(OpenApiClient):
         cluster_id: str,
         request: cs20151215_models.ModifyClusterConfigurationRequest,
     ) -> cs20151215_models.ModifyClusterConfigurationResponse:
+        """
+        @summary This API operation applies only to Container Service for Kubernetes (ACK) managed clusters.
+        
+        @param request: ModifyClusterConfigurationRequest
+        @return: ModifyClusterConfigurationResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.modify_cluster_configuration_with_options_async(cluster_id, request, headers, runtime)
@@ -8098,6 +10066,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ModifyClusterNodePoolResponse:
+        """
+        @summary You can call the ModifyClusterNodePool operation to modify the configuration of a node pool with the specified node pool ID.
+        
+        @param request: ModifyClusterNodePoolRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyClusterNodePoolResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.auto_scaling):
@@ -8144,6 +10120,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ModifyClusterNodePoolResponse:
+        """
+        @summary You can call the ModifyClusterNodePool operation to modify the configuration of a node pool with the specified node pool ID.
+        
+        @param request: ModifyClusterNodePoolRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyClusterNodePoolResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.auto_scaling):
@@ -8188,6 +10172,12 @@ class Client(OpenApiClient):
         nodepool_id: str,
         request: cs20151215_models.ModifyClusterNodePoolRequest,
     ) -> cs20151215_models.ModifyClusterNodePoolResponse:
+        """
+        @summary You can call the ModifyClusterNodePool operation to modify the configuration of a node pool with the specified node pool ID.
+        
+        @param request: ModifyClusterNodePoolRequest
+        @return: ModifyClusterNodePoolResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.modify_cluster_node_pool_with_options(cluster_id, nodepool_id, request, headers, runtime)
@@ -8198,6 +10188,12 @@ class Client(OpenApiClient):
         nodepool_id: str,
         request: cs20151215_models.ModifyClusterNodePoolRequest,
     ) -> cs20151215_models.ModifyClusterNodePoolResponse:
+        """
+        @summary You can call the ModifyClusterNodePool operation to modify the configuration of a node pool with the specified node pool ID.
+        
+        @param request: ModifyClusterNodePoolRequest
+        @return: ModifyClusterNodePoolResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.modify_cluster_node_pool_with_options_async(cluster_id, nodepool_id, request, headers, runtime)
@@ -8209,6 +10205,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ModifyClusterTagsResponse:
+        """
+        @summary Modifies the labels of a Container Service for Kubernetes (ACK) cluster. You can use labels (key-value pairs) to classify and manage ACK clusters in order to meet monitoring, cost analysis, and tenant isolation requirements.
+        
+        @param request: ModifyClusterTagsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyClusterTagsResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -8237,6 +10241,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ModifyClusterTagsResponse:
+        """
+        @summary Modifies the labels of a Container Service for Kubernetes (ACK) cluster. You can use labels (key-value pairs) to classify and manage ACK clusters in order to meet monitoring, cost analysis, and tenant isolation requirements.
+        
+        @param request: ModifyClusterTagsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyClusterTagsResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -8263,6 +10275,12 @@ class Client(OpenApiClient):
         cluster_id: str,
         request: cs20151215_models.ModifyClusterTagsRequest,
     ) -> cs20151215_models.ModifyClusterTagsResponse:
+        """
+        @summary Modifies the labels of a Container Service for Kubernetes (ACK) cluster. You can use labels (key-value pairs) to classify and manage ACK clusters in order to meet monitoring, cost analysis, and tenant isolation requirements.
+        
+        @param request: ModifyClusterTagsRequest
+        @return: ModifyClusterTagsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.modify_cluster_tags_with_options(cluster_id, request, headers, runtime)
@@ -8272,6 +10290,12 @@ class Client(OpenApiClient):
         cluster_id: str,
         request: cs20151215_models.ModifyClusterTagsRequest,
     ) -> cs20151215_models.ModifyClusterTagsResponse:
+        """
+        @summary Modifies the labels of a Container Service for Kubernetes (ACK) cluster. You can use labels (key-value pairs) to classify and manage ACK clusters in order to meet monitoring, cost analysis, and tenant isolation requirements.
+        
+        @param request: ModifyClusterTagsRequest
+        @return: ModifyClusterTagsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.modify_cluster_tags_with_options_async(cluster_id, request, headers, runtime)
@@ -8285,7 +10309,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ModifyNodePoolNodeConfigResponse:
         """
-        >  Container Service for Kubernetes (ACK) allows you to modify the kubelet configuration of nodes in a node pool. After you modify the kubelet configuration, the new configuration immediately takes effect on existing nodes in the node pool and is automatically applied to newly added nodes.
+        @summary Modifies the configuration of a node pool, such as the kubelet configuration and node rolling update configuration. After you modify the node pool configuration, nodes are batch updated and the kubelet on each node is restarted. This may adversely affect the nodes and workloads. We recommend that you perform this operation during off-peak hours.
+        
+        @description >  Container Service for Kubernetes (ACK) allows you to modify the kubelet configuration of nodes in a node pool. After you modify the kubelet configuration, the new configuration immediately takes effect on existing nodes in the node pool and is automatically applied to newly added nodes.
         
         @param request: ModifyNodePoolNodeConfigRequest
         @param headers: map
@@ -8329,7 +10355,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ModifyNodePoolNodeConfigResponse:
         """
-        >  Container Service for Kubernetes (ACK) allows you to modify the kubelet configuration of nodes in a node pool. After you modify the kubelet configuration, the new configuration immediately takes effect on existing nodes in the node pool and is automatically applied to newly added nodes.
+        @summary Modifies the configuration of a node pool, such as the kubelet configuration and node rolling update configuration. After you modify the node pool configuration, nodes are batch updated and the kubelet on each node is restarted. This may adversely affect the nodes and workloads. We recommend that you perform this operation during off-peak hours.
+        
+        @description >  Container Service for Kubernetes (ACK) allows you to modify the kubelet configuration of nodes in a node pool. After you modify the kubelet configuration, the new configuration immediately takes effect on existing nodes in the node pool and is automatically applied to newly added nodes.
         
         @param request: ModifyNodePoolNodeConfigRequest
         @param headers: map
@@ -8371,7 +10399,9 @@ class Client(OpenApiClient):
         request: cs20151215_models.ModifyNodePoolNodeConfigRequest,
     ) -> cs20151215_models.ModifyNodePoolNodeConfigResponse:
         """
-        >  Container Service for Kubernetes (ACK) allows you to modify the kubelet configuration of nodes in a node pool. After you modify the kubelet configuration, the new configuration immediately takes effect on existing nodes in the node pool and is automatically applied to newly added nodes.
+        @summary Modifies the configuration of a node pool, such as the kubelet configuration and node rolling update configuration. After you modify the node pool configuration, nodes are batch updated and the kubelet on each node is restarted. This may adversely affect the nodes and workloads. We recommend that you perform this operation during off-peak hours.
+        
+        @description >  Container Service for Kubernetes (ACK) allows you to modify the kubelet configuration of nodes in a node pool. After you modify the kubelet configuration, the new configuration immediately takes effect on existing nodes in the node pool and is automatically applied to newly added nodes.
         
         @param request: ModifyNodePoolNodeConfigRequest
         @return: ModifyNodePoolNodeConfigResponse
@@ -8387,7 +10417,9 @@ class Client(OpenApiClient):
         request: cs20151215_models.ModifyNodePoolNodeConfigRequest,
     ) -> cs20151215_models.ModifyNodePoolNodeConfigResponse:
         """
-        >  Container Service for Kubernetes (ACK) allows you to modify the kubelet configuration of nodes in a node pool. After you modify the kubelet configuration, the new configuration immediately takes effect on existing nodes in the node pool and is automatically applied to newly added nodes.
+        @summary Modifies the configuration of a node pool, such as the kubelet configuration and node rolling update configuration. After you modify the node pool configuration, nodes are batch updated and the kubelet on each node is restarted. This may adversely affect the nodes and workloads. We recommend that you perform this operation during off-peak hours.
+        
+        @description >  Container Service for Kubernetes (ACK) allows you to modify the kubelet configuration of nodes in a node pool. After you modify the kubelet configuration, the new configuration immediately takes effect on existing nodes in the node pool and is automatically applied to newly added nodes.
         
         @param request: ModifyNodePoolNodeConfigRequest
         @return: ModifyNodePoolNodeConfigResponse
@@ -8404,6 +10436,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ModifyPolicyInstanceResponse:
+        """
+        @summary You can call the ModifyPolicyInstance operation to update policy instances in a Container Service for Kubernetes (ACK) cluster.
+        
+        @param request: ModifyPolicyInstanceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyPolicyInstanceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.action):
@@ -8442,6 +10482,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ModifyPolicyInstanceResponse:
+        """
+        @summary You can call the ModifyPolicyInstance operation to update policy instances in a Container Service for Kubernetes (ACK) cluster.
+        
+        @param request: ModifyPolicyInstanceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyPolicyInstanceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.action):
@@ -8478,6 +10526,12 @@ class Client(OpenApiClient):
         policy_name: str,
         request: cs20151215_models.ModifyPolicyInstanceRequest,
     ) -> cs20151215_models.ModifyPolicyInstanceResponse:
+        """
+        @summary You can call the ModifyPolicyInstance operation to update policy instances in a Container Service for Kubernetes (ACK) cluster.
+        
+        @param request: ModifyPolicyInstanceRequest
+        @return: ModifyPolicyInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.modify_policy_instance_with_options(cluster_id, policy_name, request, headers, runtime)
@@ -8488,6 +10542,12 @@ class Client(OpenApiClient):
         policy_name: str,
         request: cs20151215_models.ModifyPolicyInstanceRequest,
     ) -> cs20151215_models.ModifyPolicyInstanceResponse:
+        """
+        @summary You can call the ModifyPolicyInstance operation to update policy instances in a Container Service for Kubernetes (ACK) cluster.
+        
+        @param request: ModifyPolicyInstanceRequest
+        @return: ModifyPolicyInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.modify_policy_instance_with_options_async(cluster_id, policy_name, request, headers, runtime)
@@ -8499,8 +10559,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.OpenAckServiceResponse:
         """
-        You can activate ACK by using Alibaba Cloud accounts.
-        *   To activate ACK by using RAM users, you need to grant the AdministratorAccess permission to the RAM users.
+        @summary You can call the OpenAckService operation to activate Container Service for Kubernetes (ACK).
+        
+        @description    You can activate ACK by using Alibaba Cloud accounts.
+        To activate ACK by using RAM users, you need to grant the AdministratorAccess permission to the RAM users.
         
         @param request: OpenAckServiceRequest
         @param headers: map
@@ -8538,8 +10600,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.OpenAckServiceResponse:
         """
-        You can activate ACK by using Alibaba Cloud accounts.
-        *   To activate ACK by using RAM users, you need to grant the AdministratorAccess permission to the RAM users.
+        @summary You can call the OpenAckService operation to activate Container Service for Kubernetes (ACK).
+        
+        @description    You can activate ACK by using Alibaba Cloud accounts.
+        To activate ACK by using RAM users, you need to grant the AdministratorAccess permission to the RAM users.
         
         @param request: OpenAckServiceRequest
         @param headers: map
@@ -8575,8 +10639,10 @@ class Client(OpenApiClient):
         request: cs20151215_models.OpenAckServiceRequest,
     ) -> cs20151215_models.OpenAckServiceResponse:
         """
-        You can activate ACK by using Alibaba Cloud accounts.
-        *   To activate ACK by using RAM users, you need to grant the AdministratorAccess permission to the RAM users.
+        @summary You can call the OpenAckService operation to activate Container Service for Kubernetes (ACK).
+        
+        @description    You can activate ACK by using Alibaba Cloud accounts.
+        To activate ACK by using RAM users, you need to grant the AdministratorAccess permission to the RAM users.
         
         @param request: OpenAckServiceRequest
         @return: OpenAckServiceResponse
@@ -8590,8 +10656,10 @@ class Client(OpenApiClient):
         request: cs20151215_models.OpenAckServiceRequest,
     ) -> cs20151215_models.OpenAckServiceResponse:
         """
-        You can activate ACK by using Alibaba Cloud accounts.
-        *   To activate ACK by using RAM users, you need to grant the AdministratorAccess permission to the RAM users.
+        @summary You can call the OpenAckService operation to activate Container Service for Kubernetes (ACK).
+        
+        @description    You can activate ACK by using Alibaba Cloud accounts.
+        To activate ACK by using RAM users, you need to grant the AdministratorAccess permission to the RAM users.
         
         @param request: OpenAckServiceRequest
         @return: OpenAckServiceResponse
@@ -8607,7 +10675,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.PauseClusterUpgradeResponse:
         """
-        @deprecated
+        @deprecated OpenAPI PauseClusterUpgrade is deprecated
+        
+        @summary You can call the PauseClusterUpgrade operation to pause the update of a Container Service for Kubernetes (ACK) cluster.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -8640,7 +10710,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.PauseClusterUpgradeResponse:
         """
-        @deprecated
+        @deprecated OpenAPI PauseClusterUpgrade is deprecated
+        
+        @summary You can call the PauseClusterUpgrade operation to pause the update of a Container Service for Kubernetes (ACK) cluster.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -8671,7 +10743,9 @@ class Client(OpenApiClient):
         cluster_id: str,
     ) -> cs20151215_models.PauseClusterUpgradeResponse:
         """
-        @deprecated
+        @deprecated OpenAPI PauseClusterUpgrade is deprecated
+        
+        @summary You can call the PauseClusterUpgrade operation to pause the update of a Container Service for Kubernetes (ACK) cluster.
         
         @return: PauseClusterUpgradeResponse
         Deprecated
@@ -8685,7 +10759,9 @@ class Client(OpenApiClient):
         cluster_id: str,
     ) -> cs20151215_models.PauseClusterUpgradeResponse:
         """
-        @deprecated
+        @deprecated OpenAPI PauseClusterUpgrade is deprecated
+        
+        @summary You can call the PauseClusterUpgrade operation to pause the update of a Container Service for Kubernetes (ACK) cluster.
         
         @return: PauseClusterUpgradeResponse
         Deprecated
@@ -8701,6 +10777,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.PauseComponentUpgradeResponse:
+        """
+        @summary You can call the PauseComponentUpgrade operation to pause the update of a component.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PauseComponentUpgradeResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -8727,6 +10810,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.PauseComponentUpgradeResponse:
+        """
+        @summary You can call the PauseComponentUpgrade operation to pause the update of a component.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PauseComponentUpgradeResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -8751,6 +10841,11 @@ class Client(OpenApiClient):
         clusterid: str,
         componentid: str,
     ) -> cs20151215_models.PauseComponentUpgradeResponse:
+        """
+        @summary You can call the PauseComponentUpgrade operation to pause the update of a component.
+        
+        @return: PauseComponentUpgradeResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.pause_component_upgrade_with_options(clusterid, componentid, headers, runtime)
@@ -8760,6 +10855,11 @@ class Client(OpenApiClient):
         clusterid: str,
         componentid: str,
     ) -> cs20151215_models.PauseComponentUpgradeResponse:
+        """
+        @summary You can call the PauseComponentUpgrade operation to pause the update of a component.
+        
+        @return: PauseComponentUpgradeResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.pause_component_upgrade_with_options_async(clusterid, componentid, headers, runtime)
@@ -8770,6 +10870,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.PauseTaskResponse:
+        """
+        @summary Pauses an on-going task.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PauseTaskResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -8795,6 +10902,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.PauseTaskResponse:
+        """
+        @summary Pauses an on-going task.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PauseTaskResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -8818,6 +10932,11 @@ class Client(OpenApiClient):
         self,
         task_id: str,
     ) -> cs20151215_models.PauseTaskResponse:
+        """
+        @summary Pauses an on-going task.
+        
+        @return: PauseTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.pause_task_with_options(task_id, headers, runtime)
@@ -8826,6 +10945,11 @@ class Client(OpenApiClient):
         self,
         task_id: str,
     ) -> cs20151215_models.PauseTaskResponse:
+        """
+        @summary Pauses an on-going task.
+        
+        @return: PauseTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.pause_task_with_options_async(task_id, headers, runtime)
@@ -8838,12 +10962,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.RemoveClusterNodesResponse:
         """
-        @deprecated
-        ****\
-        *   When you remove a node, the pods that run on the node are migrated to other nodes. This may cause service interruptions. We recommend that you remove nodes during off-peak hours.
-        *   Unknown errors may occur when you remove nodes. Before you remove nodes, back up the data on the nodes.
-        *   Nodes remain in the Unschedulable state when they are being removed.
-        *   You can remove only worker nodes. You cannot remove master nodes.
+        @deprecated OpenAPI RemoveClusterNodes is deprecated
+        
+        @summary You can call the RemoveClusterNodes operation to remove nodes from a Container Service for Kubernetes (ACK) cluster.
+        
+        @description ***\
+        When you remove a node, the pods that run on the node are migrated to other nodes. This may cause service interruptions. We recommend that you remove nodes during off-peak hours.
+        Unknown errors may occur when you remove nodes. Before you remove nodes, back up the data on the nodes.
+        Nodes remain in the Unschedulable state when they are being removed.
+        You can remove only worker nodes. You cannot remove master nodes.
         
         @param request: RemoveClusterNodesRequest
         @param headers: map
@@ -8887,12 +11014,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.RemoveClusterNodesResponse:
         """
-        @deprecated
-        ****\
-        *   When you remove a node, the pods that run on the node are migrated to other nodes. This may cause service interruptions. We recommend that you remove nodes during off-peak hours.
-        *   Unknown errors may occur when you remove nodes. Before you remove nodes, back up the data on the nodes.
-        *   Nodes remain in the Unschedulable state when they are being removed.
-        *   You can remove only worker nodes. You cannot remove master nodes.
+        @deprecated OpenAPI RemoveClusterNodes is deprecated
+        
+        @summary You can call the RemoveClusterNodes operation to remove nodes from a Container Service for Kubernetes (ACK) cluster.
+        
+        @description ***\
+        When you remove a node, the pods that run on the node are migrated to other nodes. This may cause service interruptions. We recommend that you remove nodes during off-peak hours.
+        Unknown errors may occur when you remove nodes. Before you remove nodes, back up the data on the nodes.
+        Nodes remain in the Unschedulable state when they are being removed.
+        You can remove only worker nodes. You cannot remove master nodes.
         
         @param request: RemoveClusterNodesRequest
         @param headers: map
@@ -8934,12 +11064,15 @@ class Client(OpenApiClient):
         request: cs20151215_models.RemoveClusterNodesRequest,
     ) -> cs20151215_models.RemoveClusterNodesResponse:
         """
-        @deprecated
-        ****\
-        *   When you remove a node, the pods that run on the node are migrated to other nodes. This may cause service interruptions. We recommend that you remove nodes during off-peak hours.
-        *   Unknown errors may occur when you remove nodes. Before you remove nodes, back up the data on the nodes.
-        *   Nodes remain in the Unschedulable state when they are being removed.
-        *   You can remove only worker nodes. You cannot remove master nodes.
+        @deprecated OpenAPI RemoveClusterNodes is deprecated
+        
+        @summary You can call the RemoveClusterNodes operation to remove nodes from a Container Service for Kubernetes (ACK) cluster.
+        
+        @description ***\
+        When you remove a node, the pods that run on the node are migrated to other nodes. This may cause service interruptions. We recommend that you remove nodes during off-peak hours.
+        Unknown errors may occur when you remove nodes. Before you remove nodes, back up the data on the nodes.
+        Nodes remain in the Unschedulable state when they are being removed.
+        You can remove only worker nodes. You cannot remove master nodes.
         
         @param request: RemoveClusterNodesRequest
         @return: RemoveClusterNodesResponse
@@ -8955,12 +11088,15 @@ class Client(OpenApiClient):
         request: cs20151215_models.RemoveClusterNodesRequest,
     ) -> cs20151215_models.RemoveClusterNodesResponse:
         """
-        @deprecated
-        ****\
-        *   When you remove a node, the pods that run on the node are migrated to other nodes. This may cause service interruptions. We recommend that you remove nodes during off-peak hours.
-        *   Unknown errors may occur when you remove nodes. Before you remove nodes, back up the data on the nodes.
-        *   Nodes remain in the Unschedulable state when they are being removed.
-        *   You can remove only worker nodes. You cannot remove master nodes.
+        @deprecated OpenAPI RemoveClusterNodes is deprecated
+        
+        @summary You can call the RemoveClusterNodes operation to remove nodes from a Container Service for Kubernetes (ACK) cluster.
+        
+        @description ***\
+        When you remove a node, the pods that run on the node are migrated to other nodes. This may cause service interruptions. We recommend that you remove nodes during off-peak hours.
+        Unknown errors may occur when you remove nodes. Before you remove nodes, back up the data on the nodes.
+        Nodes remain in the Unschedulable state when they are being removed.
+        You can remove only worker nodes. You cannot remove master nodes.
         
         @param request: RemoveClusterNodesRequest
         @return: RemoveClusterNodesResponse
@@ -8979,9 +11115,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.RemoveNodePoolNodesResponse:
         """
-        *\
-        ****\
-        *   When you remove a node, the pods that run on the node are migrated to other nodes. This may cause service interruptions. We recommend that you remove nodes during off-peak hours. - The operation may have unexpected risks. Back up the data before you perform this operation. - When the system removes a node, it sets the status of the node to Unschedulable. - The system removes only worker nodes. It does not remove master nodes.
+        @summary Removes nodes from a node pool.
+        
+        @description *\
+        ***\
+        When you remove a node, the pods that run on the node are migrated to other nodes. This may cause service interruptions. We recommend that you remove nodes during off-peak hours. - The operation may have unexpected risks. Back up the data before you perform this operation. - When the system removes a node, it sets the status of the node to Unschedulable. - The system removes only worker nodes. It does not remove master nodes.
         
         @param tmp_req: RemoveNodePoolNodesRequest
         @param headers: map
@@ -9035,9 +11173,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.RemoveNodePoolNodesResponse:
         """
-        *\
-        ****\
-        *   When you remove a node, the pods that run on the node are migrated to other nodes. This may cause service interruptions. We recommend that you remove nodes during off-peak hours. - The operation may have unexpected risks. Back up the data before you perform this operation. - When the system removes a node, it sets the status of the node to Unschedulable. - The system removes only worker nodes. It does not remove master nodes.
+        @summary Removes nodes from a node pool.
+        
+        @description *\
+        ***\
+        When you remove a node, the pods that run on the node are migrated to other nodes. This may cause service interruptions. We recommend that you remove nodes during off-peak hours. - The operation may have unexpected risks. Back up the data before you perform this operation. - When the system removes a node, it sets the status of the node to Unschedulable. - The system removes only worker nodes. It does not remove master nodes.
         
         @param tmp_req: RemoveNodePoolNodesRequest
         @param headers: map
@@ -9089,9 +11229,11 @@ class Client(OpenApiClient):
         request: cs20151215_models.RemoveNodePoolNodesRequest,
     ) -> cs20151215_models.RemoveNodePoolNodesResponse:
         """
-        *\
-        ****\
-        *   When you remove a node, the pods that run on the node are migrated to other nodes. This may cause service interruptions. We recommend that you remove nodes during off-peak hours. - The operation may have unexpected risks. Back up the data before you perform this operation. - When the system removes a node, it sets the status of the node to Unschedulable. - The system removes only worker nodes. It does not remove master nodes.
+        @summary Removes nodes from a node pool.
+        
+        @description *\
+        ***\
+        When you remove a node, the pods that run on the node are migrated to other nodes. This may cause service interruptions. We recommend that you remove nodes during off-peak hours. - The operation may have unexpected risks. Back up the data before you perform this operation. - When the system removes a node, it sets the status of the node to Unschedulable. - The system removes only worker nodes. It does not remove master nodes.
         
         @param request: RemoveNodePoolNodesRequest
         @return: RemoveNodePoolNodesResponse
@@ -9107,9 +11249,11 @@ class Client(OpenApiClient):
         request: cs20151215_models.RemoveNodePoolNodesRequest,
     ) -> cs20151215_models.RemoveNodePoolNodesResponse:
         """
-        *\
-        ****\
-        *   When you remove a node, the pods that run on the node are migrated to other nodes. This may cause service interruptions. We recommend that you remove nodes during off-peak hours. - The operation may have unexpected risks. Back up the data before you perform this operation. - When the system removes a node, it sets the status of the node to Unschedulable. - The system removes only worker nodes. It does not remove master nodes.
+        @summary Removes nodes from a node pool.
+        
+        @description *\
+        ***\
+        When you remove a node, the pods that run on the node are migrated to other nodes. This may cause service interruptions. We recommend that you remove nodes during off-peak hours. - The operation may have unexpected risks. Back up the data before you perform this operation. - When the system removes a node, it sets the status of the node to Unschedulable. - The system removes only worker nodes. It does not remove master nodes.
         
         @param request: RemoveNodePoolNodesRequest
         @return: RemoveNodePoolNodesResponse
@@ -9124,6 +11268,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.RemoveWorkflowResponse:
+        """
+        @summary You can call the RemoveWorkflow operation to delete a workflow.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveWorkflowResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -9149,6 +11300,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.RemoveWorkflowResponse:
+        """
+        @summary You can call the RemoveWorkflow operation to delete a workflow.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveWorkflowResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -9172,6 +11330,11 @@ class Client(OpenApiClient):
         self,
         workflow_name: str,
     ) -> cs20151215_models.RemoveWorkflowResponse:
+        """
+        @summary You can call the RemoveWorkflow operation to delete a workflow.
+        
+        @return: RemoveWorkflowResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.remove_workflow_with_options(workflow_name, headers, runtime)
@@ -9180,6 +11343,11 @@ class Client(OpenApiClient):
         self,
         workflow_name: str,
     ) -> cs20151215_models.RemoveWorkflowResponse:
+        """
+        @summary You can call the RemoveWorkflow operation to delete a workflow.
+        
+        @return: RemoveWorkflowResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.remove_workflow_with_options_async(workflow_name, headers, runtime)
@@ -9192,6 +11360,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.RepairClusterNodePoolResponse:
+        """
+        @summary You can call the RepairClusterNodePool operation to fix issues on specified nodes in a managed node pool.
+        
+        @param request: RepairClusterNodePoolRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RepairClusterNodePoolResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.auto_restart):
@@ -9226,6 +11402,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.RepairClusterNodePoolResponse:
+        """
+        @summary You can call the RepairClusterNodePool operation to fix issues on specified nodes in a managed node pool.
+        
+        @param request: RepairClusterNodePoolRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RepairClusterNodePoolResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.auto_restart):
@@ -9258,6 +11442,12 @@ class Client(OpenApiClient):
         nodepool_id: str,
         request: cs20151215_models.RepairClusterNodePoolRequest,
     ) -> cs20151215_models.RepairClusterNodePoolResponse:
+        """
+        @summary You can call the RepairClusterNodePool operation to fix issues on specified nodes in a managed node pool.
+        
+        @param request: RepairClusterNodePoolRequest
+        @return: RepairClusterNodePoolResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.repair_cluster_node_pool_with_options(cluster_id, nodepool_id, request, headers, runtime)
@@ -9268,6 +11458,12 @@ class Client(OpenApiClient):
         nodepool_id: str,
         request: cs20151215_models.RepairClusterNodePoolRequest,
     ) -> cs20151215_models.RepairClusterNodePoolResponse:
+        """
+        @summary You can call the RepairClusterNodePool operation to fix issues on specified nodes in a managed node pool.
+        
+        @param request: RepairClusterNodePoolRequest
+        @return: RepairClusterNodePoolResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.repair_cluster_node_pool_with_options_async(cluster_id, nodepool_id, request, headers, runtime)
@@ -9279,6 +11475,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ResumeComponentUpgradeResponse:
+        """
+        @summary You can call the ResumeComponentUpgrade operation to resume the update of a component.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResumeComponentUpgradeResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -9305,6 +11508,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ResumeComponentUpgradeResponse:
+        """
+        @summary You can call the ResumeComponentUpgrade operation to resume the update of a component.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResumeComponentUpgradeResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -9329,6 +11539,11 @@ class Client(OpenApiClient):
         clusterid: str,
         componentid: str,
     ) -> cs20151215_models.ResumeComponentUpgradeResponse:
+        """
+        @summary You can call the ResumeComponentUpgrade operation to resume the update of a component.
+        
+        @return: ResumeComponentUpgradeResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.resume_component_upgrade_with_options(clusterid, componentid, headers, runtime)
@@ -9338,6 +11553,11 @@ class Client(OpenApiClient):
         clusterid: str,
         componentid: str,
     ) -> cs20151215_models.ResumeComponentUpgradeResponse:
+        """
+        @summary You can call the ResumeComponentUpgrade operation to resume the update of a component.
+        
+        @return: ResumeComponentUpgradeResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.resume_component_upgrade_with_options_async(clusterid, componentid, headers, runtime)
@@ -9348,6 +11568,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ResumeTaskResponse:
+        """
+        @summary You can call the ResumeTask operation to resume a task.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResumeTaskResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -9373,6 +11600,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ResumeTaskResponse:
+        """
+        @summary You can call the ResumeTask operation to resume a task.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResumeTaskResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -9396,6 +11630,11 @@ class Client(OpenApiClient):
         self,
         task_id: str,
     ) -> cs20151215_models.ResumeTaskResponse:
+        """
+        @summary You can call the ResumeTask operation to resume a task.
+        
+        @return: ResumeTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.resume_task_with_options(task_id, headers, runtime)
@@ -9404,6 +11643,11 @@ class Client(OpenApiClient):
         self,
         task_id: str,
     ) -> cs20151215_models.ResumeTaskResponse:
+        """
+        @summary You can call the ResumeTask operation to resume a task.
+        
+        @return: ResumeTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.resume_task_with_options_async(task_id, headers, runtime)
@@ -9415,7 +11659,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ResumeUpgradeClusterResponse:
         """
-        @deprecated
+        @deprecated OpenAPI ResumeUpgradeCluster is deprecated
+        
+        @summary You can call the ResumeUpgradeCluster operation to resume the update of a cluster by cluster ID.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -9448,7 +11694,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ResumeUpgradeClusterResponse:
         """
-        @deprecated
+        @deprecated OpenAPI ResumeUpgradeCluster is deprecated
+        
+        @summary You can call the ResumeUpgradeCluster operation to resume the update of a cluster by cluster ID.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -9479,7 +11727,9 @@ class Client(OpenApiClient):
         cluster_id: str,
     ) -> cs20151215_models.ResumeUpgradeClusterResponse:
         """
-        @deprecated
+        @deprecated OpenAPI ResumeUpgradeCluster is deprecated
+        
+        @summary You can call the ResumeUpgradeCluster operation to resume the update of a cluster by cluster ID.
         
         @return: ResumeUpgradeClusterResponse
         Deprecated
@@ -9493,7 +11743,9 @@ class Client(OpenApiClient):
         cluster_id: str,
     ) -> cs20151215_models.ResumeUpgradeClusterResponse:
         """
-        @deprecated
+        @deprecated OpenAPI ResumeUpgradeCluster is deprecated
+        
+        @summary You can call the ResumeUpgradeCluster operation to resume the update of a cluster by cluster ID.
         
         @return: ResumeUpgradeClusterResponse
         Deprecated
@@ -9509,6 +11761,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.RunClusterCheckResponse:
+        """
+        @summary You can call the RunClusterCheck operation to initiate cluster checks, such as cluster update prechecks.
+        
+        @param request: RunClusterCheckRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunClusterCheckResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.options):
@@ -9544,6 +11804,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.RunClusterCheckResponse:
+        """
+        @summary You can call the RunClusterCheck operation to initiate cluster checks, such as cluster update prechecks.
+        
+        @param request: RunClusterCheckRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunClusterCheckResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.options):
@@ -9577,6 +11845,12 @@ class Client(OpenApiClient):
         cluster_id: str,
         request: cs20151215_models.RunClusterCheckRequest,
     ) -> cs20151215_models.RunClusterCheckResponse:
+        """
+        @summary You can call the RunClusterCheck operation to initiate cluster checks, such as cluster update prechecks.
+        
+        @param request: RunClusterCheckRequest
+        @return: RunClusterCheckResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.run_cluster_check_with_options(cluster_id, request, headers, runtime)
@@ -9586,6 +11860,12 @@ class Client(OpenApiClient):
         cluster_id: str,
         request: cs20151215_models.RunClusterCheckRequest,
     ) -> cs20151215_models.RunClusterCheckResponse:
+        """
+        @summary You can call the RunClusterCheck operation to initiate cluster checks, such as cluster update prechecks.
+        
+        @param request: RunClusterCheckRequest
+        @return: RunClusterCheckResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.run_cluster_check_with_options_async(cluster_id, request, headers, runtime)
@@ -9598,7 +11878,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ScaleClusterResponse:
         """
-        @deprecated
+        @deprecated OpenAPI ScaleCluster is deprecated
+        
+        @summary 扩容Kubernetes集群
         
         @param request: ScaleClusterRequest
         @param headers: map
@@ -9674,7 +11956,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ScaleClusterResponse:
         """
-        @deprecated
+        @deprecated OpenAPI ScaleCluster is deprecated
+        
+        @summary 扩容Kubernetes集群
         
         @param request: ScaleClusterRequest
         @param headers: map
@@ -9748,7 +12032,9 @@ class Client(OpenApiClient):
         request: cs20151215_models.ScaleClusterRequest,
     ) -> cs20151215_models.ScaleClusterResponse:
         """
-        @deprecated
+        @deprecated OpenAPI ScaleCluster is deprecated
+        
+        @summary 扩容Kubernetes集群
         
         @param request: ScaleClusterRequest
         @return: ScaleClusterResponse
@@ -9764,7 +12050,9 @@ class Client(OpenApiClient):
         request: cs20151215_models.ScaleClusterRequest,
     ) -> cs20151215_models.ScaleClusterResponse:
         """
-        @deprecated
+        @deprecated OpenAPI ScaleCluster is deprecated
+        
+        @summary 扩容Kubernetes集群
         
         @param request: ScaleClusterRequest
         @return: ScaleClusterResponse
@@ -9782,6 +12070,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ScaleClusterNodePoolResponse:
+        """
+        @summary You can call the ScaleClusterNodePool operation to scale out a node pool by node pool ID.
+        
+        @param request: ScaleClusterNodePoolRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ScaleClusterNodePoolResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.count):
@@ -9814,6 +12110,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ScaleClusterNodePoolResponse:
+        """
+        @summary You can call the ScaleClusterNodePool operation to scale out a node pool by node pool ID.
+        
+        @param request: ScaleClusterNodePoolRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ScaleClusterNodePoolResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.count):
@@ -9844,6 +12148,12 @@ class Client(OpenApiClient):
         nodepool_id: str,
         request: cs20151215_models.ScaleClusterNodePoolRequest,
     ) -> cs20151215_models.ScaleClusterNodePoolResponse:
+        """
+        @summary You can call the ScaleClusterNodePool operation to scale out a node pool by node pool ID.
+        
+        @param request: ScaleClusterNodePoolRequest
+        @return: ScaleClusterNodePoolResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.scale_cluster_node_pool_with_options(cluster_id, nodepool_id, request, headers, runtime)
@@ -9854,6 +12164,12 @@ class Client(OpenApiClient):
         nodepool_id: str,
         request: cs20151215_models.ScaleClusterNodePoolRequest,
     ) -> cs20151215_models.ScaleClusterNodePoolResponse:
+        """
+        @summary You can call the ScaleClusterNodePool operation to scale out a node pool by node pool ID.
+        
+        @param request: ScaleClusterNodePoolRequest
+        @return: ScaleClusterNodePoolResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.scale_cluster_node_pool_with_options_async(cluster_id, nodepool_id, request, headers, runtime)
@@ -9866,8 +12182,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ScaleOutClusterResponse:
         """
-        *\
-        ****The ScaleOutCluster API operation is phased out. You must call the node pool-related API operations to manage nodes. If you want to add worker nodes to a Container Service for Kubernetes (ACK) cluster, call the ScaleClusterNodePool API operation. For more information, see [ScaleClusterNodePool](~~184928~~).
+        @summary You can call the ScaleOutCluster operation to scale out a cluster by cluster ID.
+        
+        @description *\
+        ***The ScaleOutCluster API operation is phased out. You must call the node pool-related API operations to manage nodes. If you want to add worker nodes to a Container Service for Kubernetes (ACK) cluster, call the ScaleClusterNodePool API operation. For more information, see [ScaleClusterNodePool](https://help.aliyun.com/document_detail/184928.html).
         
         @param request: ScaleOutClusterRequest
         @param headers: map
@@ -9946,8 +12264,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ScaleOutClusterResponse:
         """
-        *\
-        ****The ScaleOutCluster API operation is phased out. You must call the node pool-related API operations to manage nodes. If you want to add worker nodes to a Container Service for Kubernetes (ACK) cluster, call the ScaleClusterNodePool API operation. For more information, see [ScaleClusterNodePool](~~184928~~).
+        @summary You can call the ScaleOutCluster operation to scale out a cluster by cluster ID.
+        
+        @description *\
+        ***The ScaleOutCluster API operation is phased out. You must call the node pool-related API operations to manage nodes. If you want to add worker nodes to a Container Service for Kubernetes (ACK) cluster, call the ScaleClusterNodePool API operation. For more information, see [ScaleClusterNodePool](https://help.aliyun.com/document_detail/184928.html).
         
         @param request: ScaleOutClusterRequest
         @param headers: map
@@ -10024,8 +12344,10 @@ class Client(OpenApiClient):
         request: cs20151215_models.ScaleOutClusterRequest,
     ) -> cs20151215_models.ScaleOutClusterResponse:
         """
-        *\
-        ****The ScaleOutCluster API operation is phased out. You must call the node pool-related API operations to manage nodes. If you want to add worker nodes to a Container Service for Kubernetes (ACK) cluster, call the ScaleClusterNodePool API operation. For more information, see [ScaleClusterNodePool](~~184928~~).
+        @summary You can call the ScaleOutCluster operation to scale out a cluster by cluster ID.
+        
+        @description *\
+        ***The ScaleOutCluster API operation is phased out. You must call the node pool-related API operations to manage nodes. If you want to add worker nodes to a Container Service for Kubernetes (ACK) cluster, call the ScaleClusterNodePool API operation. For more information, see [ScaleClusterNodePool](https://help.aliyun.com/document_detail/184928.html).
         
         @param request: ScaleOutClusterRequest
         @return: ScaleOutClusterResponse
@@ -10040,8 +12362,10 @@ class Client(OpenApiClient):
         request: cs20151215_models.ScaleOutClusterRequest,
     ) -> cs20151215_models.ScaleOutClusterResponse:
         """
-        *\
-        ****The ScaleOutCluster API operation is phased out. You must call the node pool-related API operations to manage nodes. If you want to add worker nodes to a Container Service for Kubernetes (ACK) cluster, call the ScaleClusterNodePool API operation. For more information, see [ScaleClusterNodePool](~~184928~~).
+        @summary You can call the ScaleOutCluster operation to scale out a cluster by cluster ID.
+        
+        @description *\
+        ***The ScaleOutCluster API operation is phased out. You must call the node pool-related API operations to manage nodes. If you want to add worker nodes to a Container Service for Kubernetes (ACK) cluster, call the ScaleClusterNodePool API operation. For more information, see [ScaleClusterNodePool](https://help.aliyun.com/document_detail/184928.html).
         
         @param request: ScaleOutClusterRequest
         @return: ScaleOutClusterResponse
@@ -10056,6 +12380,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ScanClusterVulsResponse:
+        """
+        @summary The cluster ID.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ScanClusterVulsResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -10081,6 +12412,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ScanClusterVulsResponse:
+        """
+        @summary The cluster ID.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ScanClusterVulsResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -10104,6 +12442,11 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
     ) -> cs20151215_models.ScanClusterVulsResponse:
+        """
+        @summary The cluster ID.
+        
+        @return: ScanClusterVulsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.scan_cluster_vuls_with_options(cluster_id, headers, runtime)
@@ -10112,6 +12455,11 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
     ) -> cs20151215_models.ScanClusterVulsResponse:
+        """
+        @summary The cluster ID.
+        
+        @return: ScanClusterVulsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.scan_cluster_vuls_with_options_async(cluster_id, headers, runtime)
@@ -10123,6 +12471,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.StartAlertResponse:
+        """
+        @param request: StartAlertRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartAlertResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.alert_rule_group_name):
@@ -10156,6 +12510,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.StartAlertResponse:
+        """
+        @param request: StartAlertRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartAlertResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.alert_rule_group_name):
@@ -10187,6 +12547,10 @@ class Client(OpenApiClient):
         cluster_id: str,
         request: cs20151215_models.StartAlertRequest,
     ) -> cs20151215_models.StartAlertResponse:
+        """
+        @param request: StartAlertRequest
+        @return: StartAlertResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.start_alert_with_options(cluster_id, request, headers, runtime)
@@ -10196,6 +12560,10 @@ class Client(OpenApiClient):
         cluster_id: str,
         request: cs20151215_models.StartAlertRequest,
     ) -> cs20151215_models.StartAlertResponse:
+        """
+        @param request: StartAlertRequest
+        @return: StartAlertResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.start_alert_with_options_async(cluster_id, request, headers, runtime)
@@ -10206,6 +12574,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.StartWorkflowResponse:
+        """
+        @summary You can call the StartWorkflow operation to create a workflow.
+        
+        @param request: StartWorkflowRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartWorkflowResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.mapping_bam_out_filename):
@@ -10272,6 +12648,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.StartWorkflowResponse:
+        """
+        @summary You can call the StartWorkflow operation to create a workflow.
+        
+        @param request: StartWorkflowRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartWorkflowResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.mapping_bam_out_filename):
@@ -10336,6 +12720,12 @@ class Client(OpenApiClient):
         self,
         request: cs20151215_models.StartWorkflowRequest,
     ) -> cs20151215_models.StartWorkflowResponse:
+        """
+        @summary You can call the StartWorkflow operation to create a workflow.
+        
+        @param request: StartWorkflowRequest
+        @return: StartWorkflowResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.start_workflow_with_options(request, headers, runtime)
@@ -10344,6 +12734,12 @@ class Client(OpenApiClient):
         self,
         request: cs20151215_models.StartWorkflowRequest,
     ) -> cs20151215_models.StartWorkflowResponse:
+        """
+        @summary You can call the StartWorkflow operation to create a workflow.
+        
+        @param request: StartWorkflowRequest
+        @return: StartWorkflowResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.start_workflow_with_options_async(request, headers, runtime)
@@ -10355,6 +12751,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.StopAlertResponse:
+        """
+        @summary You can call the StopAlert operation to disable an alert rule or an alert rule set in the alert center of Container Service for Kubernetes (ACK).
+        
+        @param request: StopAlertRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopAlertResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.alert_rule_group_name):
@@ -10388,6 +12792,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.StopAlertResponse:
+        """
+        @summary You can call the StopAlert operation to disable an alert rule or an alert rule set in the alert center of Container Service for Kubernetes (ACK).
+        
+        @param request: StopAlertRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopAlertResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.alert_rule_group_name):
@@ -10419,6 +12831,12 @@ class Client(OpenApiClient):
         cluster_id: str,
         request: cs20151215_models.StopAlertRequest,
     ) -> cs20151215_models.StopAlertResponse:
+        """
+        @summary You can call the StopAlert operation to disable an alert rule or an alert rule set in the alert center of Container Service for Kubernetes (ACK).
+        
+        @param request: StopAlertRequest
+        @return: StopAlertResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.stop_alert_with_options(cluster_id, request, headers, runtime)
@@ -10428,6 +12846,12 @@ class Client(OpenApiClient):
         cluster_id: str,
         request: cs20151215_models.StopAlertRequest,
     ) -> cs20151215_models.StopAlertResponse:
+        """
+        @summary You can call the StopAlert operation to disable an alert rule or an alert rule set in the alert center of Container Service for Kubernetes (ACK).
+        
+        @param request: StopAlertRequest
+        @return: StopAlertResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.stop_alert_with_options_async(cluster_id, request, headers, runtime)
@@ -10438,6 +12862,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.SyncClusterNodePoolResponse:
+        """
+        @summary Synchronizes the information about a node pool, including the metadata and node information of the node pool.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SyncClusterNodePoolResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -10463,6 +12894,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.SyncClusterNodePoolResponse:
+        """
+        @summary Synchronizes the information about a node pool, including the metadata and node information of the node pool.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SyncClusterNodePoolResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -10486,6 +12924,11 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
     ) -> cs20151215_models.SyncClusterNodePoolResponse:
+        """
+        @summary Synchronizes the information about a node pool, including the metadata and node information of the node pool.
+        
+        @return: SyncClusterNodePoolResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.sync_cluster_node_pool_with_options(cluster_id, headers, runtime)
@@ -10494,6 +12937,11 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
     ) -> cs20151215_models.SyncClusterNodePoolResponse:
+        """
+        @summary Synchronizes the information about a node pool, including the metadata and node information of the node pool.
+        
+        @return: SyncClusterNodePoolResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.sync_cluster_node_pool_with_options_async(cluster_id, headers, runtime)
@@ -10504,6 +12952,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.TagResourcesResponse:
+        """
+        @summary Adds labels to a Container Service for Kubernetes (ACK) cluster. You can use labels to classify and manage ACK clusters in order to meet monitoring, cost analysis, and tenant isolation requirements.
+        
+        @param request: TagResourcesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagResourcesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.region_id):
@@ -10540,6 +12996,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.TagResourcesResponse:
+        """
+        @summary Adds labels to a Container Service for Kubernetes (ACK) cluster. You can use labels to classify and manage ACK clusters in order to meet monitoring, cost analysis, and tenant isolation requirements.
+        
+        @param request: TagResourcesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagResourcesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.region_id):
@@ -10574,6 +13038,12 @@ class Client(OpenApiClient):
         self,
         request: cs20151215_models.TagResourcesRequest,
     ) -> cs20151215_models.TagResourcesResponse:
+        """
+        @summary Adds labels to a Container Service for Kubernetes (ACK) cluster. You can use labels to classify and manage ACK clusters in order to meet monitoring, cost analysis, and tenant isolation requirements.
+        
+        @param request: TagResourcesRequest
+        @return: TagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.tag_resources_with_options(request, headers, runtime)
@@ -10582,6 +13052,12 @@ class Client(OpenApiClient):
         self,
         request: cs20151215_models.TagResourcesRequest,
     ) -> cs20151215_models.TagResourcesResponse:
+        """
+        @summary Adds labels to a Container Service for Kubernetes (ACK) cluster. You can use labels to classify and manage ACK clusters in order to meet monitoring, cost analysis, and tenant isolation requirements.
+        
+        @param request: TagResourcesRequest
+        @return: TagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.tag_resources_with_options_async(request, headers, runtime)
@@ -10593,6 +13069,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.UnInstallClusterAddonsResponse:
+        """
+        @summary You can call the UnInstallClusterAddons operation to uninstall the components in a cluster by component names.
+        
+        @param request: UnInstallClusterAddonsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnInstallClusterAddonsResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -10621,6 +13105,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.UnInstallClusterAddonsResponse:
+        """
+        @summary You can call the UnInstallClusterAddons operation to uninstall the components in a cluster by component names.
+        
+        @param request: UnInstallClusterAddonsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnInstallClusterAddonsResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -10647,6 +13139,12 @@ class Client(OpenApiClient):
         cluster_id: str,
         request: cs20151215_models.UnInstallClusterAddonsRequest,
     ) -> cs20151215_models.UnInstallClusterAddonsResponse:
+        """
+        @summary You can call the UnInstallClusterAddons operation to uninstall the components in a cluster by component names.
+        
+        @param request: UnInstallClusterAddonsRequest
+        @return: UnInstallClusterAddonsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.un_install_cluster_addons_with_options(cluster_id, request, headers, runtime)
@@ -10656,6 +13154,12 @@ class Client(OpenApiClient):
         cluster_id: str,
         request: cs20151215_models.UnInstallClusterAddonsRequest,
     ) -> cs20151215_models.UnInstallClusterAddonsResponse:
+        """
+        @summary You can call the UnInstallClusterAddons operation to uninstall the components in a cluster by component names.
+        
+        @param request: UnInstallClusterAddonsRequest
+        @return: UnInstallClusterAddonsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.un_install_cluster_addons_with_options_async(cluster_id, request, headers, runtime)
@@ -10666,6 +13170,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.UntagResourcesResponse:
+        """
+        @summary Removes labels from a Container Service for Kubernetes (ACK) cluster.
+        
+        @param tmp_req: UntagResourcesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UntagResourcesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = cs20151215_models.UntagResourcesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -10710,6 +13222,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.UntagResourcesResponse:
+        """
+        @summary Removes labels from a Container Service for Kubernetes (ACK) cluster.
+        
+        @param tmp_req: UntagResourcesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UntagResourcesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = cs20151215_models.UntagResourcesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -10752,6 +13272,12 @@ class Client(OpenApiClient):
         self,
         request: cs20151215_models.UntagResourcesRequest,
     ) -> cs20151215_models.UntagResourcesResponse:
+        """
+        @summary Removes labels from a Container Service for Kubernetes (ACK) cluster.
+        
+        @param request: UntagResourcesRequest
+        @return: UntagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.untag_resources_with_options(request, headers, runtime)
@@ -10760,6 +13286,12 @@ class Client(OpenApiClient):
         self,
         request: cs20151215_models.UntagResourcesRequest,
     ) -> cs20151215_models.UntagResourcesResponse:
+        """
+        @summary Removes labels from a Container Service for Kubernetes (ACK) cluster.
+        
+        @param request: UntagResourcesRequest
+        @return: UntagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.untag_resources_with_options_async(request, headers, runtime)
@@ -10770,6 +13302,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.UpdateContactGroupForAlertResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateContactGroupForAlertResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -10795,6 +13332,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.UpdateContactGroupForAlertResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateContactGroupForAlertResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -10818,6 +13360,9 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
     ) -> cs20151215_models.UpdateContactGroupForAlertResponse:
+        """
+        @return: UpdateContactGroupForAlertResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_contact_group_for_alert_with_options(cluster_id, headers, runtime)
@@ -10826,6 +13371,9 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
     ) -> cs20151215_models.UpdateContactGroupForAlertResponse:
+        """
+        @return: UpdateContactGroupForAlertResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_contact_group_for_alert_with_options_async(cluster_id, headers, runtime)
@@ -10837,6 +13385,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.UpdateControlPlaneLogResponse:
+        """
+        @summary You can call the UpdateControlPlaneLog operation to modify the log collection configurations for control plane components in a Container Service for Kubernetes (ACK) managed cluster.
+        
+        @param request: UpdateControlPlaneLogRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateControlPlaneLogResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.aliuid):
@@ -10874,6 +13430,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.UpdateControlPlaneLogResponse:
+        """
+        @summary You can call the UpdateControlPlaneLog operation to modify the log collection configurations for control plane components in a Container Service for Kubernetes (ACK) managed cluster.
+        
+        @param request: UpdateControlPlaneLogRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateControlPlaneLogResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.aliuid):
@@ -10909,6 +13473,12 @@ class Client(OpenApiClient):
         cluster_id: str,
         request: cs20151215_models.UpdateControlPlaneLogRequest,
     ) -> cs20151215_models.UpdateControlPlaneLogResponse:
+        """
+        @summary You can call the UpdateControlPlaneLog operation to modify the log collection configurations for control plane components in a Container Service for Kubernetes (ACK) managed cluster.
+        
+        @param request: UpdateControlPlaneLogRequest
+        @return: UpdateControlPlaneLogResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_control_plane_log_with_options(cluster_id, request, headers, runtime)
@@ -10918,6 +13488,12 @@ class Client(OpenApiClient):
         cluster_id: str,
         request: cs20151215_models.UpdateControlPlaneLogRequest,
     ) -> cs20151215_models.UpdateControlPlaneLogResponse:
+        """
+        @summary You can call the UpdateControlPlaneLog operation to modify the log collection configurations for control plane components in a Container Service for Kubernetes (ACK) managed cluster.
+        
+        @param request: UpdateControlPlaneLogRequest
+        @return: UpdateControlPlaneLogResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_control_plane_log_with_options_async(cluster_id, request, headers, runtime)
@@ -10930,9 +13506,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.UpdateK8sClusterUserConfigExpireResponse:
         """
-        *\
-        ****\
-        *   You can call this operation only with an Alibaba Cloud account. - If the kubeconfig file used by your cluster is revoked, the custom validity period of the kubeconfig file is reset. In this case, you need to call this API operation to reconfigure the validity period of the kubeconfig file.
+        @summary Sets the validity period of a kubeconfig file used by a Resource Access Management (RAM) user or RAM role to connect to a Container Service for Kubernetes (ACK) cluster. The validity period ranges from 1 to 876,000 hours. You can call this API operation when you customize configurations by using an Alibaba Cloud account. The default validity period of a kubeconfig file is three years.
+        
+        @description *\
+        ***\
+        You can call this operation only with an Alibaba Cloud account. - If the kubeconfig file used by your cluster is revoked, the custom validity period of the kubeconfig file is reset. In this case, you need to call this API operation to reconfigure the validity period of the kubeconfig file.
         
         @param request: UpdateK8sClusterUserConfigExpireRequest
         @param headers: map
@@ -10973,9 +13551,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.UpdateK8sClusterUserConfigExpireResponse:
         """
-        *\
-        ****\
-        *   You can call this operation only with an Alibaba Cloud account. - If the kubeconfig file used by your cluster is revoked, the custom validity period of the kubeconfig file is reset. In this case, you need to call this API operation to reconfigure the validity period of the kubeconfig file.
+        @summary Sets the validity period of a kubeconfig file used by a Resource Access Management (RAM) user or RAM role to connect to a Container Service for Kubernetes (ACK) cluster. The validity period ranges from 1 to 876,000 hours. You can call this API operation when you customize configurations by using an Alibaba Cloud account. The default validity period of a kubeconfig file is three years.
+        
+        @description *\
+        ***\
+        You can call this operation only with an Alibaba Cloud account. - If the kubeconfig file used by your cluster is revoked, the custom validity period of the kubeconfig file is reset. In this case, you need to call this API operation to reconfigure the validity period of the kubeconfig file.
         
         @param request: UpdateK8sClusterUserConfigExpireRequest
         @param headers: map
@@ -11014,9 +13594,11 @@ class Client(OpenApiClient):
         request: cs20151215_models.UpdateK8sClusterUserConfigExpireRequest,
     ) -> cs20151215_models.UpdateK8sClusterUserConfigExpireResponse:
         """
-        *\
-        ****\
-        *   You can call this operation only with an Alibaba Cloud account. - If the kubeconfig file used by your cluster is revoked, the custom validity period of the kubeconfig file is reset. In this case, you need to call this API operation to reconfigure the validity period of the kubeconfig file.
+        @summary Sets the validity period of a kubeconfig file used by a Resource Access Management (RAM) user or RAM role to connect to a Container Service for Kubernetes (ACK) cluster. The validity period ranges from 1 to 876,000 hours. You can call this API operation when you customize configurations by using an Alibaba Cloud account. The default validity period of a kubeconfig file is three years.
+        
+        @description *\
+        ***\
+        You can call this operation only with an Alibaba Cloud account. - If the kubeconfig file used by your cluster is revoked, the custom validity period of the kubeconfig file is reset. In this case, you need to call this API operation to reconfigure the validity period of the kubeconfig file.
         
         @param request: UpdateK8sClusterUserConfigExpireRequest
         @return: UpdateK8sClusterUserConfigExpireResponse
@@ -11031,9 +13613,11 @@ class Client(OpenApiClient):
         request: cs20151215_models.UpdateK8sClusterUserConfigExpireRequest,
     ) -> cs20151215_models.UpdateK8sClusterUserConfigExpireResponse:
         """
-        *\
-        ****\
-        *   You can call this operation only with an Alibaba Cloud account. - If the kubeconfig file used by your cluster is revoked, the custom validity period of the kubeconfig file is reset. In this case, you need to call this API operation to reconfigure the validity period of the kubeconfig file.
+        @summary Sets the validity period of a kubeconfig file used by a Resource Access Management (RAM) user or RAM role to connect to a Container Service for Kubernetes (ACK) cluster. The validity period ranges from 1 to 876,000 hours. You can call this API operation when you customize configurations by using an Alibaba Cloud account. The default validity period of a kubeconfig file is three years.
+        
+        @description *\
+        ***\
+        You can call this operation only with an Alibaba Cloud account. - If the kubeconfig file used by your cluster is revoked, the custom validity period of the kubeconfig file is reset. In this case, you need to call this API operation to reconfigure the validity period of the kubeconfig file.
         
         @param request: UpdateK8sClusterUserConfigExpireRequest
         @return: UpdateK8sClusterUserConfigExpireResponse
@@ -11049,6 +13633,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.UpdateTemplateResponse:
+        """
+        @summary You can call the UpdateTemplate operation to update an orchestration template by template ID.
+        
+        @param request: UpdateTemplateRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTemplateResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.description):
@@ -11088,6 +13680,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.UpdateTemplateResponse:
+        """
+        @summary You can call the UpdateTemplate operation to update an orchestration template by template ID.
+        
+        @param request: UpdateTemplateRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTemplateResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.description):
@@ -11125,6 +13725,12 @@ class Client(OpenApiClient):
         template_id: str,
         request: cs20151215_models.UpdateTemplateRequest,
     ) -> cs20151215_models.UpdateTemplateResponse:
+        """
+        @summary You can call the UpdateTemplate operation to update an orchestration template by template ID.
+        
+        @param request: UpdateTemplateRequest
+        @return: UpdateTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_template_with_options(template_id, request, headers, runtime)
@@ -11134,6 +13740,12 @@ class Client(OpenApiClient):
         template_id: str,
         request: cs20151215_models.UpdateTemplateRequest,
     ) -> cs20151215_models.UpdateTemplateResponse:
+        """
+        @summary You can call the UpdateTemplate operation to update an orchestration template by template ID.
+        
+        @param request: UpdateTemplateRequest
+        @return: UpdateTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_template_with_options_async(template_id, request, headers, runtime)
@@ -11145,6 +13757,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.UpdateUserPermissionsResponse:
+        """
+        @summary 更新指定RAM用户/角色的RBAC权限
+        
+        @param request: UpdateUserPermissionsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateUserPermissionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.mode):
@@ -11177,6 +13797,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.UpdateUserPermissionsResponse:
+        """
+        @summary 更新指定RAM用户/角色的RBAC权限
+        
+        @param request: UpdateUserPermissionsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateUserPermissionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.mode):
@@ -11207,6 +13835,12 @@ class Client(OpenApiClient):
         uid: str,
         request: cs20151215_models.UpdateUserPermissionsRequest,
     ) -> cs20151215_models.UpdateUserPermissionsResponse:
+        """
+        @summary 更新指定RAM用户/角色的RBAC权限
+        
+        @param request: UpdateUserPermissionsRequest
+        @return: UpdateUserPermissionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_user_permissions_with_options(uid, request, headers, runtime)
@@ -11216,6 +13850,12 @@ class Client(OpenApiClient):
         uid: str,
         request: cs20151215_models.UpdateUserPermissionsRequest,
     ) -> cs20151215_models.UpdateUserPermissionsResponse:
+        """
+        @summary 更新指定RAM用户/角色的RBAC权限
+        
+        @param request: UpdateUserPermissionsRequest
+        @return: UpdateUserPermissionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_user_permissions_with_options_async(uid, request, headers, runtime)
@@ -11227,6 +13867,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.UpgradeClusterResponse:
+        """
+        @summary You can call the UpgradeCluster operation to upgrade a cluster by cluster ID.
+        
+        @param request: UpgradeClusterRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpgradeClusterResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.component_name):
@@ -11264,6 +13912,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.UpgradeClusterResponse:
+        """
+        @summary You can call the UpgradeCluster operation to upgrade a cluster by cluster ID.
+        
+        @param request: UpgradeClusterRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpgradeClusterResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.component_name):
@@ -11299,6 +13955,12 @@ class Client(OpenApiClient):
         cluster_id: str,
         request: cs20151215_models.UpgradeClusterRequest,
     ) -> cs20151215_models.UpgradeClusterResponse:
+        """
+        @summary You can call the UpgradeCluster operation to upgrade a cluster by cluster ID.
+        
+        @param request: UpgradeClusterRequest
+        @return: UpgradeClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.upgrade_cluster_with_options(cluster_id, request, headers, runtime)
@@ -11308,6 +13970,12 @@ class Client(OpenApiClient):
         cluster_id: str,
         request: cs20151215_models.UpgradeClusterRequest,
     ) -> cs20151215_models.UpgradeClusterResponse:
+        """
+        @summary You can call the UpgradeCluster operation to upgrade a cluster by cluster ID.
+        
+        @param request: UpgradeClusterRequest
+        @return: UpgradeClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.upgrade_cluster_with_options_async(cluster_id, request, headers, runtime)
@@ -11319,6 +13987,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.UpgradeClusterAddonsResponse:
+        """
+        @summary Updates cluster components to use new features and patch vulnerabilities. You must update cluster components one after one and update a component only after the previous one is successfully updated. Before you update a component, we recommend that you read the update notes for each component. Cluster component updates may affect your businesses. Assess the impact, back up data, and perform the update during off-peak hours.
+        
+        @param request: UpgradeClusterAddonsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpgradeClusterAddonsResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -11347,6 +14023,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.UpgradeClusterAddonsResponse:
+        """
+        @summary Updates cluster components to use new features and patch vulnerabilities. You must update cluster components one after one and update a component only after the previous one is successfully updated. Before you update a component, we recommend that you read the update notes for each component. Cluster component updates may affect your businesses. Assess the impact, back up data, and perform the update during off-peak hours.
+        
+        @param request: UpgradeClusterAddonsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpgradeClusterAddonsResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -11373,6 +14057,12 @@ class Client(OpenApiClient):
         cluster_id: str,
         request: cs20151215_models.UpgradeClusterAddonsRequest,
     ) -> cs20151215_models.UpgradeClusterAddonsResponse:
+        """
+        @summary Updates cluster components to use new features and patch vulnerabilities. You must update cluster components one after one and update a component only after the previous one is successfully updated. Before you update a component, we recommend that you read the update notes for each component. Cluster component updates may affect your businesses. Assess the impact, back up data, and perform the update during off-peak hours.
+        
+        @param request: UpgradeClusterAddonsRequest
+        @return: UpgradeClusterAddonsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.upgrade_cluster_addons_with_options(cluster_id, request, headers, runtime)
@@ -11382,6 +14072,12 @@ class Client(OpenApiClient):
         cluster_id: str,
         request: cs20151215_models.UpgradeClusterAddonsRequest,
     ) -> cs20151215_models.UpgradeClusterAddonsResponse:
+        """
+        @summary Updates cluster components to use new features and patch vulnerabilities. You must update cluster components one after one and update a component only after the previous one is successfully updated. Before you update a component, we recommend that you read the update notes for each component. Cluster component updates may affect your businesses. Assess the impact, back up data, and perform the update during off-peak hours.
+        
+        @param request: UpgradeClusterAddonsRequest
+        @return: UpgradeClusterAddonsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.upgrade_cluster_addons_with_options_async(cluster_id, request, headers, runtime)
@@ -11395,7 +14091,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.UpgradeClusterNodepoolResponse:
         """
-        This operation allows you to update the Kubernetes version, OS version, or container runtime version of the nodes in a node pool.
+        @summary You can call the UpgradeClusterNodepool operation to update the Kubernetes version, OS version, or container runtime version of the nodes in a node pool.
+        
+        @description This operation allows you to update the Kubernetes version, OS version, or container runtime version of the nodes in a node pool.
         
         @param request: UpgradeClusterNodepoolRequest
         @param headers: map
@@ -11447,7 +14145,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.UpgradeClusterNodepoolResponse:
         """
-        This operation allows you to update the Kubernetes version, OS version, or container runtime version of the nodes in a node pool.
+        @summary You can call the UpgradeClusterNodepool operation to update the Kubernetes version, OS version, or container runtime version of the nodes in a node pool.
+        
+        @description This operation allows you to update the Kubernetes version, OS version, or container runtime version of the nodes in a node pool.
         
         @param request: UpgradeClusterNodepoolRequest
         @param headers: map
@@ -11497,7 +14197,9 @@ class Client(OpenApiClient):
         request: cs20151215_models.UpgradeClusterNodepoolRequest,
     ) -> cs20151215_models.UpgradeClusterNodepoolResponse:
         """
-        This operation allows you to update the Kubernetes version, OS version, or container runtime version of the nodes in a node pool.
+        @summary You can call the UpgradeClusterNodepool operation to update the Kubernetes version, OS version, or container runtime version of the nodes in a node pool.
+        
+        @description This operation allows you to update the Kubernetes version, OS version, or container runtime version of the nodes in a node pool.
         
         @param request: UpgradeClusterNodepoolRequest
         @return: UpgradeClusterNodepoolResponse
@@ -11513,7 +14215,9 @@ class Client(OpenApiClient):
         request: cs20151215_models.UpgradeClusterNodepoolRequest,
     ) -> cs20151215_models.UpgradeClusterNodepoolResponse:
         """
-        This operation allows you to update the Kubernetes version, OS version, or container runtime version of the nodes in a node pool.
+        @summary You can call the UpgradeClusterNodepool operation to update the Kubernetes version, OS version, or container runtime version of the nodes in a node pool.
+        
+        @description This operation allows you to update the Kubernetes version, OS version, or container runtime version of the nodes in a node pool.
         
         @param request: UpgradeClusterNodepoolRequest
         @return: UpgradeClusterNodepoolResponse

@@ -1,3 +1,6 @@
+2024-05-13 Version: 4.0.8
+- Generated python 2015-12-15 for CS.
+
 2024-05-09 Version: 4.0.7
 - Update API DeleteCluster: add param delete_options.
 

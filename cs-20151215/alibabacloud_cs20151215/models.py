@@ -347,9 +347,12 @@ class NodepoolAutoScaling(TeaModel):
     ):
         self.eip_bandwidth = eip_bandwidth
         self.eip_internet_charge_type = eip_internet_charge_type
+        # This parameter is required.
         self.enable = enable
         self.is_bond_eip = is_bond_eip
+        # This parameter is required.
         self.max_instances = max_instances
+        # This parameter is required.
         self.min_instances = min_instances
         self.type = type
 
@@ -536,7 +539,9 @@ class NodepoolKubernetesConfig(TeaModel):
         self.cpu_policy = cpu_policy
         self.labels = labels
         self.node_name_mode = node_name_mode
+        # This parameter is required.
         self.runtime = runtime
+        # This parameter is required.
         self.runtime_version = runtime_version
         self.taints = taints
         self.user_data = user_data
@@ -854,6 +859,7 @@ class NodepoolNodepoolInfo(TeaModel):
         resource_group_id: str = None,
         type: str = None,
     ):
+        # This parameter is required.
         self.name = name
         self.resource_group_id = resource_group_id
         self.type = type
@@ -1038,7 +1044,9 @@ class NodepoolScalingGroup(TeaModel):
         self.desired_size = desired_size
         self.image_id = image_id
         self.image_type = image_type
+        # This parameter is required.
         self.instance_charge_type = instance_charge_type
+        # This parameter is required.
         self.instance_types = instance_types
         self.internet_charge_type = internet_charge_type
         self.internet_max_bandwidth_out = internet_max_bandwidth_out
@@ -1070,6 +1078,7 @@ class NodepoolScalingGroup(TeaModel):
         self.system_disk_provisioned_iops = system_disk_provisioned_iops
         self.system_disk_size = system_disk_size
         self.tags = tags
+        # This parameter is required.
         self.vswitch_ids = vswitch_ids
 
     def validate(self):
@@ -1286,6 +1295,7 @@ class NodepoolTeeConfig(TeaModel):
         self,
         tee_enable: bool = None,
     ):
+        # This parameter is required.
         self.tee_enable = tee_enable
 
     def validate(self):
@@ -1611,6 +1621,8 @@ class AttachInstancesRequest(TeaModel):
         # *   This parameter is not supported after you specify `nodepool_id`.
         self.image_id = image_id
         # The ECS instances to be added.
+        # 
+        # This parameter is required.
         self.instances = instances
         # Specifies whether the nodes that you want to add are Edge Node Service (ENS) nodes. Valid values:
         # 
@@ -1634,7 +1646,7 @@ class AttachInstancesRequest(TeaModel):
         self.key_pair = key_pair
         # The node pool ID. If you do not set this parameter, the nodes are added to the default node pool.
         self.nodepool_id = nodepool_id
-        # The SSH logon password that is used to log on to the ECS instances. You must set login_password or `key_pair`. The password must be 8 to 30 characters in length, and must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. It cannot contain backslashes (\\) or double quotation marks (").
+        # The SSH logon password that is used to log on to the ECS instances. You must set login_password or `key_pair`. The password must be 8 to 30 characters in length, and must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. It cannot contain backslashes (\\\\) or double quotation marks (").
         # 
         # For security considerations, the password is encrypted during data transfer.
         self.password = password
@@ -1651,7 +1663,7 @@ class AttachInstancesRequest(TeaModel):
         # 
         # >  This parameter is not supported if you specify the `nodepool_id` parameter.
         self.tags = tags
-        # User-defined data. For more information, see [Generate user data](~~49121~~).
+        # User-defined data. For more information, see [Generate user data](https://help.aliyun.com/document_detail/49121.html).
         # 
         # >  This parameter is not supported if you specify the `nodepool_id` parameter.
         self.user_data = user_data
@@ -2177,6 +2189,8 @@ class CancelWorkflowRequest(TeaModel):
         action: str = None,
     ):
         # The operation that you want to perform. Set the value to cancel.
+        # 
+        # This parameter is required.
         self.action = action
 
     def validate(self):
@@ -2243,6 +2257,8 @@ class CheckControlPlaneLogEnableResponseBody(TeaModel):
         # The ID of the Alibaba Cloud account to which the resource belongs.
         self.aliuid = aliuid
         # The control plane components for which log collection is enabled.
+        # 
+        # This parameter is required.
         self.components = components
         # The name of the Simple Log Service project that you want to use to store the logs of control plane components.
         # 
@@ -2503,6 +2519,8 @@ class CreateClusterRequestWorkerDataDisks(TeaModel):
         size: str = None,
     ):
         # The type of a data disk.
+        # 
+        # This parameter is required.
         self.category = category
         # Specifies whether to encrypt the data disk. Valid values:
         # 
@@ -2511,9 +2529,11 @@ class CreateClusterRequestWorkerDataDisks(TeaModel):
         # 
         # Default value: `false`.
         self.encrypted = encrypted
-        # The PL of the data disk. This parameter takes effect only for ESSDs. You can specify a higher PL if you increase the size of a data disk. For more information, see [ESSDs](~~122389~~).
+        # The PL of the data disk. This parameter takes effect only for ESSDs. You can specify a higher PL if you increase the size of a data disk. For more information, see [ESSDs](https://help.aliyun.com/document_detail/122389.html).
         self.performance_level = performance_level
         # The size of the data disk. Valid values: 40 to 32767. Unit: GiB.
+        # 
+        # This parameter is required.
         self.size = size
 
     def validate(self):
@@ -2649,32 +2669,32 @@ class CreateClusterRequest(TeaModel):
         # 
         # **Network plug-in**: required. The Flannel and Terway plug-ins are supported. Select one of the plug-ins for the cluster.
         # 
-        # *   Specify the Flannel plug-in in the following format: \[{"name":"flannel","config":""}].
-        # *   Specify the Flannel plug-in in the following format: \[{"name": "terway-eniip","config": ""}].
+        # *   Specify the Flannel plug-in in the following format: [{"name":"flannel","config":""}].
+        # *   Specify the Flannel plug-in in the following format: [{"name": "terway-eniip","config": ""}].
         # 
         # **Volume plug-in**: optional. Only the `CSI` plug-in is supported.
         # 
-        # Specify the `CSI` plug-in in the following format: \[{"name":"csi-plugin","config": ""},{"name": "csi-provisioner","config": ""}].
+        # Specify the `CSI` plug-in in the following format: [{"name":"csi-plugin","config": ""},{"name": "csi-provisioner","config": ""}].
         # 
         # **Simple Log Service component**: optional. We recommend that you enable Simple Log Service. If Simple Log Service is disabled, you cannot use the cluster auditing feature.
         # 
-        # *   To use an existing `Simple Log Service project`, specify the value in the following format: \[{"name": "logtail-ds","config": "{"IngressDashboardEnabled":"true","sls_project_name":"your_sls_project_name"}"}].
-        # *   To create a `Simple Log Service project`, specify the value in the following format: \[{"name": "logtail-ds","config": "{"IngressDashboardEnabled":"true"}"}].
+        # *   To use an existing `Simple Log Service project`, specify the value in the following format: [{"name": "logtail-ds","config": "{"IngressDashboardEnabled":"true","sls_project_name":"your_sls_project_name"}"}].
+        # *   To create a `Simple Log Service project`, specify the value in the following format: [{"name": "logtail-ds","config": "{"IngressDashboardEnabled":"true"}"}].
         # 
         # **Ingress controller**: optional. By default, the `nginx-ingress-controller` component is installed in ACK dedicated clusters.
         # 
-        # *   To install nginx-ingress-controller and enable Internet access, specify the value in the following format: \[{"name":"nginx-ingress-controller","config":"{"IngressSlbNetworkType":"internet"}"}].
-        # *   To disable the system to automatically install nginx-ingress-controller, specify the value in the following format: \[{"name": "nginx-ingress-controller","config": "","disabled": true}].
+        # *   To install nginx-ingress-controller and enable Internet access, specify the value in the following format: [{"name":"nginx-ingress-controller","config":"{"IngressSlbNetworkType":"internet"}"}].
+        # *   To disable the system to automatically install nginx-ingress-controller, specify the value in the following format: [{"name": "nginx-ingress-controller","config": "","disabled": true}].
         # 
         # **Event center**: optional. By default, the event center feature is enabled.
         # 
-        # You can use Kubernetes event centers to store and query events and configure alerts. You can use the Logstores that are associated with Kubernetes event centers free of charge within 90 days. For more information, see [Create and use a Kubernetes event center](~~150476~~).
+        # You can use Kubernetes event centers to store and query events and configure alerts. You can use the Logstores that are associated with Kubernetes event centers free of charge within 90 days. For more information, see [Create and use a Kubernetes event center](https://help.aliyun.com/document_detail/150476.html).
         # 
-        # To enable the ack-node-problem-detector component, specify the value in the following format: \[{"name":"ack-node-problem-detector","config":"{"sls_project_name":"your_sls_project_name"}"}].
+        # To enable the ack-node-problem-detector component, specify the value in the following format: [{"name":"ack-node-problem-detector","config":"{"sls_project_name":"your_sls_project_name"}"}].
         self.addons = addons
         # Service accounts provide identities for pods when pods communicate with the `API server` of the cluster. `api-audiences` are used by the `API server` to check whether the `tokens` of requests are legitimate.`` Separate multiple `audiences` with commas (,).
         # 
-        # For more information about `ServiceAccount`, see [Enable service account token volume projection](~~160384~~).
+        # For more information about `ServiceAccount`, see [Enable service account token volume projection](https://help.aliyun.com/document_detail/160384.html).
         self.api_audiences = api_audiences
         # The billing method of the cluster. The following resources are billed on a subscription basis:
         # 
@@ -2713,10 +2733,12 @@ class CreateClusterRequest(TeaModel):
         # *   `Kubernetes`: ACK dedicated cluster.
         # *   `ManagedKubernetes`: ACK managed cluster. ACK managed clusters include ACK Basic clusters, ACK Pro clusters, ACK Serverless clusters (Basic and Pro), ACK Edge clusters (Basic and Pro), and ACK Lingjun clusters (Pro).
         # *   `ExternalKubernetes`: registered cluster.
+        # 
+        # This parameter is required.
         self.cluster_type = cluster_type
         # The CIDR block of pods. You can specify 10.0.0.0/8, 172.16-31.0.0/12-16, 192.168.0.0/16, or their subnets as the CIDR block of pods. The pod CIDR block cannot overlap with the CIDR block of the VPC in which the cluster is deployed and the CIDR blocks of existing clusters in the VPC. You cannot modify the pod CIDR block after you create the cluster.
         # 
-        # For more information about subnetting for ACK clusters, see [Plan CIDR blocks for an ACK cluster that is deployed in a VPC](~~86500~~).
+        # For more information about subnetting for ACK clusters, see [Plan CIDR blocks for an ACK cluster that is deployed in a VPC](https://help.aliyun.com/document_detail/86500.html).
         # 
         # >  This parameter is required if the cluster uses Flannel as the network plug-in.
         self.container_cidr = container_cidr
@@ -2753,7 +2775,7 @@ class CreateClusterRequest(TeaModel):
         self.disable_rollback = disable_rollback
         # Specifies whether to enable the RAM Roles for Service Accounts (RRSA) feature.
         self.enable_rrsa = enable_rrsa
-        # The ID of a key that is managed by Key Management Service (KMS). The key is used to encrypt data disks. For more information, see [KMS](~~28935~~).
+        # The ID of a key that is managed by Key Management Service (KMS). The key is used to encrypt data disks. For more information, see [KMS](https://help.aliyun.com/document_detail/28935.html).
         # 
         # >  The key can be used only in ACK Pro clusters.
         self.encryption_provider_key = encryption_provider_key
@@ -2776,7 +2798,7 @@ class CreateClusterRequest(TeaModel):
         # *   If an ECS instance has data disks mounted and the file system of the last data disk is not initialized, the system automatically formats the data disk to ext4. Then, the system mounts the data disk to /var/lib/docker and /var/lib/kubelet.
         # *   If no data disk is mounted to the ECS instance, the system does not purchase a new data disk.
         self.format_disk = format_disk
-        # Specifies a custom image for nodes. By default, the image provided by ACK is used. You can select a custom image to replace the default image. For more information, see [Custom images](~~146647~~).
+        # Specifies a custom image for nodes. By default, the image provided by ACK is used. You can select a custom image to replace the default image. For more information, see [Custom images](https://help.aliyun.com/document_detail/146647.html).
         self.image_id = image_id
         # The type of OS distribution that you want to use. To specify the node OS, we recommend that you use this parameter. Valid values:
         # 
@@ -2818,7 +2840,7 @@ class CreateClusterRequest(TeaModel):
         self.key_pair = key_pair
         # The Kubernetes version of the cluster. The Kubernetes versions supported by ACK are the same as the Kubernetes versions supported by open source Kubernetes. We recommend that you specify the latest Kubernetes version. If you do not configure this parameter, the latest Kubernetes version is used.
         # 
-        # You can create clusters of the latest two Kubernetes versions in the ACK console. If you want to create clusters that run earlier Kubernetes versions, use the API. For more information about the Kubernetes versions supported by ACK, see [Release notes on Kubernetes versions](~~185269~~).
+        # You can create clusters of the latest two Kubernetes versions in the ACK console. If you want to create clusters that run earlier Kubernetes versions, use the API. For more information about the Kubernetes versions supported by ACK, see [Release notes on Kubernetes versions](https://help.aliyun.com/document_detail/185269.html).
         self.kubernetes_version = kubernetes_version
         # The specification of the Server Load Balancer (SLB) instance. Valid values:
         # 
@@ -2859,7 +2881,7 @@ class CreateClusterRequest(TeaModel):
         # 
         # Default value: `PostPaid`.
         self.master_instance_charge_type = master_instance_charge_type
-        # The instance types of master nodes. For more information, see [Overview of instance families](~~25378~~).
+        # The instance types of master nodes. For more information, see [Overview of instance families](https://help.aliyun.com/document_detail/25378.html).
         self.master_instance_types = master_instance_types
         # The subscription duration of master nodes. This parameter takes effect and is required only if `master_instance_charge_type` is set to `PrePaid`.
         # 
@@ -2879,7 +2901,7 @@ class CreateClusterRequest(TeaModel):
         # 
         # Default value: `cloud_ssd`. The default value may vary in different zones.
         self.master_system_disk_category = master_system_disk_category
-        # The performance level (PL) of the system disk that you want to use for master nodes. This parameter takes effect only for ESSDs. For more information about the relationship between disk PLs and disk sizes, see [ESSDs](~~122389~~).
+        # The performance level (PL) of the system disk that you want to use for master nodes. This parameter takes effect only for ESSDs. For more information about the relationship between disk PLs and disk sizes, see [ESSDs](https://help.aliyun.com/document_detail/122389.html).
         self.master_system_disk_performance_level = master_system_disk_performance_level
         # The size of the system disk that is specified for master nodes. Valid values: 40 to 500. Unit: GiB.
         # 
@@ -2894,6 +2916,8 @@ class CreateClusterRequest(TeaModel):
         # The name of the cluster.
         # 
         # The name must be 1 to 63 characters in length, and can contain digits, letters, and hyphens (-). The name cannot start with a hyphen (-).
+        # 
+        # This parameter is required.
         self.name = name
         # Specifies whether to create a NAT gateway and configure SNAT rules when the system creates the ACK Serverless cluster. Valid values:
         # 
@@ -2972,12 +2996,14 @@ class CreateClusterRequest(TeaModel):
         # The list of ApsaraDB RDS instances. Select the ApsaraDB RDS instances that you want to add to the whitelist. We recommend that you add the CIDR block of pods and CIDR block of nodes to the ApsaraDB RDS instances in the ApsaraDB RDS console. When you set the ApsaraDB RDS instances, you cannot scale out the number of nodes because the instances are not in the Running state.
         self.rds_instances = rds_instances
         # The ID of the region in which you want to deploy the cluster.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group to which the cluster belongs. You can use resource groups to isolate clusters.
         self.resource_group_id = resource_group_id
         # The container runtime. The default container runtime is Docker. containerd and Sandboxed-Container are also supported.
         # 
-        # For more information about how to select a proper container runtime, see [How to select between Docker and Sandboxed-Container](~~160313~~).
+        # For more information about how to select a proper container runtime, see [How to select between Docker and Sandboxed-Container](https://help.aliyun.com/document_detail/160313.html).
         self.runtime = runtime
         # The ID of an existing security group. You need to choose between this parameter and the `is_enterprise_security_group` parameter. Cluster nodes are automatically added to the security group.
         self.security_group_id = security_group_id
@@ -2992,11 +3018,13 @@ class CreateClusterRequest(TeaModel):
         self.security_hardening_os = security_hardening_os
         # Service accounts provide identities for pods when pods communicate with the `API server` of the cluster. `service-account-issuer` is the issuer of the `serviceaccount token`, which corresponds to the `iss` field in the `token payload`.
         # 
-        # For more information about `ServiceAccount`, see [Enable service account token volume projection](~~160384~~).
+        # For more information about `ServiceAccount`, see [Enable service account token volume projection](https://help.aliyun.com/document_detail/160384.html).
         self.service_account_issuer = service_account_issuer
         # The CIDR block of Services. Valid values: 10.0.0.0/16-24, 172.16-31.0.0/16-24, and 192.168.0.0/16-24. The CIDR block of Services cannot overlap with the CIDR block of the VPC (10.1.0.0/21) or the CIDR blocks of existing clusters in the VPC. You cannot modify the CIDR block of Services after the cluster is created.
         # 
         # By default, the CIDR block of Services is set to 172.19.0.0/20.
+        # 
+        # This parameter is required.
         self.service_cidr = service_cidr
         # The type of service discovery that is implemented in the `ACK Serverless` cluster.
         # 
@@ -3010,11 +3038,11 @@ class CreateClusterRequest(TeaModel):
         # *   `true`: automatically creates a NAT gateway and configures SNAT rules. Set this parameter to `true` if nodes and applications in the cluster need to access the Internet.
         # *   `false`: does not create a NAT gateway or configure SNAT rules. In this case, nodes and applications in the cluster cannot access the Internet.
         # 
-        # >  If this feature is disabled when you create the cluster, you can manually enable this feature after you create the cluster. For more information, see [Manually create a NAT gateway and configure SNAT rules](~~178480~~).
+        # >  If this feature is disabled when you create the cluster, you can manually enable this feature after you create the cluster. For more information, see [Manually create a NAT gateway and configure SNAT rules](https://help.aliyun.com/document_detail/178480.html).
         # 
         # Default value: `true`.
         self.snat_entry = snat_entry
-        # Specifies whether to enable reinforcement based on Multi-Level Protection Scheme (MLPS). For more information, see [ACK reinforcement based on classified protection](~~196148~~).
+        # Specifies whether to enable reinforcement based on Multi-Level Protection Scheme (MLPS). For more information, see [ACK reinforcement based on classified protection](https://help.aliyun.com/document_detail/196148.html).
         # 
         # Valid values:
         # 
@@ -3048,8 +3076,12 @@ class CreateClusterRequest(TeaModel):
         # The user data of nodes.
         self.user_data = user_data
         # The ID of the virtual private cloud (VPC) in which you want to deploy the cluster. This parameter is required.
+        # 
+        # This parameter is required.
         self.vpcid = vpcid
         # The vSwitches that are specified for nodes in the cluster. This parameter is required when you create an ACK managed cluster that does not contain nodes.
+        # 
+        # This parameter is required.
         self.vswitch_ids = vswitch_ids
         # Specifies whether to enable auto-renewal for worker nodes. This parameter takes effect and is required only if `worker_instance_charge_type` is set to `PrePaid`. Valid values:
         # 
@@ -3083,7 +3115,7 @@ class CreateClusterRequest(TeaModel):
         # 
         # Set the value to `Month`. Worker nodes are billed only on a monthly basis.
         self.worker_period_unit = worker_period_unit
-        # The category of the system disks for worker nodes. For more information, see [Elastic Block Storage devices](~~63136~~).
+        # The category of the system disks for worker nodes. For more information, see [Elastic Block Storage devices](https://help.aliyun.com/document_detail/63136.html).
         # 
         # Valid values:
         # 
@@ -3092,7 +3124,7 @@ class CreateClusterRequest(TeaModel):
         # 
         # Default value: `cloud_ssd`.
         self.worker_system_disk_category = worker_system_disk_category
-        # If the system disk is an ESSD, you can set the PL of the ESSD. For more information, see [ESSDs](~~122389~~).
+        # If the system disk is an ESSD, you can set the PL of the ESSD. For more information, see [ESSDs](https://help.aliyun.com/document_detail/122389.html).
         # 
         # Valid values:
         # 
@@ -4188,6 +4220,8 @@ class CreateClusterNodePoolRequestNodepoolInfo(TeaModel):
         type: str = None,
     ):
         # The name of the node pool.
+        # 
+        # This parameter is required.
         self.name = name
         # The ID of the resource group to which the node pool belongs.
         self.resource_group_id = resource_group_id
@@ -4424,8 +4458,12 @@ class CreateClusterNodePoolRequestScalingGroup(TeaModel):
         # *   `PostPaid`: the pay-as-you-go billing method.
         # 
         # Default value: `PostPaid`.
+        # 
+        # This parameter is required.
         self.instance_charge_type = instance_charge_type
         # The instance type of the nodes in the node pool.
+        # 
+        # This parameter is required.
         self.instance_types = instance_types
         # The metering method of the public IP address. Valid values:
         # 
@@ -4451,7 +4489,7 @@ class CreateClusterNodePoolRequestScalingGroup(TeaModel):
         # 
         #     **Note** `COST_OPTIMIZED` is valid only when multiple instance types are specified or at least one preemptible instance type is specified.
         # 
-        # *   `BALANCE`: ECS instances are evenly distributed across multiple zones specified by the scaling group. If ECS instances become imbalanced among multiple zones due to insufficient inventory, you can call [RebalanceInstances](~~71516~~) of Auto Scaling to balance the instance distribution among zones.
+        # *   `BALANCE`: ECS instances are evenly distributed across multiple zones specified by the scaling group. If ECS instances become imbalanced among multiple zones due to insufficient inventory, you can call [RebalanceInstances](https://help.aliyun.com/document_detail/71516.html) of Auto Scaling to balance the instance distribution among zones.
         # 
         # Default value: `PRIORITY`.
         self.multi_az_policy = multi_az_policy
@@ -4506,14 +4544,14 @@ class CreateClusterNodePoolRequestScalingGroup(TeaModel):
         # *   `SpotWithPriceLimit`: specifies the highest bid.
         # *   `SpotAsPriceGo`: automatically submits bids based on the up-to-date market price.
         # 
-        # For more information, see [Preemptible instances](~~165053~~).
+        # For more information, see [Preemptible instances](https://help.aliyun.com/document_detail/165053.html).
         self.spot_strategy = spot_strategy
         # Specifies whether to enable the burst feature for system disks. Valid values:
         # 
         # *   true: enables the burst feature.
         # *   false: disables the burst feature.
         # 
-        # This parameter is supported only when `SystemDiskCategory` is set to `cloud_auto`. For more information, see [ESSD AutoPL disks](~~368372~~).
+        # This parameter is supported only when `SystemDiskCategory` is set to `cloud_auto`. For more information, see [ESSD AutoPL disks](https://help.aliyun.com/document_detail/368372.html).
         self.system_disk_bursting_enabled = system_disk_bursting_enabled
         self.system_disk_categories = system_disk_categories
         # The type of system disk. Valid values:
@@ -4536,7 +4574,7 @@ class CreateClusterNodePoolRequestScalingGroup(TeaModel):
         self.system_disk_performance_level = system_disk_performance_level
         # The predefined IOPS of a system disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}.
         # 
-        # This parameter is supported only when `SystemDiskCategory` is set to `cloud_auto`. For more information, see [ESSD AutoPL disks](~~368372~~).
+        # This parameter is supported only when `SystemDiskCategory` is set to `cloud_auto`. For more information, see [ESSD AutoPL disks](https://help.aliyun.com/document_detail/368372.html).
         self.system_disk_provisioned_iops = system_disk_provisioned_iops
         # The system disk size of a node. Unit: GiB.
         # 
@@ -4549,6 +4587,8 @@ class CreateClusterNodePoolRequestScalingGroup(TeaModel):
         # The vSwitch IDs. Valid values: 1 to 8.
         # 
         # >  To ensure high availability, we recommend that you select vSwitches that reside in different zones.
+        # 
+        # This parameter is required.
         self.vswitch_ids = vswitch_ids
 
     def validate(self):
@@ -5020,10 +5060,16 @@ class CreateEdgeMachineRequest(TeaModel):
         # The `hostname` of the cloud-native box.
         # 
         # >  After the cloud-native box is activated, the `hostname` is automatically modified. The `hostname` is prefixed with the model and the prefix is followed by a random string.
+        # 
+        # This parameter is required.
         self.hostname = hostname
         # The model of the cloud-native box.
+        # 
+        # This parameter is required.
         self.model = model
         # The serial number of the cloud-native box.
+        # 
+        # This parameter is required.
         self.sn = sn
 
     def validate(self):
@@ -5141,14 +5187,20 @@ class CreateKubernetesTriggerRequest(TeaModel):
         # The action that the trigger performs. Set the value to redeploy.
         # 
         # `redeploy`: redeploys the resources specified by `project_id`.
+        # 
+        # This parameter is required.
         self.action = action
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # The name of the trigger project.
         # 
         # The name consists of the namespace where the application is deployed and the name of the application. The format is `${namespace}/${name}`.
         # 
         # Example: `default/test-app`.
+        # 
+        # This parameter is required.
         self.project_id = project_id
         # The type of trigger. Valid values:
         # 
@@ -5306,10 +5358,14 @@ class CreateTemplateRequest(TeaModel):
         # The name of the orchestration template.
         # 
         # The name must be 1 to 63 characters in length, and can contain digits, letters, and hyphens (-). It cannot start with a hyphen (-).
+        # 
+        # This parameter is required.
         self.name = name
         # The label of the template.
         self.tags = tags
         # The template content in the YAML format.
+        # 
+        # This parameter is required.
         self.template = template
         # The type of template. You can set the parameter to a custom value.
         # 
@@ -5437,14 +5493,20 @@ class CreateTriggerRequest(TeaModel):
         # The action that the trigger performs. Set the value to redeploy.
         # 
         # `redeploy`: redeploys the resources specified by `project_id`.
+        # 
+        # This parameter is required.
         self.action = action
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # The name of the trigger project.
         # 
         # The name consists of the namespace where the application is deployed and the name of the application. The format is `${namespace}/${name}`.
         # 
         # Example: `default/test-app`.
+        # 
+        # This parameter is required.
         self.project_id = project_id
         # The type of trigger. Valid values:
         # 
@@ -6250,6 +6312,8 @@ class DeleteClusterNodesRequest(TeaModel):
         # Default value: `false`.
         self.drain_node = drain_node
         # The list of nodes to be removed. You need to specify the name of the nodes used in the cluster, for example, `cn-hangzhou.192.168.0.70`.
+        # 
+        # This parameter is required.
         self.nodes = nodes
         # Specifies whether to release the Elastic Compute Service (ECS) instances. Valid values:
         # 
@@ -7171,6 +7235,8 @@ class DescribeAddonsRequest(TeaModel):
         # The cluster version.
         self.cluster_version = cluster_version
         # The region ID of the cluster.
+        # 
+        # This parameter is required.
         self.region = region
 
     def validate(self):
@@ -7626,6 +7692,8 @@ class DescribeClusterAddonsUpgradeStatusRequest(TeaModel):
         component_ids: List[str] = None,
     ):
         # The list of component names.
+        # 
+        # This parameter is required.
         self.component_ids = component_ids
 
     def validate(self):
@@ -7654,6 +7722,8 @@ class DescribeClusterAddonsUpgradeStatusShrinkRequest(TeaModel):
         component_ids_shrink: str = None,
     ):
         # The list of component names.
+        # 
+        # This parameter is required.
         self.component_ids_shrink = component_ids_shrink
 
     def validate(self):
@@ -7929,7 +7999,7 @@ class DescribeClusterDetailResponseBody(TeaModel):
         self.cluster_type = cluster_type
         # The time when the cluster was created.
         self.created = created
-        # The current Kubernetes version of the cluster. For more information about the Kubernetes versions supported by ACK, see [Release notes for Kubernetes versions](~~185269~~).
+        # The current Kubernetes version of the cluster. For more information about the Kubernetes versions supported by ACK, see [Release notes for Kubernetes versions](https://help.aliyun.com/document_detail/185269.html).
         self.current_version = current_version
         # Indicates whether deletion protection is enabled for the cluster. If deletion protection is enabled, the cluster cannot be deleted in the Container Service console or by calling API operations. Valid values:
         # 
@@ -7992,7 +8062,7 @@ class DescribeClusterDetailResponseBody(TeaModel):
         # 
         # The pod CIDR block cannot overlap with the CIDR block of the VPC or the CIDR blocks of the clusters in the VPC.
         # 
-        # For more information, see [Plan CIDR blocks for an ACK cluster](~~186964~~).
+        # For more information, see [Plan CIDR blocks for an ACK cluster](https://help.aliyun.com/document_detail/186964.html).
         self.subnet_cidr = subnet_cidr
         # The resource labels of the cluster.
         self.tags = tags
@@ -8790,7 +8860,7 @@ class DescribeClusterNodePoolDetailResponseBodyKubernetesConfig(TeaModel):
         # The taints of the nodes in the node pool. Taints are added to nodes to prevent pods from being scheduled to inappropriate nodes. However, tolerations allow pods to be scheduled to nodes with matching taints. For more information, see [taint-and-toleration](https://kubernetes.io/zh/docs/concepts/scheduling-eviction/taint-and-toleration/).
         self.taints = taints
         self.unschedulable = unschedulable
-        # The user data of the node pool. For more information, see [Generate user data](~~49121~~).
+        # The user data of the node pool. For more information, see [Generate user data](https://help.aliyun.com/document_detail/49121.html).
         self.user_data = user_data
 
     def validate(self):
@@ -9388,7 +9458,7 @@ class DescribeClusterNodePoolDetailResponseBodyScalingGroup(TeaModel):
         # 
         #     **Note**The `COST_OPTIMIZED` setting takes effect only when multiple instance types are specified or at least one instance type is specified for preemptible instances.
         # 
-        # *   `BALANCE`: ECS instances are evenly distributed across multiple zones specified by the scaling group. If ECS instances become imbalanced among multiple zones due to insufficient inventory, you can call the RebalanceInstances operation of Auto Scaling to balance the instance distribution among zones. For more information, see [RebalanceInstances](~~71516~~).
+        # *   `BALANCE`: ECS instances are evenly distributed across multiple zones specified by the scaling group. If ECS instances become imbalanced among multiple zones due to insufficient inventory, you can call the RebalanceInstances operation of Auto Scaling to balance the instance distribution among zones. For more information, see [RebalanceInstances](https://help.aliyun.com/document_detail/71516.html).
         # 
         # Default value: `PRIORITY`.
         self.multi_az_policy = multi_az_policy
@@ -9445,7 +9515,7 @@ class DescribeClusterNodePoolDetailResponseBodyScalingGroup(TeaModel):
         # *   SpotWithPriceLimit: a preemptible instance that is configured with the highest bid price.
         # *   SpotAsPriceGo: a preemptible instance for which the system automatically bids based on the current market price.
         # 
-        # For more information, see [Preemptible instances](~~157759~~).
+        # For more information, see [Preemptible instances](https://help.aliyun.com/document_detail/157759.html).
         self.spot_strategy = spot_strategy
         self.system_disk_bursting_enabled = system_disk_bursting_enabled
         self.system_disk_categories = system_disk_categories
@@ -10201,7 +10271,7 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsKubernetesConfig(TeaModel):
         self.taints = taints
         # Specifies whether the nodes are schedulable after a scale-out activity is performed.
         self.unschedulable = unschedulable
-        # The user data of the node pool. For more information, see [Generate user-defined data](~~49121~~).
+        # The user data of the node pool. For more information, see [Generate user-defined data](https://help.aliyun.com/document_detail/49121.html).
         self.user_data = user_data
 
     def validate(self):
@@ -10832,7 +10902,7 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup(TeaModel):
         # 
         #     **Note** `COST_OPTIMIZED` takes effect only when multiple instance types or preemptible instances are specified in the auto scaling conflagrations.
         # 
-        # *   `BALANCE`: ECS instances are evenly distributed across multiple zones specified by the scaling group. If ECS instances become imbalanced among multiple zones due to insufficient inventory, you can call the `RebalanceInstances` operation of Auto Scaling to balance the instance distribution among zones. For more information, see [RebalanceInstances](~~71516~~).
+        # *   `BALANCE`: ECS instances are evenly distributed across multiple zones specified by the scaling group. If ECS instances become imbalanced among multiple zones due to insufficient inventory, you can call the `RebalanceInstances` operation of Auto Scaling to balance the instance distribution among zones. For more information, see [RebalanceInstances](https://help.aliyun.com/document_detail/71516.html).
         self.multi_az_policy = multi_az_policy
         # The minimum number of pay-as-you-go instances that must be kept in the scaling group. Valid values: 0 to 1000. If the number of pay-as-you-go instances is less than the value of this parameter, Auto Scaling preferably creates pay-as-you-go instances.
         self.on_demand_base_capacity = on_demand_base_capacity
@@ -10899,13 +10969,13 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup(TeaModel):
         # *   SpotWithPriceLimit: a preemptible instance that is configured with the highest bid price.
         # *   SpotAsPriceGo: a preemptible instance for which the system automatically bids based on the current market price.
         # 
-        # For more information, see [Preemptible instances](~~157759~~).
+        # For more information, see [Preemptible instances](https://help.aliyun.com/document_detail/157759.html).
         self.spot_strategy = spot_strategy
         # Specifies whether to enable the burst feature for system disks. Valid values:
         # - `true`: enables the burst feature. 
         # - `false`: disables the burst feature. 
         # 
-        # This parameter is supported only when SystemDiskCategory is set to cloud_auto. For more information, see [ESSD AutoPL disks. ](~~368372~~)
+        # This parameter is supported only when SystemDiskCategory is set to cloud_auto. For more information, see [ESSD AutoPL disks. ](https://help.aliyun.com/document_detail/368372.html)
         self.system_disk_bursting_enabled = system_disk_bursting_enabled
         # The type of system disk. When a high -priority disk type cannot be used, automatically try the next priority disk type creation system disk. Valid values: 
         # - cloud: basic disk
@@ -10929,7 +10999,7 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup(TeaModel):
         # The performance level (PL) of the system disk that you want to use for the node. This parameter takes effect only for enhanced SSDs (ESSDs).
         self.system_disk_performance_level = system_disk_performance_level
         # The predefined IOPS of a system disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS} Baseline IOPS = min{1,800 + 50 × Capacity, 50,000} 
-        # This parameter is supported only when SystemDiskCategory is set to cloud_auto. For more information, see [ESSD AutoPL disks](~~368372~~).
+        # This parameter is supported only when SystemDiskCategory is set to cloud_auto. For more information, see [ESSD AutoPL disks](https://help.aliyun.com/document_detail/368372.html).
         self.system_disk_provisioned_iops = system_disk_provisioned_iops
         # The system disk size of a node. Unit: GiB.
         # 
@@ -12032,7 +12102,7 @@ class DescribeClusterResourcesResponseBody(TeaModel):
         self.created = created
         # The resource ID.
         self.instance_id = instance_id
-        # The information about the resource. For more information about how to query the source information about a resource, see [ListStackResources](~~133836~~).
+        # The information about the resource. For more information about how to query the source information about a resource, see [ListStackResources](https://help.aliyun.com/document_detail/133836.html).
         self.resource_info = resource_info
         # The resource type.
         self.resource_type = resource_type
@@ -12502,7 +12572,7 @@ class DescribeClusterUserKubeconfigResponseBody(TeaModel):
         config: str = None,
         expiration: str = None,
     ):
-        # The kubeconfig file of the cluster. For more information about the content of the kubeconfig file, see [Configure cluster credentials](~~86494~~).
+        # The kubeconfig file of the cluster. For more information about the content of the kubeconfig file, see [Configure cluster credentials](https://help.aliyun.com/document_detail/86494.html).
         self.config = config
         # The validity period of the kubeconfig file. The value is the UTC time displayed in RFC3339 format.
         self.expiration = expiration
@@ -13316,7 +13386,7 @@ class DescribeClustersV1ResponseBodyClusters(TeaModel):
         self.external_loadbalancer_id = external_loadbalancer_id
         # The Kubernetes version of the cluster. The Kubernetes versions supported by ACK are the same as the versions of open source Kubernetes. We recommend that you specify the latest Kubernetes version. If you do not specify this parameter, the latest Kubernetes version is used.
         # 
-        # You can create clusters of the latest two Kubernetes versions in the ACK console. You can call the corresponding ACK API operation to create clusters of other Kubernetes versions. For more information about the Kubernetes versions supported by ACK, see [Release notes for Kubernetes versions](~~185269~~).
+        # You can create clusters of the latest two Kubernetes versions in the ACK console. You can call the corresponding ACK API operation to create clusters of other Kubernetes versions. For more information about the Kubernetes versions supported by ACK, see [Release notes for Kubernetes versions](https://help.aliyun.com/document_detail/185269.html).
         self.init_version = init_version
         # The maintenance window of the cluster. This feature is available only for ACK Pro clusters.
         self.maintenance_window = maintenance_window
@@ -13376,7 +13446,7 @@ class DescribeClustersV1ResponseBodyClusters(TeaModel):
         # 
         # The CIDR block of pods cannot overlap with the CIDR block of the VPC in which the cluster is deployed and the CIDR blocks of existing clusters in the VPC. You cannot modify the pod CIDR block after the cluster is created.
         # 
-        # For more information, see [Plan CIDR blocks for an ACK cluster](~~86500~~).
+        # For more information, see [Plan CIDR blocks for an ACK cluster](https://help.aliyun.com/document_detail/86500.html).
         self.subnet_cidr = subnet_cidr
         # The resource labels of the cluster.
         self.tags = tags
@@ -14767,10 +14837,12 @@ class DescribeKubernetesVersionMetadataRequest(TeaModel):
         # *   `Kubernetes`: ACK dedicated cluster.
         # *   `ManagedKubernetes`: ACK managed cluster. ACK managed clusters include ACK Pro clusters, ACK Basic clusters, ACK Serverless Pro clusters, ACK Serverless Basic clusters, ACK Edge Pro clusters, and ACK Edge Basic clusters.
         # *   `ExternalKubernetes`: registered cluster.
+        # 
+        # This parameter is required.
         self.cluster_type = cluster_type
         # The Kubernetes version of the cluster. The Kubernetes versions supported by ACK are the same as the Kubernetes versions supported by open source Kubernetes. We recommend that you specify the latest Kubernetes version. If you do not set this parameter, the latest Kubernetes version is used.
         # 
-        # You can create ACK clusters of the latest two Kubernetes versions in the ACK console. You can call the specific ACK API operation to create clusters of other Kubernetes versions. For more information about the Kubernetes versions supported by ACK, see [Release notes for Kubernetes versions](~~185269~~).
+        # You can create ACK clusters of the latest two Kubernetes versions in the ACK console. You can call the specific ACK API operation to create clusters of other Kubernetes versions. For more information about the Kubernetes versions supported by ACK, see [Release notes for Kubernetes versions](https://help.aliyun.com/document_detail/185269.html).
         self.kubernetes_version = kubernetes_version
         # The query mode. Valid values:
         # 
@@ -14790,6 +14862,8 @@ class DescribeKubernetesVersionMetadataRequest(TeaModel):
         # Default value: `Default`.
         self.profile = profile
         # The region ID of the cluster.
+        # 
+        # This parameter is required.
         self.region = region
         # The container runtime type that you want to use. You can specify a runtime type to query only OS images that support the runtime type. Valid values:
         # 
@@ -14962,7 +15036,7 @@ class DescribeKubernetesVersionMetadataResponseBody(TeaModel):
         self.meta_data = meta_data
         # Details of the supported container runtimes.
         self.runtimes = runtimes
-        # The Kubernetes version that is supported by ACK. For more information, see [Release notes for Kubernetes versions](~~185269~~).
+        # The Kubernetes version that is supported by ACK. For more information, see [Release notes for Kubernetes versions](https://help.aliyun.com/document_detail/185269.html).
         self.version = version
         # The release date of the Kubernetes version.
         self.release_date = release_date
@@ -16047,7 +16121,7 @@ class DescribePolicyInstancesResponseBody(TeaModel):
         self.policy_severity = policy_severity
         # The applicable scope of the policy instance.
         # 
-        # A value of \* indicates all namespaces in the cluster. This is the default value.
+        # A value of \\* indicates all namespaces in the cluster. This is the default value.
         # 
         # Multiple namespaces are separated by commas (,).
         self.policy_scope = policy_scope
@@ -16169,7 +16243,7 @@ class DescribePolicyInstancesStatusResponseBodyPolicyInstances(TeaModel):
         policy_name: str = None,
         policy_severity: str = None,
     ):
-        # The policy type. For more information about different types of policies and their descriptions, see [Predefined security policies of ACK](~~359819~~).
+        # The policy type. For more information about different types of policies and their descriptions, see [Predefined security policies of ACK](https://help.aliyun.com/document_detail/359819.html).
         self.policy_category = policy_category
         # The description of the policy.
         self.policy_description = policy_description
@@ -16350,7 +16424,9 @@ class DescribeSubaccountK8sClusterUserConfigResponseBody(TeaModel):
         config: str = None,
         expiration: str = None,
     ):
-        # The cluster kubeconfig file. For more information about the content of the kubeconfig file, see [Configure cluster credentials](~~86494~~).
+        # The cluster kubeconfig file. For more information about the content of the kubeconfig file, see [Configure cluster credentials](https://help.aliyun.com/document_detail/86494.html).
+        # 
+        # This parameter is required.
         self.config = config
         # The expiration date of the kubeconfig file. The value is the UTC time displayed in RFC3339 format.
         self.expiration = expiration
@@ -17304,8 +17380,12 @@ class DescribeTriggerRequest(TeaModel):
         action: str = None,
     ):
         # The application name.
+        # 
+        # This parameter is required.
         self.name = name
         # The namespace to which the application belongs.
+        # 
+        # This parameter is required.
         self.namespace = namespace
         # The type of trigger. Valid values:
         # 
@@ -17549,7 +17629,7 @@ class DescribeUserPermissionResponseBody(TeaModel):
         # The type of predefined role. Valid values:
         # 
         # *   `admin`: administrator
-        # *   `ops`: O\&M engineer
+        # *   `ops`: O\\&M engineer
         # *   `dev`: developer
         # *   `restricted`: restricted user
         # *   `custom`: custom role
@@ -17947,6 +18027,8 @@ class EdgeClusterAddEdgeMachineRequest(TeaModel):
         # The timeout period of sessions. Unit: seconds.
         self.expired = expired
         # The node pool ID.
+        # 
+        # This parameter is required.
         self.nodepool_id = nodepool_id
         # The options that you want to configure.
         self.options = options
@@ -18476,8 +18558,12 @@ class GetKubernetesTriggerRequest(TeaModel):
         action: str = None,
     ):
         # The application name.
+        # 
+        # This parameter is required.
         self.name = name
         # The namespace name.
+        # 
+        # This parameter is required.
         self.namespace = namespace
         # The type of trigger. Valid values:
         # 
@@ -18817,6 +18903,8 @@ class GrantPermissionsRequestBody(TeaModel):
         # The ID of the cluster that you want to manage.
         # 
         # *   When the `role_type` parameter is set to `all-clusters`, this parameter is set to an empty string.
+        # 
+        # This parameter is required.
         self.cluster = cluster
         # Specifies whether to perform a custom authorization. To perform a custom authorization, set `role_name` to a custom cluster role.
         self.is_custom = is_custom
@@ -18827,16 +18915,20 @@ class GrantPermissionsRequestBody(TeaModel):
         # The predefined role name. Valid values:
         # 
         # *   `admin`: administrator
-        # *   `ops`: O\&M engineer
+        # *   `ops`: O\\&M engineer
         # *   `dev`: developer
         # *   `restricted`: restricted user
         # *   The custom cluster role.
+        # 
+        # This parameter is required.
         self.role_name = role_name
         # The authorization type. Valid values:
         # 
         # *   `cluster`: indicates that the permissions are scoped to a cluster.
         # *   `namespace`: specifies that the permissions are scoped to a namespace of a cluster.
         # *   `all-clusters`: specifies that the permissions are scoped to all clusters.
+        # 
+        # This parameter is required.
         self.role_type = role_type
 
     def validate(self):
@@ -18958,10 +19050,14 @@ class InstallClusterAddonsRequestBody(TeaModel):
         # The custom component settings that you want to use. The value is a JSON string.
         self.config = config
         # The component name.
+        # 
+        # This parameter is required.
         self.name = name
         # The component version.
         # 
-        # >  You can call the [DescribeClusterAddonsVersion](~~197434~~) operation to query the version of a component.
+        # >  You can call the [DescribeClusterAddonsVersion](https://help.aliyun.com/document_detail/197434.html) operation to query the version of a component.
+        # 
+        # This parameter is required.
         self.version = version
 
     def validate(self):
@@ -19798,10 +19894,16 @@ class ListTagResourcesRequest(TeaModel):
         # The pagination token that is used in the next request to retrieve a new page of results.
         self.next_token = next_token
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The list of cluster IDs.
+        # 
+        # This parameter is required.
         self.resource_ids = resource_ids
         # The resource type. Set the value to `CLUSTER`.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The list of labels that you want to query. You can specify at most 20 labels.
         self.tags = tags
@@ -19862,10 +19964,16 @@ class ListTagResourcesShrinkRequest(TeaModel):
         # The pagination token that is used in the next request to retrieve a new page of results.
         self.next_token = next_token
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The list of cluster IDs.
+        # 
+        # This parameter is required.
         self.resource_ids_shrink = resource_ids_shrink
         # The resource type. Set the value to `CLUSTER`.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The list of labels that you want to query. You can specify at most 20 labels.
         self.tags_shrink = tags_shrink
@@ -19916,7 +20024,7 @@ class ListTagResourcesResponseBodyTagResourcesTagResource(TeaModel):
     ):
         # The ID of the resource.
         self.resource_id = resource_id
-        # The type of the resource. For more information, see [Labels](~~110425~~).
+        # The type of the resource. For more information, see [Labels](https://help.aliyun.com/document_detail/110425.html).
         self.resource_type = resource_type
         # The key of the label.
         self.tag_key = tag_key
@@ -20896,7 +21004,7 @@ class ModifyClusterNodePoolRequestKubernetesConfig(TeaModel):
         # The configurations of node taints.
         self.taints = taints
         self.unschedulable = unschedulable
-        # The user-defined data of the node pool. For more information, see [Prepare user data](~~49121~~).
+        # The user-defined data of the node pool. For more information, see [Prepare user data](https://help.aliyun.com/document_detail/49121.html).
         self.user_data = user_data
 
     def validate(self):
@@ -21448,7 +21556,7 @@ class ModifyClusterNodePoolRequestScalingGroup(TeaModel):
         # 
         #     **Note** `COST_OPTIMIZED` is valid only when multiple instance types are specified or at least one preemptible instance type is specified.
         # 
-        # *   `BALANCE`: ECS instances are evenly distributed across multiple zones specified by the scaling group. If ECS instances become imbalanced among multiple zones due to the insufficient inventory, you can call the `RebalanceInstances` operation of Auto Scaling to balance the instance distribution among zones. For more information, see [RebalanceInstances](~~71516~~).
+        # *   `BALANCE`: ECS instances are evenly distributed across multiple zones specified by the scaling group. If ECS instances become imbalanced among multiple zones due to the insufficient inventory, you can call the `RebalanceInstances` operation of Auto Scaling to balance the instance distribution among zones. For more information, see [RebalanceInstances](https://help.aliyun.com/document_detail/71516.html).
         # 
         # Default value: `PRIORITY`.
         self.multi_az_policy = multi_az_policy
@@ -21497,7 +21605,7 @@ class ModifyClusterNodePoolRequestScalingGroup(TeaModel):
         # *   `SpotWithPriceLimit`: specifies the highest bid for the preemptible instance.
         # *   `SpotAsPriceGo`: automatically submits bids based on the up-to-date market price.
         # 
-        # For more information, see [Preemptible instances](~~157759~~).
+        # For more information, see [Preemptible instances](https://help.aliyun.com/document_detail/157759.html).
         self.spot_strategy = spot_strategy
         # Indicates whether Burst is enabled for the system disk when the disk type is cloud_auto.
         self.system_disk_bursting_enabled = system_disk_bursting_enabled
@@ -21516,7 +21624,7 @@ class ModifyClusterNodePoolRequestScalingGroup(TeaModel):
         self.system_disk_encrypted = system_disk_encrypted
         # The ID of the Key Management Service (KMS) key that is used to encrypt the system disk.
         self.system_disk_kms_key_id = system_disk_kms_key_id
-        # The performance level (PL) of the system disk that you want to use for the node. This parameter takes effect only for enhanced SSDs. You can specify a higher PL if you increase the size of the system disk. For more information, see [ESSDs](~~122389~~).
+        # The performance level (PL) of the system disk that you want to use for the node. This parameter takes effect only for enhanced SSDs. You can specify a higher PL if you increase the size of the system disk. For more information, see [ESSDs](https://help.aliyun.com/document_detail/122389.html).
         self.system_disk_performance_level = system_disk_performance_level
         # The predefined read and write IOPS of the system disk when the disk type is cloud_auto.
         self.system_disk_provisioned_iops = system_disk_provisioned_iops
@@ -22212,7 +22320,7 @@ class ModifyPolicyInstanceRequest(TeaModel):
         self.instance_name = instance_name
         # The namespaces to which the policy is applied. The policy is applied to all namespaces if this parameter is left empty.
         self.namespaces = namespaces
-        # The parameters of the policy instance. For more information, see [Predefined security policies of ACK](~~359819~~).
+        # The parameters of the policy instance. For more information, see [Predefined security policies of ACK](https://help.aliyun.com/document_detail/359819.html).
         self.parameters = parameters
 
     def validate(self):
@@ -22532,6 +22640,8 @@ class RemoveClusterNodesRequest(TeaModel):
         # Specifies whether to evict all pods from the nodes that you want to remove.
         self.drain_node = drain_node
         # The list of nodes to be removed.
+        # 
+        # This parameter is required.
         self.nodes = nodes
         # Specifies whether to release the Elastic Compute Service (ECS) instances when they are removed from the cluster.
         self.release_node = release_node
@@ -23050,6 +23160,8 @@ class RunClusterCheckRequest(TeaModel):
         self.options = options
         self.target = target
         # The check method.
+        # 
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -23688,6 +23800,8 @@ class ScaleOutClusterRequest(TeaModel):
         # Default value: `false`.
         self.cloud_monitor_flags = cloud_monitor_flags
         # The number of worker nodes that you want to add.
+        # 
+        # This parameter is required.
         self.count = count
         # The CPU management policy of the nodes in a node pool. The following policies are supported if the Kubernetes version of the cluster is 1.12.6 or later.
         # 
@@ -23696,11 +23810,15 @@ class ScaleOutClusterRequest(TeaModel):
         # 
         # Default value: `none`.
         self.cpu_policy = cpu_policy
-        # Specifies a custom image for nodes. By default, the image provided by Container Service for Kubernetes (ACK) is used. You can select a custom image to replace the default image. For more information, see [Custom images](~~146647~~).
+        # Specifies a custom image for nodes. By default, the image provided by Container Service for Kubernetes (ACK) is used. You can select a custom image to replace the default image. For more information, see [Custom images](https://help.aliyun.com/document_detail/146647.html).
         self.image_id = image_id
         # The name of the key pair. You must set this parameter or the `login_password` parameter.
+        # 
+        # This parameter is required.
         self.key_pair = key_pair
         # The password for SSH logon. You must set this parameter or the `key_pair` parameter. The password must be 8 to 30 characters in length, and must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
+        # 
+        # This parameter is required.
         self.login_password = login_password
         # After you specify the list of ApsaraDB RDS instances, the ECS instances in the cluster are automatically added to the whitelist of the ApsaraDB RDS instances.
         self.rds_instances = rds_instances
@@ -23713,9 +23831,11 @@ class ScaleOutClusterRequest(TeaModel):
         self.tags = tags
         # The taints that you want to add to nodes. Taints are added to nodes to prevent pods from being scheduled to inappropriate nodes. However, tolerations allow pods to be scheduled to nodes with matching taints. For more information, see [Taints and Tolerations](https://kubernetes.io/zh/docs/concepts/scheduling-eviction/taint-and-toleration/).
         self.taints = taints
-        # The user data of the node pool. For more information, see [Generate user-defined data](~~49121~~).
+        # The user data of the node pool. For more information, see [Generate user-defined data](https://help.aliyun.com/document_detail/49121.html).
         self.user_data = user_data
         # The IDs of the vSwitches. You can select one to three vSwitches when you create a cluster. We recommend that you select vSwitches in different zones to ensure high availability.
+        # 
+        # This parameter is required.
         self.vswitch_ids = vswitch_ids
         # Specifies whether to enable auto-renewal for worker nodes. This parameter takes effect only if `worker_instance_charge_type` is set to `PrePaid`. Valid values:
         # 
@@ -23740,6 +23860,8 @@ class ScaleOutClusterRequest(TeaModel):
         # Default value: `PostPaid`.
         self.worker_instance_charge_type = worker_instance_charge_type
         # The instance configurations of worker nodes.
+        # 
+        # This parameter is required.
         self.worker_instance_types = worker_instance_types
         # The subscription duration of worker nodes. This parameter takes effect and is required only if `worker_instance_charge_type` is set to `PrePaid`.
         # 
@@ -23758,12 +23880,16 @@ class ScaleOutClusterRequest(TeaModel):
         # *   `cloud_essd`: enhanced SSD (ESSD).
         # 
         # Default value: `cloud_ssd`.
+        # 
+        # This parameter is required.
         self.worker_system_disk_category = worker_system_disk_category
         # The size of the system disk that you want to use for worker nodes. Unit: GiB.
         # 
         # Valid values: 40 to 500.
         # 
         # Default value: `120`.
+        # 
+        # This parameter is required.
         self.worker_system_disk_size = worker_system_disk_size
 
     def validate(self):
@@ -24227,6 +24353,8 @@ class StartWorkflowRequest(TeaModel):
         # The output path of the Variant Call Format (VCF) file.
         self.wgs_vcf_out_path = wgs_vcf_out_path
         # The type of workflow. Valid values: wgs and mapping.
+        # 
+        # This parameter is required.
         self.workflow_type = workflow_type
 
     def validate(self):
@@ -24582,16 +24710,24 @@ class TagResourcesRequest(TeaModel):
         tags: List[Tag] = None,
     ):
         # The region ID of the resource.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The list of resource IDs.
+        # 
+        # This parameter is required.
         self.resource_ids = resource_ids
         # The type of resource that you want to label. Set the value to `CLUSTER`.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The labels that you want to add to the resources in key-value pairs. You can add up to 20 labels. Usage notes:
         # 
         # *   Label values must not be empty strings. A label value must be 1 to 128 characters in length.
         # *   The label value must not start with `aliyun` or `acs:`.
         # *   The label value must not contain `http://` or `https://`.
+        # 
+        # This parameter is required.
         self.tags = tags
 
     def validate(self):
@@ -24822,12 +24958,20 @@ class UntagResourcesRequest(TeaModel):
         # *   `false`: Do not remove all custom labels.
         self.all = all
         # The region ID of the resources.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The list of resource IDs.
+        # 
+        # This parameter is required.
         self.resource_ids = resource_ids
         # The type of resource. Set the value to `CLUSTER`.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The list of keys of the labels that you want to remove.
+        # 
+        # This parameter is required.
         self.tag_keys = tag_keys
 
     def validate(self):
@@ -24881,12 +25025,20 @@ class UntagResourcesShrinkRequest(TeaModel):
         # *   `false`: Do not remove all custom labels.
         self.all = all
         # The region ID of the resources.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The list of resource IDs.
+        # 
+        # This parameter is required.
         self.resource_ids_shrink = resource_ids_shrink
         # The type of resource. Set the value to `CLUSTER`.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The list of keys of the labels that you want to remove.
+        # 
+        # This parameter is required.
         self.tag_keys_shrink = tag_keys_shrink
 
     def validate(self):
@@ -25172,8 +25324,12 @@ class UpdateK8sClusterUserConfigExpireRequest(TeaModel):
         # The validity period of the kubeconfig file. Unit: hours.
         # 
         # > The value of expire_hour must be greater than 0 and equal to or smaller than 876000 (100 years).
+        # 
+        # This parameter is required.
         self.expire_hour = expire_hour
         # The user ID.
+        # 
+        # This parameter is required.
         self.user = user
 
     def validate(self):
@@ -25473,7 +25629,7 @@ class UpgradeClusterRequest(TeaModel):
         self.master_only = master_only
         # The Kubernetes version to which the cluster can be updated.
         self.next_version = next_version
-        # The current Kubernetes version of the cluster. For more information, see [Kubernetes versions](~~185269~~).
+        # The current Kubernetes version of the cluster. For more information, see [Kubernetes versions](https://help.aliyun.com/document_detail/185269.html).
         self.version = version
 
     def validate(self):
@@ -25598,10 +25754,14 @@ class UpgradeClusterAddonsRequestBody(TeaModel):
         version: str = None,
     ):
         # The name of the component.
+        # 
+        # This parameter is required.
         self.component_name = component_name
         # The custom component settings that you want to use. The value is a JSON string.
         self.config = config
         # The version to which the component can be updated. You can call the `DescribeClusterAddonsVersion` operation to query the version to which the component can be updated.
+        # 
+        # This parameter is required.
         self.next_version = next_version
         # The update policy. Valid values:
         # 
