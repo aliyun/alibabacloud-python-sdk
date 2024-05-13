@@ -10,7 +10,17 @@ class DescribeBgpPackByIpRequest(TeaModel):
         ddos_region_id: str = None,
         ip: str = None,
     ):
+        # The region ID of the asset to query.
+        # 
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/353250.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.ddos_region_id = ddos_region_id
+        # The IP address of the asset to query.
+        # 
+        # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/354191.html) operation to query the IDs of ECS instances, SLB instances, and EIPs within the current Alibaba Cloud account.
+        # 
+        # This parameter is required.
         self.ip = ip
 
     def validate(self):
@@ -46,10 +56,15 @@ class DescribeBgpPackByIpResponseBodyDdosbgpInfo(TeaModel):
         expire_time: int = None,
         ip: str = None,
     ):
+        # The basic protection threshold of the instance. Unit: Gbit/s.
         self.base_threshold = base_threshold
+        # The ID of the instance.
         self.ddosbgp_instance_id = ddosbgp_instance_id
+        # The burstable protection threshold of the instance. Unit: Gbit/s.
         self.elastic_threshold = elastic_threshold
+        # The expiration time of the instance. The value is a UNIX timestamp. Unit: milliseconds.
         self.expire_time = expire_time
+        # The IP address of the asset.
         self.ip = ip
 
     def validate(self):
@@ -96,9 +111,18 @@ class DescribeBgpPackByIpResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code of the request.
+        # 
+        # For more information about status codes, see [Common parameters](https://help.aliyun.com/document_detail/118841.html).
         self.code = code
+        # The configurations of the instance that is associated with the asset.
         self.ddosbgp_info = ddosbgp_info
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.success = success
 
     def validate(self):
@@ -147,9 +171,6 @@ class DescribeBgpPackByIpResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -188,10 +209,33 @@ class DescribeCapRequest(TeaModel):
         instance_type: str = None,
         internet_ip: str = None,
     ):
+        # The start time of the DDoS attack event. The value is a UNIX timestamp. Unit: milliseconds.
+        # 
+        # > You can call the [DescribeDdosEventList](https://help.aliyun.com/document_detail/354236.html) operation to query the start time of each DDoS attack event that occurred on an asset.
+        # 
+        # This parameter is required.
         self.beg_time = beg_time
+        # The region ID of the asset that is under DDoS attacks. The asset is assigned a public IP address.
+        # 
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/353250.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.ddos_region_id = ddos_region_id
+        # The ID of the asset that is under DDoS attacks.
+        # 
+        # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/354191.html) operation to query the IDs of ECS instances, SLB instances, and EIPs within the current Alibaba Cloud account.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
+        # The type of the asset that is under DDoS attacks. Valid values:
+        # 
+        # *   **ecs**: ECS instance
+        # *   **slb**: SLB instance
+        # *   **eip**: EIP
+        # 
+        # This parameter is required.
         self.instance_type = instance_type
+        # The public IP address of the asset that is under DDoS attacks.
         self.internet_ip = internet_ip
 
     def validate(self):
@@ -235,6 +279,7 @@ class DescribeCapResponseBodyCapUrl(TeaModel):
         self,
         url: str = None,
     ):
+        # The download link to the traffic data.
         self.url = url
 
     def validate(self):
@@ -263,7 +308,9 @@ class DescribeCapResponseBody(TeaModel):
         cap_url: DescribeCapResponseBodyCapUrl = None,
         request_id: str = None,
     ):
+        # The download link to the traffic data that is captured when a DDoS attack event occurs.
         self.cap_url = cap_url
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -304,9 +351,6 @@ class DescribeCapResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -342,7 +386,19 @@ class DescribeDdosCountRequest(TeaModel):
         ddos_region_id: str = None,
         instance_type: str = None,
     ):
+        # The region ID of the asset to query.
+        # 
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/353250.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.ddos_region_id = ddos_region_id
+        # The type of the asset to query. Valid values:
+        # 
+        # *   **ecs**: ECS instance
+        # *   **slb**: SLB instance
+        # *   **eip**: EIP
+        # 
+        # This parameter is required.
         self.instance_type = instance_type
 
     def validate(self):
@@ -376,8 +432,11 @@ class DescribeDdosCountResponseBodyDdosCount(TeaModel):
         defense_count: int = None,
         instacen_count: int = None,
     ):
+        # The number of assets for which blackhole filtering is triggered.
         self.blackhole_count = blackhole_count
+        # The number of assets for which traffic scrubbing is triggered.
         self.defense_count = defense_count
+        # The total number of assets.
         self.instacen_count = instacen_count
 
     def validate(self):
@@ -414,7 +473,9 @@ class DescribeDdosCountResponseBody(TeaModel):
         ddos_count: DescribeDdosCountResponseBodyDdosCount = None,
         request_id: str = None,
     ):
+        # The number of assets that are under DDoS attacks.
         self.ddos_count = ddos_count
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -455,9 +516,6 @@ class DescribeDdosCountResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -492,6 +550,11 @@ class DescribeDdosCreditRequest(TeaModel):
         self,
         ddos_region_id: str = None,
     ):
+        # The ID of the region.
+        # 
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/353250.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.ddos_region_id = ddos_region_id
 
     def validate(self):
@@ -521,8 +584,18 @@ class DescribeDdosCreditResponseBodyDdosCredit(TeaModel):
         score: int = None,
         score_level: str = None,
     ):
+        # The time period after which blackhole filtering is automatically deactivated in the specified region. Unit: minutes.
         self.blackhole_time = blackhole_time
+        # The security credit score. The full score is **1000**.
         self.score = score
+        # The security credit level. Valid values:
+        # 
+        # *   **A**: outstanding
+        # *   **B**: excellent
+        # *   **C**: good
+        # *   **D**: average
+        # *   **E**: poor
+        # *   **F**: poorer
         self.score_level = score_level
 
     def validate(self):
@@ -560,8 +633,14 @@ class DescribeDdosCreditResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The details of the security credit score of the current Alibaba Cloud account in the specified region.
         self.ddos_credit = ddos_credit
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.success = success
 
     def validate(self):
@@ -606,9 +685,6 @@ class DescribeDdosCreditResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -648,11 +724,31 @@ class DescribeDdosEventListRequest(TeaModel):
         internet_ip: str = None,
         page_size: int = None,
     ):
+        # The number of the page to return. Default value: **1**.
         self.current_page = current_page
+        # The region ID of the asset to query.
+        # 
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/353250.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.ddos_region_id = ddos_region_id
+        # The ID of asset to query.
+        # 
+        # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/354191.html) operation to query the IDs of ECS instances, SLB instances, and EIPs within the current Alibaba Cloud account.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
+        # The type of the asset to query. Valid values:
+        # 
+        # *   **ecs**: ECS instance
+        # *   **slb**: SLB instance
+        # *   **eip**: EIP
+        # 
+        # This parameter is required.
         self.instance_type = instance_type
+        # The IP address of the asset to query.
         self.internet_ip = internet_ip
+        # The number of entries to return on each page. Default value: **10**.
         self.page_size = page_size
 
     def validate(self):
@@ -705,11 +801,28 @@ class DescribeDdosEventListResponseBodyDdosEventListDdosEvent(TeaModel):
         start_time: int = None,
         un_blackhole_time: int = None,
     ):
+        # The status of the DDoS attack event. Valid values:
+        # 
+        # *   **mitigating**: indicates that traffic scrubbing is in progress.
+        # *   **blackholed**: indicates that blackhole filtering is triggered for the asset.
+        # *   **normal**: indicates that the DDoS attack event ends.
         self.ddos_status = ddos_status
+        # The type of the DDoS attack event. Valid values:
+        # 
+        # *   **defense**: an attack event that triggers traffic scrubbing
+        # *   **blackhole**: an attack event that triggers blackhole filtering
         self.ddos_type = ddos_type
+        # The time of the last attack. The value is a UNIX timestamp. Unit: milliseconds.
+        # 
+        # > This parameter is returned only when the asset is attacked multiple times within a DDoS attack event.
         self.delay_time = delay_time
+        # The end time of the DDoS attack event. The value is a UNIX timestamp. Unit: milliseconds.
         self.end_time = end_time
+        # The start time of the DDoS attack event. The value is a UNIX timestamp. Unit: milliseconds.
         self.start_time = start_time
+        # The time when blackhole filtering is deactivated. The value is a UNIX timestamp. Unit: milliseconds.
+        # 
+        # > This parameter is returned only when the value of the **DdosType** parameter is **blackhole**.
         self.un_blackhole_time = un_blackhole_time
 
     def validate(self):
@@ -794,8 +907,11 @@ class DescribeDdosEventListResponseBody(TeaModel):
         request_id: str = None,
         total: int = None,
     ):
+        # An array that consists of the details of a DDoS attack event.
         self.ddos_event_list = ddos_event_list
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # The total number of DDoS attack events.
         self.total = total
 
     def validate(self):
@@ -840,9 +956,6 @@ class DescribeDdosEventListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -880,9 +993,30 @@ class DescribeDdosThresholdRequest(TeaModel):
         instance_ids: List[str] = None,
         instance_type: str = None,
     ):
+        # The region ID of the asset.
+        # 
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/353250.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.ddos_region_id = ddos_region_id
+        # The type of the threshold. Valid values:
+        # 
+        # *   **defense**: traffic scrubbing threshold
+        # *   **blackhole**: DDoS mitigation threshold
+        # 
+        # This parameter is required.
         self.ddos_type = ddos_type
+        # The ID of asset N to query.
+        # 
+        # This parameter is required.
         self.instance_ids = instance_ids
+        # The type of the asset. Valid values:
+        # 
+        # *   **ecs**: ECS instance
+        # *   **slb**: SLB instance
+        # *   **eip**: EIP
+        # 
+        # This parameter is required.
         self.instance_type = instance_type
 
     def validate(self):
@@ -930,14 +1064,35 @@ class DescribeDdosThresholdResponseBodyThresholdsThreshold(TeaModel):
         max_pps: int = None,
         pps: int = None,
     ):
+        # If the value of the **DdosType** parameter is **defense**, the Bps parameter indicates the current traffic scrubbing threshold. Unit: Mbit/s.
+        # 
+        # If the value of the **DdosType** parameter is **blackhole**, the Bps parameter indicates the basic protection threshold. Unit: Mbit/s.
         self.bps = bps
+        # The type of the threshold. Valid values:
+        # 
+        # *   **defense**: traffic scrubbing threshold
+        # *   **blackhole**: DDoS mitigation threshold
         self.ddos_type = ddos_type
+        # The burstable protection threshold (the maximum DDoS mitigation threshold). Unit: Mbit/s.
+        # 
+        # > This parameter is returned only when the value of the **DdosType** parameter is **blackhole**.
         self.elastic_bps = elastic_bps
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The IP address of the asset.
         self.internet_ip = internet_ip
+        # Indicates whether the threshold is automatically adjusted. Valid values:
+        # 
+        # *   **true**: The scrubbing thresholds are automatically adjusted based on the traffic load on the asset.
+        # *   **false**: The scrubbing thresholds are not automatically adjusted. You must manually specify the scrubbing thresholds.
         self.is_auto = is_auto
+        # The maximum traffic scrubbing threshold. Unit: Mbit/s.
         self.max_bps = max_bps
+        # The maximum packet scrubbing threshold. Unit: pps.
         self.max_pps = max_pps
+        # The packet scrubbing threshold. Unit: pps.
+        # 
+        # > This parameter is returned only when the value of the **DdosType** parameter is **defense**.
         self.pps = pps
 
     def validate(self):
@@ -1033,7 +1188,9 @@ class DescribeDdosThresholdResponseBody(TeaModel):
         request_id: str = None,
         thresholds: DescribeDdosThresholdResponseBodyThresholds = None,
     ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # An array that consists of the details of the threshold.
         self.thresholds = thresholds
 
     def validate(self):
@@ -1074,9 +1231,6 @@ class DescribeDdosThresholdResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1118,13 +1272,39 @@ class DescribeInstanceRequest(TeaModel):
         instance_type: str = None,
         page_size: int = None,
     ):
+        # The number of the page to return. Default value: **1**.
         self.current_page = current_page
+        # The region ID of the asset.
+        # 
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/353250.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.ddos_region_id = ddos_region_id
+        # The DDoS mitigation status of the asset. Valid values:
+        # 
+        # *   **mitigating**: queries assets for which traffic scrubbing is triggered.
+        # *   **blackholed**: queries assets for which blackhole filtering is triggered.
+        # *   **normal**: queries assets that are not under DDoS attacks.
         self.ddos_status = ddos_status
+        # The ID of the asset. The formats of asset IDs vary based on the value of the **InstanceType**. parameter.
+        # 
+        # *   If you set **InstanceType** to **ecs**, specify the ID of the ECS instance. For example, you can specify i-bp1cb6x80tfgocid\\*\\*\\*\\*.
+        # *   If you set **InstanceType** to **slb**, specify the ID of the SLB instance. For example, you can specify alb-vn2dqg3v31y2vd\\*\\*\\*\\*.
+        # *   If you set **InstanceType** to **eip**, specify the ID of the EIP. For example, you can specify eip-j6ce6dcx9epi7rs46\\*\\*\\*\\*.
         self.instance_id = instance_id
+        # The IP address of the asset.
         self.instance_ip = instance_ip
+        # The name of the asset.
         self.instance_name = instance_name
+        # The type of the asset. Valid values:
+        # 
+        # *   **ecs**: ECS instance
+        # *   **slb**: SLB instance
+        # *   **eip**: EIP
+        # 
+        # This parameter is required.
         self.instance_type = instance_type
+        # The number of entries to return on each page. Default value: **10**.
         self.page_size = page_size
 
     def validate(self):
@@ -1190,16 +1370,41 @@ class DescribeInstanceResponseBodyInstanceListInstance(TeaModel):
         ip_version: str = None,
         is_bgppack: bool = None,
     ):
+        # The basic protection threshold for the asset. Unit: Mbit/s.
         self.blackhole_threshold = blackhole_threshold
+        # The traffic scrubbing threshold for the asset. Unit: Mbit/s.
         self.defense_bps_threshold = defense_bps_threshold
+        # The packet scrubbing threshold for the asset. Unit: packets per second (pps).
         self.defense_pps_threshold = defense_pps_threshold
+        # The burstable protection threshold for the asset. Unit: Mbit/s.
         self.elastic_threshold = elastic_threshold
+        # The ID of the asset.
         self.instance_id = instance_id
+        # The IP address of the asset.
         self.instance_ip = instance_ip
+        # The name of the asset.
         self.instance_name = instance_name
+        # The DDoS mitigation status of the asset. Valid values:
+        # 
+        # *   **mitigating**: indicates that traffic scrubbing is triggered for the asset.
+        # *   **blackholed**: indicates that blackhole filtering is triggered for the asset.
+        # *   **normal**: indicates that the instance is normal.
         self.instance_status = instance_status
+        # The type of the asset. Valid values:
+        # 
+        # *   **ecs**: ECS instance
+        # *   **slb**: SLB instance
+        # *   **eip**: EIP
         self.instance_type = instance_type
+        # The IP protocol that is supported by the asset. Valid values:
+        # 
+        # *   **v4**: IPv4
+        # *   **v6**: IPv6
         self.ip_version = ip_version
+        # Indicates whether the asset is associated with an Anti-DDoS Origin Basic instance. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.is_bgppack = is_bgppack
 
     def validate(self):
@@ -1304,8 +1509,11 @@ class DescribeInstanceResponseBody(TeaModel):
         request_id: str = None,
         total: int = None,
     ):
+        # An array that consists of the details of the asset.
         self.instance_list = instance_list
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of the assets.
         self.total = total
 
     def validate(self):
@@ -1350,9 +1558,6 @@ class DescribeInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1394,13 +1599,34 @@ class DescribeInstanceIpAddressRequest(TeaModel):
         instance_type: str = None,
         page_size: int = None,
     ):
+        # The number of the page to return. Default value: **1**.
         self.current_page = current_page
+        # The region ID of the asset.
+        # 
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/353250.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.ddos_region_id = ddos_region_id
+        # The DDoS mitigation status of the asset. Valid values:
+        # 
+        # *   **defense**: queries assets for which traffic scrubbing is performed.
+        # *   **blackhole**: queries assets for which blackhole filtering is triggered.
         self.ddos_status = ddos_status
+        # The ID of the instance to which the asset is added.
         self.instance_id = instance_id
+        # The IP address of the asset.
         self.instance_ip = instance_ip
+        # The name of the asset.
         self.instance_name = instance_name
+        # The type of the asset. Valid values:
+        # 
+        # *   **ecs**: ECS instance
+        # *   **slb**: SLB instance
+        # *   **eip**: EIP
+        # 
+        # This parameter is required.
         self.instance_type = instance_type
+        # The number of entries to return on each page. Default value: **10**.
         self.page_size = page_size
 
     def validate(self):
@@ -1462,16 +1688,37 @@ class DescribeInstanceIpAddressResponseBodyInstanceListIpAddressConfig(TeaModel)
         ip_status: str = None,
         ip_version: str = None,
         is_bgppack: bool = None,
+        is_full_protection: int = None,
         region_id: str = None,
     ):
+        # The basic protection threshold for the asset. Unit: Mbit/s.
         self.blackhole_threshold = blackhole_threshold
+        # The traffic scrubbing threshold for the asset. Unit: Mbit/s.
         self.defense_bps_threshold = defense_bps_threshold
+        # The packet scrubbing threshold for the asset. Unit: packets per second (pps).
         self.defense_pps_threshold = defense_pps_threshold
+        # The burstable protection threshold for the asset. Unit: Mbit/s.
         self.elastic_threshold = elastic_threshold
+        # The IP address of the asset.
         self.instance_ip = instance_ip
+        # The DDoS mitigation status of the asset. Valid values:
+        # 
+        # *   **defense**: indicates that traffic scrubbing is performed on the asset.
+        # *   **blackhole**: indicates that blackhole filtering is triggered for the asset.
+        # *   **normal**: indicates that no DDoS attacks are launched against the asset.
         self.ip_status = ip_status
+        # The IP protocol that is supported by the asset. Valid values:
+        # 
+        # *   **v4**: IPv4
+        # *   **v6**: IPv6
         self.ip_version = ip_version
+        # Indicates whether the asset is added to the instance. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.is_bgppack = is_bgppack
+        self.is_full_protection = is_full_protection
+        # The region code of the asset.
         self.region_id = region_id
 
     def validate(self):
@@ -1499,6 +1746,8 @@ class DescribeInstanceIpAddressResponseBodyInstanceListIpAddressConfig(TeaModel)
             result['IpVersion'] = self.ip_version
         if self.is_bgppack is not None:
             result['IsBgppack'] = self.is_bgppack
+        if self.is_full_protection is not None:
+            result['IsFullProtection'] = self.is_full_protection
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         return result
@@ -1521,6 +1770,8 @@ class DescribeInstanceIpAddressResponseBodyInstanceListIpAddressConfig(TeaModel)
             self.ip_version = m.get('IpVersion')
         if m.get('IsBgppack') is not None:
             self.is_bgppack = m.get('IsBgppack')
+        if m.get('IsFullProtection') is not None:
+            self.is_full_protection = m.get('IsFullProtection')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         return self
@@ -1535,10 +1786,22 @@ class DescribeInstanceIpAddressResponseBodyInstanceList(TeaModel):
         instance_type: str = None,
         ip_address_config: List[DescribeInstanceIpAddressResponseBodyInstanceListIpAddressConfig] = None,
     ):
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The name of the instance.
         self.instance_name = instance_name
+        # The DDoS mitigation status of the instance. Valid values:
+        # 
+        # *   **normal**: normal
+        # *   **abnormal**: under DDoS attacks
         self.instance_status = instance_status
+        # The type of the asset. Valid values:
+        # 
+        # *   **ecs**: ECS instance
+        # *   **slb**: SLB instance
+        # *   **eip**: EIP
         self.instance_type = instance_type
+        # An array that consists of the details of the asset.
         self.ip_address_config = ip_address_config
 
     def validate(self):
@@ -1592,8 +1855,11 @@ class DescribeInstanceIpAddressResponseBody(TeaModel):
         request_id: str = None,
         total: int = None,
     ):
+        # An array that consists of details of the instance.
         self.instance_list = instance_list
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # The total number of the assets.
         self.total = total
 
     def validate(self):
@@ -1644,9 +1910,6 @@ class DescribeInstanceIpAddressResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1685,10 +1948,36 @@ class DescribeIpDdosThresholdRequest(TeaModel):
         instance_type: str = None,
         internet_ip: str = None,
     ):
+        # The region ID of the asset.
+        # 
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/353250.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.ddos_region_id = ddos_region_id
+        # The type of the threshold. Valid values:
+        # 
+        # *   **defense**: traffic scrubbing threshold
+        # *   **blackhole**: DDoS mitigation threshold
+        # 
+        # This parameter is required.
         self.ddos_type = ddos_type
+        # The ID of the asset.
+        # 
+        # > You can call the [DescribeInstanceIpAddress](https://help.aliyun.com/document_detail/429562.html) operation to query the IDs of ECS instances, SLB instances, and EIPs within the current Alibaba Cloud account.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
+        # The type of the asset. Valid values:
+        # 
+        # *   **ecs**: ECS instance
+        # *   **slb**: SLB instance
+        # *   **eip**: EIP
+        # 
+        # This parameter is required.
         self.instance_type = instance_type
+        # The IP address of the asset.
+        # 
+        # This parameter is required.
         self.internet_ip = internet_ip
 
     def validate(self):
@@ -1740,14 +2029,35 @@ class DescribeIpDdosThresholdResponseBodyThreshold(TeaModel):
         max_pps: int = None,
         pps: int = None,
     ):
+        # If the value of the **DdosType** parameter is **defense**, the Bps parameter indicates the current traffic scrubbing threshold. Unit: Mbit/s.
+        # 
+        # If the value of the **DdosType** parameter is **blackhole**, the Bps parameter indicates the basic protection threshold. Unit: Mbit/s.
         self.bps = bps
+        # The type of the threshold. Valid values:
+        # 
+        # *   **defense**: traffic scrubbing threshold
+        # *   **blackhole**: DDoS mitigation threshold
         self.ddos_type = ddos_type
+        # The burstable protection threshold (the maximum DDoS mitigation threshold). Unit: Mbit/s.
+        # 
+        # > This parameter is returned only when the value of the **DdosType** parameter is **blackhole**.
         self.elastic_bps = elastic_bps
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The IP address of the asset.
         self.internet_ip = internet_ip
+        # Indicates whether the threshold is automatically adjusted. Valid values:
+        # 
+        # *   **true**: The scrubbing thresholds are automatically adjusted based on the traffic load on the asset.
+        # *   **false**: The scrubbing thresholds are not automatically adjusted. You must manually specify the scrubbing thresholds.
         self.is_auto = is_auto
+        # The maximum traffic scrubbing threshold. Unit: Mbit/s.
         self.max_bps = max_bps
+        # The maximum packet scrubbing threshold. Unit: pps.
         self.max_pps = max_pps
+        # The packet scrubbing threshold. Unit: packets per second (pps).
+        # 
+        # > This parameter is returned only when the value of the **DdosType** parameter is **defense**.
         self.pps = pps
 
     def validate(self):
@@ -1808,8 +2118,9 @@ class DescribeIpDdosThresholdResponseBody(TeaModel):
         request_id: str = None,
         threshold: DescribeIpDdosThresholdResponseBodyThreshold = None,
     ):
-        # Id of the request
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # An array that consists of the details of the threshold.
         self.threshold = threshold
 
     def validate(self):
@@ -1850,9 +2161,6 @@ class DescribeIpDdosThresholdResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1887,6 +2195,9 @@ class DescribeIpLocationServiceRequest(TeaModel):
         self,
         internet_ip: str = None,
     ):
+        # The IP address of the asset to query.
+        # 
+        # This parameter is required.
         self.internet_ip = internet_ip
 
     def validate(self):
@@ -1918,10 +2229,19 @@ class DescribeIpLocationServiceResponseBodyInstance(TeaModel):
         internet_ip: str = None,
         region: str = None,
     ):
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The name of the instance.
         self.instance_name = instance_name
+        # The type of the asset. Valid values:
+        # 
+        # *   ecs: ECS instance
+        # *   slb: SLB instance
+        # *   EIP: EIP
         self.instance_type = instance_type
+        # The IP address of the asset.
         self.internet_ip = internet_ip
+        # The region to which the public IP address of the asset belongs.
         self.region = region
 
     def validate(self):
@@ -1966,9 +2286,9 @@ class DescribeIpLocationServiceResponseBody(TeaModel):
         instance: DescribeIpLocationServiceResponseBodyInstance = None,
         request_id: str = None,
     ):
-        # instance model
+        # The details of the asset.
         self.instance = instance
-        # Id of the request
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -2009,9 +2329,6 @@ class DescribeIpLocationServiceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2049,9 +2366,13 @@ class DescribeRegionsResponseBodyRegionsRegion(TeaModel):
         region_no: str = None,
         region_no_alias: str = None,
     ):
+        # The English name of the region.
         self.region_en_name = region_en_name
+        # The Chinese name of the region.
         self.region_name = region_name
+        # The code of the region.
         self.region_no = region_no
+        # The ID of the region.
         self.region_no_alias = region_no_alias
 
     def validate(self):
@@ -2127,7 +2448,9 @@ class DescribeRegionsResponseBody(TeaModel):
         regions: DescribeRegionsResponseBodyRegions = None,
         request_id: str = None,
     ):
+        # An array consisting of regions in which Anti-DDoS Origin Basic is available.
         self.regions = regions
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -2168,9 +2491,6 @@ class DescribeRegionsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2200,122 +2520,6 @@ class DescribeRegionsResponse(TeaModel):
         return self
 
 
-class ModifyDdosStatusRequest(TeaModel):
-    def __init__(
-        self,
-        ddos_region_id: str = None,
-        instance_id: str = None,
-        instance_type: str = None,
-        internet_ip: str = None,
-    ):
-        self.ddos_region_id = ddos_region_id
-        self.instance_id = instance_id
-        self.instance_type = instance_type
-        self.internet_ip = internet_ip
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.ddos_region_id is not None:
-            result['DdosRegionId'] = self.ddos_region_id
-        if self.instance_id is not None:
-            result['InstanceId'] = self.instance_id
-        if self.instance_type is not None:
-            result['InstanceType'] = self.instance_type
-        if self.internet_ip is not None:
-            result['InternetIp'] = self.internet_ip
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('DdosRegionId') is not None:
-            self.ddos_region_id = m.get('DdosRegionId')
-        if m.get('InstanceId') is not None:
-            self.instance_id = m.get('InstanceId')
-        if m.get('InstanceType') is not None:
-            self.instance_type = m.get('InstanceType')
-        if m.get('InternetIp') is not None:
-            self.internet_ip = m.get('InternetIp')
-        return self
-
-
-class ModifyDdosStatusResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-    ):
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class ModifyDdosStatusResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: ModifyDdosStatusResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = ModifyDdosStatusResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class ModifyDefenseThresholdRequest(TeaModel):
     def __init__(
         self,
@@ -2327,12 +2531,48 @@ class ModifyDefenseThresholdRequest(TeaModel):
         is_auto: bool = None,
         pps: int = None,
     ):
+        # Specifies the traffic scrubbing threshold. Unit: Mbit/s. The traffic scrubbing threshold cannot exceed the peak inbound or outbound Internet traffic, whichever is larger, of the asset.
+        # 
+        # You can use the monitoring tool that is provided by the asset to query the Internet traffic of the asset:
+        # 
+        # *   For more information about how to query the Internet traffic of an ECS instance, see [Query monitoring information of an instance](https://help.aliyun.com/document_detail/25482.html).
+        # *   For more information about how to query the number of packets of an SLB instance, see [View monitoring data in the console](https://help.aliyun.com/document_detail/85982.html).
         self.bps = bps
+        # The region ID of the asset for which you want to change the scrubbing thresholds.
+        # 
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/353250.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.ddos_region_id = ddos_region_id
+        # The ID of the asset.
+        # 
+        # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/354191.html) operation to query the IDs of ECS instances, SLB instances, and EIPs within the current Alibaba Cloud account.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
+        # The type of the asset. Valid values:
+        # 
+        # *   **ecs**: ECS instance
+        # *   **slb**: SLB instance
+        # *   **eip**: EIP
+        # 
+        # This parameter is required.
         self.instance_type = instance_type
+        # The IP address of the asset.
         self.internet_ip = internet_ip
+        # Specifies whether to automatically adjust the scrubbing threshold based on the traffic load on the asset. Valid values:
+        # 
+        # *   **true**: automatically adjusts the scrubbing thresholds. You do not need to configure the **Bps** and **Pps** parameters.
+        # *   **false**: The scrubbing threshold is not automatically adjusted. You must configure the **Bps** and **Pps** parameters.
+        # 
+        # Default value: false.
         self.is_auto = is_auto
+        # Specifies the packet scrubbing threshold. Unit: packets per second (pps).
+        # 
+        # The packet scrubbing threshold cannot exceed the peak number of inbound or outbound packets, whichever is larger, of the asset. You can use the monitoring tool that is provided by the asset to query the number of packets of the asset:
+        # 
+        # *   For more information about how to query the number of packets of an ECS instance, see [Query monitoring information of an instance](https://help.aliyun.com/document_detail/25482.html).
+        # *   For more information about how to query the number of packets of an SLB instance, see [View monitoring data in the console](https://help.aliyun.com/document_detail/85982.html).
         self.pps = pps
 
     def validate(self):
@@ -2384,6 +2624,7 @@ class ModifyDefenseThresholdResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -2418,9 +2659,6 @@ class ModifyDefenseThresholdResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2446,6 +2684,174 @@ class ModifyDefenseThresholdResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyDefenseThresholdResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyIpDefenseThresholdRequest(TeaModel):
+    def __init__(
+        self,
+        bps: int = None,
+        ddos_region_id: str = None,
+        instance_id: str = None,
+        instance_type: str = None,
+        internet_ip: str = None,
+        is_auto: bool = None,
+        pps: int = None,
+    ):
+        # Specifies the traffic scrubbing threshold. Unit: Mbit/s. The traffic scrubbing threshold cannot exceed the peak inbound or outbound Internet traffic, whichever is larger, of the asset.
+        # 
+        # You can use the monitoring tool that is provided by the asset to query the Internet traffic of the asset:
+        # 
+        # *   For more information about how to query the Internet traffic of an ECS instance, see [Query monitoring information of an instance](https://help.aliyun.com/document_detail/25482.html).
+        # *   For more information about how to query the number of packets of an SLB instance, see [View monitoring data in the console](https://help.aliyun.com/document_detail/85982.html).
+        self.bps = bps
+        # The region ID of the asset.
+        # 
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/353250.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
+        self.ddos_region_id = ddos_region_id
+        # The ID of the asset.
+        # 
+        # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/354191.html) operation to query the IDs of ECS instances, SLB instances, and EIPs within the current Alibaba Cloud account.
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+        # The type of the asset. Valid values:
+        # 
+        # *   **ecs**: ECS instance
+        # *   **slb**: SLB instance
+        # *   **eip**: EIP
+        # 
+        # This parameter is required.
+        self.instance_type = instance_type
+        # The IP address of the asset.
+        # 
+        # This parameter is required.
+        self.internet_ip = internet_ip
+        # Specifies whether to automatically adjust the scrubbing threshold based on the traffic load on the asset. Valid values:
+        # 
+        # *   **true**: automatically adjusts the scrubbing threshold. You do not need to configure the **Bps** and **Pps** parameters.
+        # *   **false**: The scrubbing threshold is not automatically adjusted. You must configure the **Bps** and **Pps** parameters. This is the default value.
+        self.is_auto = is_auto
+        # Specifies the packet scrubbing threshold. Unit: packets per second (pps).
+        # 
+        # The packet scrubbing threshold cannot exceed the peak number of inbound or outbound packets, whichever is larger, of the asset. You can use the monitoring tool that is provided by the asset to query the number of packets of the asset:
+        # 
+        # *   For more information about how to query the number of packets of an ECS instance, see [Query monitoring information of an instance](https://help.aliyun.com/document_detail/25482.html).
+        # *   For more information about how to query the number of packets of an SLB instance, see [View monitoring data in the console](https://help.aliyun.com/document_detail/85982.html).
+        self.pps = pps
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bps is not None:
+            result['Bps'] = self.bps
+        if self.ddos_region_id is not None:
+            result['DdosRegionId'] = self.ddos_region_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.instance_type is not None:
+            result['InstanceType'] = self.instance_type
+        if self.internet_ip is not None:
+            result['InternetIp'] = self.internet_ip
+        if self.is_auto is not None:
+            result['IsAuto'] = self.is_auto
+        if self.pps is not None:
+            result['Pps'] = self.pps
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Bps') is not None:
+            self.bps = m.get('Bps')
+        if m.get('DdosRegionId') is not None:
+            self.ddos_region_id = m.get('DdosRegionId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
+        if m.get('InternetIp') is not None:
+            self.internet_ip = m.get('InternetIp')
+        if m.get('IsAuto') is not None:
+            self.is_auto = m.get('IsAuto')
+        if m.get('Pps') is not None:
+            self.pps = m.get('Pps')
+        return self
+
+
+class ModifyIpDefenseThresholdResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # The ID of the request, which is used to locate and troubleshoot issues.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyIpDefenseThresholdResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyIpDefenseThresholdResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyIpDefenseThresholdResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
