@@ -1,3 +1,8 @@
+2024-05-14 Version: 1.2.0
+- Support API DescribeRuleGroups.
+- Support API DescribeRules.
+
+
 2022-01-18 Version: 1.1.8
 - Upgrade SDK.
 

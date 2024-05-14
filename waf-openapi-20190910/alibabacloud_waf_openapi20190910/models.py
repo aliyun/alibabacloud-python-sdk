@@ -12,12 +12,19 @@ class CreateCertificateRequest(TeaModel):
         domain: str = None,
         instance_id: str = None,
         private_key: str = None,
+        region_id: str = None,
+        resource_group_id: str = None,
     ):
         self.certificate = certificate
+        # This parameter is required.
         self.certificate_name = certificate_name
         self.domain = domain
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.private_key = private_key
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -38,6 +45,10 @@ class CreateCertificateRequest(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.private_key is not None:
             result['PrivateKey'] = self.private_key
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -52,6 +63,10 @@ class CreateCertificateRequest(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('PrivateKey') is not None:
             self.private_key = m.get('PrivateKey')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -92,14 +107,14 @@ class CreateCertificateResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: CreateCertificateResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -111,6 +126,8 @@ class CreateCertificateResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -119,6 +136,8 @@ class CreateCertificateResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateCertificateResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -131,10 +150,17 @@ class CreateCertificateByCertificateIdRequest(TeaModel):
         certificate_id: int = None,
         domain: str = None,
         instance_id: str = None,
+        region_id: str = None,
+        resource_group_id: str = None,
     ):
+        # This parameter is required.
         self.certificate_id = certificate_id
+        # This parameter is required.
         self.domain = domain
+        # This parameter is required.
         self.instance_id = instance_id
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -151,6 +177,10 @@ class CreateCertificateByCertificateIdRequest(TeaModel):
             result['Domain'] = self.domain
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -161,6 +191,10 @@ class CreateCertificateByCertificateIdRequest(TeaModel):
             self.domain = m.get('Domain')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -201,14 +235,14 @@ class CreateCertificateByCertificateIdResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: CreateCertificateByCertificateIdResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -220,6 +254,8 @@ class CreateCertificateByCertificateIdResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -228,6 +264,8 @@ class CreateCertificateByCertificateIdResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateCertificateByCertificateIdResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -252,10 +290,15 @@ class CreateDomainRequest(TeaModel):
         instance_id: str = None,
         ip_follow_status: int = None,
         is_access_product: int = None,
+        keepalive: bool = None,
+        keepalive_requests: int = None,
+        keepalive_timeout: int = None,
         load_balancing: int = None,
         log_headers: str = None,
         read_time: int = None,
+        region_id: str = None,
         resource_group_id: str = None,
+        retry: bool = None,
         sni_host: str = None,
         sni_status: int = None,
         source_ips: str = None,
@@ -267,19 +310,27 @@ class CreateDomainRequest(TeaModel):
         self.cloud_native_instances = cloud_native_instances
         self.cluster_type = cluster_type
         self.connection_time = connection_time
+        # This parameter is required.
         self.domain = domain
         self.http_2port = http_2port
         self.http_port = http_port
         self.http_to_user_ip = http_to_user_ip
         self.https_port = https_port
         self.https_redirect = https_redirect
+        # This parameter is required.
         self.instance_id = instance_id
         self.ip_follow_status = ip_follow_status
+        # This parameter is required.
         self.is_access_product = is_access_product
+        self.keepalive = keepalive
+        self.keepalive_requests = keepalive_requests
+        self.keepalive_timeout = keepalive_timeout
         self.load_balancing = load_balancing
         self.log_headers = log_headers
         self.read_time = read_time
+        self.region_id = region_id
         self.resource_group_id = resource_group_id
+        self.retry = retry
         self.sni_host = sni_host
         self.sni_status = sni_status
         self.source_ips = source_ips
@@ -324,14 +375,24 @@ class CreateDomainRequest(TeaModel):
             result['IpFollowStatus'] = self.ip_follow_status
         if self.is_access_product is not None:
             result['IsAccessProduct'] = self.is_access_product
+        if self.keepalive is not None:
+            result['Keepalive'] = self.keepalive
+        if self.keepalive_requests is not None:
+            result['KeepaliveRequests'] = self.keepalive_requests
+        if self.keepalive_timeout is not None:
+            result['KeepaliveTimeout'] = self.keepalive_timeout
         if self.load_balancing is not None:
             result['LoadBalancing'] = self.load_balancing
         if self.log_headers is not None:
             result['LogHeaders'] = self.log_headers
         if self.read_time is not None:
             result['ReadTime'] = self.read_time
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
+        if self.retry is not None:
+            result['Retry'] = self.retry
         if self.sni_host is not None:
             result['SniHost'] = self.sni_host
         if self.sni_status is not None:
@@ -374,14 +435,24 @@ class CreateDomainRequest(TeaModel):
             self.ip_follow_status = m.get('IpFollowStatus')
         if m.get('IsAccessProduct') is not None:
             self.is_access_product = m.get('IsAccessProduct')
+        if m.get('Keepalive') is not None:
+            self.keepalive = m.get('Keepalive')
+        if m.get('KeepaliveRequests') is not None:
+            self.keepalive_requests = m.get('KeepaliveRequests')
+        if m.get('KeepaliveTimeout') is not None:
+            self.keepalive_timeout = m.get('KeepaliveTimeout')
         if m.get('LoadBalancing') is not None:
             self.load_balancing = m.get('LoadBalancing')
         if m.get('LogHeaders') is not None:
             self.log_headers = m.get('LogHeaders')
         if m.get('ReadTime') is not None:
             self.read_time = m.get('ReadTime')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('Retry') is not None:
+            self.retry = m.get('Retry')
         if m.get('SniHost') is not None:
             self.sni_host = m.get('SniHost')
         if m.get('SniStatus') is not None:
@@ -430,14 +501,14 @@ class CreateDomainResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: CreateDomainResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -449,6 +520,8 @@ class CreateDomainResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -457,6 +530,8 @@ class CreateDomainResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateDomainResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -469,11 +544,19 @@ class CreateProtectionModuleRuleRequest(TeaModel):
         defense_type: str = None,
         domain: str = None,
         instance_id: str = None,
+        region_id: str = None,
+        resource_group_id: str = None,
         rule: str = None,
     ):
+        # This parameter is required.
         self.defense_type = defense_type
+        # This parameter is required.
         self.domain = domain
+        # This parameter is required.
         self.instance_id = instance_id
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
+        # This parameter is required.
         self.rule = rule
 
     def validate(self):
@@ -491,6 +574,10 @@ class CreateProtectionModuleRuleRequest(TeaModel):
             result['Domain'] = self.domain
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.rule is not None:
             result['Rule'] = self.rule
         return result
@@ -503,6 +590,10 @@ class CreateProtectionModuleRuleRequest(TeaModel):
             self.domain = m.get('Domain')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('Rule') is not None:
             self.rule = m.get('Rule')
         return self
@@ -539,14 +630,14 @@ class CreateProtectionModuleRuleResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: CreateProtectionModuleRuleResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -558,6 +649,8 @@ class CreateProtectionModuleRuleResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -566,6 +659,8 @@ class CreateProtectionModuleRuleResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateProtectionModuleRuleResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -577,9 +672,15 @@ class DeleteDomainRequest(TeaModel):
         self,
         domain: str = None,
         instance_id: str = None,
+        region_id: str = None,
+        resource_group_id: str = None,
     ):
+        # This parameter is required.
         self.domain = domain
+        # This parameter is required.
         self.instance_id = instance_id
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -594,6 +695,10 @@ class DeleteDomainRequest(TeaModel):
             result['Domain'] = self.domain
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -602,6 +707,10 @@ class DeleteDomainRequest(TeaModel):
             self.domain = m.get('Domain')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -636,14 +745,14 @@ class DeleteDomainResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DeleteDomainResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -655,6 +764,8 @@ class DeleteDomainResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -663,6 +774,8 @@ class DeleteDomainResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteDomainResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -673,9 +786,12 @@ class DeleteInstanceRequest(TeaModel):
     def __init__(
         self,
         instance_id: str = None,
+        region_id: str = None,
         resource_group_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        self.region_id = region_id
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -689,6 +805,8 @@ class DeleteInstanceRequest(TeaModel):
         result = dict()
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
         return result
@@ -697,6 +815,8 @@ class DeleteInstanceRequest(TeaModel):
         m = m or dict()
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
         return self
@@ -733,14 +853,14 @@ class DeleteInstanceResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DeleteInstanceResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -752,6 +872,8 @@ class DeleteInstanceResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -760,6 +882,8 @@ class DeleteInstanceResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteInstanceResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -772,11 +896,19 @@ class DeleteProtectionModuleRuleRequest(TeaModel):
         defense_type: str = None,
         domain: str = None,
         instance_id: str = None,
+        region_id: str = None,
+        resource_group_id: str = None,
         rule_id: int = None,
     ):
+        # This parameter is required.
         self.defense_type = defense_type
+        # This parameter is required.
         self.domain = domain
+        # This parameter is required.
         self.instance_id = instance_id
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
+        # This parameter is required.
         self.rule_id = rule_id
 
     def validate(self):
@@ -794,6 +926,10 @@ class DeleteProtectionModuleRuleRequest(TeaModel):
             result['Domain'] = self.domain
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.rule_id is not None:
             result['RuleId'] = self.rule_id
         return result
@@ -806,6 +942,10 @@ class DeleteProtectionModuleRuleRequest(TeaModel):
             self.domain = m.get('Domain')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('RuleId') is not None:
             self.rule_id = m.get('RuleId')
         return self
@@ -842,14 +982,14 @@ class DeleteProtectionModuleRuleResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DeleteProtectionModuleRuleResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -861,6 +1001,8 @@ class DeleteProtectionModuleRuleResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -869,6 +1011,8 @@ class DeleteProtectionModuleRuleResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteProtectionModuleRuleResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -882,11 +1026,19 @@ class DescribeCertMatchStatusRequest(TeaModel):
         domain: str = None,
         instance_id: str = None,
         private_key: str = None,
+        region_id: str = None,
+        resource_group_id: str = None,
     ):
+        # This parameter is required.
         self.certificate = certificate
+        # This parameter is required.
         self.domain = domain
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.private_key = private_key
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -905,6 +1057,10 @@ class DescribeCertMatchStatusRequest(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.private_key is not None:
             result['PrivateKey'] = self.private_key
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -917,6 +1073,10 @@ class DescribeCertMatchStatusRequest(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('PrivateKey') is not None:
             self.private_key = m.get('PrivateKey')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -957,14 +1117,14 @@ class DescribeCertMatchStatusResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeCertMatchStatusResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -976,6 +1136,8 @@ class DescribeCertMatchStatusResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -984,6 +1146,8 @@ class DescribeCertMatchStatusResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeCertMatchStatusResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -995,9 +1159,14 @@ class DescribeCertificatesRequest(TeaModel):
         self,
         domain: str = None,
         instance_id: str = None,
+        region_id: str = None,
+        resource_group_id: str = None,
     ):
         self.domain = domain
+        # This parameter is required.
         self.instance_id = instance_id
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -1012,6 +1181,10 @@ class DescribeCertificatesRequest(TeaModel):
             result['Domain'] = self.domain
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -1020,6 +1193,10 @@ class DescribeCertificatesRequest(TeaModel):
             self.domain = m.get('Domain')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -1029,12 +1206,14 @@ class DescribeCertificatesResponseBodyCertificates(TeaModel):
         certificate_id: int = None,
         certificate_name: str = None,
         common_name: str = None,
+        end_time: int = None,
         is_using: bool = None,
         sans: List[str] = None,
     ):
         self.certificate_id = certificate_id
         self.certificate_name = certificate_name
         self.common_name = common_name
+        self.end_time = end_time
         self.is_using = is_using
         self.sans = sans
 
@@ -1053,6 +1232,8 @@ class DescribeCertificatesResponseBodyCertificates(TeaModel):
             result['CertificateName'] = self.certificate_name
         if self.common_name is not None:
             result['CommonName'] = self.common_name
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
         if self.is_using is not None:
             result['IsUsing'] = self.is_using
         if self.sans is not None:
@@ -1067,6 +1248,8 @@ class DescribeCertificatesResponseBodyCertificates(TeaModel):
             self.certificate_name = m.get('CertificateName')
         if m.get('CommonName') is not None:
             self.common_name = m.get('CommonName')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
         if m.get('IsUsing') is not None:
             self.is_using = m.get('IsUsing')
         if m.get('Sans') is not None:
@@ -1119,14 +1302,14 @@ class DescribeCertificatesResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeCertificatesResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1138,6 +1321,8 @@ class DescribeCertificatesResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1146,6 +1331,8 @@ class DescribeCertificatesResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeCertificatesResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -1157,9 +1344,15 @@ class DescribeDomainRequest(TeaModel):
         self,
         domain: str = None,
         instance_id: str = None,
+        region_id: str = None,
+        resource_group_id: str = None,
     ):
+        # This parameter is required.
         self.domain = domain
+        # This parameter is required.
         self.instance_id = instance_id
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -1174,6 +1367,10 @@ class DescribeDomainRequest(TeaModel):
             result['Domain'] = self.domain
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -1182,13 +1379,17 @@ class DescribeDomainRequest(TeaModel):
             self.domain = m.get('Domain')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
 class DescribeDomainResponseBodyDomainCloudNativeInstancesProtocolPortConfigs(TeaModel):
     def __init__(
         self,
-        ports: str = None,
+        ports: List[int] = None,
         protocol: str = None,
     ):
         self.ports = ports
@@ -1222,7 +1423,7 @@ class DescribeDomainResponseBodyDomainCloudNativeInstances(TeaModel):
     def __init__(
         self,
         cloud_native_product_name: str = None,
-        ipaddress_list: str = None,
+        ipaddress_list: List[str] = None,
         instance_id: str = None,
         protocol_port_configs: List[DescribeDomainResponseBodyDomainCloudNativeInstancesProtocolPortConfigs] = None,
         redirection_type_name: str = None,
@@ -1320,17 +1521,21 @@ class DescribeDomainResponseBodyDomain(TeaModel):
         cluster_type: int = None,
         cname: str = None,
         connection_time: int = None,
-        http_2port: List[str] = None,
-        http_port: List[str] = None,
+        http_2port: List[int] = None,
+        http_port: List[int] = None,
         http_to_user_ip: int = None,
-        https_port: List[str] = None,
+        https_port: List[int] = None,
         https_redirect: int = None,
         ip_follow_status: int = None,
         is_access_product: int = None,
+        keepalive: bool = None,
+        keepalive_requests: int = None,
+        keepalive_timeout: int = None,
         load_balancing: int = None,
         log_headers: List[DescribeDomainResponseBodyDomainLogHeaders] = None,
         read_time: int = None,
         resource_group_id: str = None,
+        retry: bool = None,
         sni_host: str = None,
         sni_status: int = None,
         source_ips: List[str] = None,
@@ -1351,10 +1556,14 @@ class DescribeDomainResponseBodyDomain(TeaModel):
         self.https_redirect = https_redirect
         self.ip_follow_status = ip_follow_status
         self.is_access_product = is_access_product
+        self.keepalive = keepalive
+        self.keepalive_requests = keepalive_requests
+        self.keepalive_timeout = keepalive_timeout
         self.load_balancing = load_balancing
         self.log_headers = log_headers
         self.read_time = read_time
         self.resource_group_id = resource_group_id
+        self.retry = retry
         self.sni_host = sni_host
         self.sni_status = sni_status
         self.source_ips = source_ips
@@ -1407,6 +1616,12 @@ class DescribeDomainResponseBodyDomain(TeaModel):
             result['IpFollowStatus'] = self.ip_follow_status
         if self.is_access_product is not None:
             result['IsAccessProduct'] = self.is_access_product
+        if self.keepalive is not None:
+            result['Keepalive'] = self.keepalive
+        if self.keepalive_requests is not None:
+            result['KeepaliveRequests'] = self.keepalive_requests
+        if self.keepalive_timeout is not None:
+            result['KeepaliveTimeout'] = self.keepalive_timeout
         if self.load_balancing is not None:
             result['LoadBalancing'] = self.load_balancing
         result['LogHeaders'] = []
@@ -1417,6 +1632,8 @@ class DescribeDomainResponseBodyDomain(TeaModel):
             result['ReadTime'] = self.read_time
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
+        if self.retry is not None:
+            result['Retry'] = self.retry
         if self.sni_host is not None:
             result['SniHost'] = self.sni_host
         if self.sni_status is not None:
@@ -1462,6 +1679,12 @@ class DescribeDomainResponseBodyDomain(TeaModel):
             self.ip_follow_status = m.get('IpFollowStatus')
         if m.get('IsAccessProduct') is not None:
             self.is_access_product = m.get('IsAccessProduct')
+        if m.get('Keepalive') is not None:
+            self.keepalive = m.get('Keepalive')
+        if m.get('KeepaliveRequests') is not None:
+            self.keepalive_requests = m.get('KeepaliveRequests')
+        if m.get('KeepaliveTimeout') is not None:
+            self.keepalive_timeout = m.get('KeepaliveTimeout')
         if m.get('LoadBalancing') is not None:
             self.load_balancing = m.get('LoadBalancing')
         self.log_headers = []
@@ -1473,6 +1696,8 @@ class DescribeDomainResponseBodyDomain(TeaModel):
             self.read_time = m.get('ReadTime')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('Retry') is not None:
+            self.retry = m.get('Retry')
         if m.get('SniHost') is not None:
             self.sni_host = m.get('SniHost')
         if m.get('SniStatus') is not None:
@@ -1525,14 +1750,14 @@ class DescribeDomainResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeDomainResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1544,6 +1769,8 @@ class DescribeDomainResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1552,6 +1779,8 @@ class DescribeDomainResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeDomainResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -1563,10 +1792,14 @@ class DescribeDomainAdvanceConfigsRequest(TeaModel):
         self,
         domain_list: str = None,
         instance_id: str = None,
+        region_id: str = None,
         resource_group_id: str = None,
     ):
+        # This parameter is required.
         self.domain_list = domain_list
+        # This parameter is required.
         self.instance_id = instance_id
+        self.region_id = region_id
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -1582,6 +1815,8 @@ class DescribeDomainAdvanceConfigsRequest(TeaModel):
             result['DomainList'] = self.domain_list
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
         return result
@@ -1592,6 +1827,8 @@ class DescribeDomainAdvanceConfigsRequest(TeaModel):
             self.domain_list = m.get('DomainList')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
         return self
@@ -1770,14 +2007,14 @@ class DescribeDomainAdvanceConfigsResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeDomainAdvanceConfigsResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1789,6 +2026,8 @@ class DescribeDomainAdvanceConfigsResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1797,6 +2036,8 @@ class DescribeDomainAdvanceConfigsResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeDomainAdvanceConfigsResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -1812,14 +2053,17 @@ class DescribeDomainBasicConfigsRequest(TeaModel):
         instance_id: str = None,
         page_number: int = None,
         page_size: int = None,
+        region_id: str = None,
         resource_group_id: str = None,
     ):
         self.access_type = access_type
         self.cloud_native_product_id = cloud_native_product_id
         self.domain_key = domain_key
+        # This parameter is required.
         self.instance_id = instance_id
         self.page_number = page_number
         self.page_size = page_size
+        self.region_id = region_id
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -1843,6 +2087,8 @@ class DescribeDomainBasicConfigsRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
         return result
@@ -1861,6 +2107,8 @@ class DescribeDomainBasicConfigsRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
         return self
@@ -1998,14 +2246,14 @@ class DescribeDomainBasicConfigsResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeDomainBasicConfigsResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2017,6 +2265,8 @@ class DescribeDomainBasicConfigsResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -2025,6 +2275,8 @@ class DescribeDomainBasicConfigsResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeDomainBasicConfigsResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -2040,14 +2292,17 @@ class DescribeDomainListRequest(TeaModel):
         is_sub: int = None,
         page_number: int = None,
         page_size: int = None,
+        region_id: str = None,
         resource_group_id: str = None,
     ):
         self.domain_name = domain_name
         self.domain_names = domain_names
+        # This parameter is required.
         self.instance_id = instance_id
         self.is_sub = is_sub
         self.page_number = page_number
         self.page_size = page_size
+        self.region_id = region_id
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -2071,6 +2326,8 @@ class DescribeDomainListRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
         return result
@@ -2089,6 +2346,8 @@ class DescribeDomainListRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
         return self
@@ -2137,14 +2396,14 @@ class DescribeDomainListResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeDomainListResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2156,6 +2415,8 @@ class DescribeDomainListResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -2164,6 +2425,8 @@ class DescribeDomainListResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeDomainListResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -2174,9 +2437,12 @@ class DescribeDomainNamesRequest(TeaModel):
     def __init__(
         self,
         instance_id: str = None,
+        region_id: str = None,
         resource_group_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        self.region_id = region_id
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -2190,6 +2456,8 @@ class DescribeDomainNamesRequest(TeaModel):
         result = dict()
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
         return result
@@ -2198,6 +2466,8 @@ class DescribeDomainNamesRequest(TeaModel):
         m = m or dict()
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
         return self
@@ -2240,14 +2510,14 @@ class DescribeDomainNamesResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeDomainNamesResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2259,6 +2529,8 @@ class DescribeDomainNamesResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -2267,6 +2539,8 @@ class DescribeDomainNamesResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeDomainNamesResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -2278,9 +2552,15 @@ class DescribeDomainRuleGroupRequest(TeaModel):
         self,
         domain: str = None,
         instance_id: str = None,
+        region_id: str = None,
+        resource_group_id: str = None,
     ):
+        # This parameter is required.
         self.domain = domain
+        # This parameter is required.
         self.instance_id = instance_id
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -2295,6 +2575,10 @@ class DescribeDomainRuleGroupRequest(TeaModel):
             result['Domain'] = self.domain
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -2303,6 +2587,10 @@ class DescribeDomainRuleGroupRequest(TeaModel):
             self.domain = m.get('Domain')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -2349,14 +2637,14 @@ class DescribeDomainRuleGroupResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeDomainRuleGroupResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2368,6 +2656,8 @@ class DescribeDomainRuleGroupResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -2376,6 +2666,8 @@ class DescribeDomainRuleGroupResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeDomainRuleGroupResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -2386,9 +2678,11 @@ class DescribeInstanceInfoRequest(TeaModel):
     def __init__(
         self,
         instance_id: str = None,
+        region_id: str = None,
         resource_group_id: str = None,
     ):
         self.instance_id = instance_id
+        self.region_id = region_id
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -2402,6 +2696,8 @@ class DescribeInstanceInfoRequest(TeaModel):
         result = dict()
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
         return result
@@ -2410,6 +2706,8 @@ class DescribeInstanceInfoRequest(TeaModel):
         m = m or dict()
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
         return self
@@ -2535,14 +2833,14 @@ class DescribeInstanceInfoResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeInstanceInfoResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2554,6 +2852,8 @@ class DescribeInstanceInfoResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -2562,6 +2862,8 @@ class DescribeInstanceInfoResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeInstanceInfoResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -2572,9 +2874,11 @@ class DescribeInstanceSpecInfoRequest(TeaModel):
     def __init__(
         self,
         instance_id: str = None,
+        region_id: str = None,
         resource_group_id: str = None,
     ):
         self.instance_id = instance_id
+        self.region_id = region_id
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -2588,6 +2892,8 @@ class DescribeInstanceSpecInfoRequest(TeaModel):
         result = dict()
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
         return result
@@ -2596,6 +2902,8 @@ class DescribeInstanceSpecInfoRequest(TeaModel):
         m = m or dict()
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
         return self
@@ -2697,14 +3005,14 @@ class DescribeInstanceSpecInfoResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeInstanceSpecInfoResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2716,6 +3024,8 @@ class DescribeInstanceSpecInfoResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -2724,6 +3034,8 @@ class DescribeInstanceSpecInfoResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeInstanceSpecInfoResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -2738,13 +3050,16 @@ class DescribeLogServiceStatusRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
         region: str = None,
+        region_id: str = None,
         resource_group_id: str = None,
     ):
         self.domain_names = domain_names
+        # This parameter is required.
         self.instance_id = instance_id
         self.page_number = page_number
         self.page_size = page_size
         self.region = region
+        self.region_id = region_id
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -2766,6 +3081,8 @@ class DescribeLogServiceStatusRequest(TeaModel):
             result['PageSize'] = self.page_size
         if self.region is not None:
             result['Region'] = self.region
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
         return result
@@ -2782,6 +3099,8 @@ class DescribeLogServiceStatusRequest(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('Region') is not None:
             self.region = m.get('Region')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
         return self
@@ -2871,14 +3190,14 @@ class DescribeLogServiceStatusResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeLogServiceStatusResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2890,6 +3209,8 @@ class DescribeLogServiceStatusResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -2898,6 +3219,8 @@ class DescribeLogServiceStatusResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeLogServiceStatusResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -2910,11 +3233,15 @@ class DescribeProtectionModuleCodeConfigRequest(TeaModel):
         code_type: int = None,
         code_value: int = None,
         instance_id: str = None,
+        region_id: str = None,
         resource_group_id: str = None,
     ):
+        # This parameter is required.
         self.code_type = code_type
         self.code_value = code_value
+        # This parameter is required.
         self.instance_id = instance_id
+        self.region_id = region_id
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -2932,6 +3259,8 @@ class DescribeProtectionModuleCodeConfigRequest(TeaModel):
             result['CodeValue'] = self.code_value
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
         return result
@@ -2944,6 +3273,8 @@ class DescribeProtectionModuleCodeConfigRequest(TeaModel):
             self.code_value = m.get('CodeValue')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
         return self
@@ -2986,14 +3317,14 @@ class DescribeProtectionModuleCodeConfigResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeProtectionModuleCodeConfigResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3005,6 +3336,8 @@ class DescribeProtectionModuleCodeConfigResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -3013,8 +3346,138 @@ class DescribeProtectionModuleCodeConfigResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeProtectionModuleCodeConfigResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeProtectionModuleModeRequest(TeaModel):
+    def __init__(
+        self,
+        defense_type: str = None,
+        domain: str = None,
+        instance_id: str = None,
+        region_id: str = None,
+        resource_group_id: str = None,
+    ):
+        # This parameter is required.
+        self.defense_type = defense_type
+        # This parameter is required.
+        self.domain = domain
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.defense_type is not None:
+            result['DefenseType'] = self.defense_type
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DefenseType') is not None:
+            self.defense_type = m.get('DefenseType')
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        return self
+
+
+class DescribeProtectionModuleModeResponseBody(TeaModel):
+    def __init__(
+        self,
+        mode: int = None,
+        request_id: str = None,
+    ):
+        self.mode = mode
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.mode is not None:
+            result['Mode'] = self.mode
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Mode') is not None:
+            self.mode = m.get('Mode')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeProtectionModuleModeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeProtectionModuleModeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeProtectionModuleModeResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -3029,15 +3492,19 @@ class DescribeProtectionModuleRulesRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
         query: str = None,
+        region_id: str = None,
         resource_group_id: str = None,
     ):
+        # This parameter is required.
         self.defense_type = defense_type
         self.domain = domain
+        # This parameter is required.
         self.instance_id = instance_id
         self.lang = lang
         self.page_number = page_number
         self.page_size = page_size
         self.query = query
+        self.region_id = region_id
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -3063,6 +3530,8 @@ class DescribeProtectionModuleRulesRequest(TeaModel):
             result['PageSize'] = self.page_size
         if self.query is not None:
             result['Query'] = self.query
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
         return result
@@ -3083,6 +3552,8 @@ class DescribeProtectionModuleRulesRequest(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('Query') is not None:
             self.query = m.get('Query')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
         return self
@@ -3190,14 +3661,14 @@ class DescribeProtectionModuleRulesResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeProtectionModuleRulesResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3209,6 +3680,8 @@ class DescribeProtectionModuleRulesResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -3217,6 +3690,8 @@ class DescribeProtectionModuleRulesResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeProtectionModuleRulesResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -3229,10 +3704,17 @@ class DescribeProtectionModuleStatusRequest(TeaModel):
         defense_type: str = None,
         domain: str = None,
         instance_id: str = None,
+        region_id: str = None,
+        resource_group_id: str = None,
     ):
+        # This parameter is required.
         self.defense_type = defense_type
+        # This parameter is required.
         self.domain = domain
+        # This parameter is required.
         self.instance_id = instance_id
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -3249,6 +3731,10 @@ class DescribeProtectionModuleStatusRequest(TeaModel):
             result['Domain'] = self.domain
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -3259,6 +3745,10 @@ class DescribeProtectionModuleStatusRequest(TeaModel):
             self.domain = m.get('Domain')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -3299,14 +3789,14 @@ class DescribeProtectionModuleStatusResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeProtectionModuleStatusResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3318,6 +3808,8 @@ class DescribeProtectionModuleStatusResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -3326,8 +3818,574 @@ class DescribeProtectionModuleStatusResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeProtectionModuleStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeRuleGroupsRequest(TeaModel):
+    def __init__(
+        self,
+        current_page: int = None,
+        instance_id: str = None,
+        lang: str = None,
+        page_size: int = None,
+        policy_id: int = None,
+        region: str = None,
+        region_id: str = None,
+        resource_group_id: str = None,
+        source_ip: str = None,
+        type: int = None,
+        waf_lang: str = None,
+    ):
+        self.current_page = current_page
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.lang = lang
+        self.page_size = page_size
+        self.policy_id = policy_id
+        self.region = region
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
+        self.source_ip = source_ip
+        self.type = type
+        self.waf_lang = waf_lang
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.policy_id is not None:
+            result['PolicyId'] = self.policy_id
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.source_ip is not None:
+            result['SourceIp'] = self.source_ip
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.waf_lang is not None:
+            result['WafLang'] = self.waf_lang
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('PolicyId') is not None:
+            self.policy_id = m.get('PolicyId')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('SourceIp') is not None:
+            self.source_ip = m.get('SourceIp')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('WafLang') is not None:
+            self.waf_lang = m.get('WafLang')
+        return self
+
+
+class DescribeRuleGroupsResponseBodyRuleGroups(TeaModel):
+    def __init__(
+        self,
+        desc: str = None,
+        domain_list: List[str] = None,
+        name: str = None,
+        policy_id: int = None,
+        rule_cnt: int = None,
+        rule_group_template_name: str = None,
+        rule_group_update_time: int = None,
+        template_policy_id: int = None,
+        type: int = None,
+        waf_version: int = None,
+    ):
+        self.desc = desc
+        self.domain_list = domain_list
+        self.name = name
+        self.policy_id = policy_id
+        self.rule_cnt = rule_cnt
+        self.rule_group_template_name = rule_group_template_name
+        self.rule_group_update_time = rule_group_update_time
+        self.template_policy_id = template_policy_id
+        self.type = type
+        self.waf_version = waf_version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.desc is not None:
+            result['Desc'] = self.desc
+        if self.domain_list is not None:
+            result['DomainList'] = self.domain_list
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.policy_id is not None:
+            result['PolicyId'] = self.policy_id
+        if self.rule_cnt is not None:
+            result['RuleCnt'] = self.rule_cnt
+        if self.rule_group_template_name is not None:
+            result['RuleGroupTemplateName'] = self.rule_group_template_name
+        if self.rule_group_update_time is not None:
+            result['RuleGroupUpdateTime'] = self.rule_group_update_time
+        if self.template_policy_id is not None:
+            result['TemplatePolicyId'] = self.template_policy_id
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.waf_version is not None:
+            result['WafVersion'] = self.waf_version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Desc') is not None:
+            self.desc = m.get('Desc')
+        if m.get('DomainList') is not None:
+            self.domain_list = m.get('DomainList')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('PolicyId') is not None:
+            self.policy_id = m.get('PolicyId')
+        if m.get('RuleCnt') is not None:
+            self.rule_cnt = m.get('RuleCnt')
+        if m.get('RuleGroupTemplateName') is not None:
+            self.rule_group_template_name = m.get('RuleGroupTemplateName')
+        if m.get('RuleGroupUpdateTime') is not None:
+            self.rule_group_update_time = m.get('RuleGroupUpdateTime')
+        if m.get('TemplatePolicyId') is not None:
+            self.template_policy_id = m.get('TemplatePolicyId')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('WafVersion') is not None:
+            self.waf_version = m.get('WafVersion')
+        return self
+
+
+class DescribeRuleGroupsResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        rule_groups: List[DescribeRuleGroupsResponseBodyRuleGroups] = None,
+        task_status: int = None,
+        total: int = None,
+        waf_task_id: str = None,
+    ):
+        self.request_id = request_id
+        self.rule_groups = rule_groups
+        self.task_status = task_status
+        self.total = total
+        self.waf_task_id = waf_task_id
+
+    def validate(self):
+        if self.rule_groups:
+            for k in self.rule_groups:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['RuleGroups'] = []
+        if self.rule_groups is not None:
+            for k in self.rule_groups:
+                result['RuleGroups'].append(k.to_map() if k else None)
+        if self.task_status is not None:
+            result['TaskStatus'] = self.task_status
+        if self.total is not None:
+            result['Total'] = self.total
+        if self.waf_task_id is not None:
+            result['WafTaskId'] = self.waf_task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.rule_groups = []
+        if m.get('RuleGroups') is not None:
+            for k in m.get('RuleGroups'):
+                temp_model = DescribeRuleGroupsResponseBodyRuleGroups()
+                self.rule_groups.append(temp_model.from_map(k))
+        if m.get('TaskStatus') is not None:
+            self.task_status = m.get('TaskStatus')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        if m.get('WafTaskId') is not None:
+            self.waf_task_id = m.get('WafTaskId')
+        return self
+
+
+class DescribeRuleGroupsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeRuleGroupsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeRuleGroupsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeRulesRequest(TeaModel):
+    def __init__(
+        self,
+        application_type: int = None,
+        cve_id_key: str = None,
+        instance_id: str = None,
+        lang: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        protection_type: int = None,
+        region: str = None,
+        region_id: str = None,
+        resource_group_id: str = None,
+        risk_level: int = None,
+        rule_group_id: int = None,
+        rule_id_key: str = None,
+        source_ip: str = None,
+    ):
+        self.application_type = application_type
+        # CVE ID
+        self.cve_id_key = cve_id_key
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.lang = lang
+        self.page_number = page_number
+        self.page_size = page_size
+        self.protection_type = protection_type
+        self.region = region
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
+        self.risk_level = risk_level
+        self.rule_group_id = rule_group_id
+        self.rule_id_key = rule_id_key
+        self.source_ip = source_ip
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_type is not None:
+            result['ApplicationType'] = self.application_type
+        if self.cve_id_key is not None:
+            result['CveIdKey'] = self.cve_id_key
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.protection_type is not None:
+            result['ProtectionType'] = self.protection_type
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.risk_level is not None:
+            result['RiskLevel'] = self.risk_level
+        if self.rule_group_id is not None:
+            result['RuleGroupId'] = self.rule_group_id
+        if self.rule_id_key is not None:
+            result['RuleIdKey'] = self.rule_id_key
+        if self.source_ip is not None:
+            result['SourceIp'] = self.source_ip
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplicationType') is not None:
+            self.application_type = m.get('ApplicationType')
+        if m.get('CveIdKey') is not None:
+            self.cve_id_key = m.get('CveIdKey')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ProtectionType') is not None:
+            self.protection_type = m.get('ProtectionType')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('RiskLevel') is not None:
+            self.risk_level = m.get('RiskLevel')
+        if m.get('RuleGroupId') is not None:
+            self.rule_group_id = m.get('RuleGroupId')
+        if m.get('RuleIdKey') is not None:
+            self.rule_id_key = m.get('RuleIdKey')
+        if m.get('SourceIp') is not None:
+            self.source_ip = m.get('SourceIp')
+        return self
+
+
+class DescribeRulesResponseBodyRules(TeaModel):
+    def __init__(
+        self,
+        application_type: int = None,
+        cve_id: str = None,
+        cve_url: str = None,
+        description: str = None,
+        protection_type: int = None,
+        risk_level: int = None,
+        rule_id: int = None,
+        rule_name: str = None,
+        update_time: int = None,
+    ):
+        self.application_type = application_type
+        # CVE ID。
+        self.cve_id = cve_id
+        self.cve_url = cve_url
+        self.description = description
+        self.protection_type = protection_type
+        self.risk_level = risk_level
+        self.rule_id = rule_id
+        self.rule_name = rule_name
+        self.update_time = update_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_type is not None:
+            result['ApplicationType'] = self.application_type
+        if self.cve_id is not None:
+            result['CveId'] = self.cve_id
+        if self.cve_url is not None:
+            result['CveUrl'] = self.cve_url
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.protection_type is not None:
+            result['ProtectionType'] = self.protection_type
+        if self.risk_level is not None:
+            result['RiskLevel'] = self.risk_level
+        if self.rule_id is not None:
+            result['RuleId'] = self.rule_id
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplicationType') is not None:
+            self.application_type = m.get('ApplicationType')
+        if m.get('CveId') is not None:
+            self.cve_id = m.get('CveId')
+        if m.get('CveUrl') is not None:
+            self.cve_url = m.get('CveUrl')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('ProtectionType') is not None:
+            self.protection_type = m.get('ProtectionType')
+        if m.get('RiskLevel') is not None:
+            self.risk_level = m.get('RiskLevel')
+        if m.get('RuleId') is not None:
+            self.rule_id = m.get('RuleId')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        return self
+
+
+class DescribeRulesResponseBody(TeaModel):
+    def __init__(
+        self,
+        is_subscribe: int = None,
+        request_id: str = None,
+        rule_group_name: str = None,
+        rule_group_template_id: str = None,
+        rule_group_template_name: str = None,
+        rules: List[DescribeRulesResponseBodyRules] = None,
+        total_count: int = None,
+    ):
+        self.is_subscribe = is_subscribe
+        self.request_id = request_id
+        self.rule_group_name = rule_group_name
+        self.rule_group_template_id = rule_group_template_id
+        self.rule_group_template_name = rule_group_template_name
+        self.rules = rules
+        self.total_count = total_count
+
+    def validate(self):
+        if self.rules:
+            for k in self.rules:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.is_subscribe is not None:
+            result['IsSubscribe'] = self.is_subscribe
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.rule_group_name is not None:
+            result['RuleGroupName'] = self.rule_group_name
+        if self.rule_group_template_id is not None:
+            result['RuleGroupTemplateId'] = self.rule_group_template_id
+        if self.rule_group_template_name is not None:
+            result['RuleGroupTemplateName'] = self.rule_group_template_name
+        result['Rules'] = []
+        if self.rules is not None:
+            for k in self.rules:
+                result['Rules'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IsSubscribe') is not None:
+            self.is_subscribe = m.get('IsSubscribe')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('RuleGroupName') is not None:
+            self.rule_group_name = m.get('RuleGroupName')
+        if m.get('RuleGroupTemplateId') is not None:
+            self.rule_group_template_id = m.get('RuleGroupTemplateId')
+        if m.get('RuleGroupTemplateName') is not None:
+            self.rule_group_template_name = m.get('RuleGroupTemplateName')
+        self.rules = []
+        if m.get('Rules') is not None:
+            for k in m.get('Rules'):
+                temp_model = DescribeRulesResponseBodyRules()
+                self.rules.append(temp_model.from_map(k))
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeRulesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeRulesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeRulesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -3336,9 +4394,12 @@ class DescribeWafSourceIpSegmentRequest(TeaModel):
     def __init__(
         self,
         instance_id: str = None,
+        region_id: str = None,
         resource_group_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        self.region_id = region_id
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -3352,6 +4413,8 @@ class DescribeWafSourceIpSegmentRequest(TeaModel):
         result = dict()
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
         return result
@@ -3360,6 +4423,8 @@ class DescribeWafSourceIpSegmentRequest(TeaModel):
         m = m or dict()
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
         return self
@@ -3408,14 +4473,14 @@ class DescribeWafSourceIpSegmentResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeWafSourceIpSegmentResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3427,6 +4492,8 @@ class DescribeWafSourceIpSegmentResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -3435,6 +4502,8 @@ class DescribeWafSourceIpSegmentResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeWafSourceIpSegmentResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -3459,35 +4528,171 @@ class ModifyDomainRequest(TeaModel):
         instance_id: str = None,
         ip_follow_status: int = None,
         is_access_product: int = None,
+        keepalive: bool = None,
+        keepalive_requests: int = None,
+        keepalive_timeout: int = None,
         load_balancing: int = None,
         log_headers: str = None,
         read_time: int = None,
+        region_id: str = None,
+        resource_group_id: str = None,
+        retry: bool = None,
         sni_host: str = None,
         sni_status: int = None,
         source_ips: str = None,
         write_time: int = None,
     ):
+        # The method that WAF uses to obtain the actual IP address of a client. Valid values:
+        # 
+        # *   **0**: WAF reads the first value of the X-Forwarded-For (XFF) header field as the actual IP address of the client. This is the default value.
+        # *   **1**: WAF reads the value of a custom header field as the actual IP address of the client.
+        # 
+        # >  You need to specify the parameter only when the **IsAccessProduct** parameter is set to **1**.
         self.access_header_mode = access_header_mode
+        # The custom header fields that are used to obtain the actual IP address of a client. Specify the value in the `["header1","header2",...]` format.
+        # 
+        # >  You need to specify the parameter only when the **AccessHeaderMode** parameter is set to **1**.
         self.access_headers = access_headers
+        # The mode that is used to add the domain name. Valid values:
+        # 
+        # *   **waf-cloud-dns**: CNAME record mode. This is the default value.
+        # *   **waf-cloud-native**: transparent proxy mode.
         self.access_type = access_type
+        # The list of server and port configurations for the transparent proxy mode. The value is a string that consists of JSON arrays. Each element in a JSON array is a JSON struct that contains the following fields:
+        # 
+        # *   **ProtocolPortConfigs**: the list of protocol and port configurations. This field is required. Data type: array. Each element in a JSON array is a JSON struct that contains the following fields:
+        # 
+        #     *   **Ports**: the list of ports. This field is required. Data type: array. The value is in the `[port1,port2,……]` format.
+        #     *   **Protocol**: the protocol. This field is required. Data type: string. Valid values: **http** and **https**.
+        # 
+        # *   **CloudNativeProductName**: the type of the cloud service instance. This field is required. Data type: string. Valid values: **ECS**, **SLB**, and **ALB**.
+        # 
+        # *   **RedirectionTypeName**: the type of traffic redirection port. This field is required. Data type: string. Valid values: **ECS**, **SLB-L4**, **SLB-L7**, and **ALB**.
+        # 
+        # *   **InstanceId**: the ID of the cloud service instance. This field is required. Data type: string.
+        # 
+        # *   **IPAddressList**: the list of public IP addresses of the cloud service instance. This field is required. Data type: array. The value is in the `["ip1","ip2",...]` format.
+        # 
+        # >  You need to specify the parameter only when the value of the **AccessType** parameter is set to **waf-cloud-native**.
         self.cloud_native_instances = cloud_native_instances
+        # The type of WAF protection cluster. Valid values:
+        # 
+        # *   **0**: shared cluster. This is the default value.
+        # *   **1**: exclusive cluster.
+        # 
+        # >  You need to specify the parameter only when the value of the **AccessType** parameter is set to **waf-cloud-dns**.
         self.cluster_type = cluster_type
+        # The timeout period for connections of WAF exclusive clusters. Unit: seconds.
+        # 
+        # >  You need to specify the parameter only when the value of the **AccessType** parameter is set to **waf-cloud-dns** and the value of the **ClusterType** parameter is set to **1**.
         self.connection_time = connection_time
+        # The domain name whose configurations you want to modify.
+        # 
+        # >  You can call the [DescribeDomainNames](https://help.aliyun.com/document_detail/86373.html) operation to query the domain names that are added to Web Application Firewall (WAF).
+        # 
+        # This parameter is required.
         self.domain = domain
+        # The HTTP/2 ports. Specify the value in the `["port1","port2",...]` format.
+        # 
+        # >  You need to specify this parameter only when the value of the **AccessType** parameter is set to **waf-cloud-dns** and the **HttpsPort** parameter is not empty. If the HttpsPort parameter is not empty, your website uses HTTPS.
         self.http_2port = http_2port
+        # The HTTP ports. Specify the value in the `["port1","port2",...]` format.
+        # 
+        # >  You need to specify the parameter only when the value of the **AccessType** parameter is set to **waf-cloud-dns**. If you specify this parameter, your website uses HTTP. You must specify at least one of the **HttpPort** and **HttpsPort** parameters.
         self.http_port = http_port
+        # Specifies whether to enable the feature of redirecting HTTPS requests to HTTP requests. If you enable the feature, HTTPS requests are redirected to HTTP requests on port 80, which is used by default. Valid values:
+        # 
+        # *   **0**: disables the feature. This is the default value.
+        # *   **1**: enables the feature.
+        # 
+        # >  You need to specify this parameter only when the value of the **AccessType** parameter is set to **waf-cloud-dns** and the **HttpsPort** parameter is not empty. If the HttpsPort parameter is not empty, your website uses HTTPS.
         self.http_to_user_ip = http_to_user_ip
+        # The HTTPS ports. Specify the value in the `["port1","port2",...]` format.
+        # 
+        # >  You need to specify the parameter only when the value of the **AccessType** parameter is set to **waf-cloud-dns**. If you specify this parameter, your website uses HTTPS. You must specify at least one of the **HttpPort** and **HttpsPort** parameters.
         self.https_port = https_port
+        # Specifies whether to enable the feature of redirecting HTTP requests to HTTPS requests. If you enable the feature, HTTP requests are redirected to HTTPS requests on port 443, which is used by default. Valid values:
+        # 
+        # *   **0**: disables the feature. This is the default value.
+        # *   **1**: enables the feature.
+        # 
+        # >  You need to specify this parameter only when the value of the **AccessType** parameter is set to **waf-cloud-dns** and the **HttpsPort** parameter is not empty. If the HttpsPort parameter is not empty, your website uses HTTPS.
         self.https_redirect = https_redirect
+        # The ID of the WAF instance.
+        # 
+        # >  You can call the [DescribeInstanceInfo](https://help.aliyun.com/document_detail/140857.html) operation to query the ID of the WAF instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
+        # Specifies whether to enable the feature of forwarding requests to the origin servers that use the IP address type specified in the requests. If you enable the feature, WAF forwards requests from IPv4 addresses to origin servers that use IPv4 addresses and requests from IPv6 addresses to origin servers that use IPv6 addresses. Valid values:
+        # 
+        # *   **0**: disables the feature. This is the default value.
+        # *   **1**: enables the feature.
+        # 
+        # >  You need to specify the parameter only when the value of the **AccessType** parameter is set to **waf-cloud-dns**.
         self.ip_follow_status = ip_follow_status
+        # Specifies whether to deploy a Layer 7 proxy, which is used to filter inbound traffic before the traffic reaches the WAF instance. The supported Layer 7 proxies include Anti-DDoS Pro, Anti-DDoS Premium, and Alibaba Cloud CDN. Valid values:
+        # 
+        # *   **0**: does not configure a Layer 7 proxy
+        # *   **1**: configures a Layer 7 proxy
+        # 
+        # This parameter is required.
         self.is_access_product = is_access_product
+        self.keepalive = keepalive
+        self.keepalive_requests = keepalive_requests
+        self.keepalive_timeout = keepalive_timeout
+        # The load balancing algorithm that is used when WAF forwards requests to the origin server. Valid values:
+        # 
+        # *   **0**: IP hash
+        # *   **1**: round-robin
+        # *   **2**: least time
+        # 
+        # >  You need to specify the parameter only when the value of the **AccessType** parameter is set to **waf-cloud-dns**.
         self.load_balancing = load_balancing
+        # The key-value pair that is used to mark the requests that pass through the WAF instance.
+        # 
+        # Specify the key-value pair in the `[{"k":"_key_","v":"_value_"}]` format. `_key_` specifies a header field in a custom request. `_value_` specifies the value of the field.
+        # 
+        # WAF automatically adds the key-value pair to the headers of requests. This way, the requests that pass through WAF are identified.
+        # 
+        # >  If requests contain the custom header field, WAF overwrites the original value of the field with the specified value.
         self.log_headers = log_headers
+        # The timeout period for read connections of WAF exclusive clusters. Unit: seconds.
+        # 
+        # >  You need to specify the parameter only when the value of the **AccessType** parameter is set to **waf-cloud-dns** and the value of the **ClusterType** parameter is set to **1**.
         self.read_time = read_time
+        # The region in which the WAF instance is deployed. Valid values:
+        # 
+        # *   **cn-hangzhou**: Chinese mainland.
+        # *   **ap-southeast-1**: outside the Chinese mainland.
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
+        self.retry = retry
+        # The value of the custom SNI field. If this parameter is not specified, the value of the **Host** field in the request header is automatically used as the value of the SNI field.
+        # 
+        # If you want WAF to use an SNI field whose value is different from the value of the Host field, you can specify a custom value for the SNI field.
+        # 
+        # >  This parameter needs to be set only when the value of the **SniStatus** parameter is set to **1**.
         self.sni_host = sni_host
+        # Specifies whether to enable origin SNI. Origin Server Name Indication (SNI) specifies the domain name to which an HTTPS connection needs to be established at the start of the TLS handshaking process when WAF forwards requests to the origin server. If the origin server hosts multiple domain names, you must enable this feature. Valid values:
+        # 
+        # *   **0**: disables origin SNI.
+        # *   **1**: enables origin SNI.
+        # 
+        # By default, origin SNI is disabled for WAF instances in the Chinese mainland and enabled for WAF instances outside the Chinese mainland.
+        # 
+        # >  You need to specify this parameter only when the value of the **AccessType** parameter is set to **waf-cloud-dns** and the **HttpsPort** parameter is not empty. If the HttpsPort parameter is not empty, your website uses HTTPS.
         self.sni_status = sni_status
+        # The address type of the origin server. The address can be an IP address or a domain name. You can specify only one type of address.
+        # 
+        # *   If you use the IP address type, specify the value in the `["ip1","ip2",...]` format. You can add up to 20 IP addresses.
+        # *   If you use the domain name type, specify the value in the `["domain"]` format. You can enter only one domain name.
+        # 
+        # >  You need to specify the parameter only when the value of the **AccessType** parameter is set to **waf-cloud-dns**.
         self.source_ips = source_ips
+        # The timeout period for write connections of WAF exclusive clusters. Unit: seconds.
+        # 
+        # >  You need to specify the parameter only when the value of the **AccessType** parameter is set to **waf-cloud-dns** and the value of the **ClusterType** parameter is set to **1**.
         self.write_time = write_time
 
     def validate(self):
@@ -3529,12 +4734,24 @@ class ModifyDomainRequest(TeaModel):
             result['IpFollowStatus'] = self.ip_follow_status
         if self.is_access_product is not None:
             result['IsAccessProduct'] = self.is_access_product
+        if self.keepalive is not None:
+            result['Keepalive'] = self.keepalive
+        if self.keepalive_requests is not None:
+            result['KeepaliveRequests'] = self.keepalive_requests
+        if self.keepalive_timeout is not None:
+            result['KeepaliveTimeout'] = self.keepalive_timeout
         if self.load_balancing is not None:
             result['LoadBalancing'] = self.load_balancing
         if self.log_headers is not None:
             result['LogHeaders'] = self.log_headers
         if self.read_time is not None:
             result['ReadTime'] = self.read_time
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.retry is not None:
+            result['Retry'] = self.retry
         if self.sni_host is not None:
             result['SniHost'] = self.sni_host
         if self.sni_status is not None:
@@ -3577,12 +4794,24 @@ class ModifyDomainRequest(TeaModel):
             self.ip_follow_status = m.get('IpFollowStatus')
         if m.get('IsAccessProduct') is not None:
             self.is_access_product = m.get('IsAccessProduct')
+        if m.get('Keepalive') is not None:
+            self.keepalive = m.get('Keepalive')
+        if m.get('KeepaliveRequests') is not None:
+            self.keepalive_requests = m.get('KeepaliveRequests')
+        if m.get('KeepaliveTimeout') is not None:
+            self.keepalive_timeout = m.get('KeepaliveTimeout')
         if m.get('LoadBalancing') is not None:
             self.load_balancing = m.get('LoadBalancing')
         if m.get('LogHeaders') is not None:
             self.log_headers = m.get('LogHeaders')
         if m.get('ReadTime') is not None:
             self.read_time = m.get('ReadTime')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('Retry') is not None:
+            self.retry = m.get('Retry')
         if m.get('SniHost') is not None:
             self.sni_host = m.get('SniHost')
         if m.get('SniStatus') is not None:
@@ -3599,6 +4828,7 @@ class ModifyDomainResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -3625,14 +4855,14 @@ class ModifyDomainResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ModifyDomainResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3644,6 +4874,8 @@ class ModifyDomainResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -3652,6 +4884,8 @@ class ModifyDomainResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyDomainResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -3664,10 +4898,17 @@ class ModifyDomainIpv6StatusRequest(TeaModel):
         domain: str = None,
         enabled: str = None,
         instance_id: str = None,
+        region_id: str = None,
+        resource_group_id: str = None,
     ):
+        # This parameter is required.
         self.domain = domain
+        # This parameter is required.
         self.enabled = enabled
+        # This parameter is required.
         self.instance_id = instance_id
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -3684,6 +4925,10 @@ class ModifyDomainIpv6StatusRequest(TeaModel):
             result['Enabled'] = self.enabled
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -3694,6 +4939,10 @@ class ModifyDomainIpv6StatusRequest(TeaModel):
             self.enabled = m.get('Enabled')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -3728,14 +4977,14 @@ class ModifyDomainIpv6StatusResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ModifyDomainIpv6StatusResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3747,6 +4996,8 @@ class ModifyDomainIpv6StatusResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -3755,6 +5006,8 @@ class ModifyDomainIpv6StatusResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyDomainIpv6StatusResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -3767,10 +5020,17 @@ class ModifyLogRetrievalStatusRequest(TeaModel):
         domain: str = None,
         enabled: int = None,
         instance_id: str = None,
+        region_id: str = None,
+        resource_group_id: str = None,
     ):
+        # This parameter is required.
         self.domain = domain
+        # This parameter is required.
         self.enabled = enabled
+        # This parameter is required.
         self.instance_id = instance_id
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -3787,6 +5047,10 @@ class ModifyLogRetrievalStatusRequest(TeaModel):
             result['Enabled'] = self.enabled
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -3797,6 +5061,10 @@ class ModifyLogRetrievalStatusRequest(TeaModel):
             self.enabled = m.get('Enabled')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -3831,14 +5099,14 @@ class ModifyLogRetrievalStatusResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ModifyLogRetrievalStatusResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3850,6 +5118,8 @@ class ModifyLogRetrievalStatusResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -3858,6 +5128,8 @@ class ModifyLogRetrievalStatusResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyLogRetrievalStatusResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -3870,10 +5142,17 @@ class ModifyLogServiceStatusRequest(TeaModel):
         domain: str = None,
         enabled: int = None,
         instance_id: str = None,
+        region_id: str = None,
+        resource_group_id: str = None,
     ):
+        # This parameter is required.
         self.domain = domain
+        # This parameter is required.
         self.enabled = enabled
+        # This parameter is required.
         self.instance_id = instance_id
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -3890,6 +5169,10 @@ class ModifyLogServiceStatusRequest(TeaModel):
             result['Enabled'] = self.enabled
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -3900,6 +5183,10 @@ class ModifyLogServiceStatusRequest(TeaModel):
             self.enabled = m.get('Enabled')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -3934,14 +5221,14 @@ class ModifyLogServiceStatusResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ModifyLogServiceStatusResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3953,6 +5240,8 @@ class ModifyLogServiceStatusResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -3961,6 +5250,8 @@ class ModifyLogServiceStatusResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyLogServiceStatusResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -3974,11 +5265,19 @@ class ModifyProtectionModuleModeRequest(TeaModel):
         domain: str = None,
         instance_id: str = None,
         mode: int = None,
+        region_id: str = None,
+        resource_group_id: str = None,
     ):
+        # This parameter is required.
         self.defense_type = defense_type
+        # This parameter is required.
         self.domain = domain
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.mode = mode
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -3997,6 +5296,10 @@ class ModifyProtectionModuleModeRequest(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.mode is not None:
             result['Mode'] = self.mode
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -4009,6 +5312,10 @@ class ModifyProtectionModuleModeRequest(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('Mode') is not None:
             self.mode = m.get('Mode')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -4043,14 +5350,14 @@ class ModifyProtectionModuleModeResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ModifyProtectionModuleModeResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4062,6 +5369,8 @@ class ModifyProtectionModuleModeResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -4070,6 +5379,8 @@ class ModifyProtectionModuleModeResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyProtectionModuleModeResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -4083,14 +5394,24 @@ class ModifyProtectionModuleRuleRequest(TeaModel):
         domain: str = None,
         instance_id: str = None,
         lock_version: int = None,
+        region_id: str = None,
+        resource_group_id: str = None,
         rule: str = None,
         rule_id: int = None,
     ):
+        # This parameter is required.
         self.defense_type = defense_type
+        # This parameter is required.
         self.domain = domain
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.lock_version = lock_version
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
+        # This parameter is required.
         self.rule = rule
+        # This parameter is required.
         self.rule_id = rule_id
 
     def validate(self):
@@ -4110,6 +5431,10 @@ class ModifyProtectionModuleRuleRequest(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.lock_version is not None:
             result['LockVersion'] = self.lock_version
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.rule is not None:
             result['Rule'] = self.rule
         if self.rule_id is not None:
@@ -4126,6 +5451,10 @@ class ModifyProtectionModuleRuleRequest(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('LockVersion') is not None:
             self.lock_version = m.get('LockVersion')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('Rule') is not None:
             self.rule = m.get('Rule')
         if m.get('RuleId') is not None:
@@ -4164,14 +5493,14 @@ class ModifyProtectionModuleRuleResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ModifyProtectionModuleRuleResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4183,6 +5512,8 @@ class ModifyProtectionModuleRuleResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -4191,6 +5522,8 @@ class ModifyProtectionModuleRuleResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyProtectionModuleRuleResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -4204,11 +5537,19 @@ class ModifyProtectionModuleStatusRequest(TeaModel):
         domain: str = None,
         instance_id: str = None,
         module_status: int = None,
+        region_id: str = None,
+        resource_group_id: str = None,
     ):
+        # This parameter is required.
         self.defense_type = defense_type
+        # This parameter is required.
         self.domain = domain
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.module_status = module_status
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -4227,6 +5568,10 @@ class ModifyProtectionModuleStatusRequest(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.module_status is not None:
             result['ModuleStatus'] = self.module_status
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -4239,6 +5584,10 @@ class ModifyProtectionModuleStatusRequest(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('ModuleStatus') is not None:
             self.module_status = m.get('ModuleStatus')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -4273,14 +5622,14 @@ class ModifyProtectionModuleStatusResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ModifyProtectionModuleStatusResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4292,6 +5641,8 @@ class ModifyProtectionModuleStatusResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -4300,6 +5651,8 @@ class ModifyProtectionModuleStatusResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyProtectionModuleStatusResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -4312,11 +5665,19 @@ class ModifyProtectionRuleCacheStatusRequest(TeaModel):
         defense_type: str = None,
         domain: str = None,
         instance_id: str = None,
+        region_id: str = None,
+        resource_group_id: str = None,
         rule_id: int = None,
     ):
+        # This parameter is required.
         self.defense_type = defense_type
+        # This parameter is required.
         self.domain = domain
+        # This parameter is required.
         self.instance_id = instance_id
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
+        # This parameter is required.
         self.rule_id = rule_id
 
     def validate(self):
@@ -4334,6 +5695,10 @@ class ModifyProtectionRuleCacheStatusRequest(TeaModel):
             result['Domain'] = self.domain
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.rule_id is not None:
             result['RuleId'] = self.rule_id
         return result
@@ -4346,6 +5711,10 @@ class ModifyProtectionRuleCacheStatusRequest(TeaModel):
             self.domain = m.get('Domain')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('RuleId') is not None:
             self.rule_id = m.get('RuleId')
         return self
@@ -4382,14 +5751,14 @@ class ModifyProtectionRuleCacheStatusResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ModifyProtectionRuleCacheStatusResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4401,6 +5770,8 @@ class ModifyProtectionRuleCacheStatusResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -4409,6 +5780,8 @@ class ModifyProtectionRuleCacheStatusResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyProtectionRuleCacheStatusResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -4422,14 +5795,24 @@ class ModifyProtectionRuleStatusRequest(TeaModel):
         domain: str = None,
         instance_id: str = None,
         lock_version: int = None,
+        region_id: str = None,
+        resource_group_id: str = None,
         rule_id: int = None,
         rule_status: int = None,
     ):
+        # This parameter is required.
         self.defense_type = defense_type
+        # This parameter is required.
         self.domain = domain
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.lock_version = lock_version
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
+        # This parameter is required.
         self.rule_id = rule_id
+        # This parameter is required.
         self.rule_status = rule_status
 
     def validate(self):
@@ -4449,6 +5832,10 @@ class ModifyProtectionRuleStatusRequest(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.lock_version is not None:
             result['LockVersion'] = self.lock_version
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.rule_id is not None:
             result['RuleId'] = self.rule_id
         if self.rule_status is not None:
@@ -4465,6 +5852,10 @@ class ModifyProtectionRuleStatusRequest(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('LockVersion') is not None:
             self.lock_version = m.get('LockVersion')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('RuleId') is not None:
             self.rule_id = m.get('RuleId')
         if m.get('RuleStatus') is not None:
@@ -4503,14 +5894,14 @@ class ModifyProtectionRuleStatusResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ModifyProtectionRuleStatusResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4522,6 +5913,8 @@ class ModifyProtectionRuleStatusResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -4530,6 +5923,8 @@ class ModifyProtectionRuleStatusResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyProtectionRuleStatusResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -4539,12 +5934,17 @@ class ModifyProtectionRuleStatusResponse(TeaModel):
 class MoveResourceGroupRequest(TeaModel):
     def __init__(
         self,
+        region_id: str = None,
         resource_group_id: str = None,
         resource_id: str = None,
         resource_type: str = None,
     ):
+        self.region_id = region_id
+        # This parameter is required.
         self.resource_group_id = resource_group_id
+        # This parameter is required.
         self.resource_id = resource_id
+        # This parameter is required.
         self.resource_type = resource_type
 
     def validate(self):
@@ -4556,6 +5956,8 @@ class MoveResourceGroupRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
         if self.resource_id is not None:
@@ -4566,6 +5968,8 @@ class MoveResourceGroupRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceId') is not None:
@@ -4606,14 +6010,14 @@ class MoveResourceGroupResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: MoveResourceGroupResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4625,6 +6029,8 @@ class MoveResourceGroupResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -4633,6 +6039,8 @@ class MoveResourceGroupResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = MoveResourceGroupResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -4644,14 +6052,19 @@ class SetDomainRuleGroupRequest(TeaModel):
         self,
         domains: str = None,
         instance_id: str = None,
+        region_id: str = None,
         resource_group_id: str = None,
         rule_group_id: int = None,
         waf_ai_status: int = None,
         waf_version: int = None,
     ):
+        # This parameter is required.
         self.domains = domains
+        # This parameter is required.
         self.instance_id = instance_id
+        self.region_id = region_id
         self.resource_group_id = resource_group_id
+        # This parameter is required.
         self.rule_group_id = rule_group_id
         self.waf_ai_status = waf_ai_status
         self.waf_version = waf_version
@@ -4669,6 +6082,8 @@ class SetDomainRuleGroupRequest(TeaModel):
             result['Domains'] = self.domains
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
         if self.rule_group_id is not None:
@@ -4685,6 +6100,8 @@ class SetDomainRuleGroupRequest(TeaModel):
             self.domains = m.get('Domains')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('RuleGroupId') is not None:
@@ -4727,14 +6144,14 @@ class SetDomainRuleGroupResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: SetDomainRuleGroupResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4746,6 +6163,8 @@ class SetDomainRuleGroupResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -4754,6 +6173,8 @@ class SetDomainRuleGroupResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SetDomainRuleGroupResponseBody()
             self.body = temp_model.from_map(m['body'])
