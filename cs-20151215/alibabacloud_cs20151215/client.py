@@ -6516,6 +6516,8 @@ class Client(OpenApiClient):
             query['Mode'] = request.mode
         if not UtilClient.is_unset(request.profile):
             query['Profile'] = request.profile
+        if not UtilClient.is_unset(request.query_upgradable_version):
+            query['QueryUpgradableVersion'] = request.query_upgradable_version
         if not UtilClient.is_unset(request.region):
             query['Region'] = request.region
         if not UtilClient.is_unset(request.runtime):
@@ -6564,6 +6566,8 @@ class Client(OpenApiClient):
             query['Mode'] = request.mode
         if not UtilClient.is_unset(request.profile):
             query['Profile'] = request.profile
+        if not UtilClient.is_unset(request.query_upgradable_version):
+            query['QueryUpgradableVersion'] = request.query_upgradable_version
         if not UtilClient.is_unset(request.region):
             query['Region'] = request.region
         if not UtilClient.is_unset(request.runtime):

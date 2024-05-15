@@ -14829,6 +14829,7 @@ class DescribeKubernetesVersionMetadataRequest(TeaModel):
         kubernetes_version: str = None,
         mode: str = None,
         profile: str = None,
+        query_upgradable_version: bool = None,
         region: str = None,
         runtime: str = None,
     ):
@@ -14861,6 +14862,7 @@ class DescribeKubernetesVersionMetadataRequest(TeaModel):
         # 
         # Default value: `Default`.
         self.profile = profile
+        self.query_upgradable_version = query_upgradable_version
         # The region ID of the cluster.
         # 
         # This parameter is required.
@@ -14893,6 +14895,8 @@ class DescribeKubernetesVersionMetadataRequest(TeaModel):
             result['Mode'] = self.mode
         if self.profile is not None:
             result['Profile'] = self.profile
+        if self.query_upgradable_version is not None:
+            result['QueryUpgradableVersion'] = self.query_upgradable_version
         if self.region is not None:
             result['Region'] = self.region
         if self.runtime is not None:
@@ -14909,6 +14913,8 @@ class DescribeKubernetesVersionMetadataRequest(TeaModel):
             self.mode = m.get('Mode')
         if m.get('Profile') is not None:
             self.profile = m.get('Profile')
+        if m.get('QueryUpgradableVersion') is not None:
+            self.query_upgradable_version = m.get('QueryUpgradableVersion')
         if m.get('Region') is not None:
             self.region = m.get('Region')
         if m.get('runtime') is not None:
@@ -15027,6 +15033,7 @@ class DescribeKubernetesVersionMetadataResponseBody(TeaModel):
         release_date: str = None,
         expiration_date: str = None,
         creatable: bool = None,
+        upgradable_versions: List[str] = None,
     ):
         # Features of the queried Kubernetes version.
         self.capabilities = capabilities
@@ -15044,6 +15051,7 @@ class DescribeKubernetesVersionMetadataResponseBody(TeaModel):
         self.expiration_date = expiration_date
         # Indicates whether you can create clusters that run the Kubernetes version.
         self.creatable = creatable
+        self.upgradable_versions = upgradable_versions
 
     def validate(self):
         if self.images:
@@ -15081,6 +15089,8 @@ class DescribeKubernetesVersionMetadataResponseBody(TeaModel):
             result['expiration_date'] = self.expiration_date
         if self.creatable is not None:
             result['creatable'] = self.creatable
+        if self.upgradable_versions is not None:
+            result['upgradable_versions'] = self.upgradable_versions
         return result
 
     def from_map(self, m: dict = None):
@@ -15107,6 +15117,8 @@ class DescribeKubernetesVersionMetadataResponseBody(TeaModel):
             self.expiration_date = m.get('expiration_date')
         if m.get('creatable') is not None:
             self.creatable = m.get('creatable')
+        if m.get('upgradable_versions') is not None:
+            self.upgradable_versions = m.get('upgradable_versions')
         return self
 
 
