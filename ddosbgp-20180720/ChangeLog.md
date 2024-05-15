@@ -1,3 +1,11 @@
+2024-05-15 Version: 2.5.0
+- Support API AddRdMemberList.
+- Support API DeleteRdMemberList.
+- Support API DescribeRdMemberList.
+- Support API DescribeRdStatus.
+- Update API DescribePackIpList: update response param.
+
+
 2024-04-09 Version: 2.4.0
 - Support API AddRdMemberList.
 - Support API DeleteRdMemberList.

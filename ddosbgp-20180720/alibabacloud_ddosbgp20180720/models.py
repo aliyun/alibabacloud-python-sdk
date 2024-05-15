@@ -14,21 +14,25 @@ class AddIpRequest(TeaModel):
     ):
         # The ID of the Anti-DDoS Origin Enterprise instance.
         # 
-        # >  You can call the [DescribeInstanceList](~~118698~~) operation to query the IDs of all Anti-DDoS Origin Enterprise instances.
+        # >  You can call the [DescribeInstanceList](https://help.aliyun.com/document_detail/118698.html) operation to query the IDs of all Anti-DDoS Origin Enterprise instances.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The list of IP addresses that you want to add to the Anti-DDoS Origin Enterprise instance. This parameter is a string consisting of JSON arrays. Each element in a JSON array is a JSON struct that includes the following field:
         # 
         # *   **ip**: required. The IP address that you want to add. Data type: string.
         # 
         #     > The IP address must be the IP address of an asset that belongs to the current Alibaba Cloud account.
+        # 
+        # This parameter is required.
         self.ip_list = ip_list
         # The region ID of the Anti-DDoS Origin Enterprise instance.
         # 
-        # >  You can call the [DescribeRegions](~~118703~~) operation to query all regions supported by Anti-DDoS Origin.
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query all regions supported by Anti-DDoS Origin.
         self.region_id = region_id
         # The ID of the resource group to which the Anti-DDoS Origin Enterprise instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         # 
-        # For more information about resource groups, see [Create a resource group](~~94485~~).
+        # For more information about resource groups, see [Create a resource group](https://help.aliyun.com/document_detail/94485.html).
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -164,6 +168,7 @@ class AddRdMemberListRequest(TeaModel):
         self,
         member_list: List[AddRdMemberListRequestMemberList] = None,
     ):
+        # This parameter is required.
         self.member_list = member_list
 
     def validate(self):
@@ -199,6 +204,7 @@ class AddRdMemberListShrinkRequest(TeaModel):
         self,
         member_list_shrink: str = None,
     ):
+        # This parameter is required.
         self.member_list_shrink = member_list_shrink
 
     def validate(self):
@@ -300,10 +306,16 @@ class AttachAssetGroupToInstanceRequestAssetGroupList(TeaModel):
         # The UID of the member to which the asset belongs.
         self.member_uid = member_uid
         # The ID of the asset that you want to add. If the asset is a Web Application Firewall (WAF) instance, specify the ID of the WAF instance.
+        # 
+        # This parameter is required.
         self.name = name
         # The region ID of the asset.
+        # 
+        # This parameter is required.
         self.region = region
         # The type of the asset.
+        # 
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -347,14 +359,18 @@ class AttachAssetGroupToInstanceRequest(TeaModel):
         source_ip: str = None,
     ):
         # The information about the asset to be associated.
+        # 
+        # This parameter is required.
         self.asset_group_list = asset_group_list
         # The ID of the instance to query.
         # 
-        # >  You can call the [DescribeInstanceList](~~118698~~) operation to query the IDs of all Anti-DDoS Origin instances of paid editions.
+        # >  You can call the [DescribeInstanceList](https://help.aliyun.com/document_detail/118698.html) operation to query the IDs of all Anti-DDoS Origin instances of paid editions.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The ID of the region in which the instance resides.
         # 
-        # >  You can call the [DescribeRegions](~~118703~~) operation to query the most recent region list.
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the most recent region list.
         self.region_id = region_id
         # The source IP address of the request. The system specifies this parameter.
         self.source_ip = source_ip
@@ -408,14 +424,18 @@ class AttachAssetGroupToInstanceShrinkRequest(TeaModel):
         source_ip: str = None,
     ):
         # The information about the asset to be associated.
+        # 
+        # This parameter is required.
         self.asset_group_list_shrink = asset_group_list_shrink
         # The ID of the instance to query.
         # 
-        # >  You can call the [DescribeInstanceList](~~118698~~) operation to query the IDs of all Anti-DDoS Origin instances of paid editions.
+        # >  You can call the [DescribeInstanceList](https://help.aliyun.com/document_detail/118698.html) operation to query the IDs of all Anti-DDoS Origin instances of paid editions.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The ID of the region in which the instance resides.
         # 
-        # >  You can call the [DescribeRegions](~~118703~~) operation to query the most recent region list.
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the most recent region list.
         self.region_id = region_id
         # The source IP address of the request. The system specifies this parameter.
         self.source_ip = source_ip
@@ -529,11 +549,11 @@ class CheckAccessLogAuthRequest(TeaModel):
     ):
         # The ID of the region where the Anti-DDoS Origin instance resides.
         # 
-        # For more information about the valid values of this parameter, see [Regions and zones](~~188196~~).
+        # For more information about the valid values of this parameter, see [Regions and zones](https://help.aliyun.com/document_detail/188196.html).
         self.region_id = region_id
         # The ID of the resource group to which the Anti-DDoS Origin instance belongs in Resource Management. This parameter is empty by default, which indicates that the Anti-DDoS Origin instance belongs to the default resource group.
         # 
-        # For more information about resource groups, see [Create a resource group](~~94485~~).
+        # For more information about resource groups, see [Create a resource group](https://help.aliyun.com/document_detail/94485.html).
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -653,7 +673,7 @@ class CheckGrantRequest(TeaModel):
         self.is_slr = is_slr
         # The ID of the region where the Anti-DDoS Origin instance resides.
         # 
-        # >  You can call the [DescribeRegions](~~118703~~) operation to query the most recent region list.
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the most recent region list.
         self.region_id = region_id
         # The ID of the resource group to which the Anti-DDoS Origin instance belongs in Resource Management.
         # 
@@ -785,36 +805,52 @@ class ConfigSchedruleOnDemandRequest(TeaModel):
     ):
         # The ID of the on-demand instance.
         # 
-        # >  You can call the [DescribeOnDemandInstance](~~152120~~) operation to query the IDs of all on-demand instances.
+        # >  You can call the [DescribeOnDemandInstance](https://help.aliyun.com/document_detail/152120.html) operation to query the IDs of all on-demand instances.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region ID of the on-demand instance.
         # 
-        # >  You can call the [DescribeRegions](~~118703~~) operation to query all regions supported by Anti-DDoS Origin.
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query all regions supported by Anti-DDoS Origin.
         self.region_id = region_id
         # The scheduling action. Set the value to **declare**, which indicates that the route is advertised.
+        # 
+        # This parameter is required.
         self.rule_action = rule_action
         # If the inbound bandwidth or packets consecutively exceed the threshold for the specified number of times, the scheduling rule is triggered and traffic is rerouted to the on-demand instance. The specified number of times is the value of this parameter.
         # 
         # >  The threshold of inbound bandwidth is the value of **RuleConditionMbps**. The threshold of inbound packets is the value of **RuleConditionKpps**.
+        # 
+        # This parameter is required.
         self.rule_condition_cnt = rule_condition_cnt
         # The threshold of inbound packets. Unit: Kpps. Minimum value: **10**.
+        # 
+        # This parameter is required.
         self.rule_condition_kpps = rule_condition_kpps
         # The threshold of inbound bandwidth. Unit: Mbit/s. Minimum value: **100**.
+        # 
+        # This parameter is required.
         self.rule_condition_mbps = rule_condition_mbps
         # The name of the scheduling rule.
         # 
-        # The name can contain lowercase letters, digits, hyphens (-), and underscores (\_). The name can be up to 32 characters in length. We recommend that you use the ID of the on-demand instance as the name. Example: `ddosbgp-cn-z2q1qzxb****`.
+        # The name can contain lowercase letters, digits, hyphens (-), and underscores (_). The name can be up to 32 characters in length. We recommend that you use the ID of the on-demand instance as the name. Example: `ddosbgp-cn-z2q1qzxb****`.
+        # 
+        # This parameter is required.
         self.rule_name = rule_name
         # Specifies whether the scheduling rule is enabled. Valid values:
         # 
         # *   **on**: enabled
         # *   **off**: disabled
+        # 
+        # This parameter is required.
         self.rule_switch = rule_switch
         # The start time of the period during which the scheduling rule is automatically stopped. The time must be in the 24-hour clock and in the `hh:mm` format.
         # 
         # If the system detects that DDoS attacks stop, the system no longer reroutes traffic to the on-demand instance from the time you specified. We recommend that you set this parameter to a value that is defined as off-peak hours.
         # 
         # >  This parameter takes effect only when the **RuleUndoMode** parameter is set to **auto**.
+        # 
+        # This parameter is required.
         self.rule_undo_begin_time = rule_undo_begin_time
         # The end time of the period during which the scheduling rule is automatically stopped. The time must be in the 24-hour clock and in the `hh:mm` format.
         self.rule_undo_end_time = rule_undo_end_time
@@ -822,12 +858,16 @@ class ConfigSchedruleOnDemandRequest(TeaModel):
         # 
         # *   **auto**: The scheduling rule automatically stops.
         # *   **manual**: The scheduling rule is manually stopped.
+        # 
+        # This parameter is required.
         self.rule_undo_mode = rule_undo_mode
         # The time zone of the time when the scheduling rule automatically stops. The time zone must be in the `GMT-hh:mm` format.
         # 
         # For example, the value `GMT-08:00` indicates that the time zone is UTC+8.
         # 
         # >  This parameter takes effect only when the **RuleUndoMode** parameter is set to **auto**.
+        # 
+        # This parameter is required.
         self.time_zone = time_zone
 
     def validate(self):
@@ -981,36 +1021,52 @@ class CreateSchedruleOnDemandRequest(TeaModel):
     ):
         # The ID of the on-demand instance.
         # 
-        # >  You can call the [DescribeOnDemandInstance](~~152120~~) operation to query the IDs of all on-demand instances.
+        # >  You can call the [DescribeOnDemandInstance](https://help.aliyun.com/document_detail/152120.html) operation to query the IDs of all on-demand instances.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region ID of the on-demand instance.
         # 
-        # >  You can call the [DescribeRegions](~~118703~~) operation to query all regions supported by Anti-DDoS Origin.
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query all regions supported by Anti-DDoS Origin.
         self.region_id = region_id
         # The scheduling action. Set the value to **declare**, which indicates that the route is advertised.
+        # 
+        # This parameter is required.
         self.rule_action = rule_action
         # If the inbound bandwidth or packets consecutively exceed the threshold for the specified number of times, the scheduling rule is triggered and traffic is rerouted to the on-demand instance. The specified number of times is the value of this parameter.
         # 
         # >  The threshold of inbound bandwidth is the value of **RuleConditionMbps**. The threshold of inbound packets is the value of **RuleConditionKpps**.
+        # 
+        # This parameter is required.
         self.rule_condition_cnt = rule_condition_cnt
         # The threshold of inbound packets. Unit: Kpps. Minimum value: **10**.
+        # 
+        # This parameter is required.
         self.rule_condition_kpps = rule_condition_kpps
         # The threshold of inbound bandwidth. Unit: Mbit/s. Minimum value: **100**.
+        # 
+        # This parameter is required.
         self.rule_condition_mbps = rule_condition_mbps
         # The name of the scheduling rule.
         # 
-        # The name can contain lowercase letters, digits, hyphens (-), and underscores (\_). The name can be up to 32 characters in length. We recommend that you use the ID of the on-demand instance as the name. Example: `ddosbgp-cn-z2q1qzxb****`.
+        # The name can contain lowercase letters, digits, hyphens (-), and underscores (_). The name can be up to 32 characters in length. We recommend that you use the ID of the on-demand instance as the name. Example: `ddosbgp-cn-z2q1qzxb****`.
+        # 
+        # This parameter is required.
         self.rule_name = rule_name
         # Specifies whether the scheduling rule is enabled. Valid values:
         # 
         # *   **on**: enabled
         # *   **off**: disabled
+        # 
+        # This parameter is required.
         self.rule_switch = rule_switch
         # The start time of the period during which the scheduling rule is automatically stopped. The time must be in the 24-hour clock and in the `hh:mm` format.
         # 
         # If the system detects that DDoS attacks stop, the system no longer reroutes traffic to the on-demand instance from the time you specified. We recommend that you set this parameter to a value that is defined as off-peak hours.
         # 
         # >  This parameter takes effect only when the **RuleUndoMode** parameter is set to **auto**.
+        # 
+        # This parameter is required.
         self.rule_undo_begin_time = rule_undo_begin_time
         # The end time of the period during which the scheduling rule is automatically stopped. The time must be in the 24-hour clock and in the `hh:mm` format.
         self.rule_undo_end_time = rule_undo_end_time
@@ -1018,12 +1074,16 @@ class CreateSchedruleOnDemandRequest(TeaModel):
         # 
         # *   **auto**: The scheduling rule automatically stops.
         # *   **manual**: The scheduling rule is manually stopped.
+        # 
+        # This parameter is required.
         self.rule_undo_mode = rule_undo_mode
         # The time zone of the time when the scheduling rule automatically stops. The time zone must be in the `GMT-hh:mm` format.
         # 
         # For example, the value `GMT-08:00` indicates that the time zone is UTC+8.
         # 
         # >  This parameter takes effect only when the **RuleUndoMode** parameter is set to **auto**.
+        # 
+        # This parameter is required.
         self.time_zone = time_zone
 
     def validate(self):
@@ -1169,15 +1229,19 @@ class DeleteBlackholeRequest(TeaModel):
     ):
         # The ID of the Anti-DDoS Origin instance.
         # 
-        # >  You can call the [DescribeInstanceList](~~118698~~) operation to query the IDs of all Anti-DDoS Origin instances.
+        # >  You can call the [DescribeInstanceList](https://help.aliyun.com/document_detail/118698.html) operation to query the IDs of all Anti-DDoS Origin instances.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The IP address for which you want to deactivate blackhole filtering.
         # 
-        # >  You can call the [DescribePackIpList](~~118701~~) operation to query all the IP addresses that are protected by the Anti-DDoS Origin instance and the protection status of the IP addresses. For example, you can query whether blackhole filtering is triggered for an IP address.
+        # >  You can call the [DescribePackIpList](https://help.aliyun.com/document_detail/118701.html) operation to query all the IP addresses that are protected by the Anti-DDoS Origin instance and the protection status of the IP addresses. For example, you can query whether blackhole filtering is triggered for an IP address.
+        # 
+        # This parameter is required.
         self.ip = ip
         # The ID of the region where the Anti-DDoS Origin instance resides.
         # 
-        # >  You can call the [DescribeRegions](~~118703~~) operation to query the most recent region list.
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the most recent region list.
         self.region_id = region_id
         # The ID of the resource group to which the Anti-DDoS Origin instance belongs in Resource Management.
         # 
@@ -1295,21 +1359,25 @@ class DeleteIpRequest(TeaModel):
     ):
         # The ID of the Anti-DDoS Origin Enterprise instance.
         # 
-        # >  You can call the [DescribeInstanceList](~~118698~~) operation to query the IDs of all Anti-DDoS Origin Enterprise instances.
+        # >  You can call the [DescribeInstanceList](https://help.aliyun.com/document_detail/118698.html) operation to query the IDs of all Anti-DDoS Origin Enterprise instances.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The list of IP addresses that you want to remove from the Anti-DDoS Origin Enterprise instance. This parameter is a string consisting of JSON arrays. Each element in a JSON array is a JSON struct that includes the following field:
         # 
         # *   **ip**: required. The IP address that you want to remove. Data type: string.
         # 
         #     > The IP addresses that you want to remove must be protected by the Anti-DDoS Origin Enterprise instance.
+        # 
+        # This parameter is required.
         self.ip_list = ip_list
         # The region ID of the Anti-DDoS Origin Enterprise instance.
         # 
-        # >  You can call the [DescribeRegions](~~118703~~) operation to query all regions supported by Anti-DDoS Origin.
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query all regions supported by Anti-DDoS Origin.
         self.region_id = region_id
         # The ID of the resource group to which the Anti-DDoS Origin Enterprise instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         # 
-        # For more information about resource groups, see [Create a resource group](~~94485~~).
+        # For more information about resource groups, see [Create a resource group](https://help.aliyun.com/document_detail/94485.html).
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -1445,6 +1513,7 @@ class DeleteRdMemberListRequest(TeaModel):
         self,
         member_list: List[DeleteRdMemberListRequestMemberList] = None,
     ):
+        # This parameter is required.
         self.member_list = member_list
 
     def validate(self):
@@ -1480,6 +1549,7 @@ class DeleteRdMemberListShrinkRequest(TeaModel):
         self,
         member_list_shrink: str = None,
     ):
+        # This parameter is required.
         self.member_list_shrink = member_list_shrink
 
     def validate(self):
@@ -1579,13 +1649,17 @@ class DeleteSchedruleOnDemandRequest(TeaModel):
     ):
         # The ID of the on-demand instance.
         # 
-        # >  You can call the [DescribeOnDemandInstance](~~152120~~) operation to query the IDs of all on-demand instances.
+        # >  You can call the [DescribeOnDemandInstance](https://help.aliyun.com/document_detail/152120.html) operation to query the IDs of all on-demand instances.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region ID of the on-demand instance.
         # 
-        # >  You can call the [DescribeRegions](~~118703~~) operation to query all regions supported by Anti-DDoS Origin.
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query all regions supported by Anti-DDoS Origin.
         self.region_id = region_id
         # The name of the scheduling rule that you want to delete.
+        # 
+        # This parameter is required.
         self.rule_name = rule_name
 
     def validate(self):
@@ -1697,10 +1771,12 @@ class DescribeAssetGroupRequest(TeaModel):
         # The ID of the asset. If the asset is a Web Application Firewall (WAF) instance, specify the ID of the WAF instance.
         self.name = name
         # The region ID of the asset.
+        # 
+        # This parameter is required.
         self.region = region
         # The ID of the region in which the instance resides.
         # 
-        # >  You can call the [DescribeRegions](~~118703~~) operation to query the most recent region list.
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the most recent region list.
         self.region_id = region_id
         # The source IP address of the request. The system specifies this parameter.
         self.source_ip = source_ip
@@ -1708,6 +1784,8 @@ class DescribeAssetGroupRequest(TeaModel):
         # 
         # *   **waf**: WAF instance
         # *   **ga**: Global Accelerator (GA) instance
+        # 
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -1892,7 +1970,7 @@ class DescribeAssetGroupToInstanceRequest(TeaModel):
     ):
         # The ID of the instance to query.
         # 
-        # >  You can call the [DescribeInstanceList](~~118698~~) operation to query the IDs of all Anti-DDoS Origin instances of paid editions.
+        # >  You can call the [DescribeInstanceList](https://help.aliyun.com/document_detail/118698.html) operation to query the IDs of all Anti-DDoS Origin instances of paid editions.
         self.instance_id = instance_id
         # The UID of the member to which the asset belongs.
         self.member_uid = member_uid
@@ -1902,7 +1980,7 @@ class DescribeAssetGroupToInstanceRequest(TeaModel):
         self.region = region
         # The ID of the region in which the instance resides.
         # 
-        # >  You can call the [DescribeRegions](~~118703~~) operation to query the most recent region list.
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the most recent region list.
         self.region_id = region_id
         # The source IP address of the request. The system specifies this parameter.
         self.source_ip = source_ip
@@ -2116,26 +2194,36 @@ class DescribeDdosEventRequest(TeaModel):
         start_time: int = None,
     ):
         # The end time of the DDoS attack event to query. This value is a UNIX timestamp. Unit: seconds.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The ID of the Anti-DDoS Origin instance to query.
         # 
-        # >  You can call the [DescribeInstanceList](~~118698~~) operation to query the IDs of all Anti-DDoS Origin instances.
+        # >  You can call the [DescribeInstanceList](https://help.aliyun.com/document_detail/118698.html) operation to query the IDs of all Anti-DDoS Origin instances.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The attacked IP address to query.
         self.ip = ip
         # The number of the page to return.
+        # 
+        # This parameter is required.
         self.page_no = page_no
         # The number of entries to return on each page.
+        # 
+        # This parameter is required.
         self.page_size = page_size
         # The ID of the region where the Anti-DDoS Origin instance resides.
         # 
-        # >  You can call the [DescribeRegions](~~118703~~) operation to query the most recent region list.
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the most recent region list.
         self.region_id = region_id
         # The ID of the resource group to which the Anti-DDoS Origin instance belongs in Resource Management.
         # 
         # If you do not specify this parameter, the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
         # The start time of the DDoS attack event to query. This value is a UNIX timestamp. Unit: seconds.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -2717,7 +2805,7 @@ class DescribeExcpetionCountRequest(TeaModel):
     ):
         # The ID of the region where the Anti-DDoS Origin instance resides.
         # 
-        # >  You can call the [DescribeRegions](~~118703~~) operation to query the most recent region list.
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the most recent region list.
         self.region_id = region_id
         # The ID of the resource group to which the Anti-DDoS Origin instance belongs in Resource Management.
         # 
@@ -2908,12 +2996,16 @@ class DescribeInstanceListRequest(TeaModel):
         # *   **asc**: the ascending order.
         self.orderdire = orderdire
         # The number of the page to return.
+        # 
+        # This parameter is required.
         self.page_no = page_no
         # The number of entries to return on each page.
+        # 
+        # This parameter is required.
         self.page_size = page_size
         # The ID of the region where the Anti-DDoS Origin instance to query resides.
         # 
-        # >  You can call the [DescribeRegions](~~118703~~) operation to query the most recent region list.
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the most recent region list.
         self.region_id = region_id
         # The remarks of the Anti-DDoS Origin instance to query. Fuzzy match is supported.
         self.remark = remark
@@ -3051,7 +3143,7 @@ class DescribeInstanceListResponseBodyInstanceList(TeaModel):
         self.auto_renewal = auto_renewal
         # The number of protected public IP addresses for which blackhole filtering is triggered.
         # 
-        # >  You can call the [DeleteBlackhole](~~118692~~) operation to deactivate blackhole filtering for a protected IP address.
+        # >  You can call the [DeleteBlackhole](https://help.aliyun.com/document_detail/118692.html) operation to deactivate blackhole filtering for a protected IP address.
         self.blackholding_count = blackholding_count
         self.commodity_type = commodity_type
         self.coverage_type = coverage_type
@@ -3257,15 +3349,17 @@ class DescribeInstanceSpecsRequest(TeaModel):
     ):
         # The ID of the Anti-DDoS Origin Enterprise instance. This parameter value is a string consisting of JSON arrays. Each element in a JSON array indicates an instance ID. If you want to query more than one instance, separate instance IDs with commas (,).
         # 
-        # >  You can call the [DescribeInstanceList](~~118698~~) operation to query the IDs of all Anti-DDoS Origin Enterprise instances in a specific region.
+        # >  You can call the [DescribeInstanceList](https://help.aliyun.com/document_detail/118698.html) operation to query the IDs of all Anti-DDoS Origin Enterprise instances in a specific region.
+        # 
+        # This parameter is required.
         self.instance_id_list = instance_id_list
         # The region ID of the Anti-DDoS Origin Enterprise instance. Default value: **cn-hangzhou**, which indicates the China (Hangzhou) region.
         # 
-        # >  If your instance does not reside in the China (Hangzhou) region, you must specify this parameter to the region ID of your instance. You can call the [DescribeRegions](~~118703~~) operation to query the regions of cloud assets that are supported by an Anti-DDoS Origin instance.
+        # >  If your instance does not reside in the China (Hangzhou) region, you must specify this parameter to the region ID of your instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the regions of cloud assets that are supported by an Anti-DDoS Origin instance.
         self.region_id = region_id
         # The ID of the resource group to which the Anti-DDoS Origin Enterprise instance belongs in Resource Management. This parameter is empty by default, which indicates that the Anti-DDoS Origin Enterprise instance belongs to the default resource group.
         # 
-        # For more information about resource groups, see [Create a resource group](~~94485~~).
+        # For more information about resource groups, see [Create a resource group](https://help.aliyun.com/document_detail/94485.html).
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -3401,7 +3495,7 @@ class DescribeInstanceSpecsResponseBodyInstanceSpecs(TeaModel):
         self.pack_config = pack_config
         # The region ID of the Anti-DDoS Origin Enterprise instance.
         # 
-        # >  You can call the [DescribeRegions](~~118703~~) operation to query the name of the region.
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the name of the region.
         self.region = region
         # The number of times that the unlimited protection feature can be enabled.
         self.total_defense_times = total_defense_times
@@ -3553,19 +3647,29 @@ class DescribeOnDemandDdosEventRequest(TeaModel):
         start_time: int = None,
     ):
         # The timestamp that specifies the end of the time range to query. Unit: seconds. The timestamp follows the UNIX time format. It is the number of seconds that have elapsed since 00:00:00 Thursday, 1 January 1970.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The ID of the on-demand instance to query.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The IP address of the protection target.
         self.ip = ip
         # The number of the page to return. Default value: **1**.
+        # 
+        # This parameter is required.
         self.page_no = page_no
         # The number of entries to return on each page. The maximum value is **50**. The default value is **10**.
+        # 
+        # This parameter is required.
         self.page_size = page_size
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
         # The timestamp that specifies the beginning of the time range to query. Unit: seconds. The timestamp follows the UNIX time format. It is the number of seconds that have elapsed since 00:00:00 Thursday, 1 January 1970.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -3783,11 +3887,13 @@ class DescribeOnDemandInstanceStatusRequest(TeaModel):
     ):
         # The IDs of on-demand instances.
         # 
-        # >  You can call the [DescribeOnDemandInstance](~~152120~~) operation to query the IDs of all on-demand instances.
+        # >  You can call the [DescribeOnDemandInstance](https://help.aliyun.com/document_detail/152120.html) operation to query the IDs of all on-demand instances.
+        # 
+        # This parameter is required.
         self.instance_id_list = instance_id_list
         # The region ID of the on-demand instance.
         # 
-        # >  You can call the [DescribeRegions](~~118703~~) operation to query all regions supported by Anti-DDoS Origin.
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query all regions supported by Anti-DDoS Origin.
         self.region_id = region_id
 
     def validate(self):
@@ -3992,8 +4098,12 @@ class DescribeOpEntitiesRequest(TeaModel):
         start_time: int = None,
     ):
         # The operation that you want to perform. Set the value to **DescribeOpEntities**.
+        # 
+        # This parameter is required.
         self.current_page = current_page
         # The details of the operation log.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The page number of the returned page.
         self.instance_id = instance_id
@@ -4004,9 +4114,11 @@ class DescribeOpEntitiesRequest(TeaModel):
         self.order_by = order_by
         # The ID of the region where the Anti-DDoS Origin instance resides.
         # 
-        # >  You can call the [DescribeRegions](~~118703~~) operation to query the most recent region list.
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the most recent region list.
         self.order_dir = order_dir
         # The type of the operation object. The value is fixed as **1**, which indicates Anti-DDoS Origin instances.
+        # 
+        # This parameter is required.
         self.page_size = page_size
         # The ID of the Alibaba Cloud account that performs the operation.
         # 
@@ -4042,6 +4154,8 @@ class DescribeOpEntitiesRequest(TeaModel):
         #         *   **elasticBandwidth**: the burstable protection bandwidth. Unit: Gbit/s. Data type: integer.
         self.resource_group_id = resource_group_id
         # The sorting method of operation logs. Set the value to **opdate**, which indicates sorting based on the operation time.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -4108,7 +4222,7 @@ class DescribeOpEntitiesResponseBodyOpEntities(TeaModel):
     ):
         # Queries the operation logs of an Anti-DDoS Origin instance.
         self.entity_object = entity_object
-        # All Alibaba Cloud API operations must include common request parameters. For more information about common request parameters, see [Common parameters](~~118841~~).
+        # All Alibaba Cloud API operations must include common request parameters. For more information about common request parameters, see [Common parameters](https://help.aliyun.com/document_detail/118841.html).
         # 
         # For more information about sample requests, see the **"Examples"** section of this topic.
         self.entity_type = entity_type
@@ -4264,15 +4378,21 @@ class DescribePackIpListRequest(TeaModel):
     ):
         # The ID of the Anti-DDoS Origin instance to query.
         # 
-        # >  You can call the [DescribeInstanceList](~~118698~~) operation to query the IDs of all Anti-DDoS Origin instances.
+        # >  You can call the [DescribeInstanceList](https://help.aliyun.com/document_detail/118698.html) operation to query the IDs of all Anti-DDoS Origin instances.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The protected IP address to query.
         self.ip = ip
         # The ID of the member.
         self.member_uid = member_uid
         # The number of the page to return.
+        # 
+        # This parameter is required.
         self.page_no = page_no
         # The number of entries to return on each page.
+        # 
+        # This parameter is required.
         self.page_size = page_size
         # The type of the cloud asset to which the protected IP address to query belongs. Valid values:
         # 
@@ -4283,7 +4403,7 @@ class DescribePackIpListRequest(TeaModel):
         self.product_name = product_name
         # The ID of the region where the Anti-DDoS Origin instance resides.
         # 
-        # >  You can call the [DescribeRegions](~~118703~~) operation to query the most recent region list.
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the most recent region list.
         self.region_id = region_id
         # The ID of the resource group to which the Anti-DDoS Origin instance belongs in Resource Management.
         # 
@@ -4343,6 +4463,8 @@ class DescribePackIpListResponseBodyIpList(TeaModel):
         self,
         ip: str = None,
         member_uid: str = None,
+        nsm_expire_at: int = None,
+        nsm_start_at: int = None,
         nsm_status: int = None,
         product: str = None,
         region: str = None,
@@ -4353,6 +4475,8 @@ class DescribePackIpListResponseBodyIpList(TeaModel):
         self.ip = ip
         # The ID of the member.
         self.member_uid = member_uid
+        self.nsm_expire_at = nsm_expire_at
+        self.nsm_start_at = nsm_start_at
         self.nsm_status = nsm_status
         # The type of the cloud asset to which the IP address belongs. Valid values:
         # 
@@ -4388,6 +4512,10 @@ class DescribePackIpListResponseBodyIpList(TeaModel):
             result['Ip'] = self.ip
         if self.member_uid is not None:
             result['MemberUid'] = self.member_uid
+        if self.nsm_expire_at is not None:
+            result['NsmExpireAt'] = self.nsm_expire_at
+        if self.nsm_start_at is not None:
+            result['NsmStartAt'] = self.nsm_start_at
         if self.nsm_status is not None:
             result['NsmStatus'] = self.nsm_status
         if self.product is not None:
@@ -4406,6 +4534,10 @@ class DescribePackIpListResponseBodyIpList(TeaModel):
             self.ip = m.get('Ip')
         if m.get('MemberUid') is not None:
             self.member_uid = m.get('MemberUid')
+        if m.get('NsmExpireAt') is not None:
+            self.nsm_expire_at = m.get('NsmExpireAt')
+        if m.get('NsmStartAt') is not None:
+            self.nsm_start_at = m.get('NsmStartAt')
         if m.get('NsmStatus') is not None:
             self.nsm_status = m.get('NsmStatus')
         if m.get('Product') is not None:
@@ -4430,7 +4562,7 @@ class DescribePackIpListResponseBody(TeaModel):
     ):
         # The HTTP status code of the request.
         # 
-        # For more information about status codes, see [Common parameters](~~118841~~).
+        # For more information about status codes, see [Common parameters](https://help.aliyun.com/document_detail/118841.html).
         self.code = code
         # The IP addresses that are protected by the instance.
         self.ip_list = ip_list
@@ -4819,11 +4951,11 @@ class DescribeRegionsRequest(TeaModel):
     ):
         # The region ID to query. The default value is **cn-hangzhou**, which indicates that the regions of cloud assets that are supported by an Anti-DDoS Origin instance in the China (Hangzhou) region are queried.
         # 
-        # For more information about the IDs of other regions, see [Regions and zones](~~40654~~).
+        # For more information about the IDs of other regions, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
         # The ID of the resource group to which the Anti-DDoS Origin instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         # 
-        # For more information about resource groups, see [Create a resource group](~~94485~~).
+        # For more information about resource groups, see [Create a resource group](https://help.aliyun.com/document_detail/94485.html).
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -5017,7 +5149,7 @@ class DescribeTrafficRequest(TeaModel):
         self.flow_type = flow_type
         # The ID of the Anti-DDoS Origin instance to query.
         # 
-        # >  You can call the [DescribeInstanceList](~~118698~~) operation to query the IDs of all Anti-DDoS Origin instances.
+        # >  You can call the [DescribeInstanceList](https://help.aliyun.com/document_detail/118698.html) operation to query the IDs of all Anti-DDoS Origin instances.
         # 
         # If you specify an on-demand instance, you must configure the **Interval** parameter.
         self.instance_id = instance_id
@@ -5025,19 +5157,21 @@ class DescribeTrafficRequest(TeaModel):
         self.interval = interval
         # The public IP address of the asset to query. If you do not specify this parameter, the traffic statistics of all public IP addresses that are protected by the Anti-DDoS Origin instance are queried.
         # 
-        # >  The public IP address must be a protected object of the Anti-DDoS Origin instance. You can call the [DescribePackIpList](~~118701~~) operation to query all protected objects of the Anti-DDoS Origin instance.
+        # >  The public IP address must be a protected object of the Anti-DDoS Origin instance. You can call the [DescribePackIpList](https://help.aliyun.com/document_detail/118701.html) operation to query all protected objects of the Anti-DDoS Origin instance.
         self.ip = ip
         # The Classless Inter-Domain Routing (CIDR) block of the on-demand instance that you want to query.
         self.ipnet = ipnet
         # The ID of the region where the Anti-DDoS Origin instance resides.
         # 
-        # >  You can call the [DescribeRegions](~~118703~~) operation to query the most recent region list.
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the most recent region list.
         self.region_id = region_id
         # The ID of the resource group to which the Anti-DDoS Origin instance belongs in Resource Management.
         # 
         # If you do not specify this parameter, the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
         # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -5261,13 +5395,19 @@ class DettachAssetGroupToInstanceRequestAssetGroupList(TeaModel):
         type: str = None,
     ):
         # The ID of the asset. If the asset is a Web Application Firewall (WAF) instance, specify the ID of the WAF instance.
+        # 
+        # This parameter is required.
         self.name = name
         # The region ID of the asset.
+        # 
+        # This parameter is required.
         self.region = region
         # The type of the asset. Valid values:
         # 
         # *   **waf**: WAF instance
         # *   **ga**: Global Accelerator (GA) instance
+        # 
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -5307,14 +5447,18 @@ class DettachAssetGroupToInstanceRequest(TeaModel):
         source_ip: str = None,
     ):
         # The information about the asset that you want to dissociate.
+        # 
+        # This parameter is required.
         self.asset_group_list = asset_group_list
         # The ID of the instance.
         # 
-        # >  You can call the [DescribeInstanceList](~~118698~~) operation to query the IDs of all Anti-DDoS Origin instances of paid editions.
+        # >  You can call the [DescribeInstanceList](https://help.aliyun.com/document_detail/118698.html) operation to query the IDs of all Anti-DDoS Origin instances of paid editions.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The ID of the region in which the instance resides.
         # 
-        # >  You can call the [DescribeRegions](~~118703~~) operation to query the most recent region list.
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the most recent region list.
         self.region_id = region_id
         # The source IP address of the request. The system specifies this parameter.
         self.source_ip = source_ip
@@ -5368,14 +5512,18 @@ class DettachAssetGroupToInstanceShrinkRequest(TeaModel):
         source_ip: str = None,
     ):
         # The information about the asset that you want to dissociate.
+        # 
+        # This parameter is required.
         self.asset_group_list_shrink = asset_group_list_shrink
         # The ID of the instance.
         # 
-        # >  You can call the [DescribeInstanceList](~~118698~~) operation to query the IDs of all Anti-DDoS Origin instances of paid editions.
+        # >  You can call the [DescribeInstanceList](https://help.aliyun.com/document_detail/118698.html) operation to query the IDs of all Anti-DDoS Origin instances of paid editions.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The ID of the region in which the instance resides.
         # 
-        # >  You can call the [DescribeRegions](~~118703~~) operation to query the most recent region list.
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the most recent region list.
         self.region_id = region_id
         # The source IP address of the request. The system specifies this parameter.
         self.source_ip = source_ip
@@ -5489,11 +5637,11 @@ class GetSlsOpenStatusRequest(TeaModel):
     ):
         # The ID of the region where the Anti-DDoS Origin instance resides.
         # 
-        # For more information about the valid values of this parameter, see [Regions and zones](~~188196~~).
+        # For more information about the valid values of this parameter, see [Regions and zones](https://help.aliyun.com/document_detail/188196.html).
         self.region_id = region_id
         # The ID of the resource group to which the Anti-DDoS Origin instance belongs in Resource Management. This parameter is empty by default, which indicates that the Anti-DDoS Origin instance belongs to the default resource group.
         # 
-        # For more information about resource groups, see [Create a resource group](~~94485~~).
+        # For more information about resource groups, see [Create a resource group](https://help.aliyun.com/document_detail/94485.html).
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -5612,7 +5760,7 @@ class ListOpenedAccessLogInstancesRequest(TeaModel):
         self.page_size = page_size
         # The ID of the resource group to which the Anti-DDoS Origin instance belongs in Resource Management. This parameter is empty by default, which indicates that the Anti-DDoS Origin instance belongs to the default resource group.
         # 
-        # For more information about resource groups, see [Create a resource group](~~94485~~).
+        # For more information about resource groups, see [Create a resource group](https://help.aliyun.com/document_detail/94485.html).
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -5786,10 +5934,14 @@ class ListTagKeysRequest(TeaModel):
         # The number of entries to return on each page. Valid values: 1 to **50**. Default value: **10**.
         self.page_size = page_size
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
         # The type of the resource. Valid value: **INSTANCE**.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
 
     def validate(self):
@@ -6021,7 +6173,9 @@ class ListTagResourcesRequest(TeaModel):
         self.next_token = next_token
         # The ID of the region where the Anti-DDoS Origin instance resides.
         # 
-        # >  You can call the [DescribeRegions](~~118703~~) operation to query the most recent region list.
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group to which the Anti-DDoS Origin instance belongs in Resource Management.
         # 
@@ -6029,9 +6183,11 @@ class ListTagResourcesRequest(TeaModel):
         self.resource_group_id = resource_group_id
         # The IDs of Anti-DDoS Origin Instances to query.
         # 
-        # >  You can call the [DescribeInstanceList](~~118698~~) operation to query the IDs of all Anti-DDoS Origin instances.
+        # >  You can call the [DescribeInstanceList](https://help.aliyun.com/document_detail/118698.html) operation to query the IDs of all Anti-DDoS Origin instances.
         self.resource_id = resource_id
         # The type of the resource to query. Set the value to **INSTANCE**, which indicates instances.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The tags to query.
         self.tag = tag
@@ -6263,13 +6419,17 @@ class ModifyRemarkRequest(TeaModel):
     ):
         # The ID of the Anti-DDoS Origin instance for which you want to add remarks.
         # 
-        # >  You can call the [DescribeInstanceList](~~118698~~) operation to query the IDs of all Anti-DDoS Origin instances.
+        # >  You can call the [DescribeInstanceList](https://help.aliyun.com/document_detail/118698.html) operation to query the IDs of all Anti-DDoS Origin instances.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The ID of the region where the Anti-DDoS Origin instance resides.
         # 
-        # >  You can call the [DescribeRegions](~~118703~~) operation to query the most recent region list.
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the most recent region list.
         self.region_id = region_id
         # The remarks for the Anti-DDoS Origin instance.
+        # 
+        # This parameter is required.
         self.remark = remark
         # The ID of the resource group to which the Anti-DDoS Origin instance belongs in Resource Management.
         # 
@@ -6385,11 +6545,13 @@ class QuerySchedruleOnDemandRequest(TeaModel):
     ):
         # The ID of the on-demand instance.
         # 
-        # >  You can call the [DescribeOnDemandInstance](~~152120~~) operation to query the IDs of all on-demand instances.
+        # >  You can call the [DescribeOnDemandInstance](https://help.aliyun.com/document_detail/152120.html) operation to query the IDs of all on-demand instances.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region ID of the on-demand instance.
         # 
-        # >  You can call the [DescribeRegions](~~118703~~) operation to query all regions supported by Anti-DDoS Origin.
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query all regions supported by Anti-DDoS Origin.
         self.region_id = region_id
 
     def validate(self):
@@ -6680,6 +6842,7 @@ class ReleaseDdosOriginInstanceRequest(TeaModel):
         self,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -6779,16 +6942,20 @@ class SetInstanceModeOnDemandRequest(TeaModel):
     ):
         # The IDs of on-demand instances.
         # 
-        # >  You can call the [DescribeOnDemandInstance](~~152120~~) operation to query the IDs of all on-demand instances.
+        # >  You can call the [DescribeOnDemandInstance](https://help.aliyun.com/document_detail/152120.html) operation to query the IDs of all on-demand instances.
+        # 
+        # This parameter is required.
         self.instance_id_list = instance_id_list
         # The scheduling mode of the on-demand instance. Valid values:
         # 
         # *   **manual**: manual scheduling
         # *   **netflow-auto**: automatic scheduling
+        # 
+        # This parameter is required.
         self.mode = mode
         # The region ID of the on-demand instance.
         # 
-        # >  You can call the [DescribeRegions](~~118703~~) operation to query all regions supported by Anti-DDoS Origin.
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query all regions supported by Anti-DDoS Origin.
         self.region_id = region_id
 
     def validate(self):
@@ -6938,14 +7105,19 @@ class TagResourcesRequest(TeaModel):
     ):
         # The ID of the region where the Anti-DDoS Origin instance resides.
         # 
-        # >  You can call the [DescribeRegions](~~118703~~) operation to query the most recent region list.
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group to which the Anti-DDoS Origin instance belongs in Resource Management.
         # 
         # If you do not specify this parameter, the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
+        # This parameter is required.
         self.resource_id = resource_id
         # The type of the resource to which you want to add tags. Set the value to **INSTANCE**, which indicates instances.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         self.tag = tag
 
@@ -7075,11 +7247,16 @@ class UntagResourcesRequest(TeaModel):
         # Specifies whether to remove all tags from the specified Anti-DDoS Origin Enterprise instances.
         self.all = all
         # The ID of the region where the Anti-DDoS Origin Enterprise instances reside.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # This parameter is required.
         self.resource_id = resource_id
         # The type of the specified resource. Set the value to **INSTANCE**.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         self.tag_key = tag_key
 
