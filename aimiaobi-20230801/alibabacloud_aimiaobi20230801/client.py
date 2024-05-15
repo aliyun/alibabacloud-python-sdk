@@ -897,6 +897,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_material_by_id_with_options_async(request, runtime)
 
+    def document_extraction_with_options(
+        self,
+        tmp_req: ai_miao_bi_20230801_models.DocumentExtractionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.DocumentExtractionResponse:
+        """
+        @summary 从链接中提取文档内容
+        
+        @param tmp_req: DocumentExtractionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DocumentExtractionResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ai_miao_bi_20230801_models.DocumentExtractionShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.urls):
+            request.urls_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.urls, 'Urls', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        body = {}
+        if not UtilClient.is_unset(request.urls_shrink):
+            body['Urls'] = request.urls_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DocumentExtraction',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.DocumentExtractionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def document_extraction_with_options_async(
+        self,
+        tmp_req: ai_miao_bi_20230801_models.DocumentExtractionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.DocumentExtractionResponse:
+        """
+        @summary 从链接中提取文档内容
+        
+        @param tmp_req: DocumentExtractionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DocumentExtractionResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ai_miao_bi_20230801_models.DocumentExtractionShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.urls):
+            request.urls_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.urls, 'Urls', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        body = {}
+        if not UtilClient.is_unset(request.urls_shrink):
+            body['Urls'] = request.urls_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DocumentExtraction',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.DocumentExtractionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def document_extraction(
+        self,
+        request: ai_miao_bi_20230801_models.DocumentExtractionRequest,
+    ) -> ai_miao_bi_20230801_models.DocumentExtractionResponse:
+        """
+        @summary 从链接中提取文档内容
+        
+        @param request: DocumentExtractionRequest
+        @return: DocumentExtractionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.document_extraction_with_options(request, runtime)
+
+    async def document_extraction_async(
+        self,
+        request: ai_miao_bi_20230801_models.DocumentExtractionRequest,
+    ) -> ai_miao_bi_20230801_models.DocumentExtractionResponse:
+        """
+        @summary 从链接中提取文档内容
+        
+        @param request: DocumentExtractionRequest
+        @return: DocumentExtractionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.document_extraction_with_options_async(request, runtime)
+
     def export_generated_content_with_options(
         self,
         request: ai_miao_bi_20230801_models.ExportGeneratedContentRequest,
