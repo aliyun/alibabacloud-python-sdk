@@ -191,6 +191,8 @@ class AddHDMInstanceRequest(TeaModel):
         # *   **IDC**: a self-managed database instance that is not deployed on Alibaba Cloud.
         # 
         # >  IDC refers to your data center.
+        # 
+        # This parameter is required.
         self.instance_area = instance_area
         # The instance ID.
         self.instance_id = instance_id
@@ -512,28 +514,46 @@ class CreateAdamBenchTaskRequest(TeaModel):
         src_sql_oss_addr: str = None,
     ):
         # The description of the stress testing task.
+        # 
+        # This parameter is required.
         self.description = description
-        # The ID of the destination instance. The instance must be an ApsaraDB RDS for MySQL instance or a PolarDB for MySQL instance. You can call the [GetInstanceInspections](~~202857~~) operation to query the ID.
+        # The ID of the destination instance. The instance must be an ApsaraDB RDS for MySQL instance or a PolarDB for MySQL instance. You can call the [GetInstanceInspections](https://help.aliyun.com/document_detail/202857.html) operation to query the ID.
+        # 
+        # This parameter is required.
         self.dst_instance_id = dst_instance_id
         # The name of the privileged account for the destination instance.
+        # 
+        # This parameter is required.
         self.dst_super_account = dst_super_account
         # The password of the privileged account for the destination instance.
+        # 
+        # This parameter is required.
         self.dst_super_password = dst_super_password
         # The rate at which the traffic captured from the source database instance is replayed on the destination database instance. Valid values: 1 to 30. Default value: 1.
         self.rate = rate
         # The duration of the stress testing task for which the traffic is captured from the source instance. Unit: milliseconds.
+        # 
+        # This parameter is required.
         self.request_duration = request_duration
         # The start time of the stress testing task. Specify the time in the UNIX timestamp format. Unit: milliseconds.
+        # 
+        # This parameter is required.
         self.request_start_time = request_start_time
         # The database engine that the source database instance runs.
         self.src_engine = src_engine
         # The version of the database engine that the source database instance runs.
         self.src_engine_version = src_engine_version
         # The maximum number of queries per second (QPS) within the time period during which traffic on the source database instance is captured. The value must be accurate to two decimal places.
+        # 
+        # This parameter is required.
         self.src_max_qps = src_max_qps
         # The average QPS within the time period in which traffic on the source database instance is captured. The value must be accurate to two decimal places.
+        # 
+        # This parameter is required.
         self.src_mean_qps = src_mean_qps
         # The URL of the Object Storage Service (OSS) folder in which the archived objects for SQL statements that run on the source database instance are stored. You can obtain the URL after you upload the archived files to OSS.
+        # 
+        # This parameter is required.
         self.src_sql_oss_addr = src_sql_oss_addr
 
     def validate(self):
@@ -710,16 +730,18 @@ class CreateCacheAnalysisJobRequest(TeaModel):
         node_id: str = None,
         separators: str = None,
     ):
-        # The ID of the backup file. You can call the [DescribeBackups](~~61081~~) operation to query the ID.
+        # The ID of the backup file. You can call the [DescribeBackups](https://help.aliyun.com/document_detail/61081.html) operation to query the ID.
         # 
         # *   If you need to specify multiple backup file IDs, separate them with commas (,). For example, you can set this parameter to `12345,67890`.
         # *   If you do not specify this parameter, the system automatically backs up the task and performs cache analysis on the backup file.
         self.backup_set_id = backup_set_id
         # The ID of the ApsaraDB for Redis instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The ID of the data node on the instance. You can specify this parameter to query the monitoring information about the specified node.
         # 
-        # >  If you specify the BackupSetId parameter, the system ignores the NodeId parameter. You can call the [DescribeLogicInstanceTopology](~~94665~~) operation to query the node ID.
+        # >  If you specify the BackupSetId parameter, the system ignores the NodeId parameter. You can call the [DescribeLogicInstanceTopology](https://help.aliyun.com/document_detail/94665.html) operation to query the node ID.
         self.node_id = node_id
         # The delimiters used to identify the prefixes of keys. You do not need to specify this parameter if one or more of the following default delimiters are used: `: ; , _ - + @ = | #`
         self.separators = separators
@@ -884,7 +906,7 @@ class CreateCacheAnalysisJobResponseBodyData(TeaModel):
         self.instance_id = instance_id
         # The ID of the cache analysis task.
         # 
-        # >  This parameter can be used to query a specific cache analysis task. When you call the CreateCacheAnalysisJob operation, it takes some time to create a cache analysis task. As a result, the analysis results cannot be immediately returned. You can call the [DescribeCacheAnalysisJob](~~180983~~) operation to query the analysis results of the specified cache analysis task.
+        # >  This parameter can be used to query a specific cache analysis task. When you call the CreateCacheAnalysisJob operation, it takes some time to create a cache analysis task. As a result, the analysis results cannot be immediately returned. You can call the [DescribeCacheAnalysisJob](https://help.aliyun.com/document_detail/180983.html) operation to query the analysis results of the specified cache analysis task.
         self.job_id = job_id
         # The returned message.
         # 
@@ -1079,22 +1101,26 @@ class CreateCloudBenchTasksRequest(TeaModel):
     ):
         # The total number of stress testing tasks that you want to create. Valid values: **0** to **30**. Default value: **1**.
         self.amount = amount
-        # The ID of the backup set. You can call the [DescribeBackups](~~26273~~) operation to query the ID of the backup set.
+        # The ID of the backup set. You can call the [DescribeBackups](https://help.aliyun.com/document_detail/26273.html) operation to query the ID of the backup set.
         self.backup_id = backup_id
         # The time when the backup starts. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.backup_time = backup_time
         # The type of the stress testing client. Valid values:
         # 
-        # *   **ECS**: indicates that you must create the [DBGateway](~~64905~~).
+        # *   **ECS**: indicates that you must create the [DBGateway](https://help.aliyun.com/document_detail/64905.html).
         # *   **DAS_ECS**: indicates that DAS automatically purchases and deploys an Elastic Compute Service (ECS) instance for stress testing.
+        # 
+        # This parameter is required.
         self.client_type = client_type
         # The description of the stress testing task.
+        # 
+        # This parameter is required.
         self.description = description
         # The endpoint of the destination instance. The specified endpoint must be the endpoint of an ApsaraDB RDS for MySQL instance or a PolarDB for MySQL instance.
         # 
         # >  This parameter takes effect only if you set **DstType** to **ConnectionString**.
         self.dst_connection_string = dst_connection_string
-        # The ID of the destination instance. The instance must be an ApsaraDB RDS for MySQL instance or a PolarDB for MySQL instance. You can call the [GetInstanceInspections](~~202857~~) operation to query the ID.
+        # The ID of the destination instance. The instance must be an ApsaraDB RDS for MySQL instance or a PolarDB for MySQL instance. You can call the [GetInstanceInspections](https://help.aliyun.com/document_detail/202857.html) operation to query the ID.
         # 
         # >  This parameter must be specified if you set **DstType** to **Instance**.
         self.dst_instance_id = dst_instance_id
@@ -1111,11 +1137,11 @@ class CreateCloudBenchTasksRequest(TeaModel):
         # *   **Instance**: the instance ID. This is the default value.
         # *   **ConnectionString**: the endpoint of the instance.
         self.dst_type = dst_type
-        # The specification of the Data Transmission Service (DTS) migration task. You can call the [DescribeCloudbenchTask](~~230669~~) operation to query the specification.
+        # The specification of the Data Transmission Service (DTS) migration task. You can call the [DescribeCloudbenchTask](https://help.aliyun.com/document_detail/230669.html) operation to query the specification.
         # 
         # >  You must migrate the basic data in the source instance to the destination instance before you start a stress testing task. When you create a DTS migration task, you must specify this parameter.
         self.dts_job_class = dts_job_class
-        # The ID of the DTS migration task. You can call the [ConfigureDtsJob](~~208399~~) operation to query the ID.
+        # The ID of the DTS migration task. You can call the [ConfigureDtsJob](https://help.aliyun.com/document_detail/208399.html) operation to query the ID.
         # 
         # >  After a DTS migration task is created in the DTS console, you must specify this parameter.
         self.dts_job_id = dts_job_id
@@ -1148,9 +1174,11 @@ class CreateCloudBenchTasksRequest(TeaModel):
         # 
         # >  This parameter must be specified if you set **TaskType** to **smart pressure test**.
         self.smart_pressure_time = smart_pressure_time
-        # The ID of the source instance. The instance must be an ApsaraDB RDS for MySQL instance or a PolarDB for MySQL instance. You can call the [GetInstanceInspections](~~202857~~) operation to query the ID.
+        # The ID of the source instance. The instance must be an ApsaraDB RDS for MySQL instance or a PolarDB for MySQL instance. You can call the [GetInstanceInspections](https://help.aliyun.com/document_detail/202857.html) operation to query the ID.
         # 
         # >  This parameter must be specified if you set **DstType** to **Instance**.
+        # 
+        # This parameter is required.
         self.src_instance_id = src_instance_id
         # The reserved parameter.
         self.src_public_ip = src_public_ip
@@ -1166,6 +1194,8 @@ class CreateCloudBenchTasksRequest(TeaModel):
         # 
         # *   **pressure test** (default): A task of this type replays the traffic that is captured from the source instance on the destination instance at the maximum playback rate that is supported by the destination instance.
         # *   **smart pressure test**: A task of this type analyzes the traffic that is captured from the source instance over a short period of time and generates traffic on the destination instance for continuous stress testing. The business model based on which the traffic is generated on the destination instance and the traffic distribution are consistent with those on the source instance. Stress testing tasks of this type can help you reduce the amount of time that is consumed to collect data from the source instance and reduce storage costs and performance overheads.
+        # 
+        # This parameter is required.
         self.task_type = task_type
         # The temporary directory generated for stress testing.
         self.work_dir = work_dir
@@ -1433,12 +1463,18 @@ class CreateDiagnosticReportRequest(TeaModel):
         start_time: str = None,
     ):
         # The instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The end of the time range to create the diagnostic report. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         # 
         # >  The start time must be later than the end time.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The beginning of the time range to create the diagnostic report. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -1583,21 +1619,29 @@ class CreateKillInstanceSessionTaskRequest(TeaModel):
         session_ids: str = None,
     ):
         # The database account that has the permissions to terminate sessions.
+        # 
+        # This parameter is required.
         self.db_user = db_user
         # The password of the database account.
+        # 
+        # This parameter is required.
         self.db_user_password = db_user_password
         # The account whose sessions do not need to be terminated.
         # 
-        # >  Set this parameter to a JSON array. Separate database accounts with commas (,). Example: \[\"Database account 1\",\"Database account 2\"].
+        # >  Set this parameter to a JSON array. Separate database accounts with commas (,). Example: [\\"Database account 1\\",\\"Database account 2\\"].
         self.ignored_users = ignored_users
         # The instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # Specifies whether to terminate all sessions.
         # 
         # *   **true**\
         # *   **false**\
         # 
-        # >  If you set this parameter to **true**, sessions of the accounts that are specified by **IgnoredUsers**, sessions of internal O\&M accounts of Alibaba Cloud, and **Binlog Dump** sessions are not terminated.
+        # >  If you set this parameter to **true**, sessions of the accounts that are specified by **IgnoredUsers**, sessions of internal O\\&M accounts of Alibaba Cloud, and **Binlog Dump** sessions are not terminated.
+        # 
+        # This parameter is required.
         self.kill_all_sessions = kill_all_sessions
         # The node ID.
         # 
@@ -1605,7 +1649,7 @@ class CreateKillInstanceSessionTaskRequest(TeaModel):
         self.node_id = node_id
         # The IDs of sessions that need to be terminated.
         # 
-        # >  Set this parameter to a JSON array. Separate session IDs with commas (,). Example: \[\"Session ID1\",\"Session ID2\"]. If **KillAllSessions** is set to **true**, this parameter does not take effect.
+        # >  Set this parameter to a JSON array. Separate session IDs with commas (,). Example: [\\"Session ID1\\",\\"Session ID2\\"]. If **KillAllSessions** is set to **true**, this parameter does not take effect.
         self.session_ids = session_ids
 
     def validate(self):
@@ -1665,7 +1709,7 @@ class CreateKillInstanceSessionTaskResponseBody(TeaModel):
         self.code = code
         # The ID of the task that terminated the sessions.
         # 
-        # >  If the sessions of a PolarDB for MySQL cluster were terminated, **NodeId** is left empty, and **KillAllSessions** is set to **true**, the task IDs are returned based on the number of nodes. Example: \["f77d535b45405bd462b21caa3ee8\*\*\*\*", "e93ab549abb081eb5dcd5396a29b\*\*\*\*"].
+        # >  If the sessions of a PolarDB for MySQL cluster were terminated, **NodeId** is left empty, and **KillAllSessions** is set to **true**, the task IDs are returned based on the number of nodes. Example: ["f77d535b45405bd462b21caa3ee8\\*\\*\\*\\*", "e93ab549abb081eb5dcd5396a29b\\*\\*\\*\\*"].
         self.data = data
         # The returned message.
         # 
@@ -1766,7 +1810,9 @@ class CreateKillInstanceSessionTaskWithMaintainUserRequest(TeaModel):
         session_ids: str = None,
     ):
         self.ignored_users = ignored_users
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.kill_all_sessions = kill_all_sessions
         self.node_id = node_id
         self.session_ids = session_ids
@@ -1918,15 +1964,23 @@ class CreateQueryOptimizeTagRequest(TeaModel):
         # *   **MySQL**: ApsaraDB RDS for MySQL
         # *   **PolarDBMySQL**: PolarDB for MySQL
         # *   **PostgreSQL**: ApsaraDB RDS for PostgreSQL
+        # 
+        # This parameter is required.
         self.engine = engine
         # The instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
-        # The SQL template IDs. You can call the [GetQueryOptimizeExecErrorStats](~~405261~~) operation to obtain the SQL template ID. Separate multiple SQL template IDs with commas (,).
+        # The SQL template IDs. You can call the [GetQueryOptimizeExecErrorStats](https://help.aliyun.com/document_detail/405261.html) operation to obtain the SQL template ID. Separate multiple SQL template IDs with commas (,).
+        # 
+        # This parameter is required.
         self.sql_ids = sql_ids
         # The status of **Tags**. Valid values:
         # 
         # *   **0**: removes all tags added to the SQL templates that are specified by **SqlIds** and leaves **Tags** empty.
         # *   **1**: adds the tags specified by **Tags** to the SQL templates that are specified by **SqlIds**.
+        # 
+        # This parameter is required.
         self.status = status
         # The SQL tags. Separate multiple SQL tags with commas (,). Valid values:
         # 
@@ -1934,6 +1988,8 @@ class CreateQueryOptimizeTagRequest(TeaModel):
         # *   **DAS_NOT_IMPORTANT**: The SQL template is unimportant.
         # *   **USER_IGNORE**: The scheduling of the SQL template does not need to be optimized.
         # *   **DAS_IN_PLAN**: The scheduling of the SQL template needs to be optimized.
+        # 
+        # This parameter is required.
         self.tags = tags
 
     def validate(self):
@@ -2090,14 +2146,20 @@ class CreateRequestDiagnosisRequest(TeaModel):
         sql: str = None,
     ):
         # The name of the database.
+        # 
+        # This parameter is required.
         self.database = database
         # The instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The node ID.
         # 
         # >  This parameter must be specified for PolarDB for MySQL, PolarDB for PostgreSQL (Compatible with Oracle), and ApsaraDB for MongoDB instances.
         self.node_id = node_id
         # The SQL statement that you want to diagnose.
+        # 
+        # This parameter is required.
         self.sql = sql
 
     def validate(self):
@@ -2240,7 +2302,9 @@ class CreateSqlLogTaskRequestFilters(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The name of the filter parameter.
         self.key = key
+        # The value of the filter parameter.
         self.value = value
 
     def validate(self):
@@ -2279,13 +2343,27 @@ class CreateSqlLogTaskRequest(TeaModel):
         start_time: int = None,
         type: str = None,
     ):
+        # The end of the time range to query. The value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.end_time = end_time
+        # The filter conditions.
         self.filters = filters
+        # The instance ID.
         self.instance_id = instance_id
+        # The task name.
         self.name = name
+        # The node ID.
         self.node_id = node_id
+        # The role of the node in the PolarDB-X 2.0 instance. Valid values:
+        # 
+        # *   **polarx_cn**: compute node.
+        # *   **polarx_dn**: data node.
         self.role = role
+        # The beginning of the time range to query. The value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.start_time = start_time
+        # The type of the task. Valid values:
+        # 
+        # *   Export
+        # *   Query
         self.type = type
 
     def validate(self):
@@ -2355,12 +2433,19 @@ class CreateSqlLogTaskResponseBodyData(TeaModel):
         status: str = None,
         task_id: str = None,
     ):
+        # The time when the task was created.
         self.create_time = create_time
+        # The end of the time range to query.
         self.end = end
+        # The instance ID.
         self.instance_id = instance_id
+        # The task name.
         self.name = name
+        # The beginning of the time range to query.
         self.start = start
+        # The status of the task.
         self.status = status
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -2416,11 +2501,20 @@ class CreateSqlLogTaskResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The HTTP status code returned.
         self.code = code
         # SqlLogTask
         self.data = data
+        # The returned message.
+        # 
+        # >  If the request is successful, **Successful** is returned. If the request fails, an error message that contains information such as an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -2513,6 +2607,8 @@ class CreateStorageAnalysisTaskRequest(TeaModel):
         # The database name. If you specify a database, the operation analyzes the storage usage of the specified database.
         self.db_name = db_name
         # The instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The node ID.
         # 
@@ -2707,7 +2803,9 @@ class DeleteCloudBenchTaskRequest(TeaModel):
         self,
         task_id: str = None,
     ):
-        # The ID of the stress testing task. You can call the [DescribeCloudBenchTasks](~~230670~~) operation to query the ID.
+        # The ID of the stress testing task. You can call the [DescribeCloudBenchTasks](https://help.aliyun.com/document_detail/230670.html) operation to query the ID.
+        # 
+        # This parameter is required.
         self.task_id = task_id
 
     def validate(self):
@@ -2837,7 +2935,9 @@ class DeleteStopGatewayRequest(TeaModel):
         self,
         gateway_id: str = None,
     ):
-        # The ID that can uniquely identify the DBGateway. You can obtain the DBGateway ID by calling the [DescribeCloudbenchTask](~~230669~~) operation. The DBGateway ID is the value of the **ClientGatewayId** field in the response.
+        # The ID that can uniquely identify the DBGateway. You can obtain the DBGateway ID by calling the [DescribeCloudbenchTask](https://help.aliyun.com/document_detail/230669.html) operation. The DBGateway ID is the value of the **ClientGatewayId** field in the response.
+        # 
+        # This parameter is required.
         self.gateway_id = gateway_id
 
     def validate(self):
@@ -2974,6 +3074,8 @@ class DescribeAutoScalingConfigRequest(TeaModel):
         instance_id: str = None,
     ):
         # The instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -3267,8 +3369,8 @@ class DescribeAutoScalingConfigResponseBodyDataSpec(TeaModel):
         self.max_read_only_nodes = max_read_only_nodes
         # The maximum specifications to which the database instance can be upgraded. For more information about the specifications of each type of supported database instances, see the following topics:
         # 
-        # *   PolarDB for MySQL Cluster Edition instances: [Specifications of compute nodes](~~102542~~).
-        # *   ApsaraDB RDS for MySQL High-availability Edition instances that use standard SSDs or enhanced SSDs (ESSDs): [Specifications](~~276974~~).
+        # *   PolarDB for MySQL Cluster Edition instances: [Specifications of compute nodes](https://help.aliyun.com/document_detail/102542.html).
+        # *   ApsaraDB RDS for MySQL High-availability Edition instances that use standard SSDs or enhanced SSDs (ESSDs): [Specifications](https://help.aliyun.com/document_detail/276974.html).
         self.max_spec = max_spec
         # The average memory usage threshold that triggers automatic specification scale-up. Unit: %.
         self.mem_usage_upper_threshold = mem_usage_upper_threshold
@@ -3563,18 +3665,26 @@ class DescribeAutoScalingHistoryRequest(TeaModel):
         start_time: int = None,
     ):
         # The type of the auto scaling task that you want to query. Set the value to **SPEC**, which indicates that you can query the history of only automatic performance scaling tasks.
+        # 
+        # This parameter is required.
         self.auto_scaling_task_type = auto_scaling_task_type
         # The end of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         # 
         # > The end time must be later than the start time.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The instance ID.
         # 
         # > Only ApsaraDB RDS for MySQL instances are supported.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         # 
         # > The maximum time range that can be specified is 45 days.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -3893,8 +4003,12 @@ class DescribeCacheAnalysisJobRequest(TeaModel):
         job_id: str = None,
     ):
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
-        # The ID of the cache analysis task. You can obtain the task ID from the response parameters of the [CreateCacheAnalysisJob](~~180982~~) operation.
+        # The ID of the cache analysis task. You can obtain the task ID from the response parameters of the [CreateCacheAnalysisJob](https://help.aliyun.com/document_detail/180982.html) operation.
+        # 
+        # This parameter is required.
         self.job_id = job_id
 
     def validate(self):
@@ -4688,14 +4802,20 @@ class DescribeCacheAnalysisJobsRequest(TeaModel):
         # The end of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         # 
         # >  The end time must be later than the start time.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The page number. The value must be an integer that is greater than 0. Default value: 1.
         self.page_no = page_no
         # The number of entries per page. Default value: 10.
         self.page_size = page_size
         # The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -4858,7 +4978,7 @@ class DescribeCacheAnalysisJobsResponseBodyDataListCacheAnalysisJob(TeaModel):
     ):
         # The details about the large keys.
         # 
-        # > The sub-parameters of this parameter and the content of the sub-parameters are not returned. To query the detailed information about the cache analysis tasks, call the [DescribeCacheAnalysisJob](~~443012~~) operation.
+        # > The sub-parameters of this parameter and the content of the sub-parameters are not returned. To query the detailed information about the cache analysis tasks, call the [DescribeCacheAnalysisJob](https://help.aliyun.com/document_detail/443012.html) operation.
         self.big_keys = big_keys
         # The instance ID.
         self.instance_id = instance_id
@@ -5247,7 +5367,7 @@ class DescribeCloudBenchTasksResponseBodyDataListCloudbenchTasks(TeaModel):
         # * **3**: The file is being archived.
         # * **4**: The archived file does not need to be downloaded.
         self.archive_state = archive_state
-        # The ID of the backup set. You can call the [DescribeBackups](~~26273~~) operation to query the ID of the backup set.
+        # The ID of the backup set. You can call the [DescribeBackups](https://help.aliyun.com/document_detail/26273.html) operation to query the ID of the backup set.
         self.backup_id = backup_id
         # The backup type. Valid values:
         # 
@@ -5300,7 +5420,7 @@ class DescribeCloudBenchTasksResponseBodyDataListCloudbenchTasks(TeaModel):
         self.dst_type = dst_type
         # The specification of the DTS instance.
         # 
-        # > For more information about the specifications of DTS instances and the test performance of each instance, see [Specifications of data migration instances](~~26606~~).
+        # > For more information about the specifications of DTS instances and the test performance of each instance, see [Specifications of data migration instances](https://help.aliyun.com/document_detail/26606.html).
         self.dts_job_class = dts_job_class
         # The ID of the DTS migration task.
         self.dts_job_id = dts_job_id
@@ -5795,7 +5915,9 @@ class DescribeCloudbenchTaskRequest(TeaModel):
         self,
         task_id: str = None,
     ):
-        # The ID of the stress testing task. You can call the [DescribeCloudBenchTasks](~~230670~~) operation to query the ID.
+        # The ID of the stress testing task. You can call the [DescribeCloudBenchTasks](https://help.aliyun.com/document_detail/230670.html) operation to query the ID.
+        # 
+        # This parameter is required.
         self.task_id = task_id
 
     def validate(self):
@@ -5875,7 +5997,7 @@ class DescribeCloudbenchTaskResponseBodyData(TeaModel):
         # *   **3**: The file is being archived.
         # *   **4**: The archived file does not need to be downloaded.
         self.archive_state = archive_state
-        # The ID of the backup set. You can call the [DescribeBackups](~~26273~~) operation to query the ID of the backup set.
+        # The ID of the backup set. You can call the [DescribeBackups](https://help.aliyun.com/document_detail/26273.html) operation to query the ID of the backup set.
         self.backup_id = backup_id
         # The backup type. Valid values:
         # 
@@ -5910,7 +6032,7 @@ class DescribeCloudbenchTaskResponseBodyData(TeaModel):
         self.client_gateway_id = client_gateway_id
         # The type of the stress testing client. Valid values:
         # 
-        # *   **ECS**: indicates that you must create the [DBGateway](~~64905~~).
+        # *   **ECS**: indicates that you must create the [DBGateway](https://help.aliyun.com/document_detail/64905.html).
         # *   **DAS_ECS**: indicates that DAS automatically purchases and deploys an ECS instance for stress testing.
         self.client_type = client_type
         # The description of the stress testing task.
@@ -6328,7 +6450,9 @@ class DescribeCloudbenchTaskConfigRequest(TeaModel):
         self,
         task_id: str = None,
     ):
-        # The task ID. You can call the [DescribeCloudBenchTasks](~~230670~~) operation to query the task ID.
+        # The task ID. You can call the [DescribeCloudBenchTasks](https://help.aliyun.com/document_detail/230670.html) operation to query the task ID.
+        # 
+        # This parameter is required.
         self.task_id = task_id
 
     def validate(self):
@@ -6605,16 +6729,22 @@ class DescribeDiagnosticReportListRequest(TeaModel):
         start_time: str = None,
     ):
         # The instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The end of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         # 
         # >  The end time must be later than the start time.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The page number. The value must be a positive integer. Default value: 1.
         self.page_no = page_no
         # The number of entries per page. Default value: 10.
         self.page_size = page_size
         # The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -6777,9 +6907,11 @@ class DescribeHotBigKeysRequest(TeaModel):
     ):
         # The reserved parameter.
         self.console_context = console_context
-        # The ID of the ApsaraDB for Redis instance. You can call the [DescribeInstances](~~60933~~) operation to query the ID.
+        # The ID of the ApsaraDB for Redis instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/60933.html) operation to query the ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
-        # The ID of the data shard on the ApsaraDB for Redis instance. You can call the [DescribeRoleZoneInfo](~~190794~~) operation to query the ID.
+        # The ID of the data shard on the ApsaraDB for Redis instance. You can call the [DescribeRoleZoneInfo](https://help.aliyun.com/document_detail/190794.html) operation to query the ID.
         self.node_id = node_id
 
     def validate(self):
@@ -7161,9 +7293,11 @@ class DescribeHotKeysRequest(TeaModel):
         instance_id: str = None,
         node_id: str = None,
     ):
-        # The ID of the ApsaraDB for Redis instance. You can call the [DescribeInstances](~~60933~~) operation to query the instance ID.
+        # The ID of the ApsaraDB for Redis instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/60933.html) operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
-        # The ID of the data shard on the ApsaraDB for Redis instance. You can call the [DescribeRoleZoneInfo](~~190794~~) operation to query the data shard ID.
+        # The ID of the data shard on the ApsaraDB for Redis instance. You can call the [DescribeRoleZoneInfo](https://help.aliyun.com/document_detail/190794.html) operation to query the data shard ID.
         self.node_id = node_id
 
     def validate(self):
@@ -7391,6 +7525,8 @@ class DescribeInstanceDasProRequest(TeaModel):
         instance_id: str = None,
     ):
         # The database instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -7523,6 +7659,9 @@ class DescribeSqlLogConfigRequest(TeaModel):
         self,
         instance_id: str = None,
     ):
+        # The instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -7566,22 +7705,41 @@ class DescribeSqlLogConfigResponseBodyData(TeaModel):
         support_version: str = None,
         version: str = None,
     ):
+        # The cold storage duration.
         self.cold_enable = cold_enable
+        # The cold storage duration.
         self.cold_retention = cold_retention
+        # The time when cold storage was enabled.
         self.cold_start_time = cold_start_time
+        # The version of the collector.
         self.collector_version = collector_version
+        # Indicates whether hot storage was enabled.
         self.hot_enable = hot_enable
+        # The hot storage duration.
         self.hot_retention = hot_retention
+        # The time when hot storage was enabled.
         self.hot_start_time = hot_start_time
+        # A reserved parameter.
         self.log_filter = log_filter
+        # Indicates whether SQL Explorer and Audit was enabled.
         self.request_enable = request_enable
+        # The time when SQL Explorer and Audit was enabled.
         self.request_start_time = request_start_time
+        # The time when SQL Explorer and Audit was disabled.
+        # 
+        # >  If DAS Enterprise Edition V1 was enabled, this parameter indicates the time when DAS Enterprise Edition expired.
         self.request_stop_time = request_stop_time
+        # The storage duration of the SQL Explorer and Audit data.
         self.retention = retention
+        # Indicates whether DAS Enterprise Edition was enabled.
         self.sql_log_enable = sql_log_enable
+        # The status of data migration.
         self.sql_log_state = sql_log_state
+        # The time when SQL Explorer and Audit was enabled.
         self.sql_log_visible_time = sql_log_visible_time
+        # The supported versions of Database Autonomy Service (DAS) Enterprise Edition.
         self.support_version = support_version
+        # The version of SQL Explorer and Audit.
         self.version = version
 
     def validate(self):
@@ -7677,11 +7835,20 @@ class DescribeSqlLogConfigResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The HTTP status code returned.
         self.code = code
         # SqlLogConfig
         self.data = data
+        # The returned message.
+        # 
+        # >  If the request is successful, **Successful** is returned. If the request fails, an error message that contains information such as an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -7769,6 +7936,7 @@ class DescribeSqlLogRecordsRequestFilters(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # Parameter filtering
         self.key = key
         self.value = value
 
@@ -7810,6 +7978,7 @@ class DescribeSqlLogRecordsRequest(TeaModel):
     ):
         self.end_time = end_time
         self.filters = filters
+        # This parameter is required.
         self.instance_id = instance_id
         self.node_id = node_id
         self.page_no = page_no
@@ -7932,6 +8101,7 @@ class DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord(TeaModel):
         self.rows = rows
         self.scan_rows = scan_rows
         self.scnt = scnt
+        # SQL ID。
         self.sql_id = sql_id
         self.sql_text = sql_text
         self.sql_type = sql_type
@@ -8286,6 +8456,7 @@ class DescribeSqlLogStatisticRequest(TeaModel):
         self,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -8578,7 +8749,7 @@ class DescribeSqlLogTaskResponseBodyDataQueries(TeaModel):
         self.consume = consume
         self.cpu_time = cpu_time
         self.dbname = dbname
-        # yyyy-MM-dd\"T\"HH:mm:ss.SSS\"Z\"
+        # yyyy-MM-dd\\"T\\"HH:mm:ss.SSS\\"Z\\"
         self.execute_time = execute_time
         self.ext = ext
         self.frows = frows
@@ -8964,7 +9135,9 @@ class DescribeSqlLogTasksRequestFilters(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The name of the filter parameter.
         self.key = key
+        # The value of the filter parameter.
         self.value = value
 
     def validate(self):
@@ -9002,12 +9175,21 @@ class DescribeSqlLogTasksRequest(TeaModel):
         page_size: int = None,
         start_time: int = None,
     ):
+        # The end of the time range to query. The value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.end_time = end_time
+        # The filter conditions.
         self.filters = filters
+        # The ID of the database instance.
         self.instance_id = instance_id
+        # The node ID.
+        # 
+        # > This parameter is available only for instances that run in a cluster architecture. You can specify this parameter to query the logs of a specific node. If this parameter is not specified, the logs of the primary node are returned by default.
         self.node_id = node_id
+        # The number of the page to return. Pages start from page 1. Default value: 1.
         self.page_no = page_no
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
+        # The beginning of the time range to query. The value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.start_time = start_time
 
     def validate(self):
@@ -9068,7 +9250,9 @@ class DescribeSqlLogTasksResponseBodyDataListFilters(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The name of the filter parameter.
         self.key = key
+        # The value of the filter parameter.
         self.value = value
 
     def validate(self):
@@ -9115,21 +9299,40 @@ class DescribeSqlLogTasksResponseBodyDataList(TeaModel):
         task_id: str = None,
         task_type: str = None,
     ):
+        # The time when the analysis task was complete.
         self.analysis_task_finish_time = analysis_task_finish_time
+        # The status of the analysis task.
         self.analysis_task_status = analysis_task_status
+        # The time when the task was created.
         self.create_time = create_time
+        # The end of the time range to query.
         self.end = end
+        # Indicates whether the task expires.
         self.expire = expire
+        # The filter conditions.
         self.filters = filters
+        # The instance ID.
         self.instance_id = instance_id
+        # The number of log records
         self.log_count = log_count
+        # The task name.
         self.name = name
+        # The task progress.
         self.progress = progress
+        # The Object Storage Service (OSS) URL or other information.
         self.result = result
+        # The number of files scanned
         self.scan_file_size = scan_file_size
+        # The beginning of the time range to query.
         self.start = start
+        # The status of the task.
         self.status = status
+        # The task ID.
         self.task_id = task_id
+        # The type of the task. Valid values:
+        # 
+        # *   Export
+        # *   Query
         self.task_type = task_type
 
     def validate(self):
@@ -9228,9 +9431,13 @@ class DescribeSqlLogTasksResponseBodyData(TeaModel):
         page_size: int = None,
         total: int = None,
     ):
+        # The details of the data returned.
         self.list = list
+        # The page number.
         self.page_no = page_no
+        # The number of entries per page.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total = total
 
     def validate(self):
@@ -9282,11 +9489,20 @@ class DescribeSqlLogTasksResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The HTTP status code returned.
         self.code = code
-        # ListResult<SqlLogTask>
+        # ListResult
         self.data = data
+        # The returned message.
+        # 
+        # >  If the request is successful, **Successful** is returned. If the request fails, an error message that contains information such as an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -9388,12 +9604,18 @@ class DescribeTopBigKeysRequest(TeaModel):
         # *   Only data within the last four days can be queried.
         # 
         # *   The maximum interval between the **start time** and the** end time** is 3 hours.
+        # 
+        # This parameter is required.
         self.end_time = end_time
-        # The ID of the ApsaraDB for Redis instance. You can call the [DescribeInstances](~~60933~~) operation to query the ID.
+        # The ID of the ApsaraDB for Redis instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/60933.html) operation to query the ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
-        # The ID of the data shard on the ApsaraDB for Redis instance. You can call the [DescribeRoleZoneInfo](~~190794~~) operation to query the ID.
+        # The ID of the data shard on the ApsaraDB for Redis instance. You can call the [DescribeRoleZoneInfo](https://help.aliyun.com/document_detail/190794.html) operation to query the ID.
         self.node_id = node_id
         # The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -9647,12 +9869,18 @@ class DescribeTopHotKeysRequest(TeaModel):
         # *   Only data within the last four days can be queried.
         # 
         # *   The maximum interval between the **start time** and the** end time** is 3 hours.
+        # 
+        # This parameter is required.
         self.end_time = end_time
-        # The ID of the ApsaraDB for Redis instance. You can call the [DescribeInstances](~~60933~~) operation to query the ID.
+        # The ID of the ApsaraDB for Redis instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/60933.html) operation to query the ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
-        # The ID of the data shard on the ApsaraDB for Redis instance. You can call the [DescribeRoleZoneInfo](~~190794~~) operation to query the ID.
+        # The ID of the data shard on the ApsaraDB for Redis instance. You can call the [DescribeRoleZoneInfo](https://help.aliyun.com/document_detail/190794.html) operation to query the ID.
         self.node_id = node_id
         # The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -9902,6 +10130,8 @@ class DisableAllSqlConcurrencyControlRulesRequest(TeaModel):
         # The instance ID.
         # 
         # >  You must specify this parameter only if your database instance is an ApsaraDB RDS for MySQL instance or a PolarDB for MySQL cluster.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -10040,7 +10270,9 @@ class DisableAutoResourceOptimizeRulesRequest(TeaModel):
         self.console_context = console_context
         # The database instance ID.
         # 
-        # >  Set this parameter to a JSON array that consists of multiple instance IDs. Separate instance IDs with commas (,). Example: `[\"Instance ID1\", \"Instance ID2\"]`.
+        # >  Set this parameter to a JSON array that consists of multiple instance IDs. Separate instance IDs with commas (,). Example: `[\\"Instance ID1\\", \\"Instance ID2\\"]`.
+        # 
+        # This parameter is required.
         self.instance_ids = instance_ids
 
     def validate(self):
@@ -10339,7 +10571,9 @@ class DisableAutoThrottleRulesRequest(TeaModel):
         self.console_context = console_context
         # The database instance IDs.
         # 
-        # >  Set this parameter to a JSON array that consists of multiple instance IDs. Separate instance IDs with commas (,). Example: `[\"Instance ID1\",\"Instance ID2\"]`.
+        # >  Set this parameter to a JSON array that consists of multiple instance IDs. Separate instance IDs with commas (,). Example: `[\\"Instance ID1\\",\\"Instance ID2\\"]`.
+        # 
+        # This parameter is required.
         self.instance_ids = instance_ids
 
     def validate(self):
@@ -10635,6 +10869,8 @@ class DisableDasProRequest(TeaModel):
         user_id: str = None,
     ):
         # The database instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The ID of the Alibaba Cloud account that is used to create the database instance.
         # 
@@ -10782,14 +11018,20 @@ class DisableInstanceDasConfigRequest(TeaModel):
         scale_type: str = None,
     ):
         # The database engine. Set the value to Redis.
+        # 
+        # This parameter is required.
         self.engine = engine
         # The database instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The type of auto scaling. Valid values:
         # 
         # *   **specScale**: The specifications of a database instance are automatically scaled up or down.
         # *   **shardScale**: The number of shards for a database instance is automatically increased or decreased.
         # *   **bandwidthScale**: The bandwidth of a database instance is automatically increased or decreased.
+        # 
+        # This parameter is required.
         self.scale_type = scale_type
 
     def validate(self):
@@ -10934,8 +11176,12 @@ class DisableSqlConcurrencyControlRequest(TeaModel):
         # The instance ID.
         # 
         # >  The database instance must be an ApsaraDB RDS for MySQL instance or a PolarDB for MySQL cluster.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
-        # The ID of the throttling rule that is applied to the instance. You can call the [GetRunningSqlConcurrencyControlRules](~~223538~~) operation to query the ID.
+        # The ID of the throttling rule that is applied to the instance. You can call the [GetRunningSqlConcurrencyControlRules](https://help.aliyun.com/document_detail/223538.html) operation to query the ID.
+        # 
+        # This parameter is required.
         self.item_id = item_id
 
     def validate(self):
@@ -11076,6 +11322,8 @@ class EnableDasProRequest(TeaModel):
         user_id: str = None,
     ):
         # The database instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The storage duration of SQL Explorer data. Unit: day. Default value: **30**. Valid values:
         # 
@@ -11240,26 +11488,36 @@ class EnableSqlConcurrencyControlRequest(TeaModel):
         # The duration within which the SQL throttling rule takes effect. Unit: seconds.
         # 
         # >  The throttling rule takes effect only within this duration.
+        # 
+        # This parameter is required.
         self.concurrency_control_time = concurrency_control_time
         # The reserved parameter.
         self.console_context = console_context
         # The instance ID.
         # 
         # >  You must specify the instance ID only if your database instance is an ApsaraDB RDS for MySQL instance or a PolarDB for MySQL cluster.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The maximum number of concurrent SQL statements. Set this parameter to a positive integer.
         # 
         # >  When the number of concurrent SQL statements that contain the specified keywords reaches this upper limit, the throttling rule is triggered.
+        # 
+        # This parameter is required.
         self.max_concurrency = max_concurrency
         # The keywords that are used to identify the SQL statements that need to be throttled.
         # 
         # >  If you specify multiple SQL keywords, separate them with tildes (~). If the number of concurrent SQL statements that contain all the specified SQL keywords reaches the specified upper limit, the throttling rule is triggered.
+        # 
+        # This parameter is required.
         self.sql_keywords = sql_keywords
         # The type of the SQL statements. Valid values:
         # 
         # *   **SELECT**\
         # *   **UPDATE**\
         # *   **DELETE**\
+        # 
+        # This parameter is required.
         self.sql_type = sql_type
 
     def validate(self):
@@ -11417,9 +11675,11 @@ class GetAsyncErrorRequestListByCodeRequest(TeaModel):
         # 
         # >  The end time must be later than the start time. The interval between the start time and the end time cannot exceed 24 hours.
         self.end = end
-        # The error code. You can call the [GetAsyncErrorRequestStatByCode](~~409804~~) operation to query the MySQL error codes that may be generated in the SQL Explorer results of an instance.
+        # The error code. You can call the [GetAsyncErrorRequestStatByCode](https://help.aliyun.com/document_detail/409804.html) operation to query the MySQL error codes that may be generated in the SQL Explorer results of an instance.
         self.error_code = error_code
         # The instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The node ID.
         # 
@@ -11712,6 +11972,8 @@ class GetAsyncErrorRequestStatByCodeRequest(TeaModel):
         # >  The end time must be later than the start time. The interval between the start time and the end time cannot exceed 24 hours.
         self.end = end
         # The instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The node ID.
         # 
@@ -12012,12 +12274,14 @@ class GetAsyncErrorRequestStatResultRequest(TeaModel):
         # >  The end time must be later than the start time. The interval between the start time and the end time cannot exceed 24 hours.
         self.end = end
         # The instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The node ID.
         # 
         # >  This parameter must be specified for PolarDB for MySQL instances.
         self.node_id = node_id
-        # The ID of the SQL template. Separate multiple SQL IDs with commas (,). You can call the [GetAsyncErrorRequestListByCode](~~410746~~) operation to query the ID of the SQL query for which MySQL error code is returned.
+        # The ID of the SQL template. Separate multiple SQL IDs with commas (,). You can call the [GetAsyncErrorRequestListByCode](https://help.aliyun.com/document_detail/410746.html) operation to query the ID of the SQL query for which MySQL error code is returned.
         self.sql_id_list = sql_id_list
         # The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         # 
@@ -12272,16 +12536,22 @@ class GetAutoIncrementUsageStatisticRequest(TeaModel):
     ):
         # The database name. If you specify a database, the operation queries the usage of auto-increment table IDs in the specified database. Otherwise, the operation queries the usage of auto-increment table IDs in all databases on the instance.
         # 
-        # >  Specify the parameter value as a JSON array, such as \[\"db1\",\"db2\"]. Separate multiple database names with commas (,).
+        # >  Specify the parameter value as a JSON array, such as [\\"db1\\",\\"db2\\"]. Separate multiple database names with commas (,).
         self.db_names = db_names
         # The instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The usage threshold of auto-increment IDs. Only usage that exceeds the threshold can be returned. Valid values are decimals that range from 0 to 1.
+        # 
+        # This parameter is required.
         self.ratio_filter = ratio_filter
         # Specifies whether to query real-time data. Valid values:
         # 
         # *   **true**: queries data in real time except for data generated in the last 10 minutes.****\
         # *   **false**: queries data generated in the last 2 hours. If no such data exists, queries the latest data.
+        # 
+        # This parameter is required.
         self.real_time = real_time
 
     def validate(self):
@@ -12565,7 +12835,7 @@ class GetAutoResourceOptimizeRulesRequest(TeaModel):
         self.console_context = console_context
         # The database instance IDs.
         # 
-        # *   Specify the parameter value as a JSON array, such as `[\"Database account 1\",\"Database account 2\"]`. Separate database instance IDs with commas (,).
+        # *   Specify the parameter value as a JSON array, such as `[\\"Database account 1\\",\\"Database account 2\\"]`. Separate database instance IDs with commas (,).
         # 
         # *   By default, if you leave this parameter empty, all database instances for which the automatic fragment recycling feature has been enabled within the current Alibaba Cloud account are returned. The following types of database instances are returned:
         # 
@@ -13032,7 +13302,7 @@ class GetAutoThrottleRulesRequest(TeaModel):
         self.console_context = console_context
         # The database instance IDs.
         # 
-        # *   Set this parameter to a JSON array that consists of multiple instance IDs. Separate instance IDs with commas (,). Example: `[\"Instance ID1\",\"Instance ID2\"]`.
+        # *   Set this parameter to a JSON array that consists of multiple instance IDs. Separate instance IDs with commas (,). Example: `[\\"Instance ID1\\",\\"Instance ID2\\"]`.
         # 
         # *   By default, if you leave this parameter empty, all database instances for which the automatic SQL throttling feature has been enabled within the current Alibaba Cloud account are returned. The following types of database instances are returned:
         # 
@@ -13485,8 +13755,12 @@ class GetAutonomousNotifyEventContentRequest(TeaModel):
         context: str = None,
     ):
         # The instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
-        # The unique identifier of the event. You can call the [GetAutonomousNotifyEventsInRange](~~288371~~) operation to query the unique identifier returned by the SpanId response parameter.
+        # The unique identifier of the event. You can call the [GetAutonomousNotifyEventsInRange](https://help.aliyun.com/document_detail/288371.html) operation to query the unique identifier returned by the SpanId response parameter.
+        # 
+        # This parameter is required.
         self.span_id = span_id
         # The reserved parameter.
         self.context = context
@@ -13638,6 +13912,8 @@ class GetAutonomousNotifyEventsInRangeRequest(TeaModel):
         # The end of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         # 
         # >  The end time must be later than the start time.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The reserved parameter.
         self.event_context = event_context
@@ -13657,7 +13933,7 @@ class GetAutonomousNotifyEventsInRangeRequest(TeaModel):
         # *   **Warn**: events for which the system sends warnings.
         # *   **Critical**: critical events.
         self.min_level = min_level
-        # The ID of the node in a PolarDB for MySQL cluster. You can call the [DescribeDBClusters](~~98094~~) operation to query the node ID returned by the DBNodeId response parameter.
+        # The ID of the node in a PolarDB for MySQL cluster. You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the node ID returned by the DBNodeId response parameter.
         # 
         # >  You must specify the node ID if your database instance is a PolarDB for MySQL cluster.
         self.node_id = node_id
@@ -13666,6 +13942,8 @@ class GetAutonomousNotifyEventsInRangeRequest(TeaModel):
         # The number of entries per page.
         self.page_size = page_size
         # The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # 
+        # This parameter is required.
         self.start_time = start_time
         # The reserved parameter.
         self.context = context
@@ -13931,8 +14209,12 @@ class GetBlockingDetailListRequest(TeaModel):
         # *   Separate multiple database names with commas (,).
         self.db_name_list = db_name_list
         # The end of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The database instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The page number. The value must be an integer that is greater than 0. Default value: 1.
         self.page_no = page_no
@@ -13941,6 +14223,8 @@ class GetBlockingDetailListRequest(TeaModel):
         # The hash value of the SQL statement.
         self.query_hash = query_hash
         # The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -14260,8 +14544,12 @@ class GetDBInstanceConnectivityDiagnosisRequest(TeaModel):
         src_ip: str = None,
     ):
         # The instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The source IP address.
+        # 
+        # This parameter is required.
         self.src_ip = src_ip
 
     def validate(self):
@@ -14473,6 +14761,8 @@ class GetDasProServiceUsageRequest(TeaModel):
         user_id: str = None,
     ):
         # The database instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The ID of the Alibaba Cloud account that is used to create the database instance.
         # 
@@ -14799,14 +15089,18 @@ class GetDasSQLLogHotDataRequest(TeaModel):
         # The end of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         # 
         # >  The end time must be later than the start time. The interval between the start time and the end time cannot exceed 24 hours.
+        # 
+        # This parameter is required.
         self.end = end
-        # The error code of SQL execution. You can call the [GetAsyncErrorRequestStatByCode](~~409804~~) operation to query MySQL error codes in SQL Explorer data.
+        # The error code of SQL execution. You can call the [GetAsyncErrorRequestStatByCode](https://help.aliyun.com/document_detail/409804.html) operation to query MySQL error codes in SQL Explorer data.
         self.fail = fail
         # The IP address of the client.
         # 
         # >  You can specify multiple IP addresses that are separated by spaces. Example: `IP1 IP2 IP3`.
         self.host_address = host_address
         # The ID of the database instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The logical relationship among multiple keywords.
         # 
@@ -14860,6 +15154,8 @@ class GetDasSQLLogHotDataRequest(TeaModel):
         # The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         # 
         # >  You can query only the data that is generated after the new SQL Explorer and Audit feature is enabled. The start time can be up to seven days earlier than the current time.
+        # 
+        # This parameter is required.
         self.start = start
         # The execution results. You can specify **0** to query the SQL statements that are successfully executed. You can also specify an error code to query the corresponding SQL statements that fail to be executed.
         self.state = state
@@ -15339,14 +15635,20 @@ class GetDeadLockDetailListRequest(TeaModel):
         # The database name list.
         self.db_name_list = db_name_list
         # The end of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The page number. The value must be an integer that is greater than 0. Default value: 1.
         self.page_no = page_no
         # The number of entries per page. Default value: 10.
         self.page_size = page_size
         # The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -16101,12 +16403,14 @@ class GetErrorRequestSampleRequest(TeaModel):
         # >  The end time must be later than the start time. The interval cannot exceed 24 hours.
         self.end = end
         # The instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The node ID.
         # 
         # >  You must specify the node ID if your database instance is a PolarDB for MySQL cluster.
         self.node_id = node_id
-        # The SQL query ID. You can call the [GetAsyncErrorRequestListByCode](~~410746~~) operation to query the ID of the SQL query for which MySQL error code is returned.
+        # The SQL query ID. You can call the [GetAsyncErrorRequestListByCode](https://help.aliyun.com/document_detail/410746.html) operation to query the ID of the SQL query for which MySQL error code is returned.
         self.sql_id = sql_id
         # The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         # 
@@ -16353,6 +16657,8 @@ class GetEventSubscriptionRequest(TeaModel):
         instance_id: str = None,
     ):
         # The instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -16784,8 +17090,12 @@ class GetFullRequestOriginStatByInstanceIdRequest(TeaModel):
         # The end of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         # 
         # >  The end time must be later than the start time. The interval between the start time and the end time cannot exceed 24 hours.
+        # 
+        # This parameter is required.
         self.end = end
         # The instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The node ID.
         # 
@@ -16801,8 +17111,12 @@ class GetFullRequestOriginStatByInstanceIdRequest(TeaModel):
         # *   **avgRowsReturned**: the average number of returned rows.
         self.order_by = order_by
         # The page number. Pages start from page 1. Default value: 1.
+        # 
+        # This parameter is required.
         self.page_no = page_no
         # The number of entries per page. Default value: 20.
+        # 
+        # This parameter is required.
         self.page_size = page_size
         # The role of the PolarDB-X 2.0 node. Valid values:
         # 
@@ -16816,6 +17130,8 @@ class GetFullRequestOriginStatByInstanceIdRequest(TeaModel):
         # The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         # 
         # >  The start time must be within the storage duration of the SQL Explorer of the database instance, and can be up to 90 days earlier than the current time.
+        # 
+        # This parameter is required.
         self.start = start
         # The ID of the Alibaba Cloud account that is used to create the database instance.
         # 
@@ -17293,8 +17609,12 @@ class GetFullRequestSampleByInstanceIdRequest(TeaModel):
         # The end of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         # 
         # >  The end time must be later than the start time. The interval between the start time and the end time must be equal to or greater than 1 hour.
+        # 
+        # This parameter is required.
         self.end = end
         # The instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The role of the PolarDB-X 2.0 node. Valid values:
         # 
@@ -17302,10 +17622,14 @@ class GetFullRequestSampleByInstanceIdRequest(TeaModel):
         # *   **polarx_en**: data node.
         self.role = role
         # The SQL statement ID.
+        # 
+        # This parameter is required.
         self.sql_id = sql_id
         # The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         # 
         # >  The start time must be within the storage duration of the SQL Explorer feature of the database instance, and can be up to 90 days earlier than the current time.
+        # 
+        # This parameter is required.
         self.start = start
         # The ID of the Alibaba Cloud account that is used to create the database instance.
         # 
@@ -17644,8 +17968,12 @@ class GetFullRequestStatResultByInstanceIdRequest(TeaModel):
         # The end of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         # 
         # >  The end time must be later than the start time. The interval cannot exceed one day.
+        # 
+        # This parameter is required.
         self.end = end
         # The instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The keywords that are used for query.
         self.keyword = keyword
@@ -17667,8 +17995,12 @@ class GetFullRequestStatResultByInstanceIdRequest(TeaModel):
         # >  This parameter is optional. If this parameter is specified, the full request statistics of the specified IP address are collected. If this parameter is left empty, the full request statistics of the entire database instance are collected.
         self.origin_host = origin_host
         # The page number. Pages start from page 1. Default value: 1.
+        # 
+        # This parameter is required.
         self.page_no = page_no
         # The number of entries per page. Default value: 20.
+        # 
+        # This parameter is required.
         self.page_size = page_size
         # The role of the node in the PolarDB-X 2.0 instance. Valid values:
         # 
@@ -17686,6 +18018,8 @@ class GetFullRequestStatResultByInstanceIdRequest(TeaModel):
         # The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         # 
         # >  The start time can be up to 90 days earlier than the current time.
+        # 
+        # This parameter is required.
         self.start = start
         # The ID of the Alibaba Cloud account that was used to create the database instance.
         # 
@@ -18842,12 +19176,16 @@ class GetInstanceInspectionsRequest(TeaModel):
         # The end of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         # 
         # >  The end time must be later than the start time.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The database engine. Valid values:
         # 
         # *   **MySQL**\
         # *   **Redis**\
         # *   **PolarDBMySQL**\
+        # 
+        # This parameter is required.
         self.engine = engine
         # The type of the instance on which the database is deployed. Valid values:
         # 
@@ -18856,20 +19194,28 @@ class GetInstanceInspectionsRequest(TeaModel):
         # *   **IDC**: a self-managed database instance that is not deployed on Alibaba Cloud.
         # 
         # >  The value IDC specifies that the instance is deployed in a data center.
+        # 
+        # This parameter is required.
         self.instance_area = instance_area
         # The page number. The value must be a positive integer. Default value: 1.
+        # 
+        # This parameter is required.
         self.page_no = page_no
         # The number of entries per page. Default value: 10.
+        # 
+        # This parameter is required.
         self.page_size = page_size
         # The resource group ID.
         self.resource_group_id = resource_group_id
         # The filter condition, which can be specified in one of the following formats:
         # 
         # *   Specify the ID of a single instance in the {"InstanceId":"Instance ID"} format.
-        # *   Specify the IDs of multiple instances in the {"InstanceIds":\["Instance ID1","Instance ID2"]} format. Separate the instance IDs with commas (,).
+        # *   Specify the IDs of multiple instances in the {"InstanceIds":["Instance ID1","Instance ID2"]} format. Separate the instance IDs with commas (,).
         # *   Specify the region in which the instance resides in the {"region":"Region of the instance"} format.
         self.search_map = search_map
         # The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -19449,6 +19795,8 @@ class GetInstanceMissingIndexListRequest(TeaModel):
         # The database instance ID.
         # 
         # >  Only ApsaraDB RDS for SQL Server instances are supported.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The object name.
         self.object_name = object_name
@@ -19872,6 +20220,8 @@ class GetInstanceSqlOptimizeStatisticRequest(TeaModel):
         use_merging: str = None,
     ):
         # The end of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # Specifies whether to filter instances for which DAS Enterprise Edition is enabled. Valid values:
         # 
@@ -19883,12 +20233,16 @@ class GetInstanceSqlOptimizeStatisticRequest(TeaModel):
         # The database instance ID.
         # 
         # >  The database instance must be an ApsaraDB RDS for MySQL instance or a PolarDB for MySQL cluster.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The node ID.
         # 
         # >  For ApsaraDB RDS for MySQL Cluster Edition instances or PolarDB for MySQL clusters, you must specify the node ID.
         self.node_id = node_id
         # The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # 
+        # This parameter is required.
         self.start_time = start_time
         # The duration threshold for automatic SQL optimization events. After this parameter is specified, the system collects statistics on automatic SQL optimization events whose duration does not exceed the specified threshold.
         # 
@@ -20093,12 +20447,16 @@ class GetKillInstanceSessionTaskResultRequest(TeaModel):
         task_id: str = None,
     ):
         # The instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The node ID.
         # 
         # >  You must specify this parameter if your database instance is a PolarDB for MySQL cluster.
         self.node_id = node_id
-        # The task ID. You can obtain the task ID from the response parameters of the [CreateKillInstanceSessionTask](~~609246~~) operation.
+        # The task ID. You can obtain the task ID from the response parameters of the [CreateKillInstanceSessionTask](https://help.aliyun.com/document_detail/609246.html) operation.
+        # 
+        # This parameter is required.
         self.task_id = task_id
 
     def validate(self):
@@ -20165,7 +20523,7 @@ class GetKillInstanceSessionTaskResultResponseBodyDataResult(TeaModel):
         # *   **SESSION_NO_PERMISSION**: The account used to terminate the session has insufficient permissions.
         # *   **SESSION_ACCOUNT_ERROR**: The account or password used to terminate the session is invalid.
         # *   **SESSION_IGNORED_USER**: The session of the account does not need to be terminated.
-        # *   **SESSION_INTERNAL_USER_OR_COMMAND**: The session is a session initiated by or a command run by an Alibaba Cloud O\&M account.
+        # *   **SESSION_INTERNAL_USER_OR_COMMAND**: The session is a session initiated by or a command run by an Alibaba Cloud O\\&M account.
         # *   **SESSION_KILL_TASK_TIMEOUT**: Timeout occurs when the session is terminated.
         # *   **SESSION_OTHER_ERROR**: Other errors occurred.
         self.reason = reason
@@ -20252,7 +20610,7 @@ class GetKillInstanceSessionTaskResultResponseBodyData(TeaModel):
         task_state: str = None,
         user_id: str = None,
     ):
-        # The number of ignored sessions, including sessions of the accounts that are specified by IgnoredUsers, sessions of internal O\&M accounts of Alibaba Cloud, and **Binlog Dump** sessions.
+        # The number of ignored sessions, including sessions of the accounts that are specified by IgnoredUsers, sessions of internal O\\&M accounts of Alibaba Cloud, and **Binlog Dump** sessions.
         self.ignored_user_session_count = ignored_user_session_count
         # The instance ID.
         self.instance_id = instance_id
@@ -20461,6 +20819,8 @@ class GetMongoDBCurrentOpRequest(TeaModel):
         # The `db.currentOp()` command that is used to filter sessions. For more information, see [db.currentOp()](https://docs.mongodb.com/manual/reference/method/db.currentOp/) of MongoDB Documentation.
         self.filter_doc = filter_doc
         # The instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The node ID.
         # 
@@ -20896,6 +21256,8 @@ class GetMySQLAllSessionAsyncRequest(TeaModel):
         # The instance ID.
         # 
         # >  Only ApsaraDB RDS for MySQL, PolarDB for MySQL, and PolarDB-X 2.0 instances are supported.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The node ID.
         # 
@@ -21877,10 +22239,14 @@ class GetPfsSqlSampleRequest(TeaModel):
         # The end of the time range to query. The value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         # 
         # >  The end time must be later than the start time. You can view the data of up to seven days in the previous 30 days.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The instance ID.
         # 
         # >  Only ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters are supported
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The node ID.
         # 
@@ -21889,6 +22255,8 @@ class GetPfsSqlSampleRequest(TeaModel):
         # The SQL ID.
         self.sql_id = sql_id
         # The beginning of the time range to query. The value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -23080,6 +23448,8 @@ class GetQueryOptimizeDataStatsRequest(TeaModel):
         # *   **MySQL**\
         # *   **PolarDBMySQL**\
         # *   **PostgreSQL**\
+        # 
+        # This parameter is required.
         self.engine = engine
         # The instance IDs. Separate multiple IDs with commas (,).
         self.instance_ids = instance_ids
@@ -23121,13 +23491,15 @@ class GetQueryOptimizeDataStatsRequest(TeaModel):
         # 
         # >  Set this parameter to **cn-china** for the instances that are created in the regions in the Chinese mainland.
         self.region = region
-        # The tags that are used to filter SQL templates. Separate multiple tags with commas (,). For more information, see [Query governance](~~290038~~).
+        # The tags that are used to filter SQL templates. Separate multiple tags with commas (,). For more information, see [Query governance](https://help.aliyun.com/document_detail/290038.html).
         self.rules = rules
-        # The SQL template ID. You can query the ID of a template by calling the [GetQueryOptimizeExecErrorStats](~~405235~~) operation.
+        # The SQL template ID. You can query the ID of a template by calling the [GetQueryOptimizeExecErrorStats](https://help.aliyun.com/document_detail/405235.html) operation.
         self.sql_ids = sql_ids
         # The reserved parameter.
         self.tag_names = tag_names
         # The time range to query. Specify the time in the UNIX timestamp format. Unit: milliseconds.
+        # 
+        # This parameter is required.
         self.time = time
         # The account of the database to be queried.
         self.user = user
@@ -23597,6 +23969,8 @@ class GetQueryOptimizeDataTopRequest(TeaModel):
         # *   **MySQL**\
         # *   **PolarDBMySQL**\
         # *   **PostgreSQL**\
+        # 
+        # This parameter is required.
         self.engine = engine
         # The instance IDs. Separate multiple IDs with commas (,).
         self.instance_ids = instance_ids
@@ -23613,11 +23987,15 @@ class GetQueryOptimizeDataTopRequest(TeaModel):
         # The reserved parameter.
         self.tag_names = tag_names
         # The time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # 
+        # This parameter is required.
         self.time = time
         # The type of instances that you want to query. Valid values:
         # 
         # *   **RED**: the best-performing instances
         # *   **BLACK**: the worst-performing instances
+        # 
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -23884,12 +24262,16 @@ class GetQueryOptimizeDataTrendRequest(TeaModel):
         # The end of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         # 
         # >  The end time must be later than the start time, but not later than 00:00:00 (UTC+8) on the current day.
+        # 
+        # This parameter is required.
         self.end = end
         # The database engine. Valid values:
         # 
         # *   **MySQL**\
         # *   **PolarDBMySQL**\
         # *   **PostgreSQL**\
+        # 
+        # This parameter is required.
         self.engine = engine
         # The instance IDs. Separate multiple IDs with commas (,).
         self.instance_ids = instance_ids
@@ -23906,6 +24288,8 @@ class GetQueryOptimizeDataTrendRequest(TeaModel):
         # The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         # 
         # >  You can specify a start time up to two months earlier than the current time.
+        # 
+        # This parameter is required.
         self.start = start
         # The reserved parameter.
         self.tag_names = tag_names
@@ -24180,12 +24564,20 @@ class GetQueryOptimizeExecErrorSampleRequest(TeaModel):
         # *   **MySQL**\
         # *   **PolarDBMySQL**\
         # *   **PostgreSQL**\
+        # 
+        # This parameter is required.
         self.engine = engine
         # The instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
-        # The SQL template ID. You can call the [GetQueryOptimizeExecErrorStats](~~405235~~) operation to obtain the SQL template ID.
+        # The SQL template ID. You can call the [GetQueryOptimizeExecErrorStats](https://help.aliyun.com/document_detail/405235.html) operation to obtain the SQL template ID.
+        # 
+        # This parameter is required.
         self.sql_id = sql_id
         # The date to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # 
+        # This parameter is required.
         self.time = time
 
     def validate(self):
@@ -24483,6 +24875,8 @@ class GetQueryOptimizeExecErrorStatsRequest(TeaModel):
         # *   **MySQL**\
         # *   **PolarDBMySQL**\
         # *   **PostgreSQL**\
+        # 
+        # This parameter is required.
         self.engine = engine
         # The instance IDs. Separate multiple IDs with commas (,).
         self.instance_ids = instance_ids
@@ -24496,8 +24890,12 @@ class GetQueryOptimizeExecErrorStatsRequest(TeaModel):
         # The field by which to sort the returned entries. Only error_count is supported, which specifies that the entries are sorted based on the number of failed executions.
         self.order_by = order_by
         # The page number. Pages start from page 1. Default value: 1.
+        # 
+        # This parameter is required.
         self.page_no = page_no
         # The number of entries per page. Default value: 10.
+        # 
+        # This parameter is required.
         self.page_size = page_size
         # The region in which the instance resides. Valid values:
         # 
@@ -24510,6 +24908,8 @@ class GetQueryOptimizeExecErrorStatsRequest(TeaModel):
         # >  Set this parameter to **cn-china** for the instances that are created in the regions in the Chinese mainland.
         self.region = region
         # The time range to query. Specify the time in the UNIX timestamp format. Unit: milliseconds.
+        # 
+        # This parameter is required.
         self.time = time
 
     def validate(self):
@@ -24821,6 +25221,8 @@ class GetQueryOptimizeRuleListRequest(TeaModel):
         # *   **MySQL**\
         # *   **PolarDBMySQL**\
         # *   **PostgreSQL**\
+        # 
+        # This parameter is required.
         self.engine = engine
         # The instance IDs. Separate multiple IDs with commas (,).
         self.instance_ids = instance_ids
@@ -25109,6 +25511,8 @@ class GetQueryOptimizeShareUrlRequest(TeaModel):
         # *   **MySQL**: ApsaraDB RDS for MySQL
         # *   **PolarDBMySQL**: PolarDB for MySQL
         # *   **PostgreSQL**: ApsaraDB RDS for PostgreSQL
+        # 
+        # This parameter is required.
         self.engine = engine
         # The instance IDs. Separate multiple IDs with commas (,).
         self.instance_ids = instance_ids
@@ -25150,13 +25554,15 @@ class GetQueryOptimizeShareUrlRequest(TeaModel):
         # 
         # >  If your instances reside in the regions in the Chinese mainland, set this parameter to **cn-china**.
         self.region = region
-        # The tags that are used to filter SQL templates. Separate multiple tags with commas (,). For more information, see [Query governance](~~290038~~).
+        # The tags that are used to filter SQL templates. Separate multiple tags with commas (,). For more information, see [Query governance](https://help.aliyun.com/document_detail/290038.html).
         self.rules = rules
-        # The SQL template IDs. You can call the [GetQueryOptimizeExecErrorStats](~~405261~~) operation to obtain the SQL template IDs.
+        # The SQL template IDs. You can call the [GetQueryOptimizeExecErrorStats](https://help.aliyun.com/document_detail/405261.html) operation to obtain the SQL template IDs.
         self.sql_ids = sql_ids
         # A reserved parameter.
         self.tag_names = tag_names
         # The date to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # 
+        # This parameter is required.
         self.time = time
         # The account of the database to be queried.
         self.user = user
@@ -25356,12 +25762,18 @@ class GetQueryOptimizeSolutionRequest(TeaModel):
         # *   **MySQL**\
         # *   **PolarDBMySQL**\
         # *   **PostgreSQL**\
+        # 
+        # This parameter is required.
         self.engine = engine
-        # The instance ID. You can call the [GetQueryOptimizeDataStats](~~405261~~) operation to query the instance ID.
+        # The instance ID. You can call the [GetQueryOptimizeDataStats](https://help.aliyun.com/document_detail/405261.html) operation to query the instance ID.
         self.instance_id = instance_id
-        # The tag ID. For more information, see [Query governance](~~290038~~).
+        # The tag ID. For more information, see [Query governance](https://help.aliyun.com/document_detail/290038.html).
+        # 
+        # This parameter is required.
         self.rule_ids = rule_ids
-        # The SQL template ID. You can call the [GetQueryOptimizeDataStats](~~405261~~) operation to query the SQL template ID.
+        # The SQL template ID. You can call the [GetQueryOptimizeDataStats](https://help.aliyun.com/document_detail/405261.html) operation to query the SQL template ID.
+        # 
+        # This parameter is required.
         self.sql_id = sql_id
 
     def validate(self):
@@ -25626,10 +26038,16 @@ class GetQueryOptimizeTagRequest(TeaModel):
         # *   **MySQL**: ApsaraDB RDS for MySQL
         # *   **PolarDBMySQL**: PolarDB for MySQL
         # *   **PostgreSQL**: ApsaraDB RDS for PostgreSQL
+        # 
+        # This parameter is required.
         self.engine = engine
         # The instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
-        # The SQL template ID. You can call the [GetQueryOptimizeDataStats](~~405261~~) operation to query the SQL template ID.
+        # The SQL template ID. You can call the [GetQueryOptimizeDataStats](https://help.aliyun.com/document_detail/405261.html) operation to query the SQL template ID.
+        # 
+        # This parameter is required.
         self.sql_id = sql_id
 
     def validate(self):
@@ -25815,6 +26233,8 @@ class GetRedisAllSessionRequest(TeaModel):
         # The reserved parameter.
         self.console_context = console_context
         # The database instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -26249,18 +26669,28 @@ class GetRequestDiagnosisPageRequest(TeaModel):
         start_time: int = None,
     ):
         # The end of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The node ID.
         # 
         # >  You must specify the node ID if your database instance is a PolarDB for MySQL, PolarDB for PostgreSQL (Compatible with Oracle), or ApsaraDB for MongoDB instance.
         self.node_id = node_id
         # The page number. The value must be a positive integer. Default value: 1.
+        # 
+        # This parameter is required.
         self.page_no = page_no
         # The number of entries per page. The value must be a positive integer. Default value: 10.
+        # 
+        # This parameter is required.
         self.page_size = page_size
         # The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -26627,8 +27057,12 @@ class GetRequestDiagnosisResultRequest(TeaModel):
         sql_id: str = None,
     ):
         # The instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
-        # The unique ID of the diagnostics task. You can call the [CreateRequestDiagnosis](~~341609~~) operation to query the diagnostics task ID.
+        # The unique ID of the diagnostics task. You can call the [CreateRequestDiagnosis](https://help.aliyun.com/document_detail/341609.html) operation to query the diagnostics task ID.
+        # 
+        # This parameter is required.
         self.message_id = message_id
         # The node ID.
         # 
@@ -26952,6 +27386,8 @@ class GetRunningSqlConcurrencyControlRulesRequest(TeaModel):
         # The instance ID.
         # 
         # >  You must specify this parameter only if your database instance is an ApsaraDB RDS for MySQL instance or a PolarDB for MySQL cluster.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The page number. The value must be a positive integer. Default value: 1.
         self.page_no = page_no
@@ -27277,8 +27713,12 @@ class GetSqlConcurrencyControlKeywordsFromSqlTextRequest(TeaModel):
         # The reserved parameter.
         self.console_context = console_context
         # The instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The SQL statement based on which a throttling keyword string is to be generated.
+        # 
+        # This parameter is required.
         self.sql_text = sql_text
 
     def validate(self):
@@ -27424,6 +27864,8 @@ class GetSqlConcurrencyControlRulesHistoryRequest(TeaModel):
         # The instance ID.
         # 
         # >  Only ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters are supported.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The page number. The value must be an integer that is greater than 0. Default value: 1.
         self.page_no = page_no
@@ -28010,12 +28452,16 @@ class GetStorageAnalysisResultRequest(TeaModel):
         task_id: str = None,
     ):
         # The instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The node ID.
         # 
         # >  This parameter is reserved.
         self.node_id = node_id
         # The task ID, which is returned after you call the CreateStorageAnalysisTask operation.
+        # 
+        # This parameter is required.
         self.task_id = task_id
 
     def validate(self):
@@ -28116,6 +28562,7 @@ class GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultTableStats(Te
         data_size: int = None,
         db_name: str = None,
         engine: str = None,
+        fragment_size: int = None,
         index_size: int = None,
         phy_total_size: int = None,
         physical_file_size: int = None,
@@ -28140,6 +28587,7 @@ class GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultTableStats(Te
         self.db_name = db_name
         # The type of the engine used by the table.
         self.engine = engine
+        self.fragment_size = fragment_size
         # The size of storage occupied by indexes.
         # 
         # >  Unit: bytes.
@@ -28182,6 +28630,8 @@ class GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultTableStats(Te
             result['DbName'] = self.db_name
         if self.engine is not None:
             result['Engine'] = self.engine
+        if self.fragment_size is not None:
+            result['FragmentSize'] = self.fragment_size
         if self.index_size is not None:
             result['IndexSize'] = self.index_size
         if self.phy_total_size is not None:
@@ -28210,6 +28660,8 @@ class GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultTableStats(Te
             self.db_name = m.get('DbName')
         if m.get('Engine') is not None:
             self.engine = m.get('Engine')
+        if m.get('FragmentSize') is not None:
+            self.fragment_size = m.get('FragmentSize')
         if m.get('IndexSize') is not None:
             self.index_size = m.get('IndexSize')
         if m.get('PhyTotalSize') is not None:
@@ -28541,6 +28993,8 @@ class KillInstanceAllSessionRequest(TeaModel):
         # The reserved parameter.
         self.console_context = console_context
         # The instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -29002,8 +29456,8 @@ class ModifyAutoScalingConfigRequestSpec(TeaModel):
         self.max_read_only_nodes = max_read_only_nodes
         # The maximum specifications to which the database instance can be scaled up. The database instance can be upgraded only to a database instance of the same edition with higher specifications. For information about the specifications of different database instances, see the following topics:
         # 
-        # *   PolarDB for MySQL Cluster Edition instances: [Specifications of compute nodes](~~102542~~)
-        # *   ApsaraDB RDS for MySQL High-availability Edition instances that use standard SSDs or ESSDs: [Specifications](~~276974~~)
+        # *   PolarDB for MySQL Cluster Edition instances: [Specifications of compute nodes](https://help.aliyun.com/document_detail/102542.html)
+        # *   ApsaraDB RDS for MySQL High-availability Edition instances that use standard SSDs or ESSDs: [Specifications](https://help.aliyun.com/document_detail/276974.html)
         self.max_spec = max_spec
         # The average memory usage threshold that triggers automatic specification scale-up. Unit: %. Valid values:
         # 
@@ -29105,7 +29559,7 @@ class ModifyAutoScalingConfigRequestStorage(TeaModel):
         # *   If the ApsaraDB for RDS instance uses ESSDs, the value of this parameter can be set to 32000, in GB.
         # *   If the ApsaraDB for RDS instance uses standard SSDs, the value of this parameter can be set to 6000, in GB.
         # 
-        # >  The ApsaraDB RDS for MySQL instances that use standard SSDs are discontinued. We recommend that you [upgrade the storage type of an ApsaraDB RDS for MySQL instance from standard SSDs to ESSDs](~~314678~~).
+        # >  The ApsaraDB RDS for MySQL instances that use standard SSDs are discontinued. We recommend that you [upgrade the storage type of an ApsaraDB RDS for MySQL instance from standard SSDs to ESSDs](https://help.aliyun.com/document_detail/314678.html).
         self.max_storage = max_storage
         # Specifies whether to enable the automatic storage expansion feature. Valid values:
         # 
@@ -29158,6 +29612,8 @@ class ModifyAutoScalingConfigRequest(TeaModel):
         # The configuration item of the automatic bandwidth adjustment feature.
         self.bandwidth = bandwidth
         # The instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The configuration item of the auto scaling feature for resources.
         self.resource = resource
@@ -29323,7 +29779,9 @@ class ModifySqlLogConfigRequestFilters(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # A reserved parameter.
         self.key = key
+        # A reserved parameter.
         self.value = value
 
     def validate(self):
@@ -29360,11 +29818,28 @@ class ModifySqlLogConfigRequest(TeaModel):
         request_enable: bool = None,
         retention: int = None,
     ):
+        # Specifies whether to enable DAS Enterprise Edition. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
+        # 
+        # >  By default, the latest version of DAS Enterprise Edition is enabled.
         self.enable = enable
+        # A reserved parameter.
         self.filters = filters
+        # The number of days for which data is stored in hot storage.
+        # 
+        # >  This parameter is applicable only to DAS Enterprise Edition V3.
         self.hot_retention = hot_retention
+        # The instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
+        # Specifies whether to enable SQL Explorer.
+        # 
+        # >  This parameter is applicable only to DAS Enterprise Edition V3.
         self.request_enable = request_enable
+        # The number of days for which data generated by SQL Audit is retained.
         self.retention = retention
 
     def validate(self):
@@ -29436,22 +29911,39 @@ class ModifySqlLogConfigResponseBodyData(TeaModel):
         support_version: str = None,
         version: str = None,
     ):
+        # Indicates whether cold storage is enabled.
         self.cold_enable = cold_enable
+        # The number of days for which data is stored in cold storage. The value of this parameter is the value of Retention minus the value of HotRetention.
         self.cold_retention = cold_retention
+        # The time when cold storage was enabled.
         self.cold_start_time = cold_start_time
+        # The collector version.
         self.collector_version = collector_version
+        # Indicates whether hot storage is enabled.
         self.hot_enable = hot_enable
+        # The number of days for which data is stored in hot storage.
         self.hot_retention = hot_retention
+        # The time when hot storage was enabled.
         self.hot_start_time = hot_start_time
+        # A reserved parameter.
         self.log_filter = log_filter
+        # Indicates whether SQL Explorer is enabled.
         self.request_enable = request_enable
+        # The time when SQL Explorer was enabled.
         self.request_start_time = request_start_time
+        # The time when SQL Explorer will be disabled.
         self.request_stop_time = request_stop_time
+        # The number of days for which data generated by SQL Audit is retained.
         self.retention = retention
+        # Indicates whether DAS Enterprise Edition is enabled.
         self.sql_log_enable = sql_log_enable
+        # The state of data migration.
         self.sql_log_state = sql_log_state
+        # The time when SQL Audit was enabled.
         self.sql_log_visible_time = sql_log_visible_time
+        # The latest version of DAS Enterprise Edition that is supported by the database instance.
         self.support_version = support_version
+        # The version of DAS Enterprise Edition that is enabled.
         self.version = version
 
     def validate(self):
@@ -29547,11 +30039,20 @@ class ModifySqlLogConfigResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The response code.
         self.code = code
-        # SqlLogConfig
+        # The data returned.
         self.data = data
+        # The message that is returned for the request.
+        # 
+        # >  If the request was successful, **Successful** is returned. If the request failed, error information such as an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -29638,7 +30139,9 @@ class RunCloudBenchTaskRequest(TeaModel):
         self,
         task_id: str = None,
     ):
-        # The stress testing task ID. You can call the [DescribeCloudBenchTasks](~~230670~~) operation to query the task ID.
+        # The stress testing task ID. You can call the [DescribeCloudBenchTasks](https://help.aliyun.com/document_detail/230670.html) operation to query the task ID.
+        # 
+        # This parameter is required.
         self.task_id = task_id
 
     def validate(self):
@@ -29928,6 +30431,8 @@ class SetEventSubscriptionRequest(TeaModel):
         # The supported event scenarios. You can set the value to **AllContext**, which indicates that all scenarios are supported.
         self.event_context = event_context
         # The instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The language of event notifications. You can set the value to **zh-CN**, which indicates that event notifications are sent in Chinese.
         self.lang = lang
@@ -30240,7 +30745,9 @@ class StopCloudBenchTaskRequest(TeaModel):
         self,
         task_id: str = None,
     ):
-        # The stress testing task ID. You can call the [DescribeCloudBenchTasks](~~230670~~) operation to query the task ID.
+        # The stress testing task ID. You can call the [DescribeCloudBenchTasks](https://help.aliyun.com/document_detail/230670.html) operation to query the task ID.
+        # 
+        # This parameter is required.
         self.task_id = task_id
 
     def validate(self):
@@ -30557,15 +31064,21 @@ class UpdateAutoResourceOptimizeRulesAsyncRequest(TeaModel):
         self.console_context = console_context
         # The database instance IDs.
         # 
-        # >  Set this parameter to a JSON array that consists of multiple instance IDs. Separate instance IDs with commas (,). Example: `[\"Instance ID1\", \"Instance ID2\"]`.
+        # >  Set this parameter to a JSON array that consists of multiple instance IDs. Separate instance IDs with commas (,). Example: `[\\"Instance ID1\\", \\"Instance ID2\\"]`.
+        # 
+        # This parameter is required.
         self.instance_ids = instance_ids
         # The ID of the asynchronous request.
         # 
         # >  You can leave this parameter empty when you call the operation to initiate the request for the first time, and use the value of this parameter contained in the response to the first request for subsequent requests.
         self.result_id = result_id
         # The fragmentation rate that triggers automatic fragment recycling of a single physical table. Valid values: **0.10** to **0.99**.
+        # 
+        # This parameter is required.
         self.table_fragmentation_ratio = table_fragmentation_ratio
         # The minimum storage usage that triggers automatic fragment recycling of a single physical table. Valid values: **5** to **100**. Unit: GB.
+        # 
+        # This parameter is required.
         self.table_space_size = table_space_size
 
     def validate(self):
@@ -30962,12 +31475,16 @@ class UpdateAutoSqlOptimizeStatusRequest(TeaModel):
         # The database instance IDs. Separate multiple IDs with commas (,).
         # 
         # >  You can specify up to 50 instance IDs.
+        # 
+        # This parameter is required.
         self.instances = instances
         # The status of the automatic SQL optimization feature. Valid values:
         # 
         # *   **0**: The automatic SQL optimization feature is disabled.
         # *   **1**: **SQL diagnosis and automatic index creation** is specified.
         # *   **3**: **SQL diagnosis only** is specified.
+        # 
+        # This parameter is required.
         self.status = status
 
     def validate(self):
@@ -31162,15 +31679,23 @@ class UpdateAutoThrottleRulesAsyncRequest(TeaModel):
         result_id: str = None,
     ):
         # The duration threshold for triggering automatic SQL throttling. Set this parameter to a positive integer that is greater than or equal to 2. Unit: minutes.
+        # 
+        # This parameter is required.
         self.abnormal_duration = abnormal_duration
         # The maximum number of active sessions.
         # 
         # *   Specify an integer that is greater than or equal to 16 when the CPU utilization threshold and the maximum number of active sessions are in the **OR** relationship.
         # *   Specify an integer that is greater than or equal to 2 when the CPU utilization threshold and the maximum number of active sessions are in the **AND** relationship.
+        # 
+        # This parameter is required.
         self.active_sessions = active_sessions
         # The end time of the throttling window. The time must be in UTC.
+        # 
+        # This parameter is required.
         self.allow_throttle_end_time = allow_throttle_end_time
         # The start time of the throttling window. The time must be in UTC.
+        # 
+        # This parameter is required.
         self.allow_throttle_start_time = allow_throttle_start_time
         # Specifies whether to terminate abnormal SQL statements in execution at the same time. Valid values:
         # 
@@ -31178,6 +31703,8 @@ class UpdateAutoThrottleRulesAsyncRequest(TeaModel):
         # 
         # *   **true**\
         # *   **false**\
+        # 
+        # This parameter is required.
         self.auto_kill_session = auto_kill_session
         # The reserved parameter.
         self.console_context = console_context
@@ -31185,14 +31712,22 @@ class UpdateAutoThrottleRulesAsyncRequest(TeaModel):
         # 
         # *   **AND**\
         # *   **OR**\
+        # 
+        # This parameter is required.
         self.cpu_session_relation = cpu_session_relation
         # The CPU utilization threshold, in percentages. Valid values: 70 to 100.
+        # 
+        # This parameter is required.
         self.cpu_usage = cpu_usage
         # The database instance IDs.
         # 
-        # >  Set this parameter to a JSON array that consists of multiple instance IDs. Separate instance IDs with commas (,). Example: `[\"Instance ID1\", \"Instance ID2\"]`.
+        # >  Set this parameter to a JSON array that consists of multiple instance IDs. Separate instance IDs with commas (,). Example: `[\\"Instance ID1\\", \\"Instance ID2\\"]`.
+        # 
+        # This parameter is required.
         self.instance_ids = instance_ids
         # The maximum throttling duration. Set this parameter to a positive integer. Unit: minutes.
+        # 
+        # This parameter is required.
         self.max_throttle_time = max_throttle_time
         # The ID of the asynchronous request.
         # 

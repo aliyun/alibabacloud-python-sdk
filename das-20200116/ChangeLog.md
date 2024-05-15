@@ -1,3 +1,7 @@
+2024-05-15 Version: 2.4.1
+- Update API GetStorageAnalysisResult: update response param.
+
+
 2024-04-25 Version: 2.4.0
 - Support API CreateSqlLogTask.
 - Support API DescribeSqlLogConfig.
