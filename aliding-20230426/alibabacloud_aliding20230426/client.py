@@ -19429,6 +19429,148 @@ class Client(OpenApiClient):
         headers = aliding_20230426_models.QueryScheduleConferenceHeaders()
         return await self.query_schedule_conference_with_options_async(request, headers, runtime)
 
+    def query_schedule_conference_info_with_options(
+        self,
+        tmp_req: aliding_20230426_models.QueryScheduleConferenceInfoRequest,
+        tmp_header: aliding_20230426_models.QueryScheduleConferenceInfoHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.QueryScheduleConferenceInfoResponse:
+        """
+        @summary 查询预约会议历史会议信息
+        
+        @param tmp_req: QueryScheduleConferenceInfoRequest
+        @param tmp_header: QueryScheduleConferenceInfoHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryScheduleConferenceInfoResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.QueryScheduleConferenceInfoShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.QueryScheduleConferenceInfoShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.schedule_conference_id):
+            body['ScheduleConferenceId'] = request.schedule_conference_id
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QueryScheduleConferenceInfo',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/ysp/queryScheduleConferenceInfo',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.QueryScheduleConferenceInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_schedule_conference_info_with_options_async(
+        self,
+        tmp_req: aliding_20230426_models.QueryScheduleConferenceInfoRequest,
+        tmp_header: aliding_20230426_models.QueryScheduleConferenceInfoHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.QueryScheduleConferenceInfoResponse:
+        """
+        @summary 查询预约会议历史会议信息
+        
+        @param tmp_req: QueryScheduleConferenceInfoRequest
+        @param tmp_header: QueryScheduleConferenceInfoHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryScheduleConferenceInfoResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.QueryScheduleConferenceInfoShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.QueryScheduleConferenceInfoShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.schedule_conference_id):
+            body['ScheduleConferenceId'] = request.schedule_conference_id
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QueryScheduleConferenceInfo',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/ysp/queryScheduleConferenceInfo',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.QueryScheduleConferenceInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_schedule_conference_info(
+        self,
+        request: aliding_20230426_models.QueryScheduleConferenceInfoRequest,
+    ) -> aliding_20230426_models.QueryScheduleConferenceInfoResponse:
+        """
+        @summary 查询预约会议历史会议信息
+        
+        @param request: QueryScheduleConferenceInfoRequest
+        @return: QueryScheduleConferenceInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.QueryScheduleConferenceInfoHeaders()
+        return self.query_schedule_conference_info_with_options(request, headers, runtime)
+
+    async def query_schedule_conference_info_async(
+        self,
+        request: aliding_20230426_models.QueryScheduleConferenceInfoRequest,
+    ) -> aliding_20230426_models.QueryScheduleConferenceInfoResponse:
+        """
+        @summary 查询预约会议历史会议信息
+        
+        @param request: QueryScheduleConferenceInfoRequest
+        @return: QueryScheduleConferenceInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.QueryScheduleConferenceInfoHeaders()
+        return await self.query_schedule_conference_info_with_options_async(request, headers, runtime)
+
     def query_user_honors_with_options(
         self,
         tmp_req: aliding_20230426_models.QueryUserHonorsRequest,

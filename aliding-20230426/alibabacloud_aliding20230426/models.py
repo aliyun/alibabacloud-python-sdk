@@ -53149,6 +53149,383 @@ class QueryScheduleConferenceResponse(TeaModel):
         return self
 
 
+class QueryScheduleConferenceInfoHeadersAccountContext(TeaModel):
+    def __init__(
+        self,
+        account_id: str = None,
+    ):
+        self.account_id = account_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['accountId'] = self.account_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accountId') is not None:
+            self.account_id = m.get('accountId')
+        return self
+
+
+class QueryScheduleConferenceInfoHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context: QueryScheduleConferenceInfoHeadersAccountContext = None,
+    ):
+        self.common_headers = common_headers
+        self.account_context = account_context
+
+    def validate(self):
+        if self.account_context:
+            self.account_context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context is not None:
+            result['AccountContext'] = self.account_context.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            temp_model = QueryScheduleConferenceInfoHeadersAccountContext()
+            self.account_context = temp_model.from_map(m['AccountContext'])
+        return self
+
+
+class QueryScheduleConferenceInfoShrinkHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context_shrink: str = None,
+    ):
+        self.common_headers = common_headers
+        self.account_context_shrink = account_context_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context_shrink is not None:
+            result['AccountContext'] = self.account_context_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            self.account_context_shrink = m.get('AccountContext')
+        return self
+
+
+class QueryScheduleConferenceInfoRequestTenantContext(TeaModel):
+    def __init__(
+        self,
+        tenant_id: str = None,
+    ):
+        self.tenant_id = tenant_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tenant_id is not None:
+            result['tenantId'] = self.tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('tenantId') is not None:
+            self.tenant_id = m.get('tenantId')
+        return self
+
+
+class QueryScheduleConferenceInfoRequest(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        schedule_conference_id: str = None,
+        tenant_context: QueryScheduleConferenceInfoRequestTenantContext = None,
+    ):
+        self.max_results = max_results
+        self.next_token = next_token
+        self.schedule_conference_id = schedule_conference_id
+        self.tenant_context = tenant_context
+
+    def validate(self):
+        if self.tenant_context:
+            self.tenant_context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.schedule_conference_id is not None:
+            result['ScheduleConferenceId'] = self.schedule_conference_id
+        if self.tenant_context is not None:
+            result['TenantContext'] = self.tenant_context.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('ScheduleConferenceId') is not None:
+            self.schedule_conference_id = m.get('ScheduleConferenceId')
+        if m.get('TenantContext') is not None:
+            temp_model = QueryScheduleConferenceInfoRequestTenantContext()
+            self.tenant_context = temp_model.from_map(m['TenantContext'])
+        return self
+
+
+class QueryScheduleConferenceInfoShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        schedule_conference_id: str = None,
+        tenant_context_shrink: str = None,
+    ):
+        self.max_results = max_results
+        self.next_token = next_token
+        self.schedule_conference_id = schedule_conference_id
+        self.tenant_context_shrink = tenant_context_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.schedule_conference_id is not None:
+            result['ScheduleConferenceId'] = self.schedule_conference_id
+        if self.tenant_context_shrink is not None:
+            result['TenantContext'] = self.tenant_context_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('ScheduleConferenceId') is not None:
+            self.schedule_conference_id = m.get('ScheduleConferenceId')
+        if m.get('TenantContext') is not None:
+            self.tenant_context_shrink = m.get('TenantContext')
+        return self
+
+
+class QueryScheduleConferenceInfoResponseBodyConferenceList(TeaModel):
+    def __init__(
+        self,
+        conference_id: str = None,
+        end_time: int = None,
+        room_code: str = None,
+        start_time: int = None,
+        status: int = None,
+        title: str = None,
+    ):
+        self.conference_id = conference_id
+        self.end_time = end_time
+        self.room_code = room_code
+        self.start_time = start_time
+        self.status = status
+        self.title = title
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.conference_id is not None:
+            result['ConferenceId'] = self.conference_id
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.room_code is not None:
+            result['RoomCode'] = self.room_code
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.title is not None:
+            result['Title'] = self.title
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConferenceId') is not None:
+            self.conference_id = m.get('ConferenceId')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('RoomCode') is not None:
+            self.room_code = m.get('RoomCode')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        return self
+
+
+class QueryScheduleConferenceInfoResponseBody(TeaModel):
+    def __init__(
+        self,
+        conference_list: List[QueryScheduleConferenceInfoResponseBodyConferenceList] = None,
+        next_token: str = None,
+        request_id: str = None,
+        total_count: int = None,
+        vendor_request_id: str = None,
+        vendor_type: str = None,
+    ):
+        self.conference_list = conference_list
+        self.next_token = next_token
+        self.request_id = request_id
+        self.total_count = total_count
+        self.vendor_request_id = vendor_request_id
+        self.vendor_type = vendor_type
+
+    def validate(self):
+        if self.conference_list:
+            for k in self.conference_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['conferenceList'] = []
+        if self.conference_list is not None:
+            for k in self.conference_list:
+                result['conferenceList'].append(k.to_map() if k else None)
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.total_count is not None:
+            result['totalCount'] = self.total_count
+        if self.vendor_request_id is not None:
+            result['vendorRequestId'] = self.vendor_request_id
+        if self.vendor_type is not None:
+            result['vendorType'] = self.vendor_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.conference_list = []
+        if m.get('conferenceList') is not None:
+            for k in m.get('conferenceList'):
+                temp_model = QueryScheduleConferenceInfoResponseBodyConferenceList()
+                self.conference_list.append(temp_model.from_map(k))
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('totalCount') is not None:
+            self.total_count = m.get('totalCount')
+        if m.get('vendorRequestId') is not None:
+            self.vendor_request_id = m.get('vendorRequestId')
+        if m.get('vendorType') is not None:
+            self.vendor_type = m.get('vendorType')
+        return self
+
+
+class QueryScheduleConferenceInfoResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryScheduleConferenceInfoResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryScheduleConferenceInfoResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class QueryUserHonorsHeadersAccountContext(TeaModel):
     def __init__(
         self,

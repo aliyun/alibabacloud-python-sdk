@@ -1,3 +1,7 @@
+2024-05-15 Version: 2.17.0
+- Support API QueryScheduleConferenceInfo.
+
+
 2024-05-15 Version: 2.16.0
 - Support API AddDriveSpace.
 - Support API CreateDingtalkPersonalTodoTask.
