@@ -639,8 +639,12 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.image_category):
+            query['ImageCategory'] = request.image_category
         if not UtilClient.is_unset(request.image_id):
             query['ImageId'] = request.image_id
+        if not UtilClient.is_unset(request.image_type):
+            query['ImageType'] = request.image_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -674,8 +678,12 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.image_category):
+            query['ImageCategory'] = request.image_category
         if not UtilClient.is_unset(request.image_id):
             query['ImageId'] = request.image_id
+        if not UtilClient.is_unset(request.image_type):
+            query['ImageType'] = request.image_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -949,10 +957,14 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.image_names):
             request.image_names_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.image_names, 'ImageNames', 'json')
         query = {}
+        if not UtilClient.is_unset(request.image_category):
+            query['ImageCategory'] = request.image_category
         if not UtilClient.is_unset(request.image_ids_shrink):
             query['ImageIds'] = request.image_ids_shrink
         if not UtilClient.is_unset(request.image_names_shrink):
             query['ImageNames'] = request.image_names_shrink
+        if not UtilClient.is_unset(request.image_type):
+            query['ImageType'] = request.image_type
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -996,10 +1008,14 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.image_names):
             request.image_names_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.image_names, 'ImageNames', 'json')
         query = {}
+        if not UtilClient.is_unset(request.image_category):
+            query['ImageCategory'] = request.image_category
         if not UtilClient.is_unset(request.image_ids_shrink):
             query['ImageIds'] = request.image_ids_shrink
         if not UtilClient.is_unset(request.image_names_shrink):
             query['ImageNames'] = request.image_names_shrink
+        if not UtilClient.is_unset(request.image_type):
+            query['ImageType'] = request.image_type
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):

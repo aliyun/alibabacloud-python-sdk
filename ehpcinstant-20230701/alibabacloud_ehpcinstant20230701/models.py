@@ -564,11 +564,13 @@ class CreateJobRequestTasksTaskSpecTaskExecutorContainerEnvironmentVars(TeaModel
 class CreateJobRequestTasksTaskSpecTaskExecutorContainer(TeaModel):
     def __init__(
         self,
+        app_id: str = None,
         command: List[str] = None,
         environment_vars: List[CreateJobRequestTasksTaskSpecTaskExecutorContainerEnvironmentVars] = None,
         image: str = None,
         working_dir: str = None,
     ):
+        self.app_id = app_id
         self.command = command
         self.environment_vars = environment_vars
         # This parameter is required.
@@ -587,6 +589,8 @@ class CreateJobRequestTasksTaskSpecTaskExecutorContainer(TeaModel):
             return _map
 
         result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
         if self.command is not None:
             result['Command'] = self.command
         result['EnvironmentVars'] = []
@@ -601,6 +605,8 @@ class CreateJobRequestTasksTaskSpecTaskExecutorContainer(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
         if m.get('Command') is not None:
             self.command = m.get('Command')
         self.environment_vars = []
@@ -618,10 +624,12 @@ class CreateJobRequestTasksTaskSpecTaskExecutorContainer(TeaModel):
 class CreateJobRequestTasksTaskSpecTaskExecutorVM(TeaModel):
     def __init__(
         self,
+        app_id: str = None,
         image: str = None,
         prolog_script: str = None,
         script: str = None,
     ):
+        self.app_id = app_id
         # This parameter is required.
         self.image = image
         self.prolog_script = prolog_script
@@ -636,6 +644,8 @@ class CreateJobRequestTasksTaskSpecTaskExecutorVM(TeaModel):
             return _map
 
         result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
         if self.image is not None:
             result['Image'] = self.image
         if self.prolog_script is not None:
@@ -646,6 +656,8 @@ class CreateJobRequestTasksTaskSpecTaskExecutorVM(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
         if m.get('Image') is not None:
             self.image = m.get('Image')
         if m.get('PrologScript') is not None:
@@ -1650,10 +1662,14 @@ class DescribeJobMetricLastResponse(TeaModel):
 class GetImageRequest(TeaModel):
     def __init__(
         self,
+        image_category: str = None,
         image_id: str = None,
+        image_type: str = None,
     ):
+        self.image_category = image_category
         # This parameter is required.
         self.image_id = image_id
+        self.image_type = image_type
 
     def validate(self):
         pass
@@ -1664,14 +1680,22 @@ class GetImageRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.image_category is not None:
+            result['ImageCategory'] = self.image_category
         if self.image_id is not None:
             result['ImageId'] = self.image_id
+        if self.image_type is not None:
+            result['ImageType'] = self.image_type
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ImageCategory') is not None:
+            self.image_category = m.get('ImageCategory')
         if m.get('ImageId') is not None:
             self.image_id = m.get('ImageId')
+        if m.get('ImageType') is not None:
+            self.image_type = m.get('ImageType')
         return self
 
 
@@ -1815,15 +1839,18 @@ class GetImageResponseBodyImageVMImageSpec(TeaModel):
 class GetImageResponseBodyImage(TeaModel):
     def __init__(
         self,
+        app_id: str = None,
         container_image_spec: GetImageResponseBodyImageContainerImageSpec = None,
         create_time: str = None,
         description: str = None,
         image_type: str = None,
         name: str = None,
         size: str = None,
+        status: str = None,
         vmimage_spec: GetImageResponseBodyImageVMImageSpec = None,
         version: str = None,
     ):
+        self.app_id = app_id
         self.container_image_spec = container_image_spec
         self.create_time = create_time
         self.description = description
@@ -1831,6 +1858,7 @@ class GetImageResponseBodyImage(TeaModel):
         self.image_type = image_type
         self.name = name
         self.size = size
+        self.status = status
         self.vmimage_spec = vmimage_spec
         self.version = version
 
@@ -1846,6 +1874,8 @@ class GetImageResponseBodyImage(TeaModel):
             return _map
 
         result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
         if self.container_image_spec is not None:
             result['ContainerImageSpec'] = self.container_image_spec.to_map()
         if self.create_time is not None:
@@ -1858,6 +1888,8 @@ class GetImageResponseBodyImage(TeaModel):
             result['Name'] = self.name
         if self.size is not None:
             result['Size'] = self.size
+        if self.status is not None:
+            result['Status'] = self.status
         if self.vmimage_spec is not None:
             result['VMImageSpec'] = self.vmimage_spec.to_map()
         if self.version is not None:
@@ -1866,6 +1898,8 @@ class GetImageResponseBodyImage(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
         if m.get('ContainerImageSpec') is not None:
             temp_model = GetImageResponseBodyImageContainerImageSpec()
             self.container_image_spec = temp_model.from_map(m['ContainerImageSpec'])
@@ -1879,6 +1913,8 @@ class GetImageResponseBodyImage(TeaModel):
             self.name = m.get('Name')
         if m.get('Size') is not None:
             self.size = m.get('Size')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
         if m.get('VMImageSpec') is not None:
             temp_model = GetImageResponseBodyImageVMImageSpec()
             self.vmimage_spec = temp_model.from_map(m['VMImageSpec'])
@@ -2935,13 +2971,17 @@ class ListExecutorsResponse(TeaModel):
 class ListImagesRequest(TeaModel):
     def __init__(
         self,
+        image_category: str = None,
         image_ids: List[str] = None,
         image_names: List[str] = None,
+        image_type: str = None,
         page_number: int = None,
         page_size: int = None,
     ):
+        self.image_category = image_category
         self.image_ids = image_ids
         self.image_names = image_names
+        self.image_type = image_type
         self.page_number = page_number
         self.page_size = page_size
 
@@ -2954,10 +2994,14 @@ class ListImagesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.image_category is not None:
+            result['ImageCategory'] = self.image_category
         if self.image_ids is not None:
             result['ImageIds'] = self.image_ids
         if self.image_names is not None:
             result['ImageNames'] = self.image_names
+        if self.image_type is not None:
+            result['ImageType'] = self.image_type
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
@@ -2966,10 +3010,14 @@ class ListImagesRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ImageCategory') is not None:
+            self.image_category = m.get('ImageCategory')
         if m.get('ImageIds') is not None:
             self.image_ids = m.get('ImageIds')
         if m.get('ImageNames') is not None:
             self.image_names = m.get('ImageNames')
+        if m.get('ImageType') is not None:
+            self.image_type = m.get('ImageType')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
@@ -2980,13 +3028,17 @@ class ListImagesRequest(TeaModel):
 class ListImagesShrinkRequest(TeaModel):
     def __init__(
         self,
+        image_category: str = None,
         image_ids_shrink: str = None,
         image_names_shrink: str = None,
+        image_type: str = None,
         page_number: int = None,
         page_size: int = None,
     ):
+        self.image_category = image_category
         self.image_ids_shrink = image_ids_shrink
         self.image_names_shrink = image_names_shrink
+        self.image_type = image_type
         self.page_number = page_number
         self.page_size = page_size
 
@@ -2999,10 +3051,14 @@ class ListImagesShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.image_category is not None:
+            result['ImageCategory'] = self.image_category
         if self.image_ids_shrink is not None:
             result['ImageIds'] = self.image_ids_shrink
         if self.image_names_shrink is not None:
             result['ImageNames'] = self.image_names_shrink
+        if self.image_type is not None:
+            result['ImageType'] = self.image_type
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
@@ -3011,10 +3067,14 @@ class ListImagesShrinkRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ImageCategory') is not None:
+            self.image_category = m.get('ImageCategory')
         if m.get('ImageIds') is not None:
             self.image_ids_shrink = m.get('ImageIds')
         if m.get('ImageNames') is not None:
             self.image_names_shrink = m.get('ImageNames')
+        if m.get('ImageType') is not None:
+            self.image_type = m.get('ImageType')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
@@ -3025,6 +3085,7 @@ class ListImagesShrinkRequest(TeaModel):
 class ListImagesResponseBodyImages(TeaModel):
     def __init__(
         self,
+        app_id: str = None,
         create_time: str = None,
         description: str = None,
         image_id: str = None,
@@ -3032,6 +3093,8 @@ class ListImagesResponseBodyImages(TeaModel):
         name: str = None,
         version: str = None,
     ):
+        # This parameter is required.
+        self.app_id = app_id
         self.create_time = create_time
         self.description = description
         # This parameter is required.
@@ -3050,6 +3113,8 @@ class ListImagesResponseBodyImages(TeaModel):
             return _map
 
         result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
         if self.description is not None:
@@ -3066,6 +3131,8 @@ class ListImagesResponseBodyImages(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
         if m.get('Description') is not None:
