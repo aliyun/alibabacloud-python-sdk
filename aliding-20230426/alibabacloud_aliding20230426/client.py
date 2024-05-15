@@ -187,6 +187,140 @@ class Client(OpenApiClient):
         headers = aliding_20230426_models.AddAttendeeHeaders()
         return await self.add_attendee_with_options_async(request, headers, runtime)
 
+    def add_drive_space_with_options(
+        self,
+        tmp_req: aliding_20230426_models.AddDriveSpaceRequest,
+        tmp_header: aliding_20230426_models.AddDriveSpaceHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.AddDriveSpaceResponse:
+        """
+        @summary 新建钉盘空间
+        
+        @param tmp_req: AddDriveSpaceRequest
+        @param tmp_header: AddDriveSpaceHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddDriveSpaceResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.AddDriveSpaceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.AddDriveSpaceShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AddDriveSpace',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/documents/addDriveSpace',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.AddDriveSpaceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_drive_space_with_options_async(
+        self,
+        tmp_req: aliding_20230426_models.AddDriveSpaceRequest,
+        tmp_header: aliding_20230426_models.AddDriveSpaceHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.AddDriveSpaceResponse:
+        """
+        @summary 新建钉盘空间
+        
+        @param tmp_req: AddDriveSpaceRequest
+        @param tmp_header: AddDriveSpaceHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddDriveSpaceResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.AddDriveSpaceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.AddDriveSpaceShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AddDriveSpace',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/documents/addDriveSpace',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.AddDriveSpaceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_drive_space(
+        self,
+        request: aliding_20230426_models.AddDriveSpaceRequest,
+    ) -> aliding_20230426_models.AddDriveSpaceResponse:
+        """
+        @summary 新建钉盘空间
+        
+        @param request: AddDriveSpaceRequest
+        @return: AddDriveSpaceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.AddDriveSpaceHeaders()
+        return self.add_drive_space_with_options(request, headers, runtime)
+
+    async def add_drive_space_async(
+        self,
+        request: aliding_20230426_models.AddDriveSpaceRequest,
+    ) -> aliding_20230426_models.AddDriveSpaceResponse:
+        """
+        @summary 新建钉盘空间
+        
+        @param request: AddDriveSpaceRequest
+        @return: AddDriveSpaceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.AddDriveSpaceHeaders()
+        return await self.add_drive_space_with_options_async(request, headers, runtime)
+
     def add_meeting_rooms_with_options(
         self,
         tmp_req: aliding_20230426_models.AddMeetingRoomsRequest,
@@ -2490,6 +2624,176 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.CreateDeliveryPlanHeaders()
         return await self.create_delivery_plan_with_options_async(request, headers, runtime)
+
+    def create_dingtalk_personal_todo_task_with_options(
+        self,
+        tmp_req: aliding_20230426_models.CreateDingtalkPersonalTodoTaskRequest,
+        tmp_header: aliding_20230426_models.CreateDingtalkPersonalTodoTaskHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.CreateDingtalkPersonalTodoTaskResponse:
+        """
+        @summary 委托权限创建钉钉个人待办
+        
+        @param tmp_req: CreateDingtalkPersonalTodoTaskRequest
+        @param tmp_header: CreateDingtalkPersonalTodoTaskHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDingtalkPersonalTodoTaskResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.CreateDingtalkPersonalTodoTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.CreateDingtalkPersonalTodoTaskShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.executor_ids):
+            request.executor_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.executor_ids, 'ExecutorIds', 'json')
+        if not UtilClient.is_unset(tmp_req.notify_configs):
+            request.notify_configs_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.notify_configs, 'NotifyConfigs', 'json')
+        if not UtilClient.is_unset(tmp_req.participant_ids):
+            request.participant_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.participant_ids, 'ParticipantIds', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.due_time):
+            body['DueTime'] = request.due_time
+        if not UtilClient.is_unset(request.executor_ids_shrink):
+            body['ExecutorIds'] = request.executor_ids_shrink
+        if not UtilClient.is_unset(request.notify_configs_shrink):
+            body['NotifyConfigs'] = request.notify_configs_shrink
+        if not UtilClient.is_unset(request.participant_ids_shrink):
+            body['ParticipantIds'] = request.participant_ids_shrink
+        if not UtilClient.is_unset(request.subject):
+            body['Subject'] = request.subject
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        if not UtilClient.is_unset(request.user_token):
+            body['UserToken'] = request.user_token
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateDingtalkPersonalTodoTask',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/task/createDingtalkPersonalTodoTask',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.CreateDingtalkPersonalTodoTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_dingtalk_personal_todo_task_with_options_async(
+        self,
+        tmp_req: aliding_20230426_models.CreateDingtalkPersonalTodoTaskRequest,
+        tmp_header: aliding_20230426_models.CreateDingtalkPersonalTodoTaskHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.CreateDingtalkPersonalTodoTaskResponse:
+        """
+        @summary 委托权限创建钉钉个人待办
+        
+        @param tmp_req: CreateDingtalkPersonalTodoTaskRequest
+        @param tmp_header: CreateDingtalkPersonalTodoTaskHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDingtalkPersonalTodoTaskResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.CreateDingtalkPersonalTodoTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.CreateDingtalkPersonalTodoTaskShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.executor_ids):
+            request.executor_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.executor_ids, 'ExecutorIds', 'json')
+        if not UtilClient.is_unset(tmp_req.notify_configs):
+            request.notify_configs_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.notify_configs, 'NotifyConfigs', 'json')
+        if not UtilClient.is_unset(tmp_req.participant_ids):
+            request.participant_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.participant_ids, 'ParticipantIds', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.due_time):
+            body['DueTime'] = request.due_time
+        if not UtilClient.is_unset(request.executor_ids_shrink):
+            body['ExecutorIds'] = request.executor_ids_shrink
+        if not UtilClient.is_unset(request.notify_configs_shrink):
+            body['NotifyConfigs'] = request.notify_configs_shrink
+        if not UtilClient.is_unset(request.participant_ids_shrink):
+            body['ParticipantIds'] = request.participant_ids_shrink
+        if not UtilClient.is_unset(request.subject):
+            body['Subject'] = request.subject
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        if not UtilClient.is_unset(request.user_token):
+            body['UserToken'] = request.user_token
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateDingtalkPersonalTodoTask',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/task/createDingtalkPersonalTodoTask',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.CreateDingtalkPersonalTodoTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_dingtalk_personal_todo_task(
+        self,
+        request: aliding_20230426_models.CreateDingtalkPersonalTodoTaskRequest,
+    ) -> aliding_20230426_models.CreateDingtalkPersonalTodoTaskResponse:
+        """
+        @summary 委托权限创建钉钉个人待办
+        
+        @param request: CreateDingtalkPersonalTodoTaskRequest
+        @return: CreateDingtalkPersonalTodoTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.CreateDingtalkPersonalTodoTaskHeaders()
+        return self.create_dingtalk_personal_todo_task_with_options(request, headers, runtime)
+
+    async def create_dingtalk_personal_todo_task_async(
+        self,
+        request: aliding_20230426_models.CreateDingtalkPersonalTodoTaskRequest,
+    ) -> aliding_20230426_models.CreateDingtalkPersonalTodoTaskResponse:
+        """
+        @summary 委托权限创建钉钉个人待办
+        
+        @param request: CreateDingtalkPersonalTodoTaskRequest
+        @return: CreateDingtalkPersonalTodoTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.CreateDingtalkPersonalTodoTaskHeaders()
+        return await self.create_dingtalk_personal_todo_task_with_options_async(request, headers, runtime)
 
     def create_event_with_options(
         self,
@@ -5532,6 +5836,140 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.DeleteColumnsHeaders()
         return await self.delete_columns_with_options_async(request, headers, runtime)
+
+    def delete_drive_space_with_options(
+        self,
+        tmp_req: aliding_20230426_models.DeleteDriveSpaceRequest,
+        tmp_header: aliding_20230426_models.DeleteDriveSpaceHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.DeleteDriveSpaceResponse:
+        """
+        @summary 删除钉盘空间
+        
+        @param tmp_req: DeleteDriveSpaceRequest
+        @param tmp_header: DeleteDriveSpaceHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDriveSpaceResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.DeleteDriveSpaceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.DeleteDriveSpaceShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.space_id):
+            body['SpaceId'] = request.space_id
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteDriveSpace',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/documents/deleteDriveSpace',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.DeleteDriveSpaceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_drive_space_with_options_async(
+        self,
+        tmp_req: aliding_20230426_models.DeleteDriveSpaceRequest,
+        tmp_header: aliding_20230426_models.DeleteDriveSpaceHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.DeleteDriveSpaceResponse:
+        """
+        @summary 删除钉盘空间
+        
+        @param tmp_req: DeleteDriveSpaceRequest
+        @param tmp_header: DeleteDriveSpaceHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDriveSpaceResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.DeleteDriveSpaceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.DeleteDriveSpaceShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.space_id):
+            body['SpaceId'] = request.space_id
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteDriveSpace',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/documents/deleteDriveSpace',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.DeleteDriveSpaceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_drive_space(
+        self,
+        request: aliding_20230426_models.DeleteDriveSpaceRequest,
+    ) -> aliding_20230426_models.DeleteDriveSpaceResponse:
+        """
+        @summary 删除钉盘空间
+        
+        @param request: DeleteDriveSpaceRequest
+        @return: DeleteDriveSpaceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.DeleteDriveSpaceHeaders()
+        return self.delete_drive_space_with_options(request, headers, runtime)
+
+    async def delete_drive_space_async(
+        self,
+        request: aliding_20230426_models.DeleteDriveSpaceRequest,
+    ) -> aliding_20230426_models.DeleteDriveSpaceResponse:
+        """
+        @summary 删除钉盘空间
+        
+        @param request: DeleteDriveSpaceRequest
+        @return: DeleteDriveSpaceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.DeleteDriveSpaceHeaders()
+        return await self.delete_drive_space_with_options_async(request, headers, runtime)
 
     def delete_event_with_options(
         self,
@@ -15140,6 +15578,148 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.ListDentriesHeaders()
         return await self.list_dentries_with_options_async(request, headers, runtime)
+
+    def list_drive_spaces_with_options(
+        self,
+        tmp_req: aliding_20230426_models.ListDriveSpacesRequest,
+        tmp_header: aliding_20230426_models.ListDriveSpacesHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.ListDriveSpacesResponse:
+        """
+        @summary 获取钉盘空间列表
+        
+        @param tmp_req: ListDriveSpacesRequest
+        @param tmp_header: ListDriveSpacesHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDriveSpacesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.ListDriveSpacesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.ListDriveSpacesShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.space_type):
+            body['SpaceType'] = request.space_type
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListDriveSpaces',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/documents/listDriveSpaces',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.ListDriveSpacesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_drive_spaces_with_options_async(
+        self,
+        tmp_req: aliding_20230426_models.ListDriveSpacesRequest,
+        tmp_header: aliding_20230426_models.ListDriveSpacesHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.ListDriveSpacesResponse:
+        """
+        @summary 获取钉盘空间列表
+        
+        @param tmp_req: ListDriveSpacesRequest
+        @param tmp_header: ListDriveSpacesHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDriveSpacesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.ListDriveSpacesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.ListDriveSpacesShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.space_type):
+            body['SpaceType'] = request.space_type
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListDriveSpaces',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/documents/listDriveSpaces',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.ListDriveSpacesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_drive_spaces(
+        self,
+        request: aliding_20230426_models.ListDriveSpacesRequest,
+    ) -> aliding_20230426_models.ListDriveSpacesResponse:
+        """
+        @summary 获取钉盘空间列表
+        
+        @param request: ListDriveSpacesRequest
+        @return: ListDriveSpacesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.ListDriveSpacesHeaders()
+        return self.list_drive_spaces_with_options(request, headers, runtime)
+
+    async def list_drive_spaces_async(
+        self,
+        request: aliding_20230426_models.ListDriveSpacesRequest,
+    ) -> aliding_20230426_models.ListDriveSpacesResponse:
+        """
+        @summary 获取钉盘空间列表
+        
+        @param request: ListDriveSpacesRequest
+        @return: ListDriveSpacesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.ListDriveSpacesHeaders()
+        return await self.list_drive_spaces_with_options_async(request, headers, runtime)
 
     def list_events_with_options(
         self,

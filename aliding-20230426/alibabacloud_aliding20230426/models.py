@@ -422,6 +422,329 @@ class AddAttendeeResponse(TeaModel):
         return self
 
 
+class AddDriveSpaceHeadersAccountContext(TeaModel):
+    def __init__(
+        self,
+        account_id: str = None,
+    ):
+        # This parameter is required.
+        self.account_id = account_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['accountId'] = self.account_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accountId') is not None:
+            self.account_id = m.get('accountId')
+        return self
+
+
+class AddDriveSpaceHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context: AddDriveSpaceHeadersAccountContext = None,
+    ):
+        self.common_headers = common_headers
+        # This parameter is required.
+        self.account_context = account_context
+
+    def validate(self):
+        if self.account_context:
+            self.account_context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context is not None:
+            result['AccountContext'] = self.account_context.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            temp_model = AddDriveSpaceHeadersAccountContext()
+            self.account_context = temp_model.from_map(m['AccountContext'])
+        return self
+
+
+class AddDriveSpaceShrinkHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context_shrink: str = None,
+    ):
+        self.common_headers = common_headers
+        # This parameter is required.
+        self.account_context_shrink = account_context_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context_shrink is not None:
+            result['AccountContext'] = self.account_context_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            self.account_context_shrink = m.get('AccountContext')
+        return self
+
+
+class AddDriveSpaceRequestTenantContext(TeaModel):
+    def __init__(
+        self,
+        tenant_id: str = None,
+    ):
+        self.tenant_id = tenant_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tenant_id is not None:
+            result['tenantId'] = self.tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('tenantId') is not None:
+            self.tenant_id = m.get('tenantId')
+        return self
+
+
+class AddDriveSpaceRequest(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        tenant_context: AddDriveSpaceRequestTenantContext = None,
+    ):
+        # This parameter is required.
+        self.name = name
+        self.tenant_context = tenant_context
+
+    def validate(self):
+        if self.tenant_context:
+            self.tenant_context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.tenant_context is not None:
+            result['TenantContext'] = self.tenant_context.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('TenantContext') is not None:
+            temp_model = AddDriveSpaceRequestTenantContext()
+            self.tenant_context = temp_model.from_map(m['TenantContext'])
+        return self
+
+
+class AddDriveSpaceShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        tenant_context_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.name = name
+        self.tenant_context_shrink = tenant_context_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.tenant_context_shrink is not None:
+            result['TenantContext'] = self.tenant_context_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('TenantContext') is not None:
+            self.tenant_context_shrink = m.get('TenantContext')
+        return self
+
+
+class AddDriveSpaceResponseBody(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        modify_time: str = None,
+        permission_mode: str = None,
+        quota: int = None,
+        request_id: str = None,
+        space_id: str = None,
+        space_name: str = None,
+        space_type: str = None,
+        used_quota: int = None,
+        vendor_request_id: str = None,
+        vendor_type: str = None,
+    ):
+        self.create_time = create_time
+        self.modify_time = modify_time
+        self.permission_mode = permission_mode
+        self.quota = quota
+        self.request_id = request_id
+        self.space_id = space_id
+        self.space_name = space_name
+        self.space_type = space_type
+        self.used_quota = used_quota
+        self.vendor_request_id = vendor_request_id
+        self.vendor_type = vendor_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['createTime'] = self.create_time
+        if self.modify_time is not None:
+            result['modifyTime'] = self.modify_time
+        if self.permission_mode is not None:
+            result['permissionMode'] = self.permission_mode
+        if self.quota is not None:
+            result['quota'] = self.quota
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.space_id is not None:
+            result['spaceId'] = self.space_id
+        if self.space_name is not None:
+            result['spaceName'] = self.space_name
+        if self.space_type is not None:
+            result['spaceType'] = self.space_type
+        if self.used_quota is not None:
+            result['usedQuota'] = self.used_quota
+        if self.vendor_request_id is not None:
+            result['vendorRequestId'] = self.vendor_request_id
+        if self.vendor_type is not None:
+            result['vendorType'] = self.vendor_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('createTime') is not None:
+            self.create_time = m.get('createTime')
+        if m.get('modifyTime') is not None:
+            self.modify_time = m.get('modifyTime')
+        if m.get('permissionMode') is not None:
+            self.permission_mode = m.get('permissionMode')
+        if m.get('quota') is not None:
+            self.quota = m.get('quota')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('spaceId') is not None:
+            self.space_id = m.get('spaceId')
+        if m.get('spaceName') is not None:
+            self.space_name = m.get('spaceName')
+        if m.get('spaceType') is not None:
+            self.space_type = m.get('spaceType')
+        if m.get('usedQuota') is not None:
+            self.used_quota = m.get('usedQuota')
+        if m.get('vendorRequestId') is not None:
+            self.vendor_request_id = m.get('vendorRequestId')
+        if m.get('vendorType') is not None:
+            self.vendor_type = m.get('vendorType')
+        return self
+
+
+class AddDriveSpaceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AddDriveSpaceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AddDriveSpaceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class AddMeetingRoomsHeadersAccountContext(TeaModel):
     def __init__(
         self,
@@ -5617,6 +5940,395 @@ class CreateDeliveryPlanResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateDeliveryPlanResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateDingtalkPersonalTodoTaskHeadersAccountContext(TeaModel):
+    def __init__(
+        self,
+        account_id: str = None,
+    ):
+        # This parameter is required.
+        self.account_id = account_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['accountId'] = self.account_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accountId') is not None:
+            self.account_id = m.get('accountId')
+        return self
+
+
+class CreateDingtalkPersonalTodoTaskHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context: CreateDingtalkPersonalTodoTaskHeadersAccountContext = None,
+    ):
+        self.common_headers = common_headers
+        self.account_context = account_context
+
+    def validate(self):
+        if self.account_context:
+            self.account_context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context is not None:
+            result['AccountContext'] = self.account_context.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            temp_model = CreateDingtalkPersonalTodoTaskHeadersAccountContext()
+            self.account_context = temp_model.from_map(m['AccountContext'])
+        return self
+
+
+class CreateDingtalkPersonalTodoTaskShrinkHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context_shrink: str = None,
+    ):
+        self.common_headers = common_headers
+        self.account_context_shrink = account_context_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context_shrink is not None:
+            result['AccountContext'] = self.account_context_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            self.account_context_shrink = m.get('AccountContext')
+        return self
+
+
+class CreateDingtalkPersonalTodoTaskRequestNotifyConfigs(TeaModel):
+    def __init__(
+        self,
+        ding_notify: str = None,
+    ):
+        self.ding_notify = ding_notify
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ding_notify is not None:
+            result['DingNotify'] = self.ding_notify
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DingNotify') is not None:
+            self.ding_notify = m.get('DingNotify')
+        return self
+
+
+class CreateDingtalkPersonalTodoTaskRequestTenantContext(TeaModel):
+    def __init__(
+        self,
+        tenant_id: str = None,
+    ):
+        self.tenant_id = tenant_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tenant_id is not None:
+            result['tenantId'] = self.tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('tenantId') is not None:
+            self.tenant_id = m.get('tenantId')
+        return self
+
+
+class CreateDingtalkPersonalTodoTaskRequest(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        due_time: int = None,
+        executor_ids: List[str] = None,
+        notify_configs: CreateDingtalkPersonalTodoTaskRequestNotifyConfigs = None,
+        participant_ids: List[str] = None,
+        subject: str = None,
+        tenant_context: CreateDingtalkPersonalTodoTaskRequestTenantContext = None,
+        user_token: str = None,
+    ):
+        self.description = description
+        self.due_time = due_time
+        # This parameter is required.
+        self.executor_ids = executor_ids
+        self.notify_configs = notify_configs
+        self.participant_ids = participant_ids
+        # This parameter is required.
+        self.subject = subject
+        self.tenant_context = tenant_context
+        self.user_token = user_token
+
+    def validate(self):
+        if self.notify_configs:
+            self.notify_configs.validate()
+        if self.tenant_context:
+            self.tenant_context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.due_time is not None:
+            result['DueTime'] = self.due_time
+        if self.executor_ids is not None:
+            result['ExecutorIds'] = self.executor_ids
+        if self.notify_configs is not None:
+            result['NotifyConfigs'] = self.notify_configs.to_map()
+        if self.participant_ids is not None:
+            result['ParticipantIds'] = self.participant_ids
+        if self.subject is not None:
+            result['Subject'] = self.subject
+        if self.tenant_context is not None:
+            result['TenantContext'] = self.tenant_context.to_map()
+        if self.user_token is not None:
+            result['UserToken'] = self.user_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('DueTime') is not None:
+            self.due_time = m.get('DueTime')
+        if m.get('ExecutorIds') is not None:
+            self.executor_ids = m.get('ExecutorIds')
+        if m.get('NotifyConfigs') is not None:
+            temp_model = CreateDingtalkPersonalTodoTaskRequestNotifyConfigs()
+            self.notify_configs = temp_model.from_map(m['NotifyConfigs'])
+        if m.get('ParticipantIds') is not None:
+            self.participant_ids = m.get('ParticipantIds')
+        if m.get('Subject') is not None:
+            self.subject = m.get('Subject')
+        if m.get('TenantContext') is not None:
+            temp_model = CreateDingtalkPersonalTodoTaskRequestTenantContext()
+            self.tenant_context = temp_model.from_map(m['TenantContext'])
+        if m.get('UserToken') is not None:
+            self.user_token = m.get('UserToken')
+        return self
+
+
+class CreateDingtalkPersonalTodoTaskShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        due_time: int = None,
+        executor_ids_shrink: str = None,
+        notify_configs_shrink: str = None,
+        participant_ids_shrink: str = None,
+        subject: str = None,
+        tenant_context_shrink: str = None,
+        user_token: str = None,
+    ):
+        self.description = description
+        self.due_time = due_time
+        # This parameter is required.
+        self.executor_ids_shrink = executor_ids_shrink
+        self.notify_configs_shrink = notify_configs_shrink
+        self.participant_ids_shrink = participant_ids_shrink
+        # This parameter is required.
+        self.subject = subject
+        self.tenant_context_shrink = tenant_context_shrink
+        self.user_token = user_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.due_time is not None:
+            result['DueTime'] = self.due_time
+        if self.executor_ids_shrink is not None:
+            result['ExecutorIds'] = self.executor_ids_shrink
+        if self.notify_configs_shrink is not None:
+            result['NotifyConfigs'] = self.notify_configs_shrink
+        if self.participant_ids_shrink is not None:
+            result['ParticipantIds'] = self.participant_ids_shrink
+        if self.subject is not None:
+            result['Subject'] = self.subject
+        if self.tenant_context_shrink is not None:
+            result['TenantContext'] = self.tenant_context_shrink
+        if self.user_token is not None:
+            result['UserToken'] = self.user_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('DueTime') is not None:
+            self.due_time = m.get('DueTime')
+        if m.get('ExecutorIds') is not None:
+            self.executor_ids_shrink = m.get('ExecutorIds')
+        if m.get('NotifyConfigs') is not None:
+            self.notify_configs_shrink = m.get('NotifyConfigs')
+        if m.get('ParticipantIds') is not None:
+            self.participant_ids_shrink = m.get('ParticipantIds')
+        if m.get('Subject') is not None:
+            self.subject = m.get('Subject')
+        if m.get('TenantContext') is not None:
+            self.tenant_context_shrink = m.get('TenantContext')
+        if m.get('UserToken') is not None:
+            self.user_token = m.get('UserToken')
+        return self
+
+
+class CreateDingtalkPersonalTodoTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        created_time: int = None,
+        request_id: str = None,
+        task_id: str = None,
+        vendor_request_id: str = None,
+        vendor_type: str = None,
+    ):
+        self.created_time = created_time
+        self.request_id = request_id
+        self.task_id = task_id
+        self.vendor_request_id = vendor_request_id
+        self.vendor_type = vendor_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.created_time is not None:
+            result['createdTime'] = self.created_time
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.task_id is not None:
+            result['taskId'] = self.task_id
+        if self.vendor_request_id is not None:
+            result['vendorRequestId'] = self.vendor_request_id
+        if self.vendor_type is not None:
+            result['vendorType'] = self.vendor_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('createdTime') is not None:
+            self.created_time = m.get('createdTime')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('taskId') is not None:
+            self.task_id = m.get('taskId')
+        if m.get('vendorRequestId') is not None:
+            self.vendor_request_id = m.get('vendorRequestId')
+        if m.get('vendorType') is not None:
+            self.vendor_type = m.get('vendorType')
+        return self
+
+
+class CreateDingtalkPersonalTodoTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateDingtalkPersonalTodoTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateDingtalkPersonalTodoTaskResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -13377,6 +14089,281 @@ class DeleteColumnsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteColumnsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteDriveSpaceHeadersAccountContext(TeaModel):
+    def __init__(
+        self,
+        account_id: str = None,
+    ):
+        # This parameter is required.
+        self.account_id = account_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['accountId'] = self.account_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accountId') is not None:
+            self.account_id = m.get('accountId')
+        return self
+
+
+class DeleteDriveSpaceHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context: DeleteDriveSpaceHeadersAccountContext = None,
+    ):
+        self.common_headers = common_headers
+        # This parameter is required.
+        self.account_context = account_context
+
+    def validate(self):
+        if self.account_context:
+            self.account_context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context is not None:
+            result['AccountContext'] = self.account_context.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            temp_model = DeleteDriveSpaceHeadersAccountContext()
+            self.account_context = temp_model.from_map(m['AccountContext'])
+        return self
+
+
+class DeleteDriveSpaceShrinkHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context_shrink: str = None,
+    ):
+        self.common_headers = common_headers
+        # This parameter is required.
+        self.account_context_shrink = account_context_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context_shrink is not None:
+            result['AccountContext'] = self.account_context_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            self.account_context_shrink = m.get('AccountContext')
+        return self
+
+
+class DeleteDriveSpaceRequestTenantContext(TeaModel):
+    def __init__(
+        self,
+        tenant_id: str = None,
+    ):
+        self.tenant_id = tenant_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tenant_id is not None:
+            result['tenantId'] = self.tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('tenantId') is not None:
+            self.tenant_id = m.get('tenantId')
+        return self
+
+
+class DeleteDriveSpaceRequest(TeaModel):
+    def __init__(
+        self,
+        space_id: str = None,
+        tenant_context: DeleteDriveSpaceRequestTenantContext = None,
+    ):
+        # This parameter is required.
+        self.space_id = space_id
+        self.tenant_context = tenant_context
+
+    def validate(self):
+        if self.tenant_context:
+            self.tenant_context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.space_id is not None:
+            result['SpaceId'] = self.space_id
+        if self.tenant_context is not None:
+            result['TenantContext'] = self.tenant_context.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SpaceId') is not None:
+            self.space_id = m.get('SpaceId')
+        if m.get('TenantContext') is not None:
+            temp_model = DeleteDriveSpaceRequestTenantContext()
+            self.tenant_context = temp_model.from_map(m['TenantContext'])
+        return self
+
+
+class DeleteDriveSpaceShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        space_id: str = None,
+        tenant_context_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.space_id = space_id
+        self.tenant_context_shrink = tenant_context_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.space_id is not None:
+            result['SpaceId'] = self.space_id
+        if self.tenant_context_shrink is not None:
+            result['TenantContext'] = self.tenant_context_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SpaceId') is not None:
+            self.space_id = m.get('SpaceId')
+        if m.get('TenantContext') is not None:
+            self.tenant_context_shrink = m.get('TenantContext')
+        return self
+
+
+class DeleteDriveSpaceResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        vendor_request_id: str = None,
+        vendor_type: str = None,
+    ):
+        self.request_id = request_id
+        self.vendor_request_id = vendor_request_id
+        self.vendor_type = vendor_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.vendor_request_id is not None:
+            result['vendorRequestId'] = self.vendor_request_id
+        if self.vendor_type is not None:
+            result['vendorType'] = self.vendor_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('vendorRequestId') is not None:
+            self.vendor_request_id = m.get('vendorRequestId')
+        if m.get('vendorType') is not None:
+            self.vendor_type = m.get('vendorType')
+        return self
+
+
+class DeleteDriveSpaceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteDriveSpaceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteDriveSpaceResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -38893,6 +39880,396 @@ class ListDentriesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListDentriesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListDriveSpacesHeadersAccountContext(TeaModel):
+    def __init__(
+        self,
+        account_id: str = None,
+    ):
+        # This parameter is required.
+        self.account_id = account_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['accountId'] = self.account_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accountId') is not None:
+            self.account_id = m.get('accountId')
+        return self
+
+
+class ListDriveSpacesHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context: ListDriveSpacesHeadersAccountContext = None,
+    ):
+        self.common_headers = common_headers
+        # This parameter is required.
+        self.account_context = account_context
+
+    def validate(self):
+        if self.account_context:
+            self.account_context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context is not None:
+            result['AccountContext'] = self.account_context.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            temp_model = ListDriveSpacesHeadersAccountContext()
+            self.account_context = temp_model.from_map(m['AccountContext'])
+        return self
+
+
+class ListDriveSpacesShrinkHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context_shrink: str = None,
+    ):
+        self.common_headers = common_headers
+        # This parameter is required.
+        self.account_context_shrink = account_context_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context_shrink is not None:
+            result['AccountContext'] = self.account_context_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            self.account_context_shrink = m.get('AccountContext')
+        return self
+
+
+class ListDriveSpacesRequestTenantContext(TeaModel):
+    def __init__(
+        self,
+        tenant_id: str = None,
+    ):
+        self.tenant_id = tenant_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tenant_id is not None:
+            result['tenantId'] = self.tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('tenantId') is not None:
+            self.tenant_id = m.get('tenantId')
+        return self
+
+
+class ListDriveSpacesRequest(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        space_type: str = None,
+        tenant_context: ListDriveSpacesRequestTenantContext = None,
+    ):
+        # This parameter is required.
+        self.max_results = max_results
+        self.next_token = next_token
+        # This parameter is required.
+        self.space_type = space_type
+        self.tenant_context = tenant_context
+
+    def validate(self):
+        if self.tenant_context:
+            self.tenant_context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.space_type is not None:
+            result['SpaceType'] = self.space_type
+        if self.tenant_context is not None:
+            result['TenantContext'] = self.tenant_context.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('SpaceType') is not None:
+            self.space_type = m.get('SpaceType')
+        if m.get('TenantContext') is not None:
+            temp_model = ListDriveSpacesRequestTenantContext()
+            self.tenant_context = temp_model.from_map(m['TenantContext'])
+        return self
+
+
+class ListDriveSpacesShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        space_type: str = None,
+        tenant_context_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.max_results = max_results
+        self.next_token = next_token
+        # This parameter is required.
+        self.space_type = space_type
+        self.tenant_context_shrink = tenant_context_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.space_type is not None:
+            result['SpaceType'] = self.space_type
+        if self.tenant_context_shrink is not None:
+            result['TenantContext'] = self.tenant_context_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('SpaceType') is not None:
+            self.space_type = m.get('SpaceType')
+        if m.get('TenantContext') is not None:
+            self.tenant_context_shrink = m.get('TenantContext')
+        return self
+
+
+class ListDriveSpacesResponseBodySpaces(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        modify_time: str = None,
+        permission_mode: str = None,
+        quota: int = None,
+        space_id: str = None,
+        space_name: str = None,
+        space_type: str = None,
+        used_quota: int = None,
+    ):
+        self.create_time = create_time
+        self.modify_time = modify_time
+        self.permission_mode = permission_mode
+        self.quota = quota
+        self.space_id = space_id
+        self.space_name = space_name
+        self.space_type = space_type
+        self.used_quota = used_quota
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.modify_time is not None:
+            result['ModifyTime'] = self.modify_time
+        if self.permission_mode is not None:
+            result['PermissionMode'] = self.permission_mode
+        if self.quota is not None:
+            result['Quota'] = self.quota
+        if self.space_id is not None:
+            result['SpaceId'] = self.space_id
+        if self.space_name is not None:
+            result['SpaceName'] = self.space_name
+        if self.space_type is not None:
+            result['SpaceType'] = self.space_type
+        if self.used_quota is not None:
+            result['UsedQuota'] = self.used_quota
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('ModifyTime') is not None:
+            self.modify_time = m.get('ModifyTime')
+        if m.get('PermissionMode') is not None:
+            self.permission_mode = m.get('PermissionMode')
+        if m.get('Quota') is not None:
+            self.quota = m.get('Quota')
+        if m.get('SpaceId') is not None:
+            self.space_id = m.get('SpaceId')
+        if m.get('SpaceName') is not None:
+            self.space_name = m.get('SpaceName')
+        if m.get('SpaceType') is not None:
+            self.space_type = m.get('SpaceType')
+        if m.get('UsedQuota') is not None:
+            self.used_quota = m.get('UsedQuota')
+        return self
+
+
+class ListDriveSpacesResponseBody(TeaModel):
+    def __init__(
+        self,
+        next_token: str = None,
+        request_id: str = None,
+        spaces: List[ListDriveSpacesResponseBodySpaces] = None,
+        vendor_request_id: str = None,
+        vendor_type: str = None,
+    ):
+        self.next_token = next_token
+        self.request_id = request_id
+        self.spaces = spaces
+        self.vendor_request_id = vendor_request_id
+        self.vendor_type = vendor_type
+
+    def validate(self):
+        if self.spaces:
+            for k in self.spaces:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        result['spaces'] = []
+        if self.spaces is not None:
+            for k in self.spaces:
+                result['spaces'].append(k.to_map() if k else None)
+        if self.vendor_request_id is not None:
+            result['vendorRequestId'] = self.vendor_request_id
+        if self.vendor_type is not None:
+            result['vendorType'] = self.vendor_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        self.spaces = []
+        if m.get('spaces') is not None:
+            for k in m.get('spaces'):
+                temp_model = ListDriveSpacesResponseBodySpaces()
+                self.spaces.append(temp_model.from_map(k))
+        if m.get('vendorRequestId') is not None:
+            self.vendor_request_id = m.get('vendorRequestId')
+        if m.get('vendorType') is not None:
+            self.vendor_type = m.get('vendorType')
+        return self
+
+
+class ListDriveSpacesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListDriveSpacesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListDriveSpacesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

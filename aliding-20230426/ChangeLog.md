@@ -1,3 +1,12 @@
+2024-05-15 Version: 2.16.0
+- Support API AddDriveSpace.
+- Support API CreateDingtalkPersonalTodoTask.
+- Support API DeleteDriveSpace.
+- Support API ListDriveSpaces.
+- Update API CreateEvent: update param Reminders.
+- Update API PatchEvent: update param Reminders.
+
+
 2024-05-10 Version: 2.15.0
 - Support API GetDocContentTakId.
 
