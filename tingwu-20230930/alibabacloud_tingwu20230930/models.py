@@ -21,6 +21,7 @@ class CreateTaskRequestInput(TeaModel):
         self.multiple_streams_enabled = multiple_streams_enabled
         self.progressive_callbacks_enabled = progressive_callbacks_enabled
         self.sample_rate = sample_rate
+        # This parameter is required.
         self.source_language = source_language
         self.task_id = task_id
         self.task_key = task_key
@@ -70,6 +71,88 @@ class CreateTaskRequestInput(TeaModel):
             self.task_id = m.get('TaskId')
         if m.get('TaskKey') is not None:
             self.task_key = m.get('TaskKey')
+        return self
+
+
+class CreateTaskRequestParametersCustomPromptContents(TeaModel):
+    def __init__(
+        self,
+        model: str = None,
+        name: str = None,
+        prompt: str = None,
+        trans_type: str = None,
+    ):
+        self.model = model
+        # This parameter is required.
+        self.name = name
+        # This parameter is required.
+        self.prompt = prompt
+        self.trans_type = trans_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.model is not None:
+            result['Model'] = self.model
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.prompt is not None:
+            result['Prompt'] = self.prompt
+        if self.trans_type is not None:
+            result['TransType'] = self.trans_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Model') is not None:
+            self.model = m.get('Model')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Prompt') is not None:
+            self.prompt = m.get('Prompt')
+        if m.get('TransType') is not None:
+            self.trans_type = m.get('TransType')
+        return self
+
+
+class CreateTaskRequestParametersCustomPrompt(TeaModel):
+    def __init__(
+        self,
+        contents: List[CreateTaskRequestParametersCustomPromptContents] = None,
+    ):
+        self.contents = contents
+
+    def validate(self):
+        if self.contents:
+            for k in self.contents:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Contents'] = []
+        if self.contents is not None:
+            for k in self.contents:
+                result['Contents'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.contents = []
+        if m.get('Contents') is not None:
+            for k in m.get('Contents'):
+                temp_model = CreateTaskRequestParametersCustomPromptContents()
+                self.contents.append(temp_model.from_map(k))
         return self
 
 
@@ -328,6 +411,8 @@ class CreateTaskRequestParameters(TeaModel):
     def __init__(
         self,
         auto_chapters_enabled: bool = None,
+        custom_prompt: CreateTaskRequestParametersCustomPrompt = None,
+        custom_prompt_enabled: bool = None,
         extra_params: CreateTaskRequestParametersExtraParams = None,
         meeting_assistance: CreateTaskRequestParametersMeetingAssistance = None,
         meeting_assistance_enabled: bool = None,
@@ -341,6 +426,8 @@ class CreateTaskRequestParameters(TeaModel):
         translation_enabled: bool = None,
     ):
         self.auto_chapters_enabled = auto_chapters_enabled
+        self.custom_prompt = custom_prompt
+        self.custom_prompt_enabled = custom_prompt_enabled
         self.extra_params = extra_params
         self.meeting_assistance = meeting_assistance
         self.meeting_assistance_enabled = meeting_assistance_enabled
@@ -354,6 +441,8 @@ class CreateTaskRequestParameters(TeaModel):
         self.translation_enabled = translation_enabled
 
     def validate(self):
+        if self.custom_prompt:
+            self.custom_prompt.validate()
         if self.extra_params:
             self.extra_params.validate()
         if self.meeting_assistance:
@@ -375,6 +464,10 @@ class CreateTaskRequestParameters(TeaModel):
         result = dict()
         if self.auto_chapters_enabled is not None:
             result['AutoChaptersEnabled'] = self.auto_chapters_enabled
+        if self.custom_prompt is not None:
+            result['CustomPrompt'] = self.custom_prompt.to_map()
+        if self.custom_prompt_enabled is not None:
+            result['CustomPromptEnabled'] = self.custom_prompt_enabled
         if self.extra_params is not None:
             result['ExtraParams'] = self.extra_params.to_map()
         if self.meeting_assistance is not None:
@@ -403,6 +496,11 @@ class CreateTaskRequestParameters(TeaModel):
         m = m or dict()
         if m.get('AutoChaptersEnabled') is not None:
             self.auto_chapters_enabled = m.get('AutoChaptersEnabled')
+        if m.get('CustomPrompt') is not None:
+            temp_model = CreateTaskRequestParametersCustomPrompt()
+            self.custom_prompt = temp_model.from_map(m['CustomPrompt'])
+        if m.get('CustomPromptEnabled') is not None:
+            self.custom_prompt_enabled = m.get('CustomPromptEnabled')
         if m.get('ExtraParams') is not None:
             temp_model = CreateTaskRequestParametersExtraParams()
             self.extra_params = temp_model.from_map(m['ExtraParams'])
@@ -447,6 +545,7 @@ class CreateTaskRequest(TeaModel):
         self.input = input
         self.parameters = parameters
         self.operation = operation
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -631,7 +730,9 @@ class CreateTranscriptionPhrasesRequest(TeaModel):
         word_weights: str = None,
     ):
         self.description = description
+        # This parameter is required.
         self.name = name
+        # This parameter is required.
         self.word_weights = word_weights
 
     def validate(self):
@@ -1486,7 +1587,9 @@ class UpdateTranscriptionPhrasesRequest(TeaModel):
         word_weights: str = None,
     ):
         self.description = description
+        # This parameter is required.
         self.name = name
+        # This parameter is required.
         self.word_weights = word_weights
 
     def validate(self):
