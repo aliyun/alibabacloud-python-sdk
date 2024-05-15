@@ -112,10 +112,14 @@ class AddonNodeTemplate(TeaModel):
         self.data_disks = data_disks
         self.duration = duration
         self.enable_ht = enable_ht
+        # This parameter is required.
         self.image_id = image_id
         self.instance_charge_type = instance_charge_type
+        # This parameter is required.
         self.instance_type = instance_type
+        # This parameter is required.
         self.os_name = os_name
+        # This parameter is required.
         self.os_name_en = os_name_en
         self.period = period
         self.period_unit = period_unit
@@ -435,6 +439,7 @@ class QueueTemplate(TeaModel):
         self.max_count = max_count
         self.max_count_per_cycle = max_count_per_cycle
         self.min_count = min_count
+        # This parameter is required.
         self.name = name
         self.ram_role = ram_role
         self.v_switch_ids = v_switch_ids
@@ -704,15 +709,16 @@ class AddImageRequest(TeaModel):
         self,
         container_image_spec: AddImageRequestContainerImageSpec = None,
         description: str = None,
+        image_version: str = None,
         name: str = None,
         vmimage_spec: AddImageRequestVMImageSpec = None,
-        version: str = None,
     ):
         self.container_image_spec = container_image_spec
         self.description = description
+        self.image_version = image_version
+        # This parameter is required.
         self.name = name
         self.vmimage_spec = vmimage_spec
-        self.version = version
 
     def validate(self):
         if self.container_image_spec:
@@ -730,12 +736,12 @@ class AddImageRequest(TeaModel):
             result['ContainerImageSpec'] = self.container_image_spec.to_map()
         if self.description is not None:
             result['Description'] = self.description
+        if self.image_version is not None:
+            result['ImageVersion'] = self.image_version
         if self.name is not None:
             result['Name'] = self.name
         if self.vmimage_spec is not None:
             result['VMImageSpec'] = self.vmimage_spec.to_map()
-        if self.version is not None:
-            result['Version'] = self.version
         return result
 
     def from_map(self, m: dict = None):
@@ -745,13 +751,13 @@ class AddImageRequest(TeaModel):
             self.container_image_spec = temp_model.from_map(m['ContainerImageSpec'])
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('ImageVersion') is not None:
+            self.image_version = m.get('ImageVersion')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('VMImageSpec') is not None:
             temp_model = AddImageRequestVMImageSpec()
             self.vmimage_spec = temp_model.from_map(m['VMImageSpec'])
-        if m.get('Version') is not None:
-            self.version = m.get('Version')
         return self
 
 
@@ -760,15 +766,16 @@ class AddImageShrinkRequest(TeaModel):
         self,
         container_image_spec_shrink: str = None,
         description: str = None,
+        image_version: str = None,
         name: str = None,
         vmimage_spec_shrink: str = None,
-        version: str = None,
     ):
         self.container_image_spec_shrink = container_image_spec_shrink
         self.description = description
+        self.image_version = image_version
+        # This parameter is required.
         self.name = name
         self.vmimage_spec_shrink = vmimage_spec_shrink
-        self.version = version
 
     def validate(self):
         pass
@@ -783,12 +790,12 @@ class AddImageShrinkRequest(TeaModel):
             result['ContainerImageSpec'] = self.container_image_spec_shrink
         if self.description is not None:
             result['Description'] = self.description
+        if self.image_version is not None:
+            result['ImageVersion'] = self.image_version
         if self.name is not None:
             result['Name'] = self.name
         if self.vmimage_spec_shrink is not None:
             result['VMImageSpec'] = self.vmimage_spec_shrink
-        if self.version is not None:
-            result['Version'] = self.version
         return result
 
     def from_map(self, m: dict = None):
@@ -797,12 +804,12 @@ class AddImageShrinkRequest(TeaModel):
             self.container_image_spec_shrink = m.get('ContainerImageSpec')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('ImageVersion') is not None:
+            self.image_version = m.get('ImageVersion')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('VMImageSpec') is not None:
             self.vmimage_spec_shrink = m.get('VMImageSpec')
-        if m.get('Version') is not None:
-            self.version = m.get('Version')
         return self
 
 
@@ -1145,6 +1152,7 @@ class CreateJobRequestTasksTaskSpecTaskExecutorContainer(TeaModel):
     ):
         self.command = command
         self.environment_vars = environment_vars
+        # This parameter is required.
         self.image = image
         self.working_dir = working_dir
 
@@ -1195,6 +1203,7 @@ class CreateJobRequestTasksTaskSpecTaskExecutorVM(TeaModel):
         prolog_script: str = None,
         script: str = None,
     ):
+        # This parameter is required.
         self.image = image
         self.prolog_script = prolog_script
         self.script = script
@@ -1312,6 +1321,7 @@ class CreateJobRequestTasksTaskSpec(TeaModel):
         volume_mount: List[CreateJobRequestTasksTaskSpecVolumeMount] = None,
     ):
         self.resource = resource
+        # This parameter is required.
         self.task_executor = task_executor
         self.volume_mount = volume_mount
 
@@ -1423,7 +1433,9 @@ class CreateJobRequest(TeaModel):
     ):
         self.deployment_policy = deployment_policy
         self.job_description = job_description
+        # This parameter is required.
         self.job_name = job_name
+        # This parameter is required.
         self.tasks = tasks
 
     def validate(self):
@@ -1479,7 +1491,9 @@ class CreateJobShrinkRequest(TeaModel):
     ):
         self.deployment_policy_shrink = deployment_policy_shrink
         self.job_description = job_description
+        # This parameter is required.
         self.job_name = job_name
+        # This parameter is required.
         self.tasks_shrink = tasks_shrink
 
     def validate(self):
@@ -2174,6 +2188,7 @@ class GetImageRequest(TeaModel):
         self,
         image_id: str = None,
     ):
+        # This parameter is required.
         self.image_id = image_id
 
     def validate(self):
@@ -2348,6 +2363,7 @@ class GetImageResponseBodyImage(TeaModel):
         self.container_image_spec = container_image_spec
         self.create_time = create_time
         self.description = description
+        # This parameter is required.
         self.image_type = image_type
         self.name = name
         self.size = size
@@ -3555,7 +3571,9 @@ class ListImagesResponseBodyImages(TeaModel):
     ):
         self.create_time = create_time
         self.description = description
+        # This parameter is required.
         self.image_id = image_id
+        # This parameter is required.
         self.image_type = image_type
         self.name = name
         self.version = version
@@ -4300,6 +4318,7 @@ class RemoveImageRequest(TeaModel):
         self,
         image_id: str = None,
     ):
+        # This parameter is required.
         self.image_id = image_id
 
     def validate(self):

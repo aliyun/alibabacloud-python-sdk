@@ -1,3 +1,8 @@
+2024-05-15 Version: 4.0.0
+- Update API AddImage: add param ImageVersion.
+- Update API AddImage: delete param Version.
+
+
 2024-04-16 Version: 3.0.0
 - Support API DescribeJobMetricData.
 - Support API DescribeJobMetricLast.
