@@ -777,6 +777,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.add_phone_numbers_with_options_async(request, runtime)
 
+    def add_schema_property_with_options(
+        self,
+        tmp_req: ccc20200701_models.AddSchemaPropertyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.AddSchemaPropertyResponse:
+        """
+        @param tmp_req: AddSchemaPropertyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddSchemaPropertyResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ccc20200701_models.AddSchemaPropertyShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.property):
+            request.property_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.property, 'Property', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.property_shrink):
+            body['Property'] = request.property_shrink
+        if not UtilClient.is_unset(request.request_id):
+            body['RequestId'] = request.request_id
+        if not UtilClient.is_unset(request.schema_id):
+            body['SchemaId'] = request.schema_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AddSchemaProperty',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.AddSchemaPropertyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_schema_property_with_options_async(
+        self,
+        tmp_req: ccc20200701_models.AddSchemaPropertyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.AddSchemaPropertyResponse:
+        """
+        @param tmp_req: AddSchemaPropertyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddSchemaPropertyResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ccc20200701_models.AddSchemaPropertyShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.property):
+            request.property_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.property, 'Property', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.property_shrink):
+            body['Property'] = request.property_shrink
+        if not UtilClient.is_unset(request.request_id):
+            body['RequestId'] = request.request_id
+        if not UtilClient.is_unset(request.schema_id):
+            body['SchemaId'] = request.schema_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AddSchemaProperty',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.AddSchemaPropertyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_schema_property(
+        self,
+        request: ccc20200701_models.AddSchemaPropertyRequest,
+    ) -> ccc20200701_models.AddSchemaPropertyResponse:
+        """
+        @param request: AddSchemaPropertyRequest
+        @return: AddSchemaPropertyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.add_schema_property_with_options(request, runtime)
+
+    async def add_schema_property_async(
+        self,
+        request: ccc20200701_models.AddSchemaPropertyRequest,
+    ) -> ccc20200701_models.AddSchemaPropertyResponse:
+        """
+        @param request: AddSchemaPropertyRequest
+        @return: AddSchemaPropertyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.add_schema_property_with_options_async(request, runtime)
+
     def add_skill_groups_to_user_with_options(
         self,
         request: ccc20200701_models.AddSkillGroupsToUserRequest,
@@ -3069,6 +3177,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_instance_with_options_async(request, runtime)
 
+    def create_schema_with_options(
+        self,
+        tmp_req: ccc20200701_models.CreateSchemaRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.CreateSchemaResponse:
+        """
+        @param tmp_req: CreateSchemaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSchemaResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ccc20200701_models.CreateSchemaShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.properties):
+            request.properties_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.properties, 'Properties', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.properties_shrink):
+            body['Properties'] = request.properties_shrink
+        if not UtilClient.is_unset(request.request_id):
+            body['RequestId'] = request.request_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateSchema',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.CreateSchemaResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_schema_with_options_async(
+        self,
+        tmp_req: ccc20200701_models.CreateSchemaRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.CreateSchemaResponse:
+        """
+        @param tmp_req: CreateSchemaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSchemaResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ccc20200701_models.CreateSchemaShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.properties):
+            request.properties_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.properties, 'Properties', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.properties_shrink):
+            body['Properties'] = request.properties_shrink
+        if not UtilClient.is_unset(request.request_id):
+            body['RequestId'] = request.request_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateSchema',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.CreateSchemaResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_schema(
+        self,
+        request: ccc20200701_models.CreateSchemaRequest,
+    ) -> ccc20200701_models.CreateSchemaResponse:
+        """
+        @param request: CreateSchemaRequest
+        @return: CreateSchemaResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_schema_with_options(request, runtime)
+
+    async def create_schema_async(
+        self,
+        request: ccc20200701_models.CreateSchemaRequest,
+    ) -> ccc20200701_models.CreateSchemaResponse:
+        """
+        @param request: CreateSchemaRequest
+        @return: CreateSchemaResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_schema_with_options_async(request, runtime)
+
     def create_skill_group_with_options(
         self,
         request: ccc20200701_models.CreateSkillGroupRequest,
@@ -3688,6 +3908,310 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_custom_call_tagging_with_options_async(request, runtime)
+
+    def delete_document_with_options(
+        self,
+        request: ccc20200701_models.DeleteDocumentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.DeleteDocumentResponse:
+        """
+        @param request: DeleteDocumentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDocumentResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.document_id):
+            body['DocumentId'] = request.document_id
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.request_id):
+            body['RequestId'] = request.request_id
+        if not UtilClient.is_unset(request.schema_id):
+            body['SchemaId'] = request.schema_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteDocument',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.DeleteDocumentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_document_with_options_async(
+        self,
+        request: ccc20200701_models.DeleteDocumentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.DeleteDocumentResponse:
+        """
+        @param request: DeleteDocumentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDocumentResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.document_id):
+            body['DocumentId'] = request.document_id
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.request_id):
+            body['RequestId'] = request.request_id
+        if not UtilClient.is_unset(request.schema_id):
+            body['SchemaId'] = request.schema_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteDocument',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.DeleteDocumentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_document(
+        self,
+        request: ccc20200701_models.DeleteDocumentRequest,
+    ) -> ccc20200701_models.DeleteDocumentResponse:
+        """
+        @param request: DeleteDocumentRequest
+        @return: DeleteDocumentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_document_with_options(request, runtime)
+
+    async def delete_document_async(
+        self,
+        request: ccc20200701_models.DeleteDocumentRequest,
+    ) -> ccc20200701_models.DeleteDocumentResponse:
+        """
+        @param request: DeleteDocumentRequest
+        @return: DeleteDocumentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_document_with_options_async(request, runtime)
+
+    def delete_documents_with_options(
+        self,
+        tmp_req: ccc20200701_models.DeleteDocumentsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.DeleteDocumentsResponse:
+        """
+        @param tmp_req: DeleteDocumentsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDocumentsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ccc20200701_models.DeleteDocumentsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.document_ids):
+            request.document_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.document_ids, 'DocumentIds', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.document_ids_shrink):
+            body['DocumentIds'] = request.document_ids_shrink
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.request_id):
+            body['RequestId'] = request.request_id
+        if not UtilClient.is_unset(request.schema_id):
+            body['SchemaId'] = request.schema_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteDocuments',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.DeleteDocumentsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_documents_with_options_async(
+        self,
+        tmp_req: ccc20200701_models.DeleteDocumentsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.DeleteDocumentsResponse:
+        """
+        @param tmp_req: DeleteDocumentsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDocumentsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ccc20200701_models.DeleteDocumentsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.document_ids):
+            request.document_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.document_ids, 'DocumentIds', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.document_ids_shrink):
+            body['DocumentIds'] = request.document_ids_shrink
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.request_id):
+            body['RequestId'] = request.request_id
+        if not UtilClient.is_unset(request.schema_id):
+            body['SchemaId'] = request.schema_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteDocuments',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.DeleteDocumentsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_documents(
+        self,
+        request: ccc20200701_models.DeleteDocumentsRequest,
+    ) -> ccc20200701_models.DeleteDocumentsResponse:
+        """
+        @param request: DeleteDocumentsRequest
+        @return: DeleteDocumentsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_documents_with_options(request, runtime)
+
+    async def delete_documents_async(
+        self,
+        request: ccc20200701_models.DeleteDocumentsRequest,
+    ) -> ccc20200701_models.DeleteDocumentsResponse:
+        """
+        @param request: DeleteDocumentsRequest
+        @return: DeleteDocumentsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_documents_with_options_async(request, runtime)
+
+    def delete_schema_with_options(
+        self,
+        request: ccc20200701_models.DeleteSchemaRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.DeleteSchemaResponse:
+        """
+        @param request: DeleteSchemaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSchemaResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.request_id):
+            body['RequestId'] = request.request_id
+        if not UtilClient.is_unset(request.schema_id):
+            body['SchemaId'] = request.schema_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteSchema',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.DeleteSchemaResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_schema_with_options_async(
+        self,
+        request: ccc20200701_models.DeleteSchemaRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.DeleteSchemaResponse:
+        """
+        @param request: DeleteSchemaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSchemaResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.request_id):
+            body['RequestId'] = request.request_id
+        if not UtilClient.is_unset(request.schema_id):
+            body['SchemaId'] = request.schema_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteSchema',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.DeleteSchemaResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_schema(
+        self,
+        request: ccc20200701_models.DeleteSchemaRequest,
+    ) -> ccc20200701_models.DeleteSchemaResponse:
+        """
+        @param request: DeleteSchemaRequest
+        @return: DeleteSchemaResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_schema_with_options(request, runtime)
+
+    async def delete_schema_async(
+        self,
+        request: ccc20200701_models.DeleteSchemaRequest,
+    ) -> ccc20200701_models.DeleteSchemaResponse:
+        """
+        @param request: DeleteSchemaRequest
+        @return: DeleteSchemaResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_schema_with_options_async(request, runtime)
 
     def delete_schema_property_with_options(
         self,
@@ -5536,6 +6060,102 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_do_not_call_file_upload_parameters_with_options_async(request, runtime)
+
+    def get_document_upload_parameters_with_options(
+        self,
+        request: ccc20200701_models.GetDocumentUploadParametersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.GetDocumentUploadParametersResponse:
+        """
+        @param request: GetDocumentUploadParametersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDocumentUploadParametersResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.file_name):
+            body['FileName'] = request.file_name
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.request_id):
+            body['RequestId'] = request.request_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetDocumentUploadParameters',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.GetDocumentUploadParametersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_document_upload_parameters_with_options_async(
+        self,
+        request: ccc20200701_models.GetDocumentUploadParametersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.GetDocumentUploadParametersResponse:
+        """
+        @param request: GetDocumentUploadParametersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDocumentUploadParametersResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.file_name):
+            body['FileName'] = request.file_name
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.request_id):
+            body['RequestId'] = request.request_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetDocumentUploadParameters',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.GetDocumentUploadParametersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_document_upload_parameters(
+        self,
+        request: ccc20200701_models.GetDocumentUploadParametersRequest,
+    ) -> ccc20200701_models.GetDocumentUploadParametersResponse:
+        """
+        @param request: GetDocumentUploadParametersRequest
+        @return: GetDocumentUploadParametersResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_document_upload_parameters_with_options(request, runtime)
+
+    async def get_document_upload_parameters_async(
+        self,
+        request: ccc20200701_models.GetDocumentUploadParametersRequest,
+    ) -> ccc20200701_models.GetDocumentUploadParametersResponse:
+        """
+        @param request: GetDocumentUploadParametersRequest
+        @return: GetDocumentUploadParametersResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_document_upload_parameters_with_options_async(request, runtime)
 
     def get_early_media_recording_with_options(
         self,
@@ -7844,6 +8464,106 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.import_do_not_call_numbers_with_options_async(request, runtime)
+
+    def import_documents_with_options(
+        self,
+        request: ccc20200701_models.ImportDocumentsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.ImportDocumentsResponse:
+        """
+        @param request: ImportDocumentsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ImportDocumentsResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.oss_file_key):
+            body['OssFileKey'] = request.oss_file_key
+        if not UtilClient.is_unset(request.request_id):
+            body['RequestId'] = request.request_id
+        if not UtilClient.is_unset(request.schema_id):
+            body['SchemaId'] = request.schema_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ImportDocuments',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.ImportDocumentsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def import_documents_with_options_async(
+        self,
+        request: ccc20200701_models.ImportDocumentsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.ImportDocumentsResponse:
+        """
+        @param request: ImportDocumentsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ImportDocumentsResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.oss_file_key):
+            body['OssFileKey'] = request.oss_file_key
+        if not UtilClient.is_unset(request.request_id):
+            body['RequestId'] = request.request_id
+        if not UtilClient.is_unset(request.schema_id):
+            body['SchemaId'] = request.schema_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ImportDocuments',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.ImportDocumentsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def import_documents(
+        self,
+        request: ccc20200701_models.ImportDocumentsRequest,
+    ) -> ccc20200701_models.ImportDocumentsResponse:
+        """
+        @param request: ImportDocumentsRequest
+        @return: ImportDocumentsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.import_documents_with_options(request, runtime)
+
+    async def import_documents_async(
+        self,
+        request: ccc20200701_models.ImportDocumentsRequest,
+    ) -> ccc20200701_models.ImportDocumentsResponse:
+        """
+        @param request: ImportDocumentsRequest
+        @return: ImportDocumentsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.import_documents_with_options_async(request, runtime)
 
     def initiate_attended_transfer_with_options(
         self,
@@ -10208,6 +10928,126 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_do_not_call_numbers_with_options_async(request, runtime)
+
+    def list_documents_with_options(
+        self,
+        tmp_req: ccc20200701_models.ListDocumentsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.ListDocumentsResponse:
+        """
+        @param tmp_req: ListDocumentsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDocumentsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ccc20200701_models.ListDocumentsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.sorts):
+            request.sorts_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sorts, 'Sorts', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.next_page_token):
+            body['NextPageToken'] = request.next_page_token
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.request_id):
+            body['RequestId'] = request.request_id
+        if not UtilClient.is_unset(request.schema_id):
+            body['SchemaId'] = request.schema_id
+        if not UtilClient.is_unset(request.search_pattern):
+            body['SearchPattern'] = request.search_pattern
+        if not UtilClient.is_unset(request.sorts_shrink):
+            body['Sorts'] = request.sorts_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListDocuments',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.ListDocumentsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_documents_with_options_async(
+        self,
+        tmp_req: ccc20200701_models.ListDocumentsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.ListDocumentsResponse:
+        """
+        @param tmp_req: ListDocumentsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDocumentsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ccc20200701_models.ListDocumentsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.sorts):
+            request.sorts_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sorts, 'Sorts', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.next_page_token):
+            body['NextPageToken'] = request.next_page_token
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.request_id):
+            body['RequestId'] = request.request_id
+        if not UtilClient.is_unset(request.schema_id):
+            body['SchemaId'] = request.schema_id
+        if not UtilClient.is_unset(request.search_pattern):
+            body['SearchPattern'] = request.search_pattern
+        if not UtilClient.is_unset(request.sorts_shrink):
+            body['Sorts'] = request.sorts_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListDocuments',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.ListDocumentsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_documents(
+        self,
+        request: ccc20200701_models.ListDocumentsRequest,
+    ) -> ccc20200701_models.ListDocumentsResponse:
+        """
+        @param request: ListDocumentsRequest
+        @return: ListDocumentsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_documents_with_options(request, runtime)
+
+    async def list_documents_async(
+        self,
+        request: ccc20200701_models.ListDocumentsRequest,
+    ) -> ccc20200701_models.ListDocumentsResponse:
+        """
+        @param request: ListDocumentsRequest
+        @return: ListDocumentsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_documents_with_options_async(request, runtime)
 
     def list_historical_agent_report_with_options(
         self,
@@ -17369,6 +18209,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.retrieve_call_with_options_async(request, runtime)
 
+    def save_document_with_options(
+        self,
+        request: ccc20200701_models.SaveDocumentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.SaveDocumentResponse:
+        """
+        @param request: SaveDocumentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SaveDocumentResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.document_id):
+            body['DocumentId'] = request.document_id
+        if not UtilClient.is_unset(request.document_json):
+            body['DocumentJson'] = request.document_json
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.request_id):
+            body['RequestId'] = request.request_id
+        if not UtilClient.is_unset(request.schema_id):
+            body['SchemaId'] = request.schema_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SaveDocument',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.SaveDocumentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def save_document_with_options_async(
+        self,
+        request: ccc20200701_models.SaveDocumentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.SaveDocumentResponse:
+        """
+        @param request: SaveDocumentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SaveDocumentResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.document_id):
+            body['DocumentId'] = request.document_id
+        if not UtilClient.is_unset(request.document_json):
+            body['DocumentJson'] = request.document_json
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.request_id):
+            body['RequestId'] = request.request_id
+        if not UtilClient.is_unset(request.schema_id):
+            body['SchemaId'] = request.schema_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SaveDocument',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.SaveDocumentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def save_document(
+        self,
+        request: ccc20200701_models.SaveDocumentRequest,
+    ) -> ccc20200701_models.SaveDocumentResponse:
+        """
+        @param request: SaveDocumentRequest
+        @return: SaveDocumentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.save_document_with_options(request, runtime)
+
+    async def save_document_async(
+        self,
+        request: ccc20200701_models.SaveDocumentRequest,
+    ) -> ccc20200701_models.SaveDocumentResponse:
+        """
+        @param request: SaveDocumentRequest
+        @return: SaveDocumentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.save_document_with_options_async(request, runtime)
+
     def save_rtcstats_v2with_options(
         self,
         request: ccc20200701_models.SaveRTCStatsV2Request,
@@ -19384,3 +20328,111 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_config_items_with_options_async(request, runtime)
+
+    def update_schema_property_with_options(
+        self,
+        tmp_req: ccc20200701_models.UpdateSchemaPropertyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.UpdateSchemaPropertyResponse:
+        """
+        @param tmp_req: UpdateSchemaPropertyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateSchemaPropertyResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ccc20200701_models.UpdateSchemaPropertyShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.property):
+            request.property_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.property, 'Property', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.property_shrink):
+            body['Property'] = request.property_shrink
+        if not UtilClient.is_unset(request.request_id):
+            body['RequestId'] = request.request_id
+        if not UtilClient.is_unset(request.schema_id):
+            body['SchemaId'] = request.schema_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateSchemaProperty',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.UpdateSchemaPropertyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_schema_property_with_options_async(
+        self,
+        tmp_req: ccc20200701_models.UpdateSchemaPropertyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.UpdateSchemaPropertyResponse:
+        """
+        @param tmp_req: UpdateSchemaPropertyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateSchemaPropertyResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ccc20200701_models.UpdateSchemaPropertyShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.property):
+            request.property_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.property, 'Property', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.property_shrink):
+            body['Property'] = request.property_shrink
+        if not UtilClient.is_unset(request.request_id):
+            body['RequestId'] = request.request_id
+        if not UtilClient.is_unset(request.schema_id):
+            body['SchemaId'] = request.schema_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateSchemaProperty',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.UpdateSchemaPropertyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_schema_property(
+        self,
+        request: ccc20200701_models.UpdateSchemaPropertyRequest,
+    ) -> ccc20200701_models.UpdateSchemaPropertyResponse:
+        """
+        @param request: UpdateSchemaPropertyRequest
+        @return: UpdateSchemaPropertyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_schema_property_with_options(request, runtime)
+
+    async def update_schema_property_async(
+        self,
+        request: ccc20200701_models.UpdateSchemaPropertyRequest,
+    ) -> ccc20200701_models.UpdateSchemaPropertyResponse:
+        """
+        @param request: UpdateSchemaPropertyRequest
+        @return: UpdateSchemaPropertyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_schema_property_with_options_async(request, runtime)

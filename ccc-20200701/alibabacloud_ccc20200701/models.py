@@ -151,6 +151,153 @@ class DataPropertiesValue(TeaModel):
         return self
 
 
+class DataSchemaPropertiesValue(TeaModel):
+    def __init__(
+        self,
+        display_name: str = None,
+        description: str = None,
+        name: str = None,
+        data_type: str = None,
+        pattern: str = None,
+        pattern_error_message: str = None,
+        min_length: int = None,
+        max_length: int = None,
+        minimum: float = None,
+        maximum: float = None,
+        required: bool = None,
+        system: bool = None,
+        disabled: bool = None,
+        array: bool = None,
+        read_only: bool = None,
+        editor_type: str = None,
+        attributes: str = None,
+        display_order: int = None,
+        created_time: int = None,
+        updated_time: int = None,
+        creator: str = None,
+    ):
+        self.display_name = display_name
+        self.description = description
+        self.name = name
+        self.data_type = data_type
+        self.pattern = pattern
+        self.pattern_error_message = pattern_error_message
+        self.min_length = min_length
+        self.max_length = max_length
+        self.minimum = minimum
+        self.maximum = maximum
+        self.required = required
+        self.system = system
+        self.disabled = disabled
+        self.array = array
+        self.read_only = read_only
+        self.editor_type = editor_type
+        self.attributes = attributes
+        self.display_order = display_order
+        self.created_time = created_time
+        self.updated_time = updated_time
+        self.creator = creator
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.display_name is not None:
+            result['DisplayName'] = self.display_name
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.data_type is not None:
+            result['DataType'] = self.data_type
+        if self.pattern is not None:
+            result['Pattern'] = self.pattern
+        if self.pattern_error_message is not None:
+            result['PatternErrorMessage'] = self.pattern_error_message
+        if self.min_length is not None:
+            result['MinLength'] = self.min_length
+        if self.max_length is not None:
+            result['MaxLength'] = self.max_length
+        if self.minimum is not None:
+            result['Minimum'] = self.minimum
+        if self.maximum is not None:
+            result['Maximum'] = self.maximum
+        if self.required is not None:
+            result['Required'] = self.required
+        if self.system is not None:
+            result['System'] = self.system
+        if self.disabled is not None:
+            result['Disabled'] = self.disabled
+        if self.array is not None:
+            result['Array'] = self.array
+        if self.read_only is not None:
+            result['ReadOnly'] = self.read_only
+        if self.editor_type is not None:
+            result['EditorType'] = self.editor_type
+        if self.attributes is not None:
+            result['Attributes'] = self.attributes
+        if self.display_order is not None:
+            result['DisplayOrder'] = self.display_order
+        if self.created_time is not None:
+            result['CreatedTime'] = self.created_time
+        if self.updated_time is not None:
+            result['UpdatedTime'] = self.updated_time
+        if self.creator is not None:
+            result['Creator'] = self.creator
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DisplayName') is not None:
+            self.display_name = m.get('DisplayName')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('DataType') is not None:
+            self.data_type = m.get('DataType')
+        if m.get('Pattern') is not None:
+            self.pattern = m.get('Pattern')
+        if m.get('PatternErrorMessage') is not None:
+            self.pattern_error_message = m.get('PatternErrorMessage')
+        if m.get('MinLength') is not None:
+            self.min_length = m.get('MinLength')
+        if m.get('MaxLength') is not None:
+            self.max_length = m.get('MaxLength')
+        if m.get('Minimum') is not None:
+            self.minimum = m.get('Minimum')
+        if m.get('Maximum') is not None:
+            self.maximum = m.get('Maximum')
+        if m.get('Required') is not None:
+            self.required = m.get('Required')
+        if m.get('System') is not None:
+            self.system = m.get('System')
+        if m.get('Disabled') is not None:
+            self.disabled = m.get('Disabled')
+        if m.get('Array') is not None:
+            self.array = m.get('Array')
+        if m.get('ReadOnly') is not None:
+            self.read_only = m.get('ReadOnly')
+        if m.get('EditorType') is not None:
+            self.editor_type = m.get('EditorType')
+        if m.get('Attributes') is not None:
+            self.attributes = m.get('Attributes')
+        if m.get('DisplayOrder') is not None:
+            self.display_order = m.get('DisplayOrder')
+        if m.get('CreatedTime') is not None:
+            self.created_time = m.get('CreatedTime')
+        if m.get('UpdatedTime') is not None:
+            self.updated_time = m.get('UpdatedTime')
+        if m.get('Creator') is not None:
+            self.creator = m.get('Creator')
+        return self
+
+
 class AbortCampaignRequest(TeaModel):
     def __init__(
         self,
@@ -1163,6 +1310,323 @@ class AddPhoneNumbersResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = AddPhoneNumbersResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class AddSchemaPropertyRequestProperty(TeaModel):
+    def __init__(
+        self,
+        array: bool = None,
+        attributes: str = None,
+        data_type: str = None,
+        description: str = None,
+        disabled: bool = None,
+        display_name: str = None,
+        display_order: int = None,
+        editor_type: str = None,
+        max_length: int = None,
+        maximum: float = None,
+        min_length: int = None,
+        minimum: float = None,
+        name: str = None,
+        pattern: str = None,
+        pattern_error_message: str = None,
+        read_only: bool = None,
+        required: bool = None,
+    ):
+        self.array = array
+        self.attributes = attributes
+        # This parameter is required.
+        self.data_type = data_type
+        self.description = description
+        self.disabled = disabled
+        self.display_name = display_name
+        self.display_order = display_order
+        self.editor_type = editor_type
+        self.max_length = max_length
+        self.maximum = maximum
+        self.min_length = min_length
+        self.minimum = minimum
+        # This parameter is required.
+        self.name = name
+        self.pattern = pattern
+        self.pattern_error_message = pattern_error_message
+        self.read_only = read_only
+        self.required = required
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.array is not None:
+            result['Array'] = self.array
+        if self.attributes is not None:
+            result['Attributes'] = self.attributes
+        if self.data_type is not None:
+            result['DataType'] = self.data_type
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.disabled is not None:
+            result['Disabled'] = self.disabled
+        if self.display_name is not None:
+            result['DisplayName'] = self.display_name
+        if self.display_order is not None:
+            result['DisplayOrder'] = self.display_order
+        if self.editor_type is not None:
+            result['EditorType'] = self.editor_type
+        if self.max_length is not None:
+            result['MaxLength'] = self.max_length
+        if self.maximum is not None:
+            result['Maximum'] = self.maximum
+        if self.min_length is not None:
+            result['MinLength'] = self.min_length
+        if self.minimum is not None:
+            result['Minimum'] = self.minimum
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.pattern is not None:
+            result['Pattern'] = self.pattern
+        if self.pattern_error_message is not None:
+            result['PatternErrorMessage'] = self.pattern_error_message
+        if self.read_only is not None:
+            result['ReadOnly'] = self.read_only
+        if self.required is not None:
+            result['Required'] = self.required
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Array') is not None:
+            self.array = m.get('Array')
+        if m.get('Attributes') is not None:
+            self.attributes = m.get('Attributes')
+        if m.get('DataType') is not None:
+            self.data_type = m.get('DataType')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Disabled') is not None:
+            self.disabled = m.get('Disabled')
+        if m.get('DisplayName') is not None:
+            self.display_name = m.get('DisplayName')
+        if m.get('DisplayOrder') is not None:
+            self.display_order = m.get('DisplayOrder')
+        if m.get('EditorType') is not None:
+            self.editor_type = m.get('EditorType')
+        if m.get('MaxLength') is not None:
+            self.max_length = m.get('MaxLength')
+        if m.get('Maximum') is not None:
+            self.maximum = m.get('Maximum')
+        if m.get('MinLength') is not None:
+            self.min_length = m.get('MinLength')
+        if m.get('Minimum') is not None:
+            self.minimum = m.get('Minimum')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Pattern') is not None:
+            self.pattern = m.get('Pattern')
+        if m.get('PatternErrorMessage') is not None:
+            self.pattern_error_message = m.get('PatternErrorMessage')
+        if m.get('ReadOnly') is not None:
+            self.read_only = m.get('ReadOnly')
+        if m.get('Required') is not None:
+            self.required = m.get('Required')
+        return self
+
+
+class AddSchemaPropertyRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        property: AddSchemaPropertyRequestProperty = None,
+        request_id: str = None,
+        schema_id: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.property = property
+        self.request_id = request_id
+        # schema id
+        # 
+        # This parameter is required.
+        self.schema_id = schema_id
+
+    def validate(self):
+        if self.property:
+            self.property.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.property is not None:
+            result['Property'] = self.property.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.schema_id is not None:
+            result['SchemaId'] = self.schema_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Property') is not None:
+            temp_model = AddSchemaPropertyRequestProperty()
+            self.property = temp_model.from_map(m['Property'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SchemaId') is not None:
+            self.schema_id = m.get('SchemaId')
+        return self
+
+
+class AddSchemaPropertyShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        property_shrink: str = None,
+        request_id: str = None,
+        schema_id: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.property_shrink = property_shrink
+        self.request_id = request_id
+        # schema id
+        # 
+        # This parameter is required.
+        self.schema_id = schema_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.property_shrink is not None:
+            result['Property'] = self.property_shrink
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.schema_id is not None:
+            result['SchemaId'] = self.schema_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Property') is not None:
+            self.property_shrink = m.get('Property')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SchemaId') is not None:
+            self.schema_id = m.get('SchemaId')
+        return self
+
+
+class AddSchemaPropertyResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        params: List[str] = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.http_status_code = http_status_code
+        self.message = message
+        self.params = params
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.params is not None:
+            result['Params'] = self.params
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Params') is not None:
+            self.params = m.get('Params')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class AddSchemaPropertyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AddSchemaPropertyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AddSchemaPropertyResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -6703,6 +7167,343 @@ class CreateInstanceResponse(TeaModel):
         return self
 
 
+class CreateSchemaRequestProperties(TeaModel):
+    def __init__(
+        self,
+        array: bool = None,
+        attributes: str = None,
+        data_type: str = None,
+        description: str = None,
+        disabled: bool = None,
+        display_name: str = None,
+        display_order: int = None,
+        editor_type: str = None,
+        max_length: int = None,
+        maximum: float = None,
+        min_length: int = None,
+        minimum: float = None,
+        name: str = None,
+        pattern: str = None,
+        pattern_error_message: str = None,
+        read_only: bool = None,
+        required: bool = None,
+    ):
+        self.array = array
+        self.attributes = attributes
+        # This parameter is required.
+        self.data_type = data_type
+        self.description = description
+        self.disabled = disabled
+        self.display_name = display_name
+        self.display_order = display_order
+        self.editor_type = editor_type
+        self.max_length = max_length
+        self.maximum = maximum
+        self.min_length = min_length
+        self.minimum = minimum
+        # This parameter is required.
+        self.name = name
+        self.pattern = pattern
+        self.pattern_error_message = pattern_error_message
+        self.read_only = read_only
+        self.required = required
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.array is not None:
+            result['Array'] = self.array
+        if self.attributes is not None:
+            result['Attributes'] = self.attributes
+        if self.data_type is not None:
+            result['DataType'] = self.data_type
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.disabled is not None:
+            result['Disabled'] = self.disabled
+        if self.display_name is not None:
+            result['DisplayName'] = self.display_name
+        if self.display_order is not None:
+            result['DisplayOrder'] = self.display_order
+        if self.editor_type is not None:
+            result['EditorType'] = self.editor_type
+        if self.max_length is not None:
+            result['MaxLength'] = self.max_length
+        if self.maximum is not None:
+            result['Maximum'] = self.maximum
+        if self.min_length is not None:
+            result['MinLength'] = self.min_length
+        if self.minimum is not None:
+            result['Minimum'] = self.minimum
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.pattern is not None:
+            result['Pattern'] = self.pattern
+        if self.pattern_error_message is not None:
+            result['PatternErrorMessage'] = self.pattern_error_message
+        if self.read_only is not None:
+            result['ReadOnly'] = self.read_only
+        if self.required is not None:
+            result['Required'] = self.required
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Array') is not None:
+            self.array = m.get('Array')
+        if m.get('Attributes') is not None:
+            self.attributes = m.get('Attributes')
+        if m.get('DataType') is not None:
+            self.data_type = m.get('DataType')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Disabled') is not None:
+            self.disabled = m.get('Disabled')
+        if m.get('DisplayName') is not None:
+            self.display_name = m.get('DisplayName')
+        if m.get('DisplayOrder') is not None:
+            self.display_order = m.get('DisplayOrder')
+        if m.get('EditorType') is not None:
+            self.editor_type = m.get('EditorType')
+        if m.get('MaxLength') is not None:
+            self.max_length = m.get('MaxLength')
+        if m.get('Maximum') is not None:
+            self.maximum = m.get('Maximum')
+        if m.get('MinLength') is not None:
+            self.min_length = m.get('MinLength')
+        if m.get('Minimum') is not None:
+            self.minimum = m.get('Minimum')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Pattern') is not None:
+            self.pattern = m.get('Pattern')
+        if m.get('PatternErrorMessage') is not None:
+            self.pattern_error_message = m.get('PatternErrorMessage')
+        if m.get('ReadOnly') is not None:
+            self.read_only = m.get('ReadOnly')
+        if m.get('Required') is not None:
+            self.required = m.get('Required')
+        return self
+
+
+class CreateSchemaRequest(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        id: str = None,
+        instance_id: str = None,
+        properties: List[CreateSchemaRequestProperties] = None,
+        request_id: str = None,
+    ):
+        self.description = description
+        # schema id
+        self.id = id
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.properties = properties
+        self.request_id = request_id
+
+    def validate(self):
+        if self.properties:
+            for k in self.properties:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        result['Properties'] = []
+        if self.properties is not None:
+            for k in self.properties:
+                result['Properties'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        self.properties = []
+        if m.get('Properties') is not None:
+            for k in m.get('Properties'):
+                temp_model = CreateSchemaRequestProperties()
+                self.properties.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateSchemaShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        id: str = None,
+        instance_id: str = None,
+        properties_shrink: str = None,
+        request_id: str = None,
+    ):
+        self.description = description
+        # schema id
+        self.id = id
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.properties_shrink = properties_shrink
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.properties_shrink is not None:
+            result['Properties'] = self.properties_shrink
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Properties') is not None:
+            self.properties_shrink = m.get('Properties')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateSchemaResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        params: List[str] = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.params = params
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.params is not None:
+            result['Params'] = self.params
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Params') is not None:
+            self.params = m.get('Params')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateSchemaResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateSchemaResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateSchemaResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateSkillGroupRequest(TeaModel):
     def __init__(
         self,
@@ -7661,6 +8462,473 @@ class DeleteCustomCallTaggingResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteCustomCallTaggingResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteDocumentRequest(TeaModel):
+    def __init__(
+        self,
+        document_id: str = None,
+        instance_id: str = None,
+        request_id: str = None,
+        schema_id: str = None,
+    ):
+        # This parameter is required.
+        self.document_id = document_id
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.request_id = request_id
+        # schema id
+        # 
+        # This parameter is required.
+        self.schema_id = schema_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.document_id is not None:
+            result['DocumentId'] = self.document_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.schema_id is not None:
+            result['SchemaId'] = self.schema_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DocumentId') is not None:
+            self.document_id = m.get('DocumentId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SchemaId') is not None:
+            self.schema_id = m.get('SchemaId')
+        return self
+
+
+class DeleteDocumentResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        params: List[str] = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.http_status_code = http_status_code
+        self.message = message
+        self.params = params
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.params is not None:
+            result['Params'] = self.params
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Params') is not None:
+            self.params = m.get('Params')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteDocumentResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteDocumentResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteDocumentResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteDocumentsRequest(TeaModel):
+    def __init__(
+        self,
+        document_ids: List[str] = None,
+        instance_id: str = None,
+        request_id: str = None,
+        schema_id: str = None,
+    ):
+        self.document_ids = document_ids
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.request_id = request_id
+        # schema id
+        # 
+        # This parameter is required.
+        self.schema_id = schema_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.document_ids is not None:
+            result['DocumentIds'] = self.document_ids
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.schema_id is not None:
+            result['SchemaId'] = self.schema_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DocumentIds') is not None:
+            self.document_ids = m.get('DocumentIds')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SchemaId') is not None:
+            self.schema_id = m.get('SchemaId')
+        return self
+
+
+class DeleteDocumentsShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        document_ids_shrink: str = None,
+        instance_id: str = None,
+        request_id: str = None,
+        schema_id: str = None,
+    ):
+        self.document_ids_shrink = document_ids_shrink
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.request_id = request_id
+        # schema id
+        # 
+        # This parameter is required.
+        self.schema_id = schema_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.document_ids_shrink is not None:
+            result['DocumentIds'] = self.document_ids_shrink
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.schema_id is not None:
+            result['SchemaId'] = self.schema_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DocumentIds') is not None:
+            self.document_ids_shrink = m.get('DocumentIds')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SchemaId') is not None:
+            self.schema_id = m.get('SchemaId')
+        return self
+
+
+class DeleteDocumentsResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        params: List[str] = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.http_status_code = http_status_code
+        self.message = message
+        self.params = params
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.params is not None:
+            result['Params'] = self.params
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Params') is not None:
+            self.params = m.get('Params')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteDocumentsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteDocumentsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteDocumentsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteSchemaRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        request_id: str = None,
+        schema_id: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.request_id = request_id
+        # schema id
+        # 
+        # This parameter is required.
+        self.schema_id = schema_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.schema_id is not None:
+            result['SchemaId'] = self.schema_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SchemaId') is not None:
+            self.schema_id = m.get('SchemaId')
+        return self
+
+
+class DeleteSchemaResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        params: List[str] = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.http_status_code = http_status_code
+        self.message = message
+        self.params = params
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.params is not None:
+            result['Params'] = self.params
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Params') is not None:
+            self.params = m.get('Params')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteSchemaResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteSchemaResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteSchemaResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -11581,6 +12849,205 @@ class GetDoNotCallFileUploadParametersResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetDoNotCallFileUploadParametersResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetDocumentUploadParametersRequest(TeaModel):
+    def __init__(
+        self,
+        file_name: str = None,
+        instance_id: str = None,
+        request_id: str = None,
+    ):
+        # This parameter is required.
+        self.file_name = file_name
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_name is not None:
+            result['FileName'] = self.file_name
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FileName') is not None:
+            self.file_name = m.get('FileName')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetDocumentUploadParametersResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        access_key_id: str = None,
+        expire_time: int = None,
+        file_path: str = None,
+        host: str = None,
+        policy: str = None,
+        signature: str = None,
+    ):
+        self.access_key_id = access_key_id
+        self.expire_time = expire_time
+        self.file_path = file_path
+        # oss host
+        self.host = host
+        self.policy = policy
+        self.signature = signature
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_key_id is not None:
+            result['AccessKeyId'] = self.access_key_id
+        if self.expire_time is not None:
+            result['ExpireTime'] = self.expire_time
+        if self.file_path is not None:
+            result['FilePath'] = self.file_path
+        if self.host is not None:
+            result['Host'] = self.host
+        if self.policy is not None:
+            result['Policy'] = self.policy
+        if self.signature is not None:
+            result['Signature'] = self.signature
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessKeyId') is not None:
+            self.access_key_id = m.get('AccessKeyId')
+        if m.get('ExpireTime') is not None:
+            self.expire_time = m.get('ExpireTime')
+        if m.get('FilePath') is not None:
+            self.file_path = m.get('FilePath')
+        if m.get('Host') is not None:
+            self.host = m.get('Host')
+        if m.get('Policy') is not None:
+            self.policy = m.get('Policy')
+        if m.get('Signature') is not None:
+            self.signature = m.get('Signature')
+        return self
+
+
+class GetDocumentUploadParametersResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: GetDocumentUploadParametersResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        params: List[str] = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.params = params
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.params is not None:
+            result['Params'] = self.params
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetDocumentUploadParametersResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Params') is not None:
+            self.params = m.get('Params')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetDocumentUploadParametersResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetDocumentUploadParametersResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetDocumentUploadParametersResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -17525,6 +18992,148 @@ class ImportDoNotCallNumbersResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ImportDoNotCallNumbersResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ImportDocumentsRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        oss_file_key: str = None,
+        request_id: str = None,
+        schema_id: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        # This parameter is required.
+        self.oss_file_key = oss_file_key
+        self.request_id = request_id
+        # schema id
+        # 
+        # This parameter is required.
+        self.schema_id = schema_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.oss_file_key is not None:
+            result['OssFileKey'] = self.oss_file_key
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.schema_id is not None:
+            result['SchemaId'] = self.schema_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('OssFileKey') is not None:
+            self.oss_file_key = m.get('OssFileKey')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SchemaId') is not None:
+            self.schema_id = m.get('SchemaId')
+        return self
+
+
+class ImportDocumentsResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        params: List[str] = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.http_status_code = http_status_code
+        self.message = message
+        self.params = params
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.params is not None:
+            result['Params'] = self.params
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Params') is not None:
+            self.params = m.get('Params')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ImportDocumentsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ImportDocumentsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ImportDocumentsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -24617,6 +26226,401 @@ class ListDoNotCallNumbersResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListDoNotCallNumbersResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListDocumentsRequestSorts(TeaModel):
+    def __init__(
+        self,
+        order: str = None,
+        property_name: str = None,
+    ):
+        self.order = order
+        self.property_name = property_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.order is not None:
+            result['Order'] = self.order
+        if self.property_name is not None:
+            result['PropertyName'] = self.property_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Order') is not None:
+            self.order = m.get('Order')
+        if m.get('PropertyName') is not None:
+            self.property_name = m.get('PropertyName')
+        return self
+
+
+class ListDocumentsRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        next_page_token: str = None,
+        page_size: int = None,
+        request_id: str = None,
+        schema_id: str = None,
+        search_pattern: str = None,
+        sorts: List[ListDocumentsRequestSorts] = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.next_page_token = next_page_token
+        self.page_size = page_size
+        self.request_id = request_id
+        # schema id
+        # 
+        # This parameter is required.
+        self.schema_id = schema_id
+        self.search_pattern = search_pattern
+        self.sorts = sorts
+
+    def validate(self):
+        if self.sorts:
+            for k in self.sorts:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.next_page_token is not None:
+            result['NextPageToken'] = self.next_page_token
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.schema_id is not None:
+            result['SchemaId'] = self.schema_id
+        if self.search_pattern is not None:
+            result['SearchPattern'] = self.search_pattern
+        result['Sorts'] = []
+        if self.sorts is not None:
+            for k in self.sorts:
+                result['Sorts'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('NextPageToken') is not None:
+            self.next_page_token = m.get('NextPageToken')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SchemaId') is not None:
+            self.schema_id = m.get('SchemaId')
+        if m.get('SearchPattern') is not None:
+            self.search_pattern = m.get('SearchPattern')
+        self.sorts = []
+        if m.get('Sorts') is not None:
+            for k in m.get('Sorts'):
+                temp_model = ListDocumentsRequestSorts()
+                self.sorts.append(temp_model.from_map(k))
+        return self
+
+
+class ListDocumentsShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        next_page_token: str = None,
+        page_size: int = None,
+        request_id: str = None,
+        schema_id: str = None,
+        search_pattern: str = None,
+        sorts_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.next_page_token = next_page_token
+        self.page_size = page_size
+        self.request_id = request_id
+        # schema id
+        # 
+        # This parameter is required.
+        self.schema_id = schema_id
+        self.search_pattern = search_pattern
+        self.sorts_shrink = sorts_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.next_page_token is not None:
+            result['NextPageToken'] = self.next_page_token
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.schema_id is not None:
+            result['SchemaId'] = self.schema_id
+        if self.search_pattern is not None:
+            result['SearchPattern'] = self.search_pattern
+        if self.sorts_shrink is not None:
+            result['Sorts'] = self.sorts_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('NextPageToken') is not None:
+            self.next_page_token = m.get('NextPageToken')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SchemaId') is not None:
+            self.schema_id = m.get('SchemaId')
+        if m.get('SearchPattern') is not None:
+            self.search_pattern = m.get('SearchPattern')
+        if m.get('Sorts') is not None:
+            self.sorts_shrink = m.get('Sorts')
+        return self
+
+
+class ListDocumentsResponseBodyDataSchema(TeaModel):
+    def __init__(
+        self,
+        created_time: str = None,
+        deleted: bool = None,
+        description: str = None,
+        id: str = None,
+        instance_id: str = None,
+        properties: Dict[str, DataSchemaPropertiesValue] = None,
+        updated_time: str = None,
+    ):
+        self.created_time = created_time
+        self.deleted = deleted
+        self.description = description
+        # schame id
+        self.id = id
+        self.instance_id = instance_id
+        self.properties = properties
+        self.updated_time = updated_time
+
+    def validate(self):
+        if self.properties:
+            for v in self.properties.values():
+                if v:
+                    v.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.created_time is not None:
+            result['CreatedTime'] = self.created_time
+        if self.deleted is not None:
+            result['Deleted'] = self.deleted
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        result['Properties'] = {}
+        if self.properties is not None:
+            for k, v in self.properties.items():
+                result['Properties'][k] = v.to_map()
+        if self.updated_time is not None:
+            result['UpdatedTime'] = self.updated_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreatedTime') is not None:
+            self.created_time = m.get('CreatedTime')
+        if m.get('Deleted') is not None:
+            self.deleted = m.get('Deleted')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        self.properties = {}
+        if m.get('Properties') is not None:
+            for k, v in m.get('Properties').items():
+                temp_model = DataSchemaPropertiesValue()
+                self.properties[k] = temp_model.from_map(v)
+        if m.get('UpdatedTime') is not None:
+            self.updated_time = m.get('UpdatedTime')
+        return self
+
+
+class ListDocumentsResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        documents: List[Dict[str, Any]] = None,
+        next_page_token: str = None,
+        schema: ListDocumentsResponseBodyDataSchema = None,
+        total_count: int = None,
+    ):
+        self.documents = documents
+        self.next_page_token = next_page_token
+        # scheme
+        self.schema = schema
+        self.total_count = total_count
+
+    def validate(self):
+        if self.schema:
+            self.schema.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.documents is not None:
+            result['Documents'] = self.documents
+        if self.next_page_token is not None:
+            result['NextPageToken'] = self.next_page_token
+        if self.schema is not None:
+            result['Schema'] = self.schema.to_map()
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Documents') is not None:
+            self.documents = m.get('Documents')
+        if m.get('NextPageToken') is not None:
+            self.next_page_token = m.get('NextPageToken')
+        if m.get('Schema') is not None:
+            temp_model = ListDocumentsResponseBodyDataSchema()
+            self.schema = temp_model.from_map(m['Schema'])
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListDocumentsResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: ListDocumentsResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        params: List[str] = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.params = params
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.params is not None:
+            result['Params'] = self.params
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = ListDocumentsResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Params') is not None:
+            self.params = m.get('Params')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListDocumentsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListDocumentsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListDocumentsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -48402,6 +50406,160 @@ class RetrieveCallResponse(TeaModel):
         return self
 
 
+class SaveDocumentRequest(TeaModel):
+    def __init__(
+        self,
+        document_id: str = None,
+        document_json: str = None,
+        instance_id: str = None,
+        request_id: str = None,
+        schema_id: str = None,
+    ):
+        self.document_id = document_id
+        # This parameter is required.
+        self.document_json = document_json
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.request_id = request_id
+        # schema id
+        # 
+        # This parameter is required.
+        self.schema_id = schema_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.document_id is not None:
+            result['DocumentId'] = self.document_id
+        if self.document_json is not None:
+            result['DocumentJson'] = self.document_json
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.schema_id is not None:
+            result['SchemaId'] = self.schema_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DocumentId') is not None:
+            self.document_id = m.get('DocumentId')
+        if m.get('DocumentJson') is not None:
+            self.document_json = m.get('DocumentJson')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SchemaId') is not None:
+            self.schema_id = m.get('SchemaId')
+        return self
+
+
+class SaveDocumentResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        params: List[str] = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.params = params
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.params is not None:
+            result['Params'] = self.params
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Params') is not None:
+            self.params = m.get('Params')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class SaveDocumentResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SaveDocumentResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SaveDocumentResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class SaveRTCStatsV2Request(TeaModel):
     def __init__(
         self,
@@ -53323,6 +55481,323 @@ class UpdateConfigItemsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateConfigItemsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateSchemaPropertyRequestProperty(TeaModel):
+    def __init__(
+        self,
+        array: bool = None,
+        attributes: str = None,
+        data_type: str = None,
+        description: str = None,
+        disabled: bool = None,
+        display_name: str = None,
+        display_order: int = None,
+        editor_type: str = None,
+        max_length: int = None,
+        maximum: float = None,
+        min_length: int = None,
+        minimum: float = None,
+        name: str = None,
+        pattern: str = None,
+        pattern_error_message: str = None,
+        read_only: bool = None,
+        required: bool = None,
+    ):
+        self.array = array
+        self.attributes = attributes
+        # This parameter is required.
+        self.data_type = data_type
+        self.description = description
+        self.disabled = disabled
+        self.display_name = display_name
+        self.display_order = display_order
+        self.editor_type = editor_type
+        self.max_length = max_length
+        self.maximum = maximum
+        self.min_length = min_length
+        self.minimum = minimum
+        # This parameter is required.
+        self.name = name
+        self.pattern = pattern
+        self.pattern_error_message = pattern_error_message
+        self.read_only = read_only
+        self.required = required
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.array is not None:
+            result['Array'] = self.array
+        if self.attributes is not None:
+            result['Attributes'] = self.attributes
+        if self.data_type is not None:
+            result['DataType'] = self.data_type
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.disabled is not None:
+            result['Disabled'] = self.disabled
+        if self.display_name is not None:
+            result['DisplayName'] = self.display_name
+        if self.display_order is not None:
+            result['DisplayOrder'] = self.display_order
+        if self.editor_type is not None:
+            result['EditorType'] = self.editor_type
+        if self.max_length is not None:
+            result['MaxLength'] = self.max_length
+        if self.maximum is not None:
+            result['Maximum'] = self.maximum
+        if self.min_length is not None:
+            result['MinLength'] = self.min_length
+        if self.minimum is not None:
+            result['Minimum'] = self.minimum
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.pattern is not None:
+            result['Pattern'] = self.pattern
+        if self.pattern_error_message is not None:
+            result['PatternErrorMessage'] = self.pattern_error_message
+        if self.read_only is not None:
+            result['ReadOnly'] = self.read_only
+        if self.required is not None:
+            result['Required'] = self.required
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Array') is not None:
+            self.array = m.get('Array')
+        if m.get('Attributes') is not None:
+            self.attributes = m.get('Attributes')
+        if m.get('DataType') is not None:
+            self.data_type = m.get('DataType')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Disabled') is not None:
+            self.disabled = m.get('Disabled')
+        if m.get('DisplayName') is not None:
+            self.display_name = m.get('DisplayName')
+        if m.get('DisplayOrder') is not None:
+            self.display_order = m.get('DisplayOrder')
+        if m.get('EditorType') is not None:
+            self.editor_type = m.get('EditorType')
+        if m.get('MaxLength') is not None:
+            self.max_length = m.get('MaxLength')
+        if m.get('Maximum') is not None:
+            self.maximum = m.get('Maximum')
+        if m.get('MinLength') is not None:
+            self.min_length = m.get('MinLength')
+        if m.get('Minimum') is not None:
+            self.minimum = m.get('Minimum')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Pattern') is not None:
+            self.pattern = m.get('Pattern')
+        if m.get('PatternErrorMessage') is not None:
+            self.pattern_error_message = m.get('PatternErrorMessage')
+        if m.get('ReadOnly') is not None:
+            self.read_only = m.get('ReadOnly')
+        if m.get('Required') is not None:
+            self.required = m.get('Required')
+        return self
+
+
+class UpdateSchemaPropertyRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        property: UpdateSchemaPropertyRequestProperty = None,
+        request_id: str = None,
+        schema_id: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.property = property
+        self.request_id = request_id
+        # schema id
+        # 
+        # This parameter is required.
+        self.schema_id = schema_id
+
+    def validate(self):
+        if self.property:
+            self.property.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.property is not None:
+            result['Property'] = self.property.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.schema_id is not None:
+            result['SchemaId'] = self.schema_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Property') is not None:
+            temp_model = UpdateSchemaPropertyRequestProperty()
+            self.property = temp_model.from_map(m['Property'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SchemaId') is not None:
+            self.schema_id = m.get('SchemaId')
+        return self
+
+
+class UpdateSchemaPropertyShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        property_shrink: str = None,
+        request_id: str = None,
+        schema_id: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.property_shrink = property_shrink
+        self.request_id = request_id
+        # schema id
+        # 
+        # This parameter is required.
+        self.schema_id = schema_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.property_shrink is not None:
+            result['Property'] = self.property_shrink
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.schema_id is not None:
+            result['SchemaId'] = self.schema_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Property') is not None:
+            self.property_shrink = m.get('Property')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SchemaId') is not None:
+            self.schema_id = m.get('SchemaId')
+        return self
+
+
+class UpdateSchemaPropertyResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        params: List[str] = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.http_status_code = http_status_code
+        self.message = message
+        self.params = params
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.params is not None:
+            result['Params'] = self.params
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Params') is not None:
+            self.params = m.get('Params')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateSchemaPropertyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateSchemaPropertyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateSchemaPropertyResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
