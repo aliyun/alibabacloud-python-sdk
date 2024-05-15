@@ -66,8 +66,12 @@ class AddAddressBookRequest(TeaModel):
         # *   **0** (default): no
         self.auto_add_tag_ecs = auto_add_tag_ecs
         # The description of the address book.
+        # 
+        # This parameter is required.
         self.description = description
         # The name of the address book.
+        # 
+        # This parameter is required.
         self.group_name = group_name
         # The type of the address book. Valid values:
         # 
@@ -75,6 +79,8 @@ class AddAddressBookRequest(TeaModel):
         # *   **domain**: domain address book
         # *   **port**: port address book
         # *   **tag**: ECS tag-based address book
+        # 
+        # This parameter is required.
         self.group_type = group_type
         # The language of the content within the response. Valid values:
         # 
@@ -260,6 +266,8 @@ class AddControlPolicyRequest(TeaModel):
         # *   **accept**: allows the traffic.
         # *   **drop**: denies the traffic.
         # *   **log**: monitors the traffic.
+        # 
+        # This parameter is required.
         self.acl_action = acl_action
         # The application type supported by the access control policy. Valid values:
         # 
@@ -285,6 +293,8 @@ class AddControlPolicyRequest(TeaModel):
         # The application types supported by the access control policy.
         self.application_name_list = application_name_list
         # The description of the access control policy.
+        # 
+        # This parameter is required.
         self.description = description
         # The destination port in the access control policy. Valid values:
         # 
@@ -323,11 +333,13 @@ class AddControlPolicyRequest(TeaModel):
         # 
         # *   If DestinationType is set to domain, the value of this parameter is a domain name.
         # 
-        #     Example: \*.aliyuncs.com
+        #     Example: \\*.aliyuncs.com
         # 
         # *   If DestinationType is set to location, the value of this parameter is a location.
         # 
-        #     Example: \["BJ11", "ZB"]
+        #     Example: ["BJ11", "ZB"]
+        # 
+        # This parameter is required.
         self.destination = destination
         # The type of the destination address in the access control policy. Valid values:
         # 
@@ -335,11 +347,15 @@ class AddControlPolicyRequest(TeaModel):
         # *   **group**: address book
         # *   **domain**: domain name
         # *   **location**: location
+        # 
+        # This parameter is required.
         self.destination_type = destination_type
         # The direction of the traffic to which the access control policy applies. Valid values:
         # 
         # *   **in**: inbound traffic
         # *   **out**: outbound traffic
+        # 
+        # This parameter is required.
         self.direction = direction
         # The time when the access control policy stops taking effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes later than the start time.
         # 
@@ -358,6 +374,8 @@ class AddControlPolicyRequest(TeaModel):
         # *   **en**: English
         self.lang = lang
         # The priority of the access control policy. The priority value starts from 1. A smaller priority value indicates a higher priority.
+        # 
+        # This parameter is required.
         self.new_order = new_order
         # The protocol type supported by the access control policy. Valid values:
         # 
@@ -365,6 +383,8 @@ class AddControlPolicyRequest(TeaModel):
         # *   **TCP**\
         # *   **UDP**\
         # *   **ICMP**\
+        # 
+        # This parameter is required.
         self.proto = proto
         # Specifies whether to enable the access control policy. By default, an access control policy is enabled after the policy is created. Valid values:
         # 
@@ -373,12 +393,12 @@ class AddControlPolicyRequest(TeaModel):
         self.release = release
         # The days of a week or of a month on which the access control policy takes effect.
         # 
-        # *   If you set RepeatType to `Permanent`, `None`, or `Daily`, leave this parameter empty. Example: \[].
-        # *   If you set RepeatType to Weekly, you must specify this parameter. Example: \[0, 6].
+        # *   If you set RepeatType to `Permanent`, `None`, or `Daily`, leave this parameter empty. Example: [].
+        # *   If you set RepeatType to Weekly, you must specify this parameter. Example: [0, 6].
         # 
         # >  If you set RepeatType to Weekly, the fields in the value of this parameter cannot be repeated.
         # 
-        # *   If you set RepeatType to `Monthly`, you must specify this parameter. Example: \[1, 31].
+        # *   If you set RepeatType to `Monthly`, you must specify this parameter. Example: [1, 31].
         # 
         # >  If you set RepeatType to Monthly, the fields in the value of this parameter cannot be repeated.
         self.repeat_days = repeat_days
@@ -410,7 +430,9 @@ class AddControlPolicyRequest(TeaModel):
         # 
         # *   If SourceType is set to location, the value of this parameter is a location.
         # 
-        #     Example: \["BJ11", "ZB"]
+        #     Example: ["BJ11", "ZB"]
+        # 
+        # This parameter is required.
         self.source = source
         # The source IP address of the request.
         self.source_ip = source_ip
@@ -419,6 +441,8 @@ class AddControlPolicyRequest(TeaModel):
         # *   **net**: CIDR block
         # *   **group**: address book
         # *   **location**: location
+        # 
+        # This parameter is required.
         self.source_type = source_type
         # The time when the access control policy starts to take effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes earlier than the end time.
         # 
@@ -622,6 +646,8 @@ class AddInstanceMembersRequestMembers(TeaModel):
         # The remarks of member that you want to add to Cloud Firewall. The remarks must be 1 to 256 characters in length.
         self.member_desc = member_desc
         # The UID of member that you want to add to Cloud Firewall.
+        # 
+        # This parameter is required.
         self.member_uid = member_uid
 
     def validate(self):
@@ -654,6 +680,8 @@ class AddInstanceMembersRequest(TeaModel):
         members: List[AddInstanceMembersRequestMembers] = None,
     ):
         # The members that you want to add to Cloud Firewall.
+        # 
+        # This parameter is required.
         self.members = members
 
     def validate(self):
@@ -773,14 +801,18 @@ class BatchCopyVpcFirewallControlPolicyRequest(TeaModel):
         # *   If the VPC firewall protects mutual access traffic between a VPC and a specified network instance that is attached to a Cloud Enterprise Network (CEN) instance, the value of this parameter is the ID of the CEN instance. The network instance can be a VPC, a virtual border router (VBR), or a Cloud Connect Network (CCN) instance.
         # *   If the VPC firewall protects traffic between two VPCs that are connected by using an Express Connect circuit, the value of this parameter is the instance ID of the VPC firewall.
         # 
-        # >  You can call the [DescribeVpcFirewallAclGroupList](~~159760~~) operation to query the IDs of policy groups.
+        # >  You can call the [DescribeVpcFirewallAclGroupList](https://help.aliyun.com/document_detail/159760.html) operation to query the IDs of policy groups.
+        # 
+        # This parameter is required.
         self.source_vpc_firewall_id = source_vpc_firewall_id
         # The ID of the policy group of the destination VPC firewall. Valid values:
         # 
         # *   If the VPC firewall protects mutual access traffic between a VPC and a specified network instance that is attached to a CEN instance, the value of this parameter is the ID of the CEN instance. The network instance can be a VPC, a VBR, or a CCN instance.
         # *   If the VPC firewall protects traffic between two VPCs that are connected by using an Express Connect circuit, the value of this parameter is the instance ID of the VPC firewall.
         # 
-        # >  You can call the [DescribeVpcFirewallAclGroupList](~~159760~~) operation to query the IDs of policy groups.
+        # >  You can call the [DescribeVpcFirewallAclGroupList](https://help.aliyun.com/document_detail/159760.html) operation to query the IDs of policy groups.
+        # 
+        # This parameter is required.
         self.target_vpc_firewall_id = target_vpc_firewall_id
 
     def validate(self):
@@ -891,8 +923,12 @@ class BatchDeleteVpcFirewallControlPolicyRequest(TeaModel):
         vpc_firewall_id: str = None,
     ):
         # The UUIDs of access control policies.
+        # 
+        # This parameter is required.
         self.acl_uuid_list = acl_uuid_list
         # The instance ID of the VPC firewall.
+        # 
+        # This parameter is required.
         self.vpc_firewall_id = vpc_firewall_id
 
     def validate(self):
@@ -1040,11 +1076,11 @@ class CreateDownloadTaskResponseBody(TeaModel):
         self.request_id = request_id
         # The status of the task. Valid values:
         # 
-        # finish: You can query the task to obtain the download link of the file.
+        # finish: The task finished. You can query the task to obtain the download link of the file.
         # 
-        # start
+        # start: The task start.
         # 
-        # error
+        # error: An error occurred.
         # 
         # expire: The task file is invalid and cannot be downloaded.
         self.status = status
@@ -1161,10 +1197,16 @@ class CreateNatFirewallControlPolicyRequest(TeaModel):
         # *   **accept**: allows the traffic.
         # *   **drop**: denies the traffic.
         # *   **log**: monitors the traffic.
+        # 
+        # This parameter is required.
         self.acl_action = acl_action
         # The application types supported by the access control policy.
+        # 
+        # This parameter is required.
         self.application_name_list = application_name_list
         # The description of the access control policy.
+        # 
+        # This parameter is required.
         self.description = description
         # The destination port in the access control policy. Valid values:
         # 
@@ -1201,11 +1243,13 @@ class CreateNatFirewallControlPolicyRequest(TeaModel):
         # 
         # *   If DestinationType is set to domain, the value of this parameter is a domain name.
         # 
-        #     Example: \*.aliyuncs.com
+        #     Example: \\*.aliyuncs.com
         # 
         # *   If DestinationType is set to location, the value of this parameter is a location.
         # 
-        #     Example: \["BJ11", "ZB"]
+        #     Example: ["BJ11", "ZB"]
+        # 
+        # This parameter is required.
         self.destination = destination
         # The type of the destination address in the access control policy.
         # 
@@ -1214,10 +1258,14 @@ class CreateNatFirewallControlPolicyRequest(TeaModel):
         # *   **net**: CIDR block
         # *   **group**: address book
         # *   **domain**: domain name
+        # 
+        # This parameter is required.
         self.destination_type = destination_type
         # The direction of the traffic to which the access control policy applies. Valid values:
         # 
         # *   **out**: outbound traffic
+        # 
+        # This parameter is required.
         self.direction = direction
         # The domain name resolution method of the access control policy. Valid values:
         # 
@@ -1241,8 +1289,12 @@ class CreateNatFirewallControlPolicyRequest(TeaModel):
         # *   **en**: English
         self.lang = lang
         # The ID of the NAT gateway.
+        # 
+        # This parameter is required.
         self.nat_gateway_id = nat_gateway_id
         # The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority.
+        # 
+        # This parameter is required.
         self.new_order = new_order
         # The protocol type in the access control policy.
         # 
@@ -1252,6 +1304,8 @@ class CreateNatFirewallControlPolicyRequest(TeaModel):
         # *   TCP
         # *   UDP
         # *   ICMP
+        # 
+        # This parameter is required.
         self.proto = proto
         # Specifies whether to enable the access control policy. By default, an access control policy is enabled after it is created. Valid values:
         # 
@@ -1260,12 +1314,12 @@ class CreateNatFirewallControlPolicyRequest(TeaModel):
         self.release = release
         # The days of a week or of a month on which the access control policy takes effect.
         # 
-        # *   If RepeatType is set to `Permanent`, `None`, or `Daily`, RepeatDays is left empty. Example: \[].
-        # *   If RepeatType is set to Weekly, RepeatDays must be specified. Example: \[0, 6].
+        # *   If RepeatType is set to `Permanent`, `None`, or `Daily`, RepeatDays is left empty. Example: [].
+        # *   If RepeatType is set to Weekly, RepeatDays must be specified. Example: [0, 6].
         # 
         # >  If RepeatType is set to Weekly, the fields in the value of RepeatDays cannot be repeated.
         # 
-        # *   If RepeatType is set to `Monthly`, RepeatDays must be specified. Example: \[1, 31].
+        # *   If RepeatType is set to `Monthly`, RepeatDays must be specified. Example: [1, 31].
         # 
         # >  If RepeatType is set to Monthly, the fields in the value of RepeatDays cannot be repeated.
         self.repeat_days = repeat_days
@@ -1296,6 +1350,8 @@ class CreateNatFirewallControlPolicyRequest(TeaModel):
         # *   If **SourceType** is set to `group`, the value of this parameter must be an address book name.
         # 
         #     Example: db_group
+        # 
+        # This parameter is required.
         self.source = source
         # The type of the source address in the access control policy.
         # 
@@ -1303,6 +1359,8 @@ class CreateNatFirewallControlPolicyRequest(TeaModel):
         # 
         # *   **net**: source CIDR block
         # *   **group**: source address book
+        # 
+        # This parameter is required.
         self.source_type = source_type
         # The time when the access control policy starts to take effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes earlier than the value of EndTime.
         # 
@@ -1507,9 +1565,13 @@ class CreateSecurityProxyRequestNatRouteEntryList(TeaModel):
         next_hop_type: str = None,
         route_table_id: str = None,
     ):
+        # This parameter is required.
         self.destination_cidr = destination_cidr
+        # This parameter is required.
         self.next_hop_id = next_hop_id
+        # This parameter is required.
         self.next_hop_type = next_hop_type
+        # This parameter is required.
         self.route_table_id = route_table_id
 
     def validate(self):
@@ -1561,11 +1623,16 @@ class CreateSecurityProxyRequest(TeaModel):
     ):
         self.firewall_switch = firewall_switch
         self.lang = lang
+        # This parameter is required.
         self.nat_gateway_id = nat_gateway_id
+        # This parameter is required.
         self.nat_route_entry_list = nat_route_entry_list
+        # This parameter is required.
         self.proxy_name = proxy_name
+        # This parameter is required.
         self.region_no = region_no
         self.strict_mode = strict_mode
+        # This parameter is required.
         self.vpc_id = vpc_id
         self.vswitch_auto = vswitch_auto
         self.vswitch_cidr = vswitch_cidr
@@ -2220,11 +2287,15 @@ class CreateVpcFirewallCenConfigureRequest(TeaModel):
         vpc_region: str = None,
     ):
         # The ID of the CEN instance.
+        # 
+        # This parameter is required.
         self.cen_id = cen_id
         # Specifies whether to enable the VPC firewall. Valid values:
         # 
         # *   **open**: After you create the VPC firewall, the VPC firewall is automatically enabled. This is the default value.
-        # *   **close**: After you create the VPC firewall, the VPC firewall is disabled. You can call the [ModifyVpcFirewallCenSwitchStatus](~~345780~~) operation to manually enable the VPC firewall.
+        # *   **close**: After you create the VPC firewall, the VPC firewall is disabled. You can call the [ModifyVpcFirewallCenSwitchStatus](https://help.aliyun.com/document_detail/345780.html) operation to manually enable the VPC firewall.
+        # 
+        # This parameter is required.
         self.firewall_switch = firewall_switch
         # The CIDR block of the vSwitch that is automatically created for the VPC firewall. You must specify a CIDR block for the Cloud_Firewall_VSWITCH VPC that is automatically created for the VPC firewall for traffic redirection. The CIDR block does not conflict with your network plan. The subnet mask of the CIDR block must be less than or equal to 29 bits in length. The CIDR block of the vSwitch must be within the network segment of the VPC.
         # 
@@ -2242,7 +2313,7 @@ class CreateVpcFirewallCenConfigureRequest(TeaModel):
         # 
         # If you do not specify a value, a zone is automatically assigned for the vSwitch.
         # 
-        # >  This parameter takes effect only when you create a VPC firewall for the first time in the current CEN instance and region. For more information about zones that are supported by each region, see [Query zones](~~36064~~).
+        # >  This parameter takes effect only when you create a VPC firewall for the first time in the current CEN instance and region. For more information about zones that are supported by each region, see [Query zones](https://help.aliyun.com/document_detail/36064.html).
         self.firewall_vpc_zone_id = firewall_vpc_zone_id
         # The language of the content within the request and response. Valid values:
         # 
@@ -2252,14 +2323,20 @@ class CreateVpcFirewallCenConfigureRequest(TeaModel):
         # The UID of the member that is managed by your Alibaba Cloud account.
         self.member_uid = member_uid
         # The ID of the VPC for which you want to create the VPC firewall.
+        # 
+        # This parameter is required.
         self.network_instance_id = network_instance_id
         # The ID of the vSwitch that is used to associate with the elastic network interface (ENI) required by the VPC firewall.
         self.v_switch_id = v_switch_id
         # The instance name of the VPC firewall.
+        # 
+        # This parameter is required.
         self.vpc_firewall_name = vpc_firewall_name
         # The ID of the region to which the VPC belongs.
         # 
-        # > For more information about the regions, see [Supported regions](~~195657~~).
+        # > For more information about the regions, see [Supported regions](https://help.aliyun.com/document_detail/195657.html).
+        # 
+        # This parameter is required.
         self.vpc_region = vpc_region
 
     def validate(self):
@@ -2415,7 +2492,9 @@ class CreateVpcFirewallConfigureRequest(TeaModel):
         # The status of the VPC firewall after you create the firewall. Valid values:
         # 
         # *   **open**: After you create the VPC firewall, the VPC firewall is automatically enabled. This is the default value.
-        # *   **close**: After you create the VPC firewall, the VPC firewall is disabled. To enable the firewall, you can call the [ModifyVpcFirewallSwitchStatus](~~342935~~) operation.
+        # *   **close**: After you create the VPC firewall, the VPC firewall is disabled. To enable the firewall, you can call the [ModifyVpcFirewallSwitchStatus](https://help.aliyun.com/document_detail/342935.html) operation.
+        # 
+        # This parameter is required.
         self.firewall_switch = firewall_switch
         # The language of the content within the request and the response. Valid values:
         # 
@@ -2426,12 +2505,18 @@ class CreateVpcFirewallConfigureRequest(TeaModel):
         # 
         # *   **RouteTableId**: the ID of the route table for the local VPC.
         # *   **RouteEntryList**: The value is a JSON string that contains the DestinationCidr and NextHopInstanceId parameters. The DestinationCidr parameter indicates the destination CIDR block of the local VPC. The NextHopInstanceId parameter indicates the instance ID of the next hop for the local VPC.
+        # 
+        # This parameter is required.
         self.local_vpc_cidr_table_list = local_vpc_cidr_table_list
         # The ID of the local VPC.
+        # 
+        # This parameter is required.
         self.local_vpc_id = local_vpc_id
         # The region ID of the local VPC.
         # 
-        # >  For more information about the regions in which Cloud Firewall is available, see [Supported regions](~~195657~~).
+        # >  For more information about the regions in which Cloud Firewall is available, see [Supported regions](https://help.aliyun.com/document_detail/195657.html).
+        # 
+        # This parameter is required.
         self.local_vpc_region = local_vpc_region
         # The UID of the member that is managed by your Alibaba Cloud account.
         self.member_uid = member_uid
@@ -2439,14 +2524,22 @@ class CreateVpcFirewallConfigureRequest(TeaModel):
         # 
         # *   **RouteTableId**: the ID of the route table for the peer VPC.
         # *   **RouteEntryList**: The value is a JSON string that contains the DestinationCidr and NextHopInstanceId parameters. The DestinationCidr parameter indicates the destination CIDR block of the peer VPC. The NextHopInstanceId parameter indicates the instance ID of the next hop for the peer VPC.
+        # 
+        # This parameter is required.
         self.peer_vpc_cidr_table_list = peer_vpc_cidr_table_list
         # The ID of the peer VPC.
+        # 
+        # This parameter is required.
         self.peer_vpc_id = peer_vpc_id
         # The region ID of the peer VPC.
         # 
-        # >  For more information about Cloud Firewall supported regions, see [Supported regions](~~195657~~).
+        # >  For more information about Cloud Firewall supported regions, see [Supported regions](https://help.aliyun.com/document_detail/195657.html).
+        # 
+        # This parameter is required.
         self.peer_vpc_region = peer_vpc_region
         # The instance name of the VPC firewall.
+        # 
+        # This parameter is required.
         self.vpc_firewall_name = vpc_firewall_name
 
     def validate(self):
@@ -2613,6 +2706,8 @@ class CreateVpcFirewallControlPolicyRequest(TeaModel):
         # - **accept**: allows the traffic.
         # - **drop**: blocks the traffic.
         # - **log**: monitors the traffic.
+        # 
+        # This parameter is required.
         self.acl_action = acl_action
         # The type of the applications that the access control policy supports. Valid values:
         # 
@@ -2635,6 +2730,8 @@ class CreateVpcFirewallControlPolicyRequest(TeaModel):
         # The application types supported by the access control policy.
         self.application_name_list = application_name_list
         # The description of the access control policy.
+        # 
+        # This parameter is required.
         self.description = description
         # The destination port in the access control policy. 
         # 
@@ -2654,12 +2751,16 @@ class CreateVpcFirewallControlPolicyRequest(TeaModel):
         # - If **DestinationType** is set to `net`, the value of **Destination** must be a CIDR block.
         # - If **DestinationType** is set to `group`, the value of **Destination** must be an address book.
         # - If **DestinationType** is set to `domain`, the value of **Destination** must be a domain name.
+        # 
+        # This parameter is required.
         self.destination = destination
         # The type of the destination address in the access control policy. Valid values:
         # 
         # - **net**: CIDR block
         # - **group**: address book
         # - **domain**: domain name
+        # 
+        # This parameter is required.
         self.destination_type = destination_type
         # The time when the access control policy stops taking effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes later than the start time.
         # 
@@ -2675,6 +2776,8 @@ class CreateVpcFirewallControlPolicyRequest(TeaModel):
         # The priority of the access control policy. 
         # 
         # The priority value starts from 1. A smaller priority value indicates a higher priority.
+        # 
+        # This parameter is required.
         self.new_order = new_order
         # The type of the protocol in the access control policy. Valid values:
         # 
@@ -2682,6 +2785,8 @@ class CreateVpcFirewallControlPolicyRequest(TeaModel):
         # - **TCP**\
         # - **UDP**\
         # - **ICMP**\
+        # 
+        # This parameter is required.
         self.proto = proto
         # Specifies whether to enable the access control policy. By default, an access control policy is enabled after the policy is created. Valid values: 
         # 
@@ -2690,12 +2795,12 @@ class CreateVpcFirewallControlPolicyRequest(TeaModel):
         self.release = release
         # The days of a week or of a month on which the access control policy takes effect.
         # 
-        # *   If you set RepeatType to `Permanent`, `None`, or `Daily`, leave this parameter empty. Example: \[].
-        # *   If you set RepeatType to Weekly, you must specify this parameter. Example: \[0, 6].
+        # *   If you set RepeatType to `Permanent`, `None`, or `Daily`, leave this parameter empty. Example: [].
+        # *   If you set RepeatType to Weekly, you must specify this parameter. Example: [0, 6].
         # 
         # >  If you set RepeatType to Weekly, the fields in the value of this parameter cannot be repeated.
         # 
-        # *   If you set RepeatType to `Monthly`, you must specify this parameter. Example: \[1, 31].
+        # *   If you set RepeatType to `Monthly`, you must specify this parameter. Example: [1, 31].
         # 
         # >  If you set RepeatType to Monthly, the fields in the value of this parameter cannot be repeated.
         self.repeat_days = repeat_days
@@ -2719,11 +2824,15 @@ class CreateVpcFirewallControlPolicyRequest(TeaModel):
         # 
         # - If SourceType is set to `net`, the value of Source must be a CIDR block.
         # - If SourceType is set to `group`, the value of Source must be an address book.
+        # 
+        # This parameter is required.
         self.source = source
         # The type of the source address in the access control policy. Valid values:
         # 
         # - **net**: CIDR block
         # - **group**: address book
+        # 
+        # This parameter is required.
         self.source_type = source_type
         # The time when the access control policy starts to take effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes earlier than the end time.
         # 
@@ -2735,6 +2844,8 @@ class CreateVpcFirewallControlPolicyRequest(TeaModel):
         # - If a VPC firewall protects the traffic between two VPCs that are connected by using an Express Connect circuit, the value of this parameter must be the instance ID of the VPC firewall.
         # 
         # >  You can call the [DescribeVpcFirewallAclGroupList](https://www.alibabacloud.com/help/en/cloud-firewall/latest/describevpcfirewallaclgrouplist) operation to query the IDs.
+        # 
+        # This parameter is required.
         self.vpc_firewall_id = vpc_firewall_id
 
     def validate(self):
@@ -2931,6 +3042,8 @@ class DeleteAddressBookRequest(TeaModel):
         # The ID of the address book.
         # 
         # To delete the address book, you must provide the ID of the address book. You can call the DescribeAddressBook operation to query the ID.
+        # 
+        # This parameter is required.
         self.group_uuid = group_uuid
         # The natural language of the request and response. Valid values:
         # 
@@ -3047,7 +3160,9 @@ class DeleteControlPolicyRequest(TeaModel):
     ):
         # The ID of the access control policy.
         # 
-        # To delete an access control policy, you must provide the ID of the policy. You can call the [DescribeControlPolicy](~~138866~~) operation to query the ID.
+        # To delete an access control policy, you must provide the ID of the policy. You can call the [DescribeControlPolicy](https://help.aliyun.com/document_detail/138866.html) operation to query the ID.
+        # 
+        # This parameter is required.
         self.acl_uuid = acl_uuid
         # The direction of the traffic to which the access control policy applies.
         # 
@@ -3055,6 +3170,8 @@ class DeleteControlPolicyRequest(TeaModel):
         # 
         # *   **in**: inbound traffic
         # *   **out**: outbound traffic
+        # 
+        # This parameter is required.
         self.direction = direction
         # The natural language of the request and response.
         # 
@@ -3182,6 +3299,8 @@ class DeleteControlPolicyTemplateRequest(TeaModel):
         # The source IP address of the request.
         self.source_ip = source_ip
         # The ID of the access control policy template.
+        # 
+        # This parameter is required.
         self.template_id = template_id
 
     def validate(self):
@@ -3501,6 +3620,8 @@ class DeleteInstanceMembersRequest(TeaModel):
         member_uids: List[int] = None,
     ):
         # The unique identifiers (UID) of members that you want to remove from Cloud Firewall.
+        # 
+        # This parameter is required.
         self.member_uids = member_uids
 
     def validate(self):
@@ -3603,12 +3724,16 @@ class DeleteNatFirewallControlPolicyRequest(TeaModel):
         # The UUID of the access control policy.
         # 
         # To delete an access control policy, you must provide the ID of the policy. You can call the DescribeNatFirewallControlPolicy operation to query the UUIDs of access control policies.
+        # 
+        # This parameter is required.
         self.acl_uuid = acl_uuid
         # The direction of the traffic to which the access control policy applies.
         # 
         # Valid values:
         # 
         # *   **out**: outbound traffic
+        # 
+        # This parameter is required.
         self.direction = direction
         # The language of the content within the response. Valid values:
         # 
@@ -3616,6 +3741,8 @@ class DeleteNatFirewallControlPolicyRequest(TeaModel):
         # *   **en**: English
         self.lang = lang
         # The ID of the NAT gateway.
+        # 
+        # This parameter is required.
         self.nat_gateway_id = nat_gateway_id
 
     def validate(self):
@@ -3739,6 +3866,8 @@ class DeleteNatFirewallControlPolicyBatchRequest(TeaModel):
         # *   **en**: English
         self.lang = lang
         # The ID of the NAT gateway.
+        # 
+        # This parameter is required.
         self.nat_gateway_id = nat_gateway_id
 
     def validate(self):
@@ -3838,6 +3967,108 @@ class DeleteNatFirewallControlPolicyBatchResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteNatFirewallControlPolicyBatchResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteSecurityProxyRequest(TeaModel):
+    def __init__(
+        self,
+        lang: str = None,
+        proxy_id: str = None,
+    ):
+        self.lang = lang
+        # This parameter is required.
+        self.proxy_id = proxy_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.proxy_id is not None:
+            result['ProxyId'] = self.proxy_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('ProxyId') is not None:
+            self.proxy_id = m.get('ProxyId')
+        return self
+
+
+class DeleteSecurityProxyResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteSecurityProxyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteSecurityProxyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteSecurityProxyResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -3964,6 +4195,8 @@ class DeleteVpcFirewallCenConfigureRequest(TeaModel):
         # The UID of the member that is managed by your Alibaba Cloud account.
         self.member_uid = member_uid
         # The instance IDs of VPC firewalls.
+        # 
+        # This parameter is required.
         self.vpc_firewall_id_list = vpc_firewall_id_list
 
     def validate(self):
@@ -4078,6 +4311,8 @@ class DeleteVpcFirewallConfigureRequest(TeaModel):
         # The UID of the member that is managed by your Alibaba Cloud account.
         self.member_uid = member_uid
         # The instance IDs of VPC firewalls.
+        # 
+        # This parameter is required.
         self.vpc_firewall_id_list = vpc_firewall_id_list
 
     def validate(self):
@@ -4187,6 +4422,8 @@ class DeleteVpcFirewallControlPolicyRequest(TeaModel):
         # The ID of the access control policy. 
         # 
         # To delete an access control policy, you must provide the ID of the policy. You can call the **DescribeVpcFirewallControlPolicy** operation to query the ID.
+        # 
+        # This parameter is required.
         self.acl_uuid = acl_uuid
         # The natural language of the request and response. Valid values: 
         # 
@@ -4203,6 +4440,8 @@ class DeleteVpcFirewallControlPolicyRequest(TeaModel):
         # - If the VPC firewall is used to protect an Express Connect circuit, the value of this parameter is the ID of the VPC firewall.  
         # 
         # Example: vfw-a42bbb7b887148c9****\
+        # 
+        # This parameter is required.
         self.vpc_firewall_id = vpc_firewall_id
 
     def validate(self):
@@ -4857,6 +5096,8 @@ class DescribeAssetListRequest(TeaModel):
         user_type: str = None,
     ):
         # The page number. Valid values: 1 to 50.
+        # 
+        # This parameter is required.
         self.current_page = current_page
         # The IP version of the asset that is protected by Cloud Firewall. Valid values:
         # 
@@ -4877,10 +5118,12 @@ class DescribeAssetListRequest(TeaModel):
         # *   **discovered in 7 days**: within seven days.
         self.new_resource_tag = new_resource_tag
         # The number of entries per page. Valid values: 1 to 50.
+        # 
+        # This parameter is required.
         self.page_size = page_size
         # The region ID of your Cloud Firewall.
         # 
-        # > For more information about the regions, see [Supported regions](~~195657~~).
+        # > For more information about the regions, see [Supported regions](https://help.aliyun.com/document_detail/195657.html).
         self.region_no = region_no
         # The type of the asset. Valid values:
         # 
@@ -5311,7 +5554,7 @@ class DescribeAssetRiskListRequest(TeaModel):
         # 
         # *   Example of an IPv4 address: 47.97.221.164
         # 
-        # *   Example of an IPv6 address: 2001:db8:ffff:ffff:ffff:\*\*\*\*:ffff
+        # *   Example of an IPv6 address: 2001:db8:ffff:ffff:ffff:\\*\\*\\*\\*:ffff
         self.ip_addr_list = ip_addr_list
         # The IP version of the asset that is protected by Cloud Firewall.
         # 
@@ -5319,6 +5562,8 @@ class DescribeAssetRiskListRequest(TeaModel):
         # 
         # *   **4** (default): IPv4
         # *   **6**: IPv6
+        # 
+        # This parameter is required.
         self.ip_version = ip_version
         # The language of the content within the response. Valid values:
         # 
@@ -5527,7 +5772,7 @@ class DescribeCfwRiskLevelSummaryRequest(TeaModel):
         self.lang = lang
         # The region ID of your Cloud Firewall.
         # 
-        # >  For more information about Cloud Firewall supported regions, see [Supported regions](~~195657~~).
+        # >  For more information about Cloud Firewall supported regions, see [Supported regions](https://help.aliyun.com/document_detail/195657.html).
         self.region_id = region_id
 
     def validate(self):
@@ -5716,6 +5961,8 @@ class DescribeControlPolicyRequest(TeaModel):
         # The number of the page to return.
         # 
         # Default value: 1.
+        # 
+        # This parameter is required.
         self.current_page = current_page
         # The description of the access control policy. Fuzzy match is supported.
         # 
@@ -5734,6 +5981,8 @@ class DescribeControlPolicyRequest(TeaModel):
         # 
         # *   **in**: inbound traffic
         # *   **out**: outbound traffic
+        # 
+        # This parameter is required.
         self.direction = direction
         # The IP version of the address in the access control policy. Valid values:
         # 
@@ -5746,6 +5995,8 @@ class DescribeControlPolicyRequest(TeaModel):
         # *   **en**: English
         self.lang = lang
         # The number of entries to return on each page.
+        # 
+        # This parameter is required.
         self.page_size = page_size
         # The type of the protocol in the access control policy. Valid values:
         # 
@@ -5936,7 +6187,7 @@ class DescribeControlPolicyResponseBodyPolicys(TeaModel):
         # *   If **DestinationType** is set to **net**, the value of Destination is a CIDR block. Example: 192.0.XX.XX/24.
         # *   If **DestinationType** is set to **domain**, the value of Destination is a domain name. Example: aliyuncs.com.
         # *   If **DestinationType** is set to **group**, the value of Destination is the name of an address book. Example: db_group.
-        # *   If **DestinationType** is set to **location**, the value of Destination is a location. For more information about location codes, see [AddControlPolicy](~~138867~~). Example: \["BJ11", "ZB"].
+        # *   If **DestinationType** is set to **location**, the value of Destination is a location. For more information about location codes, see [AddControlPolicy](https://help.aliyun.com/document_detail/138867.html). Example: ["BJ11", "ZB"].
         self.destination = destination
         # The CIDR blocks in the destination address book.
         self.destination_group_cidrs = destination_group_cidrs
@@ -5997,12 +6248,12 @@ class DescribeControlPolicyResponseBodyPolicys(TeaModel):
         self.release = release
         # The days of a week or of a month on which the access control policy takes effect.
         # 
-        # *   If RepeatType is set to `Permanent`, `None`, or `Daily`, this parameter is left empty. Example: \[].
-        # *   If RepeatType is set to Weekly, this parameter must be specified. Example: \[0, 6].
+        # *   If RepeatType is set to `Permanent`, `None`, or `Daily`, this parameter is left empty. Example: [].
+        # *   If RepeatType is set to Weekly, this parameter must be specified. Example: [0, 6].
         # 
         # >  If RepeatType is set to Weekly, the fields in the value of RepeatDays cannot be repeated.
         # 
-        # *   If RepeatType is set to `Monthly`, this parameter must be specified. Example: \[1, 31].
+        # *   If RepeatType is set to `Monthly`, this parameter must be specified. Example: [1, 31].
         # 
         # >  If RepeatType is set to Monthly, the fields in the value of RepeatDays cannot be repeated.
         self.repeat_days = repeat_days
@@ -6026,7 +6277,7 @@ class DescribeControlPolicyResponseBodyPolicys(TeaModel):
         # 
         # *   If **SourceType** is set to `net`, the value of Source is a CIDR block. Example: 192.0.XX.XX/24.
         # *   If **SourceType** is set to `group`, the value of Source is the name of an address book. Example: db_group.
-        # *   If **SourceType** is set to `location`, the value of Source is a location. For more information about location codes, see [AddControlPolicy](~~138867~~). Example: \["BJ11", "ZB"].
+        # *   If **SourceType** is set to `location`, the value of Source is a location. For more information about location codes, see [AddControlPolicy](https://help.aliyun.com/document_detail/138867.html). Example: ["BJ11", "ZB"].
         self.source = source
         # The CIDR blocks in the source address book.
         self.source_group_cidrs = source_group_cidrs
@@ -6474,6 +6725,8 @@ class DescribeDomainResolveRequest(TeaModel):
         source_ip: str = None,
     ):
         # The domain name whose DNS record you want to query.
+        # 
+        # This parameter is required.
         self.domain = domain
         # The IP version of the asset that is protected by Cloud Firewall. Valid values:
         # 
@@ -7597,6 +7850,8 @@ class DescribeInternetOpenIpRequest(TeaModel):
         # The asset type of the instance.
         self.assets_type = assets_type
         # The page number.
+        # 
+        # This parameter is required.
         self.current_page = current_page
         # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
         self.end_time = end_time
@@ -7606,6 +7861,8 @@ class DescribeInternetOpenIpRequest(TeaModel):
         # *   **en**: English
         self.lang = lang
         # The number of entries per page.
+        # 
+        # This parameter is required.
         self.page_size = page_size
         # The port number.
         self.port = port
@@ -7989,6 +8246,8 @@ class DescribeInternetTrafficTrendRequest(TeaModel):
         # *   **out**: outbound traffic
         self.direction = direction
         # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The language of the content in the request and response. Valid values:
         # 
@@ -7996,6 +8255,8 @@ class DescribeInternetTrafficTrendRequest(TeaModel):
         # *   **en**: English
         self.lang = lang
         # The source code.
+        # 
+        # This parameter is required.
         self.source_code = source_code
         # The IP address of the access source.
         self.source_ip = source_ip
@@ -8004,6 +8265,8 @@ class DescribeInternetTrafficTrendRequest(TeaModel):
         # The public IP address of the source.
         self.src_public_ip = src_public_ip
         # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # 
+        # This parameter is required.
         self.start_time = start_time
         # The type of the traffic that is captured. Valid values:
         # 
@@ -8944,13 +9207,15 @@ class DescribeNatFirewallControlPolicyRequest(TeaModel):
         # *   If DestinationType is set to `net`, the value of Destination must be a CIDR block. Example: 10.0.3.0/24.
         # *   If DestinationType is set to `domain`, the value of Destination must be a domain name. Example: aliyun.
         # *   If DestinationType is set to `group`, the value of Destination must be the name of an address book. Example: db_group.
-        # *   If DestinationType is set to `location`, the value of Destination is a location. For more information about location codes, see [AddControlPolicy](~~474128~~). Example: \["BJ11", "ZB"].
+        # *   If DestinationType is set to `location`, the value of Destination is a location. For more information about location codes, see [AddControlPolicy](https://help.aliyun.com/document_detail/474128.html). Example: ["BJ11", "ZB"].
         # 
         # > If you do not specify this parameter, all types of destination addresses are queried.
         self.destination = destination
         # The direction of the traffic to which the access control policy applies. Valid values:
         # 
         # *   **out**: outbound traffic
+        # 
+        # This parameter is required.
         self.direction = direction
         # The language of the content within the response. Valid values:
         # 
@@ -8958,6 +9223,8 @@ class DescribeNatFirewallControlPolicyRequest(TeaModel):
         # *   **en**: English
         self.lang = lang
         # The ID of the NAT gateway.
+        # 
+        # This parameter is required.
         self.nat_gateway_id = nat_gateway_id
         # The number of entries per page. Default value: 10.
         self.page_size = page_size
@@ -9128,7 +9395,7 @@ class DescribeNatFirewallControlPolicyResponseBodyPolicys(TeaModel):
         # *   If the value of **DestinationType** is **net**, the value of this parameter is a CIDR block. Example: 192.0.XX.XX/24.
         # *   If the value of **DestinationType** is **domain**, the value of this parameter is a domain name. Example: aliyuncs.com.
         # *   If the value of **DestinationType** is **group**, the value of this parameter is the name of an address book. Example: db_group.
-        # *   If the value of **DestinationType** is **location**, the value of this parameter is a location. For more information about location codes, see [AddControlPolicy](~~138867~~). Example: \["BJ11", "ZB"].
+        # *   If the value of **DestinationType** is **location**, the value of this parameter is a location. For more information about location codes, see [AddControlPolicy](https://help.aliyun.com/document_detail/138867.html). Example: ["BJ11", "ZB"].
         self.destination = destination
         # The CIDR blocks in the destination address book.
         self.destination_group_cidrs = destination_group_cidrs
@@ -9184,12 +9451,12 @@ class DescribeNatFirewallControlPolicyResponseBodyPolicys(TeaModel):
         self.release = release
         # The days of a week or of a month on which the access control policy takes effect.
         # 
-        # *   If RepeatType is set to `Permanent`, `None`, or `Daily`, the value of this parameter is an empty array. Example: \[].
-        # *   If RepeatType is set to Weekly, this parameter must be specified. Example: \[0, 6].
+        # *   If RepeatType is set to `Permanent`, `None`, or `Daily`, the value of this parameter is an empty array. Example: [].
+        # *   If RepeatType is set to Weekly, this parameter must be specified. Example: [0, 6].
         # 
         # >  If RepeatType is set to Weekly, the fields in the value of this parameter cannot be repeated.
         # 
-        # *   If RepeatType is set to `Monthly`, this parameter must be specified. Example: \[1, 31].
+        # *   If RepeatType is set to `Monthly`, this parameter must be specified. Example: [1, 31].
         # 
         # >  If RepeatType is set to Monthly, the fields in the value of this parameter cannot be repeated.
         self.repeat_days = repeat_days
@@ -9213,7 +9480,7 @@ class DescribeNatFirewallControlPolicyResponseBodyPolicys(TeaModel):
         # 
         # *   If the value of **SourceType** is `net`, the value of this parameter is a CIDR block. Example: 192.0.XX.XX/24.
         # *   If the value of **SourceType** is `group`, the value of this parameter is the name of an address book. Example: db_group.
-        # *   If the value of **SourceType** is `location`, the value of this parameter is a location. For more information about location codes, see [AddControlPolicy](~~138867~~). Example: \["BJ11", "ZB"].
+        # *   If the value of **SourceType** is `location`, the value of this parameter is a location. For more information about location codes, see [AddControlPolicy](https://help.aliyun.com/document_detail/138867.html). Example: ["BJ11", "ZB"].
         self.source = source
         # The CIDR blocks in the source address book.
         self.source_group_cidrs = source_group_cidrs
@@ -9475,6 +9742,268 @@ class DescribeNatFirewallControlPolicyResponse(TeaModel):
         return self
 
 
+class DescribeNatFirewallListRequest(TeaModel):
+    def __init__(
+        self,
+        lang: str = None,
+        member_uid: int = None,
+        nat_gateway_id: str = None,
+        page_no: int = None,
+        page_size: int = None,
+        proxy_id: str = None,
+        proxy_name: str = None,
+        region_no: str = None,
+        status: str = None,
+        vpc_id: str = None,
+    ):
+        self.lang = lang
+        self.member_uid = member_uid
+        self.nat_gateway_id = nat_gateway_id
+        self.page_no = page_no
+        self.page_size = page_size
+        self.proxy_id = proxy_id
+        self.proxy_name = proxy_name
+        self.region_no = region_no
+        self.status = status
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.member_uid is not None:
+            result['MemberUid'] = self.member_uid
+        if self.nat_gateway_id is not None:
+            result['NatGatewayId'] = self.nat_gateway_id
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.proxy_id is not None:
+            result['ProxyId'] = self.proxy_id
+        if self.proxy_name is not None:
+            result['ProxyName'] = self.proxy_name
+        if self.region_no is not None:
+            result['RegionNo'] = self.region_no
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('MemberUid') is not None:
+            self.member_uid = m.get('MemberUid')
+        if m.get('NatGatewayId') is not None:
+            self.nat_gateway_id = m.get('NatGatewayId')
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ProxyId') is not None:
+            self.proxy_id = m.get('ProxyId')
+        if m.get('ProxyName') is not None:
+            self.proxy_name = m.get('ProxyName')
+        if m.get('RegionNo') is not None:
+            self.region_no = m.get('RegionNo')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        return self
+
+
+class DescribeNatFirewallListResponseBodyNatFirewallList(TeaModel):
+    def __init__(
+        self,
+        ali_uid: int = None,
+        error_detail: str = None,
+        member_uid: int = None,
+        nat_gateway_id: str = None,
+        nat_gateway_name: str = None,
+        proxy_id: str = None,
+        proxy_name: str = None,
+        proxy_status: str = None,
+        region_id: str = None,
+        strict_mode: int = None,
+        vpc_id: str = None,
+        vpc_name: str = None,
+    ):
+        self.ali_uid = ali_uid
+        self.error_detail = error_detail
+        self.member_uid = member_uid
+        self.nat_gateway_id = nat_gateway_id
+        self.nat_gateway_name = nat_gateway_name
+        self.proxy_id = proxy_id
+        self.proxy_name = proxy_name
+        self.proxy_status = proxy_status
+        self.region_id = region_id
+        self.strict_mode = strict_mode
+        self.vpc_id = vpc_id
+        self.vpc_name = vpc_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ali_uid is not None:
+            result['AliUid'] = self.ali_uid
+        if self.error_detail is not None:
+            result['ErrorDetail'] = self.error_detail
+        if self.member_uid is not None:
+            result['MemberUid'] = self.member_uid
+        if self.nat_gateway_id is not None:
+            result['NatGatewayId'] = self.nat_gateway_id
+        if self.nat_gateway_name is not None:
+            result['NatGatewayName'] = self.nat_gateway_name
+        if self.proxy_id is not None:
+            result['ProxyId'] = self.proxy_id
+        if self.proxy_name is not None:
+            result['ProxyName'] = self.proxy_name
+        if self.proxy_status is not None:
+            result['ProxyStatus'] = self.proxy_status
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.strict_mode is not None:
+            result['StrictMode'] = self.strict_mode
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        if self.vpc_name is not None:
+            result['VpcName'] = self.vpc_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AliUid') is not None:
+            self.ali_uid = m.get('AliUid')
+        if m.get('ErrorDetail') is not None:
+            self.error_detail = m.get('ErrorDetail')
+        if m.get('MemberUid') is not None:
+            self.member_uid = m.get('MemberUid')
+        if m.get('NatGatewayId') is not None:
+            self.nat_gateway_id = m.get('NatGatewayId')
+        if m.get('NatGatewayName') is not None:
+            self.nat_gateway_name = m.get('NatGatewayName')
+        if m.get('ProxyId') is not None:
+            self.proxy_id = m.get('ProxyId')
+        if m.get('ProxyName') is not None:
+            self.proxy_name = m.get('ProxyName')
+        if m.get('ProxyStatus') is not None:
+            self.proxy_status = m.get('ProxyStatus')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('StrictMode') is not None:
+            self.strict_mode = m.get('StrictMode')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        if m.get('VpcName') is not None:
+            self.vpc_name = m.get('VpcName')
+        return self
+
+
+class DescribeNatFirewallListResponseBody(TeaModel):
+    def __init__(
+        self,
+        nat_firewall_list: List[DescribeNatFirewallListResponseBodyNatFirewallList] = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.nat_firewall_list = nat_firewall_list
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.nat_firewall_list:
+            for k in self.nat_firewall_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['NatFirewallList'] = []
+        if self.nat_firewall_list is not None:
+            for k in self.nat_firewall_list:
+                result['NatFirewallList'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.nat_firewall_list = []
+        if m.get('NatFirewallList') is not None:
+            for k in m.get('NatFirewallList'):
+                temp_model = DescribeNatFirewallListResponseBodyNatFirewallList()
+                self.nat_firewall_list.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeNatFirewallListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeNatFirewallListResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeNatFirewallListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeNatFirewallPolicyPriorUsedRequest(TeaModel):
     def __init__(
         self,
@@ -9488,6 +10017,8 @@ class DescribeNatFirewallPolicyPriorUsedRequest(TeaModel):
         # Valid values:
         # 
         # *   **out**: outbound traffic
+        # 
+        # This parameter is required.
         self.direction = direction
         # The IP version supported by the access control policy. Valid values:
         # 
@@ -9499,6 +10030,8 @@ class DescribeNatFirewallPolicyPriorUsedRequest(TeaModel):
         # *   **en**: English
         self.lang = lang
         # The ID of the NAT gateway.
+        # 
+        # This parameter is required.
         self.nat_gateway_id = nat_gateway_id
 
     def validate(self):
@@ -9669,6 +10202,8 @@ class DescribeOutgoingDestinationIPRequest(TeaModel):
         # The destination IP address in the outbound connection that is initiated to access a domain name.
         self.dst_ip = dst_ip
         # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The language of the content within the response. Valid values:
         # 
@@ -9696,6 +10231,8 @@ class DescribeOutgoingDestinationIPRequest(TeaModel):
         # *   **TotalBytes**: the total volume of traffic.
         self.sort = sort
         # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # 
+        # This parameter is required.
         self.start_time = start_time
         # The ID of the tag. Valid values:
         # 
@@ -9728,7 +10265,7 @@ class DescribeOutgoingDestinationIPRequest(TeaModel):
         # *   **Rogue**: rogue software
         # *   **Botnet**: botnet
         # *   **Suspicious**: suspicious website
-        # *   **C\&C**: command and control (C\&C)
+        # *   **C\\&C**: command and control (C\\&C)
         # *   **Gang**: gang
         # *   **CVE**: Common Vulnerabilities and Exposures (CVE)
         # *   **Backdoor**: webshell
@@ -10313,6 +10850,8 @@ class DescribeOutgoingDomainRequest(TeaModel):
         # The domain name in outbound connections.
         self.domain = domain
         # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The language of the content within the request. Valid values:
         # 
@@ -10336,6 +10875,8 @@ class DescribeOutgoingDomainRequest(TeaModel):
         # *   **TotalBytes**: the total volume of traffic.
         self.sort = sort
         # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # 
+        # This parameter is required.
         self.start_time = start_time
         # The ID of the tag. Valid values:
         # 
@@ -10368,7 +10909,7 @@ class DescribeOutgoingDomainRequest(TeaModel):
         # *   **Rogue**: rogue software
         # *   **Botnet**: botnet
         # *   **Suspicious**: suspicious website
-        # *   **C\&C**: command and control (C\&C)
+        # *   **C\\&C**: command and control (C\\&C)
         # *   **Gang**: gang
         # *   **CVE**: Common Vulnerabilities and Exposures (CVE)
         # *   **Backdoor**: webshell
@@ -10950,6 +11491,8 @@ class DescribePolicyPriorUsedRequest(TeaModel):
         # 
         # *   **in**: inbound traffic
         # *   **out**: outbound traffic
+        # 
+        # This parameter is required.
         self.direction = direction
         # The IP version of the asset that is protected by Cloud Firewall.
         # 
@@ -11102,6 +11645,8 @@ class DescribePostpayTrafficDetailRequest(TeaModel):
         # The page number. Default value: 1.
         self.current_page = current_page
         # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The language of the content within the request and response. Valid values:
         # 
@@ -11118,11 +11663,15 @@ class DescribePostpayTrafficDetailRequest(TeaModel):
         # The instance ID or the IP address of the asset.
         self.search_item = search_item
         # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # 
+        # This parameter is required.
         self.start_time = start_time
         # The traffic type. This parameter is required. Valid values:
         # 
         # *   **EIP_TRAFFIC**: traffic for the Internet firewall
         # *   **NatGateway_TRAFFIC**: traffic for the NAT firewall
+        # 
+        # This parameter is required.
         self.traffic_type = traffic_type
 
     def validate(self):
@@ -11719,8 +12268,10 @@ class DescribeRiskEventGroupRequest(TeaModel):
         self.buy_version = buy_version
         # The number of the page to return. Default value: **1**.
         self.current_page = current_page
-        # The type of the risk events.\
+        # The type of the risk events.\\
         # Set the value to **session**, which indicates intrusion events.
+        # 
+        # This parameter is required.
         self.data_type = data_type
         # The direction of the traffic for the intrusion events. Valid values:
         # 
@@ -11736,6 +12287,8 @@ class DescribeRiskEventGroupRequest(TeaModel):
         # > If the FirewallType parameter is set to VpcFirewall, you must specify this parameter.
         self.dst_network_instance_id = dst_network_instance_id
         # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The name of the intrusion event.
         self.event_name = event_name
@@ -11790,6 +12343,8 @@ class DescribeRiskEventGroupRequest(TeaModel):
         # > If the FirewallType parameter is set to VpcFirewall, you must specify this parameter.
         self.src_network_instance_id = src_network_instance_id
         # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # 
+        # This parameter is required.
         self.start_time = start_time
         # The risk level of the intrusion events. Valid values:
         # 
@@ -12176,12 +12731,12 @@ class DescribeRiskEventGroupResponseBodyDataList(TeaModel):
         self.event_name = event_name
         # The time when the intrusion event was first detected. The value is a UNIX timestamp. Unit: seconds.
         self.first_event_time = first_event_time
-        # The geographical information about the IP address. The value is a struct that contains the following parameters: **CityId**, **CityName**, **CountryId**, and **CountryName**.\
+        # The geographical information about the IP address. The value is a struct that contains the following parameters: **CityId**, **CityName**, **CountryId**, and **CountryName**.\\
         # ****************\
         self.iplocation_info = iplocation_info
         # The time when the intrusion event was last detected. The value is a UNIX timestamp. Unit: seconds.
         self.last_event_time = last_event_time
-        # The information about the private IP address in the intrusion event. The value is an array that contains the following parameters: **RegionNo**, **ResourceInstanceId**, **ResourceInstanceName**, and **ResourcePrivateIP**.\
+        # The information about the private IP address in the intrusion event. The value is an array that contains the following parameters: **RegionNo**, **ResourceInstanceId**, **ResourceInstanceName**, and **ResourcePrivateIP**.\\
         # ****************\
         self.resource_private_iplist = resource_private_iplist
         # The type of the public IP address in the intrusion event. Valid values:
@@ -12213,10 +12768,10 @@ class DescribeRiskEventGroupResponseBodyDataList(TeaModel):
         self.src_private_iplist = src_private_iplist
         # The tag added to the threat intelligence that is provided for major events.
         self.tag = tag
-        # The information about the destination VPC of the intrusion event. The value is a struct that contains the following parameters: **EcsInstanceId**, **EcsInstanceName**, **NetworkInstanceId**, **NetworkInstanceName**, and **RegionNo**.\
+        # The information about the destination VPC of the intrusion event. The value is a struct that contains the following parameters: **EcsInstanceId**, **EcsInstanceName**, **NetworkInstanceId**, **NetworkInstanceName**, and **RegionNo**.\\
         # ********************\
         self.vpc_dst_info = vpc_dst_info
-        # The information about the source VPC of the intrusion event. The value is a struct that contains the following parameters: **EcsInstanceId**, **EcsInstanceName**, **NetworkInstanceId**, **NetworkInstanceName**, and **RegionNo**.\
+        # The information about the source VPC of the intrusion event. The value is a struct that contains the following parameters: **EcsInstanceId**, **EcsInstanceName**, **NetworkInstanceId**, **NetworkInstanceName**, and **RegionNo**.\\
         # ********************\
         self.vpc_src_info = vpc_src_info
         # The risk level of the intrusion event. Valid values:
@@ -12460,6 +13015,8 @@ class DescribeRiskEventPayloadRequest(TeaModel):
         # The ID of the destination VPC to query. If you specify this parameter, all intrusion events that contain the specified ID of the destination VPC are queried.
         self.dst_vpc_id = dst_vpc_id
         # The end of the time range to query. The value is a timestamp. Unit: seconds.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The type of the firewall. Valid values:
         # 
@@ -12473,8 +13030,12 @@ class DescribeRiskEventPayloadRequest(TeaModel):
         # The ID of the source VPC to query. If you specify this parameter, all intrusion events that contain the specified ID of the source VPC are queried.
         self.src_vpc_id = src_vpc_id
         # The beginning of the time range to query. The value is a timestamp. Unit: seconds.
+        # 
+        # This parameter is required.
         self.start_time = start_time
         # The UUID of the intrusion event.
+        # 
+        # This parameter is required.
         self.uuid = uuid
 
     def validate(self):
@@ -14385,6 +14946,8 @@ class DescribeUserAssetIPTrafficInfoRequest(TeaModel):
         traffic_time: str = None,
     ):
         # The IP address of the asset.
+        # 
+        # This parameter is required.
         self.asset_ip = asset_ip
         # The language of the content within the response. Valid values:
         # 
@@ -14392,6 +14955,8 @@ class DescribeUserAssetIPTrafficInfoRequest(TeaModel):
         # *   **en**: English
         self.lang = lang
         # The time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # 
+        # This parameter is required.
         self.traffic_time = traffic_time
 
     def validate(self):
@@ -14850,11 +15415,11 @@ class DescribeVpcFirewallAclGroupListResponseBodyAclGroupList(TeaModel):
         # 
         # *   If the VPC firewall is used to protect a Cloud Enterprise Network (CEN) instance, the value of this parameter is the ID of the CEN instance.
         # 
-        #     Example: cen-ervw0g12b5jbw\*\*\*\*\
+        #     Example: cen-ervw0g12b5jbw\\*\\*\\*\\*\
         # 
         # *   If the VPC firewall is used to protect an Express Connect circuit, the value of this parameter is the instance ID of the VPC firewall.
         # 
-        #     Example: vfw-a42bbb7b887148c9\*\*\*\*\
+        #     Example: vfw-a42bbb7b887148c9\\*\\*\\*\\*\
         self.acl_group_id = acl_group_id
         # The name of the policy group. Valid values:
         # 
@@ -15013,7 +15578,9 @@ class DescribeVpcFirewallCenDetailRequest(TeaModel):
         self.network_instance_id = network_instance_id
         # The instance ID of the VPC firewall.
         # 
-        # > You can call the [DescribeVpcFirewallCenList](~~345777~~) operation to query the instance IDs of VPC firewalls.
+        # > You can call the [DescribeVpcFirewallCenList](https://help.aliyun.com/document_detail/345777.html) operation to query the instance IDs of VPC firewalls.
+        # 
+        # This parameter is required.
         self.vpc_firewall_id = vpc_firewall_id
 
     def validate(self):
@@ -15564,7 +16131,7 @@ class DescribeVpcFirewallCenListRequest(TeaModel):
         self.page_size = page_size
         # The region ID of the VPC.
         # 
-        # > For more information about the regions, see [Supported regions](~~195657~~).
+        # > For more information about the regions, see [Supported regions](https://help.aliyun.com/document_detail/195657.html).
         self.region_no = region_no
         # The routing mode of the VPC firewall. Valid values:
         # 
@@ -16166,6 +16733,8 @@ class DescribeVpcFirewallControlPolicyRequest(TeaModel):
         # The unique ID of the access control policy.
         self.acl_uuid = acl_uuid
         # The number of the page to return.
+        # 
+        # This parameter is required.
         self.current_page = current_page
         # The description of the access control policy. Fuzzy match is supported.
         self.description = description
@@ -16185,6 +16754,8 @@ class DescribeVpcFirewallControlPolicyRequest(TeaModel):
         # The number of entries to return on each page.
         # 
         # Maximum value: 50.
+        # 
+        # This parameter is required.
         self.page_size = page_size
         # The protocol type in the access control policy. Valid values:
         # 
@@ -16217,7 +16788,9 @@ class DescribeVpcFirewallControlPolicyRequest(TeaModel):
         # *   If the VPC firewall protects the traffic between two VPCs that are connected by using a CEN instance, the value of this parameter must be the ID of the CEN instance.
         # *   If the VPC firewall protects the traffic between two VPCs that are connected by using an Express Connect circuit, the value of this parameter must be the instance ID of the VPC firewall.
         # 
-        # > You can call the [DescribeVpcFirewallAclGroupList](~~159760~~) operation to query the ID.
+        # > You can call the [DescribeVpcFirewallAclGroupList](https://help.aliyun.com/document_detail/159760.html) operation to query the ID.
+        # 
+        # This parameter is required.
         self.vpc_firewall_id = vpc_firewall_id
 
     def validate(self):
@@ -16418,12 +16991,12 @@ class DescribeVpcFirewallControlPolicyResponseBodyPolicys(TeaModel):
         self.release = release
         # The days of a week or of a month on which the access control policy takes effect.
         # 
-        # *   If RepeatType is set to `Permanent`, `None`, or `Daily`, RepeatDays is left empty. Example: \[].
-        # *   If RepeatType is set to Weekly, RepeatDays must be specified. Example: \[0, 6].
+        # *   If RepeatType is set to `Permanent`, `None`, or `Daily`, RepeatDays is left empty. Example: [].
+        # *   If RepeatType is set to Weekly, RepeatDays must be specified. Example: [0, 6].
         # 
         # >  If RepeatType is set to Weekly, the fields in the value of RepeatDays cannot be repeated.
         # 
-        # *   If RepeatType is set to `Monthly`, RepeatDays must be specified. Example: \[1, 31].
+        # *   If RepeatType is set to `Monthly`, RepeatDays must be specified. Example: [1, 31].
         # 
         # >  If RepeatType is set to Monthly, the fields in the value of RepeatDays cannot be repeated.
         self.repeat_days = repeat_days
@@ -16713,8 +17286,10 @@ class DescribeVpcFirewallDefaultIPSConfigRequest(TeaModel):
         self.member_uid = member_uid
         # The instance ID of the VPC firewall. Valid values:
         # 
-        # *   If the VPC firewall protects mutual access traffic between a VPC and a specified network instance that is attached to a Cloud Enterprise Network (CEN) instance, the value of this parameter is the ID of the CEN instance. The network instance can be a VPC, a virtual border router (VBR), or a Cloud Connect Network (CCN) instance. You can call the [DescribeVpcFirewallCenList](~~345777~~) operation to query the IDs of CEN instances.
-        # *   If the VPC firewall protects traffic between two VPCs that are connected by using an Express Connect circuit, the value of this parameter is the instance ID of the VPC firewall. You can call the [DescribeVpcFirewallList](~~342932~~) operation to query the instance IDs of VPC firewalls.
+        # *   If the VPC firewall protects mutual access traffic between a VPC and a specified network instance that is attached to a Cloud Enterprise Network (CEN) instance, the value of this parameter is the ID of the CEN instance. The network instance can be a VPC, a virtual border router (VBR), or a Cloud Connect Network (CCN) instance. You can call the [DescribeVpcFirewallCenList](https://help.aliyun.com/document_detail/345777.html) operation to query the IDs of CEN instances.
+        # *   If the VPC firewall protects traffic between two VPCs that are connected by using an Express Connect circuit, the value of this parameter is the instance ID of the VPC firewall. You can call the [DescribeVpcFirewallList](https://help.aliyun.com/document_detail/342932.html) operation to query the instance IDs of VPC firewalls.
+        # 
+        # This parameter is required.
         self.vpc_firewall_id = vpc_firewall_id
 
     def validate(self):
@@ -16859,7 +17434,9 @@ class DescribeVpcFirewallDetailRequest(TeaModel):
         self.peer_vpc_id = peer_vpc_id
         # The instance ID of the VPC firewall.
         # 
-        # >  You can call the [DescribeVpcFirewallList](~~342932~~) operation to query the instance IDs of VPC firewalls.
+        # >  You can call the [DescribeVpcFirewallList](https://help.aliyun.com/document_detail/342932.html) operation to query the instance IDs of VPC firewalls.
+        # 
+        # This parameter is required.
         self.vpc_firewall_id = vpc_firewall_id
 
     def validate(self):
@@ -17358,6 +17935,8 @@ class DescribeVpcFirewallIPSWhitelistRequest(TeaModel):
         # The UID of the member in Cloud Firewall.
         self.member_uid = member_uid
         # The instance ID of the VPC firewall.
+        # 
+        # This parameter is required.
         self.vpc_firewall_id = vpc_firewall_id
 
     def validate(self):
@@ -17582,7 +18161,7 @@ class DescribeVpcFirewallListRequest(TeaModel):
         self.peer_uid = peer_uid
         # The region ID of the VPC.
         # 
-        # > For more information about the regions, see [Supported regions](~~195657~~).
+        # > For more information about the regions, see [Supported regions](https://help.aliyun.com/document_detail/195657.html).
         self.region_no = region_no
         # The instance ID of the VPC firewall.
         self.vpc_firewall_id = vpc_firewall_id
@@ -18241,6 +18820,8 @@ class DescribeVpcFirewallPolicyPriorUsedRequest(TeaModel):
         # - If the VPC firewall is used to protect an Express Connect circuit, the value of this parameter is the ID of the VPC firewall instance.  
         # 
         # Example: vfw-a42bbb7b887148c9****\
+        # 
+        # This parameter is required.
         self.vpc_firewall_id = vpc_firewall_id
 
     def validate(self):
@@ -18366,7 +18947,7 @@ class DescribeVpcListLiteRequest(TeaModel):
         self.lang = lang
         # The region ID of the VPC.
         # 
-        # >  For more information about Cloud Firewall supported regions, see [Supported regions](~~195657~~).
+        # >  For more information about Cloud Firewall supported regions, see [Supported regions](https://help.aliyun.com/document_detail/195657.html).
         self.region_no = region_no
         # The source IP address of the request.
         self.source_ip = source_ip
@@ -18762,6 +19343,8 @@ class DescribeVulnerabilityProtectedListRequest(TeaModel):
         # The number of the page to return. Default value: 1.
         self.current_page = current_page
         # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The language of the content within the response. Valid values:
         # 
@@ -18782,6 +19365,8 @@ class DescribeVulnerabilityProtectedListRequest(TeaModel):
         # The IP address of the access source.
         self.source_ip = source_ip
         # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # 
+        # This parameter is required.
         self.start_time = start_time
         # The type of the user. Set the value to **buy**, which indicates user of a paid edition of Cloud Firewall.
         self.user_type = user_type
@@ -18912,7 +19497,7 @@ class DescribeVulnerabilityProtectedListResponseBodyVulnListResourceList(TeaMode
         self.intranet_ip = intranet_ip
         # The region ID of your Cloud Firewall.
         # 
-        # >  For more information about Cloud Firewall supported regions, see [Supported regions](~~195657~~).
+        # >  For more information about Cloud Firewall supported regions, see [Supported regions](https://help.aliyun.com/document_detail/195657.html).
         self.region_id = region_id
         # The ID of the instance.
         self.resource_id = resource_id
@@ -19366,12 +19951,18 @@ class ModifyAddressBookRequest(TeaModel):
         # *   **0**: no
         self.auto_add_tag_ecs = auto_add_tag_ecs
         # The description of the address book.
+        # 
+        # This parameter is required.
         self.description = description
         # The name of the address book.
+        # 
+        # This parameter is required.
         self.group_name = group_name
         # The ID of the address book.
         # 
-        # >  To modify the address book, you must provide the ID of the address book. You can call the [DescribeAddressBook](~~138869~~) operation to query the ID.
+        # >  To modify the address book, you must provide the ID of the address book. You can call the [DescribeAddressBook](https://help.aliyun.com/document_detail/138869.html) operation to query the ID.
+        # 
+        # This parameter is required.
         self.group_uuid = group_uuid
         # The language of the content within the request and response. Valid values:
         # 
@@ -19548,10 +20139,14 @@ class ModifyControlPolicyRequest(TeaModel):
         # *   **accept**: allows the traffic.
         # *   **drop**: denies the traffic.
         # *   **log**: monitors the traffic.
+        # 
+        # This parameter is required.
         self.acl_action = acl_action
         # The UUID of the access control policy.
         # 
-        # >  To modify an access control policy, you must specify the UUID of the policy. You can call the [DescribeControlPolicy](~~138866~~) interface to query the UUID.
+        # >  To modify an access control policy, you must specify the UUID of the policy. You can call the [DescribeControlPolicy](https://help.aliyun.com/document_detail/138866.html) interface to query the UUID.
+        # 
+        # This parameter is required.
         self.acl_uuid = acl_uuid
         # The type of the application that the access control policy supports. Valid values:
         # 
@@ -19575,6 +20170,8 @@ class ModifyControlPolicyRequest(TeaModel):
         # The application names.
         self.application_name_list = application_name_list
         # The description of the access control policy.
+        # 
+        # This parameter is required.
         self.description = description
         # The destination port in the access control policy.
         self.dest_port = dest_port
@@ -19589,8 +20186,10 @@ class ModifyControlPolicyRequest(TeaModel):
         # 
         # *   If **DestinationType** is set to net, the value of **Destination** is a CIDR block. Example: 1.2.XX.XX/24.
         # *   If **DestinationType** is set to group, the value of **Destination** is an address book. Example: db_group.
-        # *   If **DestinationType** is set to domain, the value of **Destination** is a domain name. Example: \*.aliyuncs.com.
-        # *   If **DestinationType** is set to location, the value of **Destination** is a location. For more information about the location codes, see the "AddControlPolicy" topic. Example: \["BJ11", "ZB"].
+        # *   If **DestinationType** is set to domain, the value of **Destination** is a domain name. Example: \\*.aliyuncs.com.
+        # *   If **DestinationType** is set to location, the value of **Destination** is a location. For more information about the location codes, see the "AddControlPolicy" topic. Example: ["BJ11", "ZB"].
+        # 
+        # This parameter is required.
         self.destination = destination
         # The type of the destination address in the access control policy. Valid values:
         # 
@@ -19598,11 +20197,15 @@ class ModifyControlPolicyRequest(TeaModel):
         # *   **group**: address book
         # *   **domain**: domain name
         # *   **location**: location
+        # 
+        # This parameter is required.
         self.destination_type = destination_type
         # The direction of the traffic to which the access control policy applies. Valid values:
         # 
         # *   **in**: inbound traffic
         # *   **out**: outbound traffic
+        # 
+        # This parameter is required.
         self.direction = direction
         # The time when the access control policy stops taking effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes later than the value of StartTime.
         # 
@@ -19621,6 +20224,8 @@ class ModifyControlPolicyRequest(TeaModel):
         # *   **ICMP**\
         # 
         # >  The value *ANY* indicates all types of applications.
+        # 
+        # This parameter is required.
         self.proto = proto
         # The status of the access control policy. Valid values:
         # 
@@ -19629,12 +20234,12 @@ class ModifyControlPolicyRequest(TeaModel):
         self.release = release
         # The days of a week or of a month on which the access control policy takes effect.
         # 
-        # *   If you set RepeatType to `Permanent`, `None`, or `Daily`, the value of this parameter is an empty array. Example: \[]
-        # *   If you set RepeatType to Weekly, you must specify this parameter. Example: \[0, 6]
+        # *   If you set RepeatType to `Permanent`, `None`, or `Daily`, the value of this parameter is an empty array. Example: []
+        # *   If you set RepeatType to Weekly, you must specify this parameter. Example: [0, 6]
         # 
         # >  If you set RepeatType to Weekly, the fields in the value of this parameter cannot be repeated.
         # 
-        # *   If you set RepeatType to `Monthly`, you must specify this parameter. Example: \[1, 31]
+        # *   If you set RepeatType to `Monthly`, you must specify this parameter. Example: [1, 31]
         # 
         # >  If you set RepeatType to Monthly, the fields in the value of this parameter cannot be repeated.
         self.repeat_days = repeat_days
@@ -19658,13 +20263,17 @@ class ModifyControlPolicyRequest(TeaModel):
         # 
         # *   If **SourceType** is set to net, the value of **Source** is a CIDR block. Example: 1.2.XX.XX/24.
         # *   If **SourceType** is set to group, the value of **Source** is an address book. Example: db_group.
-        # *   If **SourceType** is set to location, the value of **Source** is a location. For more information about the location codes, see the "AddControlPolicy" topic. Example: \["BJ11", "ZB"]
+        # *   If **SourceType** is set to location, the value of **Source** is a location. For more information about the location codes, see the "AddControlPolicy" topic. Example: ["BJ11", "ZB"]
+        # 
+        # This parameter is required.
         self.source = source
         # The type of the source address in the access control policy. Valid values:
         # 
         # *   **net**: CIDR block
         # *   **group**: address book
         # *   **location**: location
+        # 
+        # This parameter is required.
         self.source_type = source_type
         # The time when the access control policy starts to take effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes earlier than the value of EndTime.
         # 
@@ -19857,6 +20466,8 @@ class ModifyControlPolicyPositionRequest(TeaModel):
         # 
         # *   in: inbound traffic
         # *   out: outbound traffic
+        # 
+        # This parameter is required.
         self.direction = direction
         # The language of the content within the response. Valid values:
         # 
@@ -19865,9 +20476,13 @@ class ModifyControlPolicyPositionRequest(TeaModel):
         self.lang = lang
         # The new priority of the IPv4 access control policy. You must specify a numeric value for this parameter. The value 1 indicates the highest priority. A larger value indicates a lower priority.
         # 
-        # >  The new priority cannot exceed the priority range of the IPv4 access control policy. Otherwise, an error occurs when you call this operation. Before you call this operation, we recommend that you use the [DescribePolicyPriorUsed](~~138862~~) operation to query the priority range of the IPv4 access control policy in the specified direction.
+        # >  The new priority cannot exceed the priority range of the IPv4 access control policy. Otherwise, an error occurs when you call this operation. Before you call this operation, we recommend that you use the [DescribePolicyPriorUsed](https://help.aliyun.com/document_detail/138862.html) operation to query the priority range of the IPv4 access control policy in the specified direction.
+        # 
+        # This parameter is required.
         self.new_order = new_order
         # The original priority of the IPv4 access control policy.
+        # 
+        # This parameter is required.
         self.old_order = old_order
         # The source IP address of the request.
         self.source_ip = source_ip
@@ -19992,13 +20607,16 @@ class ModifyDefaultIPSConfigRequest(TeaModel):
         source_ip: str = None,
     ):
         self.ai_rules = ai_rules
+        # This parameter is required.
         self.basic_rules = basic_rules
+        # This parameter is required.
         self.cti_rules = cti_rules
         self.enable_all_patch = enable_all_patch
         self.enable_default = enable_default
         self.lang = lang
         self.patch_rules = patch_rules
         self.rule_class = rule_class
+        # This parameter is required.
         self.run_mode = run_mode
         self.source_ip = source_ip
 
@@ -20267,8 +20885,12 @@ class ModifyInstanceMemberAttributesRequestMembers(TeaModel):
         member_uid: int = None,
     ):
         # The remarks of the member in Cloud Firewall.
+        # 
+        # This parameter is required.
         self.member_desc = member_desc
         # The UID of the member in Cloud Firewall.
+        # 
+        # This parameter is required.
         self.member_uid = member_uid
 
     def validate(self):
@@ -20301,6 +20923,8 @@ class ModifyInstanceMemberAttributesRequest(TeaModel):
         members: List[ModifyInstanceMemberAttributesRequestMembers] = None,
     ):
         # The members that to be modified.
+        # 
+        # This parameter is required.
         self.members = members
 
     def validate(self):
@@ -20432,16 +21056,22 @@ class ModifyNatFirewallControlPolicyRequest(TeaModel):
         # *   **accept**: allows the traffic.
         # *   **drop**: denies the traffic.
         # *   **log**: monitors the traffic.
+        # 
+        # This parameter is required.
         self.acl_action = acl_action
         # The UUID of the access control policy.
         # 
         # To modify the configurations of an access control policy, you must provide the UUID of the policy. You can call the DescribeNatFirewallControlPolicy operation to query the UUIDs of access control policies.
+        # 
+        # This parameter is required.
         self.acl_uuid = acl_uuid
         # The name of the application.
         self.application_name_list = application_name_list
         # The description of the access control policy. Fuzzy match is supported.
         # 
         # > If you do not specify this parameter, the descriptions of all policies are queried.
+        # 
+        # This parameter is required.
         self.description = description
         # The destination port in the access control policy.
         # 
@@ -20458,21 +21088,25 @@ class ModifyNatFirewallControlPolicyRequest(TeaModel):
         # 
         # *   If **DestinationType** is set to net, the value of **Destination** is a CIDR block. Example: 1.2.3.4/24
         # *   If **DestinationType** is set to group, the value of **Destination** is an address book. Example: db_group
-        # *   If **DestinationType** is set to domain, the value of **Destination** is a domain name. Example: \*.aliyuncs.com
-        # *   If **DestinationType** is set to location, the value of **Destination** is a location. For more information about the location codes, see the "AddControlPolicy" topic. Example: \["BJ11", "ZB"]
+        # *   If **DestinationType** is set to domain, the value of **Destination** is a domain name. Example: \\*.aliyuncs.com
+        # *   If **DestinationType** is set to location, the value of **Destination** is a location. For more information about the location codes, see the "AddControlPolicy" topic. Example: ["BJ11", "ZB"]
+        # 
+        # This parameter is required.
         self.destination = destination
         # The type of the destination address in the access control policy. Valid values:
         # 
         # *   **net**: CIDR block
         # *   **group**: address book
         # *   **domain**: domain name
-        # *   **location**\
+        # *   **location**: destination location
+        # 
+        # This parameter is required.
         self.destination_type = destination_type
         # The direction of the traffic to which the access control policy applies.
         # 
         # *   Set the value to **out**.
         self.direction = direction
-        # The domain name resolution method of the access control policy. By default, an access control policy is enabled after it is created. Valid values:
+        # The domain name resolution method of the access control policy. Valid values:
         # 
         # *   **0**: Fully qualified domain name (FQDN)-based resolution
         # *   **1**: Domain Name System (DNS)-based dynamic resolution
@@ -20488,6 +21122,8 @@ class ModifyNatFirewallControlPolicyRequest(TeaModel):
         # *   **en**: English
         self.lang = lang
         # The ID of the NAT gateway.
+        # 
+        # This parameter is required.
         self.nat_gateway_id = nat_gateway_id
         # The protocol type supported by the access control policy. Valid values:
         # 
@@ -20497,6 +21133,8 @@ class ModifyNatFirewallControlPolicyRequest(TeaModel):
         # *   **ICMP**\
         # 
         # > The value **ANY** indicates all types of protocols.
+        # 
+        # This parameter is required.
         self.proto = proto
         # The status of the access control policy. Valid values:
         # 
@@ -20505,12 +21143,12 @@ class ModifyNatFirewallControlPolicyRequest(TeaModel):
         self.release = release
         # The days of a week or of a month on which the access control policy takes effect.
         # 
-        # *   If RepeatType is set to `Permanent`, `None`, or `Daily`, RepeatDays is left empty. Example: \[].
-        # *   If RepeatType is set to Weekly, RepeatDays must be specified. Example: \[0, 6].
+        # *   If RepeatType is set to `Permanent`, `None`, or `Daily`, RepeatDays is left empty. Example: [].
+        # *   If RepeatType is set to Weekly, RepeatDays must be specified. Example: [0, 6].
         # 
         # >  If RepeatType is set to Weekly, the fields in the value of RepeatDays cannot be repeated.
         # 
-        # *   If RepeatType is set to `Monthly`, RepeatDays must be specified. Example: \[1, 31].
+        # *   If RepeatType is set to `Monthly`, RepeatDays must be specified. Example: [1, 31].
         # 
         # >  If RepeatType is set to Monthly, the fields in the value of RepeatDays cannot be repeated.
         self.repeat_days = repeat_days
@@ -20534,11 +21172,15 @@ class ModifyNatFirewallControlPolicyRequest(TeaModel):
         # 
         # *   If **SourceType** is set to `net`, the value of this parameter is a CIDR block. Example: 10.2.XX.XX/24.
         # *   If **SourceType** is set to `group`, the value of this parameter is an address book name. Example: db_group.
+        # 
+        # This parameter is required.
         self.source = source
         # The type of the source address in the access control policy. Valid values:
         # 
         # *   **net**: CIDR block
         # *   **group**: address book
+        # 
+        # This parameter is required.
         self.source_type = source_type
         # The time when the access control policy starts to take effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes earlier than the value of EndTime.
         # 
@@ -20732,6 +21374,8 @@ class ModifyNatFirewallControlPolicyPositionRequest(TeaModel):
         new_order: int = None,
     ):
         # The UUID of the access control policy.
+        # 
+        # This parameter is required.
         self.acl_uuid = acl_uuid
         # The direction of the traffic to which the access control policy applies.
         # 
@@ -20743,12 +21387,16 @@ class ModifyNatFirewallControlPolicyPositionRequest(TeaModel):
         # *   **en**: English
         self.lang = lang
         # The ID of the NAT gateway.
+        # 
+        # This parameter is required.
         self.nat_gateway_id = nat_gateway_id
         # The new priority of the IPv4 access control policy. You must specify a numeric value for this parameter. The value 1 indicates the highest priority. A larger value indicates a lower priority.
         # 
         # > Make sure that the value of this parameter is within the priority range of existing IPv4 access control policies. Otherwise, an error occurs when you call this operation.
         # 
         # Before you call this operation, we recommend that you call the DescribeNatFirewallPolicyPriorUsed operation to query the priority range of the IPv4 access control policies in the specified traffic direction.
+        # 
+        # This parameter is required.
         self.new_order = new_order
 
     def validate(self):
@@ -20867,6 +21515,8 @@ class ModifyPolicyAdvancedConfigRequest(TeaModel):
         # 
         # *   **on**: enables the strict mode.
         # *   **off**: disables the strict mode.
+        # 
+        # This parameter is required.
         self.internet_switch = internet_switch
         # The natural language of the request and response. Valid values:
         # 
@@ -21157,10 +21807,12 @@ class ModifyTrFirewallV2RoutePolicyScopeRequest(TeaModel):
         tr_firewall_route_policy_id: str = None,
     ):
         self.dest_candidate_list = dest_candidate_list
+        # This parameter is required.
         self.firewall_id = firewall_id
         self.lang = lang
         self.should_recover = should_recover
         self.src_candidate_list = src_candidate_list
+        # This parameter is required.
         self.tr_firewall_route_policy_id = tr_firewall_route_policy_id
 
     def validate(self):
@@ -21231,10 +21883,12 @@ class ModifyTrFirewallV2RoutePolicyScopeShrinkRequest(TeaModel):
         tr_firewall_route_policy_id: str = None,
     ):
         self.dest_candidate_list_shrink = dest_candidate_list_shrink
+        # This parameter is required.
         self.firewall_id = firewall_id
         self.lang = lang
         self.should_recover = should_recover
         self.src_candidate_list_shrink = src_candidate_list_shrink
+        # This parameter is required.
         self.tr_firewall_route_policy_id = tr_firewall_route_policy_id
 
     def validate(self):
@@ -21499,9 +22153,13 @@ class ModifyVpcFirewallCenConfigureRequest(TeaModel):
         self.member_uid = member_uid
         # The instance ID of the VPC firewall.
         # 
-        # > You can call the [DescribeVpcFirewallCenList](~~345777~~) operation to query the instance IDs of VPC firewalls.
+        # > You can call the [DescribeVpcFirewallCenList](https://help.aliyun.com/document_detail/345777.html) operation to query the instance IDs of VPC firewalls.
+        # 
+        # This parameter is required.
         self.vpc_firewall_id = vpc_firewall_id
         # The instance name of the VPC firewall.
+        # 
+        # This parameter is required.
         self.vpc_firewall_name = vpc_firewall_name
 
     def validate(self):
@@ -21617,6 +22275,8 @@ class ModifyVpcFirewallCenSwitchStatusRequest(TeaModel):
         # 
         # *   **open**: yes
         # *   **close**: no
+        # 
+        # This parameter is required.
         self.firewall_switch = firewall_switch
         # The language of the content within the request and response. Valid values:
         # 
@@ -21627,7 +22287,9 @@ class ModifyVpcFirewallCenSwitchStatusRequest(TeaModel):
         self.member_uid = member_uid
         # The instance ID of the VPC firewall.
         # 
-        # > You can call the [DescribeVpcFirewallCenList](~~345777~~) operation to query the instance IDs of VPC firewalls.
+        # > You can call the [DescribeVpcFirewallCenList](https://help.aliyun.com/document_detail/345777.html) operation to query the instance IDs of VPC firewalls.
+        # 
+        # This parameter is required.
         self.vpc_firewall_id = vpc_firewall_id
 
     def validate(self):
@@ -21751,7 +22413,9 @@ class ModifyVpcFirewallConfigureRequest(TeaModel):
         # *   **RouteTableId**: the ID of the route table for the local VPC.
         # *   **RouteEntryList**: The value is a JSON string that contains the DestinationCidr and NextHopInstanceId parameters. The DestinationCidr parameter indicates the destination CIDR block of the local VPC. The NextHopInstanceId parameter indicates the instance ID of the next hop for the local VPC.
         # 
-        # > You can call the [DescribeVpcFirewallDetail](~~342892~~) operation to query the CIDR blocks of local VPCs for VPC firewalls.
+        # > You can call the [DescribeVpcFirewallDetail](https://help.aliyun.com/document_detail/342892.html) operation to query the CIDR blocks of local VPCs for VPC firewalls.
+        # 
+        # This parameter is required.
         self.local_vpc_cidr_table_list = local_vpc_cidr_table_list
         # The UID of the member that is managed by your Alibaba Cloud account.
         self.member_uid = member_uid
@@ -21760,13 +22424,19 @@ class ModifyVpcFirewallConfigureRequest(TeaModel):
         # *   **RouteTableId**: the ID of the route table for the peer VPC.
         # *   **RouteEntryList**: The value is a JSON string that contains the DestinationCidr and NextHopInstanceId parameters. The DestinationCidr parameter indicates the destination CIDR block of the peer VPC. The NextHopInstanceId parameter indicates the instance ID of the next hop for the peer VPC.
         # 
-        # > You can call the [DescribeVpcFirewallDetail](~~342892~~) operation to query the CIDR blocks of peer VPCs for VPC firewalls.
+        # > You can call the [DescribeVpcFirewallDetail](https://help.aliyun.com/document_detail/342892.html) operation to query the CIDR blocks of peer VPCs for VPC firewalls.
+        # 
+        # This parameter is required.
         self.peer_vpc_cidr_table_list = peer_vpc_cidr_table_list
         # The instance ID of the VPC firewall.
         # 
-        # > You can call the [DescribeVpcFirewallList](~~342932~~) operation to query the instance IDs of VPC firewalls.
+        # > You can call the [DescribeVpcFirewallList](https://help.aliyun.com/document_detail/342932.html) operation to query the instance IDs of VPC firewalls.
+        # 
+        # This parameter is required.
         self.vpc_firewall_id = vpc_firewall_id
         # The instance name of the VPC firewall.
+        # 
+        # This parameter is required.
         self.vpc_firewall_name = vpc_firewall_name
 
     def validate(self):
@@ -21911,10 +22581,14 @@ class ModifyVpcFirewallControlPolicyRequest(TeaModel):
         # *   **accept**: allows the traffic.
         # *   **drop**: blocks the traffic.
         # *   **log**: monitors the traffic.
+        # 
+        # This parameter is required.
         self.acl_action = acl_action
         # The unique ID of the access control policy.
         # 
-        # If you want to modify the configurations of an access control policy, you must provide the unique ID of the policy. You can call the [DescribeVpcFirewallControlPolicy](~~159758~~) operation to query the ID.
+        # If you want to modify the configurations of an access control policy, you must provide the unique ID of the policy. You can call the [DescribeVpcFirewallControlPolicy](https://help.aliyun.com/document_detail/159758.html) operation to query the ID.
+        # 
+        # This parameter is required.
         self.acl_uuid = acl_uuid
         # The application type used in the access control policy.
         # 
@@ -21939,6 +22613,8 @@ class ModifyVpcFirewallControlPolicyRequest(TeaModel):
         # The application names.
         self.application_name_list = application_name_list
         # The description of the access control policy.
+        # 
+        # This parameter is required.
         self.description = description
         # The destination port in the access control policy.
         self.dest_port = dest_port
@@ -21961,7 +22637,9 @@ class ModifyVpcFirewallControlPolicyRequest(TeaModel):
         # 
         # *   If **DestinationType** is set to `domain`, the value of this parameter must be a domain name.
         # 
-        #     Example: \*.aliyuncs.com
+        #     Example: \\*.aliyuncs.com
+        # 
+        # This parameter is required.
         self.destination = destination
         # The type of the destination address in the access control policy.
         # 
@@ -21970,6 +22648,8 @@ class ModifyVpcFirewallControlPolicyRequest(TeaModel):
         # *   **net**: CIDR block
         # *   **group**: address book
         # *   **domain**: domain name
+        # 
+        # This parameter is required.
         self.destination_type = destination_type
         # The time when the access control policy stops taking effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes later than the value of StartTime.
         # 
@@ -21990,6 +22670,8 @@ class ModifyVpcFirewallControlPolicyRequest(TeaModel):
         # *   TCP
         # *   UDP
         # *   ICMP
+        # 
+        # This parameter is required.
         self.proto = proto
         # Specifies whether to enable the access control policy. By default, an access control policy is enabled after the policy is created. Valid values:
         # 
@@ -21998,12 +22680,12 @@ class ModifyVpcFirewallControlPolicyRequest(TeaModel):
         self.release = release
         # The days of a week or of a month on which the access control policy takes effect.
         # 
-        # *   If you set RepeatType to `Permanent`, `None`, or `Daily`, the value of this parameter is an empty array. Example: \[].
-        # *   If you set RepeatType to Weekly, you must specify this parameter. Example: \[0, 6].
+        # *   If you set RepeatType to `Permanent`, `None`, or `Daily`, the value of this parameter is an empty array. Example: [].
+        # *   If you set RepeatType to Weekly, you must specify this parameter. Example: [0, 6].
         # 
         # >  If you set RepeatType to Weekly, the fields in the value of this parameter cannot be repeated.
         # 
-        # *   If you set RepeatType to `Monthly`, you must specify this parameter. Example: \[1, 31].
+        # *   If you set RepeatType to `Monthly`, you must specify this parameter. Example: [1, 31].
         # 
         # >  If you set RepeatType to Monthly, the fields in the value of this parameter cannot be repeated.
         self.repeat_days = repeat_days
@@ -22034,6 +22716,8 @@ class ModifyVpcFirewallControlPolicyRequest(TeaModel):
         # *   If **SourceType** is set to `group`, the value of this parameter must be an address book name.
         # 
         #     Example: db_group
+        # 
+        # This parameter is required.
         self.source = source
         # The type of the source address in the access control policy.
         # 
@@ -22041,20 +22725,24 @@ class ModifyVpcFirewallControlPolicyRequest(TeaModel):
         # 
         # *   **net**: CIDR block
         # *   **group**: address book
+        # 
+        # This parameter is required.
         self.source_type = source_type
         # The time when the access control policy starts to take effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes earlier than the value of EndTime.
         # 
         # >  If you set RepeatType to Permanent, leave this parameter empty. If you set RepeatType to None, Daily, Weekly, or Monthly, you must specify this parameter.
         self.start_time = start_time
-        # The instance ID of the VPC firewall. You can call the [DescribeVpcFirewallAclGroupList](~~159760~~) operation to query the ID.
+        # The instance ID of the VPC firewall. You can call the [DescribeVpcFirewallAclGroupList](https://help.aliyun.com/document_detail/159760.html) operation to query the ID.
         # 
         # *   If the VPC firewall is used to protect a CEN instance, the value of this parameter must be the ID of the CEN instance.
         # 
-        #     Example: cen-ervw0g12b5jbw\*\*\*\*\
+        #     Example: cen-ervw0g12b5jbw\\*\\*\\*\\*\
         # 
         # *   If the VPC firewall is used to protect an Express Connect circuit, the value of this parameter must be the instance ID of the VPC firewall.
         # 
-        #     Example: vfw-a42bbb7b887148c9\*\*\*\*\
+        #     Example: vfw-a42bbb7b887148c9\\*\\*\\*\\*\
+        # 
+        # This parameter is required.
         self.vpc_firewall_id = vpc_firewall_id
 
     def validate(self):
@@ -22241,7 +22929,7 @@ class ModifyVpcFirewallControlPolicyPositionRequest(TeaModel):
     ):
         # The UUID of the access control policy.
         # 
-        # If you want to modify the configurations of an access control policy, you must provide the UUID of the policy. You can call the [DescribeVpcFirewallControlPolicy](~~159758~~) operation to query the UUID.
+        # If you want to modify the configurations of an access control policy, you must provide the UUID of the policy. You can call the [DescribeVpcFirewallControlPolicy](https://help.aliyun.com/document_detail/159758.html) operation to query the UUID.
         self.acl_uuid = acl_uuid
         # The language of the content within the request and the response.
         # 
@@ -22251,22 +22939,26 @@ class ModifyVpcFirewallControlPolicyPositionRequest(TeaModel):
         # *   **en**: English
         self.lang = lang
         # The new priority of the access control policy.
+        # 
+        # This parameter is required.
         self.new_order = new_order
         # The original priority of the access control policy.
         # 
         # > This parameter is not recommended. We recommend that you use the AclUuid parameter to specify the policy that you want to modify.
         self.old_order = old_order
-        # The ID of the group to which the access control policy belongs. You can call the [DescribeVpcFirewallAclGroupList](~~159760~~) operation to query the ID.
+        # The ID of the group to which the access control policy belongs. You can call the [DescribeVpcFirewallAclGroupList](https://help.aliyun.com/document_detail/159760.html) operation to query the ID.
         # 
         # Valid values:
         # 
         # *   If the VPC firewall is used to protect a CEN instance, the value of this parameter must be the ID of the CEN instance.
         # 
-        #     Example: cen-ervw0g12b5jbw\*\*\*\*\
+        #     Example: cen-ervw0g12b5jbw\\*\\*\\*\\*\
         # 
         # *   If the VPC firewall is used to protect an Express Connect circuit, the value of this parameter must be the instance ID of the VPC firewall.
         # 
-        #     Example: vfw-a42bbb7b887148c9\*\*\*\*\
+        #     Example: vfw-a42bbb7b887148c9\\*\\*\\*\\*\
+        # 
+        # This parameter is required.
         self.vpc_firewall_id = vpc_firewall_id
 
     def validate(self):
@@ -22389,11 +23081,15 @@ class ModifyVpcFirewallDefaultIPSConfigRequest(TeaModel):
         # 
         # *   **1**: yes
         # *   **0**: no
+        # 
+        # This parameter is required.
         self.basic_rules = basic_rules
         # Specifies whether to enable virtual patching. Valid values:
         # 
         # *   **1**: yes
         # *   **0**: no
+        # 
+        # This parameter is required.
         self.enable_all_patch = enable_all_patch
         # The language of the content within the request and response. Valid values:
         # 
@@ -22406,13 +23102,17 @@ class ModifyVpcFirewallDefaultIPSConfigRequest(TeaModel):
         # 
         # *   **1**: block mode
         # *   **0**: monitor mode
+        # 
+        # This parameter is required.
         self.run_mode = run_mode
         # The source IP address of the request.
         self.source_ip = source_ip
         # The instance ID of the VPC firewall. Valid values:
         # 
-        # *   If the VPC firewall protects mutual access traffic between a VPC and a specified network instance that is attached to a Cloud Enterprise Network (CEN) instance, the value of this parameter is the ID of the CEN instance. The network instance can be a VPC, a virtual border router (VBR), or a Cloud Connect Network (CCN) instance. You can call the [DescribeVpcFirewallCenList](~~345777~~) operation to query the IDs of CEN instances.
-        # *   If the VPC firewall protects mutual access traffic between two VPCs that are connected by using an Express Connect circuit, the value of this parameter is the ID of the VPC firewall. You can call the [DescribeVpcFirewallList](~~342932~~) operation to query the instance IDs of VPC firewalls.
+        # *   If the VPC firewall protects mutual access traffic between a VPC and a specified network instance that is attached to a Cloud Enterprise Network (CEN) instance, the value of this parameter is the ID of the CEN instance. The network instance can be a VPC, a virtual border router (VBR), or a Cloud Connect Network (CCN) instance. You can call the [DescribeVpcFirewallCenList](https://help.aliyun.com/document_detail/345777.html) operation to query the IDs of CEN instances.
+        # *   If the VPC firewall protects mutual access traffic between two VPCs that are connected by using an Express Connect circuit, the value of this parameter is the ID of the VPC firewall. You can call the [DescribeVpcFirewallList](https://help.aliyun.com/document_detail/342932.html) operation to query the instance IDs of VPC firewalls.
+        # 
+        # This parameter is required.
         self.vpc_firewall_id = vpc_firewall_id
 
     def validate(self):
@@ -22547,17 +23247,23 @@ class ModifyVpcFirewallIPSWhitelistRequest(TeaModel):
         # 
         # *   **1**: user-defined
         # *   **2**: address book
+        # 
+        # This parameter is required.
         self.list_type = list_type
         # The entry in the list.
         self.list_value = list_value
         # The UID of the member that is managed by your Alibaba Cloud account.
         self.member_uid = member_uid
         # The instance ID of the VPC firewall.
+        # 
+        # This parameter is required.
         self.vpc_firewall_id = vpc_firewall_id
         # The type of the whitelist. Valid values:
         # 
         # *   **1**: destination
         # *   **2**: source
+        # 
+        # This parameter is required.
         self.white_type = white_type
 
     def validate(self):
@@ -22681,6 +23387,8 @@ class ModifyVpcFirewallSwitchStatusRequest(TeaModel):
         # 
         # *   **open**: yes
         # *   **close**: no
+        # 
+        # This parameter is required.
         self.firewall_switch = firewall_switch
         # The language of the content within the request and response. Valid values:
         # 
@@ -22691,7 +23399,9 @@ class ModifyVpcFirewallSwitchStatusRequest(TeaModel):
         self.member_uid = member_uid
         # The instance ID of the VPC firewall.
         # 
-        # > You can call the [DescribeVpcFirewallList](~~342932~~) operation to query the instance IDs of VPC firewalls.
+        # > You can call the [DescribeVpcFirewallList](https://help.aliyun.com/document_detail/342932.html) operation to query the instance IDs of VPC firewalls.
+        # 
+        # This parameter is required.
         self.vpc_firewall_id = vpc_firewall_id
 
     def validate(self):
@@ -23487,6 +24197,8 @@ class ResetNatFirewallRuleHitCountRequest(TeaModel):
         nat_gateway_id: str = None,
     ):
         # The UUID of the access control policy.
+        # 
+        # This parameter is required.
         self.acl_uuid = acl_uuid
         # The language of the content within the request and response. Valid values:
         # 
@@ -23600,6 +24312,8 @@ class ResetVpcFirewallRuleHitCountRequest(TeaModel):
         lang: str = None,
     ):
         # The ID of the access control policy.
+        # 
+        # This parameter is required.
         self.acl_uuid = acl_uuid
         # The natural language of the request and response. 
         # 
@@ -23698,6 +24412,115 @@ class ResetVpcFirewallRuleHitCountResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ResetVpcFirewallRuleHitCountResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SwitchSecurityProxyRequest(TeaModel):
+    def __init__(
+        self,
+        lang: str = None,
+        proxy_id: str = None,
+        switch: str = None,
+    ):
+        self.lang = lang
+        # This parameter is required.
+        self.proxy_id = proxy_id
+        # This parameter is required.
+        self.switch = switch
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.proxy_id is not None:
+            result['ProxyId'] = self.proxy_id
+        if self.switch is not None:
+            result['Switch'] = self.switch
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('ProxyId') is not None:
+            self.proxy_id = m.get('ProxyId')
+        if m.get('Switch') is not None:
+            self.switch = m.get('Switch')
+        return self
+
+
+class SwitchSecurityProxyResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class SwitchSecurityProxyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SwitchSecurityProxyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SwitchSecurityProxyResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

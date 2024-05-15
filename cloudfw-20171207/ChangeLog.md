@@ -1,3 +1,9 @@
+2024-05-15 Version: 3.6.0
+- Support API DeleteSecurityProxy.
+- Support API DescribeNatFirewallList.
+- Support API SwitchSecurityProxy.
+
+
 2024-04-23 Version: 3.5.0
 - Support API CreateSecurityProxy.
 

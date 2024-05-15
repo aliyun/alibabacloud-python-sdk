@@ -51,7 +51,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.AddAddressBookResponse:
         """
-        You can call the AddAddressBook operation to create an address book for access control. The address book can be an IP address book, an ECS tag-based address book, a port address book, or a domain address book.
+        @summary Creates an address book for access control. Supported address book types are IP address books, Elastic Compute Service (ECS) tag-based address books, port address books, and domain address books. An ECS tag-based address book includes the public IP addresses of the ECS instances that have specific tags.
+        
+        @description You can call the AddAddressBook operation to create an address book for access control. The address book can be an IP address book, an ECS tag-based address book, a port address book, or a domain address book.
         ## [](#qps)Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -104,7 +106,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.AddAddressBookResponse:
         """
-        You can call the AddAddressBook operation to create an address book for access control. The address book can be an IP address book, an ECS tag-based address book, a port address book, or a domain address book.
+        @summary Creates an address book for access control. Supported address book types are IP address books, Elastic Compute Service (ECS) tag-based address books, port address books, and domain address books. An ECS tag-based address book includes the public IP addresses of the ECS instances that have specific tags.
+        
+        @description You can call the AddAddressBook operation to create an address book for access control. The address book can be an IP address book, an ECS tag-based address book, a port address book, or a domain address book.
         ## [](#qps)Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -156,7 +160,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.AddAddressBookRequest,
     ) -> cloudfw_20171207_models.AddAddressBookResponse:
         """
-        You can call the AddAddressBook operation to create an address book for access control. The address book can be an IP address book, an ECS tag-based address book, a port address book, or a domain address book.
+        @summary Creates an address book for access control. Supported address book types are IP address books, Elastic Compute Service (ECS) tag-based address books, port address books, and domain address books. An ECS tag-based address book includes the public IP addresses of the ECS instances that have specific tags.
+        
+        @description You can call the AddAddressBook operation to create an address book for access control. The address book can be an IP address book, an ECS tag-based address book, a port address book, or a domain address book.
         ## [](#qps)Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -171,7 +177,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.AddAddressBookRequest,
     ) -> cloudfw_20171207_models.AddAddressBookResponse:
         """
-        You can call the AddAddressBook operation to create an address book for access control. The address book can be an IP address book, an ECS tag-based address book, a port address book, or a domain address book.
+        @summary Creates an address book for access control. Supported address book types are IP address books, Elastic Compute Service (ECS) tag-based address books, port address books, and domain address books. An ECS tag-based address book includes the public IP addresses of the ECS instances that have specific tags.
+        
+        @description You can call the AddAddressBook operation to create an address book for access control. The address book can be an IP address book, an ECS tag-based address book, a port address book, or a domain address book.
         ## [](#qps)Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -187,7 +195,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.AddControlPolicyResponse:
         """
-        You can call the AddControlPolicy operation to create an access control policy to allow, block, or monitor traffic that reaches Cloud Firewall.
+        @summary Creates an access control policy.
+        
+        @description You can call the AddControlPolicy operation to create an access control policy to allow, block, or monitor traffic that reaches Cloud Firewall.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -270,7 +280,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.AddControlPolicyResponse:
         """
-        You can call the AddControlPolicy operation to create an access control policy to allow, block, or monitor traffic that reaches Cloud Firewall.
+        @summary Creates an access control policy.
+        
+        @description You can call the AddControlPolicy operation to create an access control policy to allow, block, or monitor traffic that reaches Cloud Firewall.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -352,7 +364,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.AddControlPolicyRequest,
     ) -> cloudfw_20171207_models.AddControlPolicyResponse:
         """
-        You can call the AddControlPolicy operation to create an access control policy to allow, block, or monitor traffic that reaches Cloud Firewall.
+        @summary Creates an access control policy.
+        
+        @description You can call the AddControlPolicy operation to create an access control policy to allow, block, or monitor traffic that reaches Cloud Firewall.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -367,7 +381,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.AddControlPolicyRequest,
     ) -> cloudfw_20171207_models.AddControlPolicyResponse:
         """
-        You can call the AddControlPolicy operation to create an access control policy to allow, block, or monitor traffic that reaches Cloud Firewall.
+        @summary Creates an access control policy.
+        
+        @description You can call the AddControlPolicy operation to create an access control policy to allow, block, or monitor traffic that reaches Cloud Firewall.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -383,7 +399,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.AddInstanceMembersResponse:
         """
-        You can call the AddInstanceMembers operation to add members to Cloud Firewall.
+        @summary Adds members to Cloud Firewall.
+        
+        @description You can call the AddInstanceMembers operation to add members to Cloud Firewall.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -420,7 +438,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.AddInstanceMembersResponse:
         """
-        You can call the AddInstanceMembers operation to add members to Cloud Firewall.
+        @summary Adds members to Cloud Firewall.
+        
+        @description You can call the AddInstanceMembers operation to add members to Cloud Firewall.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -456,7 +476,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.AddInstanceMembersRequest,
     ) -> cloudfw_20171207_models.AddInstanceMembersResponse:
         """
-        You can call the AddInstanceMembers operation to add members to Cloud Firewall.
+        @summary Adds members to Cloud Firewall.
+        
+        @description You can call the AddInstanceMembers operation to add members to Cloud Firewall.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -471,7 +493,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.AddInstanceMembersRequest,
     ) -> cloudfw_20171207_models.AddInstanceMembersResponse:
         """
-        You can call the AddInstanceMembers operation to add members to Cloud Firewall.
+        @summary Adds members to Cloud Firewall.
+        
+        @description You can call the AddInstanceMembers operation to add members to Cloud Firewall.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -487,7 +511,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.BatchCopyVpcFirewallControlPolicyResponse:
         """
-        You can call the BatchCopyVpcFirewallControlPolicy operation to copy all access control policies from a policy group of a source VPC firewall to a policy group of a destination VPC firewall.
+        @summary Copies all access control policies from a policy group of a source virtual private cloud (VPC) firewall to a policy group of a destination VPC firewall.
+        
+        @description You can call the BatchCopyVpcFirewallControlPolicy operation to copy all access control policies from a policy group of a source VPC firewall to a policy group of a destination VPC firewall.
         Before you call this operation, we recommend that you back up access control policies. For more information about how to back up an access control policy, see [Back up an access control policy](https://www.alibabacloud.com/help/en/cloud-firewall/latest/back-up-and-roll-back-an-access-control-policy).
         After you call this operation, all the access control policies in the policy group of the destination VPC firewall are replaced.
         The policy groups of the source VPC firewall and the destination VPC firewall must belong to the same Alibaba Cloud account.
@@ -533,7 +559,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.BatchCopyVpcFirewallControlPolicyResponse:
         """
-        You can call the BatchCopyVpcFirewallControlPolicy operation to copy all access control policies from a policy group of a source VPC firewall to a policy group of a destination VPC firewall.
+        @summary Copies all access control policies from a policy group of a source virtual private cloud (VPC) firewall to a policy group of a destination VPC firewall.
+        
+        @description You can call the BatchCopyVpcFirewallControlPolicy operation to copy all access control policies from a policy group of a source VPC firewall to a policy group of a destination VPC firewall.
         Before you call this operation, we recommend that you back up access control policies. For more information about how to back up an access control policy, see [Back up an access control policy](https://www.alibabacloud.com/help/en/cloud-firewall/latest/back-up-and-roll-back-an-access-control-policy).
         After you call this operation, all the access control policies in the policy group of the destination VPC firewall are replaced.
         The policy groups of the source VPC firewall and the destination VPC firewall must belong to the same Alibaba Cloud account.
@@ -578,7 +606,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.BatchCopyVpcFirewallControlPolicyRequest,
     ) -> cloudfw_20171207_models.BatchCopyVpcFirewallControlPolicyResponse:
         """
-        You can call the BatchCopyVpcFirewallControlPolicy operation to copy all access control policies from a policy group of a source VPC firewall to a policy group of a destination VPC firewall.
+        @summary Copies all access control policies from a policy group of a source virtual private cloud (VPC) firewall to a policy group of a destination VPC firewall.
+        
+        @description You can call the BatchCopyVpcFirewallControlPolicy operation to copy all access control policies from a policy group of a source VPC firewall to a policy group of a destination VPC firewall.
         Before you call this operation, we recommend that you back up access control policies. For more information about how to back up an access control policy, see [Back up an access control policy](https://www.alibabacloud.com/help/en/cloud-firewall/latest/back-up-and-roll-back-an-access-control-policy).
         After you call this operation, all the access control policies in the policy group of the destination VPC firewall are replaced.
         The policy groups of the source VPC firewall and the destination VPC firewall must belong to the same Alibaba Cloud account.
@@ -596,7 +626,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.BatchCopyVpcFirewallControlPolicyRequest,
     ) -> cloudfw_20171207_models.BatchCopyVpcFirewallControlPolicyResponse:
         """
-        You can call the BatchCopyVpcFirewallControlPolicy operation to copy all access control policies from a policy group of a source VPC firewall to a policy group of a destination VPC firewall.
+        @summary Copies all access control policies from a policy group of a source virtual private cloud (VPC) firewall to a policy group of a destination VPC firewall.
+        
+        @description You can call the BatchCopyVpcFirewallControlPolicy operation to copy all access control policies from a policy group of a source VPC firewall to a policy group of a destination VPC firewall.
         Before you call this operation, we recommend that you back up access control policies. For more information about how to back up an access control policy, see [Back up an access control policy](https://www.alibabacloud.com/help/en/cloud-firewall/latest/back-up-and-roll-back-an-access-control-policy).
         After you call this operation, all the access control policies in the policy group of the destination VPC firewall are replaced.
         The policy groups of the source VPC firewall and the destination VPC firewall must belong to the same Alibaba Cloud account.
@@ -614,6 +646,13 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.BatchDeleteVpcFirewallControlPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.BatchDeleteVpcFirewallControlPolicyResponse:
+        """
+        @summary Deletes multiple access control policies for a virtual private cloud (VPC) firewall at a time.
+        
+        @param request: BatchDeleteVpcFirewallControlPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchDeleteVpcFirewallControlPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.acl_uuid_list):
@@ -644,6 +683,13 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.BatchDeleteVpcFirewallControlPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.BatchDeleteVpcFirewallControlPolicyResponse:
+        """
+        @summary Deletes multiple access control policies for a virtual private cloud (VPC) firewall at a time.
+        
+        @param request: BatchDeleteVpcFirewallControlPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchDeleteVpcFirewallControlPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.acl_uuid_list):
@@ -673,6 +719,12 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.BatchDeleteVpcFirewallControlPolicyRequest,
     ) -> cloudfw_20171207_models.BatchDeleteVpcFirewallControlPolicyResponse:
+        """
+        @summary Deletes multiple access control policies for a virtual private cloud (VPC) firewall at a time.
+        
+        @param request: BatchDeleteVpcFirewallControlPolicyRequest
+        @return: BatchDeleteVpcFirewallControlPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.batch_delete_vpc_firewall_control_policy_with_options(request, runtime)
 
@@ -680,6 +732,12 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.BatchDeleteVpcFirewallControlPolicyRequest,
     ) -> cloudfw_20171207_models.BatchDeleteVpcFirewallControlPolicyResponse:
+        """
+        @summary Deletes multiple access control policies for a virtual private cloud (VPC) firewall at a time.
+        
+        @param request: BatchDeleteVpcFirewallControlPolicyRequest
+        @return: BatchDeleteVpcFirewallControlPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.batch_delete_vpc_firewall_control_policy_with_options_async(request, runtime)
 
@@ -688,6 +746,13 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.CreateDownloadTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.CreateDownloadTaskResponse:
+        """
+        @summary Creates a file download task.
+        
+        @param request: CreateDownloadTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDownloadTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -718,6 +783,13 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.CreateDownloadTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.CreateDownloadTaskResponse:
+        """
+        @summary Creates a file download task.
+        
+        @param request: CreateDownloadTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDownloadTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -747,6 +819,12 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.CreateDownloadTaskRequest,
     ) -> cloudfw_20171207_models.CreateDownloadTaskResponse:
+        """
+        @summary Creates a file download task.
+        
+        @param request: CreateDownloadTaskRequest
+        @return: CreateDownloadTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_download_task_with_options(request, runtime)
 
@@ -754,6 +832,12 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.CreateDownloadTaskRequest,
     ) -> cloudfw_20171207_models.CreateDownloadTaskResponse:
+        """
+        @summary Creates a file download task.
+        
+        @param request: CreateDownloadTaskRequest
+        @return: CreateDownloadTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_download_task_with_options_async(request, runtime)
 
@@ -763,7 +847,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.CreateNatFirewallControlPolicyResponse:
         """
-        You can call this operation to create a policy that allows, denies, or monitors the traffic that passes through the NAT firewall.
+        @summary Creates an access control policy for a NAT firewall.
+        
+        @description You can call this operation to create a policy that allows, denies, or monitors the traffic that passes through the NAT firewall.
         
         @param request: CreateNatFirewallControlPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -844,7 +930,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.CreateNatFirewallControlPolicyResponse:
         """
-        You can call this operation to create a policy that allows, denies, or monitors the traffic that passes through the NAT firewall.
+        @summary Creates an access control policy for a NAT firewall.
+        
+        @description You can call this operation to create a policy that allows, denies, or monitors the traffic that passes through the NAT firewall.
         
         @param request: CreateNatFirewallControlPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -924,7 +1012,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.CreateNatFirewallControlPolicyRequest,
     ) -> cloudfw_20171207_models.CreateNatFirewallControlPolicyResponse:
         """
-        You can call this operation to create a policy that allows, denies, or monitors the traffic that passes through the NAT firewall.
+        @summary Creates an access control policy for a NAT firewall.
+        
+        @description You can call this operation to create a policy that allows, denies, or monitors the traffic that passes through the NAT firewall.
         
         @param request: CreateNatFirewallControlPolicyRequest
         @return: CreateNatFirewallControlPolicyResponse
@@ -937,7 +1027,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.CreateNatFirewallControlPolicyRequest,
     ) -> cloudfw_20171207_models.CreateNatFirewallControlPolicyResponse:
         """
-        You can call this operation to create a policy that allows, denies, or monitors the traffic that passes through the NAT firewall.
+        @summary Creates an access control policy for a NAT firewall.
+        
+        @description You can call this operation to create a policy that allows, denies, or monitors the traffic that passes through the NAT firewall.
         
         @param request: CreateNatFirewallControlPolicyRequest
         @return: CreateNatFirewallControlPolicyResponse
@@ -950,6 +1042,11 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.CreateSecurityProxyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.CreateSecurityProxyResponse:
+        """
+        @param request: CreateSecurityProxyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSecurityProxyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.firewall_switch):
@@ -998,6 +1095,11 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.CreateSecurityProxyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.CreateSecurityProxyResponse:
+        """
+        @param request: CreateSecurityProxyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSecurityProxyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.firewall_switch):
@@ -1045,6 +1147,10 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.CreateSecurityProxyRequest,
     ) -> cloudfw_20171207_models.CreateSecurityProxyResponse:
+        """
+        @param request: CreateSecurityProxyRequest
+        @return: CreateSecurityProxyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_security_proxy_with_options(request, runtime)
 
@@ -1052,6 +1158,10 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.CreateSecurityProxyRequest,
     ) -> cloudfw_20171207_models.CreateSecurityProxyResponse:
+        """
+        @param request: CreateSecurityProxyRequest
+        @return: CreateSecurityProxyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_security_proxy_with_options_async(request, runtime)
 
@@ -1060,6 +1170,13 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.CreateTrFirewallV2Request,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.CreateTrFirewallV2Response:
+        """
+        @summary Creates a virtual private cloud (VPC) firewall for a transit router.
+        
+        @param request: CreateTrFirewallV2Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTrFirewallV2Response
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cen_id):
@@ -1116,6 +1233,13 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.CreateTrFirewallV2Request,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.CreateTrFirewallV2Response:
+        """
+        @summary Creates a virtual private cloud (VPC) firewall for a transit router.
+        
+        @param request: CreateTrFirewallV2Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTrFirewallV2Response
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cen_id):
@@ -1171,6 +1295,12 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.CreateTrFirewallV2Request,
     ) -> cloudfw_20171207_models.CreateTrFirewallV2Response:
+        """
+        @summary Creates a virtual private cloud (VPC) firewall for a transit router.
+        
+        @param request: CreateTrFirewallV2Request
+        @return: CreateTrFirewallV2Response
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_tr_firewall_v2with_options(request, runtime)
 
@@ -1178,6 +1308,12 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.CreateTrFirewallV2Request,
     ) -> cloudfw_20171207_models.CreateTrFirewallV2Response:
+        """
+        @summary Creates a virtual private cloud (VPC) firewall for a transit router.
+        
+        @param request: CreateTrFirewallV2Request
+        @return: CreateTrFirewallV2Response
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_tr_firewall_v2with_options_async(request, runtime)
 
@@ -1186,6 +1322,11 @@ class Client(OpenApiClient):
         tmp_req: cloudfw_20171207_models.CreateTrFirewallV2RoutePolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.CreateTrFirewallV2RoutePolicyResponse:
+        """
+        @param tmp_req: CreateTrFirewallV2RoutePolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTrFirewallV2RoutePolicyResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = cloudfw_20171207_models.CreateTrFirewallV2RoutePolicyShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1232,6 +1373,11 @@ class Client(OpenApiClient):
         tmp_req: cloudfw_20171207_models.CreateTrFirewallV2RoutePolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.CreateTrFirewallV2RoutePolicyResponse:
+        """
+        @param tmp_req: CreateTrFirewallV2RoutePolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTrFirewallV2RoutePolicyResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = cloudfw_20171207_models.CreateTrFirewallV2RoutePolicyShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1277,6 +1423,10 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.CreateTrFirewallV2RoutePolicyRequest,
     ) -> cloudfw_20171207_models.CreateTrFirewallV2RoutePolicyResponse:
+        """
+        @param request: CreateTrFirewallV2RoutePolicyRequest
+        @return: CreateTrFirewallV2RoutePolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_tr_firewall_v2route_policy_with_options(request, runtime)
 
@@ -1284,6 +1434,10 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.CreateTrFirewallV2RoutePolicyRequest,
     ) -> cloudfw_20171207_models.CreateTrFirewallV2RoutePolicyResponse:
+        """
+        @param request: CreateTrFirewallV2RoutePolicyRequest
+        @return: CreateTrFirewallV2RoutePolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_tr_firewall_v2route_policy_with_options_async(request, runtime)
 
@@ -1293,7 +1447,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.CreateVpcFirewallCenConfigureResponse:
         """
-        You can call the CreateVpcFirewallCenConfigure operation to create a VPC firewall. The VPC firewall protects mutual access traffic between a specified VPC and a network instance that is attached to a CEN instance. The network instance can be a VPC, a virtual border router (VBR), or a Cloud Connect Network (CCN) instance. The VPC firewall cannot protect mutual access traffic between VBRs, between CCN instances, or between VBRs and CCN instances. For more information, see [VPC firewall limits](~~172295~~).
+        @summary Creates a virtual private cloud (VPC) firewall to protect traffic between a specified VPC and a network instance that is attached to a Cloud Enterprise Network (CEN) instance.
+        
+        @description You can call the CreateVpcFirewallCenConfigure operation to create a VPC firewall. The VPC firewall protects mutual access traffic between a specified VPC and a network instance that is attached to a CEN instance. The network instance can be a VPC, a virtual border router (VBR), or a Cloud Connect Network (CCN) instance. The VPC firewall cannot protect mutual access traffic between VBRs, between CCN instances, or between VBRs and CCN instances. For more information, see [VPC firewall limits](https://help.aliyun.com/document_detail/172295.html).
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -1350,7 +1506,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.CreateVpcFirewallCenConfigureResponse:
         """
-        You can call the CreateVpcFirewallCenConfigure operation to create a VPC firewall. The VPC firewall protects mutual access traffic between a specified VPC and a network instance that is attached to a CEN instance. The network instance can be a VPC, a virtual border router (VBR), or a Cloud Connect Network (CCN) instance. The VPC firewall cannot protect mutual access traffic between VBRs, between CCN instances, or between VBRs and CCN instances. For more information, see [VPC firewall limits](~~172295~~).
+        @summary Creates a virtual private cloud (VPC) firewall to protect traffic between a specified VPC and a network instance that is attached to a Cloud Enterprise Network (CEN) instance.
+        
+        @description You can call the CreateVpcFirewallCenConfigure operation to create a VPC firewall. The VPC firewall protects mutual access traffic between a specified VPC and a network instance that is attached to a CEN instance. The network instance can be a VPC, a virtual border router (VBR), or a Cloud Connect Network (CCN) instance. The VPC firewall cannot protect mutual access traffic between VBRs, between CCN instances, or between VBRs and CCN instances. For more information, see [VPC firewall limits](https://help.aliyun.com/document_detail/172295.html).
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -1406,7 +1564,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.CreateVpcFirewallCenConfigureRequest,
     ) -> cloudfw_20171207_models.CreateVpcFirewallCenConfigureResponse:
         """
-        You can call the CreateVpcFirewallCenConfigure operation to create a VPC firewall. The VPC firewall protects mutual access traffic between a specified VPC and a network instance that is attached to a CEN instance. The network instance can be a VPC, a virtual border router (VBR), or a Cloud Connect Network (CCN) instance. The VPC firewall cannot protect mutual access traffic between VBRs, between CCN instances, or between VBRs and CCN instances. For more information, see [VPC firewall limits](~~172295~~).
+        @summary Creates a virtual private cloud (VPC) firewall to protect traffic between a specified VPC and a network instance that is attached to a Cloud Enterprise Network (CEN) instance.
+        
+        @description You can call the CreateVpcFirewallCenConfigure operation to create a VPC firewall. The VPC firewall protects mutual access traffic between a specified VPC and a network instance that is attached to a CEN instance. The network instance can be a VPC, a virtual border router (VBR), or a Cloud Connect Network (CCN) instance. The VPC firewall cannot protect mutual access traffic between VBRs, between CCN instances, or between VBRs and CCN instances. For more information, see [VPC firewall limits](https://help.aliyun.com/document_detail/172295.html).
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -1421,7 +1581,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.CreateVpcFirewallCenConfigureRequest,
     ) -> cloudfw_20171207_models.CreateVpcFirewallCenConfigureResponse:
         """
-        You can call the CreateVpcFirewallCenConfigure operation to create a VPC firewall. The VPC firewall protects mutual access traffic between a specified VPC and a network instance that is attached to a CEN instance. The network instance can be a VPC, a virtual border router (VBR), or a Cloud Connect Network (CCN) instance. The VPC firewall cannot protect mutual access traffic between VBRs, between CCN instances, or between VBRs and CCN instances. For more information, see [VPC firewall limits](~~172295~~).
+        @summary Creates a virtual private cloud (VPC) firewall to protect traffic between a specified VPC and a network instance that is attached to a Cloud Enterprise Network (CEN) instance.
+        
+        @description You can call the CreateVpcFirewallCenConfigure operation to create a VPC firewall. The VPC firewall protects mutual access traffic between a specified VPC and a network instance that is attached to a CEN instance. The network instance can be a VPC, a virtual border router (VBR), or a Cloud Connect Network (CCN) instance. The VPC firewall cannot protect mutual access traffic between VBRs, between CCN instances, or between VBRs and CCN instances. For more information, see [VPC firewall limits](https://help.aliyun.com/document_detail/172295.html).
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -1437,7 +1599,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.CreateVpcFirewallConfigureResponse:
         """
-        You can call this operation to create a VPC firewall. The VPC firewall controls traffic between two VPCs that are connected by using an Express Connect circuit. The VPC firewall does not control the mutual access traffic between VPCs that reside in different regions or belong to different Alibaba Cloud accounts. The firewall also does not control the mutual access traffic between VPCs and virtual border routers (VBRs). For more information, see [VPC firewall limits](~~172295~~).
+        @summary Creates a Virtual Private Cloud (VPC) firewall to protect traffic between two VPCs that are connected by using an Express Connect.
+        
+        @description You can call this operation to create a VPC firewall. The VPC firewall controls traffic between two VPCs that are connected by using an Express Connect circuit. The VPC firewall does not control the mutual access traffic between VPCs that reside in different regions or belong to different Alibaba Cloud accounts. The firewall also does not control the mutual access traffic between VPCs and virtual border routers (VBRs). For more information, see [VPC firewall limits](https://help.aliyun.com/document_detail/172295.html).
         ### [](#qps)QPS limit
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -1492,7 +1656,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.CreateVpcFirewallConfigureResponse:
         """
-        You can call this operation to create a VPC firewall. The VPC firewall controls traffic between two VPCs that are connected by using an Express Connect circuit. The VPC firewall does not control the mutual access traffic between VPCs that reside in different regions or belong to different Alibaba Cloud accounts. The firewall also does not control the mutual access traffic between VPCs and virtual border routers (VBRs). For more information, see [VPC firewall limits](~~172295~~).
+        @summary Creates a Virtual Private Cloud (VPC) firewall to protect traffic between two VPCs that are connected by using an Express Connect.
+        
+        @description You can call this operation to create a VPC firewall. The VPC firewall controls traffic between two VPCs that are connected by using an Express Connect circuit. The VPC firewall does not control the mutual access traffic between VPCs that reside in different regions or belong to different Alibaba Cloud accounts. The firewall also does not control the mutual access traffic between VPCs and virtual border routers (VBRs). For more information, see [VPC firewall limits](https://help.aliyun.com/document_detail/172295.html).
         ### [](#qps)QPS limit
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -1546,7 +1712,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.CreateVpcFirewallConfigureRequest,
     ) -> cloudfw_20171207_models.CreateVpcFirewallConfigureResponse:
         """
-        You can call this operation to create a VPC firewall. The VPC firewall controls traffic between two VPCs that are connected by using an Express Connect circuit. The VPC firewall does not control the mutual access traffic between VPCs that reside in different regions or belong to different Alibaba Cloud accounts. The firewall also does not control the mutual access traffic between VPCs and virtual border routers (VBRs). For more information, see [VPC firewall limits](~~172295~~).
+        @summary Creates a Virtual Private Cloud (VPC) firewall to protect traffic between two VPCs that are connected by using an Express Connect.
+        
+        @description You can call this operation to create a VPC firewall. The VPC firewall controls traffic between two VPCs that are connected by using an Express Connect circuit. The VPC firewall does not control the mutual access traffic between VPCs that reside in different regions or belong to different Alibaba Cloud accounts. The firewall also does not control the mutual access traffic between VPCs and virtual border routers (VBRs). For more information, see [VPC firewall limits](https://help.aliyun.com/document_detail/172295.html).
         ### [](#qps)QPS limit
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -1561,7 +1729,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.CreateVpcFirewallConfigureRequest,
     ) -> cloudfw_20171207_models.CreateVpcFirewallConfigureResponse:
         """
-        You can call this operation to create a VPC firewall. The VPC firewall controls traffic between two VPCs that are connected by using an Express Connect circuit. The VPC firewall does not control the mutual access traffic between VPCs that reside in different regions or belong to different Alibaba Cloud accounts. The firewall also does not control the mutual access traffic between VPCs and virtual border routers (VBRs). For more information, see [VPC firewall limits](~~172295~~).
+        @summary Creates a Virtual Private Cloud (VPC) firewall to protect traffic between two VPCs that are connected by using an Express Connect.
+        
+        @description You can call this operation to create a VPC firewall. The VPC firewall controls traffic between two VPCs that are connected by using an Express Connect circuit. The VPC firewall does not control the mutual access traffic between VPCs that reside in different regions or belong to different Alibaba Cloud accounts. The firewall also does not control the mutual access traffic between VPCs and virtual border routers (VBRs). For more information, see [VPC firewall limits](https://help.aliyun.com/document_detail/172295.html).
         ### [](#qps)QPS limit
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -1577,7 +1747,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.CreateVpcFirewallControlPolicyResponse:
         """
-        You can call the CreateVpcFirewallControlPolicy operation to create an access control policy in a specified policy group for a VPC firewall. Different access control policies are used when a VPC firewall is used to protect traffic between two VPCs that are connected by using a Cloud Enterprise Network (CEN) instance or an Express Connect circuit.
+        @summary Creates an access control policy in a specified policy group for a virtual private cloud (VPC) firewall.
+        
+        @description You can call the CreateVpcFirewallControlPolicy operation to create an access control policy in a specified policy group for a VPC firewall. Different access control policies are used when a VPC firewall is used to protect traffic between two VPCs that are connected by using a Cloud Enterprise Network (CEN) instance or an Express Connect circuit.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -1658,7 +1830,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.CreateVpcFirewallControlPolicyResponse:
         """
-        You can call the CreateVpcFirewallControlPolicy operation to create an access control policy in a specified policy group for a VPC firewall. Different access control policies are used when a VPC firewall is used to protect traffic between two VPCs that are connected by using a Cloud Enterprise Network (CEN) instance or an Express Connect circuit.
+        @summary Creates an access control policy in a specified policy group for a virtual private cloud (VPC) firewall.
+        
+        @description You can call the CreateVpcFirewallControlPolicy operation to create an access control policy in a specified policy group for a VPC firewall. Different access control policies are used when a VPC firewall is used to protect traffic between two VPCs that are connected by using a Cloud Enterprise Network (CEN) instance or an Express Connect circuit.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -1738,7 +1912,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.CreateVpcFirewallControlPolicyRequest,
     ) -> cloudfw_20171207_models.CreateVpcFirewallControlPolicyResponse:
         """
-        You can call the CreateVpcFirewallControlPolicy operation to create an access control policy in a specified policy group for a VPC firewall. Different access control policies are used when a VPC firewall is used to protect traffic between two VPCs that are connected by using a Cloud Enterprise Network (CEN) instance or an Express Connect circuit.
+        @summary Creates an access control policy in a specified policy group for a virtual private cloud (VPC) firewall.
+        
+        @description You can call the CreateVpcFirewallControlPolicy operation to create an access control policy in a specified policy group for a VPC firewall. Different access control policies are used when a VPC firewall is used to protect traffic between two VPCs that are connected by using a Cloud Enterprise Network (CEN) instance or an Express Connect circuit.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -1753,7 +1929,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.CreateVpcFirewallControlPolicyRequest,
     ) -> cloudfw_20171207_models.CreateVpcFirewallControlPolicyResponse:
         """
-        You can call the CreateVpcFirewallControlPolicy operation to create an access control policy in a specified policy group for a VPC firewall. Different access control policies are used when a VPC firewall is used to protect traffic between two VPCs that are connected by using a Cloud Enterprise Network (CEN) instance or an Express Connect circuit.
+        @summary Creates an access control policy in a specified policy group for a virtual private cloud (VPC) firewall.
+        
+        @description You can call the CreateVpcFirewallControlPolicy operation to create an access control policy in a specified policy group for a VPC firewall. Different access control policies are used when a VPC firewall is used to protect traffic between two VPCs that are connected by using a Cloud Enterprise Network (CEN) instance or an Express Connect circuit.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -1769,7 +1947,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DeleteAddressBookResponse:
         """
-        You can call the DeleteAddressBook operation to delete an address book for access control.
+        @summary Deletes an address book for access control.
+        
+        @description You can call the DeleteAddressBook operation to delete an address book for access control.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -1810,7 +1990,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DeleteAddressBookResponse:
         """
-        You can call the DeleteAddressBook operation to delete an address book for access control.
+        @summary Deletes an address book for access control.
+        
+        @description You can call the DeleteAddressBook operation to delete an address book for access control.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -1850,7 +2032,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DeleteAddressBookRequest,
     ) -> cloudfw_20171207_models.DeleteAddressBookResponse:
         """
-        You can call the DeleteAddressBook operation to delete an address book for access control.
+        @summary Deletes an address book for access control.
+        
+        @description You can call the DeleteAddressBook operation to delete an address book for access control.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -1865,7 +2049,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DeleteAddressBookRequest,
     ) -> cloudfw_20171207_models.DeleteAddressBookResponse:
         """
-        You can call the DeleteAddressBook operation to delete an address book for access control.
+        @summary Deletes an address book for access control.
+        
+        @description You can call the DeleteAddressBook operation to delete an address book for access control.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -1881,7 +2067,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DeleteControlPolicyResponse:
         """
-        You can call the DeleteControlPolicy operation to delete an access control policy that applies to inbound or outbound traffic.
+        @summary Deletes an access control policy.
+        
+        @description You can call the DeleteControlPolicy operation to delete an access control policy that applies to inbound or outbound traffic.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -1924,7 +2112,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DeleteControlPolicyResponse:
         """
-        You can call the DeleteControlPolicy operation to delete an access control policy that applies to inbound or outbound traffic.
+        @summary Deletes an access control policy.
+        
+        @description You can call the DeleteControlPolicy operation to delete an access control policy that applies to inbound or outbound traffic.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -1966,7 +2156,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DeleteControlPolicyRequest,
     ) -> cloudfw_20171207_models.DeleteControlPolicyResponse:
         """
-        You can call the DeleteControlPolicy operation to delete an access control policy that applies to inbound or outbound traffic.
+        @summary Deletes an access control policy.
+        
+        @description You can call the DeleteControlPolicy operation to delete an access control policy that applies to inbound or outbound traffic.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -1981,7 +2173,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DeleteControlPolicyRequest,
     ) -> cloudfw_20171207_models.DeleteControlPolicyResponse:
         """
-        You can call the DeleteControlPolicy operation to delete an access control policy that applies to inbound or outbound traffic.
+        @summary Deletes an access control policy.
+        
+        @description You can call the DeleteControlPolicy operation to delete an access control policy that applies to inbound or outbound traffic.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -1996,6 +2190,13 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DeleteControlPolicyTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DeleteControlPolicyTemplateResponse:
+        """
+        @summary Deletes an access control policy template.
+        
+        @param request: DeleteControlPolicyTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteControlPolicyTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -2030,6 +2231,13 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DeleteControlPolicyTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DeleteControlPolicyTemplateResponse:
+        """
+        @summary Deletes an access control policy template.
+        
+        @param request: DeleteControlPolicyTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteControlPolicyTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -2063,6 +2271,12 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.DeleteControlPolicyTemplateRequest,
     ) -> cloudfw_20171207_models.DeleteControlPolicyTemplateResponse:
+        """
+        @summary Deletes an access control policy template.
+        
+        @param request: DeleteControlPolicyTemplateRequest
+        @return: DeleteControlPolicyTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_control_policy_template_with_options(request, runtime)
 
@@ -2070,6 +2284,12 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.DeleteControlPolicyTemplateRequest,
     ) -> cloudfw_20171207_models.DeleteControlPolicyTemplateResponse:
+        """
+        @summary Deletes an access control policy template.
+        
+        @param request: DeleteControlPolicyTemplateRequest
+        @return: DeleteControlPolicyTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_control_policy_template_with_options_async(request, runtime)
 
@@ -2079,9 +2299,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DeleteDownloadTaskResponse:
         """
-        You can call this operation to delete file download tasks and delete the files.
-        **\
-        **Warning** Both tasks and involved files are deleted. You can no longer download the involved files by using the download links. This operation is irreversible. Proceed with caution.
+        @summary Deletes file download tasks.
+        
+        @description You can call this operation to delete file download tasks and delete the files.
+        *\
+        *Warning** Both tasks and involved files are deleted. You can no longer download the involved files by using the download links. This operation is irreversible. Proceed with caution.
         
         @param request: DeleteDownloadTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2118,9 +2340,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DeleteDownloadTaskResponse:
         """
-        You can call this operation to delete file download tasks and delete the files.
-        **\
-        **Warning** Both tasks and involved files are deleted. You can no longer download the involved files by using the download links. This operation is irreversible. Proceed with caution.
+        @summary Deletes file download tasks.
+        
+        @description You can call this operation to delete file download tasks and delete the files.
+        *\
+        *Warning** Both tasks and involved files are deleted. You can no longer download the involved files by using the download links. This operation is irreversible. Proceed with caution.
         
         @param request: DeleteDownloadTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2156,9 +2380,11 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DeleteDownloadTaskRequest,
     ) -> cloudfw_20171207_models.DeleteDownloadTaskResponse:
         """
-        You can call this operation to delete file download tasks and delete the files.
-        **\
-        **Warning** Both tasks and involved files are deleted. You can no longer download the involved files by using the download links. This operation is irreversible. Proceed with caution.
+        @summary Deletes file download tasks.
+        
+        @description You can call this operation to delete file download tasks and delete the files.
+        *\
+        *Warning** Both tasks and involved files are deleted. You can no longer download the involved files by using the download links. This operation is irreversible. Proceed with caution.
         
         @param request: DeleteDownloadTaskRequest
         @return: DeleteDownloadTaskResponse
@@ -2171,9 +2397,11 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DeleteDownloadTaskRequest,
     ) -> cloudfw_20171207_models.DeleteDownloadTaskResponse:
         """
-        You can call this operation to delete file download tasks and delete the files.
-        **\
-        **Warning** Both tasks and involved files are deleted. You can no longer download the involved files by using the download links. This operation is irreversible. Proceed with caution.
+        @summary Deletes file download tasks.
+        
+        @description You can call this operation to delete file download tasks and delete the files.
+        *\
+        *Warning** Both tasks and involved files are deleted. You can no longer download the involved files by using the download links. This operation is irreversible. Proceed with caution.
         
         @param request: DeleteDownloadTaskRequest
         @return: DeleteDownloadTaskResponse
@@ -2186,6 +2414,11 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DeleteFirewallV2RoutePoliciesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DeleteFirewallV2RoutePoliciesResponse:
+        """
+        @param request: DeleteFirewallV2RoutePoliciesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteFirewallV2RoutePoliciesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.firewall_id):
@@ -2218,6 +2451,11 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DeleteFirewallV2RoutePoliciesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DeleteFirewallV2RoutePoliciesResponse:
+        """
+        @param request: DeleteFirewallV2RoutePoliciesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteFirewallV2RoutePoliciesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.firewall_id):
@@ -2249,6 +2487,10 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.DeleteFirewallV2RoutePoliciesRequest,
     ) -> cloudfw_20171207_models.DeleteFirewallV2RoutePoliciesResponse:
+        """
+        @param request: DeleteFirewallV2RoutePoliciesRequest
+        @return: DeleteFirewallV2RoutePoliciesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_firewall_v2route_policies_with_options(request, runtime)
 
@@ -2256,6 +2498,10 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.DeleteFirewallV2RoutePoliciesRequest,
     ) -> cloudfw_20171207_models.DeleteFirewallV2RoutePoliciesResponse:
+        """
+        @param request: DeleteFirewallV2RoutePoliciesRequest
+        @return: DeleteFirewallV2RoutePoliciesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_firewall_v2route_policies_with_options_async(request, runtime)
 
@@ -2265,7 +2511,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DeleteInstanceMembersResponse:
         """
-        You can call the DeleteInstanceMembers operation to remove members from Cloud Firewall.
+        @summary Removes members from Cloud Firewall.
+        
+        @description You can call the DeleteInstanceMembers operation to remove members from Cloud Firewall.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -2302,7 +2550,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DeleteInstanceMembersResponse:
         """
-        You can call the DeleteInstanceMembers operation to remove members from Cloud Firewall.
+        @summary Removes members from Cloud Firewall.
+        
+        @description You can call the DeleteInstanceMembers operation to remove members from Cloud Firewall.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -2338,7 +2588,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DeleteInstanceMembersRequest,
     ) -> cloudfw_20171207_models.DeleteInstanceMembersResponse:
         """
-        You can call the DeleteInstanceMembers operation to remove members from Cloud Firewall.
+        @summary Removes members from Cloud Firewall.
+        
+        @description You can call the DeleteInstanceMembers operation to remove members from Cloud Firewall.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -2353,7 +2605,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DeleteInstanceMembersRequest,
     ) -> cloudfw_20171207_models.DeleteInstanceMembersResponse:
         """
-        You can call the DeleteInstanceMembers operation to remove members from Cloud Firewall.
+        @summary Removes members from Cloud Firewall.
+        
+        @description You can call the DeleteInstanceMembers operation to remove members from Cloud Firewall.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -2369,7 +2623,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DeleteNatFirewallControlPolicyResponse:
         """
-        You can use this operation to delete an outbound access control policy that is created for a NAT firewall.
+        @summary Deletes an access control policy that is created for a NAT firewall.
+        
+        @description You can use this operation to delete an outbound access control policy that is created for a NAT firewall.
         
         @param request: DeleteNatFirewallControlPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2410,7 +2666,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DeleteNatFirewallControlPolicyResponse:
         """
-        You can use this operation to delete an outbound access control policy that is created for a NAT firewall.
+        @summary Deletes an access control policy that is created for a NAT firewall.
+        
+        @description You can use this operation to delete an outbound access control policy that is created for a NAT firewall.
         
         @param request: DeleteNatFirewallControlPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2450,7 +2708,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DeleteNatFirewallControlPolicyRequest,
     ) -> cloudfw_20171207_models.DeleteNatFirewallControlPolicyResponse:
         """
-        You can use this operation to delete an outbound access control policy that is created for a NAT firewall.
+        @summary Deletes an access control policy that is created for a NAT firewall.
+        
+        @description You can use this operation to delete an outbound access control policy that is created for a NAT firewall.
         
         @param request: DeleteNatFirewallControlPolicyRequest
         @return: DeleteNatFirewallControlPolicyResponse
@@ -2463,7 +2723,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DeleteNatFirewallControlPolicyRequest,
     ) -> cloudfw_20171207_models.DeleteNatFirewallControlPolicyResponse:
         """
-        You can use this operation to delete an outbound access control policy that is created for a NAT firewall.
+        @summary Deletes an access control policy that is created for a NAT firewall.
+        
+        @description You can use this operation to delete an outbound access control policy that is created for a NAT firewall.
         
         @param request: DeleteNatFirewallControlPolicyRequest
         @return: DeleteNatFirewallControlPolicyResponse
@@ -2476,6 +2738,13 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DeleteNatFirewallControlPolicyBatchRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DeleteNatFirewallControlPolicyBatchResponse:
+        """
+        @summary Deletes access control policies that are created for a NAT firewall at a time.
+        
+        @param request: DeleteNatFirewallControlPolicyBatchRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteNatFirewallControlPolicyBatchResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.acl_uuid_list):
@@ -2510,6 +2779,13 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DeleteNatFirewallControlPolicyBatchRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DeleteNatFirewallControlPolicyBatchResponse:
+        """
+        @summary Deletes access control policies that are created for a NAT firewall at a time.
+        
+        @param request: DeleteNatFirewallControlPolicyBatchRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteNatFirewallControlPolicyBatchResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.acl_uuid_list):
@@ -2543,6 +2819,12 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.DeleteNatFirewallControlPolicyBatchRequest,
     ) -> cloudfw_20171207_models.DeleteNatFirewallControlPolicyBatchResponse:
+        """
+        @summary Deletes access control policies that are created for a NAT firewall at a time.
+        
+        @param request: DeleteNatFirewallControlPolicyBatchRequest
+        @return: DeleteNatFirewallControlPolicyBatchResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_nat_firewall_control_policy_batch_with_options(request, runtime)
 
@@ -2550,14 +2832,119 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.DeleteNatFirewallControlPolicyBatchRequest,
     ) -> cloudfw_20171207_models.DeleteNatFirewallControlPolicyBatchResponse:
+        """
+        @summary Deletes access control policies that are created for a NAT firewall at a time.
+        
+        @param request: DeleteNatFirewallControlPolicyBatchRequest
+        @return: DeleteNatFirewallControlPolicyBatchResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_nat_firewall_control_policy_batch_with_options_async(request, runtime)
+
+    def delete_security_proxy_with_options(
+        self,
+        request: cloudfw_20171207_models.DeleteSecurityProxyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DeleteSecurityProxyResponse:
+        """
+        @param request: DeleteSecurityProxyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSecurityProxyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.proxy_id):
+            query['ProxyId'] = request.proxy_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteSecurityProxy',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DeleteSecurityProxyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_security_proxy_with_options_async(
+        self,
+        request: cloudfw_20171207_models.DeleteSecurityProxyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DeleteSecurityProxyResponse:
+        """
+        @param request: DeleteSecurityProxyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSecurityProxyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.proxy_id):
+            query['ProxyId'] = request.proxy_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteSecurityProxy',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DeleteSecurityProxyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_security_proxy(
+        self,
+        request: cloudfw_20171207_models.DeleteSecurityProxyRequest,
+    ) -> cloudfw_20171207_models.DeleteSecurityProxyResponse:
+        """
+        @param request: DeleteSecurityProxyRequest
+        @return: DeleteSecurityProxyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_security_proxy_with_options(request, runtime)
+
+    async def delete_security_proxy_async(
+        self,
+        request: cloudfw_20171207_models.DeleteSecurityProxyRequest,
+    ) -> cloudfw_20171207_models.DeleteSecurityProxyResponse:
+        """
+        @param request: DeleteSecurityProxyRequest
+        @return: DeleteSecurityProxyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_security_proxy_with_options_async(request, runtime)
 
     def delete_tr_firewall_v2with_options(
         self,
         request: cloudfw_20171207_models.DeleteTrFirewallV2Request,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DeleteTrFirewallV2Response:
+        """
+        @summary Deletes a virtual private cloud (VPC) firewall that is created for a transit router.
+        
+        @param request: DeleteTrFirewallV2Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteTrFirewallV2Response
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.firewall_id):
@@ -2588,6 +2975,13 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DeleteTrFirewallV2Request,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DeleteTrFirewallV2Response:
+        """
+        @summary Deletes a virtual private cloud (VPC) firewall that is created for a transit router.
+        
+        @param request: DeleteTrFirewallV2Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteTrFirewallV2Response
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.firewall_id):
@@ -2617,6 +3011,12 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.DeleteTrFirewallV2Request,
     ) -> cloudfw_20171207_models.DeleteTrFirewallV2Response:
+        """
+        @summary Deletes a virtual private cloud (VPC) firewall that is created for a transit router.
+        
+        @param request: DeleteTrFirewallV2Request
+        @return: DeleteTrFirewallV2Response
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_tr_firewall_v2with_options(request, runtime)
 
@@ -2624,6 +3024,12 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.DeleteTrFirewallV2Request,
     ) -> cloudfw_20171207_models.DeleteTrFirewallV2Response:
+        """
+        @summary Deletes a virtual private cloud (VPC) firewall that is created for a transit router.
+        
+        @param request: DeleteTrFirewallV2Request
+        @return: DeleteTrFirewallV2Response
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_tr_firewall_v2with_options_async(request, runtime)
 
@@ -2633,7 +3039,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DeleteVpcFirewallCenConfigureResponse:
         """
-        You can call the DeleteVpcFirewallCenConfigure operation to delete a VPC firewall. The VPC firewall protects mutual access traffic between a VPC and a specified network instance that is attached to a CEN instance. The network instance can be a VPC, a virtual border router (VBR), or a Cloud Connect Network (CCN) instance. Before you call this operation, make sure that you have created a VPC firewall by calling the [CreateVpcFirewallCenConfigure](~~345772~~) operation.
+        @summary Deletes a virtual private cloud (VPC) firewall. The VPC firewall protects mutual access traffic between a VPC and a specified network instance that is attached to a Cloud Enterprise Network (CEN) instance.
+        
+        @description You can call the DeleteVpcFirewallCenConfigure operation to delete a VPC firewall. The VPC firewall protects mutual access traffic between a VPC and a specified network instance that is attached to a CEN instance. The network instance can be a VPC, a virtual border router (VBR), or a Cloud Connect Network (CCN) instance. Before you call this operation, make sure that you have created a VPC firewall by calling the [CreateVpcFirewallCenConfigure](https://help.aliyun.com/document_detail/345772.html) operation.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -2674,7 +3082,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DeleteVpcFirewallCenConfigureResponse:
         """
-        You can call the DeleteVpcFirewallCenConfigure operation to delete a VPC firewall. The VPC firewall protects mutual access traffic between a VPC and a specified network instance that is attached to a CEN instance. The network instance can be a VPC, a virtual border router (VBR), or a Cloud Connect Network (CCN) instance. Before you call this operation, make sure that you have created a VPC firewall by calling the [CreateVpcFirewallCenConfigure](~~345772~~) operation.
+        @summary Deletes a virtual private cloud (VPC) firewall. The VPC firewall protects mutual access traffic between a VPC and a specified network instance that is attached to a Cloud Enterprise Network (CEN) instance.
+        
+        @description You can call the DeleteVpcFirewallCenConfigure operation to delete a VPC firewall. The VPC firewall protects mutual access traffic between a VPC and a specified network instance that is attached to a CEN instance. The network instance can be a VPC, a virtual border router (VBR), or a Cloud Connect Network (CCN) instance. Before you call this operation, make sure that you have created a VPC firewall by calling the [CreateVpcFirewallCenConfigure](https://help.aliyun.com/document_detail/345772.html) operation.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -2714,7 +3124,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DeleteVpcFirewallCenConfigureRequest,
     ) -> cloudfw_20171207_models.DeleteVpcFirewallCenConfigureResponse:
         """
-        You can call the DeleteVpcFirewallCenConfigure operation to delete a VPC firewall. The VPC firewall protects mutual access traffic between a VPC and a specified network instance that is attached to a CEN instance. The network instance can be a VPC, a virtual border router (VBR), or a Cloud Connect Network (CCN) instance. Before you call this operation, make sure that you have created a VPC firewall by calling the [CreateVpcFirewallCenConfigure](~~345772~~) operation.
+        @summary Deletes a virtual private cloud (VPC) firewall. The VPC firewall protects mutual access traffic between a VPC and a specified network instance that is attached to a Cloud Enterprise Network (CEN) instance.
+        
+        @description You can call the DeleteVpcFirewallCenConfigure operation to delete a VPC firewall. The VPC firewall protects mutual access traffic between a VPC and a specified network instance that is attached to a CEN instance. The network instance can be a VPC, a virtual border router (VBR), or a Cloud Connect Network (CCN) instance. Before you call this operation, make sure that you have created a VPC firewall by calling the [CreateVpcFirewallCenConfigure](https://help.aliyun.com/document_detail/345772.html) operation.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -2729,7 +3141,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DeleteVpcFirewallCenConfigureRequest,
     ) -> cloudfw_20171207_models.DeleteVpcFirewallCenConfigureResponse:
         """
-        You can call the DeleteVpcFirewallCenConfigure operation to delete a VPC firewall. The VPC firewall protects mutual access traffic between a VPC and a specified network instance that is attached to a CEN instance. The network instance can be a VPC, a virtual border router (VBR), or a Cloud Connect Network (CCN) instance. Before you call this operation, make sure that you have created a VPC firewall by calling the [CreateVpcFirewallCenConfigure](~~345772~~) operation.
+        @summary Deletes a virtual private cloud (VPC) firewall. The VPC firewall protects mutual access traffic between a VPC and a specified network instance that is attached to a Cloud Enterprise Network (CEN) instance.
+        
+        @description You can call the DeleteVpcFirewallCenConfigure operation to delete a VPC firewall. The VPC firewall protects mutual access traffic between a VPC and a specified network instance that is attached to a CEN instance. The network instance can be a VPC, a virtual border router (VBR), or a Cloud Connect Network (CCN) instance. Before you call this operation, make sure that you have created a VPC firewall by calling the [CreateVpcFirewallCenConfigure](https://help.aliyun.com/document_detail/345772.html) operation.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -2745,7 +3159,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DeleteVpcFirewallConfigureResponse:
         """
-        You can call the DeleteVpcFirewallConfigure operation to delete a VPC firewall. The VPC firewall controls traffic between two VPCs that are connected by using an Express Connect circuit. Before you call the operation, make sure that you created a VPC firewall by calling the [CreateVpcFirewallConfigure](~~342893~~) operation.
+        @summary Deletes a virtual private cloud (VPC) firewall that controls traffic between two VPCs. The VPCs are connected by using an Express Connect circuit.
+        
+        @description You can call the DeleteVpcFirewallConfigure operation to delete a VPC firewall. The VPC firewall controls traffic between two VPCs that are connected by using an Express Connect circuit. Before you call the operation, make sure that you created a VPC firewall by calling the [CreateVpcFirewallConfigure](https://help.aliyun.com/document_detail/342893.html) operation.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -2786,7 +3202,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DeleteVpcFirewallConfigureResponse:
         """
-        You can call the DeleteVpcFirewallConfigure operation to delete a VPC firewall. The VPC firewall controls traffic between two VPCs that are connected by using an Express Connect circuit. Before you call the operation, make sure that you created a VPC firewall by calling the [CreateVpcFirewallConfigure](~~342893~~) operation.
+        @summary Deletes a virtual private cloud (VPC) firewall that controls traffic between two VPCs. The VPCs are connected by using an Express Connect circuit.
+        
+        @description You can call the DeleteVpcFirewallConfigure operation to delete a VPC firewall. The VPC firewall controls traffic between two VPCs that are connected by using an Express Connect circuit. Before you call the operation, make sure that you created a VPC firewall by calling the [CreateVpcFirewallConfigure](https://help.aliyun.com/document_detail/342893.html) operation.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -2826,7 +3244,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DeleteVpcFirewallConfigureRequest,
     ) -> cloudfw_20171207_models.DeleteVpcFirewallConfigureResponse:
         """
-        You can call the DeleteVpcFirewallConfigure operation to delete a VPC firewall. The VPC firewall controls traffic between two VPCs that are connected by using an Express Connect circuit. Before you call the operation, make sure that you created a VPC firewall by calling the [CreateVpcFirewallConfigure](~~342893~~) operation.
+        @summary Deletes a virtual private cloud (VPC) firewall that controls traffic between two VPCs. The VPCs are connected by using an Express Connect circuit.
+        
+        @description You can call the DeleteVpcFirewallConfigure operation to delete a VPC firewall. The VPC firewall controls traffic between two VPCs that are connected by using an Express Connect circuit. Before you call the operation, make sure that you created a VPC firewall by calling the [CreateVpcFirewallConfigure](https://help.aliyun.com/document_detail/342893.html) operation.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -2841,7 +3261,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DeleteVpcFirewallConfigureRequest,
     ) -> cloudfw_20171207_models.DeleteVpcFirewallConfigureResponse:
         """
-        You can call the DeleteVpcFirewallConfigure operation to delete a VPC firewall. The VPC firewall controls traffic between two VPCs that are connected by using an Express Connect circuit. Before you call the operation, make sure that you created a VPC firewall by calling the [CreateVpcFirewallConfigure](~~342893~~) operation.
+        @summary Deletes a virtual private cloud (VPC) firewall that controls traffic between two VPCs. The VPCs are connected by using an Express Connect circuit.
+        
+        @description You can call the DeleteVpcFirewallConfigure operation to delete a VPC firewall. The VPC firewall controls traffic between two VPCs that are connected by using an Express Connect circuit. Before you call the operation, make sure that you created a VPC firewall by calling the [CreateVpcFirewallConfigure](https://help.aliyun.com/document_detail/342893.html) operation.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -2857,7 +3279,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DeleteVpcFirewallControlPolicyResponse:
         """
-        You can call the DeleteVpcFirewallControlPolicy operation to delete an access control policy from a specific policy group for a VPC firewall. Different access control policies are used for the VPC firewall that is used to protect each Cloud Enterprise Network (CEN) instance and the VPC firewall that is used to protect each Express Connect circuit.
+        @summary Deletes an access control policy from a specific policy group for a virtual private cloud (VPC) firewall.
+        
+        @description You can call the DeleteVpcFirewallControlPolicy operation to delete an access control policy from a specific policy group for a VPC firewall. Different access control policies are used for the VPC firewall that is used to protect each Cloud Enterprise Network (CEN) instance and the VPC firewall that is used to protect each Express Connect circuit.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -2898,7 +3322,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DeleteVpcFirewallControlPolicyResponse:
         """
-        You can call the DeleteVpcFirewallControlPolicy operation to delete an access control policy from a specific policy group for a VPC firewall. Different access control policies are used for the VPC firewall that is used to protect each Cloud Enterprise Network (CEN) instance and the VPC firewall that is used to protect each Express Connect circuit.
+        @summary Deletes an access control policy from a specific policy group for a virtual private cloud (VPC) firewall.
+        
+        @description You can call the DeleteVpcFirewallControlPolicy operation to delete an access control policy from a specific policy group for a VPC firewall. Different access control policies are used for the VPC firewall that is used to protect each Cloud Enterprise Network (CEN) instance and the VPC firewall that is used to protect each Express Connect circuit.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -2938,7 +3364,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DeleteVpcFirewallControlPolicyRequest,
     ) -> cloudfw_20171207_models.DeleteVpcFirewallControlPolicyResponse:
         """
-        You can call the DeleteVpcFirewallControlPolicy operation to delete an access control policy from a specific policy group for a VPC firewall. Different access control policies are used for the VPC firewall that is used to protect each Cloud Enterprise Network (CEN) instance and the VPC firewall that is used to protect each Express Connect circuit.
+        @summary Deletes an access control policy from a specific policy group for a virtual private cloud (VPC) firewall.
+        
+        @description You can call the DeleteVpcFirewallControlPolicy operation to delete an access control policy from a specific policy group for a VPC firewall. Different access control policies are used for the VPC firewall that is used to protect each Cloud Enterprise Network (CEN) instance and the VPC firewall that is used to protect each Express Connect circuit.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -2953,7 +3381,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DeleteVpcFirewallControlPolicyRequest,
     ) -> cloudfw_20171207_models.DeleteVpcFirewallControlPolicyResponse:
         """
-        You can call the DeleteVpcFirewallControlPolicy operation to delete an access control policy from a specific policy group for a VPC firewall. Different access control policies are used for the VPC firewall that is used to protect each Cloud Enterprise Network (CEN) instance and the VPC firewall that is used to protect each Express Connect circuit.
+        @summary Deletes an access control policy from a specific policy group for a virtual private cloud (VPC) firewall.
+        
+        @description You can call the DeleteVpcFirewallControlPolicy operation to delete an access control policy from a specific policy group for a VPC firewall. Different access control policies are used for the VPC firewall that is used to protect each Cloud Enterprise Network (CEN) instance and the VPC firewall that is used to protect each Express Connect circuit.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -2968,6 +3398,13 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeACLProtectTrendRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeACLProtectTrendResponse:
+        """
+        @summary Queries the statistics on the requests that are blocked by the access control list (ACL) feature.
+        
+        @param request: DescribeACLProtectTrendRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeACLProtectTrendResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -3004,6 +3441,13 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeACLProtectTrendRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeACLProtectTrendResponse:
+        """
+        @summary Queries the statistics on the requests that are blocked by the access control list (ACL) feature.
+        
+        @param request: DescribeACLProtectTrendRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeACLProtectTrendResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -3039,6 +3483,12 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.DescribeACLProtectTrendRequest,
     ) -> cloudfw_20171207_models.DescribeACLProtectTrendResponse:
+        """
+        @summary Queries the statistics on the requests that are blocked by the access control list (ACL) feature.
+        
+        @param request: DescribeACLProtectTrendRequest
+        @return: DescribeACLProtectTrendResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_aclprotect_trend_with_options(request, runtime)
 
@@ -3046,6 +3496,12 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.DescribeACLProtectTrendRequest,
     ) -> cloudfw_20171207_models.DescribeACLProtectTrendResponse:
+        """
+        @summary Queries the statistics on the requests that are blocked by the access control list (ACL) feature.
+        
+        @param request: DescribeACLProtectTrendRequest
+        @return: DescribeACLProtectTrendResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_aclprotect_trend_with_options_async(request, runtime)
 
@@ -3055,7 +3511,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeAddressBookResponse:
         """
-        You can call this operation to query the details about an address book for an access control policy.
+        @summary Queries the details about an address book for an access control policy.
+        
+        @description You can call this operation to query the details about an address book for an access control policy.
         ## [](#qps)Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -3102,7 +3560,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeAddressBookResponse:
         """
-        You can call this operation to query the details about an address book for an access control policy.
+        @summary Queries the details about an address book for an access control policy.
+        
+        @description You can call this operation to query the details about an address book for an access control policy.
         ## [](#qps)Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -3148,7 +3608,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeAddressBookRequest,
     ) -> cloudfw_20171207_models.DescribeAddressBookResponse:
         """
-        You can call this operation to query the details about an address book for an access control policy.
+        @summary Queries the details about an address book for an access control policy.
+        
+        @description You can call this operation to query the details about an address book for an access control policy.
         ## [](#qps)Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -3163,7 +3625,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeAddressBookRequest,
     ) -> cloudfw_20171207_models.DescribeAddressBookResponse:
         """
-        You can call this operation to query the details about an address book for an access control policy.
+        @summary Queries the details about an address book for an access control policy.
+        
+        @description You can call this operation to query the details about an address book for an access control policy.
         ## [](#qps)Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -3179,7 +3643,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeAssetListResponse:
         """
-        You can call the DescribeAssetList operation to query the assets that are protected by Cloud Firewall.
+        @summary Queries the assets that are protected by Cloud Firewall.
+        
+        @description You can call the DescribeAssetList operation to query the assets that are protected by Cloud Firewall.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -3240,7 +3706,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeAssetListResponse:
         """
-        You can call the DescribeAssetList operation to query the assets that are protected by Cloud Firewall.
+        @summary Queries the assets that are protected by Cloud Firewall.
+        
+        @description You can call the DescribeAssetList operation to query the assets that are protected by Cloud Firewall.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -3300,7 +3768,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeAssetListRequest,
     ) -> cloudfw_20171207_models.DescribeAssetListResponse:
         """
-        You can call the DescribeAssetList operation to query the assets that are protected by Cloud Firewall.
+        @summary Queries the assets that are protected by Cloud Firewall.
+        
+        @description You can call the DescribeAssetList operation to query the assets that are protected by Cloud Firewall.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -3315,7 +3785,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeAssetListRequest,
     ) -> cloudfw_20171207_models.DescribeAssetListResponse:
         """
-        You can call the DescribeAssetList operation to query the assets that are protected by Cloud Firewall.
+        @summary Queries the assets that are protected by Cloud Firewall.
+        
+        @description You can call the DescribeAssetList operation to query the assets that are protected by Cloud Firewall.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -3330,6 +3802,13 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeAssetRiskListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeAssetRiskListResponse:
+        """
+        @summary Queries the risk levels of assets.
+        
+        @param request: DescribeAssetRiskListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAssetRiskListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ip_addr_list):
@@ -3364,6 +3843,13 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeAssetRiskListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeAssetRiskListResponse:
+        """
+        @summary Queries the risk levels of assets.
+        
+        @param request: DescribeAssetRiskListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAssetRiskListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ip_addr_list):
@@ -3397,6 +3883,12 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.DescribeAssetRiskListRequest,
     ) -> cloudfw_20171207_models.DescribeAssetRiskListResponse:
+        """
+        @summary Queries the risk levels of assets.
+        
+        @param request: DescribeAssetRiskListRequest
+        @return: DescribeAssetRiskListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_asset_risk_list_with_options(request, runtime)
 
@@ -3404,6 +3896,12 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.DescribeAssetRiskListRequest,
     ) -> cloudfw_20171207_models.DescribeAssetRiskListResponse:
+        """
+        @summary Queries the risk levels of assets.
+        
+        @param request: DescribeAssetRiskListRequest
+        @return: DescribeAssetRiskListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_asset_risk_list_with_options_async(request, runtime)
 
@@ -3412,6 +3910,13 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeCfwRiskLevelSummaryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeCfwRiskLevelSummaryResponse:
+        """
+        @summary Queries the firewall risk level.
+        
+        @param request: DescribeCfwRiskLevelSummaryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCfwRiskLevelSummaryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_type):
@@ -3444,6 +3949,13 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeCfwRiskLevelSummaryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeCfwRiskLevelSummaryResponse:
+        """
+        @summary Queries the firewall risk level.
+        
+        @param request: DescribeCfwRiskLevelSummaryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCfwRiskLevelSummaryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_type):
@@ -3475,6 +3987,12 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.DescribeCfwRiskLevelSummaryRequest,
     ) -> cloudfw_20171207_models.DescribeCfwRiskLevelSummaryResponse:
+        """
+        @summary Queries the firewall risk level.
+        
+        @param request: DescribeCfwRiskLevelSummaryRequest
+        @return: DescribeCfwRiskLevelSummaryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_cfw_risk_level_summary_with_options(request, runtime)
 
@@ -3482,6 +4000,12 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.DescribeCfwRiskLevelSummaryRequest,
     ) -> cloudfw_20171207_models.DescribeCfwRiskLevelSummaryResponse:
+        """
+        @summary Queries the firewall risk level.
+        
+        @param request: DescribeCfwRiskLevelSummaryRequest
+        @return: DescribeCfwRiskLevelSummaryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_cfw_risk_level_summary_with_options_async(request, runtime)
 
@@ -3491,7 +4015,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeControlPolicyResponse:
         """
-        You can call the DescribeControlPolicy operation to query the details about access control policies by page.
+        @summary Queries the details about all access control policies.
+        
+        @description You can call the DescribeControlPolicy operation to query the details about access control policies by page.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -3554,7 +4080,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeControlPolicyResponse:
         """
-        You can call the DescribeControlPolicy operation to query the details about access control policies by page.
+        @summary Queries the details about all access control policies.
+        
+        @description You can call the DescribeControlPolicy operation to query the details about access control policies by page.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -3616,7 +4144,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeControlPolicyRequest,
     ) -> cloudfw_20171207_models.DescribeControlPolicyResponse:
         """
-        You can call the DescribeControlPolicy operation to query the details about access control policies by page.
+        @summary Queries the details about all access control policies.
+        
+        @description You can call the DescribeControlPolicy operation to query the details about access control policies by page.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -3631,7 +4161,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeControlPolicyRequest,
     ) -> cloudfw_20171207_models.DescribeControlPolicyResponse:
         """
-        You can call the DescribeControlPolicy operation to query the details about access control policies by page.
+        @summary Queries the details about all access control policies.
+        
+        @description You can call the DescribeControlPolicy operation to query the details about access control policies by page.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -3646,6 +4178,11 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeDefaultIPSConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeDefaultIPSConfigResponse:
+        """
+        @param request: DescribeDefaultIPSConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDefaultIPSConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -3676,6 +4213,11 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeDefaultIPSConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeDefaultIPSConfigResponse:
+        """
+        @param request: DescribeDefaultIPSConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDefaultIPSConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -3705,6 +4247,10 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.DescribeDefaultIPSConfigRequest,
     ) -> cloudfw_20171207_models.DescribeDefaultIPSConfigResponse:
+        """
+        @param request: DescribeDefaultIPSConfigRequest
+        @return: DescribeDefaultIPSConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_default_ipsconfig_with_options(request, runtime)
 
@@ -3712,6 +4258,10 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.DescribeDefaultIPSConfigRequest,
     ) -> cloudfw_20171207_models.DescribeDefaultIPSConfigResponse:
+        """
+        @param request: DescribeDefaultIPSConfigRequest
+        @return: DescribeDefaultIPSConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_default_ipsconfig_with_options_async(request, runtime)
 
@@ -3721,7 +4271,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeDomainResolveResponse:
         """
-        You can use this operation to query the DNS record of a domain name. This operation can retrieve DNS records only from Alibaba Cloud DNS. Before you can call this operation, make sure that your domain name is hosted on Alibaba Cloud DNS.
+        @summary Queries Domain Name System (DNS) records.
+        
+        @description You can use this operation to query the DNS record of a domain name. This operation can retrieve DNS records only from Alibaba Cloud DNS. Before you can call this operation, make sure that your domain name is hosted on Alibaba Cloud DNS.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -3766,7 +4318,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeDomainResolveResponse:
         """
-        You can use this operation to query the DNS record of a domain name. This operation can retrieve DNS records only from Alibaba Cloud DNS. Before you can call this operation, make sure that your domain name is hosted on Alibaba Cloud DNS.
+        @summary Queries Domain Name System (DNS) records.
+        
+        @description You can use this operation to query the DNS record of a domain name. This operation can retrieve DNS records only from Alibaba Cloud DNS. Before you can call this operation, make sure that your domain name is hosted on Alibaba Cloud DNS.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -3810,7 +4364,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeDomainResolveRequest,
     ) -> cloudfw_20171207_models.DescribeDomainResolveResponse:
         """
-        You can use this operation to query the DNS record of a domain name. This operation can retrieve DNS records only from Alibaba Cloud DNS. Before you can call this operation, make sure that your domain name is hosted on Alibaba Cloud DNS.
+        @summary Queries Domain Name System (DNS) records.
+        
+        @description You can use this operation to query the DNS record of a domain name. This operation can retrieve DNS records only from Alibaba Cloud DNS. Before you can call this operation, make sure that your domain name is hosted on Alibaba Cloud DNS.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -3825,7 +4381,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeDomainResolveRequest,
     ) -> cloudfw_20171207_models.DescribeDomainResolveResponse:
         """
-        You can use this operation to query the DNS record of a domain name. This operation can retrieve DNS records only from Alibaba Cloud DNS. Before you can call this operation, make sure that your domain name is hosted on Alibaba Cloud DNS.
+        @summary Queries Domain Name System (DNS) records.
+        
+        @description You can use this operation to query the DNS record of a domain name. This operation can retrieve DNS records only from Alibaba Cloud DNS. Before you can call this operation, make sure that your domain name is hosted on Alibaba Cloud DNS.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -3840,6 +4398,13 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeDownloadTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeDownloadTaskResponse:
+        """
+        @summary Queries file download tasks, including the task information and download URLs.
+        
+        @param request: DescribeDownloadTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDownloadTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.current_page):
@@ -3874,6 +4439,13 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeDownloadTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeDownloadTaskResponse:
+        """
+        @summary Queries file download tasks, including the task information and download URLs.
+        
+        @param request: DescribeDownloadTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDownloadTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.current_page):
@@ -3907,6 +4479,12 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.DescribeDownloadTaskRequest,
     ) -> cloudfw_20171207_models.DescribeDownloadTaskResponse:
+        """
+        @summary Queries file download tasks, including the task information and download URLs.
+        
+        @param request: DescribeDownloadTaskRequest
+        @return: DescribeDownloadTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_download_task_with_options(request, runtime)
 
@@ -3914,6 +4492,12 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.DescribeDownloadTaskRequest,
     ) -> cloudfw_20171207_models.DescribeDownloadTaskResponse:
+        """
+        @summary Queries file download tasks, including the task information and download URLs.
+        
+        @param request: DescribeDownloadTaskRequest
+        @return: DescribeDownloadTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_download_task_with_options_async(request, runtime)
 
@@ -3922,6 +4506,13 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeDownloadTaskTypeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeDownloadTaskTypeResponse:
+        """
+        @summary Queries the types of download tasks. The type corresponds to the TaskType fields in the download task-related operations.
+        
+        @param request: DescribeDownloadTaskTypeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDownloadTaskTypeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.current_page):
@@ -3956,6 +4547,13 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeDownloadTaskTypeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeDownloadTaskTypeResponse:
+        """
+        @summary Queries the types of download tasks. The type corresponds to the TaskType fields in the download task-related operations.
+        
+        @param request: DescribeDownloadTaskTypeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDownloadTaskTypeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.current_page):
@@ -3989,6 +4587,12 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.DescribeDownloadTaskTypeRequest,
     ) -> cloudfw_20171207_models.DescribeDownloadTaskTypeResponse:
+        """
+        @summary Queries the types of download tasks. The type corresponds to the TaskType fields in the download task-related operations.
+        
+        @param request: DescribeDownloadTaskTypeRequest
+        @return: DescribeDownloadTaskTypeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_download_task_type_with_options(request, runtime)
 
@@ -3996,6 +4600,12 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.DescribeDownloadTaskTypeRequest,
     ) -> cloudfw_20171207_models.DescribeDownloadTaskTypeResponse:
+        """
+        @summary Queries the types of download tasks. The type corresponds to the TaskType fields in the download task-related operations.
+        
+        @param request: DescribeDownloadTaskTypeRequest
+        @return: DescribeDownloadTaskTypeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_download_task_type_with_options_async(request, runtime)
 
@@ -4005,7 +4615,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeInstanceMembersResponse:
         """
-        You can use this operation to query the information about members in Cloud Firewall.
+        @summary Queries the information about members in Cloud Firewall.
+        
+        @description You can use this operation to query the information about members in Cloud Firewall.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -4050,7 +4662,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeInstanceMembersResponse:
         """
-        You can use this operation to query the information about members in Cloud Firewall.
+        @summary Queries the information about members in Cloud Firewall.
+        
+        @description You can use this operation to query the information about members in Cloud Firewall.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -4094,7 +4708,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeInstanceMembersRequest,
     ) -> cloudfw_20171207_models.DescribeInstanceMembersResponse:
         """
-        You can use this operation to query the information about members in Cloud Firewall.
+        @summary Queries the information about members in Cloud Firewall.
+        
+        @description You can use this operation to query the information about members in Cloud Firewall.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -4109,7 +4725,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeInstanceMembersRequest,
     ) -> cloudfw_20171207_models.DescribeInstanceMembersResponse:
         """
-        You can use this operation to query the information about members in Cloud Firewall.
+        @summary Queries the information about members in Cloud Firewall.
+        
+        @description You can use this operation to query the information about members in Cloud Firewall.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -4124,6 +4742,13 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeInstanceRiskLevelsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeInstanceRiskLevelsResponse:
+        """
+        @summary Queries the risk levels of instances.
+        
+        @param request: DescribeInstanceRiskLevelsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceRiskLevelsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instances):
@@ -4154,6 +4779,13 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeInstanceRiskLevelsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeInstanceRiskLevelsResponse:
+        """
+        @summary Queries the risk levels of instances.
+        
+        @param request: DescribeInstanceRiskLevelsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceRiskLevelsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instances):
@@ -4183,6 +4815,12 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.DescribeInstanceRiskLevelsRequest,
     ) -> cloudfw_20171207_models.DescribeInstanceRiskLevelsResponse:
+        """
+        @summary Queries the risk levels of instances.
+        
+        @param request: DescribeInstanceRiskLevelsRequest
+        @return: DescribeInstanceRiskLevelsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_instance_risk_levels_with_options(request, runtime)
 
@@ -4190,6 +4828,12 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.DescribeInstanceRiskLevelsRequest,
     ) -> cloudfw_20171207_models.DescribeInstanceRiskLevelsResponse:
+        """
+        @summary Queries the risk levels of instances.
+        
+        @param request: DescribeInstanceRiskLevelsRequest
+        @return: DescribeInstanceRiskLevelsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_instance_risk_levels_with_options_async(request, runtime)
 
@@ -4198,6 +4842,13 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeInternetOpenIpRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeInternetOpenIpResponse:
+        """
+        @summary Queries the IP addresses that are open to the Internet.
+        
+        @param request: DescribeInternetOpenIpRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInternetOpenIpResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.assets_instance_id):
@@ -4250,6 +4901,13 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeInternetOpenIpRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeInternetOpenIpResponse:
+        """
+        @summary Queries the IP addresses that are open to the Internet.
+        
+        @param request: DescribeInternetOpenIpRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInternetOpenIpResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.assets_instance_id):
@@ -4301,6 +4959,12 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.DescribeInternetOpenIpRequest,
     ) -> cloudfw_20171207_models.DescribeInternetOpenIpResponse:
+        """
+        @summary Queries the IP addresses that are open to the Internet.
+        
+        @param request: DescribeInternetOpenIpRequest
+        @return: DescribeInternetOpenIpResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_internet_open_ip_with_options(request, runtime)
 
@@ -4308,6 +4972,12 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.DescribeInternetOpenIpRequest,
     ) -> cloudfw_20171207_models.DescribeInternetOpenIpResponse:
+        """
+        @summary Queries the IP addresses that are open to the Internet.
+        
+        @param request: DescribeInternetOpenIpRequest
+        @return: DescribeInternetOpenIpResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_internet_open_ip_with_options_async(request, runtime)
 
@@ -4316,6 +4986,13 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeInternetTrafficTrendRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeInternetTrafficTrendResponse:
+        """
+        @summary Queries the trends of Internet traffic.
+        
+        @param request: DescribeInternetTrafficTrendRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInternetTrafficTrendResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.direction):
@@ -4362,6 +5039,13 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeInternetTrafficTrendRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeInternetTrafficTrendResponse:
+        """
+        @summary Queries the trends of Internet traffic.
+        
+        @param request: DescribeInternetTrafficTrendRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInternetTrafficTrendResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.direction):
@@ -4407,6 +5091,12 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.DescribeInternetTrafficTrendRequest,
     ) -> cloudfw_20171207_models.DescribeInternetTrafficTrendResponse:
+        """
+        @summary Queries the trends of Internet traffic.
+        
+        @param request: DescribeInternetTrafficTrendRequest
+        @return: DescribeInternetTrafficTrendResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_internet_traffic_trend_with_options(request, runtime)
 
@@ -4414,6 +5104,12 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.DescribeInternetTrafficTrendRequest,
     ) -> cloudfw_20171207_models.DescribeInternetTrafficTrendResponse:
+        """
+        @summary Queries the trends of Internet traffic.
+        
+        @param request: DescribeInternetTrafficTrendRequest
+        @return: DescribeInternetTrafficTrendResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_internet_traffic_trend_with_options_async(request, runtime)
 
@@ -4422,6 +5118,13 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeInvadeEventListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeInvadeEventListResponse:
+        """
+        @summary Queries the information about the breach awareness events of a firewall.
+        
+        @param request: DescribeInvadeEventListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInvadeEventListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.assets_ip):
@@ -4480,6 +5183,13 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeInvadeEventListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeInvadeEventListResponse:
+        """
+        @summary Queries the information about the breach awareness events of a firewall.
+        
+        @param request: DescribeInvadeEventListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInvadeEventListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.assets_ip):
@@ -4537,6 +5247,12 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.DescribeInvadeEventListRequest,
     ) -> cloudfw_20171207_models.DescribeInvadeEventListResponse:
+        """
+        @summary Queries the information about the breach awareness events of a firewall.
+        
+        @param request: DescribeInvadeEventListRequest
+        @return: DescribeInvadeEventListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_invade_event_list_with_options(request, runtime)
 
@@ -4544,6 +5260,12 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.DescribeInvadeEventListRequest,
     ) -> cloudfw_20171207_models.DescribeInvadeEventListResponse:
+        """
+        @summary Queries the information about the breach awareness events of a firewall.
+        
+        @param request: DescribeInvadeEventListRequest
+        @return: DescribeInvadeEventListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_invade_event_list_with_options_async(request, runtime)
 
@@ -4552,6 +5274,13 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeNatAclPageStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeNatAclPageStatusResponse:
+        """
+        @summary Queries the pagination status of NAT firewalls.
+        
+        @param request: DescribeNatAclPageStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNatAclPageStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -4580,6 +5309,13 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeNatAclPageStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeNatAclPageStatusResponse:
+        """
+        @summary Queries the pagination status of NAT firewalls.
+        
+        @param request: DescribeNatAclPageStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNatAclPageStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -4607,6 +5343,12 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.DescribeNatAclPageStatusRequest,
     ) -> cloudfw_20171207_models.DescribeNatAclPageStatusResponse:
+        """
+        @summary Queries the pagination status of NAT firewalls.
+        
+        @param request: DescribeNatAclPageStatusRequest
+        @return: DescribeNatAclPageStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_nat_acl_page_status_with_options(request, runtime)
 
@@ -4614,6 +5356,12 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.DescribeNatAclPageStatusRequest,
     ) -> cloudfw_20171207_models.DescribeNatAclPageStatusResponse:
+        """
+        @summary Queries the pagination status of NAT firewalls.
+        
+        @param request: DescribeNatAclPageStatusRequest
+        @return: DescribeNatAclPageStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_nat_acl_page_status_with_options_async(request, runtime)
 
@@ -4623,7 +5371,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeNatFirewallControlPolicyResponse:
         """
-        You can use this operation to query the information about all access control policies that are created for NAT firewalls by page.
+        @summary Queries the information about all access control policies that are created for NAT firewalls.
+        
+        @description You can use this operation to query the information about all access control policies that are created for NAT firewalls by page.
         
         @param request: DescribeNatFirewallControlPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4682,7 +5432,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeNatFirewallControlPolicyResponse:
         """
-        You can use this operation to query the information about all access control policies that are created for NAT firewalls by page.
+        @summary Queries the information about all access control policies that are created for NAT firewalls.
+        
+        @description You can use this operation to query the information about all access control policies that are created for NAT firewalls by page.
         
         @param request: DescribeNatFirewallControlPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4740,7 +5492,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeNatFirewallControlPolicyRequest,
     ) -> cloudfw_20171207_models.DescribeNatFirewallControlPolicyResponse:
         """
-        You can use this operation to query the information about all access control policies that are created for NAT firewalls by page.
+        @summary Queries the information about all access control policies that are created for NAT firewalls.
+        
+        @description You can use this operation to query the information about all access control policies that are created for NAT firewalls by page.
         
         @param request: DescribeNatFirewallControlPolicyRequest
         @return: DescribeNatFirewallControlPolicyResponse
@@ -4753,7 +5507,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeNatFirewallControlPolicyRequest,
     ) -> cloudfw_20171207_models.DescribeNatFirewallControlPolicyResponse:
         """
-        You can use this operation to query the information about all access control policies that are created for NAT firewalls by page.
+        @summary Queries the information about all access control policies that are created for NAT firewalls.
+        
+        @description You can use this operation to query the information about all access control policies that are created for NAT firewalls by page.
         
         @param request: DescribeNatFirewallControlPolicyRequest
         @return: DescribeNatFirewallControlPolicyResponse
@@ -4761,13 +5517,151 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_nat_firewall_control_policy_with_options_async(request, runtime)
 
+    def describe_nat_firewall_list_with_options(
+        self,
+        request: cloudfw_20171207_models.DescribeNatFirewallListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeNatFirewallListResponse:
+        """
+        @summary 获取 NAT 防火墙列表
+        
+        @param request: DescribeNatFirewallListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNatFirewallListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.member_uid):
+            query['MemberUid'] = request.member_uid
+        if not UtilClient.is_unset(request.nat_gateway_id):
+            query['NatGatewayId'] = request.nat_gateway_id
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.proxy_id):
+            query['ProxyId'] = request.proxy_id
+        if not UtilClient.is_unset(request.proxy_name):
+            query['ProxyName'] = request.proxy_name
+        if not UtilClient.is_unset(request.region_no):
+            query['RegionNo'] = request.region_no
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeNatFirewallList',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeNatFirewallListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_nat_firewall_list_with_options_async(
+        self,
+        request: cloudfw_20171207_models.DescribeNatFirewallListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeNatFirewallListResponse:
+        """
+        @summary 获取 NAT 防火墙列表
+        
+        @param request: DescribeNatFirewallListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNatFirewallListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.member_uid):
+            query['MemberUid'] = request.member_uid
+        if not UtilClient.is_unset(request.nat_gateway_id):
+            query['NatGatewayId'] = request.nat_gateway_id
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.proxy_id):
+            query['ProxyId'] = request.proxy_id
+        if not UtilClient.is_unset(request.proxy_name):
+            query['ProxyName'] = request.proxy_name
+        if not UtilClient.is_unset(request.region_no):
+            query['RegionNo'] = request.region_no
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeNatFirewallList',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeNatFirewallListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_nat_firewall_list(
+        self,
+        request: cloudfw_20171207_models.DescribeNatFirewallListRequest,
+    ) -> cloudfw_20171207_models.DescribeNatFirewallListResponse:
+        """
+        @summary 获取 NAT 防火墙列表
+        
+        @param request: DescribeNatFirewallListRequest
+        @return: DescribeNatFirewallListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_nat_firewall_list_with_options(request, runtime)
+
+    async def describe_nat_firewall_list_async(
+        self,
+        request: cloudfw_20171207_models.DescribeNatFirewallListRequest,
+    ) -> cloudfw_20171207_models.DescribeNatFirewallListResponse:
+        """
+        @summary 获取 NAT 防火墙列表
+        
+        @param request: DescribeNatFirewallListRequest
+        @return: DescribeNatFirewallListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_nat_firewall_list_with_options_async(request, runtime)
+
     def describe_nat_firewall_policy_prior_used_with_options(
         self,
         request: cloudfw_20171207_models.DescribeNatFirewallPolicyPriorUsedRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeNatFirewallPolicyPriorUsedResponse:
         """
-        You can use this operation to query the priority range of access control policies that are created for a NAT firewall.
+        @summary Queries the priority range of access control policies that are created for a NAT firewall.
+        
+        @description You can use this operation to query the priority range of access control policies that are created for a NAT firewall.
         
         @param request: DescribeNatFirewallPolicyPriorUsedRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4808,7 +5702,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeNatFirewallPolicyPriorUsedResponse:
         """
-        You can use this operation to query the priority range of access control policies that are created for a NAT firewall.
+        @summary Queries the priority range of access control policies that are created for a NAT firewall.
+        
+        @description You can use this operation to query the priority range of access control policies that are created for a NAT firewall.
         
         @param request: DescribeNatFirewallPolicyPriorUsedRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4848,7 +5744,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeNatFirewallPolicyPriorUsedRequest,
     ) -> cloudfw_20171207_models.DescribeNatFirewallPolicyPriorUsedResponse:
         """
-        You can use this operation to query the priority range of access control policies that are created for a NAT firewall.
+        @summary Queries the priority range of access control policies that are created for a NAT firewall.
+        
+        @description You can use this operation to query the priority range of access control policies that are created for a NAT firewall.
         
         @param request: DescribeNatFirewallPolicyPriorUsedRequest
         @return: DescribeNatFirewallPolicyPriorUsedResponse
@@ -4861,7 +5759,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeNatFirewallPolicyPriorUsedRequest,
     ) -> cloudfw_20171207_models.DescribeNatFirewallPolicyPriorUsedResponse:
         """
-        You can use this operation to query the priority range of access control policies that are created for a NAT firewall.
+        @summary Queries the priority range of access control policies that are created for a NAT firewall.
+        
+        @description You can use this operation to query the priority range of access control policies that are created for a NAT firewall.
         
         @param request: DescribeNatFirewallPolicyPriorUsedRequest
         @return: DescribeNatFirewallPolicyPriorUsedResponse
@@ -4874,6 +5774,13 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeOutgoingDestinationIPRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeOutgoingDestinationIPResponse:
+        """
+        @summary Queries the information about the destination IP addresses in outbound connections.
+        
+        @param request: DescribeOutgoingDestinationIPRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeOutgoingDestinationIPResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.application_name):
@@ -4928,6 +5835,13 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeOutgoingDestinationIPRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeOutgoingDestinationIPResponse:
+        """
+        @summary Queries the information about the destination IP addresses in outbound connections.
+        
+        @param request: DescribeOutgoingDestinationIPRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeOutgoingDestinationIPResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.application_name):
@@ -4981,6 +5895,12 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.DescribeOutgoingDestinationIPRequest,
     ) -> cloudfw_20171207_models.DescribeOutgoingDestinationIPResponse:
+        """
+        @summary Queries the information about the destination IP addresses in outbound connections.
+        
+        @param request: DescribeOutgoingDestinationIPRequest
+        @return: DescribeOutgoingDestinationIPResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_outgoing_destination_ipwith_options(request, runtime)
 
@@ -4988,6 +5908,12 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.DescribeOutgoingDestinationIPRequest,
     ) -> cloudfw_20171207_models.DescribeOutgoingDestinationIPResponse:
+        """
+        @summary Queries the information about the destination IP addresses in outbound connections.
+        
+        @param request: DescribeOutgoingDestinationIPRequest
+        @return: DescribeOutgoingDestinationIPResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_outgoing_destination_ipwith_options_async(request, runtime)
 
@@ -4996,6 +5922,13 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeOutgoingDomainRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeOutgoingDomainResponse:
+        """
+        @summary Queries the information about the domain names in outbound connections.
+        
+        @param request: DescribeOutgoingDomainRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeOutgoingDomainResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.category_id):
@@ -5044,6 +5977,13 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeOutgoingDomainRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeOutgoingDomainResponse:
+        """
+        @summary Queries the information about the domain names in outbound connections.
+        
+        @param request: DescribeOutgoingDomainRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeOutgoingDomainResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.category_id):
@@ -5091,6 +6031,12 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.DescribeOutgoingDomainRequest,
     ) -> cloudfw_20171207_models.DescribeOutgoingDomainResponse:
+        """
+        @summary Queries the information about the domain names in outbound connections.
+        
+        @param request: DescribeOutgoingDomainRequest
+        @return: DescribeOutgoingDomainResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_outgoing_domain_with_options(request, runtime)
 
@@ -5098,6 +6044,12 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.DescribeOutgoingDomainRequest,
     ) -> cloudfw_20171207_models.DescribeOutgoingDomainResponse:
+        """
+        @summary Queries the information about the domain names in outbound connections.
+        
+        @param request: DescribeOutgoingDomainRequest
+        @return: DescribeOutgoingDomainResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_outgoing_domain_with_options_async(request, runtime)
 
@@ -5107,7 +6059,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribePolicyAdvancedConfigResponse:
         """
-        You can call the DescribePolicyAdvancedConfig operation to query whether the strict mode is enabled for an access control policy.
+        @summary Queries whether the strict mode is enabled for an access control policy.
+        
+        @description You can call the DescribePolicyAdvancedConfig operation to query whether the strict mode is enabled for an access control policy.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -5148,7 +6102,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribePolicyAdvancedConfigResponse:
         """
-        You can call the DescribePolicyAdvancedConfig operation to query whether the strict mode is enabled for an access control policy.
+        @summary Queries whether the strict mode is enabled for an access control policy.
+        
+        @description You can call the DescribePolicyAdvancedConfig operation to query whether the strict mode is enabled for an access control policy.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -5188,7 +6144,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribePolicyAdvancedConfigRequest,
     ) -> cloudfw_20171207_models.DescribePolicyAdvancedConfigResponse:
         """
-        You can call the DescribePolicyAdvancedConfig operation to query whether the strict mode is enabled for an access control policy.
+        @summary Queries whether the strict mode is enabled for an access control policy.
+        
+        @description You can call the DescribePolicyAdvancedConfig operation to query whether the strict mode is enabled for an access control policy.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -5203,7 +6161,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribePolicyAdvancedConfigRequest,
     ) -> cloudfw_20171207_models.DescribePolicyAdvancedConfigResponse:
         """
-        You can call the DescribePolicyAdvancedConfig operation to query whether the strict mode is enabled for an access control policy.
+        @summary Queries whether the strict mode is enabled for an access control policy.
+        
+        @description You can call the DescribePolicyAdvancedConfig operation to query whether the strict mode is enabled for an access control policy.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -5219,7 +6179,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribePolicyPriorUsedResponse:
         """
-        You can call the DescribePolicyPriorUsed operation to query the priority range of the access control policies that match specific query conditions.
+        @summary Queries the priority range of the access control policies that match specific query conditions.
+        
+        @description You can call the DescribePolicyPriorUsed operation to query the priority range of the access control policies that match specific query conditions.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -5262,7 +6224,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribePolicyPriorUsedResponse:
         """
-        You can call the DescribePolicyPriorUsed operation to query the priority range of the access control policies that match specific query conditions.
+        @summary Queries the priority range of the access control policies that match specific query conditions.
+        
+        @description You can call the DescribePolicyPriorUsed operation to query the priority range of the access control policies that match specific query conditions.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -5304,7 +6268,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribePolicyPriorUsedRequest,
     ) -> cloudfw_20171207_models.DescribePolicyPriorUsedResponse:
         """
-        You can call the DescribePolicyPriorUsed operation to query the priority range of the access control policies that match specific query conditions.
+        @summary Queries the priority range of the access control policies that match specific query conditions.
+        
+        @description You can call the DescribePolicyPriorUsed operation to query the priority range of the access control policies that match specific query conditions.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -5319,7 +6285,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribePolicyPriorUsedRequest,
     ) -> cloudfw_20171207_models.DescribePolicyPriorUsedResponse:
         """
-        You can call the DescribePolicyPriorUsed operation to query the priority range of the access control policies that match specific query conditions.
+        @summary Queries the priority range of the access control policies that match specific query conditions.
+        
+        @description You can call the DescribePolicyPriorUsed operation to query the priority range of the access control policies that match specific query conditions.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -5334,6 +6302,13 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribePostpayTrafficDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribePostpayTrafficDetailResponse:
+        """
+        @summary Queries the traffic details of Cloud Firewall that uses the pay-as-you-go billing method.
+        
+        @param request: DescribePostpayTrafficDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePostpayTrafficDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.current_page):
@@ -5376,6 +6351,13 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribePostpayTrafficDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribePostpayTrafficDetailResponse:
+        """
+        @summary Queries the traffic details of Cloud Firewall that uses the pay-as-you-go billing method.
+        
+        @param request: DescribePostpayTrafficDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePostpayTrafficDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.current_page):
@@ -5417,6 +6399,12 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.DescribePostpayTrafficDetailRequest,
     ) -> cloudfw_20171207_models.DescribePostpayTrafficDetailResponse:
+        """
+        @summary Queries the traffic details of Cloud Firewall that uses the pay-as-you-go billing method.
+        
+        @param request: DescribePostpayTrafficDetailRequest
+        @return: DescribePostpayTrafficDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_postpay_traffic_detail_with_options(request, runtime)
 
@@ -5424,6 +6412,12 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.DescribePostpayTrafficDetailRequest,
     ) -> cloudfw_20171207_models.DescribePostpayTrafficDetailResponse:
+        """
+        @summary Queries the traffic details of Cloud Firewall that uses the pay-as-you-go billing method.
+        
+        @param request: DescribePostpayTrafficDetailRequest
+        @return: DescribePostpayTrafficDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_postpay_traffic_detail_with_options_async(request, runtime)
 
@@ -5432,6 +6426,13 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribePostpayTrafficTotalRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribePostpayTrafficTotalResponse:
+        """
+        @summary Queries the total traffic of Cloud Firewall that uses the pay-as-you-go billing method. The traffic for each type of firewall is queried.
+        
+        @param request: DescribePostpayTrafficTotalRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePostpayTrafficTotalResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -5460,6 +6461,13 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribePostpayTrafficTotalRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribePostpayTrafficTotalResponse:
+        """
+        @summary Queries the total traffic of Cloud Firewall that uses the pay-as-you-go billing method. The traffic for each type of firewall is queried.
+        
+        @param request: DescribePostpayTrafficTotalRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePostpayTrafficTotalResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -5487,6 +6495,12 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.DescribePostpayTrafficTotalRequest,
     ) -> cloudfw_20171207_models.DescribePostpayTrafficTotalResponse:
+        """
+        @summary Queries the total traffic of Cloud Firewall that uses the pay-as-you-go billing method. The traffic for each type of firewall is queried.
+        
+        @param request: DescribePostpayTrafficTotalRequest
+        @return: DescribePostpayTrafficTotalResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_postpay_traffic_total_with_options(request, runtime)
 
@@ -5494,6 +6508,12 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.DescribePostpayTrafficTotalRequest,
     ) -> cloudfw_20171207_models.DescribePostpayTrafficTotalResponse:
+        """
+        @summary Queries the total traffic of Cloud Firewall that uses the pay-as-you-go billing method. The traffic for each type of firewall is queried.
+        
+        @param request: DescribePostpayTrafficTotalRequest
+        @return: DescribePostpayTrafficTotalResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_postpay_traffic_total_with_options_async(request, runtime)
 
@@ -5502,6 +6522,13 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribePrefixListsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribePrefixListsResponse:
+        """
+        @summary Queries prefix lists.
+        
+        @param request: DescribePrefixListsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePrefixListsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -5528,6 +6555,13 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribePrefixListsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribePrefixListsResponse:
+        """
+        @summary Queries prefix lists.
+        
+        @param request: DescribePrefixListsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePrefixListsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -5553,6 +6587,12 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.DescribePrefixListsRequest,
     ) -> cloudfw_20171207_models.DescribePrefixListsResponse:
+        """
+        @summary Queries prefix lists.
+        
+        @param request: DescribePrefixListsRequest
+        @return: DescribePrefixListsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_prefix_lists_with_options(request, runtime)
 
@@ -5560,6 +6600,12 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.DescribePrefixListsRequest,
     ) -> cloudfw_20171207_models.DescribePrefixListsResponse:
+        """
+        @summary Queries prefix lists.
+        
+        @param request: DescribePrefixListsRequest
+        @return: DescribePrefixListsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_prefix_lists_with_options_async(request, runtime)
 
@@ -5569,7 +6615,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeRiskEventGroupResponse:
         """
-        You can call the DescribeRiskEventGroup operation to query and download the details of intrusion events. We recommend that you query the details of 5 to 10 intrusion events at a time. If you do not need to query the geographical information about IP addresses, you can set the NoLocation parameter to true to prevent query timeout.
+        @summary Queries the details of intrusion events.
+        
+        @description You can call the DescribeRiskEventGroup operation to query and download the details of intrusion events. We recommend that you query the details of 5 to 10 intrusion events at a time. If you do not need to query the geographical information about IP addresses, you can set the NoLocation parameter to true to prevent query timeout.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -5650,7 +6698,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeRiskEventGroupResponse:
         """
-        You can call the DescribeRiskEventGroup operation to query and download the details of intrusion events. We recommend that you query the details of 5 to 10 intrusion events at a time. If you do not need to query the geographical information about IP addresses, you can set the NoLocation parameter to true to prevent query timeout.
+        @summary Queries the details of intrusion events.
+        
+        @description You can call the DescribeRiskEventGroup operation to query and download the details of intrusion events. We recommend that you query the details of 5 to 10 intrusion events at a time. If you do not need to query the geographical information about IP addresses, you can set the NoLocation parameter to true to prevent query timeout.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -5730,7 +6780,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeRiskEventGroupRequest,
     ) -> cloudfw_20171207_models.DescribeRiskEventGroupResponse:
         """
-        You can call the DescribeRiskEventGroup operation to query and download the details of intrusion events. We recommend that you query the details of 5 to 10 intrusion events at a time. If you do not need to query the geographical information about IP addresses, you can set the NoLocation parameter to true to prevent query timeout.
+        @summary Queries the details of intrusion events.
+        
+        @description You can call the DescribeRiskEventGroup operation to query and download the details of intrusion events. We recommend that you query the details of 5 to 10 intrusion events at a time. If you do not need to query the geographical information about IP addresses, you can set the NoLocation parameter to true to prevent query timeout.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -5745,7 +6797,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeRiskEventGroupRequest,
     ) -> cloudfw_20171207_models.DescribeRiskEventGroupResponse:
         """
-        You can call the DescribeRiskEventGroup operation to query and download the details of intrusion events. We recommend that you query the details of 5 to 10 intrusion events at a time. If you do not need to query the geographical information about IP addresses, you can set the NoLocation parameter to true to prevent query timeout.
+        @summary Queries the details of intrusion events.
+        
+        @description You can call the DescribeRiskEventGroup operation to query and download the details of intrusion events. We recommend that you query the details of 5 to 10 intrusion events at a time. If you do not need to query the geographical information about IP addresses, you can set the NoLocation parameter to true to prevent query timeout.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -5760,6 +6814,13 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeRiskEventPayloadRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeRiskEventPayloadResponse:
+        """
+        @summary Queries the attack payloads of intrusion events.
+        
+        @param request: DescribeRiskEventPayloadRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRiskEventPayloadResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dst_ip):
@@ -5804,6 +6865,13 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeRiskEventPayloadRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeRiskEventPayloadResponse:
+        """
+        @summary Queries the attack payloads of intrusion events.
+        
+        @param request: DescribeRiskEventPayloadRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRiskEventPayloadResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dst_ip):
@@ -5847,6 +6915,12 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.DescribeRiskEventPayloadRequest,
     ) -> cloudfw_20171207_models.DescribeRiskEventPayloadResponse:
+        """
+        @summary Queries the attack payloads of intrusion events.
+        
+        @param request: DescribeRiskEventPayloadRequest
+        @return: DescribeRiskEventPayloadResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_risk_event_payload_with_options(request, runtime)
 
@@ -5854,6 +6928,12 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.DescribeRiskEventPayloadRequest,
     ) -> cloudfw_20171207_models.DescribeRiskEventPayloadResponse:
+        """
+        @summary Queries the attack payloads of intrusion events.
+        
+        @param request: DescribeRiskEventPayloadRequest
+        @return: DescribeRiskEventPayloadResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_risk_event_payload_with_options_async(request, runtime)
 
@@ -5861,6 +6941,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeSignatureLibVersionResponse:
+        """
+        @summary Queries the information about signature library versions.
+        
+        @param request: DescribeSignatureLibVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSignatureLibVersionResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='DescribeSignatureLibVersion',
@@ -5882,6 +6969,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeSignatureLibVersionResponse:
+        """
+        @summary Queries the information about signature library versions.
+        
+        @param request: DescribeSignatureLibVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSignatureLibVersionResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='DescribeSignatureLibVersion',
@@ -5900,10 +6994,20 @@ class Client(OpenApiClient):
         )
 
     def describe_signature_lib_version(self) -> cloudfw_20171207_models.DescribeSignatureLibVersionResponse:
+        """
+        @summary Queries the information about signature library versions.
+        
+        @return: DescribeSignatureLibVersionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_signature_lib_version_with_options(runtime)
 
     async def describe_signature_lib_version_async(self) -> cloudfw_20171207_models.DescribeSignatureLibVersionResponse:
+        """
+        @summary Queries the information about signature library versions.
+        
+        @return: DescribeSignatureLibVersionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_signature_lib_version_with_options_async(runtime)
 
@@ -5912,6 +7016,13 @@ class Client(OpenApiClient):
         tmp_req: cloudfw_20171207_models.DescribeTrFirewallPolicyBackUpAssociationListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeTrFirewallPolicyBackUpAssociationListResponse:
+        """
+        @summary Queries information about the transit routers that are associated with a virtual private cloud (VPC) firewall created for a transit router.
+        
+        @param tmp_req: DescribeTrFirewallPolicyBackUpAssociationListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTrFirewallPolicyBackUpAssociationListResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = cloudfw_20171207_models.DescribeTrFirewallPolicyBackUpAssociationListShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -5950,6 +7061,13 @@ class Client(OpenApiClient):
         tmp_req: cloudfw_20171207_models.DescribeTrFirewallPolicyBackUpAssociationListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeTrFirewallPolicyBackUpAssociationListResponse:
+        """
+        @summary Queries information about the transit routers that are associated with a virtual private cloud (VPC) firewall created for a transit router.
+        
+        @param tmp_req: DescribeTrFirewallPolicyBackUpAssociationListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTrFirewallPolicyBackUpAssociationListResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = cloudfw_20171207_models.DescribeTrFirewallPolicyBackUpAssociationListShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -5987,6 +7105,12 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.DescribeTrFirewallPolicyBackUpAssociationListRequest,
     ) -> cloudfw_20171207_models.DescribeTrFirewallPolicyBackUpAssociationListResponse:
+        """
+        @summary Queries information about the transit routers that are associated with a virtual private cloud (VPC) firewall created for a transit router.
+        
+        @param request: DescribeTrFirewallPolicyBackUpAssociationListRequest
+        @return: DescribeTrFirewallPolicyBackUpAssociationListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_tr_firewall_policy_back_up_association_list_with_options(request, runtime)
 
@@ -5994,6 +7118,12 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.DescribeTrFirewallPolicyBackUpAssociationListRequest,
     ) -> cloudfw_20171207_models.DescribeTrFirewallPolicyBackUpAssociationListResponse:
+        """
+        @summary Queries information about the transit routers that are associated with a virtual private cloud (VPC) firewall created for a transit router.
+        
+        @param request: DescribeTrFirewallPolicyBackUpAssociationListRequest
+        @return: DescribeTrFirewallPolicyBackUpAssociationListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_tr_firewall_policy_back_up_association_list_with_options_async(request, runtime)
 
@@ -6002,6 +7132,13 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeTrFirewallV2RoutePolicyListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeTrFirewallV2RoutePolicyListResponse:
+        """
+        @summary Queries the routing policies of a virtual private cloud (VPC) firewall that is created for a transit router.
+        
+        @param request: DescribeTrFirewallV2RoutePolicyListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTrFirewallV2RoutePolicyListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.current_page):
@@ -6038,6 +7175,13 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeTrFirewallV2RoutePolicyListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeTrFirewallV2RoutePolicyListResponse:
+        """
+        @summary Queries the routing policies of a virtual private cloud (VPC) firewall that is created for a transit router.
+        
+        @param request: DescribeTrFirewallV2RoutePolicyListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTrFirewallV2RoutePolicyListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.current_page):
@@ -6073,6 +7217,12 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.DescribeTrFirewallV2RoutePolicyListRequest,
     ) -> cloudfw_20171207_models.DescribeTrFirewallV2RoutePolicyListResponse:
+        """
+        @summary Queries the routing policies of a virtual private cloud (VPC) firewall that is created for a transit router.
+        
+        @param request: DescribeTrFirewallV2RoutePolicyListRequest
+        @return: DescribeTrFirewallV2RoutePolicyListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_tr_firewall_v2route_policy_list_with_options(request, runtime)
 
@@ -6080,6 +7230,12 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.DescribeTrFirewallV2RoutePolicyListRequest,
     ) -> cloudfw_20171207_models.DescribeTrFirewallV2RoutePolicyListResponse:
+        """
+        @summary Queries the routing policies of a virtual private cloud (VPC) firewall that is created for a transit router.
+        
+        @param request: DescribeTrFirewallV2RoutePolicyListRequest
+        @return: DescribeTrFirewallV2RoutePolicyListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_tr_firewall_v2route_policy_list_with_options_async(request, runtime)
 
@@ -6088,6 +7244,13 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeTrFirewallsV2DetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeTrFirewallsV2DetailResponse:
+        """
+        @summary Queries the details of the virtual private cloud (VPC) firewalls that are created for transit routers.
+        
+        @param request: DescribeTrFirewallsV2DetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTrFirewallsV2DetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.firewall_id):
@@ -6118,6 +7281,13 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeTrFirewallsV2DetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeTrFirewallsV2DetailResponse:
+        """
+        @summary Queries the details of the virtual private cloud (VPC) firewalls that are created for transit routers.
+        
+        @param request: DescribeTrFirewallsV2DetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTrFirewallsV2DetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.firewall_id):
@@ -6147,6 +7317,12 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.DescribeTrFirewallsV2DetailRequest,
     ) -> cloudfw_20171207_models.DescribeTrFirewallsV2DetailResponse:
+        """
+        @summary Queries the details of the virtual private cloud (VPC) firewalls that are created for transit routers.
+        
+        @param request: DescribeTrFirewallsV2DetailRequest
+        @return: DescribeTrFirewallsV2DetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_tr_firewalls_v2detail_with_options(request, runtime)
 
@@ -6154,6 +7330,12 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.DescribeTrFirewallsV2DetailRequest,
     ) -> cloudfw_20171207_models.DescribeTrFirewallsV2DetailResponse:
+        """
+        @summary Queries the details of the virtual private cloud (VPC) firewalls that are created for transit routers.
+        
+        @param request: DescribeTrFirewallsV2DetailRequest
+        @return: DescribeTrFirewallsV2DetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_tr_firewalls_v2detail_with_options_async(request, runtime)
 
@@ -6162,6 +7344,13 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeTrFirewallsV2ListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeTrFirewallsV2ListResponse:
+        """
+        @summary Queries the virtual private cloud (VPC) firewalls that are created for transit routers.
+        
+        @param request: DescribeTrFirewallsV2ListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTrFirewallsV2ListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cen_id):
@@ -6210,6 +7399,13 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeTrFirewallsV2ListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeTrFirewallsV2ListResponse:
+        """
+        @summary Queries the virtual private cloud (VPC) firewalls that are created for transit routers.
+        
+        @param request: DescribeTrFirewallsV2ListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTrFirewallsV2ListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cen_id):
@@ -6257,6 +7453,12 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.DescribeTrFirewallsV2ListRequest,
     ) -> cloudfw_20171207_models.DescribeTrFirewallsV2ListResponse:
+        """
+        @summary Queries the virtual private cloud (VPC) firewalls that are created for transit routers.
+        
+        @param request: DescribeTrFirewallsV2ListRequest
+        @return: DescribeTrFirewallsV2ListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_tr_firewalls_v2list_with_options(request, runtime)
 
@@ -6264,6 +7466,12 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.DescribeTrFirewallsV2ListRequest,
     ) -> cloudfw_20171207_models.DescribeTrFirewallsV2ListResponse:
+        """
+        @summary Queries the virtual private cloud (VPC) firewalls that are created for transit routers.
+        
+        @param request: DescribeTrFirewallsV2ListRequest
+        @return: DescribeTrFirewallsV2ListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_tr_firewalls_v2list_with_options_async(request, runtime)
 
@@ -6272,6 +7480,11 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeTrFirewallsV2RouteListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeTrFirewallsV2RouteListResponse:
+        """
+        @param request: DescribeTrFirewallsV2RouteListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTrFirewallsV2RouteListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.current_page):
@@ -6308,6 +7521,11 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeTrFirewallsV2RouteListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeTrFirewallsV2RouteListResponse:
+        """
+        @param request: DescribeTrFirewallsV2RouteListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTrFirewallsV2RouteListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.current_page):
@@ -6343,6 +7561,10 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.DescribeTrFirewallsV2RouteListRequest,
     ) -> cloudfw_20171207_models.DescribeTrFirewallsV2RouteListResponse:
+        """
+        @param request: DescribeTrFirewallsV2RouteListRequest
+        @return: DescribeTrFirewallsV2RouteListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_tr_firewalls_v2route_list_with_options(request, runtime)
 
@@ -6350,6 +7572,10 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.DescribeTrFirewallsV2RouteListRequest,
     ) -> cloudfw_20171207_models.DescribeTrFirewallsV2RouteListResponse:
+        """
+        @param request: DescribeTrFirewallsV2RouteListRequest
+        @return: DescribeTrFirewallsV2RouteListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_tr_firewalls_v2route_list_with_options_async(request, runtime)
 
@@ -6358,6 +7584,13 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeUserAssetIPTrafficInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeUserAssetIPTrafficInfoResponse:
+        """
+        @summary Queries the information about the traffic of a specified asset that belongs to your Alibaba Cloud account.
+        
+        @param request: DescribeUserAssetIPTrafficInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUserAssetIPTrafficInfoResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -6384,6 +7617,13 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeUserAssetIPTrafficInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeUserAssetIPTrafficInfoResponse:
+        """
+        @summary Queries the information about the traffic of a specified asset that belongs to your Alibaba Cloud account.
+        
+        @param request: DescribeUserAssetIPTrafficInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUserAssetIPTrafficInfoResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -6409,6 +7649,12 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.DescribeUserAssetIPTrafficInfoRequest,
     ) -> cloudfw_20171207_models.DescribeUserAssetIPTrafficInfoResponse:
+        """
+        @summary Queries the information about the traffic of a specified asset that belongs to your Alibaba Cloud account.
+        
+        @param request: DescribeUserAssetIPTrafficInfoRequest
+        @return: DescribeUserAssetIPTrafficInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_user_asset_iptraffic_info_with_options(request, runtime)
 
@@ -6416,6 +7662,12 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.DescribeUserAssetIPTrafficInfoRequest,
     ) -> cloudfw_20171207_models.DescribeUserAssetIPTrafficInfoResponse:
+        """
+        @summary Queries the information about the traffic of a specified asset that belongs to your Alibaba Cloud account.
+        
+        @param request: DescribeUserAssetIPTrafficInfoRequest
+        @return: DescribeUserAssetIPTrafficInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_user_asset_iptraffic_info_with_options_async(request, runtime)
 
@@ -6424,6 +7676,11 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeUserIPSWhitelistRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeUserIPSWhitelistResponse:
+        """
+        @param request: DescribeUserIPSWhitelistRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUserIPSWhitelistResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -6456,6 +7713,11 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeUserIPSWhitelistRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeUserIPSWhitelistResponse:
+        """
+        @param request: DescribeUserIPSWhitelistRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUserIPSWhitelistResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -6487,6 +7749,10 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.DescribeUserIPSWhitelistRequest,
     ) -> cloudfw_20171207_models.DescribeUserIPSWhitelistResponse:
+        """
+        @param request: DescribeUserIPSWhitelistRequest
+        @return: DescribeUserIPSWhitelistResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_user_ipswhitelist_with_options(request, runtime)
 
@@ -6494,6 +7760,10 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.DescribeUserIPSWhitelistRequest,
     ) -> cloudfw_20171207_models.DescribeUserIPSWhitelistResponse:
+        """
+        @param request: DescribeUserIPSWhitelistRequest
+        @return: DescribeUserIPSWhitelistResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_user_ipswhitelist_with_options_async(request, runtime)
 
@@ -6503,7 +7773,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeVpcFirewallAclGroupListResponse:
         """
-        You can call the DescribeVpcFirewallAclGroupList operation to query the information about all policy groups of access control policies that are created for VPC firewalls.
+        @summary Queries the information about all policy groups of access control policies that are created for virtual private cloud (VPC) firewalls.
+        
+        @description You can call the DescribeVpcFirewallAclGroupList operation to query the information about all policy groups of access control policies that are created for VPC firewalls.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -6546,7 +7818,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeVpcFirewallAclGroupListResponse:
         """
-        You can call the DescribeVpcFirewallAclGroupList operation to query the information about all policy groups of access control policies that are created for VPC firewalls.
+        @summary Queries the information about all policy groups of access control policies that are created for virtual private cloud (VPC) firewalls.
+        
+        @description You can call the DescribeVpcFirewallAclGroupList operation to query the information about all policy groups of access control policies that are created for VPC firewalls.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -6588,7 +7862,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeVpcFirewallAclGroupListRequest,
     ) -> cloudfw_20171207_models.DescribeVpcFirewallAclGroupListResponse:
         """
-        You can call the DescribeVpcFirewallAclGroupList operation to query the information about all policy groups of access control policies that are created for VPC firewalls.
+        @summary Queries the information about all policy groups of access control policies that are created for virtual private cloud (VPC) firewalls.
+        
+        @description You can call the DescribeVpcFirewallAclGroupList operation to query the information about all policy groups of access control policies that are created for VPC firewalls.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -6603,7 +7879,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeVpcFirewallAclGroupListRequest,
     ) -> cloudfw_20171207_models.DescribeVpcFirewallAclGroupListResponse:
         """
-        You can call the DescribeVpcFirewallAclGroupList operation to query the information about all policy groups of access control policies that are created for VPC firewalls.
+        @summary Queries the information about all policy groups of access control policies that are created for virtual private cloud (VPC) firewalls.
+        
+        @description You can call the DescribeVpcFirewallAclGroupList operation to query the information about all policy groups of access control policies that are created for VPC firewalls.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -6619,7 +7897,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeVpcFirewallCenDetailResponse:
         """
-        You can call the DescribeVpcFirewallCenDetail operation to query the details about a VPC firewall. The VPC firewall protects access traffic between a specified VPC and a network instance that is attached to a CEN instance. The network instance can be a VPC, a virtual border router (VBR), or a Cloud Connect Network (CCN) instance.
+        @summary Queries the details about a virtual private cloud (VPC) firewall. The VPC firewall protects access traffic between a VPC and a network instance that is attached to a Cloud Enterprise Network (CEN) instance.
+        
+        @description You can call the DescribeVpcFirewallCenDetail operation to query the details about a VPC firewall. The VPC firewall protects access traffic between a specified VPC and a network instance that is attached to a CEN instance. The network instance can be a VPC, a virtual border router (VBR), or a Cloud Connect Network (CCN) instance.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -6662,7 +7942,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeVpcFirewallCenDetailResponse:
         """
-        You can call the DescribeVpcFirewallCenDetail operation to query the details about a VPC firewall. The VPC firewall protects access traffic between a specified VPC and a network instance that is attached to a CEN instance. The network instance can be a VPC, a virtual border router (VBR), or a Cloud Connect Network (CCN) instance.
+        @summary Queries the details about a virtual private cloud (VPC) firewall. The VPC firewall protects access traffic between a VPC and a network instance that is attached to a Cloud Enterprise Network (CEN) instance.
+        
+        @description You can call the DescribeVpcFirewallCenDetail operation to query the details about a VPC firewall. The VPC firewall protects access traffic between a specified VPC and a network instance that is attached to a CEN instance. The network instance can be a VPC, a virtual border router (VBR), or a Cloud Connect Network (CCN) instance.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -6704,7 +7986,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeVpcFirewallCenDetailRequest,
     ) -> cloudfw_20171207_models.DescribeVpcFirewallCenDetailResponse:
         """
-        You can call the DescribeVpcFirewallCenDetail operation to query the details about a VPC firewall. The VPC firewall protects access traffic between a specified VPC and a network instance that is attached to a CEN instance. The network instance can be a VPC, a virtual border router (VBR), or a Cloud Connect Network (CCN) instance.
+        @summary Queries the details about a virtual private cloud (VPC) firewall. The VPC firewall protects access traffic between a VPC and a network instance that is attached to a Cloud Enterprise Network (CEN) instance.
+        
+        @description You can call the DescribeVpcFirewallCenDetail operation to query the details about a VPC firewall. The VPC firewall protects access traffic between a specified VPC and a network instance that is attached to a CEN instance. The network instance can be a VPC, a virtual border router (VBR), or a Cloud Connect Network (CCN) instance.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -6719,7 +8003,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeVpcFirewallCenDetailRequest,
     ) -> cloudfw_20171207_models.DescribeVpcFirewallCenDetailResponse:
         """
-        You can call the DescribeVpcFirewallCenDetail operation to query the details about a VPC firewall. The VPC firewall protects access traffic between a specified VPC and a network instance that is attached to a CEN instance. The network instance can be a VPC, a virtual border router (VBR), or a Cloud Connect Network (CCN) instance.
+        @summary Queries the details about a virtual private cloud (VPC) firewall. The VPC firewall protects access traffic between a VPC and a network instance that is attached to a Cloud Enterprise Network (CEN) instance.
+        
+        @description You can call the DescribeVpcFirewallCenDetail operation to query the details about a VPC firewall. The VPC firewall protects access traffic between a specified VPC and a network instance that is attached to a CEN instance. The network instance can be a VPC, a virtual border router (VBR), or a Cloud Connect Network (CCN) instance.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -6735,7 +8021,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeVpcFirewallCenListResponse:
         """
-        You can call the DescribeVpcFirewallCenList operation to query VPC firewalls. A VPC firewall protects mutual access traffic between a specified VPC and a network instance that is attached to a CEN instance. The network instance can be a VPC, a virtual border router (VBR), or a Cloud Connect Network (CCN) instance.
+        @summary Queries virtual private cloud (VPC) firewalls. Each VPC firewall protects mutual access traffic between a specified VPC and a network instance that is attached to a Cloud Enterprise Network (CEN) instance.
+        
+        @description You can call the DescribeVpcFirewallCenList operation to query VPC firewalls. A VPC firewall protects mutual access traffic between a specified VPC and a network instance that is attached to a CEN instance. The network instance can be a VPC, a virtual border router (VBR), or a Cloud Connect Network (CCN) instance.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -6798,7 +8086,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeVpcFirewallCenListResponse:
         """
-        You can call the DescribeVpcFirewallCenList operation to query VPC firewalls. A VPC firewall protects mutual access traffic between a specified VPC and a network instance that is attached to a CEN instance. The network instance can be a VPC, a virtual border router (VBR), or a Cloud Connect Network (CCN) instance.
+        @summary Queries virtual private cloud (VPC) firewalls. Each VPC firewall protects mutual access traffic between a specified VPC and a network instance that is attached to a Cloud Enterprise Network (CEN) instance.
+        
+        @description You can call the DescribeVpcFirewallCenList operation to query VPC firewalls. A VPC firewall protects mutual access traffic between a specified VPC and a network instance that is attached to a CEN instance. The network instance can be a VPC, a virtual border router (VBR), or a Cloud Connect Network (CCN) instance.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -6860,7 +8150,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeVpcFirewallCenListRequest,
     ) -> cloudfw_20171207_models.DescribeVpcFirewallCenListResponse:
         """
-        You can call the DescribeVpcFirewallCenList operation to query VPC firewalls. A VPC firewall protects mutual access traffic between a specified VPC and a network instance that is attached to a CEN instance. The network instance can be a VPC, a virtual border router (VBR), or a Cloud Connect Network (CCN) instance.
+        @summary Queries virtual private cloud (VPC) firewalls. Each VPC firewall protects mutual access traffic between a specified VPC and a network instance that is attached to a Cloud Enterprise Network (CEN) instance.
+        
+        @description You can call the DescribeVpcFirewallCenList operation to query VPC firewalls. A VPC firewall protects mutual access traffic between a specified VPC and a network instance that is attached to a CEN instance. The network instance can be a VPC, a virtual border router (VBR), or a Cloud Connect Network (CCN) instance.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -6875,7 +8167,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeVpcFirewallCenListRequest,
     ) -> cloudfw_20171207_models.DescribeVpcFirewallCenListResponse:
         """
-        You can call the DescribeVpcFirewallCenList operation to query VPC firewalls. A VPC firewall protects mutual access traffic between a specified VPC and a network instance that is attached to a CEN instance. The network instance can be a VPC, a virtual border router (VBR), or a Cloud Connect Network (CCN) instance.
+        @summary Queries virtual private cloud (VPC) firewalls. Each VPC firewall protects mutual access traffic between a specified VPC and a network instance that is attached to a Cloud Enterprise Network (CEN) instance.
+        
+        @description You can call the DescribeVpcFirewallCenList operation to query VPC firewalls. A VPC firewall protects mutual access traffic between a specified VPC and a network instance that is attached to a CEN instance. The network instance can be a VPC, a virtual border router (VBR), or a Cloud Connect Network (CCN) instance.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -6891,7 +8185,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeVpcFirewallControlPolicyResponse:
         """
-        You can call the DescribeVpcFirewallControlPolicy operation to query the information about all access control policies that are created for a specified VPC firewall. Different access control policies are used when a VPC firewall is used to protect traffic between two VPCs that are connected by using a Cloud Enterprise Network (CEN) instance or an Express Connect circuit.
+        @summary Queries the information about the access control policies for a specified virtual private cloud (VPC) firewall.
+        
+        @description You can call the DescribeVpcFirewallControlPolicy operation to query the information about all access control policies that are created for a specified VPC firewall. Different access control policies are used when a VPC firewall is used to protect traffic between two VPCs that are connected by using a Cloud Enterprise Network (CEN) instance or an Express Connect circuit.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -6952,7 +8248,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeVpcFirewallControlPolicyResponse:
         """
-        You can call the DescribeVpcFirewallControlPolicy operation to query the information about all access control policies that are created for a specified VPC firewall. Different access control policies are used when a VPC firewall is used to protect traffic between two VPCs that are connected by using a Cloud Enterprise Network (CEN) instance or an Express Connect circuit.
+        @summary Queries the information about the access control policies for a specified virtual private cloud (VPC) firewall.
+        
+        @description You can call the DescribeVpcFirewallControlPolicy operation to query the information about all access control policies that are created for a specified VPC firewall. Different access control policies are used when a VPC firewall is used to protect traffic between two VPCs that are connected by using a Cloud Enterprise Network (CEN) instance or an Express Connect circuit.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -7012,7 +8310,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeVpcFirewallControlPolicyRequest,
     ) -> cloudfw_20171207_models.DescribeVpcFirewallControlPolicyResponse:
         """
-        You can call the DescribeVpcFirewallControlPolicy operation to query the information about all access control policies that are created for a specified VPC firewall. Different access control policies are used when a VPC firewall is used to protect traffic between two VPCs that are connected by using a Cloud Enterprise Network (CEN) instance or an Express Connect circuit.
+        @summary Queries the information about the access control policies for a specified virtual private cloud (VPC) firewall.
+        
+        @description You can call the DescribeVpcFirewallControlPolicy operation to query the information about all access control policies that are created for a specified VPC firewall. Different access control policies are used when a VPC firewall is used to protect traffic between two VPCs that are connected by using a Cloud Enterprise Network (CEN) instance or an Express Connect circuit.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -7027,7 +8327,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeVpcFirewallControlPolicyRequest,
     ) -> cloudfw_20171207_models.DescribeVpcFirewallControlPolicyResponse:
         """
-        You can call the DescribeVpcFirewallControlPolicy operation to query the information about all access control policies that are created for a specified VPC firewall. Different access control policies are used when a VPC firewall is used to protect traffic between two VPCs that are connected by using a Cloud Enterprise Network (CEN) instance or an Express Connect circuit.
+        @summary Queries the information about the access control policies for a specified virtual private cloud (VPC) firewall.
+        
+        @description You can call the DescribeVpcFirewallControlPolicy operation to query the information about all access control policies that are created for a specified VPC firewall. Different access control policies are used when a VPC firewall is used to protect traffic between two VPCs that are connected by using a Cloud Enterprise Network (CEN) instance or an Express Connect circuit.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -7043,7 +8345,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeVpcFirewallDefaultIPSConfigResponse:
         """
-        You can call the DescribeVpcFirewallDefaultIPSConfig operation to query the intrusion prevention configurations of a VPC firewall.
+        @summary Queries the intrusion prevention configurations of a virtual private cloud (VPC) firewall.
+        
+        @description You can call the DescribeVpcFirewallDefaultIPSConfig operation to query the intrusion prevention configurations of a VPC firewall.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -7082,7 +8386,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeVpcFirewallDefaultIPSConfigResponse:
         """
-        You can call the DescribeVpcFirewallDefaultIPSConfig operation to query the intrusion prevention configurations of a VPC firewall.
+        @summary Queries the intrusion prevention configurations of a virtual private cloud (VPC) firewall.
+        
+        @description You can call the DescribeVpcFirewallDefaultIPSConfig operation to query the intrusion prevention configurations of a VPC firewall.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -7120,7 +8426,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeVpcFirewallDefaultIPSConfigRequest,
     ) -> cloudfw_20171207_models.DescribeVpcFirewallDefaultIPSConfigResponse:
         """
-        You can call the DescribeVpcFirewallDefaultIPSConfig operation to query the intrusion prevention configurations of a VPC firewall.
+        @summary Queries the intrusion prevention configurations of a virtual private cloud (VPC) firewall.
+        
+        @description You can call the DescribeVpcFirewallDefaultIPSConfig operation to query the intrusion prevention configurations of a VPC firewall.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -7135,7 +8443,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeVpcFirewallDefaultIPSConfigRequest,
     ) -> cloudfw_20171207_models.DescribeVpcFirewallDefaultIPSConfigResponse:
         """
-        You can call the DescribeVpcFirewallDefaultIPSConfig operation to query the intrusion prevention configurations of a VPC firewall.
+        @summary Queries the intrusion prevention configurations of a virtual private cloud (VPC) firewall.
+        
+        @description You can call the DescribeVpcFirewallDefaultIPSConfig operation to query the intrusion prevention configurations of a VPC firewall.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -7151,7 +8461,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeVpcFirewallDetailResponse:
         """
-        You can call the DescribeVpcFirewallDetail operation to query the details about a VPC firewall. The VPC firewall controls traffic between two VPCs that are connected by using an Express Connect circuit.
+        @summary Queries the details about a virtual private cloud (VPC) firewall. The VPC firewall controls traffic between two VPCs that are connected by using an Express Connect circuit.
+        
+        @description You can call the DescribeVpcFirewallDetail operation to query the details about a VPC firewall. The VPC firewall controls traffic between two VPCs that are connected by using an Express Connect circuit.
         Before you call the operation, make sure that you created a VPC firewall by calling the [CreateVpcFirewallConfigure](https://www.alibabacloud.com/help/en/cloud-firewall/latest/createvpcfirewallconfigure) operation.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
@@ -7197,7 +8509,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeVpcFirewallDetailResponse:
         """
-        You can call the DescribeVpcFirewallDetail operation to query the details about a VPC firewall. The VPC firewall controls traffic between two VPCs that are connected by using an Express Connect circuit.
+        @summary Queries the details about a virtual private cloud (VPC) firewall. The VPC firewall controls traffic between two VPCs that are connected by using an Express Connect circuit.
+        
+        @description You can call the DescribeVpcFirewallDetail operation to query the details about a VPC firewall. The VPC firewall controls traffic between two VPCs that are connected by using an Express Connect circuit.
         Before you call the operation, make sure that you created a VPC firewall by calling the [CreateVpcFirewallConfigure](https://www.alibabacloud.com/help/en/cloud-firewall/latest/createvpcfirewallconfigure) operation.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
@@ -7242,7 +8556,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeVpcFirewallDetailRequest,
     ) -> cloudfw_20171207_models.DescribeVpcFirewallDetailResponse:
         """
-        You can call the DescribeVpcFirewallDetail operation to query the details about a VPC firewall. The VPC firewall controls traffic between two VPCs that are connected by using an Express Connect circuit.
+        @summary Queries the details about a virtual private cloud (VPC) firewall. The VPC firewall controls traffic between two VPCs that are connected by using an Express Connect circuit.
+        
+        @description You can call the DescribeVpcFirewallDetail operation to query the details about a VPC firewall. The VPC firewall controls traffic between two VPCs that are connected by using an Express Connect circuit.
         Before you call the operation, make sure that you created a VPC firewall by calling the [CreateVpcFirewallConfigure](https://www.alibabacloud.com/help/en/cloud-firewall/latest/createvpcfirewallconfigure) operation.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
@@ -7258,7 +8574,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeVpcFirewallDetailRequest,
     ) -> cloudfw_20171207_models.DescribeVpcFirewallDetailResponse:
         """
-        You can call the DescribeVpcFirewallDetail operation to query the details about a VPC firewall. The VPC firewall controls traffic between two VPCs that are connected by using an Express Connect circuit.
+        @summary Queries the details about a virtual private cloud (VPC) firewall. The VPC firewall controls traffic between two VPCs that are connected by using an Express Connect circuit.
+        
+        @description You can call the DescribeVpcFirewallDetail operation to query the details about a VPC firewall. The VPC firewall controls traffic between two VPCs that are connected by using an Express Connect circuit.
         Before you call the operation, make sure that you created a VPC firewall by calling the [CreateVpcFirewallConfigure](https://www.alibabacloud.com/help/en/cloud-firewall/latest/createvpcfirewallconfigure) operation.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
@@ -7274,6 +8592,13 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeVpcFirewallIPSWhitelistRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeVpcFirewallIPSWhitelistResponse:
+        """
+        @summary Queries the IPS whitelist of a virtual private cloud (VPC) firewall.
+        
+        @param request: DescribeVpcFirewallIPSWhitelistRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVpcFirewallIPSWhitelistResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -7306,6 +8631,13 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeVpcFirewallIPSWhitelistRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeVpcFirewallIPSWhitelistResponse:
+        """
+        @summary Queries the IPS whitelist of a virtual private cloud (VPC) firewall.
+        
+        @param request: DescribeVpcFirewallIPSWhitelistRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVpcFirewallIPSWhitelistResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -7337,6 +8669,12 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.DescribeVpcFirewallIPSWhitelistRequest,
     ) -> cloudfw_20171207_models.DescribeVpcFirewallIPSWhitelistResponse:
+        """
+        @summary Queries the IPS whitelist of a virtual private cloud (VPC) firewall.
+        
+        @param request: DescribeVpcFirewallIPSWhitelistRequest
+        @return: DescribeVpcFirewallIPSWhitelistResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_vpc_firewall_ipswhitelist_with_options(request, runtime)
 
@@ -7344,6 +8682,12 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.DescribeVpcFirewallIPSWhitelistRequest,
     ) -> cloudfw_20171207_models.DescribeVpcFirewallIPSWhitelistResponse:
+        """
+        @summary Queries the IPS whitelist of a virtual private cloud (VPC) firewall.
+        
+        @param request: DescribeVpcFirewallIPSWhitelistRequest
+        @return: DescribeVpcFirewallIPSWhitelistResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_vpc_firewall_ipswhitelist_with_options_async(request, runtime)
 
@@ -7353,7 +8697,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeVpcFirewallListResponse:
         """
-        You can call the DescribeVpcFirewallList operation to query the details about VPC firewalls by page. Each VPC firewall protects traffic between two VPCs that are connected by using an Express Connect circuit.
+        @summary Queries the details about virtual private cloud (VPC) firewalls by page. Each VPC firewall protects traffic between two VPCs that are connected by using an Express Connect circuit.
+        
+        @description You can call the DescribeVpcFirewallList operation to query the details about VPC firewalls by page. Each VPC firewall protects traffic between two VPCs that are connected by using an Express Connect circuit.
         ### Limits
         You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -7412,7 +8758,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeVpcFirewallListResponse:
         """
-        You can call the DescribeVpcFirewallList operation to query the details about VPC firewalls by page. Each VPC firewall protects traffic between two VPCs that are connected by using an Express Connect circuit.
+        @summary Queries the details about virtual private cloud (VPC) firewalls by page. Each VPC firewall protects traffic between two VPCs that are connected by using an Express Connect circuit.
+        
+        @description You can call the DescribeVpcFirewallList operation to query the details about VPC firewalls by page. Each VPC firewall protects traffic between two VPCs that are connected by using an Express Connect circuit.
         ### Limits
         You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -7470,7 +8818,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeVpcFirewallListRequest,
     ) -> cloudfw_20171207_models.DescribeVpcFirewallListResponse:
         """
-        You can call the DescribeVpcFirewallList operation to query the details about VPC firewalls by page. Each VPC firewall protects traffic between two VPCs that are connected by using an Express Connect circuit.
+        @summary Queries the details about virtual private cloud (VPC) firewalls by page. Each VPC firewall protects traffic between two VPCs that are connected by using an Express Connect circuit.
+        
+        @description You can call the DescribeVpcFirewallList operation to query the details about VPC firewalls by page. Each VPC firewall protects traffic between two VPCs that are connected by using an Express Connect circuit.
         ### Limits
         You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -7485,7 +8835,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeVpcFirewallListRequest,
     ) -> cloudfw_20171207_models.DescribeVpcFirewallListResponse:
         """
-        You can call the DescribeVpcFirewallList operation to query the details about VPC firewalls by page. Each VPC firewall protects traffic between two VPCs that are connected by using an Express Connect circuit.
+        @summary Queries the details about virtual private cloud (VPC) firewalls by page. Each VPC firewall protects traffic between two VPCs that are connected by using an Express Connect circuit.
+        
+        @description You can call the DescribeVpcFirewallList operation to query the details about VPC firewalls by page. Each VPC firewall protects traffic between two VPCs that are connected by using an Express Connect circuit.
         ### Limits
         You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -7501,7 +8853,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeVpcFirewallPolicyPriorUsedResponse:
         """
-        You can call the DescribeVpcFirewallPolicyPriorUsed operation to query the priority range of access control policies that are created for a VPC firewall in a specific policy group.
+        @summary Queries the priority range of access control policies that are created for a virtual private cloud (VPC) firewall in a specific policy group.
+        
+        @description You can call the DescribeVpcFirewallPolicyPriorUsed operation to query the priority range of access control policies that are created for a VPC firewall in a specific policy group.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -7540,7 +8894,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeVpcFirewallPolicyPriorUsedResponse:
         """
-        You can call the DescribeVpcFirewallPolicyPriorUsed operation to query the priority range of access control policies that are created for a VPC firewall in a specific policy group.
+        @summary Queries the priority range of access control policies that are created for a virtual private cloud (VPC) firewall in a specific policy group.
+        
+        @description You can call the DescribeVpcFirewallPolicyPriorUsed operation to query the priority range of access control policies that are created for a VPC firewall in a specific policy group.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -7578,7 +8934,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeVpcFirewallPolicyPriorUsedRequest,
     ) -> cloudfw_20171207_models.DescribeVpcFirewallPolicyPriorUsedResponse:
         """
-        You can call the DescribeVpcFirewallPolicyPriorUsed operation to query the priority range of access control policies that are created for a VPC firewall in a specific policy group.
+        @summary Queries the priority range of access control policies that are created for a virtual private cloud (VPC) firewall in a specific policy group.
+        
+        @description You can call the DescribeVpcFirewallPolicyPriorUsed operation to query the priority range of access control policies that are created for a VPC firewall in a specific policy group.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -7593,7 +8951,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeVpcFirewallPolicyPriorUsedRequest,
     ) -> cloudfw_20171207_models.DescribeVpcFirewallPolicyPriorUsedResponse:
         """
-        You can call the DescribeVpcFirewallPolicyPriorUsed operation to query the priority range of access control policies that are created for a VPC firewall in a specific policy group.
+        @summary Queries the priority range of access control policies that are created for a virtual private cloud (VPC) firewall in a specific policy group.
+        
+        @description You can call the DescribeVpcFirewallPolicyPriorUsed operation to query the priority range of access control policies that are created for a VPC firewall in a specific policy group.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -7608,6 +8968,13 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeVpcListLiteRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeVpcListLiteResponse:
+        """
+        @summary Queries virtual private clouds (VPCs).
+        
+        @param request: DescribeVpcListLiteRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVpcListLiteResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -7644,6 +9011,13 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeVpcListLiteRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeVpcListLiteResponse:
+        """
+        @summary Queries virtual private clouds (VPCs).
+        
+        @param request: DescribeVpcListLiteRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVpcListLiteResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -7679,6 +9053,12 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.DescribeVpcListLiteRequest,
     ) -> cloudfw_20171207_models.DescribeVpcListLiteResponse:
+        """
+        @summary Queries virtual private clouds (VPCs).
+        
+        @param request: DescribeVpcListLiteRequest
+        @return: DescribeVpcListLiteResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_vpc_list_lite_with_options(request, runtime)
 
@@ -7686,6 +9066,12 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.DescribeVpcListLiteRequest,
     ) -> cloudfw_20171207_models.DescribeVpcListLiteResponse:
+        """
+        @summary Queries virtual private clouds (VPCs).
+        
+        @param request: DescribeVpcListLiteRequest
+        @return: DescribeVpcListLiteResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_vpc_list_lite_with_options_async(request, runtime)
 
@@ -7694,6 +9080,13 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeVpcZoneRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeVpcZoneResponse:
+        """
+        @summary Queries virtual private cloud (VPC) zones.
+        
+        @param request: DescribeVpcZoneRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVpcZoneResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.environment):
@@ -7728,6 +9121,13 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeVpcZoneRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeVpcZoneResponse:
+        """
+        @summary Queries virtual private cloud (VPC) zones.
+        
+        @param request: DescribeVpcZoneRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVpcZoneResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.environment):
@@ -7761,6 +9161,12 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.DescribeVpcZoneRequest,
     ) -> cloudfw_20171207_models.DescribeVpcZoneResponse:
+        """
+        @summary Queries virtual private cloud (VPC) zones.
+        
+        @param request: DescribeVpcZoneRequest
+        @return: DescribeVpcZoneResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_vpc_zone_with_options(request, runtime)
 
@@ -7768,6 +9174,12 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.DescribeVpcZoneRequest,
     ) -> cloudfw_20171207_models.DescribeVpcZoneResponse:
+        """
+        @summary Queries virtual private cloud (VPC) zones.
+        
+        @param request: DescribeVpcZoneRequest
+        @return: DescribeVpcZoneResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_vpc_zone_with_options_async(request, runtime)
 
@@ -7776,6 +9188,13 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeVulnerabilityProtectedListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeVulnerabilityProtectedListResponse:
+        """
+        @summary Queries the vulnerabilities that are supported by Cloud Firewall.
+        
+        @param request: DescribeVulnerabilityProtectedListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVulnerabilityProtectedListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.attack_type):
@@ -7838,6 +9257,13 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeVulnerabilityProtectedListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeVulnerabilityProtectedListResponse:
+        """
+        @summary Queries the vulnerabilities that are supported by Cloud Firewall.
+        
+        @param request: DescribeVulnerabilityProtectedListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVulnerabilityProtectedListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.attack_type):
@@ -7899,6 +9325,12 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.DescribeVulnerabilityProtectedListRequest,
     ) -> cloudfw_20171207_models.DescribeVulnerabilityProtectedListResponse:
+        """
+        @summary Queries the vulnerabilities that are supported by Cloud Firewall.
+        
+        @param request: DescribeVulnerabilityProtectedListRequest
+        @return: DescribeVulnerabilityProtectedListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_vulnerability_protected_list_with_options(request, runtime)
 
@@ -7906,6 +9338,12 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.DescribeVulnerabilityProtectedListRequest,
     ) -> cloudfw_20171207_models.DescribeVulnerabilityProtectedListResponse:
+        """
+        @summary Queries the vulnerabilities that are supported by Cloud Firewall.
+        
+        @param request: DescribeVulnerabilityProtectedListRequest
+        @return: DescribeVulnerabilityProtectedListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_vulnerability_protected_list_with_options_async(request, runtime)
 
@@ -7915,7 +9353,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.ModifyAddressBookResponse:
         """
-        You can call the ModifyAddressBook operation to modify the address book that is configured for access control.
+        @summary Modifies the address book that is configured for access control.
+        
+        @description You can call the ModifyAddressBook operation to modify the address book that is configured for access control.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -7968,7 +9408,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.ModifyAddressBookResponse:
         """
-        You can call the ModifyAddressBook operation to modify the address book that is configured for access control.
+        @summary Modifies the address book that is configured for access control.
+        
+        @description You can call the ModifyAddressBook operation to modify the address book that is configured for access control.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -8020,7 +9462,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.ModifyAddressBookRequest,
     ) -> cloudfw_20171207_models.ModifyAddressBookResponse:
         """
-        You can call the ModifyAddressBook operation to modify the address book that is configured for access control.
+        @summary Modifies the address book that is configured for access control.
+        
+        @description You can call the ModifyAddressBook operation to modify the address book that is configured for access control.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -8035,7 +9479,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.ModifyAddressBookRequest,
     ) -> cloudfw_20171207_models.ModifyAddressBookResponse:
         """
-        You can call the ModifyAddressBook operation to modify the address book that is configured for access control.
+        @summary Modifies the address book that is configured for access control.
+        
+        @description You can call the ModifyAddressBook operation to modify the address book that is configured for access control.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -8051,7 +9497,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.ModifyControlPolicyResponse:
         """
-        You can call this operation to modify the configurations of an access control policy. The policy allows Cloud Firewall to allow, deny, or monitor the traffic that passes through Cloud Firewall.
+        @summary Modifies the configurations of an access control policy.
+        
+        @description You can call this operation to modify the configurations of an access control policy. The policy allows Cloud Firewall to allow, deny, or monitor the traffic that passes through Cloud Firewall.
         ## [](#qps)Limit
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -8130,7 +9578,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.ModifyControlPolicyResponse:
         """
-        You can call this operation to modify the configurations of an access control policy. The policy allows Cloud Firewall to allow, deny, or monitor the traffic that passes through Cloud Firewall.
+        @summary Modifies the configurations of an access control policy.
+        
+        @description You can call this operation to modify the configurations of an access control policy. The policy allows Cloud Firewall to allow, deny, or monitor the traffic that passes through Cloud Firewall.
         ## [](#qps)Limit
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -8208,7 +9658,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.ModifyControlPolicyRequest,
     ) -> cloudfw_20171207_models.ModifyControlPolicyResponse:
         """
-        You can call this operation to modify the configurations of an access control policy. The policy allows Cloud Firewall to allow, deny, or monitor the traffic that passes through Cloud Firewall.
+        @summary Modifies the configurations of an access control policy.
+        
+        @description You can call this operation to modify the configurations of an access control policy. The policy allows Cloud Firewall to allow, deny, or monitor the traffic that passes through Cloud Firewall.
         ## [](#qps)Limit
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -8223,7 +9675,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.ModifyControlPolicyRequest,
     ) -> cloudfw_20171207_models.ModifyControlPolicyResponse:
         """
-        You can call this operation to modify the configurations of an access control policy. The policy allows Cloud Firewall to allow, deny, or monitor the traffic that passes through Cloud Firewall.
+        @summary Modifies the configurations of an access control policy.
+        
+        @description You can call this operation to modify the configurations of an access control policy. The policy allows Cloud Firewall to allow, deny, or monitor the traffic that passes through Cloud Firewall.
         ## [](#qps)Limit
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -8239,7 +9693,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.ModifyControlPolicyPositionResponse:
         """
-        You can use this operation to modify the priority of an IPv4 access control policy for the Internet firewall. No API operations are provided for you to modify the priority of an IPv6 access control policy for the Internet firewall.
+        @summary Modifies the priority of an IPv4 access control policy for the Internet firewall. An IPv4 access control policy refers to a policy whose source IP address and destination IP address are IPv4 addresses.
+        
+        @description You can use this operation to modify the priority of an IPv4 access control policy for the Internet firewall. No API operations are provided for you to modify the priority of an IPv6 access control policy for the Internet firewall.
         ## [](#qps)Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -8284,7 +9740,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.ModifyControlPolicyPositionResponse:
         """
-        You can use this operation to modify the priority of an IPv4 access control policy for the Internet firewall. No API operations are provided for you to modify the priority of an IPv6 access control policy for the Internet firewall.
+        @summary Modifies the priority of an IPv4 access control policy for the Internet firewall. An IPv4 access control policy refers to a policy whose source IP address and destination IP address are IPv4 addresses.
+        
+        @description You can use this operation to modify the priority of an IPv4 access control policy for the Internet firewall. No API operations are provided for you to modify the priority of an IPv6 access control policy for the Internet firewall.
         ## [](#qps)Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -8328,7 +9786,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.ModifyControlPolicyPositionRequest,
     ) -> cloudfw_20171207_models.ModifyControlPolicyPositionResponse:
         """
-        You can use this operation to modify the priority of an IPv4 access control policy for the Internet firewall. No API operations are provided for you to modify the priority of an IPv6 access control policy for the Internet firewall.
+        @summary Modifies the priority of an IPv4 access control policy for the Internet firewall. An IPv4 access control policy refers to a policy whose source IP address and destination IP address are IPv4 addresses.
+        
+        @description You can use this operation to modify the priority of an IPv4 access control policy for the Internet firewall. No API operations are provided for you to modify the priority of an IPv6 access control policy for the Internet firewall.
         ## [](#qps)Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -8343,7 +9803,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.ModifyControlPolicyPositionRequest,
     ) -> cloudfw_20171207_models.ModifyControlPolicyPositionResponse:
         """
-        You can use this operation to modify the priority of an IPv4 access control policy for the Internet firewall. No API operations are provided for you to modify the priority of an IPv6 access control policy for the Internet firewall.
+        @summary Modifies the priority of an IPv4 access control policy for the Internet firewall. An IPv4 access control policy refers to a policy whose source IP address and destination IP address are IPv4 addresses.
+        
+        @description You can use this operation to modify the priority of an IPv4 access control policy for the Internet firewall. No API operations are provided for you to modify the priority of an IPv6 access control policy for the Internet firewall.
         ## [](#qps)Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -8358,6 +9820,11 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.ModifyDefaultIPSConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.ModifyDefaultIPSConfigResponse:
+        """
+        @param request: ModifyDefaultIPSConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDefaultIPSConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ai_rules):
@@ -8404,6 +9871,11 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.ModifyDefaultIPSConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.ModifyDefaultIPSConfigResponse:
+        """
+        @param request: ModifyDefaultIPSConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDefaultIPSConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ai_rules):
@@ -8449,6 +9921,10 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.ModifyDefaultIPSConfigRequest,
     ) -> cloudfw_20171207_models.ModifyDefaultIPSConfigResponse:
+        """
+        @param request: ModifyDefaultIPSConfigRequest
+        @return: ModifyDefaultIPSConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_default_ipsconfig_with_options(request, runtime)
 
@@ -8456,6 +9932,10 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.ModifyDefaultIPSConfigRequest,
     ) -> cloudfw_20171207_models.ModifyDefaultIPSConfigResponse:
+        """
+        @param request: ModifyDefaultIPSConfigRequest
+        @return: ModifyDefaultIPSConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_default_ipsconfig_with_options_async(request, runtime)
 
@@ -8464,6 +9944,13 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.ModifyFirewallV2RoutePolicySwitchRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.ModifyFirewallV2RoutePolicySwitchResponse:
+        """
+        @summary Modifies the status of a routing policy.
+        
+        @param request: ModifyFirewallV2RoutePolicySwitchRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyFirewallV2RoutePolicySwitchResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.firewall_id):
@@ -8500,6 +9987,13 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.ModifyFirewallV2RoutePolicySwitchRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.ModifyFirewallV2RoutePolicySwitchResponse:
+        """
+        @summary Modifies the status of a routing policy.
+        
+        @param request: ModifyFirewallV2RoutePolicySwitchRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyFirewallV2RoutePolicySwitchResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.firewall_id):
@@ -8535,6 +10029,12 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.ModifyFirewallV2RoutePolicySwitchRequest,
     ) -> cloudfw_20171207_models.ModifyFirewallV2RoutePolicySwitchResponse:
+        """
+        @summary Modifies the status of a routing policy.
+        
+        @param request: ModifyFirewallV2RoutePolicySwitchRequest
+        @return: ModifyFirewallV2RoutePolicySwitchResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_firewall_v2route_policy_switch_with_options(request, runtime)
 
@@ -8542,6 +10042,12 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.ModifyFirewallV2RoutePolicySwitchRequest,
     ) -> cloudfw_20171207_models.ModifyFirewallV2RoutePolicySwitchResponse:
+        """
+        @summary Modifies the status of a routing policy.
+        
+        @param request: ModifyFirewallV2RoutePolicySwitchRequest
+        @return: ModifyFirewallV2RoutePolicySwitchResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_firewall_v2route_policy_switch_with_options_async(request, runtime)
 
@@ -8551,7 +10057,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.ModifyInstanceMemberAttributesResponse:
         """
-        You can call the ModifyInstanceMemberAttributes operation to update the information about members in Cloud Firewall.
+        @summary Updates the information about members in Cloud Firewall.
+        
+        @description You can call the ModifyInstanceMemberAttributes operation to update the information about members in Cloud Firewall.
         ## Limits
         You can call this operation up to 10 times per second for each account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -8588,7 +10096,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.ModifyInstanceMemberAttributesResponse:
         """
-        You can call the ModifyInstanceMemberAttributes operation to update the information about members in Cloud Firewall.
+        @summary Updates the information about members in Cloud Firewall.
+        
+        @description You can call the ModifyInstanceMemberAttributes operation to update the information about members in Cloud Firewall.
         ## Limits
         You can call this operation up to 10 times per second for each account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -8624,7 +10134,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.ModifyInstanceMemberAttributesRequest,
     ) -> cloudfw_20171207_models.ModifyInstanceMemberAttributesResponse:
         """
-        You can call the ModifyInstanceMemberAttributes operation to update the information about members in Cloud Firewall.
+        @summary Updates the information about members in Cloud Firewall.
+        
+        @description You can call the ModifyInstanceMemberAttributes operation to update the information about members in Cloud Firewall.
         ## Limits
         You can call this operation up to 10 times per second for each account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -8639,7 +10151,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.ModifyInstanceMemberAttributesRequest,
     ) -> cloudfw_20171207_models.ModifyInstanceMemberAttributesResponse:
         """
-        You can call the ModifyInstanceMemberAttributes operation to update the information about members in Cloud Firewall.
+        @summary Updates the information about members in Cloud Firewall.
+        
+        @description You can call the ModifyInstanceMemberAttributes operation to update the information about members in Cloud Firewall.
         ## Limits
         You can call this operation up to 10 times per second for each account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -8655,7 +10169,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.ModifyNatFirewallControlPolicyResponse:
         """
-        You can use this operation to modify the configurations of an access control policy. The policy is used to allow, deny, or monitor traffic that reaches a NAT firewall.
+        @summary Modifies the configurations of an access control policy that is created for a NAT firewall.
+        
+        @description You can use this operation to modify the configurations of an access control policy. The policy is used to allow, deny, or monitor traffic that reaches a NAT firewall.
         
         @param request: ModifyNatFirewallControlPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8734,7 +10250,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.ModifyNatFirewallControlPolicyResponse:
         """
-        You can use this operation to modify the configurations of an access control policy. The policy is used to allow, deny, or monitor traffic that reaches a NAT firewall.
+        @summary Modifies the configurations of an access control policy that is created for a NAT firewall.
+        
+        @description You can use this operation to modify the configurations of an access control policy. The policy is used to allow, deny, or monitor traffic that reaches a NAT firewall.
         
         @param request: ModifyNatFirewallControlPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8812,7 +10330,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.ModifyNatFirewallControlPolicyRequest,
     ) -> cloudfw_20171207_models.ModifyNatFirewallControlPolicyResponse:
         """
-        You can use this operation to modify the configurations of an access control policy. The policy is used to allow, deny, or monitor traffic that reaches a NAT firewall.
+        @summary Modifies the configurations of an access control policy that is created for a NAT firewall.
+        
+        @description You can use this operation to modify the configurations of an access control policy. The policy is used to allow, deny, or monitor traffic that reaches a NAT firewall.
         
         @param request: ModifyNatFirewallControlPolicyRequest
         @return: ModifyNatFirewallControlPolicyResponse
@@ -8825,7 +10345,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.ModifyNatFirewallControlPolicyRequest,
     ) -> cloudfw_20171207_models.ModifyNatFirewallControlPolicyResponse:
         """
-        You can use this operation to modify the configurations of an access control policy. The policy is used to allow, deny, or monitor traffic that reaches a NAT firewall.
+        @summary Modifies the configurations of an access control policy that is created for a NAT firewall.
+        
+        @description You can use this operation to modify the configurations of an access control policy. The policy is used to allow, deny, or monitor traffic that reaches a NAT firewall.
         
         @param request: ModifyNatFirewallControlPolicyRequest
         @return: ModifyNatFirewallControlPolicyResponse
@@ -8838,6 +10360,13 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.ModifyNatFirewallControlPolicyPositionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.ModifyNatFirewallControlPolicyPositionResponse:
+        """
+        @summary Modifies the priority of an access control policy that is created for a NAT firewall.
+        
+        @param request: ModifyNatFirewallControlPolicyPositionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyNatFirewallControlPolicyPositionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.acl_uuid):
@@ -8874,6 +10403,13 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.ModifyNatFirewallControlPolicyPositionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.ModifyNatFirewallControlPolicyPositionResponse:
+        """
+        @summary Modifies the priority of an access control policy that is created for a NAT firewall.
+        
+        @param request: ModifyNatFirewallControlPolicyPositionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyNatFirewallControlPolicyPositionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.acl_uuid):
@@ -8909,6 +10445,12 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.ModifyNatFirewallControlPolicyPositionRequest,
     ) -> cloudfw_20171207_models.ModifyNatFirewallControlPolicyPositionResponse:
+        """
+        @summary Modifies the priority of an access control policy that is created for a NAT firewall.
+        
+        @param request: ModifyNatFirewallControlPolicyPositionRequest
+        @return: ModifyNatFirewallControlPolicyPositionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_nat_firewall_control_policy_position_with_options(request, runtime)
 
@@ -8916,6 +10458,12 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.ModifyNatFirewallControlPolicyPositionRequest,
     ) -> cloudfw_20171207_models.ModifyNatFirewallControlPolicyPositionResponse:
+        """
+        @summary Modifies the priority of an access control policy that is created for a NAT firewall.
+        
+        @param request: ModifyNatFirewallControlPolicyPositionRequest
+        @return: ModifyNatFirewallControlPolicyPositionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_nat_firewall_control_policy_position_with_options_async(request, runtime)
 
@@ -8925,7 +10473,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.ModifyPolicyAdvancedConfigResponse:
         """
-        You can call the ModifyPolicyAdvancedConfig operation to enable or disable the strict mode for an access control policy.
+        @summary Enables or disables the strict mode for an access control policy.
+        
+        @description You can call the ModifyPolicyAdvancedConfig operation to enable or disable the strict mode for an access control policy.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -8966,7 +10516,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.ModifyPolicyAdvancedConfigResponse:
         """
-        You can call the ModifyPolicyAdvancedConfig operation to enable or disable the strict mode for an access control policy.
+        @summary Enables or disables the strict mode for an access control policy.
+        
+        @description You can call the ModifyPolicyAdvancedConfig operation to enable or disable the strict mode for an access control policy.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -9006,7 +10558,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.ModifyPolicyAdvancedConfigRequest,
     ) -> cloudfw_20171207_models.ModifyPolicyAdvancedConfigResponse:
         """
-        You can call the ModifyPolicyAdvancedConfig operation to enable or disable the strict mode for an access control policy.
+        @summary Enables or disables the strict mode for an access control policy.
+        
+        @description You can call the ModifyPolicyAdvancedConfig operation to enable or disable the strict mode for an access control policy.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -9021,7 +10575,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.ModifyPolicyAdvancedConfigRequest,
     ) -> cloudfw_20171207_models.ModifyPolicyAdvancedConfigResponse:
         """
-        You can call the ModifyPolicyAdvancedConfig operation to enable or disable the strict mode for an access control policy.
+        @summary Enables or disables the strict mode for an access control policy.
+        
+        @description You can call the ModifyPolicyAdvancedConfig operation to enable or disable the strict mode for an access control policy.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -9036,6 +10592,11 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.ModifyTrFirewallV2ConfigurationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.ModifyTrFirewallV2ConfigurationResponse:
+        """
+        @param request: ModifyTrFirewallV2ConfigurationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyTrFirewallV2ConfigurationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.firewall_id):
@@ -9068,6 +10629,11 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.ModifyTrFirewallV2ConfigurationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.ModifyTrFirewallV2ConfigurationResponse:
+        """
+        @param request: ModifyTrFirewallV2ConfigurationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyTrFirewallV2ConfigurationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.firewall_id):
@@ -9099,6 +10665,10 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.ModifyTrFirewallV2ConfigurationRequest,
     ) -> cloudfw_20171207_models.ModifyTrFirewallV2ConfigurationResponse:
+        """
+        @param request: ModifyTrFirewallV2ConfigurationRequest
+        @return: ModifyTrFirewallV2ConfigurationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_tr_firewall_v2configuration_with_options(request, runtime)
 
@@ -9106,6 +10676,10 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.ModifyTrFirewallV2ConfigurationRequest,
     ) -> cloudfw_20171207_models.ModifyTrFirewallV2ConfigurationResponse:
+        """
+        @param request: ModifyTrFirewallV2ConfigurationRequest
+        @return: ModifyTrFirewallV2ConfigurationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_tr_firewall_v2configuration_with_options_async(request, runtime)
 
@@ -9114,6 +10688,11 @@ class Client(OpenApiClient):
         tmp_req: cloudfw_20171207_models.ModifyTrFirewallV2RoutePolicyScopeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.ModifyTrFirewallV2RoutePolicyScopeResponse:
+        """
+        @param tmp_req: ModifyTrFirewallV2RoutePolicyScopeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyTrFirewallV2RoutePolicyScopeResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = cloudfw_20171207_models.ModifyTrFirewallV2RoutePolicyScopeShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -9158,6 +10737,11 @@ class Client(OpenApiClient):
         tmp_req: cloudfw_20171207_models.ModifyTrFirewallV2RoutePolicyScopeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.ModifyTrFirewallV2RoutePolicyScopeResponse:
+        """
+        @param tmp_req: ModifyTrFirewallV2RoutePolicyScopeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyTrFirewallV2RoutePolicyScopeResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = cloudfw_20171207_models.ModifyTrFirewallV2RoutePolicyScopeShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -9201,6 +10785,10 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.ModifyTrFirewallV2RoutePolicyScopeRequest,
     ) -> cloudfw_20171207_models.ModifyTrFirewallV2RoutePolicyScopeResponse:
+        """
+        @param request: ModifyTrFirewallV2RoutePolicyScopeRequest
+        @return: ModifyTrFirewallV2RoutePolicyScopeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_tr_firewall_v2route_policy_scope_with_options(request, runtime)
 
@@ -9208,6 +10796,10 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.ModifyTrFirewallV2RoutePolicyScopeRequest,
     ) -> cloudfw_20171207_models.ModifyTrFirewallV2RoutePolicyScopeResponse:
+        """
+        @param request: ModifyTrFirewallV2RoutePolicyScopeRequest
+        @return: ModifyTrFirewallV2RoutePolicyScopeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_tr_firewall_v2route_policy_scope_with_options_async(request, runtime)
 
@@ -9216,6 +10808,11 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.ModifyUserIPSWhitelistRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.ModifyUserIPSWhitelistResponse:
+        """
+        @param request: ModifyUserIPSWhitelistRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyUserIPSWhitelistResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.direction):
@@ -9258,6 +10855,11 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.ModifyUserIPSWhitelistRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.ModifyUserIPSWhitelistResponse:
+        """
+        @param request: ModifyUserIPSWhitelistRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyUserIPSWhitelistResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.direction):
@@ -9299,6 +10901,10 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.ModifyUserIPSWhitelistRequest,
     ) -> cloudfw_20171207_models.ModifyUserIPSWhitelistResponse:
+        """
+        @param request: ModifyUserIPSWhitelistRequest
+        @return: ModifyUserIPSWhitelistResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_user_ipswhitelist_with_options(request, runtime)
 
@@ -9306,6 +10912,10 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.ModifyUserIPSWhitelistRequest,
     ) -> cloudfw_20171207_models.ModifyUserIPSWhitelistResponse:
+        """
+        @param request: ModifyUserIPSWhitelistRequest
+        @return: ModifyUserIPSWhitelistResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_user_ipswhitelist_with_options_async(request, runtime)
 
@@ -9315,7 +10925,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.ModifyVpcFirewallCenConfigureResponse:
         """
-        You can call the ModifyVpcFirewallCenConfigure operation to modify the configurations of a VPC firewall. The VPC firewall protects mutual access traffic between a VPC and a specified network instance that is attached to a CEN instance. The network instance can be a VPC, a virtual border router (VBR), or a Cloud Connect Network (CCN) instance. Before you call this operation, make sure that you have created a VPC firewall by calling the [CreateVpcFirewallCenConfigure](~~345772~~) operation.
+        @summary Modifies the configurations of a virtual private cloud (VPC) firewall. The VPC firewall protects mutual access traffic between a VPC and a specified network instance that is attached to a Cloud Enterprise Network (CEN) instance.
+        
+        @description You can call the ModifyVpcFirewallCenConfigure operation to modify the configurations of a VPC firewall. The VPC firewall protects mutual access traffic between a VPC and a specified network instance that is attached to a CEN instance. The network instance can be a VPC, a virtual border router (VBR), or a Cloud Connect Network (CCN) instance. Before you call this operation, make sure that you have created a VPC firewall by calling the [CreateVpcFirewallCenConfigure](https://help.aliyun.com/document_detail/345772.html) operation.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -9358,7 +10970,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.ModifyVpcFirewallCenConfigureResponse:
         """
-        You can call the ModifyVpcFirewallCenConfigure operation to modify the configurations of a VPC firewall. The VPC firewall protects mutual access traffic between a VPC and a specified network instance that is attached to a CEN instance. The network instance can be a VPC, a virtual border router (VBR), or a Cloud Connect Network (CCN) instance. Before you call this operation, make sure that you have created a VPC firewall by calling the [CreateVpcFirewallCenConfigure](~~345772~~) operation.
+        @summary Modifies the configurations of a virtual private cloud (VPC) firewall. The VPC firewall protects mutual access traffic between a VPC and a specified network instance that is attached to a Cloud Enterprise Network (CEN) instance.
+        
+        @description You can call the ModifyVpcFirewallCenConfigure operation to modify the configurations of a VPC firewall. The VPC firewall protects mutual access traffic between a VPC and a specified network instance that is attached to a CEN instance. The network instance can be a VPC, a virtual border router (VBR), or a Cloud Connect Network (CCN) instance. Before you call this operation, make sure that you have created a VPC firewall by calling the [CreateVpcFirewallCenConfigure](https://help.aliyun.com/document_detail/345772.html) operation.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -9400,7 +11014,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.ModifyVpcFirewallCenConfigureRequest,
     ) -> cloudfw_20171207_models.ModifyVpcFirewallCenConfigureResponse:
         """
-        You can call the ModifyVpcFirewallCenConfigure operation to modify the configurations of a VPC firewall. The VPC firewall protects mutual access traffic between a VPC and a specified network instance that is attached to a CEN instance. The network instance can be a VPC, a virtual border router (VBR), or a Cloud Connect Network (CCN) instance. Before you call this operation, make sure that you have created a VPC firewall by calling the [CreateVpcFirewallCenConfigure](~~345772~~) operation.
+        @summary Modifies the configurations of a virtual private cloud (VPC) firewall. The VPC firewall protects mutual access traffic between a VPC and a specified network instance that is attached to a Cloud Enterprise Network (CEN) instance.
+        
+        @description You can call the ModifyVpcFirewallCenConfigure operation to modify the configurations of a VPC firewall. The VPC firewall protects mutual access traffic between a VPC and a specified network instance that is attached to a CEN instance. The network instance can be a VPC, a virtual border router (VBR), or a Cloud Connect Network (CCN) instance. Before you call this operation, make sure that you have created a VPC firewall by calling the [CreateVpcFirewallCenConfigure](https://help.aliyun.com/document_detail/345772.html) operation.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -9415,7 +11031,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.ModifyVpcFirewallCenConfigureRequest,
     ) -> cloudfw_20171207_models.ModifyVpcFirewallCenConfigureResponse:
         """
-        You can call the ModifyVpcFirewallCenConfigure operation to modify the configurations of a VPC firewall. The VPC firewall protects mutual access traffic between a VPC and a specified network instance that is attached to a CEN instance. The network instance can be a VPC, a virtual border router (VBR), or a Cloud Connect Network (CCN) instance. Before you call this operation, make sure that you have created a VPC firewall by calling the [CreateVpcFirewallCenConfigure](~~345772~~) operation.
+        @summary Modifies the configurations of a virtual private cloud (VPC) firewall. The VPC firewall protects mutual access traffic between a VPC and a specified network instance that is attached to a Cloud Enterprise Network (CEN) instance.
+        
+        @description You can call the ModifyVpcFirewallCenConfigure operation to modify the configurations of a VPC firewall. The VPC firewall protects mutual access traffic between a VPC and a specified network instance that is attached to a CEN instance. The network instance can be a VPC, a virtual border router (VBR), or a Cloud Connect Network (CCN) instance. Before you call this operation, make sure that you have created a VPC firewall by calling the [CreateVpcFirewallCenConfigure](https://help.aliyun.com/document_detail/345772.html) operation.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -9431,8 +11049,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.ModifyVpcFirewallCenSwitchStatusResponse:
         """
-        You can call the ModifyVpcFirewallCenSwitchStatus operation to enable or disable a VPC firewall. A VPC firewall protects mutual access traffic between a specified VPC and a network instance that is attached to a CEN instance. The network instance can be a VPC, a virtual border router (VBR), or a Cloud Connect Network (CCN) instance. After you enable the VPC firewall, the VPC firewall protects mutual access traffic between a VPC and a specified network instance that is attached to a CEN instance. After you disable the VPC firewall, the VPC firewall no longer protect mutual access traffic between a VPC and a specified network instance that is attached to a CEN instance.
-        Before you call this operation, make sure that you have created a VPC firewall by calling the [CreateVpcFirewallCenConfigure](~~345772~~) operation.
+        @summary Enables or disables a virtual private cloud (VPC) firewall. The VPC firewall protects mutual access traffic between a VPC and a specified network instance that is attached to a Cloud Enterprise Network (CEN) instance.
+        
+        @description You can call the ModifyVpcFirewallCenSwitchStatus operation to enable or disable a VPC firewall. A VPC firewall protects mutual access traffic between a specified VPC and a network instance that is attached to a CEN instance. The network instance can be a VPC, a virtual border router (VBR), or a Cloud Connect Network (CCN) instance. After you enable the VPC firewall, the VPC firewall protects mutual access traffic between a VPC and a specified network instance that is attached to a CEN instance. After you disable the VPC firewall, the VPC firewall no longer protects mutual access traffic between a VPC and a specified network instance that is attached to a CEN instance.
+        Before you call this operation, make sure that you have created a VPC firewall by calling the [CreateVpcFirewallCenConfigure](https://help.aliyun.com/document_detail/345772.html) operation.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -9475,8 +11095,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.ModifyVpcFirewallCenSwitchStatusResponse:
         """
-        You can call the ModifyVpcFirewallCenSwitchStatus operation to enable or disable a VPC firewall. A VPC firewall protects mutual access traffic between a specified VPC and a network instance that is attached to a CEN instance. The network instance can be a VPC, a virtual border router (VBR), or a Cloud Connect Network (CCN) instance. After you enable the VPC firewall, the VPC firewall protects mutual access traffic between a VPC and a specified network instance that is attached to a CEN instance. After you disable the VPC firewall, the VPC firewall no longer protect mutual access traffic between a VPC and a specified network instance that is attached to a CEN instance.
-        Before you call this operation, make sure that you have created a VPC firewall by calling the [CreateVpcFirewallCenConfigure](~~345772~~) operation.
+        @summary Enables or disables a virtual private cloud (VPC) firewall. The VPC firewall protects mutual access traffic between a VPC and a specified network instance that is attached to a Cloud Enterprise Network (CEN) instance.
+        
+        @description You can call the ModifyVpcFirewallCenSwitchStatus operation to enable or disable a VPC firewall. A VPC firewall protects mutual access traffic between a specified VPC and a network instance that is attached to a CEN instance. The network instance can be a VPC, a virtual border router (VBR), or a Cloud Connect Network (CCN) instance. After you enable the VPC firewall, the VPC firewall protects mutual access traffic between a VPC and a specified network instance that is attached to a CEN instance. After you disable the VPC firewall, the VPC firewall no longer protects mutual access traffic between a VPC and a specified network instance that is attached to a CEN instance.
+        Before you call this operation, make sure that you have created a VPC firewall by calling the [CreateVpcFirewallCenConfigure](https://help.aliyun.com/document_detail/345772.html) operation.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -9518,8 +11140,10 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.ModifyVpcFirewallCenSwitchStatusRequest,
     ) -> cloudfw_20171207_models.ModifyVpcFirewallCenSwitchStatusResponse:
         """
-        You can call the ModifyVpcFirewallCenSwitchStatus operation to enable or disable a VPC firewall. A VPC firewall protects mutual access traffic between a specified VPC and a network instance that is attached to a CEN instance. The network instance can be a VPC, a virtual border router (VBR), or a Cloud Connect Network (CCN) instance. After you enable the VPC firewall, the VPC firewall protects mutual access traffic between a VPC and a specified network instance that is attached to a CEN instance. After you disable the VPC firewall, the VPC firewall no longer protect mutual access traffic between a VPC and a specified network instance that is attached to a CEN instance.
-        Before you call this operation, make sure that you have created a VPC firewall by calling the [CreateVpcFirewallCenConfigure](~~345772~~) operation.
+        @summary Enables or disables a virtual private cloud (VPC) firewall. The VPC firewall protects mutual access traffic between a VPC and a specified network instance that is attached to a Cloud Enterprise Network (CEN) instance.
+        
+        @description You can call the ModifyVpcFirewallCenSwitchStatus operation to enable or disable a VPC firewall. A VPC firewall protects mutual access traffic between a specified VPC and a network instance that is attached to a CEN instance. The network instance can be a VPC, a virtual border router (VBR), or a Cloud Connect Network (CCN) instance. After you enable the VPC firewall, the VPC firewall protects mutual access traffic between a VPC and a specified network instance that is attached to a CEN instance. After you disable the VPC firewall, the VPC firewall no longer protects mutual access traffic between a VPC and a specified network instance that is attached to a CEN instance.
+        Before you call this operation, make sure that you have created a VPC firewall by calling the [CreateVpcFirewallCenConfigure](https://help.aliyun.com/document_detail/345772.html) operation.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -9534,8 +11158,10 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.ModifyVpcFirewallCenSwitchStatusRequest,
     ) -> cloudfw_20171207_models.ModifyVpcFirewallCenSwitchStatusResponse:
         """
-        You can call the ModifyVpcFirewallCenSwitchStatus operation to enable or disable a VPC firewall. A VPC firewall protects mutual access traffic between a specified VPC and a network instance that is attached to a CEN instance. The network instance can be a VPC, a virtual border router (VBR), or a Cloud Connect Network (CCN) instance. After you enable the VPC firewall, the VPC firewall protects mutual access traffic between a VPC and a specified network instance that is attached to a CEN instance. After you disable the VPC firewall, the VPC firewall no longer protect mutual access traffic between a VPC and a specified network instance that is attached to a CEN instance.
-        Before you call this operation, make sure that you have created a VPC firewall by calling the [CreateVpcFirewallCenConfigure](~~345772~~) operation.
+        @summary Enables or disables a virtual private cloud (VPC) firewall. The VPC firewall protects mutual access traffic between a VPC and a specified network instance that is attached to a Cloud Enterprise Network (CEN) instance.
+        
+        @description You can call the ModifyVpcFirewallCenSwitchStatus operation to enable or disable a VPC firewall. A VPC firewall protects mutual access traffic between a specified VPC and a network instance that is attached to a CEN instance. The network instance can be a VPC, a virtual border router (VBR), or a Cloud Connect Network (CCN) instance. After you enable the VPC firewall, the VPC firewall protects mutual access traffic between a VPC and a specified network instance that is attached to a CEN instance. After you disable the VPC firewall, the VPC firewall no longer protects mutual access traffic between a VPC and a specified network instance that is attached to a CEN instance.
+        Before you call this operation, make sure that you have created a VPC firewall by calling the [CreateVpcFirewallCenConfigure](https://help.aliyun.com/document_detail/345772.html) operation.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -9551,7 +11177,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.ModifyVpcFirewallConfigureResponse:
         """
-        You can call the ModifyVpcFirewallConfigure operation to modify the configurations of a VPC firewall. The VPC firewall controls traffic between two VPCs that are connected by using an Express Connect circuit. Before you call the operation, make sure that you created a VPC firewall by calling the [CreateVpcFirewallConfigure](~~342893~~) operation.
+        @summary Modifies the configurations of a virtual private cloud (VPC) firewall. The VPC firewall controls traffic between two VPCs that are connected by using an Express Connect circuit.
+        
+        @description You can call the ModifyVpcFirewallConfigure operation to modify the configurations of a VPC firewall. The VPC firewall controls traffic between two VPCs that are connected by using an Express Connect circuit. Before you call the operation, make sure that you created a VPC firewall by calling the [CreateVpcFirewallConfigure](https://help.aliyun.com/document_detail/342893.html) operation.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -9598,7 +11226,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.ModifyVpcFirewallConfigureResponse:
         """
-        You can call the ModifyVpcFirewallConfigure operation to modify the configurations of a VPC firewall. The VPC firewall controls traffic between two VPCs that are connected by using an Express Connect circuit. Before you call the operation, make sure that you created a VPC firewall by calling the [CreateVpcFirewallConfigure](~~342893~~) operation.
+        @summary Modifies the configurations of a virtual private cloud (VPC) firewall. The VPC firewall controls traffic between two VPCs that are connected by using an Express Connect circuit.
+        
+        @description You can call the ModifyVpcFirewallConfigure operation to modify the configurations of a VPC firewall. The VPC firewall controls traffic between two VPCs that are connected by using an Express Connect circuit. Before you call the operation, make sure that you created a VPC firewall by calling the [CreateVpcFirewallConfigure](https://help.aliyun.com/document_detail/342893.html) operation.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -9644,7 +11274,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.ModifyVpcFirewallConfigureRequest,
     ) -> cloudfw_20171207_models.ModifyVpcFirewallConfigureResponse:
         """
-        You can call the ModifyVpcFirewallConfigure operation to modify the configurations of a VPC firewall. The VPC firewall controls traffic between two VPCs that are connected by using an Express Connect circuit. Before you call the operation, make sure that you created a VPC firewall by calling the [CreateVpcFirewallConfigure](~~342893~~) operation.
+        @summary Modifies the configurations of a virtual private cloud (VPC) firewall. The VPC firewall controls traffic between two VPCs that are connected by using an Express Connect circuit.
+        
+        @description You can call the ModifyVpcFirewallConfigure operation to modify the configurations of a VPC firewall. The VPC firewall controls traffic between two VPCs that are connected by using an Express Connect circuit. Before you call the operation, make sure that you created a VPC firewall by calling the [CreateVpcFirewallConfigure](https://help.aliyun.com/document_detail/342893.html) operation.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -9659,7 +11291,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.ModifyVpcFirewallConfigureRequest,
     ) -> cloudfw_20171207_models.ModifyVpcFirewallConfigureResponse:
         """
-        You can call the ModifyVpcFirewallConfigure operation to modify the configurations of a VPC firewall. The VPC firewall controls traffic between two VPCs that are connected by using an Express Connect circuit. Before you call the operation, make sure that you created a VPC firewall by calling the [CreateVpcFirewallConfigure](~~342893~~) operation.
+        @summary Modifies the configurations of a virtual private cloud (VPC) firewall. The VPC firewall controls traffic between two VPCs that are connected by using an Express Connect circuit.
+        
+        @description You can call the ModifyVpcFirewallConfigure operation to modify the configurations of a VPC firewall. The VPC firewall controls traffic between two VPCs that are connected by using an Express Connect circuit. Before you call the operation, make sure that you created a VPC firewall by calling the [CreateVpcFirewallConfigure](https://help.aliyun.com/document_detail/342893.html) operation.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -9675,7 +11309,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.ModifyVpcFirewallControlPolicyResponse:
         """
-        You can call the ModifyVpcFirewallControlPolicy operation to modify the configurations of an access control policy that is created for a VPC firewall in a specified policy group. Different access control policies are used for the VPC firewalls that are used to protect each Cloud Enterprise Network (CEN) instance and the VPC firewalls that are used to protect each Express Connect circuit.
+        @summary Modifies the configurations of an access control policy that is created for a virtual private cloud (VPC) firewall in a specified policy group.
+        
+        @description You can call the ModifyVpcFirewallControlPolicy operation to modify the configurations of an access control policy that is created for a VPC firewall in a specified policy group. Different access control policies are used for the VPC firewalls that are used to protect each Cloud Enterprise Network (CEN) instance and the VPC firewalls that are used to protect each Express Connect circuit.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -9754,7 +11390,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.ModifyVpcFirewallControlPolicyResponse:
         """
-        You can call the ModifyVpcFirewallControlPolicy operation to modify the configurations of an access control policy that is created for a VPC firewall in a specified policy group. Different access control policies are used for the VPC firewalls that are used to protect each Cloud Enterprise Network (CEN) instance and the VPC firewalls that are used to protect each Express Connect circuit.
+        @summary Modifies the configurations of an access control policy that is created for a virtual private cloud (VPC) firewall in a specified policy group.
+        
+        @description You can call the ModifyVpcFirewallControlPolicy operation to modify the configurations of an access control policy that is created for a VPC firewall in a specified policy group. Different access control policies are used for the VPC firewalls that are used to protect each Cloud Enterprise Network (CEN) instance and the VPC firewalls that are used to protect each Express Connect circuit.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -9832,7 +11470,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.ModifyVpcFirewallControlPolicyRequest,
     ) -> cloudfw_20171207_models.ModifyVpcFirewallControlPolicyResponse:
         """
-        You can call the ModifyVpcFirewallControlPolicy operation to modify the configurations of an access control policy that is created for a VPC firewall in a specified policy group. Different access control policies are used for the VPC firewalls that are used to protect each Cloud Enterprise Network (CEN) instance and the VPC firewalls that are used to protect each Express Connect circuit.
+        @summary Modifies the configurations of an access control policy that is created for a virtual private cloud (VPC) firewall in a specified policy group.
+        
+        @description You can call the ModifyVpcFirewallControlPolicy operation to modify the configurations of an access control policy that is created for a VPC firewall in a specified policy group. Different access control policies are used for the VPC firewalls that are used to protect each Cloud Enterprise Network (CEN) instance and the VPC firewalls that are used to protect each Express Connect circuit.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -9847,7 +11487,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.ModifyVpcFirewallControlPolicyRequest,
     ) -> cloudfw_20171207_models.ModifyVpcFirewallControlPolicyResponse:
         """
-        You can call the ModifyVpcFirewallControlPolicy operation to modify the configurations of an access control policy that is created for a VPC firewall in a specified policy group. Different access control policies are used for the VPC firewalls that are used to protect each Cloud Enterprise Network (CEN) instance and the VPC firewalls that are used to protect each Express Connect circuit.
+        @summary Modifies the configurations of an access control policy that is created for a virtual private cloud (VPC) firewall in a specified policy group.
+        
+        @description You can call the ModifyVpcFirewallControlPolicy operation to modify the configurations of an access control policy that is created for a VPC firewall in a specified policy group. Different access control policies are used for the VPC firewalls that are used to protect each Cloud Enterprise Network (CEN) instance and the VPC firewalls that are used to protect each Express Connect circuit.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -9863,7 +11505,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.ModifyVpcFirewallControlPolicyPositionResponse:
         """
-        You can use this operation to modify the priority of an access control policy that is created for a VPC firewall in a specific policy group.
+        @summary Modifies the priority of an access control policy that is created for a virtual private cloud (VPC) firewall in a specific policy group.
+        
+        @description You can use this operation to modify the priority of an access control policy that is created for a VPC firewall in a specific policy group.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -9908,7 +11552,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.ModifyVpcFirewallControlPolicyPositionResponse:
         """
-        You can use this operation to modify the priority of an access control policy that is created for a VPC firewall in a specific policy group.
+        @summary Modifies the priority of an access control policy that is created for a virtual private cloud (VPC) firewall in a specific policy group.
+        
+        @description You can use this operation to modify the priority of an access control policy that is created for a VPC firewall in a specific policy group.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -9952,7 +11598,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.ModifyVpcFirewallControlPolicyPositionRequest,
     ) -> cloudfw_20171207_models.ModifyVpcFirewallControlPolicyPositionResponse:
         """
-        You can use this operation to modify the priority of an access control policy that is created for a VPC firewall in a specific policy group.
+        @summary Modifies the priority of an access control policy that is created for a virtual private cloud (VPC) firewall in a specific policy group.
+        
+        @description You can use this operation to modify the priority of an access control policy that is created for a VPC firewall in a specific policy group.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -9967,7 +11615,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.ModifyVpcFirewallControlPolicyPositionRequest,
     ) -> cloudfw_20171207_models.ModifyVpcFirewallControlPolicyPositionResponse:
         """
-        You can use this operation to modify the priority of an access control policy that is created for a VPC firewall in a specific policy group.
+        @summary Modifies the priority of an access control policy that is created for a virtual private cloud (VPC) firewall in a specific policy group.
+        
+        @description You can use this operation to modify the priority of an access control policy that is created for a VPC firewall in a specific policy group.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -9983,7 +11633,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.ModifyVpcFirewallDefaultIPSConfigResponse:
         """
-        You can call the ModifyVpcFirewallDefaultIPSConfig operation to modify the intrusion prevention configurations of a VPC firewall.
+        @summary Modifies the intrusion prevention configurations of a virtual private cloud (VPC) firewall.
+        
+        @description You can call the ModifyVpcFirewallDefaultIPSConfig operation to modify the intrusion prevention configurations of a VPC firewall.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -10032,7 +11684,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.ModifyVpcFirewallDefaultIPSConfigResponse:
         """
-        You can call the ModifyVpcFirewallDefaultIPSConfig operation to modify the intrusion prevention configurations of a VPC firewall.
+        @summary Modifies the intrusion prevention configurations of a virtual private cloud (VPC) firewall.
+        
+        @description You can call the ModifyVpcFirewallDefaultIPSConfig operation to modify the intrusion prevention configurations of a VPC firewall.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -10080,7 +11734,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.ModifyVpcFirewallDefaultIPSConfigRequest,
     ) -> cloudfw_20171207_models.ModifyVpcFirewallDefaultIPSConfigResponse:
         """
-        You can call the ModifyVpcFirewallDefaultIPSConfig operation to modify the intrusion prevention configurations of a VPC firewall.
+        @summary Modifies the intrusion prevention configurations of a virtual private cloud (VPC) firewall.
+        
+        @description You can call the ModifyVpcFirewallDefaultIPSConfig operation to modify the intrusion prevention configurations of a VPC firewall.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -10095,7 +11751,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.ModifyVpcFirewallDefaultIPSConfigRequest,
     ) -> cloudfw_20171207_models.ModifyVpcFirewallDefaultIPSConfigResponse:
         """
-        You can call the ModifyVpcFirewallDefaultIPSConfig operation to modify the intrusion prevention configurations of a VPC firewall.
+        @summary Modifies the intrusion prevention configurations of a virtual private cloud (VPC) firewall.
+        
+        @description You can call the ModifyVpcFirewallDefaultIPSConfig operation to modify the intrusion prevention configurations of a VPC firewall.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -10110,6 +11768,13 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.ModifyVpcFirewallIPSWhitelistRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.ModifyVpcFirewallIPSWhitelistResponse:
+        """
+        @summary Modifies the IPS whitelist of a virtual private cloud (VPC) firewall.
+        
+        @param request: ModifyVpcFirewallIPSWhitelistRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyVpcFirewallIPSWhitelistResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -10148,6 +11813,13 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.ModifyVpcFirewallIPSWhitelistRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.ModifyVpcFirewallIPSWhitelistResponse:
+        """
+        @summary Modifies the IPS whitelist of a virtual private cloud (VPC) firewall.
+        
+        @param request: ModifyVpcFirewallIPSWhitelistRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyVpcFirewallIPSWhitelistResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -10185,6 +11857,12 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.ModifyVpcFirewallIPSWhitelistRequest,
     ) -> cloudfw_20171207_models.ModifyVpcFirewallIPSWhitelistResponse:
+        """
+        @summary Modifies the IPS whitelist of a virtual private cloud (VPC) firewall.
+        
+        @param request: ModifyVpcFirewallIPSWhitelistRequest
+        @return: ModifyVpcFirewallIPSWhitelistResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_vpc_firewall_ipswhitelist_with_options(request, runtime)
 
@@ -10192,6 +11870,12 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.ModifyVpcFirewallIPSWhitelistRequest,
     ) -> cloudfw_20171207_models.ModifyVpcFirewallIPSWhitelistResponse:
+        """
+        @summary Modifies the IPS whitelist of a virtual private cloud (VPC) firewall.
+        
+        @param request: ModifyVpcFirewallIPSWhitelistRequest
+        @return: ModifyVpcFirewallIPSWhitelistResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_vpc_firewall_ipswhitelist_with_options_async(request, runtime)
 
@@ -10201,8 +11885,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.ModifyVpcFirewallSwitchStatusResponse:
         """
-        You can call the ModifyVpcFirewallSwitchStatus operation to enable or disable a VPC firewall. The VPC firewall protects traffic between two VPCs that are connected by using an Express Connect circuit. After you enable the VPC firewall, the VPC firewall protects access traffic between two VPCs that are connected by using an Express Connect circuit. After you disable the VPC firewall, the VPC firewall no longer protects access traffic between two VPCs that are connected by using an Express Connect circuit.
-        Before you call the operation, make sure that you created a VPC firewall by calling the [CreateVpcFirewallConfigure](~~342893~~) operation.
+        @summary Enables or disables a virtual private cloud (VPC) firewall. The VPC firewall protects traffic between two VPCs that are connected by using an Express Connect circuit.
+        
+        @description You can call the ModifyVpcFirewallSwitchStatus operation to enable or disable a VPC firewall. The VPC firewall protects traffic between two VPCs that are connected by using an Express Connect circuit. After you enable the VPC firewall, the VPC firewall protects access traffic between two VPCs that are connected by using an Express Connect circuit. After you disable the VPC firewall, the VPC firewall no longer protects access traffic between two VPCs that are connected by using an Express Connect circuit.
+        Before you call the operation, make sure that you created a VPC firewall by calling the [CreateVpcFirewallConfigure](https://help.aliyun.com/document_detail/342893.html) operation.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -10245,8 +11931,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.ModifyVpcFirewallSwitchStatusResponse:
         """
-        You can call the ModifyVpcFirewallSwitchStatus operation to enable or disable a VPC firewall. The VPC firewall protects traffic between two VPCs that are connected by using an Express Connect circuit. After you enable the VPC firewall, the VPC firewall protects access traffic between two VPCs that are connected by using an Express Connect circuit. After you disable the VPC firewall, the VPC firewall no longer protects access traffic between two VPCs that are connected by using an Express Connect circuit.
-        Before you call the operation, make sure that you created a VPC firewall by calling the [CreateVpcFirewallConfigure](~~342893~~) operation.
+        @summary Enables or disables a virtual private cloud (VPC) firewall. The VPC firewall protects traffic between two VPCs that are connected by using an Express Connect circuit.
+        
+        @description You can call the ModifyVpcFirewallSwitchStatus operation to enable or disable a VPC firewall. The VPC firewall protects traffic between two VPCs that are connected by using an Express Connect circuit. After you enable the VPC firewall, the VPC firewall protects access traffic between two VPCs that are connected by using an Express Connect circuit. After you disable the VPC firewall, the VPC firewall no longer protects access traffic between two VPCs that are connected by using an Express Connect circuit.
+        Before you call the operation, make sure that you created a VPC firewall by calling the [CreateVpcFirewallConfigure](https://help.aliyun.com/document_detail/342893.html) operation.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -10288,8 +11976,10 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.ModifyVpcFirewallSwitchStatusRequest,
     ) -> cloudfw_20171207_models.ModifyVpcFirewallSwitchStatusResponse:
         """
-        You can call the ModifyVpcFirewallSwitchStatus operation to enable or disable a VPC firewall. The VPC firewall protects traffic between two VPCs that are connected by using an Express Connect circuit. After you enable the VPC firewall, the VPC firewall protects access traffic between two VPCs that are connected by using an Express Connect circuit. After you disable the VPC firewall, the VPC firewall no longer protects access traffic between two VPCs that are connected by using an Express Connect circuit.
-        Before you call the operation, make sure that you created a VPC firewall by calling the [CreateVpcFirewallConfigure](~~342893~~) operation.
+        @summary Enables or disables a virtual private cloud (VPC) firewall. The VPC firewall protects traffic between two VPCs that are connected by using an Express Connect circuit.
+        
+        @description You can call the ModifyVpcFirewallSwitchStatus operation to enable or disable a VPC firewall. The VPC firewall protects traffic between two VPCs that are connected by using an Express Connect circuit. After you enable the VPC firewall, the VPC firewall protects access traffic between two VPCs that are connected by using an Express Connect circuit. After you disable the VPC firewall, the VPC firewall no longer protects access traffic between two VPCs that are connected by using an Express Connect circuit.
+        Before you call the operation, make sure that you created a VPC firewall by calling the [CreateVpcFirewallConfigure](https://help.aliyun.com/document_detail/342893.html) operation.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -10304,8 +11994,10 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.ModifyVpcFirewallSwitchStatusRequest,
     ) -> cloudfw_20171207_models.ModifyVpcFirewallSwitchStatusResponse:
         """
-        You can call the ModifyVpcFirewallSwitchStatus operation to enable or disable a VPC firewall. The VPC firewall protects traffic between two VPCs that are connected by using an Express Connect circuit. After you enable the VPC firewall, the VPC firewall protects access traffic between two VPCs that are connected by using an Express Connect circuit. After you disable the VPC firewall, the VPC firewall no longer protects access traffic between two VPCs that are connected by using an Express Connect circuit.
-        Before you call the operation, make sure that you created a VPC firewall by calling the [CreateVpcFirewallConfigure](~~342893~~) operation.
+        @summary Enables or disables a virtual private cloud (VPC) firewall. The VPC firewall protects traffic between two VPCs that are connected by using an Express Connect circuit.
+        
+        @description You can call the ModifyVpcFirewallSwitchStatus operation to enable or disable a VPC firewall. The VPC firewall protects traffic between two VPCs that are connected by using an Express Connect circuit. After you enable the VPC firewall, the VPC firewall protects access traffic between two VPCs that are connected by using an Express Connect circuit. After you disable the VPC firewall, the VPC firewall no longer protects access traffic between two VPCs that are connected by using an Express Connect circuit.
+        Before you call the operation, make sure that you created a VPC firewall by calling the [CreateVpcFirewallConfigure](https://help.aliyun.com/document_detail/342893.html) operation.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -10321,7 +12013,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.PutDisableAllFwSwitchResponse:
         """
-        You can call the PutDisableAllFwSwitch operation to turn off all firewall switches.
+        @summary Turns off all firewall switches.
+        
+        @description You can call the PutDisableAllFwSwitch operation to turn off all firewall switches.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -10362,7 +12056,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.PutDisableAllFwSwitchResponse:
         """
-        You can call the PutDisableAllFwSwitch operation to turn off all firewall switches.
+        @summary Turns off all firewall switches.
+        
+        @description You can call the PutDisableAllFwSwitch operation to turn off all firewall switches.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -10402,7 +12098,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.PutDisableAllFwSwitchRequest,
     ) -> cloudfw_20171207_models.PutDisableAllFwSwitchResponse:
         """
-        You can call the PutDisableAllFwSwitch operation to turn off all firewall switches.
+        @summary Turns off all firewall switches.
+        
+        @description You can call the PutDisableAllFwSwitch operation to turn off all firewall switches.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -10417,7 +12115,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.PutDisableAllFwSwitchRequest,
     ) -> cloudfw_20171207_models.PutDisableAllFwSwitchResponse:
         """
-        You can call the PutDisableAllFwSwitch operation to turn off all firewall switches.
+        @summary Turns off all firewall switches.
+        
+        @description You can call the PutDisableAllFwSwitch operation to turn off all firewall switches.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -10433,7 +12133,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.PutDisableFwSwitchResponse:
         """
-        You can call the PutDisableFwSwitch operation to disable a firewall for specific assets. After you disable the firewall, traffic does not pass through Cloud Firewall.
+        @summary Disable a firewall for specific assets.
+        
+        @description You can call the PutDisableFwSwitch operation to disable a firewall for specific assets. After you disable the firewall, traffic does not pass through Cloud Firewall.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -10478,7 +12180,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.PutDisableFwSwitchResponse:
         """
-        You can call the PutDisableFwSwitch operation to disable a firewall for specific assets. After you disable the firewall, traffic does not pass through Cloud Firewall.
+        @summary Disable a firewall for specific assets.
+        
+        @description You can call the PutDisableFwSwitch operation to disable a firewall for specific assets. After you disable the firewall, traffic does not pass through Cloud Firewall.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -10522,7 +12226,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.PutDisableFwSwitchRequest,
     ) -> cloudfw_20171207_models.PutDisableFwSwitchResponse:
         """
-        You can call the PutDisableFwSwitch operation to disable a firewall for specific assets. After you disable the firewall, traffic does not pass through Cloud Firewall.
+        @summary Disable a firewall for specific assets.
+        
+        @description You can call the PutDisableFwSwitch operation to disable a firewall for specific assets. After you disable the firewall, traffic does not pass through Cloud Firewall.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -10537,7 +12243,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.PutDisableFwSwitchRequest,
     ) -> cloudfw_20171207_models.PutDisableFwSwitchResponse:
         """
-        You can call the PutDisableFwSwitch operation to disable a firewall for specific assets. After you disable the firewall, traffic does not pass through Cloud Firewall.
+        @summary Disable a firewall for specific assets.
+        
+        @description You can call the PutDisableFwSwitch operation to disable a firewall for specific assets. After you disable the firewall, traffic does not pass through Cloud Firewall.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -10553,7 +12261,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.PutEnableAllFwSwitchResponse:
         """
-        You can call the PutEnableAllFwSwitch operation to enable a firewall for all public IP addresses within your Alibaba Cloud account.
+        @summary Enables a firewall for all public IP addresses within your Alibaba Cloud account.
+        
+        @description You can call the PutEnableAllFwSwitch operation to enable a firewall for all public IP addresses within your Alibaba Cloud account.
         ## Limits
         You can call this operation up to 10 times per second per account. You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -10594,7 +12304,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.PutEnableAllFwSwitchResponse:
         """
-        You can call the PutEnableAllFwSwitch operation to enable a firewall for all public IP addresses within your Alibaba Cloud account.
+        @summary Enables a firewall for all public IP addresses within your Alibaba Cloud account.
+        
+        @description You can call the PutEnableAllFwSwitch operation to enable a firewall for all public IP addresses within your Alibaba Cloud account.
         ## Limits
         You can call this operation up to 10 times per second per account. You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -10634,7 +12346,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.PutEnableAllFwSwitchRequest,
     ) -> cloudfw_20171207_models.PutEnableAllFwSwitchResponse:
         """
-        You can call the PutEnableAllFwSwitch operation to enable a firewall for all public IP addresses within your Alibaba Cloud account.
+        @summary Enables a firewall for all public IP addresses within your Alibaba Cloud account.
+        
+        @description You can call the PutEnableAllFwSwitch operation to enable a firewall for all public IP addresses within your Alibaba Cloud account.
         ## Limits
         You can call this operation up to 10 times per second per account. You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -10649,7 +12363,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.PutEnableAllFwSwitchRequest,
     ) -> cloudfw_20171207_models.PutEnableAllFwSwitchResponse:
         """
-        You can call the PutEnableAllFwSwitch operation to enable a firewall for all public IP addresses within your Alibaba Cloud account.
+        @summary Enables a firewall for all public IP addresses within your Alibaba Cloud account.
+        
+        @description You can call the PutEnableAllFwSwitch operation to enable a firewall for all public IP addresses within your Alibaba Cloud account.
         ## Limits
         You can call this operation up to 10 times per second per account. You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -10665,7 +12381,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.PutEnableFwSwitchResponse:
         """
-        You can call the PutEnableFwSwitch operation to enable a firewall. After you enable a firewall, traffic passes through Cloud Firewall.
+        @summary Enables firewalls for specific assets.
+        
+        @description You can call the PutEnableFwSwitch operation to enable a firewall. After you enable a firewall, traffic passes through Cloud Firewall.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
         
@@ -10710,7 +12428,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.PutEnableFwSwitchResponse:
         """
-        You can call the PutEnableFwSwitch operation to enable a firewall. After you enable a firewall, traffic passes through Cloud Firewall.
+        @summary Enables firewalls for specific assets.
+        
+        @description You can call the PutEnableFwSwitch operation to enable a firewall. After you enable a firewall, traffic passes through Cloud Firewall.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
         
@@ -10754,7 +12474,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.PutEnableFwSwitchRequest,
     ) -> cloudfw_20171207_models.PutEnableFwSwitchResponse:
         """
-        You can call the PutEnableFwSwitch operation to enable a firewall. After you enable a firewall, traffic passes through Cloud Firewall.
+        @summary Enables firewalls for specific assets.
+        
+        @description You can call the PutEnableFwSwitch operation to enable a firewall. After you enable a firewall, traffic passes through Cloud Firewall.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
         
@@ -10769,7 +12491,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.PutEnableFwSwitchRequest,
     ) -> cloudfw_20171207_models.PutEnableFwSwitchResponse:
         """
-        You can call the PutEnableFwSwitch operation to enable a firewall. After you enable a firewall, traffic passes through Cloud Firewall.
+        @summary Enables firewalls for specific assets.
+        
+        @description You can call the PutEnableFwSwitch operation to enable a firewall. After you enable a firewall, traffic passes through Cloud Firewall.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
         
@@ -10784,6 +12508,13 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.ReleasePostInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.ReleasePostInstanceResponse:
+        """
+        @summary 释放按量付费实例
+        
+        @param request: ReleasePostInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReleasePostInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -10812,6 +12543,13 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.ReleasePostInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.ReleasePostInstanceResponse:
+        """
+        @summary 释放按量付费实例
+        
+        @param request: ReleasePostInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReleasePostInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -10839,6 +12577,12 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.ReleasePostInstanceRequest,
     ) -> cloudfw_20171207_models.ReleasePostInstanceResponse:
+        """
+        @summary 释放按量付费实例
+        
+        @param request: ReleasePostInstanceRequest
+        @return: ReleasePostInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.release_post_instance_with_options(request, runtime)
 
@@ -10846,6 +12590,12 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.ReleasePostInstanceRequest,
     ) -> cloudfw_20171207_models.ReleasePostInstanceResponse:
+        """
+        @summary 释放按量付费实例
+        
+        @param request: ReleasePostInstanceRequest
+        @return: ReleasePostInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.release_post_instance_with_options_async(request, runtime)
 
@@ -10854,6 +12604,13 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.ResetNatFirewallRuleHitCountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.ResetNatFirewallRuleHitCountResponse:
+        """
+        @summary Resets the number of NAT firewall hits.
+        
+        @param request: ResetNatFirewallRuleHitCountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResetNatFirewallRuleHitCountResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.acl_uuid):
@@ -10886,6 +12643,13 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.ResetNatFirewallRuleHitCountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.ResetNatFirewallRuleHitCountResponse:
+        """
+        @summary Resets the number of NAT firewall hits.
+        
+        @param request: ResetNatFirewallRuleHitCountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResetNatFirewallRuleHitCountResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.acl_uuid):
@@ -10917,6 +12681,12 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.ResetNatFirewallRuleHitCountRequest,
     ) -> cloudfw_20171207_models.ResetNatFirewallRuleHitCountResponse:
+        """
+        @summary Resets the number of NAT firewall hits.
+        
+        @param request: ResetNatFirewallRuleHitCountRequest
+        @return: ResetNatFirewallRuleHitCountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.reset_nat_firewall_rule_hit_count_with_options(request, runtime)
 
@@ -10924,6 +12694,12 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.ResetNatFirewallRuleHitCountRequest,
     ) -> cloudfw_20171207_models.ResetNatFirewallRuleHitCountResponse:
+        """
+        @summary Resets the number of NAT firewall hits.
+        
+        @param request: ResetNatFirewallRuleHitCountRequest
+        @return: ResetNatFirewallRuleHitCountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.reset_nat_firewall_rule_hit_count_with_options_async(request, runtime)
 
@@ -10933,7 +12709,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.ResetVpcFirewallRuleHitCountResponse:
         """
-        You can call the ResetVpcFirewallRuleHitCount operation to clear the count on hits of an access control policy that is created for a VPC firewall in a specific policy group.
+        @summary Clears the count on hits of an access control policy that is created for a virtual private cloud (VPC) firewall in a specific policy group.
+        
+        @description You can call the ResetVpcFirewallRuleHitCount operation to clear the count on hits of an access control policy that is created for a VPC firewall in a specific policy group.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -10972,7 +12750,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.ResetVpcFirewallRuleHitCountResponse:
         """
-        You can call the ResetVpcFirewallRuleHitCount operation to clear the count on hits of an access control policy that is created for a VPC firewall in a specific policy group.
+        @summary Clears the count on hits of an access control policy that is created for a virtual private cloud (VPC) firewall in a specific policy group.
+        
+        @description You can call the ResetVpcFirewallRuleHitCount operation to clear the count on hits of an access control policy that is created for a VPC firewall in a specific policy group.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -11010,7 +12790,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.ResetVpcFirewallRuleHitCountRequest,
     ) -> cloudfw_20171207_models.ResetVpcFirewallRuleHitCountResponse:
         """
-        You can call the ResetVpcFirewallRuleHitCount operation to clear the count on hits of an access control policy that is created for a VPC firewall in a specific policy group.
+        @summary Clears the count on hits of an access control policy that is created for a virtual private cloud (VPC) firewall in a specific policy group.
+        
+        @description You can call the ResetVpcFirewallRuleHitCount operation to clear the count on hits of an access control policy that is created for a VPC firewall in a specific policy group.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -11025,7 +12807,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.ResetVpcFirewallRuleHitCountRequest,
     ) -> cloudfw_20171207_models.ResetVpcFirewallRuleHitCountResponse:
         """
-        You can call the ResetVpcFirewallRuleHitCount operation to clear the count on hits of an access control policy that is created for a VPC firewall in a specific policy group.
+        @summary Clears the count on hits of an access control policy that is created for a virtual private cloud (VPC) firewall in a specific policy group.
+        
+        @description You can call the ResetVpcFirewallRuleHitCount operation to clear the count on hits of an access control policy that is created for a VPC firewall in a specific policy group.
         ## Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -11034,3 +12818,99 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.reset_vpc_firewall_rule_hit_count_with_options_async(request, runtime)
+
+    def switch_security_proxy_with_options(
+        self,
+        request: cloudfw_20171207_models.SwitchSecurityProxyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.SwitchSecurityProxyResponse:
+        """
+        @param request: SwitchSecurityProxyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SwitchSecurityProxyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.proxy_id):
+            query['ProxyId'] = request.proxy_id
+        if not UtilClient.is_unset(request.switch):
+            query['Switch'] = request.switch
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SwitchSecurityProxy',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.SwitchSecurityProxyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def switch_security_proxy_with_options_async(
+        self,
+        request: cloudfw_20171207_models.SwitchSecurityProxyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.SwitchSecurityProxyResponse:
+        """
+        @param request: SwitchSecurityProxyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SwitchSecurityProxyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.proxy_id):
+            query['ProxyId'] = request.proxy_id
+        if not UtilClient.is_unset(request.switch):
+            query['Switch'] = request.switch
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SwitchSecurityProxy',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.SwitchSecurityProxyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def switch_security_proxy(
+        self,
+        request: cloudfw_20171207_models.SwitchSecurityProxyRequest,
+    ) -> cloudfw_20171207_models.SwitchSecurityProxyResponse:
+        """
+        @param request: SwitchSecurityProxyRequest
+        @return: SwitchSecurityProxyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.switch_security_proxy_with_options(request, runtime)
+
+    async def switch_security_proxy_async(
+        self,
+        request: cloudfw_20171207_models.SwitchSecurityProxyRequest,
+    ) -> cloudfw_20171207_models.SwitchSecurityProxyResponse:
+        """
+        @param request: SwitchSecurityProxyRequest
+        @return: SwitchSecurityProxyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.switch_security_proxy_with_options_async(request, runtime)
