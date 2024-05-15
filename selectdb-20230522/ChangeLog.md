@@ -1,3 +1,11 @@
+2024-05-15 Version: 3.1.0
+- Support API DescribeDBClusterConfig.
+- Support API DescribeDBClusterConfigChangeLogs.
+- Support API GetCreateBEClusterInquiry.
+- Support API GetModifyBEClusterInquiry.
+- Support API ModifyDBClusterConfig.
+
+
 2024-03-15 Version: 3.0.1
 - Update API DescribeDBInstanceAttribute: update response param.
 
