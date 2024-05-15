@@ -171,6 +171,7 @@ class DatasetProxyConfig(TeaModel):
     ):
         self.dataset_type = dataset_type
         self.source = source
+        # This parameter is required.
         self.source_dataset_id = source_dataset_id
 
     def validate(self):
@@ -213,7 +214,9 @@ class QuestionOption(TeaModel):
     ):
         self.children = children
         self.color = color
+        # This parameter is required.
         self.key = key
+        # This parameter is required.
         self.label = label
         self.remark = remark
         self.shortcut = shortcut
@@ -429,14 +432,20 @@ class CreateTaskDetail(TeaModel):
     ):
         self.admins = admins
         self.allow_append_data = allow_append_data
+        # This parameter is required.
         self.assign_config = assign_config
+        # This parameter is required.
         self.dataset_proxy_relations = dataset_proxy_relations
         self.exif = exif
         self.tags = tags
+        # This parameter is required.
         self.task_name = task_name
         self.task_template_config = task_template_config
+        # This parameter is required.
         self.task_workflow = task_workflow
+        # This parameter is required.
         self.template_id = template_id
+        # This parameter is required.
         self.uuid = uuid
         self.vote_configs = vote_configs
 
@@ -840,18 +849,24 @@ class QuestionPlugin(TeaModel):
         self.can_select = can_select
         self.children = children
         self.default_result = default_result
+        # This parameter is required.
         self.display = display
         self.exif = exif
         self.hot_key_map = hot_key_map
+        # This parameter is required.
         self.mark_title = mark_title
         self.mark_title_alias = mark_title_alias
+        # This parameter is required.
         self.must_fill = must_fill
+        # This parameter is required.
         self.options = options
         self.pre_options = pre_options
+        # This parameter is required.
         self.question_id = question_id
         self.rule = rule
         self.select_group = select_group
         self.selected = selected
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -2493,14 +2508,18 @@ class ViewPlugin(TeaModel):
         type: str = None,
         visit_info: ViewPluginVisitInfo = None,
     ):
+        # This parameter is required.
         self.bind_field = bind_field
         self.convertor = convertor
+        # This parameter is required.
         self.cors_proxy = cors_proxy
+        # This parameter is required.
         self.display_ori_img = display_ori_img
         self.exif = exif
         self.hide = hide
         self.plugins = plugins
         self.relation_question_ids = relation_question_ids
+        # This parameter is required.
         self.type = type
         self.visit_info = visit_info
 
@@ -2614,12 +2633,15 @@ class TemplateDTO(TeaModel):
         self.classify = classify
         self.description = description
         self.exif = exif
+        # This parameter is required.
         self.question_configs = question_configs
         self.robot_configs = robot_configs
         self.shared_mode = shared_mode
         self.tags = tags
         self.template_id = template_id
+        # This parameter is required.
         self.template_name = template_name
+        # This parameter is required.
         self.view_configs = view_configs
 
     def validate(self):
@@ -3231,6 +3253,7 @@ class AddWorkNodeWorkforceResponseBody(TeaModel):
         self.code = code
         self.details = details
         self.error_code = error_code
+        # This parameter is required.
         self.message = message
         self.request_id = request_id
         self.success = success
@@ -3316,11 +3339,141 @@ class AddWorkNodeWorkforceResponse(TeaModel):
         return self
 
 
+class AppendAllDataToTaskRequest(TeaModel):
+    def __init__(
+        self,
+        body: OpenDatasetProxyAppendDataRequest = None,
+    ):
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('body') is not None:
+            temp_model = OpenDatasetProxyAppendDataRequest()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class AppendAllDataToTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        details: str = None,
+        error_code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.details = details
+        self.error_code = error_code
+        # This parameter is required.
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.details is not None:
+            result['Details'] = self.details
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Details') is not None:
+            self.details = m.get('Details')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class AppendAllDataToTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AppendAllDataToTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AppendAllDataToTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateTaskRequest(TeaModel):
     def __init__(
         self,
         body: CreateTaskDetail = None,
     ):
+        # This parameter is required.
         self.body = body
 
     def validate(self):
@@ -3359,6 +3512,7 @@ class CreateTaskResponseBody(TeaModel):
         self.code = code
         self.details = details
         self.error_code = error_code
+        # This parameter is required.
         self.message = message
         self.request_id = request_id
         self.success = success
@@ -3454,6 +3608,7 @@ class CreateTemplateRequest(TeaModel):
         self,
         body: TemplateDTO = None,
     ):
+        # This parameter is required.
         self.body = body
 
     def validate(self):
@@ -3492,6 +3647,7 @@ class CreateTemplateResponseBody(TeaModel):
         self.code = code
         self.details = details
         self.error_code = error_code
+        # This parameter is required.
         self.message = message
         self.request_id = request_id
         self.success = success
@@ -3590,8 +3746,11 @@ class CreateUserRequest(TeaModel):
         role: str = None,
         user_name: str = None,
     ):
+        # This parameter is required.
         self.account_no = account_no
+        # This parameter is required.
         self.account_type = account_type
+        # This parameter is required.
         self.role = role
         self.user_name = user_name
 
@@ -3641,6 +3800,7 @@ class CreateUserResponseBody(TeaModel):
         self.code = code
         self.details = details
         self.error_code = error_code
+        # This parameter is required.
         self.message = message
         self.request_id = request_id
         self.success = success
@@ -3744,6 +3904,7 @@ class DeleteTaskResponseBody(TeaModel):
         self.code = code
         self.details = details
         self.error_code = error_code
+        # This parameter is required.
         self.message = message
         self.request_id = request_id
         self.success = success
@@ -3843,6 +4004,7 @@ class DeleteTemplateResponseBody(TeaModel):
         self.code = code
         self.details = details
         self.error_code = error_code
+        # This parameter is required.
         self.message = message
         self.request_id = request_id
         self.success = success
@@ -3946,6 +4108,7 @@ class DeleteUserResponseBody(TeaModel):
         self.code = code
         self.details = details
         self.error_code = error_code
+        # This parameter is required.
         self.message = message
         self.request_id = request_id
         self.success = success
@@ -4038,6 +4201,7 @@ class ExportAnnotationsRequest(TeaModel):
         register_dataset: str = None,
         target: str = None,
     ):
+        # This parameter is required.
         self.oss_path = oss_path
         self.register_dataset = register_dataset
         self.target = target
@@ -4085,6 +4249,7 @@ class ExportAnnotationsResponseBody(TeaModel):
         self.details = details
         self.error_code = error_code
         self.flow_job = flow_job
+        # This parameter is required.
         self.message = message
         self.request_id = request_id
         self.success = success
@@ -4218,6 +4383,7 @@ class GetJobResponseBody(TeaModel):
         self.details = details
         self.error_code = error_code
         self.job = job
+        # This parameter is required.
         self.message = message
         self.request_id = request_id
         self.success = success
@@ -4323,6 +4489,7 @@ class GetSubtaskResponseBody(TeaModel):
         self.code = code
         self.details = details
         self.error_code = error_code
+        # This parameter is required.
         self.message = message
         self.request_id = request_id
         self.subtask = subtask
@@ -4430,6 +4597,7 @@ class GetSubtaskItemResponseBody(TeaModel):
         self.details = details
         self.error_code = error_code
         self.item = item
+        # This parameter is required.
         self.message = message
         self.request_id = request_id
         self.success = success
@@ -4535,6 +4703,7 @@ class GetTaskResponseBody(TeaModel):
         self.code = code
         self.details = details
         self.error_code = error_code
+        # This parameter is required.
         self.message = message
         self.request_id = request_id
         self.success = success
@@ -4668,6 +4837,7 @@ class GetTaskStatisticsResponseBody(TeaModel):
         self.code = code
         self.details = details
         self.error_code = error_code
+        # This parameter is required.
         self.message = message
         self.request_id = request_id
         self.success = success
@@ -4774,6 +4944,7 @@ class GetTaskStatusResponseBody(TeaModel):
         self.code = code
         self.details = details
         self.error_code = error_code
+        # This parameter is required.
         self.message = message
         self.request_id = request_id
         self.success = success
@@ -4878,6 +5049,7 @@ class GetTaskTemplateResponseBody(TeaModel):
         self.code = code
         self.details = details
         self.error_code = error_code
+        # This parameter is required.
         self.message = message
         self.request_id = request_id
         self.success = success
@@ -4984,6 +5156,7 @@ class GetTaskTemplateQuestionsResponseBody(TeaModel):
         self.code = code
         self.details = details
         self.error_code = error_code
+        # This parameter is required.
         self.message = message
         self.questions = questions
         self.request_id = request_id
@@ -5131,6 +5304,7 @@ class GetTaskTemplateViewsResponseBody(TeaModel):
         self.code = code
         self.details = details
         self.error_code = error_code
+        # This parameter is required.
         self.message = message
         self.request_id = request_id
         self.success = success
@@ -5237,6 +5411,7 @@ class GetTaskWorkforceResponseBody(TeaModel):
         self.code = code
         self.details = details
         self.error_code = error_code
+        # This parameter is required.
         self.message = message
         self.request_id = request_id
         self.success = success
@@ -5392,6 +5567,7 @@ class GetTaskWorkforceStatisticResponseBody(TeaModel):
         self.code = code
         self.details = details
         self.error_code = error_code
+        # This parameter is required.
         self.message = message
         self.page_number = page_number
         self.page_size = page_size
@@ -5524,6 +5700,7 @@ class GetTemplateResponseBody(TeaModel):
         self.code = code
         self.details = details
         self.error_code = error_code
+        # This parameter is required.
         self.message = message
         self.request_id = request_id
         self.success = success
@@ -5630,6 +5807,7 @@ class GetTemplateQuestionsResponseBody(TeaModel):
         self.code = code
         self.details = details
         self.error_code = error_code
+        # This parameter is required.
         self.message = message
         self.question_configs = question_configs
         self.request_id = request_id
@@ -5777,6 +5955,7 @@ class GetTemplateViewResponseBody(TeaModel):
         self.code = code
         self.details = details
         self.error_code = error_code
+        # This parameter is required.
         self.message = message
         self.request_id = request_id
         self.success = success
@@ -5883,6 +6062,7 @@ class GetTenantResponseBody(TeaModel):
         self.code = code
         self.details = details
         self.error_code = error_code
+        # This parameter is required.
         self.message = message
         self.request_id = request_id
         self.success = success
@@ -5989,6 +6169,7 @@ class GetUserResponseBody(TeaModel):
         self.code = code
         self.details = details
         self.error_code = error_code
+        # This parameter is required.
         self.message = message
         self.request_id = request_id
         self.success = success
@@ -6139,6 +6320,7 @@ class ListJobsResponseBody(TeaModel):
         self.details = details
         self.error_code = error_code
         self.jobs = jobs
+        # This parameter is required.
         self.message = message
         self.page_number = page_number
         self.page_size = page_size
@@ -6308,6 +6490,7 @@ class ListSubtaskItemsResponseBody(TeaModel):
         self.details = details
         self.error_code = error_code
         self.items = items
+        # This parameter is required.
         self.message = message
         self.page_number = page_number
         self.page_size = page_size
@@ -6476,6 +6659,7 @@ class ListSubtasksResponseBody(TeaModel):
         self.code = code
         self.details = details
         self.error_code = error_code
+        # This parameter is required.
         self.message = message
         self.page_number = page_number
         self.page_size = page_size
@@ -6645,6 +6829,7 @@ class ListTasksResponseBody(TeaModel):
         self.code = code
         self.details = details
         self.error_code = error_code
+        # This parameter is required.
         self.message = message
         self.page_number = page_number
         self.page_size = page_size
@@ -6871,6 +7056,7 @@ class ListTemplatesResponseBody(TeaModel):
         self.code = code
         self.details = details
         self.error_code = error_code
+        # This parameter is required.
         self.message = message
         self.page_number = page_number
         self.page_size = page_size
@@ -7040,6 +7226,7 @@ class ListTenantsResponseBody(TeaModel):
         self.code = code
         self.details = details
         self.error_code = error_code
+        # This parameter is required.
         self.message = message
         self.page_number = page_number
         self.page_size = page_size
@@ -7209,6 +7396,7 @@ class ListUsersResponseBody(TeaModel):
         self.code = code
         self.details = details
         self.error_code = error_code
+        # This parameter is required.
         self.message = message
         self.page_number = page_number
         self.page_size = page_size
@@ -7367,6 +7555,7 @@ class RemoveWorkNodeWorkforceResponseBody(TeaModel):
         self.code = code
         self.details = details
         self.error_code = error_code
+        # This parameter is required.
         self.message = message
         self.request_id = request_id
         self.success = success
@@ -7457,6 +7646,7 @@ class UpdateTaskRequest(TeaModel):
         self,
         body: UpdateTaskDTO = None,
     ):
+        # This parameter is required.
         self.body = body
 
     def validate(self):
@@ -7494,6 +7684,7 @@ class UpdateTaskResponseBody(TeaModel):
         self.code = code
         self.details = details
         self.error_code = error_code
+        # This parameter is required.
         self.message = message
         self.request_id = request_id
         self.success = success
@@ -7627,6 +7818,7 @@ class UpdateTaskWorkforceResponseBody(TeaModel):
         self.code = code
         self.details = details
         self.error_code = error_code
+        # This parameter is required.
         self.message = message
         self.request_id = request_id
         self.success = success
@@ -7755,6 +7947,7 @@ class UpdateTemplateResponseBody(TeaModel):
         self.code = code
         self.details = details
         self.error_code = error_code
+        # This parameter is required.
         self.message = message
         self.request_id = request_id
         self.success = success
@@ -7891,6 +8084,7 @@ class UpdateTenantResponseBody(TeaModel):
         self.code = code
         self.details = details
         self.error_code = error_code
+        # This parameter is required.
         self.message = message
         self.request_id = request_id
         self.success = success
@@ -7982,7 +8176,9 @@ class UpdateUserRequest(TeaModel):
         role: str = None,
         user_name: str = None,
     ):
+        # This parameter is required.
         self.role = role
+        # This parameter is required.
         self.user_name = user_name
 
     def validate(self):
@@ -8023,6 +8219,7 @@ class UpdateUserResponseBody(TeaModel):
         self.code = code
         self.details = details
         self.error_code = error_code
+        # This parameter is required.
         self.message = message
         self.request_id = request_id
         self.success = success

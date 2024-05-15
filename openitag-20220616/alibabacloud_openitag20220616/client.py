@@ -50,6 +50,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.AddWorkNodeWorkforceResponse:
+        """
+        @summary 增加结点任务人力
+        
+        @param request: AddWorkNodeWorkforceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddWorkNodeWorkforceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.user_ids):
@@ -83,6 +91,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.AddWorkNodeWorkforceResponse:
+        """
+        @summary 增加结点任务人力
+        
+        @param request: AddWorkNodeWorkforceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddWorkNodeWorkforceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.user_ids):
@@ -114,6 +130,12 @@ class Client(OpenApiClient):
         work_node_id: str,
         request: open_itag_20220616_models.AddWorkNodeWorkforceRequest,
     ) -> open_itag_20220616_models.AddWorkNodeWorkforceResponse:
+        """
+        @summary 增加结点任务人力
+        
+        @param request: AddWorkNodeWorkforceRequest
+        @return: AddWorkNodeWorkforceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.add_work_node_workforce_with_options(tenant_id, task_id, work_node_id, request, headers, runtime)
@@ -125,9 +147,121 @@ class Client(OpenApiClient):
         work_node_id: str,
         request: open_itag_20220616_models.AddWorkNodeWorkforceRequest,
     ) -> open_itag_20220616_models.AddWorkNodeWorkforceResponse:
+        """
+        @summary 增加结点任务人力
+        
+        @param request: AddWorkNodeWorkforceRequest
+        @return: AddWorkNodeWorkforceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.add_work_node_workforce_with_options_async(tenant_id, task_id, work_node_id, request, headers, runtime)
+
+    def append_all_data_to_task_with_options(
+        self,
+        tenant_id: str,
+        task_id: str,
+        request: open_itag_20220616_models.AppendAllDataToTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> open_itag_20220616_models.AppendAllDataToTaskResponse:
+        """
+        @summary 数据追加
+        
+        @param request: AppendAllDataToTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AppendAllDataToTaskResponse
+        """
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='AppendAllDataToTask',
+            version='2022-06-16',
+            protocol='HTTPS',
+            pathname=f'/openapi/api/v1/tenants/{OpenApiUtilClient.get_encode_param(tenant_id)}/tasks/{OpenApiUtilClient.get_encode_param(task_id)}/appendAllDataToTask',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            open_itag_20220616_models.AppendAllDataToTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def append_all_data_to_task_with_options_async(
+        self,
+        tenant_id: str,
+        task_id: str,
+        request: open_itag_20220616_models.AppendAllDataToTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> open_itag_20220616_models.AppendAllDataToTaskResponse:
+        """
+        @summary 数据追加
+        
+        @param request: AppendAllDataToTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AppendAllDataToTaskResponse
+        """
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='AppendAllDataToTask',
+            version='2022-06-16',
+            protocol='HTTPS',
+            pathname=f'/openapi/api/v1/tenants/{OpenApiUtilClient.get_encode_param(tenant_id)}/tasks/{OpenApiUtilClient.get_encode_param(task_id)}/appendAllDataToTask',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            open_itag_20220616_models.AppendAllDataToTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def append_all_data_to_task(
+        self,
+        tenant_id: str,
+        task_id: str,
+        request: open_itag_20220616_models.AppendAllDataToTaskRequest,
+    ) -> open_itag_20220616_models.AppendAllDataToTaskResponse:
+        """
+        @summary 数据追加
+        
+        @param request: AppendAllDataToTaskRequest
+        @return: AppendAllDataToTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.append_all_data_to_task_with_options(tenant_id, task_id, request, headers, runtime)
+
+    async def append_all_data_to_task_async(
+        self,
+        tenant_id: str,
+        task_id: str,
+        request: open_itag_20220616_models.AppendAllDataToTaskRequest,
+    ) -> open_itag_20220616_models.AppendAllDataToTaskResponse:
+        """
+        @summary 数据追加
+        
+        @param request: AppendAllDataToTaskRequest
+        @return: AppendAllDataToTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.append_all_data_to_task_with_options_async(tenant_id, task_id, request, headers, runtime)
 
     def create_task_with_options(
         self,
@@ -136,6 +270,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.CreateTaskResponse:
+        """
+        @summary 创建标注任务
+        
+        @param request: CreateTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTaskResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -164,6 +306,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.CreateTaskResponse:
+        """
+        @summary 创建标注任务
+        
+        @param request: CreateTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTaskResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -190,6 +340,12 @@ class Client(OpenApiClient):
         tenant_id: str,
         request: open_itag_20220616_models.CreateTaskRequest,
     ) -> open_itag_20220616_models.CreateTaskResponse:
+        """
+        @summary 创建标注任务
+        
+        @param request: CreateTaskRequest
+        @return: CreateTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_task_with_options(tenant_id, request, headers, runtime)
@@ -199,6 +355,12 @@ class Client(OpenApiClient):
         tenant_id: str,
         request: open_itag_20220616_models.CreateTaskRequest,
     ) -> open_itag_20220616_models.CreateTaskResponse:
+        """
+        @summary 创建标注任务
+        
+        @param request: CreateTaskRequest
+        @return: CreateTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_task_with_options_async(tenant_id, request, headers, runtime)
@@ -210,6 +372,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.CreateTemplateResponse:
+        """
+        @summary 创建标注模版
+        
+        @param request: CreateTemplateRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTemplateResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -238,6 +408,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.CreateTemplateResponse:
+        """
+        @summary 创建标注模版
+        
+        @param request: CreateTemplateRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTemplateResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -264,6 +442,12 @@ class Client(OpenApiClient):
         tenant_id: str,
         request: open_itag_20220616_models.CreateTemplateRequest,
     ) -> open_itag_20220616_models.CreateTemplateResponse:
+        """
+        @summary 创建标注模版
+        
+        @param request: CreateTemplateRequest
+        @return: CreateTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_template_with_options(tenant_id, request, headers, runtime)
@@ -273,6 +457,12 @@ class Client(OpenApiClient):
         tenant_id: str,
         request: open_itag_20220616_models.CreateTemplateRequest,
     ) -> open_itag_20220616_models.CreateTemplateResponse:
+        """
+        @summary 创建标注模版
+        
+        @param request: CreateTemplateRequest
+        @return: CreateTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_template_with_options_async(tenant_id, request, headers, runtime)
@@ -284,6 +474,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.CreateUserResponse:
+        """
+        @summary 创建租户内用户
+        
+        @param request: CreateUserRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateUserResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.account_no):
@@ -321,6 +519,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.CreateUserResponse:
+        """
+        @summary 创建租户内用户
+        
+        @param request: CreateUserRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateUserResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.account_no):
@@ -356,6 +562,12 @@ class Client(OpenApiClient):
         tenant_id: str,
         request: open_itag_20220616_models.CreateUserRequest,
     ) -> open_itag_20220616_models.CreateUserResponse:
+        """
+        @summary 创建租户内用户
+        
+        @param request: CreateUserRequest
+        @return: CreateUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_user_with_options(tenant_id, request, headers, runtime)
@@ -365,6 +577,12 @@ class Client(OpenApiClient):
         tenant_id: str,
         request: open_itag_20220616_models.CreateUserRequest,
     ) -> open_itag_20220616_models.CreateUserResponse:
+        """
+        @summary 创建租户内用户
+        
+        @param request: CreateUserRequest
+        @return: CreateUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_user_with_options_async(tenant_id, request, headers, runtime)
@@ -376,6 +594,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.DeleteTaskResponse:
+        """
+        @summary 删除任务
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteTaskResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -402,6 +627,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.DeleteTaskResponse:
+        """
+        @summary 删除任务
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteTaskResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -426,6 +658,11 @@ class Client(OpenApiClient):
         tenant_id: str,
         task_id: str,
     ) -> open_itag_20220616_models.DeleteTaskResponse:
+        """
+        @summary 删除任务
+        
+        @return: DeleteTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_task_with_options(tenant_id, task_id, headers, runtime)
@@ -435,6 +672,11 @@ class Client(OpenApiClient):
         tenant_id: str,
         task_id: str,
     ) -> open_itag_20220616_models.DeleteTaskResponse:
+        """
+        @summary 删除任务
+        
+        @return: DeleteTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_task_with_options_async(tenant_id, task_id, headers, runtime)
@@ -446,6 +688,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.DeleteTemplateResponse:
+        """
+        @summary 删除租户下的单个模板
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteTemplateResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -472,6 +721,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.DeleteTemplateResponse:
+        """
+        @summary 删除租户下的单个模板
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteTemplateResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -496,6 +752,11 @@ class Client(OpenApiClient):
         tenant_id: str,
         template_id: str,
     ) -> open_itag_20220616_models.DeleteTemplateResponse:
+        """
+        @summary 删除租户下的单个模板
+        
+        @return: DeleteTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_template_with_options(tenant_id, template_id, headers, runtime)
@@ -505,6 +766,11 @@ class Client(OpenApiClient):
         tenant_id: str,
         template_id: str,
     ) -> open_itag_20220616_models.DeleteTemplateResponse:
+        """
+        @summary 删除租户下的单个模板
+        
+        @return: DeleteTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_template_with_options_async(tenant_id, template_id, headers, runtime)
@@ -516,6 +782,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.DeleteUserResponse:
+        """
+        @summary 删除用户
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteUserResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -542,6 +815,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.DeleteUserResponse:
+        """
+        @summary 删除用户
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteUserResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -566,6 +846,11 @@ class Client(OpenApiClient):
         tenant_id: str,
         user_id: str,
     ) -> open_itag_20220616_models.DeleteUserResponse:
+        """
+        @summary 删除用户
+        
+        @return: DeleteUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_user_with_options(tenant_id, user_id, headers, runtime)
@@ -575,6 +860,11 @@ class Client(OpenApiClient):
         tenant_id: str,
         user_id: str,
     ) -> open_itag_20220616_models.DeleteUserResponse:
+        """
+        @summary 删除用户
+        
+        @return: DeleteUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_user_with_options_async(tenant_id, user_id, headers, runtime)
@@ -587,6 +877,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.ExportAnnotationsResponse:
+        """
+        @summary 获取任务导出结果
+        
+        @param request: ExportAnnotationsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExportAnnotationsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.oss_path):
@@ -623,6 +921,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.ExportAnnotationsResponse:
+        """
+        @summary 获取任务导出结果
+        
+        @param request: ExportAnnotationsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExportAnnotationsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.oss_path):
@@ -657,6 +963,12 @@ class Client(OpenApiClient):
         task_id: str,
         request: open_itag_20220616_models.ExportAnnotationsRequest,
     ) -> open_itag_20220616_models.ExportAnnotationsResponse:
+        """
+        @summary 获取任务导出结果
+        
+        @param request: ExportAnnotationsRequest
+        @return: ExportAnnotationsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.export_annotations_with_options(tenant_id, task_id, request, headers, runtime)
@@ -667,6 +979,12 @@ class Client(OpenApiClient):
         task_id: str,
         request: open_itag_20220616_models.ExportAnnotationsRequest,
     ) -> open_itag_20220616_models.ExportAnnotationsResponse:
+        """
+        @summary 获取任务导出结果
+        
+        @param request: ExportAnnotationsRequest
+        @return: ExportAnnotationsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.export_annotations_with_options_async(tenant_id, task_id, request, headers, runtime)
@@ -679,6 +997,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.GetJobResponse:
+        """
+        @summary 获取异步任务Job
+        
+        @param request: GetJobRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.job_type):
@@ -711,6 +1037,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.GetJobResponse:
+        """
+        @summary 获取异步任务Job
+        
+        @param request: GetJobRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.job_type):
@@ -741,6 +1075,12 @@ class Client(OpenApiClient):
         job_id: str,
         request: open_itag_20220616_models.GetJobRequest,
     ) -> open_itag_20220616_models.GetJobResponse:
+        """
+        @summary 获取异步任务Job
+        
+        @param request: GetJobRequest
+        @return: GetJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_job_with_options(tenant_id, job_id, request, headers, runtime)
@@ -751,6 +1091,12 @@ class Client(OpenApiClient):
         job_id: str,
         request: open_itag_20220616_models.GetJobRequest,
     ) -> open_itag_20220616_models.GetJobResponse:
+        """
+        @summary 获取异步任务Job
+        
+        @param request: GetJobRequest
+        @return: GetJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_job_with_options_async(tenant_id, job_id, request, headers, runtime)
@@ -763,6 +1109,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.GetSubtaskResponse:
+        """
+        @summary 获取单个子任务信息
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSubtaskResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -790,6 +1143,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.GetSubtaskResponse:
+        """
+        @summary 获取单个子任务信息
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSubtaskResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -815,6 +1175,11 @@ class Client(OpenApiClient):
         task_id: str,
         subtask_id: str,
     ) -> open_itag_20220616_models.GetSubtaskResponse:
+        """
+        @summary 获取单个子任务信息
+        
+        @return: GetSubtaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_subtask_with_options(tenant_id, task_id, subtask_id, headers, runtime)
@@ -825,6 +1190,11 @@ class Client(OpenApiClient):
         task_id: str,
         subtask_id: str,
     ) -> open_itag_20220616_models.GetSubtaskResponse:
+        """
+        @summary 获取单个子任务信息
+        
+        @return: GetSubtaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_subtask_with_options_async(tenant_id, task_id, subtask_id, headers, runtime)
@@ -838,6 +1208,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.GetSubtaskItemResponse:
+        """
+        @summary 获取子任务单个ITEM信息
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSubtaskItemResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -866,6 +1243,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.GetSubtaskItemResponse:
+        """
+        @summary 获取子任务单个ITEM信息
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSubtaskItemResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -892,6 +1276,11 @@ class Client(OpenApiClient):
         subtask_id: str,
         item_id: str,
     ) -> open_itag_20220616_models.GetSubtaskItemResponse:
+        """
+        @summary 获取子任务单个ITEM信息
+        
+        @return: GetSubtaskItemResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_subtask_item_with_options(tenant_id, task_id, subtask_id, item_id, headers, runtime)
@@ -903,6 +1292,11 @@ class Client(OpenApiClient):
         subtask_id: str,
         item_id: str,
     ) -> open_itag_20220616_models.GetSubtaskItemResponse:
+        """
+        @summary 获取子任务单个ITEM信息
+        
+        @return: GetSubtaskItemResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_subtask_item_with_options_async(tenant_id, task_id, subtask_id, item_id, headers, runtime)
@@ -914,6 +1308,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.GetTaskResponse:
+        """
+        @summary 获取任务状态信息
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTaskResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -940,6 +1341,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.GetTaskResponse:
+        """
+        @summary 获取任务状态信息
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTaskResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -964,6 +1372,11 @@ class Client(OpenApiClient):
         tenant_id: str,
         task_id: str,
     ) -> open_itag_20220616_models.GetTaskResponse:
+        """
+        @summary 获取任务状态信息
+        
+        @return: GetTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_task_with_options(tenant_id, task_id, headers, runtime)
@@ -973,6 +1386,11 @@ class Client(OpenApiClient):
         tenant_id: str,
         task_id: str,
     ) -> open_itag_20220616_models.GetTaskResponse:
+        """
+        @summary 获取任务状态信息
+        
+        @return: GetTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_task_with_options_async(tenant_id, task_id, headers, runtime)
@@ -985,6 +1403,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.GetTaskStatisticsResponse:
+        """
+        @summary 获取任务统计信息
+        
+        @param request: GetTaskStatisticsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTaskStatisticsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.stat_type):
@@ -1017,6 +1443,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.GetTaskStatisticsResponse:
+        """
+        @summary 获取任务统计信息
+        
+        @param request: GetTaskStatisticsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTaskStatisticsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.stat_type):
@@ -1047,6 +1481,12 @@ class Client(OpenApiClient):
         task_id: str,
         request: open_itag_20220616_models.GetTaskStatisticsRequest,
     ) -> open_itag_20220616_models.GetTaskStatisticsResponse:
+        """
+        @summary 获取任务统计信息
+        
+        @param request: GetTaskStatisticsRequest
+        @return: GetTaskStatisticsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_task_statistics_with_options(tenant_id, task_id, request, headers, runtime)
@@ -1057,6 +1497,12 @@ class Client(OpenApiClient):
         task_id: str,
         request: open_itag_20220616_models.GetTaskStatisticsRequest,
     ) -> open_itag_20220616_models.GetTaskStatisticsResponse:
+        """
+        @summary 获取任务统计信息
+        
+        @param request: GetTaskStatisticsRequest
+        @return: GetTaskStatisticsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_task_statistics_with_options_async(tenant_id, task_id, request, headers, runtime)
@@ -1068,6 +1514,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.GetTaskStatusResponse:
+        """
+        @summary 获取任务状态信息
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTaskStatusResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1094,6 +1547,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.GetTaskStatusResponse:
+        """
+        @summary 获取任务状态信息
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTaskStatusResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1118,6 +1578,11 @@ class Client(OpenApiClient):
         tenant_id: str,
         task_id: str,
     ) -> open_itag_20220616_models.GetTaskStatusResponse:
+        """
+        @summary 获取任务状态信息
+        
+        @return: GetTaskStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_task_status_with_options(tenant_id, task_id, headers, runtime)
@@ -1127,6 +1592,11 @@ class Client(OpenApiClient):
         tenant_id: str,
         task_id: str,
     ) -> open_itag_20220616_models.GetTaskStatusResponse:
+        """
+        @summary 获取任务状态信息
+        
+        @return: GetTaskStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_task_status_with_options_async(tenant_id, task_id, headers, runtime)
@@ -1138,6 +1608,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.GetTaskTemplateResponse:
+        """
+        @summary 获取任务模版信息
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTaskTemplateResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1164,6 +1641,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.GetTaskTemplateResponse:
+        """
+        @summary 获取任务模版信息
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTaskTemplateResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1188,6 +1672,11 @@ class Client(OpenApiClient):
         tenant_id: str,
         task_id: str,
     ) -> open_itag_20220616_models.GetTaskTemplateResponse:
+        """
+        @summary 获取任务模版信息
+        
+        @return: GetTaskTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_task_template_with_options(tenant_id, task_id, headers, runtime)
@@ -1197,6 +1686,11 @@ class Client(OpenApiClient):
         tenant_id: str,
         task_id: str,
     ) -> open_itag_20220616_models.GetTaskTemplateResponse:
+        """
+        @summary 获取任务模版信息
+        
+        @return: GetTaskTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_task_template_with_options_async(tenant_id, task_id, headers, runtime)
@@ -1208,6 +1702,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.GetTaskTemplateQuestionsResponse:
+        """
+        @summary 获取任务题目信息
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTaskTemplateQuestionsResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1234,6 +1735,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.GetTaskTemplateQuestionsResponse:
+        """
+        @summary 获取任务题目信息
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTaskTemplateQuestionsResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1258,6 +1766,11 @@ class Client(OpenApiClient):
         tenant_id: str,
         task_id: str,
     ) -> open_itag_20220616_models.GetTaskTemplateQuestionsResponse:
+        """
+        @summary 获取任务题目信息
+        
+        @return: GetTaskTemplateQuestionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_task_template_questions_with_options(tenant_id, task_id, headers, runtime)
@@ -1267,6 +1780,11 @@ class Client(OpenApiClient):
         tenant_id: str,
         task_id: str,
     ) -> open_itag_20220616_models.GetTaskTemplateQuestionsResponse:
+        """
+        @summary 获取任务题目信息
+        
+        @return: GetTaskTemplateQuestionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_task_template_questions_with_options_async(tenant_id, task_id, headers, runtime)
@@ -1278,6 +1796,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.GetTaskTemplateViewsResponse:
+        """
+        @summary 获取任务题目信息
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTaskTemplateViewsResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1304,6 +1829,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.GetTaskTemplateViewsResponse:
+        """
+        @summary 获取任务题目信息
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTaskTemplateViewsResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1328,6 +1860,11 @@ class Client(OpenApiClient):
         tenant_id: str,
         task_id: str,
     ) -> open_itag_20220616_models.GetTaskTemplateViewsResponse:
+        """
+        @summary 获取任务题目信息
+        
+        @return: GetTaskTemplateViewsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_task_template_views_with_options(tenant_id, task_id, headers, runtime)
@@ -1337,6 +1874,11 @@ class Client(OpenApiClient):
         tenant_id: str,
         task_id: str,
     ) -> open_itag_20220616_models.GetTaskTemplateViewsResponse:
+        """
+        @summary 获取任务题目信息
+        
+        @return: GetTaskTemplateViewsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_task_template_views_with_options_async(tenant_id, task_id, headers, runtime)
@@ -1348,6 +1890,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.GetTaskWorkforceResponse:
+        """
+        @summary 获取任务人力
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTaskWorkforceResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1374,6 +1923,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.GetTaskWorkforceResponse:
+        """
+        @summary 获取任务人力
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTaskWorkforceResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1398,6 +1954,11 @@ class Client(OpenApiClient):
         tenant_id: str,
         task_id: str,
     ) -> open_itag_20220616_models.GetTaskWorkforceResponse:
+        """
+        @summary 获取任务人力
+        
+        @return: GetTaskWorkforceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_task_workforce_with_options(tenant_id, task_id, headers, runtime)
@@ -1407,6 +1968,11 @@ class Client(OpenApiClient):
         tenant_id: str,
         task_id: str,
     ) -> open_itag_20220616_models.GetTaskWorkforceResponse:
+        """
+        @summary 获取任务人力
+        
+        @return: GetTaskWorkforceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_task_workforce_with_options_async(tenant_id, task_id, headers, runtime)
@@ -1419,6 +1985,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.GetTaskWorkforceStatisticResponse:
+        """
+        @summary 获取任务人力统计信息
+        
+        @param request: GetTaskWorkforceStatisticRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTaskWorkforceStatisticResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -1455,6 +2029,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.GetTaskWorkforceStatisticResponse:
+        """
+        @summary 获取任务人力统计信息
+        
+        @param request: GetTaskWorkforceStatisticRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTaskWorkforceStatisticResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -1489,6 +2071,12 @@ class Client(OpenApiClient):
         task_id: str,
         request: open_itag_20220616_models.GetTaskWorkforceStatisticRequest,
     ) -> open_itag_20220616_models.GetTaskWorkforceStatisticResponse:
+        """
+        @summary 获取任务人力统计信息
+        
+        @param request: GetTaskWorkforceStatisticRequest
+        @return: GetTaskWorkforceStatisticResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_task_workforce_statistic_with_options(tenant_id, task_id, request, headers, runtime)
@@ -1499,6 +2087,12 @@ class Client(OpenApiClient):
         task_id: str,
         request: open_itag_20220616_models.GetTaskWorkforceStatisticRequest,
     ) -> open_itag_20220616_models.GetTaskWorkforceStatisticResponse:
+        """
+        @summary 获取任务人力统计信息
+        
+        @param request: GetTaskWorkforceStatisticRequest
+        @return: GetTaskWorkforceStatisticResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_task_workforce_statistic_with_options_async(tenant_id, task_id, request, headers, runtime)
@@ -1510,6 +2104,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.GetTemplateResponse:
+        """
+        @summary 获取租户下单个模板
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTemplateResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1536,6 +2137,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.GetTemplateResponse:
+        """
+        @summary 获取租户下单个模板
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTemplateResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1560,6 +2168,11 @@ class Client(OpenApiClient):
         tenant_id: str,
         template_id: str,
     ) -> open_itag_20220616_models.GetTemplateResponse:
+        """
+        @summary 获取租户下单个模板
+        
+        @return: GetTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_template_with_options(tenant_id, template_id, headers, runtime)
@@ -1569,6 +2182,11 @@ class Client(OpenApiClient):
         tenant_id: str,
         template_id: str,
     ) -> open_itag_20220616_models.GetTemplateResponse:
+        """
+        @summary 获取租户下单个模板
+        
+        @return: GetTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_template_with_options_async(tenant_id, template_id, headers, runtime)
@@ -1580,6 +2198,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.GetTemplateQuestionsResponse:
+        """
+        @summary 获取租户下单个模板问题
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTemplateQuestionsResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1606,6 +2231,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.GetTemplateQuestionsResponse:
+        """
+        @summary 获取租户下单个模板问题
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTemplateQuestionsResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1630,6 +2262,11 @@ class Client(OpenApiClient):
         tenant_id: str,
         template_id: str,
     ) -> open_itag_20220616_models.GetTemplateQuestionsResponse:
+        """
+        @summary 获取租户下单个模板问题
+        
+        @return: GetTemplateQuestionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_template_questions_with_options(tenant_id, template_id, headers, runtime)
@@ -1639,6 +2276,11 @@ class Client(OpenApiClient):
         tenant_id: str,
         template_id: str,
     ) -> open_itag_20220616_models.GetTemplateQuestionsResponse:
+        """
+        @summary 获取租户下单个模板问题
+        
+        @return: GetTemplateQuestionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_template_questions_with_options_async(tenant_id, template_id, headers, runtime)
@@ -1650,6 +2292,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.GetTemplateViewResponse:
+        """
+        @summary 获取租户下模板视图
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTemplateViewResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1676,6 +2325,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.GetTemplateViewResponse:
+        """
+        @summary 获取租户下模板视图
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTemplateViewResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1700,6 +2356,11 @@ class Client(OpenApiClient):
         tenant_id: str,
         template_id: str,
     ) -> open_itag_20220616_models.GetTemplateViewResponse:
+        """
+        @summary 获取租户下模板视图
+        
+        @return: GetTemplateViewResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_template_view_with_options(tenant_id, template_id, headers, runtime)
@@ -1709,6 +2370,11 @@ class Client(OpenApiClient):
         tenant_id: str,
         template_id: str,
     ) -> open_itag_20220616_models.GetTemplateViewResponse:
+        """
+        @summary 获取租户下模板视图
+        
+        @return: GetTemplateViewResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_template_view_with_options_async(tenant_id, template_id, headers, runtime)
@@ -1719,6 +2385,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.GetTenantResponse:
+        """
+        @summary 获取租户信息
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTenantResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1744,6 +2417,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.GetTenantResponse:
+        """
+        @summary 获取租户信息
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTenantResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1767,6 +2447,11 @@ class Client(OpenApiClient):
         self,
         tenant_id: str,
     ) -> open_itag_20220616_models.GetTenantResponse:
+        """
+        @summary 获取租户信息
+        
+        @return: GetTenantResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_tenant_with_options(tenant_id, headers, runtime)
@@ -1775,6 +2460,11 @@ class Client(OpenApiClient):
         self,
         tenant_id: str,
     ) -> open_itag_20220616_models.GetTenantResponse:
+        """
+        @summary 获取租户信息
+        
+        @return: GetTenantResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_tenant_with_options_async(tenant_id, headers, runtime)
@@ -1786,6 +2476,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.GetUserResponse:
+        """
+        @summary 获取用户
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetUserResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1812,6 +2509,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.GetUserResponse:
+        """
+        @summary 获取用户
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetUserResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1836,6 +2540,11 @@ class Client(OpenApiClient):
         tenant_id: str,
         user_id: str,
     ) -> open_itag_20220616_models.GetUserResponse:
+        """
+        @summary 获取用户
+        
+        @return: GetUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_user_with_options(tenant_id, user_id, headers, runtime)
@@ -1845,6 +2554,11 @@ class Client(OpenApiClient):
         tenant_id: str,
         user_id: str,
     ) -> open_itag_20220616_models.GetUserResponse:
+        """
+        @summary 获取用户
+        
+        @return: GetUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_user_with_options_async(tenant_id, user_id, headers, runtime)
@@ -1856,6 +2570,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.ListJobsResponse:
+        """
+        @summary 获取异步任务Job列表
+        
+        @param request: ListJobsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListJobsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.job_type):
@@ -1891,6 +2613,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.ListJobsResponse:
+        """
+        @summary 获取异步任务Job列表
+        
+        @param request: ListJobsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListJobsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.job_type):
@@ -1924,6 +2654,12 @@ class Client(OpenApiClient):
         tenant_id: str,
         request: open_itag_20220616_models.ListJobsRequest,
     ) -> open_itag_20220616_models.ListJobsResponse:
+        """
+        @summary 获取异步任务Job列表
+        
+        @param request: ListJobsRequest
+        @return: ListJobsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_jobs_with_options(tenant_id, request, headers, runtime)
@@ -1933,6 +2669,12 @@ class Client(OpenApiClient):
         tenant_id: str,
         request: open_itag_20220616_models.ListJobsRequest,
     ) -> open_itag_20220616_models.ListJobsResponse:
+        """
+        @summary 获取异步任务Job列表
+        
+        @param request: ListJobsRequest
+        @return: ListJobsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_jobs_with_options_async(tenant_id, request, headers, runtime)
@@ -1946,6 +2688,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.ListSubtaskItemsResponse:
+        """
+        @summary 获取子任务ITEM列表页信息
+        
+        @param request: ListSubtaskItemsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSubtaskItemsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -1981,6 +2731,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.ListSubtaskItemsResponse:
+        """
+        @summary 获取子任务ITEM列表页信息
+        
+        @param request: ListSubtaskItemsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSubtaskItemsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -2014,6 +2772,12 @@ class Client(OpenApiClient):
         subtask_id: str,
         request: open_itag_20220616_models.ListSubtaskItemsRequest,
     ) -> open_itag_20220616_models.ListSubtaskItemsResponse:
+        """
+        @summary 获取子任务ITEM列表页信息
+        
+        @param request: ListSubtaskItemsRequest
+        @return: ListSubtaskItemsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_subtask_items_with_options(tenant_id, task_id, subtask_id, request, headers, runtime)
@@ -2025,6 +2789,12 @@ class Client(OpenApiClient):
         subtask_id: str,
         request: open_itag_20220616_models.ListSubtaskItemsRequest,
     ) -> open_itag_20220616_models.ListSubtaskItemsResponse:
+        """
+        @summary 获取子任务ITEM列表页信息
+        
+        @param request: ListSubtaskItemsRequest
+        @return: ListSubtaskItemsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_subtask_items_with_options_async(tenant_id, task_id, subtask_id, request, headers, runtime)
@@ -2037,6 +2807,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.ListSubtasksResponse:
+        """
+        @summary 获取子任务列表页信息
+        
+        @param request: ListSubtasksRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSubtasksResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -2071,6 +2849,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.ListSubtasksResponse:
+        """
+        @summary 获取子任务列表页信息
+        
+        @param request: ListSubtasksRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSubtasksResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -2103,6 +2889,12 @@ class Client(OpenApiClient):
         task_id: str,
         request: open_itag_20220616_models.ListSubtasksRequest,
     ) -> open_itag_20220616_models.ListSubtasksResponse:
+        """
+        @summary 获取子任务列表页信息
+        
+        @param request: ListSubtasksRequest
+        @return: ListSubtasksResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_subtasks_with_options(tenant_id, task_id, request, headers, runtime)
@@ -2113,6 +2905,12 @@ class Client(OpenApiClient):
         task_id: str,
         request: open_itag_20220616_models.ListSubtasksRequest,
     ) -> open_itag_20220616_models.ListSubtasksResponse:
+        """
+        @summary 获取子任务列表页信息
+        
+        @param request: ListSubtasksRequest
+        @return: ListSubtasksResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_subtasks_with_options_async(tenant_id, task_id, request, headers, runtime)
@@ -2124,6 +2922,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.ListTasksResponse:
+        """
+        @summary 获取任务列表页信息
+        
+        @param request: ListTasksRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTasksResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -2157,6 +2963,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.ListTasksResponse:
+        """
+        @summary 获取任务列表页信息
+        
+        @param request: ListTasksRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTasksResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -2188,6 +3002,12 @@ class Client(OpenApiClient):
         tenant_id: str,
         request: open_itag_20220616_models.ListTasksRequest,
     ) -> open_itag_20220616_models.ListTasksResponse:
+        """
+        @summary 获取任务列表页信息
+        
+        @param request: ListTasksRequest
+        @return: ListTasksResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_tasks_with_options(tenant_id, request, headers, runtime)
@@ -2197,6 +3017,12 @@ class Client(OpenApiClient):
         tenant_id: str,
         request: open_itag_20220616_models.ListTasksRequest,
     ) -> open_itag_20220616_models.ListTasksResponse:
+        """
+        @summary 获取任务列表页信息
+        
+        @param request: ListTasksRequest
+        @return: ListTasksResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_tasks_with_options_async(tenant_id, request, headers, runtime)
@@ -2208,6 +3034,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.ListTemplatesResponse:
+        """
+        @summary 获取租户模板信息列表
+        
+        @param tmp_req: ListTemplatesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTemplatesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = open_itag_20220616_models.ListTemplatesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -2249,6 +3083,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.ListTemplatesResponse:
+        """
+        @summary 获取租户模板信息列表
+        
+        @param tmp_req: ListTemplatesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTemplatesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = open_itag_20220616_models.ListTemplatesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -2288,6 +3130,12 @@ class Client(OpenApiClient):
         tenant_id: str,
         request: open_itag_20220616_models.ListTemplatesRequest,
     ) -> open_itag_20220616_models.ListTemplatesResponse:
+        """
+        @summary 获取租户模板信息列表
+        
+        @param request: ListTemplatesRequest
+        @return: ListTemplatesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_templates_with_options(tenant_id, request, headers, runtime)
@@ -2297,6 +3145,12 @@ class Client(OpenApiClient):
         tenant_id: str,
         request: open_itag_20220616_models.ListTemplatesRequest,
     ) -> open_itag_20220616_models.ListTemplatesResponse:
+        """
+        @summary 获取租户模板信息列表
+        
+        @param request: ListTemplatesRequest
+        @return: ListTemplatesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_templates_with_options_async(tenant_id, request, headers, runtime)
@@ -2307,6 +3161,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.ListTenantsResponse:
+        """
+        @summary 获取租户列表
+        
+        @param request: ListTenantsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTenantsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -2339,6 +3201,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.ListTenantsResponse:
+        """
+        @summary 获取租户列表
+        
+        @param request: ListTenantsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTenantsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -2369,6 +3239,12 @@ class Client(OpenApiClient):
         self,
         request: open_itag_20220616_models.ListTenantsRequest,
     ) -> open_itag_20220616_models.ListTenantsResponse:
+        """
+        @summary 获取租户列表
+        
+        @param request: ListTenantsRequest
+        @return: ListTenantsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_tenants_with_options(request, headers, runtime)
@@ -2377,6 +3253,12 @@ class Client(OpenApiClient):
         self,
         request: open_itag_20220616_models.ListTenantsRequest,
     ) -> open_itag_20220616_models.ListTenantsResponse:
+        """
+        @summary 获取租户列表
+        
+        @param request: ListTenantsRequest
+        @return: ListTenantsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_tenants_with_options_async(request, headers, runtime)
@@ -2388,6 +3270,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.ListUsersResponse:
+        """
+        @summary 获取用户列表
+        
+        @param request: ListUsersRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUsersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -2421,6 +3311,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.ListUsersResponse:
+        """
+        @summary 获取用户列表
+        
+        @param request: ListUsersRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUsersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -2452,6 +3350,12 @@ class Client(OpenApiClient):
         tenant_id: str,
         request: open_itag_20220616_models.ListUsersRequest,
     ) -> open_itag_20220616_models.ListUsersResponse:
+        """
+        @summary 获取用户列表
+        
+        @param request: ListUsersRequest
+        @return: ListUsersResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_users_with_options(tenant_id, request, headers, runtime)
@@ -2461,6 +3365,12 @@ class Client(OpenApiClient):
         tenant_id: str,
         request: open_itag_20220616_models.ListUsersRequest,
     ) -> open_itag_20220616_models.ListUsersResponse:
+        """
+        @summary 获取用户列表
+        
+        @param request: ListUsersRequest
+        @return: ListUsersResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_users_with_options_async(tenant_id, request, headers, runtime)
@@ -2474,6 +3384,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.RemoveWorkNodeWorkforceResponse:
+        """
+        @summary 删除结点人力
+        
+        @param request: RemoveWorkNodeWorkforceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveWorkNodeWorkforceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.user_ids):
@@ -2507,6 +3425,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.RemoveWorkNodeWorkforceResponse:
+        """
+        @summary 删除结点人力
+        
+        @param request: RemoveWorkNodeWorkforceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveWorkNodeWorkforceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.user_ids):
@@ -2538,6 +3464,12 @@ class Client(OpenApiClient):
         work_node_id: str,
         request: open_itag_20220616_models.RemoveWorkNodeWorkforceRequest,
     ) -> open_itag_20220616_models.RemoveWorkNodeWorkforceResponse:
+        """
+        @summary 删除结点人力
+        
+        @param request: RemoveWorkNodeWorkforceRequest
+        @return: RemoveWorkNodeWorkforceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.remove_work_node_workforce_with_options(tenant_id, task_id, work_node_id, request, headers, runtime)
@@ -2549,6 +3481,12 @@ class Client(OpenApiClient):
         work_node_id: str,
         request: open_itag_20220616_models.RemoveWorkNodeWorkforceRequest,
     ) -> open_itag_20220616_models.RemoveWorkNodeWorkforceResponse:
+        """
+        @summary 删除结点人力
+        
+        @param request: RemoveWorkNodeWorkforceRequest
+        @return: RemoveWorkNodeWorkforceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.remove_work_node_workforce_with_options_async(tenant_id, task_id, work_node_id, request, headers, runtime)
@@ -2561,6 +3499,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.UpdateTaskResponse:
+        """
+        @summary 更新标注任务基础信息
+        
+        @param request: UpdateTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTaskResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -2590,6 +3536,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.UpdateTaskResponse:
+        """
+        @summary 更新标注任务基础信息
+        
+        @param request: UpdateTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTaskResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -2617,6 +3571,12 @@ class Client(OpenApiClient):
         task_id: str,
         request: open_itag_20220616_models.UpdateTaskRequest,
     ) -> open_itag_20220616_models.UpdateTaskResponse:
+        """
+        @summary 更新标注任务基础信息
+        
+        @param request: UpdateTaskRequest
+        @return: UpdateTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_task_with_options(tenant_id, task_id, request, headers, runtime)
@@ -2627,6 +3587,12 @@ class Client(OpenApiClient):
         task_id: str,
         request: open_itag_20220616_models.UpdateTaskRequest,
     ) -> open_itag_20220616_models.UpdateTaskResponse:
+        """
+        @summary 更新标注任务基础信息
+        
+        @param request: UpdateTaskRequest
+        @return: UpdateTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_task_with_options_async(tenant_id, task_id, request, headers, runtime)
@@ -2639,6 +3605,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.UpdateTaskWorkforceResponse:
+        """
+        @summary 更新任务人力
+        
+        @param request: UpdateTaskWorkforceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTaskWorkforceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.workforce):
@@ -2671,6 +3645,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.UpdateTaskWorkforceResponse:
+        """
+        @summary 更新任务人力
+        
+        @param request: UpdateTaskWorkforceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTaskWorkforceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.workforce):
@@ -2701,6 +3683,12 @@ class Client(OpenApiClient):
         task_id: str,
         request: open_itag_20220616_models.UpdateTaskWorkforceRequest,
     ) -> open_itag_20220616_models.UpdateTaskWorkforceResponse:
+        """
+        @summary 更新任务人力
+        
+        @param request: UpdateTaskWorkforceRequest
+        @return: UpdateTaskWorkforceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_task_workforce_with_options(tenant_id, task_id, request, headers, runtime)
@@ -2711,6 +3699,12 @@ class Client(OpenApiClient):
         task_id: str,
         request: open_itag_20220616_models.UpdateTaskWorkforceRequest,
     ) -> open_itag_20220616_models.UpdateTaskWorkforceResponse:
+        """
+        @summary 更新任务人力
+        
+        @param request: UpdateTaskWorkforceRequest
+        @return: UpdateTaskWorkforceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_task_workforce_with_options_async(tenant_id, task_id, request, headers, runtime)
@@ -2723,6 +3717,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.UpdateTemplateResponse:
+        """
+        @summary 更新标注模版
+        
+        @param request: UpdateTemplateRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTemplateResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -2752,6 +3754,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.UpdateTemplateResponse:
+        """
+        @summary 更新标注模版
+        
+        @param request: UpdateTemplateRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTemplateResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -2779,6 +3789,12 @@ class Client(OpenApiClient):
         template_id: str,
         request: open_itag_20220616_models.UpdateTemplateRequest,
     ) -> open_itag_20220616_models.UpdateTemplateResponse:
+        """
+        @summary 更新标注模版
+        
+        @param request: UpdateTemplateRequest
+        @return: UpdateTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_template_with_options(tenant_id, template_id, request, headers, runtime)
@@ -2789,6 +3805,12 @@ class Client(OpenApiClient):
         template_id: str,
         request: open_itag_20220616_models.UpdateTemplateRequest,
     ) -> open_itag_20220616_models.UpdateTemplateResponse:
+        """
+        @summary 更新标注模版
+        
+        @param request: UpdateTemplateRequest
+        @return: UpdateTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_template_with_options_async(tenant_id, template_id, request, headers, runtime)
@@ -2800,6 +3822,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.UpdateTenantResponse:
+        """
+        @summary 更新租户信息
+        
+        @param request: UpdateTenantRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTenantResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.description):
@@ -2833,6 +3863,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.UpdateTenantResponse:
+        """
+        @summary 更新租户信息
+        
+        @param request: UpdateTenantRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTenantResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.description):
@@ -2864,6 +3902,12 @@ class Client(OpenApiClient):
         tenant_id: str,
         request: open_itag_20220616_models.UpdateTenantRequest,
     ) -> open_itag_20220616_models.UpdateTenantResponse:
+        """
+        @summary 更新租户信息
+        
+        @param request: UpdateTenantRequest
+        @return: UpdateTenantResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_tenant_with_options(tenant_id, request, headers, runtime)
@@ -2873,6 +3917,12 @@ class Client(OpenApiClient):
         tenant_id: str,
         request: open_itag_20220616_models.UpdateTenantRequest,
     ) -> open_itag_20220616_models.UpdateTenantResponse:
+        """
+        @summary 更新租户信息
+        
+        @param request: UpdateTenantRequest
+        @return: UpdateTenantResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_tenant_with_options_async(tenant_id, request, headers, runtime)
@@ -2885,6 +3935,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.UpdateUserResponse:
+        """
+        @summary 更新用户信息
+        
+        @param request: UpdateUserRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateUserResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.role):
@@ -2919,6 +3977,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.UpdateUserResponse:
+        """
+        @summary 更新用户信息
+        
+        @param request: UpdateUserRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateUserResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.role):
@@ -2951,6 +4017,12 @@ class Client(OpenApiClient):
         user_id: str,
         request: open_itag_20220616_models.UpdateUserRequest,
     ) -> open_itag_20220616_models.UpdateUserResponse:
+        """
+        @summary 更新用户信息
+        
+        @param request: UpdateUserRequest
+        @return: UpdateUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_user_with_options(tenant_id, user_id, request, headers, runtime)
@@ -2961,6 +4033,12 @@ class Client(OpenApiClient):
         user_id: str,
         request: open_itag_20220616_models.UpdateUserRequest,
     ) -> open_itag_20220616_models.UpdateUserResponse:
+        """
+        @summary 更新用户信息
+        
+        @param request: UpdateUserRequest
+        @return: UpdateUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_user_with_options_async(tenant_id, user_id, request, headers, runtime)
