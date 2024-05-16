@@ -1757,6 +1757,210 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_app_with_options_async(request, runtime)
 
+    def create_app_code_with_options(
+        self,
+        request: cloud_api20160714_models.CreateAppCodeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_api20160714_models.CreateAppCodeResponse:
+        """
+        @summary 创建新的AppCode
+        
+        @param request: CreateAppCodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAppCodeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_code):
+            query['AppCode'] = request.app_code
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateAppCode',
+            version='2016-07-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloud_api20160714_models.CreateAppCodeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_app_code_with_options_async(
+        self,
+        request: cloud_api20160714_models.CreateAppCodeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_api20160714_models.CreateAppCodeResponse:
+        """
+        @summary 创建新的AppCode
+        
+        @param request: CreateAppCodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAppCodeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_code):
+            query['AppCode'] = request.app_code
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateAppCode',
+            version='2016-07-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloud_api20160714_models.CreateAppCodeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_app_code(
+        self,
+        request: cloud_api20160714_models.CreateAppCodeRequest,
+    ) -> cloud_api20160714_models.CreateAppCodeResponse:
+        """
+        @summary 创建新的AppCode
+        
+        @param request: CreateAppCodeRequest
+        @return: CreateAppCodeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_app_code_with_options(request, runtime)
+
+    async def create_app_code_async(
+        self,
+        request: cloud_api20160714_models.CreateAppCodeRequest,
+    ) -> cloud_api20160714_models.CreateAppCodeResponse:
+        """
+        @summary 创建新的AppCode
+        
+        @param request: CreateAppCodeRequest
+        @return: CreateAppCodeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_app_code_with_options_async(request, runtime)
+
+    def create_app_key_with_options(
+        self,
+        request: cloud_api20160714_models.CreateAppKeyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_api20160714_models.CreateAppKeyResponse:
+        """
+        @summary 创建新的AK、SK
+        
+        @param request: CreateAppKeyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAppKeyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.app_key):
+            query['AppKey'] = request.app_key
+        if not UtilClient.is_unset(request.app_secret):
+            query['AppSecret'] = request.app_secret
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateAppKey',
+            version='2016-07-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloud_api20160714_models.CreateAppKeyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_app_key_with_options_async(
+        self,
+        request: cloud_api20160714_models.CreateAppKeyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_api20160714_models.CreateAppKeyResponse:
+        """
+        @summary 创建新的AK、SK
+        
+        @param request: CreateAppKeyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAppKeyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.app_key):
+            query['AppKey'] = request.app_key
+        if not UtilClient.is_unset(request.app_secret):
+            query['AppSecret'] = request.app_secret
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateAppKey',
+            version='2016-07-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloud_api20160714_models.CreateAppKeyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_app_key(
+        self,
+        request: cloud_api20160714_models.CreateAppKeyRequest,
+    ) -> cloud_api20160714_models.CreateAppKeyResponse:
+        """
+        @summary 创建新的AK、SK
+        
+        @param request: CreateAppKeyRequest
+        @return: CreateAppKeyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_app_key_with_options(request, runtime)
+
+    async def create_app_key_async(
+        self,
+        request: cloud_api20160714_models.CreateAppKeyRequest,
+    ) -> cloud_api20160714_models.CreateAppKeyResponse:
+        """
+        @summary 创建新的AK、SK
+        
+        @param request: CreateAppKeyRequest
+        @return: CreateAppKeyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_app_key_with_options_async(request, runtime)
+
     def create_backend_with_options(
         self,
         request: cloud_api20160714_models.CreateBackendRequest,
@@ -4108,6 +4312,206 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_app_with_options_async(request, runtime)
+
+    def delete_app_code_with_options(
+        self,
+        request: cloud_api20160714_models.DeleteAppCodeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_api20160714_models.DeleteAppCodeResponse:
+        """
+        @summary 删除新的AppCode
+        
+        @param request: DeleteAppCodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAppCodeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_code):
+            query['AppCode'] = request.app_code
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAppCode',
+            version='2016-07-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloud_api20160714_models.DeleteAppCodeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_app_code_with_options_async(
+        self,
+        request: cloud_api20160714_models.DeleteAppCodeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_api20160714_models.DeleteAppCodeResponse:
+        """
+        @summary 删除新的AppCode
+        
+        @param request: DeleteAppCodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAppCodeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_code):
+            query['AppCode'] = request.app_code
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAppCode',
+            version='2016-07-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloud_api20160714_models.DeleteAppCodeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_app_code(
+        self,
+        request: cloud_api20160714_models.DeleteAppCodeRequest,
+    ) -> cloud_api20160714_models.DeleteAppCodeResponse:
+        """
+        @summary 删除新的AppCode
+        
+        @param request: DeleteAppCodeRequest
+        @return: DeleteAppCodeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_app_code_with_options(request, runtime)
+
+    async def delete_app_code_async(
+        self,
+        request: cloud_api20160714_models.DeleteAppCodeRequest,
+    ) -> cloud_api20160714_models.DeleteAppCodeResponse:
+        """
+        @summary 删除新的AppCode
+        
+        @param request: DeleteAppCodeRequest
+        @return: DeleteAppCodeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_app_code_with_options_async(request, runtime)
+
+    def delete_app_key_with_options(
+        self,
+        request: cloud_api20160714_models.DeleteAppKeyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_api20160714_models.DeleteAppKeyResponse:
+        """
+        @summary 删除新的AppKey
+        
+        @param request: DeleteAppKeyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAppKeyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.app_key):
+            query['AppKey'] = request.app_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAppKey',
+            version='2016-07-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloud_api20160714_models.DeleteAppKeyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_app_key_with_options_async(
+        self,
+        request: cloud_api20160714_models.DeleteAppKeyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_api20160714_models.DeleteAppKeyResponse:
+        """
+        @summary 删除新的AppKey
+        
+        @param request: DeleteAppKeyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAppKeyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.app_key):
+            query['AppKey'] = request.app_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAppKey',
+            version='2016-07-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloud_api20160714_models.DeleteAppKeyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_app_key(
+        self,
+        request: cloud_api20160714_models.DeleteAppKeyRequest,
+    ) -> cloud_api20160714_models.DeleteAppKeyResponse:
+        """
+        @summary 删除新的AppKey
+        
+        @param request: DeleteAppKeyRequest
+        @return: DeleteAppKeyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_app_key_with_options(request, runtime)
+
+    async def delete_app_key_async(
+        self,
+        request: cloud_api20160714_models.DeleteAppKeyRequest,
+    ) -> cloud_api20160714_models.DeleteAppKeyResponse:
+        """
+        @summary 删除新的AppKey
+        
+        @param request: DeleteAppKeyRequest
+        @return: DeleteAppKeyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_app_key_with_options_async(request, runtime)
 
     def delete_backend_with_options(
         self,
