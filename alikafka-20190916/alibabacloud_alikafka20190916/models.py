@@ -13,13 +13,19 @@ class ChangeResourceGroupRequest(TeaModel):
     ):
         # The ID of the resource group to which you want to transfer the cloud resource.
         # 
-        # >  You can use resource groups to manage resources owned by your Alibaba Cloud account. Resource groups simplify the resource and permission management of your Alibaba Cloud account. For more information, see [What is resource management?](~~94475~~)
+        # >  You can use resource groups to manage resources owned by your Alibaba Cloud account. Resource groups simplify the resource and permission management of your Alibaba Cloud account. For more information, see [What is resource management?](https://help.aliyun.com/document_detail/94475.html)
+        # 
+        # This parameter is required.
         self.new_resource_group_id = new_resource_group_id
         # The region ID of the resource.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource to which you want to attach a tag. Only the ID of a Message Queue for Apache Kafka instance is supported.
         # 
         # For example, if the ID of the instance is alikafka_post-cn-v0h1fgs2xxxx, the resource ID is alikafka_post-cn-v0h1fgs2xxxx.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
 
     def validate(self):
@@ -161,8 +167,12 @@ class ConvertPostPayOrderRequest(TeaModel):
         # *   **36**\
         self.duration = duration
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region ID of the instance.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -304,40 +314,81 @@ class CreateAclRequest(TeaModel):
         region_id: str = None,
         username: str = None,
     ):
-        # The operation type. Valid values:
+        # The type of the operation allowed by the access control list (ACL). Valid values:
         # 
-        # *   **Write**: data writes
-        # *   **Read**: data reads
-        # *   **Describe**: reads of transaction IDs****\
-        # *   **IdempotentWrite**: idempotent data writes to clusters****\
+        # *   **Write**\
+        # *   **Read**\
+        # *   **Describe**: reads of transactional IDs.
+        # *   **IdempotentWrite**: idempotent data writes to clusters.
+        # *   **IDEMPOTENT_WRITE**: idempotent data writes to clusters. This value is available only for ApsaraMQ for Kafka V3 instances.
+        # *   **DESCRIBE_CONFIGS**: queries of configurations. This value is available only for ApsaraMQ for Kafka V3 instances.
+        # 
+        # This parameter is required.
         self.acl_operation_type = acl_operation_type
+        # The types of operations allowed by the ACL. Separate multiple operation types with commas (,).
+        # 
+        # Valid values:
+        # 
+        # *   **Write**\
+        # *   **Read**\
+        # *   **Describe**: reads of transactional IDs.
+        # *   **IdempotentWrite**: idempotent data writes to clusters.
+        # *   **IDEMPOTENT_WRITE**: idempotent data writes to clusters. This value is available only for ApsaraMQ for Kafka V3 instances.
+        # *   **DESCRIBE_CONFIGS**: queries of configurations. This value is available only for ApsaraMQ for Kafka V3 instances.
+        # 
+        # >  This parameter is available only for ApsaraMQ for Kafka V3 serverless instances.
         self.acl_operation_types = acl_operation_types
+        # The authorization method. Valid values:
+        # 
+        # *   **DENY**\
+        # *   **ALLOW**\
+        # 
+        # >  This parameter is available only for ApsaraMQ for Kafka V3 serverless instances.
         self.acl_permission_type = acl_permission_type
         # The name or ID of the resource.
         # 
         # *   The value can be the name of a topic, consumer group, or cluster, or the ID of a transaction.
-        # *   You can use an asterisk (\*) to represent the names or IDs of all relevant resources.
+        # *   You can use an asterisk (\\*) to represent the names or IDs of all relevant resources.
+        # 
+        # This parameter is required.
         self.acl_resource_name = acl_resource_name
         # The matching mode. Valid values:
         # 
         # *   **LITERAL**: exact match
         # *   **PREFIXED**: prefix match
+        # 
+        # This parameter is required.
         self.acl_resource_pattern_type = acl_resource_pattern_type
         # The resource type. Valid values:
         # 
         # *   **Topic**\
         # *   **Group**\
         # *   **Cluster**\
-        # *   **TransactionalId**: transaction
+        # *   **TransactionalId**: transactional ID
+        # 
+        # This parameter is required.
         self.acl_resource_type = acl_resource_type
+        # The source IP address.
+        # 
+        # > 
+        # 
+        # *   You can specify only a specific IP address or use the asterisk (\\*) wildcard character to specify all IP addresses. CIDR blocks are not supported.
+        # 
+        # *   This parameter is available only for ApsaraMQ for Kafka V3 serverless instances.
         self.host = host
         # The instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The username.
         # 
-        # You can use an asterisk (\*) to represent all usernames.
+        # You can use an asterisk (\\*) to represent all usernames.
+        # 
+        # This parameter is required.
         self.username = username
 
     def validate(self):
@@ -496,6 +547,8 @@ class CreateConsumerGroupRequestTag(TeaModel):
         # 
         # *   You must specify this parameter.
         # *   The tag key can be up to 128 characters in length and cannot start with acs: or aliyun. It cannot contain `http://` or `https://`.
+        # 
+        # This parameter is required.
         self.key = key
         # The tag value.
         # 
@@ -538,13 +591,19 @@ class CreateConsumerGroupRequest(TeaModel):
     ):
         # The name of the consumer group.
         # 
-        # *   The value can contain only letters, digits, hyphens (-), and underscores (\_), and the value must contain at least one letter or digit.
+        # *   The value can contain only letters, digits, hyphens (-), and underscores (_), and the value must contain at least one letter or digit.
         # *   The value must be 3 to 128 characters in length. If the value that you specify contains more than 128 characters, the system automatically truncates the value to 128 characters.
         # *   After a consumer group is created, you cannot change the name of the consumer group.
+        # 
+        # This parameter is required.
         self.consumer_id = consumer_id
         # The instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region ID of the instance.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The description of the consumer group.
         self.remark = remark
@@ -691,7 +750,13 @@ class CreatePostPayOrderRequestServerlessConfig(TeaModel):
         reserved_publish_capacity: int = None,
         reserved_subscribe_capacity: int = None,
     ):
+        # The reserved capacity for publishing messages. You can specify only an integer for this parameter. Minimum value: 60.
+        # 
+        # >  The actual maximum reserved capacity for publishing messages varies based on available resources in the region. The actual range displayed on the buy page shall prevail.
         self.reserved_publish_capacity = reserved_publish_capacity
+        # The reserved capacity for subscribing to messages. You can specify only an integer for this parameter. Minimum value: 20.
+        # 
+        # >  The actual maximum reserved capacity for subscribing to messages varies based on available resources in the region. The actual range displayed on the buy page shall prevail.
         self.reserved_subscribe_capacity = reserved_subscribe_capacity
 
     def validate(self):
@@ -729,6 +794,8 @@ class CreatePostPayOrderRequestTag(TeaModel):
         # *   Valid values of N: 1 to 20.
         # *   If this parameter is left empty, the keys of all tags are matched.
         # *   The tag key must be up to 128 characters in length. It cannot start with acs: or aliyun or contain [http:// or https://.](http://https://。)
+        # 
+        # This parameter is required.
         self.key = key
         # The value of tag N.
         # 
@@ -783,61 +850,91 @@ class CreatePostPayOrderRequest(TeaModel):
         # 
         # *   **4**: deploys the instance that allows access from the Internet and a VPC.
         # *   **5**: deploys the instance that allows access only from a VPC.
+        # 
+        # This parameter is required.
         self.deploy_type = deploy_type
         # The disk size.
         # 
-        # For more information about the valid values, see [Billing](~~84737~~).
+        # For information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+        # 
+        # >  If you create a serverless ApsaraMQ for Kafka V3 instance, you do not need to configure this parameter.
         self.disk_size = disk_size
         # The disk type. Valid values:
         # 
         # *   **0**: ultra disk
         # *   **1**: standard SSD
+        # 
+        # >  If you create a serverless ApsaraMQ for Kafka V3 instance, you do not need to configure this parameter.
         self.disk_type = disk_type
-        # The Internet traffic for the instance.
+        # The maximum Internet traffic in the instance.
         # 
-        # *   This parameter is required if the **DeployType** parameter is set to **4**.
-        # *   For more information about the valid values, see [Billing](~~84737~~).
+        # *   If you set **DeployType** to **4**, you must configure this parameter.
+        # *   For information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+        # 
+        # >  If you create a serverless ApsaraMQ for Kafka V3 instance, you do not need to configure this parameter.
         self.eip_max = eip_max
-        # The maximum traffic for the instance. We recommend that you do not configure this parameter.
+        # The maximum traffic in the instance. We recommend that you do not configure this parameter.
         # 
-        # *   You must specify at least one of the IoMax and IoMaxSpec parameters. If you configure both parameters, the value of the IoMaxSpec parameter takes effect. We recommend that you specify only the IoMaxSpec parameter.
-        # *   For more information about the valid values, see [Billing](~~84737~~).
+        # *   You must configure at least one of IoMax and IoMaxSpec. If you configure both parameters, the value of IoMaxSpec takes effect. We recommend that you configure only IoMaxSpec.
+        # *   For information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+        # 
+        # >  If you create a serverless ApsaraMQ for Kafka V3 instance, you do not need to configure this parameter.
         self.io_max = io_max
         # The traffic specification of the instance. We recommend that you configure this parameter.
         # 
-        # *   You must specify at least one of the IoMax and IoMaxSpec parameters. If you configure both parameters, the value of the IoMaxSpec parameter takes effect. We recommend that you specify only the IoMaxSpec parameter.
-        # *   For more information about the valid values, see [Billing](~~84737~~).
+        # *   You must configure at least one of IoMax and IoMaxSpec. If you configure both parameters, the value of IoMaxSpec takes effect. We recommend that you configure only IoMaxSpec.
+        # *   For information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+        # 
+        # >  If you create a serverless ApsaraMQ for Kafka V3 instance, you do not need to configure this parameter.
         self.io_max_spec = io_max_spec
+        # The billing method of the instance. Valid values:
+        # 
+        # *   1: the pay-as-you-go billing method for ApsaraMQ for Kafka V2 instances.
+        # *   3: the pay-as-you-go billing method for serverless ApsaraMQ for Kafka V3 instances.
         self.paid_type = paid_type
         # The number of partitions. We recommend that you configure this parameter.
         # 
-        # *   You must specify at least one of the PartitionNum and TopicQuota parameters. We recommend that you configure only the PartitionNum parameter.
-        # *   If you specify both parameters, the topic-based sales model is used to check whether the PartitionNum value and the TopicQuota value are the same. If they are not the same, a failure response is returned. If they are the same, the order is placed based on the PartitionNum value.
-        # *   For more information about the valid values, see [Billing](~~84737~~).
+        # *   You must configure one of PartitionNum and TopicQuota. We recommend that you configure only ParittionNum.
+        # *   If you configure PartitionNum and TopicQuota at the same time, the system verifies whether the price of the partitions equals the price of the topics based on the previous topic-based selling mode. If the price of the partitions does not equal the price of the topics, an error is returned. If the price of the partitions equals the price of the topics, the instance is purchased based on the partition number.
+        # *   For information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+        # 
+        # >  If you create a serverless ApsaraMQ for Kafka V3 instance, you do not need to configure this parameter.
         self.partition_num = partition_num
         # The region ID of the instance.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group.
         # 
         # If this parameter is left empty, the default resource group is used. You can view the resource group ID on the Resource Group page in the Resource Management console.
         self.resource_group_id = resource_group_id
+        # The parameters configured for the serverless ApsaraMQ for Kafka V3 instance. When you create a Serverless ApsaraMQ for Kafka V3 serverless instance, you must configure these parameters.
         self.serverless_config = serverless_config
-        # The edition of the instance. Valid values:
+        # The instance edition.
         # 
-        # *   **normal**: Standard Edition (High Write)
-        # *   **professional**: Professional Edition (High Write)
-        # *   **professionalForHighRead**: Professional Edition (High Read)
+        # Valid values if you set PaidType to 1:
         # 
-        # For more information about these instance editions, see [Billing](~~84737~~).
+        # *   normal: Standard Edition (High Write)
+        # *   professional: Professional Edition (High Write)
+        # *   professionalForHighRead: Professional Edition (High Read)
+        # 
+        # Valid values if you set PaidType to 3:
+        # 
+        # *   normal: Serverless Standard Edition
+        # *   professional: Serverless Professional Edition
+        # 
+        # For more information about the instance editions, see [Billing](https://help.aliyun.com/document_detail/84737.html).
         self.spec_type = spec_type
         # The tags.
         self.tag = tag
         # The number of topics. We recommend that you do not configure this parameter.
         # 
-        # *   You must specify at least one of the PartitionNum and TopicQuota parameters. We recommend that you configure only the PartitionNum parameter.
-        # *   If you specify both parameters, the topic-based sales model is used to check whether the PartitionNum value and the TopicQuota value are the same. If they are not the same, a failure response is returned. If they are the same, the order is placed based on the PartitionNum value.
-        # *   The default value of the TopicQuota parameter varies based on the value of the IoMaxSpec parameter. If the number of topics that you consume exceeds the default value, you are charged additional fees.
-        # *   For more information about the valid values, see [Billing](~~84737~~).
+        # *   You must configure one of PartitionNum and TopicQuota. We recommend that you configure only ParittionNum.
+        # *   If you configure PartitionNum and TopicQuota at the same time, the system verifies whether the price of the partitions equals the price of the topics based on the previous topic-based selling mode. If the price of the partitions does not equal the price of the topics, an error is returned. If the price of the partitions equals the price of the topics, the instance is purchased based on the partition number.
+        # *   The default value of TopicQuota varies based on the value of IoMaxSpec. If the number of topics that you consume exceeds the default value, you are charged additional fees.
+        # *   For information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+        # 
+        # >  If you create a serverless ApsaraMQ for Kafka V3 instance, you do not need to configure this parameter.
         self.topic_quota = topic_quota
 
     def validate(self):
@@ -934,6 +1031,8 @@ class CreatePostPayOrderShrinkRequestTag(TeaModel):
         # *   Valid values of N: 1 to 20.
         # *   If this parameter is left empty, the keys of all tags are matched.
         # *   The tag key must be up to 128 characters in length. It cannot start with acs: or aliyun or contain [http:// or https://.](http://https://。)
+        # 
+        # This parameter is required.
         self.key = key
         # The value of tag N.
         # 
@@ -988,61 +1087,91 @@ class CreatePostPayOrderShrinkRequest(TeaModel):
         # 
         # *   **4**: deploys the instance that allows access from the Internet and a VPC.
         # *   **5**: deploys the instance that allows access only from a VPC.
+        # 
+        # This parameter is required.
         self.deploy_type = deploy_type
         # The disk size.
         # 
-        # For more information about the valid values, see [Billing](~~84737~~).
+        # For information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+        # 
+        # >  If you create a serverless ApsaraMQ for Kafka V3 instance, you do not need to configure this parameter.
         self.disk_size = disk_size
         # The disk type. Valid values:
         # 
         # *   **0**: ultra disk
         # *   **1**: standard SSD
+        # 
+        # >  If you create a serverless ApsaraMQ for Kafka V3 instance, you do not need to configure this parameter.
         self.disk_type = disk_type
-        # The Internet traffic for the instance.
+        # The maximum Internet traffic in the instance.
         # 
-        # *   This parameter is required if the **DeployType** parameter is set to **4**.
-        # *   For more information about the valid values, see [Billing](~~84737~~).
+        # *   If you set **DeployType** to **4**, you must configure this parameter.
+        # *   For information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+        # 
+        # >  If you create a serverless ApsaraMQ for Kafka V3 instance, you do not need to configure this parameter.
         self.eip_max = eip_max
-        # The maximum traffic for the instance. We recommend that you do not configure this parameter.
+        # The maximum traffic in the instance. We recommend that you do not configure this parameter.
         # 
-        # *   You must specify at least one of the IoMax and IoMaxSpec parameters. If you configure both parameters, the value of the IoMaxSpec parameter takes effect. We recommend that you specify only the IoMaxSpec parameter.
-        # *   For more information about the valid values, see [Billing](~~84737~~).
+        # *   You must configure at least one of IoMax and IoMaxSpec. If you configure both parameters, the value of IoMaxSpec takes effect. We recommend that you configure only IoMaxSpec.
+        # *   For information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+        # 
+        # >  If you create a serverless ApsaraMQ for Kafka V3 instance, you do not need to configure this parameter.
         self.io_max = io_max
         # The traffic specification of the instance. We recommend that you configure this parameter.
         # 
-        # *   You must specify at least one of the IoMax and IoMaxSpec parameters. If you configure both parameters, the value of the IoMaxSpec parameter takes effect. We recommend that you specify only the IoMaxSpec parameter.
-        # *   For more information about the valid values, see [Billing](~~84737~~).
+        # *   You must configure at least one of IoMax and IoMaxSpec. If you configure both parameters, the value of IoMaxSpec takes effect. We recommend that you configure only IoMaxSpec.
+        # *   For information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+        # 
+        # >  If you create a serverless ApsaraMQ for Kafka V3 instance, you do not need to configure this parameter.
         self.io_max_spec = io_max_spec
+        # The billing method of the instance. Valid values:
+        # 
+        # *   1: the pay-as-you-go billing method for ApsaraMQ for Kafka V2 instances.
+        # *   3: the pay-as-you-go billing method for serverless ApsaraMQ for Kafka V3 instances.
         self.paid_type = paid_type
         # The number of partitions. We recommend that you configure this parameter.
         # 
-        # *   You must specify at least one of the PartitionNum and TopicQuota parameters. We recommend that you configure only the PartitionNum parameter.
-        # *   If you specify both parameters, the topic-based sales model is used to check whether the PartitionNum value and the TopicQuota value are the same. If they are not the same, a failure response is returned. If they are the same, the order is placed based on the PartitionNum value.
-        # *   For more information about the valid values, see [Billing](~~84737~~).
+        # *   You must configure one of PartitionNum and TopicQuota. We recommend that you configure only ParittionNum.
+        # *   If you configure PartitionNum and TopicQuota at the same time, the system verifies whether the price of the partitions equals the price of the topics based on the previous topic-based selling mode. If the price of the partitions does not equal the price of the topics, an error is returned. If the price of the partitions equals the price of the topics, the instance is purchased based on the partition number.
+        # *   For information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+        # 
+        # >  If you create a serverless ApsaraMQ for Kafka V3 instance, you do not need to configure this parameter.
         self.partition_num = partition_num
         # The region ID of the instance.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group.
         # 
         # If this parameter is left empty, the default resource group is used. You can view the resource group ID on the Resource Group page in the Resource Management console.
         self.resource_group_id = resource_group_id
+        # The parameters configured for the serverless ApsaraMQ for Kafka V3 instance. When you create a Serverless ApsaraMQ for Kafka V3 serverless instance, you must configure these parameters.
         self.serverless_config_shrink = serverless_config_shrink
-        # The edition of the instance. Valid values:
+        # The instance edition.
         # 
-        # *   **normal**: Standard Edition (High Write)
-        # *   **professional**: Professional Edition (High Write)
-        # *   **professionalForHighRead**: Professional Edition (High Read)
+        # Valid values if you set PaidType to 1:
         # 
-        # For more information about these instance editions, see [Billing](~~84737~~).
+        # *   normal: Standard Edition (High Write)
+        # *   professional: Professional Edition (High Write)
+        # *   professionalForHighRead: Professional Edition (High Read)
+        # 
+        # Valid values if you set PaidType to 3:
+        # 
+        # *   normal: Serverless Standard Edition
+        # *   professional: Serverless Professional Edition
+        # 
+        # For more information about the instance editions, see [Billing](https://help.aliyun.com/document_detail/84737.html).
         self.spec_type = spec_type
         # The tags.
         self.tag = tag
         # The number of topics. We recommend that you do not configure this parameter.
         # 
-        # *   You must specify at least one of the PartitionNum and TopicQuota parameters. We recommend that you configure only the PartitionNum parameter.
-        # *   If you specify both parameters, the topic-based sales model is used to check whether the PartitionNum value and the TopicQuota value are the same. If they are not the same, a failure response is returned. If they are the same, the order is placed based on the PartitionNum value.
-        # *   The default value of the TopicQuota parameter varies based on the value of the IoMaxSpec parameter. If the number of topics that you consume exceeds the default value, you are charged additional fees.
-        # *   For more information about the valid values, see [Billing](~~84737~~).
+        # *   You must configure one of PartitionNum and TopicQuota. We recommend that you configure only ParittionNum.
+        # *   If you configure PartitionNum and TopicQuota at the same time, the system verifies whether the price of the partitions equals the price of the topics based on the previous topic-based selling mode. If the price of the partitions does not equal the price of the topics, an error is returned. If the price of the partitions equals the price of the topics, the instance is purchased based on the partition number.
+        # *   The default value of TopicQuota varies based on the value of IoMaxSpec. If the number of topics that you consume exceeds the default value, you are charged additional fees.
+        # *   For information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+        # 
+        # >  If you create a serverless ApsaraMQ for Kafka V3 instance, you do not need to configure this parameter.
         self.topic_quota = topic_quota
 
     def validate(self):
@@ -1244,23 +1373,41 @@ class CreatePrePayOrderRequestConfluentConfig(TeaModel):
         zoo_keeper_replica: int = None,
         zoo_keeper_storage: int = None,
     ):
+        # The number of CPU cores of Connect.
         self.connect_cu = connect_cu
+        # The number of replicas of Connect.
         self.connect_replica = connect_replica
+        # The number of CPU cores of Control Center.
         self.control_center_cu = control_center_cu
+        # The number of replicas of Control Center.
         self.control_center_replica = control_center_replica
+        # The disk capacity of Control Center. Unit: GB
         self.control_center_storage = control_center_storage
+        # The number of CPU cores of the Kafka broker.
         self.kafka_cu = kafka_cu
+        # The number of replicas of the Kafka broker.
         self.kafka_replica = kafka_replica
+        # The number of CPU cores of Kafka Rest Proxy.
         self.kafka_rest_proxy_cu = kafka_rest_proxy_cu
+        # The number of replicas of Kafka Rest Proxy.
         self.kafka_rest_proxy_replica = kafka_rest_proxy_replica
+        # The disk capacity of the Kafka broker. Unit: GB
         self.kafka_storage = kafka_storage
+        # The number of CPU cores of ksqIDB.
         self.ksql_cu = ksql_cu
+        # The number of replicas of ksqlDB.
         self.ksql_replica = ksql_replica
+        # The disk capacity of ksqlDB. Unit: GB
         self.ksql_storage = ksql_storage
+        # The number of CPU cores of Schema Registry.
         self.schema_registry_cu = schema_registry_cu
+        # The number of replicas of Schema Registry.
         self.schema_registry_replica = schema_registry_replica
+        # The number of CPU cores of ZooKeeper.
         self.zoo_keeper_cu = zoo_keeper_cu
+        # The number of replicas of ZooKeeper.
         self.zoo_keeper_replica = zoo_keeper_replica
+        # The disk capacity of ZooKeeper. Unit: GB
         self.zoo_keeper_storage = zoo_keeper_storage
 
     def validate(self):
@@ -1362,6 +1509,8 @@ class CreatePrePayOrderRequestTag(TeaModel):
         # *   Valid values of N: 1 to 20.
         # *   If this parameter is left empty, the keys of all tags are matched.
         # *   The tag key can be up to 128 characters in length and cannot start with acs: or aliyun or contain [http:// or https://.](http://https://。)
+        # 
+        # This parameter is required.
         self.key = key
         # The value of tag N.
         # 
@@ -1413,6 +1562,7 @@ class CreatePrePayOrderRequest(TeaModel):
         tag: List[CreatePrePayOrderRequestTag] = None,
         topic_quota: int = None,
     ):
+        # The configurations of ApsaraMQ for Confluent components.
         self.confluent_config = confluent_config
         # The deployment mode of the instance. Valid values:
         # 
@@ -1421,37 +1571,46 @@ class CreatePrePayOrderRequest(TeaModel):
         self.deploy_type = deploy_type
         # The disk size. Unit: GB.
         # 
-        # For more information about the valid values, see [Billing](~~84737~~).
+        # For more information about the valid values, see [Billing](https://help.aliyun.com/document_detail/84737.html).
         self.disk_size = disk_size
         # The disk type. Valid values:
         # 
         # *   **0**: ultra disk
         # *   **1**: standard SSD
         self.disk_type = disk_type
+        # The subscription duration. Unit: months. Default value: 1. Valid values:
+        # 
+        # *   **1 to 12**\
         self.duration = duration
         # The Internet traffic for the instance.
         # 
         # *   This parameter is required if the **DeployType** parameter is set to **4**.
-        # *   For more information about the valid values, see [Pay-as-you-go](~~72142~~).
+        # *   For more information about the valid values, see [Pay-as-you-go](https://help.aliyun.com/document_detail/72142.html).
         self.eip_max = eip_max
         # The maximum traffic for the instance. We recommend that you do not configure this parameter.
         # 
         # *   You must configure at least one of the **IoMax** and **IoMaxSpec** parameters. If both parameters are configured, the value of the **IoMaxSpec** parameter takes effect. We recommend that you configure only the **IoMaxSpec** parameter.
-        # *   For more information about the valid values, see [Billing](~~84737~~).
+        # *   For more information about the valid values, see [Billing](https://help.aliyun.com/document_detail/84737.html).
         self.io_max = io_max
         # The traffic specification of the instance. We recommend that you configure this parameter.
         # 
         # *   You must configure at least one of the **IoMax** and **IoMaxSpec** parameters. If both parameters are configured, the value of the **IoMaxSpec** parameter takes effect. We recommend that you configure only the **IoMaxSpec** parameter.
-        # *   For more information about the valid values, see [Billing](~~84737~~).
+        # *   For more information about the valid values, see [Billing](https://help.aliyun.com/document_detail/84737.html).
         self.io_max_spec = io_max_spec
+        # The billing method of the instance. Valid values:
+        # 
+        # *   **0**: the subscription billing method
+        # *   **4**: the subscription billing method for ApsaraMQ for Confluent instances
         self.paid_type = paid_type
         # The number of partitions. We recommend that you configure this parameter.
         # 
         # *   You must specify at least one of the PartitionNum and TopicQuota parameters. We recommend that you configure only the PartitionNum parameter.
         # *   If you specify both parameters, the topic-based sales model is used to check whether the PartitionNum value and the TopicQuota value are the same. If they are not the same, a failure response is returned. If they are the same, the order is placed based on the PartitionNum value.
-        # *   For more information about the valid values, see [Billing](~~84737~~).
+        # *   For more information about the valid values, see [Billing](https://help.aliyun.com/document_detail/84737.html).
         self.partition_num = partition_num
         # The region ID of the instance.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group.
         # 
@@ -1463,7 +1622,7 @@ class CreatePrePayOrderRequest(TeaModel):
         # *   **professional**: Professional Edition (High Write)
         # *   **professionalForHighRead**: Professional Edition (High Read)
         # 
-        # For more information, see [Billing](~~84737~~).
+        # For more information, see [Billing](https://help.aliyun.com/document_detail/84737.html).
         self.spec_type = spec_type
         # The tags.
         self.tag = tag
@@ -1472,7 +1631,7 @@ class CreatePrePayOrderRequest(TeaModel):
         # *   You must specify at least one of the PartitionNum and TopicQuota parameters. We recommend that you configure only the PartitionNum parameter.
         # *   If you specify both parameters, the topic-based sales model is used to check whether the PartitionNum value and the TopicQuota value are the same. If they are not the same, a failure response is returned. If they are the same, the order is placed based on the PartitionNum value.
         # *   The default value of the TopicQuota parameter varies based on the value of the IoMaxSpec parameter. If the number of topics that you consume exceeds the default value, you are charged additional fees.
-        # *   For more information about the valid values, see [Billing](~~84737~~).
+        # *   For more information about the valid values, see [Billing](https://help.aliyun.com/document_detail/84737.html).
         self.topic_quota = topic_quota
 
     def validate(self):
@@ -1573,6 +1732,8 @@ class CreatePrePayOrderShrinkRequestTag(TeaModel):
         # *   Valid values of N: 1 to 20.
         # *   If this parameter is left empty, the keys of all tags are matched.
         # *   The tag key can be up to 128 characters in length and cannot start with acs: or aliyun or contain [http:// or https://.](http://https://。)
+        # 
+        # This parameter is required.
         self.key = key
         # The value of tag N.
         # 
@@ -1624,6 +1785,7 @@ class CreatePrePayOrderShrinkRequest(TeaModel):
         tag: List[CreatePrePayOrderShrinkRequestTag] = None,
         topic_quota: int = None,
     ):
+        # The configurations of ApsaraMQ for Confluent components.
         self.confluent_config_shrink = confluent_config_shrink
         # The deployment mode of the instance. Valid values:
         # 
@@ -1632,37 +1794,46 @@ class CreatePrePayOrderShrinkRequest(TeaModel):
         self.deploy_type = deploy_type
         # The disk size. Unit: GB.
         # 
-        # For more information about the valid values, see [Billing](~~84737~~).
+        # For more information about the valid values, see [Billing](https://help.aliyun.com/document_detail/84737.html).
         self.disk_size = disk_size
         # The disk type. Valid values:
         # 
         # *   **0**: ultra disk
         # *   **1**: standard SSD
         self.disk_type = disk_type
+        # The subscription duration. Unit: months. Default value: 1. Valid values:
+        # 
+        # *   **1 to 12**\
         self.duration = duration
         # The Internet traffic for the instance.
         # 
         # *   This parameter is required if the **DeployType** parameter is set to **4**.
-        # *   For more information about the valid values, see [Pay-as-you-go](~~72142~~).
+        # *   For more information about the valid values, see [Pay-as-you-go](https://help.aliyun.com/document_detail/72142.html).
         self.eip_max = eip_max
         # The maximum traffic for the instance. We recommend that you do not configure this parameter.
         # 
         # *   You must configure at least one of the **IoMax** and **IoMaxSpec** parameters. If both parameters are configured, the value of the **IoMaxSpec** parameter takes effect. We recommend that you configure only the **IoMaxSpec** parameter.
-        # *   For more information about the valid values, see [Billing](~~84737~~).
+        # *   For more information about the valid values, see [Billing](https://help.aliyun.com/document_detail/84737.html).
         self.io_max = io_max
         # The traffic specification of the instance. We recommend that you configure this parameter.
         # 
         # *   You must configure at least one of the **IoMax** and **IoMaxSpec** parameters. If both parameters are configured, the value of the **IoMaxSpec** parameter takes effect. We recommend that you configure only the **IoMaxSpec** parameter.
-        # *   For more information about the valid values, see [Billing](~~84737~~).
+        # *   For more information about the valid values, see [Billing](https://help.aliyun.com/document_detail/84737.html).
         self.io_max_spec = io_max_spec
+        # The billing method of the instance. Valid values:
+        # 
+        # *   **0**: the subscription billing method
+        # *   **4**: the subscription billing method for ApsaraMQ for Confluent instances
         self.paid_type = paid_type
         # The number of partitions. We recommend that you configure this parameter.
         # 
         # *   You must specify at least one of the PartitionNum and TopicQuota parameters. We recommend that you configure only the PartitionNum parameter.
         # *   If you specify both parameters, the topic-based sales model is used to check whether the PartitionNum value and the TopicQuota value are the same. If they are not the same, a failure response is returned. If they are the same, the order is placed based on the PartitionNum value.
-        # *   For more information about the valid values, see [Billing](~~84737~~).
+        # *   For more information about the valid values, see [Billing](https://help.aliyun.com/document_detail/84737.html).
         self.partition_num = partition_num
         # The region ID of the instance.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group.
         # 
@@ -1674,7 +1845,7 @@ class CreatePrePayOrderShrinkRequest(TeaModel):
         # *   **professional**: Professional Edition (High Write)
         # *   **professionalForHighRead**: Professional Edition (High Read)
         # 
-        # For more information, see [Billing](~~84737~~).
+        # For more information, see [Billing](https://help.aliyun.com/document_detail/84737.html).
         self.spec_type = spec_type
         # The tags.
         self.tag = tag
@@ -1683,7 +1854,7 @@ class CreatePrePayOrderShrinkRequest(TeaModel):
         # *   You must specify at least one of the PartitionNum and TopicQuota parameters. We recommend that you configure only the PartitionNum parameter.
         # *   If you specify both parameters, the topic-based sales model is used to check whether the PartitionNum value and the TopicQuota value are the same. If they are not the same, a failure response is returned. If they are the same, the order is placed based on the PartitionNum value.
         # *   The default value of the TopicQuota parameter varies based on the value of the IoMaxSpec parameter. If the number of topics that you consume exceeds the default value, you are charged additional fees.
-        # *   For more information about the valid values, see [Billing](~~84737~~).
+        # *   For more information about the valid values, see [Billing](https://help.aliyun.com/document_detail/84737.html).
         self.topic_quota = topic_quota
 
     def validate(self):
@@ -1878,6 +2049,8 @@ class CreateSaslUserRequest(TeaModel):
         username: str = None,
     ):
         # The instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The encryption method. Valid values:
         # 
@@ -1889,8 +2062,12 @@ class CreateSaslUserRequest(TeaModel):
         # *   This parameter is available only for ApsaraMQ for Kafka V3 serverless instances.
         self.mechanism = mechanism
         # The password of the SASL user.
+        # 
+        # This parameter is required.
         self.password = password
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The SASL mechanism. Valid values:
         # 
@@ -1900,6 +2077,8 @@ class CreateSaslUserRequest(TeaModel):
         # Default value: **plain**.
         self.type = type
         # The name of the SASL user.
+        # 
+        # This parameter is required.
         self.username = username
 
     def validate(self):
@@ -2032,6 +2211,297 @@ class CreateSaslUserResponse(TeaModel):
         return self
 
 
+class CreateScheduledScalingRuleRequest(TeaModel):
+    def __init__(
+        self,
+        duration_minutes: int = None,
+        enable: bool = None,
+        first_scheduled_time: int = None,
+        instance_id: str = None,
+        region_id: str = None,
+        repeat_type: str = None,
+        reserved_pub_flow: int = None,
+        reserved_sub_flow: int = None,
+        rule_name: str = None,
+        schedule_type: str = None,
+        time_zone: str = None,
+        weekly_types: List[str] = None,
+    ):
+        # This parameter is required.
+        self.duration_minutes = duration_minutes
+        self.enable = enable
+        # This parameter is required.
+        self.first_scheduled_time = first_scheduled_time
+        # This parameter is required.
+        self.instance_id = instance_id
+        # This parameter is required.
+        self.region_id = region_id
+        self.repeat_type = repeat_type
+        # This parameter is required.
+        self.reserved_pub_flow = reserved_pub_flow
+        # This parameter is required.
+        self.reserved_sub_flow = reserved_sub_flow
+        # This parameter is required.
+        self.rule_name = rule_name
+        # This parameter is required.
+        self.schedule_type = schedule_type
+        # This parameter is required.
+        self.time_zone = time_zone
+        self.weekly_types = weekly_types
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.duration_minutes is not None:
+            result['DurationMinutes'] = self.duration_minutes
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        if self.first_scheduled_time is not None:
+            result['FirstScheduledTime'] = self.first_scheduled_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.repeat_type is not None:
+            result['RepeatType'] = self.repeat_type
+        if self.reserved_pub_flow is not None:
+            result['ReservedPubFlow'] = self.reserved_pub_flow
+        if self.reserved_sub_flow is not None:
+            result['ReservedSubFlow'] = self.reserved_sub_flow
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.schedule_type is not None:
+            result['ScheduleType'] = self.schedule_type
+        if self.time_zone is not None:
+            result['TimeZone'] = self.time_zone
+        if self.weekly_types is not None:
+            result['WeeklyTypes'] = self.weekly_types
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DurationMinutes') is not None:
+            self.duration_minutes = m.get('DurationMinutes')
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        if m.get('FirstScheduledTime') is not None:
+            self.first_scheduled_time = m.get('FirstScheduledTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('RepeatType') is not None:
+            self.repeat_type = m.get('RepeatType')
+        if m.get('ReservedPubFlow') is not None:
+            self.reserved_pub_flow = m.get('ReservedPubFlow')
+        if m.get('ReservedSubFlow') is not None:
+            self.reserved_sub_flow = m.get('ReservedSubFlow')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('ScheduleType') is not None:
+            self.schedule_type = m.get('ScheduleType')
+        if m.get('TimeZone') is not None:
+            self.time_zone = m.get('TimeZone')
+        if m.get('WeeklyTypes') is not None:
+            self.weekly_types = m.get('WeeklyTypes')
+        return self
+
+
+class CreateScheduledScalingRuleShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        duration_minutes: int = None,
+        enable: bool = None,
+        first_scheduled_time: int = None,
+        instance_id: str = None,
+        region_id: str = None,
+        repeat_type: str = None,
+        reserved_pub_flow: int = None,
+        reserved_sub_flow: int = None,
+        rule_name: str = None,
+        schedule_type: str = None,
+        time_zone: str = None,
+        weekly_types_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.duration_minutes = duration_minutes
+        self.enable = enable
+        # This parameter is required.
+        self.first_scheduled_time = first_scheduled_time
+        # This parameter is required.
+        self.instance_id = instance_id
+        # This parameter is required.
+        self.region_id = region_id
+        self.repeat_type = repeat_type
+        # This parameter is required.
+        self.reserved_pub_flow = reserved_pub_flow
+        # This parameter is required.
+        self.reserved_sub_flow = reserved_sub_flow
+        # This parameter is required.
+        self.rule_name = rule_name
+        # This parameter is required.
+        self.schedule_type = schedule_type
+        # This parameter is required.
+        self.time_zone = time_zone
+        self.weekly_types_shrink = weekly_types_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.duration_minutes is not None:
+            result['DurationMinutes'] = self.duration_minutes
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        if self.first_scheduled_time is not None:
+            result['FirstScheduledTime'] = self.first_scheduled_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.repeat_type is not None:
+            result['RepeatType'] = self.repeat_type
+        if self.reserved_pub_flow is not None:
+            result['ReservedPubFlow'] = self.reserved_pub_flow
+        if self.reserved_sub_flow is not None:
+            result['ReservedSubFlow'] = self.reserved_sub_flow
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.schedule_type is not None:
+            result['ScheduleType'] = self.schedule_type
+        if self.time_zone is not None:
+            result['TimeZone'] = self.time_zone
+        if self.weekly_types_shrink is not None:
+            result['WeeklyTypes'] = self.weekly_types_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DurationMinutes') is not None:
+            self.duration_minutes = m.get('DurationMinutes')
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        if m.get('FirstScheduledTime') is not None:
+            self.first_scheduled_time = m.get('FirstScheduledTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('RepeatType') is not None:
+            self.repeat_type = m.get('RepeatType')
+        if m.get('ReservedPubFlow') is not None:
+            self.reserved_pub_flow = m.get('ReservedPubFlow')
+        if m.get('ReservedSubFlow') is not None:
+            self.reserved_sub_flow = m.get('ReservedSubFlow')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('ScheduleType') is not None:
+            self.schedule_type = m.get('ScheduleType')
+        if m.get('TimeZone') is not None:
+            self.time_zone = m.get('TimeZone')
+        if m.get('WeeklyTypes') is not None:
+            self.weekly_types_shrink = m.get('WeeklyTypes')
+        return self
+
+
+class CreateScheduledScalingRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateScheduledScalingRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateScheduledScalingRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateScheduledScalingRuleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateTopicRequestTag(TeaModel):
     def __init__(
         self,
@@ -2042,6 +2512,8 @@ class CreateTopicRequestTag(TeaModel):
         # 
         # *   If you do not specify this parameter, the keys of all tags are matched.
         # *   The tag key must be 1 to 128 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `aliyun` or `acs:`.
+        # 
+        # This parameter is required.
         self.key = key
         # The tag value.
         # 
@@ -2102,6 +2574,8 @@ class CreateTopicRequest(TeaModel):
         # > If you specify this parameter, **ReplicationFactor** does not take effect.
         self.config = config
         # The instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The type of storage that the topic uses. Valid values:
         # 
@@ -2117,14 +2591,23 @@ class CreateTopicRequest(TeaModel):
         # The number of partitions in the topic.
         # 
         # *   Valid values: 1 to 360.
-        # *   The system recommends the number of partitions based on the specification of the instance. You can view the recommended number in the Message Queue for Apache Kafka console. We recommend that you specify the number that is recommended by the system as the value of this parameter to reduce the risk of data skew.
+        # *   In the ApsaraMQ for Kafka console, you can view the number of partitions that the system recommends based on the specifications of the instance. We recommend that you specify the number that is recommended by the system as the value of this parameter to reduce the risk of data skew.
+        # 
+        # Default values:
+        # 
+        # *   ApsaraMQ for Kafka V2 instance: 12
+        # *   ApsaraMQ for Kafka V3 instance: 3
         self.partition_num = partition_num
         # The region ID of the instance in which you want to create a topic.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The description of the topic.
         # 
-        # *   The description can contain only letters, digits, hyphens (-), and underscores (\_).
+        # *   The description can contain only letters, digits, hyphens (-), and underscores (_).
         # *   The description must be 3 to 64 characters in length.
+        # 
+        # This parameter is required.
         self.remark = remark
         # The number of replicas for the topic.
         # 
@@ -2137,9 +2620,11 @@ class CreateTopicRequest(TeaModel):
         self.tag = tag
         # The topic name.
         # 
-        # *   The name can contain only letters, digits, hyphens (-), and underscores (\_).
+        # *   The name can contain only letters, digits, hyphens (-), and underscores (_).
         # *   The name must be 3 to 64 characters in length. If the name that you specify contains more than 64 characters, the system automatically truncates the name.
         # *   After a topic is created, you cannot change the name of the topic.
+        # 
+        # This parameter is required.
         self.topic = topic
 
     def validate(self):
@@ -2320,6 +2805,8 @@ class DeleteAclRequest(TeaModel):
         # *   **Read**: data reads
         # *   **Describe**: reads of transactional IDs
         # *   **IdempotentWrite**: idempotent data writes to clusters
+        # 
+        # This parameter is required.
         self.acl_operation_type = acl_operation_type
         # The operations allowed by the ACL. Separate multiple operations with commas (,).
         # 
@@ -2342,12 +2829,16 @@ class DeleteAclRequest(TeaModel):
         # The name of the resource.
         # 
         # *   The value can be the name of a topic or consumer group.
-        # *   You can use an asterisk (\*) to indicate the names of all topics or consumer groups.
+        # *   You can use an asterisk (\\*) to indicate the names of all topics or consumer groups.
+        # 
+        # This parameter is required.
         self.acl_resource_name = acl_resource_name
         # The mode that is used to match resources. Valid values:
         # 
         # *   **LITERAL:** full match
         # *   **PREFIXED**: prefix match
+        # 
+        # This parameter is required.
         self.acl_resource_pattern_type = acl_resource_pattern_type
         # The resource type. Valid values:
         # 
@@ -2355,14 +2846,22 @@ class DeleteAclRequest(TeaModel):
         # *   **Group**: consumer group
         # *   **Cluster**: cluster
         # *   **TransactionalId**: transactional ID
+        # 
+        # This parameter is required.
         self.acl_resource_type = acl_resource_type
         # The IP address of the source.
         self.host = host
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The ID of the region.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The name of the user.
+        # 
+        # This parameter is required.
         self.username = username
 
     def validate(self):
@@ -2519,10 +3018,16 @@ class DeleteConsumerGroupRequest(TeaModel):
         region_id: str = None,
     ):
         # The name of the consumer group.
+        # 
+        # This parameter is required.
         self.consumer_id = consumer_id
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region ID of the instance.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -2650,8 +3155,12 @@ class DeleteInstanceRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region ID of the instance.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -2778,9 +3287,19 @@ class DeleteSaslUserRequest(TeaModel):
         username: str = None,
     ):
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
+        # The encryption method. Valid values:
+        # 
+        # *   SCRAM-SHA-512. This is the default value.
+        # *   SCRAM-SHA-256
+        # 
+        # >  This parameter is available only for ApsaraMQ for Kafka V3 serverless instances.
         self.mechanism = mechanism
         # The ID of the region.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The SASL mechanism. Valid values:
         # 
@@ -2790,6 +3309,8 @@ class DeleteSaslUserRequest(TeaModel):
         # Default value: **plain**.
         self.type = type
         # The name of the user.
+        # 
+        # This parameter is required.
         self.username = username
 
     def validate(self):
@@ -2836,11 +3357,11 @@ class DeleteSaslUserResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code returned. The HTTP status code 200 indicates that the request is successful.
+        # The HTTP status code. If the request is successful, 200 is returned.
         self.code = code
         # The returned message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the request is successful.
         self.success = success
@@ -2918,6 +3439,135 @@ class DeleteSaslUserResponse(TeaModel):
         return self
 
 
+class DeleteScheduledScalingRuleRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        region_id: str = None,
+        rule_name: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        # This parameter is required.
+        self.region_id = region_id
+        # This parameter is required.
+        self.rule_name = rule_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        return self
+
+
+class DeleteScheduledScalingRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteScheduledScalingRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteScheduledScalingRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteScheduledScalingRuleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteTopicRequest(TeaModel):
     def __init__(
         self,
@@ -2926,10 +3576,16 @@ class DeleteTopicRequest(TeaModel):
         topic: str = None,
     ):
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region ID of the instance.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The name of the topic.
+        # 
+        # This parameter is required.
         self.topic = topic
 
     def validate(self):
@@ -3068,7 +3724,9 @@ class DescribeAclsRequest(TeaModel):
         # The name or ID of the resource.
         # 
         # *   The value can be the name of a topic or a consumer group.
-        # *   You can use an asterisk (\*) to represent the names of all topics or consumer groups.
+        # *   You can use an asterisk (\\*) to represent the names of all topics or consumer groups.
+        # 
+        # This parameter is required.
         self.acl_resource_name = acl_resource_name
         # The match mode. Valid values:
         # 
@@ -3079,13 +3737,21 @@ class DescribeAclsRequest(TeaModel):
         # 
         # *   **Topic**\
         # *   **Group**\
+        # 
+        # This parameter is required.
         self.acl_resource_type = acl_resource_type
         self.host = host
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The ID of the region.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The name of the user.
+        # 
+        # This parameter is required.
         self.username = username
 
     def validate(self):
@@ -3151,30 +3817,30 @@ class DescribeAclsResponseBodyKafkaAclListKafkaAclVO(TeaModel):
         host: str = None,
         username: str = None,
     ):
-        # The type of the operation. Valid values:
+        # The operation type. Valid values:
         # 
         # *   **Write**\
         # *   **Read**\
         self.acl_operation_type = acl_operation_type
         self.acl_permission_type = acl_permission_type
-        # The name of the resource.
+        # The resource name.
         # 
-        # *   The value can be the name of a topic or a consumer group.
-        # *   An asterisk (\*) represents the names of all topics or consumer groups.
+        # *   The value can be the name of a topic or consumer group.
+        # *   You can use the asterisk (\\*) wildcard character to specify the names of all topics or consumer groups.
         self.acl_resource_name = acl_resource_name
-        # The match mode. Valid values:
+        # The matching mode. Valid values:
         # 
-        # *   **LITERAL**: full-name match
+        # *   **LITERAL:** full-name match
         # *   **PREFIXED**: prefix match
         self.acl_resource_pattern_type = acl_resource_pattern_type
-        # The type of the resources to which you want to attach tags. Valid values:
+        # The resource type. Valid values:
         # 
         # *   **Topic**\
         # *   **Group**\
         self.acl_resource_type = acl_resource_type
         # The host.
         self.host = host
-        # The name of the user.
+        # The username.
         self.username = username
 
     def validate(self):
@@ -3267,7 +3933,7 @@ class DescribeAclsResponseBody(TeaModel):
     ):
         # The HTTP status code returned. The HTTP status code 200 indicates that the request is successful.
         self.code = code
-        # The ACLs.
+        # The access control lists (ACLs).
         self.kafka_acl_list = kafka_acl_list
         # The returned message.
         self.message = message
@@ -3362,8 +4028,12 @@ class DescribeSaslUsersRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The ID of the region.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -3398,17 +4068,20 @@ class DescribeSaslUsersResponseBodySaslUserListSaslUserVO(TeaModel):
         type: str = None,
         username: str = None,
     ):
-        self.mechanism = mechanism
-        # The password that is used to access the Elasticsearch cluster.
-        self.password = password
-        # The request type. Valid values:
+        # The encryption method.
         # 
-        # *   **plain**: a simple mechanism that uses usernames and passwords to verify user identities. Message Queue for Apache Kafka provides an optimized PLAIN mechanism that allows you to dynamically create SASL users for an instance without the need to restart the instance.
-        # *   **scram**: a mechanism that uses usernames and passwords to verify user identities. This mechanism provides better security protection than the PLAIN mechanism. Message Queue for Apache Kafka uses SCRAM-SHA-256.
+        # >  This field is available only for ApsaraMQ for Kafka V3 Serverless instances.
+        self.mechanism = mechanism
+        # The password.
+        self.password = password
+        # The type. Valid values:
+        # 
+        # *   **plain**: a simple mechanism that uses usernames and passwords to verify user identities. ApsaraMQ for Kafka provides an improved PLAIN mechanism that allows you to dynamically add SASL users without the need to restart an instance.
+        # *   **SCRAM**: a mechanism that uses usernames and passwords to verify user identities. Compared with the PLAIN mechanism, this mechanism provides better security protection. ApsaraMQ for Kafka uses the SCRAM-SHA-256 algorithm.
         # 
         # Default value: **plain**.
         self.type = type
-        # The name of the user.
+        # The username.
         self.username = username
 
     def validate(self):
@@ -3493,7 +4166,7 @@ class DescribeSaslUsersResponseBody(TeaModel):
         self.message = message
         # The ID of the request.
         self.request_id = request_id
-        # The SASL users.
+        # The Simple Authentication and Security Layer (SASL) users.
         self.sasl_user_list = sasl_user_list
         # Indicates whether the request is successful.
         self.success = success
@@ -3588,12 +4261,18 @@ class EnableAutoGroupCreationRequest(TeaModel):
         # 
         # *   **true**: enables the flexible group creation feature.
         # *   **false**: disabled the flexible group creation feature.
+        # 
+        # This parameter is required.
         self.enable = enable
         # The instance ID.
         # 
-        # You can call the [GetInstanceList](~~437663~~) operation to query instances.
+        # You can call the [GetInstanceList](https://help.aliyun.com/document_detail/437663.html) operation to query instances.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -3725,18 +4404,24 @@ class EnableAutoTopicCreationRequest(TeaModel):
         region_id: str = None,
     ):
         # The instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The operation that you want to perform. Valid values:
         # 
         # *   enable: enables the automatic topic creation feature.
         # *   disable: disables the automatic topic creation feature.
         # *   updatePartition: changes the number of partitions in topics that are automatically created.
+        # 
+        # This parameter is required.
         self.operate = operate
         # The changed number of partitions in topics that are automatically created.
         # 
         # This parameter takes effect only if you set Operate to updatePartition.
         self.partition_num = partition_num
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -3993,8 +4678,12 @@ class GetAllowedIpListRequest(TeaModel):
         region_id: str = None,
     ):
         # The instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -4272,6 +4961,328 @@ class GetAllowedIpListResponse(TeaModel):
         return self
 
 
+class GetAutoScalingConfigurationRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        region_id: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        # This parameter is required.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class GetAutoScalingConfigurationResponseBodyDataScheduledScalingRulesScheduledScalingRulesWeeklyTypes(TeaModel):
+    def __init__(
+        self,
+        weekly_types: List[str] = None,
+    ):
+        self.weekly_types = weekly_types
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.weekly_types is not None:
+            result['WeeklyTypes'] = self.weekly_types
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('WeeklyTypes') is not None:
+            self.weekly_types = m.get('WeeklyTypes')
+        return self
+
+
+class GetAutoScalingConfigurationResponseBodyDataScheduledScalingRulesScheduledScalingRules(TeaModel):
+    def __init__(
+        self,
+        duration_minutes: int = None,
+        enable: bool = None,
+        estimated_elastic_scaling_down_time_secs: int = None,
+        estimated_elastic_scaling_up_time_secs: int = None,
+        first_scheduled_time: int = None,
+        repeat_type: str = None,
+        reserved_pub_flow: int = None,
+        reserved_sub_flow: int = None,
+        rule_id: int = None,
+        rule_name: str = None,
+        schedule_type: str = None,
+        time_zone: str = None,
+        weekly_types: GetAutoScalingConfigurationResponseBodyDataScheduledScalingRulesScheduledScalingRulesWeeklyTypes = None,
+    ):
+        self.duration_minutes = duration_minutes
+        self.enable = enable
+        self.estimated_elastic_scaling_down_time_secs = estimated_elastic_scaling_down_time_secs
+        self.estimated_elastic_scaling_up_time_secs = estimated_elastic_scaling_up_time_secs
+        self.first_scheduled_time = first_scheduled_time
+        self.repeat_type = repeat_type
+        self.reserved_pub_flow = reserved_pub_flow
+        self.reserved_sub_flow = reserved_sub_flow
+        self.rule_id = rule_id
+        self.rule_name = rule_name
+        self.schedule_type = schedule_type
+        self.time_zone = time_zone
+        self.weekly_types = weekly_types
+
+    def validate(self):
+        if self.weekly_types:
+            self.weekly_types.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.duration_minutes is not None:
+            result['DurationMinutes'] = self.duration_minutes
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        if self.estimated_elastic_scaling_down_time_secs is not None:
+            result['EstimatedElasticScalingDownTimeSecs'] = self.estimated_elastic_scaling_down_time_secs
+        if self.estimated_elastic_scaling_up_time_secs is not None:
+            result['EstimatedElasticScalingUpTimeSecs'] = self.estimated_elastic_scaling_up_time_secs
+        if self.first_scheduled_time is not None:
+            result['FirstScheduledTime'] = self.first_scheduled_time
+        if self.repeat_type is not None:
+            result['RepeatType'] = self.repeat_type
+        if self.reserved_pub_flow is not None:
+            result['ReservedPubFlow'] = self.reserved_pub_flow
+        if self.reserved_sub_flow is not None:
+            result['ReservedSubFlow'] = self.reserved_sub_flow
+        if self.rule_id is not None:
+            result['RuleId'] = self.rule_id
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.schedule_type is not None:
+            result['ScheduleType'] = self.schedule_type
+        if self.time_zone is not None:
+            result['TimeZone'] = self.time_zone
+        if self.weekly_types is not None:
+            result['WeeklyTypes'] = self.weekly_types.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DurationMinutes') is not None:
+            self.duration_minutes = m.get('DurationMinutes')
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        if m.get('EstimatedElasticScalingDownTimeSecs') is not None:
+            self.estimated_elastic_scaling_down_time_secs = m.get('EstimatedElasticScalingDownTimeSecs')
+        if m.get('EstimatedElasticScalingUpTimeSecs') is not None:
+            self.estimated_elastic_scaling_up_time_secs = m.get('EstimatedElasticScalingUpTimeSecs')
+        if m.get('FirstScheduledTime') is not None:
+            self.first_scheduled_time = m.get('FirstScheduledTime')
+        if m.get('RepeatType') is not None:
+            self.repeat_type = m.get('RepeatType')
+        if m.get('ReservedPubFlow') is not None:
+            self.reserved_pub_flow = m.get('ReservedPubFlow')
+        if m.get('ReservedSubFlow') is not None:
+            self.reserved_sub_flow = m.get('ReservedSubFlow')
+        if m.get('RuleId') is not None:
+            self.rule_id = m.get('RuleId')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('ScheduleType') is not None:
+            self.schedule_type = m.get('ScheduleType')
+        if m.get('TimeZone') is not None:
+            self.time_zone = m.get('TimeZone')
+        if m.get('WeeklyTypes') is not None:
+            temp_model = GetAutoScalingConfigurationResponseBodyDataScheduledScalingRulesScheduledScalingRulesWeeklyTypes()
+            self.weekly_types = temp_model.from_map(m['WeeklyTypes'])
+        return self
+
+
+class GetAutoScalingConfigurationResponseBodyDataScheduledScalingRules(TeaModel):
+    def __init__(
+        self,
+        scheduled_scaling_rules: List[GetAutoScalingConfigurationResponseBodyDataScheduledScalingRulesScheduledScalingRules] = None,
+    ):
+        self.scheduled_scaling_rules = scheduled_scaling_rules
+
+    def validate(self):
+        if self.scheduled_scaling_rules:
+            for k in self.scheduled_scaling_rules:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ScheduledScalingRules'] = []
+        if self.scheduled_scaling_rules is not None:
+            for k in self.scheduled_scaling_rules:
+                result['ScheduledScalingRules'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.scheduled_scaling_rules = []
+        if m.get('ScheduledScalingRules') is not None:
+            for k in m.get('ScheduledScalingRules'):
+                temp_model = GetAutoScalingConfigurationResponseBodyDataScheduledScalingRulesScheduledScalingRules()
+                self.scheduled_scaling_rules.append(temp_model.from_map(k))
+        return self
+
+
+class GetAutoScalingConfigurationResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        scheduled_scaling_rules: GetAutoScalingConfigurationResponseBodyDataScheduledScalingRules = None,
+    ):
+        self.scheduled_scaling_rules = scheduled_scaling_rules
+
+    def validate(self):
+        if self.scheduled_scaling_rules:
+            self.scheduled_scaling_rules.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.scheduled_scaling_rules is not None:
+            result['ScheduledScalingRules'] = self.scheduled_scaling_rules.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ScheduledScalingRules') is not None:
+            temp_model = GetAutoScalingConfigurationResponseBodyDataScheduledScalingRules()
+            self.scheduled_scaling_rules = temp_model.from_map(m['ScheduledScalingRules'])
+        return self
+
+
+class GetAutoScalingConfigurationResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: GetAutoScalingConfigurationResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetAutoScalingConfigurationResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetAutoScalingConfigurationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetAutoScalingConfigurationResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetAutoScalingConfigurationResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetConsumerListRequest(TeaModel):
     def __init__(
         self,
@@ -4286,10 +5297,14 @@ class GetConsumerListRequest(TeaModel):
         # The page number.
         self.current_page = current_page
         # The ID of the instance to which the consumer group belongs.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The number of entries to be returned per page.
         self.page_size = page_size
         # The region ID of the instance to which the consumer group belongs.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -4626,10 +5641,16 @@ class GetConsumerProgressRequest(TeaModel):
         region_id: str = None,
     ):
         # The name of the consumer group.
+        # 
+        # This parameter is required.
         self.consumer_id = consumer_id
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region ID of the instance.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -5134,12 +6155,18 @@ class GetInstanceListRequest(TeaModel):
     ):
         # The IDs of instances.
         self.instance_id = instance_id
-        # The ID of the order. You can obtain the order ID on the [Orders](https://usercenter2-intl.aliyun.com/order/list?pageIndex=1\&pageSize=20\&spm=5176.12818093.top-nav.ditem-ord.36f016d0OQFmJa) page in Alibaba Cloud User Center.
+        # The ID of the order. You can obtain the order ID on the [Orders](https://usercenter2-intl.aliyun.com/order/list?pageIndex=1\\&pageSize=20\\&spm=5176.12818093.top-nav.ditem-ord.36f016d0OQFmJa) page in Alibaba Cloud User Center.
         self.order_id = order_id
         # The ID of the region where the instance resides.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group. You can obtain this ID on the Resource Group page in the Resource Management console.
         self.resource_group_id = resource_group_id
+        # 实例系列标识，可根据系列号来过滤不同系列的实例。取值如下：
+        # - v2
+        # - v3
+        # - confluent
         self.series = series
         # The tags.
         self.tag = tag
@@ -5214,23 +6241,41 @@ class GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfig(TeaModel)
         zoo_keeper_replica: int = None,
         zoo_keeper_storage: int = None,
     ):
+        # The number of CPU cores of Connect.
         self.connect_cu = connect_cu
+        # The number of replicas of Connect.
         self.connect_replica = connect_replica
+        # The number of CPU cores of Control Center.
         self.control_center_cu = control_center_cu
+        # The number of replicas of Control Center.
         self.control_center_replica = control_center_replica
+        # The disk capacity of Control Center. Unit: GB.
         self.control_center_storage = control_center_storage
+        # The number of CPU cores of the Kafka broker.
         self.kafka_cu = kafka_cu
+        # The number of replicas of the Kafka broker.
         self.kafka_replica = kafka_replica
+        # The number of CPU cores of Kafka Rest Proxy.
         self.kafka_rest_proxy_cu = kafka_rest_proxy_cu
+        # The number of replicas of Kafka Rest Proxy.
         self.kafka_rest_proxy_replica = kafka_rest_proxy_replica
+        # The disk capacity of the Kafka broker. Unit: GB.
         self.kafka_storage = kafka_storage
+        # The number of CPU cores of ksqlDB.
         self.ksql_cu = ksql_cu
+        # The number of replicas of ksqlDB.
         self.ksql_replica = ksql_replica
+        # The disk capacity of ksqlDB. Unit: GB.
         self.ksql_storage = ksql_storage
+        # The number of CPU cores of Schema Registry.
         self.schema_registry_cu = schema_registry_cu
+        # The number of replicas of Schema Registry.
         self.schema_registry_replica = schema_registry_replica
+        # The number of CPU cores of ZooKeeper.
         self.zoo_keeper_cu = zoo_keeper_cu
+        # The number of replicas of ZooKeeper.
         self.zoo_keeper_replica = zoo_keeper_replica
+        # The disk capacity of ZooKeeper. Unit: GB.
         self.zoo_keeper_storage = zoo_keeper_storage
 
     def validate(self):
@@ -5466,6 +6511,7 @@ class GetInstanceListResponseBodyInstanceListInstanceVO(TeaModel):
     ):
         # The configurations of the deployed ApsaraMQ for Kafka instance.
         self.all_config = all_config
+        # The parameters that are returned for the ApsaraMQ for Confluent instance.
         self.confluent_config = confluent_config
         # The time when the instance was created. Unit: milliseconds.
         self.create_time = create_time
@@ -5474,7 +6520,7 @@ class GetInstanceListResponseBodyInstanceListInstanceVO(TeaModel):
         # *   **4**: Internet and VPC
         # *   **5**: VPC
         self.deploy_type = deploy_type
-        # The disk size. Unit: GB.
+        # The disk size. Unit: GB
         self.disk_size = disk_size
         # The disk type. Valid values:
         # 
@@ -5486,7 +6532,7 @@ class GetInstanceListResponseBodyInstanceListInstanceVO(TeaModel):
         # *   Endpoints in domain name mode: An endpoint in this mode consists of the domain name of the instance and a port number. The format of an endpoint in this mode is `{Instance domain name}:{Port number}`.
         # *   Endpoints in IP address mode: An endpoint in this mode consists of the IP address of the broker and a port number. The format of an endpoint in this mode is `{Broker IP address}:{Port number}`.
         self.domain_endpoint = domain_endpoint
-        # The peak Internet traffic allowed for the instance.
+        # The maximum Internet traffic in the instance.
         self.eip_max = eip_max
         # The default endpoint of the instance in IP address mode. ApsaraMQ for Kafka instances support endpoints in domain name mode and IP address mode.
         # 
@@ -5497,11 +6543,13 @@ class GetInstanceListResponseBodyInstanceListInstanceVO(TeaModel):
         self.expired_time = expired_time
         # The instance ID.
         self.instance_id = instance_id
-        # The peak traffic allowed for the instance.
+        # The maximum traffic in the instance.
         self.io_max = io_max
+        # The maximum read traffic in the instance. Unit: Mbit/s.
         self.io_max_read = io_max_read
         # The traffic specification.
         self.io_max_spec = io_max_spec
+        # The maximum write traffic. Unit: Mbit/s.
         self.io_max_write = io_max_write
         # The ID of the key that is used for disk encryption in the region where the instance is deployed.
         self.kms_key_id = kms_key_id
@@ -5511,12 +6559,20 @@ class GetInstanceListResponseBodyInstanceListInstanceVO(TeaModel):
         self.name = name
         # The billing method of the instance. Valid values:
         # 
-        # *   **0**: subscription
-        # *   **1**: pay-as-you-go
+        # *   **0**: the subscription billing method
+        # *   **1**: the pay-as-you-go billing method
+        # *   **3**: the pay-as-you-go billing method for serverless ApsaraMQ for Kafka V3 instances
+        # *   **4**: the pay-as-you-go billing method for ApsaraMQ for Confluent instances
         self.paid_type = paid_type
         # The ID of the region where the instance resides.
         self.region_id = region_id
+        # The traffic reserved for message publishing. Unit: MB/s.
+        # 
+        # >  This parameter is returned only if the instance is a serverless ApsaraMQ for Kafka V3 instance.
         self.reserved_publish_capacity = reserved_publish_capacity
+        # The traffic reserved for message subscription. Unit: MB/s.
+        # 
+        # >  This parameter is returned only if the instance is a serverless ApsaraMQ for Kafka V3 instance.
         self.reserved_subscribe_capacity = reserved_subscribe_capacity
         # The resource group ID.
         self.resource_group_id = resource_group_id
@@ -5525,12 +6581,15 @@ class GetInstanceListResponseBodyInstanceListInstanceVO(TeaModel):
         # *   Endpoints in domain name mode: An endpoint in this mode consists of the domain name of the instance and a port number. The format of an endpoint in this mode is `{Instance domain name}:{Port number}`.
         # *   Endpoints in IP address mode: An endpoint in this mode consists of the IP address of the broker and a port number. The format of an endpoint in this mode is `{Broker IP address}:{Port number}`.
         self.sasl_domain_endpoint = sasl_domain_endpoint
-        # The security group of the instance.
+        # The security group to which the instance belongs.
         # 
-        # *   If the instance is deployed by using the ApsaraMQ for Kafka console or calling the [StartInstance](~~157786~~) operation without a security group configured, no value is returned.
-        # *   If the instance is deployed by calling the [StartInstance](~~157786~~) operation with a security group configured, the returned value is the configured security group.
+        # *   If the instance is deployed in the ApsaraMQ for Kafka console or by calling the [StartInstance](https://help.aliyun.com/document_detail/157786.html) operation without a security group configured, no value is returned.
+        # *   If the instance is deployed by calling the [StartInstance](https://help.aliyun.com/document_detail/157786.html) operation with a security group configured, the returned value is the configured security group.
         self.security_group = security_group
+        # 实例系列标识。返回值有 v2 ，v3，confluent。
         self.series = series
+        # >  This parameter is out of date. We recommend that you refer to the ViewInstanceStatusCode parameter.
+        # 
         # The instance status. Valid values:
         # 
         # *   **0**: pending
@@ -5541,10 +6600,11 @@ class GetInstanceListResponseBodyInstanceListInstanceVO(TeaModel):
         # *   **6**: migrating
         # *   **7**: ready for upgrade
         # *   **8**: upgrading
-        # *   **9**: ready for changes
+        # *   **9**: ready for change
         # *   **10**: released
         # *   **11**: changing
         # *   **15**: expired
+        # *   **30**: scaling
         self.service_status = service_status
         # The instance edition. Valid values:
         # 
@@ -5568,7 +6628,7 @@ class GetInstanceListResponseBodyInstanceListInstanceVO(TeaModel):
         self.tags = tags
         # The maximum number of topics on the instance.
         self.topic_num_limit = topic_num_limit
-        # The upgrade information of the instance.
+        # The upgrade information about the instance.
         self.upgrade_service_detail_info = upgrade_service_detail_info
         # The number of used groups.
         self.used_group_count = used_group_count
@@ -5576,8 +6636,28 @@ class GetInstanceListResponseBodyInstanceListInstanceVO(TeaModel):
         self.used_partition_count = used_partition_count
         # The number of used topics.
         self.used_topic_count = used_topic_count
-        # The vSwitch ID of the instance.
+        # The ID of the vSwitch to which the instance belongs.
         self.v_switch_id = v_switch_id
+        # The instance status. The valid values are consistent with the values displayed in the ApsaraMQ for Kafka console. This parameter is used in the new version of ApsaraMQ for Kafka.
+        # 
+        # Valid values:
+        # 
+        # *   **0**: pending
+        # *   **1**: deploying
+        # *   **2**: running
+        # *   **3**: stopped
+        # *   **4**: expiring
+        # *   **5**: expired
+        # *   **6**: released
+        # *   **7**: upgrading
+        # *   **8**: migrating
+        # *   **21**: stopping
+        # *   **22**: starting
+        # *   **23**: releasing
+        # *   **30**: auto scaling
+        # *   **101**: deployment failed
+        # *   **102**: upgrade failed
+        # *   **103**: migration failed
         self.view_instance_status_code = view_instance_status_code
         # The virtual private cloud (VPC) ID.
         self.vpc_id = vpc_id
@@ -5913,8 +6993,12 @@ class GetQuotaTipRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The ID of the region in which the instance resides.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -6150,11 +7234,13 @@ class GetTopicListRequest(TeaModel):
         region_id: str = None,
         topic: str = None,
     ):
-        # The page number of the page to return. Default value: 1.
+        # The page number. Default value: 1
         self.current_page = current_page
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
-        # The number of entries to return on each page. Default value: 10
+        # The number of entries to return on each page. Default value: 10.
         self.page_size = page_size
         # The region ID of the instance to which the topics that you want to query belong.
         self.region_id = region_id
@@ -6282,50 +7368,53 @@ class GetTopicListResponseBodyTopicListTopicVO(TeaModel):
         status_name: str = None,
         tags: GetTopicListResponseBodyTopicListTopicVOTags = None,
         topic: str = None,
+        topic_config: str = None,
     ):
+        # Indicates whether the topic was automatically created.
         self.auto_create = auto_create
-        # The log cleanup policy that is used for the topic. This parameter is returned when the **LocalTopic** parameter is set to **true**. Valid values:
+        # The log cleanup policy for the topic. This parameter is returned only if **LocalTopic** is set to **true**. Valid values:
         # 
-        # *   false: The topic uses the default log cleanup policy.
-        # *   true: The topic uses the log compaction policy.
+        # *   false: the default log cleanup policy.
+        # *   true: the Apache Kafka log compaction policy.
         self.compact_topic = compact_topic
         # The timestamp that indicates when the topic was created. Unit: milliseconds.
         self.create_time = create_time
-        # The ID of the instance
+        # The instance ID.
         self.instance_id = instance_id
-        # The type of storage used by the topic. Valid values:
+        # The storage type that is used for the topic. Valid values:
         # 
-        # *   false: The topic uses cloud storage.
-        # *   true: The topic uses local storage.
+        # *   false: cloud storage
+        # *   true: local storage
         self.local_topic = local_topic
         # The number of partitions in the topic.
         self.partition_num = partition_num
-        # The region ID of the instance to which the topics that you want to query belong.
+        # The ID of the region where the instance resides.
         self.region_id = region_id
-        # The description of the topic. Valid values:
+        # The topic description. Valid values:
         # 
-        # *   The description contains only letters, digits, hyphens (-), and underscores (\_).
-        # *   The description is 3 to 64 characters in length.
+        # *   The description can contain only letters, digits, hyphens (-), and underscores (_).
+        # *   The description must be 3 to 64 characters in length.
         self.remark = remark
-        # The status of the topic. Valid values:
+        # The topic status. Valid value:
         # 
-        # **0:** indicates that the topic is running.
+        # **0**: running.
         # 
         # If the topic is deleted, this parameter is not returned.
         self.status = status
-        # The status of the topic. Valid values:
+        # The topic status. Valid value:
         # 
-        # **Running**\
+        # **Running**.
         # 
         # If the topic is deleted, this parameter is not returned.
         self.status_name = status_name
         # The tags.
         self.tags = tags
-        # The name of the topic. Valid values:
+        # The topic name. Valid values:
         # 
-        # *   The name contains only letters, digits, hyphens (-), and underscores (\_).
-        # *   The name is 3 to 64 characters in length. If the name that you specified contains more than 64 characters, the returned name is automatically truncated.
+        # *   The name can contain only letters, digits, hyphens (-), and underscores (_).
+        # *   The name must be 3 to 64 characters in length. If the name contains more than 64 characters, the system automatically truncates the name.
         self.topic = topic
+        self.topic_config = topic_config
 
     def validate(self):
         if self.tags:
@@ -6361,6 +7450,8 @@ class GetTopicListResponseBodyTopicListTopicVO(TeaModel):
             result['Tags'] = self.tags.to_map()
         if self.topic is not None:
             result['Topic'] = self.topic
+        if self.topic_config is not None:
+            result['TopicConfig'] = self.topic_config
         return result
 
     def from_map(self, m: dict = None):
@@ -6390,6 +7481,8 @@ class GetTopicListResponseBodyTopicListTopicVO(TeaModel):
             self.tags = temp_model.from_map(m['Tags'])
         if m.get('Topic') is not None:
             self.topic = m.get('Topic')
+        if m.get('TopicConfig') is not None:
+            self.topic_config = m.get('TopicConfig')
         return self
 
 
@@ -6452,7 +7545,7 @@ class GetTopicListResponseBody(TeaModel):
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success
-        # The information about the topic.
+        # The topics.
         self.topic_list = topic_list
         # The number of topics.
         self.total = total
@@ -6556,10 +7649,14 @@ class GetTopicStatusRequest(TeaModel):
         topic: str = None,
     ):
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region ID of the instance.
         self.region_id = region_id
         # The name of the topic.
+        # 
+        # This parameter is required.
         self.topic = topic
 
     def validate(self):
@@ -6833,13 +7930,19 @@ class GetTopicSubscribeStatusRequest(TeaModel):
     ):
         # The instance ID.
         # 
-        # You can call the [GetInstanceList](~~437663~~) operation to query instances.
+        # You can call the [GetInstanceList](https://help.aliyun.com/document_detail/437663.html) operation to query instances.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The topic name.
         # 
-        # You can call the [GetTopicList](~~437677~~) operation to query topics.
+        # You can call the [GetTopicList](https://help.aliyun.com/document_detail/437677.html) operation to query topics.
+        # 
+        # This parameter is required.
         self.topic = topic
 
     def validate(self):
@@ -7057,6 +8160,8 @@ class ListTagResourcesRequest(TeaModel):
         # The token that determines the start point of the next query.
         self.next_token = next_token
         # The ID of the region in which the resource is deployed.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The resource ID. The following items describe the formats of resource IDs:
         # 
@@ -7073,6 +8178,8 @@ class ListTagResourcesRequest(TeaModel):
         # *   **INSTANCE**\
         # *   **TOPIC**\
         # *   **CONSUMERGROUP**\
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The tags.
         self.tag = tag
@@ -7308,13 +8415,19 @@ class ModifyInstanceNameRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The instance name. Valid values:
         # 
-        # *   The name can contain only letters, digits, hyphens (-), and underscores (\_).
+        # *   The name can contain only letters, digits, hyphens (-), and underscores (_).
         # *   The name must be 3 to 64 characters in length. A name that contains more than 64 characters is automatically truncated.
+        # 
+        # This parameter is required.
         self.instance_name = instance_name
         # The region ID of the instance.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -7448,12 +8561,20 @@ class ModifyPartitionNumRequest(TeaModel):
         # *   The value must be an integer that is greater than 0.
         # *   To reduce the risk of data skew, we recommend that you set the value to a multiple of 6.
         # *   The number of total partitions ranges from 1 to 360.
+        # 
+        # This parameter is required.
         self.add_partition_num = add_partition_num
         # The instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region ID of the instance.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The topic name.
+        # 
+        # This parameter is required.
         self.topic = topic
 
     def validate(self):
@@ -7578,6 +8699,142 @@ class ModifyPartitionNumResponse(TeaModel):
         return self
 
 
+class ModifyScheduledScalingRuleRequest(TeaModel):
+    def __init__(
+        self,
+        enable: bool = None,
+        instance_id: str = None,
+        region_id: str = None,
+        rule_name: str = None,
+    ):
+        # This parameter is required.
+        self.enable = enable
+        # This parameter is required.
+        self.instance_id = instance_id
+        # This parameter is required.
+        self.region_id = region_id
+        # This parameter is required.
+        self.rule_name = rule_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        return self
+
+
+class ModifyScheduledScalingRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ModifyScheduledScalingRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyScheduledScalingRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyScheduledScalingRuleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ModifyTopicRemarkRequest(TeaModel):
     def __init__(
         self,
@@ -7587,12 +8844,18 @@ class ModifyTopicRemarkRequest(TeaModel):
         topic: str = None,
     ):
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region ID of the instance.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The description of the topic.
         self.remark = remark
         # The name of the topic.
+        # 
+        # This parameter is required.
         self.topic = topic
 
     def validate(self):
@@ -7731,6 +8994,8 @@ class QueryMessageRequest(TeaModel):
         # The beginning of the time range to query. The value of this parameter is a UNIX timestamp in milliseconds.
         self.begin_time = begin_time
         # The instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The consumer offset of the partition.
         self.offset = offset
@@ -7740,10 +9005,30 @@ class QueryMessageRequest(TeaModel):
         # 
         # *   byOffset: queries messages by offset. If you select this value, you must configure Partition and Offset.
         # *   byTimestamp: queries messages by time. If you select this value, you must configure BeginTime.
+        # 
+        # <!---->
+        # 
+        # *   <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # This parameter is required.
         self.query_type = query_type
         # The ID of the region where the resource resides.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The topic name.
+        # 
+        # This parameter is required.
         self.topic = topic
 
     def validate(self):
@@ -7830,11 +9115,11 @@ class QueryMessageResponseBodyMessageList(TeaModel):
         self.topic = topic
         # The truncated size of the message key. Unit: bytes.
         # 
-        # *   A message is truncated only if the message exceeds 10 MB in size.
+        # >  A maximum of 1 KB content can be displayed for each message. Content that exceeds 1 KB is automatically truncated. For more information, see [Query messages](https://help.aliyun.com/zh/apsaramq-for-kafka/query-messages).
         self.truncated_key_size = truncated_key_size
         # The truncated size of the message value. Unit: bytes.
         # 
-        # *   A message is truncated only if the message exceeds 10 MB in size.
+        # >  A maximum of 1 KB content can be displayed for each message. Content that exceeds 1 KB is automatically truncated. For more information, see [Query messages](https://help.aliyun.com/zh/apsaramq-for-kafka/query-messages).
         self.truncated_value_size = truncated_value_size
         # The message value.
         self.value = value
@@ -8034,8 +9319,12 @@ class ReleaseInstanceRequest(TeaModel):
         # *   **false**: The physical resources of the instance are retained for a period of time before they are released.
         self.force_delete_instance = force_delete_instance
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region ID of the instance.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -8163,8 +9452,12 @@ class ReopenInstanceRequest(TeaModel):
         region_id: str = None,
     ):
         # The instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The ID of the region where the instance resides.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -8341,6 +9634,8 @@ class StartInstanceRequest(TeaModel):
         # The deployment mode of the instance must match the type of the instance. If the instance allows access only from a VPC, set the value to **vpc**. If the instance allows access from the Internet and a VPC, set the value to **eip**.
         self.deploy_module = deploy_module
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # Specifies whether the instance supports elastic IP addresses (EIPs). Valid values:
         # 
@@ -8358,9 +9653,9 @@ class StartInstanceRequest(TeaModel):
         # 
         # This parameter is available only if you deploy an instance that allows access from the Internet and a VPC.
         self.is_set_user_and_password = is_set_user_and_password
-        # The ID of the key that is used for disk encryption in the region where the instance is deployed. You can obtain the ID of the key in the [Key Management Service (KMS) console](https://kms.console.aliyun.com/?spm=a2c4g.11186623.2.5.336745b8hfiU21) or create a key. For more information, see [Manage CMKs](~~181610~~).
+        # The ID of the key that is used for disk encryption in the region where the instance is deployed. You can obtain the ID of the key in the [Key Management Service (KMS) console](https://kms.console.aliyun.com/?spm=a2c4g.11186623.2.5.336745b8hfiU21) or create a key. For more information, see [Manage CMKs](https://help.aliyun.com/document_detail/181610.html).
         # 
-        # If this parameter is configured, disk encryption is enabled for the instance. You cannot disable disk encryption after disk encryption is enabled. When you call this operation, the system checks whether the AliyunServiceRoleForAlikafkaInstanceEncryption service-linked role is created. If the role is not created, the system automatically creates the role. For more information, see [Service-linked roles](~~190460~~).
+        # If this parameter is configured, disk encryption is enabled for the instance. You cannot disable disk encryption after disk encryption is enabled. When you call this operation, the system checks whether the AliyunServiceRoleForAlikafkaInstanceEncryption service-linked role is created. If the role is not created, the system automatically creates the role. For more information, see [Service-linked roles](https://help.aliyun.com/document_detail/190460.html).
         self.kmskey_id = kmskey_id
         # The name of the instance.
         # 
@@ -8373,20 +9668,22 @@ class StartInstanceRequest(TeaModel):
         # This parameter is available only if you deploy an instance that allows access from the Internet and a VPC.
         self.password = password
         # The region ID of the instance.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The security group of the instance.
         # 
-        # If you do not specify this parameter, ApsaraMQ for Kafka automatically configures a security group for your instance. If you specify this parameter, you must create a security group in advance. For more information, see [Create a security group](~~25468~~).
+        # If you do not specify this parameter, ApsaraMQ for Kafka automatically configures a security group for your instance. If you specify this parameter, you must create a security group in advance. For more information, see [Create a security group](https://help.aliyun.com/document_detail/25468.html).
         self.security_group = security_group
         # The two-dimensional arrays that consist of the candidate set for primary zones and the candidate set for secondary zones.
         # 
-        # *   If you set CrossZone to true and specify Zone H and Zone F as the candidate set for primary zones and Zone K as the candidate set for secondary zones, set this parameter to `[[\"zoneh\",\"zonef\"],[\"zonek\"]]`.
+        # *   If you set CrossZone to true and specify Zone H and Zone F as the candidate set for primary zones and Zone K as the candidate set for secondary zones, set this parameter to `[[\\"zoneh\\",\\"zonef\\"],[\\"zonek\\"]]`.
         # 
         #     **\
         # 
-        #     **Note** If you specify multiple zones as the primary or secondary zones, the system deploys the instance in one of the zones without prioritizing them. For example, if you set this parameter to `[[\"zoneh\",\"zonef\"],[\"zonek\"]]`, the primary zone in which the instance is deployed can be Zone H or Zone F, and the secondary zone is Zone K.
+        #     **Note** If you specify multiple zones as the primary or secondary zones, the system deploys the instance in one of the zones without prioritizing them. For example, if you set this parameter to `[[\\"zoneh\\",\\"zonef\\"],[\\"zonek\\"]]`, the primary zone in which the instance is deployed can be Zone H or Zone F, and the secondary zone is Zone K.
         # 
-        # *   If you set CrossZone to false and want to deploy the instance in Zone K, set this parameter to `[[\"zonek\"],[]]`. In this case, the value of this parameter must still be two-dimensional arrays, but the array that specifies the candidate for secondary zones is left empty.
+        # *   If you set CrossZone to false and want to deploy the instance in Zone K, set this parameter to `[[\\"zonek\\"],[]]`. In this case, the value of this parameter must still be two-dimensional arrays, but the array that specifies the candidate for secondary zones is left empty.
         self.selected_zones = selected_zones
         # The version of ApsaraMQ for Kafka. Valid values: 0.10.2 and 2.2.0.
         self.service_version = service_version
@@ -8397,14 +9694,21 @@ class StartInstanceRequest(TeaModel):
         # This parameter is available only if you deploy an instance that allows access from the Internet and a VPC.
         self.username = username
         # The ID of the vSwitch to which you want to connect the instance.
+        # 
+        # This parameter is required.
         self.v_switch_id = v_switch_id
+        # The vSwitch IDs.
         self.v_switch_ids = v_switch_ids
         # The ID of the virtual private cloud (VPC) in which you want to deploy the instance.
-        self.vpc_id = vpc_id
-        # The ID of the zone in which you want to deploy the instance.
         # 
-        # *   The zone ID of the instance must be the same as that of the vSwitch.
-        # *   The value must be in the format of zoneX or Region ID-X. For example, you can set this parameter to zonea or cn-hangzhou-k.
+        # This parameter is required.
+        self.vpc_id = vpc_id
+        # The ID of the zone where you want to deploy the ApsaraMQ for Kafka instance.
+        # 
+        # *   The zone ID of the ApsaraMQ for Kafka instance must be the same as that of the vSwitch.
+        # *   The value must be in the zoneX or Region ID-X format. Examples: zonea and cn-hangzhou-k.
+        # 
+        # >  If resources in the specified zone is insufficient, the instance may be deployed in another zone.
         self.zone_id = zone_id
 
     def validate(self):
@@ -8604,8 +9908,12 @@ class StopInstanceRequest(TeaModel):
         region_id: str = None,
     ):
         # The instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The ID of the region where the instance resides.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -8732,6 +10040,8 @@ class TagResourcesRequestTag(TeaModel):
         # 
         # *   You must specify this parameter.
         # *   The tag key must be 1 to 128 characters in length and cannot start with `acs:` or `aliyun`. The tag key cannot contain `http://` or `https://`.
+        # 
+        # This parameter is required.
         self.key = key
         # The tag value.
         # 
@@ -8775,8 +10085,12 @@ class TagResourcesRequest(TeaModel):
         # The ID of the Message Queue for Apache RocketMQ instance which contains the resource to which you want to attach tags.
         self.instance_id = instance_id
         # The ID of the region in which the resource is deployed.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The list of resource IDs.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
         # The type of the resources. The value is an enumerated value. Valid values:
         # 
@@ -8785,8 +10099,12 @@ class TagResourcesRequest(TeaModel):
         # *   **CONSUMERGROUP**\
         # 
         # >  The value of this parameter is not case-sensitive.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The tags that you want to add.
+        # 
+        # This parameter is required.
         self.tag = tag
 
     def validate(self):
@@ -8914,8 +10232,12 @@ class UntagResourcesRequest(TeaModel):
         # Specifies whether to detach all tags from the resource. This parameter only takes effect when the TagKey.N parameter is not configured. Default value: **false**.
         self.all = all
         # The ID of the region in which the resource is deployed.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The IDs of the resources from which you want to detach tags.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
         # The type of the resources. Valid values:
         # 
@@ -8924,6 +10246,8 @@ class UntagResourcesRequest(TeaModel):
         # *   **CONSUMERGROUP**\
         # 
         # >  The value of this parameter is not case-sensitive.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The tag key.
         self.tag_key = tag_key
@@ -9049,15 +10373,21 @@ class UpdateAllowedIpRequest(TeaModel):
         # *   If the **UpdateType** parameter is set to **add**, specify one or more IP addresses for this parameter. Separate multiple IP addresses with commas (,).
         # *   If the **UpdateType** parameter is set to **delete**, specify only one IP address.
         # *   Exercise caution when you delete IP addresses.
+        # 
+        # This parameter is required.
         self.allowed_list_ip = allowed_list_ip
         # The type of the whitelist. Valid values:
         # 
         # *   **vpc**: a whitelist for access from a VPC.
         # *   **internet**: a whitelist for access from the Internet.
+        # 
+        # This parameter is required.
         self.allowed_list_type = allowed_list_type
         # The description of the whitelist.
         self.description = description
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The port range. Valid values:
         # 
@@ -9067,13 +10397,19 @@ class UpdateAllowedIpRequest(TeaModel):
         # *   **9095/9095**: the port range for access from VPCs by using the Secure Sockets Layer (SSL) endpoint.
         # 
         # This parameter must correspond to **AllowdedListType**.
+        # 
+        # This parameter is required.
         self.port_range = port_range
         # The ID of the region where the instance resides.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The type of configuration change. Valid values:
         # 
         # *   **add**\
         # *   **delete**\
+        # 
+        # This parameter is required.
         self.update_type = update_type
 
     def validate(self):
@@ -9258,15 +10594,21 @@ class UpdateConsumerOffsetRequest(TeaModel):
     ):
         # The name of the consumer group.
         # 
-        # *   The name can contain letters, digits, hyphens (-), and underscores (\_).
+        # *   The name can contain letters, digits, hyphens (-), and underscores (_).
         # *   The name must be **3 to 64** characters in length. If a name contains more than **64** characters, the name is automatically truncated.
         # *   The name of a consumer group cannot be changed after the consumer group is created.
+        # 
+        # This parameter is required.
         self.consumer_id = consumer_id
         # The instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # If you set resetType to offset, you can use this parameter to reset the consumer offset of each partition of a specific topic in the consumer group.
         self.offsets = offsets
         # The region ID of the instance to which the consumer group belongs.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The method that is used to reset the consumer offsets of the subscribed topics of a consumer group. Valid values:
         # 
@@ -9280,11 +10622,13 @@ class UpdateConsumerOffsetRequest(TeaModel):
         self.time = time
         # The topic name.
         # 
-        # *   The name can contain letters, digits, underscores (\_), and hyphens (-).
+        # *   The name can contain letters, digits, underscores (_), and hyphens (-).
         # *   The name must be **3 to 64** characters in length. If a name contains more than **64** characters, the name is automatically truncated.
         # *   The name of a topic cannot be changed after the topic is created.
         # 
         # **If you want to reset the consumer offsets of all topics to which the consumer subscribes, specify an empty string.
+        # 
+        # This parameter is required.
         self.topic = topic
 
     def validate(self):
@@ -9352,15 +10696,21 @@ class UpdateConsumerOffsetShrinkRequest(TeaModel):
     ):
         # The name of the consumer group.
         # 
-        # *   The name can contain letters, digits, hyphens (-), and underscores (\_).
+        # *   The name can contain letters, digits, hyphens (-), and underscores (_).
         # *   The name must be **3 to 64** characters in length. If a name contains more than **64** characters, the name is automatically truncated.
         # *   The name of a consumer group cannot be changed after the consumer group is created.
+        # 
+        # This parameter is required.
         self.consumer_id = consumer_id
         # The instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # If you set resetType to offset, you can use this parameter to reset the consumer offset of each partition of a specific topic in the consumer group.
         self.offsets_shrink = offsets_shrink
         # The region ID of the instance to which the consumer group belongs.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The method that is used to reset the consumer offsets of the subscribed topics of a consumer group. Valid values:
         # 
@@ -9374,11 +10724,13 @@ class UpdateConsumerOffsetShrinkRequest(TeaModel):
         self.time = time
         # The topic name.
         # 
-        # *   The name can contain letters, digits, underscores (\_), and hyphens (-).
+        # *   The name can contain letters, digits, underscores (_), and hyphens (-).
         # *   The name must be **3 to 64** characters in length. If a name contains more than **64** characters, the name is automatically truncated.
         # *   The name of a topic cannot be changed after the topic is created.
         # 
         # **If you want to reset the consumer offsets of all topics to which the consumer subscribes, specify an empty string.
+        # 
+        # This parameter is required.
         self.topic = topic
 
     def validate(self):
@@ -9523,10 +10875,16 @@ class UpdateInstanceConfigRequest(TeaModel):
         region_id: str = None,
     ):
         # The configurations that you want to update for the ApsaraMQ for Kafka instance. The value must be a valid JSON string.
+        # 
+        # This parameter is required.
         self.config = config
         # The instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region ID of the instance.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -9662,17 +11020,27 @@ class UpdateTopicConfigRequest(TeaModel):
         # *   ApsaraMQ for Kafka V3 instances allow you to modify configurations for all topics.
         # *   The following keys are supported by `local topic` of ApsaraMQ for Kafka V2 instances: retention.ms, retention.bytes, and replications.
         # *   The following keys are supported by ApsaraMQ for Kafka V3 instances: retention.hours and max.message.bytes.
+        # 
+        # This parameter is required.
         self.config = config
         # The instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The ID of the region where the instance resides.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The topic name.
+        # 
+        # This parameter is required.
         self.topic = topic
-        # The value of the topic configuration.
+        # The configuration item that you want to update for the topic. The following configuration items are supported by ApsaraMQ for Kafka V3 instances:
         # 
         # *   `retention.hours` specifies the message retention period. Value type: string. Valid values: 24 to 8760.
         # *   `max.message.bytes` specifies the maximum size of a sent message. Value type: string. Valid values: 1048576 to 10485760.
+        # 
+        # This parameter is required.
         self.value = value
 
     def validate(self):
@@ -9816,8 +11184,12 @@ class UpgradeInstanceVersionRequest(TeaModel):
         target_version: str = None,
     ):
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The ID of the region where the instance resides.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The major version to be upgraded to. Valid values:
         # 
@@ -9825,6 +11197,8 @@ class UpgradeInstanceVersionRequest(TeaModel):
         # *   **2.2.0**\
         # 
         # If you set this parameter to the current major version, the system upgrades the instance to the latest minor version.
+        # 
+        # This parameter is required.
         self.target_version = target_version
 
     def validate(self):
@@ -9951,9 +11325,13 @@ class UpgradePostPayOrderRequestServerlessConfig(TeaModel):
         reserved_publish_capacity: int = None,
         reserved_subscribe_capacity: int = None,
     ):
-        # The traffic reserved for message publishing. Unit: MB/s. Valid values: 1 to 31457280. You can specify only integers for this parameter.
+        # The reserved capacity for publishing messages. You can specify only integers for this parameter. Minimum value: 60.
+        # 
+        # >  The maximum capacity that you can reserve for an instance varies based on available resources in a region. The reserved capacity range displayed on the buy page shall prevail.
         self.reserved_publish_capacity = reserved_publish_capacity
-        # The traffic reserved for message subscription. Unit: MB/s. Valid values: 1 to 31457280. You can specify only integers for this parameter.
+        # The reserved capacity for subscribing to messages. You can specify only integers for this parameter. Minimum value: 50.
+        # 
+        # >  The maximum capacity that you can reserve for an instance varies based on available resources in a region. The reserved capacity range displayed on the buy page shall prevail.
         self.reserved_subscribe_capacity = reserved_subscribe_capacity
 
     def validate(self):
@@ -9998,14 +11376,14 @@ class UpgradePostPayOrderRequest(TeaModel):
         # The disk size. Unit: GB.
         # 
         # *   The disk size that you specify must be greater than or equal to the current disk size of the instance.
-        # *   For information about the valid values of this parameter, see [Billing](~~84737~~).
+        # *   For information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
         # 
         # >  When you create an ApsaraMQ for Kafka V3 serverless instance, you do not need to configure this parameter.
         self.disk_size = disk_size
         # The Internet traffic for the instance.
         # 
         # *   The Internet traffic that you specify must be greater than or equal to the current Internet traffic of the instance.
-        # *   For information about the valid values of this parameter, see [Billing](~~84737~~).
+        # *   For information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
         # 
         # > 
         # 
@@ -10021,12 +11399,14 @@ class UpgradePostPayOrderRequest(TeaModel):
         # *   false: disables Internet access.
         self.eip_model = eip_model
         # The instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The maximum traffic for the instance. We recommend that you do not configure this parameter.
         # 
         # *   The maximum traffic that you specify must be greater than or equal to the current maximum traffic of the instance.
         # *   You must configure at least one of IoMax and IoMaxSpec. If you configure both parameters, the value of IoMaxSpec takes effect. We recommend that you configure only IoMaxSpec.
-        # *   For information about the valid values of this parameter, see [Billing](~~84737~~).
+        # *   For information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
         # 
         # >  When you create an ApsaraMQ for Kafka V3 serverless instance, you do not need to configure this parameter.
         self.io_max = io_max
@@ -10034,7 +11414,7 @@ class UpgradePostPayOrderRequest(TeaModel):
         # 
         # *   The traffic specification that you specify must be greater than or equal to the current traffic specification of the instance.
         # *   You must configure at least one of IoMax and IoMaxSpec. If you configure both parameters, the value of IoMaxSpec takes effect. We recommend that you configure only IoMaxSpec.
-        # *   For information about the valid values of this parameter, see [Billing](~~84737~~).
+        # *   For information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
         # 
         # >  When you create an ApsaraMQ for Kafka V3 serverless instance, you do not need to configure this parameter.
         self.io_max_spec = io_max_spec
@@ -10042,13 +11422,15 @@ class UpgradePostPayOrderRequest(TeaModel):
         # 
         # *   You must configure one of PartitionNum and TopicQuota. We recommend that you configure only ParittionNum.
         # *   If you configure PartitionNum and TopicQuota at the same time, the system verifies whether the price of the partitions equals the price of the topics based on the previous topic-based selling mode. If the price of the partitions does not equal the price of the topics, an error is returned. If the price of the partitions equals the price of the topics, the instance is purchased based on the partition number.
-        # *   For information about the valid values of this parameter, see [Billing](~~84737~~).
+        # *   For information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
         # 
         # >  When you create an ApsaraMQ for Kafka V3 serverless instance, you do not need to configure this parameter.
         self.partition_num = partition_num
         # The region ID of the instance.
+        # 
+        # This parameter is required.
         self.region_id = region_id
-        # The parameters configured for the Serverless instance. When you create an ApsaraMQ for Kafka V3 serverless instance, you must configure these parameters.
+        # The parameters that are configured for the ApsaraMQ for Kafka serverless instance. When you create a serverless ApsaraMQ for Kafka instance, you must configure these parameters.
         self.serverless_config = serverless_config
         # The instance edition.
         # 
@@ -10063,14 +11445,14 @@ class UpgradePostPayOrderRequest(TeaModel):
         # *   normal: Serverless Standard Edition
         # *   professional: Serverless Professional Edition
         # 
-        # For more information, see [Billing](~~84737~~).
+        # For more information, see [Billing](https://help.aliyun.com/document_detail/84737.html).
         self.spec_type = spec_type
         # The number of topics. We recommend that you do not configure this parameter.
         # 
         # *   You must configure one of PartitionNum and TopicQuota. We recommend that you configure only ParittionNum.
         # *   If you configure PartitionNum and TopicQuota at the same time, the system verifies whether the price of the partitions equals the price of the topics based on the previous topic-based selling mode. If the price of the partitions does not equal the price of the topics, an error is returned. If the price of the partitions equals the price of the topics, the instance is purchased based on the partition number.
         # *   The default value of TopicQuota varies based on the value of IoMaxSpec. If the number of topics that you consume exceeds the default value, you are charged additional fees.
-        # *   For information about the valid values of this parameter, see [Billing](~~84737~~).
+        # *   For information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
         # 
         # >  When you create an ApsaraMQ for Kafka V3 serverless instance, you do not need to configure this parameter.
         self.topic_quota = topic_quota
@@ -10155,14 +11537,14 @@ class UpgradePostPayOrderShrinkRequest(TeaModel):
         # The disk size. Unit: GB.
         # 
         # *   The disk size that you specify must be greater than or equal to the current disk size of the instance.
-        # *   For information about the valid values of this parameter, see [Billing](~~84737~~).
+        # *   For information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
         # 
         # >  When you create an ApsaraMQ for Kafka V3 serverless instance, you do not need to configure this parameter.
         self.disk_size = disk_size
         # The Internet traffic for the instance.
         # 
         # *   The Internet traffic that you specify must be greater than or equal to the current Internet traffic of the instance.
-        # *   For information about the valid values of this parameter, see [Billing](~~84737~~).
+        # *   For information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
         # 
         # > 
         # 
@@ -10178,12 +11560,14 @@ class UpgradePostPayOrderShrinkRequest(TeaModel):
         # *   false: disables Internet access.
         self.eip_model = eip_model
         # The instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The maximum traffic for the instance. We recommend that you do not configure this parameter.
         # 
         # *   The maximum traffic that you specify must be greater than or equal to the current maximum traffic of the instance.
         # *   You must configure at least one of IoMax and IoMaxSpec. If you configure both parameters, the value of IoMaxSpec takes effect. We recommend that you configure only IoMaxSpec.
-        # *   For information about the valid values of this parameter, see [Billing](~~84737~~).
+        # *   For information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
         # 
         # >  When you create an ApsaraMQ for Kafka V3 serverless instance, you do not need to configure this parameter.
         self.io_max = io_max
@@ -10191,7 +11575,7 @@ class UpgradePostPayOrderShrinkRequest(TeaModel):
         # 
         # *   The traffic specification that you specify must be greater than or equal to the current traffic specification of the instance.
         # *   You must configure at least one of IoMax and IoMaxSpec. If you configure both parameters, the value of IoMaxSpec takes effect. We recommend that you configure only IoMaxSpec.
-        # *   For information about the valid values of this parameter, see [Billing](~~84737~~).
+        # *   For information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
         # 
         # >  When you create an ApsaraMQ for Kafka V3 serverless instance, you do not need to configure this parameter.
         self.io_max_spec = io_max_spec
@@ -10199,13 +11583,15 @@ class UpgradePostPayOrderShrinkRequest(TeaModel):
         # 
         # *   You must configure one of PartitionNum and TopicQuota. We recommend that you configure only ParittionNum.
         # *   If you configure PartitionNum and TopicQuota at the same time, the system verifies whether the price of the partitions equals the price of the topics based on the previous topic-based selling mode. If the price of the partitions does not equal the price of the topics, an error is returned. If the price of the partitions equals the price of the topics, the instance is purchased based on the partition number.
-        # *   For information about the valid values of this parameter, see [Billing](~~84737~~).
+        # *   For information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
         # 
         # >  When you create an ApsaraMQ for Kafka V3 serverless instance, you do not need to configure this parameter.
         self.partition_num = partition_num
         # The region ID of the instance.
+        # 
+        # This parameter is required.
         self.region_id = region_id
-        # The parameters configured for the Serverless instance. When you create an ApsaraMQ for Kafka V3 serverless instance, you must configure these parameters.
+        # The parameters that are configured for the ApsaraMQ for Kafka serverless instance. When you create a serverless ApsaraMQ for Kafka instance, you must configure these parameters.
         self.serverless_config_shrink = serverless_config_shrink
         # The instance edition.
         # 
@@ -10220,14 +11606,14 @@ class UpgradePostPayOrderShrinkRequest(TeaModel):
         # *   normal: Serverless Standard Edition
         # *   professional: Serverless Professional Edition
         # 
-        # For more information, see [Billing](~~84737~~).
+        # For more information, see [Billing](https://help.aliyun.com/document_detail/84737.html).
         self.spec_type = spec_type
         # The number of topics. We recommend that you do not configure this parameter.
         # 
         # *   You must configure one of PartitionNum and TopicQuota. We recommend that you configure only ParittionNum.
         # *   If you configure PartitionNum and TopicQuota at the same time, the system verifies whether the price of the partitions equals the price of the topics based on the previous topic-based selling mode. If the price of the partitions does not equal the price of the topics, an error is returned. If the price of the partitions equals the price of the topics, the instance is purchased based on the partition number.
         # *   The default value of TopicQuota varies based on the value of IoMaxSpec. If the number of topics that you consume exceeds the default value, you are charged additional fees.
-        # *   For information about the valid values of this parameter, see [Billing](~~84737~~).
+        # *   For information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
         # 
         # >  When you create an ApsaraMQ for Kafka V3 serverless instance, you do not need to configure this parameter.
         self.topic_quota = topic_quota
@@ -10531,12 +11917,12 @@ class UpgradePrePayOrderRequest(TeaModel):
         # The size of the disk.
         # 
         # *   The disk size that you specify must be greater than or equal to the current disk size of the instance.
-        # *   For more information about the valid values, see [Billing overview](~~84737~~).
+        # *   For more information about the valid values, see [Billing overview](https://help.aliyun.com/document_detail/84737.html).
         self.disk_size = disk_size
         # The Internet traffic for the instance.
         # 
         # *   The Internet traffic volume that you specify must be greater than or equal to the current Internet traffic volume of the instance.
-        # *   For more information about the valid values, see [Billing overview](~~84737~~).
+        # *   For more information about the valid values, see [Billing overview](https://help.aliyun.com/document_detail/84737.html).
         # > - If the **EipModel** parameter is set to **true**, set the **EipMax** parameter to a value that is greater than 0.
         # > - If the **EipModel** parameter is set to **false**, set the **EipMax** parameter to **0**.
         self.eip_max = eip_max
@@ -10546,27 +11932,31 @@ class UpgradePrePayOrderRequest(TeaModel):
         # *   false: disables Internet access.
         self.eip_model = eip_model
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The maximum traffic for the instance. We recommend that you do not configure this parameter.
         # 
         # *   The maximum traffic volume that you specify must be greater than or equal to the current maximum traffic volume of the instance.
         # *   You must configure at least one of the IoMax and IoMaxSpec parameters. If you configure both parameters, the value of the IoMaxSpec parameter takes effect. We recommend that you configure only the IoMaxSpec parameter.
-        # *   For more information about the valid values, see [Billing overview](~~84737~~).
+        # *   For more information about the valid values, see [Billing overview](https://help.aliyun.com/document_detail/84737.html).
         self.io_max = io_max
         # The traffic specification of the instance. We recommend that you configure this parameter.
         # 
         # *   The traffic specification that you specify must be greater than or equal to the current traffic specification of the instance.
         # *   You must configure at least one of the IoMax and IoMaxSpec parameters. If you configure both parameters, the value of the IoMaxSpec parameter takes effect. We recommend that you configure only the IoMaxSpec parameter.
-        # *   For more information about the valid values, see [Billing overview](~~84737~~).
+        # *   For more information about the valid values, see [Billing overview](https://help.aliyun.com/document_detail/84737.html).
         self.io_max_spec = io_max_spec
         self.paid_type = paid_type
         # The number of partitions. We recommend that you configure this parameter.
         # 
         # *   You must specify at least one of the PartitionNum and TopicQuota parameters. We recommend that you configure only the PartitionNum parameter.
         # *   If you specify both parameters, the topic-based sales model is used to check whether the PartitionNum value and the TopicQuota value are the same. If they are not the same, a failure response is returned. If they are the same, the order is placed based on the PartitionNum value.
-        # *   For more information about the valid values, see [Billing overview](~~84737~~).
+        # *   For more information about the valid values, see [Billing overview](https://help.aliyun.com/document_detail/84737.html).
         self.partition_num = partition_num
         # The region ID of the instance.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The edition of the instance. Valid values:
         # 
@@ -10574,14 +11964,14 @@ class UpgradePrePayOrderRequest(TeaModel):
         # *   **professional**: Professional Edition (High Write)
         # *   **professionalForHighRead**: Professional Edition (High Read)
         # 
-        # You cannot downgrade an instance from the Professional Edition to the Standard Edition. For more information about these instance editions, see [Billing overview](~~84737~~).
+        # You cannot downgrade an instance from the Professional Edition to the Standard Edition. For more information about these instance editions, see [Billing overview](https://help.aliyun.com/document_detail/84737.html).
         self.spec_type = spec_type
         # The number of topics. We recommend that you do not configure this parameter.
         # 
         # *   You must specify at least one of the PartitionNum and TopicQuota parameters. We recommend that you configure only the PartitionNum parameter.
         # *   If you specify both parameters, the topic-based sales model is used to check whether the PartitionNum value and the TopicQuota value are the same. If they are not the same, a failure response is returned. If they are the same, the order is placed based on the PartitionNum value.
         # *   The default value of the TopicQuota parameter varies based on the value of the IoMaxSpec parameter. If the number of topics that you consume exceeds the default value, you are charged additional fees.
-        # *   For more information about the valid values, see [Billing overview](~~84737~~).
+        # *   For more information about the valid values, see [Billing overview](https://help.aliyun.com/document_detail/84737.html).
         self.topic_quota = topic_quota
 
     def validate(self):
@@ -10670,12 +12060,12 @@ class UpgradePrePayOrderShrinkRequest(TeaModel):
         # The size of the disk.
         # 
         # *   The disk size that you specify must be greater than or equal to the current disk size of the instance.
-        # *   For more information about the valid values, see [Billing overview](~~84737~~).
+        # *   For more information about the valid values, see [Billing overview](https://help.aliyun.com/document_detail/84737.html).
         self.disk_size = disk_size
         # The Internet traffic for the instance.
         # 
         # *   The Internet traffic volume that you specify must be greater than or equal to the current Internet traffic volume of the instance.
-        # *   For more information about the valid values, see [Billing overview](~~84737~~).
+        # *   For more information about the valid values, see [Billing overview](https://help.aliyun.com/document_detail/84737.html).
         # > - If the **EipModel** parameter is set to **true**, set the **EipMax** parameter to a value that is greater than 0.
         # > - If the **EipModel** parameter is set to **false**, set the **EipMax** parameter to **0**.
         self.eip_max = eip_max
@@ -10685,27 +12075,31 @@ class UpgradePrePayOrderShrinkRequest(TeaModel):
         # *   false: disables Internet access.
         self.eip_model = eip_model
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The maximum traffic for the instance. We recommend that you do not configure this parameter.
         # 
         # *   The maximum traffic volume that you specify must be greater than or equal to the current maximum traffic volume of the instance.
         # *   You must configure at least one of the IoMax and IoMaxSpec parameters. If you configure both parameters, the value of the IoMaxSpec parameter takes effect. We recommend that you configure only the IoMaxSpec parameter.
-        # *   For more information about the valid values, see [Billing overview](~~84737~~).
+        # *   For more information about the valid values, see [Billing overview](https://help.aliyun.com/document_detail/84737.html).
         self.io_max = io_max
         # The traffic specification of the instance. We recommend that you configure this parameter.
         # 
         # *   The traffic specification that you specify must be greater than or equal to the current traffic specification of the instance.
         # *   You must configure at least one of the IoMax and IoMaxSpec parameters. If you configure both parameters, the value of the IoMaxSpec parameter takes effect. We recommend that you configure only the IoMaxSpec parameter.
-        # *   For more information about the valid values, see [Billing overview](~~84737~~).
+        # *   For more information about the valid values, see [Billing overview](https://help.aliyun.com/document_detail/84737.html).
         self.io_max_spec = io_max_spec
         self.paid_type = paid_type
         # The number of partitions. We recommend that you configure this parameter.
         # 
         # *   You must specify at least one of the PartitionNum and TopicQuota parameters. We recommend that you configure only the PartitionNum parameter.
         # *   If you specify both parameters, the topic-based sales model is used to check whether the PartitionNum value and the TopicQuota value are the same. If they are not the same, a failure response is returned. If they are the same, the order is placed based on the PartitionNum value.
-        # *   For more information about the valid values, see [Billing overview](~~84737~~).
+        # *   For more information about the valid values, see [Billing overview](https://help.aliyun.com/document_detail/84737.html).
         self.partition_num = partition_num
         # The region ID of the instance.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The edition of the instance. Valid values:
         # 
@@ -10713,14 +12107,14 @@ class UpgradePrePayOrderShrinkRequest(TeaModel):
         # *   **professional**: Professional Edition (High Write)
         # *   **professionalForHighRead**: Professional Edition (High Read)
         # 
-        # You cannot downgrade an instance from the Professional Edition to the Standard Edition. For more information about these instance editions, see [Billing overview](~~84737~~).
+        # You cannot downgrade an instance from the Professional Edition to the Standard Edition. For more information about these instance editions, see [Billing overview](https://help.aliyun.com/document_detail/84737.html).
         self.spec_type = spec_type
         # The number of topics. We recommend that you do not configure this parameter.
         # 
         # *   You must specify at least one of the PartitionNum and TopicQuota parameters. We recommend that you configure only the PartitionNum parameter.
         # *   If you specify both parameters, the topic-based sales model is used to check whether the PartitionNum value and the TopicQuota value are the same. If they are not the same, a failure response is returned. If they are the same, the order is placed based on the PartitionNum value.
         # *   The default value of the TopicQuota parameter varies based on the value of the IoMaxSpec parameter. If the number of topics that you consume exceeds the default value, you are charged additional fees.
-        # *   For more information about the valid values, see [Billing overview](~~84737~~).
+        # *   For more information about the valid values, see [Billing overview](https://help.aliyun.com/document_detail/84737.html).
         self.topic_quota = topic_quota
 
     def validate(self):

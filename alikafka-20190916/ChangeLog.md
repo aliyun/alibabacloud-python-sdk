@@ -1,3 +1,15 @@
+2024-05-16 Version: 2.7.0
+- Support API CreateScheduledScalingRule.
+- Support API DeleteScheduledScalingRule.
+- Support API GetAutoScalingConfiguration.
+- Support API ModifyScheduledScalingRule.
+- Update API CreatePrePayOrder: update param ConfluentConfig.
+- Update API CreatePrePayOrder: update param DeployType.
+- Update API CreatePrePayOrder: update param DiskSize.
+- Update API CreatePrePayOrder: update param DiskType.
+- Update API GetTopicList: update response param.
+
+
 2024-04-23 Version: 2.6.6
 - Update API CreatePostPayOrder: update param DiskSize.
 - Update API CreatePostPayOrder: update param DiskType.
