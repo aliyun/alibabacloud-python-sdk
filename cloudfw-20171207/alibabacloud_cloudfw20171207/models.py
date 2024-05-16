@@ -8426,12 +8426,14 @@ class DescribeInternetTrafficTrendResponseBody(TeaModel):
         avg_total_bps: int = None,
         data_list: List[DescribeInternetTrafficTrendResponseBodyDataList] = None,
         max_bandwidth_time: int = None,
+        max_day_exceed_bytes: int = None,
         max_in_bps: int = None,
         max_out_bps: int = None,
         max_session: int = None,
         max_total_bps: int = None,
         request_id: str = None,
         total_bytes: int = None,
+        total_exceed_bytes: int = None,
         total_in_bytes: int = None,
         total_out_bytes: int = None,
         total_session: int = None,
@@ -8448,6 +8450,7 @@ class DescribeInternetTrafficTrendResponseBody(TeaModel):
         self.data_list = data_list
         # The timestamp generated when the bandwidth reaches the peak value. The value is a UNIX timestamp. Unit: seconds.
         self.max_bandwidth_time = max_bandwidth_time
+        self.max_day_exceed_bytes = max_day_exceed_bytes
         # The maximum inbound network throughput, which indicates the maximum number of bits that are sent inbound per second. Unit: bit/s.
         self.max_in_bps = max_in_bps
         # The maximum outbound network throughput, which indicates the maximum number of bits that are sent outbound per second. Unit: bit/s.
@@ -8460,6 +8463,7 @@ class DescribeInternetTrafficTrendResponseBody(TeaModel):
         self.request_id = request_id
         # The total inbound and outbound network throughput, which indicates the total number of bytes that are sent inbound and outbound. Unit: bytes.
         self.total_bytes = total_bytes
+        self.total_exceed_bytes = total_exceed_bytes
         # The inbound network throughput, which indicates the total number of bytes that are sent inbound. Unit: bytes.
         self.total_in_bytes = total_in_bytes
         # The outbound network throughput, which indicates the total number of bytes that are sent outbound. Unit: bytes.
@@ -8493,6 +8497,8 @@ class DescribeInternetTrafficTrendResponseBody(TeaModel):
                 result['DataList'].append(k.to_map() if k else None)
         if self.max_bandwidth_time is not None:
             result['MaxBandwidthTime'] = self.max_bandwidth_time
+        if self.max_day_exceed_bytes is not None:
+            result['MaxDayExceedBytes'] = self.max_day_exceed_bytes
         if self.max_in_bps is not None:
             result['MaxInBps'] = self.max_in_bps
         if self.max_out_bps is not None:
@@ -8505,6 +8511,8 @@ class DescribeInternetTrafficTrendResponseBody(TeaModel):
             result['RequestId'] = self.request_id
         if self.total_bytes is not None:
             result['TotalBytes'] = self.total_bytes
+        if self.total_exceed_bytes is not None:
+            result['TotalExceedBytes'] = self.total_exceed_bytes
         if self.total_in_bytes is not None:
             result['TotalInBytes'] = self.total_in_bytes
         if self.total_out_bytes is not None:
@@ -8530,6 +8538,8 @@ class DescribeInternetTrafficTrendResponseBody(TeaModel):
                 self.data_list.append(temp_model.from_map(k))
         if m.get('MaxBandwidthTime') is not None:
             self.max_bandwidth_time = m.get('MaxBandwidthTime')
+        if m.get('MaxDayExceedBytes') is not None:
+            self.max_day_exceed_bytes = m.get('MaxDayExceedBytes')
         if m.get('MaxInBps') is not None:
             self.max_in_bps = m.get('MaxInBps')
         if m.get('MaxOutBps') is not None:
@@ -8542,6 +8552,8 @@ class DescribeInternetTrafficTrendResponseBody(TeaModel):
             self.request_id = m.get('RequestId')
         if m.get('TotalBytes') is not None:
             self.total_bytes = m.get('TotalBytes')
+        if m.get('TotalExceedBytes') is not None:
+            self.total_exceed_bytes = m.get('TotalExceedBytes')
         if m.get('TotalInBytes') is not None:
             self.total_in_bytes = m.get('TotalInBytes')
         if m.get('TotalOutBytes') is not None:
