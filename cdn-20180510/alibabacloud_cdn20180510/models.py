@@ -59,12 +59,16 @@ class AddCdnDomainRequest(TeaModel):
         # *   **web**: images and small files
         # *   **download**: large files
         # *   **video**: on-demand video and audio streaming
+        # 
+        # This parameter is required.
         self.cdn_type = cdn_type
         # The URL that is used to check the accessibility of the origin server.
         self.check_url = check_url
         # The domain name that you want to add to Alibaba Cloud CDN.
         # 
         # A wildcard domain that starts with a period (.) is supported, such as .example.com.
+        # 
+        # This parameter is required.
         self.domain_name = domain_name
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -80,6 +84,8 @@ class AddCdnDomainRequest(TeaModel):
         self.scope = scope
         self.security_token = security_token
         # The information about the addresses of origin servers.
+        # 
+        # This parameter is required.
         self.sources = sources
         # Details about the tags. You can specify up to 20 tags.
         self.tag = tag
@@ -235,18 +241,30 @@ class AddFCTriggerRequest(TeaModel):
         trigger_arn: str = None,
     ):
         # The name of the event.
+        # 
+        # This parameter is required.
         self.event_meta_name = event_meta_name
         # The version of the event.
+        # 
+        # This parameter is required.
         self.event_meta_version = event_meta_version
         # The feature trigger.
         self.function_arn = function_arn
         # The remarks.
+        # 
+        # This parameter is required.
         self.notes = notes
         # The assigned Resource Access Management (RAM) role.
+        # 
+        # This parameter is required.
         self.role_arn = role_arn
         # The resources and filters for event listening.
+        # 
+        # This parameter is required.
         self.source_arn = source_arn
         # The trigger that corresponds to the Function Compute service.
+        # 
+        # This parameter is required.
         self.trigger_arn = trigger_arn
 
     def validate(self):
@@ -381,10 +399,14 @@ class BatchAddCdnDomainRequest(TeaModel):
         # *   **web**: images and small files
         # *   **download**: large files
         # *   **video**: on-demand video and audio streaming
+        # 
+        # This parameter is required.
         self.cdn_type = cdn_type
         # The URL that is used for health checks.
         self.check_url = check_url
         # The domain names that you want to add to Alibaba Cloud CDN. Separate domain names with commas (,).
+        # 
+        # This parameter is required.
         self.domain_name = domain_name
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -398,6 +420,8 @@ class BatchAddCdnDomainRequest(TeaModel):
         self.scope = scope
         self.security_token = security_token
         # The information about the addresses of origin servers.
+        # 
+        # This parameter is required.
         self.sources = sources
         # The top-level domain.
         self.top_level_domain = top_level_domain
@@ -537,8 +561,12 @@ class BatchDeleteCdnDomainConfigRequest(TeaModel):
         security_token: str = None,
     ):
         # The accelerated domain names whose configurations you want to delete. Separate multiple accelerated domain names with commas (,).
+        # 
+        # This parameter is required.
         self.domain_names = domain_names
-        # The names of the features that you want to delete. Separate multiple feature names with commas (,). For more information about feature names, see [Parameters for configuring features for domain names](~~388460~~).
+        # The names of the features that you want to delete. Separate multiple feature names with commas (,). For more information about feature names, see [Parameters for configuring features for domain names](https://help.aliyun.com/document_detail/388460.html).
+        # 
+        # This parameter is required.
         self.function_names = function_names
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -653,12 +681,16 @@ class BatchDescribeCdnIpInfoRequest(TeaModel):
     def __init__(
         self,
         ip_addr_list: str = None,
+        language: str = None,
     ):
         # The list of IP addresses to query. Separate IP addresses with commas (,). You can specify up to 20 IP addresses at a time.
         # 
         # > *   Example of an IPv4 address: 192.0.2.1
-        # >*   Example of an IPv6 address: 2001:db8:ffff:ffff:ffff:\*\*\*\*:ffff.
+        # >*   Example of an IPv6 address: 2001:db8:ffff:ffff:ffff:\\*\\*\\*\\*:ffff.
+        # 
+        # This parameter is required.
         self.ip_addr_list = ip_addr_list
+        self.language = language
 
     def validate(self):
         pass
@@ -671,12 +703,16 @@ class BatchDescribeCdnIpInfoRequest(TeaModel):
         result = dict()
         if self.ip_addr_list is not None:
             result['IpAddrList'] = self.ip_addr_list
+        if self.language is not None:
+            result['Language'] = self.language
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('IpAddrList') is not None:
             self.ip_addr_list = m.get('IpAddrList')
+        if m.get('Language') is not None:
+            self.language = m.get('Language')
         return self
 
 
@@ -840,15 +876,17 @@ class BatchSetCdnDomainConfigRequest(TeaModel):
         security_token: str = None,
     ):
         # The accelerated domain names. You can specify multiple accelerated domain names and separate them with commas (,).
+        # 
+        # This parameter is required.
         self.domain_names = domain_names
         # The features that you want to configure. Format:
         # 
-        # *   **functionName**: the name of the feature. This parameter is required. Separate multiple values with commas (,). For more information, see [Parameters for configuring features for domain names](~~388460~~).
+        # *   **functionName**: the name of the feature. This parameter is required. Separate multiple values with commas (,). For more information, see [Parameters for configuring features for domain names](https://help.aliyun.com/document_detail/388460.html).
         # *   **argName**: the feature parameter for **functionName**. This parameter is required. You can specify multiple feature parameters.
         # *   **argValue**: the parameter value that is specified for **functionName**. This parameter is required.
-        # *   **parentid**: the rule condition ID. This parameter is optional. You can use the **condition** rule engine to create a rule condition. For information, see [Parameters for configuring features for domain names](~~388460~~). A rule condition can identify parameters that are included in requests and filter requests based on the identified parameters. After you create a rule condition, a [configid](~~388994~~) is generated. A configid can be used as parentId that is referenced by other features. This way, you can combine rule conditions and features for flexible configurations.
+        # *   **parentid**: the rule condition ID. This parameter is optional. You can use the **condition** rule engine to create a rule condition. For information, see [Parameters for configuring features for domain names](https://help.aliyun.com/document_detail/388460.html). A rule condition can identify parameters that are included in requests and filter requests based on the identified parameters. After you create a rule condition, a [configid](https://help.aliyun.com/document_detail/388994.html) is generated. A configid can be used as parentId that is referenced by other features. This way, you can combine rule conditions and features for flexible configurations.
         # 
-        # If the **ParentId** parameter is \*\*-1\*\*, the existing rule conditions in the configurations are deleted.
+        # If the **ParentId** parameter is \\*\\*-1\\*\\*, the existing rule conditions in the configurations are deleted.
         # 
         # ```[{
         #    "functionArgs": [{
@@ -925,6 +963,8 @@ class BatchSetCdnDomainConfigRequest(TeaModel):
         #         "parentId": -1
         # }]
         # ```
+        # 
+        # This parameter is required.
         self.functions = functions
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -1145,6 +1185,8 @@ class BatchSetCdnDomainServerCertificateRequest(TeaModel):
         # The accelerated domain name to which the SSL certificate belongs. The type of request supported by the accelerated domain name must be HTTPS. You can specify multiple accelerated domain names and separate them with commas (,).
         # 
         # >  You can manage the SSL certificates of up to 50 accelerated domain names in each call.
+        # 
+        # This parameter is required.
         self.domain_name = domain_name
         # Specifies whether to check the certificate name for duplicates. If you set the value to 1, the system does not perform the check and overwrites the information about the existing certificate that uses the same name.
         self.force_set = force_set
@@ -1157,6 +1199,8 @@ class BatchSetCdnDomainServerCertificateRequest(TeaModel):
         # 
         # *   **on**: enables the SSL certificate.
         # *   **off**: disables the SSL certificate. This is the default value.
+        # 
+        # This parameter is required.
         self.sslprotocol = sslprotocol
         # The content of the SSL certificate. Specify the content of the certificate only if you want to enable the SSL certificate.
         self.sslpub = sslpub
@@ -1295,6 +1339,8 @@ class BatchStartCdnDomainRequest(TeaModel):
         security_token: str = None,
     ):
         # The accelerated domain names. You can specify one or more domain names. Separate multiple domain names with commas (,).
+        # 
+        # This parameter is required.
         self.domain_names = domain_names
         self.owner_id = owner_id
         self.security_token = security_token
@@ -1404,6 +1450,8 @@ class BatchStopCdnDomainRequest(TeaModel):
         security_token: str = None,
     ):
         # The names of the accelerated domain names. You can specify one or more domain names in each request. Separate multiple domain names with commas (,).
+        # 
+        # This parameter is required.
         self.domain_names = domain_names
         self.owner_id = owner_id
         self.security_token = security_token
@@ -1516,6 +1564,8 @@ class BatchUpdateCdnDomainRequest(TeaModel):
         top_level_domain: str = None,
     ):
         # The accelerated domain names. You can specify one or more accelerated domain names. Separate domain names with commas (,).
+        # 
+        # This parameter is required.
         self.domain_name = domain_name
         self.owner_id = owner_id
         # The ID of the resource group.
@@ -1645,6 +1695,8 @@ class CdnMigrateRegisterRequest(TeaModel):
         domain_name: str = None,
     ):
         # The accelerated domain name for which you want to register the dynamic routing feature. You can specify only one domain name in each request.
+        # 
+        # This parameter is required.
         self.domain_name = domain_name
 
     def validate(self):
@@ -1764,6 +1816,8 @@ class ChangeCdnDomainToDcdnRequest(TeaModel):
         security_token: str = None,
     ):
         # The accelerated domain name. You can specify only one domain name in each request.
+        # 
+        # This parameter is required.
         self.domain_name = domain_name
         # The operation that you want to perform on the check items. Valid values:
         # 
@@ -1894,6 +1948,8 @@ class CheckCdnDomainExistRequest(TeaModel):
         security_token: str = None,
     ):
         # The accelerated domain name.
+        # 
+        # This parameter is required.
         self.domain_name = domain_name
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -2025,6 +2081,8 @@ class CheckCdnDomainICPRequest(TeaModel):
         security_token: str = None,
     ):
         # The domain name.
+        # 
+        # This parameter is required.
         self.domain_name = domain_name
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -2156,6 +2214,8 @@ class CreateCdnCertificateSigningRequestRequest(TeaModel):
         # The city. Default value: Hangzhou.
         self.city = city
         # The Common Name of the certificate.
+        # 
+        # This parameter is required.
         self.common_name = common_name
         # The country or region in which the organization is located. Default value: CN.
         self.country = country
@@ -2318,16 +2378,24 @@ class CreateCdnDeliverTaskRequest(TeaModel):
         schedule: str = None,
     ):
         # The method that is used to send operations reports. Operations reports are sent to you only by email. The settings must be escaped in JSON.
+        # 
+        # This parameter is required.
         self.deliver = deliver
         # The domain names to be tracked. Separate multiple domain names with commas (,). You can specify up to 500 domain names. If you want to specify more than 500 domain names, [submit a ticket](https://workorder-intl.console.aliyun.com/?spm=5176.2020520001.aliyun_topbar.18.dbd44bd3e4f845#/ticket/createIndex).
         # 
         # > If you do not specify a domain name, the tracking task is created for all domain names that belong to your Alibaba Cloud account.
         self.domain_name = domain_name
         # The name of the tracking task.
+        # 
+        # This parameter is required.
         self.name = name
         # The operations reports that are tracked by the task. The data must be escaped in JSON.
+        # 
+        # This parameter is required.
         self.reports = reports
         # The parameters that specify the time interval at which the tracking task sends operations reports. The settings must be escaped in JSON.
+        # 
+        # This parameter is required.
         self.schedule = schedule
 
     def validate(self):
@@ -2466,6 +2534,8 @@ class CreateCdnSubTaskRequest(TeaModel):
         # *   **19**: page views and unique visitors
         # *   **21**: regions from which requests are initiated
         # *   **23**: Internet service providers (ISPs)
+        # 
+        # This parameter is required.
         self.report_ids = report_ids
 
     def validate(self):
@@ -2570,12 +2640,20 @@ class CreateRealTimeLogDeliveryRequest(TeaModel):
         region: str = None,
     ):
         # The accelerated domain name for which you want to configure real-time log delivery.
+        # 
+        # This parameter is required.
         self.domain = domain
         # The name of the Logstore where log entries are stored.
+        # 
+        # This parameter is required.
         self.logstore = logstore
         # The name of the Log Service project that is used for real-time log delivery.
+        # 
+        # This parameter is required.
         self.project = project
-        # The ID of the region where the Log Service project is deployed. For more information, see [Regions that support real-time log delivery](~~144883~~).
+        # The ID of the region where the Log Service project is deployed. For more information, see [Regions that support real-time log delivery](https://help.aliyun.com/document_detail/144883.html).
+        # 
+        # This parameter is required.
         self.region = region
 
     def validate(self):
@@ -2699,6 +2777,8 @@ class CreateUsageDetailDataExportTaskRequest(TeaModel):
         # Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         # 
         # > The end time must be later than the start time.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The domain name group. If you specify this parameter, the **DomainNames** parameter is ignored.
         self.group = group
@@ -2710,6 +2790,8 @@ class CreateUsageDetailDataExportTaskRequest(TeaModel):
         # The beginning of the time range to query.
         # 
         # Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # 
+        # This parameter is required.
         self.start_time = start_time
         # The name of the task.
         self.task_name = task_name
@@ -2717,6 +2799,8 @@ class CreateUsageDetailDataExportTaskRequest(TeaModel):
         # 
         # *   **flow**: traffic and bandwidth
         # *   **vas**: requests
+        # 
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -2864,6 +2948,8 @@ class CreateUserUsageDataExportTaskRequest(TeaModel):
         # The end of the time range to query. The end time must be later than the start time.
         # 
         # Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The language in which you want to export the file. Default value: zh-cn. Valid values:
         # 
@@ -2873,6 +2959,8 @@ class CreateUserUsageDataExportTaskRequest(TeaModel):
         # The start of the time range to query. The data is collected every 5 minutes.
         # 
         # Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # 
+        # This parameter is required.
         self.start_time = start_time
         # The name of the task.
         self.task_name = task_name
@@ -3004,7 +3092,9 @@ class DeleteCdnDeliverTaskRequest(TeaModel):
         self,
         deliver_id: int = None,
     ):
-        # The ID of the tracking task that you want to delete. You can call the [DescribeCdnDeliverList](~~270877~~) operation to query task IDs.
+        # The ID of the tracking task that you want to delete. You can call the [DescribeCdnDeliverList](https://help.aliyun.com/document_detail/270877.html) operation to query task IDs.
+        # 
+        # This parameter is required.
         self.deliver_id = deliver_id
 
     def validate(self):
@@ -3104,6 +3194,8 @@ class DeleteCdnDomainRequest(TeaModel):
         owner_id: int = None,
     ):
         # The accelerated domain name that you want to remove. You can specify only one domain name in each call.
+        # 
+        # This parameter is required.
         self.domain_name = domain_name
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -3280,6 +3372,8 @@ class DeleteFCTriggerRequest(TeaModel):
         trigger_arn: str = None,
     ):
         # The trigger that corresponds to the Function Compute service.
+        # 
+        # This parameter is required.
         self.trigger_arn = trigger_arn
 
     def validate(self):
@@ -3379,10 +3473,16 @@ class DeleteRealTimeLogLogstoreRequest(TeaModel):
         region: str = None,
     ):
         # The name of the Logstore to which log entries are delivered.
+        # 
+        # This parameter is required.
         self.logstore = logstore
         # The name of the Log Service project that is used for real-time log delivery.
+        # 
+        # This parameter is required.
         self.project = project
-        # The ID of the region where the Log Service project is deployed. For more information, see [Regions that support real-time log delivery](~~144883~~).
+        # The ID of the region where the Log Service project is deployed. For more information, see [Regions that support real-time log delivery](https://help.aliyun.com/document_detail/144883.html).
+        # 
+        # This parameter is required.
         self.region = region
 
     def validate(self):
@@ -3491,12 +3591,20 @@ class DeleteRealtimeLogDeliveryRequest(TeaModel):
         region: str = None,
     ):
         # The acceleration domain name for which you want to disable real-time log delivery. You can specify multiple domain names and separate them with commas (,).
+        # 
+        # This parameter is required.
         self.domain = domain
         # The name of the Logstore where log entries are stored.
+        # 
+        # This parameter is required.
         self.logstore = logstore
         # The name of the Log Service project that is used for real-time log delivery.
+        # 
+        # This parameter is required.
         self.project = project
-        # The ID of the region where the Log Service project is deployed. For more information, see [Regions that support real-time log delivery](~~144883~~).
+        # The ID of the region where the Log Service project is deployed. For more information, see [Regions that support real-time log delivery](https://help.aliyun.com/document_detail/144883.html).
+        # 
+        # This parameter is required.
         self.region = region
 
     def validate(self):
@@ -3608,9 +3716,13 @@ class DeleteSpecificConfigRequest(TeaModel):
         owner_id: int = None,
         security_token: str = None,
     ):
-        # The ID of the configuration. Separate multiple configuration IDs with commas (,). For more information about ConfigId, see [Usage notes on ConfigId](~~388994~~).
+        # The ID of the configuration. Separate multiple configuration IDs with commas (,). For more information about ConfigId, see [Usage notes on ConfigId](https://help.aliyun.com/document_detail/388994.html).
+        # 
+        # This parameter is required.
         self.config_id = config_id
         # The accelerated domain name. You can specify only one domain name.
+        # 
+        # This parameter is required.
         self.domain_name = domain_name
         self.owner_id = owner_id
         self.security_token = security_token
@@ -3724,9 +3836,13 @@ class DeleteSpecificStagingConfigRequest(TeaModel):
         owner_id: int = None,
         security_token: str = None,
     ):
-        # The configuration IDs. Separate configuration IDs with commas (,). For more information about ConfigId, see [Usage notes on ConfigId](~~388994~~).
+        # The configuration IDs. Separate configuration IDs with commas (,). For more information about ConfigId, see [Usage notes on ConfigId](https://help.aliyun.com/document_detail/388994.html).
+        # 
+        # This parameter is required.
         self.config_id = config_id
         # The accelerated domain name. You can specify up to 50 domain names in each request. Separate multiple domain names with commas (,).
+        # 
+        # This parameter is required.
         self.domain_name = domain_name
         self.owner_id = owner_id
         self.security_token = security_token
@@ -3837,7 +3953,9 @@ class DeleteUsageDetailDataExportTaskRequest(TeaModel):
         self,
         task_id: str = None,
     ):
-        # The ID of the task. You can call the [DescribeUserUsageDataExportTask](~~91062~~) operation to query tasks.
+        # The ID of the task. You can call the [DescribeUserUsageDataExportTask](https://help.aliyun.com/document_detail/91062.html) operation to query tasks.
+        # 
+        # This parameter is required.
         self.task_id = task_id
 
     def validate(self):
@@ -3935,6 +4053,8 @@ class DeleteUserUsageDataExportTaskRequest(TeaModel):
         task_id: str = None,
     ):
         # The ID of the task to delete.
+        # 
+        # This parameter is required.
         self.task_id = task_id
 
     def validate(self):
@@ -4036,6 +4156,8 @@ class DescribeBlockedRegionsRequest(TeaModel):
         # *   **zh**: simplified Chinese
         # *   **en**: English
         # *   **jp**: Japanese
+        # 
+        # This parameter is required.
         self.language = language
 
     def validate(self):
@@ -4221,6 +4343,8 @@ class DescribeCdnCertificateDetailRequest(TeaModel):
         security_token: str = None,
     ):
         # The ID of the SSL certificate. You can query only one certificate at a time.
+        # 
+        # This parameter is required.
         self.cert_name = cert_name
         self.owner_id = owner_id
         self.security_token = security_token
@@ -4359,6 +4483,8 @@ class DescribeCdnCertificateDetailByIdRequest(TeaModel):
         security_token: str = None,
     ):
         # The ID of the certificate.
+        # 
+        # This parameter is required.
         self.cert_id = cert_id
         # The region of the certificate. Valid values:
         # 
@@ -4767,6 +4893,8 @@ class DescribeCdnConditionIPBInfoRequest(TeaModel):
         # *   condition_isp_config_en
         # *   condition_country_config_cn
         # *   condition_country_config_en
+        # 
+        # This parameter is required.
         self.data_id = data_id
 
     def validate(self):
@@ -5218,6 +5346,7 @@ class DescribeCdnDomainAtoaLogsRequest(TeaModel):
         page_size: int = None,
         start_time: str = None,
     ):
+        # This parameter is required.
         self.domain_name = domain_name
         self.end_time = end_time
         self.page_number = page_number
@@ -5561,6 +5690,8 @@ class DescribeCdnDomainByCertificateRequest(TeaModel):
         # The public key of the SSL certificate. You must encode the public key in Base64 and then call the encodeURIComponent function to encode the public key again.
         # 
         # The public key must be in the PEM format.
+        # 
+        # This parameter is required.
         self.sslpub = sslpub
         # Specifies whether the domain name list to return contains only domain names with HTTPS enabled or disabled.
         # 
@@ -5808,11 +5939,13 @@ class DescribeCdnDomainConfigsRequest(TeaModel):
         owner_id: int = None,
         security_token: str = None,
     ):
-        # The ID of the configuration. For more information about ConfigId, see [Usage notes on ConfigId](~~388994~~).
+        # The ID of the configuration. For more information about ConfigId, see [Usage notes on ConfigId](https://help.aliyun.com/document_detail/388994.html).
         self.config_id = config_id
         # The accelerated domain name. You can specify only one domain name in each request.
+        # 
+        # This parameter is required.
         self.domain_name = domain_name
-        # The names of the features. Separate multiple feature names with commas (,). For more information, see [Parameters for configuring features for domain names](~~388460~~).
+        # The names of the features. Separate multiple feature names with commas (,). For more information, see [Parameters for configuring features for domain names](https://help.aliyun.com/document_detail/388460.html).
         self.function_names = function_names
         self.owner_id = owner_id
         self.security_token = security_token
@@ -5940,9 +6073,9 @@ class DescribeCdnDomainConfigsResponseBodyDomainConfigsDomainConfig(TeaModel):
         self.function_name = function_name
         # The ID of the rule condition. This parameter is optional.
         # 
-        # To create a rule condition, you can configure the **condition** feature that is described in the [Parameters for configuring features for domain names](~~388460~~) topic. A rule condition can identify parameters that are included in requests and filter requests based on the identified parameters. Each rule condition has a [ConfigId](~~388994~~). You can use ConfigId as ParentId that is referenced by other features. This way, you can combine rule conditions and features for flexible configurations.
+        # To create a rule condition, you can configure the **condition** feature that is described in the [Parameters for configuring features for domain names](https://help.aliyun.com/document_detail/388460.html) topic. A rule condition can identify parameters that are included in requests and filter requests based on the identified parameters. Each rule condition has a [ConfigId](https://help.aliyun.com/document_detail/388994.html). You can use ConfigId as ParentId that is referenced by other features. This way, you can combine rule conditions and features for flexible configurations.
         # 
-        # For more information, see [BatchSetCdnDomainConfig](~~90915~~) or ParentId configuration example in this topic.
+        # For more information, see [BatchSetCdnDomainConfig](https://help.aliyun.com/document_detail/90915.html) or ParentId configuration example in this topic.
         self.parent_id = parent_id
         # The status of the configuration. Valid values:
         # 
@@ -6111,6 +6244,8 @@ class DescribeCdnDomainDetailRequest(TeaModel):
         security_token: str = None,
     ):
         # The accelerated domain name. You can specify only one domain name.
+        # 
+        # This parameter is required.
         self.domain_name = domain_name
         self.owner_id = owner_id
         self.security_token = security_token
@@ -6457,6 +6592,8 @@ class DescribeCdnDomainLogsRequest(TeaModel):
         start_time: str = None,
     ):
         # The domain name. You can specify only one domain name.
+        # 
+        # This parameter is required.
         self.domain_name = domain_name
         # The end of the time range to query.
         # 
@@ -6818,6 +6955,7 @@ class DescribeCdnDomainLogsExTtlRequest(TeaModel):
         page_size: int = None,
         start_time: str = None,
     ):
+        # This parameter is required.
         self.domain_name = domain_name
         self.end_time = end_time
         self.page_number = page_number
@@ -7153,8 +7291,10 @@ class DescribeCdnDomainStagingConfigRequest(TeaModel):
         function_names: str = None,
     ):
         # The accelerated domain name. You can specify only one domain name in each request.
+        # 
+        # This parameter is required.
         self.domain_name = domain_name
-        # The list of feature names. Separate multiple values with commas (,). For more information, see [A list of features](~~388460~~).
+        # The list of feature names. Separate multiple values with commas (,). For more information, see [A list of features](https://help.aliyun.com/document_detail/388460.html).
         self.function_names = function_names
 
     def validate(self):
@@ -7231,7 +7371,7 @@ class DescribeCdnDomainStagingConfigResponseBodyDomainConfigs(TeaModel):
         self.function_args = function_args
         # The feature name.
         self.function_name = function_name
-        # The rule condition ID. This parameter is optional. To create a rule condition, you can configure the **condition** feature that is described in the [Parameters for configuring features for domain names](~~388460~~) topic. A rule condition can identify parameters that are included in requests and filter requests based on the identified parameters. Each rule condition has a [ConfigId](~~388994~~). You can reference ConfigId instead of ParentId in other features. This way, you can combine rule conditions and features for flexible configurations. For more information, see [BatchSetCdnDomainConfig](~~90915~~) or ParentId configuration example in this topic.
+        # The rule condition ID. This parameter is optional. To create a rule condition, you can configure the **condition** feature that is described in the [Parameters for configuring features for domain names](https://help.aliyun.com/document_detail/388460.html) topic. A rule condition can identify parameters that are included in requests and filter requests based on the identified parameters. Each rule condition has a [ConfigId](https://help.aliyun.com/document_detail/388994.html). You can reference ConfigId instead of ParentId in other features. This way, you can combine rule conditions and features for flexible configurations. For more information, see [BatchSetCdnDomainConfig](https://help.aliyun.com/document_detail/90915.html) or ParentId configuration example in this topic.
         self.parent_id = parent_id
         # The configuration status. Valid values:
         # 
@@ -7630,6 +7770,8 @@ class DescribeCdnMigrateRegisterStatusRequest(TeaModel):
         domain_name: str = None,
     ):
         # The accelerated domain name. You can specify only one domain name.
+        # 
+        # This parameter is required.
         self.domain_name = domain_name
 
     def validate(self):
@@ -7748,6 +7890,8 @@ class DescribeCdnOrderCommodityCodeRequest(TeaModel):
         security_token: str = None,
     ):
         # The original commodity code.
+        # 
+        # This parameter is required.
         self.commodity_code = commodity_code
         self.owner_id = owner_id
         self.security_token = security_token
@@ -8128,7 +8272,7 @@ class DescribeCdnReportRequest(TeaModel):
         report_id: int = None,
         start_time: str = None,
     ):
-        # The region. You can call the [DescribeCdnRegionAndIsp](~~91077~~) operation to query regions.
+        # The region. You can call the [DescribeCdnRegionAndIsp](https://help.aliyun.com/document_detail/91077.html) operation to query regions.
         # 
         # *   If you do not specify a region, data in all regions is queried.
         # *   If you specify a region, data in the specified region is queried. You can specify one or more regions. If you specify multiple regions, separate the regions with commas (,).
@@ -8136,6 +8280,8 @@ class DescribeCdnReportRequest(TeaModel):
         # The domain name that you want to query. Separate domain names with commas (,).
         self.domain_name = domain_name
         # The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The HTTP status code. Valid values:
         # 
@@ -8151,9 +8297,13 @@ class DescribeCdnReportRequest(TeaModel):
         # *   **1**: outside the Chinese mainland
         # *   **0**: inside the Chinese mainland
         self.is_overseas = is_overseas
-        # The ID of the operations report that you want to query. You can specify only one ID in each request. You can call the [DescribeCdnSubList](~~271655~~) operation to query report IDs.
+        # The ID of the operations report that you want to query. You can specify only one ID in each request. You can call the [DescribeCdnSubList](https://help.aliyun.com/document_detail/271655.html) operation to query report IDs.
+        # 
+        # This parameter is required.
         self.report_id = report_id
         # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -8388,6 +8538,8 @@ class DescribeCdnSMCertificateDetailRequest(TeaModel):
         security_token: str = None,
     ):
         # The ID of the certificate.
+        # 
+        # This parameter is required.
         self.cert_identifier = cert_identifier
         self.owner_id = owner_id
         self.security_token = security_token
@@ -8553,6 +8705,8 @@ class DescribeCdnSMCertificateListRequest(TeaModel):
         security_token: str = None,
     ):
         # The accelerated domain name. You can specify only one domain name in each request.
+        # 
+        # This parameter is required.
         self.domain_name = domain_name
         self.owner_id = owner_id
         self.security_token = security_token
@@ -9089,11 +9243,15 @@ class DescribeCdnSecFuncInfoRequest(TeaModel):
         # 
         # *   en: English
         # *   zh: Chinese
+        # 
+        # This parameter is required.
         self.lang = lang
         # The type of the security feature. Valid values:
         # 
         # *   CipherSuiteGroupCustomize: custom cipher suite.
         # *   CipherSuiteGroupStrict: dustom cipher suite.
+        # 
+        # This parameter is required.
         self.sec_func_type = sec_func_type
 
     def validate(self):
@@ -9563,10 +9721,14 @@ class DescribeCdnUserBillHistoryRequest(TeaModel):
         # The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         # 
         # The end time must be later than the start time.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         # 
         # The minimum data granularity is 5 minutes.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -9884,7 +10046,7 @@ class DescribeCdnUserBillPredictionRequest(TeaModel):
         # 
         # By default, the value of this parameter is determined by the metering method that is currently used. Regions inside and outside the Chinese mainland are classified into the **CN** and **OverSeas** billable regions. Billable regions inside the Chinese mainland include **CN**. Billable regions outside the Chinese mainland include **AP1**, **AP2**, **AP3**, **NA**, **SA**, **EU**, and **MEAA**.
         # 
-        # > For more information about billable regions, see [Billable regions](~~142221~~).
+        # > For more information about billable regions, see [Billable regions](https://help.aliyun.com/document_detail/142221.html).
         self.area = area
         # The billable item. A value of flow specifies bandwidth.
         self.dimension = dimension
@@ -10017,17 +10179,17 @@ class DescribeCdnUserBillPredictionResponseBody(TeaModel):
         self.bill_prediction_data = bill_prediction_data
         # The metering method.
         # 
-        # > If the metering method ends with \_overseas, the billable region is outside the Chinese mainland. For example, BillType": "month_avg_day_bandwidth_overseas specifies a billable region outside the Chinese mainland and that the metering method is pay by daily peak bandwidth per month.
+        # > If the metering method ends with _overseas, the billable region is outside the Chinese mainland. For example, BillType": "month_avg_day_bandwidth_overseas specifies a billable region outside the Chinese mainland and that the metering method is pay by daily peak bandwidth per month.
         # 
         # Valid values:
         # 
         # *   hour_flow: pay by hourly data transfer
         # *   day_bandwidth: pay by daily bandwidth
-        # *   month\_95: pay by monthly 95th percentile bandwidth.
+        # *   month_95: pay by monthly 95th percentile bandwidth.
         # *   month_avg_day_bandwidth: pay by average daily peak bandwidth per month
-        # *   month\_4th_day_bandwidth: pay by monthly 4th peak bandwidth
-        # *   month_avg_day\_95: pay by average daily 95th percentile bandwidth per month
-        # *   month\_95\_night_half: pay by 95th percentile bandwidth with 50% off from 00:00 to 08:00.
+        # *   month_4th_day_bandwidth: pay by monthly 4th peak bandwidth
+        # *   month_avg_day_95: pay by average daily 95th percentile bandwidth per month
+        # *   month_95_night_half: pay by 95th percentile bandwidth with 50% off from 00:00 to 08:00.
         # *   hour_vas: pay by value-added services per hour
         # *   day_count: pay by daily requests
         self.bill_type = bill_type
@@ -10126,10 +10288,14 @@ class DescribeCdnUserBillTypeRequest(TeaModel):
         # The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         # 
         # The end time must be later than the start time.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         # 
         # The minimum data granularity is 5 minutes.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -10168,22 +10334,22 @@ class DescribeCdnUserBillTypeResponseBodyBillTypeDataBillTypeDataItem(TeaModel):
     ):
         # The metering method.
         # 
-        # > If the metering method is suffixed with \*\*\_overseas\*\*, the billable region is outside the Chinese mainland. For example, "BillType": "month_avg_day_bandwidth_overseas" indicates that the metering method is pay by average daily peak bandwidth per month in a billable region outside the Chinese mainland.
+        # > If the metering method is suffixed with \\*\\*_overseas\\*\\*, the billable region is outside the Chinese mainland. For example, "BillType": "month_avg_day_bandwidth_overseas" indicates that the metering method is pay by average daily peak bandwidth per month in a billable region outside the Chinese mainland.
         # 
         # Valid values:
         # 
         # *   hour_flow: pay by hourly data transfer
         # *   day_bandwidth: pay by daily bandwidth
-        # *   month\_95: pay by monthly 95th percentile bandwidth
+        # *   month_95: pay by monthly 95th percentile bandwidth
         # *   month_avg_day_bandwidth: pay by average daily peak bandwidth per month
-        # *   month\_4th_day_bandwidth: pay by monthly 4th peak bandwidth
-        # *   month_avg_day\_95: pay by average daily 95th percentile bandwidth per month
-        # *   month\_95\_night_half: pay by 95th percentile bandwidth with 50% off from 00:00 to 08:00
+        # *   month_4th_day_bandwidth: pay by monthly 4th peak bandwidth
+        # *   month_avg_day_95: pay by average daily 95th percentile bandwidth per month
+        # *   month_95_night_half: pay by 95th percentile bandwidth with 50% off from 00:00 to 08:00
         # *   hour_vas: pay by value-added services per hour
         # *   quic_hour_count: pay by hourly QUIC requests
         # *   day_count: pay by daily requests
         # *   hour_count: pay by hourly requests
-        # *   day\_95: pay by daily 95th percentile bandwidth
+        # *   day_95: pay by daily 95th percentile bandwidth
         self.bill_type = bill_type
         # The billing cycle.
         self.billing_cycle = billing_cycle
@@ -10365,6 +10531,8 @@ class DescribeCdnUserConfigsRequest(TeaModel):
         # 
         # *   **domain_business_control**: user configurations
         # *   **waf**: Web Application Firewall (WAF) configurations
+        # 
+        # This parameter is required.
         self.function_name = function_name
 
     def validate(self):
@@ -10534,6 +10702,8 @@ class DescribeCdnUserDomainsByFuncRequest(TeaModel):
         # The ID of the feature.
         # 
         # For example, the ID of the origin host feature (set_req_host_header) is 18.
+        # 
+        # This parameter is required.
         self.func_id = func_id
         # The number of the page to return. Default value: **1**.
         # 
@@ -11362,6 +11532,8 @@ class DescribeCdnWafDomainRequest(TeaModel):
         # *   **ap-southeast-1**: outside the Chinese mainland
         # 
         # > ap-southeast-1 includes Hong Kong (China), Macao (China), Taiwan (China), and other countries and regions.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -11560,6 +11732,8 @@ class DescribeCertificateInfoByIDRequest(TeaModel):
         cert_id: str = None,
     ):
         # The ID of the certificate. You can query only one certificate in each call.
+        # 
+        # This parameter is required.
         self.cert_id = cert_id
 
     def validate(self):
@@ -11775,6 +11949,8 @@ class DescribeCustomLogConfigRequest(TeaModel):
         config_id: str = None,
     ):
         # The ID of the custom configuration.
+        # 
+        # This parameter is required.
         self.config_id = config_id
 
     def validate(self):
@@ -11915,9 +12091,9 @@ class DescribeDomainAverageResponseTimeRequest(TeaModel):
         # *   If the time span between StartTime and EndTime is greater than or equal to 3 days and less than 31 days, valid values are **3600** and **86400**. Default value: **3600**.
         # *   If the time range between StartTime and EndTime is 31 days or longer, the valid value is **86400**. Default value: **86400**.
         self.interval = interval
-        # The name of the Internet service provider (ISP) for your Alibaba Cloud CDN service. You can call the [DescribeCdnRegionAndIsp](~~91077~~) operation to query ISPs. If you do not set this parameter, data of all ISPs is queried.
+        # The name of the Internet service provider (ISP) for your Alibaba Cloud CDN service. You can call the [DescribeCdnRegionAndIsp](https://help.aliyun.com/document_detail/91077.html) operation to query ISPs. If you do not set this parameter, data of all ISPs is queried.
         self.isp_name_en = isp_name_en
-        # The name of the region. You can call the [DescribeCdnRegionAndIsp](~~91077~~) operation to query regions. If you do not set this parameter, data in all regions is queried.
+        # The name of the region. You can call the [DescribeCdnRegionAndIsp](https://help.aliyun.com/document_detail/91077.html) operation to query regions. If you do not set this parameter, data in all regions is queried.
         self.location_name_en = location_name_en
         # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.start_time = start_time
@@ -12170,11 +12346,11 @@ class DescribeDomainBpsDataRequest(TeaModel):
         # 
         # The time granularity varies with the maximum time range per query. Valid values: 300 (5 minutes), 3600 (1 hour), and 86400 (1 day). For more information, see **Usage notes**.
         self.interval = interval
-        # The name of the Internet service provider (ISP). You can call the [DescribeCdnRegionAndIsp](~~91077~~) operation to query ISP names.
+        # The name of the Internet service provider (ISP). You can call the [DescribeCdnRegionAndIsp](https://help.aliyun.com/document_detail/91077.html) operation to query ISP names.
         # 
         # If you do not set this parameter, data of all ISPs is queried.
         self.isp_name_en = isp_name_en
-        # The name of the region. You can call the [DescribeCdnRegionAndIsp](~~91077~~) operation to query regions.
+        # The name of the region. You can call the [DescribeCdnRegionAndIsp](https://help.aliyun.com/document_detail/91077.html) operation to query regions.
         # 
         # If you do not specify a region, data in all regions is queried.
         self.location_name_en = location_name_en
@@ -12703,18 +12879,26 @@ class DescribeDomainBpsDataByTimeStampRequest(TeaModel):
         time_point: str = None,
     ):
         # The accelerated domain name. You can specify only one domain name in each request.
+        # 
+        # This parameter is required.
         self.domain_name = domain_name
         # The names of the Internet service providers (ISPs). Separate multiple ISPs with commas (,).
         # 
-        # You can call the [DescribeCdnRegionAndIsp](~~91077~~) operation to query regions.
+        # You can call the [DescribeCdnRegionAndIsp](https://help.aliyun.com/document_detail/91077.html) operation to query regions.
+        # 
+        # This parameter is required.
         self.isp_names = isp_names
         # The regions. Separate multiple regions with commas (,).
         # 
-        # You can call the [DescribeCdnRegionAndIsp](~~91077~~) operation to query regions.
+        # You can call the [DescribeCdnRegionAndIsp](https://help.aliyun.com/document_detail/91077.html) operation to query regions.
+        # 
+        # This parameter is required.
         self.location_names = location_names
         # The point in time to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         # 
         # > The data is collected every 5 minutes.
+        # 
+        # This parameter is required.
         self.time_point = time_point
 
     def validate(self):
@@ -13200,6 +13384,8 @@ class DescribeDomainCertificateInfoRequest(TeaModel):
         domain_name: str = None,
     ):
         # The accelerated domain name. You can specify only one domain name in each request.
+        # 
+        # This parameter is required.
         self.domain_name = domain_name
 
     def validate(self):
@@ -13494,6 +13680,8 @@ class DescribeDomainCnameRequest(TeaModel):
         domain_name: str = None,
     ):
         # The accelerated domain name that you want to query. Separate multiple domain names with commas (,). This parameter cannot be left empty.
+        # 
+        # This parameter is required.
         self.domain_name = domain_name
 
     def validate(self):
@@ -13680,6 +13868,8 @@ class DescribeDomainCustomLogConfigRequest(TeaModel):
         domain_name: str = None,
     ):
         # The domain name. You can specify only one domain name.
+        # 
+        # This parameter is required.
         self.domain_name = domain_name
 
     def validate(self):
@@ -13810,17 +14000,23 @@ class DescribeDomainDetailDataByLayerRequest(TeaModel):
         location_name_en: str = None,
         start_time: str = None,
     ):
-        # The name of the Internet service provider (ISP) for your Alibaba Cloud CDN service. You can call the [DescribeCdnRegionAndIsp](~~91077~~) operation to query ISP names.
+        # The name of the Internet service provider (ISP) for your Alibaba Cloud CDN service. You can call the [DescribeCdnRegionAndIsp](https://help.aliyun.com/document_detail/91077.html) operation to query ISP names.
         # 
         # If you do not specify an ISP, data of all ISPs is queried.
+        # 
+        # This parameter is required.
         self.domain_name = domain_name
         # The protocol by which you want to query data. Valid values: **http**, **https**, **quic**, and **all**.
         # 
         # The default value is **all**.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         # 
         # >  The end time must be later than the start time.
+        # 
+        # This parameter is required.
         self.field = field
         # The ID of the request.
         self.isp_name_en = isp_name_en
@@ -13828,9 +14024,11 @@ class DescribeDomainDetailDataByLayerRequest(TeaModel):
         self.layer = layer
         # The detailed data of the accelerated domain names.
         self.location_name_en = location_name_en
-        # The name of the region. You can call the [DescribeCdnRegionAndIsp](~~91077~~) operation to query regions.
+        # The name of the region. You can call the [DescribeCdnRegionAndIsp](https://help.aliyun.com/document_detail/91077.html) operation to query regions.
         # 
         # If you do not specify a region, data in all regions is queried.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -14688,7 +14886,7 @@ class DescribeDomainHttpCodeDataByLayerRequest(TeaModel):
         # 
         # The time granularity varies with the maximum time range per query. Valid values: 300 (5 minutes), 3600 (1 hour), and 86400 (1 day). For more information, see **Usage notes**.
         self.interval = interval
-        # The name of the Internet service provider (ISP). You can call the [DescribeCdnRegionAndIsp](~~91077~~) operation to query ISP names.
+        # The name of the Internet service provider (ISP). You can call the [DescribeCdnRegionAndIsp](https://help.aliyun.com/document_detail/91077.html) operation to query ISP names.
         # 
         # If you do not specify an ISP, data of all ISPs is queried.
         self.isp_name_en = isp_name_en
@@ -14696,7 +14894,7 @@ class DescribeDomainHttpCodeDataByLayerRequest(TeaModel):
         # 
         # Default value: **all**\
         self.layer = layer
-        # The name of the region. You can call the [DescribeCdnRegionAndIsp](~~91077~~) operation to query regions.
+        # The name of the region. You can call the [DescribeCdnRegionAndIsp](https://help.aliyun.com/document_detail/91077.html) operation to query regions.
         # 
         # If you do not specify a region, data in all regions is queried.
         self.location_name_en = location_name_en
@@ -15821,6 +16019,8 @@ class DescribeDomainPathDataRequest(TeaModel):
         # The accelerated domain name.
         # 
         # > You can specify only one domain name in each call.
+        # 
+        # This parameter is required.
         self.domain_name = domain_name
         # The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. The interval between the start time and end time must be less than 30 days. Example: 2016-10-21T04:00:00Z.
         self.end_time = end_time
@@ -16087,6 +16287,8 @@ class DescribeDomainPvDataRequest(TeaModel):
         start_time: str = None,
     ):
         # The accelerated domain name. You can specify only one domain name.
+        # 
+        # This parameter is required.
         self.domain_name = domain_name
         # The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         # 
@@ -16321,9 +16523,9 @@ class DescribeDomainQpsDataRequest(TeaModel):
         # 
         # The time granularity varies with the maximum time range per query. Valid values: 300 (5 minutes), 3600 (1 hour), and 86400 (1 day). For more information, see **Usage notes**.
         self.interval = interval
-        # The name of the Internet service provider (ISP) for your Alibaba Cloud CDN service. You can call the [DescribeCdnRegionAndIsp](~~91077~~) operation to query ISPs. If you do not specify an ISP, data of all ISPs is queried.
+        # The name of the Internet service provider (ISP) for your Alibaba Cloud CDN service. You can call the [DescribeCdnRegionAndIsp](https://help.aliyun.com/document_detail/91077.html) operation to query ISPs. If you do not specify an ISP, data of all ISPs is queried.
         self.isp_name_en = isp_name_en
-        # The name of the region. You can call the [DescribeCdnRegionAndIsp](~~91077~~) operation to query regions. If you do not specify a region, data in all regions is queried.
+        # The name of the region. You can call the [DescribeCdnRegionAndIsp](https://help.aliyun.com/document_detail/91077.html) operation to query regions. If you do not specify a region, data in all regions is queried.
         self.location_name_en = location_name_en
         # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.start_time = start_time
@@ -16644,7 +16846,7 @@ class DescribeDomainQpsDataByLayerRequest(TeaModel):
         # 
         # The time granularity varies with the maximum time range per query. Valid values: 300 (5 minutes), 3600 (1 hour), and 86400 (1 day). For more information, see **Description**.
         self.interval = interval
-        # The name of the Internet service provider (ISP) for your Alibaba Cloud CDN service. You can call the [DescribeCdnRegionAndIsp](~~91077~~) operation to query ISPs. If you do not set this parameter, all ISPs are queried.
+        # The name of the Internet service provider (ISP) for your Alibaba Cloud CDN service. You can call the [DescribeCdnRegionAndIsp](https://help.aliyun.com/document_detail/91077.html) operation to query ISPs. If you do not set this parameter, all ISPs are queried.
         self.isp_name_en = isp_name_en
         # The layers at which you want to query the number of queries per second. Valid values:
         # 
@@ -16652,7 +16854,7 @@ class DescribeDomainQpsDataByLayerRequest(TeaModel):
         # *   **Application layer**: **http**, **https**, and **quic**.
         # *   **all**: The default value. Both the network and application layers are included.
         self.layer = layer
-        # The name of the region. You can call the [DescribeCdnRegionAndIsp](~~91077~~) operation to query the most recent region list. If you do not set this parameter, all regions are queried.
+        # The name of the region. You can call the [DescribeCdnRegionAndIsp](https://help.aliyun.com/document_detail/91077.html) operation to query the most recent region list. If you do not set this parameter, all regions are queried.
         self.location_name_en = location_name_en
         # The beginning of the time range to query. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format in the ISO 8601 standard. The time is displayed in UTC.
         self.start_time = start_time
@@ -16931,6 +17133,8 @@ class DescribeDomainRealTimeBpsDataRequest(TeaModel):
         # The accelerated domain name. Separate multiple accelerated domain names with commas (,).
         # 
         # > You can specify up to 500 domain names in each request.
+        # 
+        # This parameter is required.
         self.domain_name = domain_name
         # The end of the time range to query.
         # 
@@ -16940,11 +17144,11 @@ class DescribeDomainRealTimeBpsDataRequest(TeaModel):
         self.end_time = end_time
         # The name of the Internet service provider (ISP).
         # 
-        # You can call the [DescribeCdnRegionAndIsp](~~91077~~) operation to query ISPs. If you do not set this parameter, all ISPs are queried.
+        # You can call the [DescribeCdnRegionAndIsp](https://help.aliyun.com/document_detail/91077.html) operation to query ISPs. If you do not set this parameter, all ISPs are queried.
         self.isp_name_en = isp_name_en
         # The name of the region.
         # 
-        # You can call the [DescribeCdnRegionAndIsp](~~91077~~) operation to query regions. If you do not set this parameter, all regions are queried.
+        # You can call the [DescribeCdnRegionAndIsp](https://help.aliyun.com/document_detail/91077.html) operation to query regions. If you do not set this parameter, all regions are queried.
         self.location_name_en = location_name_en
         # The beginning of the time range to query.
         # 
@@ -17143,6 +17347,8 @@ class DescribeDomainRealTimeByteHitRateDataRequest(TeaModel):
         start_time: str = None,
     ):
         # The accelerated domain name. You can specify up to 100 domain names in each call. Separate multiple domain names with commas (,).
+        # 
+        # This parameter is required.
         self.domain_name = domain_name
         # The end of the time range to query.
         # 
@@ -17344,22 +17550,28 @@ class DescribeDomainRealTimeDetailDataRequest(TeaModel):
         start_time: str = None,
     ):
         # The accelerated domain name that you want to query.
+        # 
+        # This parameter is required.
         self.domain_name = domain_name
         # The end of the time range to query.
         # 
         # Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. Example: 2019-11-30T05:40:00Z.
         # 
         # > The end time must be later than the start time. The difference between the end time and the start time cannot exceed 10 minutes.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The type of data that you want to query. You can specify multiple data types and separate them with commas (,). Valid values:
         # 
         # *   **qps**: queries per second (QPS)
         # *   **bps**: bandwidth
         # *   **http_code**: HTTP status code
+        # 
+        # This parameter is required.
         self.field = field
-        # The name of the Internet service provider (ISP). You can call the [DescribeCdnRegionAndIsp](~~91077~~) operation to query ISPs. If you do not specify an ISP, data of all ISPs is queried.
+        # The name of the Internet service provider (ISP). You can call the [DescribeCdnRegionAndIsp](https://help.aliyun.com/document_detail/91077.html) operation to query ISPs. If you do not specify an ISP, data of all ISPs is queried.
         self.isp_name_en = isp_name_en
-        # The name of the region. If you do not specify a region, data in all regions is queried. You can call the [DescribeCdnRegionAndIsp](~~91077~~) operation to query regions.
+        # The name of the region. If you do not specify a region, data in all regions is queried. You can call the [DescribeCdnRegionAndIsp](https://help.aliyun.com/document_detail/91077.html) operation to query regions.
         self.location_name_en = location_name_en
         # Specifies whether to return a summary value based on ISPs and regions. Valid values:
         # 
@@ -17378,6 +17590,8 @@ class DescribeDomainRealTimeDetailDataRequest(TeaModel):
         # The beginning of the time range to query.
         # 
         # Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. Example: 2019-11-30T05:33:00Z.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -17516,6 +17730,8 @@ class DescribeDomainRealTimeHttpCodeDataRequest(TeaModel):
         # The accelerated domain name. You can specify multiple accelerated domain names and separate them with commas (,).
         # 
         # > You can specify up to 100 accelerated domain names in each request.
+        # 
+        # This parameter is required.
         self.domain_name = domain_name
         # The end of the time range to query.
         # 
@@ -17523,9 +17739,9 @@ class DescribeDomainRealTimeHttpCodeDataRequest(TeaModel):
         # 
         # > The end time must be later than the start time.
         self.end_time = end_time
-        # The name of the Internet service provider (ISP). You can call the [DescribeCdnRegionAndIsp](~~91077~~) operation to query ISP names.
+        # The name of the Internet service provider (ISP). You can call the [DescribeCdnRegionAndIsp](https://help.aliyun.com/document_detail/91077.html) operation to query ISP names.
         self.isp_name_en = isp_name_en
-        # The name of the region. You can call the [DescribeCdnRegionAndIsp](~~91077~~) operation to query regions. If you do not specify a region, all regions are queried.
+        # The name of the region. You can call the [DescribeCdnRegionAndIsp](https://help.aliyun.com/document_detail/91077.html) operation to query regions. If you do not specify a region, all regions are queried.
         self.location_name_en = location_name_en
         # The beginning of the time range to query.
         # 
@@ -17837,6 +18053,8 @@ class DescribeDomainRealTimeQpsDataRequest(TeaModel):
         # The accelerated domain name. Separate multiple accelerated domain names with commas (,).
         # 
         # > You can specify up to 500 domain names in each request.
+        # 
+        # This parameter is required.
         self.domain_name = domain_name
         # The end of the time range to query.
         # 
@@ -17846,11 +18064,11 @@ class DescribeDomainRealTimeQpsDataRequest(TeaModel):
         self.end_time = end_time
         # The name of the Internet service provider (ISP).
         # 
-        # If you do not set this parameter, data of all ISPs is queried. You can call the [DescribeCdnRegionAndIsp](~~91077~~) operation to query ISP names.
+        # If you do not set this parameter, data of all ISPs is queried. You can call the [DescribeCdnRegionAndIsp](https://help.aliyun.com/document_detail/91077.html) operation to query ISP names.
         self.isp_name_en = isp_name_en
         # The name of the region.
         # 
-        # If you do not set this parameter, data in all regions is queried. You can call the [DescribeCdnRegionAndIsp](~~91077~~) operation to query regions.
+        # If you do not set this parameter, data in all regions is queried. You can call the [DescribeCdnRegionAndIsp](https://help.aliyun.com/document_detail/91077.html) operation to query regions.
         self.location_name_en = location_name_en
         # The beginning of the time range to query.
         # 
@@ -18049,6 +18267,8 @@ class DescribeDomainRealTimeReqHitRateDataRequest(TeaModel):
         start_time: str = None,
     ):
         # The accelerated domain name. You can specify up to 100 domain names in each call. Separate multiple domain names with commas (,).
+        # 
+        # This parameter is required.
         self.domain_name = domain_name
         # The end of the time range to query.
         # 
@@ -18245,6 +18465,8 @@ class DescribeDomainRealTimeSrcBpsDataRequest(TeaModel):
         start_time: str = None,
     ):
         # The accelerated domain name. You can specify up to 100 domain names in each request. Separate multiple domain names with commas (,).
+        # 
+        # This parameter is required.
         self.domain_name = domain_name
         # The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         # 
@@ -18471,14 +18693,16 @@ class DescribeDomainRealTimeSrcHttpCodeDataRequest(TeaModel):
         start_time: str = None,
     ):
         # The accelerated domain name. You can specify up to 100 domain names in each call. Separate multiple domain names with commas (,).
+        # 
+        # This parameter is required.
         self.domain_name = domain_name
         # The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         # 
         # > The end time must be later than the start time.
         self.end_time = end_time
-        # The name of the Internet service provider (ISP). You can call the [DescribeCdnRegionAndIsp](~~91077~~) operation to query ISPs. If you leave this parameter empty, all ISPs are queried.
+        # The name of the Internet service provider (ISP). You can call the [DescribeCdnRegionAndIsp](https://help.aliyun.com/document_detail/91077.html) operation to query ISPs. If you leave this parameter empty, all ISPs are queried.
         self.isp_name_en = isp_name_en
-        # The name of the region. You can call the [DescribeCdnRegionAndIsp](~~91077~~) operation to query regions. If you leave this parameter empty, all regions are queried.
+        # The name of the region. You can call the [DescribeCdnRegionAndIsp](https://help.aliyun.com/document_detail/91077.html) operation to query regions. If you leave this parameter empty, all regions are queried.
         self.location_name_en = location_name_en
         # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.start_time = start_time
@@ -18782,6 +19006,8 @@ class DescribeDomainRealTimeSrcTrafficDataRequest(TeaModel):
         start_time: str = None,
     ):
         # The accelerated domain name. You can specify up to 100 domain names in each call. Separate multiple domain names with commas (,).
+        # 
+        # This parameter is required.
         self.domain_name = domain_name
         # The end of the time range to query.
         # 
@@ -19010,6 +19236,8 @@ class DescribeDomainRealTimeTrafficDataRequest(TeaModel):
         start_time: str = None,
     ):
         # The accelerated domain name. You can specify up to 100 domain names in each call. Separate multiple domain names with commas (,).
+        # 
+        # This parameter is required.
         self.domain_name = domain_name
         # The end of the time range to query.
         # 
@@ -19019,11 +19247,11 @@ class DescribeDomainRealTimeTrafficDataRequest(TeaModel):
         self.end_time = end_time
         # The name of the Internet service provider (ISP).
         # 
-        # You can call the [DescribeCdnRegionAndIsp](~~91077~~) operation to query the most recent region list. If you do not set this parameter, all regions are queried.
+        # You can call the [DescribeCdnRegionAndIsp](https://help.aliyun.com/document_detail/91077.html) operation to query the most recent region list. If you do not set this parameter, all regions are queried.
         self.isp_name_en = isp_name_en
         # The name of the region.
         # 
-        # You can call the [DescribeCdnRegionAndIsp](~~91077~~) operation to query the most recent region list. If you do not set this parameter, all regions are queried.
+        # You can call the [DescribeCdnRegionAndIsp](https://help.aliyun.com/document_detail/91077.html) operation to query the most recent region list. If you do not set this parameter, all regions are queried.
         self.location_name_en = location_name_en
         # The beginning of the time range to query.
         # 
@@ -19250,6 +19478,8 @@ class DescribeDomainRealtimeLogDeliveryRequest(TeaModel):
         domain: str = None,
     ):
         # The accelerated domain name for which real-time log delivery is enabled. You can specify only one domain name.
+        # 
+        # This parameter is required.
         self.domain = domain
 
     def validate(self):
@@ -20702,6 +20932,8 @@ class DescribeDomainSrcTopUrlVisitRequest(TeaModel):
         start_time: str = None,
     ):
         # The accelerated domain name. Separate multiple accelerated domain names with commas (,).
+        # 
+        # This parameter is required.
         self.domain_name = domain_name
         # The end of the time range to query.
         # 
@@ -21608,7 +21840,7 @@ class DescribeDomainTopClientIpVisitRequest(TeaModel):
         self.limit = limit
         # The name of the region. Separate multiple region names with commas (,).
         # 
-        # You can call the [DescribeCdnRegionAndIsp](~~91077~~) operation to query regions.
+        # You can call the [DescribeCdnRegionAndIsp](https://help.aliyun.com/document_detail/91077.html) operation to query regions.
         self.location_name_en = location_name_en
         # The criterion by which you want to sort client IP addresses. Valid values:
         # 
@@ -21802,6 +22034,8 @@ class DescribeDomainTopReferVisitRequest(TeaModel):
         start_time: str = None,
     ):
         # The accelerated domain name. Separate multiple accelerated domain names with commas (,).
+        # 
+        # This parameter is required.
         self.domain_name = domain_name
         # The end of the time range to query.
         # 
@@ -22043,6 +22277,8 @@ class DescribeDomainTopUrlVisitRequest(TeaModel):
         start_time: str = None,
     ):
         # The accelerated domain name that you want to query.
+        # 
+        # This parameter is required.
         self.domain_name = domain_name
         # The end of the time range to query.
         # 
@@ -23006,6 +23242,8 @@ class DescribeDomainUsageDataRequest(TeaModel):
         # Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         # 
         # > The end time must be later than the start time. The maximum time range that can be specified is 31 days.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The type of the data that you want to query. Valid values:
         # 
@@ -23014,6 +23252,8 @@ class DescribeDomainUsageDataRequest(TeaModel):
         # *   **acc**: requests
         # 
         # > If you set this parameter to **acc**, the **Area** parameter is not supported.
+        # 
+        # This parameter is required.
         self.field = field
         # The time granularity of the data entries. Unit: seconds. Valid values: **300** (5 minutes), **3600** (1 hour), and **86400** (1 day).
         # 
@@ -23026,6 +23266,8 @@ class DescribeDomainUsageDataRequest(TeaModel):
         # Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         # 
         # > Data is collected every 5 minutes.
+        # 
+        # This parameter is required.
         self.start_time = start_time
         # The type of content that you want to query. Valid values:
         # 
@@ -23298,6 +23540,8 @@ class DescribeDomainUvDataRequest(TeaModel):
         start_time: str = None,
     ):
         # The accelerated domain name. You can specify only one domain name.
+        # 
+        # This parameter is required.
         self.domain_name = domain_name
         # The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         # 
@@ -23517,6 +23761,8 @@ class DescribeDomainVerifyDataRequest(TeaModel):
         global_resource_plan: str = None,
     ):
         # The accelerated domain name. You can specify only one domain name in each request.
+        # 
+        # This parameter is required.
         self.domain_name = domain_name
         # Specifies whether to enable the global resource plan.
         # 
@@ -23649,6 +23895,8 @@ class DescribeDomainsBySourceRequest(TeaModel):
         self.owner_id = owner_id
         self.security_token = security_token
         # The origin servers. Separate multiple origin servers with commas (,). Fuzzy match is not supported.
+        # 
+        # This parameter is required.
         self.sources = sources
 
     def validate(self):
@@ -24363,12 +24611,18 @@ class DescribeEsExceptionDataRequest(TeaModel):
         # Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         # 
         # > The end time must be later than the start time.
+        # 
+        # This parameter is required.
         self.end_time = end_time
-        # The script ID. You can call the [DescribeCdnDomainConfigs](~~90924~~) operation to query script IDs.
+        # The script ID. You can call the [DescribeCdnDomainConfigs](https://help.aliyun.com/document_detail/90924.html) operation to query script IDs.
+        # 
+        # This parameter is required.
         self.rule_id = rule_id
         # The beginning of the time range to query.
         # 
         # Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -24571,10 +24825,16 @@ class DescribeEsExecuteDataRequest(TeaModel):
         # The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         # 
         # > The end time must be later than the start time.
+        # 
+        # This parameter is required.
         self.end_time = end_time
-        # The ID of the rule. You can call the [DescribeCdnDomainConfigs](~~90924~~) operation to query script IDs.
+        # The ID of the rule. You can call the [DescribeCdnDomainConfigs](https://help.aliyun.com/document_detail/90924.html) operation to query script IDs.
+        # 
+        # This parameter is required.
         self.rule_id = rule_id
         # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -24737,6 +24997,8 @@ class DescribeFCTriggerRequest(TeaModel):
         trigger_arn: str = None,
     ):
         # The trigger that corresponds to the Function Compute service.
+        # 
+        # This parameter is required.
         self.trigger_arn = trigger_arn
 
     def validate(self):
@@ -24906,6 +25168,8 @@ class DescribeIpInfoRequest(TeaModel):
         ip: str = None,
     ):
         # The IP address. You can specify only one IP address.
+        # 
+        # This parameter is required.
         self.ip = ip
 
     def validate(self):
@@ -25039,7 +25303,9 @@ class DescribeIpStatusRequest(TeaModel):
         self,
         ips: str = None,
     ):
-        # The IP addresses that you want to query. Separate IP addresses with underscores (\_), such as Ips=ip1\_ip2.
+        # The IP addresses that you want to query. Separate IP addresses with underscores (_), such as Ips=ip1_ip2.
+        # 
+        # This parameter is required.
         self.ips = ips
 
     def validate(self):
@@ -25193,6 +25459,8 @@ class DescribeL2VipsByDomainRequest(TeaModel):
         security_token: str = None,
     ):
         # The accelerated domain name. You can specify only one domain name in each request.
+        # 
+        # This parameter is required.
         self.domain_name = domain_name
         self.owner_id = owner_id
         self.security_token = security_token
@@ -25343,6 +25611,8 @@ class DescribePreloadDetailByIdRequest(TeaModel):
         task_id: str = None,
     ):
         # Queries the details of a preload task by task ID. You can query one task ID at a time.
+        # 
+        # This parameter is required.
         self.task_id = task_id
 
     def validate(self):
@@ -25604,24 +25874,30 @@ class DescribeRangeDataByLocateAndIspServiceRequest(TeaModel):
         start_time: str = None,
     ):
         # The accelerated domain name.
+        # 
+        # This parameter is required.
         self.domain_names = domain_names
         # The end of the time range to query.
         # 
         # Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         # 
         # > The end time must be later than the start time. The maximum time range that can be specified is 1 hour.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The name of the ISP. You can specify only one ISP name in each call.
         # 
-        # You can call the [DescribeCdnRegionAndIsp](~~91077~~) operation to query ISPs.
+        # You can call the [DescribeCdnRegionAndIsp](https://help.aliyun.com/document_detail/91077.html) operation to query ISPs.
         self.isp_names = isp_names
         # The names of the regions. Separate multiple region names with commas (,).
         # 
-        # You can call the [DescribeCdnRegionAndIsp](~~91077~~) operation to query the most recent region list.
+        # You can call the [DescribeCdnRegionAndIsp](https://help.aliyun.com/document_detail/91077.html) operation to query the most recent region list.
         self.location_names = location_names
         # The beginning of the time range to query.
         # 
         # Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -26160,9 +26436,11 @@ class DescribeRefreshTaskByIdRequest(TeaModel):
     ):
         # The ID of the task that you want to query.
         # 
-        # You can call the [RefreshObjectCaches](~~91164~~) operation to query task IDs. Then, you can use the task IDs to query task status.
+        # You can call the [RefreshObjectCaches](https://help.aliyun.com/document_detail/91164.html) operation to query task IDs. Then, you can use the task IDs to query task status.
         # 
         # You can specify up to 10 task IDs. Separate task IDs with commas (,).
+        # 
+        # This parameter is required.
         self.task_id = task_id
 
     def validate(self):
@@ -26841,8 +27119,12 @@ class DescribeTagResourcesRequest(TeaModel):
         tag: List[DescribeTagResourcesRequestTag] = None,
     ):
         # The IDs of the resources. You can specify up to 50 IDs in each request.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
         # The resource type. Set the value to **DOMAIN**.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The tags. You can specify up to 20 tags in each request.
         self.tag = tag
@@ -27393,6 +27675,8 @@ class DescribeUserConfigsRequest(TeaModel):
         security_token: str = None,
     ):
         # The feature whose configurations you want to query. You can specify only one feature in each request. Valid values: oss, green_manager, waf, cc_rule, ddos_dispatch, edge_safe, blocked_regions, http_acl_policy, bot_manager, and ip_reputation.
+        # 
+        # This parameter is required.
         self.config = config
         self.owner_id = owner_id
         self.security_token = security_token
@@ -28927,6 +29211,8 @@ class DescribeUserVipsByDomainRequest(TeaModel):
         # *   **off**: all CDN edge nodes.
         self.available = available
         # The accelerated domain name. You can specify only one domain name.
+        # 
+        # This parameter is required.
         self.domain_name = domain_name
 
     def validate(self):
@@ -29071,6 +29357,8 @@ class DescribeVerifyContentRequest(TeaModel):
         domain_name: str = None,
     ):
         # The domain name of which the ownership was verified. You can specify only one domain name.
+        # 
+        # This parameter is required.
         self.domain_name = domain_name
 
     def validate(self):
@@ -29175,6 +29463,8 @@ class DisableRealtimeLogDeliveryRequest(TeaModel):
         domain: str = None,
     ):
         # The accelerated domain name for which you want to disable real-time log delivery. You can specify multiple domain names and separate them with commas (,).
+        # 
+        # This parameter is required.
         self.domain = domain
 
     def validate(self):
@@ -29272,6 +29562,8 @@ class EnableRealtimeLogDeliveryRequest(TeaModel):
         domain: str = None,
     ):
         # The accelerated domain name for which you want to enable real-time log delivery. You can specify multiple domain names and separate them with commas (,).
+        # 
+        # This parameter is required.
         self.domain = domain
 
     def validate(self):
@@ -29369,6 +29661,8 @@ class ListDomainsByLogConfigIdRequest(TeaModel):
         config_id: str = None,
     ):
         # The ID of the custom configuration.
+        # 
+        # This parameter is required.
         self.config_id = config_id
 
     def validate(self):
@@ -29503,8 +29797,12 @@ class ListFCTriggerRequest(TeaModel):
         event_meta_version: str = None,
     ):
         # The name of the event. You can specify only one name.
+        # 
+        # This parameter is required.
         self.event_meta_name = event_meta_name
         # The version number of the event. You can specify only one version number.
+        # 
+        # This parameter is required.
         self.event_meta_version = event_meta_version
 
     def validate(self):
@@ -29686,12 +29984,18 @@ class ListRealtimeLogDeliveryDomainsRequest(TeaModel):
         region: str = None,
     ):
         # The name of the Logstore that collects log data from Alibaba Cloud CDN in real time. You can specify multiple Logstore names and separate them with commas (,).
+        # 
+        # This parameter is required.
         self.logstore = logstore
         # The name of the Log Service project that is used for real-time log delivery. You can specify multiple project names and separate them with commas (,).
+        # 
+        # This parameter is required.
         self.project = project
         # The ID of the region where the Log Service project is deployed. You can specify multiple region IDs and separate them with commas (,).
         # 
-        # For more information about regions, see [Regions that support real-time log delivery](~~144883~~).
+        # For more information about regions, see [Regions that support real-time log delivery](https://help.aliyun.com/document_detail/144883.html).
+        # 
+        # This parameter is required.
         self.region = region
 
     def validate(self):
@@ -29884,7 +30188,7 @@ class ListRealtimeLogDeliveryInfosResponseBodyContentRealtimeLogDeliveryInfos(Te
         self.logstore = logstore
         # The name of the Log Service project that is used for real-time log delivery.
         self.project = project
-        # The ID of the region where the Log Service project is deployed. For more information, see [Regions that support real-time log delivery](~~144883~~).
+        # The ID of the region where the Log Service project is deployed. For more information, see [Regions that support real-time log delivery](https://help.aliyun.com/document_detail/144883.html).
         self.region = region
 
     def validate(self):
@@ -30078,6 +30382,8 @@ class ListTagResourcesRequest(TeaModel):
         # The ID of the resource.
         self.resource_id = resource_id
         # The type of the resource. Set the value to **DOMAIN**.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The key-value pair of a tag.
         self.tag = tag
@@ -30419,6 +30725,8 @@ class ModifyCdnDomainRequest(TeaModel):
         top_level_domain: str = None,
     ):
         # The accelerated domain name. You can specify only one domain name in each request.
+        # 
+        # This parameter is required.
         self.domain_name = domain_name
         self.owner_id = owner_id
         # The ID of the resource group.
@@ -30551,6 +30859,8 @@ class ModifyCdnDomainOwnerRequest(TeaModel):
         security_token: str = None,
     ):
         # The accelerated domain name.
+        # 
+        # This parameter is required.
         self.domain_name = domain_name
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -30594,7 +30904,7 @@ class ModifyCdnDomainOwnerResponseBody(TeaModel):
         content: Dict[str, Any] = None,
         request_id: str = None,
     ):
-        # Procedure
+        # The description of the domain name transfer.
         self.content = content
         # The request ID.
         self.request_id = request_id
@@ -30671,6 +30981,8 @@ class ModifyCdnDomainSchdmByPropertyRequest(TeaModel):
         property: str = None,
     ):
         # The accelerated domain name for which you want to change the acceleration region. You can specify only one domain name.
+        # 
+        # This parameter is required.
         self.domain_name = domain_name
         # The information about the acceleration region. {"coverage":"overseas"}
         # 
@@ -30679,6 +30991,8 @@ class ModifyCdnDomainSchdmByPropertyRequest(TeaModel):
         # *   **domestic**: Chinese mainland
         # *   **overseas**: global (excluding the Chinese mainland)
         # *   **global**: global
+        # 
+        # This parameter is required.
         self.property = property
 
     def validate(self):
@@ -30783,12 +31097,20 @@ class ModifyRealtimeLogDeliveryRequest(TeaModel):
         region: str = None,
     ):
         # The accelerated domain name for which you want to modify the configurations of real-time log delivery. Only one domain name is supported.
+        # 
+        # This parameter is required.
         self.domain = domain
         # The name of the Logstore where log entries are stored.
+        # 
+        # This parameter is required.
         self.logstore = logstore
         # The name of the Log Service project that is used for real-time log delivery.
+        # 
+        # This parameter is required.
         self.project = project
-        # The ID of the region where the Log Service project is deployed. For more information, see [Regions that support real-time log delivery](~~144883~~).
+        # The ID of the region where the Log Service project is deployed. For more information, see [Regions that support real-time log delivery](https://help.aliyun.com/document_detail/144883.html).
+        # 
+        # This parameter is required.
         self.region = region
 
     def validate(self):
@@ -30900,6 +31222,8 @@ class OpenCdnServiceRequest(TeaModel):
         security_token: str = None,
     ):
         # The metering method of Alibaba Cloud CDN. A value of **PayByTraffic** indicates that the metering method is pay-by-data-transfer.
+        # 
+        # This parameter is required.
         self.internet_charge_type = internet_charge_type
         self.owner_id = owner_id
         self.security_token = security_token
@@ -31007,6 +31331,8 @@ class PublishStagingConfigToProductionRequest(TeaModel):
         domain_name: str = None,
     ):
         # The accelerated domain name. You can specify only one domain name in each call.
+        # 
+        # This parameter is required.
         self.domain_name = domain_name
 
     def validate(self):
@@ -31126,7 +31452,9 @@ class PushObjectCacheRequest(TeaModel):
         self.l_2preload = l_2preload
         # The URLs based on which content is prefetched. Format: **accelerated domain name/files to be prefetched**.
         # 
-        # > Separate URLs with line feeds (\n or \r\n). Each object path can be up to 1,024 characters in length.
+        # > Separate URLs with line feeds (\\n or \\r\\n). Each object path can be up to 1,024 characters in length.
+        # 
+        # This parameter is required.
         self.object_path = object_path
         self.owner_id = owner_id
         self.security_token = security_token
@@ -31259,7 +31587,9 @@ class RefreshObjectCacheByCacheTagRequest(TeaModel):
         domain_name: str = None,
         force: bool = None,
     ):
+        # This parameter is required.
         self.cache_tag = cache_tag
+        # This parameter is required.
         self.domain_name = domain_name
         self.force = force
 
@@ -31379,6 +31709,7 @@ class RefreshObjectCachesRequest(TeaModel):
         # *   **true**: refresh all resources in the directory.
         # *   **false**: refresh the changed resources in the directory.
         self.force = force
+        # This parameter is required.
         self.object_path = object_path
         # The type of the object that you want to refresh. Valid values:
         # 
@@ -31387,7 +31718,7 @@ class RefreshObjectCachesRequest(TeaModel):
         # *   **Regex**: refreshes content based on regular expressions.
         # *   **ExQuery**: omits parameters after the question mark in the URL and refreshes content.
         # 
-        # If you set the ObjectType parameter to File or Directory, you can view [Refresh and prefetch resources](~~27140~~) to obtain more information. If you set the ObjectType parameter to Regex, you can view [Configure URL refresh rules that contain regular expressions](~~146195~~) to obtain more information.
+        # If you set the ObjectType parameter to File or Directory, you can view [Refresh and prefetch resources](https://help.aliyun.com/document_detail/27140.html) to obtain more information. If you set the ObjectType parameter to Regex, you can view [Configure URL refresh rules that contain regular expressions](https://help.aliyun.com/document_detail/146195.html) to obtain more information.
         # 
         # If you set the ObjectType parameter to Directory, the resources in the directory that you want to refresh are marked as expired. You cannot delete the directory. If clients request resources on POPs that are marked as expired, Alibaba Cloud CDN checks whether the resources on your origin server are updated. If resources are updated, Alibaba Cloud CDN retrieves the latest version of the resources and returns the resources to the clients. Otherwise, the origin server returns the 304 status code.
         self.object_type = object_type
@@ -31515,6 +31846,8 @@ class RollbackStagingConfigRequest(TeaModel):
         domain_name: str = None,
     ):
         # The accelerated domain name. You can specify only one domain name in each request.
+        # 
+        # This parameter is required.
         self.domain_name = domain_name
 
     def validate(self):
@@ -31613,8 +31946,12 @@ class SetCdnDomainCSRCertificateRequest(TeaModel):
         server_certificate: str = None,
     ):
         # The accelerated domain name for which you want to configure an SSL certificate. The domain name must have HTTPS secure acceleration enabled.
+        # 
+        # This parameter is required.
         self.domain_name = domain_name
-        # The content of the certificate. The certificate must match the certificate signing request (CSR) created by calling the [CreateCdnCertificateSigningRequest](~~144478~~) operation. Make sure that the content of the certificate is encoded in Base64 and then encoded by encodeURIComponent.
+        # The content of the certificate. The certificate must match the certificate signing request (CSR) created by calling the [CreateCdnCertificateSigningRequest](https://help.aliyun.com/document_detail/144478.html) operation. Make sure that the content of the certificate is encoded in Base64 and then encoded by encodeURIComponent.
+        # 
+        # This parameter is required.
         self.server_certificate = server_certificate
 
     def validate(self):
@@ -31720,16 +32057,22 @@ class SetCdnDomainSMCertificateRequest(TeaModel):
         security_token: str = None,
     ):
         # The ID of the SM certificate that you want to configure. The identifier of the certificate. The value is Certificate ID-cn-hangzhou. For example, if the certificate ID is 123, set the value of this parameter to 123-cn-hangzhou.
+        # 
+        # This parameter is required.
         self.cert_identifier = cert_identifier
         # The accelerated domain name for which you want to configure the SM certificate.
         # 
         # > The domain name must use HTTPS acceleration.
+        # 
+        # This parameter is required.
         self.domain_name = domain_name
         self.owner_id = owner_id
         # Specifies whether to enable the SSL certificate. Valid values:
         # 
         # *   **on**\
         # *   **off**\
+        # 
+        # This parameter is required.
         self.sslprotocol = sslprotocol
         self.security_token = security_token
 
@@ -31865,6 +32208,8 @@ class SetCdnDomainSSLCertificateRequest(TeaModel):
         # *   **cas**: a certificate that is acquired through Certificate Management Service.
         self.cert_type = cert_type
         # The accelerated domain name for which you want to configure the SSL certificate. The type of request supported by the domain name must be HTTPS. You can specify only one domain name in each request.
+        # 
+        # This parameter is required.
         self.domain_name = domain_name
         # Specifies whether the certificate is issued in canary releases. If you set this parameter to **staging**, the certificate is issued in canary releases. If you do not specify this parameter or set this parameter to other values, the certificate is officially issued.
         self.env = env
@@ -31875,6 +32220,8 @@ class SetCdnDomainSSLCertificateRequest(TeaModel):
         # 
         # *   **on**\
         # *   **off**\
+        # 
+        # This parameter is required.
         self.sslprotocol = sslprotocol
         # The content of the SSL certificate. Specify the content of the SSL certificate only if you want to enable the SSL certificate.
         self.sslpub = sslpub
@@ -32016,10 +32363,12 @@ class SetCdnDomainStagingConfigRequest(TeaModel):
         functions: str = None,
     ):
         # The accelerated domain name. You can specify only one domain name.
+        # 
+        # This parameter is required.
         self.domain_name = domain_name
         # The features that you want to configure. Format:
         # 
-        # > *   **functionName**: The name of the feature. Separate multiple values with commas (,). For more information, see [A list of features](~~388460~~).
+        # > *   **functionName**: The name of the feature. Separate multiple values with commas (,). For more information, see [A list of features](https://help.aliyun.com/document_detail/388460.html).
         # >*   **argName**: The feature parameters for **functionName**.
         # >*   **argValue**: The parameter values set for **functionName**.
         # 
@@ -32038,6 +32387,8 @@ class SetCdnDomainStagingConfigRequest(TeaModel):
         #          "functionName": "Feature name"
         #             }
         #         ]
+        # 
+        # This parameter is required.
         self.functions = functions
 
     def validate(self):
@@ -32215,6 +32566,8 @@ class SetDomainServerCertificateRequest(TeaModel):
         # The accelerated domain name for which you want to configure the SSL certificate. The type of request supported by the domain name must be HTTPS.
         # 
         # You can specify one domain name in each call.
+        # 
+        # This parameter is required.
         self.domain_name = domain_name
         # Specifies whether to check the certificate name for duplicates. If you set the value to 1, the system does not perform the check and overwrites the information about the existing certificate that uses the same name.
         self.force_set = force_set
@@ -32224,13 +32577,15 @@ class SetDomainServerCertificateRequest(TeaModel):
         self.security_token = security_token
         # The content of the SSL certificate. Specify the content of the SSL certificate only if you want to enable the SSL certificate. You can use one of the following methods to obtain the content of the SSL certificate:
         # 
-        # *   Method 1: Call the [DescribeDomainCertificateInfo](~~91182~~) API operation to query the information about the SSL certificate corresponding to the accelerated domain name and obtain the public key of the ServerCertificate certificate from the returned data.
-        # *   Method 2: Call the [DescribeCdnCertificateList](~~91181~~) API operation to query the SSL certificate list corresponding to the accelerated domain name, and obtain the value of CertName from the returned data. Then, Call the [DescribeCdnCertificateDetail](~~131905~~) API operation with CertName as a parameter to obtain the details about the certificate, and obtain the public key of the Cert certificate from the returned data.
+        # *   Method 1: Call the [DescribeDomainCertificateInfo](https://help.aliyun.com/document_detail/91182.html) API operation to query the information about the SSL certificate corresponding to the accelerated domain name and obtain the public key of the ServerCertificate certificate from the returned data.
+        # *   Method 2: Call the [DescribeCdnCertificateList](https://help.aliyun.com/document_detail/91181.html) API operation to query the SSL certificate list corresponding to the accelerated domain name, and obtain the value of CertName from the returned data. Then, Call the [DescribeCdnCertificateDetail](https://help.aliyun.com/document_detail/131905.html) API operation with CertName as a parameter to obtain the details about the certificate, and obtain the public key of the Cert certificate from the returned data.
         self.server_certificate = server_certificate
         # Specifies whether to enable the SSL certificate. Default value: off. Valid values:
         # 
         # *   **on** : enables the SSL certificate.
         # *   **off**: disables the SSL certificate.
+        # 
+        # This parameter is required.
         self.server_certificate_status = server_certificate_status
 
     def validate(self):
@@ -32367,12 +32722,18 @@ class SetReqHeaderConfigRequest(TeaModel):
         # The ID of the configuration.
         self.config_id = config_id
         # The accelerated domain name. Separate multiple domain names with commas (,).
+        # 
+        # This parameter is required.
         self.domain_name = domain_name
         # The name of the custom header.
+        # 
+        # This parameter is required.
         self.key = key
         self.owner_id = owner_id
         self.security_token = security_token
         # The value of the custom header.
+        # 
+        # This parameter is required.
         self.value = value
 
     def validate(self):
@@ -32495,16 +32856,28 @@ class SetWaitingRoomConfigRequest(TeaModel):
         wait_url: str = None,
     ):
         # The percentage of requests that are allowed to be redirected to the origin server. Valid values: **0** to **100**.
+        # 
+        # This parameter is required.
         self.allow_pct = allow_pct
         # The accelerated domain name. You can specify only one domain name.
+        # 
+        # This parameter is required.
         self.domain_name = domain_name
         # The length of waiting time to skip after an exit from the queue. Unit: seconds.
+        # 
+        # This parameter is required.
         self.gap_time = gap_time
         # The maximum length of waiting time in the queue. Unit: seconds.
+        # 
+        # This parameter is required.
         self.max_time_wait = max_time_wait
         # The regular expression that is used to match URI strings for which the virtual waiting room feature is enabled.
+        # 
+        # This parameter is required.
         self.wait_uri = wait_uri
         # The URL of the waiting page.
+        # 
+        # This parameter is required.
         self.wait_url = wait_url
 
     def validate(self):
@@ -32624,6 +32997,8 @@ class StartCdnDomainRequest(TeaModel):
         security_token: str = None,
     ):
         # The accelerated domain name. You can specify only one domain name in each request.
+        # 
+        # This parameter is required.
         self.domain_name = domain_name
         self.owner_id = owner_id
         self.security_token = security_token
@@ -32733,6 +33108,8 @@ class StopCdnDomainRequest(TeaModel):
         security_token: str = None,
     ):
         # The accelerated domain name that you want to disable. You can specify only one domain name in each request.
+        # 
+        # This parameter is required.
         self.domain_name = domain_name
         self.owner_id = owner_id
         self.security_token = security_token
@@ -32841,6 +33218,8 @@ class TagResourcesRequestTag(TeaModel):
         value: str = None,
     ):
         # The key of a tag.
+        # 
+        # This parameter is required.
         self.key = key
         # The value of a tag.
         self.value = value
@@ -32877,10 +33256,16 @@ class TagResourcesRequest(TeaModel):
         tag: List[TagResourcesRequestTag] = None,
     ):
         # The list of resource IDs. Maximum number of list elements: 50.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
         # The type of the resource. Set this value to **DOMAIN**.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The tags. Maximum number of list elements: 20.
+        # 
+        # This parameter is required.
         self.tag = tag
 
     def validate(self):
@@ -33004,8 +33389,12 @@ class UntagResourcesRequest(TeaModel):
         # Default value: **false**.
         self.all = all
         # The list of resource IDs. You can specify up to 50 resource IDs in the list.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
         # The type of the resources from which you want to remove tags. Set this parameter to **DOMAIN**.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The list of tag keys. You can specify up to 20 tag keys in the list.
         self.tag_key = tag_key
@@ -33124,6 +33513,8 @@ class UpdateCdnDeliverTaskRequest(TeaModel):
         # The method that is used to send operations reports. Operations reports are sent to you only by email. The settings must be escaped in JSON.
         self.deliver = deliver
         # The ID of the tracking task that you want to update.
+        # 
+        # This parameter is required.
         self.deliver_id = deliver_id
         # The domain name that you want to track. You can specify up to 500 domain names in each request. Separate multiple domain names with commas (,). If you do not specify a domain name, the task collects data from all domain names that belong to your Alibaba Cloud account.
         self.domain_name = domain_name
@@ -33379,6 +33770,8 @@ class UpdateFCTriggerRequest(TeaModel):
         # The resources and filters for event listening.
         self.source_arn = source_arn
         # The trigger that corresponds to the Function Compute service.
+        # 
+        # This parameter is required.
         self.trigger_arn = trigger_arn
 
     def validate(self):
@@ -33493,11 +33886,15 @@ class VerifyDomainOwnerRequest(TeaModel):
         verify_type: str = None,
     ):
         # The domain name of which you want to verify the ownership. You can specify only one domain name.
+        # 
+        # This parameter is required.
         self.domain_name = domain_name
         # The verification method. Valid values:
         # 
         # *   **dnsCheck**: by DNS record
         # *   **fileCheck**: by verification file
+        # 
+        # This parameter is required.
         self.verify_type = verify_type
 
     def validate(self):

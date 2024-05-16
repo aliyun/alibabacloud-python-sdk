@@ -1,3 +1,8 @@
+2024-05-16 Version: 3.3.1
+- Update API BatchDescribeCdnIpInfo: add param Language.
+- Update API DescribeUserDomains: update param DomainName.
+
+
 2024-03-24 Version: 3.3.0
 - Support API BatchDescribeCdnIpInfo.
 - Support API DescribeCdnDomainAtoaLogs.
