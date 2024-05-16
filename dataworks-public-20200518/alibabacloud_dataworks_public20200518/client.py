@@ -78,6 +78,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.AbolishDataServiceApiRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.AbolishDataServiceApiResponse:
+        """
+        @summary Unpublishes a DataService Studio API.
+        
+        @param request: AbolishDataServiceApiRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AbolishDataServiceApiResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.api_id):
@@ -110,6 +117,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.AbolishDataServiceApiRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.AbolishDataServiceApiResponse:
+        """
+        @summary Unpublishes a DataService Studio API.
+        
+        @param request: AbolishDataServiceApiRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AbolishDataServiceApiResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.api_id):
@@ -141,6 +155,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.AbolishDataServiceApiRequest,
     ) -> dataworks_public_20200518_models.AbolishDataServiceApiResponse:
+        """
+        @summary Unpublishes a DataService Studio API.
+        
+        @param request: AbolishDataServiceApiRequest
+        @return: AbolishDataServiceApiResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.abolish_data_service_api_with_options(request, runtime)
 
@@ -148,6 +168,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.AbolishDataServiceApiRequest,
     ) -> dataworks_public_20200518_models.AbolishDataServiceApiResponse:
+        """
+        @summary Unpublishes a DataService Studio API.
+        
+        @param request: AbolishDataServiceApiRequest
+        @return: AbolishDataServiceApiResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.abolish_data_service_api_with_options_async(request, runtime)
 
@@ -156,6 +182,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.AddMetaCollectionEntityRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.AddMetaCollectionEntityResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *AddMetaCollectionEntity**.
+        
+        @param request: AddMetaCollectionEntityRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddMetaCollectionEntityResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.collection_qualified_name):
@@ -188,6 +221,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.AddMetaCollectionEntityRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.AddMetaCollectionEntityResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *AddMetaCollectionEntity**.
+        
+        @param request: AddMetaCollectionEntityRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddMetaCollectionEntityResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.collection_qualified_name):
@@ -219,6 +259,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.AddMetaCollectionEntityRequest,
     ) -> dataworks_public_20200518_models.AddMetaCollectionEntityResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *AddMetaCollectionEntity**.
+        
+        @param request: AddMetaCollectionEntityRequest
+        @return: AddMetaCollectionEntityResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_meta_collection_entity_with_options(request, runtime)
 
@@ -226,6 +272,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.AddMetaCollectionEntityRequest,
     ) -> dataworks_public_20200518_models.AddMetaCollectionEntityResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *AddMetaCollectionEntity**.
+        
+        @param request: AddMetaCollectionEntityRequest
+        @return: AddMetaCollectionEntityResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_meta_collection_entity_with_options_async(request, runtime)
 
@@ -235,7 +287,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.AddProjectMemberToRoleResponse:
         """
-        The ID of the DataWorks workspace. You can call the [ListProjects](~~178393~~) operation to query the ID.
+        @summary For more information about how to add your Alibaba Cloud account or a RAM user as a member of a DataWorks workspace, see [Add a member to a DataWorks workspace](https://help.aliyun.com/document_detail/136941.html).
+        
+        @description The ID of the DataWorks workspace. You can call the [ListProjects](https://help.aliyun.com/document_detail/178393.html) operation to query the ID.
         
         @param request: AddProjectMemberToRoleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -276,7 +330,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.AddProjectMemberToRoleResponse:
         """
-        The ID of the DataWorks workspace. You can call the [ListProjects](~~178393~~) operation to query the ID.
+        @summary For more information about how to add your Alibaba Cloud account or a RAM user as a member of a DataWorks workspace, see [Add a member to a DataWorks workspace](https://help.aliyun.com/document_detail/136941.html).
+        
+        @description The ID of the DataWorks workspace. You can call the [ListProjects](https://help.aliyun.com/document_detail/178393.html) operation to query the ID.
         
         @param request: AddProjectMemberToRoleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -316,7 +372,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.AddProjectMemberToRoleRequest,
     ) -> dataworks_public_20200518_models.AddProjectMemberToRoleResponse:
         """
-        The ID of the DataWorks workspace. You can call the [ListProjects](~~178393~~) operation to query the ID.
+        @summary For more information about how to add your Alibaba Cloud account or a RAM user as a member of a DataWorks workspace, see [Add a member to a DataWorks workspace](https://help.aliyun.com/document_detail/136941.html).
+        
+        @description The ID of the DataWorks workspace. You can call the [ListProjects](https://help.aliyun.com/document_detail/178393.html) operation to query the ID.
         
         @param request: AddProjectMemberToRoleRequest
         @return: AddProjectMemberToRoleResponse
@@ -329,7 +387,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.AddProjectMemberToRoleRequest,
     ) -> dataworks_public_20200518_models.AddProjectMemberToRoleResponse:
         """
-        The ID of the DataWorks workspace. You can call the [ListProjects](~~178393~~) operation to query the ID.
+        @summary For more information about how to add your Alibaba Cloud account or a RAM user as a member of a DataWorks workspace, see [Add a member to a DataWorks workspace](https://help.aliyun.com/document_detail/136941.html).
+        
+        @description The ID of the DataWorks workspace. You can call the [ListProjects](https://help.aliyun.com/document_detail/178393.html) operation to query the ID.
         
         @param request: AddProjectMemberToRoleRequest
         @return: AddProjectMemberToRoleResponse
@@ -342,6 +402,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.AddRecognizeRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.AddRecognizeRuleResponse:
+        """
+        @summary 添加识别规则
+        
+        @param request: AddRecognizeRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddRecognizeRuleResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.account_name):
@@ -404,6 +471,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.AddRecognizeRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.AddRecognizeRuleResponse:
+        """
+        @summary 添加识别规则
+        
+        @param request: AddRecognizeRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddRecognizeRuleResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.account_name):
@@ -465,6 +539,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.AddRecognizeRuleRequest,
     ) -> dataworks_public_20200518_models.AddRecognizeRuleResponse:
+        """
+        @summary 添加识别规则
+        
+        @param request: AddRecognizeRuleRequest
+        @return: AddRecognizeRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_recognize_rule_with_options(request, runtime)
 
@@ -472,6 +552,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.AddRecognizeRuleRequest,
     ) -> dataworks_public_20200518_models.AddRecognizeRuleResponse:
+        """
+        @summary 添加识别规则
+        
+        @param request: AddRecognizeRuleRequest
+        @return: AddRecognizeRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_recognize_rule_with_options_async(request, runtime)
 
@@ -480,6 +566,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.AddToMetaCategoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.AddToMetaCategoryResponse:
+        """
+        @summary Adds a metatable to a specified category.
+        
+        @param request: AddToMetaCategoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddToMetaCategoryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.category_id):
@@ -510,6 +603,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.AddToMetaCategoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.AddToMetaCategoryResponse:
+        """
+        @summary Adds a metatable to a specified category.
+        
+        @param request: AddToMetaCategoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddToMetaCategoryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.category_id):
@@ -539,6 +639,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.AddToMetaCategoryRequest,
     ) -> dataworks_public_20200518_models.AddToMetaCategoryResponse:
+        """
+        @summary Adds a metatable to a specified category.
+        
+        @param request: AddToMetaCategoryRequest
+        @return: AddToMetaCategoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_to_meta_category_with_options(request, runtime)
 
@@ -546,6 +652,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.AddToMetaCategoryRequest,
     ) -> dataworks_public_20200518_models.AddToMetaCategoryResponse:
+        """
+        @summary Adds a metatable to a specified category.
+        
+        @param request: AddToMetaCategoryRequest
+        @return: AddToMetaCategoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_to_meta_category_with_options_async(request, runtime)
 
@@ -554,6 +666,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ApprovePermissionApplyOrderRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ApprovePermissionApplyOrderResponse:
+        """
+        @param request: ApprovePermissionApplyOrderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ApprovePermissionApplyOrderResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.approve_action):
@@ -586,6 +703,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ApprovePermissionApplyOrderRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ApprovePermissionApplyOrderResponse:
+        """
+        @param request: ApprovePermissionApplyOrderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ApprovePermissionApplyOrderResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.approve_action):
@@ -617,6 +739,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ApprovePermissionApplyOrderRequest,
     ) -> dataworks_public_20200518_models.ApprovePermissionApplyOrderResponse:
+        """
+        @param request: ApprovePermissionApplyOrderRequest
+        @return: ApprovePermissionApplyOrderResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.approve_permission_apply_order_with_options(request, runtime)
 
@@ -624,6 +750,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ApprovePermissionApplyOrderRequest,
     ) -> dataworks_public_20200518_models.ApprovePermissionApplyOrderResponse:
+        """
+        @param request: ApprovePermissionApplyOrderRequest
+        @return: ApprovePermissionApplyOrderResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.approve_permission_apply_order_with_options_async(request, runtime)
 
@@ -632,6 +762,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CallbackExtensionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CallbackExtensionResponse:
+        """
+        @summary 扩展程序回调接口
+        
+        @param request: CallbackExtensionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CallbackExtensionResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.check_message):
@@ -666,6 +803,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CallbackExtensionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CallbackExtensionResponse:
+        """
+        @summary 扩展程序回调接口
+        
+        @param request: CallbackExtensionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CallbackExtensionResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.check_message):
@@ -699,6 +843,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.CallbackExtensionRequest,
     ) -> dataworks_public_20200518_models.CallbackExtensionResponse:
+        """
+        @summary 扩展程序回调接口
+        
+        @param request: CallbackExtensionRequest
+        @return: CallbackExtensionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.callback_extension_with_options(request, runtime)
 
@@ -706,6 +856,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.CallbackExtensionRequest,
     ) -> dataworks_public_20200518_models.CallbackExtensionResponse:
+        """
+        @summary 扩展程序回调接口
+        
+        @param request: CallbackExtensionRequest
+        @return: CallbackExtensionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.callback_extension_with_options_async(request, runtime)
 
@@ -714,6 +870,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ChangeResourceManagerResourceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ChangeResourceManagerResourceGroupResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *ChangeResourceManagerResourceGroup**.
+        
+        @param request: ChangeResourceManagerResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeResourceManagerResourceGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.resource_id):
@@ -746,6 +909,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ChangeResourceManagerResourceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ChangeResourceManagerResourceGroupResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *ChangeResourceManagerResourceGroup**.
+        
+        @param request: ChangeResourceManagerResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeResourceManagerResourceGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.resource_id):
@@ -777,6 +947,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ChangeResourceManagerResourceGroupRequest,
     ) -> dataworks_public_20200518_models.ChangeResourceManagerResourceGroupResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *ChangeResourceManagerResourceGroup**.
+        
+        @param request: ChangeResourceManagerResourceGroupRequest
+        @return: ChangeResourceManagerResourceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.change_resource_manager_resource_group_with_options(request, runtime)
 
@@ -784,6 +960,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ChangeResourceManagerResourceGroupRequest,
     ) -> dataworks_public_20200518_models.ChangeResourceManagerResourceGroupResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *ChangeResourceManagerResourceGroup**.
+        
+        @param request: ChangeResourceManagerResourceGroupRequest
+        @return: ChangeResourceManagerResourceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.change_resource_manager_resource_group_with_options_async(request, runtime)
 
@@ -792,6 +974,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CheckFileDeploymentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CheckFileDeploymentResponse:
+        """
+        @param request: CheckFileDeploymentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckFileDeploymentResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.check_detail_url):
@@ -824,6 +1011,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CheckFileDeploymentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CheckFileDeploymentResponse:
+        """
+        @param request: CheckFileDeploymentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckFileDeploymentResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.check_detail_url):
@@ -855,6 +1047,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.CheckFileDeploymentRequest,
     ) -> dataworks_public_20200518_models.CheckFileDeploymentResponse:
+        """
+        @param request: CheckFileDeploymentRequest
+        @return: CheckFileDeploymentResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.check_file_deployment_with_options(request, runtime)
 
@@ -862,6 +1058,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.CheckFileDeploymentRequest,
     ) -> dataworks_public_20200518_models.CheckFileDeploymentResponse:
+        """
+        @param request: CheckFileDeploymentRequest
+        @return: CheckFileDeploymentResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.check_file_deployment_with_options_async(request, runtime)
 
@@ -870,6 +1070,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CheckMetaPartitionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CheckMetaPartitionResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *CheckMetaPartition**.
+        
+        @param request: CheckMetaPartitionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckMetaPartitionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -908,6 +1115,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CheckMetaPartitionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CheckMetaPartitionResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *CheckMetaPartition**.
+        
+        @param request: CheckMetaPartitionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckMetaPartitionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -945,6 +1159,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.CheckMetaPartitionRequest,
     ) -> dataworks_public_20200518_models.CheckMetaPartitionResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *CheckMetaPartition**.
+        
+        @param request: CheckMetaPartitionRequest
+        @return: CheckMetaPartitionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.check_meta_partition_with_options(request, runtime)
 
@@ -952,6 +1172,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.CheckMetaPartitionRequest,
     ) -> dataworks_public_20200518_models.CheckMetaPartitionResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *CheckMetaPartition**.
+        
+        @param request: CheckMetaPartitionRequest
+        @return: CheckMetaPartitionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.check_meta_partition_with_options_async(request, runtime)
 
@@ -960,6 +1186,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CheckMetaTableRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CheckMetaTableResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *CheckMetaTable**.
+        
+        @param request: CheckMetaTableRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckMetaTableResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -996,6 +1229,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CheckMetaTableRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CheckMetaTableResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *CheckMetaTable**.
+        
+        @param request: CheckMetaTableRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckMetaTableResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -1031,6 +1271,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.CheckMetaTableRequest,
     ) -> dataworks_public_20200518_models.CheckMetaTableResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *CheckMetaTable**.
+        
+        @param request: CheckMetaTableRequest
+        @return: CheckMetaTableResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.check_meta_table_with_options(request, runtime)
 
@@ -1038,6 +1284,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.CheckMetaTableRequest,
     ) -> dataworks_public_20200518_models.CheckMetaTableResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *CheckMetaTable**.
+        
+        @param request: CheckMetaTableRequest
+        @return: CheckMetaTableResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.check_meta_table_with_options_async(request, runtime)
 
@@ -1046,6 +1298,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateBaselineRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateBaselineResponse:
+        """
+        @summary 创建基线
+        
+        @param request: CreateBaselineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateBaselineResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.alert_margin_threshold):
@@ -1088,6 +1347,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateBaselineRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateBaselineResponse:
+        """
+        @summary 创建基线
+        
+        @param request: CreateBaselineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateBaselineResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.alert_margin_threshold):
@@ -1129,6 +1395,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.CreateBaselineRequest,
     ) -> dataworks_public_20200518_models.CreateBaselineResponse:
+        """
+        @summary 创建基线
+        
+        @param request: CreateBaselineRequest
+        @return: CreateBaselineResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_baseline_with_options(request, runtime)
 
@@ -1136,6 +1408,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.CreateBaselineRequest,
     ) -> dataworks_public_20200518_models.CreateBaselineResponse:
+        """
+        @summary 创建基线
+        
+        @param request: CreateBaselineRequest
+        @return: CreateBaselineResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_baseline_with_options_async(request, runtime)
 
@@ -1144,6 +1422,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateBusinessRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateBusinessResponse:
+        """
+        @param request: CreateBusinessRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateBusinessResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.business_name):
@@ -1182,6 +1465,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateBusinessRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateBusinessResponse:
+        """
+        @param request: CreateBusinessRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateBusinessResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.business_name):
@@ -1219,6 +1507,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.CreateBusinessRequest,
     ) -> dataworks_public_20200518_models.CreateBusinessResponse:
+        """
+        @param request: CreateBusinessRequest
+        @return: CreateBusinessResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_business_with_options(request, runtime)
 
@@ -1226,6 +1518,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.CreateBusinessRequest,
     ) -> dataworks_public_20200518_models.CreateBusinessResponse:
+        """
+        @param request: CreateBusinessRequest
+        @return: CreateBusinessResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_business_with_options_async(request, runtime)
 
@@ -1235,7 +1531,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateConnectionResponse:
         """
-        @deprecated
+        @deprecated OpenAPI CreateConnection is deprecated
+        
+        @summary 创建数据源
         
         @param request: CreateConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1283,7 +1581,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateConnectionResponse:
         """
-        @deprecated
+        @deprecated OpenAPI CreateConnection is deprecated
+        
+        @summary 创建数据源
         
         @param request: CreateConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1330,7 +1630,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateConnectionRequest,
     ) -> dataworks_public_20200518_models.CreateConnectionResponse:
         """
-        @deprecated
+        @deprecated OpenAPI CreateConnection is deprecated
+        
+        @summary 创建数据源
         
         @param request: CreateConnectionRequest
         @return: CreateConnectionResponse
@@ -1344,7 +1646,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateConnectionRequest,
     ) -> dataworks_public_20200518_models.CreateConnectionResponse:
         """
-        @deprecated
+        @deprecated OpenAPI CreateConnection is deprecated
+        
+        @summary 创建数据源
         
         @param request: CreateConnectionRequest
         @return: CreateConnectionResponse
@@ -1358,6 +1662,13 @@ class Client(OpenApiClient):
         tmp_req: dataworks_public_20200518_models.CreateDIAlarmRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateDIAlarmRuleResponse:
+        """
+        @summary 创建数据集成新版告警规则
+        
+        @param tmp_req: CreateDIAlarmRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDIAlarmRuleResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dataworks_public_20200518_models.CreateDIAlarmRuleShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1402,6 +1713,13 @@ class Client(OpenApiClient):
         tmp_req: dataworks_public_20200518_models.CreateDIAlarmRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateDIAlarmRuleResponse:
+        """
+        @summary 创建数据集成新版告警规则
+        
+        @param tmp_req: CreateDIAlarmRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDIAlarmRuleResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dataworks_public_20200518_models.CreateDIAlarmRuleShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1445,6 +1763,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.CreateDIAlarmRuleRequest,
     ) -> dataworks_public_20200518_models.CreateDIAlarmRuleResponse:
+        """
+        @summary 创建数据集成新版告警规则
+        
+        @param request: CreateDIAlarmRuleRequest
+        @return: CreateDIAlarmRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_dialarm_rule_with_options(request, runtime)
 
@@ -1452,6 +1776,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.CreateDIAlarmRuleRequest,
     ) -> dataworks_public_20200518_models.CreateDIAlarmRuleResponse:
+        """
+        @summary 创建数据集成新版告警规则
+        
+        @param request: CreateDIAlarmRuleRequest
+        @return: CreateDIAlarmRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_dialarm_rule_with_options_async(request, runtime)
 
@@ -1460,6 +1790,13 @@ class Client(OpenApiClient):
         tmp_req: dataworks_public_20200518_models.CreateDIJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateDIJobResponse:
+        """
+        @summary 创建数据集成新版解决方案任务
+        
+        @param tmp_req: CreateDIJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDIJobResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dataworks_public_20200518_models.CreateDIJobShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1528,6 +1865,13 @@ class Client(OpenApiClient):
         tmp_req: dataworks_public_20200518_models.CreateDIJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateDIJobResponse:
+        """
+        @summary 创建数据集成新版解决方案任务
+        
+        @param tmp_req: CreateDIJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDIJobResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dataworks_public_20200518_models.CreateDIJobShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1595,6 +1939,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.CreateDIJobRequest,
     ) -> dataworks_public_20200518_models.CreateDIJobResponse:
+        """
+        @summary 创建数据集成新版解决方案任务
+        
+        @param request: CreateDIJobRequest
+        @return: CreateDIJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_dijob_with_options(request, runtime)
 
@@ -1602,6 +1952,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.CreateDIJobRequest,
     ) -> dataworks_public_20200518_models.CreateDIJobResponse:
+        """
+        @summary 创建数据集成新版解决方案任务
+        
+        @param request: CreateDIJobRequest
+        @return: CreateDIJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_dijob_with_options_async(request, runtime)
 
@@ -1611,7 +1967,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateDISyncTaskResponse:
         """
-        DataWorks allows you to use only the CreateDISyncTask operation to create a batch synchronization node in Data Integration. To create a real-time synchronization node or a synchronization solution, you must first call the [GenerateDISyncTaskConfigForCreating](~~383463~~) operation to generate the ID of an asynchronous thread and call the [QueryDISyncTaskConfigProcessResult](~~383465~~) operation to obtain the asynchronously generated parameters based on the ID. Then, you can call the CreateDISyncTask operation and use the parameters as request parameters to create a real-time synchronization node or a synchronization solution in Data Integration.
+        @description DataWorks allows you to use only the CreateDISyncTask operation to create a batch synchronization node in Data Integration. To create a real-time synchronization node or a synchronization solution, you must first call the [GenerateDISyncTaskConfigForCreating](https://help.aliyun.com/document_detail/383463.html) operation to generate the ID of an asynchronous thread and call the [QueryDISyncTaskConfigProcessResult](https://help.aliyun.com/document_detail/383465.html) operation to obtain the asynchronously generated parameters based on the ID. Then, you can call the CreateDISyncTask operation and use the parameters as request parameters to create a real-time synchronization node or a synchronization solution in Data Integration.
         
         @param request: CreateDISyncTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1656,7 +2012,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateDISyncTaskResponse:
         """
-        DataWorks allows you to use only the CreateDISyncTask operation to create a batch synchronization node in Data Integration. To create a real-time synchronization node or a synchronization solution, you must first call the [GenerateDISyncTaskConfigForCreating](~~383463~~) operation to generate the ID of an asynchronous thread and call the [QueryDISyncTaskConfigProcessResult](~~383465~~) operation to obtain the asynchronously generated parameters based on the ID. Then, you can call the CreateDISyncTask operation and use the parameters as request parameters to create a real-time synchronization node or a synchronization solution in Data Integration.
+        @description DataWorks allows you to use only the CreateDISyncTask operation to create a batch synchronization node in Data Integration. To create a real-time synchronization node or a synchronization solution, you must first call the [GenerateDISyncTaskConfigForCreating](https://help.aliyun.com/document_detail/383463.html) operation to generate the ID of an asynchronous thread and call the [QueryDISyncTaskConfigProcessResult](https://help.aliyun.com/document_detail/383465.html) operation to obtain the asynchronously generated parameters based on the ID. Then, you can call the CreateDISyncTask operation and use the parameters as request parameters to create a real-time synchronization node or a synchronization solution in Data Integration.
         
         @param request: CreateDISyncTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1700,7 +2056,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateDISyncTaskRequest,
     ) -> dataworks_public_20200518_models.CreateDISyncTaskResponse:
         """
-        DataWorks allows you to use only the CreateDISyncTask operation to create a batch synchronization node in Data Integration. To create a real-time synchronization node or a synchronization solution, you must first call the [GenerateDISyncTaskConfigForCreating](~~383463~~) operation to generate the ID of an asynchronous thread and call the [QueryDISyncTaskConfigProcessResult](~~383465~~) operation to obtain the asynchronously generated parameters based on the ID. Then, you can call the CreateDISyncTask operation and use the parameters as request parameters to create a real-time synchronization node or a synchronization solution in Data Integration.
+        @description DataWorks allows you to use only the CreateDISyncTask operation to create a batch synchronization node in Data Integration. To create a real-time synchronization node or a synchronization solution, you must first call the [GenerateDISyncTaskConfigForCreating](https://help.aliyun.com/document_detail/383463.html) operation to generate the ID of an asynchronous thread and call the [QueryDISyncTaskConfigProcessResult](https://help.aliyun.com/document_detail/383465.html) operation to obtain the asynchronously generated parameters based on the ID. Then, you can call the CreateDISyncTask operation and use the parameters as request parameters to create a real-time synchronization node or a synchronization solution in Data Integration.
         
         @param request: CreateDISyncTaskRequest
         @return: CreateDISyncTaskResponse
@@ -1713,7 +2069,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateDISyncTaskRequest,
     ) -> dataworks_public_20200518_models.CreateDISyncTaskResponse:
         """
-        DataWorks allows you to use only the CreateDISyncTask operation to create a batch synchronization node in Data Integration. To create a real-time synchronization node or a synchronization solution, you must first call the [GenerateDISyncTaskConfigForCreating](~~383463~~) operation to generate the ID of an asynchronous thread and call the [QueryDISyncTaskConfigProcessResult](~~383465~~) operation to obtain the asynchronously generated parameters based on the ID. Then, you can call the CreateDISyncTask operation and use the parameters as request parameters to create a real-time synchronization node or a synchronization solution in Data Integration.
+        @description DataWorks allows you to use only the CreateDISyncTask operation to create a batch synchronization node in Data Integration. To create a real-time synchronization node or a synchronization solution, you must first call the [GenerateDISyncTaskConfigForCreating](https://help.aliyun.com/document_detail/383463.html) operation to generate the ID of an asynchronous thread and call the [QueryDISyncTaskConfigProcessResult](https://help.aliyun.com/document_detail/383465.html) operation to obtain the asynchronously generated parameters based on the ID. Then, you can call the CreateDISyncTask operation and use the parameters as request parameters to create a real-time synchronization node or a synchronization solution in Data Integration.
         
         @param request: CreateDISyncTaskRequest
         @return: CreateDISyncTaskResponse
@@ -1727,7 +2083,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateDagComplementResponse:
         """
-        @deprecated
+        @deprecated OpenAPI CreateDagComplement is deprecated
         
         @param request: CreateDagComplementRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1783,7 +2139,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateDagComplementResponse:
         """
-        @deprecated
+        @deprecated OpenAPI CreateDagComplement is deprecated
         
         @param request: CreateDagComplementRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1838,7 +2194,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateDagComplementRequest,
     ) -> dataworks_public_20200518_models.CreateDagComplementResponse:
         """
-        @deprecated
+        @deprecated OpenAPI CreateDagComplement is deprecated
         
         @param request: CreateDagComplementRequest
         @return: CreateDagComplementResponse
@@ -1852,7 +2208,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateDagComplementRequest,
     ) -> dataworks_public_20200518_models.CreateDagComplementResponse:
         """
-        @deprecated
+        @deprecated OpenAPI CreateDagComplement is deprecated
         
         @param request: CreateDagComplementRequest
         @return: CreateDagComplementResponse
@@ -1867,7 +2223,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateDagTestResponse:
         """
-        @deprecated
+        @deprecated OpenAPI CreateDagTest is deprecated
         
         @param request: CreateDagTestRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1911,7 +2267,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateDagTestResponse:
         """
-        @deprecated
+        @deprecated OpenAPI CreateDagTest is deprecated
         
         @param request: CreateDagTestRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1954,7 +2310,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateDagTestRequest,
     ) -> dataworks_public_20200518_models.CreateDagTestResponse:
         """
-        @deprecated
+        @deprecated OpenAPI CreateDagTest is deprecated
         
         @param request: CreateDagTestRequest
         @return: CreateDagTestResponse
@@ -1968,7 +2324,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateDagTestRequest,
     ) -> dataworks_public_20200518_models.CreateDagTestResponse:
         """
-        @deprecated
+        @deprecated OpenAPI CreateDagTest is deprecated
         
         @param request: CreateDagTestRequest
         @return: CreateDagTestResponse
@@ -1982,6 +2338,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateDataServiceApiRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateDataServiceApiResponse:
+        """
+        @param request: CreateDataServiceApiRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDataServiceApiResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.api_description):
@@ -2046,6 +2407,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateDataServiceApiRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateDataServiceApiResponse:
+        """
+        @param request: CreateDataServiceApiRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDataServiceApiResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.api_description):
@@ -2109,6 +2475,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.CreateDataServiceApiRequest,
     ) -> dataworks_public_20200518_models.CreateDataServiceApiResponse:
+        """
+        @param request: CreateDataServiceApiRequest
+        @return: CreateDataServiceApiResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_data_service_api_with_options(request, runtime)
 
@@ -2116,6 +2486,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.CreateDataServiceApiRequest,
     ) -> dataworks_public_20200518_models.CreateDataServiceApiResponse:
+        """
+        @param request: CreateDataServiceApiRequest
+        @return: CreateDataServiceApiResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_data_service_api_with_options_async(request, runtime)
 
@@ -2124,6 +2498,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateDataServiceApiAuthorityRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateDataServiceApiAuthorityResponse:
+        """
+        @summary Grants the access permissions on an API in DataService Studio.
+        
+        @param request: CreateDataServiceApiAuthorityRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDataServiceApiAuthorityResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.api_id):
@@ -2160,6 +2541,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateDataServiceApiAuthorityRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateDataServiceApiAuthorityResponse:
+        """
+        @summary Grants the access permissions on an API in DataService Studio.
+        
+        @param request: CreateDataServiceApiAuthorityRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDataServiceApiAuthorityResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.api_id):
@@ -2195,6 +2583,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.CreateDataServiceApiAuthorityRequest,
     ) -> dataworks_public_20200518_models.CreateDataServiceApiAuthorityResponse:
+        """
+        @summary Grants the access permissions on an API in DataService Studio.
+        
+        @param request: CreateDataServiceApiAuthorityRequest
+        @return: CreateDataServiceApiAuthorityResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_data_service_api_authority_with_options(request, runtime)
 
@@ -2202,6 +2596,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.CreateDataServiceApiAuthorityRequest,
     ) -> dataworks_public_20200518_models.CreateDataServiceApiAuthorityResponse:
+        """
+        @summary Grants the access permissions on an API in DataService Studio.
+        
+        @param request: CreateDataServiceApiAuthorityRequest
+        @return: CreateDataServiceApiAuthorityResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_data_service_api_authority_with_options_async(request, runtime)
 
@@ -2210,6 +2610,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateDataServiceFolderRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateDataServiceFolderResponse:
+        """
+        @summary Creates a folder in DataService Studio.
+        
+        @param request: CreateDataServiceFolderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDataServiceFolderResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.folder_name):
@@ -2246,6 +2653,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateDataServiceFolderRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateDataServiceFolderResponse:
+        """
+        @summary Creates a folder in DataService Studio.
+        
+        @param request: CreateDataServiceFolderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDataServiceFolderResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.folder_name):
@@ -2281,6 +2695,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.CreateDataServiceFolderRequest,
     ) -> dataworks_public_20200518_models.CreateDataServiceFolderResponse:
+        """
+        @summary Creates a folder in DataService Studio.
+        
+        @param request: CreateDataServiceFolderRequest
+        @return: CreateDataServiceFolderResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_data_service_folder_with_options(request, runtime)
 
@@ -2288,6 +2708,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.CreateDataServiceFolderRequest,
     ) -> dataworks_public_20200518_models.CreateDataServiceFolderResponse:
+        """
+        @summary Creates a folder in DataService Studio.
+        
+        @param request: CreateDataServiceFolderRequest
+        @return: CreateDataServiceFolderResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_data_service_folder_with_options_async(request, runtime)
 
@@ -2296,6 +2722,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateDataServiceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateDataServiceGroupResponse:
+        """
+        @summary Creates a business process.
+        
+        @param request: CreateDataServiceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDataServiceGroupResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.api_gateway_group_id):
@@ -2332,6 +2765,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateDataServiceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateDataServiceGroupResponse:
+        """
+        @summary Creates a business process.
+        
+        @param request: CreateDataServiceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDataServiceGroupResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.api_gateway_group_id):
@@ -2367,6 +2807,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.CreateDataServiceGroupRequest,
     ) -> dataworks_public_20200518_models.CreateDataServiceGroupResponse:
+        """
+        @summary Creates a business process.
+        
+        @param request: CreateDataServiceGroupRequest
+        @return: CreateDataServiceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_data_service_group_with_options(request, runtime)
 
@@ -2374,6 +2820,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.CreateDataServiceGroupRequest,
     ) -> dataworks_public_20200518_models.CreateDataServiceGroupResponse:
+        """
+        @summary Creates a business process.
+        
+        @param request: CreateDataServiceGroupRequest
+        @return: CreateDataServiceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_data_service_group_with_options_async(request, runtime)
 
@@ -2382,6 +2834,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateDataSourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateDataSourceResponse:
+        """
+        @summary 创建数据源
+        
+        @param request: CreateDataSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDataSourceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.content):
@@ -2422,6 +2881,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateDataSourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateDataSourceResponse:
+        """
+        @summary 创建数据源
+        
+        @param request: CreateDataSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDataSourceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.content):
@@ -2461,6 +2927,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.CreateDataSourceRequest,
     ) -> dataworks_public_20200518_models.CreateDataSourceResponse:
+        """
+        @summary 创建数据源
+        
+        @param request: CreateDataSourceRequest
+        @return: CreateDataSourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_data_source_with_options(request, runtime)
 
@@ -2468,6 +2940,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.CreateDataSourceRequest,
     ) -> dataworks_public_20200518_models.CreateDataSourceResponse:
+        """
+        @summary 创建数据源
+        
+        @param request: CreateDataSourceRequest
+        @return: CreateDataSourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_data_source_with_options_async(request, runtime)
 
@@ -2476,6 +2954,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateExportMigrationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateExportMigrationResponse:
+        """
+        @summary 新建导出任务
+        
+        @param request: CreateExportMigrationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateExportMigrationResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.description):
@@ -2514,6 +2999,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateExportMigrationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateExportMigrationResponse:
+        """
+        @summary 新建导出任务
+        
+        @param request: CreateExportMigrationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateExportMigrationResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.description):
@@ -2551,6 +3043,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.CreateExportMigrationRequest,
     ) -> dataworks_public_20200518_models.CreateExportMigrationResponse:
+        """
+        @summary 新建导出任务
+        
+        @param request: CreateExportMigrationRequest
+        @return: CreateExportMigrationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_export_migration_with_options(request, runtime)
 
@@ -2558,6 +3056,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.CreateExportMigrationRequest,
     ) -> dataworks_public_20200518_models.CreateExportMigrationResponse:
+        """
+        @summary 新建导出任务
+        
+        @param request: CreateExportMigrationRequest
+        @return: CreateExportMigrationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_export_migration_with_options_async(request, runtime)
 
@@ -2566,6 +3070,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateFileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateFileResponse:
+        """
+        @summary Creates a file in DataStudio. You cannot call this operation to create files for Data Integration nodes.
+        
+        @param request: CreateFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateFileResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.advanced_settings):
@@ -2654,6 +3165,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateFileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateFileResponse:
+        """
+        @summary Creates a file in DataStudio. You cannot call this operation to create files for Data Integration nodes.
+        
+        @param request: CreateFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateFileResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.advanced_settings):
@@ -2741,6 +3259,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.CreateFileRequest,
     ) -> dataworks_public_20200518_models.CreateFileResponse:
+        """
+        @summary Creates a file in DataStudio. You cannot call this operation to create files for Data Integration nodes.
+        
+        @param request: CreateFileRequest
+        @return: CreateFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_file_with_options(request, runtime)
 
@@ -2748,6 +3272,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.CreateFileRequest,
     ) -> dataworks_public_20200518_models.CreateFileResponse:
+        """
+        @summary Creates a file in DataStudio. You cannot call this operation to create files for Data Integration nodes.
+        
+        @param request: CreateFileRequest
+        @return: CreateFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_file_with_options_async(request, runtime)
 
@@ -2756,6 +3286,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateFolderRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateFolderResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *CreateFolder**.
+        
+        @param request: CreateFolderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateFolderResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.folder_path):
@@ -2788,6 +3325,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateFolderRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateFolderResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *CreateFolder**.
+        
+        @param request: CreateFolderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateFolderResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.folder_path):
@@ -2819,6 +3363,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.CreateFolderRequest,
     ) -> dataworks_public_20200518_models.CreateFolderResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *CreateFolder**.
+        
+        @param request: CreateFolderRequest
+        @return: CreateFolderResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_folder_with_options(request, runtime)
 
@@ -2826,6 +3376,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.CreateFolderRequest,
     ) -> dataworks_public_20200518_models.CreateFolderResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *CreateFolder**.
+        
+        @param request: CreateFolderRequest
+        @return: CreateFolderResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_folder_with_options_async(request, runtime)
 
@@ -2835,7 +3391,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateImportMigrationResponse:
         """
-        The import package must be uploaded. Example of the upload method:
+        @description The import package must be uploaded. Example of the upload method:
         Config config = new Config();
         config.setAccessKeyId(accessId);
         config.setAccessKeySecret(accessKey);
@@ -2843,7 +3399,7 @@ class Client(OpenApiClient):
         config.setRegionId(regionId);
         Client client = new Client(config);
         CreateImportMigrationAdvanceRequest request = new CreateImportMigrationAdvanceRequest();
-        request.setName("test_migration_api\\_" + System.currentTimeMillis());
+        request.setName("test_migration_api_" + System.currentTimeMillis());
         request.setProjectId(123456L);
         request.setPackageType("DATAWORKS_MODEL");
         request.setPackageFileObject(new FileInputStream("/home/admin/Downloads/test.zip"));
@@ -2900,7 +3456,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateImportMigrationResponse:
         """
-        The import package must be uploaded. Example of the upload method:
+        @description The import package must be uploaded. Example of the upload method:
         Config config = new Config();
         config.setAccessKeyId(accessId);
         config.setAccessKeySecret(accessKey);
@@ -2908,7 +3464,7 @@ class Client(OpenApiClient):
         config.setRegionId(regionId);
         Client client = new Client(config);
         CreateImportMigrationAdvanceRequest request = new CreateImportMigrationAdvanceRequest();
-        request.setName("test_migration_api\\_" + System.currentTimeMillis());
+        request.setName("test_migration_api_" + System.currentTimeMillis());
         request.setProjectId(123456L);
         request.setPackageType("DATAWORKS_MODEL");
         request.setPackageFileObject(new FileInputStream("/home/admin/Downloads/test.zip"));
@@ -2964,7 +3520,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateImportMigrationRequest,
     ) -> dataworks_public_20200518_models.CreateImportMigrationResponse:
         """
-        The import package must be uploaded. Example of the upload method:
+        @description The import package must be uploaded. Example of the upload method:
         Config config = new Config();
         config.setAccessKeyId(accessId);
         config.setAccessKeySecret(accessKey);
@@ -2972,7 +3528,7 @@ class Client(OpenApiClient):
         config.setRegionId(regionId);
         Client client = new Client(config);
         CreateImportMigrationAdvanceRequest request = new CreateImportMigrationAdvanceRequest();
-        request.setName("test_migration_api\\_" + System.currentTimeMillis());
+        request.setName("test_migration_api_" + System.currentTimeMillis());
         request.setProjectId(123456L);
         request.setPackageType("DATAWORKS_MODEL");
         request.setPackageFileObject(new FileInputStream("/home/admin/Downloads/test.zip"));
@@ -2991,7 +3547,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateImportMigrationRequest,
     ) -> dataworks_public_20200518_models.CreateImportMigrationResponse:
         """
-        The import package must be uploaded. Example of the upload method:
+        @description The import package must be uploaded. Example of the upload method:
         Config config = new Config();
         config.setAccessKeyId(accessId);
         config.setAccessKeySecret(accessKey);
@@ -2999,7 +3555,7 @@ class Client(OpenApiClient):
         config.setRegionId(regionId);
         Client client = new Client(config);
         CreateImportMigrationAdvanceRequest request = new CreateImportMigrationAdvanceRequest();
-        request.setName("test_migration_api\\_" + System.currentTimeMillis());
+        request.setName("test_migration_api_" + System.currentTimeMillis());
         request.setProjectId(123456L);
         request.setPackageType("DATAWORKS_MODEL");
         request.setPackageFileObject(new FileInputStream("/home/admin/Downloads/test.zip"));
@@ -3161,7 +3717,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateManualDagResponse:
         """
-        @deprecated
+        @deprecated OpenAPI CreateManualDag is deprecated
         
         @param request: CreateManualDagRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3211,7 +3767,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateManualDagResponse:
         """
-        @deprecated
+        @deprecated OpenAPI CreateManualDag is deprecated
         
         @param request: CreateManualDagRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3260,7 +3816,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateManualDagRequest,
     ) -> dataworks_public_20200518_models.CreateManualDagResponse:
         """
-        @deprecated
+        @deprecated OpenAPI CreateManualDag is deprecated
         
         @param request: CreateManualDagRequest
         @return: CreateManualDagResponse
@@ -3274,7 +3830,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateManualDagRequest,
     ) -> dataworks_public_20200518_models.CreateManualDagResponse:
         """
-        @deprecated
+        @deprecated OpenAPI CreateManualDag is deprecated
         
         @param request: CreateManualDagRequest
         @return: CreateManualDagResponse
@@ -3288,6 +3844,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateMetaCategoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateMetaCategoryResponse:
+        """
+        @summary Creates a category.
+        
+        @param request: CreateMetaCategoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMetaCategoryResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.comment):
@@ -3320,6 +3883,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateMetaCategoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateMetaCategoryResponse:
+        """
+        @summary Creates a category.
+        
+        @param request: CreateMetaCategoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMetaCategoryResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.comment):
@@ -3351,6 +3921,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.CreateMetaCategoryRequest,
     ) -> dataworks_public_20200518_models.CreateMetaCategoryResponse:
+        """
+        @summary Creates a category.
+        
+        @param request: CreateMetaCategoryRequest
+        @return: CreateMetaCategoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_meta_category_with_options(request, runtime)
 
@@ -3358,6 +3934,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.CreateMetaCategoryRequest,
     ) -> dataworks_public_20200518_models.CreateMetaCategoryResponse:
+        """
+        @summary Creates a category.
+        
+        @param request: CreateMetaCategoryRequest
+        @return: CreateMetaCategoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_meta_category_with_options_async(request, runtime)
 
@@ -3367,7 +3949,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateMetaCollectionResponse:
         """
-        A category must belong to a data album.
+        @summary Collections are classified into various types. The names of collections of the same type must be different.
+        
+        @description A category must belong to a data album.
         You can create a category in a data album only after you create the data album. You can set the value of the parentQualifiedName parameter to the unique identifier of the data album to create the category.
         
         @param request: CreateMetaCollectionRequest
@@ -3409,7 +3993,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateMetaCollectionResponse:
         """
-        A category must belong to a data album.
+        @summary Collections are classified into various types. The names of collections of the same type must be different.
+        
+        @description A category must belong to a data album.
         You can create a category in a data album only after you create the data album. You can set the value of the parentQualifiedName parameter to the unique identifier of the data album to create the category.
         
         @param request: CreateMetaCollectionRequest
@@ -3450,7 +4036,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateMetaCollectionRequest,
     ) -> dataworks_public_20200518_models.CreateMetaCollectionResponse:
         """
-        A category must belong to a data album.
+        @summary Collections are classified into various types. The names of collections of the same type must be different.
+        
+        @description A category must belong to a data album.
         You can create a category in a data album only after you create the data album. You can set the value of the parentQualifiedName parameter to the unique identifier of the data album to create the category.
         
         @param request: CreateMetaCollectionRequest
@@ -3464,7 +4052,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateMetaCollectionRequest,
     ) -> dataworks_public_20200518_models.CreateMetaCollectionResponse:
         """
-        A category must belong to a data album.
+        @summary Collections are classified into various types. The names of collections of the same type must be different.
+        
+        @description A category must belong to a data album.
         You can create a category in a data album only after you create the data album. You can set the value of the parentQualifiedName parameter to the unique identifier of the data album to create the category.
         
         @param request: CreateMetaCollectionRequest
@@ -3478,6 +4068,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreatePermissionApplyOrderRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreatePermissionApplyOrderResponse:
+        """
+        @param request: CreatePermissionApplyOrderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreatePermissionApplyOrderResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.apply_object):
@@ -3520,6 +4115,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreatePermissionApplyOrderRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreatePermissionApplyOrderResponse:
+        """
+        @param request: CreatePermissionApplyOrderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreatePermissionApplyOrderResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.apply_object):
@@ -3561,6 +4161,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.CreatePermissionApplyOrderRequest,
     ) -> dataworks_public_20200518_models.CreatePermissionApplyOrderResponse:
+        """
+        @param request: CreatePermissionApplyOrderRequest
+        @return: CreatePermissionApplyOrderResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_permission_apply_order_with_options(request, runtime)
 
@@ -3568,6 +4172,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.CreatePermissionApplyOrderRequest,
     ) -> dataworks_public_20200518_models.CreatePermissionApplyOrderResponse:
+        """
+        @param request: CreatePermissionApplyOrderRequest
+        @return: CreatePermissionApplyOrderResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_permission_apply_order_with_options_async(request, runtime)
 
@@ -3576,6 +4184,13 @@ class Client(OpenApiClient):
         tmp_req: dataworks_public_20200518_models.CreateProjectRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateProjectResponse:
+        """
+        @summary 创建项目
+        
+        @param tmp_req: CreateProjectRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateProjectResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dataworks_public_20200518_models.CreateProjectShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3624,6 +4239,13 @@ class Client(OpenApiClient):
         tmp_req: dataworks_public_20200518_models.CreateProjectRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateProjectResponse:
+        """
+        @summary 创建项目
+        
+        @param tmp_req: CreateProjectRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateProjectResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dataworks_public_20200518_models.CreateProjectShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3671,6 +4293,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.CreateProjectRequest,
     ) -> dataworks_public_20200518_models.CreateProjectResponse:
+        """
+        @summary 创建项目
+        
+        @param request: CreateProjectRequest
+        @return: CreateProjectResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_project_with_options(request, runtime)
 
@@ -3678,6 +4306,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.CreateProjectRequest,
     ) -> dataworks_public_20200518_models.CreateProjectResponse:
+        """
+        @summary 创建项目
+        
+        @param request: CreateProjectRequest
+        @return: CreateProjectResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_project_with_options_async(request, runtime)
 
@@ -3686,6 +4320,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateProjectMemberRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateProjectMemberResponse:
+        """
+        @param request: CreateProjectMemberRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateProjectMemberResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -3720,6 +4359,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateProjectMemberRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateProjectMemberResponse:
+        """
+        @param request: CreateProjectMemberRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateProjectMemberResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -3753,6 +4397,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.CreateProjectMemberRequest,
     ) -> dataworks_public_20200518_models.CreateProjectMemberResponse:
+        """
+        @param request: CreateProjectMemberRequest
+        @return: CreateProjectMemberResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_project_member_with_options(request, runtime)
 
@@ -3760,6 +4408,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.CreateProjectMemberRequest,
     ) -> dataworks_public_20200518_models.CreateProjectMemberResponse:
+        """
+        @param request: CreateProjectMemberRequest
+        @return: CreateProjectMemberResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_project_member_with_options_async(request, runtime)
 
@@ -3768,6 +4420,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateQualityEntityRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateQualityEntityResponse:
+        """
+        @param request: CreateQualityEntityRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateQualityEntityResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.entity_level):
@@ -3806,6 +4463,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateQualityEntityRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateQualityEntityResponse:
+        """
+        @param request: CreateQualityEntityRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateQualityEntityResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.entity_level):
@@ -3843,6 +4505,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.CreateQualityEntityRequest,
     ) -> dataworks_public_20200518_models.CreateQualityEntityResponse:
+        """
+        @param request: CreateQualityEntityRequest
+        @return: CreateQualityEntityResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_quality_entity_with_options(request, runtime)
 
@@ -3850,6 +4516,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.CreateQualityEntityRequest,
     ) -> dataworks_public_20200518_models.CreateQualityEntityResponse:
+        """
+        @param request: CreateQualityEntityRequest
+        @return: CreateQualityEntityResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_quality_entity_with_options_async(request, runtime)
 
@@ -3858,6 +4528,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateQualityFollowerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateQualityFollowerResponse:
+        """
+        @param request: CreateQualityFollowerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateQualityFollowerResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.alarm_mode):
@@ -3894,6 +4569,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateQualityFollowerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateQualityFollowerResponse:
+        """
+        @param request: CreateQualityFollowerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateQualityFollowerResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.alarm_mode):
@@ -3929,6 +4609,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.CreateQualityFollowerRequest,
     ) -> dataworks_public_20200518_models.CreateQualityFollowerResponse:
+        """
+        @param request: CreateQualityFollowerRequest
+        @return: CreateQualityFollowerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_quality_follower_with_options(request, runtime)
 
@@ -3936,6 +4620,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.CreateQualityFollowerRequest,
     ) -> dataworks_public_20200518_models.CreateQualityFollowerResponse:
+        """
+        @param request: CreateQualityFollowerRequest
+        @return: CreateQualityFollowerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_quality_follower_with_options_async(request, runtime)
 
@@ -3944,6 +4632,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateQualityRelativeNodeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateQualityRelativeNodeResponse:
+        """
+        @param request: CreateQualityRelativeNodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateQualityRelativeNodeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.env_type):
@@ -3986,6 +4679,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateQualityRelativeNodeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateQualityRelativeNodeResponse:
+        """
+        @param request: CreateQualityRelativeNodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateQualityRelativeNodeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.env_type):
@@ -4027,6 +4725,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.CreateQualityRelativeNodeRequest,
     ) -> dataworks_public_20200518_models.CreateQualityRelativeNodeResponse:
+        """
+        @param request: CreateQualityRelativeNodeRequest
+        @return: CreateQualityRelativeNodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_quality_relative_node_with_options(request, runtime)
 
@@ -4034,6 +4736,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.CreateQualityRelativeNodeRequest,
     ) -> dataworks_public_20200518_models.CreateQualityRelativeNodeResponse:
+        """
+        @param request: CreateQualityRelativeNodeRequest
+        @return: CreateQualityRelativeNodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_quality_relative_node_with_options_async(request, runtime)
 
@@ -4042,6 +4748,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateQualityRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateQualityRuleResponse:
+        """
+        @param request: CreateQualityRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateQualityRuleResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.block_type):
@@ -4108,6 +4819,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateQualityRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateQualityRuleResponse:
+        """
+        @param request: CreateQualityRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateQualityRuleResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.block_type):
@@ -4173,6 +4889,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.CreateQualityRuleRequest,
     ) -> dataworks_public_20200518_models.CreateQualityRuleResponse:
+        """
+        @param request: CreateQualityRuleRequest
+        @return: CreateQualityRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_quality_rule_with_options(request, runtime)
 
@@ -4180,6 +4900,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.CreateQualityRuleRequest,
     ) -> dataworks_public_20200518_models.CreateQualityRuleResponse:
+        """
+        @param request: CreateQualityRuleRequest
+        @return: CreateQualityRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_quality_rule_with_options_async(request, runtime)
 
@@ -4188,6 +4912,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateRemindRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateRemindResponse:
+        """
+        @param request: CreateRemindRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateRemindResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.alert_interval):
@@ -4246,6 +4975,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateRemindRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateRemindResponse:
+        """
+        @param request: CreateRemindRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateRemindResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.alert_interval):
@@ -4303,6 +5037,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.CreateRemindRequest,
     ) -> dataworks_public_20200518_models.CreateRemindResponse:
+        """
+        @param request: CreateRemindRequest
+        @return: CreateRemindResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_remind_with_options(request, runtime)
 
@@ -4310,6 +5048,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.CreateRemindRequest,
     ) -> dataworks_public_20200518_models.CreateRemindResponse:
+        """
+        @param request: CreateRemindRequest
+        @return: CreateRemindResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_remind_with_options_async(request, runtime)
 
@@ -4318,6 +5060,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateResourceFileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateResourceFileResponse:
+        """
+        @summary 支持用户指定自己的文件（比如jar，py，arhive，file等）创建数据开发资源文件
+        
+        @param request: CreateResourceFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateResourceFileResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.content):
@@ -4368,6 +5117,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateResourceFileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateResourceFileResponse:
+        """
+        @summary 支持用户指定自己的文件（比如jar，py，arhive，file等）创建数据开发资源文件
+        
+        @param request: CreateResourceFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateResourceFileResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.content):
@@ -4417,6 +5173,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.CreateResourceFileRequest,
     ) -> dataworks_public_20200518_models.CreateResourceFileResponse:
+        """
+        @summary 支持用户指定自己的文件（比如jar，py，arhive，file等）创建数据开发资源文件
+        
+        @param request: CreateResourceFileRequest
+        @return: CreateResourceFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_resource_file_with_options(request, runtime)
 
@@ -4424,6 +5186,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.CreateResourceFileRequest,
     ) -> dataworks_public_20200518_models.CreateResourceFileResponse:
+        """
+        @summary 支持用户指定自己的文件（比如jar，py，arhive，file等）创建数据开发资源文件
+        
+        @param request: CreateResourceFileRequest
+        @return: CreateResourceFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_resource_file_with_options_async(request, runtime)
 
@@ -4574,6 +5342,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateTableRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateTableResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *CreateTable**.
+        
+        @param request: CreateTableRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTableResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_guid):
@@ -4642,6 +5417,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateTableRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateTableResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *CreateTable**.
+        
+        @param request: CreateTableRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTableResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_guid):
@@ -4709,6 +5491,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.CreateTableRequest,
     ) -> dataworks_public_20200518_models.CreateTableResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *CreateTable**.
+        
+        @param request: CreateTableRequest
+        @return: CreateTableResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_table_with_options(request, runtime)
 
@@ -4716,6 +5504,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.CreateTableRequest,
     ) -> dataworks_public_20200518_models.CreateTableResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *CreateTable**.
+        
+        @param request: CreateTableRequest
+        @return: CreateTableResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_table_with_options_async(request, runtime)
 
@@ -4724,6 +5518,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateTableLevelRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateTableLevelResponse:
+        """
+        @summary The ID of the DataWorks workspace.
+        
+        @param request: CreateTableLevelRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTableLevelResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -4758,6 +5559,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateTableLevelRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateTableLevelResponse:
+        """
+        @summary The ID of the DataWorks workspace.
+        
+        @param request: CreateTableLevelRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTableLevelResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -4791,6 +5599,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.CreateTableLevelRequest,
     ) -> dataworks_public_20200518_models.CreateTableLevelResponse:
+        """
+        @summary The ID of the DataWorks workspace.
+        
+        @param request: CreateTableLevelRequest
+        @return: CreateTableLevelResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_table_level_with_options(request, runtime)
 
@@ -4798,6 +5612,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.CreateTableLevelRequest,
     ) -> dataworks_public_20200518_models.CreateTableLevelResponse:
+        """
+        @summary The ID of the DataWorks workspace.
+        
+        @param request: CreateTableLevelRequest
+        @return: CreateTableLevelResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_table_level_with_options_async(request, runtime)
 
@@ -4806,6 +5626,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateTableThemeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateTableThemeResponse:
+        """
+        @param request: CreateTableThemeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTableThemeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.level):
@@ -4840,6 +5665,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateTableThemeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateTableThemeResponse:
+        """
+        @param request: CreateTableThemeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTableThemeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.level):
@@ -4873,6 +5703,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.CreateTableThemeRequest,
     ) -> dataworks_public_20200518_models.CreateTableThemeResponse:
+        """
+        @param request: CreateTableThemeRequest
+        @return: CreateTableThemeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_table_theme_with_options(request, runtime)
 
@@ -4880,6 +5714,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.CreateTableThemeRequest,
     ) -> dataworks_public_20200518_models.CreateTableThemeResponse:
+        """
+        @param request: CreateTableThemeRequest
+        @return: CreateTableThemeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_table_theme_with_options_async(request, runtime)
 
@@ -4888,6 +5726,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateUdfFileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateUdfFileResponse:
+        """
+        @param request: CreateUdfFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateUdfFileResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.class_name):
@@ -4940,6 +5783,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateUdfFileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateUdfFileResponse:
+        """
+        @param request: CreateUdfFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateUdfFileResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.class_name):
@@ -4991,6 +5839,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.CreateUdfFileRequest,
     ) -> dataworks_public_20200518_models.CreateUdfFileResponse:
+        """
+        @param request: CreateUdfFileRequest
+        @return: CreateUdfFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_udf_file_with_options(request, runtime)
 
@@ -4998,6 +5850,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.CreateUdfFileRequest,
     ) -> dataworks_public_20200518_models.CreateUdfFileResponse:
+        """
+        @param request: CreateUdfFileRequest
+        @return: CreateUdfFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_udf_file_with_options_async(request, runtime)
 
@@ -5006,6 +5862,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DeleteBaselineRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DeleteBaselineResponse:
+        """
+        @param request: DeleteBaselineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteBaselineResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.baseline_id):
@@ -5036,6 +5897,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DeleteBaselineRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DeleteBaselineResponse:
+        """
+        @param request: DeleteBaselineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteBaselineResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.baseline_id):
@@ -5065,6 +5931,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.DeleteBaselineRequest,
     ) -> dataworks_public_20200518_models.DeleteBaselineResponse:
+        """
+        @param request: DeleteBaselineRequest
+        @return: DeleteBaselineResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_baseline_with_options(request, runtime)
 
@@ -5072,6 +5942,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.DeleteBaselineRequest,
     ) -> dataworks_public_20200518_models.DeleteBaselineResponse:
+        """
+        @param request: DeleteBaselineRequest
+        @return: DeleteBaselineResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_baseline_with_options_async(request, runtime)
 
@@ -5080,6 +5954,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DeleteBusinessRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DeleteBusinessResponse:
+        """
+        @param request: DeleteBusinessRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteBusinessResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.business_id):
@@ -5112,6 +5991,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DeleteBusinessRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DeleteBusinessResponse:
+        """
+        @param request: DeleteBusinessRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteBusinessResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.business_id):
@@ -5143,6 +6027,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.DeleteBusinessRequest,
     ) -> dataworks_public_20200518_models.DeleteBusinessResponse:
+        """
+        @param request: DeleteBusinessRequest
+        @return: DeleteBusinessResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_business_with_options(request, runtime)
 
@@ -5150,6 +6038,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.DeleteBusinessRequest,
     ) -> dataworks_public_20200518_models.DeleteBusinessResponse:
+        """
+        @param request: DeleteBusinessRequest
+        @return: DeleteBusinessResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_business_with_options_async(request, runtime)
 
@@ -5159,7 +6051,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DeleteConnectionResponse:
         """
-        @deprecated
+        @deprecated OpenAPI DeleteConnection is deprecated
+        
+        @summary 删除数据源
         
         @param request: DeleteConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5195,7 +6089,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DeleteConnectionResponse:
         """
-        @deprecated
+        @deprecated OpenAPI DeleteConnection is deprecated
+        
+        @summary 删除数据源
         
         @param request: DeleteConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5230,7 +6126,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DeleteConnectionRequest,
     ) -> dataworks_public_20200518_models.DeleteConnectionResponse:
         """
-        @deprecated
+        @deprecated OpenAPI DeleteConnection is deprecated
+        
+        @summary 删除数据源
         
         @param request: DeleteConnectionRequest
         @return: DeleteConnectionResponse
@@ -5244,7 +6142,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DeleteConnectionRequest,
     ) -> dataworks_public_20200518_models.DeleteConnectionResponse:
         """
-        @deprecated
+        @deprecated OpenAPI DeleteConnection is deprecated
+        
+        @summary 删除数据源
         
         @param request: DeleteConnectionRequest
         @return: DeleteConnectionResponse
@@ -5258,6 +6158,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DeleteDIAlarmRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DeleteDIAlarmRuleResponse:
+        """
+        @summary 删除数据集成新版告警规则
+        
+        @param request: DeleteDIAlarmRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDIAlarmRuleResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.dialarm_rule_id):
@@ -5286,6 +6193,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DeleteDIAlarmRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DeleteDIAlarmRuleResponse:
+        """
+        @summary 删除数据集成新版告警规则
+        
+        @param request: DeleteDIAlarmRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDIAlarmRuleResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.dialarm_rule_id):
@@ -5313,6 +6227,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.DeleteDIAlarmRuleRequest,
     ) -> dataworks_public_20200518_models.DeleteDIAlarmRuleResponse:
+        """
+        @summary 删除数据集成新版告警规则
+        
+        @param request: DeleteDIAlarmRuleRequest
+        @return: DeleteDIAlarmRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_dialarm_rule_with_options(request, runtime)
 
@@ -5320,6 +6240,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.DeleteDIAlarmRuleRequest,
     ) -> dataworks_public_20200518_models.DeleteDIAlarmRuleResponse:
+        """
+        @summary 删除数据集成新版告警规则
+        
+        @param request: DeleteDIAlarmRuleRequest
+        @return: DeleteDIAlarmRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_dialarm_rule_with_options_async(request, runtime)
 
@@ -5328,6 +6254,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DeleteDIJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DeleteDIJobResponse:
+        """
+        @summary 删除数据集成新版解决方案任务
+        
+        @param request: DeleteDIJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDIJobResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.dijob_id):
@@ -5356,6 +6289,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DeleteDIJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DeleteDIJobResponse:
+        """
+        @summary 删除数据集成新版解决方案任务
+        
+        @param request: DeleteDIJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDIJobResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.dijob_id):
@@ -5383,6 +6323,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.DeleteDIJobRequest,
     ) -> dataworks_public_20200518_models.DeleteDIJobResponse:
+        """
+        @summary 删除数据集成新版解决方案任务
+        
+        @param request: DeleteDIJobRequest
+        @return: DeleteDIJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_dijob_with_options(request, runtime)
 
@@ -5390,6 +6336,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.DeleteDIJobRequest,
     ) -> dataworks_public_20200518_models.DeleteDIJobResponse:
+        """
+        @summary 删除数据集成新版解决方案任务
+        
+        @param request: DeleteDIJobRequest
+        @return: DeleteDIJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_dijob_with_options_async(request, runtime)
 
@@ -5398,6 +6350,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DeleteDISyncTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DeleteDISyncTaskResponse:
+        """
+        @summary The operation that you want to perform.
+        
+        @param request: DeleteDISyncTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDISyncTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.file_id):
@@ -5430,6 +6389,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DeleteDISyncTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DeleteDISyncTaskResponse:
+        """
+        @summary The operation that you want to perform.
+        
+        @param request: DeleteDISyncTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDISyncTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.file_id):
@@ -5461,6 +6427,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.DeleteDISyncTaskRequest,
     ) -> dataworks_public_20200518_models.DeleteDISyncTaskResponse:
+        """
+        @summary The operation that you want to perform.
+        
+        @param request: DeleteDISyncTaskRequest
+        @return: DeleteDISyncTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_disync_task_with_options(request, runtime)
 
@@ -5468,6 +6440,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.DeleteDISyncTaskRequest,
     ) -> dataworks_public_20200518_models.DeleteDISyncTaskResponse:
+        """
+        @summary The operation that you want to perform.
+        
+        @param request: DeleteDISyncTaskRequest
+        @return: DeleteDISyncTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_disync_task_with_options_async(request, runtime)
 
@@ -5476,6 +6454,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DeleteDataServiceApiRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DeleteDataServiceApiResponse:
+        """
+        @summary Deletes an API in DataService Studio.
+        
+        @param request: DeleteDataServiceApiRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDataServiceApiResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.api_id):
@@ -5508,6 +6493,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DeleteDataServiceApiRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DeleteDataServiceApiResponse:
+        """
+        @summary Deletes an API in DataService Studio.
+        
+        @param request: DeleteDataServiceApiRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDataServiceApiResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.api_id):
@@ -5539,6 +6531,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.DeleteDataServiceApiRequest,
     ) -> dataworks_public_20200518_models.DeleteDataServiceApiResponse:
+        """
+        @summary Deletes an API in DataService Studio.
+        
+        @param request: DeleteDataServiceApiRequest
+        @return: DeleteDataServiceApiResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_data_service_api_with_options(request, runtime)
 
@@ -5546,6 +6544,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.DeleteDataServiceApiRequest,
     ) -> dataworks_public_20200518_models.DeleteDataServiceApiResponse:
+        """
+        @summary Deletes an API in DataService Studio.
+        
+        @param request: DeleteDataServiceApiRequest
+        @return: DeleteDataServiceApiResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_data_service_api_with_options_async(request, runtime)
 
@@ -5554,6 +6558,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DeleteDataServiceApiAuthorityRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DeleteDataServiceApiAuthorityResponse:
+        """
+        @summary Revokes the access permissions on an API.
+        
+        @param request: DeleteDataServiceApiAuthorityRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDataServiceApiAuthorityResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.api_id):
@@ -5588,6 +6599,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DeleteDataServiceApiAuthorityRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DeleteDataServiceApiAuthorityResponse:
+        """
+        @summary Revokes the access permissions on an API.
+        
+        @param request: DeleteDataServiceApiAuthorityRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDataServiceApiAuthorityResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.api_id):
@@ -5621,6 +6639,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.DeleteDataServiceApiAuthorityRequest,
     ) -> dataworks_public_20200518_models.DeleteDataServiceApiAuthorityResponse:
+        """
+        @summary Revokes the access permissions on an API.
+        
+        @param request: DeleteDataServiceApiAuthorityRequest
+        @return: DeleteDataServiceApiAuthorityResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_data_service_api_authority_with_options(request, runtime)
 
@@ -5628,6 +6652,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.DeleteDataServiceApiAuthorityRequest,
     ) -> dataworks_public_20200518_models.DeleteDataServiceApiAuthorityResponse:
+        """
+        @summary Revokes the access permissions on an API.
+        
+        @param request: DeleteDataServiceApiAuthorityRequest
+        @return: DeleteDataServiceApiAuthorityResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_data_service_api_authority_with_options_async(request, runtime)
 
@@ -5636,6 +6666,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DeleteDataSourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DeleteDataSourceResponse:
+        """
+        @param request: DeleteDataSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDataSourceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.data_source_id):
@@ -5664,6 +6699,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DeleteDataSourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DeleteDataSourceResponse:
+        """
+        @param request: DeleteDataSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDataSourceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.data_source_id):
@@ -5691,6 +6731,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.DeleteDataSourceRequest,
     ) -> dataworks_public_20200518_models.DeleteDataSourceResponse:
+        """
+        @param request: DeleteDataSourceRequest
+        @return: DeleteDataSourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_data_source_with_options(request, runtime)
 
@@ -5698,6 +6742,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.DeleteDataSourceRequest,
     ) -> dataworks_public_20200518_models.DeleteDataSourceResponse:
+        """
+        @param request: DeleteDataSourceRequest
+        @return: DeleteDataSourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_data_source_with_options_async(request, runtime)
 
@@ -5706,6 +6754,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DeleteFileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DeleteFileResponse:
+        """
+        @summary The operation that you want to perform.
+        
+        @param request: DeleteFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteFileResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.file_id):
@@ -5738,6 +6793,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DeleteFileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DeleteFileResponse:
+        """
+        @summary The operation that you want to perform.
+        
+        @param request: DeleteFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteFileResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.file_id):
@@ -5769,6 +6831,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.DeleteFileRequest,
     ) -> dataworks_public_20200518_models.DeleteFileResponse:
+        """
+        @summary The operation that you want to perform.
+        
+        @param request: DeleteFileRequest
+        @return: DeleteFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_file_with_options(request, runtime)
 
@@ -5776,6 +6844,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.DeleteFileRequest,
     ) -> dataworks_public_20200518_models.DeleteFileResponse:
+        """
+        @summary The operation that you want to perform.
+        
+        @param request: DeleteFileRequest
+        @return: DeleteFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_file_with_options_async(request, runtime)
 
@@ -5784,6 +6858,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DeleteFolderRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DeleteFolderResponse:
+        """
+        @param request: DeleteFolderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteFolderResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.folder_id):
@@ -5816,6 +6895,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DeleteFolderRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DeleteFolderResponse:
+        """
+        @param request: DeleteFolderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteFolderResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.folder_id):
@@ -5847,6 +6931,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.DeleteFolderRequest,
     ) -> dataworks_public_20200518_models.DeleteFolderResponse:
+        """
+        @param request: DeleteFolderRequest
+        @return: DeleteFolderResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_folder_with_options(request, runtime)
 
@@ -5854,6 +6942,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.DeleteFolderRequest,
     ) -> dataworks_public_20200518_models.DeleteFolderResponse:
+        """
+        @param request: DeleteFolderRequest
+        @return: DeleteFolderResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_folder_with_options_async(request, runtime)
 
@@ -5862,6 +6954,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DeleteFromMetaCategoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DeleteFromMetaCategoryResponse:
+        """
+        @summary Removes a metatable from a specified category.
+        
+        @param request: DeleteFromMetaCategoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteFromMetaCategoryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.category_id):
@@ -5892,6 +6991,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DeleteFromMetaCategoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DeleteFromMetaCategoryResponse:
+        """
+        @summary Removes a metatable from a specified category.
+        
+        @param request: DeleteFromMetaCategoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteFromMetaCategoryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.category_id):
@@ -5921,6 +7027,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.DeleteFromMetaCategoryRequest,
     ) -> dataworks_public_20200518_models.DeleteFromMetaCategoryResponse:
+        """
+        @summary Removes a metatable from a specified category.
+        
+        @param request: DeleteFromMetaCategoryRequest
+        @return: DeleteFromMetaCategoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_from_meta_category_with_options(request, runtime)
 
@@ -5928,6 +7040,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.DeleteFromMetaCategoryRequest,
     ) -> dataworks_public_20200518_models.DeleteFromMetaCategoryResponse:
+        """
+        @summary Removes a metatable from a specified category.
+        
+        @param request: DeleteFromMetaCategoryRequest
+        @return: DeleteFromMetaCategoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_from_meta_category_with_options_async(request, runtime)
 
@@ -5936,6 +7054,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DeleteLineageRelationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DeleteLineageRelationResponse:
+        """
+        @summary 删除血缘, 支持删除用户自定义血缘关系
+        
+        @param request: DeleteLineageRelationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteLineageRelationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dest_entity_qualified_name):
@@ -5968,6 +7093,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DeleteLineageRelationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DeleteLineageRelationResponse:
+        """
+        @summary 删除血缘, 支持删除用户自定义血缘关系
+        
+        @param request: DeleteLineageRelationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteLineageRelationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dest_entity_qualified_name):
@@ -5999,6 +7131,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.DeleteLineageRelationRequest,
     ) -> dataworks_public_20200518_models.DeleteLineageRelationResponse:
+        """
+        @summary 删除血缘, 支持删除用户自定义血缘关系
+        
+        @param request: DeleteLineageRelationRequest
+        @return: DeleteLineageRelationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_lineage_relation_with_options(request, runtime)
 
@@ -6006,6 +7144,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.DeleteLineageRelationRequest,
     ) -> dataworks_public_20200518_models.DeleteLineageRelationResponse:
+        """
+        @summary 删除血缘, 支持删除用户自定义血缘关系
+        
+        @param request: DeleteLineageRelationRequest
+        @return: DeleteLineageRelationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_lineage_relation_with_options_async(request, runtime)
 
@@ -6014,6 +7158,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DeleteMetaCategoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DeleteMetaCategoryResponse:
+        """
+        @summary Deletes a category.
+        
+        @param request: DeleteMetaCategoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMetaCategoryResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -6040,6 +7191,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DeleteMetaCategoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DeleteMetaCategoryResponse:
+        """
+        @summary Deletes a category.
+        
+        @param request: DeleteMetaCategoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMetaCategoryResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -6065,6 +7223,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.DeleteMetaCategoryRequest,
     ) -> dataworks_public_20200518_models.DeleteMetaCategoryResponse:
+        """
+        @summary Deletes a category.
+        
+        @param request: DeleteMetaCategoryRequest
+        @return: DeleteMetaCategoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_meta_category_with_options(request, runtime)
 
@@ -6072,6 +7236,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.DeleteMetaCategoryRequest,
     ) -> dataworks_public_20200518_models.DeleteMetaCategoryResponse:
+        """
+        @summary Deletes a category.
+        
+        @param request: DeleteMetaCategoryRequest
+        @return: DeleteMetaCategoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_meta_category_with_options_async(request, runtime)
 
@@ -6080,6 +7250,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DeleteMetaCollectionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DeleteMetaCollectionResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *DeleteMetaCollection**.
+        
+        @param request: DeleteMetaCollectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMetaCollectionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.qualified_name):
@@ -6108,6 +7285,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DeleteMetaCollectionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DeleteMetaCollectionResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *DeleteMetaCollection**.
+        
+        @param request: DeleteMetaCollectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMetaCollectionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.qualified_name):
@@ -6135,6 +7319,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.DeleteMetaCollectionRequest,
     ) -> dataworks_public_20200518_models.DeleteMetaCollectionResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *DeleteMetaCollection**.
+        
+        @param request: DeleteMetaCollectionRequest
+        @return: DeleteMetaCollectionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_meta_collection_with_options(request, runtime)
 
@@ -6142,6 +7332,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.DeleteMetaCollectionRequest,
     ) -> dataworks_public_20200518_models.DeleteMetaCollectionResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *DeleteMetaCollection**.
+        
+        @param request: DeleteMetaCollectionRequest
+        @return: DeleteMetaCollectionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_meta_collection_with_options_async(request, runtime)
 
@@ -6150,6 +7346,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DeleteMetaCollectionEntityRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DeleteMetaCollectionEntityResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *DeleteMetaCollectionEntity**.
+        
+        @param request: DeleteMetaCollectionEntityRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMetaCollectionEntityResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.collection_qualified_name):
@@ -6180,6 +7383,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DeleteMetaCollectionEntityRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DeleteMetaCollectionEntityResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *DeleteMetaCollectionEntity**.
+        
+        @param request: DeleteMetaCollectionEntityRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMetaCollectionEntityResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.collection_qualified_name):
@@ -6209,6 +7419,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.DeleteMetaCollectionEntityRequest,
     ) -> dataworks_public_20200518_models.DeleteMetaCollectionEntityResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *DeleteMetaCollectionEntity**.
+        
+        @param request: DeleteMetaCollectionEntityRequest
+        @return: DeleteMetaCollectionEntityResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_meta_collection_entity_with_options(request, runtime)
 
@@ -6216,6 +7432,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.DeleteMetaCollectionEntityRequest,
     ) -> dataworks_public_20200518_models.DeleteMetaCollectionEntityResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *DeleteMetaCollectionEntity**.
+        
+        @param request: DeleteMetaCollectionEntityRequest
+        @return: DeleteMetaCollectionEntityResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_meta_collection_entity_with_options_async(request, runtime)
 
@@ -6224,6 +7446,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DeleteProjectMemberRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DeleteProjectMemberResponse:
+        """
+        @param request: DeleteProjectMemberRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteProjectMemberResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.project_id):
@@ -6254,6 +7481,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DeleteProjectMemberRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DeleteProjectMemberResponse:
+        """
+        @param request: DeleteProjectMemberRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteProjectMemberResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.project_id):
@@ -6283,6 +7515,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.DeleteProjectMemberRequest,
     ) -> dataworks_public_20200518_models.DeleteProjectMemberResponse:
+        """
+        @param request: DeleteProjectMemberRequest
+        @return: DeleteProjectMemberResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_project_member_with_options(request, runtime)
 
@@ -6290,6 +7526,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.DeleteProjectMemberRequest,
     ) -> dataworks_public_20200518_models.DeleteProjectMemberResponse:
+        """
+        @param request: DeleteProjectMemberRequest
+        @return: DeleteProjectMemberResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_project_member_with_options_async(request, runtime)
 
@@ -6298,6 +7538,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DeleteQualityEntityRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DeleteQualityEntityResponse:
+        """
+        @param request: DeleteQualityEntityRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteQualityEntityResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.entity_id):
@@ -6332,6 +7577,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DeleteQualityEntityRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DeleteQualityEntityResponse:
+        """
+        @param request: DeleteQualityEntityRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteQualityEntityResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.entity_id):
@@ -6365,6 +7615,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.DeleteQualityEntityRequest,
     ) -> dataworks_public_20200518_models.DeleteQualityEntityResponse:
+        """
+        @param request: DeleteQualityEntityRequest
+        @return: DeleteQualityEntityResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_quality_entity_with_options(request, runtime)
 
@@ -6372,6 +7626,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.DeleteQualityEntityRequest,
     ) -> dataworks_public_20200518_models.DeleteQualityEntityResponse:
+        """
+        @param request: DeleteQualityEntityRequest
+        @return: DeleteQualityEntityResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_quality_entity_with_options_async(request, runtime)
 
@@ -6381,7 +7639,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DeleteQualityFollowerResponse:
         """
-        In Data Quality, you must configure monitoring rules based on a partition filter expression. Data Quality uses these rules to detect changes in source data and dirty data generated during the process of extract, transformation, load (ETL). Thereby, Data Quality automatically blocks the nodes that involve dirty data to stop dirty data from spreading downstream. This prevents nodes from producing unexpected dirty data that affects normal use and business decisions. You can go to the Manage Subscriptions page to add subscribers for a partition filter expression. When the monitoring rule described by the partition filter expression is triggered, the subscribers can receive notifications and troubleshoot errors in a timely manner. For more information, see [Configure monitoring rules for MaxCompute](~~73690~~).
+        @description In Data Quality, you must configure monitoring rules based on a partition filter expression. Data Quality uses these rules to detect changes in source data and dirty data generated during the process of extract, transformation, load (ETL). Thereby, Data Quality automatically blocks the nodes that involve dirty data to stop dirty data from spreading downstream. This prevents nodes from producing unexpected dirty data that affects normal use and business decisions. You can go to the Manage Subscriptions page to add subscribers for a partition filter expression. When the monitoring rule described by the partition filter expression is triggered, the subscribers can receive notifications and troubleshoot errors in a timely manner. For more information, see [Configure monitoring rules for MaxCompute](https://help.aliyun.com/document_detail/73690.html).
         
         @param request: DeleteQualityFollowerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6420,7 +7678,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DeleteQualityFollowerResponse:
         """
-        In Data Quality, you must configure monitoring rules based on a partition filter expression. Data Quality uses these rules to detect changes in source data and dirty data generated during the process of extract, transformation, load (ETL). Thereby, Data Quality automatically blocks the nodes that involve dirty data to stop dirty data from spreading downstream. This prevents nodes from producing unexpected dirty data that affects normal use and business decisions. You can go to the Manage Subscriptions page to add subscribers for a partition filter expression. When the monitoring rule described by the partition filter expression is triggered, the subscribers can receive notifications and troubleshoot errors in a timely manner. For more information, see [Configure monitoring rules for MaxCompute](~~73690~~).
+        @description In Data Quality, you must configure monitoring rules based on a partition filter expression. Data Quality uses these rules to detect changes in source data and dirty data generated during the process of extract, transformation, load (ETL). Thereby, Data Quality automatically blocks the nodes that involve dirty data to stop dirty data from spreading downstream. This prevents nodes from producing unexpected dirty data that affects normal use and business decisions. You can go to the Manage Subscriptions page to add subscribers for a partition filter expression. When the monitoring rule described by the partition filter expression is triggered, the subscribers can receive notifications and troubleshoot errors in a timely manner. For more information, see [Configure monitoring rules for MaxCompute](https://help.aliyun.com/document_detail/73690.html).
         
         @param request: DeleteQualityFollowerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6458,7 +7716,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DeleteQualityFollowerRequest,
     ) -> dataworks_public_20200518_models.DeleteQualityFollowerResponse:
         """
-        In Data Quality, you must configure monitoring rules based on a partition filter expression. Data Quality uses these rules to detect changes in source data and dirty data generated during the process of extract, transformation, load (ETL). Thereby, Data Quality automatically blocks the nodes that involve dirty data to stop dirty data from spreading downstream. This prevents nodes from producing unexpected dirty data that affects normal use and business decisions. You can go to the Manage Subscriptions page to add subscribers for a partition filter expression. When the monitoring rule described by the partition filter expression is triggered, the subscribers can receive notifications and troubleshoot errors in a timely manner. For more information, see [Configure monitoring rules for MaxCompute](~~73690~~).
+        @description In Data Quality, you must configure monitoring rules based on a partition filter expression. Data Quality uses these rules to detect changes in source data and dirty data generated during the process of extract, transformation, load (ETL). Thereby, Data Quality automatically blocks the nodes that involve dirty data to stop dirty data from spreading downstream. This prevents nodes from producing unexpected dirty data that affects normal use and business decisions. You can go to the Manage Subscriptions page to add subscribers for a partition filter expression. When the monitoring rule described by the partition filter expression is triggered, the subscribers can receive notifications and troubleshoot errors in a timely manner. For more information, see [Configure monitoring rules for MaxCompute](https://help.aliyun.com/document_detail/73690.html).
         
         @param request: DeleteQualityFollowerRequest
         @return: DeleteQualityFollowerResponse
@@ -6471,7 +7729,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DeleteQualityFollowerRequest,
     ) -> dataworks_public_20200518_models.DeleteQualityFollowerResponse:
         """
-        In Data Quality, you must configure monitoring rules based on a partition filter expression. Data Quality uses these rules to detect changes in source data and dirty data generated during the process of extract, transformation, load (ETL). Thereby, Data Quality automatically blocks the nodes that involve dirty data to stop dirty data from spreading downstream. This prevents nodes from producing unexpected dirty data that affects normal use and business decisions. You can go to the Manage Subscriptions page to add subscribers for a partition filter expression. When the monitoring rule described by the partition filter expression is triggered, the subscribers can receive notifications and troubleshoot errors in a timely manner. For more information, see [Configure monitoring rules for MaxCompute](~~73690~~).
+        @description In Data Quality, you must configure monitoring rules based on a partition filter expression. Data Quality uses these rules to detect changes in source data and dirty data generated during the process of extract, transformation, load (ETL). Thereby, Data Quality automatically blocks the nodes that involve dirty data to stop dirty data from spreading downstream. This prevents nodes from producing unexpected dirty data that affects normal use and business decisions. You can go to the Manage Subscriptions page to add subscribers for a partition filter expression. When the monitoring rule described by the partition filter expression is triggered, the subscribers can receive notifications and troubleshoot errors in a timely manner. For more information, see [Configure monitoring rules for MaxCompute](https://help.aliyun.com/document_detail/73690.html).
         
         @param request: DeleteQualityFollowerRequest
         @return: DeleteQualityFollowerResponse
@@ -6484,6 +7742,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DeleteQualityRelativeNodeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DeleteQualityRelativeNodeResponse:
+        """
+        @param request: DeleteQualityRelativeNodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteQualityRelativeNodeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.env_type):
@@ -6526,6 +7789,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DeleteQualityRelativeNodeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DeleteQualityRelativeNodeResponse:
+        """
+        @param request: DeleteQualityRelativeNodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteQualityRelativeNodeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.env_type):
@@ -6567,6 +7835,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.DeleteQualityRelativeNodeRequest,
     ) -> dataworks_public_20200518_models.DeleteQualityRelativeNodeResponse:
+        """
+        @param request: DeleteQualityRelativeNodeRequest
+        @return: DeleteQualityRelativeNodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_quality_relative_node_with_options(request, runtime)
 
@@ -6574,6 +7846,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.DeleteQualityRelativeNodeRequest,
     ) -> dataworks_public_20200518_models.DeleteQualityRelativeNodeResponse:
+        """
+        @param request: DeleteQualityRelativeNodeRequest
+        @return: DeleteQualityRelativeNodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_quality_relative_node_with_options_async(request, runtime)
 
@@ -6582,6 +7858,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DeleteQualityRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DeleteQualityRuleResponse:
+        """
+        @param request: DeleteQualityRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteQualityRuleResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.project_id):
@@ -6614,6 +7895,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DeleteQualityRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DeleteQualityRuleResponse:
+        """
+        @param request: DeleteQualityRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteQualityRuleResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.project_id):
@@ -6645,6 +7931,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.DeleteQualityRuleRequest,
     ) -> dataworks_public_20200518_models.DeleteQualityRuleResponse:
+        """
+        @param request: DeleteQualityRuleRequest
+        @return: DeleteQualityRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_quality_rule_with_options(request, runtime)
 
@@ -6652,6 +7942,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.DeleteQualityRuleRequest,
     ) -> dataworks_public_20200518_models.DeleteQualityRuleResponse:
+        """
+        @param request: DeleteQualityRuleRequest
+        @return: DeleteQualityRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_quality_rule_with_options_async(request, runtime)
 
@@ -6660,6 +7954,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DeleteRecognizeRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DeleteRecognizeRuleResponse:
+        """
+        @summary 删除识别规则
+        
+        @param request: DeleteRecognizeRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteRecognizeRuleResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.sensitive_id):
@@ -6690,6 +7991,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DeleteRecognizeRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DeleteRecognizeRuleResponse:
+        """
+        @summary 删除识别规则
+        
+        @param request: DeleteRecognizeRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteRecognizeRuleResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.sensitive_id):
@@ -6719,6 +8027,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.DeleteRecognizeRuleRequest,
     ) -> dataworks_public_20200518_models.DeleteRecognizeRuleResponse:
+        """
+        @summary 删除识别规则
+        
+        @param request: DeleteRecognizeRuleRequest
+        @return: DeleteRecognizeRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_recognize_rule_with_options(request, runtime)
 
@@ -6726,6 +8040,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.DeleteRecognizeRuleRequest,
     ) -> dataworks_public_20200518_models.DeleteRecognizeRuleResponse:
+        """
+        @summary 删除识别规则
+        
+        @param request: DeleteRecognizeRuleRequest
+        @return: DeleteRecognizeRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_recognize_rule_with_options_async(request, runtime)
 
@@ -6734,6 +8054,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DeleteRemindRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DeleteRemindResponse:
+        """
+        @summary Deletes a custom alert rule.
+        
+        @param request: DeleteRemindRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteRemindResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.remind_id):
@@ -6762,6 +8089,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DeleteRemindRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DeleteRemindResponse:
+        """
+        @summary Deletes a custom alert rule.
+        
+        @param request: DeleteRemindRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteRemindResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.remind_id):
@@ -6789,6 +8123,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.DeleteRemindRequest,
     ) -> dataworks_public_20200518_models.DeleteRemindResponse:
+        """
+        @summary Deletes a custom alert rule.
+        
+        @param request: DeleteRemindRequest
+        @return: DeleteRemindResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_remind_with_options(request, runtime)
 
@@ -6796,6 +8136,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.DeleteRemindRequest,
     ) -> dataworks_public_20200518_models.DeleteRemindResponse:
+        """
+        @summary Deletes a custom alert rule.
+        
+        @param request: DeleteRemindRequest
+        @return: DeleteRemindResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_remind_with_options_async(request, runtime)
 
@@ -6804,6 +8150,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DeleteTableRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DeleteTableResponse:
+        """
+        @param request: DeleteTableRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteTableResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_guid):
@@ -6840,6 +8191,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DeleteTableRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DeleteTableResponse:
+        """
+        @param request: DeleteTableRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteTableResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_guid):
@@ -6875,6 +8231,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.DeleteTableRequest,
     ) -> dataworks_public_20200518_models.DeleteTableResponse:
+        """
+        @param request: DeleteTableRequest
+        @return: DeleteTableResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_table_with_options(request, runtime)
 
@@ -6882,6 +8242,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.DeleteTableRequest,
     ) -> dataworks_public_20200518_models.DeleteTableResponse:
+        """
+        @param request: DeleteTableRequest
+        @return: DeleteTableResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_table_with_options_async(request, runtime)
 
@@ -6890,6 +8254,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DeleteTableLevelRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DeleteTableLevelResponse:
+        """
+        @param request: DeleteTableLevelRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteTableLevelResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.level_id):
@@ -6920,6 +8289,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DeleteTableLevelRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DeleteTableLevelResponse:
+        """
+        @param request: DeleteTableLevelRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteTableLevelResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.level_id):
@@ -6949,6 +8323,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.DeleteTableLevelRequest,
     ) -> dataworks_public_20200518_models.DeleteTableLevelResponse:
+        """
+        @param request: DeleteTableLevelRequest
+        @return: DeleteTableLevelResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_table_level_with_options(request, runtime)
 
@@ -6956,6 +8334,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.DeleteTableLevelRequest,
     ) -> dataworks_public_20200518_models.DeleteTableLevelResponse:
+        """
+        @param request: DeleteTableLevelRequest
+        @return: DeleteTableLevelResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_table_level_with_options_async(request, runtime)
 
@@ -6964,6 +8346,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DeleteTableThemeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DeleteTableThemeResponse:
+        """
+        @param request: DeleteTableThemeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteTableThemeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.project_id):
@@ -6994,6 +8381,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DeleteTableThemeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DeleteTableThemeResponse:
+        """
+        @param request: DeleteTableThemeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteTableThemeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.project_id):
@@ -7023,6 +8415,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.DeleteTableThemeRequest,
     ) -> dataworks_public_20200518_models.DeleteTableThemeResponse:
+        """
+        @param request: DeleteTableThemeRequest
+        @return: DeleteTableThemeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_table_theme_with_options(request, runtime)
 
@@ -7030,6 +8426,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.DeleteTableThemeRequest,
     ) -> dataworks_public_20200518_models.DeleteTableThemeResponse:
+        """
+        @param request: DeleteTableThemeRequest
+        @return: DeleteTableThemeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_table_theme_with_options_async(request, runtime)
 
@@ -7038,6 +8438,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DeployDISyncTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DeployDISyncTaskResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *DeployDISyncTask**.
+        
+        @param request: DeployDISyncTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeployDISyncTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.file_id):
@@ -7070,6 +8477,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DeployDISyncTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DeployDISyncTaskResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *DeployDISyncTask**.
+        
+        @param request: DeployDISyncTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeployDISyncTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.file_id):
@@ -7101,6 +8515,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.DeployDISyncTaskRequest,
     ) -> dataworks_public_20200518_models.DeployDISyncTaskResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *DeployDISyncTask**.
+        
+        @param request: DeployDISyncTaskRequest
+        @return: DeployDISyncTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.deploy_disync_task_with_options(request, runtime)
 
@@ -7108,6 +8528,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.DeployDISyncTaskRequest,
     ) -> dataworks_public_20200518_models.DeployDISyncTaskResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *DeployDISyncTask**.
+        
+        @param request: DeployDISyncTaskRequest
+        @return: DeployDISyncTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.deploy_disync_task_with_options_async(request, runtime)
 
@@ -7116,6 +8542,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DeployFileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DeployFileResponse:
+        """
+        @param request: DeployFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeployFileResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.comment):
@@ -7152,6 +8583,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DeployFileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DeployFileResponse:
+        """
+        @param request: DeployFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeployFileResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.comment):
@@ -7187,6 +8623,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.DeployFileRequest,
     ) -> dataworks_public_20200518_models.DeployFileResponse:
+        """
+        @param request: DeployFileRequest
+        @return: DeployFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.deploy_file_with_options(request, runtime)
 
@@ -7194,6 +8634,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.DeployFileRequest,
     ) -> dataworks_public_20200518_models.DeployFileResponse:
+        """
+        @param request: DeployFileRequest
+        @return: DeployFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.deploy_file_with_options_async(request, runtime)
 
@@ -7202,6 +8646,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DesensitizeDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DesensitizeDataResponse:
+        """
+        @param request: DesensitizeDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DesensitizeDataResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -7228,6 +8677,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DesensitizeDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DesensitizeDataResponse:
+        """
+        @param request: DesensitizeDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DesensitizeDataResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -7253,6 +8707,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.DesensitizeDataRequest,
     ) -> dataworks_public_20200518_models.DesensitizeDataResponse:
+        """
+        @param request: DesensitizeDataRequest
+        @return: DesensitizeDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.desensitize_data_with_options(request, runtime)
 
@@ -7260,14 +8718,521 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.DesensitizeDataRequest,
     ) -> dataworks_public_20200518_models.DesensitizeDataResponse:
+        """
+        @param request: DesensitizeDataRequest
+        @return: DesensitizeDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.desensitize_data_with_options_async(request, runtime)
+
+    def dsg_desens_plan_delete_with_options(
+        self,
+        tmp_req: dataworks_public_20200518_models.DsgDesensPlanDeleteRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.DsgDesensPlanDeleteResponse:
+        """
+        @summary 删除脱敏规则
+        
+        @param tmp_req: DsgDesensPlanDeleteRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DsgDesensPlanDeleteResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20200518_models.DsgDesensPlanDeleteShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.ids):
+            request.ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ids, 'Ids', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.ids_shrink):
+            query['Ids'] = request.ids_shrink
+        if not UtilClient.is_unset(request.scene_code):
+            query['SceneCode'] = request.scene_code
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DsgDesensPlanDelete',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.DsgDesensPlanDeleteResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def dsg_desens_plan_delete_with_options_async(
+        self,
+        tmp_req: dataworks_public_20200518_models.DsgDesensPlanDeleteRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.DsgDesensPlanDeleteResponse:
+        """
+        @summary 删除脱敏规则
+        
+        @param tmp_req: DsgDesensPlanDeleteRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DsgDesensPlanDeleteResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20200518_models.DsgDesensPlanDeleteShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.ids):
+            request.ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ids, 'Ids', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.ids_shrink):
+            query['Ids'] = request.ids_shrink
+        if not UtilClient.is_unset(request.scene_code):
+            query['SceneCode'] = request.scene_code
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DsgDesensPlanDelete',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.DsgDesensPlanDeleteResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def dsg_desens_plan_delete(
+        self,
+        request: dataworks_public_20200518_models.DsgDesensPlanDeleteRequest,
+    ) -> dataworks_public_20200518_models.DsgDesensPlanDeleteResponse:
+        """
+        @summary 删除脱敏规则
+        
+        @param request: DsgDesensPlanDeleteRequest
+        @return: DsgDesensPlanDeleteResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.dsg_desens_plan_delete_with_options(request, runtime)
+
+    async def dsg_desens_plan_delete_async(
+        self,
+        request: dataworks_public_20200518_models.DsgDesensPlanDeleteRequest,
+    ) -> dataworks_public_20200518_models.DsgDesensPlanDeleteResponse:
+        """
+        @summary 删除脱敏规则
+        
+        @param request: DsgDesensPlanDeleteRequest
+        @return: DsgDesensPlanDeleteResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.dsg_desens_plan_delete_with_options_async(request, runtime)
+
+    def dsg_desens_plan_query_list_with_options(
+        self,
+        request: dataworks_public_20200518_models.DsgDesensPlanQueryListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.DsgDesensPlanQueryListResponse:
+        """
+        @summary 查询脱敏规则列表
+        
+        @param request: DsgDesensPlanQueryListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DsgDesensPlanQueryListResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DsgDesensPlanQueryList',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.DsgDesensPlanQueryListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def dsg_desens_plan_query_list_with_options_async(
+        self,
+        request: dataworks_public_20200518_models.DsgDesensPlanQueryListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.DsgDesensPlanQueryListResponse:
+        """
+        @summary 查询脱敏规则列表
+        
+        @param request: DsgDesensPlanQueryListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DsgDesensPlanQueryListResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DsgDesensPlanQueryList',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.DsgDesensPlanQueryListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def dsg_desens_plan_query_list(
+        self,
+        request: dataworks_public_20200518_models.DsgDesensPlanQueryListRequest,
+    ) -> dataworks_public_20200518_models.DsgDesensPlanQueryListResponse:
+        """
+        @summary 查询脱敏规则列表
+        
+        @param request: DsgDesensPlanQueryListRequest
+        @return: DsgDesensPlanQueryListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.dsg_desens_plan_query_list_with_options(request, runtime)
+
+    async def dsg_desens_plan_query_list_async(
+        self,
+        request: dataworks_public_20200518_models.DsgDesensPlanQueryListRequest,
+    ) -> dataworks_public_20200518_models.DsgDesensPlanQueryListResponse:
+        """
+        @summary 查询脱敏规则列表
+        
+        @param request: DsgDesensPlanQueryListRequest
+        @return: DsgDesensPlanQueryListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.dsg_desens_plan_query_list_with_options_async(request, runtime)
+
+    def dsg_desens_plan_update_status_with_options(
+        self,
+        tmp_req: dataworks_public_20200518_models.DsgDesensPlanUpdateStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.DsgDesensPlanUpdateStatusResponse:
+        """
+        @summary 修改脱敏规则生效状态
+        
+        @param tmp_req: DsgDesensPlanUpdateStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DsgDesensPlanUpdateStatusResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20200518_models.DsgDesensPlanUpdateStatusShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.ids):
+            request.ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ids, 'Ids', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.ids_shrink):
+            query['Ids'] = request.ids_shrink
+        if not UtilClient.is_unset(request.scene_code):
+            query['SceneCode'] = request.scene_code
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DsgDesensPlanUpdateStatus',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.DsgDesensPlanUpdateStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def dsg_desens_plan_update_status_with_options_async(
+        self,
+        tmp_req: dataworks_public_20200518_models.DsgDesensPlanUpdateStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.DsgDesensPlanUpdateStatusResponse:
+        """
+        @summary 修改脱敏规则生效状态
+        
+        @param tmp_req: DsgDesensPlanUpdateStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DsgDesensPlanUpdateStatusResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20200518_models.DsgDesensPlanUpdateStatusShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.ids):
+            request.ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ids, 'Ids', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.ids_shrink):
+            query['Ids'] = request.ids_shrink
+        if not UtilClient.is_unset(request.scene_code):
+            query['SceneCode'] = request.scene_code
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DsgDesensPlanUpdateStatus',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.DsgDesensPlanUpdateStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def dsg_desens_plan_update_status(
+        self,
+        request: dataworks_public_20200518_models.DsgDesensPlanUpdateStatusRequest,
+    ) -> dataworks_public_20200518_models.DsgDesensPlanUpdateStatusResponse:
+        """
+        @summary 修改脱敏规则生效状态
+        
+        @param request: DsgDesensPlanUpdateStatusRequest
+        @return: DsgDesensPlanUpdateStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.dsg_desens_plan_update_status_with_options(request, runtime)
+
+    async def dsg_desens_plan_update_status_async(
+        self,
+        request: dataworks_public_20200518_models.DsgDesensPlanUpdateStatusRequest,
+    ) -> dataworks_public_20200518_models.DsgDesensPlanUpdateStatusResponse:
+        """
+        @summary 修改脱敏规则生效状态
+        
+        @param request: DsgDesensPlanUpdateStatusRequest
+        @return: DsgDesensPlanUpdateStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.dsg_desens_plan_update_status_with_options_async(request, runtime)
+
+    def dsg_platform_query_projects_and_schema_from_meta_with_options(
+        self,
+        request: dataworks_public_20200518_models.DsgPlatformQueryProjectsAndSchemaFromMetaRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.DsgPlatformQueryProjectsAndSchemaFromMetaResponse:
+        """
+        @summary 查询引擎实例列表
+        
+        @param request: DsgPlatformQueryProjectsAndSchemaFromMetaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DsgPlatformQueryProjectsAndSchemaFromMetaResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DsgPlatformQueryProjectsAndSchemaFromMeta',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.DsgPlatformQueryProjectsAndSchemaFromMetaResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def dsg_platform_query_projects_and_schema_from_meta_with_options_async(
+        self,
+        request: dataworks_public_20200518_models.DsgPlatformQueryProjectsAndSchemaFromMetaRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.DsgPlatformQueryProjectsAndSchemaFromMetaResponse:
+        """
+        @summary 查询引擎实例列表
+        
+        @param request: DsgPlatformQueryProjectsAndSchemaFromMetaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DsgPlatformQueryProjectsAndSchemaFromMetaResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DsgPlatformQueryProjectsAndSchemaFromMeta',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.DsgPlatformQueryProjectsAndSchemaFromMetaResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def dsg_platform_query_projects_and_schema_from_meta(
+        self,
+        request: dataworks_public_20200518_models.DsgPlatformQueryProjectsAndSchemaFromMetaRequest,
+    ) -> dataworks_public_20200518_models.DsgPlatformQueryProjectsAndSchemaFromMetaResponse:
+        """
+        @summary 查询引擎实例列表
+        
+        @param request: DsgPlatformQueryProjectsAndSchemaFromMetaRequest
+        @return: DsgPlatformQueryProjectsAndSchemaFromMetaResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.dsg_platform_query_projects_and_schema_from_meta_with_options(request, runtime)
+
+    async def dsg_platform_query_projects_and_schema_from_meta_async(
+        self,
+        request: dataworks_public_20200518_models.DsgPlatformQueryProjectsAndSchemaFromMetaRequest,
+    ) -> dataworks_public_20200518_models.DsgPlatformQueryProjectsAndSchemaFromMetaResponse:
+        """
+        @summary 查询引擎实例列表
+        
+        @param request: DsgPlatformQueryProjectsAndSchemaFromMetaRequest
+        @return: DsgPlatformQueryProjectsAndSchemaFromMetaResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.dsg_platform_query_projects_and_schema_from_meta_with_options_async(request, runtime)
+
+    def dsg_query_default_templates_with_options(
+        self,
+        request: dataworks_public_20200518_models.DsgQueryDefaultTemplatesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.DsgQueryDefaultTemplatesResponse:
+        """
+        @summary 查询能够选择的敏感类型模版列表
+        
+        @param request: DsgQueryDefaultTemplatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DsgQueryDefaultTemplatesResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DsgQueryDefaultTemplates',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.DsgQueryDefaultTemplatesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def dsg_query_default_templates_with_options_async(
+        self,
+        request: dataworks_public_20200518_models.DsgQueryDefaultTemplatesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.DsgQueryDefaultTemplatesResponse:
+        """
+        @summary 查询能够选择的敏感类型模版列表
+        
+        @param request: DsgQueryDefaultTemplatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DsgQueryDefaultTemplatesResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DsgQueryDefaultTemplates',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.DsgQueryDefaultTemplatesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def dsg_query_default_templates(
+        self,
+        request: dataworks_public_20200518_models.DsgQueryDefaultTemplatesRequest,
+    ) -> dataworks_public_20200518_models.DsgQueryDefaultTemplatesResponse:
+        """
+        @summary 查询能够选择的敏感类型模版列表
+        
+        @param request: DsgQueryDefaultTemplatesRequest
+        @return: DsgQueryDefaultTemplatesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.dsg_query_default_templates_with_options(request, runtime)
+
+    async def dsg_query_default_templates_async(
+        self,
+        request: dataworks_public_20200518_models.DsgQueryDefaultTemplatesRequest,
+    ) -> dataworks_public_20200518_models.DsgQueryDefaultTemplatesResponse:
+        """
+        @summary 查询能够选择的敏感类型模版列表
+        
+        @param request: DsgQueryDefaultTemplatesRequest
+        @return: DsgQueryDefaultTemplatesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.dsg_query_default_templates_with_options_async(request, runtime)
 
     def dsg_query_sens_result_with_options(
         self,
         request: dataworks_public_20200518_models.DsgQuerySensResultRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DsgQuerySensResultResponse:
+        """
+        @summary 识别结果查询
+        
+        @param request: DsgQuerySensResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DsgQuerySensResultResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.col):
@@ -7324,6 +9289,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DsgQuerySensResultRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DsgQuerySensResultResponse:
+        """
+        @summary 识别结果查询
+        
+        @param request: DsgQuerySensResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DsgQuerySensResultResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.col):
@@ -7379,6 +9351,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.DsgQuerySensResultRequest,
     ) -> dataworks_public_20200518_models.DsgQuerySensResultResponse:
+        """
+        @summary 识别结果查询
+        
+        @param request: DsgQuerySensResultRequest
+        @return: DsgQuerySensResultResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.dsg_query_sens_result_with_options(request, runtime)
 
@@ -7386,6 +9364,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.DsgQuerySensResultRequest,
     ) -> dataworks_public_20200518_models.DsgQuerySensResultResponse:
+        """
+        @summary 识别结果查询
+        
+        @param request: DsgQuerySensResultRequest
+        @return: DsgQuerySensResultResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.dsg_query_sens_result_with_options_async(request, runtime)
 
@@ -7394,6 +9378,11 @@ class Client(OpenApiClient):
         tmp_req: dataworks_public_20200518_models.DsgRunSensIdentifyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DsgRunSensIdentifyResponse:
+        """
+        @param tmp_req: DsgRunSensIdentifyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DsgRunSensIdentifyResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dataworks_public_20200518_models.DsgRunSensIdentifyShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -7428,6 +9417,11 @@ class Client(OpenApiClient):
         tmp_req: dataworks_public_20200518_models.DsgRunSensIdentifyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DsgRunSensIdentifyResponse:
+        """
+        @param tmp_req: DsgRunSensIdentifyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DsgRunSensIdentifyResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dataworks_public_20200518_models.DsgRunSensIdentifyShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -7461,6 +9455,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.DsgRunSensIdentifyRequest,
     ) -> dataworks_public_20200518_models.DsgRunSensIdentifyResponse:
+        """
+        @param request: DsgRunSensIdentifyRequest
+        @return: DsgRunSensIdentifyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.dsg_run_sens_identify_with_options(request, runtime)
 
@@ -7468,14 +9466,129 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.DsgRunSensIdentifyRequest,
     ) -> dataworks_public_20200518_models.DsgRunSensIdentifyResponse:
+        """
+        @param request: DsgRunSensIdentifyRequest
+        @return: DsgRunSensIdentifyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.dsg_run_sens_identify_with_options_async(request, runtime)
+
+    def dsg_scene_add_or_update_scene_with_options(
+        self,
+        tmp_req: dataworks_public_20200518_models.DsgSceneAddOrUpdateSceneRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.DsgSceneAddOrUpdateSceneResponse:
+        """
+        @summary 新增或编辑二级场景
+        
+        @param tmp_req: DsgSceneAddOrUpdateSceneRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DsgSceneAddOrUpdateSceneResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20200518_models.DsgSceneAddOrUpdateSceneShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.scenes):
+            request.scenes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.scenes, 'scenes', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.scenes_shrink):
+            query['scenes'] = request.scenes_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DsgSceneAddOrUpdateScene',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.DsgSceneAddOrUpdateSceneResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def dsg_scene_add_or_update_scene_with_options_async(
+        self,
+        tmp_req: dataworks_public_20200518_models.DsgSceneAddOrUpdateSceneRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.DsgSceneAddOrUpdateSceneResponse:
+        """
+        @summary 新增或编辑二级场景
+        
+        @param tmp_req: DsgSceneAddOrUpdateSceneRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DsgSceneAddOrUpdateSceneResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20200518_models.DsgSceneAddOrUpdateSceneShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.scenes):
+            request.scenes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.scenes, 'scenes', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.scenes_shrink):
+            query['scenes'] = request.scenes_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DsgSceneAddOrUpdateScene',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.DsgSceneAddOrUpdateSceneResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def dsg_scene_add_or_update_scene(
+        self,
+        request: dataworks_public_20200518_models.DsgSceneAddOrUpdateSceneRequest,
+    ) -> dataworks_public_20200518_models.DsgSceneAddOrUpdateSceneResponse:
+        """
+        @summary 新增或编辑二级场景
+        
+        @param request: DsgSceneAddOrUpdateSceneRequest
+        @return: DsgSceneAddOrUpdateSceneResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.dsg_scene_add_or_update_scene_with_options(request, runtime)
+
+    async def dsg_scene_add_or_update_scene_async(
+        self,
+        request: dataworks_public_20200518_models.DsgSceneAddOrUpdateSceneRequest,
+    ) -> dataworks_public_20200518_models.DsgSceneAddOrUpdateSceneResponse:
+        """
+        @summary 新增或编辑二级场景
+        
+        @param request: DsgSceneAddOrUpdateSceneRequest
+        @return: DsgSceneAddOrUpdateSceneResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.dsg_scene_add_or_update_scene_with_options_async(request, runtime)
 
     def dsg_stop_sens_identify_with_options(
         self,
         request: dataworks_public_20200518_models.DsgStopSensIdentifyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DsgStopSensIdentifyResponse:
+        """
+        @summary 识别任务停止
+        
+        @param request: DsgStopSensIdentifyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DsgStopSensIdentifyResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.job_id):
@@ -7506,6 +9619,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DsgStopSensIdentifyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DsgStopSensIdentifyResponse:
+        """
+        @summary 识别任务停止
+        
+        @param request: DsgStopSensIdentifyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DsgStopSensIdentifyResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.job_id):
@@ -7535,6 +9655,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.DsgStopSensIdentifyRequest,
     ) -> dataworks_public_20200518_models.DsgStopSensIdentifyResponse:
+        """
+        @summary 识别任务停止
+        
+        @param request: DsgStopSensIdentifyRequest
+        @return: DsgStopSensIdentifyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.dsg_stop_sens_identify_with_options(request, runtime)
 
@@ -7542,14 +9668,577 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.DsgStopSensIdentifyRequest,
     ) -> dataworks_public_20200518_models.DsgStopSensIdentifyResponse:
+        """
+        @summary 识别任务停止
+        
+        @param request: DsgStopSensIdentifyRequest
+        @return: DsgStopSensIdentifyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.dsg_stop_sens_identify_with_options_async(request, runtime)
+
+    def dsg_user_group_add_or_update_with_options(
+        self,
+        tmp_req: dataworks_public_20200518_models.DsgUserGroupAddOrUpdateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.DsgUserGroupAddOrUpdateResponse:
+        """
+        @summary 新增或编辑用户组
+        
+        @param tmp_req: DsgUserGroupAddOrUpdateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DsgUserGroupAddOrUpdateResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20200518_models.DsgUserGroupAddOrUpdateShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.user_groups):
+            request.user_groups_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_groups, 'UserGroups', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.user_groups_shrink):
+            query['UserGroups'] = request.user_groups_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DsgUserGroupAddOrUpdate',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.DsgUserGroupAddOrUpdateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def dsg_user_group_add_or_update_with_options_async(
+        self,
+        tmp_req: dataworks_public_20200518_models.DsgUserGroupAddOrUpdateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.DsgUserGroupAddOrUpdateResponse:
+        """
+        @summary 新增或编辑用户组
+        
+        @param tmp_req: DsgUserGroupAddOrUpdateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DsgUserGroupAddOrUpdateResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20200518_models.DsgUserGroupAddOrUpdateShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.user_groups):
+            request.user_groups_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_groups, 'UserGroups', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.user_groups_shrink):
+            query['UserGroups'] = request.user_groups_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DsgUserGroupAddOrUpdate',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.DsgUserGroupAddOrUpdateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def dsg_user_group_add_or_update(
+        self,
+        request: dataworks_public_20200518_models.DsgUserGroupAddOrUpdateRequest,
+    ) -> dataworks_public_20200518_models.DsgUserGroupAddOrUpdateResponse:
+        """
+        @summary 新增或编辑用户组
+        
+        @param request: DsgUserGroupAddOrUpdateRequest
+        @return: DsgUserGroupAddOrUpdateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.dsg_user_group_add_or_update_with_options(request, runtime)
+
+    async def dsg_user_group_add_or_update_async(
+        self,
+        request: dataworks_public_20200518_models.DsgUserGroupAddOrUpdateRequest,
+    ) -> dataworks_public_20200518_models.DsgUserGroupAddOrUpdateResponse:
+        """
+        @summary 新增或编辑用户组
+        
+        @param request: DsgUserGroupAddOrUpdateRequest
+        @return: DsgUserGroupAddOrUpdateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.dsg_user_group_add_or_update_with_options_async(request, runtime)
+
+    def dsg_user_group_delete_with_options(
+        self,
+        tmp_req: dataworks_public_20200518_models.DsgUserGroupDeleteRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.DsgUserGroupDeleteResponse:
+        """
+        @summary 删除用户组
+        
+        @param tmp_req: DsgUserGroupDeleteRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DsgUserGroupDeleteResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20200518_models.DsgUserGroupDeleteShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.ids):
+            request.ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ids, 'Ids', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.ids_shrink):
+            query['Ids'] = request.ids_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DsgUserGroupDelete',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.DsgUserGroupDeleteResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def dsg_user_group_delete_with_options_async(
+        self,
+        tmp_req: dataworks_public_20200518_models.DsgUserGroupDeleteRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.DsgUserGroupDeleteResponse:
+        """
+        @summary 删除用户组
+        
+        @param tmp_req: DsgUserGroupDeleteRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DsgUserGroupDeleteResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20200518_models.DsgUserGroupDeleteShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.ids):
+            request.ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ids, 'Ids', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.ids_shrink):
+            query['Ids'] = request.ids_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DsgUserGroupDelete',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.DsgUserGroupDeleteResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def dsg_user_group_delete(
+        self,
+        request: dataworks_public_20200518_models.DsgUserGroupDeleteRequest,
+    ) -> dataworks_public_20200518_models.DsgUserGroupDeleteResponse:
+        """
+        @summary 删除用户组
+        
+        @param request: DsgUserGroupDeleteRequest
+        @return: DsgUserGroupDeleteResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.dsg_user_group_delete_with_options(request, runtime)
+
+    async def dsg_user_group_delete_async(
+        self,
+        request: dataworks_public_20200518_models.DsgUserGroupDeleteRequest,
+    ) -> dataworks_public_20200518_models.DsgUserGroupDeleteResponse:
+        """
+        @summary 删除用户组
+        
+        @param request: DsgUserGroupDeleteRequest
+        @return: DsgUserGroupDeleteResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.dsg_user_group_delete_with_options_async(request, runtime)
+
+    def dsg_user_group_get_odps_role_groups_with_options(
+        self,
+        request: dataworks_public_20200518_models.DsgUserGroupGetOdpsRoleGroupsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.DsgUserGroupGetOdpsRoleGroupsResponse:
+        """
+        @param request: DsgUserGroupGetOdpsRoleGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DsgUserGroupGetOdpsRoleGroupsResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DsgUserGroupGetOdpsRoleGroups',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.DsgUserGroupGetOdpsRoleGroupsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def dsg_user_group_get_odps_role_groups_with_options_async(
+        self,
+        request: dataworks_public_20200518_models.DsgUserGroupGetOdpsRoleGroupsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.DsgUserGroupGetOdpsRoleGroupsResponse:
+        """
+        @param request: DsgUserGroupGetOdpsRoleGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DsgUserGroupGetOdpsRoleGroupsResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DsgUserGroupGetOdpsRoleGroups',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.DsgUserGroupGetOdpsRoleGroupsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def dsg_user_group_get_odps_role_groups(
+        self,
+        request: dataworks_public_20200518_models.DsgUserGroupGetOdpsRoleGroupsRequest,
+    ) -> dataworks_public_20200518_models.DsgUserGroupGetOdpsRoleGroupsResponse:
+        """
+        @param request: DsgUserGroupGetOdpsRoleGroupsRequest
+        @return: DsgUserGroupGetOdpsRoleGroupsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.dsg_user_group_get_odps_role_groups_with_options(request, runtime)
+
+    async def dsg_user_group_get_odps_role_groups_async(
+        self,
+        request: dataworks_public_20200518_models.DsgUserGroupGetOdpsRoleGroupsRequest,
+    ) -> dataworks_public_20200518_models.DsgUserGroupGetOdpsRoleGroupsResponse:
+        """
+        @param request: DsgUserGroupGetOdpsRoleGroupsRequest
+        @return: DsgUserGroupGetOdpsRoleGroupsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.dsg_user_group_get_odps_role_groups_with_options_async(request, runtime)
+
+    def dsg_user_group_query_list_with_options(
+        self,
+        request: dataworks_public_20200518_models.DsgUserGroupQueryListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.DsgUserGroupQueryListResponse:
+        """
+        @summary 查询用户组列表
+        
+        @param request: DsgUserGroupQueryListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DsgUserGroupQueryListResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DsgUserGroupQueryList',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.DsgUserGroupQueryListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def dsg_user_group_query_list_with_options_async(
+        self,
+        request: dataworks_public_20200518_models.DsgUserGroupQueryListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.DsgUserGroupQueryListResponse:
+        """
+        @summary 查询用户组列表
+        
+        @param request: DsgUserGroupQueryListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DsgUserGroupQueryListResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DsgUserGroupQueryList',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.DsgUserGroupQueryListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def dsg_user_group_query_list(
+        self,
+        request: dataworks_public_20200518_models.DsgUserGroupQueryListRequest,
+    ) -> dataworks_public_20200518_models.DsgUserGroupQueryListResponse:
+        """
+        @summary 查询用户组列表
+        
+        @param request: DsgUserGroupQueryListRequest
+        @return: DsgUserGroupQueryListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.dsg_user_group_query_list_with_options(request, runtime)
+
+    async def dsg_user_group_query_list_async(
+        self,
+        request: dataworks_public_20200518_models.DsgUserGroupQueryListRequest,
+    ) -> dataworks_public_20200518_models.DsgUserGroupQueryListResponse:
+        """
+        @summary 查询用户组列表
+        
+        @param request: DsgUserGroupQueryListRequest
+        @return: DsgUserGroupQueryListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.dsg_user_group_query_list_with_options_async(request, runtime)
+
+    def dsg_user_group_query_user_list_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.DsgUserGroupQueryUserListResponse:
+        """
+        @summary 查询当前用户列表
+        
+        @param request: DsgUserGroupQueryUserListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DsgUserGroupQueryUserListResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='DsgUserGroupQueryUserList',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.DsgUserGroupQueryUserListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def dsg_user_group_query_user_list_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.DsgUserGroupQueryUserListResponse:
+        """
+        @summary 查询当前用户列表
+        
+        @param request: DsgUserGroupQueryUserListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DsgUserGroupQueryUserListResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='DsgUserGroupQueryUserList',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.DsgUserGroupQueryUserListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def dsg_user_group_query_user_list(self) -> dataworks_public_20200518_models.DsgUserGroupQueryUserListResponse:
+        """
+        @summary 查询当前用户列表
+        
+        @return: DsgUserGroupQueryUserListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.dsg_user_group_query_user_list_with_options(runtime)
+
+    async def dsg_user_group_query_user_list_async(self) -> dataworks_public_20200518_models.DsgUserGroupQueryUserListResponse:
+        """
+        @summary 查询当前用户列表
+        
+        @return: DsgUserGroupQueryUserListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.dsg_user_group_query_user_list_with_options_async(runtime)
+
+    def dsg_white_list_query_list_with_options(
+        self,
+        request: dataworks_public_20200518_models.DsgWhiteListQueryListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.DsgWhiteListQueryListResponse:
+        """
+        @summary 查询脱敏白名单
+        
+        @param request: DsgWhiteListQueryListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DsgWhiteListQueryListResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DsgWhiteListQueryList',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.DsgWhiteListQueryListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def dsg_white_list_query_list_with_options_async(
+        self,
+        request: dataworks_public_20200518_models.DsgWhiteListQueryListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.DsgWhiteListQueryListResponse:
+        """
+        @summary 查询脱敏白名单
+        
+        @param request: DsgWhiteListQueryListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DsgWhiteListQueryListResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DsgWhiteListQueryList',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.DsgWhiteListQueryListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def dsg_white_list_query_list(
+        self,
+        request: dataworks_public_20200518_models.DsgWhiteListQueryListRequest,
+    ) -> dataworks_public_20200518_models.DsgWhiteListQueryListResponse:
+        """
+        @summary 查询脱敏白名单
+        
+        @param request: DsgWhiteListQueryListRequest
+        @return: DsgWhiteListQueryListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.dsg_white_list_query_list_with_options(request, runtime)
+
+    async def dsg_white_list_query_list_async(
+        self,
+        request: dataworks_public_20200518_models.DsgWhiteListQueryListRequest,
+    ) -> dataworks_public_20200518_models.DsgWhiteListQueryListResponse:
+        """
+        @summary 查询脱敏白名单
+        
+        @param request: DsgWhiteListQueryListRequest
+        @return: DsgWhiteListQueryListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.dsg_white_list_query_list_with_options_async(request, runtime)
 
     def edit_recognize_rule_with_options(
         self,
         request: dataworks_public_20200518_models.EditRecognizeRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.EditRecognizeRuleResponse:
+        """
+        @summary 修改识别规则
+        
+        @param request: EditRecognizeRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EditRecognizeRuleResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.account_name):
@@ -7614,6 +10303,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.EditRecognizeRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.EditRecognizeRuleResponse:
+        """
+        @summary 修改识别规则
+        
+        @param request: EditRecognizeRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EditRecognizeRuleResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.account_name):
@@ -7677,6 +10373,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.EditRecognizeRuleRequest,
     ) -> dataworks_public_20200518_models.EditRecognizeRuleResponse:
+        """
+        @summary 修改识别规则
+        
+        @param request: EditRecognizeRuleRequest
+        @return: EditRecognizeRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.edit_recognize_rule_with_options(request, runtime)
 
@@ -7684,6 +10386,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.EditRecognizeRuleRequest,
     ) -> dataworks_public_20200518_models.EditRecognizeRuleResponse:
+        """
+        @summary 修改识别规则
+        
+        @param request: EditRecognizeRuleRequest
+        @return: EditRecognizeRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.edit_recognize_rule_with_options_async(request, runtime)
 
@@ -7692,6 +10400,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.EstablishRelationTableToBusinessRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.EstablishRelationTableToBusinessResponse:
+        """
+        @param request: EstablishRelationTableToBusinessRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EstablishRelationTableToBusinessResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.business_id):
@@ -7728,6 +10441,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.EstablishRelationTableToBusinessRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.EstablishRelationTableToBusinessResponse:
+        """
+        @param request: EstablishRelationTableToBusinessRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EstablishRelationTableToBusinessResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.business_id):
@@ -7763,6 +10481,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.EstablishRelationTableToBusinessRequest,
     ) -> dataworks_public_20200518_models.EstablishRelationTableToBusinessResponse:
+        """
+        @param request: EstablishRelationTableToBusinessRequest
+        @return: EstablishRelationTableToBusinessResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.establish_relation_table_to_business_with_options(request, runtime)
 
@@ -7770,6 +10492,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.EstablishRelationTableToBusinessRequest,
     ) -> dataworks_public_20200518_models.EstablishRelationTableToBusinessResponse:
+        """
+        @param request: EstablishRelationTableToBusinessRequest
+        @return: EstablishRelationTableToBusinessResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.establish_relation_table_to_business_with_options_async(request, runtime)
 
@@ -7778,6 +10504,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ExportDataSourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ExportDataSourcesResponse:
+        """
+        @param request: ExportDataSourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExportDataSourcesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -7804,6 +10535,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ExportDataSourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ExportDataSourcesResponse:
+        """
+        @param request: ExportDataSourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExportDataSourcesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -7829,6 +10565,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ExportDataSourcesRequest,
     ) -> dataworks_public_20200518_models.ExportDataSourcesResponse:
+        """
+        @param request: ExportDataSourcesRequest
+        @return: ExportDataSourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.export_data_sources_with_options(request, runtime)
 
@@ -7836,6 +10576,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ExportDataSourcesRequest,
     ) -> dataworks_public_20200518_models.ExportDataSourcesResponse:
+        """
+        @param request: ExportDataSourcesRequest
+        @return: ExportDataSourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.export_data_sources_with_options_async(request, runtime)
 
@@ -7845,7 +10589,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GenerateDISyncTaskConfigForCreatingResponse:
         """
-        The operation that you want to perform.
+        @summary DataWorks allows you to use only the [CreateDISyncTask](https://help.aliyun.com/document_detail/278725.html) operation to create a batch synchronization node in Data Integration. To create a real-time synchronization node or a synchronization solution, you must first call the [GenerateDISyncTaskConfigForCreating](https://help.aliyun.com/document_detail/383463.html) operation to generate the ID of an asynchronous thread and call the [QueryDISyncTaskConfigProcessResult](https://help.aliyun.com/document_detail/383465.html) operation to obtain the asynchronously generated parameters based on the ID. Then, you can call the [CreateDISyncTask](https://help.aliyun.com/document_detail/278725.html) operation and use the parameters as request parameters to create a real-time synchronization node or a synchronization solution in Data Integration.
+        DataWorks allows you to create real-time synchronization nodes and synchronization solutions in Data Integration only in asynchronous mode.
+        
+        @description The operation that you want to perform.
         
         @param request: GenerateDISyncTaskConfigForCreatingRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7886,7 +10633,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GenerateDISyncTaskConfigForCreatingResponse:
         """
-        The operation that you want to perform.
+        @summary DataWorks allows you to use only the [CreateDISyncTask](https://help.aliyun.com/document_detail/278725.html) operation to create a batch synchronization node in Data Integration. To create a real-time synchronization node or a synchronization solution, you must first call the [GenerateDISyncTaskConfigForCreating](https://help.aliyun.com/document_detail/383463.html) operation to generate the ID of an asynchronous thread and call the [QueryDISyncTaskConfigProcessResult](https://help.aliyun.com/document_detail/383465.html) operation to obtain the asynchronously generated parameters based on the ID. Then, you can call the [CreateDISyncTask](https://help.aliyun.com/document_detail/278725.html) operation and use the parameters as request parameters to create a real-time synchronization node or a synchronization solution in Data Integration.
+        DataWorks allows you to create real-time synchronization nodes and synchronization solutions in Data Integration only in asynchronous mode.
+        
+        @description The operation that you want to perform.
         
         @param request: GenerateDISyncTaskConfigForCreatingRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7926,7 +10676,10 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GenerateDISyncTaskConfigForCreatingRequest,
     ) -> dataworks_public_20200518_models.GenerateDISyncTaskConfigForCreatingResponse:
         """
-        The operation that you want to perform.
+        @summary DataWorks allows you to use only the [CreateDISyncTask](https://help.aliyun.com/document_detail/278725.html) operation to create a batch synchronization node in Data Integration. To create a real-time synchronization node or a synchronization solution, you must first call the [GenerateDISyncTaskConfigForCreating](https://help.aliyun.com/document_detail/383463.html) operation to generate the ID of an asynchronous thread and call the [QueryDISyncTaskConfigProcessResult](https://help.aliyun.com/document_detail/383465.html) operation to obtain the asynchronously generated parameters based on the ID. Then, you can call the [CreateDISyncTask](https://help.aliyun.com/document_detail/278725.html) operation and use the parameters as request parameters to create a real-time synchronization node or a synchronization solution in Data Integration.
+        DataWorks allows you to create real-time synchronization nodes and synchronization solutions in Data Integration only in asynchronous mode.
+        
+        @description The operation that you want to perform.
         
         @param request: GenerateDISyncTaskConfigForCreatingRequest
         @return: GenerateDISyncTaskConfigForCreatingResponse
@@ -7939,7 +10692,10 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GenerateDISyncTaskConfigForCreatingRequest,
     ) -> dataworks_public_20200518_models.GenerateDISyncTaskConfigForCreatingResponse:
         """
-        The operation that you want to perform.
+        @summary DataWorks allows you to use only the [CreateDISyncTask](https://help.aliyun.com/document_detail/278725.html) operation to create a batch synchronization node in Data Integration. To create a real-time synchronization node or a synchronization solution, you must first call the [GenerateDISyncTaskConfigForCreating](https://help.aliyun.com/document_detail/383463.html) operation to generate the ID of an asynchronous thread and call the [QueryDISyncTaskConfigProcessResult](https://help.aliyun.com/document_detail/383465.html) operation to obtain the asynchronously generated parameters based on the ID. Then, you can call the [CreateDISyncTask](https://help.aliyun.com/document_detail/278725.html) operation and use the parameters as request parameters to create a real-time synchronization node or a synchronization solution in Data Integration.
+        DataWorks allows you to create real-time synchronization nodes and synchronization solutions in Data Integration only in asynchronous mode.
+        
+        @description The operation that you want to perform.
         
         @param request: GenerateDISyncTaskConfigForCreatingRequest
         @return: GenerateDISyncTaskConfigForCreatingResponse
@@ -7953,7 +10709,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GenerateDISyncTaskConfigForUpdatingResponse:
         """
-        The operation that you want to perform.
+        @summary DataWorks allows you to use only the [UpdateDISyncTask](https://help.aliyun.com/document_detail/289109.html) operation to update a batch synchronization node in Data Integration. To update a real-time synchronization node or a synchronization solution, you must first call the GenerateDISyncTaskConfigForUpdating operation to generate the ID of an asynchronous thread and call the [QueryDISyncTaskConfigProcessResult](https://help.aliyun.com/document_detail/383465.html) operation to obtain the asynchronously generated parameters based on the ID. Then, you can call the UpdateDISyncTask operation and use the parameters as request parameters to update a real-time synchronization node or a synchronization solution in Data Integration. DataWorks allows you to update real-time synchronization nodes and synchronization solutions in Data Integration only in asynchronous mode.
+        
+        @description The operation that you want to perform.
         
         @param request: GenerateDISyncTaskConfigForUpdatingRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7996,7 +10754,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GenerateDISyncTaskConfigForUpdatingResponse:
         """
-        The operation that you want to perform.
+        @summary DataWorks allows you to use only the [UpdateDISyncTask](https://help.aliyun.com/document_detail/289109.html) operation to update a batch synchronization node in Data Integration. To update a real-time synchronization node or a synchronization solution, you must first call the GenerateDISyncTaskConfigForUpdating operation to generate the ID of an asynchronous thread and call the [QueryDISyncTaskConfigProcessResult](https://help.aliyun.com/document_detail/383465.html) operation to obtain the asynchronously generated parameters based on the ID. Then, you can call the UpdateDISyncTask operation and use the parameters as request parameters to update a real-time synchronization node or a synchronization solution in Data Integration. DataWorks allows you to update real-time synchronization nodes and synchronization solutions in Data Integration only in asynchronous mode.
+        
+        @description The operation that you want to perform.
         
         @param request: GenerateDISyncTaskConfigForUpdatingRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8038,7 +10798,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GenerateDISyncTaskConfigForUpdatingRequest,
     ) -> dataworks_public_20200518_models.GenerateDISyncTaskConfigForUpdatingResponse:
         """
-        The operation that you want to perform.
+        @summary DataWorks allows you to use only the [UpdateDISyncTask](https://help.aliyun.com/document_detail/289109.html) operation to update a batch synchronization node in Data Integration. To update a real-time synchronization node or a synchronization solution, you must first call the GenerateDISyncTaskConfigForUpdating operation to generate the ID of an asynchronous thread and call the [QueryDISyncTaskConfigProcessResult](https://help.aliyun.com/document_detail/383465.html) operation to obtain the asynchronously generated parameters based on the ID. Then, you can call the UpdateDISyncTask operation and use the parameters as request parameters to update a real-time synchronization node or a synchronization solution in Data Integration. DataWorks allows you to update real-time synchronization nodes and synchronization solutions in Data Integration only in asynchronous mode.
+        
+        @description The operation that you want to perform.
         
         @param request: GenerateDISyncTaskConfigForUpdatingRequest
         @return: GenerateDISyncTaskConfigForUpdatingResponse
@@ -8051,7 +10813,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GenerateDISyncTaskConfigForUpdatingRequest,
     ) -> dataworks_public_20200518_models.GenerateDISyncTaskConfigForUpdatingResponse:
         """
-        The operation that you want to perform.
+        @summary DataWorks allows you to use only the [UpdateDISyncTask](https://help.aliyun.com/document_detail/289109.html) operation to update a batch synchronization node in Data Integration. To update a real-time synchronization node or a synchronization solution, you must first call the GenerateDISyncTaskConfigForUpdating operation to generate the ID of an asynchronous thread and call the [QueryDISyncTaskConfigProcessResult](https://help.aliyun.com/document_detail/383465.html) operation to obtain the asynchronously generated parameters based on the ID. Then, you can call the UpdateDISyncTask operation and use the parameters as request parameters to update a real-time synchronization node or a synchronization solution in Data Integration. DataWorks allows you to update real-time synchronization nodes and synchronization solutions in Data Integration only in asynchronous mode.
+        
+        @description The operation that you want to perform.
         
         @param request: GenerateDISyncTaskConfigForUpdatingRequest
         @return: GenerateDISyncTaskConfigForUpdatingResponse
@@ -8064,6 +10828,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetAlertMessageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetAlertMessageResponse:
+        """
+        @summary 获取告警信息
+        
+        @param request: GetAlertMessageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAlertMessageResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.alert_id):
@@ -8092,6 +10863,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetAlertMessageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetAlertMessageResponse:
+        """
+        @summary 获取告警信息
+        
+        @param request: GetAlertMessageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAlertMessageResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.alert_id):
@@ -8119,6 +10897,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetAlertMessageRequest,
     ) -> dataworks_public_20200518_models.GetAlertMessageResponse:
+        """
+        @summary 获取告警信息
+        
+        @param request: GetAlertMessageRequest
+        @return: GetAlertMessageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_alert_message_with_options(request, runtime)
 
@@ -8126,6 +10910,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetAlertMessageRequest,
     ) -> dataworks_public_20200518_models.GetAlertMessageResponse:
+        """
+        @summary 获取告警信息
+        
+        @param request: GetAlertMessageRequest
+        @return: GetAlertMessageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_alert_message_with_options_async(request, runtime)
 
@@ -8134,6 +10924,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetBaselineRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetBaselineResponse:
+        """
+        @summary 根据基线id查询基线
+        
+        @param request: GetBaselineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetBaselineResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.baseline_id):
@@ -8164,6 +10961,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetBaselineRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetBaselineResponse:
+        """
+        @summary 根据基线id查询基线
+        
+        @param request: GetBaselineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetBaselineResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.baseline_id):
@@ -8193,6 +10997,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetBaselineRequest,
     ) -> dataworks_public_20200518_models.GetBaselineResponse:
+        """
+        @summary 根据基线id查询基线
+        
+        @param request: GetBaselineRequest
+        @return: GetBaselineResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_baseline_with_options(request, runtime)
 
@@ -8200,6 +11010,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetBaselineRequest,
     ) -> dataworks_public_20200518_models.GetBaselineResponse:
+        """
+        @summary 根据基线id查询基线
+        
+        @param request: GetBaselineRequest
+        @return: GetBaselineResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_baseline_with_options_async(request, runtime)
 
@@ -8208,6 +11024,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetBaselineConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetBaselineConfigResponse:
+        """
+        @param request: GetBaselineConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetBaselineConfigResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.baseline_id):
@@ -8236,6 +11057,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetBaselineConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetBaselineConfigResponse:
+        """
+        @param request: GetBaselineConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetBaselineConfigResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.baseline_id):
@@ -8263,6 +11089,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetBaselineConfigRequest,
     ) -> dataworks_public_20200518_models.GetBaselineConfigResponse:
+        """
+        @param request: GetBaselineConfigRequest
+        @return: GetBaselineConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_baseline_config_with_options(request, runtime)
 
@@ -8270,6 +11100,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetBaselineConfigRequest,
     ) -> dataworks_public_20200518_models.GetBaselineConfigResponse:
+        """
+        @param request: GetBaselineConfigRequest
+        @return: GetBaselineConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_baseline_config_with_options_async(request, runtime)
 
@@ -8278,6 +11112,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetBaselineKeyPathRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetBaselineKeyPathResponse:
+        """
+        @summary The information about the events that are associated with the instance.
+        
+        @param request: GetBaselineKeyPathRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetBaselineKeyPathResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.baseline_id):
@@ -8310,6 +11151,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetBaselineKeyPathRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetBaselineKeyPathResponse:
+        """
+        @summary The information about the events that are associated with the instance.
+        
+        @param request: GetBaselineKeyPathRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetBaselineKeyPathResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.baseline_id):
@@ -8341,6 +11189,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetBaselineKeyPathRequest,
     ) -> dataworks_public_20200518_models.GetBaselineKeyPathResponse:
+        """
+        @summary The information about the events that are associated with the instance.
+        
+        @param request: GetBaselineKeyPathRequest
+        @return: GetBaselineKeyPathResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_baseline_key_path_with_options(request, runtime)
 
@@ -8348,6 +11202,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetBaselineKeyPathRequest,
     ) -> dataworks_public_20200518_models.GetBaselineKeyPathResponse:
+        """
+        @summary The information about the events that are associated with the instance.
+        
+        @param request: GetBaselineKeyPathRequest
+        @return: GetBaselineKeyPathResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_baseline_key_path_with_options_async(request, runtime)
 
@@ -8356,6 +11216,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetBaselineStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetBaselineStatusResponse:
+        """
+        @summary Queries the details of a baseline instance.
+        
+        @param request: GetBaselineStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetBaselineStatusResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.baseline_id):
@@ -8388,6 +11255,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetBaselineStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetBaselineStatusResponse:
+        """
+        @summary Queries the details of a baseline instance.
+        
+        @param request: GetBaselineStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetBaselineStatusResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.baseline_id):
@@ -8419,6 +11293,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetBaselineStatusRequest,
     ) -> dataworks_public_20200518_models.GetBaselineStatusResponse:
+        """
+        @summary Queries the details of a baseline instance.
+        
+        @param request: GetBaselineStatusRequest
+        @return: GetBaselineStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_baseline_status_with_options(request, runtime)
 
@@ -8426,6 +11306,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetBaselineStatusRequest,
     ) -> dataworks_public_20200518_models.GetBaselineStatusResponse:
+        """
+        @summary Queries the details of a baseline instance.
+        
+        @param request: GetBaselineStatusRequest
+        @return: GetBaselineStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_baseline_status_with_options_async(request, runtime)
 
@@ -8434,6 +11320,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetBusinessRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetBusinessResponse:
+        """
+        @param request: GetBusinessRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetBusinessResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.business_id):
@@ -8466,6 +11357,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetBusinessRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetBusinessResponse:
+        """
+        @param request: GetBusinessRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetBusinessResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.business_id):
@@ -8497,6 +11393,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetBusinessRequest,
     ) -> dataworks_public_20200518_models.GetBusinessResponse:
+        """
+        @param request: GetBusinessRequest
+        @return: GetBusinessResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_business_with_options(request, runtime)
 
@@ -8504,6 +11404,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetBusinessRequest,
     ) -> dataworks_public_20200518_models.GetBusinessResponse:
+        """
+        @param request: GetBusinessRequest
+        @return: GetBusinessResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_business_with_options_async(request, runtime)
 
@@ -8512,6 +11416,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetDDLJobStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetDDLJobStatusResponse:
+        """
+        @summary Queries the status of a table creation, update, or deletion task.
+        
+        @param request: GetDDLJobStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDDLJobStatusResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -8538,6 +11449,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetDDLJobStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetDDLJobStatusResponse:
+        """
+        @summary Queries the status of a table creation, update, or deletion task.
+        
+        @param request: GetDDLJobStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDDLJobStatusResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -8563,6 +11481,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetDDLJobStatusRequest,
     ) -> dataworks_public_20200518_models.GetDDLJobStatusResponse:
+        """
+        @summary Queries the status of a table creation, update, or deletion task.
+        
+        @param request: GetDDLJobStatusRequest
+        @return: GetDDLJobStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_ddljob_status_with_options(request, runtime)
 
@@ -8570,6 +11494,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetDDLJobStatusRequest,
     ) -> dataworks_public_20200518_models.GetDDLJobStatusResponse:
+        """
+        @summary Queries the status of a table creation, update, or deletion task.
+        
+        @param request: GetDDLJobStatusRequest
+        @return: GetDDLJobStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_ddljob_status_with_options_async(request, runtime)
 
@@ -8578,6 +11508,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetDIAlarmRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetDIAlarmRuleResponse:
+        """
+        @summary 查询数据集成新版告警规则
+        
+        @param request: GetDIAlarmRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDIAlarmRuleResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.dialarm_rule_id):
@@ -8606,6 +11543,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetDIAlarmRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetDIAlarmRuleResponse:
+        """
+        @summary 查询数据集成新版告警规则
+        
+        @param request: GetDIAlarmRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDIAlarmRuleResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.dialarm_rule_id):
@@ -8633,6 +11577,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetDIAlarmRuleRequest,
     ) -> dataworks_public_20200518_models.GetDIAlarmRuleResponse:
+        """
+        @summary 查询数据集成新版告警规则
+        
+        @param request: GetDIAlarmRuleRequest
+        @return: GetDIAlarmRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_dialarm_rule_with_options(request, runtime)
 
@@ -8640,6 +11590,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetDIAlarmRuleRequest,
     ) -> dataworks_public_20200518_models.GetDIAlarmRuleResponse:
+        """
+        @summary 查询数据集成新版告警规则
+        
+        @param request: GetDIAlarmRuleRequest
+        @return: GetDIAlarmRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_dialarm_rule_with_options_async(request, runtime)
 
@@ -8648,6 +11604,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetDIJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetDIJobResponse:
+        """
+        @summary 查询数据集成新版解决方案任务
+        
+        @param request: GetDIJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDIJobResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.dijob_id):
@@ -8678,6 +11641,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetDIJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetDIJobResponse:
+        """
+        @summary 查询数据集成新版解决方案任务
+        
+        @param request: GetDIJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDIJobResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.dijob_id):
@@ -8707,6 +11677,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetDIJobRequest,
     ) -> dataworks_public_20200518_models.GetDIJobResponse:
+        """
+        @summary 查询数据集成新版解决方案任务
+        
+        @param request: GetDIJobRequest
+        @return: GetDIJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_dijob_with_options(request, runtime)
 
@@ -8714,6 +11690,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetDIJobRequest,
     ) -> dataworks_public_20200518_models.GetDIJobResponse:
+        """
+        @summary 查询数据集成新版解决方案任务
+        
+        @param request: GetDIJobRequest
+        @return: GetDIJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_dijob_with_options_async(request, runtime)
 
@@ -8722,6 +11704,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetDISyncInstanceInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetDISyncInstanceInfoResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *GetDISyncInstanceInfo**.
+        
+        @param request: GetDISyncInstanceInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDISyncInstanceInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.file_id):
@@ -8754,6 +11743,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetDISyncInstanceInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetDISyncInstanceInfoResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *GetDISyncInstanceInfo**.
+        
+        @param request: GetDISyncInstanceInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDISyncInstanceInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.file_id):
@@ -8785,6 +11781,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetDISyncInstanceInfoRequest,
     ) -> dataworks_public_20200518_models.GetDISyncInstanceInfoResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *GetDISyncInstanceInfo**.
+        
+        @param request: GetDISyncInstanceInfoRequest
+        @return: GetDISyncInstanceInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_disync_instance_info_with_options(request, runtime)
 
@@ -8792,6 +11794,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetDISyncInstanceInfoRequest,
     ) -> dataworks_public_20200518_models.GetDISyncInstanceInfoResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *GetDISyncInstanceInfo**.
+        
+        @param request: GetDISyncInstanceInfoRequest
+        @return: GetDISyncInstanceInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_disync_instance_info_with_options_async(request, runtime)
 
@@ -8800,6 +11808,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetDISyncTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetDISyncTaskResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *GetDISyncTask**.
+        
+        @param request: GetDISyncTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDISyncTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.file_id):
@@ -8832,6 +11847,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetDISyncTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetDISyncTaskResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *GetDISyncTask**.
+        
+        @param request: GetDISyncTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDISyncTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.file_id):
@@ -8863,6 +11885,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetDISyncTaskRequest,
     ) -> dataworks_public_20200518_models.GetDISyncTaskResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *GetDISyncTask**.
+        
+        @param request: GetDISyncTaskRequest
+        @return: GetDISyncTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_disync_task_with_options(request, runtime)
 
@@ -8870,6 +11898,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetDISyncTaskRequest,
     ) -> dataworks_public_20200518_models.GetDISyncTaskResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *GetDISyncTask**.
+        
+        @param request: GetDISyncTaskRequest
+        @return: GetDISyncTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_disync_task_with_options_async(request, runtime)
 
@@ -8879,16 +11913,21 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetDagResponse:
         """
-        Supported DAG types:
-        *   MANUAL: the DAG for a manually triggered workflow.
-        *   SMOKE_TEST: the DAG for a smoke testing workflow.
-        *   SUPPLY_DATA: the DAG for a data backfill instance.
-        *   BUSINESS_PROCESS_DAG: the DAG for a one-time workflow.
+        @summary Queries the details of a directed acyclic graph (DAG) based on the ID of the DAG.
+        You can call the GetDag operation to query the details of the DAG for a manually triggered
+        workflow, a manually triggered node, or a data backfill instance. However, you cannot
+        query the details of the DAG for an auto triggered node or an auto triggered workflow.
+        
+        @description Supported DAG types:
+        MANUAL: the DAG for a manually triggered workflow.
+        SMOKE_TEST: the DAG for a smoke testing workflow.
+        SUPPLY_DATA: the DAG for a data backfill instance.
+        BUSINESS_PROCESS_DAG: the DAG for a one-time workflow.
         Supported DAG states:
-        *   CREATED: The DAG is created.
-        *   RUNNING: The DAG is running.
-        *   FAILURE: The DAG fails to run.
-        *   SUCCESS: The DAG successfully runs.
+        CREATED: The DAG is created.
+        RUNNING: The DAG is running.
+        FAILURE: The DAG fails to run.
+        SUCCESS: The DAG successfully runs.
         
         @param request: GetDagRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8925,16 +11964,21 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetDagResponse:
         """
-        Supported DAG types:
-        *   MANUAL: the DAG for a manually triggered workflow.
-        *   SMOKE_TEST: the DAG for a smoke testing workflow.
-        *   SUPPLY_DATA: the DAG for a data backfill instance.
-        *   BUSINESS_PROCESS_DAG: the DAG for a one-time workflow.
+        @summary Queries the details of a directed acyclic graph (DAG) based on the ID of the DAG.
+        You can call the GetDag operation to query the details of the DAG for a manually triggered
+        workflow, a manually triggered node, or a data backfill instance. However, you cannot
+        query the details of the DAG for an auto triggered node or an auto triggered workflow.
+        
+        @description Supported DAG types:
+        MANUAL: the DAG for a manually triggered workflow.
+        SMOKE_TEST: the DAG for a smoke testing workflow.
+        SUPPLY_DATA: the DAG for a data backfill instance.
+        BUSINESS_PROCESS_DAG: the DAG for a one-time workflow.
         Supported DAG states:
-        *   CREATED: The DAG is created.
-        *   RUNNING: The DAG is running.
-        *   FAILURE: The DAG fails to run.
-        *   SUCCESS: The DAG successfully runs.
+        CREATED: The DAG is created.
+        RUNNING: The DAG is running.
+        FAILURE: The DAG fails to run.
+        SUCCESS: The DAG successfully runs.
         
         @param request: GetDagRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8970,16 +12014,21 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetDagRequest,
     ) -> dataworks_public_20200518_models.GetDagResponse:
         """
-        Supported DAG types:
-        *   MANUAL: the DAG for a manually triggered workflow.
-        *   SMOKE_TEST: the DAG for a smoke testing workflow.
-        *   SUPPLY_DATA: the DAG for a data backfill instance.
-        *   BUSINESS_PROCESS_DAG: the DAG for a one-time workflow.
+        @summary Queries the details of a directed acyclic graph (DAG) based on the ID of the DAG.
+        You can call the GetDag operation to query the details of the DAG for a manually triggered
+        workflow, a manually triggered node, or a data backfill instance. However, you cannot
+        query the details of the DAG for an auto triggered node or an auto triggered workflow.
+        
+        @description Supported DAG types:
+        MANUAL: the DAG for a manually triggered workflow.
+        SMOKE_TEST: the DAG for a smoke testing workflow.
+        SUPPLY_DATA: the DAG for a data backfill instance.
+        BUSINESS_PROCESS_DAG: the DAG for a one-time workflow.
         Supported DAG states:
-        *   CREATED: The DAG is created.
-        *   RUNNING: The DAG is running.
-        *   FAILURE: The DAG fails to run.
-        *   SUCCESS: The DAG successfully runs.
+        CREATED: The DAG is created.
+        RUNNING: The DAG is running.
+        FAILURE: The DAG fails to run.
+        SUCCESS: The DAG successfully runs.
         
         @param request: GetDagRequest
         @return: GetDagResponse
@@ -8992,16 +12041,21 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetDagRequest,
     ) -> dataworks_public_20200518_models.GetDagResponse:
         """
-        Supported DAG types:
-        *   MANUAL: the DAG for a manually triggered workflow.
-        *   SMOKE_TEST: the DAG for a smoke testing workflow.
-        *   SUPPLY_DATA: the DAG for a data backfill instance.
-        *   BUSINESS_PROCESS_DAG: the DAG for a one-time workflow.
+        @summary Queries the details of a directed acyclic graph (DAG) based on the ID of the DAG.
+        You can call the GetDag operation to query the details of the DAG for a manually triggered
+        workflow, a manually triggered node, or a data backfill instance. However, you cannot
+        query the details of the DAG for an auto triggered node or an auto triggered workflow.
+        
+        @description Supported DAG types:
+        MANUAL: the DAG for a manually triggered workflow.
+        SMOKE_TEST: the DAG for a smoke testing workflow.
+        SUPPLY_DATA: the DAG for a data backfill instance.
+        BUSINESS_PROCESS_DAG: the DAG for a one-time workflow.
         Supported DAG states:
-        *   CREATED: The DAG is created.
-        *   RUNNING: The DAG is running.
-        *   FAILURE: The DAG fails to run.
-        *   SUCCESS: The DAG successfully runs.
+        CREATED: The DAG is created.
+        RUNNING: The DAG is running.
+        FAILURE: The DAG fails to run.
+        SUCCESS: The DAG successfully runs.
         
         @param request: GetDagRequest
         @return: GetDagResponse
@@ -9014,6 +12068,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetDataServiceApiRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetDataServiceApiResponse:
+        """
+        @summary Queries the details of a DataService Studio API in the development state.
+        
+        @param request: GetDataServiceApiRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataServiceApiResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.api_id):
@@ -9046,6 +12107,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetDataServiceApiRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetDataServiceApiResponse:
+        """
+        @summary Queries the details of a DataService Studio API in the development state.
+        
+        @param request: GetDataServiceApiRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataServiceApiResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.api_id):
@@ -9077,6 +12145,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetDataServiceApiRequest,
     ) -> dataworks_public_20200518_models.GetDataServiceApiResponse:
+        """
+        @summary Queries the details of a DataService Studio API in the development state.
+        
+        @param request: GetDataServiceApiRequest
+        @return: GetDataServiceApiResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_data_service_api_with_options(request, runtime)
 
@@ -9084,6 +12158,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetDataServiceApiRequest,
     ) -> dataworks_public_20200518_models.GetDataServiceApiResponse:
+        """
+        @summary Queries the details of a DataService Studio API in the development state.
+        
+        @param request: GetDataServiceApiRequest
+        @return: GetDataServiceApiResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_data_service_api_with_options_async(request, runtime)
 
@@ -9092,6 +12172,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetDataServiceApiTestRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetDataServiceApiTestResponse:
+        """
+        @param request: GetDataServiceApiTestRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataServiceApiTestResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -9118,6 +12203,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetDataServiceApiTestRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetDataServiceApiTestResponse:
+        """
+        @param request: GetDataServiceApiTestRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataServiceApiTestResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -9143,6 +12233,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetDataServiceApiTestRequest,
     ) -> dataworks_public_20200518_models.GetDataServiceApiTestResponse:
+        """
+        @param request: GetDataServiceApiTestRequest
+        @return: GetDataServiceApiTestResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_data_service_api_test_with_options(request, runtime)
 
@@ -9150,6 +12244,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetDataServiceApiTestRequest,
     ) -> dataworks_public_20200518_models.GetDataServiceApiTestResponse:
+        """
+        @param request: GetDataServiceApiTestRequest
+        @return: GetDataServiceApiTestResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_data_service_api_test_with_options_async(request, runtime)
 
@@ -9158,6 +12256,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetDataServiceApplicationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetDataServiceApplicationResponse:
+        """
+        @summary Queries the details of an application.
+        
+        @param request: GetDataServiceApplicationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataServiceApplicationResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.application_id):
@@ -9190,6 +12295,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetDataServiceApplicationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetDataServiceApplicationResponse:
+        """
+        @summary Queries the details of an application.
+        
+        @param request: GetDataServiceApplicationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataServiceApplicationResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.application_id):
@@ -9221,6 +12333,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetDataServiceApplicationRequest,
     ) -> dataworks_public_20200518_models.GetDataServiceApplicationResponse:
+        """
+        @summary Queries the details of an application.
+        
+        @param request: GetDataServiceApplicationRequest
+        @return: GetDataServiceApplicationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_data_service_application_with_options(request, runtime)
 
@@ -9228,6 +12346,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetDataServiceApplicationRequest,
     ) -> dataworks_public_20200518_models.GetDataServiceApplicationResponse:
+        """
+        @summary Queries the details of an application.
+        
+        @param request: GetDataServiceApplicationRequest
+        @return: GetDataServiceApplicationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_data_service_application_with_options_async(request, runtime)
 
@@ -9236,6 +12360,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetDataServiceFolderRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetDataServiceFolderResponse:
+        """
+        @summary Queries a folder.
+        
+        @param request: GetDataServiceFolderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataServiceFolderResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.folder_id):
@@ -9268,6 +12399,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetDataServiceFolderRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetDataServiceFolderResponse:
+        """
+        @summary Queries a folder.
+        
+        @param request: GetDataServiceFolderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataServiceFolderResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.folder_id):
@@ -9299,6 +12437,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetDataServiceFolderRequest,
     ) -> dataworks_public_20200518_models.GetDataServiceFolderResponse:
+        """
+        @summary Queries a folder.
+        
+        @param request: GetDataServiceFolderRequest
+        @return: GetDataServiceFolderResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_data_service_folder_with_options(request, runtime)
 
@@ -9306,6 +12450,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetDataServiceFolderRequest,
     ) -> dataworks_public_20200518_models.GetDataServiceFolderResponse:
+        """
+        @summary Queries a folder.
+        
+        @param request: GetDataServiceFolderRequest
+        @return: GetDataServiceFolderResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_data_service_folder_with_options_async(request, runtime)
 
@@ -9314,6 +12464,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetDataServiceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetDataServiceGroupResponse:
+        """
+        @summary Queries a business process.
+        
+        @param request: GetDataServiceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataServiceGroupResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.group_id):
@@ -9346,6 +12503,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetDataServiceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetDataServiceGroupResponse:
+        """
+        @summary Queries a business process.
+        
+        @param request: GetDataServiceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataServiceGroupResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.group_id):
@@ -9377,6 +12541,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetDataServiceGroupRequest,
     ) -> dataworks_public_20200518_models.GetDataServiceGroupResponse:
+        """
+        @summary Queries a business process.
+        
+        @param request: GetDataServiceGroupRequest
+        @return: GetDataServiceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_data_service_group_with_options(request, runtime)
 
@@ -9384,6 +12554,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetDataServiceGroupRequest,
     ) -> dataworks_public_20200518_models.GetDataServiceGroupResponse:
+        """
+        @summary Queries a business process.
+        
+        @param request: GetDataServiceGroupRequest
+        @return: GetDataServiceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_data_service_group_with_options_async(request, runtime)
 
@@ -9392,6 +12568,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetDataServicePublishedApiRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetDataServicePublishedApiResponse:
+        """
+        @summary Queries the information about a DataService Studio API in the published state.
+        
+        @param request: GetDataServicePublishedApiRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataServicePublishedApiResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.api_id):
@@ -9424,6 +12607,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetDataServicePublishedApiRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetDataServicePublishedApiResponse:
+        """
+        @summary Queries the information about a DataService Studio API in the published state.
+        
+        @param request: GetDataServicePublishedApiRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataServicePublishedApiResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.api_id):
@@ -9455,6 +12645,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetDataServicePublishedApiRequest,
     ) -> dataworks_public_20200518_models.GetDataServicePublishedApiResponse:
+        """
+        @summary Queries the information about a DataService Studio API in the published state.
+        
+        @param request: GetDataServicePublishedApiRequest
+        @return: GetDataServicePublishedApiResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_data_service_published_api_with_options(request, runtime)
 
@@ -9462,6 +12658,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetDataServicePublishedApiRequest,
     ) -> dataworks_public_20200518_models.GetDataServicePublishedApiResponse:
+        """
+        @summary Queries the information about a DataService Studio API in the published state.
+        
+        @param request: GetDataServicePublishedApiRequest
+        @return: GetDataServicePublishedApiResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_data_service_published_api_with_options_async(request, runtime)
 
@@ -9470,6 +12672,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetDataSourceMetaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetDataSourceMetaResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *GetDataSourceMeta**.
+        
+        @param request: GetDataSourceMetaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataSourceMetaResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.datasource_name):
@@ -9506,6 +12715,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetDataSourceMetaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetDataSourceMetaResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *GetDataSourceMeta**.
+        
+        @param request: GetDataSourceMetaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataSourceMetaResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.datasource_name):
@@ -9541,6 +12757,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetDataSourceMetaRequest,
     ) -> dataworks_public_20200518_models.GetDataSourceMetaResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *GetDataSourceMeta**.
+        
+        @param request: GetDataSourceMetaRequest
+        @return: GetDataSourceMetaResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_data_source_meta_with_options(request, runtime)
 
@@ -9548,6 +12770,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetDataSourceMetaRequest,
     ) -> dataworks_public_20200518_models.GetDataSourceMetaResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *GetDataSourceMeta**.
+        
+        @param request: GetDataSourceMetaRequest
+        @return: GetDataSourceMetaResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_data_source_meta_with_options_async(request, runtime)
 
@@ -9556,6 +12784,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetDeploymentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetDeploymentResponse:
+        """
+        @summary Queries the details of a deployment task.
+        
+        @param request: GetDeploymentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDeploymentResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.deployment_id):
@@ -9588,6 +12823,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetDeploymentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetDeploymentResponse:
+        """
+        @summary Queries the details of a deployment task.
+        
+        @param request: GetDeploymentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDeploymentResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.deployment_id):
@@ -9619,6 +12861,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetDeploymentRequest,
     ) -> dataworks_public_20200518_models.GetDeploymentResponse:
+        """
+        @summary Queries the details of a deployment task.
+        
+        @param request: GetDeploymentRequest
+        @return: GetDeploymentResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_deployment_with_options(request, runtime)
 
@@ -9626,6 +12874,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetDeploymentRequest,
     ) -> dataworks_public_20200518_models.GetDeploymentResponse:
+        """
+        @summary Queries the details of a deployment task.
+        
+        @param request: GetDeploymentRequest
+        @return: GetDeploymentResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_deployment_with_options_async(request, runtime)
 
@@ -9634,6 +12888,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetExtensionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetExtensionResponse:
+        """
+        @summary 获取开放平台扩展程序详情
+        
+        @param request: GetExtensionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetExtensionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.extension_code):
@@ -9662,6 +12923,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetExtensionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetExtensionResponse:
+        """
+        @summary 获取开放平台扩展程序详情
+        
+        @param request: GetExtensionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetExtensionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.extension_code):
@@ -9689,6 +12957,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetExtensionRequest,
     ) -> dataworks_public_20200518_models.GetExtensionResponse:
+        """
+        @summary 获取开放平台扩展程序详情
+        
+        @param request: GetExtensionRequest
+        @return: GetExtensionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_extension_with_options(request, runtime)
 
@@ -9696,6 +12970,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetExtensionRequest,
     ) -> dataworks_public_20200518_models.GetExtensionResponse:
+        """
+        @summary 获取开放平台扩展程序详情
+        
+        @param request: GetExtensionRequest
+        @return: GetExtensionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_extension_with_options_async(request, runtime)
 
@@ -9704,6 +12984,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetFileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetFileResponse:
+        """
+        @param request: GetFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetFileResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.file_id):
@@ -9738,6 +13023,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetFileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetFileResponse:
+        """
+        @param request: GetFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetFileResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.file_id):
@@ -9771,6 +13061,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetFileRequest,
     ) -> dataworks_public_20200518_models.GetFileResponse:
+        """
+        @param request: GetFileRequest
+        @return: GetFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_file_with_options(request, runtime)
 
@@ -9778,6 +13072,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetFileRequest,
     ) -> dataworks_public_20200518_models.GetFileResponse:
+        """
+        @param request: GetFileRequest
+        @return: GetFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_file_with_options_async(request, runtime)
 
@@ -9786,6 +13084,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetFileTypeStatisticRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetFileTypeStatisticResponse:
+        """
+        @param request: GetFileTypeStatisticRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetFileTypeStatisticResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.project_env):
@@ -9816,6 +13119,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetFileTypeStatisticRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetFileTypeStatisticResponse:
+        """
+        @param request: GetFileTypeStatisticRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetFileTypeStatisticResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.project_env):
@@ -9845,6 +13153,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetFileTypeStatisticRequest,
     ) -> dataworks_public_20200518_models.GetFileTypeStatisticResponse:
+        """
+        @param request: GetFileTypeStatisticRequest
+        @return: GetFileTypeStatisticResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_file_type_statistic_with_options(request, runtime)
 
@@ -9852,6 +13164,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetFileTypeStatisticRequest,
     ) -> dataworks_public_20200518_models.GetFileTypeStatisticResponse:
+        """
+        @param request: GetFileTypeStatisticRequest
+        @return: GetFileTypeStatisticResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_file_type_statistic_with_options_async(request, runtime)
 
@@ -9860,6 +13176,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetFileVersionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetFileVersionResponse:
+        """
+        @param request: GetFileVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetFileVersionResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.file_id):
@@ -9894,6 +13215,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetFileVersionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetFileVersionResponse:
+        """
+        @param request: GetFileVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetFileVersionResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.file_id):
@@ -9927,6 +13253,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetFileVersionRequest,
     ) -> dataworks_public_20200518_models.GetFileVersionResponse:
+        """
+        @param request: GetFileVersionRequest
+        @return: GetFileVersionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_file_version_with_options(request, runtime)
 
@@ -9934,6 +13264,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetFileVersionRequest,
     ) -> dataworks_public_20200518_models.GetFileVersionResponse:
+        """
+        @param request: GetFileVersionRequest
+        @return: GetFileVersionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_file_version_with_options_async(request, runtime)
 
@@ -9942,6 +13276,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetFolderRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetFolderResponse:
+        """
+        @param request: GetFolderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetFolderResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.folder_id):
@@ -9976,6 +13315,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetFolderRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetFolderResponse:
+        """
+        @param request: GetFolderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetFolderResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.folder_id):
@@ -10009,6 +13353,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetFolderRequest,
     ) -> dataworks_public_20200518_models.GetFolderResponse:
+        """
+        @param request: GetFolderRequest
+        @return: GetFolderResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_folder_with_options(request, runtime)
 
@@ -10016,6 +13364,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetFolderRequest,
     ) -> dataworks_public_20200518_models.GetFolderResponse:
+        """
+        @param request: GetFolderRequest
+        @return: GetFolderResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_folder_with_options_async(request, runtime)
 
@@ -10024,6 +13376,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetIDEEventDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetIDEEventDetailResponse:
+        """
+        @summary Queries the data snapshot of an extension point based on the ID of an open message when the related extension point event is triggered.
+        
+        @param request: GetIDEEventDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetIDEEventDetailResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.message_id):
@@ -10054,6 +13413,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetIDEEventDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetIDEEventDetailResponse:
+        """
+        @summary Queries the data snapshot of an extension point based on the ID of an open message when the related extension point event is triggered.
+        
+        @param request: GetIDEEventDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetIDEEventDetailResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.message_id):
@@ -10083,6 +13449,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetIDEEventDetailRequest,
     ) -> dataworks_public_20200518_models.GetIDEEventDetailResponse:
+        """
+        @summary Queries the data snapshot of an extension point based on the ID of an open message when the related extension point event is triggered.
+        
+        @param request: GetIDEEventDetailRequest
+        @return: GetIDEEventDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_ideevent_detail_with_options(request, runtime)
 
@@ -10090,6 +13462,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetIDEEventDetailRequest,
     ) -> dataworks_public_20200518_models.GetIDEEventDetailResponse:
+        """
+        @summary Queries the data snapshot of an extension point based on the ID of an open message when the related extension point event is triggered.
+        
+        @param request: GetIDEEventDetailRequest
+        @return: GetIDEEventDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_ideevent_detail_with_options_async(request, runtime)
 
@@ -10098,6 +13476,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetInstanceResponse:
+        """
+        @param request: GetInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetInstanceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -10128,6 +13511,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetInstanceResponse:
+        """
+        @param request: GetInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetInstanceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -10157,6 +13545,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetInstanceRequest,
     ) -> dataworks_public_20200518_models.GetInstanceResponse:
+        """
+        @param request: GetInstanceRequest
+        @return: GetInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_instance_with_options(request, runtime)
 
@@ -10164,6 +13556,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetInstanceRequest,
     ) -> dataworks_public_20200518_models.GetInstanceResponse:
+        """
+        @param request: GetInstanceRequest
+        @return: GetInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_instance_with_options_async(request, runtime)
 
@@ -10173,7 +13569,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetInstanceConsumeTimeRankResponse:
         """
-        @deprecated
+        @deprecated OpenAPI GetInstanceConsumeTimeRank is deprecated
         
         @param request: GetInstanceConsumeTimeRankRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10211,7 +13607,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetInstanceConsumeTimeRankResponse:
         """
-        @deprecated
+        @deprecated OpenAPI GetInstanceConsumeTimeRank is deprecated
         
         @param request: GetInstanceConsumeTimeRankRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10248,7 +13644,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetInstanceConsumeTimeRankRequest,
     ) -> dataworks_public_20200518_models.GetInstanceConsumeTimeRankResponse:
         """
-        @deprecated
+        @deprecated OpenAPI GetInstanceConsumeTimeRank is deprecated
         
         @param request: GetInstanceConsumeTimeRankRequest
         @return: GetInstanceConsumeTimeRankResponse
@@ -10262,7 +13658,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetInstanceConsumeTimeRankRequest,
     ) -> dataworks_public_20200518_models.GetInstanceConsumeTimeRankResponse:
         """
-        @deprecated
+        @deprecated OpenAPI GetInstanceConsumeTimeRank is deprecated
         
         @param request: GetInstanceConsumeTimeRankRequest
         @return: GetInstanceConsumeTimeRankResponse
@@ -10277,7 +13673,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetInstanceCountTrendResponse:
         """
-        @deprecated
+        @deprecated OpenAPI GetInstanceCountTrend is deprecated
         
         @param request: GetInstanceCountTrendRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10317,7 +13713,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetInstanceCountTrendResponse:
         """
-        @deprecated
+        @deprecated OpenAPI GetInstanceCountTrend is deprecated
         
         @param request: GetInstanceCountTrendRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10356,7 +13752,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetInstanceCountTrendRequest,
     ) -> dataworks_public_20200518_models.GetInstanceCountTrendResponse:
         """
-        @deprecated
+        @deprecated OpenAPI GetInstanceCountTrend is deprecated
         
         @param request: GetInstanceCountTrendRequest
         @return: GetInstanceCountTrendResponse
@@ -10370,7 +13766,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetInstanceCountTrendRequest,
     ) -> dataworks_public_20200518_models.GetInstanceCountTrendResponse:
         """
-        @deprecated
+        @deprecated OpenAPI GetInstanceCountTrend is deprecated
         
         @param request: GetInstanceCountTrendRequest
         @return: GetInstanceCountTrendResponse
@@ -10385,7 +13781,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetInstanceErrorRankResponse:
         """
-        @deprecated
+        @deprecated OpenAPI GetInstanceErrorRank is deprecated
         
         @param request: GetInstanceErrorRankRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10421,7 +13817,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetInstanceErrorRankResponse:
         """
-        @deprecated
+        @deprecated OpenAPI GetInstanceErrorRank is deprecated
         
         @param request: GetInstanceErrorRankRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10456,7 +13852,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetInstanceErrorRankRequest,
     ) -> dataworks_public_20200518_models.GetInstanceErrorRankResponse:
         """
-        @deprecated
+        @deprecated OpenAPI GetInstanceErrorRank is deprecated
         
         @param request: GetInstanceErrorRankRequest
         @return: GetInstanceErrorRankResponse
@@ -10470,7 +13866,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetInstanceErrorRankRequest,
     ) -> dataworks_public_20200518_models.GetInstanceErrorRankResponse:
         """
-        @deprecated
+        @deprecated OpenAPI GetInstanceErrorRank is deprecated
         
         @param request: GetInstanceErrorRankRequest
         @return: GetInstanceErrorRankResponse
@@ -10485,7 +13881,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetInstanceLogResponse:
         """
-        You may not obtain the instance logs that were generated more than seven days ago.
+        @summary Queries the logs of an instance.
+        
+        @description You may not obtain the instance logs that were generated more than seven days ago.
         
         @param request: GetInstanceLogRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10524,7 +13922,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetInstanceLogResponse:
         """
-        You may not obtain the instance logs that were generated more than seven days ago.
+        @summary Queries the logs of an instance.
+        
+        @description You may not obtain the instance logs that were generated more than seven days ago.
         
         @param request: GetInstanceLogRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10562,7 +13962,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetInstanceLogRequest,
     ) -> dataworks_public_20200518_models.GetInstanceLogResponse:
         """
-        You may not obtain the instance logs that were generated more than seven days ago.
+        @summary Queries the logs of an instance.
+        
+        @description You may not obtain the instance logs that were generated more than seven days ago.
         
         @param request: GetInstanceLogRequest
         @return: GetInstanceLogResponse
@@ -10575,7 +13977,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetInstanceLogRequest,
     ) -> dataworks_public_20200518_models.GetInstanceLogResponse:
         """
-        You may not obtain the instance logs that were generated more than seven days ago.
+        @summary Queries the logs of an instance.
+        
+        @description You may not obtain the instance logs that were generated more than seven days ago.
         
         @param request: GetInstanceLogRequest
         @return: GetInstanceLogResponse
@@ -10589,7 +13993,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetInstanceStatusCountResponse:
         """
-        @deprecated
+        @deprecated OpenAPI GetInstanceStatusCount is deprecated
         
         @param request: GetInstanceStatusCountRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10629,7 +14033,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetInstanceStatusCountResponse:
         """
-        @deprecated
+        @deprecated OpenAPI GetInstanceStatusCount is deprecated
         
         @param request: GetInstanceStatusCountRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10668,7 +14072,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetInstanceStatusCountRequest,
     ) -> dataworks_public_20200518_models.GetInstanceStatusCountResponse:
         """
-        @deprecated
+        @deprecated OpenAPI GetInstanceStatusCount is deprecated
         
         @param request: GetInstanceStatusCountRequest
         @return: GetInstanceStatusCountResponse
@@ -10682,7 +14086,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetInstanceStatusCountRequest,
     ) -> dataworks_public_20200518_models.GetInstanceStatusCountResponse:
         """
-        @deprecated
+        @deprecated OpenAPI GetInstanceStatusCount is deprecated
         
         @param request: GetInstanceStatusCountRequest
         @return: GetInstanceStatusCountResponse
@@ -10696,6 +14100,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetInstanceStatusStatisticRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetInstanceStatusStatisticResponse:
+        """
+        @param request: GetInstanceStatusStatisticRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetInstanceStatusStatisticResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.biz_date):
@@ -10734,6 +14143,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetInstanceStatusStatisticRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetInstanceStatusStatisticResponse:
+        """
+        @param request: GetInstanceStatusStatisticRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetInstanceStatusStatisticResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.biz_date):
@@ -10771,6 +14185,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetInstanceStatusStatisticRequest,
     ) -> dataworks_public_20200518_models.GetInstanceStatusStatisticResponse:
+        """
+        @param request: GetInstanceStatusStatisticRequest
+        @return: GetInstanceStatusStatisticResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_instance_status_statistic_with_options(request, runtime)
 
@@ -10778,6 +14196,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetInstanceStatusStatisticRequest,
     ) -> dataworks_public_20200518_models.GetInstanceStatusStatisticResponse:
+        """
+        @param request: GetInstanceStatusStatisticRequest
+        @return: GetInstanceStatusStatisticResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_instance_status_statistic_with_options_async(request, runtime)
 
@@ -10787,7 +14209,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetManualDagInstancesResponse:
         """
-        @deprecated
+        @deprecated OpenAPI GetManualDagInstances is deprecated
         
         @param request: GetManualDagInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10827,7 +14249,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetManualDagInstancesResponse:
         """
-        @deprecated
+        @deprecated OpenAPI GetManualDagInstances is deprecated
         
         @param request: GetManualDagInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10866,7 +14288,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetManualDagInstancesRequest,
     ) -> dataworks_public_20200518_models.GetManualDagInstancesResponse:
         """
-        @deprecated
+        @deprecated OpenAPI GetManualDagInstances is deprecated
         
         @param request: GetManualDagInstancesRequest
         @return: GetManualDagInstancesResponse
@@ -10880,7 +14302,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetManualDagInstancesRequest,
     ) -> dataworks_public_20200518_models.GetManualDagInstancesResponse:
         """
-        @deprecated
+        @deprecated OpenAPI GetManualDagInstances is deprecated
         
         @param request: GetManualDagInstancesRequest
         @return: GetManualDagInstancesResponse
@@ -10894,6 +14316,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetMetaCategoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetMetaCategoryResponse:
+        """
+        @summary Queries a category tree.
+        
+        @param request: GetMetaCategoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMetaCategoryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_num):
@@ -10926,6 +14355,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetMetaCategoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetMetaCategoryResponse:
+        """
+        @summary Queries a category tree.
+        
+        @param request: GetMetaCategoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMetaCategoryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_num):
@@ -10957,6 +14393,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetMetaCategoryRequest,
     ) -> dataworks_public_20200518_models.GetMetaCategoryResponse:
+        """
+        @summary Queries a category tree.
+        
+        @param request: GetMetaCategoryRequest
+        @return: GetMetaCategoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_meta_category_with_options(request, runtime)
 
@@ -10964,6 +14406,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetMetaCategoryRequest,
     ) -> dataworks_public_20200518_models.GetMetaCategoryResponse:
+        """
+        @summary Queries a category tree.
+        
+        @param request: GetMetaCategoryRequest
+        @return: GetMetaCategoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_meta_category_with_options_async(request, runtime)
 
@@ -10972,6 +14420,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetMetaCollectionDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetMetaCollectionDetailResponse:
+        """
+        @summary Queries the details of a collection.
+        
+        @param request: GetMetaCollectionDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMetaCollectionDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.qualified_name):
@@ -11000,6 +14455,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetMetaCollectionDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetMetaCollectionDetailResponse:
+        """
+        @summary Queries the details of a collection.
+        
+        @param request: GetMetaCollectionDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMetaCollectionDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.qualified_name):
@@ -11027,6 +14489,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetMetaCollectionDetailRequest,
     ) -> dataworks_public_20200518_models.GetMetaCollectionDetailResponse:
+        """
+        @summary Queries the details of a collection.
+        
+        @param request: GetMetaCollectionDetailRequest
+        @return: GetMetaCollectionDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_meta_collection_detail_with_options(request, runtime)
 
@@ -11034,6 +14502,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetMetaCollectionDetailRequest,
     ) -> dataworks_public_20200518_models.GetMetaCollectionDetailResponse:
+        """
+        @summary Queries the details of a collection.
+        
+        @param request: GetMetaCollectionDetailRequest
+        @return: GetMetaCollectionDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_meta_collection_detail_with_options_async(request, runtime)
 
@@ -11042,6 +14516,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetMetaColumnLineageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetMetaColumnLineageResponse:
+        """
+        @summary Queries the lineage of a field in a metatable.
+        
+        @param request: GetMetaColumnLineageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMetaColumnLineageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -11086,6 +14567,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetMetaColumnLineageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetMetaColumnLineageResponse:
+        """
+        @summary Queries the lineage of a field in a metatable.
+        
+        @param request: GetMetaColumnLineageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMetaColumnLineageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -11129,6 +14617,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetMetaColumnLineageRequest,
     ) -> dataworks_public_20200518_models.GetMetaColumnLineageResponse:
+        """
+        @summary Queries the lineage of a field in a metatable.
+        
+        @param request: GetMetaColumnLineageRequest
+        @return: GetMetaColumnLineageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_meta_column_lineage_with_options(request, runtime)
 
@@ -11136,6 +14630,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetMetaColumnLineageRequest,
     ) -> dataworks_public_20200518_models.GetMetaColumnLineageResponse:
+        """
+        @summary Queries the lineage of a field in a metatable.
+        
+        @param request: GetMetaColumnLineageRequest
+        @return: GetMetaColumnLineageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_meta_column_lineage_with_options_async(request, runtime)
 
@@ -11145,7 +14645,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetMetaDBInfoResponse:
         """
-        The ID of the EMR cluster. This parameter is required only if you set the DataSourceType parameter to emr.
+        @summary The ID of the compute engine instance. Specify the ID in the Engine type.Engine name format.
+        
+        @description The ID of the EMR cluster. This parameter is required only if you set the DataSourceType parameter to emr.
         You can log on to the [EMR console](https://emr.console.aliyun.com/?spm=a2c4g.11186623.0.0.965cc5c2GeiHet#/cn-hangzhou) to obtain the ID of the EMR cluster.
         
         @param request: GetMetaDBInfoRequest
@@ -11179,7 +14681,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetMetaDBInfoResponse:
         """
-        The ID of the EMR cluster. This parameter is required only if you set the DataSourceType parameter to emr.
+        @summary The ID of the compute engine instance. Specify the ID in the Engine type.Engine name format.
+        
+        @description The ID of the EMR cluster. This parameter is required only if you set the DataSourceType parameter to emr.
         You can log on to the [EMR console](https://emr.console.aliyun.com/?spm=a2c4g.11186623.0.0.965cc5c2GeiHet#/cn-hangzhou) to obtain the ID of the EMR cluster.
         
         @param request: GetMetaDBInfoRequest
@@ -11212,7 +14716,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetMetaDBInfoRequest,
     ) -> dataworks_public_20200518_models.GetMetaDBInfoResponse:
         """
-        The ID of the EMR cluster. This parameter is required only if you set the DataSourceType parameter to emr.
+        @summary The ID of the compute engine instance. Specify the ID in the Engine type.Engine name format.
+        
+        @description The ID of the EMR cluster. This parameter is required only if you set the DataSourceType parameter to emr.
         You can log on to the [EMR console](https://emr.console.aliyun.com/?spm=a2c4g.11186623.0.0.965cc5c2GeiHet#/cn-hangzhou) to obtain the ID of the EMR cluster.
         
         @param request: GetMetaDBInfoRequest
@@ -11226,7 +14732,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetMetaDBInfoRequest,
     ) -> dataworks_public_20200518_models.GetMetaDBInfoResponse:
         """
-        The ID of the EMR cluster. This parameter is required only if you set the DataSourceType parameter to emr.
+        @summary The ID of the compute engine instance. Specify the ID in the Engine type.Engine name format.
+        
+        @description The ID of the EMR cluster. This parameter is required only if you set the DataSourceType parameter to emr.
         You can log on to the [EMR console](https://emr.console.aliyun.com/?spm=a2c4g.11186623.0.0.965cc5c2GeiHet#/cn-hangzhou) to obtain the ID of the EMR cluster.
         
         @param request: GetMetaDBInfoRequest
@@ -11240,6 +14748,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetMetaDBTableListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetMetaDBTableListResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *GetMetaDBTableList**.
+        
+        @param request: GetMetaDBTableListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMetaDBTableListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_guid):
@@ -11278,6 +14793,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetMetaDBTableListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetMetaDBTableListResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *GetMetaDBTableList**.
+        
+        @param request: GetMetaDBTableListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMetaDBTableListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_guid):
@@ -11315,6 +14837,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetMetaDBTableListRequest,
     ) -> dataworks_public_20200518_models.GetMetaDBTableListResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *GetMetaDBTableList**.
+        
+        @param request: GetMetaDBTableListRequest
+        @return: GetMetaDBTableListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_meta_dbtable_list_with_options(request, runtime)
 
@@ -11322,6 +14850,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetMetaDBTableListRequest,
     ) -> dataworks_public_20200518_models.GetMetaDBTableListResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *GetMetaDBTableList**.
+        
+        @param request: GetMetaDBTableListRequest
+        @return: GetMetaDBTableListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_meta_dbtable_list_with_options_async(request, runtime)
 
@@ -11331,7 +14865,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetMetaTableBasicInfoResponse:
         """
-        ***\
+        @summary The operation that you want to perform. Set the value to *GetMetaTableBasicInfo**.
+        
+        @description ***\
         
         @param request: GetMetaTableBasicInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11364,7 +14900,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetMetaTableBasicInfoResponse:
         """
-        ***\
+        @summary The operation that you want to perform. Set the value to *GetMetaTableBasicInfo**.
+        
+        @description ***\
         
         @param request: GetMetaTableBasicInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11396,7 +14934,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetMetaTableBasicInfoRequest,
     ) -> dataworks_public_20200518_models.GetMetaTableBasicInfoResponse:
         """
-        ***\
+        @summary The operation that you want to perform. Set the value to *GetMetaTableBasicInfo**.
+        
+        @description ***\
         
         @param request: GetMetaTableBasicInfoRequest
         @return: GetMetaTableBasicInfoResponse
@@ -11409,7 +14949,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetMetaTableBasicInfoRequest,
     ) -> dataworks_public_20200518_models.GetMetaTableBasicInfoResponse:
         """
-        ***\
+        @summary The operation that you want to perform. Set the value to *GetMetaTableBasicInfo**.
+        
+        @description ***\
         
         @param request: GetMetaTableBasicInfoRequest
         @return: GetMetaTableBasicInfoResponse
@@ -11422,6 +14964,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetMetaTableChangeLogRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetMetaTableChangeLogResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *GetMetaTableChangeLog**.
+        
+        @param request: GetMetaTableChangeLogRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMetaTableChangeLogResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.change_type):
@@ -11462,6 +15011,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetMetaTableChangeLogRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetMetaTableChangeLogResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *GetMetaTableChangeLog**.
+        
+        @param request: GetMetaTableChangeLogRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMetaTableChangeLogResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.change_type):
@@ -11501,6 +15057,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetMetaTableChangeLogRequest,
     ) -> dataworks_public_20200518_models.GetMetaTableChangeLogResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *GetMetaTableChangeLog**.
+        
+        @param request: GetMetaTableChangeLogRequest
+        @return: GetMetaTableChangeLogResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_meta_table_change_log_with_options(request, runtime)
 
@@ -11508,6 +15070,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetMetaTableChangeLogRequest,
     ) -> dataworks_public_20200518_models.GetMetaTableChangeLogResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *GetMetaTableChangeLog**.
+        
+        @param request: GetMetaTableChangeLogRequest
+        @return: GetMetaTableChangeLogResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_meta_table_change_log_with_options_async(request, runtime)
 
@@ -11516,6 +15084,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetMetaTableColumnRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetMetaTableColumnResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *GetMetaTableColumn**.
+        
+        @param request: GetMetaTableColumnRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMetaTableColumnResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -11542,6 +15117,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetMetaTableColumnRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetMetaTableColumnResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *GetMetaTableColumn**.
+        
+        @param request: GetMetaTableColumnRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMetaTableColumnResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -11567,6 +15149,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetMetaTableColumnRequest,
     ) -> dataworks_public_20200518_models.GetMetaTableColumnResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *GetMetaTableColumn**.
+        
+        @param request: GetMetaTableColumnRequest
+        @return: GetMetaTableColumnResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_meta_table_column_with_options(request, runtime)
 
@@ -11574,6 +15162,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetMetaTableColumnRequest,
     ) -> dataworks_public_20200518_models.GetMetaTableColumnResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *GetMetaTableColumn**.
+        
+        @param request: GetMetaTableColumnRequest
+        @return: GetMetaTableColumnResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_meta_table_column_with_options_async(request, runtime)
 
@@ -11582,6 +15176,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetMetaTableFullInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetMetaTableFullInfoResponse:
+        """
+        @summary Queries the complete information about a metatable, including information about fields in the metatable.
+        
+        @param request: GetMetaTableFullInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMetaTableFullInfoResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -11608,6 +15209,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetMetaTableFullInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetMetaTableFullInfoResponse:
+        """
+        @summary Queries the complete information about a metatable, including information about fields in the metatable.
+        
+        @param request: GetMetaTableFullInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMetaTableFullInfoResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -11633,6 +15241,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetMetaTableFullInfoRequest,
     ) -> dataworks_public_20200518_models.GetMetaTableFullInfoResponse:
+        """
+        @summary Queries the complete information about a metatable, including information about fields in the metatable.
+        
+        @param request: GetMetaTableFullInfoRequest
+        @return: GetMetaTableFullInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_meta_table_full_info_with_options(request, runtime)
 
@@ -11640,6 +15254,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetMetaTableFullInfoRequest,
     ) -> dataworks_public_20200518_models.GetMetaTableFullInfoResponse:
+        """
+        @summary Queries the complete information about a metatable, including information about fields in the metatable.
+        
+        @param request: GetMetaTableFullInfoRequest
+        @return: GetMetaTableFullInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_meta_table_full_info_with_options_async(request, runtime)
 
@@ -11648,6 +15268,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetMetaTableIntroWikiRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetMetaTableIntroWikiResponse:
+        """
+        @summary Queries the instructions on how to use a metatable.
+        
+        @param request: GetMetaTableIntroWikiRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMetaTableIntroWikiResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.table_guid):
@@ -11678,6 +15305,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetMetaTableIntroWikiRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetMetaTableIntroWikiResponse:
+        """
+        @summary Queries the instructions on how to use a metatable.
+        
+        @param request: GetMetaTableIntroWikiRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMetaTableIntroWikiResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.table_guid):
@@ -11707,6 +15341,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetMetaTableIntroWikiRequest,
     ) -> dataworks_public_20200518_models.GetMetaTableIntroWikiResponse:
+        """
+        @summary Queries the instructions on how to use a metatable.
+        
+        @param request: GetMetaTableIntroWikiRequest
+        @return: GetMetaTableIntroWikiResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_meta_table_intro_wiki_with_options(request, runtime)
 
@@ -11714,6 +15354,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetMetaTableIntroWikiRequest,
     ) -> dataworks_public_20200518_models.GetMetaTableIntroWikiResponse:
+        """
+        @summary Queries the instructions on how to use a metatable.
+        
+        @param request: GetMetaTableIntroWikiRequest
+        @return: GetMetaTableIntroWikiResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_meta_table_intro_wiki_with_options_async(request, runtime)
 
@@ -11722,6 +15368,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetMetaTableLineageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetMetaTableLineageResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *GetMetaTableLineage**.
+        
+        @param request: GetMetaTableLineageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMetaTableLineageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -11764,6 +15417,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetMetaTableLineageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetMetaTableLineageResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *GetMetaTableLineage**.
+        
+        @param request: GetMetaTableLineageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMetaTableLineageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -11805,6 +15465,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetMetaTableLineageRequest,
     ) -> dataworks_public_20200518_models.GetMetaTableLineageResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *GetMetaTableLineage**.
+        
+        @param request: GetMetaTableLineageRequest
+        @return: GetMetaTableLineageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_meta_table_lineage_with_options(request, runtime)
 
@@ -11812,6 +15478,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetMetaTableLineageRequest,
     ) -> dataworks_public_20200518_models.GetMetaTableLineageResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *GetMetaTableLineage**.
+        
+        @param request: GetMetaTableLineageRequest
+        @return: GetMetaTableLineageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_meta_table_lineage_with_options_async(request, runtime)
 
@@ -11820,6 +15492,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetMetaTableListByCategoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetMetaTableListByCategoryResponse:
+        """
+        @param request: GetMetaTableListByCategoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMetaTableListByCategoryResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -11846,6 +15523,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetMetaTableListByCategoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetMetaTableListByCategoryResponse:
+        """
+        @param request: GetMetaTableListByCategoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMetaTableListByCategoryResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -11871,6 +15553,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetMetaTableListByCategoryRequest,
     ) -> dataworks_public_20200518_models.GetMetaTableListByCategoryResponse:
+        """
+        @param request: GetMetaTableListByCategoryRequest
+        @return: GetMetaTableListByCategoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_meta_table_list_by_category_with_options(request, runtime)
 
@@ -11878,6 +15564,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetMetaTableListByCategoryRequest,
     ) -> dataworks_public_20200518_models.GetMetaTableListByCategoryResponse:
+        """
+        @param request: GetMetaTableListByCategoryRequest
+        @return: GetMetaTableListByCategoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_meta_table_list_by_category_with_options_async(request, runtime)
 
@@ -11886,6 +15576,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetMetaTableOutputRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetMetaTableOutputResponse:
+        """
+        @param request: GetMetaTableOutputRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMetaTableOutputResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_date):
@@ -11924,6 +15619,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetMetaTableOutputRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetMetaTableOutputResponse:
+        """
+        @param request: GetMetaTableOutputRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMetaTableOutputResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_date):
@@ -11961,6 +15661,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetMetaTableOutputRequest,
     ) -> dataworks_public_20200518_models.GetMetaTableOutputResponse:
+        """
+        @param request: GetMetaTableOutputRequest
+        @return: GetMetaTableOutputResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_meta_table_output_with_options(request, runtime)
 
@@ -11968,6 +15672,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetMetaTableOutputRequest,
     ) -> dataworks_public_20200518_models.GetMetaTableOutputResponse:
+        """
+        @param request: GetMetaTableOutputRequest
+        @return: GetMetaTableOutputResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_meta_table_output_with_options_async(request, runtime)
 
@@ -11977,7 +15685,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetMetaTablePartitionResponse:
         """
-        The operation that you want to perform. Set the value to *GetMetaTablePartition**.
+        @summary For more information about the example on how to use the GetMetaTablePartition operation, see [Examples of DataWorks API operations](https://developer.aliyun.com/article/780879?groupCode=dataworks).
+        
+        @description The operation that you want to perform. Set the value to *GetMetaTablePartition**.
         
         @param tmp_req: GetMetaTablePartitionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12030,7 +15740,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetMetaTablePartitionResponse:
         """
-        The operation that you want to perform. Set the value to *GetMetaTablePartition**.
+        @summary For more information about the example on how to use the GetMetaTablePartition operation, see [Examples of DataWorks API operations](https://developer.aliyun.com/article/780879?groupCode=dataworks).
+        
+        @description The operation that you want to perform. Set the value to *GetMetaTablePartition**.
         
         @param tmp_req: GetMetaTablePartitionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12082,7 +15794,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetMetaTablePartitionRequest,
     ) -> dataworks_public_20200518_models.GetMetaTablePartitionResponse:
         """
-        The operation that you want to perform. Set the value to *GetMetaTablePartition**.
+        @summary For more information about the example on how to use the GetMetaTablePartition operation, see [Examples of DataWorks API operations](https://developer.aliyun.com/article/780879?groupCode=dataworks).
+        
+        @description The operation that you want to perform. Set the value to *GetMetaTablePartition**.
         
         @param request: GetMetaTablePartitionRequest
         @return: GetMetaTablePartitionResponse
@@ -12095,7 +15809,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetMetaTablePartitionRequest,
     ) -> dataworks_public_20200518_models.GetMetaTablePartitionResponse:
         """
-        The operation that you want to perform. Set the value to *GetMetaTablePartition**.
+        @summary For more information about the example on how to use the GetMetaTablePartition operation, see [Examples of DataWorks API operations](https://developer.aliyun.com/article/780879?groupCode=dataworks).
+        
+        @description The operation that you want to perform. Set the value to *GetMetaTablePartition**.
         
         @param request: GetMetaTablePartitionRequest
         @return: GetMetaTablePartitionResponse
@@ -12108,6 +15824,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetMetaTableProducingTasksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetMetaTableProducingTasksResponse:
+        """
+        @summary 获取Table的产出任务列表
+        
+        @param request: GetMetaTableProducingTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMetaTableProducingTasksResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -12146,6 +15869,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetMetaTableProducingTasksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetMetaTableProducingTasksResponse:
+        """
+        @summary 获取Table的产出任务列表
+        
+        @param request: GetMetaTableProducingTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMetaTableProducingTasksResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -12183,6 +15913,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetMetaTableProducingTasksRequest,
     ) -> dataworks_public_20200518_models.GetMetaTableProducingTasksResponse:
+        """
+        @summary 获取Table的产出任务列表
+        
+        @param request: GetMetaTableProducingTasksRequest
+        @return: GetMetaTableProducingTasksResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_meta_table_producing_tasks_with_options(request, runtime)
 
@@ -12190,6 +15926,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetMetaTableProducingTasksRequest,
     ) -> dataworks_public_20200518_models.GetMetaTableProducingTasksResponse:
+        """
+        @summary 获取Table的产出任务列表
+        
+        @param request: GetMetaTableProducingTasksRequest
+        @return: GetMetaTableProducingTasksResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_meta_table_producing_tasks_with_options_async(request, runtime)
 
@@ -12198,6 +15940,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetMetaTableThemeLevelRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetMetaTableThemeLevelResponse:
+        """
+        @summary Queries information about table folders and table levels.
+        
+        @param request: GetMetaTableThemeLevelRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMetaTableThemeLevelResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -12224,6 +15973,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetMetaTableThemeLevelRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetMetaTableThemeLevelResponse:
+        """
+        @summary Queries information about table folders and table levels.
+        
+        @param request: GetMetaTableThemeLevelRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMetaTableThemeLevelResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -12249,6 +16005,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetMetaTableThemeLevelRequest,
     ) -> dataworks_public_20200518_models.GetMetaTableThemeLevelResponse:
+        """
+        @summary Queries information about table folders and table levels.
+        
+        @param request: GetMetaTableThemeLevelRequest
+        @return: GetMetaTableThemeLevelResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_meta_table_theme_level_with_options(request, runtime)
 
@@ -12256,6 +16018,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetMetaTableThemeLevelRequest,
     ) -> dataworks_public_20200518_models.GetMetaTableThemeLevelResponse:
+        """
+        @summary Queries information about table folders and table levels.
+        
+        @param request: GetMetaTableThemeLevelRequest
+        @return: GetMetaTableThemeLevelResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_meta_table_theme_level_with_options_async(request, runtime)
 
@@ -12264,6 +16032,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetMigrationProcessRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetMigrationProcessResponse:
+        """
+        @param request: GetMigrationProcessRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMigrationProcessResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.migration_id):
@@ -12294,6 +16067,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetMigrationProcessRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetMigrationProcessResponse:
+        """
+        @param request: GetMigrationProcessRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMigrationProcessResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.migration_id):
@@ -12323,6 +16101,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetMigrationProcessRequest,
     ) -> dataworks_public_20200518_models.GetMigrationProcessResponse:
+        """
+        @param request: GetMigrationProcessRequest
+        @return: GetMigrationProcessResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_migration_process_with_options(request, runtime)
 
@@ -12330,6 +16112,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetMigrationProcessRequest,
     ) -> dataworks_public_20200518_models.GetMigrationProcessResponse:
+        """
+        @param request: GetMigrationProcessRequest
+        @return: GetMigrationProcessResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_migration_process_with_options_async(request, runtime)
 
@@ -12338,6 +16124,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetMigrationSummaryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetMigrationSummaryResponse:
+        """
+        @summary The operation that you want to perform.
+        
+        @param request: GetMigrationSummaryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMigrationSummaryResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.migration_id):
@@ -12368,6 +16161,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetMigrationSummaryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetMigrationSummaryResponse:
+        """
+        @summary The operation that you want to perform.
+        
+        @param request: GetMigrationSummaryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMigrationSummaryResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.migration_id):
@@ -12397,6 +16197,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetMigrationSummaryRequest,
     ) -> dataworks_public_20200518_models.GetMigrationSummaryResponse:
+        """
+        @summary The operation that you want to perform.
+        
+        @param request: GetMigrationSummaryRequest
+        @return: GetMigrationSummaryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_migration_summary_with_options(request, runtime)
 
@@ -12404,6 +16210,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetMigrationSummaryRequest,
     ) -> dataworks_public_20200518_models.GetMigrationSummaryResponse:
+        """
+        @summary The operation that you want to perform.
+        
+        @param request: GetMigrationSummaryRequest
+        @return: GetMigrationSummaryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_migration_summary_with_options_async(request, runtime)
 
@@ -12412,6 +16224,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetNodeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetNodeResponse:
+        """
+        @summary Indicates whether the request is successful.
+        
+        @param request: GetNodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetNodeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.node_id):
@@ -12442,6 +16261,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetNodeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetNodeResponse:
+        """
+        @summary Indicates whether the request is successful.
+        
+        @param request: GetNodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetNodeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.node_id):
@@ -12471,6 +16297,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetNodeRequest,
     ) -> dataworks_public_20200518_models.GetNodeResponse:
+        """
+        @summary Indicates whether the request is successful.
+        
+        @param request: GetNodeRequest
+        @return: GetNodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_node_with_options(request, runtime)
 
@@ -12478,6 +16310,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetNodeRequest,
     ) -> dataworks_public_20200518_models.GetNodeResponse:
+        """
+        @summary Indicates whether the request is successful.
+        
+        @param request: GetNodeRequest
+        @return: GetNodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_node_with_options_async(request, runtime)
 
@@ -12486,6 +16324,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetNodeChildrenRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetNodeChildrenResponse:
+        """
+        @param request: GetNodeChildrenRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetNodeChildrenResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.node_id):
@@ -12516,6 +16359,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetNodeChildrenRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetNodeChildrenResponse:
+        """
+        @param request: GetNodeChildrenRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetNodeChildrenResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.node_id):
@@ -12545,6 +16393,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetNodeChildrenRequest,
     ) -> dataworks_public_20200518_models.GetNodeChildrenResponse:
+        """
+        @param request: GetNodeChildrenRequest
+        @return: GetNodeChildrenResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_node_children_with_options(request, runtime)
 
@@ -12552,6 +16404,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetNodeChildrenRequest,
     ) -> dataworks_public_20200518_models.GetNodeChildrenResponse:
+        """
+        @param request: GetNodeChildrenRequest
+        @return: GetNodeChildrenResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_node_children_with_options_async(request, runtime)
 
@@ -12560,6 +16416,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetNodeCodeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetNodeCodeResponse:
+        """
+        @summary Queries the code of a node.
+        
+        @param request: GetNodeCodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetNodeCodeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.node_id):
@@ -12590,6 +16453,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetNodeCodeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetNodeCodeResponse:
+        """
+        @summary Queries the code of a node.
+        
+        @param request: GetNodeCodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetNodeCodeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.node_id):
@@ -12619,6 +16489,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetNodeCodeRequest,
     ) -> dataworks_public_20200518_models.GetNodeCodeResponse:
+        """
+        @summary Queries the code of a node.
+        
+        @param request: GetNodeCodeRequest
+        @return: GetNodeCodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_node_code_with_options(request, runtime)
 
@@ -12626,6 +16502,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetNodeCodeRequest,
     ) -> dataworks_public_20200518_models.GetNodeCodeResponse:
+        """
+        @summary Queries the code of a node.
+        
+        @param request: GetNodeCodeRequest
+        @return: GetNodeCodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_node_code_with_options_async(request, runtime)
 
@@ -12635,7 +16517,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetNodeOnBaselineResponse:
         """
-        @deprecated
+        @deprecated OpenAPI GetNodeOnBaseline is deprecated
         
         @param request: GetNodeOnBaselineRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12671,7 +16553,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetNodeOnBaselineResponse:
         """
-        @deprecated
+        @deprecated OpenAPI GetNodeOnBaseline is deprecated
         
         @param request: GetNodeOnBaselineRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12706,7 +16588,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetNodeOnBaselineRequest,
     ) -> dataworks_public_20200518_models.GetNodeOnBaselineResponse:
         """
-        @deprecated
+        @deprecated OpenAPI GetNodeOnBaseline is deprecated
         
         @param request: GetNodeOnBaselineRequest
         @return: GetNodeOnBaselineResponse
@@ -12720,7 +16602,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetNodeOnBaselineRequest,
     ) -> dataworks_public_20200518_models.GetNodeOnBaselineResponse:
         """
-        @deprecated
+        @deprecated OpenAPI GetNodeOnBaseline is deprecated
         
         @param request: GetNodeOnBaselineRequest
         @return: GetNodeOnBaselineResponse
@@ -12734,6 +16616,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetNodeParentsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetNodeParentsResponse:
+        """
+        @param request: GetNodeParentsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetNodeParentsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.node_id):
@@ -12764,6 +16651,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetNodeParentsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetNodeParentsResponse:
+        """
+        @param request: GetNodeParentsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetNodeParentsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.node_id):
@@ -12793,6 +16685,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetNodeParentsRequest,
     ) -> dataworks_public_20200518_models.GetNodeParentsResponse:
+        """
+        @param request: GetNodeParentsRequest
+        @return: GetNodeParentsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_node_parents_with_options(request, runtime)
 
@@ -12800,6 +16696,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetNodeParentsRequest,
     ) -> dataworks_public_20200518_models.GetNodeParentsResponse:
+        """
+        @param request: GetNodeParentsRequest
+        @return: GetNodeParentsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_node_parents_with_options_async(request, runtime)
 
@@ -12809,7 +16709,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetNodeTypeListInfoResponse:
         """
-        @deprecated
+        @deprecated OpenAPI GetNodeTypeListInfo is deprecated
         
         @param request: GetNodeTypeListInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12855,7 +16755,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetNodeTypeListInfoResponse:
         """
-        @deprecated
+        @deprecated OpenAPI GetNodeTypeListInfo is deprecated
         
         @param request: GetNodeTypeListInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12900,7 +16800,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetNodeTypeListInfoRequest,
     ) -> dataworks_public_20200518_models.GetNodeTypeListInfoResponse:
         """
-        @deprecated
+        @deprecated OpenAPI GetNodeTypeListInfo is deprecated
         
         @param request: GetNodeTypeListInfoRequest
         @return: GetNodeTypeListInfoResponse
@@ -12914,7 +16814,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetNodeTypeListInfoRequest,
     ) -> dataworks_public_20200518_models.GetNodeTypeListInfoResponse:
         """
-        @deprecated
+        @deprecated OpenAPI GetNodeTypeListInfo is deprecated
         
         @param request: GetNodeTypeListInfoRequest
         @return: GetNodeTypeListInfoResponse
@@ -12928,6 +16828,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetOpRiskDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetOpRiskDataResponse:
+        """
+        @param request: GetOpRiskDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetOpRiskDataResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -12954,6 +16859,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetOpRiskDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetOpRiskDataResponse:
+        """
+        @param request: GetOpRiskDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetOpRiskDataResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -12979,6 +16889,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetOpRiskDataRequest,
     ) -> dataworks_public_20200518_models.GetOpRiskDataResponse:
+        """
+        @param request: GetOpRiskDataRequest
+        @return: GetOpRiskDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_op_risk_data_with_options(request, runtime)
 
@@ -12986,6 +16900,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetOpRiskDataRequest,
     ) -> dataworks_public_20200518_models.GetOpRiskDataResponse:
+        """
+        @param request: GetOpRiskDataRequest
+        @return: GetOpRiskDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_op_risk_data_with_options_async(request, runtime)
 
@@ -12994,6 +16912,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetOpSensitiveDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetOpSensitiveDataResponse:
+        """
+        @param request: GetOpSensitiveDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetOpSensitiveDataResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -13020,6 +16943,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetOpSensitiveDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetOpSensitiveDataResponse:
+        """
+        @param request: GetOpSensitiveDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetOpSensitiveDataResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -13045,6 +16973,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetOpSensitiveDataRequest,
     ) -> dataworks_public_20200518_models.GetOpSensitiveDataResponse:
+        """
+        @param request: GetOpSensitiveDataRequest
+        @return: GetOpSensitiveDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_op_sensitive_data_with_options(request, runtime)
 
@@ -13052,6 +16984,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetOpSensitiveDataRequest,
     ) -> dataworks_public_20200518_models.GetOpSensitiveDataResponse:
+        """
+        @param request: GetOpSensitiveDataRequest
+        @return: GetOpSensitiveDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_op_sensitive_data_with_options_async(request, runtime)
 
@@ -13060,6 +16996,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetOptionValueForProjectRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetOptionValueForProjectResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *GetOptionValueForProject**.
+        
+        @param request: GetOptionValueForProjectRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetOptionValueForProjectResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.extension_code):
@@ -13090,6 +17033,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetOptionValueForProjectRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetOptionValueForProjectResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *GetOptionValueForProject**.
+        
+        @param request: GetOptionValueForProjectRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetOptionValueForProjectResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.extension_code):
@@ -13119,6 +17069,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetOptionValueForProjectRequest,
     ) -> dataworks_public_20200518_models.GetOptionValueForProjectResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *GetOptionValueForProject**.
+        
+        @param request: GetOptionValueForProjectRequest
+        @return: GetOptionValueForProjectResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_option_value_for_project_with_options(request, runtime)
 
@@ -13126,6 +17082,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetOptionValueForProjectRequest,
     ) -> dataworks_public_20200518_models.GetOptionValueForProjectResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *GetOptionValueForProject**.
+        
+        @param request: GetOptionValueForProjectRequest
+        @return: GetOptionValueForProjectResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_option_value_for_project_with_options_async(request, runtime)
 
@@ -13134,6 +17096,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetPermissionApplyOrderDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetPermissionApplyOrderDetailResponse:
+        """
+        @summary Queries the details about a permission request order.
+        
+        @param request: GetPermissionApplyOrderDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPermissionApplyOrderDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.flow_id):
@@ -13162,6 +17131,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetPermissionApplyOrderDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetPermissionApplyOrderDetailResponse:
+        """
+        @summary Queries the details about a permission request order.
+        
+        @param request: GetPermissionApplyOrderDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPermissionApplyOrderDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.flow_id):
@@ -13189,6 +17165,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetPermissionApplyOrderDetailRequest,
     ) -> dataworks_public_20200518_models.GetPermissionApplyOrderDetailResponse:
+        """
+        @summary Queries the details about a permission request order.
+        
+        @param request: GetPermissionApplyOrderDetailRequest
+        @return: GetPermissionApplyOrderDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_permission_apply_order_detail_with_options(request, runtime)
 
@@ -13196,6 +17178,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetPermissionApplyOrderDetailRequest,
     ) -> dataworks_public_20200518_models.GetPermissionApplyOrderDetailResponse:
+        """
+        @summary Queries the details about a permission request order.
+        
+        @param request: GetPermissionApplyOrderDetailRequest
+        @return: GetPermissionApplyOrderDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_permission_apply_order_detail_with_options_async(request, runtime)
 
@@ -13204,6 +17192,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetProjectRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetProjectResponse:
+        """
+        @summary 查询工作空间详情
+        
+        @param request: GetProjectRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetProjectResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.project_id):
@@ -13234,6 +17229,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetProjectRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetProjectResponse:
+        """
+        @summary 查询工作空间详情
+        
+        @param request: GetProjectRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetProjectResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.project_id):
@@ -13263,6 +17265,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetProjectRequest,
     ) -> dataworks_public_20200518_models.GetProjectResponse:
+        """
+        @summary 查询工作空间详情
+        
+        @param request: GetProjectRequest
+        @return: GetProjectResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_project_with_options(request, runtime)
 
@@ -13270,6 +17278,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetProjectRequest,
     ) -> dataworks_public_20200518_models.GetProjectResponse:
+        """
+        @summary 查询工作空间详情
+        
+        @param request: GetProjectRequest
+        @return: GetProjectResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_project_with_options_async(request, runtime)
 
@@ -13279,7 +17293,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetProjectDetailResponse:
         """
-        @deprecated
+        @deprecated OpenAPI GetProjectDetail is deprecated
+        
+        @summary 查询工作空间详情
         
         @param request: GetProjectDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13315,7 +17331,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetProjectDetailResponse:
         """
-        @deprecated
+        @deprecated OpenAPI GetProjectDetail is deprecated
+        
+        @summary 查询工作空间详情
         
         @param request: GetProjectDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13350,7 +17368,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetProjectDetailRequest,
     ) -> dataworks_public_20200518_models.GetProjectDetailResponse:
         """
-        @deprecated
+        @deprecated OpenAPI GetProjectDetail is deprecated
+        
+        @summary 查询工作空间详情
         
         @param request: GetProjectDetailRequest
         @return: GetProjectDetailResponse
@@ -13364,7 +17384,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetProjectDetailRequest,
     ) -> dataworks_public_20200518_models.GetProjectDetailResponse:
         """
-        @deprecated
+        @deprecated OpenAPI GetProjectDetail is deprecated
+        
+        @summary 查询工作空间详情
         
         @param request: GetProjectDetailRequest
         @return: GetProjectDetailResponse
@@ -13378,6 +17400,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetQualityEntityRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetQualityEntityResponse:
+        """
+        @param request: GetQualityEntityRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetQualityEntityResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.env_type):
@@ -13414,6 +17441,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetQualityEntityRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetQualityEntityResponse:
+        """
+        @param request: GetQualityEntityRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetQualityEntityResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.env_type):
@@ -13449,6 +17481,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetQualityEntityRequest,
     ) -> dataworks_public_20200518_models.GetQualityEntityResponse:
+        """
+        @param request: GetQualityEntityRequest
+        @return: GetQualityEntityResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_quality_entity_with_options(request, runtime)
 
@@ -13456,6 +17492,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetQualityEntityRequest,
     ) -> dataworks_public_20200518_models.GetQualityEntityResponse:
+        """
+        @param request: GetQualityEntityRequest
+        @return: GetQualityEntityResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_quality_entity_with_options_async(request, runtime)
 
@@ -13464,6 +17504,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetQualityFollowerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetQualityFollowerResponse:
+        """
+        @param request: GetQualityFollowerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetQualityFollowerResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.entity_id):
@@ -13496,6 +17541,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetQualityFollowerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetQualityFollowerResponse:
+        """
+        @param request: GetQualityFollowerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetQualityFollowerResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.entity_id):
@@ -13527,6 +17577,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetQualityFollowerRequest,
     ) -> dataworks_public_20200518_models.GetQualityFollowerResponse:
+        """
+        @param request: GetQualityFollowerRequest
+        @return: GetQualityFollowerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_quality_follower_with_options(request, runtime)
 
@@ -13534,6 +17588,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetQualityFollowerRequest,
     ) -> dataworks_public_20200518_models.GetQualityFollowerResponse:
+        """
+        @param request: GetQualityFollowerRequest
+        @return: GetQualityFollowerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_quality_follower_with_options_async(request, runtime)
 
@@ -13542,6 +17600,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetQualityRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetQualityRuleResponse:
+        """
+        @param request: GetQualityRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetQualityRuleResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.project_id):
@@ -13574,6 +17637,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetQualityRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetQualityRuleResponse:
+        """
+        @param request: GetQualityRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetQualityRuleResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.project_id):
@@ -13605,6 +17673,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetQualityRuleRequest,
     ) -> dataworks_public_20200518_models.GetQualityRuleResponse:
+        """
+        @param request: GetQualityRuleRequest
+        @return: GetQualityRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_quality_rule_with_options(request, runtime)
 
@@ -13612,6 +17684,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetQualityRuleRequest,
     ) -> dataworks_public_20200518_models.GetQualityRuleResponse:
+        """
+        @param request: GetQualityRuleRequest
+        @return: GetQualityRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_quality_rule_with_options_async(request, runtime)
 
@@ -13620,6 +17696,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetRemindRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetRemindResponse:
+        """
+        @param request: GetRemindRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetRemindResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.remind_id):
@@ -13648,6 +17729,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetRemindRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetRemindResponse:
+        """
+        @param request: GetRemindRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetRemindResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.remind_id):
@@ -13675,6 +17761,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetRemindRequest,
     ) -> dataworks_public_20200518_models.GetRemindResponse:
+        """
+        @param request: GetRemindRequest
+        @return: GetRemindResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_remind_with_options(request, runtime)
 
@@ -13682,6 +17772,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetRemindRequest,
     ) -> dataworks_public_20200518_models.GetRemindResponse:
+        """
+        @param request: GetRemindRequest
+        @return: GetRemindResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_remind_with_options_async(request, runtime)
 
@@ -13690,6 +17784,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetSensitiveDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetSensitiveDataResponse:
+        """
+        @param request: GetSensitiveDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSensitiveDataResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -13716,6 +17815,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetSensitiveDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetSensitiveDataResponse:
+        """
+        @param request: GetSensitiveDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSensitiveDataResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -13741,6 +17845,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetSensitiveDataRequest,
     ) -> dataworks_public_20200518_models.GetSensitiveDataResponse:
+        """
+        @param request: GetSensitiveDataRequest
+        @return: GetSensitiveDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_sensitive_data_with_options(request, runtime)
 
@@ -13748,6 +17856,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetSensitiveDataRequest,
     ) -> dataworks_public_20200518_models.GetSensitiveDataResponse:
+        """
+        @param request: GetSensitiveDataRequest
+        @return: GetSensitiveDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_sensitive_data_with_options_async(request, runtime)
 
@@ -13757,7 +17869,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetSuccessInstanceTrendResponse:
         """
-        @deprecated
+        @deprecated OpenAPI GetSuccessInstanceTrend is deprecated
         
         @param request: GetSuccessInstanceTrendRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13793,7 +17905,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetSuccessInstanceTrendResponse:
         """
-        @deprecated
+        @deprecated OpenAPI GetSuccessInstanceTrend is deprecated
         
         @param request: GetSuccessInstanceTrendRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13828,7 +17940,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetSuccessInstanceTrendRequest,
     ) -> dataworks_public_20200518_models.GetSuccessInstanceTrendResponse:
         """
-        @deprecated
+        @deprecated OpenAPI GetSuccessInstanceTrend is deprecated
         
         @param request: GetSuccessInstanceTrendRequest
         @return: GetSuccessInstanceTrendResponse
@@ -13842,7 +17954,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetSuccessInstanceTrendRequest,
     ) -> dataworks_public_20200518_models.GetSuccessInstanceTrendResponse:
         """
-        @deprecated
+        @deprecated OpenAPI GetSuccessInstanceTrend is deprecated
         
         @param request: GetSuccessInstanceTrendRequest
         @return: GetSuccessInstanceTrendResponse
@@ -13857,7 +17969,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetTopicResponse:
         """
-        ***\
+        @description ***\
         
         @param request: GetTopicRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13892,7 +18004,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetTopicResponse:
         """
-        ***\
+        @description ***\
         
         @param request: GetTopicRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13926,7 +18038,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetTopicRequest,
     ) -> dataworks_public_20200518_models.GetTopicResponse:
         """
-        ***\
+        @description ***\
         
         @param request: GetTopicRequest
         @return: GetTopicResponse
@@ -13939,7 +18051,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetTopicRequest,
     ) -> dataworks_public_20200518_models.GetTopicResponse:
         """
-        ***\
+        @description ***\
         
         @param request: GetTopicRequest
         @return: GetTopicResponse
@@ -13952,6 +18064,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetTopicInfluenceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetTopicInfluenceResponse:
+        """
+        @param request: GetTopicInfluenceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTopicInfluenceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.topic_id):
@@ -13980,6 +18097,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetTopicInfluenceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetTopicInfluenceResponse:
+        """
+        @param request: GetTopicInfluenceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTopicInfluenceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.topic_id):
@@ -14007,6 +18129,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetTopicInfluenceRequest,
     ) -> dataworks_public_20200518_models.GetTopicInfluenceResponse:
+        """
+        @param request: GetTopicInfluenceRequest
+        @return: GetTopicInfluenceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_topic_influence_with_options(request, runtime)
 
@@ -14014,6 +18140,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetTopicInfluenceRequest,
     ) -> dataworks_public_20200518_models.GetTopicInfluenceResponse:
+        """
+        @param request: GetTopicInfluenceRequest
+        @return: GetTopicInfluenceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_topic_influence_with_options_async(request, runtime)
 
@@ -14023,9 +18153,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ImportDataSourcesResponse:
         """
-        You can import self-managed data sources or data sources that are exported from other Dataworks workspaces to a specified DataWorks workspace.
-        *   To import a self-managed data source to DataWorks, the data source type must be supported by DataWorks. For more information about the types of data sources supported by DataWorks, see [Supported data stores](~~181656~~).
-        *   For more information about how to export data sources from DataWorks workspaces to on-premises devices, see [ExportDataSources](~~279570~~).
+        @description You can import self-managed data sources or data sources that are exported from other Dataworks workspaces to a specified DataWorks workspace.
+        To import a self-managed data source to DataWorks, the data source type must be supported by DataWorks. For more information about the types of data sources supported by DataWorks, see [Supported data stores](https://help.aliyun.com/document_detail/181656.html).
+        For more information about how to export data sources from DataWorks workspaces to on-premises devices, see [ExportDataSources](https://help.aliyun.com/document_detail/279570.html).
         
         @param request: ImportDataSourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14062,9 +18192,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ImportDataSourcesResponse:
         """
-        You can import self-managed data sources or data sources that are exported from other Dataworks workspaces to a specified DataWorks workspace.
-        *   To import a self-managed data source to DataWorks, the data source type must be supported by DataWorks. For more information about the types of data sources supported by DataWorks, see [Supported data stores](~~181656~~).
-        *   For more information about how to export data sources from DataWorks workspaces to on-premises devices, see [ExportDataSources](~~279570~~).
+        @description You can import self-managed data sources or data sources that are exported from other Dataworks workspaces to a specified DataWorks workspace.
+        To import a self-managed data source to DataWorks, the data source type must be supported by DataWorks. For more information about the types of data sources supported by DataWorks, see [Supported data stores](https://help.aliyun.com/document_detail/181656.html).
+        For more information about how to export data sources from DataWorks workspaces to on-premises devices, see [ExportDataSources](https://help.aliyun.com/document_detail/279570.html).
         
         @param request: ImportDataSourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14100,9 +18230,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ImportDataSourcesRequest,
     ) -> dataworks_public_20200518_models.ImportDataSourcesResponse:
         """
-        You can import self-managed data sources or data sources that are exported from other Dataworks workspaces to a specified DataWorks workspace.
-        *   To import a self-managed data source to DataWorks, the data source type must be supported by DataWorks. For more information about the types of data sources supported by DataWorks, see [Supported data stores](~~181656~~).
-        *   For more information about how to export data sources from DataWorks workspaces to on-premises devices, see [ExportDataSources](~~279570~~).
+        @description You can import self-managed data sources or data sources that are exported from other Dataworks workspaces to a specified DataWorks workspace.
+        To import a self-managed data source to DataWorks, the data source type must be supported by DataWorks. For more information about the types of data sources supported by DataWorks, see [Supported data stores](https://help.aliyun.com/document_detail/181656.html).
+        For more information about how to export data sources from DataWorks workspaces to on-premises devices, see [ExportDataSources](https://help.aliyun.com/document_detail/279570.html).
         
         @param request: ImportDataSourcesRequest
         @return: ImportDataSourcesResponse
@@ -14115,9 +18245,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ImportDataSourcesRequest,
     ) -> dataworks_public_20200518_models.ImportDataSourcesResponse:
         """
-        You can import self-managed data sources or data sources that are exported from other Dataworks workspaces to a specified DataWorks workspace.
-        *   To import a self-managed data source to DataWorks, the data source type must be supported by DataWorks. For more information about the types of data sources supported by DataWorks, see [Supported data stores](~~181656~~).
-        *   For more information about how to export data sources from DataWorks workspaces to on-premises devices, see [ExportDataSources](~~279570~~).
+        @description You can import self-managed data sources or data sources that are exported from other Dataworks workspaces to a specified DataWorks workspace.
+        To import a self-managed data source to DataWorks, the data source type must be supported by DataWorks. For more information about the types of data sources supported by DataWorks, see [Supported data stores](https://help.aliyun.com/document_detail/181656.html).
+        For more information about how to export data sources from DataWorks workspaces to on-premises devices, see [ExportDataSources](https://help.aliyun.com/document_detail/279570.html).
         
         @param request: ImportDataSourcesRequest
         @return: ImportDataSourcesResponse
@@ -14130,6 +18260,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListAlertMessagesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListAlertMessagesResponse:
+        """
+        @param request: ListAlertMessagesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAlertMessagesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.alert_methods):
@@ -14174,6 +18309,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListAlertMessagesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListAlertMessagesResponse:
+        """
+        @param request: ListAlertMessagesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAlertMessagesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.alert_methods):
@@ -14217,6 +18357,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListAlertMessagesRequest,
     ) -> dataworks_public_20200518_models.ListAlertMessagesResponse:
+        """
+        @param request: ListAlertMessagesRequest
+        @return: ListAlertMessagesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_alert_messages_with_options(request, runtime)
 
@@ -14224,6 +18368,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListAlertMessagesRequest,
     ) -> dataworks_public_20200518_models.ListAlertMessagesResponse:
+        """
+        @param request: ListAlertMessagesRequest
+        @return: ListAlertMessagesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_alert_messages_with_options_async(request, runtime)
 
@@ -14232,6 +18380,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListBaselineConfigsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListBaselineConfigsResponse:
+        """
+        @param request: ListBaselineConfigsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListBaselineConfigsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.baseline_types):
@@ -14274,6 +18427,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListBaselineConfigsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListBaselineConfigsResponse:
+        """
+        @param request: ListBaselineConfigsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListBaselineConfigsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.baseline_types):
@@ -14315,6 +18473,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListBaselineConfigsRequest,
     ) -> dataworks_public_20200518_models.ListBaselineConfigsResponse:
+        """
+        @param request: ListBaselineConfigsRequest
+        @return: ListBaselineConfigsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_baseline_configs_with_options(request, runtime)
 
@@ -14322,6 +18484,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListBaselineConfigsRequest,
     ) -> dataworks_public_20200518_models.ListBaselineConfigsResponse:
+        """
+        @param request: ListBaselineConfigsRequest
+        @return: ListBaselineConfigsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_baseline_configs_with_options_async(request, runtime)
 
@@ -14330,6 +18496,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListBaselineStatusesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListBaselineStatusesResponse:
+        """
+        @summary Queries baseline instances.
+        
+        @param request: ListBaselineStatusesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListBaselineStatusesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.baseline_types):
@@ -14376,6 +18549,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListBaselineStatusesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListBaselineStatusesResponse:
+        """
+        @summary Queries baseline instances.
+        
+        @param request: ListBaselineStatusesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListBaselineStatusesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.baseline_types):
@@ -14421,6 +18601,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListBaselineStatusesRequest,
     ) -> dataworks_public_20200518_models.ListBaselineStatusesResponse:
+        """
+        @summary Queries baseline instances.
+        
+        @param request: ListBaselineStatusesRequest
+        @return: ListBaselineStatusesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_baseline_statuses_with_options(request, runtime)
 
@@ -14428,6 +18614,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListBaselineStatusesRequest,
     ) -> dataworks_public_20200518_models.ListBaselineStatusesResponse:
+        """
+        @summary Queries baseline instances.
+        
+        @param request: ListBaselineStatusesRequest
+        @return: ListBaselineStatusesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_baseline_statuses_with_options_async(request, runtime)
 
@@ -14436,6 +18628,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListBaselinesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListBaselinesResponse:
+        """
+        @summary 查询基线列表
+        
+        @param request: ListBaselinesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListBaselinesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.baseline_types):
@@ -14478,6 +18677,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListBaselinesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListBaselinesResponse:
+        """
+        @summary 查询基线列表
+        
+        @param request: ListBaselinesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListBaselinesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.baseline_types):
@@ -14519,6 +18725,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListBaselinesRequest,
     ) -> dataworks_public_20200518_models.ListBaselinesResponse:
+        """
+        @summary 查询基线列表
+        
+        @param request: ListBaselinesRequest
+        @return: ListBaselinesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_baselines_with_options(request, runtime)
 
@@ -14526,6 +18738,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListBaselinesRequest,
     ) -> dataworks_public_20200518_models.ListBaselinesResponse:
+        """
+        @summary 查询基线列表
+        
+        @param request: ListBaselinesRequest
+        @return: ListBaselinesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_baselines_with_options_async(request, runtime)
 
@@ -14534,6 +18752,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListBusinessRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListBusinessResponse:
+        """
+        @summary Queries workflows.
+        
+        @param request: ListBusinessRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListBusinessResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.keyword):
@@ -14570,6 +18795,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListBusinessRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListBusinessResponse:
+        """
+        @summary Queries workflows.
+        
+        @param request: ListBusinessRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListBusinessResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.keyword):
@@ -14605,6 +18837,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListBusinessRequest,
     ) -> dataworks_public_20200518_models.ListBusinessResponse:
+        """
+        @summary Queries workflows.
+        
+        @param request: ListBusinessRequest
+        @return: ListBusinessResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_business_with_options(request, runtime)
 
@@ -14612,6 +18850,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListBusinessRequest,
     ) -> dataworks_public_20200518_models.ListBusinessResponse:
+        """
+        @summary Queries workflows.
+        
+        @param request: ListBusinessRequest
+        @return: ListBusinessResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_business_with_options_async(request, runtime)
 
@@ -14620,6 +18864,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListCalcEnginesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListCalcEnginesResponse:
+        """
+        @param request: ListCalcEnginesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCalcEnginesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.calc_engine_type):
@@ -14658,6 +18907,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListCalcEnginesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListCalcEnginesResponse:
+        """
+        @param request: ListCalcEnginesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCalcEnginesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.calc_engine_type):
@@ -14695,6 +18949,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListCalcEnginesRequest,
     ) -> dataworks_public_20200518_models.ListCalcEnginesResponse:
+        """
+        @param request: ListCalcEnginesRequest
+        @return: ListCalcEnginesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_calc_engines_with_options(request, runtime)
 
@@ -14702,6 +18960,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListCalcEnginesRequest,
     ) -> dataworks_public_20200518_models.ListCalcEnginesResponse:
+        """
+        @param request: ListCalcEnginesRequest
+        @return: ListCalcEnginesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_calc_engines_with_options_async(request, runtime)
 
@@ -14711,7 +18973,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListConnectionsResponse:
         """
-        @deprecated
+        @deprecated OpenAPI ListConnections is deprecated
+        
+        @summary 查询数据源
         
         @param request: ListConnectionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14745,7 +19009,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListConnectionsResponse:
         """
-        @deprecated
+        @deprecated OpenAPI ListConnections is deprecated
+        
+        @summary 查询数据源
         
         @param request: ListConnectionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14778,7 +19044,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListConnectionsRequest,
     ) -> dataworks_public_20200518_models.ListConnectionsResponse:
         """
-        @deprecated
+        @deprecated OpenAPI ListConnections is deprecated
+        
+        @summary 查询数据源
         
         @param request: ListConnectionsRequest
         @return: ListConnectionsResponse
@@ -14792,7 +19060,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListConnectionsRequest,
     ) -> dataworks_public_20200518_models.ListConnectionsResponse:
         """
-        @deprecated
+        @deprecated OpenAPI ListConnections is deprecated
+        
+        @summary 查询数据源
         
         @param request: ListConnectionsRequest
         @return: ListConnectionsResponse
@@ -14806,6 +19076,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListDIAlarmRulesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListDIAlarmRulesResponse:
+        """
+        @summary 查询数据集成新版告警规则列表
+        
+        @param request: ListDIAlarmRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDIAlarmRulesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.dijob_id):
@@ -14838,6 +19115,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListDIAlarmRulesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListDIAlarmRulesResponse:
+        """
+        @summary 查询数据集成新版告警规则列表
+        
+        @param request: ListDIAlarmRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDIAlarmRulesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.dijob_id):
@@ -14869,6 +19153,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListDIAlarmRulesRequest,
     ) -> dataworks_public_20200518_models.ListDIAlarmRulesResponse:
+        """
+        @summary 查询数据集成新版告警规则列表
+        
+        @param request: ListDIAlarmRulesRequest
+        @return: ListDIAlarmRulesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_dialarm_rules_with_options(request, runtime)
 
@@ -14876,6 +19166,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListDIAlarmRulesRequest,
     ) -> dataworks_public_20200518_models.ListDIAlarmRulesResponse:
+        """
+        @summary 查询数据集成新版告警规则列表
+        
+        @param request: ListDIAlarmRulesRequest
+        @return: ListDIAlarmRulesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_dialarm_rules_with_options_async(request, runtime)
 
@@ -14884,6 +19180,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListDIJobsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListDIJobsResponse:
+        """
+        @summary 查询数据集成新版解决方案任务列表
+        
+        @param request: ListDIJobsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDIJobsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.destination_data_source_type):
@@ -14922,6 +19225,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListDIJobsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListDIJobsResponse:
+        """
+        @summary 查询数据集成新版解决方案任务列表
+        
+        @param request: ListDIJobsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDIJobsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.destination_data_source_type):
@@ -14959,6 +19269,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListDIJobsRequest,
     ) -> dataworks_public_20200518_models.ListDIJobsResponse:
+        """
+        @summary 查询数据集成新版解决方案任务列表
+        
+        @param request: ListDIJobsRequest
+        @return: ListDIJobsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_dijobs_with_options(request, runtime)
 
@@ -14966,6 +19282,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListDIJobsRequest,
     ) -> dataworks_public_20200518_models.ListDIJobsResponse:
+        """
+        @summary 查询数据集成新版解决方案任务列表
+        
+        @param request: ListDIJobsRequest
+        @return: ListDIJobsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_dijobs_with_options_async(request, runtime)
 
@@ -14975,7 +19297,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListDIProjectConfigResponse:
         """
-        DataWorks allows you to set the default global configuration for only the processing rules of DDL messages in sync solutions. After you configure the *processing rules of DDL messages** in sync solutions, the configuration is set as the default global configuration and applies to all real-time sync nodes. You can also modify the **processing rules of DDL messages** based on your business requirements. For more information, see [Sync solutions](~~199008~~).
+        @description DataWorks allows you to set the default global configuration for only the processing rules of DDL messages in sync solutions. After you configure the *processing rules of DDL messages** in sync solutions, the configuration is set as the default global configuration and applies to all real-time sync nodes. You can also modify the **processing rules of DDL messages** based on your business requirements. For more information, see [Sync solutions](https://help.aliyun.com/document_detail/199008.html).
         
         @param request: ListDIProjectConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15014,7 +19336,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListDIProjectConfigResponse:
         """
-        DataWorks allows you to set the default global configuration for only the processing rules of DDL messages in sync solutions. After you configure the *processing rules of DDL messages** in sync solutions, the configuration is set as the default global configuration and applies to all real-time sync nodes. You can also modify the **processing rules of DDL messages** based on your business requirements. For more information, see [Sync solutions](~~199008~~).
+        @description DataWorks allows you to set the default global configuration for only the processing rules of DDL messages in sync solutions. After you configure the *processing rules of DDL messages** in sync solutions, the configuration is set as the default global configuration and applies to all real-time sync nodes. You can also modify the **processing rules of DDL messages** based on your business requirements. For more information, see [Sync solutions](https://help.aliyun.com/document_detail/199008.html).
         
         @param request: ListDIProjectConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15052,7 +19374,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListDIProjectConfigRequest,
     ) -> dataworks_public_20200518_models.ListDIProjectConfigResponse:
         """
-        DataWorks allows you to set the default global configuration for only the processing rules of DDL messages in sync solutions. After you configure the *processing rules of DDL messages** in sync solutions, the configuration is set as the default global configuration and applies to all real-time sync nodes. You can also modify the **processing rules of DDL messages** based on your business requirements. For more information, see [Sync solutions](~~199008~~).
+        @description DataWorks allows you to set the default global configuration for only the processing rules of DDL messages in sync solutions. After you configure the *processing rules of DDL messages** in sync solutions, the configuration is set as the default global configuration and applies to all real-time sync nodes. You can also modify the **processing rules of DDL messages** based on your business requirements. For more information, see [Sync solutions](https://help.aliyun.com/document_detail/199008.html).
         
         @param request: ListDIProjectConfigRequest
         @return: ListDIProjectConfigResponse
@@ -15065,7 +19387,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListDIProjectConfigRequest,
     ) -> dataworks_public_20200518_models.ListDIProjectConfigResponse:
         """
-        DataWorks allows you to set the default global configuration for only the processing rules of DDL messages in sync solutions. After you configure the *processing rules of DDL messages** in sync solutions, the configuration is set as the default global configuration and applies to all real-time sync nodes. You can also modify the **processing rules of DDL messages** based on your business requirements. For more information, see [Sync solutions](~~199008~~).
+        @description DataWorks allows you to set the default global configuration for only the processing rules of DDL messages in sync solutions. After you configure the *processing rules of DDL messages** in sync solutions, the configuration is set as the default global configuration and applies to all real-time sync nodes. You can also modify the **processing rules of DDL messages** based on your business requirements. For more information, see [Sync solutions](https://help.aliyun.com/document_detail/199008.html).
         
         @param request: ListDIProjectConfigRequest
         @return: ListDIProjectConfigResponse
@@ -15079,7 +19401,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListDagsResponse:
         """
-        The operation that you want to perform. Set the value to *ListDags**.
+        @summary Supported DAG types:
+        MANUAL: the DAG for a manually triggered workflow.
+        SMOKE_TEST: the DAG for a smoke testing workflow.
+        SUPPLY_DATA: the DAG for a data backfill instance.
+        BUSINESS_PROCESS_DAG: the DAG for a one-time workflow.
+        Supported DAG states:
+        CREATED: The DAG is created.
+        RUNNING: The DAG is running.
+        FAILURE: The DAG fails to run.
+        SUCCESS: The DAG successfully runs.
+        
+        @description The operation that you want to perform. Set the value to *ListDags**.
         
         @param request: ListDagsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15116,7 +19449,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListDagsResponse:
         """
-        The operation that you want to perform. Set the value to *ListDags**.
+        @summary Supported DAG types:
+        MANUAL: the DAG for a manually triggered workflow.
+        SMOKE_TEST: the DAG for a smoke testing workflow.
+        SUPPLY_DATA: the DAG for a data backfill instance.
+        BUSINESS_PROCESS_DAG: the DAG for a one-time workflow.
+        Supported DAG states:
+        CREATED: The DAG is created.
+        RUNNING: The DAG is running.
+        FAILURE: The DAG fails to run.
+        SUCCESS: The DAG successfully runs.
+        
+        @description The operation that you want to perform. Set the value to *ListDags**.
         
         @param request: ListDagsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15152,7 +19496,18 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListDagsRequest,
     ) -> dataworks_public_20200518_models.ListDagsResponse:
         """
-        The operation that you want to perform. Set the value to *ListDags**.
+        @summary Supported DAG types:
+        MANUAL: the DAG for a manually triggered workflow.
+        SMOKE_TEST: the DAG for a smoke testing workflow.
+        SUPPLY_DATA: the DAG for a data backfill instance.
+        BUSINESS_PROCESS_DAG: the DAG for a one-time workflow.
+        Supported DAG states:
+        CREATED: The DAG is created.
+        RUNNING: The DAG is running.
+        FAILURE: The DAG fails to run.
+        SUCCESS: The DAG successfully runs.
+        
+        @description The operation that you want to perform. Set the value to *ListDags**.
         
         @param request: ListDagsRequest
         @return: ListDagsResponse
@@ -15165,7 +19520,18 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListDagsRequest,
     ) -> dataworks_public_20200518_models.ListDagsResponse:
         """
-        The operation that you want to perform. Set the value to *ListDags**.
+        @summary Supported DAG types:
+        MANUAL: the DAG for a manually triggered workflow.
+        SMOKE_TEST: the DAG for a smoke testing workflow.
+        SUPPLY_DATA: the DAG for a data backfill instance.
+        BUSINESS_PROCESS_DAG: the DAG for a one-time workflow.
+        Supported DAG states:
+        CREATED: The DAG is created.
+        RUNNING: The DAG is running.
+        FAILURE: The DAG fails to run.
+        SUCCESS: The DAG successfully runs.
+        
+        @description The operation that you want to perform. Set the value to *ListDags**.
         
         @param request: ListDagsRequest
         @return: ListDagsResponse
@@ -15178,6 +19544,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListDataServiceApiAuthoritiesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListDataServiceApiAuthoritiesResponse:
+        """
+        @summary Queries the APIs on which other users are granted the access permissions.
+        
+        @param request: ListDataServiceApiAuthoritiesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDataServiceApiAuthoritiesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -15216,6 +19589,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListDataServiceApiAuthoritiesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListDataServiceApiAuthoritiesResponse:
+        """
+        @summary Queries the APIs on which other users are granted the access permissions.
+        
+        @param request: ListDataServiceApiAuthoritiesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDataServiceApiAuthoritiesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -15253,6 +19633,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListDataServiceApiAuthoritiesRequest,
     ) -> dataworks_public_20200518_models.ListDataServiceApiAuthoritiesResponse:
+        """
+        @summary Queries the APIs on which other users are granted the access permissions.
+        
+        @param request: ListDataServiceApiAuthoritiesRequest
+        @return: ListDataServiceApiAuthoritiesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_data_service_api_authorities_with_options(request, runtime)
 
@@ -15260,6 +19646,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListDataServiceApiAuthoritiesRequest,
     ) -> dataworks_public_20200518_models.ListDataServiceApiAuthoritiesResponse:
+        """
+        @summary Queries the APIs on which other users are granted the access permissions.
+        
+        @param request: ListDataServiceApiAuthoritiesRequest
+        @return: ListDataServiceApiAuthoritiesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_data_service_api_authorities_with_options_async(request, runtime)
 
@@ -15268,6 +19660,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListDataServiceApiTestRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListDataServiceApiTestResponse:
+        """
+        @summary Queries the test records of a DataService Studio API. This API operation allows you to query only the test records that are generated within the last month.
+        
+        @param request: ListDataServiceApiTestRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDataServiceApiTestResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -15294,6 +19693,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListDataServiceApiTestRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListDataServiceApiTestResponse:
+        """
+        @summary Queries the test records of a DataService Studio API. This API operation allows you to query only the test records that are generated within the last month.
+        
+        @param request: ListDataServiceApiTestRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDataServiceApiTestResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -15319,6 +19725,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListDataServiceApiTestRequest,
     ) -> dataworks_public_20200518_models.ListDataServiceApiTestResponse:
+        """
+        @summary Queries the test records of a DataService Studio API. This API operation allows you to query only the test records that are generated within the last month.
+        
+        @param request: ListDataServiceApiTestRequest
+        @return: ListDataServiceApiTestResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_data_service_api_test_with_options(request, runtime)
 
@@ -15326,6 +19738,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListDataServiceApiTestRequest,
     ) -> dataworks_public_20200518_models.ListDataServiceApiTestResponse:
+        """
+        @summary Queries the test records of a DataService Studio API. This API operation allows you to query only the test records that are generated within the last month.
+        
+        @param request: ListDataServiceApiTestRequest
+        @return: ListDataServiceApiTestResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_data_service_api_test_with_options_async(request, runtime)
 
@@ -15334,6 +19752,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListDataServiceApisRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListDataServiceApisResponse:
+        """
+        @summary Queries the information about APIs in the development state.
+        
+        @param request: ListDataServiceApisRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDataServiceApisResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.api_name_keyword):
@@ -15374,6 +19799,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListDataServiceApisRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListDataServiceApisResponse:
+        """
+        @summary Queries the information about APIs in the development state.
+        
+        @param request: ListDataServiceApisRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDataServiceApisResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.api_name_keyword):
@@ -15413,6 +19845,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListDataServiceApisRequest,
     ) -> dataworks_public_20200518_models.ListDataServiceApisResponse:
+        """
+        @summary Queries the information about APIs in the development state.
+        
+        @param request: ListDataServiceApisRequest
+        @return: ListDataServiceApisResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_data_service_apis_with_options(request, runtime)
 
@@ -15420,6 +19858,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListDataServiceApisRequest,
     ) -> dataworks_public_20200518_models.ListDataServiceApisResponse:
+        """
+        @summary Queries the information about APIs in the development state.
+        
+        @param request: ListDataServiceApisRequest
+        @return: ListDataServiceApisResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_data_service_apis_with_options_async(request, runtime)
 
@@ -15428,6 +19872,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListDataServiceApplicationsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListDataServiceApplicationsResponse:
+        """
+        @summary Queries the basic information of applications.
+        
+        @param request: ListDataServiceApplicationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDataServiceApplicationsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.page_number):
@@ -15462,6 +19913,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListDataServiceApplicationsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListDataServiceApplicationsResponse:
+        """
+        @summary Queries the basic information of applications.
+        
+        @param request: ListDataServiceApplicationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDataServiceApplicationsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.page_number):
@@ -15495,6 +19953,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListDataServiceApplicationsRequest,
     ) -> dataworks_public_20200518_models.ListDataServiceApplicationsResponse:
+        """
+        @summary Queries the basic information of applications.
+        
+        @param request: ListDataServiceApplicationsRequest
+        @return: ListDataServiceApplicationsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_data_service_applications_with_options(request, runtime)
 
@@ -15502,6 +19966,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListDataServiceApplicationsRequest,
     ) -> dataworks_public_20200518_models.ListDataServiceApplicationsResponse:
+        """
+        @summary Queries the basic information of applications.
+        
+        @param request: ListDataServiceApplicationsRequest
+        @return: ListDataServiceApplicationsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_data_service_applications_with_options_async(request, runtime)
 
@@ -15510,6 +19980,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListDataServiceAuthorizedApisRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListDataServiceAuthorizedApisResponse:
+        """
+        @summary Queries the APIs that you are authorized to access.
+        
+        @param request: ListDataServiceAuthorizedApisRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDataServiceAuthorizedApisResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -15548,6 +20025,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListDataServiceAuthorizedApisRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListDataServiceAuthorizedApisResponse:
+        """
+        @summary Queries the APIs that you are authorized to access.
+        
+        @param request: ListDataServiceAuthorizedApisRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDataServiceAuthorizedApisResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -15585,6 +20069,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListDataServiceAuthorizedApisRequest,
     ) -> dataworks_public_20200518_models.ListDataServiceAuthorizedApisResponse:
+        """
+        @summary Queries the APIs that you are authorized to access.
+        
+        @param request: ListDataServiceAuthorizedApisRequest
+        @return: ListDataServiceAuthorizedApisResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_data_service_authorized_apis_with_options(request, runtime)
 
@@ -15592,6 +20082,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListDataServiceAuthorizedApisRequest,
     ) -> dataworks_public_20200518_models.ListDataServiceAuthorizedApisResponse:
+        """
+        @summary Queries the APIs that you are authorized to access.
+        
+        @param request: ListDataServiceAuthorizedApisRequest
+        @return: ListDataServiceAuthorizedApisResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_data_service_authorized_apis_with_options_async(request, runtime)
 
@@ -15600,6 +20096,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListDataServiceFoldersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListDataServiceFoldersResponse:
+        """
+        @summary Queries folders.
+        
+        @param request: ListDataServiceFoldersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDataServiceFoldersResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.folder_name_keyword):
@@ -15638,6 +20141,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListDataServiceFoldersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListDataServiceFoldersResponse:
+        """
+        @summary Queries folders.
+        
+        @param request: ListDataServiceFoldersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDataServiceFoldersResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.folder_name_keyword):
@@ -15675,6 +20185,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListDataServiceFoldersRequest,
     ) -> dataworks_public_20200518_models.ListDataServiceFoldersResponse:
+        """
+        @summary Queries folders.
+        
+        @param request: ListDataServiceFoldersRequest
+        @return: ListDataServiceFoldersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_data_service_folders_with_options(request, runtime)
 
@@ -15682,6 +20198,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListDataServiceFoldersRequest,
     ) -> dataworks_public_20200518_models.ListDataServiceFoldersResponse:
+        """
+        @summary Queries folders.
+        
+        @param request: ListDataServiceFoldersRequest
+        @return: ListDataServiceFoldersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_data_service_folders_with_options_async(request, runtime)
 
@@ -15690,6 +20212,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListDataServiceGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListDataServiceGroupsResponse:
+        """
+        @summary Queries business processes.
+        
+        @param request: ListDataServiceGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDataServiceGroupsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.group_name_keyword):
@@ -15726,6 +20255,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListDataServiceGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListDataServiceGroupsResponse:
+        """
+        @summary Queries business processes.
+        
+        @param request: ListDataServiceGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDataServiceGroupsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.group_name_keyword):
@@ -15761,6 +20297,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListDataServiceGroupsRequest,
     ) -> dataworks_public_20200518_models.ListDataServiceGroupsResponse:
+        """
+        @summary Queries business processes.
+        
+        @param request: ListDataServiceGroupsRequest
+        @return: ListDataServiceGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_data_service_groups_with_options(request, runtime)
 
@@ -15768,6 +20310,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListDataServiceGroupsRequest,
     ) -> dataworks_public_20200518_models.ListDataServiceGroupsResponse:
+        """
+        @summary Queries business processes.
+        
+        @param request: ListDataServiceGroupsRequest
+        @return: ListDataServiceGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_data_service_groups_with_options_async(request, runtime)
 
@@ -15776,6 +20324,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListDataServicePublishedApisRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListDataServicePublishedApisResponse:
+        """
+        @summary Queries the information about APIs in the published state.
+        
+        @param request: ListDataServicePublishedApisRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDataServicePublishedApisResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.api_name_keyword):
@@ -15816,6 +20371,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListDataServicePublishedApisRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListDataServicePublishedApisResponse:
+        """
+        @summary Queries the information about APIs in the published state.
+        
+        @param request: ListDataServicePublishedApisRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDataServicePublishedApisResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.api_name_keyword):
@@ -15855,6 +20417,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListDataServicePublishedApisRequest,
     ) -> dataworks_public_20200518_models.ListDataServicePublishedApisResponse:
+        """
+        @summary Queries the information about APIs in the published state.
+        
+        @param request: ListDataServicePublishedApisRequest
+        @return: ListDataServicePublishedApisResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_data_service_published_apis_with_options(request, runtime)
 
@@ -15862,6 +20430,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListDataServicePublishedApisRequest,
     ) -> dataworks_public_20200518_models.ListDataServicePublishedApisResponse:
+        """
+        @summary Queries the information about APIs in the published state.
+        
+        @param request: ListDataServicePublishedApisRequest
+        @return: ListDataServicePublishedApisResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_data_service_published_apis_with_options_async(request, runtime)
 
@@ -15870,6 +20444,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListDataSourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListDataSourcesResponse:
+        """
+        @summary 查询数据源
+        
+        @param request: ListDataSourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDataSourcesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -15896,6 +20477,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListDataSourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListDataSourcesResponse:
+        """
+        @summary 查询数据源
+        
+        @param request: ListDataSourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDataSourcesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -15921,6 +20509,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListDataSourcesRequest,
     ) -> dataworks_public_20200518_models.ListDataSourcesResponse:
+        """
+        @summary 查询数据源
+        
+        @param request: ListDataSourcesRequest
+        @return: ListDataSourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_data_sources_with_options(request, runtime)
 
@@ -15928,6 +20522,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListDataSourcesRequest,
     ) -> dataworks_public_20200518_models.ListDataSourcesResponse:
+        """
+        @summary 查询数据源
+        
+        @param request: ListDataSourcesRequest
+        @return: ListDataSourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_data_sources_with_options_async(request, runtime)
 
@@ -15936,6 +20536,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListDeploymentsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListDeploymentsResponse:
+        """
+        @summary 查询发布包列表
+        
+        @param request: ListDeploymentsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDeploymentsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.creator):
@@ -15982,6 +20589,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListDeploymentsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListDeploymentsResponse:
+        """
+        @summary 查询发布包列表
+        
+        @param request: ListDeploymentsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDeploymentsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.creator):
@@ -16027,6 +20641,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListDeploymentsRequest,
     ) -> dataworks_public_20200518_models.ListDeploymentsResponse:
+        """
+        @summary 查询发布包列表
+        
+        @param request: ListDeploymentsRequest
+        @return: ListDeploymentsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_deployments_with_options(request, runtime)
 
@@ -16034,6 +20654,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListDeploymentsRequest,
     ) -> dataworks_public_20200518_models.ListDeploymentsResponse:
+        """
+        @summary 查询发布包列表
+        
+        @param request: ListDeploymentsRequest
+        @return: ListDeploymentsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_deployments_with_options_async(request, runtime)
 
@@ -16042,6 +20668,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListEnabledExtensionsForProjectRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListEnabledExtensionsForProjectResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *ListEnabledExtensionsForProject**.
+        
+        @param request: ListEnabledExtensionsForProjectRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListEnabledExtensionsForProjectResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.event_code):
@@ -16074,6 +20707,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListEnabledExtensionsForProjectRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListEnabledExtensionsForProjectResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *ListEnabledExtensionsForProject**.
+        
+        @param request: ListEnabledExtensionsForProjectRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListEnabledExtensionsForProjectResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.event_code):
@@ -16105,6 +20745,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListEnabledExtensionsForProjectRequest,
     ) -> dataworks_public_20200518_models.ListEnabledExtensionsForProjectResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *ListEnabledExtensionsForProject**.
+        
+        @param request: ListEnabledExtensionsForProjectRequest
+        @return: ListEnabledExtensionsForProjectResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_enabled_extensions_for_project_with_options(request, runtime)
 
@@ -16112,6 +20758,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListEnabledExtensionsForProjectRequest,
     ) -> dataworks_public_20200518_models.ListEnabledExtensionsForProjectResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *ListEnabledExtensionsForProject**.
+        
+        @param request: ListEnabledExtensionsForProjectRequest
+        @return: ListEnabledExtensionsForProjectResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_enabled_extensions_for_project_with_options_async(request, runtime)
 
@@ -16120,6 +20772,13 @@ class Client(OpenApiClient):
         tmp_req: dataworks_public_20200518_models.ListEntitiesByTagsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListEntitiesByTagsResponse:
+        """
+        @summary List entities by tags
+        
+        @param tmp_req: ListEntitiesByTagsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListEntitiesByTagsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dataworks_public_20200518_models.ListEntitiesByTagsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -16150,6 +20809,13 @@ class Client(OpenApiClient):
         tmp_req: dataworks_public_20200518_models.ListEntitiesByTagsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListEntitiesByTagsResponse:
+        """
+        @summary List entities by tags
+        
+        @param tmp_req: ListEntitiesByTagsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListEntitiesByTagsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dataworks_public_20200518_models.ListEntitiesByTagsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -16179,6 +20845,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListEntitiesByTagsRequest,
     ) -> dataworks_public_20200518_models.ListEntitiesByTagsResponse:
+        """
+        @summary List entities by tags
+        
+        @param request: ListEntitiesByTagsRequest
+        @return: ListEntitiesByTagsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_entities_by_tags_with_options(request, runtime)
 
@@ -16186,6 +20858,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListEntitiesByTagsRequest,
     ) -> dataworks_public_20200518_models.ListEntitiesByTagsResponse:
+        """
+        @summary List entities by tags
+        
+        @param request: ListEntitiesByTagsRequest
+        @return: ListEntitiesByTagsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_entities_by_tags_with_options_async(request, runtime)
 
@@ -16194,6 +20872,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListEntityTagsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListEntityTagsResponse:
+        """
+        @summary List entity tags by given qualified name
+        
+        @param request: ListEntityTagsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListEntityTagsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -16220,6 +20905,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListEntityTagsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListEntityTagsResponse:
+        """
+        @summary List entity tags by given qualified name
+        
+        @param request: ListEntityTagsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListEntityTagsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -16245,6 +20937,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListEntityTagsRequest,
     ) -> dataworks_public_20200518_models.ListEntityTagsResponse:
+        """
+        @summary List entity tags by given qualified name
+        
+        @param request: ListEntityTagsRequest
+        @return: ListEntityTagsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_entity_tags_with_options(request, runtime)
 
@@ -16252,6 +20950,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListEntityTagsRequest,
     ) -> dataworks_public_20200518_models.ListEntityTagsResponse:
+        """
+        @summary List entity tags by given qualified name
+        
+        @param request: ListEntityTagsRequest
+        @return: ListEntityTagsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_entity_tags_with_options_async(request, runtime)
 
@@ -16260,6 +20964,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListExtensionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListExtensionsResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *ListExtensions**.
+        
+        @param request: ListExtensionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListExtensionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -16290,6 +21001,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListExtensionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListExtensionsResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *ListExtensions**.
+        
+        @param request: ListExtensionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListExtensionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -16319,6 +21037,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListExtensionsRequest,
     ) -> dataworks_public_20200518_models.ListExtensionsResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *ListExtensions**.
+        
+        @param request: ListExtensionsRequest
+        @return: ListExtensionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_extensions_with_options(request, runtime)
 
@@ -16326,6 +21050,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListExtensionsRequest,
     ) -> dataworks_public_20200518_models.ListExtensionsResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *ListExtensions**.
+        
+        @param request: ListExtensionsRequest
+        @return: ListExtensionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_extensions_with_options_async(request, runtime)
 
@@ -16334,6 +21064,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListFileTypeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListFileTypeResponse:
+        """
+        @param request: ListFileTypeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFileTypeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.keyword):
@@ -16372,6 +21107,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListFileTypeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListFileTypeResponse:
+        """
+        @param request: ListFileTypeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFileTypeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.keyword):
@@ -16409,6 +21149,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListFileTypeRequest,
     ) -> dataworks_public_20200518_models.ListFileTypeResponse:
+        """
+        @param request: ListFileTypeRequest
+        @return: ListFileTypeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_file_type_with_options(request, runtime)
 
@@ -16416,6 +21160,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListFileTypeRequest,
     ) -> dataworks_public_20200518_models.ListFileTypeResponse:
+        """
+        @param request: ListFileTypeRequest
+        @return: ListFileTypeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_file_type_with_options_async(request, runtime)
 
@@ -16424,6 +21172,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListFileVersionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListFileVersionsResponse:
+        """
+        @param request: ListFileVersionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFileVersionsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.file_id):
@@ -16460,6 +21213,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListFileVersionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListFileVersionsResponse:
+        """
+        @param request: ListFileVersionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFileVersionsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.file_id):
@@ -16495,6 +21253,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListFileVersionsRequest,
     ) -> dataworks_public_20200518_models.ListFileVersionsResponse:
+        """
+        @param request: ListFileVersionsRequest
+        @return: ListFileVersionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_file_versions_with_options(request, runtime)
 
@@ -16502,6 +21264,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListFileVersionsRequest,
     ) -> dataworks_public_20200518_models.ListFileVersionsResponse:
+        """
+        @param request: ListFileVersionsRequest
+        @return: ListFileVersionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_file_versions_with_options_async(request, runtime)
 
@@ -16510,6 +21276,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListFilesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListFilesResponse:
+        """
+        @param request: ListFilesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFilesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.exact_file_name):
@@ -16564,6 +21335,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListFilesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListFilesResponse:
+        """
+        @param request: ListFilesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFilesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.exact_file_name):
@@ -16617,6 +21393,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListFilesRequest,
     ) -> dataworks_public_20200518_models.ListFilesResponse:
+        """
+        @param request: ListFilesRequest
+        @return: ListFilesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_files_with_options(request, runtime)
 
@@ -16624,6 +21404,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListFilesRequest,
     ) -> dataworks_public_20200518_models.ListFilesResponse:
+        """
+        @param request: ListFilesRequest
+        @return: ListFilesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_files_with_options_async(request, runtime)
 
@@ -16632,6 +21416,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListFoldersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListFoldersResponse:
+        """
+        @param request: ListFoldersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFoldersResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.page_number):
@@ -16668,6 +21457,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListFoldersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListFoldersResponse:
+        """
+        @param request: ListFoldersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFoldersResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.page_number):
@@ -16703,6 +21497,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListFoldersRequest,
     ) -> dataworks_public_20200518_models.ListFoldersResponse:
+        """
+        @param request: ListFoldersRequest
+        @return: ListFoldersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_folders_with_options(request, runtime)
 
@@ -16710,6 +21508,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListFoldersRequest,
     ) -> dataworks_public_20200518_models.ListFoldersResponse:
+        """
+        @param request: ListFoldersRequest
+        @return: ListFoldersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_folders_with_options_async(request, runtime)
 
@@ -16718,6 +21520,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListInnerNodesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListInnerNodesResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *ListInnerNodes**.
+        
+        @param request: ListInnerNodesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInnerNodesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.node_name):
@@ -16758,6 +21567,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListInnerNodesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListInnerNodesResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *ListInnerNodes**.
+        
+        @param request: ListInnerNodesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInnerNodesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.node_name):
@@ -16797,6 +21613,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListInnerNodesRequest,
     ) -> dataworks_public_20200518_models.ListInnerNodesResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *ListInnerNodes**.
+        
+        @param request: ListInnerNodesRequest
+        @return: ListInnerNodesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_inner_nodes_with_options(request, runtime)
 
@@ -16804,6 +21626,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListInnerNodesRequest,
     ) -> dataworks_public_20200518_models.ListInnerNodesResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *ListInnerNodes**.
+        
+        @param request: ListInnerNodesRequest
+        @return: ListInnerNodesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_inner_nodes_with_options_async(request, runtime)
 
@@ -16812,6 +21640,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListInstanceAmountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListInstanceAmountResponse:
+        """
+        @param request: ListInstanceAmountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInstanceAmountResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.begin_date):
@@ -16844,6 +21677,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListInstanceAmountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListInstanceAmountResponse:
+        """
+        @param request: ListInstanceAmountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInstanceAmountResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.begin_date):
@@ -16875,6 +21713,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListInstanceAmountRequest,
     ) -> dataworks_public_20200518_models.ListInstanceAmountResponse:
+        """
+        @param request: ListInstanceAmountRequest
+        @return: ListInstanceAmountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_instance_amount_with_options(request, runtime)
 
@@ -16882,6 +21724,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListInstanceAmountRequest,
     ) -> dataworks_public_20200518_models.ListInstanceAmountResponse:
+        """
+        @param request: ListInstanceAmountRequest
+        @return: ListInstanceAmountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_instance_amount_with_options_async(request, runtime)
 
@@ -16890,6 +21736,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListInstanceHistoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListInstanceHistoryResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *ListInstanceHistory**.
+        
+        @param request: ListInstanceHistoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInstanceHistoryResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -16920,6 +21773,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListInstanceHistoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListInstanceHistoryResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *ListInstanceHistory**.
+        
+        @param request: ListInstanceHistoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInstanceHistoryResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -16949,6 +21809,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListInstanceHistoryRequest,
     ) -> dataworks_public_20200518_models.ListInstanceHistoryResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *ListInstanceHistory**.
+        
+        @param request: ListInstanceHistoryRequest
+        @return: ListInstanceHistoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_instance_history_with_options(request, runtime)
 
@@ -16956,6 +21822,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListInstanceHistoryRequest,
     ) -> dataworks_public_20200518_models.ListInstanceHistoryResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *ListInstanceHistory**.
+        
+        @param request: ListInstanceHistoryRequest
+        @return: ListInstanceHistoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_instance_history_with_options_async(request, runtime)
 
@@ -16964,6 +21836,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListInstancesResponse:
+        """
+        @summary The ID of the directed acyclic graph (DAG). You can set this parameter to the value of the DagId parameter returned by the [RunCycleDagNodes](https://help.aliyun.com/document_detail/212961.html), [RunSmokeTest](https://help.aliyun.com/document_detail/212949.html), or [RunManualDagNodes](https://help.aliyun.com/document_detail/212830.html) operation based on your business requirements. The RunManualDagNodes operation is used to backfill data, the RunSmokeTest operation is used to perform smoke testing, and the RunManualDagNodes operation is used to run nodes in a manually triggered workflow.
+        
+        @param request: ListInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInstancesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.begin_bizdate):
@@ -17020,6 +21899,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListInstancesResponse:
+        """
+        @summary The ID of the directed acyclic graph (DAG). You can set this parameter to the value of the DagId parameter returned by the [RunCycleDagNodes](https://help.aliyun.com/document_detail/212961.html), [RunSmokeTest](https://help.aliyun.com/document_detail/212949.html), or [RunManualDagNodes](https://help.aliyun.com/document_detail/212830.html) operation based on your business requirements. The RunManualDagNodes operation is used to backfill data, the RunSmokeTest operation is used to perform smoke testing, and the RunManualDagNodes operation is used to run nodes in a manually triggered workflow.
+        
+        @param request: ListInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInstancesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.begin_bizdate):
@@ -17075,6 +21961,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListInstancesRequest,
     ) -> dataworks_public_20200518_models.ListInstancesResponse:
+        """
+        @summary The ID of the directed acyclic graph (DAG). You can set this parameter to the value of the DagId parameter returned by the [RunCycleDagNodes](https://help.aliyun.com/document_detail/212961.html), [RunSmokeTest](https://help.aliyun.com/document_detail/212949.html), or [RunManualDagNodes](https://help.aliyun.com/document_detail/212830.html) operation based on your business requirements. The RunManualDagNodes operation is used to backfill data, the RunSmokeTest operation is used to perform smoke testing, and the RunManualDagNodes operation is used to run nodes in a manually triggered workflow.
+        
+        @param request: ListInstancesRequest
+        @return: ListInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_instances_with_options(request, runtime)
 
@@ -17082,6 +21974,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListInstancesRequest,
     ) -> dataworks_public_20200518_models.ListInstancesResponse:
+        """
+        @summary The ID of the directed acyclic graph (DAG). You can set this parameter to the value of the DagId parameter returned by the [RunCycleDagNodes](https://help.aliyun.com/document_detail/212961.html), [RunSmokeTest](https://help.aliyun.com/document_detail/212949.html), or [RunManualDagNodes](https://help.aliyun.com/document_detail/212830.html) operation based on your business requirements. The RunManualDagNodes operation is used to backfill data, the RunSmokeTest operation is used to perform smoke testing, and the RunManualDagNodes operation is used to run nodes in a manually triggered workflow.
+        
+        @param request: ListInstancesRequest
+        @return: ListInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_instances_with_options_async(request, runtime)
 
@@ -17090,6 +21988,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListLineageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListLineageResponse:
+        """
+        @summary 查询血缘V2, 支持各种实体的血缘查询
+        
+        @param request: ListLineageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListLineageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.direction):
@@ -17126,6 +22031,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListLineageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListLineageResponse:
+        """
+        @summary 查询血缘V2, 支持各种实体的血缘查询
+        
+        @param request: ListLineageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListLineageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.direction):
@@ -17161,6 +22073,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListLineageRequest,
     ) -> dataworks_public_20200518_models.ListLineageResponse:
+        """
+        @summary 查询血缘V2, 支持各种实体的血缘查询
+        
+        @param request: ListLineageRequest
+        @return: ListLineageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_lineage_with_options(request, runtime)
 
@@ -17168,6 +22086,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListLineageRequest,
     ) -> dataworks_public_20200518_models.ListLineageResponse:
+        """
+        @summary 查询血缘V2, 支持各种实体的血缘查询
+        
+        @param request: ListLineageRequest
+        @return: ListLineageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_lineage_with_options_async(request, runtime)
 
@@ -17176,6 +22100,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListManualDagInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListManualDagInstancesResponse:
+        """
+        @param request: ListManualDagInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListManualDagInstancesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.dag_id):
@@ -17208,6 +22137,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListManualDagInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListManualDagInstancesResponse:
+        """
+        @param request: ListManualDagInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListManualDagInstancesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.dag_id):
@@ -17239,6 +22173,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListManualDagInstancesRequest,
     ) -> dataworks_public_20200518_models.ListManualDagInstancesResponse:
+        """
+        @param request: ListManualDagInstancesRequest
+        @return: ListManualDagInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_manual_dag_instances_with_options(request, runtime)
 
@@ -17246,6 +22184,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListManualDagInstancesRequest,
     ) -> dataworks_public_20200518_models.ListManualDagInstancesResponse:
+        """
+        @param request: ListManualDagInstancesRequest
+        @return: ListManualDagInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_manual_dag_instances_with_options_async(request, runtime)
 
@@ -17254,6 +22196,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListMetaCollectionEntitiesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListMetaCollectionEntitiesResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *ListMetaCollectionEntities**.
+        
+        @param request: ListMetaCollectionEntitiesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMetaCollectionEntitiesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.collection_qualified_name):
@@ -17290,6 +22239,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListMetaCollectionEntitiesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListMetaCollectionEntitiesResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *ListMetaCollectionEntities**.
+        
+        @param request: ListMetaCollectionEntitiesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMetaCollectionEntitiesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.collection_qualified_name):
@@ -17325,6 +22281,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListMetaCollectionEntitiesRequest,
     ) -> dataworks_public_20200518_models.ListMetaCollectionEntitiesResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *ListMetaCollectionEntities**.
+        
+        @param request: ListMetaCollectionEntitiesRequest
+        @return: ListMetaCollectionEntitiesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_meta_collection_entities_with_options(request, runtime)
 
@@ -17332,6 +22294,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListMetaCollectionEntitiesRequest,
     ) -> dataworks_public_20200518_models.ListMetaCollectionEntitiesResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *ListMetaCollectionEntities**.
+        
+        @param request: ListMetaCollectionEntitiesRequest
+        @return: ListMetaCollectionEntitiesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_meta_collection_entities_with_options_async(request, runtime)
 
@@ -17341,7 +22309,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListMetaCollectionsResponse:
         """
-        You can configure only one of the Creator, Administrator, and Follower parameters.
+        @summary The type can be ALBUM or ALBUM_CATEGORY. ALBUM indicates data albums. ALBUM_CATEGORY indicates categories.
+        
+        @description You can configure only one of the Creator, Administrator, and Follower parameters.
         
         @param request: ListMetaCollectionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17392,7 +22362,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListMetaCollectionsResponse:
         """
-        You can configure only one of the Creator, Administrator, and Follower parameters.
+        @summary The type can be ALBUM or ALBUM_CATEGORY. ALBUM indicates data albums. ALBUM_CATEGORY indicates categories.
+        
+        @description You can configure only one of the Creator, Administrator, and Follower parameters.
         
         @param request: ListMetaCollectionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17442,7 +22414,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListMetaCollectionsRequest,
     ) -> dataworks_public_20200518_models.ListMetaCollectionsResponse:
         """
-        You can configure only one of the Creator, Administrator, and Follower parameters.
+        @summary The type can be ALBUM or ALBUM_CATEGORY. ALBUM indicates data albums. ALBUM_CATEGORY indicates categories.
+        
+        @description You can configure only one of the Creator, Administrator, and Follower parameters.
         
         @param request: ListMetaCollectionsRequest
         @return: ListMetaCollectionsResponse
@@ -17455,7 +22429,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListMetaCollectionsRequest,
     ) -> dataworks_public_20200518_models.ListMetaCollectionsResponse:
         """
-        You can configure only one of the Creator, Administrator, and Follower parameters.
+        @summary The type can be ALBUM or ALBUM_CATEGORY. ALBUM indicates data albums. ALBUM_CATEGORY indicates categories.
+        
+        @description You can configure only one of the Creator, Administrator, and Follower parameters.
         
         @param request: ListMetaCollectionsRequest
         @return: ListMetaCollectionsResponse
@@ -17468,6 +22444,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListMetaDBRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListMetaDBResponse:
+        """
+        @param request: ListMetaDBRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMetaDBResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -17494,6 +22475,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListMetaDBRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListMetaDBResponse:
+        """
+        @param request: ListMetaDBRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMetaDBResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -17519,6 +22505,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListMetaDBRequest,
     ) -> dataworks_public_20200518_models.ListMetaDBResponse:
+        """
+        @param request: ListMetaDBRequest
+        @return: ListMetaDBResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_meta_dbwith_options(request, runtime)
 
@@ -17526,6 +22516,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListMetaDBRequest,
     ) -> dataworks_public_20200518_models.ListMetaDBResponse:
+        """
+        @param request: ListMetaDBRequest
+        @return: ListMetaDBResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_meta_dbwith_options_async(request, runtime)
 
@@ -17534,6 +22528,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListMigrationsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListMigrationsResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *ListMigrations**.
+        
+        @param request: ListMigrationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMigrationsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.migration_type):
@@ -17570,6 +22571,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListMigrationsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListMigrationsResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *ListMigrations**.
+        
+        @param request: ListMigrationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMigrationsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.migration_type):
@@ -17605,6 +22613,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListMigrationsRequest,
     ) -> dataworks_public_20200518_models.ListMigrationsResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *ListMigrations**.
+        
+        @param request: ListMigrationsRequest
+        @return: ListMigrationsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_migrations_with_options(request, runtime)
 
@@ -17612,6 +22626,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListMigrationsRequest,
     ) -> dataworks_public_20200518_models.ListMigrationsResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *ListMigrations**.
+        
+        @param request: ListMigrationsRequest
+        @return: ListMigrationsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_migrations_with_options_async(request, runtime)
 
@@ -17621,7 +22641,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListNodeIOResponse:
         """
-        @deprecated
+        @deprecated OpenAPI ListNodeIO is deprecated
         
         @param request: ListNodeIORequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17661,7 +22681,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListNodeIOResponse:
         """
-        @deprecated
+        @deprecated OpenAPI ListNodeIO is deprecated
         
         @param request: ListNodeIORequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17700,7 +22720,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListNodeIORequest,
     ) -> dataworks_public_20200518_models.ListNodeIOResponse:
         """
-        @deprecated
+        @deprecated OpenAPI ListNodeIO is deprecated
         
         @param request: ListNodeIORequest
         @return: ListNodeIOResponse
@@ -17714,7 +22734,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListNodeIORequest,
     ) -> dataworks_public_20200518_models.ListNodeIOResponse:
         """
-        @deprecated
+        @deprecated OpenAPI ListNodeIO is deprecated
         
         @param request: ListNodeIORequest
         @return: ListNodeIOResponse
@@ -17728,6 +22748,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListNodeInputOrOutputRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListNodeInputOrOutputResponse:
+        """
+        @param request: ListNodeInputOrOutputRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListNodeInputOrOutputResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.io_type):
@@ -17760,6 +22785,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListNodeInputOrOutputRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListNodeInputOrOutputResponse:
+        """
+        @param request: ListNodeInputOrOutputRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListNodeInputOrOutputResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.io_type):
@@ -17791,6 +22821,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListNodeInputOrOutputRequest,
     ) -> dataworks_public_20200518_models.ListNodeInputOrOutputResponse:
+        """
+        @param request: ListNodeInputOrOutputRequest
+        @return: ListNodeInputOrOutputResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_node_input_or_output_with_options(request, runtime)
 
@@ -17798,6 +22832,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListNodeInputOrOutputRequest,
     ) -> dataworks_public_20200518_models.ListNodeInputOrOutputResponse:
+        """
+        @param request: ListNodeInputOrOutputRequest
+        @return: ListNodeInputOrOutputResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_node_input_or_output_with_options_async(request, runtime)
 
@@ -17806,6 +22844,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListNodesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListNodesResponse:
+        """
+        @summary The ID of the workspace.
+        
+        @param request: ListNodesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListNodesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.biz_name):
@@ -17850,6 +22895,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListNodesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListNodesResponse:
+        """
+        @summary The ID of the workspace.
+        
+        @param request: ListNodesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListNodesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.biz_name):
@@ -17893,6 +22945,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListNodesRequest,
     ) -> dataworks_public_20200518_models.ListNodesResponse:
+        """
+        @summary The ID of the workspace.
+        
+        @param request: ListNodesRequest
+        @return: ListNodesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_nodes_with_options(request, runtime)
 
@@ -17900,6 +22958,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListNodesRequest,
     ) -> dataworks_public_20200518_models.ListNodesResponse:
+        """
+        @summary The ID of the workspace.
+        
+        @param request: ListNodesRequest
+        @return: ListNodesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_nodes_with_options_async(request, runtime)
 
@@ -17908,6 +22972,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListNodesByBaselineRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListNodesByBaselineResponse:
+        """
+        @param request: ListNodesByBaselineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListNodesByBaselineResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.baseline_id):
@@ -17936,6 +23005,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListNodesByBaselineRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListNodesByBaselineResponse:
+        """
+        @param request: ListNodesByBaselineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListNodesByBaselineResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.baseline_id):
@@ -17963,6 +23037,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListNodesByBaselineRequest,
     ) -> dataworks_public_20200518_models.ListNodesByBaselineResponse:
+        """
+        @param request: ListNodesByBaselineRequest
+        @return: ListNodesByBaselineResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_nodes_by_baseline_with_options(request, runtime)
 
@@ -17970,6 +23048,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListNodesByBaselineRequest,
     ) -> dataworks_public_20200518_models.ListNodesByBaselineResponse:
+        """
+        @param request: ListNodesByBaselineRequest
+        @return: ListNodesByBaselineResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_nodes_by_baseline_with_options_async(request, runtime)
 
@@ -17978,6 +23060,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListNodesByOutputRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListNodesByOutputResponse:
+        """
+        @param request: ListNodesByOutputRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListNodesByOutputResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.outputs):
@@ -18008,6 +23095,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListNodesByOutputRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListNodesByOutputResponse:
+        """
+        @param request: ListNodesByOutputRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListNodesByOutputResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.outputs):
@@ -18037,6 +23129,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListNodesByOutputRequest,
     ) -> dataworks_public_20200518_models.ListNodesByOutputResponse:
+        """
+        @param request: ListNodesByOutputRequest
+        @return: ListNodesByOutputResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_nodes_by_output_with_options(request, runtime)
 
@@ -18044,6 +23140,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListNodesByOutputRequest,
     ) -> dataworks_public_20200518_models.ListNodesByOutputResponse:
+        """
+        @param request: ListNodesByOutputRequest
+        @return: ListNodesByOutputResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_nodes_by_output_with_options_async(request, runtime)
 
@@ -18052,6 +23152,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListPermissionApplyOrdersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListPermissionApplyOrdersResponse:
+        """
+        @param request: ListPermissionApplyOrdersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPermissionApplyOrdersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -18100,6 +23205,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListPermissionApplyOrdersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListPermissionApplyOrdersResponse:
+        """
+        @param request: ListPermissionApplyOrdersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPermissionApplyOrdersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -18147,6 +23257,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListPermissionApplyOrdersRequest,
     ) -> dataworks_public_20200518_models.ListPermissionApplyOrdersResponse:
+        """
+        @param request: ListPermissionApplyOrdersRequest
+        @return: ListPermissionApplyOrdersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_permission_apply_orders_with_options(request, runtime)
 
@@ -18154,6 +23268,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListPermissionApplyOrdersRequest,
     ) -> dataworks_public_20200518_models.ListPermissionApplyOrdersResponse:
+        """
+        @param request: ListPermissionApplyOrdersRequest
+        @return: ListPermissionApplyOrdersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_permission_apply_orders_with_options_async(request, runtime)
 
@@ -18163,7 +23281,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListProgramTypeCountResponse:
         """
-        @deprecated
+        @deprecated OpenAPI ListProgramTypeCount is deprecated
         
         @param request: ListProgramTypeCountRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18201,7 +23319,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListProgramTypeCountResponse:
         """
-        @deprecated
+        @deprecated OpenAPI ListProgramTypeCount is deprecated
         
         @param request: ListProgramTypeCountRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18238,7 +23356,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListProgramTypeCountRequest,
     ) -> dataworks_public_20200518_models.ListProgramTypeCountResponse:
         """
-        @deprecated
+        @deprecated OpenAPI ListProgramTypeCount is deprecated
         
         @param request: ListProgramTypeCountRequest
         @return: ListProgramTypeCountResponse
@@ -18252,7 +23370,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListProgramTypeCountRequest,
     ) -> dataworks_public_20200518_models.ListProgramTypeCountResponse:
         """
-        @deprecated
+        @deprecated OpenAPI ListProgramTypeCount is deprecated
         
         @param request: ListProgramTypeCountRequest
         @return: ListProgramTypeCountResponse
@@ -18267,7 +23385,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListProjectIdsResponse:
         """
-        For example, an Alibaba Cloud account can assume the developer, O&M engineer, or workspace administrator role in a workspace. For more information, see [Manage members and roles](~~136941~~).
+        @description For example, an Alibaba Cloud account can assume the developer, O&M engineer, or workspace administrator role in a workspace. For more information, see [Manage members and roles](https://help.aliyun.com/document_detail/136941.html).
         
         @param request: ListProjectIdsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18302,7 +23420,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListProjectIdsResponse:
         """
-        For example, an Alibaba Cloud account can assume the developer, O&M engineer, or workspace administrator role in a workspace. For more information, see [Manage members and roles](~~136941~~).
+        @description For example, an Alibaba Cloud account can assume the developer, O&M engineer, or workspace administrator role in a workspace. For more information, see [Manage members and roles](https://help.aliyun.com/document_detail/136941.html).
         
         @param request: ListProjectIdsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18336,7 +23454,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListProjectIdsRequest,
     ) -> dataworks_public_20200518_models.ListProjectIdsResponse:
         """
-        For example, an Alibaba Cloud account can assume the developer, O&M engineer, or workspace administrator role in a workspace. For more information, see [Manage members and roles](~~136941~~).
+        @description For example, an Alibaba Cloud account can assume the developer, O&M engineer, or workspace administrator role in a workspace. For more information, see [Manage members and roles](https://help.aliyun.com/document_detail/136941.html).
         
         @param request: ListProjectIdsRequest
         @return: ListProjectIdsResponse
@@ -18349,7 +23467,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListProjectIdsRequest,
     ) -> dataworks_public_20200518_models.ListProjectIdsResponse:
         """
-        For example, an Alibaba Cloud account can assume the developer, O&M engineer, or workspace administrator role in a workspace. For more information, see [Manage members and roles](~~136941~~).
+        @description For example, an Alibaba Cloud account can assume the developer, O&M engineer, or workspace administrator role in a workspace. For more information, see [Manage members and roles](https://help.aliyun.com/document_detail/136941.html).
         
         @param request: ListProjectIdsRequest
         @return: ListProjectIdsResponse
@@ -18362,6 +23480,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListProjectMembersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListProjectMembersResponse:
+        """
+        @param request: ListProjectMembersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListProjectMembersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -18394,6 +23517,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListProjectMembersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListProjectMembersResponse:
+        """
+        @param request: ListProjectMembersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListProjectMembersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -18425,6 +23553,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListProjectMembersRequest,
     ) -> dataworks_public_20200518_models.ListProjectMembersResponse:
+        """
+        @param request: ListProjectMembersRequest
+        @return: ListProjectMembersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_project_members_with_options(request, runtime)
 
@@ -18432,6 +23564,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListProjectMembersRequest,
     ) -> dataworks_public_20200518_models.ListProjectMembersResponse:
+        """
+        @param request: ListProjectMembersRequest
+        @return: ListProjectMembersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_project_members_with_options_async(request, runtime)
 
@@ -18440,6 +23576,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListProjectRolesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListProjectRolesResponse:
+        """
+        @summary Dataworks ID of the workspace.
+        
+        @param request: ListProjectRolesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListProjectRolesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.project_id):
@@ -18468,6 +23611,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListProjectRolesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListProjectRolesResponse:
+        """
+        @summary Dataworks ID of the workspace.
+        
+        @param request: ListProjectRolesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListProjectRolesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.project_id):
@@ -18495,6 +23645,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListProjectRolesRequest,
     ) -> dataworks_public_20200518_models.ListProjectRolesResponse:
+        """
+        @summary Dataworks ID of the workspace.
+        
+        @param request: ListProjectRolesRequest
+        @return: ListProjectRolesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_project_roles_with_options(request, runtime)
 
@@ -18502,6 +23658,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListProjectRolesRequest,
     ) -> dataworks_public_20200518_models.ListProjectRolesResponse:
+        """
+        @summary Dataworks ID of the workspace.
+        
+        @param request: ListProjectRolesRequest
+        @return: ListProjectRolesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_project_roles_with_options_async(request, runtime)
 
@@ -18510,6 +23672,13 @@ class Client(OpenApiClient):
         tmp_req: dataworks_public_20200518_models.ListProjectsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListProjectsResponse:
+        """
+        @summary 查询工作空间
+        
+        @param tmp_req: ListProjectsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListProjectsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dataworks_public_20200518_models.ListProjectsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -18548,6 +23717,13 @@ class Client(OpenApiClient):
         tmp_req: dataworks_public_20200518_models.ListProjectsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListProjectsResponse:
+        """
+        @summary 查询工作空间
+        
+        @param tmp_req: ListProjectsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListProjectsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dataworks_public_20200518_models.ListProjectsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -18585,6 +23761,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListProjectsRequest,
     ) -> dataworks_public_20200518_models.ListProjectsResponse:
+        """
+        @summary 查询工作空间
+        
+        @param request: ListProjectsRequest
+        @return: ListProjectsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_projects_with_options(request, runtime)
 
@@ -18592,6 +23774,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListProjectsRequest,
     ) -> dataworks_public_20200518_models.ListProjectsResponse:
+        """
+        @summary 查询工作空间
+        
+        @param request: ListProjectsRequest
+        @return: ListProjectsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_projects_with_options_async(request, runtime)
 
@@ -18601,7 +23789,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListQualityResultsByEntityResponse:
         """
-        ***\
+        @description ***\
         
         @param request: ListQualityResultsByEntityRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18648,7 +23836,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListQualityResultsByEntityResponse:
         """
-        ***\
+        @description ***\
         
         @param request: ListQualityResultsByEntityRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18694,7 +23882,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListQualityResultsByEntityRequest,
     ) -> dataworks_public_20200518_models.ListQualityResultsByEntityResponse:
         """
-        ***\
+        @description ***\
         
         @param request: ListQualityResultsByEntityRequest
         @return: ListQualityResultsByEntityResponse
@@ -18707,7 +23895,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListQualityResultsByEntityRequest,
     ) -> dataworks_public_20200518_models.ListQualityResultsByEntityResponse:
         """
-        ***\
+        @description ***\
         
         @param request: ListQualityResultsByEntityRequest
         @return: ListQualityResultsByEntityResponse
@@ -18720,6 +23908,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListQualityResultsByRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListQualityResultsByRuleResponse:
+        """
+        @param request: ListQualityResultsByRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListQualityResultsByRuleResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.end_date):
@@ -18760,6 +23953,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListQualityResultsByRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListQualityResultsByRuleResponse:
+        """
+        @param request: ListQualityResultsByRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListQualityResultsByRuleResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.end_date):
@@ -18799,6 +23997,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListQualityResultsByRuleRequest,
     ) -> dataworks_public_20200518_models.ListQualityResultsByRuleResponse:
+        """
+        @param request: ListQualityResultsByRuleRequest
+        @return: ListQualityResultsByRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_quality_results_by_rule_with_options(request, runtime)
 
@@ -18806,6 +24008,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListQualityResultsByRuleRequest,
     ) -> dataworks_public_20200518_models.ListQualityResultsByRuleResponse:
+        """
+        @param request: ListQualityResultsByRuleRequest
+        @return: ListQualityResultsByRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_quality_results_by_rule_with_options_async(request, runtime)
 
@@ -18814,6 +24020,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListQualityRulesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListQualityRulesResponse:
+        """
+        @param request: ListQualityRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListQualityRulesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.entity_id):
@@ -18850,6 +24061,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListQualityRulesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListQualityRulesResponse:
+        """
+        @param request: ListQualityRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListQualityRulesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.entity_id):
@@ -18885,6 +24101,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListQualityRulesRequest,
     ) -> dataworks_public_20200518_models.ListQualityRulesResponse:
+        """
+        @param request: ListQualityRulesRequest
+        @return: ListQualityRulesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_quality_rules_with_options(request, runtime)
 
@@ -18892,6 +24112,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListQualityRulesRequest,
     ) -> dataworks_public_20200518_models.ListQualityRulesResponse:
+        """
+        @param request: ListQualityRulesRequest
+        @return: ListQualityRulesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_quality_rules_with_options_async(request, runtime)
 
@@ -18900,6 +24124,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListRefDISyncTasksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListRefDISyncTasksResponse:
+        """
+        @param request: ListRefDISyncTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRefDISyncTasksResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.datasource_name):
@@ -18938,6 +24167,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListRefDISyncTasksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListRefDISyncTasksResponse:
+        """
+        @param request: ListRefDISyncTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRefDISyncTasksResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.datasource_name):
@@ -18975,6 +24209,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListRefDISyncTasksRequest,
     ) -> dataworks_public_20200518_models.ListRefDISyncTasksResponse:
+        """
+        @param request: ListRefDISyncTasksRequest
+        @return: ListRefDISyncTasksResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_ref_disync_tasks_with_options(request, runtime)
 
@@ -18982,6 +24220,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListRefDISyncTasksRequest,
     ) -> dataworks_public_20200518_models.ListRefDISyncTasksResponse:
+        """
+        @param request: ListRefDISyncTasksRequest
+        @return: ListRefDISyncTasksResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_ref_disync_tasks_with_options_async(request, runtime)
 
@@ -18990,6 +24232,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListRemindsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListRemindsResponse:
+        """
+        @summary Queries custom alert rules.
+        
+        @param request: ListRemindsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRemindsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.alert_target):
@@ -19030,6 +24279,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListRemindsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListRemindsResponse:
+        """
+        @summary Queries custom alert rules.
+        
+        @param request: ListRemindsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRemindsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.alert_target):
@@ -19069,6 +24325,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListRemindsRequest,
     ) -> dataworks_public_20200518_models.ListRemindsResponse:
+        """
+        @summary Queries custom alert rules.
+        
+        @param request: ListRemindsRequest
+        @return: ListRemindsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_reminds_with_options(request, runtime)
 
@@ -19076,6 +24338,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListRemindsRequest,
     ) -> dataworks_public_20200518_models.ListRemindsResponse:
+        """
+        @summary Queries custom alert rules.
+        
+        @param request: ListRemindsRequest
+        @return: ListRemindsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_reminds_with_options_async(request, runtime)
 
@@ -19084,6 +24352,13 @@ class Client(OpenApiClient):
         tmp_req: dataworks_public_20200518_models.ListResourceGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListResourceGroupsResponse:
+        """
+        @summary 查询资源组
+        
+        @param tmp_req: ListResourceGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListResourceGroupsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dataworks_public_20200518_models.ListResourceGroupsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -19124,6 +24399,13 @@ class Client(OpenApiClient):
         tmp_req: dataworks_public_20200518_models.ListResourceGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListResourceGroupsResponse:
+        """
+        @summary 查询资源组
+        
+        @param tmp_req: ListResourceGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListResourceGroupsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dataworks_public_20200518_models.ListResourceGroupsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -19163,6 +24445,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListResourceGroupsRequest,
     ) -> dataworks_public_20200518_models.ListResourceGroupsResponse:
+        """
+        @summary 查询资源组
+        
+        @param request: ListResourceGroupsRequest
+        @return: ListResourceGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_resource_groups_with_options(request, runtime)
 
@@ -19170,6 +24458,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListResourceGroupsRequest,
     ) -> dataworks_public_20200518_models.ListResourceGroupsResponse:
+        """
+        @summary 查询资源组
+        
+        @param request: ListResourceGroupsRequest
+        @return: ListResourceGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_resource_groups_with_options_async(request, runtime)
 
@@ -19178,6 +24472,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListShiftPersonnelsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListShiftPersonnelsResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *ListShiftPersonnels**.
+        
+        @param request: ListShiftPersonnelsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListShiftPersonnelsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.begin_time):
@@ -19214,6 +24515,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListShiftPersonnelsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListShiftPersonnelsResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *ListShiftPersonnels**.
+        
+        @param request: ListShiftPersonnelsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListShiftPersonnelsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.begin_time):
@@ -19249,6 +24557,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListShiftPersonnelsRequest,
     ) -> dataworks_public_20200518_models.ListShiftPersonnelsResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *ListShiftPersonnels**.
+        
+        @param request: ListShiftPersonnelsRequest
+        @return: ListShiftPersonnelsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_shift_personnels_with_options(request, runtime)
 
@@ -19256,6 +24570,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListShiftPersonnelsRequest,
     ) -> dataworks_public_20200518_models.ListShiftPersonnelsResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *ListShiftPersonnels**.
+        
+        @param request: ListShiftPersonnelsRequest
+        @return: ListShiftPersonnelsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_shift_personnels_with_options_async(request, runtime)
 
@@ -19264,6 +24584,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListShiftSchedulesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListShiftSchedulesResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *ListShiftSchedules**.
+        
+        @param request: ListShiftSchedulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListShiftSchedulesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.owner):
@@ -19298,6 +24625,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListShiftSchedulesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListShiftSchedulesResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *ListShiftSchedules**.
+        
+        @param request: ListShiftSchedulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListShiftSchedulesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.owner):
@@ -19331,6 +24665,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListShiftSchedulesRequest,
     ) -> dataworks_public_20200518_models.ListShiftSchedulesResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *ListShiftSchedules**.
+        
+        @param request: ListShiftSchedulesRequest
+        @return: ListShiftSchedulesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_shift_schedules_with_options(request, runtime)
 
@@ -19338,6 +24678,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListShiftSchedulesRequest,
     ) -> dataworks_public_20200518_models.ListShiftSchedulesResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *ListShiftSchedules**.
+        
+        @param request: ListShiftSchedulesRequest
+        @return: ListShiftSchedulesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_shift_schedules_with_options_async(request, runtime)
 
@@ -19346,6 +24692,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListSuccessInstanceAmountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListSuccessInstanceAmountResponse:
+        """
+        @summary Queries the trend of the number of auto triggered node instances that are successfully run every hour on the hour of the current day.
+        
+        @param request: ListSuccessInstanceAmountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSuccessInstanceAmountResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.project_id):
@@ -19374,6 +24727,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListSuccessInstanceAmountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListSuccessInstanceAmountResponse:
+        """
+        @summary Queries the trend of the number of auto triggered node instances that are successfully run every hour on the hour of the current day.
+        
+        @param request: ListSuccessInstanceAmountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSuccessInstanceAmountResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.project_id):
@@ -19401,6 +24761,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListSuccessInstanceAmountRequest,
     ) -> dataworks_public_20200518_models.ListSuccessInstanceAmountResponse:
+        """
+        @summary Queries the trend of the number of auto triggered node instances that are successfully run every hour on the hour of the current day.
+        
+        @param request: ListSuccessInstanceAmountRequest
+        @return: ListSuccessInstanceAmountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_success_instance_amount_with_options(request, runtime)
 
@@ -19408,6 +24774,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListSuccessInstanceAmountRequest,
     ) -> dataworks_public_20200518_models.ListSuccessInstanceAmountResponse:
+        """
+        @summary Queries the trend of the number of auto triggered node instances that are successfully run every hour on the hour of the current day.
+        
+        @param request: ListSuccessInstanceAmountRequest
+        @return: ListSuccessInstanceAmountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_success_instance_amount_with_options_async(request, runtime)
 
@@ -19416,6 +24788,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListTableLevelRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListTableLevelResponse:
+        """
+        @param request: ListTableLevelRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTableLevelResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -19442,6 +24819,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListTableLevelRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListTableLevelResponse:
+        """
+        @param request: ListTableLevelRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTableLevelResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -19467,6 +24849,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListTableLevelRequest,
     ) -> dataworks_public_20200518_models.ListTableLevelResponse:
+        """
+        @param request: ListTableLevelRequest
+        @return: ListTableLevelResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_table_level_with_options(request, runtime)
 
@@ -19474,6 +24860,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListTableLevelRequest,
     ) -> dataworks_public_20200518_models.ListTableLevelResponse:
+        """
+        @param request: ListTableLevelRequest
+        @return: ListTableLevelResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_table_level_with_options_async(request, runtime)
 
@@ -19482,6 +24872,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListTableThemeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListTableThemeResponse:
+        """
+        @param request: ListTableThemeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTableThemeResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -19508,6 +24903,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListTableThemeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListTableThemeResponse:
+        """
+        @param request: ListTableThemeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTableThemeResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -19533,6 +24933,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListTableThemeRequest,
     ) -> dataworks_public_20200518_models.ListTableThemeResponse:
+        """
+        @param request: ListTableThemeRequest
+        @return: ListTableThemeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_table_theme_with_options(request, runtime)
 
@@ -19540,6 +24944,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListTableThemeRequest,
     ) -> dataworks_public_20200518_models.ListTableThemeResponse:
+        """
+        @param request: ListTableThemeRequest
+        @return: ListTableThemeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_table_theme_with_options_async(request, runtime)
 
@@ -19548,6 +24956,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListTopicsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListTopicsResponse:
+        """
+        @summary Queries events.
+        
+        @param request: ListTopicsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTopicsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.begin_time):
@@ -19592,6 +25007,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListTopicsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListTopicsResponse:
+        """
+        @summary Queries events.
+        
+        @param request: ListTopicsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTopicsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.begin_time):
@@ -19635,6 +25057,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListTopicsRequest,
     ) -> dataworks_public_20200518_models.ListTopicsResponse:
+        """
+        @summary Queries events.
+        
+        @param request: ListTopicsRequest
+        @return: ListTopicsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_topics_with_options(request, runtime)
 
@@ -19642,6 +25070,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListTopicsRequest,
     ) -> dataworks_public_20200518_models.ListTopicsResponse:
+        """
+        @summary Queries events.
+        
+        @param request: ListTopicsRequest
+        @return: ListTopicsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_topics_with_options_async(request, runtime)
 
@@ -19650,6 +25084,14 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.MountDirectoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.MountDirectoryResponse:
+        """
+        @summary The ID of the directory that you want to add to the left-side navigation pane of DataAnalysis. This parameter is used together with the TargetType parameter.
+        For example, if you set the TargetType parameter to META_ALBUM, you must set the TargetId parameter to the ID of the related data album. You can call the [ListMetaCollections](https://help.aliyun.com/document_detail/469938.html) operation to obtain the ID of the data album. The ID is indicated by the QualifiedName parameter.
+        
+        @param request: MountDirectoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MountDirectoryResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.target_id):
@@ -19682,6 +25124,14 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.MountDirectoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.MountDirectoryResponse:
+        """
+        @summary The ID of the directory that you want to add to the left-side navigation pane of DataAnalysis. This parameter is used together with the TargetType parameter.
+        For example, if you set the TargetType parameter to META_ALBUM, you must set the TargetId parameter to the ID of the related data album. You can call the [ListMetaCollections](https://help.aliyun.com/document_detail/469938.html) operation to obtain the ID of the data album. The ID is indicated by the QualifiedName parameter.
+        
+        @param request: MountDirectoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MountDirectoryResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.target_id):
@@ -19713,6 +25163,13 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.MountDirectoryRequest,
     ) -> dataworks_public_20200518_models.MountDirectoryResponse:
+        """
+        @summary The ID of the directory that you want to add to the left-side navigation pane of DataAnalysis. This parameter is used together with the TargetType parameter.
+        For example, if you set the TargetType parameter to META_ALBUM, you must set the TargetId parameter to the ID of the related data album. You can call the [ListMetaCollections](https://help.aliyun.com/document_detail/469938.html) operation to obtain the ID of the data album. The ID is indicated by the QualifiedName parameter.
+        
+        @param request: MountDirectoryRequest
+        @return: MountDirectoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.mount_directory_with_options(request, runtime)
 
@@ -19720,6 +25177,13 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.MountDirectoryRequest,
     ) -> dataworks_public_20200518_models.MountDirectoryResponse:
+        """
+        @summary The ID of the directory that you want to add to the left-side navigation pane of DataAnalysis. This parameter is used together with the TargetType parameter.
+        For example, if you set the TargetType parameter to META_ALBUM, you must set the TargetId parameter to the ID of the related data album. You can call the [ListMetaCollections](https://help.aliyun.com/document_detail/469938.html) operation to obtain the ID of the data album. The ID is indicated by the QualifiedName parameter.
+        
+        @param request: MountDirectoryRequest
+        @return: MountDirectoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.mount_directory_with_options_async(request, runtime)
 
@@ -19728,6 +25192,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.OfflineNodeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.OfflineNodeResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *OfflineNode**.
+        
+        @param request: OfflineNodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OfflineNodeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.node_id):
@@ -19758,6 +25229,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.OfflineNodeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.OfflineNodeResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *OfflineNode**.
+        
+        @param request: OfflineNodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OfflineNodeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.node_id):
@@ -19787,6 +25265,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.OfflineNodeRequest,
     ) -> dataworks_public_20200518_models.OfflineNodeResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *OfflineNode**.
+        
+        @param request: OfflineNodeRequest
+        @return: OfflineNodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.offline_node_with_options(request, runtime)
 
@@ -19794,6 +25278,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.OfflineNodeRequest,
     ) -> dataworks_public_20200518_models.OfflineNodeResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *OfflineNode**.
+        
+        @param request: OfflineNodeRequest
+        @return: OfflineNodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.offline_node_with_options_async(request, runtime)
 
@@ -19802,6 +25292,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.PublishDataServiceApiRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.PublishDataServiceApiResponse:
+        """
+        @param request: PublishDataServiceApiRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PublishDataServiceApiResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.api_id):
@@ -19834,6 +25329,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.PublishDataServiceApiRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.PublishDataServiceApiResponse:
+        """
+        @param request: PublishDataServiceApiRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PublishDataServiceApiResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.api_id):
@@ -19865,6 +25365,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.PublishDataServiceApiRequest,
     ) -> dataworks_public_20200518_models.PublishDataServiceApiResponse:
+        """
+        @param request: PublishDataServiceApiRequest
+        @return: PublishDataServiceApiResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.publish_data_service_api_with_options(request, runtime)
 
@@ -19872,6 +25376,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.PublishDataServiceApiRequest,
     ) -> dataworks_public_20200518_models.PublishDataServiceApiResponse:
+        """
+        @param request: PublishDataServiceApiRequest
+        @return: PublishDataServiceApiResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.publish_data_service_api_with_options_async(request, runtime)
 
@@ -19881,7 +25389,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.QueryDISyncTaskConfigProcessResultResponse:
         """
-        The operation that you want to perform.
+        @summary DataWorks allows you to call only the [CreateDISyncTask](https://help.aliyun.com/document_detail/278725.html) or [UpdateDISyncTask](https://help.aliyun.com/document_detail/289109.html) operation to create or update a batch synchronization node in Data Integration. To create or update a real-time synchronization node or a synchronization solution, you must first call the GenerateDISyncTaskConfigForCreating or GenerateDISyncTaskConfigForUpdating operation to generate the ID of an asynchronous thread and call the [QueryDISyncTaskConfigProcessResult](https://help.aliyun.com/document_detail/383465.html) operation to obtain the asynchronously generated parameters based on the ID. Then, you can call the CreateDISyncTask or UpdateDISyncTask operation and use the parameters as request parameters to create or update a real-time synchronization node or a synchronization solution.
+        DataWorks allows you to create or update real-time synchronization nodes and synchronization solutions in Data Integration only in asynchronous mode.
+        
+        @description The operation that you want to perform.
         
         @param request: QueryDISyncTaskConfigProcessResultRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19920,7 +25431,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.QueryDISyncTaskConfigProcessResultResponse:
         """
-        The operation that you want to perform.
+        @summary DataWorks allows you to call only the [CreateDISyncTask](https://help.aliyun.com/document_detail/278725.html) or [UpdateDISyncTask](https://help.aliyun.com/document_detail/289109.html) operation to create or update a batch synchronization node in Data Integration. To create or update a real-time synchronization node or a synchronization solution, you must first call the GenerateDISyncTaskConfigForCreating or GenerateDISyncTaskConfigForUpdating operation to generate the ID of an asynchronous thread and call the [QueryDISyncTaskConfigProcessResult](https://help.aliyun.com/document_detail/383465.html) operation to obtain the asynchronously generated parameters based on the ID. Then, you can call the CreateDISyncTask or UpdateDISyncTask operation and use the parameters as request parameters to create or update a real-time synchronization node or a synchronization solution.
+        DataWorks allows you to create or update real-time synchronization nodes and synchronization solutions in Data Integration only in asynchronous mode.
+        
+        @description The operation that you want to perform.
         
         @param request: QueryDISyncTaskConfigProcessResultRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19958,7 +25472,10 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.QueryDISyncTaskConfigProcessResultRequest,
     ) -> dataworks_public_20200518_models.QueryDISyncTaskConfigProcessResultResponse:
         """
-        The operation that you want to perform.
+        @summary DataWorks allows you to call only the [CreateDISyncTask](https://help.aliyun.com/document_detail/278725.html) or [UpdateDISyncTask](https://help.aliyun.com/document_detail/289109.html) operation to create or update a batch synchronization node in Data Integration. To create or update a real-time synchronization node or a synchronization solution, you must first call the GenerateDISyncTaskConfigForCreating or GenerateDISyncTaskConfigForUpdating operation to generate the ID of an asynchronous thread and call the [QueryDISyncTaskConfigProcessResult](https://help.aliyun.com/document_detail/383465.html) operation to obtain the asynchronously generated parameters based on the ID. Then, you can call the CreateDISyncTask or UpdateDISyncTask operation and use the parameters as request parameters to create or update a real-time synchronization node or a synchronization solution.
+        DataWorks allows you to create or update real-time synchronization nodes and synchronization solutions in Data Integration only in asynchronous mode.
+        
+        @description The operation that you want to perform.
         
         @param request: QueryDISyncTaskConfigProcessResultRequest
         @return: QueryDISyncTaskConfigProcessResultResponse
@@ -19971,7 +25488,10 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.QueryDISyncTaskConfigProcessResultRequest,
     ) -> dataworks_public_20200518_models.QueryDISyncTaskConfigProcessResultResponse:
         """
-        The operation that you want to perform.
+        @summary DataWorks allows you to call only the [CreateDISyncTask](https://help.aliyun.com/document_detail/278725.html) or [UpdateDISyncTask](https://help.aliyun.com/document_detail/289109.html) operation to create or update a batch synchronization node in Data Integration. To create or update a real-time synchronization node or a synchronization solution, you must first call the GenerateDISyncTaskConfigForCreating or GenerateDISyncTaskConfigForUpdating operation to generate the ID of an asynchronous thread and call the [QueryDISyncTaskConfigProcessResult](https://help.aliyun.com/document_detail/383465.html) operation to obtain the asynchronously generated parameters based on the ID. Then, you can call the CreateDISyncTask or UpdateDISyncTask operation and use the parameters as request parameters to create or update a real-time synchronization node or a synchronization solution.
+        DataWorks allows you to create or update real-time synchronization nodes and synchronization solutions in Data Integration only in asynchronous mode.
+        
+        @description The operation that you want to perform.
         
         @param request: QueryDISyncTaskConfigProcessResultRequest
         @return: QueryDISyncTaskConfigProcessResultResponse
@@ -19984,6 +25504,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.QueryDefaultTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.QueryDefaultTemplateResponse:
+        """
+        @summary 获取模版列表
+        
+        @param request: QueryDefaultTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDefaultTemplateResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.tenant_id):
@@ -20012,6 +25539,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.QueryDefaultTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.QueryDefaultTemplateResponse:
+        """
+        @summary 获取模版列表
+        
+        @param request: QueryDefaultTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDefaultTemplateResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.tenant_id):
@@ -20039,6 +25573,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.QueryDefaultTemplateRequest,
     ) -> dataworks_public_20200518_models.QueryDefaultTemplateResponse:
+        """
+        @summary 获取模版列表
+        
+        @param request: QueryDefaultTemplateRequest
+        @return: QueryDefaultTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_default_template_with_options(request, runtime)
 
@@ -20046,6 +25586,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.QueryDefaultTemplateRequest,
     ) -> dataworks_public_20200518_models.QueryDefaultTemplateResponse:
+        """
+        @summary 获取模版列表
+        
+        @param request: QueryDefaultTemplateRequest
+        @return: QueryDefaultTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_default_template_with_options_async(request, runtime)
 
@@ -20054,6 +25600,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.QueryPublicModelEngineRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.QueryPublicModelEngineResponse:
+        """
+        @summary 建模平台弹外的公共处理
+        
+        @param request: QueryPublicModelEngineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryPublicModelEngineResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.project_id):
@@ -20084,6 +25637,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.QueryPublicModelEngineRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.QueryPublicModelEngineResponse:
+        """
+        @summary 建模平台弹外的公共处理
+        
+        @param request: QueryPublicModelEngineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryPublicModelEngineResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.project_id):
@@ -20113,6 +25673,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.QueryPublicModelEngineRequest,
     ) -> dataworks_public_20200518_models.QueryPublicModelEngineResponse:
+        """
+        @summary 建模平台弹外的公共处理
+        
+        @param request: QueryPublicModelEngineRequest
+        @return: QueryPublicModelEngineResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_public_model_engine_with_options(request, runtime)
 
@@ -20120,6 +25686,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.QueryPublicModelEngineRequest,
     ) -> dataworks_public_20200518_models.QueryPublicModelEngineResponse:
+        """
+        @summary 建模平台弹外的公共处理
+        
+        @param request: QueryPublicModelEngineRequest
+        @return: QueryPublicModelEngineResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_public_model_engine_with_options_async(request, runtime)
 
@@ -20128,6 +25700,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.QueryRecognizeDataByRuleTypeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.QueryRecognizeDataByRuleTypeResponse:
+        """
+        @summary 获取识别规则类型数据
+        
+        @param request: QueryRecognizeDataByRuleTypeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryRecognizeDataByRuleTypeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.recognize_rules_type):
@@ -20158,6 +25737,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.QueryRecognizeDataByRuleTypeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.QueryRecognizeDataByRuleTypeResponse:
+        """
+        @summary 获取识别规则类型数据
+        
+        @param request: QueryRecognizeDataByRuleTypeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryRecognizeDataByRuleTypeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.recognize_rules_type):
@@ -20187,6 +25773,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.QueryRecognizeDataByRuleTypeRequest,
     ) -> dataworks_public_20200518_models.QueryRecognizeDataByRuleTypeResponse:
+        """
+        @summary 获取识别规则类型数据
+        
+        @param request: QueryRecognizeDataByRuleTypeRequest
+        @return: QueryRecognizeDataByRuleTypeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_recognize_data_by_rule_type_with_options(request, runtime)
 
@@ -20194,6 +25786,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.QueryRecognizeDataByRuleTypeRequest,
     ) -> dataworks_public_20200518_models.QueryRecognizeDataByRuleTypeResponse:
+        """
+        @summary 获取识别规则类型数据
+        
+        @param request: QueryRecognizeDataByRuleTypeRequest
+        @return: QueryRecognizeDataByRuleTypeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_recognize_data_by_rule_type_with_options_async(request, runtime)
 
@@ -20202,6 +25800,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.QueryRecognizeRuleDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.QueryRecognizeRuleDetailResponse:
+        """
+        @summary 查询识别规则详情
+        
+        @param request: QueryRecognizeRuleDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryRecognizeRuleDetailResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.sensitive_name):
@@ -20232,6 +25837,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.QueryRecognizeRuleDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.QueryRecognizeRuleDetailResponse:
+        """
+        @summary 查询识别规则详情
+        
+        @param request: QueryRecognizeRuleDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryRecognizeRuleDetailResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.sensitive_name):
@@ -20261,6 +25873,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.QueryRecognizeRuleDetailRequest,
     ) -> dataworks_public_20200518_models.QueryRecognizeRuleDetailResponse:
+        """
+        @summary 查询识别规则详情
+        
+        @param request: QueryRecognizeRuleDetailRequest
+        @return: QueryRecognizeRuleDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_recognize_rule_detail_with_options(request, runtime)
 
@@ -20268,6 +25886,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.QueryRecognizeRuleDetailRequest,
     ) -> dataworks_public_20200518_models.QueryRecognizeRuleDetailResponse:
+        """
+        @summary 查询识别规则详情
+        
+        @param request: QueryRecognizeRuleDetailRequest
+        @return: QueryRecognizeRuleDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_recognize_rule_detail_with_options_async(request, runtime)
 
@@ -20275,6 +25899,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.QueryRecognizeRulesTypeResponse:
+        """
+        @summary 获取识别规则类型
+        
+        @param request: QueryRecognizeRulesTypeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryRecognizeRulesTypeResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='QueryRecognizeRulesType',
@@ -20296,6 +25927,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.QueryRecognizeRulesTypeResponse:
+        """
+        @summary 获取识别规则类型
+        
+        @param request: QueryRecognizeRulesTypeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryRecognizeRulesTypeResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='QueryRecognizeRulesType',
@@ -20314,10 +25952,20 @@ class Client(OpenApiClient):
         )
 
     def query_recognize_rules_type(self) -> dataworks_public_20200518_models.QueryRecognizeRulesTypeResponse:
+        """
+        @summary 获取识别规则类型
+        
+        @return: QueryRecognizeRulesTypeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_recognize_rules_type_with_options(runtime)
 
     async def query_recognize_rules_type_async(self) -> dataworks_public_20200518_models.QueryRecognizeRulesTypeResponse:
+        """
+        @summary 获取识别规则类型
+        
+        @return: QueryRecognizeRulesTypeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_recognize_rules_type_with_options_async(runtime)
 
@@ -20326,6 +25974,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.QuerySensClassificationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.QuerySensClassificationResponse:
+        """
+        @summary 获取分类
+        
+        @param request: QuerySensClassificationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QuerySensClassificationResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.template_id):
@@ -20356,6 +26011,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.QuerySensClassificationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.QuerySensClassificationResponse:
+        """
+        @summary 获取分类
+        
+        @param request: QuerySensClassificationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QuerySensClassificationResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.template_id):
@@ -20385,6 +26047,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.QuerySensClassificationRequest,
     ) -> dataworks_public_20200518_models.QuerySensClassificationResponse:
+        """
+        @summary 获取分类
+        
+        @param request: QuerySensClassificationRequest
+        @return: QuerySensClassificationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_sens_classification_with_options(request, runtime)
 
@@ -20392,6 +26060,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.QuerySensClassificationRequest,
     ) -> dataworks_public_20200518_models.QuerySensClassificationResponse:
+        """
+        @summary 获取分类
+        
+        @param request: QuerySensClassificationRequest
+        @return: QuerySensClassificationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_sens_classification_with_options_async(request, runtime)
 
@@ -20400,6 +26074,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.QuerySensLevelRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.QuerySensLevelResponse:
+        """
+        @summary 获取分级
+        
+        @param request: QuerySensLevelRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QuerySensLevelResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.template_id):
@@ -20430,6 +26111,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.QuerySensLevelRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.QuerySensLevelResponse:
+        """
+        @summary 获取分级
+        
+        @param request: QuerySensLevelRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QuerySensLevelResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.template_id):
@@ -20459,6 +26147,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.QuerySensLevelRequest,
     ) -> dataworks_public_20200518_models.QuerySensLevelResponse:
+        """
+        @summary 获取分级
+        
+        @param request: QuerySensLevelRequest
+        @return: QuerySensLevelResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_sens_level_with_options(request, runtime)
 
@@ -20466,6 +26160,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.QuerySensLevelRequest,
     ) -> dataworks_public_20200518_models.QuerySensLevelResponse:
+        """
+        @summary 获取分级
+        
+        @param request: QuerySensLevelRequest
+        @return: QuerySensLevelResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_sens_level_with_options_async(request, runtime)
 
@@ -20474,6 +26174,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.QuerySensNodeInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.QuerySensNodeInfoResponse:
+        """
+        @summary 获取敏感字段
+        
+        @param request: QuerySensNodeInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QuerySensNodeInfoResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.node_id):
@@ -20514,6 +26221,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.QuerySensNodeInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.QuerySensNodeInfoResponse:
+        """
+        @summary 获取敏感字段
+        
+        @param request: QuerySensNodeInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QuerySensNodeInfoResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.node_id):
@@ -20553,6 +26267,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.QuerySensNodeInfoRequest,
     ) -> dataworks_public_20200518_models.QuerySensNodeInfoResponse:
+        """
+        @summary 获取敏感字段
+        
+        @param request: QuerySensNodeInfoRequest
+        @return: QuerySensNodeInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_sens_node_info_with_options(request, runtime)
 
@@ -20560,6 +26280,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.QuerySensNodeInfoRequest,
     ) -> dataworks_public_20200518_models.QuerySensNodeInfoResponse:
+        """
+        @summary 获取敏感字段
+        
+        @param request: QuerySensNodeInfoRequest
+        @return: QuerySensNodeInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_sens_node_info_with_options_async(request, runtime)
 
@@ -20568,6 +26294,13 @@ class Client(OpenApiClient):
         tmp_req: dataworks_public_20200518_models.RegisterLineageRelationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.RegisterLineageRelationResponse:
+        """
+        @summary 注册实体关系，支持用户注册自定义的实体关系
+        
+        @param tmp_req: RegisterLineageRelationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RegisterLineageRelationResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dataworks_public_20200518_models.RegisterLineageRelationShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -20600,6 +26333,13 @@ class Client(OpenApiClient):
         tmp_req: dataworks_public_20200518_models.RegisterLineageRelationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.RegisterLineageRelationResponse:
+        """
+        @summary 注册实体关系，支持用户注册自定义的实体关系
+        
+        @param tmp_req: RegisterLineageRelationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RegisterLineageRelationResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dataworks_public_20200518_models.RegisterLineageRelationShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -20631,6 +26371,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.RegisterLineageRelationRequest,
     ) -> dataworks_public_20200518_models.RegisterLineageRelationResponse:
+        """
+        @summary 注册实体关系，支持用户注册自定义的实体关系
+        
+        @param request: RegisterLineageRelationRequest
+        @return: RegisterLineageRelationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.register_lineage_relation_with_options(request, runtime)
 
@@ -20638,6 +26384,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.RegisterLineageRelationRequest,
     ) -> dataworks_public_20200518_models.RegisterLineageRelationResponse:
+        """
+        @summary 注册实体关系，支持用户注册自定义的实体关系
+        
+        @param request: RegisterLineageRelationRequest
+        @return: RegisterLineageRelationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.register_lineage_relation_with_options_async(request, runtime)
 
@@ -20646,6 +26398,13 @@ class Client(OpenApiClient):
         tmp_req: dataworks_public_20200518_models.RemoveEntityTagsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.RemoveEntityTagsResponse:
+        """
+        @summary Remove entity tags by given qualified name and tag keys
+        
+        @param tmp_req: RemoveEntityTagsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveEntityTagsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dataworks_public_20200518_models.RemoveEntityTagsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -20682,6 +26441,13 @@ class Client(OpenApiClient):
         tmp_req: dataworks_public_20200518_models.RemoveEntityTagsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.RemoveEntityTagsResponse:
+        """
+        @summary Remove entity tags by given qualified name and tag keys
+        
+        @param tmp_req: RemoveEntityTagsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveEntityTagsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dataworks_public_20200518_models.RemoveEntityTagsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -20717,6 +26483,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.RemoveEntityTagsRequest,
     ) -> dataworks_public_20200518_models.RemoveEntityTagsResponse:
+        """
+        @summary Remove entity tags by given qualified name and tag keys
+        
+        @param request: RemoveEntityTagsRequest
+        @return: RemoveEntityTagsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.remove_entity_tags_with_options(request, runtime)
 
@@ -20724,6 +26496,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.RemoveEntityTagsRequest,
     ) -> dataworks_public_20200518_models.RemoveEntityTagsResponse:
+        """
+        @summary Remove entity tags by given qualified name and tag keys
+        
+        @param request: RemoveEntityTagsRequest
+        @return: RemoveEntityTagsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.remove_entity_tags_with_options_async(request, runtime)
 
@@ -20732,6 +26510,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.RemoveProjectMemberFromRoleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.RemoveProjectMemberFromRoleResponse:
+        """
+        @param request: RemoveProjectMemberFromRoleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveProjectMemberFromRoleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.project_id):
@@ -20764,6 +26547,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.RemoveProjectMemberFromRoleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.RemoveProjectMemberFromRoleResponse:
+        """
+        @param request: RemoveProjectMemberFromRoleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveProjectMemberFromRoleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.project_id):
@@ -20795,6 +26583,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.RemoveProjectMemberFromRoleRequest,
     ) -> dataworks_public_20200518_models.RemoveProjectMemberFromRoleResponse:
+        """
+        @param request: RemoveProjectMemberFromRoleRequest
+        @return: RemoveProjectMemberFromRoleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.remove_project_member_from_role_with_options(request, runtime)
 
@@ -20802,6 +26594,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.RemoveProjectMemberFromRoleRequest,
     ) -> dataworks_public_20200518_models.RemoveProjectMemberFromRoleResponse:
+        """
+        @param request: RemoveProjectMemberFromRoleRequest
+        @return: RemoveProjectMemberFromRoleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.remove_project_member_from_role_with_options_async(request, runtime)
 
@@ -20810,6 +26606,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.RestartInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.RestartInstanceResponse:
+        """
+        @summary Restarts an instance.
+        
+        @param request: RestartInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RestartInstanceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -20840,6 +26643,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.RestartInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.RestartInstanceResponse:
+        """
+        @summary Restarts an instance.
+        
+        @param request: RestartInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RestartInstanceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -20869,6 +26679,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.RestartInstanceRequest,
     ) -> dataworks_public_20200518_models.RestartInstanceResponse:
+        """
+        @summary Restarts an instance.
+        
+        @param request: RestartInstanceRequest
+        @return: RestartInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.restart_instance_with_options(request, runtime)
 
@@ -20876,6 +26692,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.RestartInstanceRequest,
     ) -> dataworks_public_20200518_models.RestartInstanceResponse:
+        """
+        @summary Restarts an instance.
+        
+        @param request: RestartInstanceRequest
+        @return: RestartInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.restart_instance_with_options_async(request, runtime)
 
@@ -20884,6 +26706,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ResumeInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ResumeInstanceResponse:
+        """
+        @summary Resumes a suspended instance.
+        
+        @param request: ResumeInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResumeInstanceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -20914,6 +26743,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ResumeInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ResumeInstanceResponse:
+        """
+        @summary Resumes a suspended instance.
+        
+        @param request: ResumeInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResumeInstanceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -20943,6 +26779,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ResumeInstanceRequest,
     ) -> dataworks_public_20200518_models.ResumeInstanceResponse:
+        """
+        @summary Resumes a suspended instance.
+        
+        @param request: ResumeInstanceRequest
+        @return: ResumeInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.resume_instance_with_options(request, runtime)
 
@@ -20950,6 +26792,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ResumeInstanceRequest,
     ) -> dataworks_public_20200518_models.ResumeInstanceResponse:
+        """
+        @summary Resumes a suspended instance.
+        
+        @param request: ResumeInstanceRequest
+        @return: ResumeInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.resume_instance_with_options_async(request, runtime)
 
@@ -20958,6 +26806,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.RevokeColumnPermissionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.RevokeColumnPermissionResponse:
+        """
+        @summary The ID of the region where the MaxCompute project that contains the destination fields resides. For example, the ID of the China (Shanghai) region is cn-shanghai, and that of the China (Zhangjiakou) region is cn-zhangjiakou. The system automatically determines the value of this parameter based on the endpoint used to call the operation.
+        
+        @param request: RevokeColumnPermissionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RevokeColumnPermissionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.columns):
@@ -20996,6 +26851,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.RevokeColumnPermissionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.RevokeColumnPermissionResponse:
+        """
+        @summary The ID of the region where the MaxCompute project that contains the destination fields resides. For example, the ID of the China (Shanghai) region is cn-shanghai, and that of the China (Zhangjiakou) region is cn-zhangjiakou. The system automatically determines the value of this parameter based on the endpoint used to call the operation.
+        
+        @param request: RevokeColumnPermissionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RevokeColumnPermissionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.columns):
@@ -21033,6 +26895,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.RevokeColumnPermissionRequest,
     ) -> dataworks_public_20200518_models.RevokeColumnPermissionResponse:
+        """
+        @summary The ID of the region where the MaxCompute project that contains the destination fields resides. For example, the ID of the China (Shanghai) region is cn-shanghai, and that of the China (Zhangjiakou) region is cn-zhangjiakou. The system automatically determines the value of this parameter based on the endpoint used to call the operation.
+        
+        @param request: RevokeColumnPermissionRequest
+        @return: RevokeColumnPermissionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.revoke_column_permission_with_options(request, runtime)
 
@@ -21040,6 +26908,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.RevokeColumnPermissionRequest,
     ) -> dataworks_public_20200518_models.RevokeColumnPermissionResponse:
+        """
+        @summary The ID of the region where the MaxCompute project that contains the destination fields resides. For example, the ID of the China (Shanghai) region is cn-shanghai, and that of the China (Zhangjiakou) region is cn-zhangjiakou. The system automatically determines the value of this parameter based on the endpoint used to call the operation.
+        
+        @param request: RevokeColumnPermissionRequest
+        @return: RevokeColumnPermissionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.revoke_column_permission_with_options_async(request, runtime)
 
@@ -21048,6 +26922,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.RevokeTablePermissionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.RevokeTablePermissionResponse:
+        """
+        @param request: RevokeTablePermissionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RevokeTablePermissionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.actions):
@@ -21086,6 +26965,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.RevokeTablePermissionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.RevokeTablePermissionResponse:
+        """
+        @param request: RevokeTablePermissionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RevokeTablePermissionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.actions):
@@ -21123,6 +27007,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.RevokeTablePermissionRequest,
     ) -> dataworks_public_20200518_models.RevokeTablePermissionResponse:
+        """
+        @param request: RevokeTablePermissionRequest
+        @return: RevokeTablePermissionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.revoke_table_permission_with_options(request, runtime)
 
@@ -21130,6 +27018,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.RevokeTablePermissionRequest,
     ) -> dataworks_public_20200518_models.RevokeTablePermissionResponse:
+        """
+        @param request: RevokeTablePermissionRequest
+        @return: RevokeTablePermissionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.revoke_table_permission_with_options_async(request, runtime)
 
@@ -21139,7 +27031,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.RunCycleDagNodesResponse:
         """
-        For more information about data backfill, see [Backfill data](~~137937~~).
+        @description For more information about data backfill, see [Backfill data](https://help.aliyun.com/document_detail/137937.html).
         
         @param request: RunCycleDagNodesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21202,7 +27094,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.RunCycleDagNodesResponse:
         """
-        For more information about data backfill, see [Backfill data](~~137937~~).
+        @description For more information about data backfill, see [Backfill data](https://help.aliyun.com/document_detail/137937.html).
         
         @param request: RunCycleDagNodesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21264,7 +27156,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.RunCycleDagNodesRequest,
     ) -> dataworks_public_20200518_models.RunCycleDagNodesResponse:
         """
-        For more information about data backfill, see [Backfill data](~~137937~~).
+        @description For more information about data backfill, see [Backfill data](https://help.aliyun.com/document_detail/137937.html).
         
         @param request: RunCycleDagNodesRequest
         @return: RunCycleDagNodesResponse
@@ -21277,7 +27169,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.RunCycleDagNodesRequest,
     ) -> dataworks_public_20200518_models.RunCycleDagNodesResponse:
         """
-        For more information about data backfill, see [Backfill data](~~137937~~).
+        @description For more information about data backfill, see [Backfill data](https://help.aliyun.com/document_detail/137937.html).
         
         @param request: RunCycleDagNodesRequest
         @return: RunCycleDagNodesResponse
@@ -21290,6 +27182,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.RunManualDagNodesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.RunManualDagNodesResponse:
+        """
+        @summary The region ID. For example, the ID of the China (Shanghai) region is cn-shanghai, and that of the China (Zhangjiakou) region is cn-zhangjiakou. The system automatically determines the value of this parameter based on the endpoint used to call the operation.
+        
+        @param request: RunManualDagNodesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunManualDagNodesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.biz_date):
@@ -21338,6 +27237,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.RunManualDagNodesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.RunManualDagNodesResponse:
+        """
+        @summary The region ID. For example, the ID of the China (Shanghai) region is cn-shanghai, and that of the China (Zhangjiakou) region is cn-zhangjiakou. The system automatically determines the value of this parameter based on the endpoint used to call the operation.
+        
+        @param request: RunManualDagNodesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunManualDagNodesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.biz_date):
@@ -21385,6 +27291,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.RunManualDagNodesRequest,
     ) -> dataworks_public_20200518_models.RunManualDagNodesResponse:
+        """
+        @summary The region ID. For example, the ID of the China (Shanghai) region is cn-shanghai, and that of the China (Zhangjiakou) region is cn-zhangjiakou. The system automatically determines the value of this parameter based on the endpoint used to call the operation.
+        
+        @param request: RunManualDagNodesRequest
+        @return: RunManualDagNodesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.run_manual_dag_nodes_with_options(request, runtime)
 
@@ -21392,6 +27304,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.RunManualDagNodesRequest,
     ) -> dataworks_public_20200518_models.RunManualDagNodesResponse:
+        """
+        @summary The region ID. For example, the ID of the China (Shanghai) region is cn-shanghai, and that of the China (Zhangjiakou) region is cn-zhangjiakou. The system automatically determines the value of this parameter based on the endpoint used to call the operation.
+        
+        @param request: RunManualDagNodesRequest
+        @return: RunManualDagNodesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.run_manual_dag_nodes_with_options_async(request, runtime)
 
@@ -21400,6 +27318,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.RunSmokeTestRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.RunSmokeTestResponse:
+        """
+        @param request: RunSmokeTestRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunSmokeTestResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.bizdate):
@@ -21436,6 +27359,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.RunSmokeTestRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.RunSmokeTestResponse:
+        """
+        @param request: RunSmokeTestRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunSmokeTestResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.bizdate):
@@ -21471,6 +27399,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.RunSmokeTestRequest,
     ) -> dataworks_public_20200518_models.RunSmokeTestResponse:
+        """
+        @param request: RunSmokeTestRequest
+        @return: RunSmokeTestResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.run_smoke_test_with_options(request, runtime)
 
@@ -21478,6 +27410,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.RunSmokeTestRequest,
     ) -> dataworks_public_20200518_models.RunSmokeTestResponse:
+        """
+        @param request: RunSmokeTestRequest
+        @return: RunSmokeTestResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.run_smoke_test_with_options_async(request, runtime)
 
@@ -21486,6 +27422,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.RunTriggerNodeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.RunTriggerNodeResponse:
+        """
+        @param request: RunTriggerNodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunTriggerNodeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -21520,6 +27461,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.RunTriggerNodeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.RunTriggerNodeResponse:
+        """
+        @param request: RunTriggerNodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunTriggerNodeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -21553,6 +27499,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.RunTriggerNodeRequest,
     ) -> dataworks_public_20200518_models.RunTriggerNodeResponse:
+        """
+        @param request: RunTriggerNodeRequest
+        @return: RunTriggerNodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.run_trigger_node_with_options(request, runtime)
 
@@ -21560,6 +27510,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.RunTriggerNodeRequest,
     ) -> dataworks_public_20200518_models.RunTriggerNodeResponse:
+        """
+        @param request: RunTriggerNodeRequest
+        @return: RunTriggerNodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.run_trigger_node_with_options_async(request, runtime)
 
@@ -21568,6 +27522,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.SaveDataServiceApiTestResultRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.SaveDataServiceApiTestResultResponse:
+        """
+        @summary 保存api测试结果
+        
+        @param request: SaveDataServiceApiTestResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SaveDataServiceApiTestResultResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.api_id):
@@ -21604,6 +27565,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.SaveDataServiceApiTestResultRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.SaveDataServiceApiTestResultResponse:
+        """
+        @summary 保存api测试结果
+        
+        @param request: SaveDataServiceApiTestResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SaveDataServiceApiTestResultResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.api_id):
@@ -21639,6 +27607,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.SaveDataServiceApiTestResultRequest,
     ) -> dataworks_public_20200518_models.SaveDataServiceApiTestResultResponse:
+        """
+        @summary 保存api测试结果
+        
+        @param request: SaveDataServiceApiTestResultRequest
+        @return: SaveDataServiceApiTestResultResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.save_data_service_api_test_result_with_options(request, runtime)
 
@@ -21646,6 +27620,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.SaveDataServiceApiTestResultRequest,
     ) -> dataworks_public_20200518_models.SaveDataServiceApiTestResultResponse:
+        """
+        @summary 保存api测试结果
+        
+        @param request: SaveDataServiceApiTestResultRequest
+        @return: SaveDataServiceApiTestResultResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.save_data_service_api_test_result_with_options_async(request, runtime)
 
@@ -21654,6 +27634,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ScanSensitiveDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ScanSensitiveDataResponse:
+        """
+        @param request: ScanSensitiveDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ScanSensitiveDataResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -21680,6 +27665,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ScanSensitiveDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ScanSensitiveDataResponse:
+        """
+        @param request: ScanSensitiveDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ScanSensitiveDataResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -21705,6 +27695,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ScanSensitiveDataRequest,
     ) -> dataworks_public_20200518_models.ScanSensitiveDataResponse:
+        """
+        @param request: ScanSensitiveDataRequest
+        @return: ScanSensitiveDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.scan_sensitive_data_with_options(request, runtime)
 
@@ -21712,6 +27706,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ScanSensitiveDataRequest,
     ) -> dataworks_public_20200518_models.ScanSensitiveDataResponse:
+        """
+        @param request: ScanSensitiveDataRequest
+        @return: ScanSensitiveDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.scan_sensitive_data_with_options_async(request, runtime)
 
@@ -21721,7 +27719,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.SearchMetaTablesResponse:
         """
-        The operation that you want to perform. Set the value to *SearchMetaTables**.
+        @summary For more information about the example on how to use the SearchMetaTables operation, see [Examples of DataWorks API operations](https://developer.aliyun.com/article/780879?groupCode=dataworks).
+        
+        @description The operation that you want to perform. Set the value to *SearchMetaTables**.
         
         @param request: SearchMetaTablesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21770,7 +27770,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.SearchMetaTablesResponse:
         """
-        The operation that you want to perform. Set the value to *SearchMetaTables**.
+        @summary For more information about the example on how to use the SearchMetaTables operation, see [Examples of DataWorks API operations](https://developer.aliyun.com/article/780879?groupCode=dataworks).
+        
+        @description The operation that you want to perform. Set the value to *SearchMetaTables**.
         
         @param request: SearchMetaTablesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21818,7 +27820,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.SearchMetaTablesRequest,
     ) -> dataworks_public_20200518_models.SearchMetaTablesResponse:
         """
-        The operation that you want to perform. Set the value to *SearchMetaTables**.
+        @summary For more information about the example on how to use the SearchMetaTables operation, see [Examples of DataWorks API operations](https://developer.aliyun.com/article/780879?groupCode=dataworks).
+        
+        @description The operation that you want to perform. Set the value to *SearchMetaTables**.
         
         @param request: SearchMetaTablesRequest
         @return: SearchMetaTablesResponse
@@ -21831,7 +27835,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.SearchMetaTablesRequest,
     ) -> dataworks_public_20200518_models.SearchMetaTablesResponse:
         """
-        The operation that you want to perform. Set the value to *SearchMetaTables**.
+        @summary For more information about the example on how to use the SearchMetaTables operation, see [Examples of DataWorks API operations](https://developer.aliyun.com/article/780879?groupCode=dataworks).
+        
+        @description The operation that you want to perform. Set the value to *SearchMetaTables**.
         
         @param request: SearchMetaTablesRequest
         @return: SearchMetaTablesResponse
@@ -21845,7 +27851,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.SearchNodesByOutputResponse:
         """
-        @deprecated
+        @deprecated OpenAPI SearchNodesByOutput is deprecated
         
         @param request: SearchNodesByOutputRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21883,7 +27889,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.SearchNodesByOutputResponse:
         """
-        @deprecated
+        @deprecated OpenAPI SearchNodesByOutput is deprecated
         
         @param request: SearchNodesByOutputRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21920,7 +27926,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.SearchNodesByOutputRequest,
     ) -> dataworks_public_20200518_models.SearchNodesByOutputResponse:
         """
-        @deprecated
+        @deprecated OpenAPI SearchNodesByOutput is deprecated
         
         @param request: SearchNodesByOutputRequest
         @return: SearchNodesByOutputResponse
@@ -21934,7 +27940,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.SearchNodesByOutputRequest,
     ) -> dataworks_public_20200518_models.SearchNodesByOutputResponse:
         """
-        @deprecated
+        @deprecated OpenAPI SearchNodesByOutput is deprecated
         
         @param request: SearchNodesByOutputRequest
         @return: SearchNodesByOutputResponse
@@ -21949,7 +27955,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.SetDataSourceShareResponse:
         """
-        @deprecated
+        @deprecated OpenAPI SetDataSourceShare is deprecated
         
         @param request: SetDataSourceShareRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21993,7 +27999,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.SetDataSourceShareResponse:
         """
-        @deprecated
+        @deprecated OpenAPI SetDataSourceShare is deprecated
         
         @param request: SetDataSourceShareRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22036,7 +28042,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.SetDataSourceShareRequest,
     ) -> dataworks_public_20200518_models.SetDataSourceShareResponse:
         """
-        @deprecated
+        @deprecated OpenAPI SetDataSourceShare is deprecated
         
         @param request: SetDataSourceShareRequest
         @return: SetDataSourceShareResponse
@@ -22050,7 +28056,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.SetDataSourceShareRequest,
     ) -> dataworks_public_20200518_models.SetDataSourceShareResponse:
         """
-        @deprecated
+        @deprecated OpenAPI SetDataSourceShare is deprecated
         
         @param request: SetDataSourceShareRequest
         @return: SetDataSourceShareResponse
@@ -22064,6 +28070,13 @@ class Client(OpenApiClient):
         tmp_req: dataworks_public_20200518_models.SetEntityTagsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.SetEntityTagsResponse:
+        """
+        @summary Set entity tags by given qualified name and tags
+        
+        @param tmp_req: SetEntityTagsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetEntityTagsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dataworks_public_20200518_models.SetEntityTagsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -22100,6 +28113,13 @@ class Client(OpenApiClient):
         tmp_req: dataworks_public_20200518_models.SetEntityTagsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.SetEntityTagsResponse:
+        """
+        @summary Set entity tags by given qualified name and tags
+        
+        @param tmp_req: SetEntityTagsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetEntityTagsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dataworks_public_20200518_models.SetEntityTagsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -22135,6 +28155,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.SetEntityTagsRequest,
     ) -> dataworks_public_20200518_models.SetEntityTagsResponse:
+        """
+        @summary Set entity tags by given qualified name and tags
+        
+        @param request: SetEntityTagsRequest
+        @return: SetEntityTagsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.set_entity_tags_with_options(request, runtime)
 
@@ -22142,6 +28168,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.SetEntityTagsRequest,
     ) -> dataworks_public_20200518_models.SetEntityTagsResponse:
+        """
+        @summary Set entity tags by given qualified name and tags
+        
+        @param request: SetEntityTagsRequest
+        @return: SetEntityTagsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.set_entity_tags_with_options_async(request, runtime)
 
@@ -22150,6 +28182,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.SetSuccessInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.SetSuccessInstanceResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *SetSuccessInstance**.
+        
+        @param request: SetSuccessInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetSuccessInstanceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -22180,6 +28219,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.SetSuccessInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.SetSuccessInstanceResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *SetSuccessInstance**.
+        
+        @param request: SetSuccessInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetSuccessInstanceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -22209,6 +28255,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.SetSuccessInstanceRequest,
     ) -> dataworks_public_20200518_models.SetSuccessInstanceResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *SetSuccessInstance**.
+        
+        @param request: SetSuccessInstanceRequest
+        @return: SetSuccessInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.set_success_instance_with_options(request, runtime)
 
@@ -22216,6 +28268,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.SetSuccessInstanceRequest,
     ) -> dataworks_public_20200518_models.SetSuccessInstanceResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *SetSuccessInstance**.
+        
+        @param request: SetSuccessInstanceRequest
+        @return: SetSuccessInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.set_success_instance_with_options_async(request, runtime)
 
@@ -22224,6 +28282,13 @@ class Client(OpenApiClient):
         tmp_req: dataworks_public_20200518_models.StartDIJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.StartDIJobResponse:
+        """
+        @summary 启动数据集成新版解决方案任务
+        
+        @param tmp_req: StartDIJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartDIJobResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dataworks_public_20200518_models.StartDIJobShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -22260,6 +28325,13 @@ class Client(OpenApiClient):
         tmp_req: dataworks_public_20200518_models.StartDIJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.StartDIJobResponse:
+        """
+        @summary 启动数据集成新版解决方案任务
+        
+        @param tmp_req: StartDIJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartDIJobResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dataworks_public_20200518_models.StartDIJobShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -22295,6 +28367,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.StartDIJobRequest,
     ) -> dataworks_public_20200518_models.StartDIJobResponse:
+        """
+        @summary 启动数据集成新版解决方案任务
+        
+        @param request: StartDIJobRequest
+        @return: StartDIJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.start_dijob_with_options(request, runtime)
 
@@ -22302,6 +28380,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.StartDIJobRequest,
     ) -> dataworks_public_20200518_models.StartDIJobResponse:
+        """
+        @summary 启动数据集成新版解决方案任务
+        
+        @param request: StartDIJobRequest
+        @return: StartDIJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.start_dijob_with_options_async(request, runtime)
 
@@ -22310,6 +28394,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.StartDISyncInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.StartDISyncInstanceResponse:
+        """
+        @summary The operation that you want to perform.
+        
+        @param request: StartDISyncInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartDISyncInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.file_id):
@@ -22344,6 +28435,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.StartDISyncInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.StartDISyncInstanceResponse:
+        """
+        @summary The operation that you want to perform.
+        
+        @param request: StartDISyncInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartDISyncInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.file_id):
@@ -22377,6 +28475,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.StartDISyncInstanceRequest,
     ) -> dataworks_public_20200518_models.StartDISyncInstanceResponse:
+        """
+        @summary The operation that you want to perform.
+        
+        @param request: StartDISyncInstanceRequest
+        @return: StartDISyncInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.start_disync_instance_with_options(request, runtime)
 
@@ -22384,6 +28488,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.StartDISyncInstanceRequest,
     ) -> dataworks_public_20200518_models.StartDISyncInstanceResponse:
+        """
+        @summary The operation that you want to perform.
+        
+        @param request: StartDISyncInstanceRequest
+        @return: StartDISyncInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.start_disync_instance_with_options_async(request, runtime)
 
@@ -22392,6 +28502,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.StartMigrationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.StartMigrationResponse:
+        """
+        @param request: StartMigrationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartMigrationResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.migration_id):
@@ -22422,6 +28537,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.StartMigrationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.StartMigrationResponse:
+        """
+        @param request: StartMigrationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartMigrationResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.migration_id):
@@ -22451,6 +28571,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.StartMigrationRequest,
     ) -> dataworks_public_20200518_models.StartMigrationResponse:
+        """
+        @param request: StartMigrationRequest
+        @return: StartMigrationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.start_migration_with_options(request, runtime)
 
@@ -22458,6 +28582,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.StartMigrationRequest,
     ) -> dataworks_public_20200518_models.StartMigrationResponse:
+        """
+        @param request: StartMigrationRequest
+        @return: StartMigrationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.start_migration_with_options_async(request, runtime)
 
@@ -22466,6 +28594,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.StopDIJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.StopDIJobResponse:
+        """
+        @summary 停止数据集成新版解决方案任务
+        
+        @param request: StopDIJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopDIJobResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.dijob_id):
@@ -22494,6 +28629,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.StopDIJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.StopDIJobResponse:
+        """
+        @summary 停止数据集成新版解决方案任务
+        
+        @param request: StopDIJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopDIJobResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.dijob_id):
@@ -22521,6 +28663,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.StopDIJobRequest,
     ) -> dataworks_public_20200518_models.StopDIJobResponse:
+        """
+        @summary 停止数据集成新版解决方案任务
+        
+        @param request: StopDIJobRequest
+        @return: StopDIJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.stop_dijob_with_options(request, runtime)
 
@@ -22528,6 +28676,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.StopDIJobRequest,
     ) -> dataworks_public_20200518_models.StopDIJobResponse:
+        """
+        @summary 停止数据集成新版解决方案任务
+        
+        @param request: StopDIJobRequest
+        @return: StopDIJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.stop_dijob_with_options_async(request, runtime)
 
@@ -22536,6 +28690,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.StopDISyncInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.StopDISyncInstanceResponse:
+        """
+        @summary The operation that you want to perform.
+        
+        @param request: StopDISyncInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopDISyncInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.file_id):
@@ -22568,6 +28729,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.StopDISyncInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.StopDISyncInstanceResponse:
+        """
+        @summary The operation that you want to perform.
+        
+        @param request: StopDISyncInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopDISyncInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.file_id):
@@ -22599,6 +28767,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.StopDISyncInstanceRequest,
     ) -> dataworks_public_20200518_models.StopDISyncInstanceResponse:
+        """
+        @summary The operation that you want to perform.
+        
+        @param request: StopDISyncInstanceRequest
+        @return: StopDISyncInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.stop_disync_instance_with_options(request, runtime)
 
@@ -22606,6 +28780,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.StopDISyncInstanceRequest,
     ) -> dataworks_public_20200518_models.StopDISyncInstanceResponse:
+        """
+        @summary The operation that you want to perform.
+        
+        @param request: StopDISyncInstanceRequest
+        @return: StopDISyncInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.stop_disync_instance_with_options_async(request, runtime)
 
@@ -22614,6 +28794,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.StopInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.StopInstanceResponse:
+        """
+        @param request: StopInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopInstanceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -22644,6 +28829,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.StopInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.StopInstanceResponse:
+        """
+        @param request: StopInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopInstanceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -22673,6 +28863,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.StopInstanceRequest,
     ) -> dataworks_public_20200518_models.StopInstanceResponse:
+        """
+        @param request: StopInstanceRequest
+        @return: StopInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.stop_instance_with_options(request, runtime)
 
@@ -22680,6 +28874,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.StopInstanceRequest,
     ) -> dataworks_public_20200518_models.StopInstanceResponse:
+        """
+        @param request: StopInstanceRequest
+        @return: StopInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.stop_instance_with_options_async(request, runtime)
 
@@ -22688,6 +28886,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.SubmitDataServiceApiRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.SubmitDataServiceApiResponse:
+        """
+        @summary 发布APi
+        
+        @param request: SubmitDataServiceApiRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitDataServiceApiResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.api_id):
@@ -22720,6 +28925,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.SubmitDataServiceApiRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.SubmitDataServiceApiResponse:
+        """
+        @summary 发布APi
+        
+        @param request: SubmitDataServiceApiRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitDataServiceApiResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.api_id):
@@ -22751,6 +28963,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.SubmitDataServiceApiRequest,
     ) -> dataworks_public_20200518_models.SubmitDataServiceApiResponse:
+        """
+        @summary 发布APi
+        
+        @param request: SubmitDataServiceApiRequest
+        @return: SubmitDataServiceApiResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.submit_data_service_api_with_options(request, runtime)
 
@@ -22758,6 +28976,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.SubmitDataServiceApiRequest,
     ) -> dataworks_public_20200518_models.SubmitDataServiceApiResponse:
+        """
+        @summary 发布APi
+        
+        @param request: SubmitDataServiceApiRequest
+        @return: SubmitDataServiceApiResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.submit_data_service_api_with_options_async(request, runtime)
 
@@ -22766,6 +28990,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.SubmitFileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.SubmitFileResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *SubmitFile**.
+        
+        @param request: SubmitFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitFileResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.comment):
@@ -22802,6 +29033,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.SubmitFileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.SubmitFileResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *SubmitFile**.
+        
+        @param request: SubmitFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitFileResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.comment):
@@ -22837,6 +29075,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.SubmitFileRequest,
     ) -> dataworks_public_20200518_models.SubmitFileResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *SubmitFile**.
+        
+        @param request: SubmitFileRequest
+        @return: SubmitFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.submit_file_with_options(request, runtime)
 
@@ -22844,6 +29088,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.SubmitFileRequest,
     ) -> dataworks_public_20200518_models.SubmitFileResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *SubmitFile**.
+        
+        @param request: SubmitFileRequest
+        @return: SubmitFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.submit_file_with_options_async(request, runtime)
 
@@ -22852,6 +29102,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.SuspendInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.SuspendInstanceResponse:
+        """
+        @summary Suspends an instance.
+        
+        @param request: SuspendInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SuspendInstanceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -22882,6 +29139,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.SuspendInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.SuspendInstanceResponse:
+        """
+        @summary Suspends an instance.
+        
+        @param request: SuspendInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SuspendInstanceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -22911,6 +29175,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.SuspendInstanceRequest,
     ) -> dataworks_public_20200518_models.SuspendInstanceResponse:
+        """
+        @summary Suspends an instance.
+        
+        @param request: SuspendInstanceRequest
+        @return: SuspendInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.suspend_instance_with_options(request, runtime)
 
@@ -22918,6 +29188,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.SuspendInstanceRequest,
     ) -> dataworks_public_20200518_models.SuspendInstanceResponse:
+        """
+        @summary Suspends an instance.
+        
+        @param request: SuspendInstanceRequest
+        @return: SuspendInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.suspend_instance_with_options_async(request, runtime)
 
@@ -22926,6 +29202,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.TerminateDISyncInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.TerminateDISyncInstanceResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *TerminateDISyncInstance**.
+        
+        @param request: TerminateDISyncInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TerminateDISyncInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.file_id):
@@ -22958,6 +29241,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.TerminateDISyncInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.TerminateDISyncInstanceResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *TerminateDISyncInstance**.
+        
+        @param request: TerminateDISyncInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TerminateDISyncInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.file_id):
@@ -22989,6 +29279,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.TerminateDISyncInstanceRequest,
     ) -> dataworks_public_20200518_models.TerminateDISyncInstanceResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *TerminateDISyncInstance**.
+        
+        @param request: TerminateDISyncInstanceRequest
+        @return: TerminateDISyncInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.terminate_disync_instance_with_options(request, runtime)
 
@@ -22996,6 +29292,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.TerminateDISyncInstanceRequest,
     ) -> dataworks_public_20200518_models.TerminateDISyncInstanceResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *TerminateDISyncInstance**.
+        
+        @param request: TerminateDISyncInstanceRequest
+        @return: TerminateDISyncInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.terminate_disync_instance_with_options_async(request, runtime)
 
@@ -23004,6 +29306,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.TestDataServiceApiRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.TestDataServiceApiResponse:
+        """
+        @summary Tests a DataService Studio API in asynchronous mode. You can call the GetDataServiceApiTest operation to query the test result.
+        
+        @param request: TestDataServiceApiRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TestDataServiceApiResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.api_id):
@@ -23044,6 +29353,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.TestDataServiceApiRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.TestDataServiceApiResponse:
+        """
+        @summary Tests a DataService Studio API in asynchronous mode. You can call the GetDataServiceApiTest operation to query the test result.
+        
+        @param request: TestDataServiceApiRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TestDataServiceApiResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.api_id):
@@ -23083,6 +29399,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.TestDataServiceApiRequest,
     ) -> dataworks_public_20200518_models.TestDataServiceApiResponse:
+        """
+        @summary Tests a DataService Studio API in asynchronous mode. You can call the GetDataServiceApiTest operation to query the test result.
+        
+        @param request: TestDataServiceApiRequest
+        @return: TestDataServiceApiResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.test_data_service_api_with_options(request, runtime)
 
@@ -23090,6 +29412,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.TestDataServiceApiRequest,
     ) -> dataworks_public_20200518_models.TestDataServiceApiResponse:
+        """
+        @summary Tests a DataService Studio API in asynchronous mode. You can call the GetDataServiceApiTest operation to query the test result.
+        
+        @param request: TestDataServiceApiRequest
+        @return: TestDataServiceApiResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.test_data_service_api_with_options_async(request, runtime)
 
@@ -23098,6 +29426,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.TestNetworkConnectionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.TestNetworkConnectionResponse:
+        """
+        @param request: TestNetworkConnectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TestNetworkConnectionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.datasource_name):
@@ -23132,6 +29465,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.TestNetworkConnectionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.TestNetworkConnectionResponse:
+        """
+        @param request: TestNetworkConnectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TestNetworkConnectionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.datasource_name):
@@ -23165,6 +29503,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.TestNetworkConnectionRequest,
     ) -> dataworks_public_20200518_models.TestNetworkConnectionResponse:
+        """
+        @param request: TestNetworkConnectionRequest
+        @return: TestNetworkConnectionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.test_network_connection_with_options(request, runtime)
 
@@ -23172,6 +29514,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.TestNetworkConnectionRequest,
     ) -> dataworks_public_20200518_models.TestNetworkConnectionResponse:
+        """
+        @param request: TestNetworkConnectionRequest
+        @return: TestNetworkConnectionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.test_network_connection_with_options_async(request, runtime)
 
@@ -23180,6 +29526,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.TopTenElapsedTimeInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.TopTenElapsedTimeInstanceResponse:
+        """
+        @param request: TopTenElapsedTimeInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TopTenElapsedTimeInstanceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.project_id):
@@ -23208,6 +29559,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.TopTenElapsedTimeInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.TopTenElapsedTimeInstanceResponse:
+        """
+        @param request: TopTenElapsedTimeInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TopTenElapsedTimeInstanceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.project_id):
@@ -23235,6 +29591,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.TopTenElapsedTimeInstanceRequest,
     ) -> dataworks_public_20200518_models.TopTenElapsedTimeInstanceResponse:
+        """
+        @param request: TopTenElapsedTimeInstanceRequest
+        @return: TopTenElapsedTimeInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.top_ten_elapsed_time_instance_with_options(request, runtime)
 
@@ -23242,6 +29602,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.TopTenElapsedTimeInstanceRequest,
     ) -> dataworks_public_20200518_models.TopTenElapsedTimeInstanceResponse:
+        """
+        @param request: TopTenElapsedTimeInstanceRequest
+        @return: TopTenElapsedTimeInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.top_ten_elapsed_time_instance_with_options_async(request, runtime)
 
@@ -23250,6 +29614,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.TopTenErrorTimesInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.TopTenErrorTimesInstanceResponse:
+        """
+        @param request: TopTenErrorTimesInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TopTenErrorTimesInstanceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.project_id):
@@ -23278,6 +29647,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.TopTenErrorTimesInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.TopTenErrorTimesInstanceResponse:
+        """
+        @param request: TopTenErrorTimesInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TopTenErrorTimesInstanceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.project_id):
@@ -23305,6 +29679,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.TopTenErrorTimesInstanceRequest,
     ) -> dataworks_public_20200518_models.TopTenErrorTimesInstanceResponse:
+        """
+        @param request: TopTenErrorTimesInstanceRequest
+        @return: TopTenErrorTimesInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.top_ten_error_times_instance_with_options(request, runtime)
 
@@ -23312,6 +29690,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.TopTenErrorTimesInstanceRequest,
     ) -> dataworks_public_20200518_models.TopTenErrorTimesInstanceResponse:
+        """
+        @param request: TopTenErrorTimesInstanceRequest
+        @return: TopTenErrorTimesInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.top_ten_error_times_instance_with_options_async(request, runtime)
 
@@ -23320,6 +29702,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UmountDirectoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UmountDirectoryResponse:
+        """
+        @summary 将数据专辑从数据分析的左侧导航目录移除（卸载）
+        
+        @param request: UmountDirectoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UmountDirectoryResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.target_id):
@@ -23352,6 +29741,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UmountDirectoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UmountDirectoryResponse:
+        """
+        @summary 将数据专辑从数据分析的左侧导航目录移除（卸载）
+        
+        @param request: UmountDirectoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UmountDirectoryResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.target_id):
@@ -23383,6 +29779,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.UmountDirectoryRequest,
     ) -> dataworks_public_20200518_models.UmountDirectoryResponse:
+        """
+        @summary 将数据专辑从数据分析的左侧导航目录移除（卸载）
+        
+        @param request: UmountDirectoryRequest
+        @return: UmountDirectoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.umount_directory_with_options(request, runtime)
 
@@ -23390,6 +29792,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.UmountDirectoryRequest,
     ) -> dataworks_public_20200518_models.UmountDirectoryResponse:
+        """
+        @summary 将数据专辑从数据分析的左侧导航目录移除（卸载）
+        
+        @param request: UmountDirectoryRequest
+        @return: UmountDirectoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.umount_directory_with_options_async(request, runtime)
 
@@ -23398,6 +29806,13 @@ class Client(OpenApiClient):
         tmp_req: dataworks_public_20200518_models.UpdateBaselineRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateBaselineResponse:
+        """
+        @summary 更新基线
+        
+        @param tmp_req: UpdateBaselineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateBaselineResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dataworks_public_20200518_models.UpdateBaselineShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -23456,6 +29871,13 @@ class Client(OpenApiClient):
         tmp_req: dataworks_public_20200518_models.UpdateBaselineRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateBaselineResponse:
+        """
+        @summary 更新基线
+        
+        @param tmp_req: UpdateBaselineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateBaselineResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dataworks_public_20200518_models.UpdateBaselineShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -23513,6 +29935,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.UpdateBaselineRequest,
     ) -> dataworks_public_20200518_models.UpdateBaselineResponse:
+        """
+        @summary 更新基线
+        
+        @param request: UpdateBaselineRequest
+        @return: UpdateBaselineResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_baseline_with_options(request, runtime)
 
@@ -23520,6 +29948,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.UpdateBaselineRequest,
     ) -> dataworks_public_20200518_models.UpdateBaselineResponse:
+        """
+        @summary 更新基线
+        
+        @param request: UpdateBaselineRequest
+        @return: UpdateBaselineResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_baseline_with_options_async(request, runtime)
 
@@ -23528,6 +29962,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateBusinessRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateBusinessResponse:
+        """
+        @summary Updates a workflow.
+        
+        @param request: UpdateBusinessRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateBusinessResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.business_id):
@@ -23566,6 +30007,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateBusinessRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateBusinessResponse:
+        """
+        @summary Updates a workflow.
+        
+        @param request: UpdateBusinessRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateBusinessResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.business_id):
@@ -23603,6 +30051,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.UpdateBusinessRequest,
     ) -> dataworks_public_20200518_models.UpdateBusinessResponse:
+        """
+        @summary Updates a workflow.
+        
+        @param request: UpdateBusinessRequest
+        @return: UpdateBusinessResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_business_with_options(request, runtime)
 
@@ -23610,6 +30064,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.UpdateBusinessRequest,
     ) -> dataworks_public_20200518_models.UpdateBusinessResponse:
+        """
+        @summary Updates a workflow.
+        
+        @param request: UpdateBusinessRequest
+        @return: UpdateBusinessResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_business_with_options_async(request, runtime)
 
@@ -23619,7 +30079,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateConnectionResponse:
         """
-        @deprecated
+        @deprecated OpenAPI UpdateConnection is deprecated
         
         @param request: UpdateConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -23663,7 +30123,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateConnectionResponse:
         """
-        @deprecated
+        @deprecated OpenAPI UpdateConnection is deprecated
         
         @param request: UpdateConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -23706,7 +30166,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateConnectionRequest,
     ) -> dataworks_public_20200518_models.UpdateConnectionResponse:
         """
-        @deprecated
+        @deprecated OpenAPI UpdateConnection is deprecated
         
         @param request: UpdateConnectionRequest
         @return: UpdateConnectionResponse
@@ -23720,7 +30180,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateConnectionRequest,
     ) -> dataworks_public_20200518_models.UpdateConnectionResponse:
         """
-        @deprecated
+        @deprecated OpenAPI UpdateConnection is deprecated
         
         @param request: UpdateConnectionRequest
         @return: UpdateConnectionResponse
@@ -23734,6 +30194,13 @@ class Client(OpenApiClient):
         tmp_req: dataworks_public_20200518_models.UpdateDIAlarmRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateDIAlarmRuleResponse:
+        """
+        @summary 更新数据集成新版告警规则
+        
+        @param tmp_req: UpdateDIAlarmRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDIAlarmRuleResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dataworks_public_20200518_models.UpdateDIAlarmRuleShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -23778,6 +30245,13 @@ class Client(OpenApiClient):
         tmp_req: dataworks_public_20200518_models.UpdateDIAlarmRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateDIAlarmRuleResponse:
+        """
+        @summary 更新数据集成新版告警规则
+        
+        @param tmp_req: UpdateDIAlarmRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDIAlarmRuleResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dataworks_public_20200518_models.UpdateDIAlarmRuleShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -23821,6 +30295,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.UpdateDIAlarmRuleRequest,
     ) -> dataworks_public_20200518_models.UpdateDIAlarmRuleResponse:
+        """
+        @summary 更新数据集成新版告警规则
+        
+        @param request: UpdateDIAlarmRuleRequest
+        @return: UpdateDIAlarmRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_dialarm_rule_with_options(request, runtime)
 
@@ -23828,6 +30308,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.UpdateDIAlarmRuleRequest,
     ) -> dataworks_public_20200518_models.UpdateDIAlarmRuleResponse:
+        """
+        @summary 更新数据集成新版告警规则
+        
+        @param request: UpdateDIAlarmRuleRequest
+        @return: UpdateDIAlarmRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_dialarm_rule_with_options_async(request, runtime)
 
@@ -23836,6 +30322,13 @@ class Client(OpenApiClient):
         tmp_req: dataworks_public_20200518_models.UpdateDIJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateDIJobResponse:
+        """
+        @summary 更新数据集成新版解决方案任务
+        
+        @param tmp_req: UpdateDIJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDIJobResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dataworks_public_20200518_models.UpdateDIJobShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -23884,6 +30377,13 @@ class Client(OpenApiClient):
         tmp_req: dataworks_public_20200518_models.UpdateDIJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateDIJobResponse:
+        """
+        @summary 更新数据集成新版解决方案任务
+        
+        @param tmp_req: UpdateDIJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDIJobResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = dataworks_public_20200518_models.UpdateDIJobShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -23931,6 +30431,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.UpdateDIJobRequest,
     ) -> dataworks_public_20200518_models.UpdateDIJobResponse:
+        """
+        @summary 更新数据集成新版解决方案任务
+        
+        @param request: UpdateDIJobRequest
+        @return: UpdateDIJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_dijob_with_options(request, runtime)
 
@@ -23938,6 +30444,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.UpdateDIJobRequest,
     ) -> dataworks_public_20200518_models.UpdateDIJobResponse:
+        """
+        @summary 更新数据集成新版解决方案任务
+        
+        @param request: UpdateDIJobRequest
+        @return: UpdateDIJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_dijob_with_options_async(request, runtime)
 
@@ -23947,7 +30459,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateDIProjectConfigResponse:
         """
-        The operation that you want to perform. Set the value to *UpdateDIProjectConfig**.
+        @summary DataWorks allows you to specify a default global configuration only for the processing rules of DDL messages in synchronization solutions. After you configure the *processing rules of DDL messages** in synchronization solutions, the configuration is used as the default global configuration and applies to all real-time synchronization nodes in the solutions. You can modify the **processing rules of DDL messages** based on your business requirements. For more information about how to configure a synchronization solution, see [Synchronization solutions](https://help.aliyun.com/document_detail/199008.html).
+        
+        @description The operation that you want to perform. Set the value to *UpdateDIProjectConfig**.
         
         @param request: UpdateDIProjectConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -23988,7 +30502,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateDIProjectConfigResponse:
         """
-        The operation that you want to perform. Set the value to *UpdateDIProjectConfig**.
+        @summary DataWorks allows you to specify a default global configuration only for the processing rules of DDL messages in synchronization solutions. After you configure the *processing rules of DDL messages** in synchronization solutions, the configuration is used as the default global configuration and applies to all real-time synchronization nodes in the solutions. You can modify the **processing rules of DDL messages** based on your business requirements. For more information about how to configure a synchronization solution, see [Synchronization solutions](https://help.aliyun.com/document_detail/199008.html).
+        
+        @description The operation that you want to perform. Set the value to *UpdateDIProjectConfig**.
         
         @param request: UpdateDIProjectConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -24028,7 +30544,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateDIProjectConfigRequest,
     ) -> dataworks_public_20200518_models.UpdateDIProjectConfigResponse:
         """
-        The operation that you want to perform. Set the value to *UpdateDIProjectConfig**.
+        @summary DataWorks allows you to specify a default global configuration only for the processing rules of DDL messages in synchronization solutions. After you configure the *processing rules of DDL messages** in synchronization solutions, the configuration is used as the default global configuration and applies to all real-time synchronization nodes in the solutions. You can modify the **processing rules of DDL messages** based on your business requirements. For more information about how to configure a synchronization solution, see [Synchronization solutions](https://help.aliyun.com/document_detail/199008.html).
+        
+        @description The operation that you want to perform. Set the value to *UpdateDIProjectConfig**.
         
         @param request: UpdateDIProjectConfigRequest
         @return: UpdateDIProjectConfigResponse
@@ -24041,7 +30559,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateDIProjectConfigRequest,
     ) -> dataworks_public_20200518_models.UpdateDIProjectConfigResponse:
         """
-        The operation that you want to perform. Set the value to *UpdateDIProjectConfig**.
+        @summary DataWorks allows you to specify a default global configuration only for the processing rules of DDL messages in synchronization solutions. After you configure the *processing rules of DDL messages** in synchronization solutions, the configuration is used as the default global configuration and applies to all real-time synchronization nodes in the solutions. You can modify the **processing rules of DDL messages** based on your business requirements. For more information about how to configure a synchronization solution, see [Synchronization solutions](https://help.aliyun.com/document_detail/199008.html).
+        
+        @description The operation that you want to perform. Set the value to *UpdateDIProjectConfig**.
         
         @param request: UpdateDIProjectConfigRequest
         @return: UpdateDIProjectConfigResponse
@@ -24054,6 +30574,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateDISyncTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateDISyncTaskResponse:
+        """
+        @param request: UpdateDISyncTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDISyncTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.file_id):
@@ -24090,6 +30615,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateDISyncTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateDISyncTaskResponse:
+        """
+        @param request: UpdateDISyncTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDISyncTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.file_id):
@@ -24125,6 +30655,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.UpdateDISyncTaskRequest,
     ) -> dataworks_public_20200518_models.UpdateDISyncTaskResponse:
+        """
+        @param request: UpdateDISyncTaskRequest
+        @return: UpdateDISyncTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_disync_task_with_options(request, runtime)
 
@@ -24132,6 +30666,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.UpdateDISyncTaskRequest,
     ) -> dataworks_public_20200518_models.UpdateDISyncTaskResponse:
+        """
+        @param request: UpdateDISyncTaskRequest
+        @return: UpdateDISyncTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_disync_task_with_options_async(request, runtime)
 
@@ -24140,6 +30678,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateDataServiceApiRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateDataServiceApiResponse:
+        """
+        @summary Updates the information about an API in the development state in DataService Studio.
+        
+        @param request: UpdateDataServiceApiRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDataServiceApiResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.api_description):
@@ -24194,6 +30739,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateDataServiceApiRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateDataServiceApiResponse:
+        """
+        @summary Updates the information about an API in the development state in DataService Studio.
+        
+        @param request: UpdateDataServiceApiRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDataServiceApiResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.api_description):
@@ -24247,6 +30799,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.UpdateDataServiceApiRequest,
     ) -> dataworks_public_20200518_models.UpdateDataServiceApiResponse:
+        """
+        @summary Updates the information about an API in the development state in DataService Studio.
+        
+        @param request: UpdateDataServiceApiRequest
+        @return: UpdateDataServiceApiResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_data_service_api_with_options(request, runtime)
 
@@ -24254,6 +30812,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.UpdateDataServiceApiRequest,
     ) -> dataworks_public_20200518_models.UpdateDataServiceApiResponse:
+        """
+        @summary Updates the information about an API in the development state in DataService Studio.
+        
+        @param request: UpdateDataServiceApiRequest
+        @return: UpdateDataServiceApiResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_data_service_api_with_options_async(request, runtime)
 
@@ -24262,6 +30826,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateDataSourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateDataSourceResponse:
+        """
+        @param request: UpdateDataSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDataSourceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.content):
@@ -24298,6 +30867,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateDataSourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateDataSourceResponse:
+        """
+        @param request: UpdateDataSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDataSourceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.content):
@@ -24333,6 +30907,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.UpdateDataSourceRequest,
     ) -> dataworks_public_20200518_models.UpdateDataSourceResponse:
+        """
+        @param request: UpdateDataSourceRequest
+        @return: UpdateDataSourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_data_source_with_options(request, runtime)
 
@@ -24340,6 +30918,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.UpdateDataSourceRequest,
     ) -> dataworks_public_20200518_models.UpdateDataSourceResponse:
+        """
+        @param request: UpdateDataSourceRequest
+        @return: UpdateDataSourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_data_source_with_options_async(request, runtime)
 
@@ -24349,7 +30931,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateFileResponse:
         """
-        When you debug or call this operation, you must specify new values for the specified parameters to ensure that the values are different from the original configurations of the file. For example, if the original value of a parameter is A, you must change the value of this parameter to B before you commit the node. If you set the parameter to A, an exception that indicates invalid data occurs.
+        @description When you debug or call this operation, you must specify new values for the specified parameters to ensure that the values are different from the original configurations of the file. For example, if the original value of a parameter is A, you must change the value of this parameter to B before you commit the node. If you set the parameter to A, an exception that indicates invalid data occurs.
         
         @param request: UpdateFileRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -24442,7 +31024,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateFileResponse:
         """
-        When you debug or call this operation, you must specify new values for the specified parameters to ensure that the values are different from the original configurations of the file. For example, if the original value of a parameter is A, you must change the value of this parameter to B before you commit the node. If you set the parameter to A, an exception that indicates invalid data occurs.
+        @description When you debug or call this operation, you must specify new values for the specified parameters to ensure that the values are different from the original configurations of the file. For example, if the original value of a parameter is A, you must change the value of this parameter to B before you commit the node. If you set the parameter to A, an exception that indicates invalid data occurs.
         
         @param request: UpdateFileRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -24534,7 +31116,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateFileRequest,
     ) -> dataworks_public_20200518_models.UpdateFileResponse:
         """
-        When you debug or call this operation, you must specify new values for the specified parameters to ensure that the values are different from the original configurations of the file. For example, if the original value of a parameter is A, you must change the value of this parameter to B before you commit the node. If you set the parameter to A, an exception that indicates invalid data occurs.
+        @description When you debug or call this operation, you must specify new values for the specified parameters to ensure that the values are different from the original configurations of the file. For example, if the original value of a parameter is A, you must change the value of this parameter to B before you commit the node. If you set the parameter to A, an exception that indicates invalid data occurs.
         
         @param request: UpdateFileRequest
         @return: UpdateFileResponse
@@ -24547,7 +31129,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateFileRequest,
     ) -> dataworks_public_20200518_models.UpdateFileResponse:
         """
-        When you debug or call this operation, you must specify new values for the specified parameters to ensure that the values are different from the original configurations of the file. For example, if the original value of a parameter is A, you must change the value of this parameter to B before you commit the node. If you set the parameter to A, an exception that indicates invalid data occurs.
+        @description When you debug or call this operation, you must specify new values for the specified parameters to ensure that the values are different from the original configurations of the file. For example, if the original value of a parameter is A, you must change the value of this parameter to B before you commit the node. If you set the parameter to A, an exception that indicates invalid data occurs.
         
         @param request: UpdateFileRequest
         @return: UpdateFileResponse
@@ -24560,6 +31142,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateFolderRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateFolderResponse:
+        """
+        @param request: UpdateFolderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateFolderResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.folder_id):
@@ -24594,6 +31181,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateFolderRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateFolderResponse:
+        """
+        @param request: UpdateFolderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateFolderResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.folder_id):
@@ -24627,6 +31219,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.UpdateFolderRequest,
     ) -> dataworks_public_20200518_models.UpdateFolderResponse:
+        """
+        @param request: UpdateFolderRequest
+        @return: UpdateFolderResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_folder_with_options(request, runtime)
 
@@ -24634,6 +31230,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.UpdateFolderRequest,
     ) -> dataworks_public_20200518_models.UpdateFolderResponse:
+        """
+        @param request: UpdateFolderRequest
+        @return: UpdateFolderResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_folder_with_options_async(request, runtime)
 
@@ -24642,6 +31242,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateIDEEventResultRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateIDEEventResultResponse:
+        """
+        @summary The operation that you want to perform.
+        
+        @param request: UpdateIDEEventResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateIDEEventResultResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.check_result):
@@ -24676,6 +31283,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateIDEEventResultRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateIDEEventResultResponse:
+        """
+        @summary The operation that you want to perform.
+        
+        @param request: UpdateIDEEventResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateIDEEventResultResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.check_result):
@@ -24709,6 +31323,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.UpdateIDEEventResultRequest,
     ) -> dataworks_public_20200518_models.UpdateIDEEventResultResponse:
+        """
+        @summary The operation that you want to perform.
+        
+        @param request: UpdateIDEEventResultRequest
+        @return: UpdateIDEEventResultResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_ideevent_result_with_options(request, runtime)
 
@@ -24716,6 +31336,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.UpdateIDEEventResultRequest,
     ) -> dataworks_public_20200518_models.UpdateIDEEventResultResponse:
+        """
+        @summary The operation that you want to perform.
+        
+        @param request: UpdateIDEEventResultRequest
+        @return: UpdateIDEEventResultResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_ideevent_result_with_options_async(request, runtime)
 
@@ -24724,6 +31350,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateMetaCategoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateMetaCategoryResponse:
+        """
+        @summary Updates a category.
+        
+        @param request: UpdateMetaCategoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateMetaCategoryResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.category_id):
@@ -24756,6 +31389,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateMetaCategoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateMetaCategoryResponse:
+        """
+        @summary Updates a category.
+        
+        @param request: UpdateMetaCategoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateMetaCategoryResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.category_id):
@@ -24787,6 +31427,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.UpdateMetaCategoryRequest,
     ) -> dataworks_public_20200518_models.UpdateMetaCategoryResponse:
+        """
+        @summary Updates a category.
+        
+        @param request: UpdateMetaCategoryRequest
+        @return: UpdateMetaCategoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_meta_category_with_options(request, runtime)
 
@@ -24794,6 +31440,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.UpdateMetaCategoryRequest,
     ) -> dataworks_public_20200518_models.UpdateMetaCategoryResponse:
+        """
+        @summary Updates a category.
+        
+        @param request: UpdateMetaCategoryRequest
+        @return: UpdateMetaCategoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_meta_category_with_options_async(request, runtime)
 
@@ -24803,7 +31455,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateMetaCollectionResponse:
         """
-        You must configure at least one of the Name and Comment parameters when you update a collection.
+        @summary Only the name and comment of a collection can be updated.
+        
+        @description You must configure at least one of the Name and Comment parameters when you update a collection.
         
         @param request: UpdateMetaCollectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -24842,7 +31496,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateMetaCollectionResponse:
         """
-        You must configure at least one of the Name and Comment parameters when you update a collection.
+        @summary Only the name and comment of a collection can be updated.
+        
+        @description You must configure at least one of the Name and Comment parameters when you update a collection.
         
         @param request: UpdateMetaCollectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -24880,7 +31536,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateMetaCollectionRequest,
     ) -> dataworks_public_20200518_models.UpdateMetaCollectionResponse:
         """
-        You must configure at least one of the Name and Comment parameters when you update a collection.
+        @summary Only the name and comment of a collection can be updated.
+        
+        @description You must configure at least one of the Name and Comment parameters when you update a collection.
         
         @param request: UpdateMetaCollectionRequest
         @return: UpdateMetaCollectionResponse
@@ -24893,7 +31551,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateMetaCollectionRequest,
     ) -> dataworks_public_20200518_models.UpdateMetaCollectionResponse:
         """
-        You must configure at least one of the Name and Comment parameters when you update a collection.
+        @summary Only the name and comment of a collection can be updated.
+        
+        @description You must configure at least one of the Name and Comment parameters when you update a collection.
         
         @param request: UpdateMetaCollectionRequest
         @return: UpdateMetaCollectionResponse
@@ -24906,6 +31566,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateMetaTableRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateMetaTableResponse:
+        """
+        @param request: UpdateMetaTableRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateMetaTableResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.caption):
@@ -24956,6 +31621,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateMetaTableRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateMetaTableResponse:
+        """
+        @param request: UpdateMetaTableRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateMetaTableResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.caption):
@@ -25005,6 +31675,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.UpdateMetaTableRequest,
     ) -> dataworks_public_20200518_models.UpdateMetaTableResponse:
+        """
+        @param request: UpdateMetaTableRequest
+        @return: UpdateMetaTableResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_meta_table_with_options(request, runtime)
 
@@ -25012,6 +31686,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.UpdateMetaTableRequest,
     ) -> dataworks_public_20200518_models.UpdateMetaTableResponse:
+        """
+        @param request: UpdateMetaTableRequest
+        @return: UpdateMetaTableResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_meta_table_with_options_async(request, runtime)
 
@@ -25020,6 +31698,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateMetaTableIntroWikiRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateMetaTableIntroWikiResponse:
+        """
+        @summary Updates the instructions on how to use a metatable. If no instruction on how to use the metatable is available, the instructions that are specified by calling this operation are added.
+        
+        @param request: UpdateMetaTableIntroWikiRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateMetaTableIntroWikiResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.table_guid):
@@ -25052,6 +31737,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateMetaTableIntroWikiRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateMetaTableIntroWikiResponse:
+        """
+        @summary Updates the instructions on how to use a metatable. If no instruction on how to use the metatable is available, the instructions that are specified by calling this operation are added.
+        
+        @param request: UpdateMetaTableIntroWikiRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateMetaTableIntroWikiResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.table_guid):
@@ -25083,6 +31775,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.UpdateMetaTableIntroWikiRequest,
     ) -> dataworks_public_20200518_models.UpdateMetaTableIntroWikiResponse:
+        """
+        @summary Updates the instructions on how to use a metatable. If no instruction on how to use the metatable is available, the instructions that are specified by calling this operation are added.
+        
+        @param request: UpdateMetaTableIntroWikiRequest
+        @return: UpdateMetaTableIntroWikiResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_meta_table_intro_wiki_with_options(request, runtime)
 
@@ -25090,6 +31788,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.UpdateMetaTableIntroWikiRequest,
     ) -> dataworks_public_20200518_models.UpdateMetaTableIntroWikiResponse:
+        """
+        @summary Updates the instructions on how to use a metatable. If no instruction on how to use the metatable is available, the instructions that are specified by calling this operation are added.
+        
+        @param request: UpdateMetaTableIntroWikiRequest
+        @return: UpdateMetaTableIntroWikiResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_meta_table_intro_wiki_with_options_async(request, runtime)
 
@@ -25098,6 +31802,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateNodeOwnerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateNodeOwnerResponse:
+        """
+        @param request: UpdateNodeOwnerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateNodeOwnerResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.node_id):
@@ -25130,6 +31839,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateNodeOwnerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateNodeOwnerResponse:
+        """
+        @param request: UpdateNodeOwnerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateNodeOwnerResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.node_id):
@@ -25161,6 +31875,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.UpdateNodeOwnerRequest,
     ) -> dataworks_public_20200518_models.UpdateNodeOwnerResponse:
+        """
+        @param request: UpdateNodeOwnerRequest
+        @return: UpdateNodeOwnerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_node_owner_with_options(request, runtime)
 
@@ -25168,6 +31886,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.UpdateNodeOwnerRequest,
     ) -> dataworks_public_20200518_models.UpdateNodeOwnerResponse:
+        """
+        @param request: UpdateNodeOwnerRequest
+        @return: UpdateNodeOwnerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_node_owner_with_options_async(request, runtime)
 
@@ -25176,6 +31898,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateNodeRunModeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateNodeRunModeResponse:
+        """
+        @param request: UpdateNodeRunModeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateNodeRunModeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.node_id):
@@ -25208,6 +31935,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateNodeRunModeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateNodeRunModeResponse:
+        """
+        @param request: UpdateNodeRunModeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateNodeRunModeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.node_id):
@@ -25239,6 +31971,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.UpdateNodeRunModeRequest,
     ) -> dataworks_public_20200518_models.UpdateNodeRunModeResponse:
+        """
+        @param request: UpdateNodeRunModeRequest
+        @return: UpdateNodeRunModeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_node_run_mode_with_options(request, runtime)
 
@@ -25246,6 +31982,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.UpdateNodeRunModeRequest,
     ) -> dataworks_public_20200518_models.UpdateNodeRunModeResponse:
+        """
+        @param request: UpdateNodeRunModeRequest
+        @return: UpdateNodeRunModeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_node_run_mode_with_options_async(request, runtime)
 
@@ -25254,6 +31994,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateQualityFollowerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateQualityFollowerResponse:
+        """
+        @param request: UpdateQualityFollowerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateQualityFollowerResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.alarm_mode):
@@ -25290,6 +32035,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateQualityFollowerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateQualityFollowerResponse:
+        """
+        @param request: UpdateQualityFollowerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateQualityFollowerResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.alarm_mode):
@@ -25325,6 +32075,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.UpdateQualityFollowerRequest,
     ) -> dataworks_public_20200518_models.UpdateQualityFollowerResponse:
+        """
+        @param request: UpdateQualityFollowerRequest
+        @return: UpdateQualityFollowerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_quality_follower_with_options(request, runtime)
 
@@ -25332,6 +32086,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.UpdateQualityFollowerRequest,
     ) -> dataworks_public_20200518_models.UpdateQualityFollowerResponse:
+        """
+        @param request: UpdateQualityFollowerRequest
+        @return: UpdateQualityFollowerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_quality_follower_with_options_async(request, runtime)
 
@@ -25340,6 +32098,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateQualityRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateQualityRuleResponse:
+        """
+        @param request: UpdateQualityRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateQualityRuleResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.block_type):
@@ -25410,6 +32173,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateQualityRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateQualityRuleResponse:
+        """
+        @param request: UpdateQualityRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateQualityRuleResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.block_type):
@@ -25479,6 +32247,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.UpdateQualityRuleRequest,
     ) -> dataworks_public_20200518_models.UpdateQualityRuleResponse:
+        """
+        @param request: UpdateQualityRuleRequest
+        @return: UpdateQualityRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_quality_rule_with_options(request, runtime)
 
@@ -25486,6 +32258,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.UpdateQualityRuleRequest,
     ) -> dataworks_public_20200518_models.UpdateQualityRuleResponse:
+        """
+        @param request: UpdateQualityRuleRequest
+        @return: UpdateQualityRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_quality_rule_with_options_async(request, runtime)
 
@@ -25494,6 +32270,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateRemindRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateRemindResponse:
+        """
+        @param request: UpdateRemindRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateRemindResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.alert_interval):
@@ -25556,6 +32337,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateRemindRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateRemindResponse:
+        """
+        @param request: UpdateRemindRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateRemindResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.alert_interval):
@@ -25617,6 +32403,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.UpdateRemindRequest,
     ) -> dataworks_public_20200518_models.UpdateRemindResponse:
+        """
+        @param request: UpdateRemindRequest
+        @return: UpdateRemindResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_remind_with_options(request, runtime)
 
@@ -25624,6 +32414,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.UpdateRemindRequest,
     ) -> dataworks_public_20200518_models.UpdateRemindResponse:
+        """
+        @param request: UpdateRemindRequest
+        @return: UpdateRemindResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_remind_with_options_async(request, runtime)
 
@@ -25632,6 +32426,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateTableRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateTableResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *UpdateTable**.
+        
+        @param request: UpdateTableRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTableResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_guid):
@@ -25700,6 +32501,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateTableRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateTableResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *UpdateTable**.
+        
+        @param request: UpdateTableRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTableResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_guid):
@@ -25767,6 +32575,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.UpdateTableRequest,
     ) -> dataworks_public_20200518_models.UpdateTableResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *UpdateTable**.
+        
+        @param request: UpdateTableRequest
+        @return: UpdateTableResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_table_with_options(request, runtime)
 
@@ -25774,6 +32588,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.UpdateTableRequest,
     ) -> dataworks_public_20200518_models.UpdateTableResponse:
+        """
+        @summary The operation that you want to perform. Set the value to *UpdateTable**.
+        
+        @param request: UpdateTableRequest
+        @return: UpdateTableResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_table_with_options_async(request, runtime)
 
@@ -25782,6 +32602,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateTableAddColumnRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateTableAddColumnResponse:
+        """
+        @param request: UpdateTableAddColumnRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTableAddColumnResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.table_guid):
@@ -25814,6 +32639,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateTableAddColumnRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateTableAddColumnResponse:
+        """
+        @param request: UpdateTableAddColumnRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTableAddColumnResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.table_guid):
@@ -25845,6 +32675,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.UpdateTableAddColumnRequest,
     ) -> dataworks_public_20200518_models.UpdateTableAddColumnResponse:
+        """
+        @param request: UpdateTableAddColumnRequest
+        @return: UpdateTableAddColumnResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_table_add_column_with_options(request, runtime)
 
@@ -25852,6 +32686,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.UpdateTableAddColumnRequest,
     ) -> dataworks_public_20200518_models.UpdateTableAddColumnResponse:
+        """
+        @param request: UpdateTableAddColumnRequest
+        @return: UpdateTableAddColumnResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_table_add_column_with_options_async(request, runtime)
 
@@ -25860,6 +32698,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateTableLevelRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateTableLevelResponse:
+        """
+        @param request: UpdateTableLevelRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTableLevelResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -25896,6 +32739,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateTableLevelRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateTableLevelResponse:
+        """
+        @param request: UpdateTableLevelRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTableLevelResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -25931,6 +32779,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.UpdateTableLevelRequest,
     ) -> dataworks_public_20200518_models.UpdateTableLevelResponse:
+        """
+        @param request: UpdateTableLevelRequest
+        @return: UpdateTableLevelResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_table_level_with_options(request, runtime)
 
@@ -25938,6 +32790,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.UpdateTableLevelRequest,
     ) -> dataworks_public_20200518_models.UpdateTableLevelResponse:
+        """
+        @param request: UpdateTableLevelRequest
+        @return: UpdateTableLevelResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_table_level_with_options_async(request, runtime)
 
@@ -25946,6 +32802,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateTableModelInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateTableModelInfoResponse:
+        """
+        @param request: UpdateTableModelInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTableModelInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.first_level_theme_id):
@@ -25982,6 +32843,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateTableModelInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateTableModelInfoResponse:
+        """
+        @param request: UpdateTableModelInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTableModelInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.first_level_theme_id):
@@ -26017,6 +32883,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.UpdateTableModelInfoRequest,
     ) -> dataworks_public_20200518_models.UpdateTableModelInfoResponse:
+        """
+        @param request: UpdateTableModelInfoRequest
+        @return: UpdateTableModelInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_table_model_info_with_options(request, runtime)
 
@@ -26024,6 +32894,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.UpdateTableModelInfoRequest,
     ) -> dataworks_public_20200518_models.UpdateTableModelInfoResponse:
+        """
+        @param request: UpdateTableModelInfoRequest
+        @return: UpdateTableModelInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_table_model_info_with_options_async(request, runtime)
 
@@ -26032,6 +32906,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateTableThemeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateTableThemeResponse:
+        """
+        @param request: UpdateTableThemeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTableThemeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.name):
@@ -26064,6 +32943,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateTableThemeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateTableThemeResponse:
+        """
+        @param request: UpdateTableThemeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTableThemeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.name):
@@ -26095,6 +32979,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.UpdateTableThemeRequest,
     ) -> dataworks_public_20200518_models.UpdateTableThemeResponse:
+        """
+        @param request: UpdateTableThemeRequest
+        @return: UpdateTableThemeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_table_theme_with_options(request, runtime)
 
@@ -26102,6 +32990,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.UpdateTableThemeRequest,
     ) -> dataworks_public_20200518_models.UpdateTableThemeResponse:
+        """
+        @param request: UpdateTableThemeRequest
+        @return: UpdateTableThemeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_table_theme_with_options_async(request, runtime)
 
@@ -26110,6 +33002,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateUdfFileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateUdfFileResponse:
+        """
+        @param request: UpdateUdfFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateUdfFileResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.class_name):
@@ -26160,6 +33057,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateUdfFileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateUdfFileResponse:
+        """
+        @param request: UpdateUdfFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateUdfFileResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.class_name):
@@ -26209,6 +33111,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.UpdateUdfFileRequest,
     ) -> dataworks_public_20200518_models.UpdateUdfFileResponse:
+        """
+        @param request: UpdateUdfFileRequest
+        @return: UpdateUdfFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_udf_file_with_options(request, runtime)
 
@@ -26216,6 +33122,10 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.UpdateUdfFileRequest,
     ) -> dataworks_public_20200518_models.UpdateUdfFileResponse:
+        """
+        @param request: UpdateUdfFileRequest
+        @return: UpdateUdfFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_udf_file_with_options_async(request, runtime)
 
@@ -26224,6 +33134,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateWorkbenchEventResultRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateWorkbenchEventResultResponse:
+        """
+        @summary 更新运维中心扩展程序的回调结果
+        
+        @param request: UpdateWorkbenchEventResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateWorkbenchEventResultResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.check_result):
@@ -26258,6 +33175,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateWorkbenchEventResultRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateWorkbenchEventResultResponse:
+        """
+        @summary 更新运维中心扩展程序的回调结果
+        
+        @param request: UpdateWorkbenchEventResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateWorkbenchEventResultResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.check_result):
@@ -26291,6 +33215,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.UpdateWorkbenchEventResultRequest,
     ) -> dataworks_public_20200518_models.UpdateWorkbenchEventResultResponse:
+        """
+        @summary 更新运维中心扩展程序的回调结果
+        
+        @param request: UpdateWorkbenchEventResultRequest
+        @return: UpdateWorkbenchEventResultResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_workbench_event_result_with_options(request, runtime)
 
@@ -26298,5 +33228,11 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.UpdateWorkbenchEventResultRequest,
     ) -> dataworks_public_20200518_models.UpdateWorkbenchEventResultResponse:
+        """
+        @summary 更新运维中心扩展程序的回调结果
+        
+        @param request: UpdateWorkbenchEventResultRequest
+        @return: UpdateWorkbenchEventResultResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_workbench_event_result_with_options_async(request, runtime)

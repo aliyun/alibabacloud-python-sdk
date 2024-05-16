@@ -1,3 +1,23 @@
+2024-05-16 Version: 5.5.0
+- Support API DsgDesensPlanDelete.
+- Support API DsgDesensPlanQueryList.
+- Support API DsgDesensPlanUpdateStatus.
+- Support API DsgPlatformQueryProjectsAndSchemaFromMeta.
+- Support API DsgQueryDefaultTemplates.
+- Support API DsgSceneAddOrUpdateScene.
+- Support API DsgUserGroupAddOrUpdate.
+- Support API DsgUserGroupDelete.
+- Support API DsgUserGroupGetOdpsRoleGroups.
+- Support API DsgUserGroupQueryList.
+- Support API DsgUserGroupQueryUserList.
+- Support API DsgWhiteListQueryList.
+- Update API CreateQualityEntity: update response param.
+- Update API CreateQualityRelativeNode: update response param.
+- Update API DeleteQualityEntity: update response param.
+- Update API DeleteQualityRelativeNode: update response param.
+- Update API ListQualityResultsByRule: update response param.
+
+
 2024-05-07 Version: 5.4.1
 - Generated python 2020-05-18 for dataworks-public.
 
