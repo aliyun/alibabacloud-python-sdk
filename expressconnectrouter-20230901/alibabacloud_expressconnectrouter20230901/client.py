@@ -46,6 +46,11 @@ class Client(OpenApiClient):
         request: express_connect_router_20230901_models.AttachExpressConnectRouterChildInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.AttachExpressConnectRouterChildInstanceResponse:
+        """
+        @param request: AttachExpressConnectRouterChildInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AttachExpressConnectRouterChildInstanceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.child_instance_id):
@@ -86,6 +91,11 @@ class Client(OpenApiClient):
         request: express_connect_router_20230901_models.AttachExpressConnectRouterChildInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.AttachExpressConnectRouterChildInstanceResponse:
+        """
+        @param request: AttachExpressConnectRouterChildInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AttachExpressConnectRouterChildInstanceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.child_instance_id):
@@ -125,6 +135,10 @@ class Client(OpenApiClient):
         self,
         request: express_connect_router_20230901_models.AttachExpressConnectRouterChildInstanceRequest,
     ) -> express_connect_router_20230901_models.AttachExpressConnectRouterChildInstanceResponse:
+        """
+        @param request: AttachExpressConnectRouterChildInstanceRequest
+        @return: AttachExpressConnectRouterChildInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.attach_express_connect_router_child_instance_with_options(request, runtime)
 
@@ -132,6 +146,10 @@ class Client(OpenApiClient):
         self,
         request: express_connect_router_20230901_models.AttachExpressConnectRouterChildInstanceRequest,
     ) -> express_connect_router_20230901_models.AttachExpressConnectRouterChildInstanceResponse:
+        """
+        @param request: AttachExpressConnectRouterChildInstanceRequest
+        @return: AttachExpressConnectRouterChildInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.attach_express_connect_router_child_instance_with_options_async(request, runtime)
 
@@ -140,6 +158,11 @@ class Client(OpenApiClient):
         request: express_connect_router_20230901_models.CheckAddRegionToExpressConnectRouterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.CheckAddRegionToExpressConnectRouterResponse:
+        """
+        @param request: CheckAddRegionToExpressConnectRouterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckAddRegionToExpressConnectRouterResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.client_token):
@@ -174,6 +197,11 @@ class Client(OpenApiClient):
         request: express_connect_router_20230901_models.CheckAddRegionToExpressConnectRouterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.CheckAddRegionToExpressConnectRouterResponse:
+        """
+        @param request: CheckAddRegionToExpressConnectRouterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckAddRegionToExpressConnectRouterResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.client_token):
@@ -207,6 +235,10 @@ class Client(OpenApiClient):
         self,
         request: express_connect_router_20230901_models.CheckAddRegionToExpressConnectRouterRequest,
     ) -> express_connect_router_20230901_models.CheckAddRegionToExpressConnectRouterResponse:
+        """
+        @param request: CheckAddRegionToExpressConnectRouterRequest
+        @return: CheckAddRegionToExpressConnectRouterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.check_add_region_to_express_connect_router_with_options(request, runtime)
 
@@ -214,6 +246,10 @@ class Client(OpenApiClient):
         self,
         request: express_connect_router_20230901_models.CheckAddRegionToExpressConnectRouterRequest,
     ) -> express_connect_router_20230901_models.CheckAddRegionToExpressConnectRouterResponse:
+        """
+        @param request: CheckAddRegionToExpressConnectRouterRequest
+        @return: CheckAddRegionToExpressConnectRouterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.check_add_region_to_express_connect_router_with_options_async(request, runtime)
 
@@ -222,6 +258,11 @@ class Client(OpenApiClient):
         request: express_connect_router_20230901_models.CreateExpressConnectRouterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.CreateExpressConnectRouterResponse:
+        """
+        @param request: CreateExpressConnectRouterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateExpressConnectRouterResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.alibaba_side_asn):
@@ -236,6 +277,8 @@ class Client(OpenApiClient):
             body['Name'] = request.name
         if not UtilClient.is_unset(request.resource_group_id):
             body['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.tags):
+            body['Tags'] = request.tags
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -260,6 +303,11 @@ class Client(OpenApiClient):
         request: express_connect_router_20230901_models.CreateExpressConnectRouterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.CreateExpressConnectRouterResponse:
+        """
+        @param request: CreateExpressConnectRouterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateExpressConnectRouterResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.alibaba_side_asn):
@@ -274,6 +322,8 @@ class Client(OpenApiClient):
             body['Name'] = request.name
         if not UtilClient.is_unset(request.resource_group_id):
             body['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.tags):
+            body['Tags'] = request.tags
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -297,6 +347,10 @@ class Client(OpenApiClient):
         self,
         request: express_connect_router_20230901_models.CreateExpressConnectRouterRequest,
     ) -> express_connect_router_20230901_models.CreateExpressConnectRouterResponse:
+        """
+        @param request: CreateExpressConnectRouterRequest
+        @return: CreateExpressConnectRouterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_express_connect_router_with_options(request, runtime)
 
@@ -304,6 +358,10 @@ class Client(OpenApiClient):
         self,
         request: express_connect_router_20230901_models.CreateExpressConnectRouterRequest,
     ) -> express_connect_router_20230901_models.CreateExpressConnectRouterResponse:
+        """
+        @param request: CreateExpressConnectRouterRequest
+        @return: CreateExpressConnectRouterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_express_connect_router_with_options_async(request, runtime)
 
@@ -312,6 +370,11 @@ class Client(OpenApiClient):
         request: express_connect_router_20230901_models.CreateExpressConnectRouterAssociationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.CreateExpressConnectRouterAssociationResponse:
+        """
+        @param request: CreateExpressConnectRouterAssociationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateExpressConnectRouterAssociationResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.allowed_prefixes):
@@ -360,6 +423,11 @@ class Client(OpenApiClient):
         request: express_connect_router_20230901_models.CreateExpressConnectRouterAssociationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.CreateExpressConnectRouterAssociationResponse:
+        """
+        @param request: CreateExpressConnectRouterAssociationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateExpressConnectRouterAssociationResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.allowed_prefixes):
@@ -407,6 +475,10 @@ class Client(OpenApiClient):
         self,
         request: express_connect_router_20230901_models.CreateExpressConnectRouterAssociationRequest,
     ) -> express_connect_router_20230901_models.CreateExpressConnectRouterAssociationResponse:
+        """
+        @param request: CreateExpressConnectRouterAssociationRequest
+        @return: CreateExpressConnectRouterAssociationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_express_connect_router_association_with_options(request, runtime)
 
@@ -414,6 +486,10 @@ class Client(OpenApiClient):
         self,
         request: express_connect_router_20230901_models.CreateExpressConnectRouterAssociationRequest,
     ) -> express_connect_router_20230901_models.CreateExpressConnectRouterAssociationResponse:
+        """
+        @param request: CreateExpressConnectRouterAssociationRequest
+        @return: CreateExpressConnectRouterAssociationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_express_connect_router_association_with_options_async(request, runtime)
 
@@ -422,6 +498,11 @@ class Client(OpenApiClient):
         request: express_connect_router_20230901_models.DeleteExpressConnectRouterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.DeleteExpressConnectRouterResponse:
+        """
+        @param request: DeleteExpressConnectRouterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteExpressConnectRouterResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.client_token):
@@ -454,6 +535,11 @@ class Client(OpenApiClient):
         request: express_connect_router_20230901_models.DeleteExpressConnectRouterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.DeleteExpressConnectRouterResponse:
+        """
+        @param request: DeleteExpressConnectRouterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteExpressConnectRouterResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.client_token):
@@ -485,6 +571,10 @@ class Client(OpenApiClient):
         self,
         request: express_connect_router_20230901_models.DeleteExpressConnectRouterRequest,
     ) -> express_connect_router_20230901_models.DeleteExpressConnectRouterResponse:
+        """
+        @param request: DeleteExpressConnectRouterRequest
+        @return: DeleteExpressConnectRouterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_express_connect_router_with_options(request, runtime)
 
@@ -492,6 +582,10 @@ class Client(OpenApiClient):
         self,
         request: express_connect_router_20230901_models.DeleteExpressConnectRouterRequest,
     ) -> express_connect_router_20230901_models.DeleteExpressConnectRouterResponse:
+        """
+        @param request: DeleteExpressConnectRouterRequest
+        @return: DeleteExpressConnectRouterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_express_connect_router_with_options_async(request, runtime)
 
@@ -500,6 +594,11 @@ class Client(OpenApiClient):
         request: express_connect_router_20230901_models.DeleteExpressConnectRouterAssociationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.DeleteExpressConnectRouterAssociationResponse:
+        """
+        @param request: DeleteExpressConnectRouterAssociationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteExpressConnectRouterAssociationResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.association_id):
@@ -536,6 +635,11 @@ class Client(OpenApiClient):
         request: express_connect_router_20230901_models.DeleteExpressConnectRouterAssociationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.DeleteExpressConnectRouterAssociationResponse:
+        """
+        @param request: DeleteExpressConnectRouterAssociationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteExpressConnectRouterAssociationResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.association_id):
@@ -571,6 +675,10 @@ class Client(OpenApiClient):
         self,
         request: express_connect_router_20230901_models.DeleteExpressConnectRouterAssociationRequest,
     ) -> express_connect_router_20230901_models.DeleteExpressConnectRouterAssociationResponse:
+        """
+        @param request: DeleteExpressConnectRouterAssociationRequest
+        @return: DeleteExpressConnectRouterAssociationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_express_connect_router_association_with_options(request, runtime)
 
@@ -578,6 +686,10 @@ class Client(OpenApiClient):
         self,
         request: express_connect_router_20230901_models.DeleteExpressConnectRouterAssociationRequest,
     ) -> express_connect_router_20230901_models.DeleteExpressConnectRouterAssociationResponse:
+        """
+        @param request: DeleteExpressConnectRouterAssociationRequest
+        @return: DeleteExpressConnectRouterAssociationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_express_connect_router_association_with_options_async(request, runtime)
 
@@ -586,6 +698,11 @@ class Client(OpenApiClient):
         request: express_connect_router_20230901_models.DescribeDisabledExpressConnectRouterRouteEntriesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.DescribeDisabledExpressConnectRouterRouteEntriesResponse:
+        """
+        @param request: DescribeDisabledExpressConnectRouterRouteEntriesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDisabledExpressConnectRouterRouteEntriesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.client_token):
@@ -622,6 +739,11 @@ class Client(OpenApiClient):
         request: express_connect_router_20230901_models.DescribeDisabledExpressConnectRouterRouteEntriesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.DescribeDisabledExpressConnectRouterRouteEntriesResponse:
+        """
+        @param request: DescribeDisabledExpressConnectRouterRouteEntriesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDisabledExpressConnectRouterRouteEntriesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.client_token):
@@ -657,6 +779,10 @@ class Client(OpenApiClient):
         self,
         request: express_connect_router_20230901_models.DescribeDisabledExpressConnectRouterRouteEntriesRequest,
     ) -> express_connect_router_20230901_models.DescribeDisabledExpressConnectRouterRouteEntriesResponse:
+        """
+        @param request: DescribeDisabledExpressConnectRouterRouteEntriesRequest
+        @return: DescribeDisabledExpressConnectRouterRouteEntriesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_disabled_express_connect_router_route_entries_with_options(request, runtime)
 
@@ -664,6 +790,10 @@ class Client(OpenApiClient):
         self,
         request: express_connect_router_20230901_models.DescribeDisabledExpressConnectRouterRouteEntriesRequest,
     ) -> express_connect_router_20230901_models.DescribeDisabledExpressConnectRouterRouteEntriesResponse:
+        """
+        @param request: DescribeDisabledExpressConnectRouterRouteEntriesRequest
+        @return: DescribeDisabledExpressConnectRouterRouteEntriesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_disabled_express_connect_router_route_entries_with_options_async(request, runtime)
 
@@ -672,6 +802,11 @@ class Client(OpenApiClient):
         request: express_connect_router_20230901_models.DescribeExpressConnectRouterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.DescribeExpressConnectRouterResponse:
+        """
+        @param request: DescribeExpressConnectRouterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeExpressConnectRouterResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.client_token):
@@ -714,6 +849,11 @@ class Client(OpenApiClient):
         request: express_connect_router_20230901_models.DescribeExpressConnectRouterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.DescribeExpressConnectRouterResponse:
+        """
+        @param request: DescribeExpressConnectRouterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeExpressConnectRouterResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.client_token):
@@ -755,6 +895,10 @@ class Client(OpenApiClient):
         self,
         request: express_connect_router_20230901_models.DescribeExpressConnectRouterRequest,
     ) -> express_connect_router_20230901_models.DescribeExpressConnectRouterResponse:
+        """
+        @param request: DescribeExpressConnectRouterRequest
+        @return: DescribeExpressConnectRouterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_express_connect_router_with_options(request, runtime)
 
@@ -762,6 +906,10 @@ class Client(OpenApiClient):
         self,
         request: express_connect_router_20230901_models.DescribeExpressConnectRouterRequest,
     ) -> express_connect_router_20230901_models.DescribeExpressConnectRouterResponse:
+        """
+        @param request: DescribeExpressConnectRouterRequest
+        @return: DescribeExpressConnectRouterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_express_connect_router_with_options_async(request, runtime)
 
@@ -770,6 +918,11 @@ class Client(OpenApiClient):
         request: express_connect_router_20230901_models.DescribeExpressConnectRouterAllowedPrefixHistoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.DescribeExpressConnectRouterAllowedPrefixHistoryResponse:
+        """
+        @param request: DescribeExpressConnectRouterAllowedPrefixHistoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeExpressConnectRouterAllowedPrefixHistoryResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.association_id):
@@ -808,6 +961,11 @@ class Client(OpenApiClient):
         request: express_connect_router_20230901_models.DescribeExpressConnectRouterAllowedPrefixHistoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.DescribeExpressConnectRouterAllowedPrefixHistoryResponse:
+        """
+        @param request: DescribeExpressConnectRouterAllowedPrefixHistoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeExpressConnectRouterAllowedPrefixHistoryResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.association_id):
@@ -845,6 +1003,10 @@ class Client(OpenApiClient):
         self,
         request: express_connect_router_20230901_models.DescribeExpressConnectRouterAllowedPrefixHistoryRequest,
     ) -> express_connect_router_20230901_models.DescribeExpressConnectRouterAllowedPrefixHistoryResponse:
+        """
+        @param request: DescribeExpressConnectRouterAllowedPrefixHistoryRequest
+        @return: DescribeExpressConnectRouterAllowedPrefixHistoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_express_connect_router_allowed_prefix_history_with_options(request, runtime)
 
@@ -852,6 +1014,10 @@ class Client(OpenApiClient):
         self,
         request: express_connect_router_20230901_models.DescribeExpressConnectRouterAllowedPrefixHistoryRequest,
     ) -> express_connect_router_20230901_models.DescribeExpressConnectRouterAllowedPrefixHistoryResponse:
+        """
+        @param request: DescribeExpressConnectRouterAllowedPrefixHistoryRequest
+        @return: DescribeExpressConnectRouterAllowedPrefixHistoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_express_connect_router_allowed_prefix_history_with_options_async(request, runtime)
 
@@ -860,6 +1026,11 @@ class Client(OpenApiClient):
         request: express_connect_router_20230901_models.DescribeExpressConnectRouterAssociationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.DescribeExpressConnectRouterAssociationResponse:
+        """
+        @param request: DescribeExpressConnectRouterAssociationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeExpressConnectRouterAssociationResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.association_id):
@@ -908,6 +1079,11 @@ class Client(OpenApiClient):
         request: express_connect_router_20230901_models.DescribeExpressConnectRouterAssociationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.DescribeExpressConnectRouterAssociationResponse:
+        """
+        @param request: DescribeExpressConnectRouterAssociationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeExpressConnectRouterAssociationResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.association_id):
@@ -955,6 +1131,10 @@ class Client(OpenApiClient):
         self,
         request: express_connect_router_20230901_models.DescribeExpressConnectRouterAssociationRequest,
     ) -> express_connect_router_20230901_models.DescribeExpressConnectRouterAssociationResponse:
+        """
+        @param request: DescribeExpressConnectRouterAssociationRequest
+        @return: DescribeExpressConnectRouterAssociationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_express_connect_router_association_with_options(request, runtime)
 
@@ -962,6 +1142,10 @@ class Client(OpenApiClient):
         self,
         request: express_connect_router_20230901_models.DescribeExpressConnectRouterAssociationRequest,
     ) -> express_connect_router_20230901_models.DescribeExpressConnectRouterAssociationResponse:
+        """
+        @param request: DescribeExpressConnectRouterAssociationRequest
+        @return: DescribeExpressConnectRouterAssociationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_express_connect_router_association_with_options_async(request, runtime)
 
@@ -970,6 +1154,11 @@ class Client(OpenApiClient):
         request: express_connect_router_20230901_models.DescribeExpressConnectRouterChildInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.DescribeExpressConnectRouterChildInstanceResponse:
+        """
+        @param request: DescribeExpressConnectRouterChildInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeExpressConnectRouterChildInstanceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.association_id):
@@ -1014,6 +1203,11 @@ class Client(OpenApiClient):
         request: express_connect_router_20230901_models.DescribeExpressConnectRouterChildInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.DescribeExpressConnectRouterChildInstanceResponse:
+        """
+        @param request: DescribeExpressConnectRouterChildInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeExpressConnectRouterChildInstanceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.association_id):
@@ -1057,6 +1251,10 @@ class Client(OpenApiClient):
         self,
         request: express_connect_router_20230901_models.DescribeExpressConnectRouterChildInstanceRequest,
     ) -> express_connect_router_20230901_models.DescribeExpressConnectRouterChildInstanceResponse:
+        """
+        @param request: DescribeExpressConnectRouterChildInstanceRequest
+        @return: DescribeExpressConnectRouterChildInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_express_connect_router_child_instance_with_options(request, runtime)
 
@@ -1064,6 +1262,10 @@ class Client(OpenApiClient):
         self,
         request: express_connect_router_20230901_models.DescribeExpressConnectRouterChildInstanceRequest,
     ) -> express_connect_router_20230901_models.DescribeExpressConnectRouterChildInstanceResponse:
+        """
+        @param request: DescribeExpressConnectRouterChildInstanceRequest
+        @return: DescribeExpressConnectRouterChildInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_express_connect_router_child_instance_with_options_async(request, runtime)
 
@@ -1072,6 +1274,11 @@ class Client(OpenApiClient):
         request: express_connect_router_20230901_models.DescribeExpressConnectRouterInterRegionTransitModeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.DescribeExpressConnectRouterInterRegionTransitModeResponse:
+        """
+        @param request: DescribeExpressConnectRouterInterRegionTransitModeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeExpressConnectRouterInterRegionTransitModeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.client_token):
@@ -1104,6 +1311,11 @@ class Client(OpenApiClient):
         request: express_connect_router_20230901_models.DescribeExpressConnectRouterInterRegionTransitModeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.DescribeExpressConnectRouterInterRegionTransitModeResponse:
+        """
+        @param request: DescribeExpressConnectRouterInterRegionTransitModeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeExpressConnectRouterInterRegionTransitModeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.client_token):
@@ -1135,6 +1347,10 @@ class Client(OpenApiClient):
         self,
         request: express_connect_router_20230901_models.DescribeExpressConnectRouterInterRegionTransitModeRequest,
     ) -> express_connect_router_20230901_models.DescribeExpressConnectRouterInterRegionTransitModeResponse:
+        """
+        @param request: DescribeExpressConnectRouterInterRegionTransitModeRequest
+        @return: DescribeExpressConnectRouterInterRegionTransitModeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_express_connect_router_inter_region_transit_mode_with_options(request, runtime)
 
@@ -1142,6 +1358,10 @@ class Client(OpenApiClient):
         self,
         request: express_connect_router_20230901_models.DescribeExpressConnectRouterInterRegionTransitModeRequest,
     ) -> express_connect_router_20230901_models.DescribeExpressConnectRouterInterRegionTransitModeResponse:
+        """
+        @param request: DescribeExpressConnectRouterInterRegionTransitModeRequest
+        @return: DescribeExpressConnectRouterInterRegionTransitModeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_express_connect_router_inter_region_transit_mode_with_options_async(request, runtime)
 
@@ -1150,6 +1370,11 @@ class Client(OpenApiClient):
         request: express_connect_router_20230901_models.DescribeExpressConnectRouterRegionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.DescribeExpressConnectRouterRegionResponse:
+        """
+        @param request: DescribeExpressConnectRouterRegionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeExpressConnectRouterRegionResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.client_token):
@@ -1182,6 +1407,11 @@ class Client(OpenApiClient):
         request: express_connect_router_20230901_models.DescribeExpressConnectRouterRegionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.DescribeExpressConnectRouterRegionResponse:
+        """
+        @param request: DescribeExpressConnectRouterRegionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeExpressConnectRouterRegionResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.client_token):
@@ -1213,6 +1443,10 @@ class Client(OpenApiClient):
         self,
         request: express_connect_router_20230901_models.DescribeExpressConnectRouterRegionRequest,
     ) -> express_connect_router_20230901_models.DescribeExpressConnectRouterRegionResponse:
+        """
+        @param request: DescribeExpressConnectRouterRegionRequest
+        @return: DescribeExpressConnectRouterRegionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_express_connect_router_region_with_options(request, runtime)
 
@@ -1220,6 +1454,10 @@ class Client(OpenApiClient):
         self,
         request: express_connect_router_20230901_models.DescribeExpressConnectRouterRegionRequest,
     ) -> express_connect_router_20230901_models.DescribeExpressConnectRouterRegionResponse:
+        """
+        @param request: DescribeExpressConnectRouterRegionRequest
+        @return: DescribeExpressConnectRouterRegionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_express_connect_router_region_with_options_async(request, runtime)
 
@@ -1228,6 +1466,11 @@ class Client(OpenApiClient):
         request: express_connect_router_20230901_models.DescribeExpressConnectRouterRouteEntriesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.DescribeExpressConnectRouterRouteEntriesResponse:
+        """
+        @param request: DescribeExpressConnectRouterRouteEntriesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeExpressConnectRouterRouteEntriesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.as_path):
@@ -1274,6 +1517,11 @@ class Client(OpenApiClient):
         request: express_connect_router_20230901_models.DescribeExpressConnectRouterRouteEntriesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.DescribeExpressConnectRouterRouteEntriesResponse:
+        """
+        @param request: DescribeExpressConnectRouterRouteEntriesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeExpressConnectRouterRouteEntriesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.as_path):
@@ -1319,6 +1567,10 @@ class Client(OpenApiClient):
         self,
         request: express_connect_router_20230901_models.DescribeExpressConnectRouterRouteEntriesRequest,
     ) -> express_connect_router_20230901_models.DescribeExpressConnectRouterRouteEntriesResponse:
+        """
+        @param request: DescribeExpressConnectRouterRouteEntriesRequest
+        @return: DescribeExpressConnectRouterRouteEntriesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_express_connect_router_route_entries_with_options(request, runtime)
 
@@ -1326,6 +1578,10 @@ class Client(OpenApiClient):
         self,
         request: express_connect_router_20230901_models.DescribeExpressConnectRouterRouteEntriesRequest,
     ) -> express_connect_router_20230901_models.DescribeExpressConnectRouterRouteEntriesResponse:
+        """
+        @param request: DescribeExpressConnectRouterRouteEntriesRequest
+        @return: DescribeExpressConnectRouterRouteEntriesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_express_connect_router_route_entries_with_options_async(request, runtime)
 
@@ -1334,6 +1590,11 @@ class Client(OpenApiClient):
         request: express_connect_router_20230901_models.DescribeInstanceGrantedToExpressConnectRouterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.DescribeInstanceGrantedToExpressConnectRouterResponse:
+        """
+        @param request: DescribeInstanceGrantedToExpressConnectRouterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceGrantedToExpressConnectRouterResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.client_token):
@@ -1382,6 +1643,11 @@ class Client(OpenApiClient):
         request: express_connect_router_20230901_models.DescribeInstanceGrantedToExpressConnectRouterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.DescribeInstanceGrantedToExpressConnectRouterResponse:
+        """
+        @param request: DescribeInstanceGrantedToExpressConnectRouterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceGrantedToExpressConnectRouterResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.client_token):
@@ -1429,6 +1695,10 @@ class Client(OpenApiClient):
         self,
         request: express_connect_router_20230901_models.DescribeInstanceGrantedToExpressConnectRouterRequest,
     ) -> express_connect_router_20230901_models.DescribeInstanceGrantedToExpressConnectRouterResponse:
+        """
+        @param request: DescribeInstanceGrantedToExpressConnectRouterRequest
+        @return: DescribeInstanceGrantedToExpressConnectRouterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_instance_granted_to_express_connect_router_with_options(request, runtime)
 
@@ -1436,6 +1706,10 @@ class Client(OpenApiClient):
         self,
         request: express_connect_router_20230901_models.DescribeInstanceGrantedToExpressConnectRouterRequest,
     ) -> express_connect_router_20230901_models.DescribeInstanceGrantedToExpressConnectRouterResponse:
+        """
+        @param request: DescribeInstanceGrantedToExpressConnectRouterRequest
+        @return: DescribeInstanceGrantedToExpressConnectRouterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_instance_granted_to_express_connect_router_with_options_async(request, runtime)
 
@@ -1444,6 +1718,11 @@ class Client(OpenApiClient):
         request: express_connect_router_20230901_models.DetachExpressConnectRouterChildInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.DetachExpressConnectRouterChildInstanceResponse:
+        """
+        @param request: DetachExpressConnectRouterChildInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetachExpressConnectRouterChildInstanceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.child_instance_id):
@@ -1480,6 +1759,11 @@ class Client(OpenApiClient):
         request: express_connect_router_20230901_models.DetachExpressConnectRouterChildInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.DetachExpressConnectRouterChildInstanceResponse:
+        """
+        @param request: DetachExpressConnectRouterChildInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetachExpressConnectRouterChildInstanceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.child_instance_id):
@@ -1515,6 +1799,10 @@ class Client(OpenApiClient):
         self,
         request: express_connect_router_20230901_models.DetachExpressConnectRouterChildInstanceRequest,
     ) -> express_connect_router_20230901_models.DetachExpressConnectRouterChildInstanceResponse:
+        """
+        @param request: DetachExpressConnectRouterChildInstanceRequest
+        @return: DetachExpressConnectRouterChildInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.detach_express_connect_router_child_instance_with_options(request, runtime)
 
@@ -1522,6 +1810,10 @@ class Client(OpenApiClient):
         self,
         request: express_connect_router_20230901_models.DetachExpressConnectRouterChildInstanceRequest,
     ) -> express_connect_router_20230901_models.DetachExpressConnectRouterChildInstanceResponse:
+        """
+        @param request: DetachExpressConnectRouterChildInstanceRequest
+        @return: DetachExpressConnectRouterChildInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.detach_express_connect_router_child_instance_with_options_async(request, runtime)
 
@@ -1530,6 +1822,11 @@ class Client(OpenApiClient):
         request: express_connect_router_20230901_models.DisableExpressConnectRouterRouteEntriesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.DisableExpressConnectRouterRouteEntriesResponse:
+        """
+        @param request: DisableExpressConnectRouterRouteEntriesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisableExpressConnectRouterRouteEntriesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.client_token):
@@ -1566,6 +1863,11 @@ class Client(OpenApiClient):
         request: express_connect_router_20230901_models.DisableExpressConnectRouterRouteEntriesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.DisableExpressConnectRouterRouteEntriesResponse:
+        """
+        @param request: DisableExpressConnectRouterRouteEntriesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisableExpressConnectRouterRouteEntriesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.client_token):
@@ -1601,6 +1903,10 @@ class Client(OpenApiClient):
         self,
         request: express_connect_router_20230901_models.DisableExpressConnectRouterRouteEntriesRequest,
     ) -> express_connect_router_20230901_models.DisableExpressConnectRouterRouteEntriesResponse:
+        """
+        @param request: DisableExpressConnectRouterRouteEntriesRequest
+        @return: DisableExpressConnectRouterRouteEntriesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.disable_express_connect_router_route_entries_with_options(request, runtime)
 
@@ -1608,6 +1914,10 @@ class Client(OpenApiClient):
         self,
         request: express_connect_router_20230901_models.DisableExpressConnectRouterRouteEntriesRequest,
     ) -> express_connect_router_20230901_models.DisableExpressConnectRouterRouteEntriesResponse:
+        """
+        @param request: DisableExpressConnectRouterRouteEntriesRequest
+        @return: DisableExpressConnectRouterRouteEntriesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.disable_express_connect_router_route_entries_with_options_async(request, runtime)
 
@@ -1616,6 +1926,11 @@ class Client(OpenApiClient):
         request: express_connect_router_20230901_models.EnableExpressConnectRouterRouteEntriesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.EnableExpressConnectRouterRouteEntriesResponse:
+        """
+        @param request: EnableExpressConnectRouterRouteEntriesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableExpressConnectRouterRouteEntriesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.client_token):
@@ -1652,6 +1967,11 @@ class Client(OpenApiClient):
         request: express_connect_router_20230901_models.EnableExpressConnectRouterRouteEntriesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.EnableExpressConnectRouterRouteEntriesResponse:
+        """
+        @param request: EnableExpressConnectRouterRouteEntriesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableExpressConnectRouterRouteEntriesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.client_token):
@@ -1687,6 +2007,10 @@ class Client(OpenApiClient):
         self,
         request: express_connect_router_20230901_models.EnableExpressConnectRouterRouteEntriesRequest,
     ) -> express_connect_router_20230901_models.EnableExpressConnectRouterRouteEntriesResponse:
+        """
+        @param request: EnableExpressConnectRouterRouteEntriesRequest
+        @return: EnableExpressConnectRouterRouteEntriesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.enable_express_connect_router_route_entries_with_options(request, runtime)
 
@@ -1694,6 +2018,10 @@ class Client(OpenApiClient):
         self,
         request: express_connect_router_20230901_models.EnableExpressConnectRouterRouteEntriesRequest,
     ) -> express_connect_router_20230901_models.EnableExpressConnectRouterRouteEntriesResponse:
+        """
+        @param request: EnableExpressConnectRouterRouteEntriesRequest
+        @return: EnableExpressConnectRouterRouteEntriesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.enable_express_connect_router_route_entries_with_options_async(request, runtime)
 
@@ -1702,6 +2030,11 @@ class Client(OpenApiClient):
         request: express_connect_router_20230901_models.ForceDeleteExpressConnectRouterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.ForceDeleteExpressConnectRouterResponse:
+        """
+        @param request: ForceDeleteExpressConnectRouterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ForceDeleteExpressConnectRouterResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.client_token):
@@ -1734,6 +2067,11 @@ class Client(OpenApiClient):
         request: express_connect_router_20230901_models.ForceDeleteExpressConnectRouterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.ForceDeleteExpressConnectRouterResponse:
+        """
+        @param request: ForceDeleteExpressConnectRouterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ForceDeleteExpressConnectRouterResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.client_token):
@@ -1765,6 +2103,10 @@ class Client(OpenApiClient):
         self,
         request: express_connect_router_20230901_models.ForceDeleteExpressConnectRouterRequest,
     ) -> express_connect_router_20230901_models.ForceDeleteExpressConnectRouterResponse:
+        """
+        @param request: ForceDeleteExpressConnectRouterRequest
+        @return: ForceDeleteExpressConnectRouterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.force_delete_express_connect_router_with_options(request, runtime)
 
@@ -1772,6 +2114,10 @@ class Client(OpenApiClient):
         self,
         request: express_connect_router_20230901_models.ForceDeleteExpressConnectRouterRequest,
     ) -> express_connect_router_20230901_models.ForceDeleteExpressConnectRouterResponse:
+        """
+        @param request: ForceDeleteExpressConnectRouterRequest
+        @return: ForceDeleteExpressConnectRouterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.force_delete_express_connect_router_with_options_async(request, runtime)
 
@@ -1780,6 +2126,11 @@ class Client(OpenApiClient):
         request: express_connect_router_20230901_models.GrantInstanceToExpressConnectRouterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.GrantInstanceToExpressConnectRouterResponse:
+        """
+        @param request: GrantInstanceToExpressConnectRouterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GrantInstanceToExpressConnectRouterResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.client_token):
@@ -1820,6 +2171,11 @@ class Client(OpenApiClient):
         request: express_connect_router_20230901_models.GrantInstanceToExpressConnectRouterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.GrantInstanceToExpressConnectRouterResponse:
+        """
+        @param request: GrantInstanceToExpressConnectRouterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GrantInstanceToExpressConnectRouterResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.client_token):
@@ -1859,6 +2215,10 @@ class Client(OpenApiClient):
         self,
         request: express_connect_router_20230901_models.GrantInstanceToExpressConnectRouterRequest,
     ) -> express_connect_router_20230901_models.GrantInstanceToExpressConnectRouterResponse:
+        """
+        @param request: GrantInstanceToExpressConnectRouterRequest
+        @return: GrantInstanceToExpressConnectRouterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.grant_instance_to_express_connect_router_with_options(request, runtime)
 
@@ -1866,6 +2226,10 @@ class Client(OpenApiClient):
         self,
         request: express_connect_router_20230901_models.GrantInstanceToExpressConnectRouterRequest,
     ) -> express_connect_router_20230901_models.GrantInstanceToExpressConnectRouterResponse:
+        """
+        @param request: GrantInstanceToExpressConnectRouterRequest
+        @return: GrantInstanceToExpressConnectRouterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.grant_instance_to_express_connect_router_with_options_async(request, runtime)
 
@@ -1874,6 +2238,11 @@ class Client(OpenApiClient):
         request: express_connect_router_20230901_models.ListExpressConnectRouterSupportedRegionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.ListExpressConnectRouterSupportedRegionResponse:
+        """
+        @param request: ListExpressConnectRouterSupportedRegionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListExpressConnectRouterSupportedRegionResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.client_token):
@@ -1904,6 +2273,11 @@ class Client(OpenApiClient):
         request: express_connect_router_20230901_models.ListExpressConnectRouterSupportedRegionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.ListExpressConnectRouterSupportedRegionResponse:
+        """
+        @param request: ListExpressConnectRouterSupportedRegionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListExpressConnectRouterSupportedRegionResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.client_token):
@@ -1933,6 +2307,10 @@ class Client(OpenApiClient):
         self,
         request: express_connect_router_20230901_models.ListExpressConnectRouterSupportedRegionRequest,
     ) -> express_connect_router_20230901_models.ListExpressConnectRouterSupportedRegionResponse:
+        """
+        @param request: ListExpressConnectRouterSupportedRegionRequest
+        @return: ListExpressConnectRouterSupportedRegionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_express_connect_router_supported_region_with_options(request, runtime)
 
@@ -1940,6 +2318,10 @@ class Client(OpenApiClient):
         self,
         request: express_connect_router_20230901_models.ListExpressConnectRouterSupportedRegionRequest,
     ) -> express_connect_router_20230901_models.ListExpressConnectRouterSupportedRegionResponse:
+        """
+        @param request: ListExpressConnectRouterSupportedRegionRequest
+        @return: ListExpressConnectRouterSupportedRegionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_express_connect_router_supported_region_with_options_async(request, runtime)
 
@@ -1948,6 +2330,11 @@ class Client(OpenApiClient):
         request: express_connect_router_20230901_models.ModifyExpressConnectRouterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.ModifyExpressConnectRouterResponse:
+        """
+        @param request: ModifyExpressConnectRouterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyExpressConnectRouterResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.client_token):
@@ -1984,6 +2371,11 @@ class Client(OpenApiClient):
         request: express_connect_router_20230901_models.ModifyExpressConnectRouterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.ModifyExpressConnectRouterResponse:
+        """
+        @param request: ModifyExpressConnectRouterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyExpressConnectRouterResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.client_token):
@@ -2019,6 +2411,10 @@ class Client(OpenApiClient):
         self,
         request: express_connect_router_20230901_models.ModifyExpressConnectRouterRequest,
     ) -> express_connect_router_20230901_models.ModifyExpressConnectRouterResponse:
+        """
+        @param request: ModifyExpressConnectRouterRequest
+        @return: ModifyExpressConnectRouterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_express_connect_router_with_options(request, runtime)
 
@@ -2026,6 +2422,10 @@ class Client(OpenApiClient):
         self,
         request: express_connect_router_20230901_models.ModifyExpressConnectRouterRequest,
     ) -> express_connect_router_20230901_models.ModifyExpressConnectRouterResponse:
+        """
+        @param request: ModifyExpressConnectRouterRequest
+        @return: ModifyExpressConnectRouterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_express_connect_router_with_options_async(request, runtime)
 
@@ -2034,6 +2434,11 @@ class Client(OpenApiClient):
         request: express_connect_router_20230901_models.ModifyExpressConnectRouterAssociationAllowedPrefixRequest,
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.ModifyExpressConnectRouterAssociationAllowedPrefixResponse:
+        """
+        @param request: ModifyExpressConnectRouterAssociationAllowedPrefixRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyExpressConnectRouterAssociationAllowedPrefixResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.allowed_prefixes):
@@ -2072,6 +2477,11 @@ class Client(OpenApiClient):
         request: express_connect_router_20230901_models.ModifyExpressConnectRouterAssociationAllowedPrefixRequest,
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.ModifyExpressConnectRouterAssociationAllowedPrefixResponse:
+        """
+        @param request: ModifyExpressConnectRouterAssociationAllowedPrefixRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyExpressConnectRouterAssociationAllowedPrefixResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.allowed_prefixes):
@@ -2109,6 +2519,10 @@ class Client(OpenApiClient):
         self,
         request: express_connect_router_20230901_models.ModifyExpressConnectRouterAssociationAllowedPrefixRequest,
     ) -> express_connect_router_20230901_models.ModifyExpressConnectRouterAssociationAllowedPrefixResponse:
+        """
+        @param request: ModifyExpressConnectRouterAssociationAllowedPrefixRequest
+        @return: ModifyExpressConnectRouterAssociationAllowedPrefixResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_express_connect_router_association_allowed_prefix_with_options(request, runtime)
 
@@ -2116,6 +2530,10 @@ class Client(OpenApiClient):
         self,
         request: express_connect_router_20230901_models.ModifyExpressConnectRouterAssociationAllowedPrefixRequest,
     ) -> express_connect_router_20230901_models.ModifyExpressConnectRouterAssociationAllowedPrefixResponse:
+        """
+        @param request: ModifyExpressConnectRouterAssociationAllowedPrefixRequest
+        @return: ModifyExpressConnectRouterAssociationAllowedPrefixResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_express_connect_router_association_allowed_prefix_with_options_async(request, runtime)
 
@@ -2124,6 +2542,11 @@ class Client(OpenApiClient):
         request: express_connect_router_20230901_models.ModifyExpressConnectRouterInterRegionTransitModeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.ModifyExpressConnectRouterInterRegionTransitModeResponse:
+        """
+        @param request: ModifyExpressConnectRouterInterRegionTransitModeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyExpressConnectRouterInterRegionTransitModeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.client_token):
@@ -2158,6 +2581,11 @@ class Client(OpenApiClient):
         request: express_connect_router_20230901_models.ModifyExpressConnectRouterInterRegionTransitModeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.ModifyExpressConnectRouterInterRegionTransitModeResponse:
+        """
+        @param request: ModifyExpressConnectRouterInterRegionTransitModeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyExpressConnectRouterInterRegionTransitModeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.client_token):
@@ -2191,6 +2619,10 @@ class Client(OpenApiClient):
         self,
         request: express_connect_router_20230901_models.ModifyExpressConnectRouterInterRegionTransitModeRequest,
     ) -> express_connect_router_20230901_models.ModifyExpressConnectRouterInterRegionTransitModeResponse:
+        """
+        @param request: ModifyExpressConnectRouterInterRegionTransitModeRequest
+        @return: ModifyExpressConnectRouterInterRegionTransitModeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_express_connect_router_inter_region_transit_mode_with_options(request, runtime)
 
@@ -2198,6 +2630,10 @@ class Client(OpenApiClient):
         self,
         request: express_connect_router_20230901_models.ModifyExpressConnectRouterInterRegionTransitModeRequest,
     ) -> express_connect_router_20230901_models.ModifyExpressConnectRouterInterRegionTransitModeResponse:
+        """
+        @param request: ModifyExpressConnectRouterInterRegionTransitModeRequest
+        @return: ModifyExpressConnectRouterInterRegionTransitModeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_express_connect_router_inter_region_transit_mode_with_options_async(request, runtime)
 
@@ -2206,6 +2642,11 @@ class Client(OpenApiClient):
         request: express_connect_router_20230901_models.RevokeInstanceFromExpressConnectRouterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.RevokeInstanceFromExpressConnectRouterResponse:
+        """
+        @param request: RevokeInstanceFromExpressConnectRouterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RevokeInstanceFromExpressConnectRouterResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.client_token):
@@ -2246,6 +2687,11 @@ class Client(OpenApiClient):
         request: express_connect_router_20230901_models.RevokeInstanceFromExpressConnectRouterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.RevokeInstanceFromExpressConnectRouterResponse:
+        """
+        @param request: RevokeInstanceFromExpressConnectRouterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RevokeInstanceFromExpressConnectRouterResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.client_token):
@@ -2285,6 +2731,10 @@ class Client(OpenApiClient):
         self,
         request: express_connect_router_20230901_models.RevokeInstanceFromExpressConnectRouterRequest,
     ) -> express_connect_router_20230901_models.RevokeInstanceFromExpressConnectRouterResponse:
+        """
+        @param request: RevokeInstanceFromExpressConnectRouterRequest
+        @return: RevokeInstanceFromExpressConnectRouterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.revoke_instance_from_express_connect_router_with_options(request, runtime)
 
@@ -2292,6 +2742,10 @@ class Client(OpenApiClient):
         self,
         request: express_connect_router_20230901_models.RevokeInstanceFromExpressConnectRouterRequest,
     ) -> express_connect_router_20230901_models.RevokeInstanceFromExpressConnectRouterResponse:
+        """
+        @param request: RevokeInstanceFromExpressConnectRouterRequest
+        @return: RevokeInstanceFromExpressConnectRouterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.revoke_instance_from_express_connect_router_with_options_async(request, runtime)
 
@@ -2300,6 +2754,11 @@ class Client(OpenApiClient):
         request: express_connect_router_20230901_models.SynchronizeExpressConnectRouterInterRegionBandwidthRequest,
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.SynchronizeExpressConnectRouterInterRegionBandwidthResponse:
+        """
+        @param request: SynchronizeExpressConnectRouterInterRegionBandwidthRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SynchronizeExpressConnectRouterInterRegionBandwidthResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.client_token):
@@ -2332,6 +2791,11 @@ class Client(OpenApiClient):
         request: express_connect_router_20230901_models.SynchronizeExpressConnectRouterInterRegionBandwidthRequest,
         runtime: util_models.RuntimeOptions,
     ) -> express_connect_router_20230901_models.SynchronizeExpressConnectRouterInterRegionBandwidthResponse:
+        """
+        @param request: SynchronizeExpressConnectRouterInterRegionBandwidthRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SynchronizeExpressConnectRouterInterRegionBandwidthResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.client_token):
@@ -2363,6 +2827,10 @@ class Client(OpenApiClient):
         self,
         request: express_connect_router_20230901_models.SynchronizeExpressConnectRouterInterRegionBandwidthRequest,
     ) -> express_connect_router_20230901_models.SynchronizeExpressConnectRouterInterRegionBandwidthResponse:
+        """
+        @param request: SynchronizeExpressConnectRouterInterRegionBandwidthRequest
+        @return: SynchronizeExpressConnectRouterInterRegionBandwidthResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.synchronize_express_connect_router_inter_region_bandwidth_with_options(request, runtime)
 
@@ -2370,5 +2838,9 @@ class Client(OpenApiClient):
         self,
         request: express_connect_router_20230901_models.SynchronizeExpressConnectRouterInterRegionBandwidthRequest,
     ) -> express_connect_router_20230901_models.SynchronizeExpressConnectRouterInterRegionBandwidthResponse:
+        """
+        @param request: SynchronizeExpressConnectRouterInterRegionBandwidthRequest
+        @return: SynchronizeExpressConnectRouterInterRegionBandwidthResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.synchronize_express_connect_router_inter_region_bandwidth_with_options_async(request, runtime)

@@ -15,12 +15,16 @@ class AttachExpressConnectRouterChildInstanceRequest(TeaModel):
         dry_run: bool = None,
         ecr_id: str = None,
     ):
+        # This parameter is required.
         self.child_instance_id = child_instance_id
         self.child_instance_owner_id = child_instance_owner_id
+        # This parameter is required.
         self.child_instance_region_id = child_instance_region_id
+        # This parameter is required.
         self.child_instance_type = child_instance_type
         self.client_token = client_token
         self.dry_run = dry_run
+        # This parameter is required.
         self.ecr_id = ecr_id
 
     def validate(self):
@@ -187,7 +191,9 @@ class CheckAddRegionToExpressConnectRouterRequest(TeaModel):
     ):
         self.client_token = client_token
         self.dry_run = dry_run
+        # This parameter is required.
         self.ecr_id = ecr_id
+        # This parameter is required.
         self.fresh_region_id = fresh_region_id
 
     def validate(self):
@@ -362,6 +368,39 @@ class CheckAddRegionToExpressConnectRouterResponse(TeaModel):
         return self
 
 
+class CreateExpressConnectRouterRequestTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class CreateExpressConnectRouterRequest(TeaModel):
     def __init__(
         self,
@@ -371,16 +410,22 @@ class CreateExpressConnectRouterRequest(TeaModel):
         dry_run: bool = None,
         name: str = None,
         resource_group_id: str = None,
+        tags: List[CreateExpressConnectRouterRequestTags] = None,
     ):
+        # This parameter is required.
         self.alibaba_side_asn = alibaba_side_asn
         self.client_token = client_token
         self.description = description
         self.dry_run = dry_run
         self.name = name
         self.resource_group_id = resource_group_id
+        self.tags = tags
 
     def validate(self):
-        pass
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -400,6 +445,10 @@ class CreateExpressConnectRouterRequest(TeaModel):
             result['Name'] = self.name
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -416,6 +465,11 @@ class CreateExpressConnectRouterRequest(TeaModel):
             self.name = m.get('Name')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = CreateExpressConnectRouterRequestTags()
+                self.tags.append(temp_model.from_map(k))
         return self
 
 
@@ -551,11 +605,13 @@ class CreateExpressConnectRouterAssociationRequest(TeaModel):
         vpc_owner_id: int = None,
     ):
         self.allowed_prefixes = allowed_prefixes
+        # This parameter is required.
         self.association_region_id = association_region_id
         self.cen_id = cen_id
         self.client_token = client_token
         self.create_attachment = create_attachment
         self.dry_run = dry_run
+        # This parameter is required.
         self.ecr_id = ecr_id
         self.transit_router_id = transit_router_id
         self.transit_router_owner_id = transit_router_owner_id
@@ -747,6 +803,7 @@ class DeleteExpressConnectRouterRequest(TeaModel):
     ):
         self.client_token = client_token
         self.dry_run = dry_run
+        # This parameter is required.
         self.ecr_id = ecr_id
 
     def validate(self):
@@ -896,10 +953,12 @@ class DeleteExpressConnectRouterAssociationRequest(TeaModel):
         dry_run: bool = None,
         ecr_id: str = None,
     ):
+        # This parameter is required.
         self.association_id = association_id
         self.client_token = client_token
         self.delete_attachment = delete_attachment
         self.dry_run = dry_run
+        # This parameter is required.
         self.ecr_id = ecr_id
 
     def validate(self):
@@ -1059,6 +1118,7 @@ class DescribeDisabledExpressConnectRouterRouteEntriesRequest(TeaModel):
     ):
         self.client_token = client_token
         self.dry_run = dry_run
+        # This parameter is required.
         self.ecr_id = ecr_id
         self.max_results = max_results
         self.next_token = next_token
@@ -1727,6 +1787,7 @@ class DescribeExpressConnectRouterAllowedPrefixHistoryRequest(TeaModel):
         self.association_id = association_id
         self.client_token = client_token
         self.dry_run = dry_run
+        # This parameter is required.
         self.ecr_id = ecr_id
         self.instance_id = instance_id
         self.instance_type = instance_type
@@ -1949,6 +2010,7 @@ class DescribeExpressConnectRouterAssociationRequest(TeaModel):
         self.cen_id = cen_id
         self.client_token = client_token
         self.dry_run = dry_run
+        # This parameter is required.
         self.ecr_id = ecr_id
         self.max_results = max_results
         self.next_token = next_token
@@ -2281,6 +2343,7 @@ class DescribeExpressConnectRouterChildInstanceRequest(TeaModel):
         self.child_instance_type = child_instance_type
         self.client_token = client_token
         self.dry_run = dry_run
+        # This parameter is required.
         self.ecr_id = ecr_id
         self.max_results = max_results
         self.next_token = next_token
@@ -2575,6 +2638,7 @@ class DescribeExpressConnectRouterInterRegionTransitModeRequest(TeaModel):
     ):
         self.client_token = client_token
         self.dry_run = dry_run
+        # This parameter is required.
         self.ecr_id = ecr_id
 
     def validate(self):
@@ -2771,6 +2835,7 @@ class DescribeExpressConnectRouterRegionRequest(TeaModel):
     ):
         self.client_token = client_token
         self.dry_run = dry_run
+        # This parameter is required.
         self.ecr_id = ecr_id
 
     def validate(self):
@@ -2936,6 +3001,7 @@ class DescribeExpressConnectRouterRouteEntriesRequest(TeaModel):
         self.community = community
         self.destination_cidr_block = destination_cidr_block
         self.dry_run = dry_run
+        # This parameter is required.
         self.ecr_id = ecr_id
         self.max_results = max_results
         self.next_token = next_token
@@ -3247,6 +3313,7 @@ class DescribeInstanceGrantedToExpressConnectRouterRequest(TeaModel):
     ):
         self.client_token = client_token
         self.dry_run = dry_run
+        # This parameter is required.
         self.ecr_id = ecr_id
         self.instance_id = instance_id
         self.instance_owner_id = instance_owner_id
@@ -3557,10 +3624,13 @@ class DetachExpressConnectRouterChildInstanceRequest(TeaModel):
         dry_run: bool = None,
         ecr_id: str = None,
     ):
+        # This parameter is required.
         self.child_instance_id = child_instance_id
+        # This parameter is required.
         self.child_instance_type = child_instance_type
         self.client_token = client_token
         self.dry_run = dry_run
+        # This parameter is required.
         self.ecr_id = ecr_id
 
     def validate(self):
@@ -3719,9 +3789,12 @@ class DisableExpressConnectRouterRouteEntriesRequest(TeaModel):
         nexthop_instance_id: str = None,
     ):
         self.client_token = client_token
+        # This parameter is required.
         self.destination_cidr_block = destination_cidr_block
         self.dry_run = dry_run
+        # This parameter is required.
         self.ecr_id = ecr_id
+        # This parameter is required.
         self.nexthop_instance_id = nexthop_instance_id
 
     def validate(self):
@@ -3880,9 +3953,12 @@ class EnableExpressConnectRouterRouteEntriesRequest(TeaModel):
         nexthop_instance_id: str = None,
     ):
         self.client_token = client_token
+        # This parameter is required.
         self.destination_cidr_block = destination_cidr_block
         self.dry_run = dry_run
+        # This parameter is required.
         self.ecr_id = ecr_id
+        # This parameter is required.
         self.nexthop_instance_id = nexthop_instance_id
 
     def validate(self):
@@ -4040,6 +4116,7 @@ class ForceDeleteExpressConnectRouterRequest(TeaModel):
     ):
         self.client_token = client_token
         self.dry_run = dry_run
+        # This parameter is required.
         self.ecr_id = ecr_id
 
     def validate(self):
@@ -4193,10 +4270,15 @@ class GrantInstanceToExpressConnectRouterRequest(TeaModel):
     ):
         self.client_token = client_token
         self.dry_run = dry_run
+        # This parameter is required.
         self.ecr_id = ecr_id
+        # This parameter is required.
         self.ecr_owner_ali_uid = ecr_owner_ali_uid
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.instance_region_id = instance_region_id
+        # This parameter is required.
         self.instance_type = instance_type
 
     def validate(self):
@@ -4360,6 +4442,7 @@ class ListExpressConnectRouterSupportedRegionRequest(TeaModel):
         node_type: str = None,
     ):
         self.client_token = client_token
+        # This parameter is required.
         self.node_type = node_type
 
     def validate(self):
@@ -4496,6 +4579,7 @@ class ModifyExpressConnectRouterRequest(TeaModel):
         self.client_token = client_token
         self.description = description
         self.dry_run = dry_run
+        # This parameter is required.
         self.ecr_id = ecr_id
         self.name = name
 
@@ -4656,9 +4740,11 @@ class ModifyExpressConnectRouterAssociationAllowedPrefixRequest(TeaModel):
         owner_account: str = None,
     ):
         self.allowed_prefixes = allowed_prefixes
+        # This parameter is required.
         self.association_id = association_id
         self.client_token = client_token
         self.dry_run = dry_run
+        # This parameter is required.
         self.ecr_id = ecr_id
         self.owner_account = owner_account
 
@@ -4855,6 +4941,7 @@ class ModifyExpressConnectRouterInterRegionTransitModeRequest(TeaModel):
     ):
         self.client_token = client_token
         self.dry_run = dry_run
+        # This parameter is required.
         self.ecr_id = ecr_id
         self.transit_mode_list = transit_mode_list
 
@@ -5021,10 +5108,15 @@ class RevokeInstanceFromExpressConnectRouterRequest(TeaModel):
     ):
         self.client_token = client_token
         self.dry_run = dry_run
+        # This parameter is required.
         self.ecr_id = ecr_id
+        # This parameter is required.
         self.ecr_owner_ali_uid = ecr_owner_ali_uid
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.instance_region_id = instance_region_id
+        # This parameter is required.
         self.instance_type = instance_type
 
     def validate(self):
@@ -5190,6 +5282,7 @@ class SynchronizeExpressConnectRouterInterRegionBandwidthRequest(TeaModel):
     ):
         self.client_token = client_token
         self.dry_run = dry_run
+        # This parameter is required.
         self.ecr_id = ecr_id
 
     def validate(self):
