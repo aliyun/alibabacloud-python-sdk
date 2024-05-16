@@ -1,3 +1,7 @@
+2024-05-16 Version: 1.6.0
+- Support API DescribePatternTypes.
+
+
 2024-04-23 Version: 1.5.2
 - Update API AttachDBInstances: add param AttachMode.
 - Update API AttachDBInstances: add param Type.
