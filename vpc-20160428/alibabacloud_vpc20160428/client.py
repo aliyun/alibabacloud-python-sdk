@@ -30789,6 +30789,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.dry_run):
             query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.enable_ipv_6):
+            query['EnableIpv6'] = request.enable_ipv_6
         if not UtilClient.is_unset(request.is_default):
             query['IsDefault'] = request.is_default
         if not UtilClient.is_unset(request.owner_account):
@@ -30856,6 +30858,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.dry_run):
             query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.enable_ipv_6):
+            query['EnableIpv6'] = request.enable_ipv_6
         if not UtilClient.is_unset(request.is_default):
             query['IsDefault'] = request.is_default
         if not UtilClient.is_unset(request.owner_account):
@@ -31587,6 +31591,8 @@ class Client(OpenApiClient):
             query['DhcpOptionsSetId'] = request.dhcp_options_set_id
         if not UtilClient.is_unset(request.dry_run):
             query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.enable_ipv_6):
+            query['EnableIpv6'] = request.enable_ipv_6
         if not UtilClient.is_unset(request.is_default):
             query['IsDefault'] = request.is_default
         if not UtilClient.is_unset(request.owner_account):
@@ -31650,6 +31656,8 @@ class Client(OpenApiClient):
             query['DhcpOptionsSetId'] = request.dhcp_options_set_id
         if not UtilClient.is_unset(request.dry_run):
             query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.enable_ipv_6):
+            query['EnableIpv6'] = request.enable_ipv_6
         if not UtilClient.is_unset(request.is_default):
             query['IsDefault'] = request.is_default
         if not UtilClient.is_unset(request.owner_account):
