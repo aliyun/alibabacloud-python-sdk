@@ -49,6 +49,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> emr_serverless_spark_20230808_models.CancelJobRunResponse:
+        """
+        @summary 取消jobRun作业
+        
+        @param request: CancelJobRunRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelJobRunResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region_id):
@@ -81,6 +89,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> emr_serverless_spark_20230808_models.CancelJobRunResponse:
+        """
+        @summary 取消jobRun作业
+        
+        @param request: CancelJobRunRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelJobRunResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region_id):
@@ -111,6 +127,12 @@ class Client(OpenApiClient):
         job_run_id: str,
         request: emr_serverless_spark_20230808_models.CancelJobRunRequest,
     ) -> emr_serverless_spark_20230808_models.CancelJobRunResponse:
+        """
+        @summary 取消jobRun作业
+        
+        @param request: CancelJobRunRequest
+        @return: CancelJobRunResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.cancel_job_run_with_options(workspace_id, job_run_id, request, headers, runtime)
@@ -121,6 +143,12 @@ class Client(OpenApiClient):
         job_run_id: str,
         request: emr_serverless_spark_20230808_models.CancelJobRunRequest,
     ) -> emr_serverless_spark_20230808_models.CancelJobRunResponse:
+        """
+        @summary 取消jobRun作业
+        
+        @param request: CancelJobRunRequest
+        @return: CancelJobRunResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.cancel_job_run_with_options_async(workspace_id, job_run_id, request, headers, runtime)
@@ -133,6 +161,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> emr_serverless_spark_20230808_models.GetJobRunResponse:
+        """
+        @summary 获取任务
+        
+        @param request: GetJobRunRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetJobRunResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region_id):
@@ -165,6 +201,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> emr_serverless_spark_20230808_models.GetJobRunResponse:
+        """
+        @summary 获取任务
+        
+        @param request: GetJobRunRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetJobRunResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region_id):
@@ -195,6 +239,12 @@ class Client(OpenApiClient):
         job_run_id: str,
         request: emr_serverless_spark_20230808_models.GetJobRunRequest,
     ) -> emr_serverless_spark_20230808_models.GetJobRunResponse:
+        """
+        @summary 获取任务
+        
+        @param request: GetJobRunRequest
+        @return: GetJobRunResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_job_run_with_options(workspace_id, job_run_id, request, headers, runtime)
@@ -205,6 +255,12 @@ class Client(OpenApiClient):
         job_run_id: str,
         request: emr_serverless_spark_20230808_models.GetJobRunRequest,
     ) -> emr_serverless_spark_20230808_models.GetJobRunResponse:
+        """
+        @summary 获取任务
+        
+        @param request: GetJobRunRequest
+        @return: GetJobRunResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_job_run_with_options_async(workspace_id, job_run_id, request, headers, runtime)
@@ -216,6 +272,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> emr_serverless_spark_20230808_models.ListJobRunsResponse:
+        """
+        @summary 查询run列表
+        
+        @param tmp_req: ListJobRunsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListJobRunsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = emr_serverless_spark_20230808_models.ListJobRunsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -277,6 +341,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> emr_serverless_spark_20230808_models.ListJobRunsResponse:
+        """
+        @summary 查询run列表
+        
+        @param tmp_req: ListJobRunsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListJobRunsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = emr_serverless_spark_20230808_models.ListJobRunsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -336,6 +408,12 @@ class Client(OpenApiClient):
         workspace_id: str,
         request: emr_serverless_spark_20230808_models.ListJobRunsRequest,
     ) -> emr_serverless_spark_20230808_models.ListJobRunsResponse:
+        """
+        @summary 查询run列表
+        
+        @param request: ListJobRunsRequest
+        @return: ListJobRunsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_job_runs_with_options(workspace_id, request, headers, runtime)
@@ -345,6 +423,12 @@ class Client(OpenApiClient):
         workspace_id: str,
         request: emr_serverless_spark_20230808_models.ListJobRunsRequest,
     ) -> emr_serverless_spark_20230808_models.ListJobRunsResponse:
+        """
+        @summary 查询run列表
+        
+        @param request: ListJobRunsRequest
+        @return: ListJobRunsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_job_runs_with_options_async(workspace_id, request, headers, runtime)
@@ -356,6 +440,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> emr_serverless_spark_20230808_models.StartJobRunResponse:
+        """
+        @summary 启动作业
+        
+        @param request: StartJobRunRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartJobRunResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region_id):
@@ -409,6 +501,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> emr_serverless_spark_20230808_models.StartJobRunResponse:
+        """
+        @summary 启动作业
+        
+        @param request: StartJobRunRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartJobRunResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region_id):
@@ -460,6 +560,12 @@ class Client(OpenApiClient):
         workspace_id: str,
         request: emr_serverless_spark_20230808_models.StartJobRunRequest,
     ) -> emr_serverless_spark_20230808_models.StartJobRunResponse:
+        """
+        @summary 启动作业
+        
+        @param request: StartJobRunRequest
+        @return: StartJobRunResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.start_job_run_with_options(workspace_id, request, headers, runtime)
@@ -469,6 +575,12 @@ class Client(OpenApiClient):
         workspace_id: str,
         request: emr_serverless_spark_20230808_models.StartJobRunRequest,
     ) -> emr_serverless_spark_20230808_models.StartJobRunResponse:
+        """
+        @summary 启动作业
+        
+        @param request: StartJobRunRequest
+        @return: StartJobRunResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.start_job_run_with_options_async(workspace_id, request, headers, runtime)

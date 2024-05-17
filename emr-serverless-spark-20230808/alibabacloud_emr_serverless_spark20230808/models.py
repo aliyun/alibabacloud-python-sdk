@@ -15,12 +15,19 @@ class Credential(TeaModel):
         security_token: str = None,
         signature: str = None,
     ):
+        # This parameter is required.
         self.access_id = access_id
+        # This parameter is required.
         self.dir = dir
+        # This parameter is required.
         self.expire = expire
+        # This parameter is required.
         self.host = host
+        # This parameter is required.
         self.policy = policy
+        # This parameter is required.
         self.security_token = security_token
+        # This parameter is required.
         self.signature = signature
 
     def validate(self):
@@ -79,13 +86,20 @@ class Artifact(TeaModel):
         modifier: int = None,
         name: str = None,
     ):
+        # This parameter is required.
         self.biz_id = biz_id
+        # This parameter is required.
         self.creator = creator
         self.credential = credential
+        # This parameter is required.
         self.gmt_created = gmt_created
+        # This parameter is required.
         self.gmt_modified = gmt_modified
+        # This parameter is required.
         self.location = location
+        # This parameter is required.
         self.modifier = modifier
+        # This parameter is required.
         self.name = name
 
     def validate(self):
@@ -150,13 +164,20 @@ class Category(TeaModel):
         parent_biz_id: str = None,
         type: str = None,
     ):
+        # This parameter is required.
         self.biz_id = biz_id
+        # This parameter is required.
         self.creator = creator
+        # This parameter is required.
         self.gmt_created = gmt_created
+        # This parameter is required.
         self.gmt_modified = gmt_modified
+        # This parameter is required.
         self.modifier = modifier
+        # This parameter is required.
         self.name = name
         self.parent_biz_id = parent_biz_id
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -243,6 +264,80 @@ class Configuration(TeaModel):
             self.config_item_key = m.get('configItemKey')
         if m.get('configItemValue') is not None:
             self.config_item_value = m.get('configItemValue')
+        return self
+
+
+class ConfigurationOverridesConfigurations(TeaModel):
+    def __init__(
+        self,
+        config_file_name: str = None,
+        config_item_key: str = None,
+        config_item_value: str = None,
+    ):
+        self.config_file_name = config_file_name
+        self.config_item_key = config_item_key
+        self.config_item_value = config_item_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_file_name is not None:
+            result['configFileName'] = self.config_file_name
+        if self.config_item_key is not None:
+            result['configItemKey'] = self.config_item_key
+        if self.config_item_value is not None:
+            result['configItemValue'] = self.config_item_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('configFileName') is not None:
+            self.config_file_name = m.get('configFileName')
+        if m.get('configItemKey') is not None:
+            self.config_item_key = m.get('configItemKey')
+        if m.get('configItemValue') is not None:
+            self.config_item_value = m.get('configItemValue')
+        return self
+
+
+class ConfigurationOverrides(TeaModel):
+    def __init__(
+        self,
+        configurations: List[ConfigurationOverridesConfigurations] = None,
+    ):
+        self.configurations = configurations
+
+    def validate(self):
+        if self.configurations:
+            for k in self.configurations:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['configurations'] = []
+        if self.configurations is not None:
+            for k in self.configurations:
+                result['configurations'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.configurations = []
+        if m.get('configurations') is not None:
+            for k in m.get('configurations'):
+                temp_model = ConfigurationOverridesConfigurations()
+                self.configurations.append(temp_model.from_map(k))
         return self
 
 
@@ -389,11 +484,15 @@ class ReleaseVersionImage(TeaModel):
 class RunLog(TeaModel):
     def __init__(
         self,
+        driver_startup: str = None,
         driver_std_error: str = None,
         driver_std_out: str = None,
+        driver_syslog: str = None,
     ):
+        self.driver_startup = driver_startup
         self.driver_std_error = driver_std_error
         self.driver_std_out = driver_std_out
+        self.driver_syslog = driver_syslog
 
     def validate(self):
         pass
@@ -404,18 +503,26 @@ class RunLog(TeaModel):
             return _map
 
         result = dict()
+        if self.driver_startup is not None:
+            result['driverStartup'] = self.driver_startup
         if self.driver_std_error is not None:
             result['driverStdError'] = self.driver_std_error
         if self.driver_std_out is not None:
             result['driverStdOut'] = self.driver_std_out
+        if self.driver_syslog is not None:
+            result['driverSyslog'] = self.driver_syslog
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('driverStartup') is not None:
+            self.driver_startup = m.get('driverStartup')
         if m.get('driverStdError') is not None:
             self.driver_std_error = m.get('driverStdError')
         if m.get('driverStdOut') is not None:
             self.driver_std_out = m.get('driverStdOut')
+        if m.get('driverSyslog') is not None:
+            self.driver_syslog = m.get('driverSyslog')
         return self
 
 
@@ -425,7 +532,9 @@ class SparkConf(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # This parameter is required.
         self.key = key
+        # This parameter is required.
         self.value = value
 
     def validate(self):
@@ -635,6 +744,7 @@ class Tag(TeaModel):
 class Task(TeaModel):
     def __init__(
         self,
+        archives: List[str] = None,
         artifact_url: str = None,
         biz_id: str = None,
         category_biz_id: str = None,
@@ -645,10 +755,13 @@ class Task(TeaModel):
         default_resource_queue_id: str = None,
         default_sql_compute_id: str = None,
         extra_artifact_ids: List[str] = None,
+        extra_spark_submit_params: str = None,
+        files: List[str] = None,
         gmt_created: str = None,
         gmt_modified: str = None,
         has_changed: bool = None,
         has_commited: bool = None,
+        jars: List[str] = None,
         last_run_resource_queue_id: str = None,
         modifier: int = None,
         name: str = None,
@@ -666,35 +779,54 @@ class Task(TeaModel):
         tags: Dict[str, str] = None,
         type: str = None,
     ):
+        self.archives = archives
         self.artifact_url = artifact_url
+        # This parameter is required.
         self.biz_id = biz_id
         self.category_biz_id = category_biz_id
         self.content = content
+        # This parameter is required.
         self.creator = creator
         self.default_catalog_id = default_catalog_id
         self.default_database = default_database
         self.default_resource_queue_id = default_resource_queue_id
         self.default_sql_compute_id = default_sql_compute_id
         self.extra_artifact_ids = extra_artifact_ids
+        self.extra_spark_submit_params = extra_spark_submit_params
+        self.files = files
+        # This parameter is required.
         self.gmt_created = gmt_created
+        # This parameter is required.
         self.gmt_modified = gmt_modified
         self.has_changed = has_changed
+        # This parameter is required.
         self.has_commited = has_commited
+        self.jars = jars
         self.last_run_resource_queue_id = last_run_resource_queue_id
+        # This parameter is required.
         self.modifier = modifier
+        # This parameter is required.
         self.name = name
         self.py_files = py_files
         self.spark_args = spark_args
         self.spark_conf = spark_conf
+        # This parameter is required.
         self.spark_driver_cores = spark_driver_cores
+        # This parameter is required.
         self.spark_driver_memory = spark_driver_memory
         self.spark_entrypoint = spark_entrypoint
+        # This parameter is required.
         self.spark_executor_cores = spark_executor_cores
+        # This parameter is required.
         self.spark_executor_memory = spark_executor_memory
+        # This parameter is required.
         self.spark_log_level = spark_log_level
+        # This parameter is required.
         self.spark_log_path = spark_log_path
+        # This parameter is required.
         self.spark_version = spark_version
         self.tags = tags
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -709,6 +841,8 @@ class Task(TeaModel):
             return _map
 
         result = dict()
+        if self.archives is not None:
+            result['archives'] = self.archives
         if self.artifact_url is not None:
             result['artifactUrl'] = self.artifact_url
         if self.biz_id is not None:
@@ -729,6 +863,10 @@ class Task(TeaModel):
             result['defaultSqlComputeId'] = self.default_sql_compute_id
         if self.extra_artifact_ids is not None:
             result['extraArtifactIds'] = self.extra_artifact_ids
+        if self.extra_spark_submit_params is not None:
+            result['extraSparkSubmitParams'] = self.extra_spark_submit_params
+        if self.files is not None:
+            result['files'] = self.files
         if self.gmt_created is not None:
             result['gmtCreated'] = self.gmt_created
         if self.gmt_modified is not None:
@@ -737,6 +875,8 @@ class Task(TeaModel):
             result['hasChanged'] = self.has_changed
         if self.has_commited is not None:
             result['hasCommited'] = self.has_commited
+        if self.jars is not None:
+            result['jars'] = self.jars
         if self.last_run_resource_queue_id is not None:
             result['lastRunResourceQueueId'] = self.last_run_resource_queue_id
         if self.modifier is not None:
@@ -775,6 +915,8 @@ class Task(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('archives') is not None:
+            self.archives = m.get('archives')
         if m.get('artifactUrl') is not None:
             self.artifact_url = m.get('artifactUrl')
         if m.get('bizId') is not None:
@@ -795,6 +937,10 @@ class Task(TeaModel):
             self.default_sql_compute_id = m.get('defaultSqlComputeId')
         if m.get('extraArtifactIds') is not None:
             self.extra_artifact_ids = m.get('extraArtifactIds')
+        if m.get('extraSparkSubmitParams') is not None:
+            self.extra_spark_submit_params = m.get('extraSparkSubmitParams')
+        if m.get('files') is not None:
+            self.files = m.get('files')
         if m.get('gmtCreated') is not None:
             self.gmt_created = m.get('gmtCreated')
         if m.get('gmtModified') is not None:
@@ -803,6 +949,8 @@ class Task(TeaModel):
             self.has_changed = m.get('hasChanged')
         if m.get('hasCommited') is not None:
             self.has_commited = m.get('hasCommited')
+        if m.get('jars') is not None:
+            self.jars = m.get('jars')
         if m.get('lastRunResourceQueueId') is not None:
             self.last_run_resource_queue_id = m.get('lastRunResourceQueueId')
         if m.get('modifier') is not None:
@@ -994,17 +1142,28 @@ class Template(TeaModel):
         spark_version: str = None,
         template_type: str = None,
     ):
+        # This parameter is required.
         self.creator = creator
+        # This parameter is required.
         self.gmt_created = gmt_created
+        # This parameter is required.
         self.gmt_modified = gmt_modified
+        # This parameter is required.
         self.modifier = modifier
         self.spark_conf = spark_conf
+        # This parameter is required.
         self.spark_driver_cores = spark_driver_cores
+        # This parameter is required.
         self.spark_driver_memory = spark_driver_memory
+        # This parameter is required.
         self.spark_executor_cores = spark_executor_cores
+        # This parameter is required.
         self.spark_executor_memory = spark_executor_memory
+        # This parameter is required.
         self.spark_log_level = spark_log_level
+        # This parameter is required.
         self.spark_log_path = spark_log_path
+        # This parameter is required.
         self.spark_version = spark_version
         self.template_type = template_type
 
